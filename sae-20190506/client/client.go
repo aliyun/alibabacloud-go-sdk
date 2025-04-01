@@ -8519,7 +8519,7 @@ func (s *WebWAFConfig) SetEnableWAF(v bool) *WebWAFConfig {
 }
 
 type AbortAndRollbackChangeOrderRequest struct {
-	// The ID of the request.
+	// The ID of the change order.
 	//
 	// This parameter is required.
 	//
@@ -8543,49 +8543,55 @@ func (s *AbortAndRollbackChangeOrderRequest) SetChangeOrderId(v string) *AbortAn
 }
 
 type AbortAndRollbackChangeOrderResponseBody struct {
-	// Indicates whether the change order was terminated or the application was rolled back. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The change order was terminated or the application was rolled back.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The change order could not be terminated or the application could not be rolled back.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the change order.
+	// The details of the change order.
 	Data *AbortAndRollbackChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the change order was terminated. Valid values:
+	//
+	// 	- **true**: The change order was terminated.
+	//
+	// 	- **false**: The change order failed to be terminated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the change order.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -8637,11 +8643,7 @@ func (s *AbortAndRollbackChangeOrderResponseBody) SetTraceId(v string) *AbortAnd
 }
 
 type AbortAndRollbackChangeOrderResponseBodyData struct {
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The ID of the change order.
 	//
 	// example:
 	//
@@ -8692,7 +8694,7 @@ func (s *AbortAndRollbackChangeOrderResponse) SetBody(v *AbortAndRollbackChangeO
 }
 
 type AbortChangeOrderRequest struct {
-	// The ID of the request.
+	// The ID of the change order.
 	//
 	// This parameter is required.
 	//
@@ -8716,45 +8718,51 @@ func (s *AbortChangeOrderRequest) SetChangeOrderId(v string) *AbortChangeOrderRe
 }
 
 type AbortChangeOrderResponseBody struct {
-	// Indicates whether the change order was terminated. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The change order was terminated.
+	// 	- **2xx**: The request was successful.
 	//
-	// 	- **false**: The change order could not be terminated.
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the change order.
+	// The data returned.
 	Data *AbortChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Value values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **ErrorCode*	- is not returned if a request is successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **ErrorCode*	- is returned if a request failed. For more information, see **Error code*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace.
+	// The message returned for the operation.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the change order was terminated. Valid values:
+	//
+	// 	- **true**: The change order was terminated.
+	//
+	// 	- **false**: The change order failed to be terminated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned data.
+	// The ID of the trace.
 	//
 	// example:
 	//
@@ -8806,11 +8814,7 @@ func (s *AbortChangeOrderResponseBody) SetTraceId(v string) *AbortChangeOrderRes
 }
 
 type AbortChangeOrderResponseBodyData struct {
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The ID of the change order.
 	//
 	// example:
 	//
@@ -9831,8 +9835,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistration        *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	//
 	// example:
@@ -9860,8 +9865,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// KSAK****
-	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
+	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
+	OidcRoleName  *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// xxxxxx
 	//
 	// example:
@@ -10193,6 +10199,11 @@ func (s *CreateApplicationRequest) SetMicroRegistrationConfig(v string) *CreateA
 	return s
 }
 
+func (s *CreateApplicationRequest) SetMicroserviceEngineConfig(v string) *CreateApplicationRequest {
+	s.MicroserviceEngineConfig = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetMountDesc(v string) *CreateApplicationRequest {
 	s.MountDesc = &v
 	return s
@@ -10215,6 +10226,11 @@ func (s *CreateApplicationRequest) SetNasConfigs(v string) *CreateApplicationReq
 
 func (s *CreateApplicationRequest) SetNasId(v string) *CreateApplicationRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetNewSaeVersion(v string) *CreateApplicationRequest {
+	s.NewSaeVersion = &v
 	return s
 }
 
@@ -10525,8 +10541,9 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// "0"
-	MicroRegistration       *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
-	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistration        *string `json:"MicroRegistration,omitempty" xml:"MicroRegistration,omitempty"`
+	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// [{mountPath: "/tmp", nasPath: "/"}]
 	//
 	// example:
@@ -10554,8 +10571,9 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// KSAK****
-	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
-	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
+	NasId         *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
+	OidcRoleName  *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// xxxxxx
 	//
 	// example:
@@ -10887,6 +10905,11 @@ func (s *CreateApplicationShrinkRequest) SetMicroRegistrationConfig(v string) *C
 	return s
 }
 
+func (s *CreateApplicationShrinkRequest) SetMicroserviceEngineConfig(v string) *CreateApplicationShrinkRequest {
+	s.MicroserviceEngineConfig = &v
+	return s
+}
+
 func (s *CreateApplicationShrinkRequest) SetMountDesc(v string) *CreateApplicationShrinkRequest {
 	s.MountDesc = &v
 	return s
@@ -10909,6 +10932,11 @@ func (s *CreateApplicationShrinkRequest) SetNasConfigs(v string) *CreateApplicat
 
 func (s *CreateApplicationShrinkRequest) SetNasId(v string) *CreateApplicationShrinkRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetNewSaeVersion(v string) *CreateApplicationShrinkRequest {
+	s.NewSaeVersion = &v
 	return s
 }
 
@@ -11533,11 +11561,23 @@ type CreateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	// example:
 	//
 	// CPU
-	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// lb-xxx
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// example:
+	//
+	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
-	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
-	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
+	// example:
+	//
+	// test
+	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// example:
+	//
+	// 80
+	Vport *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s CreateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -11626,9 +11666,15 @@ type CreateApplicationScalingRuleResponseBodyDataTimerSchedules struct {
 	// example:
 	//
 	// 08:00
-	AtTime      *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
-	MaxReplicas *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	// example:
+	//
+	// 10
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// example:
+	//
+	// 5
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 	// example:
 	//
 	// 3
@@ -11905,11 +11951,13 @@ func (s *CreateConfigMapResponse) SetBody(v *CreateConfigMapResponseBody) *Creat
 }
 
 type CreateGreyTagRouteRequest struct {
+	// The canary release rule of the application for which Application Load Balancer (ALB) gateway routing is configured.
+	//
 	// example:
 	//
 	// [{"condition":"AND","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"sourceIp","value":"127.0.0.1"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
 	AlbRules *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
-	// dubbo-echo
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -11917,19 +11965,19 @@ type CreateGreyTagRouteRequest struct {
 	//
 	// 7802c49a-67bc-4167-8369-9a9c003c****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// [{"condition":"OR","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+	// The description of the canary release rule. The name must be 1 to 64 characters in length.
 	//
 	// example:
 	//
 	// 灰度发布-地域灰度
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the request.
+	// The canary release rule that you created for Dubbo applications. If your application uses the Dubbo framework, you must configure this parameter. You do not need to configure the **ScRules*	- parameter.
 	//
 	// example:
 	//
 	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
 	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// Canary Release - Regions
+	// The name of the canary release rule. The name must start with a lowercase letter and end with a digit or a lowercase letter. The name can contain only lowercase letters, Chinese characters, digits, and hyphens (-). The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -11937,7 +11985,7 @@ type CreateGreyTagRouteRequest struct {
 	//
 	// dubbo-echo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
+	// The canary release rule that you created for Spring Cloud application. If your application uses the Spring Cloud framework, you must configure this parameter. You do not need to configure the **DubboRules*	- parameter.
 	//
 	// example:
 	//
@@ -11984,6 +12032,40 @@ func (s *CreateGreyTagRouteRequest) SetScRules(v string) *CreateGreyTagRouteRequ
 }
 
 type CreateGreyTagRouteResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the canary release rule.
+	Data *CreateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// 	- **ErrorCode*	- is not returned if a request is successful.
+	//
+	// 	- **ErrorCode*	- is returned if a request failed. For more information, see **Error code*	- section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned for the operation.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 9D29CBD0-45D3-410B-9826-52F86F90****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the information of the change order was queried. Valid values:
 	//
 	// 	- **true**: The information was queried.
@@ -11992,37 +12074,9 @@ type CreateGreyTagRouteResponseBody struct {
 	//
 	// example:
 	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the canary release rule. The ID is globally unique.
-	Data *CreateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: The call was successful.
-	//
-	// 	- **3xx**: The call was redirected.
-	//
-	// 	- **4xx**: The call failed.
-	//
-	// 	- **5xx**: A server error occurred.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The trace ID that is used to query the details of the request.
-	//
-	// example:
-	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information.
-	//
-	// example:
-	//
-	// 9D29CBD0-45D3-410B-9826-52F86F90****
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// example:
-	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the canary release rule.
+	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -12074,11 +12128,7 @@ func (s *CreateGreyTagRouteResponseBody) SetTraceId(v string) *CreateGreyTagRout
 }
 
 type CreateGreyTagRouteResponseBodyData struct {
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The ID of the canary release rule. The ID is globally unique.
 	//
 	// example:
 	//
@@ -12149,7 +12199,8 @@ type CreateIngressRequest struct {
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds    *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CorsConfig *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
 	// Default forwarding rule. Traffic is forwarded to the specified application through a designated port based on the IP address. Parameter descriptions are as follows:
 	//
 	// - **appId**: Application ID. - **containerPort**: Application instance port.
@@ -12173,9 +12224,7 @@ type CreateIngressRequest struct {
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
 	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
 	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
-	// The timeout period of an idle connection. Unit: seconds. Valid values: 1 to 60.
-	//
-	// If no request is received within the specified timeout period, ALB closes the current connection. When another request is received, ALB establishes a new connection.
+	// The timeout period of an idle connection. Unit: seconds Valid values: 1 to 60. If no requests are received within the specified timeout period, ALB closes the current connection. When a new request is received, ALB establishes a new connection.
 	//
 	// example:
 	//
@@ -12218,9 +12267,7 @@ type CreateIngressRequest struct {
 	//
 	// cn-beijing:sae-test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The timeout period of a request. Unit: seconds. Valid values: 1 to 180.
-	//
-	// If no response is received from the backend server within the specified timeout period, ALB returns an HTTP 504 error code to the client.
+	// The timeout period of a request. Unit: seconds. Valid values: 1 to 180. If no response is received from the backend server within the specified timeout period, ALB stops waiting for the response and returns an HTTP 504 error code to the client.
 	//
 	// example:
 	//
@@ -12248,7 +12295,7 @@ type CreateIngressRequest struct {
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The security policy ID.
+	// The ID of a security policy.
 	//
 	// example:
 	//
@@ -12285,6 +12332,11 @@ func (s *CreateIngressRequest) SetCertId(v string) *CreateIngressRequest {
 
 func (s *CreateIngressRequest) SetCertIds(v string) *CreateIngressRequest {
 	s.CertIds = &v
+	return s
+}
+
+func (s *CreateIngressRequest) SetCorsConfig(v string) *CreateIngressRequest {
+	s.CorsConfig = &v
 	return s
 }
 
@@ -12666,7 +12718,10 @@ type CreateJobRequest struct {
 	//
 	// 3.5.3
 	EdasContainerVersion *string `json:"EdasContainerVersion,omitempty" xml:"EdasContainerVersion,omitempty"`
-	EnableImageAccl      *bool   `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
+	// example:
+	//
+	// false
+	EnableImageAccl *bool `json:"EnableImageAccl,omitempty" xml:"EnableImageAccl,omitempty"`
 	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
 	//
 	// 	- Customize
@@ -13461,6 +13516,17 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateNamespaceRequest struct {
+	// Indicates whether to enable SAE built-in registry:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// Default value: true. If you do not use the built-in registry, you can set this parameter to false to accelerate the creation of a namespace.
+	//
+	// example:
+	//
+	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
 	// The trace ID that is used to query the details of the request.
 	//
@@ -13530,7 +13596,7 @@ type CreateNamespaceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The region where the namespace resides.
+	// The information about a namespace.
 	Data *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// http://sae_pop_pre/#vpc
 	//
@@ -13608,6 +13674,15 @@ func (s *CreateNamespaceResponseBody) SetTraceId(v string) *CreateNamespaceRespo
 }
 
 type CreateNamespaceResponseBodyData struct {
+	// Indicates whether the SAE built-in registry is enabled:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
 	// Indicates whether the namespace was created. Valid values:
 	//
@@ -13962,12 +14037,16 @@ func (s *CreateSecretResponse) SetBody(v *CreateSecretResponseBody) *CreateSecre
 }
 
 type CreateWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The information about the application.
+	//
 	// This parameter is required.
 	Body *CreateWebApplicationInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -14020,12 +14099,16 @@ func (s *CreateWebApplicationResponse) SetBody(v *WebApplicationBody) *CreateWeb
 }
 
 type CreateWebCustomDomainRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The information about custom domain name.
+	//
 	// This parameter is required.
 	Body *CreateWebCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -14078,7 +14161,7 @@ func (s *CreateWebCustomDomainResponse) SetBody(v *WebCustomDomainBody) *CreateW
 }
 
 type DeleteApplicationRequest struct {
-	// The ID of the request.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -14102,49 +14185,55 @@ func (s *DeleteApplicationRequest) SetAppId(v string) *DeleteApplicationRequest 
 }
 
 type DeleteApplicationResponseBody struct {
-	// Indicates whether the application is deleted. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**
+	// 	- **2xx**: The request was successful.
 	//
-	// 	- **false**
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the change order that is used to query the task execution status.
+	// The result returned.
 	Data *DeleteApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: The request is successful.
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- **3xx**: A redirection message is returned.
-	//
-	// 	- **4xx**: The request is invalid.
-	//
-	// 	- **5xx**: A server error occurred.
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The trace ID that is used to query details of the request.
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- If the request is successful, **success*	- is returned.
-	//
-	// 	- If an error occurred, the error code is returned.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the application is deleted. Valid values:
+	//
+	// 	- **true**: The applications were deleted
+	//
+	// 	- **false**: The applications failed to be deleted.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned results.
+	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -14196,11 +14285,7 @@ func (s *DeleteApplicationResponseBody) SetTraceId(v string) *DeleteApplicationR
 }
 
 type DeleteApplicationResponseBodyData struct {
-	// The error code that is returned if the request fails.
-	//
-	// 	- If the request is successful, this parameter is not returned.****
-	//
-	// 	- This parameter is returned only if the request failed.***	- For more information about the values of this parameter, see the "**Error codes**" section of this topic.
+	// The ID of the change order. The ID can be used to query the status of the change task.
 	//
 	// example:
 	//
@@ -14370,7 +14455,7 @@ func (s *DeleteApplicationScalingRuleResponse) SetBody(v *DeleteApplicationScali
 }
 
 type DeleteConfigMapRequest struct {
-	// 1
+	// The ID of the ConfigMap that you want to delete. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID of a ConfigMap.
 	//
 	// This parameter is required.
 	//
@@ -14396,13 +14481,13 @@ func (s *DeleteConfigMapRequest) SetConfigMapId(v int64) *DeleteConfigMapRequest
 type DeleteConfigMapResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the call failed.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -14410,39 +14495,39 @@ type DeleteConfigMapResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *DeleteConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code. Valid values:
 	//
 	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information. Valid values:
+	// The returned message. Valid values:
 	//
-	// 	- If the call is successful, **success*	- is returned.
+	// 	- success: If the call is successful, **success*	- is returned.
 	//
-	// 	- If the call fails, an error code is returned.
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the ConfigMap instance was deleted. Valid values:
+	// Indicates whether the ConfigMap was deleted. Valid values:
 	//
-	// 	- **true**: The instance was deleted.
+	// 	- **true**: The ConfigMap was deleted.
 	//
-	// 	- **false**: The instance failed to be deleted.
+	// 	- **false**: The ConfigMap failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -14494,7 +14579,7 @@ func (s *DeleteConfigMapResponseBody) SetTraceId(v string) *DeleteConfigMapRespo
 }
 
 type DeleteConfigMapResponseBodyData struct {
-	// The ID of the deleted ConfigMap instance.
+	// The ID of the deleted ConfigMap.
 	//
 	// example:
 	//
@@ -14545,7 +14630,7 @@ func (s *DeleteConfigMapResponse) SetBody(v *DeleteConfigMapResponseBody) *Delet
 }
 
 type DeleteGreyTagRouteRequest struct {
-	// The ID of the request.
+	// The rule ID.
 	//
 	// This parameter is required.
 	//
@@ -14569,18 +14654,6 @@ func (s *DeleteGreyTagRouteRequest) SetGreyTagRouteId(v int64) *DeleteGreyTagRou
 }
 
 type DeleteGreyTagRouteResponseBody struct {
-	// Indicates whether the information of the change order was queried. Valid values:
-	//
-	// 	- **true**: The information was queried.
-	//
-	// 	- **false**: The information failed to be queried.
-	//
-	// example:
-	//
-	// 200
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the canary release rule. The ID is globally unique.
-	Data *DeleteGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
 	// 	- **2xx**: The call was successful.
@@ -14590,14 +14663,20 @@ type DeleteGreyTagRouteResponseBody struct {
 	// 	- **4xx**: The call failed.
 	//
 	// 	- **5xx**: A server error occurred.
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
-	// success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information. Valid values:
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the canary release rule.
+	Data *DeleteGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The returned message. Valid values:
 	//
 	// 	- success: If the call is successful, **success*	- is returned.
 	//
@@ -14605,13 +14684,25 @@ type DeleteGreyTagRouteResponseBody struct {
 	//
 	// example:
 	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
 	// 9D29CBD0-45D3-410B-9826-52F86F90****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the information of the change order was queried. Valid values:
+	//
+	// 	- **true**: The information was queried.
+	//
+	// 	- **false**: The information failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The information about the canary release rule.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -14663,11 +14754,7 @@ func (s *DeleteGreyTagRouteResponseBody) SetTraceId(v string) *DeleteGreyTagRout
 }
 
 type DeleteGreyTagRouteResponseBodyData struct {
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The ID of the canary release rule. The ID is globally unique.
 	//
 	// example:
 	//
@@ -14769,7 +14856,7 @@ type DeleteHistoryJobResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The result returned.
 	//
 	// example:
 	//
@@ -14892,7 +14979,7 @@ func (s *DeleteHistoryJobResponse) SetBody(v *DeleteHistoryJobResponseBody) *Del
 }
 
 type DeleteIngressRequest struct {
-	// 87
+	// The ID of the routing rule that you want to delete. You can call the [ListIngresses](https://help.aliyun.com/document_detail/153934.html) operation to obtain the ID of a routing rule.
 	//
 	// This parameter is required.
 	//
@@ -14918,25 +15005,25 @@ func (s *DeleteIngressRequest) SetIngressId(v int64) *DeleteIngressRequest {
 type DeleteIngressResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request failed.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *DeleteIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -14944,7 +15031,7 @@ type DeleteIngressResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -14952,15 +15039,15 @@ type DeleteIngressResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the routing rule was deleted. Valid values:
 	//
-	// 	- **true**: indicates that the routing rule was deleted.
+	// 	- **true**: The routing rule was deleted.
 	//
-	// 	- **false**: indicates that the routing rule could not be deleted.
+	// 	- **false**: The routing rule failed to be deleted.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -15012,7 +15099,7 @@ func (s *DeleteIngressResponseBody) SetTraceId(v string) *DeleteIngressResponseB
 }
 
 type DeleteIngressResponseBodyData struct {
-	// The ID of the routing rule that you want to delete.
+	// The ID of the deleted routing rule.
 	//
 	// example:
 	//
@@ -15101,7 +15188,7 @@ type DeleteJobResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The result returned.
 	//
 	// example:
 	//
@@ -15565,6 +15652,8 @@ func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecre
 }
 
 type DeleteWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15616,6 +15705,8 @@ func (s *DeleteWebApplicationResponse) SetBody(v *WebApplicationBody) *DeleteWeb
 }
 
 type DeleteWebApplicationRevisionRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15667,6 +15758,8 @@ func (s *DeleteWebApplicationRevisionResponse) SetBody(v *WebApplicationRevision
 }
 
 type DeleteWebCustomDomainRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -15825,7 +15918,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// example:
+	//
+	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication*	- operation to manage a running application, the application is immediately redeployed.
 	//
@@ -15837,6 +15933,9 @@ type DeployApplicationRequest struct {
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// example:
+	//
+	// .NET 3.1
 	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
@@ -15853,8 +15952,11 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// false
-	EnableAhas     *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableCpuBurst *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
+	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// example:
+	//
+	// true
+	EnableCpuBurst *bool `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
 	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
 	//
 	// 	- **true**: The canary release rules are enabled.
@@ -15864,8 +15966,14 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// false
-	EnableGreyTagRoute            *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	EnableNewArms                 *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	// example:
+	//
+	// true
+	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	// example:
+	//
+	// true
 	EnableSidecarResourceIsolated *bool `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
 	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
 	//
@@ -15998,7 +16106,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
-	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
 	// 	- If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
@@ -16056,7 +16165,14 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// 10d3b4****
-	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The name of the RAM role used to authenticate the user identity.
+	//
+	// >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
+	//
+	// example:
+	//
+	// sae-test
 	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	//
@@ -16175,7 +16291,10 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// 1
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// example:
 	//
@@ -16184,7 +16303,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// {\\"alicloud.service.tag\\":\\"g1\\"}
-	ServiceTags             *string                   `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	ServiceTags *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	// The configuration of the container.
 	SidecarContainersConfig []*SidecarContainerConfig `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty" type:"Repeated"`
 	// The logging configurations of Log Service.
 	//
@@ -16456,6 +16576,11 @@ func (s *DeployApplicationRequest) SetMicroRegistration(v string) *DeployApplica
 
 func (s *DeployApplicationRequest) SetMicroRegistrationConfig(v string) *DeployApplicationRequest {
 	s.MicroRegistrationConfig = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetMicroserviceEngineConfig(v string) *DeployApplicationRequest {
+	s.MicroserviceEngineConfig = &v
 	return s
 }
 
@@ -16752,7 +16877,10 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"hostName":"samplehost","ip":"127.0.0.1"}]
-	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
+	// example:
+	//
+	// internet
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
 	// This parameter takes effect only for applications that are in the Stopped state. If you call the **DeployApplication*	- operation to manage a running application, the application is immediately redeployed.
 	//
@@ -16764,6 +16892,9 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// true
 	Deploy *string `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	// example:
+	//
+	// .NET 3.1
 	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
@@ -16780,8 +16911,11 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableAhas     *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
-	EnableCpuBurst *bool   `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
+	EnableAhas *string `json:"EnableAhas,omitempty" xml:"EnableAhas,omitempty"`
+	// example:
+	//
+	// true
+	EnableCpuBurst *bool `json:"EnableCpuBurst,omitempty" xml:"EnableCpuBurst,omitempty"`
 	// Indicates whether canary release rules are enabled. Canary release rules apply only to applications in Spring Cloud and Dubbo frameworks. Take note of the following rules:
 	//
 	// 	- **true**: The canary release rules are enabled.
@@ -16791,8 +16925,14 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// false
-	EnableGreyTagRoute            *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
-	EnableNewArms                 *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	EnableGreyTagRoute *bool `json:"EnableGreyTagRoute,omitempty" xml:"EnableGreyTagRoute,omitempty"`
+	// example:
+	//
+	// true
+	EnableNewArms *bool `json:"EnableNewArms,omitempty" xml:"EnableNewArms,omitempty"`
+	// example:
+	//
+	// true
 	EnableSidecarResourceIsolated *bool `json:"EnableSidecarResourceIsolated,omitempty" xml:"EnableSidecarResourceIsolated,omitempty"`
 	// The environment variables. You can configure custom environment variables or reference a ConfigMap. If you want to reference a ConfigMap, you must first create a ConfigMap. For more information, see [CreateConfigMap](https://help.aliyun.com/document_detail/176914.html). Take note of the following rules:
 	//
@@ -16925,7 +17065,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// {\\"instanceId\\":\\"mse-cn-zvp2bh6h70r\\",\\"namespace\\":\\"4c0aa74f-57cb-423c-b6af-5d9f2d0e3dbd\\"}
-	MicroRegistrationConfig *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroRegistrationConfig  *string `json:"MicroRegistrationConfig,omitempty" xml:"MicroRegistrationConfig,omitempty"`
+	MicroserviceEngineConfig *string `json:"MicroserviceEngineConfig,omitempty" xml:"MicroserviceEngineConfig,omitempty"`
 	// The percentage of the minimum number of available instances. Take note of the following rules:
 	//
 	// 	- If you set the value to **-1**, the minimum number of available instances is not determined based on this parameter. Default value: -1.
@@ -16983,7 +17124,14 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// 10d3b4****
-	NasId        *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	NasId *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	// The name of the RAM role used to authenticate the user identity.
+	//
+	// >  You need to create an OpenID Connect (OIDC) identity provider (IdP) and an identity provider (IdP) for role-based single sign-on (SSO) in advance. For more information, see [Creates an OpenID Connect (OIDC) identity provider (IdP)](https://help.aliyun.com/document_detail/2331022.html) and [Creates an identity provider (IdP) for role-based single sign-on (SSO)](https://help.aliyun.com/document_detail/2331016.html).
+	//
+	// example:
+	//
+	// sae-test
 	OidcRoleName *string `json:"OidcRoleName,omitempty" xml:"OidcRoleName,omitempty"`
 	// The AccessKey ID that is used to read data from and write data to Object Storage Service (OSS) buckets.
 	//
@@ -17102,7 +17250,10 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// 1
-	Replicas        *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// example:
+	//
+	// [{“secretId":10,”key":"test","mountPath":"/tmp"}]
 	SecretMountDesc *string `json:"SecretMountDesc,omitempty" xml:"SecretMountDesc,omitempty"`
 	// example:
 	//
@@ -17111,7 +17262,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// {\\"alicloud.service.tag\\":\\"g1\\"}
-	ServiceTags                   *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	ServiceTags *string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+	// The configuration of the container.
 	SidecarContainersConfigShrink *string `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty"`
 	// The logging configurations of Log Service.
 	//
@@ -17383,6 +17535,11 @@ func (s *DeployApplicationShrinkRequest) SetMicroRegistration(v string) *DeployA
 
 func (s *DeployApplicationShrinkRequest) SetMicroRegistrationConfig(v string) *DeployApplicationShrinkRequest {
 	s.MicroRegistrationConfig = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetMicroserviceEngineConfig(v string) *DeployApplicationShrinkRequest {
+	s.MicroserviceEngineConfig = &v
 	return s
 }
 
@@ -17760,8 +17917,18 @@ type DescribeAppServiceDetailRequest struct {
 	// example:
 	//
 	// 6dcc8c9e-d3da-478a-a066-86dcf820****
-	AppId            *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	NacosInstanceId  *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the MSE Nacos instance.
+	//
+	// example:
+	//
+	// mse-cn-sco3r0u****
+	NacosInstanceId *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
+	// The ID of the namespace for the MSE Nacos instance.
+	//
+	// example:
+	//
+	// public
 	NacosNamespaceId *string `json:"NacosNamespaceId,omitempty" xml:"NacosNamespaceId,omitempty"`
 	// springCloud
 	//
@@ -17847,7 +18014,7 @@ type DescribeAppServiceDetailResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data that is returned.
 	Data *DescribeAppServiceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned error code. Valid values:
 	//
@@ -17960,10 +18127,17 @@ type DescribeAppServiceDetailResponseBodyData struct {
 	// example:
 	//
 	// service-provider
-	ServiceName     *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServicePorts    []*int64  `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
-	ServiceProtocol *string   `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
-	ServiceTags     []*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty" type:"Repeated"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The port used by the service.
+	ServicePorts []*int64 `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
+	// The protocol used by the service.
+	//
+	// example:
+	//
+	// HTTP
+	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// The tag of the service.
+	ServiceTags []*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty" type:"Repeated"`
 	// The type of the service. Valid values:
 	//
 	// 	- **dubbo**
@@ -18395,6 +18569,12 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The SAE application type.
+	//
+	// 	- micro_service
+	//
+	// 	- web
+	//
+	// 	- job
 	//
 	// example:
 	//
@@ -18862,7 +19042,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
-	SecurityGroupId         *string                                                             `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The canary tag configured for the application.
 	ServiceTags             map[string]*string                                                  `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
 	SidecarContainersConfig []*DescribeApplicationConfigResponseBodyDataSidecarContainersConfig `json:"SidecarContainersConfig,omitempty" xml:"SidecarContainersConfig,omitempty" type:"Repeated"`
 	// The logging configurations of Log Service.
@@ -20891,18 +21072,27 @@ func (s *DescribeApplicationScalingRuleRequest) SetScalingRuleName(v string) *De
 }
 
 type DescribeApplicationScalingRuleResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data      *DescribeApplicationScalingRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 73404D3D-EE4F-4CB2-B197-5C46F6A1****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
@@ -20967,7 +21157,6 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	//
 	// 1624329843790
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The time when the auto scaling policy was last disabled.
 	//
 	// example:
@@ -20975,9 +21164,15 @@ type DescribeApplicationScalingRuleResponseBodyData struct {
 	// 1641882854484
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
-	Metric                *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReadyInstanceRatio *int32                                                `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	MinReadyInstances     *int32                                                `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	Metric *DescribeApplicationScalingRuleResponseBodyDataMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// example:
+	//
+	// -1
+	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	// example:
+	//
+	// 1
+	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
 	// 	- **true**: enabled
@@ -21031,11 +21226,6 @@ func (s *DescribeApplicationScalingRuleResponseBodyData) SetAppId(v string) *Des
 
 func (s *DescribeApplicationScalingRuleResponseBodyData) SetCreateTime(v int64) *DescribeApplicationScalingRuleResponseBodyData {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeApplicationScalingRuleResponseBodyData) SetEnableIdle(v bool) *DescribeApplicationScalingRuleResponseBodyData {
-	s.EnableIdle = &v
 	return s
 }
 
@@ -21177,11 +21367,23 @@ type DescribeApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	// example:
 	//
 	// CPU
-	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// lb-xxx
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// example:
+	//
+	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
-	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
-	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
+	// example:
+	//
+	// test
+	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// example:
+	//
+	// 80
+	Vport *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s DescribeApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -21590,9 +21792,15 @@ type DescribeApplicationScalingRuleResponseBodyDataTimerSchedules struct {
 	// example:
 	//
 	// 08:00
-	AtTime      *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
-	MaxReplicas *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	// example:
+	//
+	// 10
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// example:
+	//
+	// 1
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 	// The expected number of instances.
 	//
 	// example:
@@ -21683,18 +21891,27 @@ func (s *DescribeApplicationScalingRulesRequest) SetAppId(v string) *DescribeApp
 }
 
 type DescribeApplicationScalingRulesResponseBody struct {
+	// example:
+	//
+	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The data returned.
 	Data      *DescribeApplicationScalingRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	ErrorCode *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
@@ -21810,7 +22027,6 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules stru
 	//
 	// 1616642248938
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableIdle *bool  `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	// The time when the auto scaling policy was last disabled.
 	//
 	// example:
@@ -21818,9 +22034,15 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules stru
 	// 1641882854484
 	LastDisableTime *int64 `json:"LastDisableTime,omitempty" xml:"LastDisableTime,omitempty"`
 	// The details of the metric-based auto scaling policy.
-	Metric                *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
-	MinReadyInstanceRatio *int32                                                                        `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
-	MinReadyInstances     *int32                                                                        `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
+	Metric *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetric `json:"Metric,omitempty" xml:"Metric,omitempty" type:"Struct"`
+	// example:
+	//
+	// -1
+	MinReadyInstanceRatio *int32 `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
+	// example:
+	//
+	// 1
+	MinReadyInstances *int32 `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	// Indicates whether the auto scaling policy is enabled. Valid values:
 	//
 	// 	- **true**: enabled
@@ -21874,11 +22096,6 @@ func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules)
 
 func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetCreateTime(v int64) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
 	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules) SetEnableIdle(v bool) *DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRules {
-	s.EnableIdle = &v
 	return s
 }
 
@@ -22020,11 +22237,23 @@ type DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetri
 	// example:
 	//
 	// CPU
-	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// lb-xxx
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// example:
+	//
+	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
-	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
-	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
+	// example:
+	//
+	// test
+	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// example:
+	//
+	// 80
+	Vport *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s DescribeApplicationScalingRulesResponseBodyDataApplicationScalingRulesMetricMetrics) String() string {
@@ -22568,7 +22797,7 @@ type DescribeApplicationSlbsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Configurations of internal-facing SLB instances.
+	// The returned data.
 	Data *DescribeApplicationSlbsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
@@ -22652,23 +22881,29 @@ func (s *DescribeApplicationSlbsResponseBody) SetTraceId(v string) *DescribeAppl
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
-	// The ID of the SSL certificate issued by Alibaba Cloud.
+	// The configurations of the Internet-facing SLB instance.
 	Internet []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
 	// The ID of the Internet-facing SLB instance.
 	//
 	// example:
 	//
 	// ``59.74.**.**``
-	InternetIp            *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	// example:
+	//
+	// PayBySpec
 	InternetSlbChargeType *string `json:"InternetSlbChargeType,omitempty" xml:"InternetSlbChargeType,omitempty"`
-	InternetSlbExpired    *bool   `json:"InternetSlbExpired,omitempty" xml:"InternetSlbExpired,omitempty"`
+	// example:
+	//
+	// false
+	InternetSlbExpired *bool `json:"InternetSlbExpired,omitempty" xml:"InternetSlbExpired,omitempty"`
 	// Configurations of Internet-facing SLB instances.
 	//
 	// example:
 	//
 	// lb-uf6xc7wybefehnv45****
 	InternetSlbId *string `json:"InternetSlbId,omitempty" xml:"InternetSlbId,omitempty"`
-	// The ID of the SSL certificate issued by Alibaba Cloud.
+	// The configurations of the internal-facing SLB instance.
 	Intranet []*DescribeApplicationSlbsResponseBodyDataIntranet `json:"Intranet,omitempty" xml:"Intranet,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -22679,9 +22914,15 @@ type DescribeApplicationSlbsResponseBodyData struct {
 	// example:
 	//
 	// 192.168.0.0
-	IntranetIp            *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	// example:
+	//
+	// PayBySpec
 	IntranetSlbChargeType *string `json:"IntranetSlbChargeType,omitempty" xml:"IntranetSlbChargeType,omitempty"`
-	IntranetSlbExpired    *bool   `json:"IntranetSlbExpired,omitempty" xml:"IntranetSlbExpired,omitempty"`
+	// example:
+	//
+	// false
+	IntranetSlbExpired *bool `json:"IntranetSlbExpired,omitempty" xml:"IntranetSlbExpired,omitempty"`
 	// The IP address of the internal-facing SLB instance.
 	//
 	// example:
@@ -22749,9 +22990,23 @@ func (s *DescribeApplicationSlbsResponseBodyData) SetIntranetSlbId(v string) *De
 }
 
 type DescribeApplicationSlbsResponseBodyDataInternet struct {
-	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// wwe
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// example:
+	//
+	// 56
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The timestamp when the canary release rule was created.
+	//
+	// example:
+	//
+	// 1741247308294
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -22770,8 +23025,14 @@ type DescribeApplicationSlbsResponseBodyDataInternet struct {
 	// example:
 	//
 	// TCP
-	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	StickySession     *bool   `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// false
+	StickySession *bool `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// example:
+	//
+	// insert
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The port specified for the SLB listener.
 	//
@@ -22840,9 +23101,23 @@ func (s *DescribeApplicationSlbsResponseBodyDataInternet) SetTargetPort(v int32)
 }
 
 type DescribeApplicationSlbsResponseBodyDataIntranet struct {
-	Cookie        *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
-	CookieTimeout *int32  `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
-	CreateTime    *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// wwe
+	Cookie *string `json:"Cookie,omitempty" xml:"Cookie,omitempty"`
+	// example:
+	//
+	// 56
+	CookieTimeout *int32 `json:"CookieTimeout,omitempty" xml:"CookieTimeout,omitempty"`
+	// The timestamp when the canary release rule was created.
+	//
+	// example:
+	//
+	// 1741247308294
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1513561019707729_16f37aae5f3_-375882821_-169099****
 	HttpsCaCertId *string `json:"HttpsCaCertId,omitempty" xml:"HttpsCaCertId,omitempty"`
 	// The supported protocol.
 	//
@@ -22861,8 +23136,14 @@ type DescribeApplicationSlbsResponseBodyDataIntranet struct {
 	// example:
 	//
 	// TCP
-	Protocol          *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	StickySession     *bool   `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// example:
+	//
+	// false
+	StickySession *bool `json:"StickySession,omitempty" xml:"StickySession,omitempty"`
+	// example:
+	//
+	// insert
 	StickySessionType *string `json:"StickySessionType,omitempty" xml:"StickySessionType,omitempty"`
 	// The port specified for the SLB listener.
 	//
@@ -22960,7 +23241,7 @@ func (s *DescribeApplicationSlbsResponse) SetBody(v *DescribeApplicationSlbsResp
 }
 
 type DescribeApplicationStatusRequest struct {
-	// 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -22986,53 +23267,53 @@ func (s *DescribeApplicationStatusRequest) SetAppId(v string) *DescribeApplicati
 type DescribeApplicationStatusResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	Data *DescribeApplicationStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- If the request is successful, this parameter is not returned.****
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Valid values:
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// 	- success: If the call is successful, **success*	- is returned.
 	//
-	// 	- An error code is returned when the request fails.
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether information of the application is successfully obtained. Valid values:
+	// Indicates whether the status of the application was queried. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The status was queried.
 	//
-	// 	- **false**
+	// 	- **false**: The status failed to be queried.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -23112,7 +23393,7 @@ type DescribeApplicationStatusResponseBodyData struct {
 	//
 	// 1563373372746
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The current state of the application. Valid values:
+	// The current status of the application. Valid values:
 	//
 	// 	- **RUNNING**
 	//
@@ -23140,7 +23421,7 @@ type DescribeApplicationStatusResponseBodyData struct {
 	//
 	// 10240
 	FileSizeLimit *int64 `json:"FileSizeLimit,omitempty" xml:"FileSizeLimit,omitempty"`
-	// The ID of the latest change order that is executed. If no change orders have been executed or if change orders have expired, an empty parameter is returned.
+	// The ID of the latest change order that is executed. If no change orders are executed or if change orders expire, this parameter is left empty.
 	//
 	// example:
 	//
@@ -23156,13 +23437,13 @@ type DescribeApplicationStatusResponseBodyData struct {
 	//
 	// false
 	LastChangeOrderRunning *bool `json:"LastChangeOrderRunning,omitempty" xml:"LastChangeOrderRunning,omitempty"`
-	// The state of the latest change order. Valid values:
+	// The status of the latest change order. Valid values:
 	//
 	// 	- **READY**: The change order is ready.
 	//
 	// 	- **RUNNING**: The change order is being executed.
 	//
-	// 	- **SUCCESS**: The change order was executed successfully.
+	// 	- **SUCCESS**: The change order was executed.
 	//
 	// 	- **FAIL**: The change order failed to be executed.
 	//
@@ -23188,11 +23469,11 @@ type DescribeApplicationStatusResponseBodyData struct {
 	//
 	// 1
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
-	// Indicates whether an error occurred while the change order was being executed. Valid values:
+	// The substatus of the change order. This parameter indicates whether an exception occurred while the change order was being executed. Valid values:
 	//
 	// 	- **NORMAL**
 	//
-	// 	- **RUNNING_BUT_HAS_ERROR*	- If an error occurs during a batch release, you must manually perform a rollback. In this case, the change order is still running because the task is not completed, but the state of the change order is RUNNING_BUT_HAS_ERROR.
+	// 	- **RUNNING_BUT_HAS_ERROR**: For example, if an error occurs during a phased release, you must manually roll back the application. In this case, the change order cannot be completed because the change order is still being executed.
 	//
 	// example:
 	//
@@ -23298,7 +23579,7 @@ func (s *DescribeApplicationStatusResponse) SetBody(v *DescribeApplicationStatus
 }
 
 type DescribeChangeOrderRequest struct {
-	// 76fa5c0-9ebb-4bb4-b383-1f885447\\*\\*\\*\\*
+	// The ID of the change order. You can call the [ListChangeOrders](https://help.aliyun.com/document_detail/126615.html) operation to obtain the ID.
 	//
 	// This parameter is required.
 	//
@@ -23324,13 +23605,13 @@ func (s *DescribeChangeOrderRequest) SetChangeOrderId(v string) *DescribeChangeO
 type DescribeChangeOrderResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -23338,11 +23619,11 @@ type DescribeChangeOrderResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of the change order.
 	Data *DescribeChangeOrderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -23350,23 +23631,23 @@ type DescribeChangeOrderResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the information of a change order was obtained. Valid values:
+	// Indicates whether the information of the change order was queried. Valid values:
 	//
-	// 	- **true**: The information was obtained.
+	// 	- **true**: The information was queried.
 	//
-	// 	- **false**: The information could not be obtained.
+	// 	- **false**: The information failed to be queried.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -23436,11 +23717,11 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 67de0b39-a9d4-4c09-a170-cf438208****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// Indicates whether SAE automatically determines the release batches. Valid values:
+	// Indicates whether SAE automatically releases the batches. Valid values:
 	//
-	// 	- **true**: SAE automatically determines the release batches.
+	// 	- **true**: SAE automatically releases the batches.
 	//
-	// 	- **false**: SAE does not automatically determine the release batches.
+	// 	- **false**: SAE does not automatically release the batches.
 	//
 	// example:
 	//
@@ -23452,17 +23733,17 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 1
 	BatchCount *int32 `json:"BatchCount,omitempty" xml:"BatchCount,omitempty"`
-	// The mode in which the release batches are determined. Valid values:
+	// The processing method for the batches. Valid values:
 	//
-	// 	- **auto**: SAE automatically determines the release batches.
+	// 	- **auto**: SAE automatically releases the batches.
 	//
-	// 	- **Manual**: You must manually determine the release batches.
+	// 	- **Manual**: You must manually release the batches.
 	//
 	// example:
 	//
 	// auto
 	BatchType *string `json:"BatchType,omitempty" xml:"BatchType,omitempty"`
-	// The interval between batches when SAE automatically determines the release batches in a phased release. Unit: minutes.
+	// The interval between batches in a phased release. SAE automatically releases batches at the specified interval. Unit: minutes.
 	//
 	// example:
 	//
@@ -23474,11 +23755,11 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 765fa5c0-9ebb-4bb4-b383-1f885447**
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
-	// The description about the change type, which corresponds to the **CoTypeCode*	- parameter.
+	// The change type, which corresponds to the **CoTypeCode*	- parameter.
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
 	// The code of the change type. Valid values:
 	//
-	// 	- **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
+	// 	- **CoBindSlb**: associates a Sever Load Balancer (SLB) instance with the application.
 	//
 	// 	- **CoUnbindSlb**: disassociates the SLB instance from the application.
 	//
@@ -23500,11 +23781,11 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 	- **CoStop**: stops the application.
 	//
-	// 	- **CoRescaleApplicationVertically**: modifies the instance specifications.
+	// 	- **CoRescaleApplicationVertically**: modifies the instance type.
 	//
 	// 	- **CoDeployHistroy**: rolls back the application to a historical version.
 	//
-	// 	- **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
+	// 	- **CoBindNas**: associates a NAS file system with the application.
 	//
 	// 	- **CoUnbindNas**: disassociates the NAS file system from the application.
 	//
@@ -23516,7 +23797,7 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 	- **CoDeleteInstances**: deletes the instances.
 	//
-	// 	- **CoScaleInAppWithInstances**: reduces the number of specified application instances.
+	// 	- **CoScaleInAppWithInstances**: reduces the specified number of application instances.
 	//
 	// example:
 	//
@@ -23556,13 +23837,13 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 	- **2**: The change order was executed.
 	//
-	// 	- **3**: The change order could not be executed.
+	// 	- **3**: The change order failed to be executed.
 	//
 	// 	- **6**: The change order was terminated.
 	//
-	// 	- **8**: The execution process is pending. You must manually determine the release batch.
+	// 	- **8**: The execution process is pending. You must manually release the batches.
 	//
-	// 	- **9**: The execution process is pending. SAE will automatically determine the release batches.
+	// 	- **9**: The execution process is pending. SAE will automatically release the batches.
 	//
 	// 	- **10**: The execution failed due to a system exception.
 	//
@@ -23578,7 +23859,7 @@ type DescribeChangeOrderResponseBodyData struct {
 	//
 	// 	- **0**: No exception occurred.
 	//
-	// 	- **1**: An exception occurred. For example, when an error occurred during a phased release, you must manually roll back the application. In this case, the change order cannot be completed, so the Status parameter is still displayed as "1", which indicates that the change order is being executed. You can check the value of this parameter to determine whether an exception occurs.
+	// 	- **1**: An exception occurred. For example, if an error occurs during a phased release, you must manually roll back the application. In this case, the change order cannot be completed, so the Status parameter is still displayed as "1", which indicates that the change order is being executed. You can check the value of this parameter to determine whether an exception occurs.
 	//
 	// example:
 	//
@@ -23719,7 +24000,7 @@ type DescribeChangeOrderResponseBodyDataPipelines struct {
 	//
 	// Batch 1 Change
 	PipelineName *string `json:"PipelineName,omitempty" xml:"PipelineName,omitempty"`
-	// The time when the batch processing starts.
+	// The time when the batch processing started.
 	//
 	// example:
 	//
@@ -23733,25 +24014,25 @@ type DescribeChangeOrderResponseBodyDataPipelines struct {
 	//
 	// 	- **2**: The batch was processed.
 	//
-	// 	- **3**: The batch could not be processed.
+	// 	- **3**: The batch failed to be processed.
 	//
 	// 	- **6**: The batch processing was terminated.
 	//
-	// 	- **8**: The execution process is pending. You must manually determine the release batch.
+	// 	- **8**: The execution process is pending. You must manually release the batch.
 	//
-	// 	- **9**: The execution process is pending. SAE will automatically determine the release batch.
+	// 	- **9**: The execution process is pending. SAE will automatically release the batch.
 	//
-	// 	- **10**: The batch could not be processed due to a system exception.
+	// 	- **10**: The batch failed to be processed due to a system exception.
 	//
-	// 	- **11**: The change order is pending approval.
+	// 	- **11**: The batch is pending approval.
 	//
-	// 	- **12**: The change order is approved and is pending execution.
+	// 	- **12**: The batch is approved and is pending execution.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the batch information is last modified.
+	// The time when the batch information was last modified.
 	//
 	// example:
 	//
@@ -23832,13 +24113,17 @@ func (s *DescribeChangeOrderResponse) SetBody(v *DescribeChangeOrderResponseBody
 }
 
 type DescribeComponentsRequest struct {
-	// TOMCAT
+	// The application ID.
 	//
 	// example:
 	//
 	// d700e680-aa4d-4ec1-afc2-6566b5ff****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The type of the supported components. Valid values:
+	//
+	// 	- **TOMCAT**
+	//
+	// 	- **JDK**
 	//
 	// This parameter is required.
 	//
@@ -23867,45 +24152,51 @@ func (s *DescribeComponentsRequest) SetType(v string) *DescribeComponentsRequest
 }
 
 type DescribeComponentsResponseBody struct {
-	// Indicates whether the component version was obtained. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: indicates that the component version was obtained.
+	// 	- **2xx**: The request was successful.
 	//
-	// 	- **false**: indicates that the component version could not be obtained.
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The component type.
+	// The details of the supported components.
 	Data []*DescribeComponentsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code. Valid values:
+	// The status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The message returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the component version was obtained. Valid values:
+	//
+	// 	- **true**: The applications were obtained.
+	//
+	// 	- **false**: The applications failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the component.
+	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -23957,6 +24248,18 @@ func (s *DescribeComponentsResponseBody) SetTraceId(v string) *DescribeComponent
 }
 
 type DescribeComponentsResponseBodyData struct {
+	// The description of the component.
+	//
+	// example:
+	//
+	// Open JDK 8
+	ComponentDescription *string `json:"ComponentDescription,omitempty" xml:"ComponentDescription,omitempty"`
+	// The component ID.
+	//
+	// example:
+	//
+	// Open JDK 8
+	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
 	// Indicates whether the component is expired. Valid values:
 	//
 	// 	- **true**: The component is expired.
@@ -23965,25 +24268,9 @@ type DescribeComponentsResponseBodyData struct {
 	//
 	// example:
 	//
-	// Open JDK 8
-	ComponentDescription *string `json:"ComponentDescription,omitempty" xml:"ComponentDescription,omitempty"`
-	// The description of the component.
-	//
-	// example:
-	//
-	// Open JDK 8
-	ComponentKey *string `json:"ComponentKey,omitempty" xml:"ComponentKey,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
-	//
-	// example:
-	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The ID of the component.
+	// The type of the component.
 	//
 	// example:
 	//
@@ -24049,7 +24336,7 @@ func (s *DescribeComponentsResponse) SetBody(v *DescribeComponentsResponseBody) 
 }
 
 type DescribeConfigMapRequest struct {
-	// The ID of the request.
+	// The ID of the ConfigMap whose details you want to query. You can call the [ListNamespacedConfigMaps](https://help.aliyun.com/document_detail/176917.html) operation to obtain the ID of a ConfigMap.
 	//
 	// This parameter is required.
 	//
@@ -24073,49 +24360,55 @@ func (s *DescribeConfigMapRequest) SetConfigMapId(v int64) *DescribeConfigMapReq
 }
 
 type DescribeConfigMapResponseBody struct {
-	// Indicates whether the details of the ConfigMap instance were obtained. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The details were obtained.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The details failed to be obtained.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the instance was last modified.
+	// The returned result.
 	Data *DescribeConfigMapResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
-	//
-	// 	- **4xx**: indicates that the call failed.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information. Valid values:
-	//
-	// 	- If the call is successful, **success*	- is returned.
-	//
-	// 	- If the call fails, an error code is returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the details of the ConfigMap were queried. Valid values:
+	//
+	// 	- **true**: The details were queried.
+	//
+	// 	- **false**: The details failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned result.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -24167,53 +24460,49 @@ func (s *DescribeConfigMapResponseBody) SetTraceId(v string) *DescribeConfigMapR
 }
 
 type DescribeConfigMapResponseBodyData struct {
-	// The name of the ConfigMap instance.
+	// The ID of the ConfigMap.
 	//
 	// example:
 	//
 	// 1
 	ConfigMapId *int64 `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
-	// The application that is associated with the instance.
+	// The time when the ConfigMap was created.
 	//
 	// example:
 	//
 	// 1593746835111
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the namespace to which the instance belongs.
+	// The key-value pairs of the ConfigMap. Format:
+	//
+	// {"k1":"v1", "k2":"v2"}
+	//
+	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes ConfigMap](https://help.aliyun.com/document_detail/171326.html).
 	//
 	// example:
 	//
 	// {"k1":"v1","k2":"v2"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The time when the instance was created.
+	// The description of the ConfigMap.
 	//
 	// example:
 	//
 	// test-desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The name of the ConfigMap.
 	//
 	// example:
 	//
 	// test-configmap
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The description of the instance.
+	// The ID of the namespace.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	// The name of the application.
+	// The application that is associated with the ConfigMap.
 	RelateApps []*DescribeConfigMapResponseBodyDataRelateApps `json:"RelateApps,omitempty" xml:"RelateApps,omitempty" type:"Repeated"`
-	// The data of ConfigMap key-value pairs. Format:
-	//
-	// {"k1":"v1", "k2":"v2"}
-	//
-	// k specifies a key and v specifies a value. For more information, see [Manage and use configurations](https://help.aliyun.com/document_detail/171326.html).
+	// The time when the ConfigMap was updated.
 	//
 	// example:
 	//
@@ -24270,13 +24559,13 @@ func (s *DescribeConfigMapResponseBodyData) SetUpdateTime(v int64) *DescribeConf
 }
 
 type DescribeConfigMapResponseBodyDataRelateApps struct {
-	// The ID of the ConfigMap instance.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// f16b4000-9058-4c22-a49d-49a28f0b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the application.
+	// The name of the application.
 	//
 	// example:
 	//
@@ -24332,12 +24621,52 @@ func (s *DescribeConfigMapResponse) SetBody(v *DescribeConfigMapResponseBody) *D
 }
 
 type DescribeConfigurationPriceRequest struct {
+	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	//
+	// 	- **500**
+	//
+	// 	- **1000**
+	//
+	// 	- **2000**
+	//
+	// 	- **4000**
+	//
+	// 	- **8000**
+	//
+	// 	- **12000**
+	//
+	// 	- **16000**
+	//
+	// 	- **32000**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	//
+	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	//
+	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	//
+	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8,000.
+	//
+	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	//
+	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	//
+	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	//
+	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24345,6 +24674,12 @@ type DescribeConfigurationPriceRequest struct {
 	// 4096
 	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Scenarios:
+	//
+	// 	- Web
+	//
+	// 	- micro_service
+	//
 	// example:
 	//
 	// Web
@@ -24380,24 +24715,56 @@ func (s *DescribeConfigurationPriceRequest) SetWorkload(v string) *DescribeConfi
 }
 
 type DescribeConfigurationPriceResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *DescribeConfigurationPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The price.
+	Data *DescribeConfigurationPriceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code. Valid values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// ADCEC067-86AD-19E2-BD43-E83F3841****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configuration price was obtained.
+	//
+	// 	- **true**: The price was obtained.
+	//
+	// 	- **false**: The price failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace.
+	//
 	// example:
 	//
 	// 1a0dcc771722848598056771******
@@ -24448,11 +24815,17 @@ func (s *DescribeConfigurationPriceResponseBody) SetTraceId(v string) *DescribeC
 }
 
 type DescribeConfigurationPriceResponseBodyData struct {
-	BagUsage     *DescribeConfigurationPriceResponseBodyDataBagUsage     `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
-	CpuMemPrice  *DescribeConfigurationPriceResponseBodyDataCpuMemPrice  `json:"CpuMemPrice,omitempty" xml:"CpuMemPrice,omitempty" type:"Struct"`
-	Order        *DescribeConfigurationPriceResponseBodyDataOrder        `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The remaining capacity of the resource plan.
+	BagUsage *DescribeConfigurationPriceResponseBodyDataBagUsage `json:"BagUsage,omitempty" xml:"BagUsage,omitempty" type:"Struct"`
+	// The price of CPU and memory.
+	CpuMemPrice *DescribeConfigurationPriceResponseBodyDataCpuMemPrice `json:"CpuMemPrice,omitempty" xml:"CpuMemPrice,omitempty" type:"Struct"`
+	// The information about pricing.
+	Order *DescribeConfigurationPriceResponseBodyDataOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The price based on the number of requests.
 	RequestPrice *DescribeConfigurationPriceResponseBodyDataRequestPrice `json:"RequestPrice,omitempty" xml:"RequestPrice,omitempty" type:"Struct"`
-	Rules        []*DescribeConfigurationPriceResponseBodyDataRules      `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The promotion rules.
+	Rules []*DescribeConfigurationPriceResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	// The traffic price.
 	TrafficPrice *DescribeConfigurationPriceResponseBodyDataTrafficPrice `json:"TrafficPrice,omitempty" xml:"TrafficPrice,omitempty" type:"Struct"`
 }
 
@@ -24495,11 +24868,15 @@ func (s *DescribeConfigurationPriceResponseBodyData) SetTrafficPrice(v *Describe
 }
 
 type DescribeConfigurationPriceResponseBodyDataBagUsage struct {
+	// The available CPU capacity. Unit: cores \\*.
+	//
 	// example:
 	//
 	// 497570.450009
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Cu  *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	// The available memory size. Unit: GiB ×.
+	//
 	// example:
 	//
 	// 989802.563546
@@ -24530,7 +24907,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataBagUsage) SetMem(v float32) *
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPrice struct {
-	Order *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The information about pricing.
+	Order *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The discount rules.
 	Rules []*DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -24553,15 +24932,22 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPrice) SetRules(v []*De
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 0.0009259
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price.
+	//
 	// example:
 	//
 	// 0.0046296
-	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The ID of the discount rule.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The final price of the order.
+	//
 	// example:
 	//
 	// 0.0037037
@@ -24597,7 +24983,10 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceOrder) SetTradeAmo
 }
 
 type DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules struct {
+	// The name of discount rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the discount rule.
+	//
 	// example:
 	//
 	// 2000010******
@@ -24623,15 +25012,22 @@ func (s *DescribeConfigurationPriceResponseBodyDataCpuMemPriceRules) SetRuleDesc
 }
 
 type DescribeConfigurationPriceResponseBodyDataOrder struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 0.0018518
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price of the order.
+	//
 	// example:
 	//
 	// 0.0092592
-	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The ID of the promotion rule.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The transaction price.
+	//
 	// example:
 	//
 	// 0.0074074
@@ -24667,7 +25063,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataOrder) SetTradeAmount(v float
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPrice struct {
-	Order *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The information about pricing.
+	Order *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The discount rule.
 	Rules []*DescribeConfigurationPriceResponseBodyDataRequestPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -24690,15 +25088,22 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPrice) SetRules(v []*D
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceOrder struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 0.0009259
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price of the order.
+	//
 	// example:
 	//
 	// 0.0046296
-	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The ID of the discount rule.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The actual price of the order.
+	//
 	// example:
 	//
 	// 0.0037037
@@ -24734,7 +25139,10 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceOrder) SetTradeAm
 }
 
 type DescribeConfigurationPriceResponseBodyDataRequestPriceRules struct {
+	// The name of the discount rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the discount policy.
+	//
 	// example:
 	//
 	// 2000010******
@@ -24760,7 +25168,10 @@ func (s *DescribeConfigurationPriceResponseBodyDataRequestPriceRules) SetRuleDes
 }
 
 type DescribeConfigurationPriceResponseBodyDataRules struct {
+	// The name of the promotion rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the promotion rule.
+	//
 	// example:
 	//
 	// 2000010******
@@ -24786,7 +25197,9 @@ func (s *DescribeConfigurationPriceResponseBodyDataRules) SetRuleDescId(v int64)
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPrice struct {
-	Order *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder   `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The information about pricing.
+	Order *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
+	// The discount rule.
 	Rules []*DescribeConfigurationPriceResponseBodyDataTrafficPriceRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -24809,15 +25222,22 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPrice) SetRules(v []*D
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder struct {
+	// The discount amount.
+	//
 	// example:
 	//
 	// 0.0009259
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The original price of the order.
+	//
 	// example:
 	//
 	// 0.0046296
-	OriginalAmount *float32  `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
-	RuleIds        []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The ID of the discount rule.
+	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+	// The final price of the order.
+	//
 	// example:
 	//
 	// 0.0037037
@@ -24853,7 +25273,10 @@ func (s *DescribeConfigurationPriceResponseBodyDataTrafficPriceOrder) SetTradeAm
 }
 
 type DescribeConfigurationPriceResponseBodyDataTrafficPriceRules struct {
+	// The name of the discount rule.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the discount rule.
+	//
 	// example:
 	//
 	// 2000010******
@@ -24910,25 +25333,25 @@ func (s *DescribeConfigurationPriceResponse) SetBody(v *DescribeConfigurationPri
 type DescribeEdasContainersResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The list of components.
+	// The components.
 	Data []*DescribeEdasContainersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message.
 	//
@@ -24936,23 +25359,23 @@ type DescribeEdasContainersResponseBody struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of container components of a microservice application was obtained. Valid values:
+	// Indicates whether the list of container components of a microservices application was obtained. Valid values:
 	//
-	// 	- **true**: indicates that the list was obtained.
+	// 	- **true**: The list was obtained.
 	//
-	// 	- **false**: indicates that the list could not be obtained.
+	// 	- **false**: The list failed to be obtained.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -25006,15 +25429,15 @@ func (s *DescribeEdasContainersResponseBody) SetTraceId(v string) *DescribeEdasC
 type DescribeEdasContainersResponseBodyData struct {
 	// Indicates whether the component is disabled. Valid values:
 	//
-	// 	- **true**: indicates that the component is disabled.
+	// 	- **true**: The component is disabled.
 	//
-	// 	- **false**: indicates that the component is not disabled.
+	// 	- **false**: The component is not disabled.
 	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The version of the container, such as Ali-Tomcat, in which a High-speed Service Framework (HSF) application runs.
+	// The version of the container, such as Ali-Tomcat, in which an application that is developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
 	//
@@ -25791,7 +26214,7 @@ func (s *DescribeGreyTagRouteResponse) SetBody(v *DescribeGreyTagRouteResponseBo
 }
 
 type DescribeIngressRequest struct {
-	// The returned data.
+	// The ID of the routing rule to be queried.
 	//
 	// This parameter is required.
 	//
@@ -25815,30 +26238,55 @@ func (s *DescribeIngressRequest) SetIngressId(v int64) *DescribeIngressRequest {
 }
 
 type DescribeIngressResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The port specified for the SLB listener.
-	Data      *DescribeIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the namespace.
+	// The result returned.
+	Data *DescribeIngressResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error codes. Valid values:
+	//
+	// 	- **ErrorCode*	- is not returned if a request is successful.
+	//
+	// 	- **ErrorCode*	- is returned if a request failed. For more information, see **Error code*	- section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- **success*	- is returned when a request is successful.
+	//
+	// 	- An error code is returned when the request failed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of a request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the configurations of Ingresses were queried successfully. Valid values:
+	//
+	// 	- **true**: The information was queried.
+	//
+	// 	- **false**: The information failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The name of the routing rule.
+	// The ID of a trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -25890,20 +26338,23 @@ func (s *DescribeIngressResponseBody) SetTraceId(v string) *DescribeIngressRespo
 }
 
 type DescribeIngressResponseBodyData struct {
-	// The name of the application specified in the default rule.
+	// The ID of the certificate that is associated with a Classic Load Balancer (**CLB**) instance.
 	//
 	// example:
 	//
 	// 13623****809_16cad216b32_845_-419427029
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate that is associated with an Application Load Balancer **ALB*	- instance.
+	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds      *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
-	CreatedBySae *bool   `json:"CreatedBySae,omitempty" xml:"CreatedBySae,omitempty"`
-	// The forwarding rules.
+	CertIds      *string                                    `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CorsConfig   *DescribeIngressResponseBodyDataCorsConfig `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
+	CreatedBySae *bool                                      `json:"CreatedBySae,omitempty" xml:"CreatedBySae,omitempty"`
+	// The default rule.
 	DefaultRule *DescribeIngressResponseBodyDataDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
-	// The name of the routing rule.
+	// The name of a routing rule.
 	//
 	// example:
 	//
@@ -25914,15 +26365,7 @@ type DescribeIngressResponseBodyData struct {
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
 	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
 	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: indicates that the request was successful.
-	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// The ID of a routing rule.
 	//
 	// example:
 	//
@@ -25932,33 +26375,41 @@ type DescribeIngressResponseBodyData struct {
 	//
 	// 3
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The default rule.
+	// The listener ports for an SLB instance.
 	//
 	// example:
 	//
 	// 443
 	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The protocol used to forward requests. Valid values:
+	//
+	// 	- **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
+	//
+	// 	- **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+	//
+	// This parameter is optional in the **CreateIngress*	- and **UpadateIngress*	- operations. If you do not configure this parameter when you call the CreateIngress or UpdateIngress operation to create or update a gateway routing rule, this parameter is not returned for the corresponding response.
+	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// Indicates whether the configurations of the routing rule were queried successfully. Valid values:
+	// The type of SLB instances. Valid values:
 	//
-	// 	- **true**: indicates that the query was successful.
+	// 	- **clb**: Classic Load Balancer (formerly known as SLB).
 	//
-	// 	- **false**: indicates that the query failed.
+	// 	- **alb**: Application Load Balancer.
 	//
 	// example:
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	// The ID of the application specified in the default rule.
+	// The name of a routing rule.
 	//
 	// example:
 	//
 	// lb-uf6jt0nu4z6ior943****-80-f5****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the certificate.
+	// The ID of a namespace.
 	//
 	// example:
 	//
@@ -25968,23 +26419,23 @@ type DescribeIngressResponseBodyData struct {
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The ID of the application specified in the forwarding rule.
+	// The forwarding rules.
 	Rules []*DescribeIngressResponseBodyDataRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// sp-n0kn923****
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The type of the SLB instance based on the IP address. Valid values:
-	//
-	// 	- **internet**: the Internet-facing SLB instance.
-	//
-	// 	- **intranet**: the internal-facing SLB instance.
+	// The ID of a Server Load Balancer (SLB) instance.
 	//
 	// example:
 	//
 	// lb-uf62****6d13tq2u5
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The container port of the application specified in the default rule.
+	// The type of an SLB instance. Valid values:
+	//
+	// 	- **internet**: an Internet-facing SLB instance
+	//
+	// 	- **intranet**: an Intranet-facing SLB instance
 	//
 	// example:
 	//
@@ -26007,6 +26458,11 @@ func (s *DescribeIngressResponseBodyData) SetCertId(v string) *DescribeIngressRe
 
 func (s *DescribeIngressResponseBodyData) SetCertIds(v string) *DescribeIngressResponseBodyData {
 	s.CertIds = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyData) SetCorsConfig(v *DescribeIngressResponseBodyDataCorsConfig) *DescribeIngressResponseBodyData {
+	s.CorsConfig = v
 	return s
 }
 
@@ -26110,24 +26566,87 @@ func (s *DescribeIngressResponseBodyData) SetSlbType(v string) *DescribeIngressR
 	return s
 }
 
+type DescribeIngressResponseBodyDataCorsConfig struct {
+	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
+	AllowMethods     *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
+	AllowOrigin      *string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty"`
+	Enable           *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ExposeHeaders    *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
+	MaxAge           *string `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s DescribeIngressResponseBodyDataCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIngressResponseBodyDataCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetAllowCredentials(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetAllowHeaders(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.AllowHeaders = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetAllowMethods(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.AllowMethods = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetAllowOrigin(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.AllowOrigin = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetEnable(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetExposeHeaders(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.ExposeHeaders = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataCorsConfig) SetMaxAge(v string) *DescribeIngressResponseBodyDataCorsConfig {
+	s.MaxAge = &v
+	return s
+}
+
 type DescribeIngressResponseBodyDataDefaultRule struct {
-	// The domain name of the application.
+	// The ID of the application that is specified in the default rule.
 	//
 	// example:
 	//
 	// 395b60e4-0550-458d-9c54-a265d036****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The container port of the application specified in the forwarding rule.
+	// The name of the application that is specified in the default rule.
 	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The backend protocol. Valid values:
+	//
+	// 	- **http**: HTTP is suitable for applications that need to identify the transmitted data.
+	//
+	// 	- **https**: HTTP is suitable for applications that require encrypted data transmission.
+	//
+	// 	- **grpc**: GRPC is suitable for load balancing scenarios in which you want to deploy services in multi-language frameworks, such as the .NET framework.
+	//
+	// This parameter is returned only if the**LoadBalanceType*	- parameter is set to **ALB*	- and the **ListenerProtocol*	- parameter **is set to HTTPS**.
+	//
 	// example:
 	//
 	// HTTP
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	// The name of the application specified in the forwarding rule.
+	// The container port of the application that is specified in the default rule.
 	//
 	// example:
 	//
@@ -26164,52 +26683,55 @@ func (s *DescribeIngressResponseBodyDataDefaultRule) SetContainerPort(v int32) *
 }
 
 type DescribeIngressResponseBodyDataRules struct {
-	// The protocol used to forward requests. Valid values:
-	//
-	// 	- **HTTP**: used when the application needs to identify the transmitted data.
-	//
-	// 	- **HTTPS**: used when the application requires encrypted data transmission.
+	// The ID of the application specified in the forwarding rule.
 	//
 	// example:
 	//
 	// 395b60e4-0550-458d-9c54-a265d036****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The path of the URL.
+	// The name of the application specified in the forwarding rules.
 	//
 	// example:
 	//
 	// app1
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The backend protocol. Valid values:
+	//
+	// 	- **http**: HTTP is suitable for applications that need to identify the transmitted data.
+	//
+	// 	- **https**: HTTPS is suitable for applications that require encrypted data transmission.
+	//
+	// 	- **grpc**: GRPC is suitable for load balancing scenarios in which you want to deploy services in multi-language frameworks, such as the .NET framework.
+	//
+	// This parameter is returned only if the **LoadBalanceType*	- parameter is set to **ALB*	- and the **ListenerProtocol*	- parameter is set to **HTTPS**.
+	//
 	// example:
 	//
 	// HTTP
 	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
-	// The ID of the routing rule.
+	// Tthe container port of the application specified in the forwarding rules.
 	//
 	// example:
 	//
 	// 8080
 	ContainerPort *int32 `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
-	// The type of the SLB instance based on the processing capabilities. Valid values:
-	//
-	// 	- **clb**: the Classic Load Balancer (CLB) instance.
-	//
-	// 	- **alb**: the Application Load Balancer (ALB) instance.
+	// The domain name of the application specified in the forwarding rules.
 	//
 	// example:
 	//
 	// edas.site
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The path of a URL.
 	//
 	// example:
 	//
 	// /path1
-	Path        *string                                            `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The path that is used to rewrite the original path.
+	//
+	// example:
+	//
+	// /${1}
 	RewritePath *string                                            `json:"RewritePath,omitempty" xml:"RewritePath,omitempty"`
 	RuleActions []*DescribeIngressResponseBodyDataRulesRuleActions `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 }
@@ -26478,53 +27000,53 @@ func (s *DescribeInstanceLogResponse) SetBody(v *DescribeInstanceLogResponseBody
 type DescribeInstanceSpecificationsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Information of instance types.
+	// The information about the instance types.
 	Data []*DescribeInstanceSpecificationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// 	- If the request is successful, this parameter is not returned.****
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	// The returned message. Valid values:
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// 	- success: If the call is successful, **success*	- is returned.
 	//
-	// 	- An error code is returned when the request fails.
+	// 	- If the request failed, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether information of the instance types is successfully obtained. Valid values:
+	// Indicates whether the instance types were queried. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The instance types were queried.
 	//
-	// 	- **false**
+	// 	- **false**: The instance types failed to be queried.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -26682,7 +27204,7 @@ func (s *DescribeInstanceSpecificationsResponse) SetBody(v *DescribeInstanceSpec
 }
 
 type DescribeJobRequest struct {
-	// The application ID.
+	// The ID of the job template.
 	//
 	// This parameter is required.
 	//
@@ -26731,7 +27253,7 @@ type DescribeJobResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the application.
+	// The information of the job template.
 	Data *DescribeJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
@@ -26755,11 +27277,11 @@ type DescribeJobResponseBody struct {
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the configurations of an application were obtained. Valid values:
+	// Indicates whether the configurations of the job template were obtained. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: The configurations were obtained.
 	//
-	// 	- **false**
+	// 	- **false**: The configurations failed to be obtained.
 	//
 	// example:
 	//
@@ -26829,19 +27351,19 @@ type DescribeJobResponseBodyData struct {
 	//
 	// cri-xxxxxx
 	AcrInstanceId *string `json:"AcrInstanceId,omitempty" xml:"AcrInstanceId,omitempty"`
-	// The description of the application.
+	// The description of the job template.
 	//
 	// example:
 	//
 	// Sample application
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
-	// The application ID.
+	// The ID of the job template.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The name of the job template.
 	//
 	// example:
 	//
@@ -26925,7 +27447,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// [{"hostName":"test.host.name","ip":"0.0.0.0"}]
 	CustomHostAlias *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
-	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
+	// The version of the container, such as Ali-Tomcat, in which a job that is developed based on High-speed Service Framework (HSF) is deployed.
 	//
 	// example:
 	//
@@ -26965,13 +27487,13 @@ type DescribeJobResponseBodyData struct {
 	//
 	// docker.io/library/nginx:1.14.2
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// The arguments in the JAR package. The arguments are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
 	//
 	// start
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
-	// The option settings in the JAR package. The settings are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	// The option settings in the JAR package. The settings are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
 	//
@@ -27025,7 +27547,7 @@ type DescribeJobResponseBodyData struct {
 	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	// The details of the mounted NAS file system.
 	MountDesc []*DescribeJobResponseBodyDataMountDesc `json:"MountDesc,omitempty" xml:"MountDesc,omitempty" type:"Repeated"`
-	// The mount target of the NAS file system in the VPC in which the application is deployed. If you do not need to modify this configuration during the deployment, configure **MountHost*	- only in the first request. If you need to remove this configuration, leave **MountHost*	- empty in the request.
+	// The mount target of the Apsara File Storage NAS (NAS) file system in the virtual private cloud (VPC) where the job template is deployed. If you do not need to modify the NAS configurations when you deploy the job template, configure the **MountHost*	- parameter only in the first request. You do not need to include this parameter in subsequent requests. If you no longer need to use NAS, leave the **MountHost*	- parameter empty in the request.
 	//
 	// example:
 	//
@@ -27065,9 +27587,9 @@ type DescribeJobResponseBodyData struct {
 	OssMountDescs []*DescribeJobResponseBodyDataOssMountDescs `json:"OssMountDescs,omitempty" xml:"OssMountDescs,omitempty" type:"Repeated"`
 	// The type of the deployment package. Valid values:
 	//
-	// 	- If you deploy the application by using a Java Archive (JAR) package, this parameter is set to **FatJar**, **War**, or **Image**.
+	// 	- If you deploy a Java job template, you can set this parameter to **FatJar**, **War**, or **Image**.
 	//
-	// 	- If you deploy the application by using a PHP package, this parameter is set to one of the following values:
+	// 	- If you deploy a PHP job template, the following types are available:
 	//
 	//     	- **PhpZip**
 	//
@@ -27099,7 +27621,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	//     	- **IMAGE_PHP_7_3_ALPINE**
 	//
-	// 	- If you deploy the application by using a Pythhon package, this parameter is set to **PythonZip*	- or **Image**.
+	// 	- If you deploy a Python job template, you can set this parameter to **PythonZip*	- or **Image**.
 	//
 	// example:
 	//
@@ -27119,7 +27641,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// k1=v1
 	PhpConfig *string `json:"PhpConfig,omitempty" xml:"PhpConfig,omitempty"`
-	// The path on which the PHP configuration file for application startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
+	// The path on which the PHP configuration file for job startup is mounted. Make sure that the PHP server uses this configuration file during the startup.
 	//
 	// example:
 	//
@@ -27137,7 +27659,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// {"exec":{"command":["cat","/etc/group"]}}
 	PreStop *string `json:"PreStop,omitempty" xml:"PreStop,omitempty"`
-	// The programming language that is used to create the application. Valid values:
+	// The programming language in which the job template is created. Valid values:
 	//
 	// 	- **java**: Java
 	//
@@ -27145,7 +27667,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// 	- **python**: Python
 	//
-	// 	- **other**: other programming languages, such as C++, Go, .NET, and Node.js.
+	// 	- **other**: other programming languages, such as C++, Go, .NET, and Node.js
 	//
 	// example:
 	//
@@ -27179,7 +27701,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of application instances.
+	// The number of job instances.
 	//
 	// example:
 	//
@@ -27241,7 +27763,7 @@ type DescribeJobResponseBodyData struct {
 	//
 	// 10
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// The timeout period for the job. Unit: seconds.
+	// The timeout period of the job. Unit: seconds.
 	//
 	// example:
 	//
@@ -27284,7 +27806,7 @@ type DescribeJobResponseBodyData struct {
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// The internal request URLs for one-time jobs.
 	VpcWebHookUrls []*string `json:"VpcWebHookUrls,omitempty" xml:"VpcWebHookUrls,omitempty" type:"Repeated"`
-	// The option settings in the WAR package. The settings are used to start the application container. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
+	// The option settings in the WAR package. The settings are used to start the job. The default startup command is `java $JAVA_OPTS $CATALINA_OPTS -Options org.apache.catalina.startup.Bootstrap "$@" start`.
 	//
 	// example:
 	//
@@ -27626,7 +28148,7 @@ type DescribeJobResponseBodyDataConfigMapMountDesc struct {
 	//
 	// k1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The path on which the NAS file system is mounted.
+	// The path on which the ConfigMap is mounted.
 	//
 	// example:
 	//
@@ -27696,7 +28218,7 @@ func (s *DescribeJobResponseBodyDataMountDesc) SetNasPath(v string) *DescribeJob
 }
 
 type DescribeJobResponseBodyDataOssMountDescs struct {
-	// The bucket name.
+	// The name of the bucket.
 	//
 	// example:
 	//
@@ -27714,11 +28236,11 @@ type DescribeJobResponseBodyDataOssMountDescs struct {
 	//
 	// /usr/data/user.data
 	MountPath *string `json:"mountPath,omitempty" xml:"mountPath,omitempty"`
-	// Indicates whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
+	// Indicates whether the job template can use the container directory to read data from or write data to resources in the directory of the OSS bucket. Valid values:
 	//
-	// 	- **true**: The application has the read-only permission.
+	// 	- **true**: The job template has the read-only permissions.
 	//
-	// 	- **false**: The application has read and write permissions.
+	// 	- **false**: The job template has the read and write permissions.
 	//
 	// example:
 	//
@@ -29419,7 +29941,7 @@ func (s *DescribeNamespaceResourcesResponse) SetBody(v *DescribeNamespaceResourc
 }
 
 type DescribeNamespacesRequest struct {
-	// 1
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -29427,7 +29949,7 @@ type DescribeNamespacesRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// 10
+	// The number of entries per page. Valid values: 0 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -29458,13 +29980,13 @@ func (s *DescribeNamespacesRequest) SetPageSize(v int32) *DescribeNamespacesRequ
 type DescribeNamespacesResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request failed.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -29472,39 +29994,39 @@ type DescribeNamespacesResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information of namespaces.
 	Data *DescribeNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The returned message. Valid values:
 	//
-	// 	- **success*	- is returned when the request succeeds.
+	// 	- success: If the call is successful, **success*	- is returned.
 	//
-	// 	- An error message is returned when the request fails.
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the details of namespaces were queried successfully. Valid values:
+	// Indicates whether the list of namespaces was queried. Valid values:
 	//
-	// 	- **true**: indicates that the query was successful.
+	// 	- **true**: The list was queried.
 	//
-	// 	- **false**: indicates that the query failed.
+	// 	- **false**: The list failed to be queried.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -29556,15 +30078,15 @@ func (s *DescribeNamespacesResponseBody) SetTraceId(v string) *DescribeNamespace
 }
 
 type DescribeNamespacesResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of namespaces.
+	// The namespaces.
 	Namespaces []*DescribeNamespacesResponseBodyDataNamespaces `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// The number of entries returned on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -29607,16 +30129,20 @@ func (s *DescribeNamespacesResponseBodyData) SetTotalSize(v int32) *DescribeName
 }
 
 type DescribeNamespacesResponseBodyDataNamespaces struct {
-	// The ACM-specific AccessKey ID. It can be used to manage data in an Application Configuration Management (ACM) namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](~~~~).
+	// The ACM-specific AccessKey ID. It can be used to manage data in an Application Configuration Management (ACM) namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](https://help.aliyun.com/document_detail/68941.html).
 	//
 	// example:
 	//
 	// b34dbe3315c64f9f99b58ea447ec****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The endpoint of the host.
+	//
 	// example:
 	//
 	// addr-bj-internal.edas.aliyun.com
 	AddressServerHost *string `json:"AddressServerHost,omitempty" xml:"AddressServerHost,omitempty"`
+	// The short ID of the namespace.
+	//
 	// example:
 	//
 	// test
@@ -29627,7 +30153,7 @@ type DescribeNamespacesResponseBodyDataNamespaces struct {
 	//
 	// desc
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The ID of the namespace. The information of the default namespace cannot be queried or modified. The default namespace cannot be deleted.
+	// The ID of the namespace. You cannot query, modify, or delete the default namespace.
 	//
 	// example:
 	//
@@ -29639,19 +30165,19 @@ type DescribeNamespacesResponseBodyDataNamespaces struct {
 	//
 	// name
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ACM-specific AccessKey secret. It can be used to manage data in an ACM namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](~~~~).
+	// The ACM-specific AccessKey secret. It can be used to manage data in an ACM namespace. For more information, see [Differences between Alibaba Cloud AccessKey and ACM-specific AccessKey](https://help.aliyun.com/document_detail/68941.html).
 	//
 	// example:
 	//
 	// G/w6sseK7+nb3S6HBmANDBMD****
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// The ID of the tenant.
+	// The tenant ID.
 	//
 	// example:
 	//
@@ -30214,27 +30740,27 @@ func (s *DescribePipelineResponse) SetBody(v *DescribePipelineResponseBody) *Des
 type DescribeRegionsResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// - **2xx**: The call was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// - **3xx**: The call was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// - **4xx**: The call failed.
+	// 	- **4xx**: The call failed.
 	//
-	// - **5xx**: A server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// No request parameters are required.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The regions.
 	Regions *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
-	// The returned information.
+	// The request ID.
 	//
 	// example:
 	//
@@ -30288,29 +30814,7 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	// The list of regions.
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region. Valid values:
-	//
-	// 	- **cn-hangzhou**: the ID of the China (Hangzhou) region
-	//
-	// 	- **cn-shanghai**: the ID of the China (Shanghai) region
-	//
-	// 	- **cn-beijing**: the ID of the China (Beijing) region
-	//
-	// 	- **cn-zhangjiakou**: the ID of the China (Zhangjiakou) region
-	//
-	// 	- **cn-shenzhen**: the ID of the China (Shenzhen) region
-	//
-	// 	- **cn-guangzhou**: the ID of the China (Guangzhou) region
-	//
-	// 	- **cn-hongkong**: the ID of the China (Hong Kong) region
-	//
-	// 	- **ap-southeast-1**: the ID of the Singapore region
-	//
-	// 	- **us-west-1**: the ID of the US (Silicon Valley) region
-	RecommendZones *DescribeRegionsResponseBodyRegionsRegionRecommendZones `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Struct"`
-	// The name of the region. Valid values:
+	// The region name. Valid values:
 	//
 	// 	- **China (Hangzhou)**
 	//
@@ -30326,15 +30830,13 @@ type DescribeRegionsResponseBodyRegionsRegion struct {
 	//
 	// 	- **China (Hong Kong)**
 	//
-	// 	- **Singapore (Singapore)**
+	// 	- **Singapore**
 	//
 	// 	- **US (Silicon Valley)**
-	//
-	// example:
-	//
-	// sae.cn-shanghai.aliyuncs.com
-	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The endpoint of the region. Valid values:
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The recommended zones.
+	RecommendZones *DescribeRegionsResponseBodyRegionsRegionRecommendZones `json:"RecommendZones,omitempty" xml:"RecommendZones,omitempty" type:"Struct"`
+	// The endpoint for the region. Valid values:
 	//
 	// 	- **sae.cn-hangzhou.aliyuncs.com**
 	//
@@ -30353,6 +30855,30 @@ type DescribeRegionsResponseBodyRegionsRegion struct {
 	// 	- **sae.ap-southeast-1.aliyuncs.com**
 	//
 	// 	- **sae.us-west-1.aliyuncs.com**
+	//
+	// example:
+	//
+	// sae.cn-shanghai.aliyuncs.com
+	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The region ID. Valid values:
+	//
+	// 	- **cn-hangzhou**: the ID of the China (Hangzhou) region
+	//
+	// 	- **cn-shanghai**: the ID of the China (Shanghai) region
+	//
+	// 	- **cn-beijing**: the ID of the China (Beijing) region
+	//
+	// 	- **cn-zhangjiakou**: the ID of the China (Zhangjiakou) region
+	//
+	// 	- **cn-shenzhen**: the ID of the China (Shenzhen) region
+	//
+	// 	- **cn-guangzhou**: the ID of the China (Guangzhou) region
+	//
+	// 	- **cn-hongkong**: the ID of the China (Hong Kong) region
+	//
+	// 	- **ap-southeast-1**: the ID of the Singapore region
+	//
+	// 	- **us-west-1**: the ID of the US (Silicon Valley) region
 	//
 	// example:
 	//
@@ -30435,7 +30961,7 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeSecretRequest struct {
-	// The ID of the namespace in which the Secret instance resides. By default, the namespace ID is the same as the region ID.
+	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
 	//
 	// This parameter is required.
 	//
@@ -30729,6 +31255,8 @@ func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *Describ
 }
 
 type DescribeWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30780,20 +31308,28 @@ func (s *DescribeWebApplicationResponse) SetBody(v *WebApplicationBody) *Describ
 }
 
 type DescribeWebApplicationResourceStaticsRequest struct {
+	// The end of the time range during which data was queried.
+	//
 	// example:
 	//
 	// 1687832980387
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The time when the task was created.
+	//
 	// example:
 	//
 	// 1562831689704
@@ -30858,6 +31394,8 @@ func (s *DescribeWebApplicationResourceStaticsResponse) SetBody(v *WebApplicatio
 }
 
 type DescribeWebApplicationRevisionRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30909,6 +31447,8 @@ func (s *DescribeWebApplicationRevisionResponse) SetBody(v *WebApplicationRevisi
 }
 
 type DescribeWebApplicationScalingConfigRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30960,6 +31500,8 @@ func (s *DescribeWebApplicationScalingConfigResponse) SetBody(v *WebApplicationS
 }
 
 type DescribeWebApplicationTrafficConfigRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31011,6 +31553,8 @@ func (s *DescribeWebApplicationTrafficConfigResponse) SetBody(v *WebApplicationT
 }
 
 type DescribeWebCustomDomainRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31062,6 +31606,8 @@ func (s *DescribeWebCustomDomainResponse) SetBody(v *WebCustomDomain) *DescribeW
 }
 
 type DescribeWebInstanceLogsRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31555,16 +32101,32 @@ type ExecJobRequest struct {
 	//
 	// custom
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// The arguments in the JAR package. The arguments are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
+	//
 	// example:
 	//
 	// custom-args
 	JarStartArgs *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	// The option settings in the JAR package. The settings are used to start the job. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArg`.
+	//
 	// example:
 	//
 	// -Xms4G -Xmx4G
 	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
-	Replicas        *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Time            *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The number of concurrent instances.
+	//
+	// example:
+	//
+	// 3
+	Replicas *string `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The time at which the job is triggered. Format: `yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\"`.
+	//
+	// example:
+	//
+	// 2023-09-14T14:25:02Z
+	Time *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The startup command of the WAR package. For information about how to configure the startup command, see [Configure a startup command](https://help.aliyun.com/document_detail/96677.html).
+	//
 	// example:
 	//
 	// CATALINA_OPTS=\\"$CATALINA_OPTS $Options\\" catalina.sh run
@@ -31774,14 +32336,20 @@ func (s *ExecJobResponse) SetBody(v *ExecJobResponseBody) *ExecJobResponse {
 }
 
 type GetApplicationRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the namespace.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -31812,15 +32380,26 @@ func (s *GetApplicationRequest) SetNamespaceId(v string) *GetApplicationRequest 
 }
 
 type GetApplicationResponseBody struct {
+	// The details of the application.
 	Application *GetApplicationResponseBodyApplication `json:"Application,omitempty" xml:"Application,omitempty" type:"Struct"`
+	// The additional information returned. Valid values:
+	//
+	// 	- When a request is successful, **success**is returned.
+	//
+	// 	- An error code is returned when a request failed.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 01CF26C7-00A3-4AA6-BA76-7E95F2A3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// ac1a0b2215622920113732501e****
@@ -31856,55 +32435,138 @@ func (s *GetApplicationResponseBody) SetTraceId(v string) *GetApplicationRespons
 }
 
 type GetApplicationResponseBodyApplication struct {
+	// The description of the application.
 	AppDescription *string `json:"AppDescription,omitempty" xml:"AppDescription,omitempty"`
+	// The application ID.
+	//
 	// example:
 	//
 	// 443d638a-ef76-47c4-b707-61197d******
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The ID of the basic application.
+	//
 	// example:
 	//
 	// ee99cce6-1c8e-4bfa-96c3-3e2fa9******
 	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	//
+	// 	- **500**
+	//
+	// 	- **1000**
+	//
+	// 	- **2000**
+	//
+	// 	- **4000**
+	//
+	// 	- **8000**
+	//
+	// 	- **12000**
+	//
+	// 	- **16000**
+	//
+	// 	- **32000**
+	//
 	// example:
 	//
 	// 2000
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The number of application instances.
+	//
 	// example:
 	//
 	// i-8ps2o182102o1jv05bys
 	Instances *int32 `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	// The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	//
+	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	//
+	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	//
+	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	//
+	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	//
+	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	//
+	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	//
+	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	//
 	// example:
 	//
 	// 4096
 	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// Specifies whether to enable WebAssembly Filter. Valid values:
+	//
+	// 	- true: enables this parameter.
+	//
+	// 	- false: disables this parameter.
+	//
 	// example:
 	//
 	// true
 	MseEnabled *bool `json:"MseEnabled,omitempty" xml:"MseEnabled,omitempty"`
+	// The ID of the namespace to which the MSE instance belongs.
+	//
 	// example:
 	//
 	// test
 	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The programming language that is used to create the application. Valid values:
+	//
+	// 	- **java*	- :Java.
+	//
+	// 	- **php**: PHP.
+	//
+	// 	- **other**: other programming languages, such as Python, C++, Go, .NET, and Node.js
+	//
 	// example:
 	//
 	// java
 	ProgrammingLanguage *string `json:"ProgrammingLanguage,omitempty" xml:"ProgrammingLanguage,omitempty"`
+	// The number of application instances that are running.
+	//
 	// example:
 	//
 	// 1
 	RunningInstances *int32 `json:"RunningInstances,omitempty" xml:"RunningInstances,omitempty"`
+	// Indicates whether the auto scaling policy is enabled. Valid values:
+	//
+	// 	- **true**: The auto scaling policy is enabled.
+	//
+	// 	- **false**: The auto scaling policy is disabled.
+	//
 	// example:
 	//
 	// true
 	ScaleRuleEnabled *string `json:"ScaleRuleEnabled,omitempty" xml:"ScaleRuleEnabled,omitempty"`
+	// The type of the auto scaling policy. Valid values:
+	//
+	// 	- **timing**: a scheduled auto scaling policy.
+	//
+	// 	- **metric**: a metric-based auto scaling policy.
+	//
+	// 	- **mix**: a hybrid auto scaling policy.
+	//
 	// example:
 	//
 	// timing
@@ -32019,18 +32681,6 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetArmsTopNMetricRequest struct {
-	// The SAE application type. Valid values:
-	//
-	// 	- **micro_service**
-	//
-	// 	- **web**
-	//
-	// 	- **job**
-	//
-	// example:
-	//
-	// micro_service
-	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
 	// The CPU allocation policy. Valid values:
 	//
 	// 	- **request**: CPU cores are allocated only when a request is initiated.
@@ -32039,9 +32689,25 @@ type GetArmsTopNMetricRequest struct {
 	//
 	// example:
 	//
+	// micro_service
+	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	// The additional information that is returned. The following limits are imposed on the ID:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
+	//
+	// example:
+	//
 	// always
 	CpuStrategy *string `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
-	// The end of the time range to query.
+	// The SAE application type. Valid values:
+	//
+	// 	- **micro_service**
+	//
+	// 	- **web**
+	//
+	// 	- **job**
 	//
 	// This parameter is required.
 	//
@@ -32049,7 +32715,7 @@ type GetArmsTopNMetricRequest struct {
 	//
 	// 1675824035951
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of entries to return. Valid values: 0 to 100.
+	// The beginning of the time range to query.
 	//
 	// This parameter is required.
 	//
@@ -32057,7 +32723,7 @@ type GetArmsTopNMetricRequest struct {
 	//
 	// 10
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The field based on which you want to sort the returned entries.
+	// The number of entries to return. Valid values: 0 to 100.
 	//
 	// This parameter is required.
 	//
@@ -32065,7 +32731,7 @@ type GetArmsTopNMetricRequest struct {
 	//
 	// count
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The region ID.
+	// The field based on which you want to sort the returned entries.
 	//
 	// This parameter is required.
 	//
@@ -32073,7 +32739,7 @@ type GetArmsTopNMetricRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query.
+	// The end of the time range to query.
 	//
 	// This parameter is required.
 	//
@@ -32143,21 +32809,17 @@ type GetArmsTopNMetricResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The details of applications.
 	Data []*GetArmsTopNMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The additional information that is returned. The following limits are imposed on the ID:
-	//
-	// 	- success: If the call is successful, **success*	- is returned.
-	//
-	// 	- An error code: If the call fails, an error code is returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
 	//
 	// example:
 	//
-	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
+	// 3B763F98-0BA2-5C23-B6B8-558568D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
 	//
@@ -33189,21 +33851,13 @@ func (s *GetWarningEventMetricRequest) SetStartTime(v int64) *GetWarningEventMet
 }
 
 type GetWarningEventMetricResponseBody struct {
-	// The HTTP status code. The following limits are imposed on the ID:
-	//
-	// 	- **2xx**: The call was successful.
-	//
-	// 	- **3xx**: The call was redirected.
-	//
-	// 	- **4xx**: The call failed.
-	//
-	// 	- **5xx**: A server error occurred.
+	// The number of Warning events.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of applications.
+	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
 	Data []*GetWarningEventMetricResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The additional information that is returned. The following limits are imposed on the ID:
 	//
@@ -33219,13 +33873,17 @@ type GetWarningEventMetricResponseBody struct {
 	//
 	// example:
 	//
-	// 3B763F98-0BA2-5C23-B6B8-558568D2C1C2
+	// 3B763F98-0BA2-5C23-B6B8-558568D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the list of applications was obtained. The following limits are imposed on the ID:
+	// The HTTP status code. The following limits are imposed on the ID:
 	//
-	// 	- **true**: The namespaces were obtained.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: no
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -33267,25 +33925,25 @@ func (s *GetWarningEventMetricResponseBody) SetSuccess(v bool) *GetWarningEventM
 }
 
 type GetWarningEventMetricResponseBodyData struct {
-	// The application ID.
+	// The details of the application.
 	//
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The application name.
+	// The application ID.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The namespace ID.
+	// The application name.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of Warning events.
+	// The namespace ID.
 	//
 	// example:
 	//
@@ -33356,7 +34014,26 @@ type GetWebshellTokenRequest struct {
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the container.
+	//
+	// Note:
+	//
+	// 	- If this parameter is specified, Cloud Assistant runs the command in the specified container of the instance.
+	//
+	// 	- If this parameter is specified, the command can run only on Linux instances on which Cloud Assistant Agent 2.2.3.344 or later is installed.
+	//
+	//     	- For information about how to query the version of Cloud Assistant Agent, see [Install Cloud Assistant Agent](https://help.aliyun.com/document_detail/64921.html).
+	//
+	//     	- For information about how to upgrade Cloud Assistant Agent, see [Upgrade or disable upgrades for Cloud Assistant Agent](https://help.aliyun.com/document_detail/134383.html).
+	//
+	// 	- If this parameter is specified, the `Username` parameter that is specified in a request to call this operation and the `WorkingDir` parameter that is specified in a request to call the [CreateCommand](https://help.aliyun.com/document_detail/64844.html) operation do not take effect. You can run the command only in the default working directory of the container by using the default user of the container. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	//
+	// 	- If this parameter is specified, only shell scripts can be run in Linux containers. You cannot add a command in the format similar to `#!/usr/bin/python` at the beginning of a script to specify a script interpreter. For more information, see [Use Cloud Assistant to run commands in containers](https://help.aliyun.com/document_detail/456641.html).
+	//
+	// example:
+	//
+	// ad-helper
 	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
 	// This parameter is required.
 	//
@@ -33875,38 +34552,72 @@ func (s *ListAppEventsResponse) SetBody(v *ListAppEventsResponseBody) *ListAppEv
 }
 
 type ListAppServicesRequest struct {
+	// The ID of the application. You must specify only one of the following parameters: vpcId, namespace ID, and application ID.
+	//
 	// example:
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the MSE Nacos instance. This parameter is required when the registry type is set to MSE Nacos.
+	//
 	// example:
 	//
 	// mse-cn-sco3r0u****
 	NacosInstanceId *string `json:"NacosInstanceId,omitempty" xml:"NacosInstanceId,omitempty"`
+	// The ID of the MSE Nacos namespace. This parameter is required when the registry type is set to MSE Nacos.
+	//
 	// example:
 	//
 	// mse-test
 	NacosNamespaceId *string `json:"NacosNamespaceId,omitempty" xml:"NacosNamespaceId,omitempty"`
+	// The ID of the namespace. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The page number of the returned page.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The registry type. Valid values:
+	//
+	// 	- **0**: SAE Nacos
+	//
+	// 	- **1**: SAE built-in Nacos
+	//
+	// 	- **2*	- :MSE Nacos
+	//
+	// 	- **9**: SAE Kubernetes service
+	//
 	// example:
 	//
 	// 0
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The service type. Valid values:
+	//
+	// 	- **dubbo**
+	//
+	// 	- **springCloud**
+	//
+	// 	- **hsf**
+	//
+	// 	- **k8sService**
+	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The unique identifier of the VPC. You must specify only one of the following parameters: VPC ID, namespace ID, and application ID.
+	//
 	// example:
 	//
 	// vpc-2ze0i263cnn311nvj****
@@ -33967,24 +34678,56 @@ func (s *ListAppServicesRequest) SetVpcId(v string) *ListAppServicesRequest {
 }
 
 type ListAppServicesResponseBody struct {
+	// The HTTP status code that is returned. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      []*ListAppServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The details of the microservice.
+	Data []*ListAppServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The status code. Valid values:
+	//
+	// 	- If the request was successful, the **ErrorCode*	- parameter is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- in this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**: The request was successful.
+	//
+	// 	- **false**: The request failed.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -34035,49 +34778,90 @@ func (s *ListAppServicesResponseBody) SetTraceId(v string) *ListAppServicesRespo
 }
 
 type ListAppServicesResponseBodyData struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The number of instances of the microservice.
+	//
 	// example:
 	//
 	// 1
 	InstanceCount *string `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// The ID of the namespace to which the application belongs.
+	//
 	// example:
 	//
 	// cn-beijing:test
-	NamespaceId   *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The name of the namespace.
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// The registry type. Valid values:
+	//
+	// 	- **0**：SAE Nacos
+	//
+	// 	- **1**: SAE built-in Nacos
+	//
+	// 	- **2**: MSE Nacos
+	//
+	// 	- **9**: SAE Kubernets service
+	//
 	// example:
 	//
 	// 0
 	RegistryType *string `json:"RegistryType,omitempty" xml:"RegistryType,omitempty"`
+	// The IDs of the security groups.
+	//
 	// example:
 	//
 	// sg-wz969ngg2e49q5i4****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The group to which the microservice belongs.
+	//
 	// example:
 	//
 	// DEFAULT_GROUP
 	ServiceGroup *string `json:"ServiceGroup,omitempty" xml:"ServiceGroup,omitempty"`
+	// The name of the microservice.
+	//
 	// example:
 	//
 	// frontend
-	ServiceName            *string            `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// The ports and protocols.
 	ServicePortAndProtocol map[string]*string `json:"ServicePortAndProtocol,omitempty" xml:"ServicePortAndProtocol,omitempty"`
-	ServicePorts           []*int32           `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
+	// The list of ports.
+	ServicePorts []*int32 `json:"ServicePorts,omitempty" xml:"ServicePorts,omitempty" type:"Repeated"`
+	// The protocol used by the microservice.
+	//
 	// example:
 	//
 	// HTTP
 	ServiceProtocol *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	// The type of the microservice. Valid values:
+	//
+	// 	- **dubbo**
+	//
+	// 	- **springCloud**
+	//
+	// 	- **hsf**
+	//
+	// 	- **k8sService**
+	//
 	// example:
 	//
 	// springCloud
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	// The version of the microservice.
+	//
 	// example:
 	//
 	// 1.0.0
@@ -34192,7 +34976,7 @@ func (s *ListAppServicesResponse) SetBody(v *ListAppServicesResponseBody) *ListA
 }
 
 type ListAppServicesPageRequest struct {
-	// 1
+	// The application ID.
 	//
 	// This parameter is required.
 	//
@@ -34200,19 +34984,23 @@ type ListAppServicesPageRequest struct {
 	//
 	// 6dcc8c9e-d3da-478a-a066-86dcf820****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The returned information.
+	// The number of entries returned on each page. Valid values: 0 to 9999.
 	//
 	// example:
 	//
 	// 9999
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 9999
+	// The service type. Valid values:
+	//
+	// 	- **dubbo**
+	//
+	// 	- **springCloud**
 	//
 	// This parameter is required.
 	//
@@ -34251,35 +35039,51 @@ func (s *ListAppServicesPageRequest) SetServiceType(v string) *ListAppServicesPa
 }
 
 type ListAppServicesPageResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The total number of pages returned.
+	// The details of services.
 	Data []*ListAppServicesPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether the microservice list was obtained. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **true**: The list was obtained.
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
 	//
-	// 	- **false**: The list failed to be obtained.
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The details of microservices.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 2583E089-99C2-562E-8B7E-73512136****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the microservice list was obtained. Valid values:
+	//
+	// 	- **true**: The list was obtained.
+	//
+	// 	- **false**: The list failed to be obtained.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The page number of the current page.
+	// The ID of the trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -34331,27 +35135,27 @@ func (s *ListAppServicesPageResponseBody) SetTraceId(v string) *ListAppServicesP
 }
 
 type ListAppServicesPageResponseBodyData struct {
-	// The page number of the returned page.
+	// The page number of the current page.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The returned result.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The name of the application.
+	// The number of entries returned on each page. Valid values: 0 to 9999.
 	//
 	// example:
 	//
 	// 9999
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The version of the service. You can create a custom version.
+	// The result returned.
 	Result []*ListAppServicesPageResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	// The number of entries returned per page. Valid values: 0 to 9999.
+	// The total number of returned pages.
 	//
 	// example:
 	//
@@ -34393,49 +35197,37 @@ func (s *ListAppServicesPageResponseBodyData) SetTotalSize(v string) *ListAppSer
 }
 
 type ListAppServicesPageResponseBodyDataResult struct {
-	// The group to which the service belongs. You can create a custom group.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// hc4fs1****@98314c8790b****
 	EdasAppId *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	// The total number of instances.
+	// The name of the application.
 	//
 	// example:
 	//
 	// cn-zhangjiakou-micro-service-******
 	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: indicates that the call was successful.
-	//
-	// 	- **3xx**: indicates that the call was redirected.
-	//
-	// 	- **4xx**: indicates that the call failed.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// The group to which the service belongs. You can create a custom group.
 	//
 	// example:
 	//
 	// springCloud
 	Group *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	// The name of the service.
+	// The number of instances.
 	//
 	// example:
 	//
 	// 1
 	InstanceNum *int64 `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	// The returned error code. Valid values:
-	//
-	// - If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// - If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The service name.
 	//
 	// example:
 	//
 	// edas.service.provider
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	// The ID of the application.
+	// The version of a service. You can create a custom version.
 	//
 	// example:
 	//
@@ -34545,13 +35337,7 @@ type ListAppVersionsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The deployment method of the application. Valid values:
-	//
-	// 	- **image**: indicates that the application was deployed by using an image.
-	//
-	// 	- **upload**: indicates that the application was deployed by uploading a WAR or JAR package.
-	//
-	// 	- **url**: indicates that the application was deployed by specifying the URL of a WAR or JAR package.
+	// The information about the versions.
 	Data []*ListAppVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The HTTP status code. Valid values:
 	//
@@ -34620,9 +35406,11 @@ func (s *ListAppVersionsResponseBody) SetSuccess(v bool) *ListAppVersionsRespons
 }
 
 type ListAppVersionsResponseBodyData struct {
-	// 	- The address of the image. This parameter is returned when the **Type*	- parameter is set to **image**.
+	// The URL of the code package. If you use the SAE console to upload the code package, take note of the following items:
 	//
-	// 	- The download link of the WAR or JAR package. This parameter is returned when the **Type*	- parameter is set to **upload**.
+	// 	- You cannot download the URL. You must call the GetPackageVersionAccessableUrl operation to obtain the URL. The obtained URL is valid for 10 minutes.
+	//
+	// 	- SAE can retain the package up to 90 days. After 90 days, the URL cannot be returned or downloaded.
 	BuildPackageUrl *string `json:"BuildPackageUrl,omitempty" xml:"BuildPackageUrl,omitempty"`
 	// The download link of the WAR or JAR package. This parameter is returned when the **Type*	- parameter is set to **url**.
 	//
@@ -34640,13 +35428,17 @@ type ListAppVersionsResponseBodyData struct {
 	//
 	// a0ce266c-d354-423a-9bd6-4083405a****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The time when the application was created.
+	// The deployment method of the application. Valid values:
+	//
+	// 	- **image**: indicates that the application is deployed by using an image.
+	//
+	// 	- **url**: indicates that the application is deployed by using a code package.
 	//
 	// example:
 	//
 	// image
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the version.
+	// The URL of the image.
 	WarUrl *string `json:"WarUrl,omitempty" xml:"WarUrl,omitempty"`
 }
 
@@ -35059,8 +35851,9 @@ type ListApplicationsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 1000
-	Cpu      *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Cpu        *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EnableIdle *string `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
+	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The number of application instances.
 	//
 	// example:
@@ -35166,6 +35959,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetChildren(v []*ListAppl
 
 func (s *ListApplicationsResponseBodyDataApplications) SetCpu(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetEnableIdle(v string) *ListApplicationsResponseBodyDataApplications {
+	s.EnableIdle = &v
 	return s
 }
 
@@ -35459,7 +36257,47 @@ type ListChangeOrdersRequest struct {
 	//
 	// 2
 	CoStatus *string `json:"CoStatus,omitempty" xml:"CoStatus,omitempty"`
-	// 2
+	// The type of the change order. Valid values:
+	//
+	// 	- **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
+	//
+	// 	- **CoUnbindSlb**: disassociates an SLB instance from the application.
+	//
+	// 	- **CoCreateApp**: creates the application.
+	//
+	// 	- **CoDeleteApp**: deletes the application.
+	//
+	// 	- **CoDeploy**: deploys the application.
+	//
+	// 	- **CoRestartApplication**: restarts the application.
+	//
+	// 	- **CoRollback**: rolls back the application.
+	//
+	// 	- **CoScaleIn**: scales in the application.
+	//
+	// 	- **CoScaleOut**: scales out the application.
+	//
+	// 	- **CoStartApplication**: starts the application.
+	//
+	// 	- **CoStopApplication**: stops the application.
+	//
+	// 	- **CoRescaleApplicationVertically**: modifies the instance type.
+	//
+	// 	- **CoDeployHistroy**: rolls back the application to an earlier version.
+	//
+	// 	- **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
+	//
+	// 	- **CoUnbindNas**: disassociates a NAS file system from the application.
+	//
+	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
+	//
+	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
+	//
+	// 	- **CoRestartInstances**: restarts the instance.
+	//
+	// 	- **CoDeleteInstances**: deletes the instance.
+	//
+	// 	- **CoScaleInAppWithInstances**: reduces the specified number of application instances.
 	//
 	// example:
 	//
@@ -35534,7 +36372,7 @@ type ListChangeOrdersResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of the returned page.
+	// The information about change orders.
 	Data *ListChangeOrdersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
@@ -35614,27 +36452,7 @@ func (s *ListChangeOrdersResponseBody) SetTraceId(v string) *ListChangeOrdersRes
 }
 
 type ListChangeOrdersResponseBodyData struct {
-	// The status of the change order. Valid values:
-	//
-	// 	- **0**: The change order is being prepared.
-	//
-	// 	- **1**: The change order is being executed.
-	//
-	// 	- **2**: The change order was executed.
-	//
-	// 	- **3**: The change order could not be executed.
-	//
-	// 	- **6**: The change order was terminated.
-	//
-	// 	- **8**: The execution process is pending. You must manually determine the release batch.
-	//
-	// 	- **9**: The execution process is pending. SAE will automatically determine the release batch.
-	//
-	// 	- **10**: The change order could not be executed due to a system exception.
-	//
-	// 	- **11**: The change order is pending approval.
-	//
-	// 	- **12**: The change order is approved and is pending execution.
+	// The change orders.
 	ChangeOrderList []*ListChangeOrdersResponseBodyDataChangeOrderList `json:"ChangeOrderList,omitempty" xml:"ChangeOrderList,omitempty" type:"Repeated"`
 	// The total number of change orders.
 	//
@@ -35719,7 +36537,47 @@ type ListChangeOrdersResponseBodyDataChangeOrderList struct {
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
 	// The ID of the application.
 	CoType *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
-	// The ID of the change order.
+	// The code of the change order. Valid values:
+	//
+	// 	- **CoBindSlb**: associates the Server Load Balancer (SLB) instance with the application.
+	//
+	// 	- **CoUnbindSlb**: disassociates an SLB instance from the application.
+	//
+	// 	- **CoCreateApp**: creates the application.
+	//
+	// 	- **CoDeleteApp**: deletes the application.
+	//
+	// 	- **CoDeploy**: deploys the application.
+	//
+	// 	- **CoRestartApplication**: restarts the application.
+	//
+	// 	- **CoRollback**: rolls back the application.
+	//
+	// 	- **CoScaleIn**: scales in the application.
+	//
+	// 	- **CoScaleOut**: scales out the application.
+	//
+	// 	- **CoStartApplication**: starts the application.
+	//
+	// 	- **CoStopApplication**: stops the application.
+	//
+	// 	- **CoRescaleApplicationVertically**: modifies the instance type.
+	//
+	// 	- **CoDeployHistroy**: rolls back the application to an earlier version.
+	//
+	// 	- **CoBindNas**: associates a network-attached storage (NAS) file system with the application.
+	//
+	// 	- **CoUnbindNas**: disassociates a NAS file system from the application.
+	//
+	// 	- **CoBatchStartApplication**: starts multiple applications concurrently.
+	//
+	// 	- **CoBatchStopApplication**: stops multiple applications concurrently.
+	//
+	// 	- **CoRestartInstances**: restarts the instance.
+	//
+	// 	- **CoDeleteInstances**: deletes the instance.
+	//
+	// 	- **CoScaleInAppWithInstances**: reduces the specified number of application instances.
 	//
 	// example:
 	//
@@ -35919,7 +36777,7 @@ func (s *ListChangeOrdersResponse) SetBody(v *ListChangeOrdersResponseBody) *Lis
 }
 
 type ListConsumedServicesRequest struct {
-	// The ID of the request.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -35943,49 +36801,55 @@ func (s *ListConsumedServicesRequest) SetAppId(v string) *ListConsumedServicesRe
 }
 
 type ListConsumedServicesResponseBody struct {
-	// Indicates whether the microservice list was obtained. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The list was obtained.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The list failed to be obtained.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The type of the published service.
+	// The details of the microservices.
 	Data []*ListConsumedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
-	//
-	// 	- **4xx**: indicates that the call failed.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. The ID is used to query the details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information. Valid values:
-	//
-	// 	- If the call is successful, **success*	- is returned.
-	//
-	// 	- If the call fails, an error code is returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of microservices was queried. Valid values:
+	//
+	// 	- **true**: The list was queried.
+	//
+	// 	- **false**: The list failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the microservices.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -36037,39 +36901,35 @@ func (s *ListConsumedServicesResponseBody) SetTraceId(v string) *ListConsumedSer
 }
 
 type ListConsumedServicesResponseBodyData struct {
-	// A reserved parameter.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The subscription address of the service.
+	// This parameter is reserved.
 	//
 	// example:
 	//
 	// {}
 	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The version of the published service
+	// The service groups that corresponds to the consumed services.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The name of the published service.
+	// The addresses where the services can be subscribed to.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The name of the published service.
 	//
 	// example:
 	//
 	// com.alibaba.nodejs.ItemService
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The service group that corresponds to the published service.
+	// The type of the published service.
 	//
 	// example:
 	//
 	// RPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the application.
+	// The version of the published service.
 	//
 	// example:
 	//
@@ -36418,9 +37278,12 @@ type ListGreyTagRouteResponseBodyDataResultAlbRules struct {
 	// example:
 	//
 	// 23
-	IngressId   *string                                                `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
-	Items       []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	ServiceName *string                                                `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+	IngressId *string                                                `json:"ingressId,omitempty" xml:"ingressId,omitempty"`
+	Items     []*ListGreyTagRouteResponseBodyDataResultAlbRulesItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// s-6366-e3****-99**
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 }
 
 func (s ListGreyTagRouteResponseBodyDataResultAlbRules) String() string {
@@ -36886,13 +37749,13 @@ func (s *ListGreyTagRouteResponse) SetBody(v *ListGreyTagRouteResponseBody) *Lis
 }
 
 type ListIngressesRequest struct {
-	// The list of routing rules.
+	// The ID of an application.
 	//
 	// example:
 	//
 	// bbf3a590-6d13-46fe-8ca9-c947a20b****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The returned data.
+	// The ID of a namespace.
 	//
 	// This parameter is required.
 	//
@@ -36921,30 +37784,55 @@ func (s *ListIngressesRequest) SetNamespaceId(v string) *ListIngressesRequest {
 }
 
 type ListIngressesResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The port specified for the SLB listener.
-	Data      *ListIngressesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                        `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the namespace.
+	// The result returned.
+	Data *ListIngressesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The error code returned if the request failed. Valid values:
+	//
+	// 	- **ErrorCode*	- is not returned if a request is successful.
+	//
+	// 	- **ErrorCode*	- is returned if a request failed. For more information, see **Error codes**.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- **success*	- is returned when a request is successful.
+	//
+	// 	- An error code is returned when a request failed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the SLB instance.
+	// The ID of a request.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of Ingresses was obtained. Valid values:
+	//
+	// 	- **true**: The list were obtained.
+	//
+	// 	- **false**: The list failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The name of the routing rule.
+	// The ID of a trace. The ID is used to query the details of a request.
 	//
 	// example:
 	//
@@ -36996,11 +37884,7 @@ func (s *ListIngressesResponseBody) SetTraceId(v string) *ListIngressesResponseB
 }
 
 type ListIngressesResponseBodyData struct {
-	// The type of the SLB instance based on the IP address. Valid values:
-	//
-	// 	- **internet**: the Internet-facing SLB instance.
-	//
-	// 	- **intranet**: the internal-facing SLB instance.
+	// The list of routing rules.
 	IngressList []*ListIngressesResponseBodyDataIngressList `json:"IngressList,omitempty" xml:"IngressList,omitempty" type:"Repeated"`
 }
 
@@ -37018,75 +37902,91 @@ func (s *ListIngressesResponseBodyData) SetIngressList(v []*ListIngressesRespons
 }
 
 type ListIngressesResponseBodyDataIngressList struct {
-	// The error code.
-	//
-	// - The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// - The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The ID of the certificate that is associated with a Classic Load Balancer (**CLB**) instance.
 	//
 	// example:
 	//
 	// 13624*****73809_16f8e549a20_1175189789_12****3210
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The ID of the certificate that is associated with an Application Load Balancer **ALB*	- instance.
+	//
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
 	CertIds     *string                                              `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CorsConfig  *ListIngressesResponseBodyDataIngressListCorsConfig  `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty" type:"Struct"`
 	CreateTime  *int64                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DefaultRule *ListIngressesResponseBodyDataIngressListDefaultRule `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty" type:"Struct"`
-	// The ID of the routing rule.
+	// The name of a routing rule.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the list of routing rules was obtained. Valid values:
-	//
-	// 	- **true**: indicates that the list was obtained.
-	//
-	// 	- **false**: indicates that the list could not be obtained.
+	// The ID of a routing rule.
 	//
 	// example:
 	//
 	// 18
 	Id          *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	IdleTimeout *int64 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// The type of the SLB instance based on the processing capabilities. Valid values:
-	//
-	// 	- **clb**: the Classic Load Balancer (CLB) instance.
-	//
-	// 	- **alb**: the Application Load Balancer (ALB) instance.
+	// The listener ports for an SLB instance.
 	//
 	// example:
 	//
 	// 80
 	ListenerPort *string `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The protocol that is supported by SLB to forward requests. Valid values:
+	//
+	// 	- **HTTP**: HTTP is suitable for applications that need to identify the transmitted data.
+	//
+	// 	- **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+	//
+	// This parameter is optional in the **CreateIngress*	- and **UpadateIngress*	- operations. If you do not configure this parameter when you call the CreateIngress or UpdateIngress operation to create or update a gateway routing rule, this parameter is not returned for the corresponding response.
+	//
 	// example:
 	//
 	// HTTP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
+	// The type of SLB instances. Valid values:
+	//
+	// 	- **clb**: Classic Load Balancer (formerly known as SLB).
+	//
+	// 	- **alb**: Application Load Balancer.
+	//
 	// example:
 	//
 	// clb
-	LoadBalanceType    *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
-	MseGatewayId       *string `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
-	MseGatewayPort     *string `json:"MseGatewayPort,omitempty" xml:"MseGatewayPort,omitempty"`
+	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	// The ID of an MSE cloud-native gateway.
+	//
+	// example:
+	//
+	// gw-d5df01a1bae748f1a7c4e325d2fd****
+	MseGatewayId *string `json:"MseGatewayId,omitempty" xml:"MseGatewayId,omitempty"`
+	// The port of a service.
+	//
+	// example:
+	//
+	// 80
+	MseGatewayPort *string `json:"MseGatewayPort,omitempty" xml:"MseGatewayPort,omitempty"`
+	// The protocol that is supported by an MSE cloud-native gateway to forward requests. Valid values:
+	//
+	// 	- **HTTP**: HTTP is suitable for applications that need to identify transmitted data.
+	//
+	// 	- **HTTPS**: HTTPS is suitable for applications that require encrypted data transmission.
+	//
+	// example:
+	//
+	// HTTP
 	MseGatewayProtocol *string `json:"MseGatewayProtocol,omitempty" xml:"MseGatewayProtocol,omitempty"`
-	// The HTTP status code. Valid values:
-	//
-	// 	- **2xx**: indicates that the request was successful.
-	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// The name of a routing rule.
 	//
 	// example:
 	//
 	// lb-uf6jt0nu4z6ior943****-80-f5****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The name of the routing rule.
+	// The ID of a namespace.
 	//
 	// example:
 	//
@@ -37094,17 +37994,17 @@ type ListIngressesResponseBodyDataIngressList struct {
 	NamespaceId    *string                                          `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	RequestTimeout *int64                                           `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	Rules          []*ListIngressesResponseBodyDataIngressListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The ID of the certificate.
+	// The ID of a Server Load Balancer (SLB) instance.
 	//
 	// example:
 	//
 	// lb-uf62****6d13tq2u5
 	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	// The protocol used to forward requests. Valid values:
+	// The type of SLB instances. Valid values:
 	//
-	// 	- **HTTP**: used when the application needs to identify the transmitted data.
+	// 	- **internet**: an Internet-facing SLB instance
 	//
-	// 	- **HTTPS**: used when the application requires encrypted data transmission.
+	// 	- **intranet**: an Intranet-facing SLB instance
 	//
 	// example:
 	//
@@ -37127,6 +38027,11 @@ func (s *ListIngressesResponseBodyDataIngressList) SetCertId(v string) *ListIngr
 
 func (s *ListIngressesResponseBodyDataIngressList) SetCertIds(v string) *ListIngressesResponseBodyDataIngressList {
 	s.CertIds = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressList) SetCorsConfig(v *ListIngressesResponseBodyDataIngressListCorsConfig) *ListIngressesResponseBodyDataIngressList {
+	s.CorsConfig = v
 	return s
 }
 
@@ -37212,6 +38117,59 @@ func (s *ListIngressesResponseBodyDataIngressList) SetSlbId(v string) *ListIngre
 
 func (s *ListIngressesResponseBodyDataIngressList) SetSlbType(v string) *ListIngressesResponseBodyDataIngressList {
 	s.SlbType = &v
+	return s
+}
+
+type ListIngressesResponseBodyDataIngressListCorsConfig struct {
+	AllowCredentials *string `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
+	AllowMethods     *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
+	AllowOrigin      *string `json:"AllowOrigin,omitempty" xml:"AllowOrigin,omitempty"`
+	Enable           *string `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	ExposeHeaders    *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
+	MaxAge           *string `json:"MaxAge,omitempty" xml:"MaxAge,omitempty"`
+}
+
+func (s ListIngressesResponseBodyDataIngressListCorsConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIngressesResponseBodyDataIngressListCorsConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetAllowCredentials(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetAllowHeaders(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.AllowHeaders = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetAllowMethods(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.AllowMethods = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetAllowOrigin(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.AllowOrigin = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetEnable(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetExposeHeaders(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.ExposeHeaders = &v
+	return s
+}
+
+func (s *ListIngressesResponseBodyDataIngressListCorsConfig) SetMaxAge(v string) *ListIngressesResponseBodyDataIngressListCorsConfig {
+	s.MaxAge = &v
 	return s
 }
 
@@ -37702,7 +38660,26 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// 1657522839
 	CompletionTime *int64 `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
-	Cpu            *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The CPU specifications that are required for each instance. Unit: millicores. This parameter cannot be set to 0. Valid values:
+	//
+	// 	- **500**
+	//
+	// 	- **1000**
+	//
+	// 	- **2000**
+	//
+	// 	- **4000**
+	//
+	// 	- **8000**
+	//
+	// 	- **16000**
+	//
+	// 	- **32000**
+	//
+	// example:
+	//
+	// 500
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The number of instances that failed to run.
 	//
 	// example:
@@ -37719,7 +38696,7 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// 1
 	LastChangeorderState *string `json:"LastChangeorderState,omitempty" xml:"LastChangeorderState,omitempty"`
-	// The running status of the latest job. Valid values:
+	// The status of the latest job. Valid values:
 	//
 	// 	- **0**: The job is not executed.
 	//
@@ -37738,10 +38715,40 @@ type ListJobsResponseBodyDataApplications struct {
 	// example:
 	//
 	// 1657522800
-	LastStartTime *int64  `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
-	Mem           *int32  `json:"Mem,omitempty" xml:"Mem,omitempty"`
-	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The namespace ID.
+	LastStartTime *int64 `json:"LastStartTime,omitempty" xml:"LastStartTime,omitempty"`
+	// The size of memory that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
+	//
+	// 	- This parameter is set to **1024*	- if the Cpu parameter is set to 500 or 1000.
+	//
+	// 	- This parameter is set to **2048*	- if the Cpu parameter is set to 500, 1000, or 2000.
+	//
+	// 	- This parameter is set to **4096*	- if the Cpu parameter is set to 1000, 2000, or 4000.
+	//
+	// 	- This parameter is set to **8192*	- if the Cpu parameter is set to 2000, 4000, or 8000.
+	//
+	// 	- This parameter is set to **12288*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **16384*	- if the Cpu parameter is set to 4000, 8000, or 16000.
+	//
+	// 	- This parameter is set to **24576*	- if the Cpu parameter is set to 12000.
+	//
+	// 	- This parameter is set to **32768*	- if the Cpu parameter is set to 16000.
+	//
+	// 	- This parameter is set to **65536*	- if the Cpu parameter is set to 8000, 16000, or 32000.
+	//
+	// 	- This parameter is set to **131072*	- if the Cpu parameter is set to 32000.
+	//
+	// example:
+	//
+	// 1024
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+	// The returned message.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the namespace.
 	//
 	// example:
 	//
@@ -37765,7 +38772,7 @@ type ListJobsResponseBodyDataApplications struct {
 	//
 	// false
 	Suspend *bool `json:"Suspend,omitempty" xml:"Suspend,omitempty"`
-	// The tag of the job template.
+	// The tags of the job template.
 	Tags          []*ListJobsResponseBodyDataApplicationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TriggerConfig *string                                     `json:"TriggerConfig,omitempty" xml:"TriggerConfig,omitempty"`
 }
@@ -37869,13 +38876,13 @@ func (s *ListJobsResponseBodyDataApplications) SetTriggerConfig(v string) *ListJ
 }
 
 type ListJobsResponseBodyDataApplicationsTags struct {
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -37991,7 +38998,7 @@ type ListLogConfigsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of logging configurations.
+	// The logging configurations.
 	Data *ListLogConfigsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The HTTP status code. Valid values:
 	//
@@ -38081,7 +39088,7 @@ type ListLogConfigsResponseBodyData struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The name of the Log Service configuration.
+	// The details of the logging configuration.
 	LogConfigs []*ListLogConfigsResponseBodyDataLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
 	// The error code.
 	//
@@ -38142,7 +39149,7 @@ type ListLogConfigsResponseBodyDataLogConfigs struct {
 	//
 	// 2019-08-29 17:18:00
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The name of the Logstore in Log Service.
+	// The path of the log file (log source).
 	//
 	// example:
 	//
@@ -39004,7 +40011,7 @@ func (s *ListNamespacedConfigMapsResponse) SetBody(v *ListNamespacedConfigMapsRe
 }
 
 type ListPublishedServicesRequest struct {
-	// The ID of the request.
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -39028,49 +40035,55 @@ func (s *ListPublishedServicesRequest) SetAppId(v string) *ListPublishedServices
 }
 
 type ListPublishedServicesResponseBody struct {
-	// Indicates whether the microservice list was obtained. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The list was obtained.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The list failed to be obtained.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The type of the published service.
+	// The details of the microservices.
 	Data []*ListPublishedServicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the call was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the call was redirected.
-	//
-	// 	- **4xx**: indicates that the call failed.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It is used to query the details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned information. Valid values:
-	//
-	// 	- If the call is successful, **success*	- is returned.
-	//
-	// 	- If the call fails, an error code is returned.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of microservices was queried. Valid values:
+	//
+	// 	- **true**: The list was queried.
+	//
+	// 	- **false**: The list failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The details of the microservices.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -39122,39 +40135,35 @@ func (s *ListPublishedServicesResponseBody) SetTraceId(v string) *ListPublishedS
 }
 
 type ListPublishedServicesResponseBodyData struct {
-	// The reserved parameter. This parameter does not take effect.
+	// The ID of the application.
 	//
 	// example:
 	//
 	// b2a8a925-477a-4ed7-b825-d5e22500****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The subscription address of the service.
+	// The reserved parameter. This parameter does not take effect.
 	//
 	// example:
 	//
 	// {}
 	Group2Ip *string `json:"Group2Ip,omitempty" xml:"Group2Ip,omitempty"`
-	// The version of the published services.
+	// The service group that corresponds to the consumed service.
 	Groups []*string `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
-	// The name of the published service.
+	// The addresses where services can be subscribed to.
 	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
-	// The returned error code. Valid values:
-	//
-	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
-	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// The name of the published service.
 	//
 	// example:
 	//
 	// com.alibaba.nodejs.ItemService
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The service group that corresponds to the consumed service.
+	// The type of the published service.
 	//
 	// example:
 	//
 	// RPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the application.
+	// The version of the published services.
 	//
 	// example:
 	//
@@ -39529,13 +40538,13 @@ func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsRe
 }
 
 type ListTagResourcesRequest struct {
-	// A2RN
+	// A maximum of 50 entries can be returned for a query. If a query generates more than 50 entries, the NextToken parameter is returned with the first 50 entries. You can use the NextToken parameter value to retrieve the subsequent entries that are not returned in the current query result.
 	//
 	// example:
 	//
 	// A2RN
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// cn-beijing
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -39543,13 +40552,13 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// ["d42921c4-5433-4abd-8075-0e536f8b\\*\\*\\*\\*"]
+	// The resource ID. Separate multiple resource IDs with comma (,). This parameter is required if you do not specify the **Tags*	- parameter.
 	//
 	// example:
 	//
 	// ["d42921c4-5433-4abd-8075-0e536f8b****"]
 	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
-	// application
+	// The type of the resource. Set the value to `application`.
 	//
 	// This parameter is required.
 	//
@@ -39557,7 +40566,15 @@ type ListTagResourcesRequest struct {
 	//
 	// application
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// [{"key":"k1","value":"v1"}]
+	// The tag in the format of a key-value pair. This parameter is required if you do not specify the **ResourceIds*	- parameter. The following parameters are involved:
+	//
+	// 	- **key**: the tag key. It cannot exceed 128 characters in length.
+	//
+	// 	- **value**: the tag value. It cannot exceed 128 characters in length.
+	//
+	// Tag keys and tag values are case-sensitive. If you specify multiple tags, the system adds all the tags to the specified resources. Each tag key on a resource can have only one tag value. If you create a tag that has the same key as an existing tag, the value of the existing tag is overwritten.
+	//
+	// Tag keys and tag values cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -39601,13 +40618,13 @@ func (s *ListTagResourcesRequest) SetTags(v string) *ListTagResourcesRequest {
 type ListTagResourcesResponseBody struct {
 	// The HTTP status code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
+	// 	- **3xx**: The call was redirected.
 	//
-	// 	- **4xx**: indicates that the request was invalid.
+	// 	- **4xx**: The call failed.
 	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
@@ -39615,35 +40632,39 @@ type ListTagResourcesResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data *ListTagResourcesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code.
+	// The error code. Valid values:
 	//
-	// - The **ErrorCode*	- parameter is not returned when the request succeeds.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// - The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned message.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 7414187F-4F59-4585-9BCF-5F0804E4****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether mapping relationships between applications and tags were queried successfully. Valid values:
+	// Indicates whether the mapping relationships between applications and tags were queried. Valid values:
 	//
-	// 	- **true**: The query was successful.
+	// 	- **true**: The mapping relationships were queried.
 	//
-	// 	- **false**: The query failed.
+	// 	- **false**: The mapping relationships failed to be queried.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -39730,19 +40751,19 @@ type ListTagResourcesResponseBodyDataTagResources struct {
 	//
 	// d42921c4-5433-4abd-8075-0e536f8b****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Set the value to `application`.
+	// The type of the resource. Valid value: `application`.
 	//
 	// example:
 	//
 	// ALIYUN::SAE::APPLICATION
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// k1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The value of the tag.
 	//
 	// example:
 	//
@@ -39808,23 +40829,42 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type ListWebApplicationInstancesRequest struct {
+	// The time when the operation ended.
+	//
+	// example:
+	//
+	// 1715567192
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-667d143a-17b4e0fa-46d3a2******
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The number of application instances returned.
+	//
 	// example:
 	//
 	// 10
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	NamespaceId *string   `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	StartTime   *int64    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Statuses    []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 1562831689704
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the application instance.
+	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	// The ID of the application version.
+	//
 	// example:
 	//
 	// 001
@@ -39875,23 +40915,42 @@ func (s *ListWebApplicationInstancesRequest) SetVersionIds(v []*string) *ListWeb
 }
 
 type ListWebApplicationInstancesShrinkRequest struct {
+	// The time when the operation ended.
+	//
+	// example:
+	//
+	// 1715567192
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// c-667d143a-17b4e0fa-46d3a2******
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+	// The number of application instances returned.
+	//
 	// example:
 	//
 	// 10
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	NamespaceId    *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The time when the task was created.
+	//
+	// example:
+	//
+	// 1562831689704
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The status of the application instance.
 	StatusesShrink *string `json:"Statuses,omitempty" xml:"Statuses,omitempty"`
+	// The ID of the application version.
+	//
 	// example:
 	//
 	// 001
@@ -39971,16 +41030,22 @@ func (s *ListWebApplicationInstancesResponse) SetBody(v *ListWebApplicationInsta
 }
 
 type ListWebApplicationRevisionsRequest struct {
+	// The number of applications returned.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// A2RN
@@ -40040,18 +41105,26 @@ func (s *ListWebApplicationRevisionsResponse) SetBody(v *ListWebApplicationRevis
 }
 
 type ListWebApplicationsRequest struct {
+	// The number of applications returned.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// MTIzNCNhYmM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The prefix of the application name.
+	//
 	// example:
 	//
 	// my-application
@@ -40116,22 +41189,32 @@ func (s *ListWebApplicationsResponse) SetBody(v *ListWebApplicationsBody) *ListW
 }
 
 type ListWebCustomDomainsRequest struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// 7e41aff0-9eca-45c9-ac48-675e09******
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	// The number of custom domain names returned.
+	//
 	// example:
 	//
 	// 10
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The namespace ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// A2RN
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The prefix of the custom domain name that you want to query.
+	//
 	// example:
 	//
 	// remoteresult
@@ -40263,12 +41346,16 @@ func (s *OpenSaeServiceResponse) SetBody(v *OpenSaeServiceResponseBody) *OpenSae
 }
 
 type PublishWebApplicationRevisionRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The configurations of the version.
+	//
 	// This parameter is required.
 	Body *PublishWebApplicationRevisionInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -42104,6 +43191,8 @@ func (s *StartApplicationResponse) SetBody(v *StartApplicationResponseBody) *Sta
 }
 
 type StartWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42326,6 +43415,8 @@ func (s *StopApplicationResponse) SetBody(v *StopApplicationResponseBody) *StopA
 }
 
 type StopWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -42736,8 +43827,220 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
-type UnbindSlbRequest struct {
+type UnbindNlbRequest struct {
+	// A short description of struct
+	//
+	// example:
+	//
+	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of NLB instance.
+	//
+	// example:
+	//
+	// nlb-7z7jjbzz44d82c9***
+	NlbId *string `json:"NlbId,omitempty" xml:"NlbId,omitempty"`
+	// The listener port of the instance. Valid values: 0 to 65535.
+	//
+	// example:
+	//
+	// 3306
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The type of the protocol. Valid values:
+	//
+	// 	- **TCP**.
+	//
+	// 	- **UDP**.
+	//
+	// 	- **TCPSSL**.
+	//
+	// example:
+	//
+	// TCP
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s UnbindNlbRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindNlbRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindNlbRequest) SetAppId(v string) *UnbindNlbRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UnbindNlbRequest) SetNlbId(v string) *UnbindNlbRequest {
+	s.NlbId = &v
+	return s
+}
+
+func (s *UnbindNlbRequest) SetPort(v int32) *UnbindNlbRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *UnbindNlbRequest) SetProtocol(v string) *UnbindNlbRequest {
+	s.Protocol = &v
+	return s
+}
+
+type UnbindNlbResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	Data *UnbindNlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The status code. Valid values:
+	//
+	// 	- If the request was successful, **ErrorCode*	- is not returned.
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error codes*	- section of this topic.
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the internal-facing or Internet-facing NLB instance was disassociated. Valid values:
+	//
+	// 	- **true**: The NLB instance was disassociated.
+	//
+	// 	- **false**: The NLB instance failed to be disassociated.
+	//
+	// example:
+	//
 	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
+	// example:
+	//
+	// 0a981dd515966966104121683d****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UnbindNlbResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindNlbResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindNlbResponseBody) SetCode(v string) *UnbindNlbResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetData(v *UnbindNlbResponseBodyData) *UnbindNlbResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetErrorCode(v string) *UnbindNlbResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetMessage(v string) *UnbindNlbResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetRequestId(v string) *UnbindNlbResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetSuccess(v bool) *UnbindNlbResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UnbindNlbResponseBody) SetTraceId(v string) *UnbindNlbResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UnbindNlbResponseBodyData struct {
+	// The ID of the change order. The ID can be used to query the status of the change task.
+	//
+	// example:
+	//
+	// ba386059-69b1-4e65-b1e5-0682d9fa****
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+}
+
+func (s UnbindNlbResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindNlbResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindNlbResponseBodyData) SetChangeOrderId(v string) *UnbindNlbResponseBodyData {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type UnbindNlbResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindNlbResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnbindNlbResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindNlbResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindNlbResponse) SetHeaders(v map[string]*string) *UnbindNlbResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindNlbResponse) SetStatusCode(v int32) *UnbindNlbResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindNlbResponse) SetBody(v *UnbindNlbResponseBody) *UnbindNlbResponse {
+	s.Body = v
+	return s
+}
+
+type UnbindSlbRequest struct {
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -42745,13 +44048,21 @@ type UnbindSlbRequest struct {
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// true
+	// Specifies whether to disassociate the Internet-facing SLB instance. Valid values:
+	//
+	// 	- **true**: dissociates the Internet-facing SLB instance.
+	//
+	// 	- **false**: does not dissociate the Internet-facing SLB instance.
 	//
 	// example:
 	//
 	// true
 	Internet *bool `json:"Internet,omitempty" xml:"Internet,omitempty"`
-	// The ID of the request.
+	// Specifies whether to disassociate the internal-facing SLB instance. Valid values:
+	//
+	// 	- **true**: dissociates the internal-facing SLB instance.
+	//
+	// 	- **false**: does not dissociate the internal-facing SLB instance.
 	//
 	// example:
 	//
@@ -42783,49 +44094,55 @@ func (s *UnbindSlbRequest) SetIntranet(v bool) *UnbindSlbRequest {
 }
 
 type UnbindSlbResponseBody struct {
-	// Indicates whether the internal-facing or Internet-facing SLB instance was disassociated successfully. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**: The SLB instance was disassociated successfully.
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**: The SLB instance could not be disassociated.
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the change order. It can be used to query the task status.
+	// The returned result.
 	Data *UnbindSlbResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query the details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- **success*	- is returned when the request succeeds.
-	//
-	// 	- An error code is returned when the request fails.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the internal-facing or Internet-facing SLB instance was disassociated. Valid values:
+	//
+	// 	- **true**: The SLB instance was disassociated.
+	//
+	// 	- **false**: The SLB instance failed to be disassociated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The returned data.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -42877,11 +44194,7 @@ func (s *UnbindSlbResponseBody) SetTraceId(v string) *UnbindSlbResponseBody {
 }
 
 type UnbindSlbResponseBodyData struct {
-	// The error code.
-	//
-	// 	- The **ErrorCode*	- parameter is not returned when the request succeeds.
-	//
-	// 	- The **ErrorCode*	- parameter is returned when the request fails. For more information, see **Error codes*	- in this topic.
+	// The ID of the change order. The ID can be used to query the status of the change task.
 	//
 	// example:
 	//
@@ -43133,7 +44446,7 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateAppSecurityGroupRequest struct {
-	// sg-wz969ngg2e49q5i4\\*\\*\\*\\*
+	// The ID of the application.
 	//
 	// This parameter is required.
 	//
@@ -43141,7 +44454,7 @@ type UpdateAppSecurityGroupRequest struct {
 	//
 	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the request.
+	// The ID of the security group.
 	//
 	// This parameter is required.
 	//
@@ -43170,51 +44483,53 @@ func (s *UpdateAppSecurityGroupRequest) SetSecurityGroupId(v string) *UpdateAppS
 }
 
 type UpdateAppSecurityGroupResponseBody struct {
-	// Indicates whether the security group of the application is successfully updated. Valid values:
+	// The HTTP status code. Valid values:
 	//
-	// 	- **true**
+	// 	- **2xx**: The call was successful.
 	//
-	// 	- **false**
+	// 	- **3xx**: The call was redirected.
+	//
+	// 	- **4xx**: The call failed.
+	//
+	// 	- **5xx**: A server error occurred.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code. Valid values:
+	// The error code. Valid values:
 	//
-	// 	- **2xx**: indicates that the request was successful.
+	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- **3xx**: indicates that the request was redirected.
-	//
-	// 	- **4xx**: indicates that the request was invalid.
-	//
-	// 	- **5xx**: indicates that a server error occurred.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the trace. It can be used to query details of a request.
+	// The returned message. Valid values:
+	//
+	// 	- success: If the call is successful, **success*	- is returned.
+	//
+	// 	- An error code: If the call fails, an error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The returned message.
-	//
-	// 	- If the request is successful, **success*	- is returned.
-	//
-	// 	- An error code is returned when the request fails.
+	// The request ID.
 	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the security group of the application was updated. Valid values:
+	//
+	// 	- **true**: The security group was updated.
+	//
+	// 	- **false**: The security group failed to be updated.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The error code.
-	//
-	// 	- If the request is successful, this parameter is not returned.****
-	//
-	// 	- This parameter is returned only if the request failed.***	- For more information, see the "**Error codes**" section in this topic.
+	// The trace ID that is used to query the details of the request.
 	//
 	// example:
 	//
@@ -43900,11 +45215,23 @@ type UpdateApplicationScalingRuleResponseBodyDataMetricMetrics struct {
 	// example:
 	//
 	// CPU
-	MetricType  *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	SlbId       *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// lb-xxx
+	SlbId *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
+	// example:
+	//
+	// test
 	SlbLogstore *string `json:"SlbLogstore,omitempty" xml:"SlbLogstore,omitempty"`
-	SlbProject  *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
-	Vport       *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
+	// example:
+	//
+	// test
+	SlbProject *string `json:"SlbProject,omitempty" xml:"SlbProject,omitempty"`
+	// example:
+	//
+	// 80
+	Vport *string `json:"Vport,omitempty" xml:"Vport,omitempty"`
 }
 
 func (s UpdateApplicationScalingRuleResponseBodyDataMetricMetrics) String() string {
@@ -44030,9 +45357,15 @@ type UpdateApplicationScalingRuleResponseBodyDataTimerSchedules struct {
 	// example:
 	//
 	// 08:00
-	AtTime      *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
-	MaxReplicas *int32  `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
-	MinReplicas *int32  `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
+	AtTime *string `json:"AtTime,omitempty" xml:"AtTime,omitempty"`
+	// example:
+	//
+	// 10
+	MaxReplicas *int32 `json:"MaxReplicas,omitempty" xml:"MaxReplicas,omitempty"`
+	// example:
+	//
+	// 1
+	MinReplicas *int32 `json:"MinReplicas,omitempty" xml:"MinReplicas,omitempty"`
 	// The expected number of instances.
 	//
 	// example:
@@ -44099,12 +45432,16 @@ func (s *UpdateApplicationScalingRuleResponse) SetBody(v *UpdateApplicationScali
 }
 
 type UpdateApplicationVswitchesRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0099b7be-5f5b-4512-a7fc-56049ef1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the vSwitch.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -44132,23 +45469,54 @@ func (s *UpdateApplicationVswitchesRequest) SetVSwitchId(v string) *UpdateApplic
 }
 
 type UpdateApplicationVswitchesResponseBody struct {
+	// The HTTP status code. Valid values:
+	//
+	// 	- **2xx**: The request was successful.
+	//
+	// 	- **3xx**: The request was redirected.
+	//
+	// 	- **4xx**: The request failed.
+	//
+	// 	- **5xx**: A server error occurred.
+	//
 	// example:
 	//
 	// 200
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code. Valid values:
+	//
+	// 	- If the request was successful, this parameter is not returned.****
+	//
+	// 	- If the request failed, **ErrorCode*	- is returned. For more information, see **Error code*	- section of this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The message returned. Valid values:
+	//
+	// 	- If the request was successful, **success*	- is returned.
+	//
+	// 	- If the request failed, an error code is returned.
+	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the list of applications was obtained. Valid values:
+	//
+	// 	- **true**: The applications were obtained.
+	//
+	// 	- **false**: The applications failed to be queried.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the trace. The ID is used to query the details of a request.
+	//
 	// example:
 	//
 	// 0a98a02315955564772843261e****
@@ -44412,23 +45780,25 @@ func (s *UpdateConfigMapResponse) SetBody(v *UpdateConfigMapResponseBody) *Updat
 }
 
 type UpdateGreyTagRouteRequest struct {
+	// The canary release rule of the application for which ALB gateway routing is configured.
+	//
 	// example:
 	//
 	// [{"condition":"AND","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"sourceIp","value":"127.0.0.1"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
 	AlbRules *string `json:"AlbRules,omitempty" xml:"AlbRules,omitempty"`
-	// Canary Release - Regions
+	// The description of the canary release rule.
 	//
 	// example:
 	//
 	// 灰度发布-地域灰度
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
+	// The canary release rule of the Dubbo application.
 	//
 	// example:
 	//
 	// [{"condition":"OR","group":"DUBBO","items":[{"cond":"==","expr":".key1","index":0,"operator":"rawvalue","value":"value1"},{"cond":"==","expr":".key2","index":0,"operator":"rawvalue","value":"value2"}],"methodName":"echo","serviceName":"com.alibaba.edas.boot.EchoService","version":"1.0.0"}]
 	DubboRules *string `json:"DubboRules,omitempty" xml:"DubboRules,omitempty"`
-	// 1
+	// The ID of the canary release rule.
 	//
 	// This parameter is required.
 	//
@@ -44436,7 +45806,7 @@ type UpdateGreyTagRouteRequest struct {
 	//
 	// 1
 	GreyTagRouteId *int64 `json:"GreyTagRouteId,omitempty" xml:"GreyTagRouteId,omitempty"`
-	// [{"condition":"OR","items":[{"cond":"==","name":"grey","operator":"rawvalue","type":"param","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"cookie","value":"true"},{"cond":"==","name":"grey","operator":"rawvalue","type":"header","value":"true"}],"path":"/post-echo/hi"}]
+	// The canary release rule of the Spring Cloud application.
 	//
 	// example:
 	//
@@ -44494,19 +45864,19 @@ type UpdateGreyTagRouteResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The information about the canary release rule.
 	Data *UpdateGreyTagRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned error code. Valid values:
+	// The error code. Valid values:
 	//
 	// 	- If the call is successful, the **ErrorCode*	- parameter is not returned.
 	//
-	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the "**Error codes**" section of this topic.
+	// 	- If the call fails, the **ErrorCode*	- parameter is returned. For more information, see the **Error codes*	- section in this topic.
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The returned information.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -44644,7 +46014,8 @@ type UpdateIngressRequest struct {
 	// example:
 	//
 	// 87***35-cn-hangzhou,812***3-cn-hangzhou
-	CertIds *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CertIds    *string `json:"CertIds,omitempty" xml:"CertIds,omitempty"`
+	CorsConfig *string `json:"CorsConfig,omitempty" xml:"CorsConfig,omitempty"`
 	// The default forwarding rule. You can specify a port and an application in the default forwarding rule to forward traffic based on the IP address. The following list describes the involved parameters:
 	//
 	// 	- **appId**: the ID of the application.
@@ -44668,9 +46039,13 @@ type UpdateIngressRequest struct {
 	EnableXForwardedForProto         *bool   `json:"EnableXForwardedForProto,omitempty" xml:"EnableXForwardedForProto,omitempty"`
 	EnableXForwardedForSlbId         *bool   `json:"EnableXForwardedForSlbId,omitempty" xml:"EnableXForwardedForSlbId,omitempty"`
 	EnableXForwardedForSlbPort       *bool   `json:"EnableXForwardedForSlbPort,omitempty" xml:"EnableXForwardedForSlbPort,omitempty"`
+	// The timeout period of idle connections. Unit: seconds.
+	//
+	// >  A value of 0 indicates that the default value is used.
+	//
 	// example:
 	//
-	// 3
+	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The ID of the routing rule.
 	//
@@ -44702,6 +46077,8 @@ type UpdateIngressRequest struct {
 	//
 	// clb
 	LoadBalanceType *string `json:"LoadBalanceType,omitempty" xml:"LoadBalanceType,omitempty"`
+	// The request timed out. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
@@ -44720,9 +46097,11 @@ type UpdateIngressRequest struct {
 	//
 	// [{"appId":"395b60e4-0550-458d-9c54-a265d036****","containerPort":8080,"domain":"www.sae.site","path":"/path1"},{"appId":"666403ce-d25b-47cf-87fe-497565d2****","containerPort":8080,"domain":"sae.site","path":"/path2"}]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	// The ID of a security policy.
+	//
 	// example:
 	//
-	// tls_cipher_policy_1_0
+	// tls_cipher_policy_1_2_strict_with_1_3
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 }
 
@@ -44741,6 +46120,11 @@ func (s *UpdateIngressRequest) SetCertId(v string) *UpdateIngressRequest {
 
 func (s *UpdateIngressRequest) SetCertIds(v string) *UpdateIngressRequest {
 	s.CertIds = &v
+	return s
+}
+
+func (s *UpdateIngressRequest) SetCorsConfig(v string) *UpdateIngressRequest {
+	s.CorsConfig = &v
 	return s
 }
 
@@ -45747,6 +47131,17 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateNamespaceRequest struct {
+	// Indicates whether to enable SAE built-in registry:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// If you set this parameter to true, a shared registry is created for the namespace. The registry cannot be disabled after it is created.
+	//
+	// example:
+	//
+	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
 	// The short ID of the namespace. You do not need to specify a region ID. We recommend that you configure this parameter. The value of this parameter can be up to 20 characters in length and can contain only lowercase letters and digits.
 	//
@@ -45760,7 +47155,7 @@ type UpdateNamespaceRequest struct {
 	//
 	// desc
 	NamespaceDescription *string `json:"NamespaceDescription,omitempty" xml:"NamespaceDescription,omitempty"`
-	// The long ID of the namespace. If you configure this parameter, the long ID take effects and the value of the NameSpaceShortId parameter is ignored. To ensure compatibility, we recommend that you specify a short namespace ID. A long namespace ID follows the `<RegionId>:<NamespaceId>` format. The `NamespaceId` variable can contain only lowercase letters and digits. Example: `cn-beijing:test`. The value of the NamespaceId variable cannot exceed 32 characters in length. For more information about **RegionId**, you can call the [DescribeRegions](https://help.aliyun.com/document_detail/126213.html) operation to obtain the IDs of regions supported by SAE.
+	// The long ID of the namespace. If you configure this parameter, the long ID take effects and the value of the NameSpaceShortId parameter is ignored. To ensure compatibility, we recommend that you specify a short namespace ID. A long namespace ID follows the `<RegionId>:<NamespaceId>` format. The `NamespaceId` variable can contain only lowercase letters and digits. Example: `cn-beijing:test`. The value of the Namespaceid variable cannot exceed 32 characters in length. For more information about **RegionId**, you can call the [DescribeRegions](https://help.aliyun.com/document_detail/2834842.html) operation to obtain the IDs of regions supported by SAE.
 	//
 	// example:
 	//
@@ -45824,7 +47219,7 @@ type UpdateNamespaceResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information of the namespace.
+	// The information about a namespace.
 	Data *UpdateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned. Take note of the following rules:
 	//
@@ -45910,6 +47305,15 @@ func (s *UpdateNamespaceResponseBody) SetTraceId(v string) *UpdateNamespaceRespo
 }
 
 type UpdateNamespaceResponseBodyData struct {
+	// Indicates whether to enable SAE built-in registry:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
 	EnableMicroRegistration *bool `json:"EnableMicroRegistration,omitempty" xml:"EnableMicroRegistration,omitempty"`
 	// The short ID of the namespace.
 	//
@@ -46175,12 +47579,16 @@ func (s *UpdateNamespaceVpcResponse) SetBody(v *UpdateNamespaceVpcResponseBody) 
 }
 
 type UpdateSecretRequest struct {
+	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Secret data.
+	//
 	// This parameter is required.
 	SecretData *UpdateSecretRequestSecretData `json:"SecretData,omitempty" xml:"SecretData,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -46215,7 +47623,17 @@ func (s *UpdateSecretRequest) SetSecretId(v int64) *UpdateSecretRequest {
 }
 
 type UpdateSecretRequestSecretData struct {
+	// The information about the key-value pairs of the Secret. This parameter is required. The following formats are supported:
+	//
+	// {"Data":"{"k1":"v1", "k2":"v2"}"}
+	//
+	// k specifies a key and v specifies a value. For more information, see [Manage a Kubernetes Secret](https://help.aliyun.com/document_detail/463383.html).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// {".dockerconfigjson":"eyJhdXRocyI6eyJyZWdpc3RyeS12cGMuY24tYmVpamluZy5hbGl5dW5jcy5jb20iOnsidXNlcm5hbWUiOiJ1c2VybmFtZSIsInBhc3N3b3JkIjoicGFzc3dvcmQiLCJhdXRoIjoiZFhObGNtNWhiV1U2Y0dGemMzZHZjbVE9In0sInJlZ2lzdHJ5LmNuLWJlaWppbmcuYWxpeXVuY3MuY29tIjp7InVzZXJuYW1lIjoidXNlcm5hbWUiLCJwYXNzd29yZCI6InBhc3N3b3JkIiwiYXV0aCI6ImRYTmxjbTVoYldVNmNHRnpjM2R2Y21RPSJ9fX0="}
 	SecretData *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 }
 
@@ -46233,12 +47651,16 @@ func (s *UpdateSecretRequestSecretData) SetSecretData(v string) *UpdateSecretReq
 }
 
 type UpdateSecretShrinkRequest struct {
+	// The ID of the namespace where the Secret resides. If the namespace is the default namespace, you need to only enter the region ID, such as `cn-beijing`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The Secret data.
+	//
 	// This parameter is required.
 	SecretDataShrink *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	// This parameter is required.
@@ -46390,12 +47812,16 @@ func (s *UpdateSecretResponse) SetBody(v *UpdateSecretResponseBody) *UpdateSecre
 }
 
 type UpdateWebApplicationRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// Updates the information about a web application.
+	//
 	// This parameter is required.
 	Body *UpdateWebApplicationInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -46448,12 +47874,16 @@ func (s *UpdateWebApplicationResponse) SetBody(v *WebApplicationBody) *UpdateWeb
 }
 
 type UpdateWebApplicationScalingConfigRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The information about scaling configurations.
+	//
 	// This parameter is required.
 	Body *UpdateWebApplicationScalingConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -46506,12 +47936,16 @@ func (s *UpdateWebApplicationScalingConfigResponse) SetBody(v *WebApplicationSca
 }
 
 type UpdateWebApplicationTrafficConfigRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing:test
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The traffic configurations.
+	//
 	// This parameter is required.
 	Body *UpdateWebApplicationTrafficConfigInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -46564,12 +47998,16 @@ func (s *UpdateWebApplicationTrafficConfigResponse) SetBody(v *WebApplicationTra
 }
 
 type UpdateWebCustomDomainRequest struct {
+	// The namespace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// The information about the custom domain name.
+	//
 	// This parameter is required.
 	Body *UpdateWebCustomDomainInput `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -46809,7 +48247,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// ba386059-69b1-4e65-b1e5-0682d9fa\\*\\*\\*\\*
+// Terminates a change order and rolls back the corresponding application.
 //
 // @param request - AbortAndRollbackChangeOrderRequest
 //
@@ -46865,7 +48303,7 @@ func (client *Client) AbortAndRollbackChangeOrderWithOptions(request *AbortAndRo
 
 // Summary:
 //
-// ba386059-69b1-4e65-b1e5-0682d9fa\\*\\*\\*\\*
+// Terminates a change order and rolls back the corresponding application.
 //
 // @param request - AbortAndRollbackChangeOrderRequest
 //
@@ -46882,6 +48320,10 @@ func (client *Client) AbortAndRollbackChangeOrder(request *AbortAndRollbackChang
 	return _result, _err
 }
 
+// Summary:
+//
+// Terminate a change order.
+//
 // @param request - AbortChangeOrderRequest
 //
 // @param headers - map
@@ -46934,6 +48376,10 @@ func (client *Client) AbortChangeOrderWithOptions(request *AbortChangeOrderReque
 
 }
 
+// Summary:
+//
+// Terminate a change order.
+//
 // @param request - AbortChangeOrderRequest
 //
 // @return AbortChangeOrderResponse
@@ -47400,6 +48846,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["MicroRegistration"] = request.MicroRegistration
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MicroserviceEngineConfig)) {
+		query["MicroserviceEngineConfig"] = request.MicroserviceEngineConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MountDesc)) {
 		query["MountDesc"] = request.MountDesc
 	}
@@ -47418,6 +48868,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSaeVersion)) {
+		query["NewSaeVersion"] = request.NewSaeVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OidcRoleName)) {
@@ -47630,19 +49084,19 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 
 // Summary:
 //
-// Null
+// # Null
 //
 // Description:
 //
 // The HTTP status code. Take note of the following rules:
 //
-// 	- **2xx**: The call was successful.
+//   - **2xx**: The call was successful.
 //
-// 	- **3xx**: The call was redirected.
+//   - **3xx**: The call was redirected.
 //
-// 	- **4xx**: The call failed.
+//   - **4xx**: The call failed.
 //
-// 	- **5xx**: A server error occurred.
+//   - **5xx**: A server error occurred.
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -47730,19 +49184,19 @@ func (client *Client) CreateApplicationScalingRuleWithOptions(request *CreateApp
 
 // Summary:
 //
-// Null
+// # Null
 //
 // Description:
 //
 // The HTTP status code. Take note of the following rules:
 //
-// 	- **2xx**: The call was successful.
+//   - **2xx**: The call was successful.
 //
-// 	- **3xx**: The call was redirected.
+//   - **3xx**: The call was redirected.
 //
-// 	- **4xx**: The call failed.
+//   - **4xx**: The call failed.
 //
-// 	- **5xx**: A server error occurred.
+//   - **5xx**: A server error occurred.
 //
 // @param request - CreateApplicationScalingRuleRequest
 //
@@ -47980,6 +49434,10 @@ func (client *Client) CreateIngressWithOptions(request *CreateIngressRequest, he
 		query["CertIds"] = request.CertIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CorsConfig)) {
+		query["CorsConfig"] = request.CorsConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
 		query["DefaultRule"] = request.DefaultRule
 	}
@@ -48110,7 +49568,7 @@ func (client *Client) CreateIngress(request *CreateIngressRequest) (_result *Cre
 
 // Summary:
 //
-// Updates a job template.
+// Create a job template.
 //
 // @param request - CreateJobRequest
 //
@@ -48380,7 +49838,7 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// Updates a job template.
+// Create a job template.
 //
 // @param request - CreateJobRequest
 //
@@ -48399,7 +49857,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// Creates a namespace.
+// Create a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -48471,7 +49929,7 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 // Summary:
 //
-// Creates a namespace.
+// Create a namespace.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -48490,7 +49948,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Null
+// # Null
 //
 // @param tmpReq - CreateSecretRequest
 //
@@ -48564,7 +50022,7 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, heade
 
 // Summary:
 //
-// Null
+// # Null
 //
 // @param request - CreateSecretRequest
 //
@@ -48583,7 +50041,11 @@ func (client *Client) CreateSecret(request *CreateSecretRequest) (_result *Creat
 
 // Summary:
 //
-// 创建应用
+// # Create a web application
+//
+// Description:
+//
+// Call the CreateWebApplication operation to create a web application.
 //
 // @param request - CreateWebApplicationRequest
 //
@@ -48640,7 +50102,11 @@ func (client *Client) CreateWebApplicationWithOptions(request *CreateWebApplicat
 
 // Summary:
 //
-// 创建应用
+// # Create a web application
+//
+// Description:
+//
+// Call the CreateWebApplication operation to create a web application.
 //
 // @param request - CreateWebApplicationRequest
 //
@@ -48659,7 +50125,11 @@ func (client *Client) CreateWebApplication(request *CreateWebApplicationRequest)
 
 // Summary:
 //
-// 新建自定义域名
+// Create a custom domain name for the web application.
+//
+// Description:
+//
+// Create a custom domain name for the web application.
 //
 // @param request - CreateWebCustomDomainRequest
 //
@@ -48716,7 +50186,11 @@ func (client *Client) CreateWebCustomDomainWithOptions(request *CreateWebCustomD
 
 // Summary:
 //
-// 新建自定义域名
+// Create a custom domain name for the web application.
+//
+// Description:
+//
+// Create a custom domain name for the web application.
 //
 // @param request - CreateWebCustomDomainRequest
 //
@@ -48733,6 +50207,10 @@ func (client *Client) CreateWebCustomDomain(request *CreateWebCustomDomainReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an application.
+//
 // @param request - DeleteApplicationRequest
 //
 // @param headers - map
@@ -48785,6 +50263,10 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 
 }
 
+// Summary:
+//
+// Deletes an application.
+//
 // @param request - DeleteApplicationRequest
 //
 // @return DeleteApplicationResponse
@@ -48879,6 +50361,10 @@ func (client *Client) DeleteApplicationScalingRule(request *DeleteApplicationSca
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a ConfigMap.
+//
 // @param request - DeleteConfigMapRequest
 //
 // @param headers - map
@@ -48931,6 +50417,10 @@ func (client *Client) DeleteConfigMapWithOptions(request *DeleteConfigMapRequest
 
 }
 
+// Summary:
+//
+// Deletes a ConfigMap.
+//
 // @param request - DeleteConfigMapRequest
 //
 // @return DeleteConfigMapResponse
@@ -48948,7 +50438,7 @@ func (client *Client) DeleteConfigMap(request *DeleteConfigMapRequest) (_result 
 
 // Summary:
 //
-// 1
+// Deletes a canary release rule based on the specified rule ID.
 //
 // @param request - DeleteGreyTagRouteRequest
 //
@@ -49004,7 +50494,7 @@ func (client *Client) DeleteGreyTagRouteWithOptions(request *DeleteGreyTagRouteR
 
 // Summary:
 //
-// 1
+// Deletes a canary release rule based on the specified rule ID.
 //
 // @param request - DeleteGreyTagRouteRequest
 //
@@ -49023,7 +50513,7 @@ func (client *Client) DeleteGreyTagRoute(request *DeleteGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// Deletes a job.
+// Delete a job.
 //
 // @param request - DeleteHistoryJobRequest
 //
@@ -49083,7 +50573,7 @@ func (client *Client) DeleteHistoryJobWithOptions(request *DeleteHistoryJobReque
 
 // Summary:
 //
-// Deletes a job.
+// Delete a job.
 //
 // @param request - DeleteHistoryJobRequest
 //
@@ -49100,6 +50590,10 @@ func (client *Client) DeleteHistoryJob(request *DeleteHistoryJobRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a routing rule.
+//
 // @param request - DeleteIngressRequest
 //
 // @param headers - map
@@ -49152,6 +50646,10 @@ func (client *Client) DeleteIngressWithOptions(request *DeleteIngressRequest, he
 
 }
 
+// Summary:
+//
+// Deletes a routing rule.
+//
 // @param request - DeleteIngressRequest
 //
 // @return DeleteIngressResponse
@@ -49169,7 +50667,7 @@ func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *Del
 
 // Summary:
 //
-// Deletes a job template.
+// Delete a job template.
 //
 // @param request - DeleteJobRequest
 //
@@ -49225,7 +50723,7 @@ func (client *Client) DeleteJobWithOptions(request *DeleteJobRequest, headers ma
 
 // Summary:
 //
-// Deletes a job template.
+// Delete a job template.
 //
 // @param request - DeleteJobRequest
 //
@@ -49242,6 +50740,10 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a namespace.
+//
 // @param request - DeleteNamespaceRequest
 //
 // @param headers - map
@@ -49298,6 +50800,10 @@ func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest
 
 }
 
+// Summary:
+//
+// Deletes a namespace.
+//
 // @param request - DeleteNamespaceRequest
 //
 // @return DeleteNamespaceResponse
@@ -49394,7 +50900,11 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 // Summary:
 //
-// 删除应用
+// Delete a web application.
+//
+// Description:
+//
+// Call the DeleteWebApplication operation to delete a web application.
 //
 // @param request - DeleteWebApplicationRequest
 //
@@ -49450,7 +50960,11 @@ func (client *Client) DeleteWebApplicationWithOptions(ApplicationId *string, req
 
 // Summary:
 //
-// 删除应用
+// Delete a web application.
+//
+// Description:
+//
+// Call the DeleteWebApplication operation to delete a web application.
 //
 // @param request - DeleteWebApplicationRequest
 //
@@ -49469,7 +50983,11 @@ func (client *Client) DeleteWebApplication(ApplicationId *string, request *Delet
 
 // Summary:
 //
-// 删除应用版本
+// Delete a web application version.
+//
+// Description:
+//
+// Delete a web application version.
 //
 // @param request - DeleteWebApplicationRevisionRequest
 //
@@ -49525,7 +51043,11 @@ func (client *Client) DeleteWebApplicationRevisionWithOptions(ApplicationId *str
 
 // Summary:
 //
-// 删除应用版本
+// Delete a web application version.
+//
+// Description:
+//
+// Delete a web application version.
 //
 // @param request - DeleteWebApplicationRevisionRequest
 //
@@ -49544,7 +51066,11 @@ func (client *Client) DeleteWebApplicationRevision(ApplicationId *string, Revisi
 
 // Summary:
 //
-// 删除自定义域名
+// Delete a custom domain name.
+//
+// Description:
+//
+// Delete a custom domain name.
 //
 // @param request - DeleteWebCustomDomainRequest
 //
@@ -49600,7 +51126,11 @@ func (client *Client) DeleteWebCustomDomainWithOptions(DomainName *string, reque
 
 // Summary:
 //
-// 删除自定义域名
+// Delete a custom domain name.
+//
+// Description:
+//
+// Delete a custom domain name.
 //
 // @param request - DeleteWebCustomDomainRequest
 //
@@ -49746,6 +51276,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.MicroRegistration)) {
 		query["MicroRegistration"] = request.MicroRegistration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MicroserviceEngineConfig)) {
+		query["MicroserviceEngineConfig"] = request.MicroserviceEngineConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MinReadyInstanceRatio)) {
@@ -50628,6 +52162,10 @@ func (client *Client) DescribeApplicationSlbs(request *DescribeApplicationSlbsRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the status of an application.
+//
 // @param request - DescribeApplicationStatusRequest
 //
 // @param headers - map
@@ -50680,6 +52218,10 @@ func (client *Client) DescribeApplicationStatusWithOptions(request *DescribeAppl
 
 }
 
+// Summary:
+//
+// Queries the status of an application.
+//
 // @param request - DescribeApplicationStatusRequest
 //
 // @return DescribeApplicationStatusResponse
@@ -50695,6 +52237,10 @@ func (client *Client) DescribeApplicationStatus(request *DescribeApplicationStat
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information of a change order.
+//
 // @param request - DescribeChangeOrderRequest
 //
 // @param headers - map
@@ -50747,6 +52293,10 @@ func (client *Client) DescribeChangeOrderWithOptions(request *DescribeChangeOrde
 
 }
 
+// Summary:
+//
+// Queries the information of a change order.
+//
 // @param request - DescribeChangeOrderRequest
 //
 // @return DescribeChangeOrderResponse
@@ -50762,6 +52312,10 @@ func (client *Client) DescribeChangeOrder(request *DescribeChangeOrderRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the version of the component that is required when you create and deploy an application.
+//
 // @param request - DescribeComponentsRequest
 //
 // @param headers - map
@@ -50818,6 +52372,10 @@ func (client *Client) DescribeComponentsWithOptions(request *DescribeComponentsR
 
 }
 
+// Summary:
+//
+// Queries the version of the component that is required when you create and deploy an application.
+//
 // @param request - DescribeComponentsRequest
 //
 // @return DescribeComponentsResponse
@@ -50833,6 +52391,10 @@ func (client *Client) DescribeComponents(request *DescribeComponentsRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of a ConfigMap.
+//
 // @param request - DescribeConfigMapRequest
 //
 // @param headers - map
@@ -50885,6 +52447,10 @@ func (client *Client) DescribeConfigMapWithOptions(request *DescribeConfigMapReq
 
 }
 
+// Summary:
+//
+// Queries the details of a ConfigMap.
+//
 // @param request - DescribeConfigMapRequest
 //
 // @return DescribeConfigMapResponse
@@ -50900,6 +52466,10 @@ func (client *Client) DescribeConfigMap(request *DescribeConfigMapRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Query configuration price.
+//
 // @param request - DescribeConfigurationPriceRequest
 //
 // @param headers - map
@@ -50964,6 +52534,10 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 
 }
 
+// Summary:
+//
+// Query configuration price.
+//
 // @param request - DescribeConfigurationPriceRequest
 //
 // @return DescribeConfigurationPriceResponse
@@ -50979,6 +52553,10 @@ func (client *Client) DescribeConfigurationPrice(request *DescribeConfigurationP
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the container components of a microservices application.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51019,6 +52597,10 @@ func (client *Client) DescribeEdasContainersWithOptions(headers map[string]*stri
 
 }
 
+// Summary:
+//
+// Queries the container components of a microservices application.
+//
 // @return DescribeEdasContainersResponse
 func (client *Client) DescribeEdasContainers() (_result *DescribeEdasContainersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -51107,6 +52689,10 @@ func (client *Client) DescribeGreyTagRoute(request *DescribeGreyTagRouteRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Call the DescribeIngress operation to query the details of an Ingress.
+//
 // @param request - DescribeIngressRequest
 //
 // @param headers - map
@@ -51159,6 +52745,10 @@ func (client *Client) DescribeIngressWithOptions(request *DescribeIngressRequest
 
 }
 
+// Summary:
+//
+// Call the DescribeIngress operation to query the details of an Ingress.
+//
 // @param request - DescribeIngressRequest
 //
 // @return DescribeIngressResponse
@@ -51245,6 +52835,10 @@ func (client *Client) DescribeInstanceLog(request *DescribeInstanceLogRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries all instance types.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51285,6 +52879,10 @@ func (client *Client) DescribeInstanceSpecificationsWithOptions(headers map[stri
 
 }
 
+// Summary:
+//
+// Queries all instance types.
+//
 // @return DescribeInstanceSpecificationsResponse
 func (client *Client) DescribeInstanceSpecifications() (_result *DescribeInstanceSpecificationsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -51774,7 +53372,7 @@ func (client *Client) DescribeNamespaceResources(request *DescribeNamespaceResou
 
 // Summary:
 //
-// Queries the details of namespaces.
+// Queries a list of namespaces.
 //
 // @param request - DescribeNamespacesRequest
 //
@@ -51834,7 +53432,7 @@ func (client *Client) DescribeNamespacesWithOptions(request *DescribeNamespacesR
 
 // Summary:
 //
-// Queries the details of namespaces.
+// Queries a list of namespaces.
 //
 // @param request - DescribeNamespacesRequest
 //
@@ -51853,7 +53451,7 @@ func (client *Client) DescribeNamespaces(request *DescribeNamespacesRequest) (_r
 
 // Summary:
 //
-// Queries the information of a batch.
+// # View batch information
 //
 // @param request - DescribePipelineRequest
 //
@@ -51909,7 +53507,7 @@ func (client *Client) DescribePipelineWithOptions(request *DescribePipelineReque
 
 // Summary:
 //
-// Queries the information of a batch.
+// # View batch information
 //
 // @param request - DescribePipelineRequest
 //
@@ -51989,7 +53587,7 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Queries the details of a Secret instance.
+// Queries the details of a Secret.
 //
 // @param request - DescribeSecretRequest
 //
@@ -52049,7 +53647,7 @@ func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, 
 
 // Summary:
 //
-// Queries the details of a Secret instance.
+// Queries the details of a Secret.
 //
 // @param request - DescribeSecretRequest
 //
@@ -52068,7 +53666,11 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 
 // Summary:
 //
-// 获取应用信息
+// Query web applications.
+//
+// Description:
+//
+// Call the DescribeWebApplication operation to query web applications.
 //
 // @param request - DescribeWebApplicationRequest
 //
@@ -52124,7 +53726,11 @@ func (client *Client) DescribeWebApplicationWithOptions(ApplicationId *string, r
 
 // Summary:
 //
-// 获取应用信息
+// Query web applications.
+//
+// Description:
+//
+// Call the DescribeWebApplication operation to query web applications.
 //
 // @param request - DescribeWebApplicationRequest
 //
@@ -52143,7 +53749,11 @@ func (client *Client) DescribeWebApplication(ApplicationId *string, request *Des
 
 // Summary:
 //
-// 应用资源用量统计
+// Query the resource usage of a web application.
+//
+// Description:
+//
+// Query the resource usage of a web application.
 //
 // @param request - DescribeWebApplicationResourceStaticsRequest
 //
@@ -52211,7 +53821,11 @@ func (client *Client) DescribeWebApplicationResourceStaticsWithOptions(Applicati
 
 // Summary:
 //
-// 应用资源用量统计
+// Query the resource usage of a web application.
+//
+// Description:
+//
+// Query the resource usage of a web application.
 //
 // @param request - DescribeWebApplicationResourceStaticsRequest
 //
@@ -52230,7 +53844,11 @@ func (client *Client) DescribeWebApplicationResourceStatics(ApplicationId *strin
 
 // Summary:
 //
-// 获取应用版本
+// Describe a web application version.
+//
+// Description:
+//
+// Describe a web application version.
 //
 // @param request - DescribeWebApplicationRevisionRequest
 //
@@ -52286,7 +53904,11 @@ func (client *Client) DescribeWebApplicationRevisionWithOptions(ApplicationId *s
 
 // Summary:
 //
-// 获取应用版本
+// Describe a web application version.
+//
+// Description:
+//
+// Describe a web application version.
 //
 // @param request - DescribeWebApplicationRevisionRequest
 //
@@ -52305,7 +53927,11 @@ func (client *Client) DescribeWebApplicationRevision(ApplicationId *string, Revi
 
 // Summary:
 //
-// 弹性配置详情
+// Describe the scaling configuration of a web application.
+//
+// Description:
+//
+// Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
 //
 // @param request - DescribeWebApplicationScalingConfigRequest
 //
@@ -52361,7 +53987,11 @@ func (client *Client) DescribeWebApplicationScalingConfigWithOptions(Application
 
 // Summary:
 //
-// 弹性配置详情
+// Describe the scaling configuration of a web application.
+//
+// Description:
+//
+// Call the DescribeWebApplicationScalingConfig operation to obtain the scaling configuration of a web application.
 //
 // @param request - DescribeWebApplicationScalingConfigRequest
 //
@@ -52380,7 +54010,11 @@ func (client *Client) DescribeWebApplicationScalingConfig(ApplicationId *string,
 
 // Summary:
 //
-// 流量配置详情
+// Query the traffic configurations of a web application.
+//
+// Description:
+//
+// Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
 //
 // @param request - DescribeWebApplicationTrafficConfigRequest
 //
@@ -52436,7 +54070,11 @@ func (client *Client) DescribeWebApplicationTrafficConfigWithOptions(Application
 
 // Summary:
 //
-// 流量配置详情
+// Query the traffic configurations of a web application.
+//
+// Description:
+//
+// Call the DescribeWebApplicationTrafficConfig operation to query the traffic configurations of a web application.
 //
 // @param request - DescribeWebApplicationTrafficConfigRequest
 //
@@ -52455,7 +54093,11 @@ func (client *Client) DescribeWebApplicationTrafficConfig(ApplicationId *string,
 
 // Summary:
 //
-// 获取域名.
+// Query the details of a custom domain name for a web application.
+//
+// Description:
+//
+// Query the details of a custom domain name for a web application.
 //
 // @param request - DescribeWebCustomDomainRequest
 //
@@ -52511,7 +54153,11 @@ func (client *Client) DescribeWebCustomDomainWithOptions(DomainName *string, req
 
 // Summary:
 //
-// 获取域名.
+// Query the details of a custom domain name for a web application.
+//
+// Description:
+//
+// Query the details of a custom domain name for a web application.
 //
 // @param request - DescribeWebCustomDomainRequest
 //
@@ -52530,7 +54176,11 @@ func (client *Client) DescribeWebCustomDomain(DomainName *string, request *Descr
 
 // Summary:
 //
-// 应用实例日志
+// Obtain the logs of web application instances.
+//
+// Description:
+//
+// Obtain the logs of web application instances.
 //
 // @param request - DescribeWebInstanceLogsRequest
 //
@@ -52586,7 +54236,11 @@ func (client *Client) DescribeWebInstanceLogsWithOptions(ApplicationId *string, 
 
 // Summary:
 //
-// 应用实例日志
+// Obtain the logs of web application instances.
+//
+// Description:
+//
+// Obtain the logs of web application instances.
 //
 // @param request - DescribeWebInstanceLogsRequest
 //
@@ -52674,6 +54328,10 @@ func (client *Client) DisableApplicationScalingRule(request *DisableApplicationS
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+//
 // @param request - DowngradeApplicationApmServiceRequest
 //
 // @param headers - map
@@ -52726,6 +54384,10 @@ func (client *Client) DowngradeApplicationApmServiceWithOptions(request *Downgra
 
 }
 
+// Summary:
+//
+// Disables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+//
 // @param request - DowngradeApplicationApmServiceRequest
 //
 // @return DowngradeApplicationApmServiceResponse
@@ -52925,7 +54587,7 @@ func (client *Client) ExecJob(request *ExecJobRequest) (_result *ExecJobResponse
 
 // Summary:
 //
-// 查询应用基本信息
+// Queries the basic information of an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -52989,7 +54651,7 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 
 // Summary:
 //
-// 查询应用基本信息
+// Queries the basic information of an application.
 //
 // @param request - GetApplicationRequest
 //
@@ -53008,7 +54670,7 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 // Summary:
 //
-// Queries the top N applications in Application Monitoring.
+// The application name.
 //
 // @param request - GetArmsTopNMetricRequest
 //
@@ -53088,7 +54750,7 @@ func (client *Client) GetArmsTopNMetricWithOptions(request *GetArmsTopNMetricReq
 
 // Summary:
 //
-// Queries the top N applications in Application Monitoring.
+// The application name.
 //
 // @param request - GetArmsTopNMetricRequest
 //
@@ -53376,7 +55038,7 @@ func (client *Client) GetScaleAppMetric(request *GetScaleAppMetricRequest) (_res
 
 // Summary:
 //
-// Queries the top N applications in which Warning events occur.
+// The number of Warning events.
 //
 // @param request - GetWarningEventMetricRequest
 //
@@ -53452,7 +55114,7 @@ func (client *Client) GetWarningEventMetricWithOptions(request *GetWarningEventM
 
 // Summary:
 //
-// Queries the top N applications in which Warning events occur.
+// The number of Warning events.
 //
 // @param request - GetWarningEventMetricRequest
 //
@@ -53469,6 +55131,10 @@ func (client *Client) GetWarningEventMetric(request *GetWarningEventMetricReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the token used to remotely log on to the Webshell of an instance.
+//
 // @param request - GetWebshellTokenRequest
 //
 // @param headers - map
@@ -53529,6 +55195,10 @@ func (client *Client) GetWebshellTokenWithOptions(request *GetWebshellTokenReque
 
 }
 
+// Summary:
+//
+// Obtains the token used to remotely log on to the Webshell of an instance.
+//
 // @param request - GetWebshellTokenRequest
 //
 // @return GetWebshellTokenResponse
@@ -53649,7 +55319,7 @@ func (client *Client) ListAppEvents(request *ListAppEventsRequest) (_result *Lis
 
 // Summary:
 //
-// 查询微服务的服务列表
+// # Queries the list of microservices
 //
 // @param request - ListAppServicesRequest
 //
@@ -53737,7 +55407,7 @@ func (client *Client) ListAppServicesWithOptions(request *ListAppServicesRequest
 
 // Summary:
 //
-// 查询微服务的服务列表
+// # Queries the list of microservices
 //
 // @param request - ListAppServicesRequest
 //
@@ -53756,7 +55426,7 @@ func (client *Client) ListAppServices(request *ListAppServicesRequest) (_result 
 
 // Summary:
 //
-// 6dcc8c9e-d3da-478a-a066-86dcf820\\*\\*\\*\\*
+// Queries the services of an application.
 //
 // @param request - ListAppServicesPageRequest
 //
@@ -53824,7 +55494,7 @@ func (client *Client) ListAppServicesPageWithOptions(request *ListAppServicesPag
 
 // Summary:
 //
-// 6dcc8c9e-d3da-478a-a066-86dcf820\\*\\*\\*\\*
+// Queries the services of an application.
 //
 // @param request - ListAppServicesPageRequest
 //
@@ -53843,7 +55513,7 @@ func (client *Client) ListAppServicesPage(request *ListAppServicesPageRequest) (
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+// Queries the deployment versions of an application.
 //
 // @param request - ListAppVersionsRequest
 //
@@ -53899,7 +55569,7 @@ func (client *Client) ListAppVersionsWithOptions(request *ListAppVersionsRequest
 
 // Summary:
 //
-// 7171a6ca-d1cd-4928-8642-7d5cfe69\\*\\*\\*\\*
+// Queries the deployment versions of an application.
 //
 // @param request - ListAppVersionsRequest
 //
@@ -53918,7 +55588,7 @@ func (client *Client) ListAppVersions(request *ListAppVersionsRequest) (_result 
 
 // Summary:
 //
-// The ID of the namespace.
+// Queries a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -54010,7 +55680,7 @@ func (client *Client) ListApplicationsWithOptions(request *ListApplicationsReque
 
 // Summary:
 //
-// The ID of the namespace.
+// Queries a list of applications.
 //
 // @param request - ListApplicationsRequest
 //
@@ -54027,6 +55697,10 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Query a list of change orders.
+//
 // @param request - ListChangeOrdersRequest
 //
 // @param headers - map
@@ -54099,6 +55773,10 @@ func (client *Client) ListChangeOrdersWithOptions(request *ListChangeOrdersReque
 
 }
 
+// Summary:
+//
+// Query a list of change orders.
+//
 // @param request - ListChangeOrdersRequest
 //
 // @return ListChangeOrdersResponse
@@ -54116,7 +55794,7 @@ func (client *Client) ListChangeOrders(request *ListChangeOrdersRequest) (_resul
 
 // Summary:
 //
-// b2a8a925-477a-4ed7-b825-d5e22500\\*\\*\\*\\*
+// Queries a list of microservices that are subscribed.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -54172,7 +55850,7 @@ func (client *Client) ListConsumedServicesWithOptions(request *ListConsumedServi
 
 // Summary:
 //
-// b2a8a925-477a-4ed7-b825-d5e22500\\*\\*\\*\\*
+// Queries a list of microservices that are subscribed.
 //
 // @param request - ListConsumedServicesRequest
 //
@@ -54274,11 +55952,7 @@ func (client *Client) ListGreyTagRoute(request *ListGreyTagRouteRequest) (_resul
 
 // Summary:
 //
-// The returned message.
-//
-// 	- **success*	- is returned when the request succeeds.
-//
-// 	- An error code is returned when the request fails.
+// # Use ListIngress API call to query Ingress list
 //
 // @param request - ListIngressesRequest
 //
@@ -54338,11 +56012,7 @@ func (client *Client) ListIngressesWithOptions(request *ListIngressesRequest, he
 
 // Summary:
 //
-// The returned message.
-//
-// 	- **success*	- is returned when the request succeeds.
-//
-// 	- An error code is returned when the request fails.
+// # Use ListIngress API call to query Ingress list
 //
 // @param request - ListIngressesRequest
 //
@@ -54472,7 +56142,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// 56f77b65-788d-442a-9885-7f20d91f\\*\\*\\*\\*
+// Queries a list of application logs.
 //
 // @param request - ListLogConfigsRequest
 //
@@ -54536,7 +56206,7 @@ func (client *Client) ListLogConfigsWithOptions(request *ListLogConfigsRequest, 
 
 // Summary:
 //
-// 56f77b65-788d-442a-9885-7f20d91f\\*\\*\\*\\*
+// Queries a list of application logs.
 //
 // @param request - ListLogConfigsRequest
 //
@@ -54553,6 +56223,10 @@ func (client *Client) ListLogConfigs(request *ListLogConfigsRequest) (_result *L
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of change orders in a namespace.
+//
 // @param request - ListNamespaceChangeOrdersRequest
 //
 // @param headers - map
@@ -54625,6 +56299,10 @@ func (client *Client) ListNamespaceChangeOrdersWithOptions(request *ListNamespac
 
 }
 
+// Summary:
+//
+// Queries a list of change orders in a namespace.
+//
 // @param request - ListNamespaceChangeOrdersRequest
 //
 // @return ListNamespaceChangeOrdersResponse
@@ -54717,7 +56395,7 @@ func (client *Client) ListNamespacedConfigMaps(request *ListNamespacedConfigMaps
 
 // Summary:
 //
-// b2a8a925-477a-4ed7-b825-d5e22500\\*\\*\\*\\*
+// Queries a list of microservices that are published.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -54773,7 +56451,7 @@ func (client *Client) ListPublishedServicesWithOptions(request *ListPublishedSer
 
 // Summary:
 //
-// b2a8a925-477a-4ed7-b825-d5e22500\\*\\*\\*\\*
+// Queries a list of microservices that are published.
 //
 // @param request - ListPublishedServicesRequest
 //
@@ -54958,7 +56636,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 应用实例列表
+// Query the list of web application instances.
+//
+// Description:
+//
+// Query the list of web application instances.
 //
 // @param tmpReq - ListWebApplicationInstancesRequest
 //
@@ -55052,7 +56734,11 @@ func (client *Client) ListWebApplicationInstancesWithOptions(ApplicationId *stri
 
 // Summary:
 //
-// 应用实例列表
+// Query the list of web application instances.
+//
+// Description:
+//
+// Query the list of web application instances.
 //
 // @param request - ListWebApplicationInstancesRequest
 //
@@ -55071,7 +56757,11 @@ func (client *Client) ListWebApplicationInstances(ApplicationId *string, request
 
 // Summary:
 //
-// 版本列表
+// Query the list of web application versions.
+//
+// Description:
+//
+// Query the list of web application versions.
 //
 // @param request - ListWebApplicationRevisionsRequest
 //
@@ -55135,7 +56825,11 @@ func (client *Client) ListWebApplicationRevisionsWithOptions(ApplicationId *stri
 
 // Summary:
 //
-// 版本列表
+// Query the list of web application versions.
+//
+// Description:
+//
+// Query the list of web application versions.
 //
 // @param request - ListWebApplicationRevisionsRequest
 //
@@ -55154,7 +56848,11 @@ func (client *Client) ListWebApplicationRevisions(ApplicationId *string, request
 
 // Summary:
 //
-// 应用列表
+// Query the list of web applications.
+//
+// Description:
+//
+// Call the ListWebApplications operation to query the list of web applications.
 //
 // @param request - ListWebApplicationsRequest
 //
@@ -55222,7 +56920,11 @@ func (client *Client) ListWebApplicationsWithOptions(request *ListWebApplication
 
 // Summary:
 //
-// 应用列表
+// Query the list of web applications.
+//
+// Description:
+//
+// Call the ListWebApplications operation to query the list of web applications.
 //
 // @param request - ListWebApplicationsRequest
 //
@@ -55241,7 +56943,11 @@ func (client *Client) ListWebApplications(request *ListWebApplicationsRequest) (
 
 // Summary:
 //
-// 自定义域名列表.
+// Query available custom domain names.
+//
+// Description:
+//
+// Query available custom domain names.
 //
 // @param request - ListWebCustomDomainsRequest
 //
@@ -55313,7 +57019,11 @@ func (client *Client) ListWebCustomDomainsWithOptions(request *ListWebCustomDoma
 
 // Summary:
 //
-// 自定义域名列表.
+// Query available custom domain names.
+//
+// Description:
+//
+// Query available custom domain names.
 //
 // @param request - ListWebCustomDomainsRequest
 //
@@ -55401,7 +57111,11 @@ func (client *Client) OpenSaeService() (_result *OpenSaeServiceResponse, _err er
 
 // Summary:
 //
-// 新建版本
+// Publish a web application version.
+//
+// Description:
+//
+// Publish a web application version. You can change the configurations of the version and create a new version.
 //
 // @param request - PublishWebApplicationRevisionRequest
 //
@@ -55458,7 +57172,11 @@ func (client *Client) PublishWebApplicationRevisionWithOptions(ApplicationId *st
 
 // Summary:
 //
-// 新建版本
+// Publish a web application version.
+//
+// Description:
+//
+// Publish a web application version. You can change the configurations of the version and create a new version.
 //
 // @param request - PublishWebApplicationRevisionRequest
 //
@@ -56157,7 +57875,11 @@ func (client *Client) StartApplication(request *StartApplicationRequest) (_resul
 
 // Summary:
 //
-// 启动应用
+// Start a web application.
+//
+// Description:
+//
+// Call the StartWebApplication operation to start a web application.
 //
 // @param request - StartWebApplicationRequest
 //
@@ -56213,7 +57935,11 @@ func (client *Client) StartWebApplicationWithOptions(ApplicationId *string, requ
 
 // Summary:
 //
-// 启动应用
+// Start a web application.
+//
+// Description:
+//
+// Call the StartWebApplication operation to start a web application.
 //
 // @param request - StartWebApplicationRequest
 //
@@ -56307,7 +58033,11 @@ func (client *Client) StopApplication(request *StopApplicationRequest) (_result 
 
 // Summary:
 //
-// 停止应用
+// Stop a web application.
+//
+// Description:
+//
+// Call the StopWebApplication operation to stop a web application.
 //
 // @param request - StopWebApplicationRequest
 //
@@ -56363,7 +58093,11 @@ func (client *Client) StopWebApplicationWithOptions(ApplicationId *string, reque
 
 // Summary:
 //
-// 停止应用
+// Stop a web application.
+//
+// Description:
+//
+// Call the StopWebApplication operation to stop a web application.
 //
 // @param request - StopWebApplicationRequest
 //
@@ -56548,7 +58282,94 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
+// # Calls the UnbindNlb operation to delete an NLB listener bound for application access
+//
+// @param request - UnbindNlbRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindNlbResponse
+func (client *Client) UnbindNlbWithOptions(request *UnbindNlbRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnbindNlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NlbId)) {
+		query["NlbId"] = request.NlbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		query["Protocol"] = request.Protocol
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindNlb"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/nlb"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindNlbResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindNlbResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # Calls the UnbindNlb operation to delete an NLB listener bound for application access
+//
+// @param request - UnbindNlbRequest
+//
+// @return UnbindNlbResponse
+func (client *Client) UnbindNlb(request *UnbindNlbRequest) (_result *UnbindNlbResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnbindNlbResponse{}
+	_body, _err := client.UnbindNlbWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disassociates an internal-facing or Internet-facing SLB instance from an application.
 //
 // @param request - UnbindSlbRequest
 //
@@ -56612,7 +58433,7 @@ func (client *Client) UnbindSlbWithOptions(request *UnbindSlbRequest, headers ma
 
 // Summary:
 //
-// 0099b7be-5f5b-4512-a7fc-56049ef1\\*\\*\\*\\*
+// Disassociates an internal-facing or Internet-facing SLB instance from an application.
 //
 // @param request - UnbindSlbRequest
 //
@@ -56714,7 +58535,7 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 017f39b8-dfa4-4e16-a84b-1dcee4b1\\*\\*\\*\\*
+// Updates the security group of an application.
 //
 // @param request - UpdateAppSecurityGroupRequest
 //
@@ -56774,7 +58595,7 @@ func (client *Client) UpdateAppSecurityGroupWithOptions(request *UpdateAppSecuri
 
 // Summary:
 //
-// 017f39b8-dfa4-4e16-a84b-1dcee4b1\\*\\*\\*\\*
+// Updates the security group of an application.
 //
 // @param request - UpdateAppSecurityGroupRequest
 //
@@ -56793,7 +58614,7 @@ func (client *Client) UpdateAppSecurityGroup(request *UpdateAppSecurityGroupRequ
 
 // Summary:
 //
-// 更新应用描述信息
+// Updates the description of an application.
 //
 // @param request - UpdateApplicationDescriptionRequest
 //
@@ -56853,7 +58674,7 @@ func (client *Client) UpdateApplicationDescriptionWithOptions(request *UpdateApp
 
 // Summary:
 //
-// 更新应用描述信息
+// Updates the description of an application.
 //
 // @param request - UpdateApplicationDescriptionRequest
 //
@@ -56981,6 +58802,10 @@ func (client *Client) UpdateApplicationScalingRule(request *UpdateApplicationSca
 	return _result, _err
 }
 
+// Summary:
+//
+// Update the configuration of a vSwitch.
+//
 // @param request - UpdateApplicationVswitchesRequest
 //
 // @param headers - map
@@ -57037,6 +58862,10 @@ func (client *Client) UpdateApplicationVswitchesWithOptions(request *UpdateAppli
 
 }
 
+// Summary:
+//
+// Update the configuration of a vSwitch.
+//
 // @param request - UpdateApplicationVswitchesRequest
 //
 // @return UpdateApplicationVswitchesResponse
@@ -57054,7 +58883,7 @@ func (client *Client) UpdateApplicationVswitches(request *UpdateApplicationVswit
 
 // Summary:
 //
-// 1
+// Update a ConfigMap.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -57120,7 +58949,7 @@ func (client *Client) UpdateConfigMapWithOptions(request *UpdateConfigMapRequest
 
 // Summary:
 //
-// 1
+// Update a ConfigMap.
 //
 // @param request - UpdateConfigMapRequest
 //
@@ -57230,7 +59059,7 @@ func (client *Client) UpdateGreyTagRoute(request *UpdateGreyTagRouteRequest) (_r
 
 // Summary:
 //
-// Updates the configurations of a routing rule.
+// Update the configurations of an Ingress instance.
 //
 // @param request - UpdateIngressRequest
 //
@@ -57251,6 +59080,10 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.CertIds)) {
 		query["CertIds"] = request.CertIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CorsConfig)) {
+		query["CorsConfig"] = request.CorsConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DefaultRule)) {
@@ -57352,7 +59185,7 @@ func (client *Client) UpdateIngressWithOptions(request *UpdateIngressRequest, he
 
 // Summary:
 //
-// Updates the configurations of a routing rule.
+// Update the configurations of an Ingress instance.
 //
 // @param request - UpdateIngressRequest
 //
@@ -57800,13 +59633,13 @@ func (client *Client) UpdateNamespaceVpc(request *UpdateNamespaceVpcRequest) (_r
 //
 // The HTTP status code. Valid values:
 //
-// 	- **2xx**: The call was successful.
+//   - **2xx**: The call was successful.
 //
-// 	- **3xx**: The call was redirected.
+//   - **3xx**: The call was redirected.
 //
-// 	- **4xx**: The call failed.
+//   - **4xx**: The call failed.
 //
-// 	- **5xx**: A server error occurred.
+//   - **5xx**: A server error occurred.
 //
 // @param tmpReq - UpdateSecretRequest
 //
@@ -57878,13 +59711,13 @@ func (client *Client) UpdateSecretWithOptions(tmpReq *UpdateSecretRequest, heade
 //
 // The HTTP status code. Valid values:
 //
-// 	- **2xx**: The call was successful.
+//   - **2xx**: The call was successful.
 //
-// 	- **3xx**: The call was redirected.
+//   - **3xx**: The call was redirected.
 //
-// 	- **4xx**: The call failed.
+//   - **4xx**: The call failed.
 //
-// 	- **5xx**: A server error occurred.
+//   - **5xx**: A server error occurred.
 //
 // @param request - UpdateSecretRequest
 //
@@ -57903,7 +59736,11 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 
 // Summary:
 //
-// 更新应用
+// Updates the configuration at the web application level.
+//
+// Description:
+//
+// You can call the UpdateWebApplication operation to update the configuration at the web application level.
 //
 // @param request - UpdateWebApplicationRequest
 //
@@ -57960,7 +59797,11 @@ func (client *Client) UpdateWebApplicationWithOptions(ApplicationId *string, req
 
 // Summary:
 //
-// 更新应用
+// Updates the configuration at the web application level.
+//
+// Description:
+//
+// You can call the UpdateWebApplication operation to update the configuration at the web application level.
 //
 // @param request - UpdateWebApplicationRequest
 //
@@ -57979,7 +59820,11 @@ func (client *Client) UpdateWebApplication(ApplicationId *string, request *Updat
 
 // Summary:
 //
-// 更新弹性配置
+// Update the scaling configuration of a web application.
+//
+// Description:
+//
+// You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
 //
 // @param request - UpdateWebApplicationScalingConfigRequest
 //
@@ -58036,7 +59881,11 @@ func (client *Client) UpdateWebApplicationScalingConfigWithOptions(ApplicationId
 
 // Summary:
 //
-// 更新弹性配置
+// Update the scaling configuration of a web application.
+//
+// Description:
+//
+// You can call the UpdateWebApplicationScalingConfig operation to update the scaling configurations of a web application.
 //
 // @param request - UpdateWebApplicationScalingConfigRequest
 //
@@ -58055,7 +59904,11 @@ func (client *Client) UpdateWebApplicationScalingConfig(ApplicationId *string, r
 
 // Summary:
 //
-// 更新流量配置
+// Update the traffic configurations of a web application.
+//
+// Description:
+//
+// Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
 //
 // @param request - UpdateWebApplicationTrafficConfigRequest
 //
@@ -58112,7 +59965,11 @@ func (client *Client) UpdateWebApplicationTrafficConfigWithOptions(ApplicationId
 
 // Summary:
 //
-// 更新流量配置
+// Update the traffic configurations of a web application.
+//
+// Description:
+//
+// Call the UpdateWebApplicationTrafficConfig operation to update the traffic configurations of a web application.
 //
 // @param request - UpdateWebApplicationTrafficConfigRequest
 //
@@ -58131,7 +59988,11 @@ func (client *Client) UpdateWebApplicationTrafficConfig(ApplicationId *string, r
 
 // Summary:
 //
-// 更新自定义域名.
+// Update a custom domain name.
+//
+// Description:
+//
+// Update a custom domain name.
 //
 // @param request - UpdateWebCustomDomainRequest
 //
@@ -58188,7 +60049,11 @@ func (client *Client) UpdateWebCustomDomainWithOptions(DomainName *string, reque
 
 // Summary:
 //
-// 更新自定义域名.
+// Update a custom domain name.
+//
+// Description:
+//
+// Update a custom domain name.
 //
 // @param request - UpdateWebCustomDomainRequest
 //
@@ -58205,6 +60070,14 @@ func (client *Client) UpdateWebCustomDomain(DomainName *string, request *UpdateW
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+//
+// Description:
+//
+// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+//
 // @param request - UpgradeApplicationApmServiceRequest
 //
 // @param headers - map
@@ -58257,6 +60130,14 @@ func (client *Client) UpgradeApplicationApmServiceWithOptions(request *UpgradeAp
 
 }
 
+// Summary:
+//
+// Enables the advanced monitoring feature of Application Real-Time Monitoring Service (ARMS).
+//
+// Description:
+//
+// You are charged when you use the ARMS advanced monitoring feature. Enable this feature based on your business requirements. For more information, see [Billing overview](https://icms.alibaba-inc.com/content/arms/arms?l=1\\&m=16992\\&n=3183148).
+//
 // @param request - UpgradeApplicationApmServiceRequest
 //
 // @return UpgradeApplicationApmServiceResponse
