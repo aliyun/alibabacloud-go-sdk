@@ -3012,7 +3012,8 @@ type CreateARMServerInstancesRequest struct {
 	// example:
 	//
 	// true
-	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	AutoUseCoupon *bool   `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	Cidr          *string `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
 	// The ID of the Edge Node Service (ENS) node.
 	//
 	// This parameter is required.
@@ -3211,6 +3212,11 @@ func (s *CreateARMServerInstancesRequest) SetAutoRenew(v bool) *CreateARMServerI
 
 func (s *CreateARMServerInstancesRequest) SetAutoUseCoupon(v bool) *CreateARMServerInstancesRequest {
 	s.AutoUseCoupon = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetCidr(v string) *CreateARMServerInstancesRequest {
+	s.Cidr = &v
 	return s
 }
 
@@ -4175,9 +4181,13 @@ type CreateEnsRouteEntryRequest struct {
 	//
 	// i-5vb7leks9z4mxy1ay258
 	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
-	// The type of next hop of the custom route entry. Valid values:
+	// The next hop type of the custom route. Valid values:
 	//
-	// 	- Instance (default): an ENS instance.
+	// 	- Instance: an ENS instance.
+	//
+	// 	- HaVip: a high-availability virtual IP address (HAVIP).
+	//
+	// 	- NetworkPeer: VPC peering connection.
 	//
 	// example:
 	//
@@ -4196,7 +4206,12 @@ type CreateEnsRouteEntryRequest struct {
 	// example:
 	//
 	// vtb-bp1cifr72dioje82lse2j
-	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The new source CIDR block of the inbound or outbound traffic.
+	//
+	// example:
+	//
+	// 172.XXX.XXX.0/24
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
 }
 
@@ -9158,6 +9173,19 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateSnatEntryRequest struct {
+	// Specifies whether to enable EIP affinity. Valid values:
+	//
+	// 	- **0**: no
+	//
+	// 	- **1**: yes
+	//
+	// **
+	//
+	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+	//
+	// example:
+	//
+	// false
 	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
 	//
@@ -11509,6 +11537,21 @@ func (s *DeleteMountTargetResponse) SetBody(v *DeleteMountTargetResponseBody) *D
 }
 
 type DeleteNatGatewayRequest struct {
+	// Specifies whether to forcefully delete the VPC. Valid values:
+	//
+	// - **true**: yes
+	//
+	// - **false*	- (default): no
+	//
+	// You can forcefully delete a VPC in the following scenarios:
+	//
+	// - Only an IPv4 gateway and routes that point to the IPv4 gateway exist in the VPC.
+	//
+	// - Only an IPv6 gateway and routes that point to the IPv6 gateway exist in the VPC.
+	//
+	// example:
+	//
+	// true
 	ForceDelete *bool `json:"ForceDelete,omitempty" xml:"ForceDelete,omitempty"`
 	// The ID of the NAT gateway that you want to delete.
 	//
@@ -21546,6 +21589,11 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
+	// The time when the entry was created. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2023-02-16T03:50:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// Enter a description for the route.
 	//
@@ -21578,7 +21626,12 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
 	// example:
 	//
 	// vtb-uf62p9o5cn35fi8xgurnm
-	RouteTableId    *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The new source CIDR block of the inbound or outbound traffic.
+	//
+	// example:
+	//
+	// 10.XXX.XXX.0/24
 	SourceCidrBlock *string `json:"SourceCidrBlock,omitempty" xml:"SourceCidrBlock,omitempty"`
 	// The status of the route entry. Valid values:
 	//
@@ -21726,6 +21779,15 @@ func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryList
 }
 
 type DescribeEnsRouteTablesRequest struct {
+	// The type of the route table. Valid values:
+	//
+	// 	- **VSwitch*	- (default): vSwitch route table
+	//
+	// 	- **Gateway**: gateway route table
+	//
+	// example:
+	//
+	// Gateway
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
 	// The ID of the ENS node.
 	//
@@ -21733,7 +21795,7 @@ type DescribeEnsRouteTablesRequest struct {
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The IDs of the Edge Node Service (ENS) nodes.
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
@@ -21758,9 +21820,25 @@ type DescribeEnsRouteTablesRequest struct {
 	// example:
 	//
 	// vtb-5p1cifr72di****
-	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The name of the route table that you want to query.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
+	// example:
+	//
+	// tftest-nat04
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of the NAT.
+	//
+	// 	- Empty: symmetric NAT.
+	//
+	// 	- FullCone: full cone NAT.
+	//
+	// example:
+	//
+	// FullCone
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeEnsRouteTablesRequest) String() string {
@@ -21879,6 +21957,15 @@ func (s *DescribeEnsRouteTablesResponseBody) SetTotalCount(v int32) *DescribeEns
 }
 
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {
+	// The type of the route table. Valid values:
+	//
+	// 	- **VSwitch*	- (default): vSwitch route table
+	//
+	// 	- **Gateway**: gateway route table
+	//
+	// example:
+	//
+	// VSwitch
 	AssociateType *string `json:"AssociateType,omitempty" xml:"AssociateType,omitempty"`
 	// The time when the route table was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
 	//
@@ -21886,14 +21973,26 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// 2024-03-08T08:35:18Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the network.
+	//
+	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the edge node.
 	//
 	// example:
 	//
 	// cn-beijing-15
-	EnsRegionId                *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	IsDefaultGatewayRouteTable *bool   `json:"IsDefaultGatewayRouteTable,omitempty" xml:"IsDefaultGatewayRouteTable,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Is the gateway routing table the default.
+	//
+	// example:
+	//
+	// false
+	IsDefaultGatewayRouteTable *bool `json:"IsDefaultGatewayRouteTable,omitempty" xml:"IsDefaultGatewayRouteTable,omitempty"`
 	// The ID of the network.
 	//
 	// example:
@@ -21906,6 +22005,10 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// rt-5xde2bit9****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// The name of the route table that you want to query.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// test-tf-vtb7
@@ -21918,7 +22021,7 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the route table. Valid values:
+	// The type of the route table. Examples:
 	//
 	// 	- Custom: custom route table.
 	//
@@ -24813,6 +24916,7 @@ type DescribeFileSystemsResponseBodyFileSystems struct {
 	//
 	// 2022-08-31 12:00:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The ID of the region.
 	//
 	// example:
@@ -24900,6 +25004,11 @@ func (s *DescribeFileSystemsResponseBodyFileSystems) SetCapacity(v int64) *Descr
 
 func (s *DescribeFileSystemsResponseBodyFileSystems) SetCreationTime(v string) *DescribeFileSystemsResponseBodyFileSystems {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeFileSystemsResponseBodyFileSystems) SetDescription(v string) *DescribeFileSystemsResponseBodyFileSystems {
+	s.Description = &v
 	return s
 }
 
@@ -26186,9 +26295,9 @@ type DescribeImageSharePermissionRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: **100**.
+	// The number of entries to return on each page. Maximum value: **100**.
 	//
-	// Default value: **10**.
+	// Default value: **10**
 	//
 	// example:
 	//
@@ -30557,6 +30666,11 @@ func (s *DescribeLoadBalancerAttributeResponseBodyBackendServers) SetWeight(v in
 }
 
 type DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocols struct {
+	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	//
+	// example:
+	//
+	// 6000
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The description of the listener.
 	//
@@ -31841,8 +31955,18 @@ func (s *DescribeLoadBalancerListenMonitorResponse) SetBody(v *DescribeLoadBalan
 }
 
 type DescribeLoadBalancerListenersRequest struct {
-	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ListenerPort *int32  `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
+	// The description of the image.
+	//
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The listener port.
+	//
+	// example:
+	//
+	// 80
+	ListenerPort *int32 `json:"ListenerPort,omitempty" xml:"ListenerPort,omitempty"`
 	// The ID of the ELB instance.
 	//
 	// This parameter is required.
@@ -31978,6 +32102,11 @@ func (s *DescribeLoadBalancerListenersResponseBodyListeners) SetListener(v []*De
 }
 
 type DescribeLoadBalancerListenersResponseBodyListenersListener struct {
+	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	//
+	// example:
+	//
+	// 3306
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
 	// The timestamp when the listener was created.
 	//
@@ -34691,7 +34820,8 @@ type DescribeNatGatewaysRequest struct {
 	// example:
 	//
 	// cn-wuxi-9
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The node information.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
@@ -34704,7 +34834,8 @@ type DescribeNatGatewaysRequest struct {
 	// example:
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
-	NatGatewayId  *string   `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The IDs of NAT Gateways.
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
@@ -34790,7 +34921,7 @@ func (s *DescribeNatGatewaysRequest) SetVSwitchId(v string) *DescribeNatGateways
 }
 
 type DescribeNatGatewaysResponseBody struct {
-	// Details about the NAT gateways.
+	// The details of the NAT gateways.
 	NatGateways []*DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -34863,8 +34994,9 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	// example:
 	//
 	// cn-xiangyang-5
-	EnsRegionId *string                                              `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	IpLists     []*DescribeNatGatewaysResponseBodyNatGatewaysIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Repeated"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+	IpLists []*DescribeNatGatewaysResponseBodyNatGatewaysIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
 	// example:
@@ -34888,7 +35020,18 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	// example:
 	//
 	// enat.default
-	Spec   *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The status of the SNAT entry.
+	//
+	// 	- Pending: The SNAT entry is being created or modified.
+	//
+	// 	- Available: The SNAT entry is available.
+	//
+	// 	- Deleting: The SNAT entry is being deleted.
+	//
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the vSwitch.
 	//
@@ -34952,9 +35095,32 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVSwitchId(v string) *Des
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// eip-50g****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	IpAddress    *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
-	UsingStatus  *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
+	// The IP address of the EIP associated with the NAT gateway.
+	//
+	// example:
+	//
+	// 8.XX.XX.162
+	IpAddress *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	// The association between the EIP and the Internet NAT gateway. Valid values:
+	//
+	// 	- **UsedByForwardTable**: The EIP is specified in a DNAT entry.
+	//
+	// 	- **UsedBySnatTable**: The EIP is specified in an SNAT entry.
+	//
+	// 	- **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
+	//
+	// 	- **Idle**: The EIP is not specified in a DNAT or SNAT entry.
+	//
+	// example:
+	//
+	// Idle
+	UsingStatus *string `json:"UsingStatus,omitempty" xml:"UsingStatus,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGatewaysIpLists) String() string {
@@ -35628,7 +35794,14 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// cn-beijing
-	EnsRegionId         *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the gateway route table associated with the IPv6 gateway.
+	//
+	// >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+	//
+	// example:
+	//
+	// rt-539***tbs
 	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
 	// List of HaVipIds.
 	HaVipIds *DescribeNetworkAttributeResponseBodyHaVipIds `json:"HaVipIds,omitempty" xml:"HaVipIds,omitempty" type:"Struct"`
@@ -35663,7 +35836,12 @@ type DescribeNetworkAttributeResponseBody struct {
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the route table that you want to query.
+	//
+	// example:
+	//
+	// rt-539***fpu
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
 	// List of routing table IDs.
 	RouteTableIds *DescribeNetworkAttributeResponseBodyRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
@@ -36593,7 +36771,7 @@ type DescribeNetworksRequest struct {
 	//
 	// cn-beijing-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The node information.
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
@@ -36601,7 +36779,7 @@ type DescribeNetworksRequest struct {
 	//
 	// n-5***
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	// The ID of Network.
+	// The IDs of VPCs You can specify 1 to 100 IDs.
 	NetworkIds []*string `json:"NetworkIds,omitempty" xml:"NetworkIds,omitempty" type:"Repeated"`
 	// The name of the network.
 	//
@@ -36667,7 +36845,7 @@ func (s *DescribeNetworksRequest) SetPageSize(v int32) *DescribeNetworksRequest 
 }
 
 type DescribeNetworksResponseBody struct {
-	// The list of networks.
+	// The VPCs.
 	Networks *DescribeNetworksResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
 	// The page number of the returned page.
 	//
@@ -36769,7 +36947,14 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// cn-beijing
-	EnsRegionId         *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The ID of the gateway route table associated with the IPv6 gateway.
+	//
+	// >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+	//
+	// example:
+	//
+	// rt-5*****tbs
 	GatewayRouteTableId *string `json:"GatewayRouteTableId,omitempty" xml:"GatewayRouteTableId,omitempty"`
 	// The ID of the network access control list (ACL).
 	//
@@ -36788,9 +36973,14 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// example
-	NetworkName  *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	// The ID of the route table.
+	//
+	// example:
+	//
+	// rt-5*****pks
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The ID of the route table. Valid values of **N*	- are **1*	- to **20**, which specifies that you can disassociate a gateway endpoint from at most 20 route tables at a time.
+	// The IDs of the route tables.
 	RouteTableIds *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds `json:"RouteTableIds,omitempty" xml:"RouteTableIds,omitempty" type:"Struct"`
 	// The route table ID.
 	//
@@ -41813,15 +42003,30 @@ type DescribeSelfImagesResponseBody struct {
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The image information.
-	Images     *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
-	PageNumber *string                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *string                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Images *DescribeSelfImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Maximum value: 50. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
 	//
 	// example:
 	//
 	// A8B8EB73-B4FD-4262-8EF6-680DF39C9BA0
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -43449,8 +43654,21 @@ type DescribeSnatAttributeResponseBody struct {
 	// example:
 	//
 	// 101.10. XX.XX/24
-	DestCIDR    *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
-	EipAffinity *bool   `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
+	DestCIDR *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
+	// Specifies whether to enable EIP affinity. Valid values:
+	//
+	// 	- **0**: no
+	//
+	// 	- **1**: yes
+	//
+	// **
+	//
+	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+	//
+	// example:
+	//
+	// false
+	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period. Unit: seconds.
 	//
 	// example:
@@ -43762,7 +43980,8 @@ type DescribeSnatTableEntriesRequest struct {
 	// example:
 	//
 	// 58.XXXX.XXX.29
-	SnatIp  *string   `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// The information about the EIP specified in the SNAT entry.
 	SnatIps []*string `json:"SnatIps,omitempty" xml:"SnatIps,omitempty" type:"Repeated"`
 	// The source CIDR block specified in the SNAT entry.
 	//
@@ -43883,6 +44102,19 @@ func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeS
 }
 
 type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
+	// Specifies whether to enable EIP affinity. Valid values:
+	//
+	// 	- **0**: no
+	//
+	// 	- **1**: yes
+	//
+	// **
+	//
+	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+	//
+	// example:
+	//
+	// false
 	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// The timeout period for idle connections. Valid values: **1*	- to **86400**. Unit: seconds.
 	//
@@ -49810,7 +50042,23 @@ func (s *ModifyFileSystemResponse) SetBody(v *ModifyFileSystemResponseBody) *Mod
 }
 
 type ModifyForwardEntryRequest struct {
-	ExternalIp   *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The elastic IP address (EIP) that is used to access the Internet.
+	//
+	// example:
+	//
+	// 121.XXX.XXX.28
+	ExternalIp *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	// The external port or port range that is used for port forwarding.
+	//
+	// 	- Valid values: 1 to 65535.
+	//
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	//
+	// 	- If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+	//
+	// example:
+	//
+	// 22
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
 	// The ID of the DNAT entry.
 	//
@@ -49831,10 +50079,35 @@ type ModifyForwardEntryRequest struct {
 	// example:
 	//
 	// 80
-	HealthCheckPort *int32  `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
-	InternalIp      *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	InternalPort    *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	HealthCheckPort *int32 `json:"HealthCheckPort,omitempty" xml:"HealthCheckPort,omitempty"`
+	// The private IP address of the instance that uses the DNAT entry for Internet communication.
+	//
+	// example:
+	//
+	// 10.XXX.XXX.50
+	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	// The internal port or port range that is used for port forwarding.
+	//
+	// 	- Valid values: 1 to 65535.
+	//
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	//
+	// example:
+	//
+	// 22
+	InternalPort *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	// The protocol. Valid values:
+	//
+	// 	- **TCP**: forwards TCP packets.
+	//
+	// 	- **UDP**: forwards UDP packets.
+	//
+	// 	- **Any*	- (default): forwards all packets.
+	//
+	// example:
+	//
+	// Any
+	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 }
 
 func (s ModifyForwardEntryRequest) String() string {
@@ -53821,7 +54094,26 @@ type ReleaseInstanceResponseBody struct {
 	// example:
 	//
 	// 4EC47282-1B74-4534-BD0E-403F3EE64CAF
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the resource.
+	//
+	// Valid values:
+	//
+	// 	- instance
+	//
+	// 	- eip
+	//
+	// 	- disk
+	//
+	// 	- network
+	//
+	// 	- natgateway
+	//
+	// 	- vswitch
+	//
+	// example:
+	//
+	// eip
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -60424,7 +60716,16 @@ type UnAssociateEnsEipAddressRequest struct {
 	//
 	// eip-5sqa431nx3vee8heqxfxp****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	Force        *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	// Specifies whether to forcefully release the instance if it is in the Running status. Valid values:
+	//
+	// 	- true. If you set the Force parameter to true, temporary data in the memory and storage of the instance is erased and cannot be restored after you call the operation, which is similar to the effect of a power-off action.
+	//
+	// 	- false (default)
+	//
+	// example:
+	//
+	// false
+	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 }
 
 func (s UnAssociateEnsEipAddressRequest) String() string {
@@ -63379,6 +63680,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 
 	if !tea.BoolValue(util.IsUnset(request.AutoUseCoupon)) {
 		query["AutoUseCoupon"] = request.AutoUseCoupon
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Cidr)) {
+		query["Cidr"] = request.Cidr
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
