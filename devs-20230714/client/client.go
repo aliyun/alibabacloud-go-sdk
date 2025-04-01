@@ -7533,8 +7533,9 @@ func (s *ServicePluginStep) SetPlugin(v string) *ServicePluginStep {
 }
 
 type SourceConfig struct {
-	Repository *RepositorySourceConfig `json:"repository,omitempty" xml:"repository,omitempty"`
-	Template   *TemplateSourceConfig   `json:"template,omitempty" xml:"template,omitempty"`
+	Oss        *OpenStructOssSourceConfig `json:"oss,omitempty" xml:"oss,omitempty"`
+	Repository *RepositorySourceConfig    `json:"repository,omitempty" xml:"repository,omitempty"`
+	Template   *TemplateSourceConfig      `json:"template,omitempty" xml:"template,omitempty"`
 }
 
 func (s SourceConfig) String() string {
@@ -7543,6 +7544,11 @@ func (s SourceConfig) String() string {
 
 func (s SourceConfig) GoString() string {
 	return s.String()
+}
+
+func (s *SourceConfig) SetOss(v *OpenStructOssSourceConfig) *SourceConfig {
+	s.Oss = v
+	return s
 }
 
 func (s *SourceConfig) SetRepository(v *RepositorySourceConfig) *SourceConfig {
@@ -9079,6 +9085,87 @@ func (s *WebhookCodeContext) SetTitle(v string) *WebhookCodeContext {
 	return s
 }
 
+type OpenStructOssSourceConfig struct {
+	// example:
+	//
+	// demo-bucket
+	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
+	// example:
+	//
+	// demo-object
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+}
+
+func (s OpenStructOssSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructOssSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructOssSourceConfig) SetBucket(v string) *OpenStructOssSourceConfig {
+	s.Bucket = &v
+	return s
+}
+
+func (s *OpenStructOssSourceConfig) SetObject(v string) *OpenStructOssSourceConfig {
+	s.Object = &v
+	return s
+}
+
+type ActivateConnectionRequest struct {
+	Account    *GitAccount      `json:"account,omitempty" xml:"account,omitempty"`
+	Credential *OAuthCredential `json:"credential,omitempty" xml:"credential,omitempty"`
+}
+
+func (s ActivateConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateConnectionRequest) SetAccount(v *GitAccount) *ActivateConnectionRequest {
+	s.Account = v
+	return s
+}
+
+func (s *ActivateConnectionRequest) SetCredential(v *OAuthCredential) *ActivateConnectionRequest {
+	s.Credential = v
+	return s
+}
+
+type ActivateConnectionResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Connection        `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ActivateConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ActivateConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ActivateConnectionResponse) SetHeaders(v map[string]*string) *ActivateConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ActivateConnectionResponse) SetStatusCode(v int32) *ActivateConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ActivateConnectionResponse) SetBody(v *Connection) *ActivateConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type CancelPipelineResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9390,6 +9477,75 @@ func (s *DeleteArtifactResponse) SetStatusCode(v int32) *DeleteArtifactResponse 
 	return s
 }
 
+type DeleteConnectionRequest struct {
+	// example:
+	//
+	// true
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s DeleteConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConnectionRequest) SetForce(v bool) *DeleteConnectionRequest {
+	s.Force = &v
+	return s
+}
+
+type DeleteConnectionResponseBody struct {
+	// example:
+	//
+	// A5152937-1C8A-5260-90FA-520CEF028D2D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConnectionResponseBody) SetRequestId(v string) *DeleteConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConnectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConnectionResponse) SetHeaders(v map[string]*string) *DeleteConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConnectionResponse) SetStatusCode(v int32) *DeleteConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConnectionResponse) SetBody(v *DeleteConnectionResponseBody) *DeleteConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEnvironmentResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -9556,6 +9712,35 @@ func (s *FetchArtifactTempBucketTokenResponse) SetStatusCode(v int32) *FetchArti
 }
 
 func (s *FetchArtifactTempBucketTokenResponse) SetBody(v *ArtifactTempBucketToken) *FetchArtifactTempBucketTokenResponse {
+	s.Body = v
+	return s
+}
+
+type FetchConnectionCredentialResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OAuthCredential   `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s FetchConnectionCredentialResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FetchConnectionCredentialResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FetchConnectionCredentialResponse) SetHeaders(v map[string]*string) *FetchConnectionCredentialResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FetchConnectionCredentialResponse) SetStatusCode(v int32) *FetchConnectionCredentialResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *FetchConnectionCredentialResponse) SetBody(v *OAuthCredential) *FetchConnectionCredentialResponse {
 	s.Body = v
 	return s
 }
@@ -9788,6 +9973,167 @@ func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
 }
 
 func (s *GetTaskResponse) SetBody(v *Task) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListConnectionsRequest struct {
+	// example:
+	//
+	// auto-
+	Keyword       *string   `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelector []*string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsRequest) SetKeyword(v string) *ListConnectionsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetLabelSelector(v []*string) *ListConnectionsRequest {
+	s.LabelSelector = v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetPageNumber(v int64) *ListConnectionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetPageSize(v int64) *ListConnectionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListConnectionsShrinkRequest struct {
+	// example:
+	//
+	// auto-
+	Keyword             *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	LabelSelectorShrink *string `json:"labelSelector,omitempty" xml:"labelSelector,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListConnectionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsShrinkRequest) SetKeyword(v string) *ListConnectionsShrinkRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetLabelSelectorShrink(v string) *ListConnectionsShrinkRequest {
+	s.LabelSelectorShrink = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetPageNumber(v int64) *ListConnectionsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetPageSize(v int64) *ListConnectionsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListConnectionsResponseBody struct {
+	Data []*Connection `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+}
+
+func (s ListConnectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsResponseBody) SetData(v []*Connection) *ListConnectionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetPageNumber(v int64) *ListConnectionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetPageSize(v int64) *ListConnectionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetTotalCount(v int64) *ListConnectionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConnectionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsResponse) SetHeaders(v map[string]*string) *ListConnectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionsResponse) SetStatusCode(v int32) *ListConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConnectionsResponse) SetBody(v *ListConnectionsResponseBody) *ListConnectionsResponse {
 	s.Body = v
 	return s
 }
@@ -10965,6 +11311,85 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 激活身份绑定,完成OAuth授权
+//
+// @param request - ActivateConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ActivateConnectionResponse
+func (client *Client) ActivateConnectionWithOptions(name *string, request *ActivateConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ActivateConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		body["account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Credential)) {
+		body["credential"] = request.Credential
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ActivateConnection"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/connections/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/activate"),
+		Method:      tea.String("PATCH"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ActivateConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ActivateConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 激活身份绑定,完成OAuth授权
+//
+// @param request - ActivateConnectionRequest
+//
+// @return ActivateConnectionResponse
+func (client *Client) ActivateConnection(name *string, request *ActivateConnectionRequest) (_result *ActivateConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ActivateConnectionResponse{}
+	_body, _err := client.ActivateConnectionWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消流水线
 //
 // @param headers - map
@@ -11498,6 +11923,81 @@ func (client *Client) DeleteArtifact(name *string) (_result *DeleteArtifactRespo
 
 // Summary:
 //
+// 删除身份绑定
+//
+// @param request - DeleteConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConnectionResponse
+func (client *Client) DeleteConnectionWithOptions(name *string, request *DeleteConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["force"] = request.Force
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConnection"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/connections/" + tea.StringValue(openapiutil.GetEncodeParam(name))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除身份绑定
+//
+// @param request - DeleteConnectionRequest
+//
+// @return DeleteConnectionResponse
+func (client *Client) DeleteConnection(name *string, request *DeleteConnectionRequest) (_result *DeleteConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConnectionResponse{}
+	_body, _err := client.DeleteConnectionWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除环境
 //
 // @param headers - map
@@ -11817,6 +12317,67 @@ func (client *Client) FetchArtifactTempBucketToken() (_result *FetchArtifactTemp
 	headers := make(map[string]*string)
 	_result = &FetchArtifactTempBucketTokenResponse{}
 	_body, _err := client.FetchArtifactTempBucketTokenWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询身份绑定中的凭证信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return FetchConnectionCredentialResponse
+func (client *Client) FetchConnectionCredentialWithOptions(name *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *FetchConnectionCredentialResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("FetchConnectionCredential"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/connections/" + tea.StringValue(openapiutil.GetEncodeParam(name)) + "/fetchCredential"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &FetchConnectionCredentialResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &FetchConnectionCredentialResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询身份绑定中的凭证信息
+//
+// @return FetchConnectionCredentialResponse
+func (client *Client) FetchConnectionCredential(name *string) (_result *FetchConnectionCredentialResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FetchConnectionCredentialResponse{}
+	_body, _err := client.FetchConnectionCredentialWithOptions(name, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12305,6 +12866,99 @@ func (client *Client) GetTask(name *string) (_result *GetTaskResponse, _err erro
 	headers := make(map[string]*string)
 	_result = &GetTaskResponse{}
 	_body, _err := client.GetTaskWithOptions(name, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量查询身份绑定
+//
+// @param tmpReq - ListConnectionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnectionsResponse
+func (client *Client) ListConnectionsWithOptions(tmpReq *ListConnectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListConnectionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LabelSelector)) {
+		request.LabelSelectorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LabelSelector, tea.String("labelSelector"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LabelSelectorShrink)) {
+		query["labelSelector"] = request.LabelSelectorShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnections"),
+		Version:     tea.String("2023-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-07-14/connections"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListConnectionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListConnectionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 批量查询身份绑定
+//
+// @param request - ListConnectionsRequest
+//
+// @return ListConnectionsResponse
+func (client *Client) ListConnections(request *ListConnectionsRequest) (_result *ListConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConnectionsResponse{}
+	_body, _err := client.ListConnectionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
