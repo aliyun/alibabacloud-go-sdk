@@ -3526,10 +3526,12 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespList) SetStatu
 }
 
 type GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp struct {
-	DialogExecPlan *string                                                                                  `json:"dialogExecPlan,omitempty" xml:"dialogExecPlan,omitempty"`
-	DialogLabels   []*GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels `json:"dialogLabels,omitempty" xml:"dialogLabels,omitempty" type:"Repeated"`
-	DialogSop      *string                                                                                  `json:"dialogSop,omitempty" xml:"dialogSop,omitempty"`
-	DialogSummary  *string                                                                                  `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty"`
+	DialogExecPlan        *string                                                                                  `json:"dialogExecPlan,omitempty" xml:"dialogExecPlan,omitempty"`
+	DialogLabels          []*GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels `json:"dialogLabels,omitempty" xml:"dialogLabels,omitempty" type:"Repeated"`
+	DialogOpenAnalysis    map[string]interface{}                                                                   `json:"dialogOpenAnalysis,omitempty" xml:"dialogOpenAnalysis,omitempty"`
+	DialogProcessAnalysis map[string]interface{}                                                                   `json:"dialogProcessAnalysis,omitempty" xml:"dialogProcessAnalysis,omitempty"`
+	DialogSop             *string                                                                                  `json:"dialogSop,omitempty" xml:"dialogSop,omitempty"`
+	DialogSummary         *string                                                                                  `json:"dialogSummary,omitempty" xml:"dialogSummary,omitempty"`
 }
 
 func (s GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) String() string {
@@ -3547,6 +3549,16 @@ func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRe
 
 func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) SetDialogLabels(v []*GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisRespDialogLabels) *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp {
 	s.DialogLabels = v
+	return s
+}
+
+func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) SetDialogOpenAnalysis(v map[string]interface{}) *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp {
+	s.DialogOpenAnalysis = v
+	return s
+}
+
+func (s *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp) SetDialogProcessAnalysis(v map[string]interface{}) *GetDialogAnalysisResultResponseBodyDataDialogAnalysisRespListAnalysisResp {
+	s.DialogProcessAnalysis = v
 	return s
 }
 
