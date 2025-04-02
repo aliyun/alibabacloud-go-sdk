@@ -13,6 +13,10 @@ type AssociateDefaultFilterRequest struct {
 	// The name of the filter.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// My Filters
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
@@ -754,8 +758,14 @@ type ExecuteMultiAccountSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope. The value of this parameter can be one of the following items:
 	//
 	// 	- ID of a resource directory: Resources within the management account and all members of the resource directory are searched.
@@ -808,9 +818,19 @@ func (s *ExecuteMultiAccountSQLQueryRequest) SetScope(v string) *ExecuteMultiAcc
 
 type ExecuteMultiAccountSQLQueryResponseBody struct {
 	// The columns.
-	Columns    []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	MaxResults *int32                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                           `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Columns []*ExecuteMultiAccountSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -929,8 +949,14 @@ type ExecuteSQLQueryRequest struct {
 	//
 	// SELECT 	- FROM resources LIMIT 100;
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The search scope.
 	//
 	// Set this parameter to the ID of a resource group.
@@ -973,9 +999,19 @@ func (s *ExecuteSQLQueryRequest) SetScope(v string) *ExecuteSQLQueryRequest {
 
 type ExecuteSQLQueryResponseBody struct {
 	// The columns.
-	Columns    []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	MaxResults *int32                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Columns []*ExecuteSQLQueryResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 1000
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -2600,6 +2636,10 @@ func (s *ListExampleQueriesResponse) SetBody(v *ListExampleQueriesResponseBody) 
 
 type ListFiltersResponseBody struct {
 	// The name of the default filter.
+	//
+	// example:
+	//
+	// My Filters
 	DefaultFilterName *string `json:"DefaultFilterName,omitempty" xml:"DefaultFilterName,omitempty"`
 	// The configurations of the filter.
 	Filters []*ListFiltersResponseBodyFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
@@ -2662,6 +2702,10 @@ type ListFiltersResponseBodyFilters struct {
 	// }
 	FilterConfiguration *string `json:"FilterConfiguration,omitempty" xml:"FilterConfiguration,omitempty"`
 	// The name of the filter.
+	//
+	// example:
+	//
+	// My devices
 	FilterName *string `json:"FilterName,omitempty" xml:"FilterName,omitempty"`
 }
 
@@ -2915,6 +2959,276 @@ func (s *ListMultiAccountResourceGroupsResponse) SetStatusCode(v int32) *ListMul
 }
 
 func (s *ListMultiAccountResourceGroupsResponse) SetBody(v *ListMultiAccountResourceGroupsResponseBody) *ListMultiAccountResourceGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMultiAccountResourceRelationshipsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId              *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedResourceFilter []*ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter `json:"RelatedResourceFilter,omitempty" xml:"RelatedResourceFilter,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-eb3hji****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// rd-r4****
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ListMultiAccountResourceRelationshipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountResourceRelationshipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetMaxResults(v int32) *ListMultiAccountResourceRelationshipsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetNextToken(v string) *ListMultiAccountResourceRelationshipsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetRegionId(v string) *ListMultiAccountResourceRelationshipsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetRelatedResourceFilter(v []*ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) *ListMultiAccountResourceRelationshipsRequest {
+	s.RelatedResourceFilter = v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetResourceId(v string) *ListMultiAccountResourceRelationshipsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetResourceType(v string) *ListMultiAccountResourceRelationshipsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequest) SetScope(v string) *ListMultiAccountResourceRelationshipsRequest {
+	s.Scope = &v
+	return s
+}
+
+type ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter struct {
+	// example:
+	//
+	// RelatedResourceRegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Equals
+	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) SetKey(v string) *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) SetMatchType(v string) *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter) SetValue(v []*string) *ListMultiAccountResourceRelationshipsRequestRelatedResourceFilter {
+	s.Value = v
+	return s
+}
+
+type ListMultiAccountResourceRelationshipsResponseBody struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// BCAB07BA-82FA-5DC0-9322-FB7ED726481D
+	RequestId             *string                                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRelationships []*ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rd-r4****
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ListMultiAccountResourceRelationshipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountResourceRelationshipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBody) SetMaxResults(v int32) *ListMultiAccountResourceRelationshipsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBody) SetNextToken(v string) *ListMultiAccountResourceRelationshipsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBody) SetRequestId(v string) *ListMultiAccountResourceRelationshipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBody) SetResourceRelationships(v []*ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) *ListMultiAccountResourceRelationshipsResponseBody {
+	s.ResourceRelationships = v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBody) SetScope(v string) *ListMultiAccountResourceRelationshipsResponseBody {
+	s.Scope = &v
+	return s
+}
+
+type ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships struct {
+	// example:
+	//
+	// 193396142051****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// vpc-uf6m5okksddm6c9lh7***
+	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
+	// example:
+	//
+	// ACS::VPC::VPC
+	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	// example:
+	//
+	// m-eb3hji****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ACS::ACK::Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetAccountId(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetRegionId(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceId(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceRegionId(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceRegionId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceType(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceType = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetResourceId(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships) SetResourceType(v string) *ListMultiAccountResourceRelationshipsResponseBodyResourceRelationships {
+	s.ResourceType = &v
+	return s
+}
+
+type ListMultiAccountResourceRelationshipsResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMultiAccountResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMultiAccountResourceRelationshipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiAccountResourceRelationshipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponse) SetHeaders(v map[string]*string) *ListMultiAccountResourceRelationshipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponse) SetStatusCode(v int32) *ListMultiAccountResourceRelationshipsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMultiAccountResourceRelationshipsResponse) SetBody(v *ListMultiAccountResourceRelationshipsResponseBody) *ListMultiAccountResourceRelationshipsResponse {
 	s.Body = v
 	return s
 }
@@ -3240,6 +3554,247 @@ func (s *ListMultiAccountTagValuesResponse) SetBody(v *ListMultiAccountTagValues
 	return s
 }
 
+type ListResourceRelationshipsRequest struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId              *string                                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RelatedResourceFilter []*ListResourceRelationshipsRequestRelatedResourceFilter `json:"RelatedResourceFilter,omitempty" xml:"RelatedResourceFilter,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-eb3hji****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ACS::ACK::Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListResourceRelationshipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsRequest) SetMaxResults(v int32) *ListResourceRelationshipsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetNextToken(v string) *ListResourceRelationshipsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetRegionId(v string) *ListResourceRelationshipsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetRelatedResourceFilter(v []*ListResourceRelationshipsRequestRelatedResourceFilter) *ListResourceRelationshipsRequest {
+	s.RelatedResourceFilter = v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetResourceId(v string) *ListResourceRelationshipsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetResourceType(v string) *ListResourceRelationshipsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ListResourceRelationshipsRequestRelatedResourceFilter struct {
+	// example:
+	//
+	// RelatedResourceRegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// Equals
+	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
+	Value     []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+}
+
+func (s ListResourceRelationshipsRequestRelatedResourceFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsRequestRelatedResourceFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsRequestRelatedResourceFilter) SetKey(v string) *ListResourceRelationshipsRequestRelatedResourceFilter {
+	s.Key = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequestRelatedResourceFilter) SetMatchType(v string) *ListResourceRelationshipsRequestRelatedResourceFilter {
+	s.MatchType = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequestRelatedResourceFilter) SetValue(v []*string) *ListResourceRelationshipsRequestRelatedResourceFilter {
+	s.Value = v
+	return s
+}
+
+type ListResourceRelationshipsResponseBody struct {
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// eyJzZWFyY2hBZnRlcnMiOlsiMTAwMTU2Nzk4MTU1OSJd****
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// 682A3004-38E3-5122-9A11-CCDFAB9C3C4F
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRelationships []*ListResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
+}
+
+func (s ListResourceRelationshipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetMaxResults(v int32) *ListResourceRelationshipsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetNextToken(v string) *ListResourceRelationshipsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetRequestId(v string) *ListResourceRelationshipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*ListResourceRelationshipsResponseBodyResourceRelationships) *ListResourceRelationshipsResponseBody {
+	s.ResourceRelationships = v
+	return s
+}
+
+type ListResourceRelationshipsResponseBodyResourceRelationships struct {
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// vpc-uf6m5okksddm6c9lh7***
+	RelatedResourceId *string `json:"RelatedResourceId,omitempty" xml:"RelatedResourceId,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	RelatedResourceRegionId *string `json:"RelatedResourceRegionId,omitempty" xml:"RelatedResourceRegionId,omitempty"`
+	// example:
+	//
+	// ACS::VPC::VPC
+	RelatedResourceType *string `json:"RelatedResourceType,omitempty" xml:"RelatedResourceType,omitempty"`
+	// example:
+	//
+	// m-eb3hji****
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// example:
+	//
+	// ACS::ACK::Cluster
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ListResourceRelationshipsResponseBodyResourceRelationships) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponseBodyResourceRelationships) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRegionId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceRegionId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceRegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRelatedResourceType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelatedResourceType = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetResourceId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetResourceType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.ResourceType = &v
+	return s
+}
+
+type ListResourceRelationshipsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListResourceRelationshipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponse) SetHeaders(v map[string]*string) *ListResourceRelationshipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponse) SetStatusCode(v int32) *ListResourceRelationshipsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponse) SetBody(v *ListResourceRelationshipsResponseBody) *ListResourceRelationshipsResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceTypesRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -3293,7 +3848,7 @@ type ListResourceTypesResponseBody struct {
 	//
 	// E5556E4C-479A-5BBB-B325-F07563E7E917
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the resource types.
+	// The resource types.
 	ResourceTypes []*ListResourceTypesResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Repeated"`
 }
 
@@ -3316,9 +3871,7 @@ func (s *ListResourceTypesResponseBody) SetResourceTypes(v []*ListResourceTypesR
 }
 
 type ListResourceTypesResponseBodyResourceTypes struct {
-	// if can be null:
-	// true
-	Authorized  *bool                                                  `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
+	// The code mapping of the resource type.
 	CodeMapping *ListResourceTypesResponseBodyResourceTypesCodeMapping `json:"CodeMapping,omitempty" xml:"CodeMapping,omitempty" type:"Struct"`
 	// The supported filter conditions.
 	FilterKeys []*string `json:"FilterKeys,omitempty" xml:"FilterKeys,omitempty" type:"Repeated"`
@@ -3327,7 +3880,8 @@ type ListResourceTypesResponseBodyResourceTypes struct {
 	// example:
 	//
 	// Container Service for Kubernetes
-	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	ProductName          *string   `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RelatedResourceTypes []*string `json:"RelatedResourceTypes,omitempty" xml:"RelatedResourceTypes,omitempty" type:"Repeated"`
 	// The resource type.
 	//
 	// example:
@@ -3350,11 +3904,6 @@ func (s ListResourceTypesResponseBodyResourceTypes) GoString() string {
 	return s.String()
 }
 
-func (s *ListResourceTypesResponseBodyResourceTypes) SetAuthorized(v bool) *ListResourceTypesResponseBodyResourceTypes {
-	s.Authorized = &v
-	return s
-}
-
 func (s *ListResourceTypesResponseBodyResourceTypes) SetCodeMapping(v *ListResourceTypesResponseBodyResourceTypesCodeMapping) *ListResourceTypesResponseBodyResourceTypes {
 	s.CodeMapping = v
 	return s
@@ -3370,6 +3919,11 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetProductName(v string) *L
 	return s
 }
 
+func (s *ListResourceTypesResponseBodyResourceTypes) SetRelatedResourceTypes(v []*string) *ListResourceTypesResponseBodyResourceTypes {
+	s.RelatedResourceTypes = v
+	return s
+}
+
 func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceType(v string) *ListResourceTypesResponseBodyResourceTypes {
 	s.ResourceType = &v
 	return s
@@ -3381,8 +3935,18 @@ func (s *ListResourceTypesResponseBodyResourceTypes) SetResourceTypeName(v strin
 }
 
 type ListResourceTypesResponseBodyResourceTypesCodeMapping struct {
+	// The resource group.
+	//
+	// example:
+	//
+	// cs.cluster
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	Tag           *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The tag.
+	//
+	// example:
+	//
+	// cs.cluster
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 }
 
 func (s ListResourceTypesResponseBodyResourceTypesCodeMapping) String() string {
@@ -5199,13 +5763,24 @@ func (client *Client) AssociateDefaultFilterWithOptions(request *AssociateDefaul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AssociateDefaultFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AssociateDefaultFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AssociateDefaultFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5263,13 +5838,24 @@ func (client *Client) CreateFilterWithOptions(request *CreateFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5331,13 +5917,24 @@ func (client *Client) CreateSavedQueryWithOptions(request *CreateSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSavedQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSavedQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSavedQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5391,13 +5988,24 @@ func (client *Client) DeleteFilterWithOptions(request *DeleteFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5451,13 +6059,24 @@ func (client *Client) DeleteSavedQueryWithOptions(request *DeleteSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSavedQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSavedQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSavedQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5500,13 +6119,24 @@ func (client *Client) DisableMultiAccountResourceCenterWithOptions(runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableMultiAccountResourceCenterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableMultiAccountResourceCenterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableMultiAccountResourceCenterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5547,13 +6177,24 @@ func (client *Client) DisableResourceCenterWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableResourceCenterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableResourceCenterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableResourceCenterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5594,13 +6235,24 @@ func (client *Client) DisassociateDefaultFilterWithOptions(runtime *util.Runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisassociateDefaultFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisassociateDefaultFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisassociateDefaultFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5645,13 +6297,24 @@ func (client *Client) EnableMultiAccountResourceCenterWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableMultiAccountResourceCenterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableMultiAccountResourceCenterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableMultiAccountResourceCenterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5696,13 +6359,24 @@ func (client *Client) EnableResourceCenterWithOptions(runtime *util.RuntimeOptio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableResourceCenterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableResourceCenterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableResourceCenterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5766,13 +6440,24 @@ func (client *Client) ExecuteMultiAccountSQLQueryWithOptions(request *ExecuteMul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteMultiAccountSQLQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteMultiAccountSQLQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteMultiAccountSQLQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5838,13 +6523,24 @@ func (client *Client) ExecuteSQLQueryWithOptions(request *ExecuteSQLQueryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteSQLQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteSQLQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteSQLQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5898,13 +6594,24 @@ func (client *Client) GetExampleQueryWithOptions(request *GetExampleQueryRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetExampleQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetExampleQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetExampleQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -5947,13 +6654,24 @@ func (client *Client) GetMultiAccountResourceCenterServiceStatusWithOptions(runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMultiAccountResourceCenterServiceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6017,13 +6735,24 @@ func (client *Client) GetMultiAccountResourceConfigurationWithOptions(request *G
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetMultiAccountResourceConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMultiAccountResourceConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMultiAccountResourceConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6066,13 +6795,24 @@ func (client *Client) GetResourceCenterServiceStatusWithOptions(runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceCenterServiceStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceCenterServiceStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceCenterServiceStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6132,13 +6872,24 @@ func (client *Client) GetResourceConfigurationWithOptions(request *GetResourceCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceConfigurationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceConfigurationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceConfigurationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6196,13 +6947,24 @@ func (client *Client) GetResourceCountsWithOptions(request *GetResourceCountsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResourceCountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResourceCountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResourceCountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6256,13 +7018,24 @@ func (client *Client) GetSavedQueryWithOptions(request *GetSavedQueryRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSavedQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSavedQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSavedQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6320,13 +7093,24 @@ func (client *Client) ListExampleQueriesWithOptions(request *ListExampleQueriesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListExampleQueriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListExampleQueriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListExampleQueriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6369,13 +7153,24 @@ func (client *Client) ListFiltersWithOptions(runtime *util.RuntimeOptions) (_res
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListFiltersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListFiltersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListFiltersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6439,13 +7234,24 @@ func (client *Client) ListMultiAccountResourceGroupsWithOptions(request *ListMul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListMultiAccountResourceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMultiAccountResourceGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMultiAccountResourceGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6459,6 +7265,101 @@ func (client *Client) ListMultiAccountResourceGroups(request *ListMultiAccountRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListMultiAccountResourceGroupsResponse{}
 	_body, _err := client.ListMultiAccountResourceGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 跨账号列出资源关系
+//
+// @param request - ListMultiAccountResourceRelationshipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMultiAccountResourceRelationshipsResponse
+func (client *Client) ListMultiAccountResourceRelationshipsWithOptions(request *ListMultiAccountResourceRelationshipsRequest, runtime *util.RuntimeOptions) (_result *ListMultiAccountResourceRelationshipsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedResourceFilter)) {
+		query["RelatedResourceFilter"] = request.RelatedResourceFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMultiAccountResourceRelationships"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMultiAccountResourceRelationshipsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMultiAccountResourceRelationshipsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 跨账号列出资源关系
+//
+// @param request - ListMultiAccountResourceRelationshipsRequest
+//
+// @return ListMultiAccountResourceRelationshipsResponse
+func (client *Client) ListMultiAccountResourceRelationships(request *ListMultiAccountResourceRelationshipsRequest) (_result *ListMultiAccountResourceRelationshipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMultiAccountResourceRelationshipsResponse{}
+	_body, _err := client.ListMultiAccountResourceRelationshipsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6515,13 +7416,24 @@ func (client *Client) ListMultiAccountTagKeysWithOptions(request *ListMultiAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListMultiAccountTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMultiAccountTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMultiAccountTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6595,13 +7507,24 @@ func (client *Client) ListMultiAccountTagValuesWithOptions(request *ListMultiAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListMultiAccountTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMultiAccountTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMultiAccountTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6624,7 +7547,98 @@ func (client *Client) ListMultiAccountTagValues(request *ListMultiAccountTagValu
 
 // Summary:
 //
-// Queries the resource types supported by Resource Center.
+// 列出资源关系
+//
+// @param request - ListResourceRelationshipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListResourceRelationshipsResponse
+func (client *Client) ListResourceRelationshipsWithOptions(request *ListResourceRelationshipsRequest, runtime *util.RuntimeOptions) (_result *ListResourceRelationshipsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedResourceFilter)) {
+		query["RelatedResourceFilter"] = request.RelatedResourceFilter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceRelationships"),
+		Version:     tea.String("2022-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceRelationshipsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceRelationshipsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 列出资源关系
+//
+// @param request - ListResourceRelationshipsRequest
+//
+// @return ListResourceRelationshipsResponse
+func (client *Client) ListResourceRelationships(request *ListResourceRelationshipsRequest) (_result *ListResourceRelationshipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResourceRelationshipsResponse{}
+	_body, _err := client.ListResourceRelationshipsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the metadata of resource types.
 //
 // @param request - ListResourceTypesRequest
 //
@@ -6663,18 +7677,29 @@ func (client *Client) ListResourceTypesWithOptions(request *ListResourceTypesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResourceTypesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResourceTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResourceTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the resource types supported by Resource Center.
+// Queries the metadata of resource types.
 //
 // @param request - ListResourceTypesRequest
 //
@@ -6727,13 +7752,24 @@ func (client *Client) ListSavedQueriesWithOptions(request *ListSavedQueriesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSavedQueriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSavedQueriesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSavedQueriesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6799,13 +7835,24 @@ func (client *Client) ListTagKeysWithOptions(request *ListTagKeysRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6875,13 +7922,24 @@ func (client *Client) ListTagValuesWithOptions(request *ListTagValuesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagValuesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagValuesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6908,17 +7966,17 @@ func (client *Client) ListTagValues(request *ListTagValuesRequest) (_result *Lis
 //
 // Description:
 //
-//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-// 	- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//		- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
 //
-// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
 //
-// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
 //
-// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
-// 	- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//		- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
 //
 // @param request - SearchMultiAccountResourcesRequest
 //
@@ -6965,13 +8023,24 @@ func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMult
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchMultiAccountResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchMultiAccountResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchMultiAccountResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -6980,17 +8049,17 @@ func (client *Client) SearchMultiAccountResourcesWithOptions(request *SearchMult
 //
 // Description:
 //
-//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-// 	- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
+//		- Before you use a RAM user or a RAM role to call the operation, you must make sure that the RAM user or RAM role is granted the required permissions. For more information, see [Grant a RAM user the permissions to use Resource Center](https://help.aliyun.com/document_detail/600556.html).
 //
-// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
 //
-// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
 //
-// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
-// 	- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//		- You can visit [Sample Code Center](https://api.alibabacloud.com/api-tools/demo/ResourceCenter) to view more sample queries.
 //
 // @param request - SearchMultiAccountResourcesRequest
 //
@@ -7012,15 +8081,15 @@ func (client *Client) SearchMultiAccountResources(request *SearchMultiAccountRes
 //
 // Description:
 //
-//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
 //
-// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
 //
-// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
-// 	- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//		- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
 //
 // @param request - SearchResourcesRequest
 //
@@ -7067,13 +8136,24 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SearchResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7082,15 +8162,15 @@ func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest
 //
 // Description:
 //
-//   You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
+//	  You can use this operation to search for only resources whose types are supported by Resource Center in services that work with Resource Center. For more information about the services and the resource types that are supported by Resource Center, see [Services that work with Resource Center](https://help.aliyun.com/document_detail/477798.html).
 //
-// 	- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
+//		- By default, the operation returns a maximum of 20 entries. You can configure the `MaxResults` parameter to specify the maximum number of entries to return.
 //
-// 	- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
+//		- If the response does not contain the `NextToken` parameter, all entries are returned. Otherwise, more entries exist. If you want to obtain the entries, you can call the operation again to initiate another query request. In the request, set the `NextToken` parameter to the value of `NextToken` in the last response of the operation. If you do not configure the `NextToken` parameter, entries on the first page are returned by default.
 //
-// 	- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
+//		- You can specify one or more filter conditions to narrow the search scope. For more information about supported filter parameters and matching methods, see the Supported filter parameters section. Multiple filter conditions have logical `AND` relations. Only resources that meet all filter conditions are returned. The values of a filter condition have logical `OR` relations. Resources that meet any value of the filter condition are returned.
 //
-// 	- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
+//		- You can visit [Sample Code Center](https://api.aliyun.com/api-tools/demo/ResourceCenter) to view more sample queries.
 //
 // @param request - SearchResourcesRequest
 //
@@ -7143,13 +8223,24 @@ func (client *Client) UpdateFilterWithOptions(request *UpdateFilterRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateFilterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateFilterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateFilterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -7215,13 +8306,24 @@ func (client *Client) UpdateSavedQueryWithOptions(request *UpdateSavedQueryReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSavedQueryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSavedQueryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSavedQueryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
