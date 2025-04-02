@@ -1536,16 +1536,14 @@ func (s *LicenseInstanceAppDTOLicenseConfigs) SetSubscriptionPkg(v string) *Lice
 }
 
 type LiveManifestConfig struct {
-	AdMarkers               *string `json:"AdMarkers,omitempty" xml:"AdMarkers,omitempty"`
-	DateTimeInterval        *int32  `json:"DateTimeInterval,omitempty" xml:"DateTimeInterval,omitempty"`
-	ManifestName            *string `json:"ManifestName,omitempty" xml:"ManifestName,omitempty"`
-	MaxVideoBitrate         *int32  `json:"MaxVideoBitrate,omitempty" xml:"MaxVideoBitrate,omitempty"`
-	MinBufferTime           *int32  `json:"MinBufferTime,omitempty" xml:"MinBufferTime,omitempty"`
-	MinVideoBitrate         *int32  `json:"MinVideoBitrate,omitempty" xml:"MinVideoBitrate,omitempty"`
-	Protocol                *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	SegmentNum              *int32  `json:"SegmentNum,omitempty" xml:"SegmentNum,omitempty"`
-	StreamOrder             *string `json:"StreamOrder,omitempty" xml:"StreamOrder,omitempty"`
-	UseAudioRenditionGroups *bool   `json:"UseAudioRenditionGroups,omitempty" xml:"UseAudioRenditionGroups,omitempty"`
+	AdMarkers        *string `json:"AdMarkers,omitempty" xml:"AdMarkers,omitempty"`
+	DateTimeInterval *int32  `json:"DateTimeInterval,omitempty" xml:"DateTimeInterval,omitempty"`
+	MaxVideoBitrate  *int32  `json:"MaxVideoBitrate,omitempty" xml:"MaxVideoBitrate,omitempty"`
+	MinBufferTime    *int32  `json:"MinBufferTime,omitempty" xml:"MinBufferTime,omitempty"`
+	MinUpdatePeriod  *int32  `json:"MinUpdatePeriod,omitempty" xml:"MinUpdatePeriod,omitempty"`
+	MinVideoBitrate  *int32  `json:"MinVideoBitrate,omitempty" xml:"MinVideoBitrate,omitempty"`
+	SegmentCount     *int32  `json:"SegmentCount,omitempty" xml:"SegmentCount,omitempty"`
+	StreamOrder      *string `json:"StreamOrder,omitempty" xml:"StreamOrder,omitempty"`
 }
 
 func (s LiveManifestConfig) String() string {
@@ -1566,11 +1564,6 @@ func (s *LiveManifestConfig) SetDateTimeInterval(v int32) *LiveManifestConfig {
 	return s
 }
 
-func (s *LiveManifestConfig) SetManifestName(v string) *LiveManifestConfig {
-	s.ManifestName = &v
-	return s
-}
-
 func (s *LiveManifestConfig) SetMaxVideoBitrate(v int32) *LiveManifestConfig {
 	s.MaxVideoBitrate = &v
 	return s
@@ -1581,28 +1574,23 @@ func (s *LiveManifestConfig) SetMinBufferTime(v int32) *LiveManifestConfig {
 	return s
 }
 
+func (s *LiveManifestConfig) SetMinUpdatePeriod(v int32) *LiveManifestConfig {
+	s.MinUpdatePeriod = &v
+	return s
+}
+
 func (s *LiveManifestConfig) SetMinVideoBitrate(v int32) *LiveManifestConfig {
 	s.MinVideoBitrate = &v
 	return s
 }
 
-func (s *LiveManifestConfig) SetProtocol(v string) *LiveManifestConfig {
-	s.Protocol = &v
-	return s
-}
-
-func (s *LiveManifestConfig) SetSegmentNum(v int32) *LiveManifestConfig {
-	s.SegmentNum = &v
+func (s *LiveManifestConfig) SetSegmentCount(v int32) *LiveManifestConfig {
+	s.SegmentCount = &v
 	return s
 }
 
 func (s *LiveManifestConfig) SetStreamOrder(v string) *LiveManifestConfig {
 	s.StreamOrder = &v
-	return s
-}
-
-func (s *LiveManifestConfig) SetUseAudioRenditionGroups(v bool) *LiveManifestConfig {
-	s.UseAudioRenditionGroups = &v
 	return s
 }
 
@@ -1644,6 +1632,7 @@ func (s *LivePackagingConfig) SetUseAudioRenditionGroups(v bool) *LivePackagingC
 type LivePackagingConfigDrmConfig struct {
 	EncryptionMethod *string   `json:"EncryptionMethod,omitempty" xml:"EncryptionMethod,omitempty"`
 	IV               *string   `json:"IV,omitempty" xml:"IV,omitempty"`
+	RotatePeriod     *int32    `json:"RotatePeriod,omitempty" xml:"RotatePeriod,omitempty"`
 	SystemIds        []*string `json:"SystemIds,omitempty" xml:"SystemIds,omitempty" type:"Repeated"`
 	Url              *string   `json:"Url,omitempty" xml:"Url,omitempty"`
 }
@@ -1663,6 +1652,11 @@ func (s *LivePackagingConfigDrmConfig) SetEncryptionMethod(v string) *LivePackag
 
 func (s *LivePackagingConfigDrmConfig) SetIV(v string) *LivePackagingConfigDrmConfig {
 	s.IV = &v
+	return s
+}
+
+func (s *LivePackagingConfigDrmConfig) SetRotatePeriod(v int32) *LivePackagingConfigDrmConfig {
+	s.RotatePeriod = &v
 	return s
 }
 
@@ -59810,7 +59804,8 @@ type QueryIProductionJobResponseBody struct {
 	// The output file.
 	Output *QueryIProductionJobResponseBodyOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
 	// The output files.
-	OutputFiles []*string `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	OutputFiles    []*string `json:"OutputFiles,omitempty" xml:"OutputFiles,omitempty" type:"Repeated"`
+	OutputMediaIds []*string `json:"OutputMediaIds,omitempty" xml:"OutputMediaIds,omitempty" type:"Repeated"`
 	// The URLs of the output files.
 	OutputUrls []*string `json:"OutputUrls,omitempty" xml:"OutputUrls,omitempty" type:"Repeated"`
 	// The ID of the request.
@@ -59904,6 +59899,11 @@ func (s *QueryIProductionJobResponseBody) SetOutputFiles(v []*string) *QueryIPro
 	return s
 }
 
+func (s *QueryIProductionJobResponseBody) SetOutputMediaIds(v []*string) *QueryIProductionJobResponseBody {
+	s.OutputMediaIds = v
+	return s
+}
+
 func (s *QueryIProductionJobResponseBody) SetOutputUrls(v []*string) *QueryIProductionJobResponseBody {
 	s.OutputUrls = v
 	return s
@@ -59981,6 +59981,7 @@ func (s *QueryIProductionJobResponseBodyInput) SetType(v string) *QueryIProducti
 }
 
 type QueryIProductionJobResponseBodyOutput struct {
+	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
 	//
 	// 1.  oss://bucket/object
@@ -59990,7 +59991,8 @@ type QueryIProductionJobResponseBodyOutput struct {
 	// example:
 	//
 	// oss://bucket/object
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
 	// The media type. Valid values:
 	//
 	// 	- OSS: OSS object
@@ -60011,8 +60013,18 @@ func (s QueryIProductionJobResponseBodyOutput) GoString() string {
 	return s.String()
 }
 
+func (s *QueryIProductionJobResponseBodyOutput) SetBiz(v string) *QueryIProductionJobResponseBodyOutput {
+	s.Biz = &v
+	return s
+}
+
 func (s *QueryIProductionJobResponseBodyOutput) SetMedia(v string) *QueryIProductionJobResponseBodyOutput {
 	s.Media = &v
+	return s
+}
+
+func (s *QueryIProductionJobResponseBodyOutput) SetOutputUrl(v string) *QueryIProductionJobResponseBodyOutput {
+	s.OutputUrl = &v
 	return s
 }
 
@@ -73793,6 +73805,7 @@ func (s *SubmitIProductionJobRequestInput) SetType(v string) *SubmitIProductionJ
 }
 
 type SubmitIProductionJobRequestOutput struct {
+	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	// The output file. If Type is set to OSS, set this parameter to the path of an OSS object. If Type is set to Media, set this parameter to the ID of a media asset. You can specify the path of an OSS object in one of the following formats:
 	//
 	// 1.  oss://bucket/object
@@ -73804,7 +73817,8 @@ type SubmitIProductionJobRequestOutput struct {
 	// example:
 	//
 	// oss://bucket/object
-	Media *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	Media     *string `json:"Media,omitempty" xml:"Media,omitempty"`
+	OutputUrl *string `json:"OutputUrl,omitempty" xml:"OutputUrl,omitempty"`
 	// The media type. Valid values:
 	//
 	// 	- OSS: OSS object
@@ -73827,8 +73841,18 @@ func (s SubmitIProductionJobRequestOutput) GoString() string {
 	return s.String()
 }
 
+func (s *SubmitIProductionJobRequestOutput) SetBiz(v string) *SubmitIProductionJobRequestOutput {
+	s.Biz = &v
+	return s
+}
+
 func (s *SubmitIProductionJobRequestOutput) SetMedia(v string) *SubmitIProductionJobRequestOutput {
 	s.Media = &v
+	return s
+}
+
+func (s *SubmitIProductionJobRequestOutput) SetOutputUrl(v string) *SubmitIProductionJobRequestOutput {
+	s.OutputUrl = &v
 	return s
 }
 
