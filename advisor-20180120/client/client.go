@@ -1660,7 +1660,8 @@ type DescribeAdvisorChecksFoPagesResponseBodyDataResult struct {
 	// example:
 	//
 	// ECS
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Product   *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	RiskLevel *int64  `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// example:
 	//
 	// Advisor
@@ -1722,6 +1723,11 @@ func (s *DescribeAdvisorChecksFoPagesResponseBodyDataResult) SetOperateColumn(v 
 
 func (s *DescribeAdvisorChecksFoPagesResponseBodyDataResult) SetProduct(v string) *DescribeAdvisorChecksFoPagesResponseBodyDataResult {
 	s.Product = &v
+	return s
+}
+
+func (s *DescribeAdvisorChecksFoPagesResponseBodyDataResult) SetRiskLevel(v int64) *DescribeAdvisorChecksFoPagesResponseBodyDataResult {
+	s.RiskLevel = &v
 	return s
 }
 
