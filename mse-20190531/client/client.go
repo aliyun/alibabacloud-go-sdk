@@ -41896,7 +41896,8 @@ type ListClustersResponseBodyData struct {
 	// example:
 	//
 	// EUREKA_1_9_3
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionCode      *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// example:
 	//
 	// vpc-bp1hcg467ekqsv0zr****
@@ -42008,6 +42009,11 @@ func (s *ListClustersResponseBodyData) SetTags(v map[string]interface{}) *ListCl
 
 func (s *ListClustersResponseBodyData) SetVersionCode(v string) *ListClustersResponseBodyData {
 	s.VersionCode = &v
+	return s
+}
+
+func (s *ListClustersResponseBodyData) SetVersionLifecycle(v string) *ListClustersResponseBodyData {
+	s.VersionLifecycle = &v
 	return s
 }
 
@@ -44726,7 +44732,8 @@ type ListGatewayResponseBodyDataResult struct {
 	// example:
 	//
 	// 4792060800000
-	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndDate      *string                                          `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	GatewayEntry []*ListGatewayResponseBodyDataResultGatewayEntry `json:"GatewayEntry,omitempty" xml:"GatewayEntry,omitempty" type:"Repeated"`
 	// The gateway type.
 	//
 	// example:
@@ -44896,7 +44903,8 @@ type ListGatewayResponseBodyDataResult struct {
 	// example:
 	//
 	// false
-	Upgrade *bool `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	Upgrade          *bool   `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
+	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// The ID of the virtual private cloud (VPC) to which the gateway belongs.
 	//
 	// example:
@@ -44971,6 +44979,11 @@ func (s *ListGatewayResponseBodyDataResult) SetElasticType(v string) *ListGatewa
 
 func (s *ListGatewayResponseBodyDataResult) SetEndDate(v string) *ListGatewayResponseBodyDataResult {
 	s.EndDate = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetGatewayEntry(v []*ListGatewayResponseBodyDataResultGatewayEntry) *ListGatewayResponseBodyDataResult {
+	s.GatewayEntry = v
 	return s
 }
 
@@ -45114,6 +45127,11 @@ func (s *ListGatewayResponseBodyDataResult) SetUpgrade(v bool) *ListGatewayRespo
 	return s
 }
 
+func (s *ListGatewayResponseBodyDataResult) SetVersionLifecycle(v string) *ListGatewayResponseBodyDataResult {
+	s.VersionLifecycle = &v
+	return s
+}
+
 func (s *ListGatewayResponseBodyDataResult) SetVpcId(v string) *ListGatewayResponseBodyDataResult {
 	s.VpcId = &v
 	return s
@@ -45253,6 +45271,53 @@ func (s *ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList) SetEndTim
 
 func (s *ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList) SetStartTime(v string) *ListGatewayResponseBodyDataResultElasticPolicyTimePolicyList {
 	s.StartTime = &v
+	return s
+}
+
+type ListGatewayResponseBodyDataResultGatewayEntry struct {
+	// example:
+	//
+	// gw-*****5c2cd6144f4bfa1c32289f45ea8.cn-hangzhou.alicloudapi.com
+	EntryDomain *string   `json:"EntryDomain,omitempty" xml:"EntryDomain,omitempty"`
+	HttpPorts   []*int32  `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
+	HttpsPorts  []*int32  `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
+	IpList      []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PUB_NET
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+}
+
+func (s ListGatewayResponseBodyDataResultGatewayEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyDataResultGatewayEntry) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetEntryDomain(v string) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.EntryDomain = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetHttpPorts(v []*int32) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.HttpPorts = v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetHttpsPorts(v []*int32) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.HttpsPorts = v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetIpList(v []*string) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.IpList = v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultGatewayEntry) SetNetType(v string) *ListGatewayResponseBodyDataResultGatewayEntry {
+	s.NetType = &v
 	return s
 }
 
@@ -60078,7 +60143,8 @@ type QueryClusterDetailResponseBodyData struct {
 	// example:
 	//
 	// vsw-xxx-xxxx
-	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
@@ -60272,6 +60338,11 @@ func (s *QueryClusterDetailResponseBodyData) SetTags(v map[string]interface{}) *
 
 func (s *QueryClusterDetailResponseBodyData) SetVSwitchId(v string) *QueryClusterDetailResponseBodyData {
 	s.VSwitchId = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetVersionLifecycle(v string) *QueryClusterDetailResponseBodyData {
+	s.VersionLifecycle = &v
 	return s
 }
 
@@ -61008,8 +61079,9 @@ type QueryClusterInfoResponseBodyData struct {
 	// example:
 	//
 	// vsw-bp1egfakxxxxx
-	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VersionCode *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VSwitchId        *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VersionCode      *string `json:"VersionCode,omitempty" xml:"VersionCode,omitempty"`
+	VersionLifecycle *string `json:"VersionLifecycle,omitempty" xml:"VersionLifecycle,omitempty"`
 	// The ID of the VPC where the instance resides.
 	//
 	// example:
@@ -61233,6 +61305,11 @@ func (s *QueryClusterInfoResponseBodyData) SetVSwitchId(v string) *QueryClusterI
 
 func (s *QueryClusterInfoResponseBodyData) SetVersionCode(v string) *QueryClusterInfoResponseBodyData {
 	s.VersionCode = &v
+	return s
+}
+
+func (s *QueryClusterInfoResponseBodyData) SetVersionLifecycle(v string) *QueryClusterInfoResponseBodyData {
+	s.VersionLifecycle = &v
 	return s
 }
 
