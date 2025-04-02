@@ -4009,13 +4009,17 @@ type BatchUpdateWafRulesRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
 	// The configurations shared by multiple rules.
+	//
+	// example:
+	//
+	// 10000001
 	Shared *WafBatchRuleShared `json:"Shared,omitempty" xml:"Shared,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -4078,13 +4082,17 @@ type BatchUpdateWafRulesShrinkRequest struct {
 	//
 	// http_custom
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) operation.
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) operation.
 	//
 	// example:
 	//
 	// 10000001
 	RulesetId *int64 `json:"RulesetId,omitempty" xml:"RulesetId,omitempty"`
 	// The configurations shared by multiple rules.
+	//
+	// example:
+	//
+	// 10000001
 	SharedShrink *string `json:"Shared,omitempty" xml:"Shared,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
@@ -15113,7 +15121,7 @@ func (s *CreateWafRuleShrinkRequest) SetSiteVersion(v int32) *CreateWafRuleShrin
 }
 
 type CreateWafRuleResponseBody struct {
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) API.
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) API.
 	//
 	// example:
 	//
@@ -15125,7 +15133,7 @@ type CreateWafRuleResponseBody struct {
 	//
 	// 36af3fcc-43d0-441c-86b1-428951dc8225
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
 	//
 	// example:
 	//
@@ -22822,6 +22830,658 @@ func (s *DescribeRatePlanInstanceStatusResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeRatePlanInstanceStatusResponse) SetBody(v *DescribeRatePlanInstanceStatusResponseBody) *DescribeRatePlanInstanceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataRequest struct {
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	Fields []*DescribeSiteTimeSeriesDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 300
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1150376036*****
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataRequest) SetEndTime(v string) *DescribeSiteTimeSeriesDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataRequest) SetFields(v []*DescribeSiteTimeSeriesDataRequestFields) *DescribeSiteTimeSeriesDataRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataRequest) SetInterval(v string) *DescribeSiteTimeSeriesDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataRequest) SetSiteId(v string) *DescribeSiteTimeSeriesDataRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataRequest) SetStartTime(v string) *DescribeSiteTimeSeriesDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataRequestFields struct {
+	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataRequestFields) SetDimension(v []*string) *DescribeSiteTimeSeriesDataRequestFields {
+	s.Dimension = v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataRequestFields) SetFieldName(v string) *DescribeSiteTimeSeriesDataRequestFields {
+	s.FieldName = &v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataShrinkRequest struct {
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// 300
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 1150376036*****
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataShrinkRequest) SetEndTime(v string) *DescribeSiteTimeSeriesDataShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataShrinkRequest) SetFieldsShrink(v string) *DescribeSiteTimeSeriesDataShrinkRequest {
+	s.FieldsShrink = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataShrinkRequest) SetInterval(v string) *DescribeSiteTimeSeriesDataShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataShrinkRequest) SetSiteId(v string) *DescribeSiteTimeSeriesDataShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataShrinkRequest) SetStartTime(v string) *DescribeSiteTimeSeriesDataShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataResponseBody struct {
+	Data []*DescribeSiteTimeSeriesDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 300
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime      *string                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	SummarizedData []*DescribeSiteTimeSeriesDataResponseBodySummarizedData `json:"SummarizedData,omitempty" xml:"SummarizedData,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetData(v []*DescribeSiteTimeSeriesDataResponseBodyData) *DescribeSiteTimeSeriesDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetEndTime(v string) *DescribeSiteTimeSeriesDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetInterval(v int64) *DescribeSiteTimeSeriesDataResponseBody {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetRequestId(v string) *DescribeSiteTimeSeriesDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetSamplingRate(v float32) *DescribeSiteTimeSeriesDataResponseBody {
+	s.SamplingRate = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetStartTime(v string) *DescribeSiteTimeSeriesDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBody) SetSummarizedData(v []*DescribeSiteTimeSeriesDataResponseBodySummarizedData) *DescribeSiteTimeSeriesDataResponseBody {
+	s.SummarizedData = v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataResponseBodyData struct {
+	DetailData []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALL
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// example:
+	//
+	// ALL
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyData) SetDetailData(v []*DescribeSiteTimeSeriesDataResponseBodyDataDetailData) *DescribeSiteTimeSeriesDataResponseBodyData {
+	s.DetailData = v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyData) SetDimensionName(v string) *DescribeSiteTimeSeriesDataResponseBodyData {
+	s.DimensionName = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyData) SetDimensionValue(v string) *DescribeSiteTimeSeriesDataResponseBodyData {
+	s.DimensionValue = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyData) SetFieldName(v string) *DescribeSiteTimeSeriesDataResponseBodyData {
+	s.FieldName = &v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataResponseBodyDataDetailData struct {
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	TimeStamp *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 123
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodyDataDetailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodyDataDetailData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyDataDetailData) SetTimeStamp(v string) *DescribeSiteTimeSeriesDataResponseBodyDataDetailData {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodyDataDetailData) SetValue(v interface{}) *DescribeSiteTimeSeriesDataResponseBodyDataDetailData {
+	s.Value = v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataResponseBodySummarizedData struct {
+	// example:
+	//
+	// sum
+	AggMethod *string `json:"AggMethod,omitempty" xml:"AggMethod,omitempty"`
+	// example:
+	//
+	// ALL
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// example:
+	//
+	// ALL
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// example:
+	//
+	// 12345
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodySummarizedData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataResponseBodySummarizedData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodySummarizedData) SetAggMethod(v string) *DescribeSiteTimeSeriesDataResponseBodySummarizedData {
+	s.AggMethod = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodySummarizedData) SetDimensionName(v string) *DescribeSiteTimeSeriesDataResponseBodySummarizedData {
+	s.DimensionName = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodySummarizedData) SetDimensionValue(v string) *DescribeSiteTimeSeriesDataResponseBodySummarizedData {
+	s.DimensionValue = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodySummarizedData) SetFieldName(v string) *DescribeSiteTimeSeriesDataResponseBodySummarizedData {
+	s.FieldName = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponseBodySummarizedData) SetValue(v interface{}) *DescribeSiteTimeSeriesDataResponseBodySummarizedData {
+	s.Value = v
+	return s
+}
+
+type DescribeSiteTimeSeriesDataResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSiteTimeSeriesDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSiteTimeSeriesDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTimeSeriesDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTimeSeriesDataResponse) SetHeaders(v map[string]*string) *DescribeSiteTimeSeriesDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponse) SetStatusCode(v int32) *DescribeSiteTimeSeriesDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSiteTimeSeriesDataResponse) SetBody(v *DescribeSiteTimeSeriesDataResponseBody) *DescribeSiteTimeSeriesDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSiteTopDataRequest struct {
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	Fields []*DescribeSiteTopDataRequestFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 300
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Limit    *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// 1150376036*****
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteTopDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataRequest) SetEndTime(v string) *DescribeSiteTopDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequest) SetFields(v []*DescribeSiteTopDataRequestFields) *DescribeSiteTopDataRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequest) SetInterval(v string) *DescribeSiteTopDataRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequest) SetLimit(v string) *DescribeSiteTopDataRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequest) SetSiteId(v string) *DescribeSiteTopDataRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequest) SetStartTime(v string) *DescribeSiteTopDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteTopDataRequestFields struct {
+	Dimension []*string `json:"Dimension,omitempty" xml:"Dimension,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+}
+
+func (s DescribeSiteTopDataRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataRequestFields) SetDimension(v []*string) *DescribeSiteTopDataRequestFields {
+	s.Dimension = v
+	return s
+}
+
+func (s *DescribeSiteTopDataRequestFields) SetFieldName(v string) *DescribeSiteTopDataRequestFields {
+	s.FieldName = &v
+	return s
+}
+
+type DescribeSiteTopDataShrinkRequest struct {
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	FieldsShrink *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// example:
+	//
+	// 300
+	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Limit    *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// example:
+	//
+	// 1150376036*****
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteTopDataShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetEndTime(v string) *DescribeSiteTopDataShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetFieldsShrink(v string) *DescribeSiteTopDataShrinkRequest {
+	s.FieldsShrink = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetInterval(v string) *DescribeSiteTopDataShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetLimit(v string) *DescribeSiteTopDataShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetSiteId(v string) *DescribeSiteTopDataShrinkRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataShrinkRequest) SetStartTime(v string) *DescribeSiteTopDataShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteTopDataResponseBody struct {
+	Data []*DescribeSiteTopDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2023-04-09T16:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 35C66C7B-671H-4297-9187-2C447724****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 100
+	SamplingRate *float32 `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	// example:
+	//
+	// 2023-04-08T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteTopDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataResponseBody) SetData(v []*DescribeSiteTopDataResponseBodyData) *DescribeSiteTopDataResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBody) SetEndTime(v string) *DescribeSiteTopDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBody) SetRequestId(v string) *DescribeSiteTopDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBody) SetSamplingRate(v float32) *DescribeSiteTopDataResponseBody {
+	s.SamplingRate = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBody) SetStartTime(v string) *DescribeSiteTopDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteTopDataResponseBodyData struct {
+	DetailData []*DescribeSiteTopDataResponseBodyDataDetailData `json:"DetailData,omitempty" xml:"DetailData,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ALL
+	DimensionName *string `json:"DimensionName,omitempty" xml:"DimensionName,omitempty"`
+	// example:
+	//
+	// Traffic
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+}
+
+func (s DescribeSiteTopDataResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataResponseBodyData) SetDetailData(v []*DescribeSiteTopDataResponseBodyDataDetailData) *DescribeSiteTopDataResponseBodyData {
+	s.DetailData = v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBodyData) SetDimensionName(v string) *DescribeSiteTopDataResponseBodyData {
+	s.DimensionName = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBodyData) SetFieldName(v string) *DescribeSiteTopDataResponseBodyData {
+	s.FieldName = &v
+	return s
+}
+
+type DescribeSiteTopDataResponseBodyDataDetailData struct {
+	// example:
+	//
+	// ALL
+	DimensionValue *string `json:"DimensionValue,omitempty" xml:"DimensionValue,omitempty"`
+	// example:
+	//
+	// 123
+	Value interface{} `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSiteTopDataResponseBodyDataDetailData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataResponseBodyDataDetailData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataResponseBodyDataDetailData) SetDimensionValue(v string) *DescribeSiteTopDataResponseBodyDataDetailData {
+	s.DimensionValue = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponseBodyDataDetailData) SetValue(v interface{}) *DescribeSiteTopDataResponseBodyDataDetailData {
+	s.Value = v
+	return s
+}
+
+type DescribeSiteTopDataResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSiteTopDataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSiteTopDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteTopDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteTopDataResponse) SetHeaders(v map[string]*string) *DescribeSiteTopDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponse) SetStatusCode(v int32) *DescribeSiteTopDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSiteTopDataResponse) SetBody(v *DescribeSiteTopDataResponseBody) *DescribeSiteTopDataResponse {
 	s.Body = v
 	return s
 }
@@ -37881,7 +38541,7 @@ func (s *GetWafQuotaResponse) SetBody(v *GetWafQuotaResponseBody) *GetWafQuotaRe
 }
 
 type GetWafRuleRequest struct {
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -37920,7 +38580,7 @@ func (s *GetWafRuleRequest) SetSiteId(v int64) *GetWafRuleRequest {
 type GetWafRuleResponseBody struct {
 	// Rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// The ID of the WAF rule, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// example:
 	//
@@ -38046,7 +38706,7 @@ func (s *GetWafRuleResponse) SetBody(v *GetWafRuleResponseBody) *GetWafRuleRespo
 }
 
 type GetWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
 	//
 	// example:
 	//
@@ -68016,7 +68676,7 @@ func (s *UpdateUserDeliveryTaskStatusResponse) SetBody(v *UpdateUserDeliveryTask
 type UpdateWafRuleRequest struct {
 	// Rule configuration.
 	Config *WafRuleConfig `json:"Config,omitempty" xml:"Config,omitempty"`
-	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -68093,7 +68753,7 @@ func (s *UpdateWafRuleRequest) SetStatus(v string) *UpdateWafRuleRequest {
 type UpdateWafRuleShrinkRequest struct {
 	// Rule configuration.
 	ConfigShrink *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -68168,7 +68828,7 @@ func (s *UpdateWafRuleShrinkRequest) SetStatus(v string) *UpdateWafRuleShrinkReq
 }
 
 type UpdateWafRuleResponseBody struct {
-	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2850237.html) interface.
+	// WAF rule ID, which can be obtained by calling the [ListWafRules](https://help.aliyun.com/document_detail/2878257.html) interface.
 	//
 	// example:
 	//
@@ -80524,6 +81184,196 @@ func (client *Client) DescribeRatePlanInstanceStatus(request *DescribeRatePlanIn
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRatePlanInstanceStatusResponse{}
 	_body, _err := client.DescribeRatePlanInstanceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取时序数据
+//
+// @param tmpReq - DescribeSiteTimeSeriesDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSiteTimeSeriesDataResponse
+func (client *Client) DescribeSiteTimeSeriesDataWithOptions(tmpReq *DescribeSiteTimeSeriesDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSiteTimeSeriesDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSiteTimeSeriesDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Fields)) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, tea.String("Fields"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldsShrink)) {
+		query["Fields"] = request.FieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSiteTimeSeriesData"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSiteTimeSeriesDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSiteTimeSeriesDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取时序数据
+//
+// @param request - DescribeSiteTimeSeriesDataRequest
+//
+// @return DescribeSiteTimeSeriesDataResponse
+func (client *Client) DescribeSiteTimeSeriesData(request *DescribeSiteTimeSeriesDataRequest) (_result *DescribeSiteTimeSeriesDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSiteTimeSeriesDataResponse{}
+	_body, _err := client.DescribeSiteTimeSeriesDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Top数据
+//
+// @param tmpReq - DescribeSiteTopDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSiteTopDataResponse
+func (client *Client) DescribeSiteTopDataWithOptions(tmpReq *DescribeSiteTopDataRequest, runtime *util.RuntimeOptions) (_result *DescribeSiteTopDataResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeSiteTopDataShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Fields)) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, tea.String("Fields"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldsShrink)) {
+		query["Fields"] = request.FieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSiteTopData"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSiteTopDataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSiteTopDataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取Top数据
+//
+// @param request - DescribeSiteTopDataRequest
+//
+// @return DescribeSiteTopDataResponse
+func (client *Client) DescribeSiteTopData(request *DescribeSiteTopDataRequest) (_result *DescribeSiteTopDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSiteTopDataResponse{}
+	_body, _err := client.DescribeSiteTopDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
