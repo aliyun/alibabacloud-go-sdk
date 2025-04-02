@@ -1087,9 +1087,11 @@ func (s *EventInfo) SetTime(v string) *EventInfo {
 }
 
 type ExtraPodSpec struct {
-	InitContainers         []*ContainerSpec   `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	Lifecycle              *Lifecycle         `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	PodAnnotations         map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
+	InitContainers []*ContainerSpec `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
+	Lifecycle      *Lifecycle       `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	// Deprecated
+	PodAnnotations map[string]*string `json:"PodAnnotations,omitempty" xml:"PodAnnotations,omitempty"`
+	// Deprecated
 	PodLabels              map[string]*string `json:"PodLabels,omitempty" xml:"PodLabels,omitempty"`
 	SharedVolumeMountPaths []*string          `json:"SharedVolumeMountPaths,omitempty" xml:"SharedVolumeMountPaths,omitempty" type:"Repeated"`
 	SideCarContainers      []*ContainerSpec   `json:"SideCarContainers,omitempty" xml:"SideCarContainers,omitempty" type:"Repeated"`
@@ -2551,10 +2553,11 @@ func (s *LifecyclePreStopExec) SetCommand(v []*string) *LifecyclePreStopExec {
 }
 
 type LogInfo struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	PodId   *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
-	PodUid  *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsTruncated *bool   `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	PodId       *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	PodUid      *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
 	// example:
 	//
 	// stderr, stdout
@@ -2577,6 +2580,11 @@ func (s *LogInfo) SetContent(v string) *LogInfo {
 
 func (s *LogInfo) SetId(v string) *LogInfo {
 	s.Id = &v
+	return s
+}
+
+func (s *LogInfo) SetIsTruncated(v bool) *LogInfo {
+	s.IsTruncated = &v
 	return s
 }
 
@@ -2701,7 +2709,8 @@ type PodItem struct {
 	// example:
 	//
 	// 10.0.1.2
-	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Ip       *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	// example:
 	//
 	// dlc-20210126170216-mtl37ge7gkvdz-worker-0
@@ -2713,7 +2722,8 @@ type PodItem struct {
 	// example:
 	//
 	// Stopped
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 	// example:
 	//
 	// Worker
@@ -2753,6 +2763,11 @@ func (s *PodItem) SetIp(v string) *PodItem {
 	return s
 }
 
+func (s *PodItem) SetNodeName(v string) *PodItem {
+	s.NodeName = &v
+	return s
+}
+
 func (s *PodItem) SetPodId(v string) *PodItem {
 	s.PodId = &v
 	return s
@@ -2765,6 +2780,11 @@ func (s *PodItem) SetPodUid(v string) *PodItem {
 
 func (s *PodItem) SetStatus(v string) *PodItem {
 	s.Status = &v
+	return s
+}
+
+func (s *PodItem) SetSubStatus(v string) *PodItem {
+	s.SubStatus = &v
 	return s
 }
 
@@ -3158,6 +3178,70 @@ func (s *SanityCheckResultItem) SetStartedAt(v string) *SanityCheckResultItem {
 
 func (s *SanityCheckResultItem) SetStatus(v string) *SanityCheckResultItem {
 	s.Status = &v
+	return s
+}
+
+type SeccompProfile struct {
+	// example:
+	//
+	// my-profiles/profile-allow.json
+	LocalhostProfile *string `json:"LocalhostProfile,omitempty" xml:"LocalhostProfile,omitempty"`
+	// example:
+	//
+	// Unconfined
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SeccompProfile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeccompProfile) GoString() string {
+	return s.String()
+}
+
+func (s *SeccompProfile) SetLocalhostProfile(v string) *SeccompProfile {
+	s.LocalhostProfile = &v
+	return s
+}
+
+func (s *SeccompProfile) SetType(v string) *SeccompProfile {
+	s.Type = &v
+	return s
+}
+
+type SecurityContext struct {
+	// example:
+	//
+	// 1000
+	RunAsGroup *int64 `json:"RunAsGroup,omitempty" xml:"RunAsGroup,omitempty"`
+	// example:
+	//
+	// 1000
+	RunAsUser      *int64          `json:"RunAsUser,omitempty" xml:"RunAsUser,omitempty"`
+	SeccompProfile *SeccompProfile `json:"SeccompProfile,omitempty" xml:"SeccompProfile,omitempty"`
+}
+
+func (s SecurityContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecurityContext) GoString() string {
+	return s.String()
+}
+
+func (s *SecurityContext) SetRunAsGroup(v int64) *SecurityContext {
+	s.RunAsGroup = &v
+	return s
+}
+
+func (s *SecurityContext) SetRunAsUser(v int64) *SecurityContext {
+	s.RunAsUser = &v
+	return s
+}
+
+func (s *SecurityContext) SetSeccompProfile(v *SeccompProfile) *SecurityContext {
+	s.SeccompProfile = v
 	return s
 }
 
@@ -3836,63 +3920,156 @@ func (s *Workspace) SetWorkspaceName(v string) *Workspace {
 }
 
 type CreateJobRequest struct {
-	Accessibility    *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CodeSource       *CreateJobRequestCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	CredentialConfig *CredentialConfig              `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DataSources      []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The job visibility. Valid values:
+	//
+	// 	- PUBLIC: The job is visible to all members in the workspace.
+	//
+	// 	- PRIVATE: The job is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The code source of the job. Before the node of the job runs, DLC automatically downloads the configured code from the code source and mounts the code to the local path of the container.
+	CodeSource *CreateJobRequestCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	// The access 
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The data sources for job running.
+	DataSources []*CreateJobRequestDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// This parameter is not supported.
+	//
 	// example:
 	//
 	// “”
 	DebuggerConfigContent *string `json:"DebuggerConfigContent,omitempty" xml:"DebuggerConfigContent,omitempty"`
+	// The job name. The name must be in the following format:
+	//
+	// 	- The name must be 1 to 256 characters in length.
+	//
+	// 	- The name can contain digits, letters, underscores (_), periods (.), and hyphens (-).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// tf-mnist-test
-	DisplayName *string            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	ElasticSpec *JobElasticSpec    `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
-	Envs        map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// This parameter is not supported.
+	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// The environment variables.
+	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The maximum running duration of the job. Unit: minutes.
+	//
 	// example:
 	//
 	// 1024
 	JobMaxRunningTimeMinutes *int64 `json:"JobMaxRunningTimeMinutes,omitempty" xml:"JobMaxRunningTimeMinutes,omitempty"`
+	// The configurations for job running, such as the image address, startup command, node resource declaration, and number of replicas.****
+	//
+	// A DLC job consists of different types of nodes. If nodes of the same type have exactly the same configuration, the configuration is called JobSpec. **JobSpecs*	- specifies the configurations of all types of nodes. The value is of the array type.
+	//
 	// This parameter is required.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// The job type. The value is case-sensitive. Valid values:
+	//
+	// 	- TFJob
+	//
+	// 	- PyTorchJob
+	//
+	// 	- MPIJob
+	//
+	// 	- XGBoostJob
+	//
+	// 	- OneFlowJob
+	//
+	// 	- ElasticBatchJob
+	//
+	// 	- SlurmJob
+	//
+	// 	- RayJob
+	//
+	// Valid values for each job type:
+	//
+	// 	- OneFlowJob: OneFlow.
+	//
+	// 	- PyTorchJob: PyTorch.
+	//
+	// 	- SlurmJob: Slurm.
+	//
+	// 	- XGBoostJob: XGBoost.
+	//
+	// 	- ElasticBatchJob: ElasticBatch.
+	//
+	// 	- MPIJob: MPIJob.
+	//
+	// 	- TFJob: Tensorflow.
+	//
+	// 	- RayJob: Ray.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The additional configuration of the job. You can use this parameter to adjust the behavior of the attached data source. For example, if the attached data source of the job is of the OSS type, you can use this parameter to add the following configurations to override the default parameters of JindoFS: `fs.oss.download.thread.concurrency=4,fs.oss.download.queue.size=16`.
+	//
 	// example:
 	//
 	// key1=value1,key2=value2
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The priority of the job. Default value: 1. Valid values: 1 to 9.
+	//
+	// 	- 1: the lowest priority.
+	//
+	// 	- 9: the highest priority.
+	//
 	// example:
 	//
 	// 8
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The ID of the resource group. This parameter is optional.
+	//
+	// 	- If you leave this parameter empty, the job is submitted to a public resource group.
+	//
+	// 	- If a resource quota is associated with the current workspace, you can specify the resource quota ID. For more information about how to query the resource quota ID, see [Manage resource quotas](https://help.aliyun.com/document_detail/2651299.html).
+	//
 	// example:
 	//
 	// rs-xxx
-	ResourceId *string      `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Settings   *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The additional parameter configurations of the job.
+	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The policy that is used to check whether a distributed multi-node job is successful. Only TensorFlow distributed multi-node jobs are supported.
+	//
+	// 	- ChiefWorker: If you use this policy, the job is considered successful when the pod on the chief node completes operations.
+	//
+	// 	- AllWorkers (default): If you use this policy, the job is considered successful when all worker nodes complete operations.
+	//
 	// example:
 	//
 	// AllWorkers
 	SuccessPolicy *string `json:"SuccessPolicy,omitempty" xml:"SuccessPolicy,omitempty"`
+	// The folder in which the third-party Python library file requirements.txt is stored. Before the startup command specified by the UserCommand parameter is run on each node, DLC fetches the requirements.txt file from the folder and runs `pip install -r` to install the required package and library.
+	//
 	// example:
 	//
 	// /root/code/
-	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	// The third-party Python libraries to be installed.
+	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// The startup command for all nodes of the job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// python /root/code/mnist.py
-	UserCommand *string                  `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
-	UserVpc     *CreateJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	// The VPC settings.
+	UserVpc *CreateJobRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// ws-20210126170216-xxxxxxx
@@ -4013,18 +4190,26 @@ func (s *CreateJobRequest) SetWorkspaceId(v string) *CreateJobRequest {
 }
 
 type CreateJobRequestCodeSource struct {
+	// The branch of the referenced code repository. By default, the branch configured in the code source is used. This parameter is optional.
+	//
 	// example:
 	//
 	// master
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The ID of the code source.
+	//
 	// example:
 	//
 	// code-20210111103721-xxxxxxx
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The commit ID of the code to be downloaded. By default, the commit ID configured in the code source is used. This parameter is optional.
+	//
 	// example:
 	//
 	// 44da109b5******
 	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// The path to which the job is mounted. By default, the mount path configured in the data source is used. This parameter is optional.
+	//
 	// example:
 	//
 	// /root/data
@@ -4060,16 +4245,36 @@ func (s *CreateJobRequestCodeSource) SetMountPath(v string) *CreateJobRequestCod
 }
 
 type CreateJobRequestDataSources struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// d-cn9dl*******
 	DataSourceId      *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	DataSourceVersion *string `json:"DataSourceVersion,omitempty" xml:"DataSourceVersion,omitempty"`
+	MountAccess       *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The path to which the job is mounted. By default, the mount path in the data source configuration is used. This parameter is optional.
+	//
 	// example:
 	//
 	// /root/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	Options   *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The mount attribute of the custom dataset. Set the value to OSS.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "fs.oss.download.thread.concurrency": "10",
+	//
+	//   "fs.oss.upload.thread.concurrency": "10",
+	//
+	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The data source path.
+	//
 	// example:
 	//
 	// oss://bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/
@@ -4094,6 +4299,11 @@ func (s *CreateJobRequestDataSources) SetDataSourceVersion(v string) *CreateJobR
 	return s
 }
 
+func (s *CreateJobRequestDataSources) SetMountAccess(v string) *CreateJobRequestDataSources {
+	s.MountAccess = &v
+	return s
+}
+
 func (s *CreateJobRequestDataSources) SetMountPath(v string) *CreateJobRequestDataSources {
 	s.MountPath = &v
 	return s
@@ -4110,16 +4320,40 @@ func (s *CreateJobRequestDataSources) SetUri(v string) *CreateJobRequestDataSour
 }
 
 type CreateJobRequestUserVpc struct {
-	DefaultRoute  *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The default route. Default value: false. Valid values:
+	//
+	// 	- eth0: The default network interface is used to access the Internet through the public gateway.
+	//
+	// 	- eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
+	//
+	// example:
+	//
+	// eth0
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR block.
+	//
+	// 	- If you leave the SwitchId and ExtendedCIDRs parameters empty, the system automatically obtains all CIDR blocks in a VPC.
+	//
+	// 	- If you configure the SwitchId and ExtendedCIDRs parameters, we recommend that you specify all CIDR blocks in a VPC.
 	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The ID of the security group.
+	//
 	// example:
 	//
 	// sg-abcdef****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID. This parameter is optional.
+	//
+	// 	- If you leave this parameter empty, the system automatically selects a vSwitch based on the inventory status.
+	//
+	// 	- You can also specify a vSwitch ID.
+	//
 	// example:
 	//
 	// vs-abcdef****
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-abcdef****
@@ -4160,10 +4394,14 @@ func (s *CreateJobRequestUserVpc) SetVpcId(v string) *CreateJobRequestUserVpc {
 }
 
 type CreateJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc7*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID used to troubleshoot issues.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxx
@@ -4218,61 +4456,132 @@ func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse
 }
 
 type CreateTensorboardRequest struct {
+	// The visibility of the job. Valid values:
+	//
+	// 	- PUBLIC: The configuration is public in the workspace.
+	//
+	// 	- PRIVATE: The configuration is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The number of vCPU cores.
+	//
 	// example:
 	//
 	// 1
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The dataset ID.
+	//
+	// <props="china">Call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to get the dataset ID.
+	//
 	// example:
 	//
 	// d-xxxxxxxx
-	DataSourceId   *string           `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	DataSourceType *string           `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DataSources    []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The dataset type. Valid values:
+	//
+	// 	- OSS
+	//
+	// 	- NAS
+	//
+	// example:
+	//
+	// OSS
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The configurations of the data source.
+	DataSources []*DataSourceItem `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The TensorBoard name
+	//
 	// example:
 	//
 	// tensorboard
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The job ID. Call [ListJobs](https://help.aliyun.com/document_detail/459676.html) to get the job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-mtl37ge7gkvdz
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The maximum running duration. Unit: minutes.
+	//
 	// example:
 	//
 	// 240
 	MaxRunningTimeMinutes *int64 `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 1000
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The extended fields of the dataset are in the JSON format. MountPath: the path to mount the dataset.
+	//
 	// example:
 	//
 	// {"mountpath":"/root/data/"}
-	Options  *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The priority of the job. Default value: 1. Valid values: 1 to 9.
+	//
+	// 	- 1 is the lowest priority.
+	//
+	// 	- 9 is the highest priority.
+	//
+	// example:
+	//
+	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	QuotaId  *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The resource quota ID. This parameter is required when you create a TensorBoard job by using a resource quota. <props="china">Call [ListQuotas](https://help.aliyun.com/document_detail/2628071.html) to get the quota ID.
+	//
+	// This feature is currently limited to whitelisted users. If you need to use this feature, contact us.
+	//
+	// example:
+	//
+	// quota12345
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// The source ID.
+	//
 	// example:
 	//
 	// dlc-xxxxxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type.
+	//
 	// example:
 	//
 	// job
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The directory of summary.
+	//
 	// example:
 	//
 	// /root/data/
 	SummaryPath *string `json:"SummaryPath,omitempty" xml:"SummaryPath,omitempty"`
+	// The relative path of summary.
+	//
 	// example:
 	//
 	// /summary/
-	SummaryRelativePath    *string                      `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
+	SummaryRelativePath *string `json:"SummaryRelativePath,omitempty" xml:"SummaryRelativePath,omitempty"`
+	// The configurations of datasets mounted with the TensorBoard job.
 	TensorboardDataSources []*TensorboardDataSourceSpec `json:"TensorboardDataSources,omitempty" xml:"TensorboardDataSources,omitempty" type:"Repeated"`
-	TensorboardSpec        *TensorboardSpec             `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
+	// The pay-as-you-go configuration of TensorBoard, which is used to create TensorBoard jobs that use pay-as-you-go resources.
+	TensorboardSpec *TensorboardSpec `json:"TensorboardSpec,omitempty" xml:"TensorboardSpec,omitempty"`
+	// The dataset URI.
+	//
+	// 	- Value format when DataSourceType is set to OSS: `oss://[oss-bucket].[endpoint]/[path]`.
+	//
+	// 	- Value format when DataSourceType is set to NAS:`nas://[nas-filesystem-id].[region]/[path]`.
+	//
 	// example:
 	//
 	// oss://.oss-cn-shanghai-finance-1.aliyuncs.com/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The workspace ID.
+	//
+	// <props="china">Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 123***
@@ -4388,18 +4697,26 @@ func (s *CreateTensorboardRequest) SetWorkspaceId(v string) *CreateTensorboardRe
 }
 
 type CreateTensorboardResponseBody struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// ds-20210126170216-xxxxxxxx
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-xxxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TensorBoard ID
+	//
 	// example:
 	//
 	// tbxxxxxxxx
@@ -4464,10 +4781,14 @@ func (s *CreateTensorboardResponse) SetBody(v *CreateTensorboardResponseBody) *C
 }
 
 type DeleteJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc*************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID. You can troubleshoot issues based on the request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -4522,6 +4843,10 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 }
 
 type DeleteTensorboardRequest struct {
+	// The workspace ID.
+	//
+	// <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 46099
@@ -4542,10 +4867,14 @@ func (s *DeleteTensorboardRequest) SetWorkspaceId(v string) *DeleteTensorboardRe
 }
 
 type DeleteTensorboardResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The TensorBoard ID.
+	//
 	// example:
 	//
 	// tensorboard-20210114104214-vf9lowjt3pso
@@ -4600,6 +4929,8 @@ func (s *DeleteTensorboardResponse) SetBody(v *DeleteTensorboardResponseBody) *D
 }
 
 type GetJobRequest struct {
+	// Specifies whether to return the job details. Default value: true.
+	//
 	// example:
 	//
 	// true
@@ -4620,127 +4951,234 @@ func (s *GetJobRequest) SetNeedDetail(v bool) *GetJobRequest {
 }
 
 type GetJobResponseBody struct {
+	// The visibility of the job. Valid values:
+	//
+	// 	- PUBLIC: The code is public in the workspace.
+	//
+	// 	- PRIVATE: The workspace is visible only to you and the administrator of the workspace. This is the default value.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// a*****
-	ClusterId        *string                          `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CodeSource       *GetJobResponseBodyCodeSource    `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
-	CredentialConfig *CredentialConfig                `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	DataSources      []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The code source.
+	CodeSource *GetJobResponseBodyCodeSource `json:"CodeSource,omitempty" xml:"CodeSource,omitempty" type:"Struct"`
+	// The access credential configurations.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The data sources.
+	DataSources []*GetJobResponseBodyDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	// The job name.
+	//
 	// example:
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The duration of the job (seconds).
+	//
 	// example:
 	//
 	// 3602
-	Duration    *int64          `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The elastic job parameters.
 	ElasticSpec *JobElasticSpec `json:"ElasticSpec,omitempty" xml:"ElasticSpec,omitempty"`
+	// Specifies whether to enable the debugger job.
+	//
 	// example:
 	//
 	// false
-	EnabledDebugger *bool              `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
-	Envs            map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	EnabledDebugger *bool `json:"EnabledDebugger,omitempty" xml:"EnabledDebugger,omitempty"`
+	// The configurations of environment variables.
+	Envs map[string]*string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	// The time when the job was created (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:35:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time of the job failed (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFailedTime *string `json:"GmtFailedTime,omitempty" xml:"GmtFailedTime,omitempty"`
+	// The time when the job ended (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The start time of the job (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:21Z
 	GmtRunningTime *string `json:"GmtRunningTime,omitempty" xml:"GmtRunningTime,omitempty"`
+	// The time when the job stopped (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtStoppedTime *string `json:"GmtStoppedTime,omitempty" xml:"GmtStoppedTime,omitempty"`
+	// The time when the job was submitted to the cluster (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtSubmittedTime *string `json:"GmtSubmittedTime,omitempty" xml:"GmtSubmittedTime,omitempty"`
+	// The time when the job succeeded (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:08Z
 	GmtSuccessedTime *string `json:"GmtSuccessedTime,omitempty" xml:"GmtSuccessedTime,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc*******
-	JobId    *string    `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The node configurations of the job, which is **JobSpecs*	- in the CreateJob operation.
 	JobSpecs []*JobSpec `json:"JobSpecs,omitempty" xml:"JobSpecs,omitempty" type:"Repeated"`
+	// The job type. Specified by the JobType parameter of the [CreateJob](https://help.aliyun.com/document_detail/459672.html) operation.
+	//
 	// example:
 	//
 	// TFJob
-	JobType *string                   `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	Pods    []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// All running nodes of the job.
+	Pods []*GetJobResponseBodyPods `json:"Pods,omitempty" xml:"Pods,omitempty" type:"Repeated"`
+	// The priority of the job. Valid values: 1 to 9.
+	//
 	// example:
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The status detail code, which is a sub-status under the current status.
+	//
 	// example:
 	//
 	// JobStoppedByUser
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The description of the status detail code.
+	//
 	// example:
 	//
 	// Job is stopped by user.
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The request ID, which can be used for troubleshooting.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the resource group to which the job belongs.
+	//
 	// example:
 	//
 	// r******
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource level that the job uses.
+	//
 	// example:
 	//
 	// L0
 	ResourceLevel *string `json:"ResourceLevel,omitempty" xml:"ResourceLevel,omitempty"`
+	// The resource type. Valid values: ECS, Lingjun, and ACS.
+	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The number of retries and the maximum number of retries used by the job.
+	//
 	// example:
 	//
 	// 0/10
-	RestartTimes *string      `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
-	Settings     *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	RestartTimes *string `json:"RestartTimes,omitempty" xml:"RestartTimes,omitempty"`
+	// The settings of the additional parameters of the job.
+	Settings *JobSettings `json:"Settings,omitempty" xml:"Settings,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Queuing
+	//
+	// 	- Bidding (Only for Lingjun preemptible jobs)
+	//
+	// 	- EnvPreparing
+	//
+	// 	- SanityChecking
+	//
+	// 	- Running
+	//
+	// 	- Restarting
+	//
+	// 	- Stopping
+	//
+	// 	- SucceededReserving
+	//
+	// 	- FailedReserving
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
+	// 	- Stopped
+	//
 	// example:
 	//
 	// Stopped
-	Status        *string                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status history.
 	StatusHistory []*StatusTransitionItem `json:"StatusHistory,omitempty" xml:"StatusHistory,omitempty" type:"Repeated"`
+	// The sub-status of the job, such as its preemption status.
+	//
 	// example:
 	//
 	// Restarting
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
-	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The tenant ID.
+	//
+	// example:
+	//
+	// GAR***W134
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The directory that contains requirements.txt.
+	//
 	// example:
 	//
 	// /root/code/
-	ThirdpartyLibDir *string   `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
-	ThirdpartyLibs   []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	ThirdpartyLibDir *string `json:"ThirdpartyLibDir,omitempty" xml:"ThirdpartyLibDir,omitempty"`
+	// The third-party Python libraries to be installed.
+	ThirdpartyLibs []*string `json:"ThirdpartyLibs,omitempty" xml:"ThirdpartyLibs,omitempty" type:"Repeated"`
+	// The command that is run to start each node.
+	//
 	// example:
 	//
 	// python /root/code/mnist.py
 	UserCommand *string `json:"UserCommand,omitempty" xml:"UserCommand,omitempty"`
+	// The UID of the Alibaba Cloud account who submitted the job.
+	//
 	// example:
 	//
 	// 12*********
-	UserId  *string                    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The VPC of the user.
 	UserVpc *GetJobResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The ID of the workspace to which the job belongs.
+	//
 	// example:
 	//
 	// 268
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace to which the job belongs.
+	//
 	// example:
 	//
 	// dlc-workspace
@@ -4961,18 +5399,26 @@ func (s *GetJobResponseBody) SetWorkspaceName(v string) *GetJobResponseBody {
 }
 
 type GetJobResponseBodyCodeSource struct {
+	// The code branch.
+	//
 	// example:
 	//
 	// master
 	Branch *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
+	// The code source ID.
+	//
 	// example:
 	//
 	// code******
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The code commit ID
+	//
 	// example:
 	//
 	// 44da109b59f8596152987eaa8f3b2487xxxxxx
 	Commit *string `json:"Commit,omitempty" xml:"Commit,omitempty"`
+	// The local mount path.
+	//
 	// example:
 	//
 	// /mnt/data
@@ -5008,14 +5454,20 @@ func (s *GetJobResponseBodyCodeSource) SetMountPath(v string) *GetJobResponseBod
 }
 
 type GetJobResponseBodyDataSources struct {
+	// The data source ID.
+	//
 	// example:
 	//
 	// d*******
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	// The local mount path. This parameter is optional. The default value is empty, which specifies that the mount path in the data source is used.
+	//
 	// example:
 	//
 	// /mnt/data/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The data source URL.
+	//
 	// example:
 	//
 	// oss://bucket.oss-cn-hangzhou-internal.aliyuncs.com/path/
@@ -5046,43 +5498,78 @@ func (s *GetJobResponseBodyDataSources) SetUri(v string) *GetJobResponseBodyData
 }
 
 type GetJobResponseBodyPods struct {
+	// The time when the node was created (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The end time of the node (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T15:36:05Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The start time of the node (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
-	GmtStartTime *string                              `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
-	HistoryPods  []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// The historical nodes.
+	HistoryPods []*GetJobResponseBodyPodsHistoryPods `json:"HistoryPods,omitempty" xml:"HistoryPods,omitempty" type:"Repeated"`
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 10.0.1.2
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The node ID. It can be used in the GetPodLogs and GetPodEvents operations to obtain the detailed logs and events of the node.
+	//
 	// example:
 	//
 	// Worker
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// The UID of the node.
+	//
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57591d
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The resource type of the node.
+	//
 	// example:
 	//
 	// Normal
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the node. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Running
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
+	// 	- Unknown
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub-status of the node, such as its preemption status. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Evicted
+	//
 	// example:
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// The node type, which corresponds to a specific JobSpec in JobSpecs of the CreateJob operation.
+	//
 	// example:
 	//
 	// Worker
@@ -5153,42 +5640,66 @@ func (s *GetJobResponseBodyPods) SetType(v string) *GetJobResponseBodyPods {
 }
 
 type GetJobResponseBodyPodsHistoryPods struct {
+	// The time when the node was created (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The end time of the node (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtFinishTime *string `json:"GmtFinishTime,omitempty" xml:"GmtFinishTime,omitempty"`
+	// The start time of the node (UTC).
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtStartTime *string `json:"GmtStartTime,omitempty" xml:"GmtStartTime,omitempty"`
+	// The IP address of the node.
+	//
 	// example:
 	//
 	// 10.0.1.3
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	// The ID of the node.
+	//
 	// example:
 	//
 	// Worker
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// The UID of the node.
+	//
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57591d
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The resource type of the node.
+	//
 	// example:
 	//
 	// Normal
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The status of the node.
+	//
 	// example:
 	//
 	// Failed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub-status of the node, such as its preemption status. Valid values:
+	//
+	// 	- Normal
+	//
+	// 	- Evicted
+	//
 	// example:
 	//
 	// Normal
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// The type of the node.
+	//
 	// example:
 	//
 	// Worker
@@ -5254,16 +5765,26 @@ func (s *GetJobResponseBodyPodsHistoryPods) SetType(v string) *GetJobResponseBod
 }
 
 type GetJobResponseBodyUserVpc struct {
-	DefaultRoute  *string   `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The default router. This parameter is valid only for general-purpose computing resources. Valid values:
+	//
+	// eth0: The default network interface is used to access the Internet through the public gateway. eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
+	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR block. Example: 192.168.0.1/24.
 	ExtendedCidrs []*string `json:"ExtendedCidrs,omitempty" xml:"ExtendedCidrs,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-abcdef****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vs-abcdef****
 	SwitchId *string `json:"SwitchId,omitempty" xml:"SwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-abcdef****
@@ -5333,14 +5854,20 @@ func (s *GetJobResponse) SetBody(v *GetJobResponseBody) *GetJobResponse {
 }
 
 type GetJobEventsRequest struct {
+	// The end time (UTC) of the time range for querying events. The default value is the current time.
+	//
 	// example:
 	//
 	// 2020-11-08T18:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of events that can be returned. Default value: 2000.
+	//
 	// example:
 	//
 	// 100
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// The start time (UTC) of the time range for querying events. The default value is 7 days ago.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
@@ -5371,11 +5898,16 @@ func (s *GetJobEventsRequest) SetStartTime(v string) *GetJobEventsRequest {
 }
 
 type GetJobEventsResponseBody struct {
+	// The events.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID, which can be used for troubleshooting.
+	//
 	// example:
 	//
 	// 78F6FCE2-278F-4C4A-A6B7-DD8ECEA9C456
@@ -5435,24 +5967,50 @@ func (s *GetJobEventsResponse) SetBody(v *GetJobEventsResponseBody) *GetJobEvent
 }
 
 type GetJobMetricsRequest struct {
+	// The end time of the time range to query monitoring data. The time is displayed in UTC. The default value is the current time.
+	//
 	// example:
 	//
 	// 2020-11-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The type of the monitoring metrics. Valid values:
+	//
+	// 	- GpuCoreUsage: GPU utilization
+	//
+	// 	- GpuMemoryUsage: GPU memory utilization
+	//
+	// 	- CpuCoreUsage: CPU utilization
+	//
+	// 	- MemoryUsage: memory utilization
+	//
+	// 	- NetworkInputRate: the network write in rate.
+	//
+	// 	- NetworkOutputRate: the network write out rate
+	//
+	// 	- DiskReadRate: the disk read rate
+	//
+	// 	- DiskWriteRate: the disk write rate
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GpuMemoryUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The beginning of the time range to query monitoring data. The time is displayed in UTC. The default value is the time 1 hour before the current time.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The interval at which monitoring data is returned. Default value: 5. Unit: minutes.
+	//
 	// example:
 	//
 	// 5m
 	TimeStep *string `json:"TimeStep,omitempty" xml:"TimeStep,omitempty"`
+	// The temporary token used for authentication.
+	//
 	// example:
 	//
 	// eyXXXX-XXXX.XXXXX
@@ -5493,11 +6051,16 @@ func (s *GetJobMetricsRequest) SetToken(v string) *GetJobMetricsRequest {
 }
 
 type GetJobMetricsResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-*******
-	JobId      *string      `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The monitoring metrics of the job.
 	PodMetrics []*PodMetric `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
+	// The request ID. You can troubleshoot issues based on the request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -5557,17 +6120,36 @@ func (s *GetJobMetricsResponse) SetBody(v *GetJobMetricsResponseBody) *GetJobMet
 }
 
 type GetJobSanityCheckResultRequest struct {
+	// The nth time for which the job sanity check is performed.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	SanityCheckNumber *int32 `json:"SanityCheckNumber,omitempty" xml:"SanityCheckNumber,omitempty"`
+	// The phase in which the job sanity check is performed.
+	//
+	// 	- CheckInit
+	//
+	// 	- DeviceCheck
+	//
+	// 	- SingleNodeCommCheck
+	//
+	// 	- TwoNodeCommCheck
+	//
+	// 	- AllNodeCommCheck
+	//
 	// example:
 	//
 	// DeviceCheck
 	SanityCheckPhase *string `json:"SanityCheckPhase,omitempty" xml:"SanityCheckPhase,omitempty"`
-	Token            *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token information for job sharing. For more information about how to obtain the token information, see [GetToken](https://help.aliyun.com/document_detail/2557812.html).
+	//
+	// example:
+	//
+	// eyJhbG******zI1NiIsInR5cCI6IkpXVCJ9.eyJle****jE3MDk1Mzk0NDIsImlhdCI6MTcwODkzNDY0MiwidXNlcl9pZCI6IjE3NTgwNTQxNjI0Mzg2NTUiLCJ0YXJnZXRfaWQiOiJkbGM1OGh1a2xyYzZwdGMyIiwidGFyZ2V0X3R5cGUiOiJqb2IifQ.GNL7jo6****mgKKv0QeGIYgvBufSU-PH_EQttX****
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetJobSanityCheckResultRequest) String() string {
@@ -5594,14 +6176,19 @@ func (s *GetJobSanityCheckResultRequest) SetToken(v string) *GetJobSanityCheckRe
 }
 
 type GetJobSanityCheckResultResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-xxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B3789344-F1xxxBE-5xx2-A04D-xxxxx
-	RequestID         *string                  `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	// The job sanity check result.
 	SanityCheckResult []*SanityCheckResultItem `json:"SanityCheckResult,omitempty" xml:"SanityCheckResult,omitempty" type:"Repeated"`
 }
 
@@ -5658,18 +6245,26 @@ func (s *GetJobSanityCheckResultResponse) SetBody(v *GetJobSanityCheckResultResp
 }
 
 type GetPodEventsRequest struct {
+	// The end time (UTC).
+	//
 	// example:
 	//
 	// 2020-11-09T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of events that can be returned.
+	//
 	// example:
 	//
 	// 100
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// The node UID. Call [GetJob](https://help.aliyun.com/document_detail/459677.html) to get the node UID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-*****-chief-0
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The start time (UTC).
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
@@ -5705,21 +6300,30 @@ func (s *GetPodEventsRequest) SetStartTime(v string) *GetPodEventsRequest {
 }
 
 type GetPodEventsResponseBody struct {
+	// The events returned.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-*****
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The node ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dlc-20210126170216-*****-chief-0
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// The node UID.
+	//
 	// example:
 	//
 	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The request ID, which can be used for troubleshooting.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -5789,22 +6393,36 @@ func (s *GetPodEventsResponse) SetBody(v *GetPodEventsResponseBody) *GetPodEvent
 }
 
 type GetPodLogsRequest struct {
+	// Specifies whether to download the log file. Default value: false. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
 	DownloadToFile *bool `json:"DownloadToFile,omitempty" xml:"DownloadToFile,omitempty"`
+	// The end time of the query. Default value: current time.
+	//
 	// example:
 	//
 	// 2020-11-08T17:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of log entries. Default value: 2000.
+	//
 	// example:
 	//
 	// 100
 	MaxLines *int32 `json:"MaxLines,omitempty" xml:"MaxLines,omitempty"`
+	// The node UID. For more information about how to obtain a node UID, see [GetJob](https://help.aliyun.com/document_detail/459677.html).
+	//
 	// example:
 	//
 	// fe846462-af2c-4521-bd6f-96787a57****
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The start time of the query. Default value: 7 days ago.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
@@ -5845,19 +6463,28 @@ func (s *GetPodLogsRequest) SetStartTime(v string) *GetPodLogsRequest {
 }
 
 type GetPodLogsResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-******
-	JobId *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Logs  []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The logs.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The node ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-****-chief-0
 	PodId *string `json:"PodId,omitempty" xml:"PodId,omitempty"`
+	// The instance UID.
+	//
 	// example:
 	//
 	// 94a7cc7c-0033-48b5-85bd-71c63592c268
 	PodUid *string `json:"PodUid,omitempty" xml:"PodUid,omitempty"`
+	// The request ID which is used for diagnostics and Q\\&A.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -5927,11 +6554,28 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetTensorboardRequest struct {
+	// The job ID. For more information about how to query the job ID, see [ListJob](https://help.aliyun.com/document_detail/459676.html).
+	//
 	// example:
 	//
 	// dlc-xxxxxxxx
 	JodId *string `json:"JodId,omitempty" xml:"JodId,omitempty"`
+	// The information about the shared token. You can specify this parameter to obtain the permission to view a TensorBoard job based on the shared token information. You can execute [GetTensorboardSharedUrl](https://help.aliyun.com/document_detail/2557813.html) and extract the shared token from the obtained information.
+	//
+	// example:
+	//
+	// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e
+	//
+	// yJleHAiOjE2OTUyODA0NTMsImlhdCI6MTY5NTE5NDA1MywidXNlcl9pZCI6IjExN
+	//
+	// Tc3MDMyNzA5OTQ5MDEiLCJ0YXJnZXRfaWQiOiJ0YjRrOGxjNXhmdTM2b3B0Iiw
+	//
+	// idGFyZ2V0X3R5cGUiOiJ0ZW5zb3Jib2FyZCJ9.6eT68J-KMBwwfN2d7fj7u6vyPcf0erfqYeizd2N****
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The workspace ID.
+	//
+	// <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 46099
@@ -5991,6 +6635,8 @@ func (s *GetTensorboardResponse) SetBody(v *Tensorboard) *GetTensorboardResponse
 }
 
 type GetTensorboardSharedUrlRequest struct {
+	// The validity period of the shareable link. Unit: seconds. Maximum value: 604800.
+	//
 	// example:
 	//
 	// 86400
@@ -6011,10 +6657,14 @@ func (s *GetTensorboardSharedUrlRequest) SetExpireTimeSeconds(v string) *GetTens
 }
 
 type GetTensorboardSharedUrlResponseBody struct {
+	// The request ID which is used for troubleshooting.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The shareable link of the TensorBoard task.
+	//
 	// example:
 	//
 	// http://pai-dlc-proxy-xxx.alicyuncs.com/xxx/xxx/token/
@@ -6069,14 +6719,20 @@ func (s *GetTensorboardSharedUrlResponse) SetBody(v *GetTensorboardSharedUrlResp
 }
 
 type GetTokenRequest struct {
+	// The time when the share link expires. Default value: 604800 seconds. Minimum value: 0.
+	//
 	// example:
 	//
 	// 60
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The ID of the job that is waiting to be shared.
+	//
 	// example:
 	//
 	// dlc*******
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
+	// The type of the job that you want to share. Valid values: job and tensorboard.
+	//
 	// example:
 	//
 	// job
@@ -6107,10 +6763,14 @@ func (s *GetTokenRequest) SetTargetType(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
+	// The request ID, which is used to troubleshoot issues.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The token of the shared job, which can be used as the value of the Token parameter in the GetJob API operation to view information about the shared job.
+	//
 	// example:
 	//
 	// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9*****
@@ -6165,8 +6825,17 @@ func (s *GetTokenResponse) SetBody(v *GetTokenResponseBody) *GetTokenResponse {
 }
 
 type GetWebTerminalRequest struct {
+	// Specifies whether to create a shareable link to access the container. Valid values:
+	//
+	// 	- true: returns a shareable link to access the container. The link will expire after 30 seconds and can only be used once. After you access the container by using the link, other requests that use this link to access the container become invalid.
+	//
+	// 	- false: returns a common shareable link to access the container. If you use a common shareable link to access a container, Alibaba Cloud identity authentication is required. The link will expire after 30 seconds.
+	//
+	// example:
+	//
+	// true
 	IsShared *bool `json:"IsShared,omitempty" xml:"IsShared,omitempty"`
-	// Pod UID。
+	// The pod UID.
 	//
 	// example:
 	//
@@ -6193,7 +6862,81 @@ func (s *GetWebTerminalRequest) SetPodUid(v string) *GetWebTerminalRequest {
 }
 
 type GetWebTerminalResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The request ID which is used for diagnostics and Q\\&A.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The WebSocket URI for accessing the container. You must build a WebSocket client. For more information about the communication format, see the following code:
+	//
+	//     ws = new WebSocket(
+	//
+	//       `wss://xxxxx`,
+	//
+	//     );
+	//
+	//     ws.onopen = function open() {
+	//
+	//       console.warn(\\"connected\\");
+	//
+	//       term.write(\\"\\r\\");
+	//
+	//     };
+	//
+	//     ws.onclose = function close() {
+	//
+	//       console.warn(\\"disconnected\\");
+	//
+	//       term.write(\\"Connection closed\\");
+	//
+	//     };
+	//
+	//     // Return the following information in the backend.
+	//
+	//     ws.onmessage = function incoming(event) {
+	//
+	//       const msg = JSON.parse(event.data);
+	//
+	//       console.warn(msg);
+	//
+	//       if (msg.operation === \\"stdout\\") {
+	//
+	//         term.write(msg.data);
+	//
+	//       } else {
+	//
+	//         console.warn(\\"invalid msg operation: \\" + msg);
+	//
+	//       }
+	//
+	//     };
+	//
+	//     // Enter the following code in the console.
+	//
+	//     term.onData(data => {
+	//
+	//       const msg = { operation: \\"stdin\\", data: data };
+	//
+	//       ws.send(JSON.stringify(msg));
+	//
+	//     });
+	//
+	//     term.onResize(size => {
+	//
+	//       const msg = { operation: \\"resize\\", cols: size.cols, rows: size.rows };
+	//
+	//       ws.send(JSON.stringify(msg));
+	//
+	//     });
+	//
+	//     fitAddon.fit();
+	//
+	//     };
+	//
+	// example:
+	//
+	// wss://*****
 	WebTerminalUrl *string `json:"WebTerminalUrl,omitempty" xml:"WebTerminalUrl,omitempty"`
 }
 
@@ -6245,30 +6988,64 @@ func (s *GetWebTerminalResponse) SetBody(v *GetWebTerminalResponseBody) *GetWebT
 }
 
 type ListEcsSpecsRequest struct {
+	// Filter by accelerator type. Valid values:
+	//
+	// 	- CPU
+	//
+	// 	- GPU
+	//
 	// example:
 	//
 	// GPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The instance types to query. Separate the types with commas (,).
+	//
 	// example:
 	//
 	// ecs.g6.large,ecs.g6.xlarge
 	InstanceTypes *string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- desc: descending order.
+	//
+	// 	- asc: ascending order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The number of the page to query. The start value is 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// 	- ECS
+	//
+	// 	- Lingjun
+	//
 	// example:
 	//
 	// ECS
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The field based on which the results are sorted. Valid values:
+	//
+	// 	- CPU
+	//
+	// 	- GPU
+	//
+	// 	- Memory
+	//
+	// 	- GmtCreateTime
+	//
 	// example:
 	//
 	// Gpu
@@ -6319,11 +7096,16 @@ func (s *ListEcsSpecsRequest) SetSortBy(v string) *ListEcsSpecsRequest {
 }
 
 type ListEcsSpecsResponseBody struct {
+	// The list of ECS specifications.
 	EcsSpecs []*EcsSpec `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of types that meet the filter conditions.
+	//
 	// example:
 	//
 	// 10
@@ -6383,6 +7165,12 @@ func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpec
 }
 
 type ListJobSanityCheckResultsRequest struct {
+	// The sorting order:
+	//
+	// 	- desc: descending order
+	//
+	// 	- asc: ascending order
+	//
 	// example:
 	//
 	// desc
@@ -6403,11 +7191,16 @@ func (s *ListJobSanityCheckResultsRequest) SetOrder(v string) *ListJobSanityChec
 }
 
 type ListJobSanityCheckResultsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AC9xxx-3xxx-5xxx2-xxxx-FA5
-	RequestID          *string                    `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
+	// The sanity check results.
 	SanityCheckResults [][]*SanityCheckResultItem `json:"SanityCheckResults,omitempty" xml:"SanityCheckResults,omitempty" type:"Repeated"`
+	// The total number of results that meet the filter conditions.
+	//
 	// example:
 	//
 	// 10
@@ -6467,77 +7260,199 @@ func (s *ListJobSanityCheckResultsResponse) SetBody(v *ListJobSanityCheckResults
 }
 
 type ListJobsRequest struct {
+	// The job visibility. Valid values:
+	//
+	// 	- PUBLIC: The job is visible to all members in the workspace.
+	//
+	// 	- PRIVATE: The job is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The ID of the user associated with the job.
+	//
 	// example:
 	//
 	// 16****
 	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// The caller.
+	//
 	// example:
 	//
 	// local
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
+	//
 	// example:
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end time of the query. Use the job creation time to filter data. The default value is the current time.
+	//
 	// example:
 	//
 	// 2020-11-09T14:45:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
+	//
 	// example:
 	//
 	// false
 	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	// The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
+	//
 	// example:
 	//
 	// dlc********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type. You can query any job type. The default value null indicates any job type. Valid values:
+	//
+	// 	- TFJob
+	//
+	// 	- PyTorchJob
+	//
+	// 	- XGBoostJob
+	//
+	// 	- OneFlowJob
+	//
+	// 	- ElasticBatchJob
+	//
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- desc (default)
+	//
+	// 	- asc
+	//
 	// example:
 	//
 	// desc
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Idle resource information. Valid values:
+	//
+	// 	- ForbiddenQuotaOverSold
+	//
+	// 	- ForceQuotaOverSold
+	//
+	// 	- AcceptQuotaOverSold-true (true indicates that the job uses idle resources.)
+	//
+	// 	- AcceptQuotaOverSold-false (false indicates that the job uses guaranteed resources.)
+	//
+	// example:
+	//
+	// ForbiddenQuotaOverSold
 	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
+	// The number of the page to return for the current query. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The specific pipeline ID used to filter jobs.
+	//
 	// example:
 	//
 	// flow-*******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
+	//
 	// example:
 	//
 	// r*****
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource quota name used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by resource quota name.
+	//
+	// example:
+	//
+	// quota***
 	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
+	// Specifies whether to query only the jobs submitted by the current user.
+	//
 	// example:
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// The sorting field in the returned job list. Valid values:
+	//
+	// 	- DisplayName
+	//
+	// 	- JobType
+	//
+	// 	- Status
+	//
+	// 	- GmtCreateTime
+	//
+	// 	- GmtFinishTime
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start time of the query. Use the job creation time to filter data. The default value is the current time minus seven days. In other words, if you do not configure the StartTime and EndTime parameters, the system queries the job list in the last seven days.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Queuing
+	//
+	// 	- Bidding (only available for spot jobs that use Lingjun resources)
+	//
+	// 	- EnvPreparing
+	//
+	// 	- SanityChecking
+	//
+	// 	- Running
+	//
+	// 	- Restarting
+	//
+	// 	- Stopping
+	//
+	// 	- SucceededReserving
+	//
+	// 	- FailedReserving
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
+	// 	- Stopped
+	//
 	// example:
 	//
 	// Running
-	Status          *string            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags            map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	UserIdForFilter *string            `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	Username        *string            `json:"Username,omitempty" xml:"Username,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags map[string]*string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The user ID used to filter jobs.
+	//
+	// example:
+	//
+	// 20**************
+	UserIdForFilter *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
+	// The username used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by username.
+	//
+	// example:
+	//
+	// test***
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1****
@@ -6673,77 +7588,199 @@ func (s *ListJobsRequest) SetWorkspaceId(v string) *ListJobsRequest {
 }
 
 type ListJobsShrinkRequest struct {
+	// The job visibility. Valid values:
+	//
+	// 	- PUBLIC: The job is visible to all members in the workspace.
+	//
+	// 	- PRIVATE: The job is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The ID of the user associated with the job.
+	//
 	// example:
 	//
 	// 16****
 	BusinessUserId *string `json:"BusinessUserId,omitempty" xml:"BusinessUserId,omitempty"`
+	// The caller.
+	//
 	// example:
 	//
 	// local
 	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
+	//
 	// example:
 	//
 	// tf-mnist-test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end time of the query. Use the job creation time to filter data. The default value is the current time.
+	//
 	// example:
 	//
 	// 2020-11-09T14:45:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
+	//
 	// example:
 	//
 	// false
 	FromAllWorkspaces *bool `json:"FromAllWorkspaces,omitempty" xml:"FromAllWorkspaces,omitempty"`
+	// The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
+	//
 	// example:
 	//
 	// dlc********
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job type. You can query any job type. The default value null indicates any job type. Valid values:
+	//
+	// 	- TFJob
+	//
+	// 	- PyTorchJob
+	//
+	// 	- XGBoostJob
+	//
+	// 	- OneFlowJob
+	//
+	// 	- ElasticBatchJob
+	//
 	// example:
 	//
 	// TFJob
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- desc (default)
+	//
+	// 	- asc
+	//
 	// example:
 	//
 	// desc
-	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The Idle resource information. Valid values:
+	//
+	// 	- ForbiddenQuotaOverSold
+	//
+	// 	- ForceQuotaOverSold
+	//
+	// 	- AcceptQuotaOverSold-true (true indicates that the job uses idle resources.)
+	//
+	// 	- AcceptQuotaOverSold-false (false indicates that the job uses guaranteed resources.)
+	//
+	// example:
+	//
+	// ForbiddenQuotaOverSold
 	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
+	// The number of the page to return for the current query. Minimum value: 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The specific pipeline ID used to filter jobs.
+	//
 	// example:
 	//
 	// flow-*******
 	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
+	// The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
+	//
 	// example:
 	//
 	// r*****
-	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource quota name used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by resource quota name.
+	//
+	// example:
+	//
+	// quota***
 	ResourceQuotaName *string `json:"ResourceQuotaName,omitempty" xml:"ResourceQuotaName,omitempty"`
+	// Specifies whether to query only the jobs submitted by the current user.
+	//
 	// example:
 	//
 	// true
 	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// The sorting field in the returned job list. Valid values:
+	//
+	// 	- DisplayName
+	//
+	// 	- JobType
+	//
+	// 	- Status
+	//
+	// 	- GmtCreateTime
+	//
+	// 	- GmtFinishTime
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start time of the query. Use the job creation time to filter data. The default value is the current time minus seven days. In other words, if you do not configure the StartTime and EndTime parameters, the system queries the job list in the last seven days.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The job status. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Queuing
+	//
+	// 	- Bidding (only available for spot jobs that use Lingjun resources)
+	//
+	// 	- EnvPreparing
+	//
+	// 	- SanityChecking
+	//
+	// 	- Running
+	//
+	// 	- Restarting
+	//
+	// 	- Stopping
+	//
+	// 	- SucceededReserving
+	//
+	// 	- FailedReserving
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
+	// 	- Stopped
+	//
 	// example:
 	//
 	// Running
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TagsShrink      *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	// The user ID used to filter jobs.
+	//
+	// example:
+	//
+	// 20**************
 	UserIdForFilter *string `json:"UserIdForFilter,omitempty" xml:"UserIdForFilter,omitempty"`
-	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The username used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by username.
+	//
+	// example:
+	//
+	// test***
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1****
@@ -6879,11 +7916,16 @@ func (s *ListJobsShrinkRequest) SetWorkspaceId(v string) *ListJobsShrinkRequest 
 }
 
 type ListJobsResponseBody struct {
+	// The jobs.
 	Jobs []*JobItem `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// The request ID used to troubleshoot issues.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of jobs that meet the filter conditions.
+	//
 	// example:
 	//
 	// 2
@@ -6943,64 +7985,160 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListTensorboardsRequest struct {
+	// The instance visibility.
+	//
+	// 	- PUBLIC: TensorBoard instances are visible to all members in the workspace.
+	//
+	// 	- PRIVATE: TensorBoard instances are visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The TensorBoard instance name.
+	//
 	// example:
 	//
 	// TestTensorboard
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The end time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is the current time.
+	//
 	// example:
 	//
 	// 2020-11-09T14:45:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The job ID used to filter TensorBoard instances. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
+	//
 	// example:
 	//
 	// dlc-xxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The sorting order.
+	//
+	// 	- desc
+	//
+	// 	- asc
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Minimum value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of TensorBoard instances per page.
+	//
 	// example:
 	//
 	// 50
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method of TensorBoard instances.
+	//
+	// 	- Free: the TensorBoard instance that uses free resources.
+	//
+	// 	- Postpaid: the TensorBoard instance that uses pay-as-you-go resources.
+	//
+	// example:
+	//
+	// Postpaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	QuotaId     *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
-	ShowOwn     *bool   `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// The resource quota ID.
+	//
+	// >
+	//
+	// 	- Only whitelisted users can use resource quotas to create TensorBoard instances. If you want to use this feature, contact us.
+	//
+	// 	- This parameter takes effect only when TensorBoard instances use resource quotas.
+	//
+	// example:
+	//
+	// quota12***
+	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	// Specifies whether to return only the TensorBoard instances created by the current logon account.
+	//
+	// example:
+	//
+	// false
+	ShowOwn *bool `json:"ShowOwn,omitempty" xml:"ShowOwn,omitempty"`
+	// The returned field used to sort TensorBoard instances.
+	//
+	// 	- DisplayName: the name of the TensorBoard instance.
+	//
+	// 	- GmtCreateTime: the time when the TensorBoard instance is created.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The data source ID. For more information about how to obtain the ID of a job, see [ListJobs](https://help.aliyun.com/document_detail/459676.html).
+	//
 	// example:
 	//
 	// dlc-xxxxxx
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The data source associated with the TensorBoard instance. This parameter is no longer used. Only Deep Learning Containers (DLC) training jobs are supported.
+	//
 	// example:
 	//
 	// job
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The start time of the query. Use the UTC time when the TensorBoard instance is created to filter data. If you leave this parameter empty, the default value is seven days before the current time.
+	//
 	// example:
 	//
 	// 2020-11-08T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The TensorBoard instance status. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- Running
+	//
+	// 	- Stopped
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The TensorBoard instance ID used to filter TensorBoard instances.
+	//
 	// example:
 	//
 	// tensorboard-xxx
 	TensorboardId *string `json:"TensorboardId,omitempty" xml:"TensorboardId,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// The user ID.
+	//
+	// example:
+	//
+	// 161****3000
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
+	// example:
+	//
+	// she****mo
+	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	// Specifies whether to return the information about the TensorBoard instance.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The workspace ID. Obtain a list of TensorBoard instances based on the workspace ID.
+	//
+	// <props="china">For more information, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 380
@@ -7116,11 +8254,16 @@ func (s *ListTensorboardsRequest) SetWorkspaceId(v string) *ListTensorboardsRequ
 }
 
 type ListTensorboardsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
-	RequestId    *string        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The TensorBoard instances.
 	Tensorboards []*Tensorboard `json:"Tensorboards,omitempty" xml:"Tensorboards,omitempty" type:"Repeated"`
+	// The total number of data sources that meet the conditions.
+	//
 	// example:
 	//
 	// 100
@@ -7180,6 +8323,10 @@ func (s *ListTensorboardsResponse) SetBody(v *ListTensorboardsResponseBody) *Lis
 }
 
 type StartTensorboardRequest struct {
+	// The workspace ID.
+	//
+	// <props="china">For more information about how to obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 380
@@ -7200,10 +8347,14 @@ func (s *StartTensorboardRequest) SetWorkspaceId(v string) *StartTensorboardRequ
 }
 
 type StartTensorboardResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The TensorBoard instance ID.
+	//
 	// example:
 	//
 	// tensorboard-20210114104214-vf9lowjt3pso
@@ -7258,10 +8409,14 @@ func (s *StartTensorboardResponse) SetBody(v *StartTensorboardResponseBody) *Sta
 }
 
 type StopJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc-20210126170216-xxxxxxx
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID. You can troubleshoot issues based on the request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxx
@@ -7316,6 +8471,10 @@ func (s *StopJobResponse) SetBody(v *StopJobResponseBody) *StopJobResponse {
 }
 
 type StopTensorboardRequest struct {
+	// The workspace ID.
+	//
+	// <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 380
@@ -7336,10 +8495,14 @@ func (s *StopTensorboardRequest) SetWorkspaceId(v string) *StopTensorboardReques
 }
 
 type StopTensorboardResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the TensorBoard instance.
+	//
 	// example:
 	//
 	// tensorboard-20210114104214-xxxxxxxx
@@ -7394,7 +8557,22 @@ func (s *StopTensorboardResponse) SetBody(v *StopTensorboardResponseBody) *StopT
 }
 
 type UpdateJobRequest struct {
+	// The job visibility. Valid values:
+	//
+	// 	- PUBLIC: The job is visible to all members in the workspace.
+	//
+	// 	- PRIVATE: The job is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The job priority. Valid values: 1 to 9.
+	//
+	// 	- 1: the lowest priority.
+	//
+	// 	- 9: the highest priority.
+	//
 	// example:
 	//
 	// 5
@@ -7420,10 +8598,14 @@ func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
 }
 
 type UpdateJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// dlc*************
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The request ID, which is used for diagnostics and Q\\&A.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -7478,12 +8660,27 @@ func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse
 }
 
 type UpdateTensorboardRequest struct {
-	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The visibility of the jobs. Valid values:
+	//
+	// 	- PUBLIC: The jobs are public in the workspace.
+	//
+	// 	- PRIVATE: The jobs are visible only to you and the administrator of the workspace.
+	//
 	// example:
 	//
-	// MaxRunningTimeMinutes
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The maximum running time. Unit: minutes.
+	//
+	// example:
+	//
+	// 300
 	MaxRunningTimeMinutes *int64  `json:"MaxRunningTimeMinutes,omitempty" xml:"MaxRunningTimeMinutes,omitempty"`
 	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The workspace ID.
+	//
+	// <props="china">For more information about how to query the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 380
@@ -7519,10 +8716,14 @@ func (s *UpdateTensorboardRequest) SetWorkspaceId(v string) *UpdateTensorboardRe
 }
 
 type UpdateTensorboardResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the TensorBoard instance.
+	//
 	// example:
 	//
 	// tensorboard-20210114104214-xxxxxxxx
@@ -7593,12 +8794,9 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
-		"ap-northeast-1":              tea.String("pai-dlc.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("pai-dlc.aliyuncs.com"),
 		"ap-south-1":                  tea.String("pai-dlc.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("pai-dlc.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("pai-dlc.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("pai-dlc.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("pai-dlc.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("pai-dlc.aliyuncs.com"),
 		"cn-beijing-gov-1":            tea.String("pai-dlc.aliyuncs.com"),
@@ -7629,7 +8827,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shenzhen-st4-d01":         tea.String("pai-dlc.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("pai-dlc.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("pai-dlc.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("pai-dlc.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("pai-dlc.aliyuncs.com"),
 		"cn-zhangbei":                 tea.String("pai-dlc.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("pai-dlc.aliyuncs.com"),
@@ -7640,8 +8837,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"eu-west-1-oxs":               tea.String("pai-dlc.aliyuncs.com"),
 		"me-east-1":                   tea.String("pai-dlc.aliyuncs.com"),
 		"rus-west-1-pop":              tea.String("pai-dlc.aliyuncs.com"),
-		"us-east-1":                   tea.String("pai-dlc.aliyuncs.com"),
-		"us-west-1":                   tea.String("pai-dlc.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -7676,7 +8871,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 创建一个DLC作业
+// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - CreateJobRequest
 //
@@ -7812,7 +9011,11 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, headers ma
 
 // Summary:
 //
-// 创建一个DLC作业
+// Creates a job that runs in a cluster. You can configure the data source, code source, startup command, and computing resources of each node on which a job runs.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - CreateJobRequest
 //
@@ -7831,7 +9034,7 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 
 // Summary:
 //
-// 创建一个Tensorboard
+// Creates a TensorBoard by using a job or specifying a data source configuration.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -7963,7 +9166,7 @@ func (client *Client) CreateTensorboardWithOptions(request *CreateTensorboardReq
 
 // Summary:
 //
-// 创建一个Tensorboard
+// Creates a TensorBoard by using a job or specifying a data source configuration.
 //
 // @param request - CreateTensorboardRequest
 //
@@ -7982,7 +9185,7 @@ func (client *Client) CreateTensorboard(request *CreateTensorboardRequest) (_res
 
 // Summary:
 //
-// 删除一个DLC作业
+// Deletes a completed or stopped job.
 //
 // @param headers - map
 //
@@ -8026,7 +9229,7 @@ func (client *Client) DeleteJobWithOptions(JobId *string, headers map[string]*st
 
 // Summary:
 //
-// 删除一个DLC作业
+// Deletes a completed or stopped job.
 //
 // @return DeleteJobResponse
 func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err error) {
@@ -8043,7 +9246,7 @@ func (client *Client) DeleteJob(JobId *string) (_result *DeleteJobResponse, _err
 
 // Summary:
 //
-// 删除一个数据源配置
+// Deletes a stopped TensorBoard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -8099,7 +9302,7 @@ func (client *Client) DeleteTensorboardWithOptions(TensorboardId *string, reques
 
 // Summary:
 //
-// 删除一个数据源配置
+// Deletes a stopped TensorBoard.
 //
 // @param request - DeleteTensorboardRequest
 //
@@ -8118,7 +9321,7 @@ func (client *Client) DeleteTensorboard(TensorboardId *string, request *DeleteTe
 
 // Summary:
 //
-// 获取一个DLC作业详情
+// Obtains the configuration and runtime information of a job.
 //
 // @param request - GetJobRequest
 //
@@ -8174,7 +9377,7 @@ func (client *Client) GetJobWithOptions(JobId *string, request *GetJobRequest, h
 
 // Summary:
 //
-// 获取一个DLC作业详情
+// Obtains the configuration and runtime information of a job.
 //
 // @param request - GetJobRequest
 //
@@ -8193,7 +9396,7 @@ func (client *Client) GetJob(JobId *string, request *GetJobRequest) (_result *Ge
 
 // Summary:
 //
-// 获取作业的事件
+// Obtains the system events of a job.
 //
 // @param request - GetJobEventsRequest
 //
@@ -8257,7 +9460,7 @@ func (client *Client) GetJobEventsWithOptions(JobId *string, request *GetJobEven
 
 // Summary:
 //
-// 获取作业的事件
+// Obtains the system events of a job.
 //
 // @param request - GetJobEventsRequest
 //
@@ -8276,7 +9479,7 @@ func (client *Client) GetJobEvents(JobId *string, request *GetJobEventsRequest) 
 
 // Summary:
 //
-// 获取一个作业的资源监控指标
+// Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
 //
 // @param request - GetJobMetricsRequest
 //
@@ -8348,7 +9551,7 @@ func (client *Client) GetJobMetricsWithOptions(JobId *string, request *GetJobMet
 
 // Summary:
 //
-// 获取一个作业的资源监控指标
+// Obtains the monitoring data of a job, including the CPU, GPU, and memory utilization, network, and disk read/write rate.
 //
 // @param request - GetJobMetricsRequest
 //
@@ -8367,7 +9570,7 @@ func (client *Client) GetJobMetrics(JobId *string, request *GetJobMetricsRequest
 
 // Summary:
 //
-// 获取DLC作业某次算力健康检测结果
+// Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -8431,7 +9634,7 @@ func (client *Client) GetJobSanityCheckResultWithOptions(JobId *string, request 
 
 // Summary:
 //
-// 获取DLC作业某次算力健康检测结果
+// Obtains specified job sanity check result in a Deep Learning Containers (DLC) job.
 //
 // @param request - GetJobSanityCheckResultRequest
 //
@@ -8450,7 +9653,7 @@ func (client *Client) GetJobSanityCheckResult(JobId *string, request *GetJobSani
 
 // Summary:
 //
-// 获取作业中一个运行实例的系统事件
+// Obtains the system events of a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
 //
@@ -8518,7 +9721,7 @@ func (client *Client) GetPodEventsWithOptions(JobId *string, PodId *string, requ
 
 // Summary:
 //
-// 获取作业中一个运行实例的系统事件
+// Obtains the system events of a specific node in a job to locate and troubleshoot issues.
 //
 // @param request - GetPodEventsRequest
 //
@@ -8537,7 +9740,7 @@ func (client *Client) GetPodEvents(JobId *string, PodId *string, request *GetPod
 
 // Summary:
 //
-// 获取作业中一个运行实例的日志
+// Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
 //
 // @param request - GetPodLogsRequest
 //
@@ -8609,7 +9812,7 @@ func (client *Client) GetPodLogsWithOptions(JobId *string, PodId *string, reques
 
 // Summary:
 //
-// 获取作业中一个运行实例的日志
+// Obtains or downloads the logs of a node for a task. The logs are from the stdout and stderr of the system and user scripts.
 //
 // @param request - GetPodLogsRequest
 //
@@ -8628,7 +9831,7 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 
 // Summary:
 //
-// 获取一个Tensorboard
+// Queries the information of a TensorBoard instance.
 //
 // @param request - GetTensorboardRequest
 //
@@ -8692,7 +9895,7 @@ func (client *Client) GetTensorboardWithOptions(TensorboardId *string, request *
 
 // Summary:
 //
-// 获取一个Tensorboard
+// Queries the information of a TensorBoard instance.
 //
 // @param request - GetTensorboardRequest
 //
@@ -8711,7 +9914,7 @@ func (client *Client) GetTensorboard(TensorboardId *string, request *GetTensorbo
 
 // Summary:
 //
-// Get the shared url for tensorboard
+// Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
 //
 // @param request - GetTensorboardSharedUrlRequest
 //
@@ -8767,7 +9970,7 @@ func (client *Client) GetTensorboardSharedUrlWithOptions(TensorboardId *string, 
 
 // Summary:
 //
-// Get the shared url for tensorboard
+// Obtains the shareable link of a TensorBoard task. The link contains digital tokens. You can use a shareable link to access a TensorBoard task.
 //
 // @param request - GetTensorboardSharedUrlRequest
 //
@@ -8786,7 +9989,7 @@ func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *Ge
 
 // Summary:
 //
-// 获取用户Token
+// Queries a user token.
 //
 // @param request - GetTokenRequest
 //
@@ -8850,7 +10053,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// 获取用户Token
+// Queries a user token.
 //
 // @param request - GetTokenRequest
 //
@@ -8869,7 +10072,7 @@ func (client *Client) GetToken(request *GetTokenRequest) (_result *GetTokenRespo
 
 // Summary:
 //
-// Get the url for accessing pod's terminal in k8s
+// Provides methods and steps to obtain a HTTP link for accessing a container.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -8929,7 +10132,7 @@ func (client *Client) GetWebTerminalWithOptions(JobId *string, PodId *string, re
 
 // Summary:
 //
-// Get the url for accessing pod's terminal in k8s
+// Provides methods and steps to obtain a HTTP link for accessing a container.
 //
 // @param request - GetWebTerminalRequest
 //
@@ -8948,7 +10151,7 @@ func (client *Client) GetWebTerminal(JobId *string, PodId *string, request *GetW
 
 // Summary:
 //
-// ListEcsSpecs
+// Queries the list of supported instance types.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -9028,7 +10231,7 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 
 // Summary:
 //
-// ListEcsSpecs
+// Queries the list of supported instance types.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -9047,7 +10250,7 @@ func (client *Client) ListEcsSpecs(request *ListEcsSpecsRequest) (_result *ListE
 
 // Summary:
 //
-// 获取某个DLC作业的多次算力健康检测结果
+// Obtains the results of all sanity checks for a DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -9103,7 +10306,7 @@ func (client *Client) ListJobSanityCheckResultsWithOptions(JobId *string, reques
 
 // Summary:
 //
-// 获取某个DLC作业的多次算力健康检测结果
+// Obtains the results of all sanity checks for a DLC job.
 //
 // @param request - ListJobSanityCheckResultsRequest
 //
@@ -9122,7 +10325,7 @@ func (client *Client) ListJobSanityCheckResults(JobId *string, request *ListJobS
 
 // Summary:
 //
-// 根据过滤条件获取DLC作业列表
+// Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
 //
 // @param tmpReq - ListJobsRequest
 //
@@ -9276,7 +10479,7 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 // Summary:
 //
-// 根据过滤条件获取DLC作业列表
+// Queries a list of jobs and supports pagination, sorting, and filtering by conditions.
 //
 // @param request - ListJobsRequest
 //
@@ -9295,7 +10498,7 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 
 // Summary:
 //
-// 获取Tensorboard
+// Queries a list of TensorBoard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -9427,7 +10630,7 @@ func (client *Client) ListTensorboardsWithOptions(request *ListTensorboardsReque
 
 // Summary:
 //
-// 获取Tensorboard
+// Queries a list of TensorBoard instances.
 //
 // @param request - ListTensorboardsRequest
 //
@@ -9446,7 +10649,7 @@ func (client *Client) ListTensorboards(request *ListTensorboardsRequest) (_resul
 
 // Summary:
 //
-// 开始运行tensorboard
+// Starts a TensorBoard instance.
 //
 // @param request - StartTensorboardRequest
 //
@@ -9502,7 +10705,7 @@ func (client *Client) StartTensorboardWithOptions(TensorboardId *string, request
 
 // Summary:
 //
-// 开始运行tensorboard
+// Starts a TensorBoard instance.
 //
 // @param request - StartTensorboardRequest
 //
@@ -9521,7 +10724,7 @@ func (client *Client) StartTensorboard(TensorboardId *string, request *StartTens
 
 // Summary:
 //
-// 停止一个DLC作业
+// Stops a running job.
 //
 // @param headers - map
 //
@@ -9565,7 +10768,7 @@ func (client *Client) StopJobWithOptions(JobId *string, headers map[string]*stri
 
 // Summary:
 //
-// 停止一个DLC作业
+// Stops a running job.
 //
 // @return StopJobResponse
 func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err error) {
@@ -9582,7 +10785,7 @@ func (client *Client) StopJob(JobId *string) (_result *StopJobResponse, _err err
 
 // Summary:
 //
-// 停止运行tensorboard
+// Stops a TensorBoard instance.
 //
 // @param request - StopTensorboardRequest
 //
@@ -9638,7 +10841,7 @@ func (client *Client) StopTensorboardWithOptions(TensorboardId *string, request 
 
 // Summary:
 //
-// 停止运行tensorboard
+// Stops a TensorBoard instance.
 //
 // @param request - StopTensorboardRequest
 //
@@ -9657,7 +10860,7 @@ func (client *Client) StopTensorboard(TensorboardId *string, request *StopTensor
 
 // Summary:
 //
-// 更新一个Job
+// Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
 //
 // @param request - UpdateJobRequest
 //
@@ -9717,7 +10920,7 @@ func (client *Client) UpdateJobWithOptions(JobId *string, request *UpdateJobRequ
 
 // Summary:
 //
-// 更新一个Job
+// Updates the configuration information of a job. For example, you can modify the priority of a job in a queue.
 //
 // @param request - UpdateJobRequest
 //
@@ -9736,7 +10939,7 @@ func (client *Client) UpdateJob(JobId *string, request *UpdateJobRequest) (_resu
 
 // Summary:
 //
-// 更新tensorboard
+// Updates a TensorBoard instance.
 //
 // @param request - UpdateTensorboardRequest
 //
@@ -9804,7 +11007,7 @@ func (client *Client) UpdateTensorboardWithOptions(TensorboardId *string, reques
 
 // Summary:
 //
-// 更新tensorboard
+// Updates a TensorBoard instance.
 //
 // @param request - UpdateTensorboardRequest
 //

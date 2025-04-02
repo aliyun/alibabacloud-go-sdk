@@ -1,3 +1,7 @@
+2025-04-02 Version: v1.5.23
+- Update API CreateJob: add request parameters body.DataSources.$.MountAccess.
+
+
 2025-01-22 Version: v1.5.22
 - Generated golang 2020-12-03 for pai-dlc.
 
