@@ -3464,6 +3464,750 @@ func (s *GetIssuesResponse) SetBody(v *GetIssuesResponseBody) *GetIssuesResponse
 	return s
 }
 
+type GetSymbolicFilesRequest struct {
+	// appKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 1.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// 1743523199999
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// NORMAL
+	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
+	// example:
+	//
+	// app_so.zip
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// APP_SO
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// android
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1742918400000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// uuid
+	//
+	// example:
+	//
+	// abcf4a4b-158c-4a0b-b81c-262785d84c4f
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetSymbolicFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSymbolicFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSymbolicFilesRequest) SetAppKey(v int64) *GetSymbolicFilesRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetAppVersion(v string) *GetSymbolicFilesRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetEndTime(v int64) *GetSymbolicFilesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetExportStatus(v string) *GetSymbolicFilesRequest {
+	s.ExportStatus = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetFileName(v string) *GetSymbolicFilesRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetFileType(v string) *GetSymbolicFilesRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetOs(v string) *GetSymbolicFilesRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetPageIndex(v int32) *GetSymbolicFilesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetPageSize(v int32) *GetSymbolicFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetStartTime(v int64) *GetSymbolicFilesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSymbolicFilesRequest) SetUuid(v string) *GetSymbolicFilesRequest {
+	s.Uuid = &v
+	return s
+}
+
+type GetSymbolicFilesResponseBody struct {
+	// Args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *GetSymbolicFilesResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// requestId
+	//
+	// example:
+	//
+	// B3AD0FE4-36EF-1641-90B1-77618166F2ff
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSymbolicFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSymbolicFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSymbolicFilesResponseBody) SetArgs(v map[string]interface{}) *GetSymbolicFilesResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBody) SetErrorCode(v int32) *GetSymbolicFilesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBody) SetMessage(v string) *GetSymbolicFilesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBody) SetModel(v *GetSymbolicFilesResponseBodyModel) *GetSymbolicFilesResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBody) SetRequestId(v string) *GetSymbolicFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBody) SetSuccess(v bool) *GetSymbolicFilesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSymbolicFilesResponseBodyModel struct {
+	Items []*GetSymbolicFilesResponseBodyModelItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3
+	Pages *int32 `json:"Pages,omitempty" xml:"Pages,omitempty"`
+	// example:
+	//
+	// 30
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s GetSymbolicFilesResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSymbolicFilesResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetSymbolicFilesResponseBodyModel) SetItems(v []*GetSymbolicFilesResponseBodyModelItems) *GetSymbolicFilesResponseBodyModel {
+	s.Items = v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModel) SetPageNum(v int32) *GetSymbolicFilesResponseBodyModel {
+	s.PageNum = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModel) SetPageSize(v int32) *GetSymbolicFilesResponseBodyModel {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModel) SetPages(v int32) *GetSymbolicFilesResponseBodyModel {
+	s.Pages = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModel) SetTotal(v int64) *GetSymbolicFilesResponseBodyModel {
+	s.Total = &v
+	return s
+}
+
+type GetSymbolicFilesResponseBodyModelItems struct {
+	// example:
+	//
+	// 1.0.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// e8a1a2b9ab653780b34383a942ac91b2
+	BuildId *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	// example:
+	//
+	// EXPORT_SUCCESS
+	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
+	// example:
+	//
+	// app_so.zip
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 24781204@android/1743506690915-app_so.zip
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// example:
+	//
+	// APP_SO
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// 1655962713000
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 392522
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// uuid
+	//
+	// example:
+	//
+	// 9634758587856312DEV
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s GetSymbolicFilesResponseBodyModelItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSymbolicFilesResponseBodyModelItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetAppVersion(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetBuildId(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.BuildId = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetExportStatus(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.ExportStatus = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetFileName(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetFilePath(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.FilePath = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetFileType(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetGmtCreate(v int64) *GetSymbolicFilesResponseBodyModelItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetId(v int64) *GetSymbolicFilesResponseBodyModelItems {
+	s.Id = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetStatus(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponseBodyModelItems) SetUuid(v string) *GetSymbolicFilesResponseBodyModelItems {
+	s.Uuid = &v
+	return s
+}
+
+type GetSymbolicFilesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSymbolicFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSymbolicFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSymbolicFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSymbolicFilesResponse) SetHeaders(v map[string]*string) *GetSymbolicFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSymbolicFilesResponse) SetStatusCode(v int32) *GetSymbolicFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSymbolicFilesResponse) SetBody(v *GetSymbolicFilesResponseBody) *GetSymbolicFilesResponse {
+	s.Body = v
+	return s
+}
+
+type RequestUploadTokenRequest struct {
+	// appKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24780725
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// android
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+}
+
+func (s RequestUploadTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestUploadTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RequestUploadTokenRequest) SetAppKey(v int64) *RequestUploadTokenRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *RequestUploadTokenRequest) SetOs(v string) *RequestUploadTokenRequest {
+	s.Os = &v
+	return s
+}
+
+type RequestUploadTokenResponseBody struct {
+	// Args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 200
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *RequestUploadTokenResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// AB8AB5EC-9636-421D-AE7C-BB227DFC95B0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RequestUploadTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestUploadTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RequestUploadTokenResponseBody) SetArgs(v map[string]interface{}) *RequestUploadTokenResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBody) SetErrorCode(v int32) *RequestUploadTokenResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBody) SetMessage(v string) *RequestUploadTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBody) SetModel(v *RequestUploadTokenResponseBodyModel) *RequestUploadTokenResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBody) SetRequestId(v string) *RequestUploadTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBody) SetSuccess(v bool) *RequestUploadTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RequestUploadTokenResponseBodyModel struct {
+	// OSS AccessKeyId
+	//
+	// example:
+	//
+	// STS.NXEGHKdjkdnINNgLiDE
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// OSS AccessKeySecret
+	//
+	// example:
+	//
+	// ikKgkNDGedInGEIngL
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	// example:
+	//
+	// oss-cn-shanghai.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// example:
+	//
+	// Szi9v92mHNikdknfe
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// example:
+	//
+	// symbolic-prod
+	UploadBucket *string `json:"UploadBucket,omitempty" xml:"UploadBucket,omitempty"`
+	// example:
+	//
+	// /335374903@iphoneos/
+	UploadDir *string `json:"UploadDir,omitempty" xml:"UploadDir,omitempty"`
+}
+
+func (s RequestUploadTokenResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestUploadTokenResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetAccessKeyId(v string) *RequestUploadTokenResponseBodyModel {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetAccessKeySecret(v string) *RequestUploadTokenResponseBodyModel {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetEndpoint(v string) *RequestUploadTokenResponseBodyModel {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetSecurityToken(v string) *RequestUploadTokenResponseBodyModel {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetUploadBucket(v string) *RequestUploadTokenResponseBodyModel {
+	s.UploadBucket = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponseBodyModel) SetUploadDir(v string) *RequestUploadTokenResponseBodyModel {
+	s.UploadDir = &v
+	return s
+}
+
+type RequestUploadTokenResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RequestUploadTokenResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RequestUploadTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestUploadTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RequestUploadTokenResponse) SetHeaders(v map[string]*string) *RequestUploadTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RequestUploadTokenResponse) SetStatusCode(v int32) *RequestUploadTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RequestUploadTokenResponse) SetBody(v *RequestUploadTokenResponseBody) *RequestUploadTokenResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitSymbolicRequest struct {
+	// appKey
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24781204
+	AppKey *int64 `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// example:
+	//
+	// 1.0
+	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// example:
+	//
+	// ab6b81d800968f2
+	BuildId *string `json:"BuildId,omitempty" xml:"BuildId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// app_so.zip
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 24781204@android/1743506690915-app_so.zip
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// APP_SO
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// android
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// uuid
+	//
+	// example:
+	//
+	// abcf4a4b-158c-4a0b-b81c-262785d84c4f
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s SubmitSymbolicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSymbolicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSymbolicRequest) SetAppKey(v int64) *SubmitSymbolicRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetAppVersion(v string) *SubmitSymbolicRequest {
+	s.AppVersion = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetBuildId(v string) *SubmitSymbolicRequest {
+	s.BuildId = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetFileName(v string) *SubmitSymbolicRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetFilePath(v string) *SubmitSymbolicRequest {
+	s.FilePath = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetFileType(v string) *SubmitSymbolicRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetOs(v string) *SubmitSymbolicRequest {
+	s.Os = &v
+	return s
+}
+
+func (s *SubmitSymbolicRequest) SetUuid(v string) *SubmitSymbolicRequest {
+	s.Uuid = &v
+	return s
+}
+
+type SubmitSymbolicResponseBody struct {
+	// args
+	Args map[string]interface{} `json:"Args,omitempty" xml:"Args,omitempty"`
+	// example:
+	//
+	// 500
+	ErrorCode *int32 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// Successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B3AD0FE4-36EF-1641-90B1-77618166F2ff
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitSymbolicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSymbolicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSymbolicResponseBody) SetArgs(v map[string]interface{}) *SubmitSymbolicResponseBody {
+	s.Args = v
+	return s
+}
+
+func (s *SubmitSymbolicResponseBody) SetErrorCode(v int32) *SubmitSymbolicResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitSymbolicResponseBody) SetMessage(v string) *SubmitSymbolicResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitSymbolicResponseBody) SetRequestId(v string) *SubmitSymbolicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitSymbolicResponseBody) SetSuccess(v bool) *SubmitSymbolicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitSymbolicResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSymbolicResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSymbolicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSymbolicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSymbolicResponse) SetHeaders(v map[string]*string) *SubmitSymbolicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSymbolicResponse) SetStatusCode(v int32) *SubmitSymbolicResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSymbolicResponse) SetBody(v *SubmitSymbolicResponseBody) *SubmitSymbolicResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -3931,6 +4675,267 @@ func (client *Client) GetIssues(request *GetIssuesRequest) (_result *GetIssuesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIssuesResponse{}
 	_body, _err := client.GetIssuesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetSymbolicFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSymbolicFilesResponse
+func (client *Client) GetSymbolicFilesWithOptions(request *GetSymbolicFilesRequest, runtime *util.RuntimeOptions) (_result *GetSymbolicFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportStatus)) {
+		body["ExportStatus"] = request.ExportStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		body["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSymbolicFiles"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSymbolicFilesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSymbolicFilesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - GetSymbolicFilesRequest
+//
+// @return GetSymbolicFilesResponse
+func (client *Client) GetSymbolicFiles(request *GetSymbolicFilesRequest) (_result *GetSymbolicFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSymbolicFilesResponse{}
+	_body, _err := client.GetSymbolicFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - RequestUploadTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequestUploadTokenResponse
+func (client *Client) RequestUploadTokenWithOptions(request *RequestUploadTokenRequest, runtime *util.RuntimeOptions) (_result *RequestUploadTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RequestUploadToken"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RequestUploadTokenResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RequestUploadTokenResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - RequestUploadTokenRequest
+//
+// @return RequestUploadTokenResponse
+func (client *Client) RequestUploadToken(request *RequestUploadTokenRequest) (_result *RequestUploadTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RequestUploadTokenResponse{}
+	_body, _err := client.RequestUploadTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SubmitSymbolicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSymbolicResponse
+func (client *Client) SubmitSymbolicWithOptions(request *SubmitSymbolicRequest, runtime *util.RuntimeOptions) (_result *SubmitSymbolicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		body["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppVersion)) {
+		body["AppVersion"] = request.AppVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildId)) {
+		body["BuildId"] = request.BuildId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilePath)) {
+		body["FilePath"] = request.FilePath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Os)) {
+		body["Os"] = request.Os
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		body["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSymbolic"),
+		Version:     tea.String("2019-06-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSymbolicResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSymbolicResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// @param request - SubmitSymbolicRequest
+//
+// @return SubmitSymbolicResponse
+func (client *Client) SubmitSymbolic(request *SubmitSymbolicRequest) (_result *SubmitSymbolicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSymbolicResponse{}
+	_body, _err := client.SubmitSymbolicWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
