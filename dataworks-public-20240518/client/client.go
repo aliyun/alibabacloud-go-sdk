@@ -3824,18 +3824,29 @@ type CreateDIJobRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	JobType     *string                        `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 任务类型，可选
+	//
+	//  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+	//
+	//  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+	//
+	//  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
+	//
+	// example:
+	//
+	// DatabaseRealtimeMigration
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// 	- FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
 	//
-	// 	- RealtimeIncremental: real-time incremental synchronization
+	// 	- RealtimeIncremental: real-time incremental synchronization of data in a single table
 	//
-	// 	- Full: full synchronization
+	// 	- Full: full batch synchronization of data in an entire database
 	//
-	// 	- OfflineIncremental: batch incremental synchronization
+	// 	- OfflineIncremental: batch incremental synchronization of data in an entire database
 	//
-	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	// 	- FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
 	//
 	// This parameter is required.
 	//
@@ -4738,18 +4749,29 @@ type CreateDIJobShrinkRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	JobType           *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 任务类型，可选
+	//
+	//  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+	//
+	//  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+	//
+	//  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
+	//
+	// example:
+	//
+	// DatabaseRealtimeMigration
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// 	- FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
 	//
-	// 	- RealtimeIncremental: real-time incremental synchronization
+	// 	- RealtimeIncremental: real-time incremental synchronization of data in a single table
 	//
-	// 	- Full: full synchronization
+	// 	- Full: full batch synchronization of data in an entire database
 	//
-	// 	- OfflineIncremental: batch incremental synchronization
+	// 	- OfflineIncremental: batch incremental synchronization of data in an entire database
 	//
-	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	// 	- FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
 	//
 	// This parameter is required.
 	//
@@ -14388,12 +14410,16 @@ func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRul
 }
 
 type GetCertificateRequest struct {
+	// The ID of the certificate file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The ID of the workspace to which the certificate file belongs.
+	//
 	// example:
 	//
 	// 1065601
@@ -14419,7 +14445,10 @@ func (s *GetCertificateRequest) SetProjectId(v int64) *GetCertificateRequest {
 }
 
 type GetCertificateResponseBody struct {
+	// The details of the certificate file.
 	Certificate *GetCertificateResponseBodyCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0000-ABCD-EFG****
@@ -14445,30 +14474,44 @@ func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateRespo
 }
 
 type GetCertificateResponseBodyCertificate struct {
+	// The time when the certificate file was created. The value is a UNIX timestamp. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1730217600000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the certificate file.
+	//
 	// example:
 	//
 	// 1107550004253538
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// This is a file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The size of the certificate file, in bytes.
+	//
 	// example:
 	//
 	// 77549
 	FileSizeInBytes *int64 `json:"FileSizeInBytes,omitempty" xml:"FileSizeInBytes,omitempty"`
+	// The ID of the certificate file.
+	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the certificate file.
+	//
 	// example:
 	//
 	// ca1.crt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the workspace to which the certificate file belongs.
+	//
 	// example:
 	//
 	// 177161
@@ -14806,7 +14849,16 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// Running
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	JobType   *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// DatabaseRealtimeMigration (Full Database Real-Time): Perform stream synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+	//
+	// DatabaseOfflineMigration (Full Database Offline): Perform batch synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+	//
+	// SingleTableRealtimeMigration (Single Table Real-Time): Perform stream synchronization of a single table from the source.
+	//
+	// example:
+	//
+	// DatabaseRealtimeMigration
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
 	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
@@ -16995,7 +17047,7 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -17034,7 +17086,7 @@ type GetDataQualityEvaluationTaskInstanceResponseBodyDataQualityEvaluationTaskIn
 	//
 	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -26338,40 +26390,58 @@ func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAle
 }
 
 type ListCertificatesRequest struct {
+	// The ID of the user who created the certificate files.
+	//
 	// example:
 	//
 	// 1107550004253538
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The time when the certificate file was created. You can call this operation to query the files that are created before the time. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1593877765000
 	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// The name of the certificate file. Fuzzy match by file name is supported.
+	//
 	// example:
 	//
 	// xm_create_test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which you want to sort the certificate files. Valid values: Desc: descending order ASC: ascending order Default value: Asc
+	//
 	// example:
 	//
 	// Asc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10. Maximum value: 100.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the workspace to which the certificate file belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10000
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// The field used to sort the certificate files. Valid values: CreateTime Id Name Default value: Id
+	//
 	// example:
 	//
 	// Id
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The time when the certificate file was created. You can call this operation to query the files that are created after the time. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 1730217600000
@@ -26432,7 +26502,10 @@ func (s *ListCertificatesRequest) SetStartCreateTime(v int64) *ListCertificatesR
 }
 
 type ListCertificatesResponseBody struct {
+	// The pagination information.
 	PagingInfo *ListCertificatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ecb967ec-c137-48****
@@ -26458,15 +26531,22 @@ func (s *ListCertificatesResponseBody) SetRequestId(v string) *ListCertificatesR
 }
 
 type ListCertificatesResponseBodyPagingInfo struct {
+	// The certificate files.
 	Certificates []*ListCertificatesResponseBodyPagingInfoCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -26502,26 +26582,38 @@ func (s *ListCertificatesResponseBodyPagingInfo) SetTotalCount(v int32) *ListCer
 }
 
 type ListCertificatesResponseBodyPagingInfoCertificates struct {
+	// The time when the certificate file was created. This value is a UNIX timestamp.
+	//
 	// example:
 	//
 	// 1730217600000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the user who created the certificate file.
+	//
 	// example:
 	//
 	// 1107550004253538
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// The description.
+	//
 	// example:
 	//
 	// This is a file
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The size of the certificate file, in bytes.
+	//
 	// example:
 	//
 	// 1024
 	FileSizeInBytes *int64 `json:"FileSizeInBytes,omitempty" xml:"FileSizeInBytes,omitempty"`
+	// The ID of the certificate file.
+	//
 	// example:
 	//
 	// 676303114031776
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The name of the certificate file.
+	//
 	// example:
 	//
 	// ca1.crt
@@ -28413,9 +28505,7 @@ func (s *ListDIJobsResponse) SetBody(v *ListDIJobsResponseBody) *ListDIJobsRespo
 }
 
 type ListDataAssetTagsRequest struct {
-	// The type of the tag.
-	//
-	// Valid values:
+	// The type of the tag. Valid values:
 	//
 	// 	- Normal
 	//
@@ -33896,9 +33986,9 @@ func (s *ListDownstreamTaskInstancesResponseBodyPagingInfo) SetTotalCount(v int3
 type ListDownstreamTaskInstancesResponseBodyPagingInfoDownstreamTaskInstances struct {
 	// The scheduling dependency type. Valid values:
 	//
-	// 	- Normal: same-cycle scheduling dependency
+	// 	- Normal
 	//
-	// 	- CrossCycle: cross-cycle scheduling dependency
+	// 	- CrossCycle
 	//
 	// example:
 	//
@@ -38783,6 +38873,7 @@ func (s *ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode) SetOutput(v s
 }
 
 type ListNodesResponseBodyPagingInfoNodesRuntimeResource struct {
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
 	// The resource group ID.
 	//
 	// example:
@@ -38797,6 +38888,11 @@ func (s ListNodesResponseBodyPagingInfoNodesRuntimeResource) String() string {
 
 func (s ListNodesResponseBodyPagingInfoNodesRuntimeResource) GoString() string {
 	return s.String()
+}
+
+func (s *ListNodesResponseBodyPagingInfoNodesRuntimeResource) SetResourceGroup(v string) *ListNodesResponseBodyPagingInfoNodesRuntimeResource {
+	s.ResourceGroup = &v
+	return s
 }
 
 func (s *ListNodesResponseBodyPagingInfoNodesRuntimeResource) SetResourceGroupId(v string) *ListNodesResponseBodyPagingInfoNodesRuntimeResource {
@@ -40419,7 +40515,7 @@ type ListResourceGroupsRequest struct {
 	//
 	// 	- CreateUser (Desc/Asc): the creator of the resource group
 	//
-	// 	- CreateTime (Desc/Asc): the time when the route is created
+	// 	- CreateTime (Desc/Asc): the time when the resource group is created
 	//
 	// Default value: CreateTime Asc
 	//
@@ -40583,7 +40679,7 @@ type ListResourceGroupsShrinkRequest struct {
 	//
 	// 	- CreateUser (Desc/Asc): the creator of the resource group
 	//
-	// 	- CreateTime (Desc/Asc): the time when the route is created
+	// 	- CreateTime (Desc/Asc): the time when the resource group is created
 	//
 	// Default value: CreateTime Asc
 	//
@@ -41756,7 +41852,7 @@ func (s *ListRoutesResponse) SetBody(v *ListRoutesResponseBody) *ListRoutesRespo
 }
 
 type ListTaskInstanceOperationLogsRequest struct {
-	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days.
+	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days. This value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -42096,7 +42192,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The trigger type.
+	// The trigger type. Valid values:
 	//
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
@@ -42348,7 +42444,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// Normal
 	TriggerRecurrence *string `json:"TriggerRecurrence,omitempty" xml:"TriggerRecurrence,omitempty"`
-	// The trigger type.
+	// The trigger type. Valid values:
 	//
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
@@ -46983,8 +47079,6 @@ func (s *ListWorkflowDefinitionsResponse) SetBody(v *ListWorkflowDefinitionsResp
 }
 
 type ListWorkflowInstancesRequest struct {
-	// 业务日期。
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -47043,17 +47137,17 @@ type ListWorkflowInstancesRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 工作流实例的类型。
+	// The type of the workflow instance. Valid values:
 	//
-	// - Normal：周期调度
+	// 	- Normal
 	//
-	// - Manual：手动任务
+	// 	- Manual
 	//
-	// - SmokeTest：测试
+	// 	- SmokeTest
 	//
-	// - SupplementData：补数据
+	// 	- SupplementData
 	//
-	// - ManualWorkflow：手动工作流
+	// 	- ManualWorkflow
 	//
 	// example:
 	//
@@ -47126,8 +47220,6 @@ func (s *ListWorkflowInstancesRequest) SetWorkflowId(v int64) *ListWorkflowInsta
 }
 
 type ListWorkflowInstancesShrinkRequest struct {
-	// 业务日期。
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -47186,17 +47278,17 @@ type ListWorkflowInstancesShrinkRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// 工作流实例的类型。
+	// The type of the workflow instance. Valid values:
 	//
-	// - Normal：周期调度
+	// 	- Normal
 	//
-	// - Manual：手动任务
+	// 	- Manual
 	//
-	// - SmokeTest：测试
+	// 	- SmokeTest
 	//
-	// - SupplementData：补数据
+	// 	- SupplementData
 	//
-	// - ManualWorkflow：手动工作流
+	// 	- ManualWorkflow
 	//
 	// example:
 	//
@@ -47349,8 +47441,6 @@ func (s *ListWorkflowInstancesResponseBodyPagingInfo) SetWorkflowInstances(v []*
 }
 
 type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
-	// 业务日期。
-	//
 	// example:
 	//
 	// 1710239005403
@@ -47441,18 +47531,6 @@ type ListWorkflowInstancesResponseBodyPagingInfoWorkflowInstances struct {
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 工作流实例的类型。
-	//
-	// - Normal：周期调度
-	//
-	// - Manual：手动任务
-	//
-	// - SmokeTest：测试
-	//
-	// - SupplementData：补数据
-	//
-	// - ManualWorkflow：手动工作流
-	//
 	// example:
 	//
 	// Normal
@@ -49753,7 +49831,11 @@ type StartDIJobRequest struct {
 	//
 	// 10000
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// Deprecated
+	// Specifies whether to forcefully rerun all synchronization steps. If you do not configure this parameter, the system does not perform the forcible rerun operation.
+	//
+	// 	- If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
+	//
+	// 	- If the system performs the forcible rerun operation, all steps start to rerun.
 	//
 	// example:
 	//
@@ -49766,6 +49848,12 @@ type StartDIJobRequest struct {
 	// 10000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for starting real-time synchronization.
+	//
+	//     {
+	//
+	//       "StartTime":1663765058
+	//
+	//     }
 	RealtimeStartSettings *StartDIJobRequestRealtimeStartSettings `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty" type:"Struct"`
 }
 
@@ -49800,7 +49888,7 @@ func (s *StartDIJobRequest) SetRealtimeStartSettings(v *StartDIJobRequestRealtim
 type StartDIJobRequestRealtimeStartSettings struct {
 	// Deprecated
 	//
-	// The failover settings.
+	// This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
 	FailoverSettings *StartDIJobRequestRealtimeStartSettingsFailoverSettings `json:"FailoverSettings,omitempty" xml:"FailoverSettings,omitempty" type:"Struct"`
 	// The start time.
 	//
@@ -49831,7 +49919,7 @@ func (s *StartDIJobRequestRealtimeStartSettings) SetStartTime(v int64) *StartDIJ
 type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {
 	// Deprecated
 	//
-	// The failover interval. Unit: minutes.
+	// This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
 	//
 	// example:
 	//
@@ -49839,7 +49927,7 @@ type StartDIJobRequestRealtimeStartSettingsFailoverSettings struct {
 	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	// Deprecated
 	//
-	// The maximum number of failovers allowed.
+	// This parameter is deprecated. Use advanced parameters for failover settings when you create a task.
 	//
 	// example:
 	//
@@ -49874,7 +49962,11 @@ type StartDIJobShrinkRequest struct {
 	//
 	// 10000
 	DIJobId *int64 `json:"DIJobId,omitempty" xml:"DIJobId,omitempty"`
-	// Deprecated
+	// Specifies whether to forcefully rerun all synchronization steps. If you do not configure this parameter, the system does not perform the forcible rerun operation.
+	//
+	// 	- If the system does not perform the forcible rerun operation, only the steps that are not run start to run.
+	//
+	// 	- If the system performs the forcible rerun operation, all steps start to rerun.
 	//
 	// example:
 	//
@@ -49887,6 +49979,12 @@ type StartDIJobShrinkRequest struct {
 	// 10000
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The settings for starting real-time synchronization.
+	//
+	//     {
+	//
+	//       "StartTime":1663765058
+	//
+	//     }
 	RealtimeStartSettingsShrink *string `json:"RealtimeStartSettings,omitempty" xml:"RealtimeStartSettings,omitempty"`
 }
 
@@ -51049,7 +51147,7 @@ type TriggerSchedulerTaskInstanceRequest struct {
 	//
 	// 1234
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The time defined by the HTTP Trigger node.
+	// The time defined by the HTTP Trigger node. This value is a UNIX timestamp.
 	//
 	// This parameter is required.
 	//
@@ -52935,7 +53033,7 @@ type UpdateDIJobRequestResourceSettingsOfflineResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for Data Integration used for batch synchronization.
+	// The name of the resource group for Data Integration used for batch synchronization.
 	//
 	// example:
 	//
@@ -52968,7 +53066,7 @@ type UpdateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for Data Integration used for real-time synchronization.
+	// The name of the resource group for Data Integration used for real-time synchronization.
 	//
 	// example:
 	//
@@ -53001,7 +53099,7 @@ type UpdateDIJobRequestResourceSettingsScheduleResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for scheduling used for batch synchronization.
+	// The name of the resource group for scheduling used for batch synchronization.
 	//
 	// example:
 	//
@@ -56860,7 +56958,7 @@ type UpdateTaskRequest struct {
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -57397,7 +57495,7 @@ type UpdateTaskRequestTrigger struct {
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -57415,7 +57513,7 @@ type UpdateTaskRequestTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -57423,9 +57521,9 @@ type UpdateTaskRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodic scheduling
+	// 	- Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual scheduling
+	// 	- Manual: manual trigger
 	//
 	// This parameter is required.
 	//
@@ -57515,7 +57613,7 @@ type UpdateTaskShrinkRequest struct {
 	//
 	// T+1
 	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// This parameter is required.
 	//
@@ -58837,13 +58935,13 @@ type UpdateWorkflowRequestTrigger struct {
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The end time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
 	// 9999-01-01 00:00:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The start time of the time range during which the workflow is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -58851,9 +58949,9 @@ type UpdateWorkflowRequestTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodic scheduling
+	// 	- Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual scheduling
+	// 	- Manual: manual trigger
 	//
 	// This parameter is required.
 	//
@@ -63972,7 +64070,7 @@ func (client *Client) ExecuteAdhocWorkflowInstance(request *ExecuteAdhocWorkflow
 
 // Summary:
 //
-// Queries a list of custom alert monitoring rules.
+// Queries a custom alert monitoring rule.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -64021,7 +64119,7 @@ func (client *Client) GetAlertRuleWithOptions(request *GetAlertRuleRequest, runt
 
 // Summary:
 //
-// Queries a list of custom alert monitoring rules.
+// Queries a custom alert monitoring rule.
 //
 // @param request - GetAlertRuleRequest
 //
@@ -64039,7 +64137,13 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 
 // Summary:
 //
-// 查看认证文件
+// Queries a certificate file.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
 //
 // @param request - GetCertificateRequest
 //
@@ -64088,7 +64192,13 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 
 // Summary:
 //
-// 查看认证文件
+// Queries a certificate file.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Workspace Owner, and O\\&M.
 //
 // @param request - GetCertificateRequest
 //
@@ -66311,7 +66421,7 @@ func (client *Client) ImportWorkflowDefinition(request *ImportWorkflowDefinition
 
 // Summary:
 //
-// Queries a list of custom monitoring alert rule by page.
+// Queries a list of custom monitoring alert rules.
 //
 // @param tmpReq - ListAlertRulesRequest
 //
@@ -66398,7 +66508,7 @@ func (client *Client) ListAlertRulesWithOptions(tmpReq *ListAlertRulesRequest, r
 
 // Summary:
 //
-// Queries a list of custom monitoring alert rule by page.
+// Queries a list of custom monitoring alert rules.
 //
 // @param request - ListAlertRulesRequest
 //
@@ -66416,7 +66526,13 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 
 // Summary:
 //
-// 查询认证文件列表
+// Queries a list of certificate files.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
 //
 // @param request - ListCertificatesRequest
 //
@@ -66465,7 +66581,13 @@ func (client *Client) ListCertificatesWithOptions(request *ListCertificatesReque
 
 // Summary:
 //
-// 查询认证文件列表
+// Queries a list of certificate files.
+//
+// Description:
+//
+// 1.  This API operation is available for all DataWorks editions.
+//
+// 2.  You can call this operation only if you are assigned one of the following roles in DataWorks: Tenant Owner, Workspace Administrator, Deploy, Develop, Visitor, Workspace Owner, O\\&M, Model Designer, Security Administrator, Data Analyst, OpenPlatform Administrator, and Data Governance Administrator.
 //
 // @param request - ListCertificatesRequest
 //
@@ -71189,7 +71311,7 @@ func (client *Client) TagDataAssets(request *TagDataAssetsRequest) (_result *Tag
 
 // Summary:
 //
-// Tests the network connectivity between a resource group and a data source.
+// Tests the connectivity between a data source and a resource group.
 //
 // Description:
 //
@@ -71256,7 +71378,7 @@ func (client *Client) TestDataSourceConnectivityWithOptions(request *TestDataSou
 
 // Summary:
 //
-// Tests the network connectivity between a resource group and a data source.
+// Tests the connectivity between a data source and a resource group.
 //
 // Description:
 //
@@ -71474,7 +71596,7 @@ func (client *Client) UnTagDataAssets(request *UnTagDataAssetsRequest) (_result 
 
 // Summary:
 //
-// Updates a custom alert monitoring rule.
+// Updates the information about a custom alert monitoring rule.
 //
 // @param tmpReq - UpdateAlertRuleRequest
 //
@@ -71557,7 +71679,7 @@ func (client *Client) UpdateAlertRuleWithOptions(tmpReq *UpdateAlertRuleRequest,
 
 // Summary:
 //
-// Updates a custom alert monitoring rule.
+// Updates the information about a custom alert monitoring rule.
 //
 // @param request - UpdateAlertRuleRequest
 //
