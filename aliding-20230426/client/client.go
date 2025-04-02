@@ -17424,6 +17424,10 @@ func (s *CreateWorkspaceDocShrinkRequest) SetWorkspaceId(v string) *CreateWorksp
 type CreateWorkspaceDocResponseBody struct {
 	// example:
 	//
+	// YRBcvy
+	DentryUuid *string `json:"dentryUuid,omitempty" xml:"dentryUuid,omitempty"`
+	// example:
+	//
 	// QoJGq7xxx
 	DocKey *string `json:"docKey,omitempty" xml:"docKey,omitempty"`
 	// example:
@@ -17442,6 +17446,14 @@ type CreateWorkspaceDocResponseBody struct {
 	Url *string `json:"url,omitempty" xml:"url,omitempty"`
 	// example:
 	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+	// example:
+	//
 	// YRBGvy
 	WorkspaceId *string `json:"workspaceId,omitempty" xml:"workspaceId,omitempty"`
 }
@@ -17452,6 +17464,11 @@ func (s CreateWorkspaceDocResponseBody) String() string {
 
 func (s CreateWorkspaceDocResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWorkspaceDocResponseBody) SetDentryUuid(v string) *CreateWorkspaceDocResponseBody {
+	s.DentryUuid = &v
+	return s
 }
 
 func (s *CreateWorkspaceDocResponseBody) SetDocKey(v string) *CreateWorkspaceDocResponseBody {
@@ -17471,6 +17488,16 @@ func (s *CreateWorkspaceDocResponseBody) SetRequestId(v string) *CreateWorkspace
 
 func (s *CreateWorkspaceDocResponseBody) SetUrl(v string) *CreateWorkspaceDocResponseBody {
 	s.Url = &v
+	return s
+}
+
+func (s *CreateWorkspaceDocResponseBody) SetVendorRequestId(v string) *CreateWorkspaceDocResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateWorkspaceDocResponseBody) SetVendorType(v string) *CreateWorkspaceDocResponseBody {
+	s.VendorType = &v
 	return s
 }
 
