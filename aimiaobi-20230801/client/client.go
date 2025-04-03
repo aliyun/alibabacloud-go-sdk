@@ -8119,7 +8119,10 @@ type GetHotTopicBroadcastRequest struct {
 	// example:
 	//
 	// 2024-10-11_13
-	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	HotTopicVersion *string   `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	LocationQuery   *string   `json:"LocationQuery,omitempty" xml:"LocationQuery,omitempty"`
+	Locations       []*string `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
+	Query           *string   `json:"Query,omitempty" xml:"Query,omitempty"`
 	// example:
 	//
 	// 5
@@ -8163,6 +8166,21 @@ func (s *GetHotTopicBroadcastRequest) SetCurrent(v int32) *GetHotTopicBroadcastR
 
 func (s *GetHotTopicBroadcastRequest) SetHotTopicVersion(v string) *GetHotTopicBroadcastRequest {
 	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetLocationQuery(v string) *GetHotTopicBroadcastRequest {
+	s.LocationQuery = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetLocations(v []*string) *GetHotTopicBroadcastRequest {
+	s.Locations = v
+	return s
+}
+
+func (s *GetHotTopicBroadcastRequest) SetQuery(v string) *GetHotTopicBroadcastRequest {
+	s.Query = &v
 	return s
 }
 
@@ -8233,7 +8251,8 @@ type GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfig struct {
 	// example:
 	//
 	// ["科技","经济","时政","娱乐"]
-	Categories            []*string                                                                            `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Categories []*string `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	// Deprecated
 	CustomHotValueWeights []*GetHotTopicBroadcastRequestStepForNewsBroadcastContentConfigCustomHotValueWeights `json:"CustomHotValueWeights,omitempty" xml:"CustomHotValueWeights,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -8310,6 +8329,9 @@ type GetHotTopicBroadcastShrinkRequest struct {
 	//
 	// 2024-10-11_13
 	HotTopicVersion *string `json:"HotTopicVersion,omitempty" xml:"HotTopicVersion,omitempty"`
+	LocationQuery   *string `json:"LocationQuery,omitempty" xml:"LocationQuery,omitempty"`
+	LocationsShrink *string `json:"Locations,omitempty" xml:"Locations,omitempty"`
+	Query           *string `json:"Query,omitempty" xml:"Query,omitempty"`
 	// example:
 	//
 	// 5
@@ -8353,6 +8375,21 @@ func (s *GetHotTopicBroadcastShrinkRequest) SetCurrent(v int32) *GetHotTopicBroa
 
 func (s *GetHotTopicBroadcastShrinkRequest) SetHotTopicVersion(v string) *GetHotTopicBroadcastShrinkRequest {
 	s.HotTopicVersion = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetLocationQuery(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.LocationQuery = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetLocationsShrink(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.LocationsShrink = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastShrinkRequest) SetQuery(v string) *GetHotTopicBroadcastShrinkRequest {
+	s.Query = &v
 	return s
 }
 
@@ -8513,6 +8550,7 @@ type GetHotTopicBroadcastResponseBodyDataData struct {
 	//
 	// 29
 	InputToken *int32                                          `json:"InputToken,omitempty" xml:"InputToken,omitempty"`
+	Locations  []*string                                       `json:"Locations,omitempty" xml:"Locations,omitempty" type:"Repeated"`
 	News       []*GetHotTopicBroadcastResponseBodyDataDataNews `json:"News,omitempty" xml:"News,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -8580,6 +8618,11 @@ func (s *GetHotTopicBroadcastResponseBodyDataData) SetImages(v []*GetHotTopicBro
 
 func (s *GetHotTopicBroadcastResponseBodyDataData) SetInputToken(v int32) *GetHotTopicBroadcastResponseBodyDataData {
 	s.InputToken = &v
+	return s
+}
+
+func (s *GetHotTopicBroadcastResponseBodyDataData) SetLocations(v []*string) *GetHotTopicBroadcastResponseBodyDataData {
+	s.Locations = v
 	return s
 }
 
@@ -29519,6 +29562,7 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	ImageSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResult  `json:"ImageSearchResult,omitempty" xml:"ImageSearchResult,omitempty" type:"Struct"`
 	NewsElementResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResult  `json:"NewsElementResult,omitempty" xml:"NewsElementResult,omitempty" type:"Struct"`
 	TextGenerateResult *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult `json:"TextGenerateResult,omitempty" xml:"TextGenerateResult,omitempty" type:"Struct"`
+	TextSearchResult   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult   `json:"TextSearchResult,omitempty" xml:"TextSearchResult,omitempty" type:"Struct"`
 	TimelineResult     *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult     `json:"TimelineResult,omitempty" xml:"TimelineResult,omitempty" type:"Struct"`
 	VideoSearchResult  *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResult  `json:"VideoSearchResult,omitempty" xml:"VideoSearchResult,omitempty" type:"Struct"`
 }
@@ -29553,6 +29597,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetTextGenerateResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
 	s.TextGenerateResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) SetTextSearchResult(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent {
+	s.TextSearchResult = v
 	return s
 }
 
@@ -31641,6 +31690,142 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultTextGenerateMultimodalMediaListMultimodalMediaListArticle {
+	s.Url = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult struct {
+	Current      *int32                                                                                                            `json:"Current,omitempty" xml:"Current,omitempty"`
+	SearchResult []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	Size         *int32                                                                                                            `json:"Size,omitempty" xml:"Size,omitempty"`
+	Total        *int32                                                                                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) SetCurrent(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult {
+	s.Current = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) SetSearchResult(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult {
+	s.SearchResult = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) SetSize(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult {
+	s.Size = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult) SetTotal(v int32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResult {
+	s.Total = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult struct {
+	// example:
+	//
+	// xx
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// xx
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// xx
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-11-25 14:25:59
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSource *string `json:"SearchSource,omitempty" xml:"SearchSource,omitempty"`
+	// example:
+	//
+	// xxx
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	// example:
+	//
+	// SystemSearch
+	SearchSourceType *string `json:"SearchSourceType,omitempty" xml:"SearchSourceType,omitempty"`
+	// example:
+	//
+	// xx
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetContent(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Content = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetDocId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetDocUuid(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetPubTime(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetSearchSource(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetSearchSourceName(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetSearchSourceType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.SearchSourceType = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetSummary(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetTitle(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
+	s.Title = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult) SetUrl(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult {
 	s.Url = &v
 	return s
 }
@@ -34682,12 +34867,14 @@ func (s *RunTextPolishingResponse) SetBody(v *RunTextPolishingResponseBody) *Run
 }
 
 type RunTitleGenerationRequest struct {
+	DeduplicatedTitles []*string `json:"DeduplicatedTitles,omitempty" xml:"DeduplicatedTitles,omitempty" type:"Repeated"`
 	// This parameter is required.
 	ReferenceData *RunTitleGenerationRequestReferenceData `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty" type:"Struct"`
 	// example:
 	//
 	// xxxx
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TitleCount *string `json:"TitleCount,omitempty" xml:"TitleCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -34704,6 +34891,11 @@ func (s RunTitleGenerationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunTitleGenerationRequest) SetDeduplicatedTitles(v []*string) *RunTitleGenerationRequest {
+	s.DeduplicatedTitles = v
+	return s
+}
+
 func (s *RunTitleGenerationRequest) SetReferenceData(v *RunTitleGenerationRequestReferenceData) *RunTitleGenerationRequest {
 	s.ReferenceData = v
 	return s
@@ -34711,6 +34903,11 @@ func (s *RunTitleGenerationRequest) SetReferenceData(v *RunTitleGenerationReques
 
 func (s *RunTitleGenerationRequest) SetTaskId(v string) *RunTitleGenerationRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *RunTitleGenerationRequest) SetTitleCount(v string) *RunTitleGenerationRequest {
+	s.TitleCount = &v
 	return s
 }
 
@@ -34738,12 +34935,14 @@ func (s *RunTitleGenerationRequestReferenceData) SetContents(v []*string) *RunTi
 }
 
 type RunTitleGenerationShrinkRequest struct {
+	DeduplicatedTitlesShrink *string `json:"DeduplicatedTitles,omitempty" xml:"DeduplicatedTitles,omitempty"`
 	// This parameter is required.
 	ReferenceDataShrink *string `json:"ReferenceData,omitempty" xml:"ReferenceData,omitempty"`
 	// example:
 	//
 	// xxxx
-	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TitleCount *string `json:"TitleCount,omitempty" xml:"TitleCount,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -34760,6 +34959,11 @@ func (s RunTitleGenerationShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunTitleGenerationShrinkRequest) SetDeduplicatedTitlesShrink(v string) *RunTitleGenerationShrinkRequest {
+	s.DeduplicatedTitlesShrink = &v
+	return s
+}
+
 func (s *RunTitleGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunTitleGenerationShrinkRequest {
 	s.ReferenceDataShrink = &v
 	return s
@@ -34767,6 +34971,11 @@ func (s *RunTitleGenerationShrinkRequest) SetReferenceDataShrink(v string) *RunT
 
 func (s *RunTitleGenerationShrinkRequest) SetTaskId(v string) *RunTitleGenerationShrinkRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *RunTitleGenerationShrinkRequest) SetTitleCount(v string) *RunTitleGenerationShrinkRequest {
+	s.TitleCount = &v
 	return s
 }
 
@@ -45783,6 +45992,10 @@ func (client *Client) GetHotTopicBroadcastWithOptions(tmpReq *GetHotTopicBroadca
 	}
 	request := &GetHotTopicBroadcastShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Locations)) {
+		request.LocationsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Locations, tea.String("Locations"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.StepForCustomSummaryStyleConfig)) {
 		request.StepForCustomSummaryStyleConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.StepForCustomSummaryStyleConfig, tea.String("StepForCustomSummaryStyleConfig"), tea.String("json"))
 	}
@@ -45810,6 +46023,18 @@ func (client *Client) GetHotTopicBroadcastWithOptions(tmpReq *GetHotTopicBroadca
 
 	if !tea.BoolValue(util.IsUnset(request.HotTopicVersion)) {
 		body["HotTopicVersion"] = request.HotTopicVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationQuery)) {
+		body["LocationQuery"] = request.LocationQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationsShrink)) {
+		body["Locations"] = request.LocationsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
@@ -51399,7 +51624,7 @@ func (client *Client) RunHotword(request *RunHotwordRequest) (_result *RunHotwor
 
 // Summary:
 //
-// AI妙笔-创作-抽取关键词
+// # AI妙笔-创作-抽取关键词
 //
 // @param tmpReq - RunKeywordsExtractionGenerationRequest
 //
@@ -51466,7 +51691,7 @@ func (client *Client) RunKeywordsExtractionGenerationWithOptions(tmpReq *RunKeyw
 
 // Summary:
 //
-// AI妙笔-创作-抽取关键词
+// # AI妙笔-创作-抽取关键词
 //
 // @param request - RunKeywordsExtractionGenerationRequest
 //
@@ -51577,7 +51802,7 @@ func (client *Client) RunMultiDocIntroduction(request *RunMultiDocIntroductionRe
 
 // Summary:
 //
-// AI妙搜-智能搜索生成
+// # AI妙搜-智能搜索生成
 //
 // @param tmpReq - RunSearchGenerationRequest
 //
@@ -51660,7 +51885,7 @@ func (client *Client) RunSearchGenerationWithOptions(tmpReq *RunSearchGeneration
 
 // Summary:
 //
-// AI妙搜-智能搜索生成
+// # AI妙搜-智能搜索生成
 //
 // @param request - RunSearchGenerationRequest
 //
@@ -52133,17 +52358,29 @@ func (client *Client) RunTitleGenerationWithOptions(tmpReq *RunTitleGenerationRe
 	}
 	request := &RunTitleGenerationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeduplicatedTitles)) {
+		request.DeduplicatedTitlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeduplicatedTitles, tea.String("DeduplicatedTitles"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ReferenceData)) {
 		request.ReferenceDataShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ReferenceData, tea.String("ReferenceData"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeduplicatedTitlesShrink)) {
+		body["DeduplicatedTitles"] = request.DeduplicatedTitlesShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ReferenceDataShrink)) {
 		body["ReferenceData"] = request.ReferenceDataShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TitleCount)) {
+		body["TitleCount"] = request.TitleCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
@@ -52204,7 +52441,7 @@ func (client *Client) RunTitleGeneration(request *RunTitleGenerationRequest) (_r
 
 // Summary:
 //
-// AI妙笔-创作-中英文翻译
+// # AI妙笔-创作-中英文翻译
 //
 // @param tmpReq - RunTranslateGenerationRequest
 //
@@ -52275,7 +52512,7 @@ func (client *Client) RunTranslateGenerationWithOptions(tmpReq *RunTranslateGene
 
 // Summary:
 //
-// AI妙笔-创作-中英文翻译
+// # AI妙笔-创作-中英文翻译
 //
 // @param request - RunTranslateGenerationRequest
 //
@@ -52293,7 +52530,7 @@ func (client *Client) RunTranslateGeneration(request *RunTranslateGenerationRequ
 
 // Summary:
 //
-// AI妙笔-创作-文风改写
+// # AI妙笔-创作-文风改写
 //
 // @param tmpReq - RunWriteToneGenerationRequest
 //
@@ -52364,7 +52601,7 @@ func (client *Client) RunWriteToneGenerationWithOptions(tmpReq *RunWriteToneGene
 
 // Summary:
 //
-// AI妙笔-创作-文风改写
+// # AI妙笔-创作-文风改写
 //
 // @param request - RunWriteToneGenerationRequest
 //
