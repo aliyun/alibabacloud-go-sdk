@@ -2421,6 +2421,13 @@ type CreateAggregateConfigRuleRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// i-xxx
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -2471,6 +2478,10 @@ type CreateAggregateConfigRuleRequest struct {
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
 	// The tags.
 	Tag []*CreateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -2481,17 +2492,25 @@ type CreateAggregateConfigRuleRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	// Deprecated
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -2601,6 +2620,11 @@ func (s *CreateAggregateConfigRuleRequest) SetResourceGroupIdsScope(v string) *C
 
 func (s *CreateAggregateConfigRuleRequest) SetResourceIdsScope(v string) *CreateAggregateConfigRuleRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleRequest) SetResourceNameScope(v string) *CreateAggregateConfigRuleRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -2911,6 +2935,13 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// i-xxx
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -2961,6 +2992,10 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
 	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -2971,17 +3006,25 @@ type CreateAggregateConfigRuleShrinkRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key. Separate multiple parameter values with commas (,).
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
-	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
+	// Deprecated
 	//
-	// > This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
+	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+	//
+	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
 	//
 	// example:
 	//
@@ -3091,6 +3134,11 @@ func (s *CreateAggregateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v stri
 
 func (s *CreateAggregateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *CreateAggregateConfigRuleShrinkRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateAggregateConfigRuleShrinkRequest) SetResourceNameScope(v string) *CreateAggregateConfigRuleShrinkRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -3528,11 +3576,11 @@ type CreateAggregatorRequest struct {
 	//
 	// Aggregator description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
+	// The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`. Multiple resource folder IDs should be separated by commas (,).
 	//
 	// example:
 	//
-	// fd-brHdgv****
+	// fd-brHdgv****,fd-brHdgk****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The tags of the resource.
 	//
@@ -3726,11 +3774,11 @@ type CreateAggregatorShrinkRequest struct {
 	//
 	// Aggregator description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`.
+	// The ID of the folder to which the account group is attached. You must specify this parameter if `AggregatorType` is set to `FOLDER`. Multiple resource folder IDs should be separated by commas (,).
 	//
 	// example:
 	//
-	// fd-brHdgv****
+	// fd-brHdgv****,fd-brHdgk****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The tags of the resource.
 	//
@@ -5038,6 +5086,9 @@ type CreateConfigRuleRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -5088,6 +5139,8 @@ type CreateConfigRuleRequest struct {
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
 	// rule attached tags
 	Tag []*CreateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -5098,6 +5151,8 @@ type CreateConfigRuleRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
@@ -5106,6 +5161,8 @@ type CreateConfigRuleRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
@@ -5193,6 +5250,11 @@ func (s *CreateConfigRuleRequest) SetResourceGroupIdsScope(v string) *CreateConf
 
 func (s *CreateConfigRuleRequest) SetResourceIdsScope(v string) *CreateConfigRuleRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleRequest) SetResourceNameScope(v string) *CreateConfigRuleRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -5455,6 +5517,9 @@ type CreateConfigRuleShrinkRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// This parameter is required.
@@ -5505,6 +5570,8 @@ type CreateConfigRuleShrinkRequest struct {
 	SourceOwner *string `json:"SourceOwner,omitempty" xml:"SourceOwner,omitempty"`
 	// rule attached tags
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Deprecated
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for `TagKeyScope`. For example, if you set `TagKeyScope` to `ECS,OSS` and set TagKeyLogicScope to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -5515,6 +5582,8 @@ type CreateConfigRuleShrinkRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
@@ -5523,6 +5592,8 @@ type CreateConfigRuleShrinkRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
@@ -5610,6 +5681,11 @@ func (s *CreateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v string) *Crea
 
 func (s *CreateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *CreateConfigRuleShrinkRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *CreateConfigRuleShrinkRequest) SetResourceNameScope(v string) *CreateConfigRuleShrinkRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -11565,7 +11641,7 @@ func (s *GetAggregateConfigRuleShrinkRequest) SetTagShrink(v string) *GetAggrega
 }
 
 type GetAggregateConfigRuleResponseBody struct {
-	// The rules.
+	// The information about the rules.
 	ConfigRule *GetAggregateConfigRuleResponseBodyConfigRule `json:"ConfigRule,omitempty" xml:"ConfigRule,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -11772,6 +11848,15 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// The names of the resource groups to which the rule applies.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// i-xxx
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource evaluated by the rule.
 	//
 	// example:
@@ -11792,22 +11877,34 @@ type GetAggregateConfigRuleResponseBodyConfigRule struct {
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	// The information about how the rule was created.
 	Source *GetAggregateConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
-	// The logical relationship among the tag keys if you specify multiple tag keys by using the `TagKeyScope` parameter. For example, if the `TagKeyScope` parameter is set to `ECS,OSS` and the TagKeyLogicScope parameter is set to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	// Deprecated
 	//
-	// 	- AND: the logical relationship of AND
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
 	//
-	// 	- OR: the logical relationship of OR
+	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
+	//
+	// 	- AND
+	//
+	// 	- OR
 	//
 	// example:
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// example:
 	//
 	// RAM
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
 	//
 	// example:
@@ -11960,6 +12057,11 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceGroupIdsScope(
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceIdsScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetResourceNameScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -12985,7 +13087,7 @@ func (s *GetAggregateConfigRulesReportRequest) SetReportId(v string) *GetAggrega
 }
 
 type GetAggregateConfigRulesReportResponseBody struct {
-	// The information about the compliance evaluation report.
+	// The compliance evaluation report.
 	ConfigRulesReport *GetAggregateConfigRulesReportResponseBodyConfigRulesReport `json:"ConfigRulesReport,omitempty" xml:"ConfigRulesReport,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -13040,9 +13142,9 @@ type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
 	// The status of the compliance evaluation report. Valid values:
 	//
-	// 	- NONE: The compliance evaluation report was not generated.
+	// 	- NONE: The compliance evaluation report is not generated.
 	//
-	// 	- CREATING: The compliance evaluation report was being generated.
+	// 	- CREATING: The compliance evaluation report is being generated.
 	//
 	// 	- COMPLETE: The compliance evaluation report was generated.
 	//
@@ -13050,7 +13152,7 @@ type GetAggregateConfigRulesReportResponseBodyConfigRulesReport struct {
 	//
 	// CREATING
 	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
-	// The URL that is used to download the compliance evaluation report.
+	// The URL used to download the compliance evaluation report.
 	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
 }
 
@@ -17548,6 +17650,9 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	//
 	// eip-8vbf3x310fn56ijfd****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule.
 	//
 	// example:
@@ -17570,6 +17675,8 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	Scope *GetConfigRuleResponseBodyConfigRuleScope `json:"Scope,omitempty" xml:"Scope,omitempty" type:"Struct"`
 	// The information about how the rule was created.
 	Source *GetConfigRuleResponseBodyConfigRuleSource `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	// Deprecated
+	//
 	// The ID of the member account to which the rule does not apply, which means that the resources within the member account are not evaluated based on the rule.
 	//
 	// > This parameter applies only to a managed rule.
@@ -17578,6 +17685,8 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	//
 	// 120886317861****
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
@@ -17586,6 +17695,8 @@ type GetConfigRuleResponseBodyConfigRule struct {
 	//
 	// RAM
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
 	// The tag value used to filter resources. The rule applies only to the resources with the specified tag value.
 	//
 	// > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
@@ -17720,6 +17831,11 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetResourceGroupIdsScope(v string)
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetResourceIdsScope(v string) *GetConfigRuleResponseBodyConfigRule {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetResourceNameScope(v string) *GetConfigRuleResponseBodyConfigRule {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -27791,7 +27907,7 @@ type ListConfigRuleEvaluationResultsRequest struct {
 	//
 	// cr-cac56457e0d900d3****
 	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
-	// The maximum number of entries to return for a single request. Valid values: 1 to 100.
+	// The maximum number of entries to return in a request. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -27986,6 +28102,8 @@ type ListConfigRuleEvaluationResultsResponseBodyEvaluationResultsEvaluationResul
 	// 	- ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
 	//
 	// 	- ScheduledNotification: The rule is periodically triggered.
+	//
+	// 	- Manual: The rule is manually triggered.
 	//
 	// example:
 	//
@@ -31219,6 +31337,8 @@ type ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultL
 	// 	- ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
 	//
 	// 	- ScheduledNotification: The managed rule is periodically triggered.
+	//
+	// 	- Manual: The rule is manually triggered.
 	//
 	// example:
 	//
@@ -35157,17 +35277,17 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// {"tag1Key":"ECS","tag1Value":"test"}
 	InputParameters map[string]interface{} `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The intervals at which the rule is triggered. Valid values:
+	// The interval at which the rule is triggered. Valid values:
 	//
-	// 	- One_Hour: 1 hour
+	// 	- One_Hour
 	//
-	// 	- Three_Hours: 3 hours
+	// 	- Three_Hours
 	//
-	// 	- Six_Hours: 6 hours
+	// 	- Six_Hours
 	//
-	// 	- Twelve_Hours: 12 hours
+	// 	- Twelve_Hours
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// 	- TwentyFour_Hours
 	//
 	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
 	//
@@ -35197,19 +35317,28 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// The names of the resource groups to which the rule applies.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// i-xxx
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypesScope []*string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty" type:"Repeated"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -35219,6 +35348,10 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// You can add up to 20 tags to a resource.
 	Tag []*UpdateAggregateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -35229,6 +35362,10 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35237,6 +35374,10 @@ type UpdateAggregateConfigRuleRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35349,6 +35490,11 @@ func (s *UpdateAggregateConfigRuleRequest) SetResourceGroupIdsScope(v string) *U
 
 func (s *UpdateAggregateConfigRuleRequest) SetResourceIdsScope(v string) *UpdateAggregateConfigRuleRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleRequest) SetResourceNameScope(v string) *UpdateAggregateConfigRuleRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -35611,17 +35757,17 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// {"tag1Key":"ECS","tag1Value":"test"}
 	InputParametersShrink *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
-	// The intervals at which the rule is triggered. Valid values:
+	// The interval at which the rule is triggered. Valid values:
 	//
-	// 	- One_Hour: 1 hour
+	// 	- One_Hour
 	//
-	// 	- Three_Hours: 3 hours
+	// 	- Three_Hours
 	//
-	// 	- Six_Hours: 6 hours
+	// 	- Six_Hours
 	//
-	// 	- Twelve_Hours: 12 hours
+	// 	- Twelve_Hours
 	//
-	// 	- TwentyFour_Hours: 24 hours
+	// 	- TwentyFour_Hours
 	//
 	// >  This parameter is required if the `ConfigRuleTriggerTypes` parameter is set to `ScheduledNotification`.
 	//
@@ -35651,19 +35797,28 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// The names of the resource groups to which the rule applies.
+	//
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// i-xxx
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
 	//
 	// ACS::ECS::Instance
 	ResourceTypesScopeShrink *string `json:"ResourceTypesScope,omitempty" xml:"ResourceTypesScope,omitempty"`
-	// The risk level of the resources that are not compliant with the rule. Valid values:
+	// The risk level of the resources that do not comply with the rule. Valid values:
 	//
-	// 	- 1: high risk level
+	// 	- 1: high
 	//
-	// 	- 2: medium risk level
+	// 	- 2: medium
 	//
-	// 	- 3: low risk level
+	// 	- 3: low
 	//
 	// example:
 	//
@@ -35673,6 +35828,10 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -35683,6 +35842,10 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35691,6 +35854,10 @@ type UpdateAggregateConfigRuleShrinkRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
+	// This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -35803,6 +35970,11 @@ func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v stri
 
 func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateAggregateConfigRuleShrinkRequest) SetResourceNameScope(v string) *UpdateAggregateConfigRuleShrinkRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -36187,6 +36359,7 @@ type UpdateAggregatorRequest struct {
 	//
 	// Test_Aggregator_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The tags of the resource.
 	//
 	// You can add up to 20 tags to a resource.
@@ -36223,6 +36396,11 @@ func (s *UpdateAggregatorRequest) SetClientToken(v string) *UpdateAggregatorRequ
 
 func (s *UpdateAggregatorRequest) SetDescription(v string) *UpdateAggregatorRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAggregatorRequest) SetFolderId(v string) *UpdateAggregatorRequest {
+	s.FolderId = &v
 	return s
 }
 
@@ -36364,6 +36542,7 @@ type UpdateAggregatorShrinkRequest struct {
 	//
 	// Test_Aggregator_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FolderId    *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
 	// The tags of the resource.
 	//
 	// You can add up to 20 tags to a resource.
@@ -36400,6 +36579,11 @@ func (s *UpdateAggregatorShrinkRequest) SetClientToken(v string) *UpdateAggregat
 
 func (s *UpdateAggregatorShrinkRequest) SetDescription(v string) *UpdateAggregatorShrinkRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *UpdateAggregatorShrinkRequest) SetFolderId(v string) *UpdateAggregatorShrinkRequest {
+	s.FolderId = &v
 	return s
 }
 
@@ -37635,6 +37819,9 @@ type UpdateConfigRuleRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -37657,6 +37844,8 @@ type UpdateConfigRuleRequest struct {
 	//
 	// You can add up to 20 tags to a resource.
 	Tag []*UpdateConfigRuleRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Deprecated
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -37667,6 +37856,8 @@ type UpdateConfigRuleRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -37675,6 +37866,8 @@ type UpdateConfigRuleRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -37767,6 +37960,11 @@ func (s *UpdateConfigRuleRequest) SetResourceGroupIdsScope(v string) *UpdateConf
 
 func (s *UpdateConfigRuleRequest) SetResourceIdsScope(v string) *UpdateConfigRuleRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleRequest) SetResourceNameScope(v string) *UpdateConfigRuleRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -38024,6 +38222,9 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// lb-5cmbowstbkss9ta03****
 	ResourceIdsScope *string `json:"ResourceIdsScope,omitempty" xml:"ResourceIdsScope,omitempty"`
+	// if can be null:
+	// true
+	ResourceNameScope *string `json:"ResourceNameScope,omitempty" xml:"ResourceNameScope,omitempty"`
 	// The type of the resource to be evaluated by the rule. Separate multiple resource types with commas (,).
 	//
 	// example:
@@ -38046,6 +38247,8 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// You can add up to 20 tags to a resource.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Deprecated
+	//
 	// The logical relationship among the tag keys if you specify multiple tag keys for the `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and the TagKeyLogicScope parameter to `AND`, the rule applies to resources with both the `ECS` and `OSS` tag keys. Valid values:
 	//
 	// 	- AND
@@ -38056,6 +38259,8 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// AND
 	TagKeyLogicScope *string `json:"TagKeyLogicScope,omitempty" xml:"TagKeyLogicScope,omitempty"`
+	// Deprecated
+	//
 	// The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -38064,6 +38269,8 @@ type UpdateConfigRuleShrinkRequest struct {
 	//
 	// ECS
 	TagKeyScope *string `json:"TagKeyScope,omitempty" xml:"TagKeyScope,omitempty"`
+	// Deprecated
+	//
 	// The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
 	//
 	// >  This parameter applies only to a managed rule. You must configure the `TagKeyScope` and `TagValueScope` parameters at the same time.
@@ -38156,6 +38363,11 @@ func (s *UpdateConfigRuleShrinkRequest) SetResourceGroupIdsScope(v string) *Upda
 
 func (s *UpdateConfigRuleShrinkRequest) SetResourceIdsScope(v string) *UpdateConfigRuleShrinkRequest {
 	s.ResourceIdsScope = &v
+	return s
+}
+
+func (s *UpdateConfigRuleShrinkRequest) SetResourceNameScope(v string) *UpdateConfigRuleShrinkRequest {
+	s.ResourceNameScope = &v
 	return s
 }
 
@@ -40041,6 +40253,10 @@ func (client *Client) CreateAggregateConfigRuleWithOptions(tmpReq *CreateAggrega
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceNameScope)) {
+		query["ResourceNameScope"] = request.ResourceNameScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
 		query["Tag"] = request.TagShrink
 	}
@@ -40337,15 +40553,15 @@ func (client *Client) CreateAggregateRemediation(request *CreateAggregateRemedia
 //
 // Cloud Config supports the following types of account groups:
 //
-// 	- Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+//   - Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
 //
-// 	- Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+//   - Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
 //
 // This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
 //
-// 	- Member account ID: `171322098523****`. Member account name: `Alice`.
+//   - Member account ID: `171322098523****`. Member account name: `Alice`.
 //
-// 	- Member account ID: `100532098349****`. Member account name: `Tom`.
+//   - Member account ID: `100532098349****`. Member account name: `Tom`.
 //
 // @param tmpReq - CreateAggregatorRequest
 //
@@ -40442,15 +40658,15 @@ func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorReques
 //
 // Cloud Config supports the following types of account groups:
 //
-// 	- Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
+//   - Global account group: The global account group contains all the member accounts that are added to the resource directory. A management account can create only one global account group.
 //
-// 	- Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
+//   - Custom account group: If you create a custom account group, you must manually add all or specific member accounts from the resource directory to the custom account group.
 //
 // This topic provides an example on how to create an account group of the `CUSTOM` type. The custom account group is named `Test_Group`, and its description is `Test account group`. The custom account group contains the following two member accounts:
 //
-// 	- Member account ID: `171322098523****`. Member account name: `Alice`.
+//   - Member account ID: `171322098523****`. Member account name: `Alice`.
 //
-// 	- Member account ID: `100532098349****`. Member account name: `Tom`.
+//   - Member account ID: `100532098349****`. Member account name: `Tom`.
 //
 // @param request - CreateAggregatorRequest
 //
@@ -40854,6 +41070,10 @@ func (client *Client) CreateConfigRuleWithOptions(tmpReq *CreateConfigRuleReques
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
 		body["ResourceIdsScope"] = request.ResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceNameScope)) {
+		body["ResourceNameScope"] = request.ResourceNameScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
@@ -41721,13 +41941,13 @@ func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemedi
 //
 // After you delete an account group, the following changes occur to Cloud Config:
 //
-// 	- The rules and compliance packages of the account group are deleted and cannot be recovered.
+//   - The rules and compliance packages of the account group are deleted and cannot be recovered.
 //
-// 	- All compliance results generated in the account group are automatically deleted and cannot be recovered.
+//   - All compliance results generated in the account group are automatically deleted and cannot be recovered.
 //
-// 	- Service-linked roles for Cloud Config of member accounts in the account group are retained.
+//   - Service-linked roles for Cloud Config of member accounts in the account group are retained.
 //
-// 	- If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
+//   - If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
 //
 // ### [](#)Description
 //
@@ -41796,13 +42016,13 @@ func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsReq
 //
 // After you delete an account group, the following changes occur to Cloud Config:
 //
-// 	- The rules and compliance packages of the account group are deleted and cannot be recovered.
+//   - The rules and compliance packages of the account group are deleted and cannot be recovered.
 //
-// 	- All compliance results generated in the account group are automatically deleted and cannot be recovered.
+//   - All compliance results generated in the account group are automatically deleted and cannot be recovered.
 //
-// 	- Service-linked roles for Cloud Config of member accounts in the account group are retained.
+//   - Service-linked roles for Cloud Config of member accounts in the account group are retained.
 //
-// 	- If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
+//   - If the account groups to which a member belongs are all deleted, the member account uses Cloud Config as an independent Alibaba Cloud account.
 //
 // ### [](#)Description
 //
@@ -47832,9 +48052,9 @@ func (client *Client) ListAggregateResourceRelations(request *ListAggregateResou
 //
 // >
 //
-// 	- Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+//   - Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
 //
-// 	- For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+//   - For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
 //
 // This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c****` by using the advanced search feature.
 //
@@ -47901,9 +48121,9 @@ func (client *Client) ListAggregateResourcesByAdvancedSearchWithOptions(request 
 //
 // >
 //
-// 	- Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+//   - Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
 //
-// 	- For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+//   - For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
 //
 // This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` in the account group `ca-4b05626622af000c****` by using the advanced search feature.
 //
@@ -49401,9 +49621,9 @@ func (client *Client) ListResourceRelations(request *ListResourceRelationsReques
 //
 // >
 //
-// 	- Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+//   - Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
 //
-// 	- For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+//   - For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
 //
 // This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
 //
@@ -49466,9 +49686,9 @@ func (client *Client) ListResourcesByAdvancedSearchWithOptions(request *ListReso
 //
 // >
 //
-// 	- Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
+//   - Each resource type supported by Cloud Config has a property file. Property files are named based on the related resource types. For example, the property file of the `ACS::ECS::Instance` resource type is named `ACS_ECS_Instance.properties.json`. Property files of different resource types are placed under the `config/properties/resource-types` path.
 //
-// 	- For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
+//   - For more information about the examples and limits on SQL query statements, see [Examples of SQL query statements](https://help.aliyun.com/document_detail/398718.html) and [Limits on SQL query statements](https://help.aliyun.com/document_detail/398750.html).
 //
 // This topic provides an example on how to obtain all resources whose tag key is `business` and whose tag value is `online` within the current account by using the advanced search feature.
 //
@@ -51019,6 +51239,10 @@ func (client *Client) UpdateAggregateConfigRuleWithOptions(tmpReq *UpdateAggrega
 		body["ResourceIdsScope"] = request.ResourceIdsScope
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceNameScope)) {
+		body["ResourceNameScope"] = request.ResourceNameScope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
 		body["ResourceTypesScope"] = request.ResourceTypesScopeShrink
 	}
@@ -51257,6 +51481,10 @@ func (client *Client) UpdateAggregatorWithOptions(tmpReq *UpdateAggregatorReques
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -51698,6 +51926,10 @@ func (client *Client) UpdateConfigRuleWithOptions(tmpReq *UpdateConfigRuleReques
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIdsScope)) {
 		body["ResourceIdsScope"] = request.ResourceIdsScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceNameScope)) {
+		body["ResourceNameScope"] = request.ResourceNameScope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceTypesScopeShrink)) {
