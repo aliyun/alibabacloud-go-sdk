@@ -6176,7 +6176,8 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetSubnet
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
 	// Bond information
-	Bonds []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	Bonds    []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	Hostname *string                                                  `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// Node ID
 	//
 	// example:
@@ -6195,6 +6196,11 @@ func (s ExtendClusterRequestIpAllocationPolicyNodePolicy) GoString() string {
 
 func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetBonds(v []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) *ExtendClusterRequestIpAllocationPolicyNodePolicy {
 	s.Bonds = v
+	return s
+}
+
+func (s *ExtendClusterRequestIpAllocationPolicyNodePolicy) SetHostname(v string) *ExtendClusterRequestIpAllocationPolicyNodePolicy {
+	s.Hostname = &v
 	return s
 }
 
@@ -6237,14 +6243,21 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestNodeGroups struct {
+	Amount        *int64    `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AutoRenew     *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ChargeType    *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	Hostnames     []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	LoginPassword *string   `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// Node Group ID
 	//
 	// example:
 	//
 	// i16d4883a46cbadeb4bc9
-	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeGroupId *string                                  `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	NodeTag     []*ExtendClusterRequestNodeGroupsNodeTag `json:"NodeTag,omitempty" xml:"NodeTag,omitempty" type:"Repeated"`
 	// List of Nodes
-	Nodes []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Nodes  []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Period *int64                                 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// Custom Data
 	//
 	// example:
@@ -6252,7 +6265,9 @@ type ExtendClusterRequestNodeGroups struct {
 	// #!/bin/sh
 	//
 	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Zone ID
 	//
 	// example:
@@ -6269,8 +6284,38 @@ func (s ExtendClusterRequestNodeGroups) GoString() string {
 	return s.String()
 }
 
+func (s *ExtendClusterRequestNodeGroups) SetAmount(v int64) *ExtendClusterRequestNodeGroups {
+	s.Amount = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetAutoRenew(v bool) *ExtendClusterRequestNodeGroups {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetChargeType(v string) *ExtendClusterRequestNodeGroups {
+	s.ChargeType = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetHostnames(v []*string) *ExtendClusterRequestNodeGroups {
+	s.Hostnames = v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetLoginPassword(v string) *ExtendClusterRequestNodeGroups {
+	s.LoginPassword = &v
+	return s
+}
+
 func (s *ExtendClusterRequestNodeGroups) SetNodeGroupId(v string) *ExtendClusterRequestNodeGroups {
 	s.NodeGroupId = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetNodeTag(v []*ExtendClusterRequestNodeGroupsNodeTag) *ExtendClusterRequestNodeGroups {
+	s.NodeTag = v
 	return s
 }
 
@@ -6279,13 +6324,51 @@ func (s *ExtendClusterRequestNodeGroups) SetNodes(v []*ExtendClusterRequestNodeG
 	return s
 }
 
+func (s *ExtendClusterRequestNodeGroups) SetPeriod(v int64) *ExtendClusterRequestNodeGroups {
+	s.Period = &v
+	return s
+}
+
 func (s *ExtendClusterRequestNodeGroups) SetUserData(v string) *ExtendClusterRequestNodeGroups {
 	s.UserData = &v
 	return s
 }
 
+func (s *ExtendClusterRequestNodeGroups) SetVSwitchId(v string) *ExtendClusterRequestNodeGroups {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroups) SetVpcId(v string) *ExtendClusterRequestNodeGroups {
+	s.VpcId = &v
+	return s
+}
+
 func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterRequestNodeGroups {
 	s.ZoneId = &v
+	return s
+}
+
+type ExtendClusterRequestNodeGroupsNodeTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ExtendClusterRequestNodeGroupsNodeTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExtendClusterRequestNodeGroupsNodeTag) GoString() string {
+	return s.String()
+}
+
+func (s *ExtendClusterRequestNodeGroupsNodeTag) SetKey(v string) *ExtendClusterRequestNodeGroupsNodeTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ExtendClusterRequestNodeGroupsNodeTag) SetValue(v string) *ExtendClusterRequestNodeGroupsNodeTag {
+	s.Value = &v
 	return s
 }
 
