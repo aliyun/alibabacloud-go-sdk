@@ -7788,7 +7788,8 @@ type CreateNatGatewayRequest struct {
 	// example:
 	//
 	// cn-suzhou-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The instance type of the NAT gateway. Set the value to **enat.default**.
 	//
 	// example:
@@ -7813,8 +7814,6 @@ type CreateNatGatewayRequest struct {
 	Tag []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// vsw-5savh5ngxh8sbj14bu7n****
@@ -7831,6 +7830,11 @@ func (s CreateNatGatewayRequest) GoString() string {
 
 func (s *CreateNatGatewayRequest) SetEnsRegionId(v string) *CreateNatGatewayRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetInstanceBillingCycle(v string) *CreateNatGatewayRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -33099,7 +33103,8 @@ type DescribeLoadBalancersRequest struct {
 	// example:
 	//
 	// cn-guangzhou-10
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IDs of the Edge Node Service (ENS) nodes.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the ELB instance.
 	//
@@ -33135,7 +33140,7 @@ type DescribeLoadBalancersRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 10. Valid values: **10*	- to **100**.
+	// The number of entries to return on each page. Default value: 10. Valid values: **10*	- to **100**.
 	//
 	// example:
 	//
@@ -66115,6 +66120,10 @@ func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
