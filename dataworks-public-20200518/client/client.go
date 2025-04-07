@@ -60922,6 +60922,7 @@ func (s *ListFileVersionsResponse) SetBody(v *ListFileVersionsResponseBody) *Lis
 }
 
 type ListFilesRequest struct {
+	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
 	// The exact matching file name. The file name of the query result is exactly the same as this parameter.
 	//
 	// example:
@@ -60953,7 +60954,12 @@ type ListFilesRequest struct {
 	// example:
 	//
 	// ods
-	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to last modify the file.
+	//
+	// example:
+	//
+	// 38748246285727
 	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
 	// Whether the query result contains the path of the folder where the file is located.
 	//
@@ -61033,6 +61039,11 @@ func (s ListFilesRequest) String() string {
 
 func (s ListFilesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFilesRequest) SetCommitStatus(v int32) *ListFilesRequest {
+	s.CommitStatus = &v
+	return s
 }
 
 func (s *ListFilesRequest) SetExactFileName(v string) *ListFilesRequest {
@@ -67028,20 +67039,6 @@ type ListPermissionApplyOrdersRequest struct {
 	// 	- 3: approved but authorization failed
 	//
 	// 	- 4: rejected
-	//
-	// Valid values:
-	//
-	// 	- 0
-	//
-	// 	- 1
-	//
-	// 	- 2
-	//
-	// 	- 3
-	//
-	// 	- 4
-	//
-	// 	- 5
 	//
 	// example:
 	//
@@ -84033,9 +84030,9 @@ type UpdateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xssssss",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxsaxsa",
+	//           "accessKey": "*****",
 	//
 	//           "authType": 2,
 	//
@@ -84091,9 +84088,9 @@ type UpdateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "sssssxx",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxaxsaxs",
+	//           "accessKey": "*****",
 	//
 	//           "bucket": "xsa-xs-xs",
 	//
@@ -84171,7 +84168,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xsaxsa",
+	//           "accessId": "*****",
 	//
 	//           "emrClusterId": "C-dsads",
 	//
@@ -84179,7 +84176,7 @@ type UpdateDataSourceRequest struct {
 	//
 	//           "emrEndpoint": "emr.aliyuncs.com",
 	//
-	//           "accessKey": "dsadsad",
+	//           "accessKey": "*****",
 	//
 	//           "emrUserId": "224833315798889783",
 	//
@@ -84249,9 +84246,9 @@ type UpdateDataSourceRequest struct {
 	//
 	//         {
 	//
-	//           "accessId": "xsaxsaxs",
+	//           "accessId": "*****",
 	//
-	//           "accessKey": "xsaxsaxsa",
+	//           "accessKey": "*****",
 	//
 	//           "database": "xsaxsaxsa",
 	//
@@ -106169,6 +106166,10 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *u
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommitStatus)) {
+		body["CommitStatus"] = request.CommitStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExactFileName)) {
 		body["ExactFileName"] = request.ExactFileName
 	}
