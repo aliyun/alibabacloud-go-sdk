@@ -4537,9 +4537,9 @@ type CreatePolicyV2RequestRules struct {
 	//
 	// cn-shanghai
 	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**, **TRANSITION*	- or **REPLICATION**.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**, **TRANSITION**, or **REPLICATION**.
 	//
-	// 	- If the **RuleType*	- parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the Retention field of the rule with RuleType=TRANSITION. Minimum value: 1. Maximum value: 364635. Unit: days.
+	// 	- If the **RuleType*	- parameter is set to **BACKUP**, this parameter specifies the retention period of the backup data. The priority is lower than the retention period when the **RuleType*	- parameter is set to **TRANSITION**. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
 	// 	- If the **RuleType*	- parameter is set to **TRANSITION**, this parameter specifies the retention period of the backup data. Minimum value: 1. Maximum value: 364635. Unit: days.
 	//
@@ -4559,7 +4559,7 @@ type CreatePolicyV2RequestRules struct {
 	//
 	// 	- **REPLICATION**: replication rule
 	//
-	// 	- **TAG**: tag rule
+	// 	- **TAG**: tag-based resource association rule
 	//
 	// This parameter is required.
 	//
@@ -4567,11 +4567,21 @@ type CreatePolicyV2RequestRules struct {
 	//
 	// BACKUP
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Formats:
 	//
-	// 	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	// 	- `I|{startTime}|{interval}`: The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// 	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	//     	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, `PT1H` specifies an interval of 1 hour. `P1D` specifies an interval of one day.
+	//
+	// 	- `C|{startTime}|{crontab}`: The system runs backup jobs at a point in time that is specified in the {startTime} parameter based on the {crontab} expression. For example, C|1631685600|0 0 2 ?\\	- 3,5,7 indicates that the system runs backup jobs at 02:00:00 every Tuesday, Thursday, and Saturday from14:00:00 on September 15, 2021.``
+	//
+	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	//     	- crontab: the crontab expression. For example, 0 0 2 ?\\	- 3,5,7 indicates 02:00:00 every Tuesday, Thursday, and Saturday.``
+	//
+	// The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed.
 	//
 	// example:
 	//
@@ -4653,7 +4663,7 @@ func (s *CreatePolicyV2RequestRules) SetVaultId(v string) *CreatePolicyV2Request
 type CreatePolicyV2RequestRulesDataSourceFilters struct {
 	// This parameter is deprecated.
 	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
-	// The type of the data source. Valid value:
+	// The type of the data source. Valid values:
 	//
 	// 	- **UDM_ECS**: Elastic Compute Service (ECS) instance This type of data source is supported only if the **PolicyType*	- parameter is set to **UDM_ECS_ONLY**.
 	//
@@ -5350,7 +5360,53 @@ type CreateRestoreJobRequest struct {
 	//
 	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// Details of the whole machine backup.
+	// The parameter is valid only when the SourceType is set to UDM_ECS. It represents the details of the entire machine backup and is a JSON string. Depending on the value of RestoreType, different details must be passed as follows:
+	//
+	// - **UDM_ECS_DISK**: ECS disk cloning.
+	//
+	//   - **targetInstanceId**: string (required). Specifies the target ECS instance ID to which the cloned disk will be attached.
+	//
+	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//
+	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level, supporting PL0, PL1, PL2, and PL3, with PL1 as the default.
+	//
+	// - **UDM_ECS_DISK_ROLLBACK**: ECS disk rollback.
+	//
+	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//
+	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//
+	// - **UDM_ECS**: Full ECS cloning.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//
+	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//
+	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level (PL0/PL1/PL2/PL3), defaulting to PL1.
+	//
+	//   - **instanceType**: string (required). Specifies the specification of the target ECS instance.
+	//
+	//   - **restoredNetwork**: string (required). Specifies the vSwitch ID for the target ECS instance.
+	//
+	//   - **securityGroup**: string (required). Specifies the security group ID for the target ECS instance.
+	//
+	//   - **restoredName:*	- string (required). Specifies the instance name of the target ECS instance.
+	//
+	//   - **restoredHostName**: string (required). Specifies the host name of the target ECS instance.
+	//
+	//   - **allocatePublicIp**: bool (default: false). Indicates whether to assign a public IP to the target ECS instance.
+	//
+	//   - **privateIpAddress**: string. Specifies the internal IP address of the target ECS instance. If not specified, an IP will be assigned via DHCP.
+	//
+	// - **UDM_ECS_ROLLBACK**: Full ECS rollback.
+	//
+	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//
+	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
 	//
 	// example:
 	//
@@ -5678,7 +5734,53 @@ type CreateRestoreJobShrinkRequest struct {
 	//
 	// 1642496881
 	TargetTime *int64 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	// Details of the whole machine backup.
+	// The parameter is valid only when the SourceType is set to UDM_ECS. It represents the details of the entire machine backup and is a JSON string. Depending on the value of RestoreType, different details must be passed as follows:
+	//
+	// - **UDM_ECS_DISK**: ECS disk cloning.
+	//
+	//   - **targetInstanceId**: string (required). Specifies the target ECS instance ID to which the cloned disk will be attached.
+	//
+	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//
+	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level, supporting PL0, PL1, PL2, and PL3, with PL1 as the default.
+	//
+	// - **UDM_ECS_DISK_ROLLBACK**: ECS disk rollback.
+	//
+	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//
+	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//
+	// - **UDM_ECS**: Full ECS cloning.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
+	//
+	//   - **diskCategory**: string (required). Specifies the type of the target disk.
+	//
+	//   - **diskPerformanceLevel**: string. When diskCategory is "essd", this indicates the disk performance level (PL0/PL1/PL2/PL3), defaulting to PL1.
+	//
+	//   - **instanceType**: string (required). Specifies the specification of the target ECS instance.
+	//
+	//   - **restoredNetwork**: string (required). Specifies the vSwitch ID for the target ECS instance.
+	//
+	//   - **securityGroup**: string (required). Specifies the security group ID for the target ECS instance.
+	//
+	//   - **restoredName:*	- string (required). Specifies the instance name of the target ECS instance.
+	//
+	//   - **restoredHostName**: string (required). Specifies the host name of the target ECS instance.
+	//
+	//   - **allocatePublicIp**: bool (default: false). Indicates whether to assign a public IP to the target ECS instance.
+	//
+	//   - **privateIpAddress**: string. Specifies the internal IP address of the target ECS instance. If not specified, an IP will be assigned via DHCP.
+	//
+	// - **UDM_ECS_ROLLBACK**: Full ECS rollback.
+	//
+	//   - **sourceInstanceId**: string (required). Specifies the source ECS instance ID.
+	//
+	//   - **forceRestore**: bool (default: false). Indicates whether to force restore. NOTE: If forceRestore is set to true, the disk restoration will proceed even if the backup disk has been unmounted from the original ECS instance or mounted to another instance. Exercise caution when using this option.
+	//
+	//   - **bootAfterRestore**: bool (default: false). Indicates whether to start the ECS instance after restoration.
 	//
 	// example:
 	//
@@ -6168,15 +6270,15 @@ type CreateVaultRequest struct {
 	//
 	// cn-shanghai
 	VaultRegionId *string `json:"VaultRegionId,omitempty" xml:"VaultRegionId,omitempty"`
-	// The storage type of the backup vault. Valid value:
+	// The storage type of the backup vault.
 	//
-	// - **STANDARD**: standard storage.
+	// 	- **STANDARD**: standard storage.
 	//
-	// - **ARCHIVE**: deprected.
+	// 	- **ARCHIVE**: This parameter is deprecated.
 	//
-	// - **COLD_ARCHIVE**: deprected.
+	// 	- **COLD_ARCHIVE**: This parameter is deprecated.
 	//
-	// - **IA**: deprected.
+	// 	- **IA**: This parameter is deprecated.
 	//
 	// example:
 	//
@@ -6192,7 +6294,7 @@ type CreateVaultRequest struct {
 	//
 	// STANDARD
 	VaultType *string `json:"VaultType,omitempty" xml:"VaultType,omitempty"`
-	// Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+	// Specifies whether to enable the immutable backup feature.
 	//
 	// example:
 	//
@@ -6359,7 +6461,7 @@ func (s *CreateVaultResponse) SetBody(v *CreateVaultResponseBody) *CreateVaultRe
 }
 
 type DeleteAirEcsInstanceRequest struct {
-	// The ID of the ECS instance.
+	// The ID of the Elastic Compute Service (ECS) instance.
 	//
 	// example:
 	//
@@ -6388,7 +6490,7 @@ func (s *DeleteAirEcsInstanceRequest) SetUninstallClientSourceTypes(v []*string)
 }
 
 type DeleteAirEcsInstanceShrinkRequest struct {
-	// The ID of the ECS instance.
+	// The ID of the Elastic Compute Service (ECS) instance.
 	//
 	// example:
 	//
@@ -7641,15 +7743,13 @@ type DeleteSnapshotRequest struct {
 	//
 	// c-*********************
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// Specifies whether to forcibly delete the most recent backup snapshot. Valid values:
+	// Deprecated
 	//
-	// 	- true: The system forcibly deletes the most recent backup snapshot.
-	//
-	// 	- false (default): The system does not forcibly delete the most recent backup snapshot.
+	// This parameter is deprecated.
 	//
 	// example:
 	//
-	// false
+	// Deprected.
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the ECS instance. If you delete a backup snapshot for ECS instances, you must specify one of the InstanceId and **ClientId*	- parameters.
 	//
@@ -8222,7 +8322,8 @@ type DescribeBackupClientsRequest struct {
 	// example:
 	//
 	// 129374672382xxxx
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64                                 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Filters            []*DescribeBackupClientsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The IDs of ECS instances.
 	//
 	// example:
@@ -8287,6 +8388,11 @@ func (s *DescribeBackupClientsRequest) SetCrossAccountUserId(v int64) *DescribeB
 	return s
 }
 
+func (s *DescribeBackupClientsRequest) SetFilters(v []*DescribeBackupClientsRequestFilters) *DescribeBackupClientsRequest {
+	s.Filters = v
+	return s
+}
+
 func (s *DescribeBackupClientsRequest) SetInstanceIds(v []*string) *DescribeBackupClientsRequest {
 	s.InstanceIds = v
 	return s
@@ -8304,6 +8410,29 @@ func (s *DescribeBackupClientsRequest) SetPageSize(v int32) *DescribeBackupClien
 
 func (s *DescribeBackupClientsRequest) SetTag(v []*DescribeBackupClientsRequestTag) *DescribeBackupClientsRequest {
 	s.Tag = v
+	return s
+}
+
+type DescribeBackupClientsRequestFilters struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupClientsRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupClientsRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupClientsRequestFilters) SetKey(v string) *DescribeBackupClientsRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeBackupClientsRequestFilters) SetValues(v []*string) *DescribeBackupClientsRequestFilters {
+	s.Values = v
 	return s
 }
 
@@ -8398,7 +8527,8 @@ type DescribeBackupClientsShrinkRequest struct {
 	// example:
 	//
 	// 129374672382xxxx
-	CrossAccountUserId *int64 `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	CrossAccountUserId *int64                                       `json:"CrossAccountUserId,omitempty" xml:"CrossAccountUserId,omitempty"`
+	Filters            []*DescribeBackupClientsShrinkRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The IDs of ECS instances.
 	//
 	// example:
@@ -8463,6 +8593,11 @@ func (s *DescribeBackupClientsShrinkRequest) SetCrossAccountUserId(v int64) *Des
 	return s
 }
 
+func (s *DescribeBackupClientsShrinkRequest) SetFilters(v []*DescribeBackupClientsShrinkRequestFilters) *DescribeBackupClientsShrinkRequest {
+	s.Filters = v
+	return s
+}
+
 func (s *DescribeBackupClientsShrinkRequest) SetInstanceIdsShrink(v string) *DescribeBackupClientsShrinkRequest {
 	s.InstanceIdsShrink = &v
 	return s
@@ -8480,6 +8615,29 @@ func (s *DescribeBackupClientsShrinkRequest) SetPageSize(v int32) *DescribeBacku
 
 func (s *DescribeBackupClientsShrinkRequest) SetTag(v []*DescribeBackupClientsShrinkRequestTag) *DescribeBackupClientsShrinkRequest {
 	s.Tag = v
+	return s
+}
+
+type DescribeBackupClientsShrinkRequestFilters struct {
+	Key    *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupClientsShrinkRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupClientsShrinkRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupClientsShrinkRequestFilters) SetKey(v string) *DescribeBackupClientsShrinkRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeBackupClientsShrinkRequestFilters) SetValues(v []*string) *DescribeBackupClientsShrinkRequestFilters {
+	s.Values = v
 	return s
 }
 
@@ -10253,11 +10411,13 @@ type DescribeBackupPlansRequest struct {
 	//
 	// 	- **OSS**: Object Storage Service (OSS) buckets
 	//
-	// 	- **NAS**: Apsara File Storage NAS file systems
+	// 	- **NAS**: File Storage NAS (NAS) file systems
 	//
 	// 	- **OTS**: Tablestore instances
 	//
 	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **SYNC**: data synchronization
 	//
 	// example:
 	//
@@ -10686,6 +10846,8 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	// 	- **OTS**: Tablestore instances
 	//
 	// 	- **UDM_ECS**: ECS instances
+	//
+	// 	- **SYNC**: data synchronization
 	//
 	// example:
 	//
@@ -11587,7 +11749,12 @@ type DescribeClientsResponseBodyClientsClient struct {
 	// example:
 	//
 	// 1554347313
-	CreatedTime   *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTime *int64 `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The latest heartbeat time of the Cloud Backup client. This value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1554347313
 	HeartBeatTime *int64 `json:"HeartBeatTime,omitempty" xml:"HeartBeatTime,omitempty"`
 	// The instance ID.
 	//
@@ -16394,11 +16561,11 @@ type DescribePolicyBindingsResponseBodyPolicyBindings struct {
 	//
 	// i-8vb************5ly
 	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
-	// 策略是否对该数据源生效。
+	// Whether the policy is disbaled for this data source.
 	//
-	// - true：暂停
+	// - true: disabled
 	//
-	// - false：未暂停
+	// - false: Not disabled
 	//
 	// example:
 	//
@@ -19629,7 +19796,12 @@ type DescribeVaultsRequest struct {
 	// example:
 	//
 	// v-*********************
-	VaultId   *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	// The name of the backup vault. The name must be 1 to 64 characters in length.
+	//
+	// example:
+	//
+	// vaultname
 	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
 	// The region ID to which the backup vault belongs.
 	//
@@ -22005,7 +22177,7 @@ type GetTempFileDownloadLinkResponseBody struct {
 	//
 	// example:
 	//
-	// https://a-hbr-temp-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/job-0007yg2i0m6705wdhgb6_0.csv?Expires=1649406469&OSSAccessKeyId=LTAIjGotF8wX****&Signature=26%2BgjegCrRmMDCpS5jzyG4ivKU8%3D
+	// https://a-hbr-temp-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/job-0007yg2i0m6705wdhgb6_0.csv?Expires=1649406469&OSSAccessKeyId=LTAI************&Signature=26%2BgjegCrRmMDCpS5jzyG4ivKU8%3D
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -26898,7 +27070,7 @@ type UpdatePolicyV2RequestRules struct {
 	//
 	// 7
 	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// This parameter is required only if the value of the **RuleType*	- parameter is **TRANSITION**. This parameter specifies the special retention rules.
+	// This parameter is required only if the **RuleType*	- parameter is set to **TRANSITION**. This parameter specifies the special retention rules.
 	RetentionRules []*UpdatePolicyV2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -26918,11 +27090,21 @@ type UpdatePolicyV2RequestRules struct {
 	//
 	// BACKUP
 	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
+	// This parameter is required only if the **RuleType*	- parameter is set to **BACKUP**. This parameter specifies the backup schedule settings. Formats:
 	//
-	// 	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	// 	- `I|{startTime}|{interval}`: The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. For example, `I|1631685600|P1D` indicates that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
 	//
-	// 	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of 1 hour. P1D specifies an interval of one day.
+	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	//     	- interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, `PT1H` specifies an interval of 1 hour. `P1D` specifies an interval of one day.
+	//
+	// 	- `C|{startTime}|{crontab}`: The system runs backup jobs at a point in time that is specified in the {startTime} parameter based on the {crontab} expression. For example, C|1631685600|0 0 2 ?\\	- 3,5,7 indicates that the system runs backup jobs at 02:00:00 every Tuesday, Thursday, and Saturday from14:00:00 on September 15, 2021.``
+	//
+	//     	- startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds.
+	//
+	//     	- crontab: the crontab expression. For example, 0 0 2 ?\\	- 3,5,7 indicates 02:00:00 every Tuesday, Thursday, and Saturday.``
+	//
+	// The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed.
 	//
 	// example:
 	//
@@ -27319,7 +27501,7 @@ type UpdateVaultRequest struct {
 	//
 	// vaultname
 	VaultName *string `json:"VaultName,omitempty" xml:"VaultName,omitempty"`
-	// Whether to enable the vault worm feature. Once the worm feature is enabled, the vault and all its backup data cannot be deleted before they automatically expire. After enabling the worm feature, it is not supported to disable it. The worm feature is only effective for standard and archive backup vault.
+	// Specifies whether to enable the immutable backup feature for storage vaults. After the immutable backup feature is enabled, backup vaults and all backup data cannot be deleted until the retention period expires. The immutable backup feature cannot be disabled after it is enabled. Only standard backup vaults and archive vaults support the immutable backup feature.
 	//
 	// example:
 	//
@@ -28217,11 +28399,11 @@ func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_resul
 //
 // Description:
 //
-//   In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
+//	  In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
 //
-// 	- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+//		- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
 //
-// 	- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
+//		- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -28286,11 +28468,11 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 //
 // Description:
 //
-//   In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
+//	  In the Cloud Backup console, you can use resource groups to manage resources such as backup vaults, Cloud Backup clients, and SAP HANA instances.
 //
-// 	- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
+//		- A resource is a cloud service entity that you create on Alibaba Cloud, such as an Elastic Compute Service (ECS) instance, a backup vault, or an SAP HANA instance.
 //
-// 	- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
+//		- You can sort resources owned by your Alibaba Cloud account into various resource groups. Resource groups facilitate resource management among multiple projects or applications within your Alibaba Cloud account and simplify permission management.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -28874,13 +29056,13 @@ func (client *Client) CreateClients(request *CreateClientsRequest) (_result *Cre
 //
 // Description:
 //
-//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- You can specify only one type of data source in a backup plan.
+//		- You can specify only one type of data source in a backup plan.
 //
-// 	- You can specify only one interval as a backup cycle in a backup plan.
+//		- You can specify only one interval as a backup cycle in a backup plan.
 //
-// 	- Each backup plan allows you to back up data to only one backup vault.
+//		- Each backup plan allows you to back up data to only one backup vault.
 //
 // @param request - CreateHanaBackupPlanRequest
 //
@@ -28965,13 +29147,13 @@ func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupP
 //
 // Description:
 //
-//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- You can specify only one type of data source in a backup plan.
+//		- You can specify only one type of data source in a backup plan.
 //
-// 	- You can specify only one interval as a backup cycle in a backup plan.
+//		- You can specify only one interval as a backup cycle in a backup plan.
 //
-// 	- Each backup plan allows you to back up data to only one backup vault.
+//		- Each backup plan allows you to back up data to only one backup vault.
 //
 // @param request - CreateHanaBackupPlanRequest
 //
@@ -29275,9 +29457,9 @@ func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_res
 //
 // Description:
 //
-//   You can bind data sources to only one policy in each request.
+//	  You can bind data sources to only one policy in each request.
 //
-// 	- Elastic Compute Service (ECS) instances can be bound to only one policy.
+//		- Elastic Compute Service (ECS) instances can be bound to only one policy.
 //
 // @param tmpReq - CreatePolicyBindingsRequest
 //
@@ -29346,9 +29528,9 @@ func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindin
 //
 // Description:
 //
-//   You can bind data sources to only one policy in each request.
+//	  You can bind data sources to only one policy in each request.
 //
-// 	- Elastic Compute Service (ECS) instances can be bound to only one policy.
+//		- Elastic Compute Service (ECS) instances can be bound to only one policy.
 //
 // @param request - CreatePolicyBindingsRequest
 //
@@ -29372,11 +29554,11 @@ func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest)
 //
 // A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+//   - A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
 //
-// 	- You can specify only one interval as a backup cycle in a backup policy.
+//   - You can specify only one interval as a backup cycle in a backup policy.
 //
-// 	- Each backup policy allows you to back up data to only one backup vault.
+//   - Each backup policy allows you to back up data to only one backup vault.
 //
 // @param tmpReq - CreatePolicyV2Request
 //
@@ -29453,11 +29635,11 @@ func (client *Client) CreatePolicyV2WithOptions(tmpReq *CreatePolicyV2Request, r
 //
 // A backup policy records the information required for backup. After you execute a backup policy, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
+//   - A backup policy supports multiple data sources. The data sources can be only Elastic Compute Service (ECS) instances.
 //
-// 	- You can specify only one interval as a backup cycle in a backup policy.
+//   - You can specify only one interval as a backup cycle in a backup policy.
 //
-// 	- Each backup policy allows you to back up data to only one backup vault.
+//   - Each backup policy allows you to back up data to only one backup vault.
 //
 // @param request - CreatePolicyV2Request
 //
@@ -29880,13 +30062,13 @@ func (client *Client) CreateTempFileUploadUrl(request *CreateTempFileUploadUrlRe
 //
 // Description:
 //
-//   Each Alibaba Cloud account can create up to 100 backup vaults.
+//	  Each Alibaba Cloud account can create up to 100 backup vaults.
 //
-// 	- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+//		- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
 //
-//     **
+//	    **
 //
-//     **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
+//	    **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
 //
 // @param request - CreateVaultRequest
 //
@@ -29971,13 +30153,13 @@ func (client *Client) CreateVaultWithOptions(request *CreateVaultRequest, runtim
 //
 // Description:
 //
-//   Each Alibaba Cloud account can create up to 100 backup vaults.
+//	  Each Alibaba Cloud account can create up to 100 backup vaults.
 //
-// 	- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
+//		- After a backup vault is created, the backup vault is in the INITIALIZING state, and the system automatically runs an initialization task to initialize the backup vault. After the initialization task is completed, the backup vault is in the CREATED state. A backup job can use a backup vault to store backup data only if the backup vault is in the CREATED state.
 //
-//     **
+//	    **
 //
-//     **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
+//	    **Note*	- Before you call this operation, make sure that you fully understand the billing of Cloud Backup.
 //
 // @param request - CreateVaultRequest
 //
@@ -30080,15 +30262,15 @@ func (client *Client) DeleteAirEcsInstance(request *DeleteAirEcsInstanceRequest)
 //
 // Description:
 //
-//   You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+//	  You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
 //
-// 	- When you perform this operation, resources that are associated with the client are also deleted, including:
+//		- When you perform this operation, resources that are associated with the client are also deleted, including:
 //
-//     	- Backup plans
+//	    	- Backup plans
 //
-//     	- Backup jobs
+//	    	- Backup jobs
 //
-//     	- Snapshots
+//	    	- Snapshots
 //
 // @param request - DeleteBackupClientRequest
 //
@@ -30145,15 +30327,15 @@ func (client *Client) DeleteBackupClientWithOptions(request *DeleteBackupClientR
 //
 // Description:
 //
-//   You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
+//	  You cannot delete the active Cloud Backup clients that receive heartbeat packets within 1 hour. You can call the UninstallBackupClients operation to uninstall a Cloud Backup client. Then, the client becomes inactive.
 //
-// 	- When you perform this operation, resources that are associated with the client are also deleted, including:
+//		- When you perform this operation, resources that are associated with the client are also deleted, including:
 //
-//     	- Backup plans
+//	    	- Backup plans
 //
-//     	- Backup jobs
+//	    	- Backup jobs
 //
-//     	- Snapshots
+//	    	- Snapshots
 //
 // @param request - DeleteBackupClientRequest
 //
@@ -30260,9 +30442,9 @@ func (client *Client) DeleteBackupClientResource(request *DeleteBackupClientReso
 //
 // Description:
 //
-//   If you delete a backup plan, the backup jobs are also deleted.
+//	  If you delete a backup plan, the backup jobs are also deleted.
 //
-// 	- If you delete a backup plan, the created snapshot files are not deleted.
+//		- If you delete a backup plan, the created snapshot files are not deleted.
 //
 // @param request - DeleteBackupPlanRequest
 //
@@ -30331,9 +30513,9 @@ func (client *Client) DeleteBackupPlanWithOptions(request *DeleteBackupPlanReque
 //
 // Description:
 //
-//   If you delete a backup plan, the backup jobs are also deleted.
+//	  If you delete a backup plan, the backup jobs are also deleted.
 //
-// 	- If you delete a backup plan, the created snapshot files are not deleted.
+//		- If you delete a backup plan, the created snapshot files are not deleted.
 //
 // @param request - DeleteBackupPlanRequest
 //
@@ -30764,10 +30946,6 @@ func (client *Client) DeletePolicyV2(request *DeletePolicyV2Request) (_result *D
 //
 // Deletes a backup snapshot.
 //
-// Description:
-//
-// If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
-//
 // @param request - DeleteSnapshotRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -30844,10 +31022,6 @@ func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, 
 // Summary:
 //
 // Deletes a backup snapshot.
-//
-// Description:
-//
-// If you delete the most recent backup snapshot for a data source, you must set the Force parameter to `true`. Otherwise, an error occurs.
 //
 // @param request - DeleteSnapshotRequest
 //
@@ -31011,9 +31185,9 @@ func (client *Client) DeleteUdmEcsInstance(request *DeleteUdmEcsInstanceRequest)
 //
 // Description:
 //
-//   You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+//	  You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
 //
-// 	- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
+//		- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
 //
 // @param request - DeleteVaultRequest
 //
@@ -31078,9 +31252,9 @@ func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtim
 //
 // Description:
 //
-//   You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
+//	  You cannot delete a backup vault within 2 hours after the backup vault is created or a backup vault that is in the INITIALIZING state.
 //
-// 	- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
+//		- After you delete a backup vault, all resources that are associated with the backup vault are deleted. The resources include the Cloud Backup client of the old version, backup plans, backup jobs, snapshots, and restore jobs.
 //
 // @param request - DeleteVaultRequest
 //
@@ -31139,6 +31313,10 @@ func (client *Client) DescribeBackupClientsWithOptions(tmpReq *DescribeBackupCli
 
 	if !tea.BoolValue(util.IsUnset(request.CrossAccountUserId)) {
 		query["CrossAccountUserId"] = request.CrossAccountUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -32276,9 +32454,9 @@ func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest)
 //
 // Description:
 //
-//   If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+//	  If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
 //
-// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
 //
 // @param request - DescribeHanaRetentionSettingRequest
 //
@@ -32343,9 +32521,9 @@ func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeH
 //
 // Description:
 //
-//   If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
+//	  If you want to query the backup parameters of a database, you can call the DescribeHanaBackupSetting operation.
 //
-// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
 //
 // @param request - DescribeHanaRetentionSettingRequest
 //
@@ -33239,9 +33417,9 @@ func (client *Client) DescribeVaults(request *DescribeVaultsRequest) (_result *D
 //
 // Description:
 //
-//   If the request is successful, the mount target is deleted.
+//	  If the request is successful, the mount target is deleted.
 //
-// 	- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+//		- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
 //
 // @param request - DetachNasFileSystemRequest
 //
@@ -33314,9 +33492,9 @@ func (client *Client) DetachNasFileSystemWithOptions(request *DetachNasFileSyste
 //
 // Description:
 //
-//   If the request is successful, the mount target is deleted.
+//	  If the request is successful, the mount target is deleted.
 //
-// 	- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
+//		- After you create a backup plan for an Apsara File Storage NAS file system, HBR automatically creates a mount target for the file system. You can call this operation to delete the mount target. In the **Status*	- column of the mount target of the NAS file system, the following information is displayed: **This mount target is created by an Alibaba Cloud internal service and cannot be operated. Service name: HBR**.
 //
 // @param request - DetachNasFileSystemRequest
 //
@@ -34016,11 +34194,11 @@ func (client *Client) GetTempFileDownloadLink(request *GetTempFileDownloadLinkRe
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
 //
-// 	- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+//		- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
 //
 // @param tmpReq - InstallBackupClientsRequest
 //
@@ -34095,11 +34273,11 @@ func (client *Client) InstallBackupClientsWithOptions(tmpReq *InstallBackupClien
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to install an HBR client on an ECS instance.
 //
-// 	- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
+//		- You can call the [DescribeTask](https://help.aliyun.com/document_detail/431265.html) operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
+//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 60 seconds after you call the InstallBackupClients operation to install HBR clients. Then, run the next queries at an interval of 30 seconds.
 //
 // @param request - InstallBackupClientsRequest
 //
@@ -34450,11 +34628,11 @@ func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncReques
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
 //
-// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
 //
 // @param tmpReq - UninstallBackupClientsRequest
 //
@@ -34537,11 +34715,11 @@ func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupC
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to uninstall a backup client from an ECS instance.
 //
-// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
+//		- The timeout period of an asynchronous job is 15 minutes. We recommend that you call the DescribeTask operation to run the first query 30 seconds after you call the UninstallBackupClients operation to uninstall backup clients. Then, run the next queries at an interval of 30 seconds.
 //
 // @param request - UninstallBackupClientsRequest
 //
@@ -35019,13 +35197,13 @@ func (client *Client) UpdateContainerCluster(request *UpdateContainerClusterRequ
 //
 // Description:
 //
-//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- You can specify only one type of data source in a backup plan.
+//		- You can specify only one type of data source in a backup plan.
 //
-// 	- You can specify only one interval as a backup cycle in a backup plan.
+//		- You can specify only one interval as a backup cycle in a backup plan.
 //
-// 	- Each backup plan allows you to back up data to only one backup vault.
+//		- Each backup plan allows you to back up data to only one backup vault.
 //
 // @param request - UpdateHanaBackupPlanRequest
 //
@@ -35106,13 +35284,13 @@ func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupP
 //
 // Description:
 //
-//   A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
+//	  A backup plan defines the data source, backup policy, and other configurations. After you execute a backup plan, a backup job is generated to record the backup progress and the backup result. If a backup job is completed, a backup snapshot is generated. You can use a backup snapshot to create a restore job.
 //
-// 	- You can specify only one type of data source in a backup plan.
+//		- You can specify only one type of data source in a backup plan.
 //
-// 	- You can specify only one interval as a backup cycle in a backup plan.
+//		- You can specify only one interval as a backup cycle in a backup plan.
 //
-// 	- Each backup plan allows you to back up data to only one backup vault.
+//		- Each backup plan allows you to back up data to only one backup vault.
 //
 // @param request - UpdateHanaBackupPlanRequest
 //
@@ -35360,9 +35538,9 @@ func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_r
 //
 // Description:
 //
-//   If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+//	  If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
 //
-// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
 //
 // @param request - UpdateHanaRetentionSettingRequest
 //
@@ -35439,9 +35617,9 @@ func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaR
 //
 // Description:
 //
-//   If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
+//	  If you want to update the backup parameters of a database, you can call the UpdateHanaBackupSetting operation.
 //
-// 	- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
+//		- Cloud Backup deletes the expired catalogs and data that are related to Backint and file backup. The deleted catalogs and data cannot be restored. We recommend that you set the retention period based on your business requirements.
 //
 // @param request - UpdateHanaRetentionSettingRequest
 //
@@ -35762,11 +35940,11 @@ func (client *Client) UpdateVault(request *UpdateVaultRequest) (_result *UpdateV
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
 //
-// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes.
+//		- The timeout period of an asynchronous job is 15 minutes.
 //
 // @param tmpReq - UpgradeBackupClientsRequest
 //
@@ -35849,11 +36027,11 @@ func (client *Client) UpgradeBackupClientsWithOptions(tmpReq *UpgradeBackupClien
 //
 // Description:
 //
-//   This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
+//	  This operation creates an asynchronous job at the backend and calls Cloud Assistant to upgrade an HBR client that is installed on an ECS instance.
 //
-// 	- You can call the DescribeTask operation to query the execution result of an asynchronous job.
+//		- You can call the DescribeTask operation to query the execution result of an asynchronous job.
 //
-// 	- The timeout period of an asynchronous job is 15 minutes.
+//		- The timeout period of an asynchronous job is 15 minutes.
 //
 // @param request - UpgradeBackupClientsRequest
 //
