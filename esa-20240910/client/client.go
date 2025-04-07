@@ -12091,6 +12091,142 @@ func (s *CreateRoutineRelatedRouteResponse) SetBody(v *CreateRoutineRelatedRoute
 	return s
 }
 
+type CreateRoutineRouteRequest struct {
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// example:
+	//
+	// on
+	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateRoutineRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRouteRequest) SetBypass(v string) *CreateRoutineRouteRequest {
+	s.Bypass = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetRouteEnable(v string) *CreateRoutineRouteRequest {
+	s.RouteEnable = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetRouteName(v string) *CreateRoutineRouteRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetRoutineName(v string) *CreateRoutineRouteRequest {
+	s.RoutineName = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetRule(v string) *CreateRoutineRouteRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetSequence(v int32) *CreateRoutineRouteRequest {
+	s.Sequence = &v
+	return s
+}
+
+func (s *CreateRoutineRouteRequest) SetSiteId(v int64) *CreateRoutineRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type CreateRoutineRouteResponseBody struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRoutineRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRouteResponseBody) SetConfigId(v int64) *CreateRoutineRouteResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *CreateRoutineRouteResponseBody) SetRequestId(v string) *CreateRoutineRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRoutineRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRoutineRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRoutineRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRoutineRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRoutineRouteResponse) SetHeaders(v map[string]*string) *CreateRoutineRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRoutineRouteResponse) SetStatusCode(v int32) *CreateRoutineRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRoutineRouteResponse) SetBody(v *CreateRoutineRouteResponseBody) *CreateRoutineRouteResponse {
+	s.Body = v
+	return s
+}
+
 type CreateScheduledPreloadExecutionsRequest struct {
 	// The scheduled prefetch plans to create.
 	//
@@ -19511,6 +19647,88 @@ func (s *DeleteRoutineRelatedRouteResponse) SetStatusCode(v int32) *DeleteRoutin
 }
 
 func (s *DeleteRoutineRelatedRouteResponse) SetBody(v *DeleteRoutineRelatedRouteResponseBody) *DeleteRoutineRelatedRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRoutineRouteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3528160969****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 11223***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DeleteRoutineRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRouteRequest) SetConfigId(v int64) *DeleteRoutineRouteRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *DeleteRoutineRouteRequest) SetSiteId(v int64) *DeleteRoutineRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type DeleteRoutineRouteResponseBody struct {
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRoutineRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRouteResponseBody) SetRequestId(v string) *DeleteRoutineRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRoutineRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRoutineRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRoutineRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRoutineRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRoutineRouteResponse) SetHeaders(v map[string]*string) *DeleteRoutineRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRoutineRouteResponse) SetStatusCode(v int32) *DeleteRoutineRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRoutineRouteResponse) SetBody(v *DeleteRoutineRouteResponseBody) *DeleteRoutineRouteResponse {
 	s.Body = v
 	return s
 }
@@ -35113,6 +35331,178 @@ func (s *GetRoutineResponse) SetBody(v *GetRoutineResponseBody) *GetRoutineRespo
 	return s
 }
 
+type GetRoutineRouteRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s GetRoutineRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineRouteRequest) SetConfigId(v int64) *GetRoutineRouteRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRoutineRouteRequest) SetSiteId(v int64) *GetRoutineRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type GetRoutineRouteResponseBody struct {
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// example:
+	//
+	// 352816******
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// simple
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// 36af3fcc-43d0-441c-86b1-428951dc8225
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// on
+	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 0
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s GetRoutineRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineRouteResponseBody) SetBypass(v string) *GetRoutineRouteResponseBody {
+	s.Bypass = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetConfigId(v int64) *GetRoutineRouteResponseBody {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetConfigType(v string) *GetRoutineRouteResponseBody {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetMode(v string) *GetRoutineRouteResponseBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetRequestId(v string) *GetRoutineRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetRouteEnable(v string) *GetRoutineRouteResponseBody {
+	s.RouteEnable = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetRouteName(v string) *GetRoutineRouteResponseBody {
+	s.RouteName = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetRoutineName(v string) *GetRoutineRouteResponseBody {
+	s.RoutineName = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetRule(v string) *GetRoutineRouteResponseBody {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetSequence(v int32) *GetRoutineRouteResponseBody {
+	s.Sequence = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponseBody) SetSiteVersion(v int32) *GetRoutineRouteResponseBody {
+	s.SiteVersion = &v
+	return s
+}
+
+type GetRoutineRouteResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetRoutineRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetRoutineRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRoutineRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRoutineRouteResponse) SetHeaders(v map[string]*string) *GetRoutineRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRoutineRouteResponse) SetStatusCode(v int32) *GetRoutineRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetRoutineRouteResponse) SetBody(v *GetRoutineRouteResponseBody) *GetRoutineRouteResponse {
+	s.Body = v
+	return s
+}
+
 type GetRoutineStagingCodeUploadInfoRequest struct {
 	// The code description.
 	//
@@ -38706,7 +39096,7 @@ func (s *GetWafRuleResponse) SetBody(v *GetWafRuleResponseBody) *GetWafRuleRespo
 }
 
 type GetWafRulesetRequest struct {
-	// The ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
+	// The ID of the WAF ruleset, which can be obtained by calling the ListWafRulesets interface.
 	//
 	// example:
 	//
@@ -51756,6 +52146,256 @@ func (s *ListRoutineOptionalSpecsResponse) SetBody(v *ListRoutineOptionalSpecsRe
 	return s
 }
 
+type ListRoutineRoutesRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+}
+
+func (s ListRoutineRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineRoutesRequest) SetPageNumber(v int32) *ListRoutineRoutesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineRoutesRequest) SetPageSize(v int32) *ListRoutineRoutesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineRoutesRequest) SetRoutineName(v string) *ListRoutineRoutesRequest {
+	s.RoutineName = &v
+	return s
+}
+
+type ListRoutineRoutesResponseBody struct {
+	Configs []*ListRoutineRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 83
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 2
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListRoutineRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineRoutesResponseBody) SetConfigs(v []*ListRoutineRoutesResponseBodyConfigs) *ListRoutineRoutesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBody) SetPageNumber(v int32) *ListRoutineRoutesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBody) SetPageSize(v int32) *ListRoutineRoutesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBody) SetRequestId(v string) *ListRoutineRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBody) SetTotalCount(v int32) *ListRoutineRoutesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBody) SetTotalPage(v int32) *ListRoutineRoutesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListRoutineRoutesResponseBodyConfigs struct {
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// simple
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// on
+	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 554889455535696
+	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// test.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListRoutineRoutesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineRoutesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetBypass(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.Bypass = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetConfigId(v int64) *ListRoutineRoutesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetConfigType(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetMode(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.Mode = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetRouteEnable(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.RouteEnable = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetRouteName(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetRoutineName(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.RoutineName = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetRule(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetSequence(v int32) *ListRoutineRoutesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteId(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteName(v string) *ListRoutineRoutesResponseBodyConfigs {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteVersion(v int32) *ListRoutineRoutesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListRoutineRoutesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoutineRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRoutineRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineRoutesResponse) SetHeaders(v map[string]*string) *ListRoutineRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoutineRoutesResponse) SetStatusCode(v int32) *ListRoutineRoutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRoutineRoutesResponse) SetBody(v *ListRoutineRoutesResponseBody) *ListRoutineRoutesResponse {
+	s.Body = v
+	return s
+}
+
 type ListScheduledPreloadExecutionsRequest struct {
 	// The ID of the scheduled prefetch task.
 	//
@@ -52512,6 +53152,265 @@ func (s *ListSiteDeliveryTasksResponse) SetStatusCode(v int32) *ListSiteDelivery
 }
 
 func (s *ListSiteDeliveryTasksResponse) SetBody(v *ListSiteDeliveryTasksResponseBody) *ListSiteDeliveryTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListSiteRoutesRequest struct {
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456****
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ListSiteRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteRoutesRequest) SetConfigId(v int64) *ListSiteRoutesRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteRoutesRequest) SetConfigType(v string) *ListSiteRoutesRequest {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListSiteRoutesRequest) SetPageNumber(v int32) *ListSiteRoutesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSiteRoutesRequest) SetPageSize(v int32) *ListSiteRoutesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSiteRoutesRequest) SetRouteName(v string) *ListSiteRoutesRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListSiteRoutesRequest) SetSiteId(v int64) *ListSiteRoutesRequest {
+	s.SiteId = &v
+	return s
+}
+
+type ListSiteRoutesResponseBody struct {
+	Configs []*ListSiteRoutesResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 04F0F334-1335-436C-A1D7-6C044FE73368
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 10
+	TotalPage *int32 `json:"TotalPage,omitempty" xml:"TotalPage,omitempty"`
+}
+
+func (s ListSiteRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteRoutesResponseBody) SetConfigs(v []*ListSiteRoutesResponseBodyConfigs) *ListSiteRoutesResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBody) SetPageNumber(v int32) *ListSiteRoutesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBody) SetPageSize(v int32) *ListSiteRoutesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBody) SetRequestId(v string) *ListSiteRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBody) SetTotalCount(v int32) *ListSiteRoutesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBody) SetTotalPage(v int32) *ListSiteRoutesResponseBody {
+	s.TotalPage = &v
+	return s
+}
+
+type ListSiteRoutesResponseBodyConfigs struct {
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// global
+	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// example:
+	//
+	// simple
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// on
+	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// example:
+	//
+	// 1
+	SiteVersion *int32 `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
+}
+
+func (s ListSiteRoutesResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteRoutesResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetBypass(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.Bypass = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetConfigId(v int64) *ListSiteRoutesResponseBodyConfigs {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetConfigType(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.ConfigType = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetMode(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.Mode = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetRouteEnable(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.RouteEnable = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetRouteName(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetRoutineName(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.RoutineName = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetRule(v string) *ListSiteRoutesResponseBodyConfigs {
+	s.Rule = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetSequence(v int32) *ListSiteRoutesResponseBodyConfigs {
+	s.Sequence = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponseBodyConfigs) SetSiteVersion(v int32) *ListSiteRoutesResponseBodyConfigs {
+	s.SiteVersion = &v
+	return s
+}
+
+type ListSiteRoutesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSiteRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSiteRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSiteRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSiteRoutesResponse) SetHeaders(v map[string]*string) *ListSiteRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSiteRoutesResponse) SetStatusCode(v int32) *ListSiteRoutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSiteRoutesResponse) SetBody(v *ListSiteRoutesResponseBody) *ListSiteRoutesResponse {
 	s.Body = v
 	return s
 }
@@ -67197,6 +68096,142 @@ func (s *UpdateRewriteUrlRuleResponse) SetBody(v *UpdateRewriteUrlRuleResponseBo
 	return s
 }
 
+type UpdateRoutineRouteRequest struct {
+	// example:
+	//
+	// on
+	Bypass *string `json:"Bypass,omitempty" xml:"Bypass,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 35281609698****
+	ConfigId *int64 `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
+	// example:
+	//
+	// on
+	RouteEnable *string `json:"RouteEnable,omitempty" xml:"RouteEnable,omitempty"`
+	// example:
+	//
+	// test_route
+	RouteName *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	// example:
+	//
+	// test-routine1
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+	// example:
+	//
+	// (http.host eq \\"video.example.com\\")
+	Rule *string `json:"Rule,omitempty" xml:"Rule,omitempty"`
+	// example:
+	//
+	// 1
+	Sequence *int32 `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456******
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s UpdateRoutineRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRoutineRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRoutineRouteRequest) SetBypass(v string) *UpdateRoutineRouteRequest {
+	s.Bypass = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetConfigId(v int64) *UpdateRoutineRouteRequest {
+	s.ConfigId = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetRouteEnable(v string) *UpdateRoutineRouteRequest {
+	s.RouteEnable = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetRouteName(v string) *UpdateRoutineRouteRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetRoutineName(v string) *UpdateRoutineRouteRequest {
+	s.RoutineName = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetRule(v string) *UpdateRoutineRouteRequest {
+	s.Rule = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetSequence(v int32) *UpdateRoutineRouteRequest {
+	s.Sequence = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteRequest) SetSiteId(v int64) *UpdateRoutineRouteRequest {
+	s.SiteId = &v
+	return s
+}
+
+type UpdateRoutineRouteResponseBody struct {
+	// example:
+	//
+	// 34DCBC8A-****-****-****-6DAA11D7DDBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateRoutineRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRoutineRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRoutineRouteResponseBody) SetRequestId(v string) *UpdateRoutineRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateRoutineRouteResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRoutineRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRoutineRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRoutineRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRoutineRouteResponse) SetHeaders(v map[string]*string) *UpdateRoutineRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRoutineRouteResponse) SetStatusCode(v int32) *UpdateRoutineRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRoutineRouteResponse) SetBody(v *UpdateRoutineRouteResponseBody) *UpdateRoutineRouteResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateScheduledPreloadExecutionRequest struct {
 	// The end time of the prefetch plan.
 	//
@@ -68890,7 +69925,7 @@ func (s *UpdateWafRuleResponse) SetBody(v *UpdateWafRuleResponseBody) *UpdateWaf
 }
 
 type UpdateWafRulesetRequest struct {
-	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2850233.html) interface.
+	// ID of the WAF ruleset, which can be obtained by calling the [ListWafRulesets](https://help.aliyun.com/document_detail/2878359.html) interface.
 	//
 	// This parameter is required.
 	//
@@ -75810,6 +76845,101 @@ func (client *Client) CreateRoutineRelatedRoute(request *CreateRoutineRelatedRou
 
 // Summary:
 //
+// 新增边缘函数路由配置
+//
+// @param request - CreateRoutineRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRoutineRouteResponse
+func (client *Client) CreateRoutineRouteWithOptions(request *CreateRoutineRouteRequest, runtime *util.RuntimeOptions) (_result *CreateRoutineRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bypass)) {
+		query["Bypass"] = request.Bypass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEnable)) {
+		query["RouteEnable"] = request.RouteEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutineName)) {
+		query["RoutineName"] = request.RoutineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRoutineRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateRoutineRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateRoutineRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 新增边缘函数路由配置
+//
+// @param request - CreateRoutineRouteRequest
+//
+// @return CreateRoutineRouteResponse
+func (client *Client) CreateRoutineRoute(request *CreateRoutineRouteRequest) (_result *CreateRoutineRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRoutineRouteResponse{}
+	_body, _err := client.CreateRoutineRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates scheduled prefetch plans.
 //
 // @param tmpReq - CreateScheduledPreloadExecutionsRequest
@@ -79539,6 +80669,81 @@ func (client *Client) DeleteRoutineRelatedRoute(request *DeleteRoutineRelatedRou
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRoutineRelatedRouteResponse{}
 	_body, _err := client.DeleteRoutineRelatedRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除边缘函数路由配置
+//
+// @param request - DeleteRoutineRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRoutineRouteResponse
+func (client *Client) DeleteRoutineRouteWithOptions(request *DeleteRoutineRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRoutineRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteRoutineRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteRoutineRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除边缘函数路由配置
+//
+// @param request - DeleteRoutineRouteRequest
+//
+// @return DeleteRoutineRouteResponse
+func (client *Client) DeleteRoutineRoute(request *DeleteRoutineRouteRequest) (_result *DeleteRoutineRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRoutineRouteResponse{}
+	_body, _err := client.DeleteRoutineRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -84921,6 +86126,81 @@ func (client *Client) GetRoutine(request *GetRoutineRequest) (_result *GetRoutin
 
 // Summary:
 //
+// 查询单条边缘函数路由配置
+//
+// @param request - GetRoutineRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRoutineRouteResponse
+func (client *Client) GetRoutineRouteWithOptions(request *GetRoutineRouteRequest, runtime *util.RuntimeOptions) (_result *GetRoutineRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRoutineRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetRoutineRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetRoutineRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询单条边缘函数路由配置
+//
+// @param request - GetRoutineRouteRequest
+//
+// @return GetRoutineRouteResponse
+func (client *Client) GetRoutineRoute(request *GetRoutineRouteRequest) (_result *GetRoutineRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetRoutineRouteResponse{}
+	_body, _err := client.GetRoutineRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the release information about the routine code that is released to the staging environment. This information can be used to upload the test code to Object Storage Service (OSS).
 //
 // Description:
@@ -89155,6 +90435,85 @@ func (client *Client) ListRoutineOptionalSpecs() (_result *ListRoutineOptionalSp
 
 // Summary:
 //
+// 查询边缘程序的函数路由列表
+//
+// @param request - ListRoutineRoutesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoutineRoutesResponse
+func (client *Client) ListRoutineRoutesWithOptions(request *ListRoutineRoutesRequest, runtime *util.RuntimeOptions) (_result *ListRoutineRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutineName)) {
+		query["RoutineName"] = request.RoutineName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoutineRoutes"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListRoutineRoutesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListRoutineRoutesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询边缘程序的函数路由列表
+//
+// @param request - ListRoutineRoutesRequest
+//
+// @return ListRoutineRoutesResponse
+func (client *Client) ListRoutineRoutes(request *ListRoutineRoutesRequest) (_result *ListRoutineRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoutineRoutesResponse{}
+	_body, _err := client.ListRoutineRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Lists the plans in a scheduled prefetch task by task ID.
 //
 // @param request - ListScheduledPreloadExecutionsRequest
@@ -89347,6 +90706,97 @@ func (client *Client) ListSiteDeliveryTasks(request *ListSiteDeliveryTasksReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSiteDeliveryTasksResponse{}
 	_body, _err := client.ListSiteDeliveryTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点的函数路由列表
+//
+// @param request - ListSiteRoutesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSiteRoutesResponse
+func (client *Client) ListSiteRoutesWithOptions(request *ListSiteRoutesRequest, runtime *util.RuntimeOptions) (_result *ListSiteRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigType)) {
+		query["ConfigType"] = request.ConfigType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSiteRoutes"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSiteRoutesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSiteRoutesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询站点的函数路由列表
+//
+// @param request - ListSiteRoutesRequest
+//
+// @return ListSiteRoutesResponse
+func (client *Client) ListSiteRoutes(request *ListSiteRoutesRequest) (_result *ListSiteRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSiteRoutesResponse{}
+	_body, _err := client.ListSiteRoutesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -95385,6 +96835,105 @@ func (client *Client) UpdateRewriteUrlRule(request *UpdateRewriteUrlRuleRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRewriteUrlRuleResponse{}
 	_body, _err := client.UpdateRewriteUrlRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改边缘函数路由配置
+//
+// @param request - UpdateRoutineRouteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRoutineRouteResponse
+func (client *Client) UpdateRoutineRouteWithOptions(request *UpdateRoutineRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateRoutineRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bypass)) {
+		query["Bypass"] = request.Bypass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigId)) {
+		query["ConfigId"] = request.ConfigId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEnable)) {
+		query["RouteEnable"] = request.RouteEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoutineName)) {
+		query["RoutineName"] = request.RoutineName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		query["Rule"] = request.Rule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sequence)) {
+		query["Sequence"] = request.Sequence
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRoutineRoute"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateRoutineRouteResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateRoutineRouteResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改边缘函数路由配置
+//
+// @param request - UpdateRoutineRouteRequest
+//
+// @return UpdateRoutineRouteResponse
+func (client *Client) UpdateRoutineRoute(request *UpdateRoutineRouteRequest) (_result *UpdateRoutineRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRoutineRouteResponse{}
+	_body, _err := client.UpdateRoutineRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
