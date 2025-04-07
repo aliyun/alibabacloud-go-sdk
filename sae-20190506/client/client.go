@@ -9770,8 +9770,9 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// true
-	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
+	Deploy   *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	Dotnet   *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// 3.5.3
 	//
 	// example:
@@ -10111,6 +10112,11 @@ func (s *CreateApplicationRequest) SetCustomImageNetworkType(v string) *CreateAp
 
 func (s *CreateApplicationRequest) SetDeploy(v bool) *CreateApplicationRequest {
 	s.Deploy = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetDiskSize(v int32) *CreateApplicationRequest {
+	s.DiskSize = &v
 	return s
 }
 
@@ -10476,8 +10482,9 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// true
-	Deploy *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
-	Dotnet *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
+	Deploy   *bool   `json:"Deploy,omitempty" xml:"Deploy,omitempty"`
+	DiskSize *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	Dotnet   *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// 3.5.3
 	//
 	// example:
@@ -10817,6 +10824,11 @@ func (s *CreateApplicationShrinkRequest) SetCustomImageNetworkType(v string) *Cr
 
 func (s *CreateApplicationShrinkRequest) SetDeploy(v bool) *CreateApplicationShrinkRequest {
 	s.Deploy = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetDiskSize(v int32) *CreateApplicationShrinkRequest {
+	s.DiskSize = &v
 	return s
 }
 
@@ -18663,6 +18675,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// [{"hostName":"test.host.name","ip":"0.0.0.0"}]
 	CustomHostAlias        *string `json:"CustomHostAlias,omitempty" xml:"CustomHostAlias,omitempty"`
 	CustomImageNetworkType *string `json:"CustomImageNetworkType,omitempty" xml:"CustomImageNetworkType,omitempty"`
+	DiskSize               *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	Dotnet                 *string `json:"Dotnet,omitempty" xml:"Dotnet,omitempty"`
 	// The version of the container, such as Ali-Tomcat, in which an application developed based on High-speed Service Framework (HSF) is deployed.
 	//
@@ -19244,6 +19257,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetCustomHostAlias(v string)
 
 func (s *DescribeApplicationConfigResponseBodyData) SetCustomImageNetworkType(v string) *DescribeApplicationConfigResponseBodyData {
 	s.CustomImageNetworkType = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetDiskSize(v int32) *DescribeApplicationConfigResponseBodyData {
+	s.DiskSize = &v
 	return s
 }
 
@@ -20575,7 +20593,8 @@ type DescribeApplicationInstancesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PipelineId *string `json:"PipelineId,omitempty" xml:"PipelineId,omitempty"`
 	// true
 	//
 	// example:
@@ -20614,6 +20633,11 @@ func (s *DescribeApplicationInstancesRequest) SetInstanceId(v string) *DescribeA
 
 func (s *DescribeApplicationInstancesRequest) SetPageSize(v int32) *DescribeApplicationInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesRequest) SetPipelineId(v string) *DescribeApplicationInstancesRequest {
+	s.PipelineId = &v
 	return s
 }
 
@@ -20879,6 +20903,7 @@ type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	// 1609939496200
 	PackageVersion          *string                                                                         `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
 	SidecarContainersStatus []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus `json:"SidecarContainersStatus,omitempty" xml:"SidecarContainersStatus,omitempty" type:"Repeated"`
+	Timestamp               *int64                                                                          `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
 	UnhealthyMessage        *string                                                                         `json:"UnhealthyMessage,omitempty" xml:"UnhealthyMessage,omitempty"`
 	// The ID of the zone where the instance is deployed.
 	//
@@ -20963,6 +20988,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetPackageVersio
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetSidecarContainersStatus(v []*DescribeApplicationInstancesResponseBodyDataInstancesSidecarContainersStatus) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.SidecarContainersStatus = v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetTimestamp(v int64) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.Timestamp = &v
 	return s
 }
 
@@ -33239,6 +33269,7 @@ func (s *GetAvailabilityMetricResponse) SetBody(v *GetAvailabilityMetricResponse
 }
 
 type GetChangeOrderMetricRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The SAE application type. Valid values:
 	//
 	// 	- **micro_service**
@@ -33251,6 +33282,7 @@ type GetChangeOrderMetricRequest struct {
 	//
 	// micro_service
 	AppSource *string `json:"AppSource,omitempty" xml:"AppSource,omitempty"`
+	CoType    *string `json:"CoType,omitempty" xml:"CoType,omitempty"`
 	// The CPU allocation policy. Valid values:
 	//
 	// 	- **request**: CPU cores are allocated only when a request is initiated.
@@ -33301,8 +33333,18 @@ func (s GetChangeOrderMetricRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetChangeOrderMetricRequest) SetAppId(v string) *GetChangeOrderMetricRequest {
+	s.AppId = &v
+	return s
+}
+
 func (s *GetChangeOrderMetricRequest) SetAppSource(v string) *GetChangeOrderMetricRequest {
 	s.AppSource = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricRequest) SetCoType(v string) *GetChangeOrderMetricRequest {
+	s.CoType = &v
 	return s
 }
 
@@ -33415,7 +33457,8 @@ type GetChangeOrderMetricResponseBodyData struct {
 	// example:
 	//
 	// 7171a6ca-d1cd-4928-8642-7d5cfe69****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId         *string  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AvgTimeCostMs *float32 `json:"AvgTimeCostMs,omitempty" xml:"AvgTimeCostMs,omitempty"`
 	// The number of abnormal change orders.
 	//
 	// example:
@@ -33427,19 +33470,22 @@ type GetChangeOrderMetricResponseBodyData struct {
 	// example:
 	//
 	// 0.25
-	ErrorPercent *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	ErrorPercent  *float32 `json:"ErrorPercent,omitempty" xml:"ErrorPercent,omitempty"`
+	MaxTimeCostMs *float32 `json:"MaxTimeCostMs,omitempty" xml:"MaxTimeCostMs,omitempty"`
 	// The application name.
 	//
 	// example:
 	//
 	// test
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OptimizeSuggestions *string `json:"OptimizeSuggestions,omitempty" xml:"OptimizeSuggestions,omitempty"`
 	// The namespace ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskTimeCostMsAvg *string `json:"TaskTimeCostMsAvg,omitempty" xml:"TaskTimeCostMsAvg,omitempty"`
 	// The total number of change orders.
 	//
 	// example:
@@ -33461,6 +33507,11 @@ func (s *GetChangeOrderMetricResponseBodyData) SetAppId(v string) *GetChangeOrde
 	return s
 }
 
+func (s *GetChangeOrderMetricResponseBodyData) SetAvgTimeCostMs(v float32) *GetChangeOrderMetricResponseBodyData {
+	s.AvgTimeCostMs = &v
+	return s
+}
+
 func (s *GetChangeOrderMetricResponseBodyData) SetError(v int64) *GetChangeOrderMetricResponseBodyData {
 	s.Error = &v
 	return s
@@ -33471,13 +33522,28 @@ func (s *GetChangeOrderMetricResponseBodyData) SetErrorPercent(v float32) *GetCh
 	return s
 }
 
+func (s *GetChangeOrderMetricResponseBodyData) SetMaxTimeCostMs(v float32) *GetChangeOrderMetricResponseBodyData {
+	s.MaxTimeCostMs = &v
+	return s
+}
+
 func (s *GetChangeOrderMetricResponseBodyData) SetName(v string) *GetChangeOrderMetricResponseBodyData {
 	s.Name = &v
 	return s
 }
 
+func (s *GetChangeOrderMetricResponseBodyData) SetOptimizeSuggestions(v string) *GetChangeOrderMetricResponseBodyData {
+	s.OptimizeSuggestions = &v
+	return s
+}
+
 func (s *GetChangeOrderMetricResponseBodyData) SetRegionId(v string) *GetChangeOrderMetricResponseBodyData {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetChangeOrderMetricResponseBodyData) SetTaskTimeCostMsAvg(v string) *GetChangeOrderMetricResponseBodyData {
+	s.TaskTimeCostMsAvg = &v
 	return s
 }
 
@@ -35852,6 +35918,7 @@ type ListApplicationsResponseBodyDataApplications struct {
 	//
 	// 1000
 	Cpu        *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DiskSize   *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	EnableIdle *string `json:"EnableIdle,omitempty" xml:"EnableIdle,omitempty"`
 	ImageUrl   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The number of application instances.
@@ -35959,6 +36026,11 @@ func (s *ListApplicationsResponseBodyDataApplications) SetChildren(v []*ListAppl
 
 func (s *ListApplicationsResponseBodyDataApplications) SetCpu(v int32) *ListApplicationsResponseBodyDataApplications {
 	s.Cpu = &v
+	return s
+}
+
+func (s *ListApplicationsResponseBodyDataApplications) SetDiskSize(v int32) *ListApplicationsResponseBodyDataApplications {
+	s.DiskSize = &v
 	return s
 }
 
@@ -36314,13 +36386,15 @@ type ListChangeOrdersRequest struct {
 	// example:
 	//
 	// test
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Key     *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	// test
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Reverse  *bool  `json:"Reverse,omitempty" xml:"Reverse,omitempty"`
 }
 
 func (s ListChangeOrdersRequest) String() string {
@@ -36356,8 +36430,18 @@ func (s *ListChangeOrdersRequest) SetKey(v string) *ListChangeOrdersRequest {
 	return s
 }
 
+func (s *ListChangeOrdersRequest) SetOrderBy(v string) *ListChangeOrdersRequest {
+	s.OrderBy = &v
+	return s
+}
+
 func (s *ListChangeOrdersRequest) SetPageSize(v int32) *ListChangeOrdersRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListChangeOrdersRequest) SetReverse(v bool) *ListChangeOrdersRequest {
+	s.Reverse = &v
 	return s
 }
 
@@ -42097,7 +42181,8 @@ type RescaleApplicationVerticallyRequest struct {
 	// example:
 	//
 	// 1000
-	Cpu *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu      *string `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	DiskSize *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// The destination memory size. Unit: MB.
 	//
 	// This parameter is required.
@@ -42126,6 +42211,11 @@ func (s *RescaleApplicationVerticallyRequest) SetAppId(v string) *RescaleApplica
 
 func (s *RescaleApplicationVerticallyRequest) SetCpu(v string) *RescaleApplicationVerticallyRequest {
 	s.Cpu = &v
+	return s
+}
+
+func (s *RescaleApplicationVerticallyRequest) SetDiskSize(v string) *RescaleApplicationVerticallyRequest {
+	s.DiskSize = &v
 	return s
 }
 
@@ -48786,6 +48876,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Deploy"] = request.Deploy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Dotnet)) {
 		query["Dotnet"] = request.Dotnet
 	}
@@ -51875,6 +51969,10 @@ func (client *Client) DescribeApplicationInstancesWithOptions(request *DescribeA
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PipelineId)) {
+		query["PipelineId"] = request.PipelineId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
 		query["Reverse"] = request.Reverse
 	}
@@ -54871,8 +54969,16 @@ func (client *Client) GetChangeOrderMetricWithOptions(request *GetChangeOrderMet
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppSource)) {
 		query["AppSource"] = request.AppSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoType)) {
+		query["CoType"] = request.CoType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CpuStrategy)) {
@@ -55734,8 +55840,16 @@ func (client *Client) ListChangeOrdersWithOptions(request *ListChangeOrdersReque
 		query["Key"] = request.Key
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		query["Reverse"] = request.Reverse
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -57461,6 +57575,10 @@ func (client *Client) RescaleApplicationVerticallyWithOptions(request *RescaleAp
 
 	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
 		query["Cpu"] = request.Cpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
