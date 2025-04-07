@@ -1,3 +1,7 @@
+2025-04-07 Version: v7.0.4
+- Update API GetService: add response parameters Body.BuildParameters.
+
+
 2025-04-01 Version: v7.0.3
 - Generated golang 2021-05-21 for ComputeNestSupplier.
 

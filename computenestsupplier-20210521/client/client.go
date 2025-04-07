@@ -5571,7 +5571,8 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// { "RepoUrl": "https://github.com/user/repo.git", "Brancn": "main"}
-	BuildInfo *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	BuildInfo       *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
 	// The category of the service.
 	//
 	// example:
@@ -5956,6 +5957,11 @@ func (s *GetServiceResponseBody) SetApprovalType(v string) *GetServiceResponseBo
 
 func (s *GetServiceResponseBody) SetBuildInfo(v string) *GetServiceResponseBody {
 	s.BuildInfo = &v
+	return s
+}
+
+func (s *GetServiceResponseBody) SetBuildParameters(v string) *GetServiceResponseBody {
+	s.BuildParameters = &v
 	return s
 }
 
