@@ -10,6 +10,13 @@ import (
 )
 
 type GetConnectionTicketRequest struct {
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// example:
 	//
 	// ca-etn4zizgaezo9gis9
@@ -94,6 +101,11 @@ func (s GetConnectionTicketRequest) String() string {
 
 func (s GetConnectionTicketRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetConnectionTicketRequest) SetAccessType(v string) *GetConnectionTicketRequest {
+	s.AccessType = &v
+	return s
 }
 
 func (s *GetConnectionTicketRequest) SetAppId(v string) *GetConnectionTicketRequest {
@@ -2417,6 +2429,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		body["AccessType"] = request.AccessType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
