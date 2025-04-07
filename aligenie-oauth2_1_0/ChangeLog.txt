@@ -1,0 +1,3 @@
+2025-04-07 Version: v1.0.0
+- Generated golang oauth2_1.0 for AliGenie.
+
