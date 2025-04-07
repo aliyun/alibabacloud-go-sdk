@@ -3409,6 +3409,13 @@ func (s *GetAppInstanceGroupResponse) SetBody(v *GetAppInstanceGroupResponseBody
 }
 
 type GetConnectionTicketRequest struct {
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// INTERNET
+	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
 	// The application ID.
 	//
 	// >  This parameter is required for the first call to this operation and optional for subsequent calls to the operation.
@@ -3497,6 +3504,11 @@ func (s GetConnectionTicketRequest) String() string {
 
 func (s GetConnectionTicketRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetConnectionTicketRequest) SetAccessType(v string) *GetConnectionTicketRequest {
+	s.AccessType = &v
+	return s
 }
 
 func (s *GetConnectionTicketRequest) SetAppId(v string) *GetConnectionTicketRequest {
@@ -12756,6 +12768,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessType)) {
+		body["AccessType"] = request.AccessType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppId)) {
 		body["AppId"] = request.AppId
 	}
