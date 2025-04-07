@@ -27,8 +27,10 @@ func (s *AgentBaseQuery) SetQuery(v string) *AgentBaseQuery {
 }
 
 type CommonAgentQuery struct {
+	Limit              *int32  `json:"limit,omitempty" xml:"limit,omitempty"`
 	Query              *string `json:"query,omitempty" xml:"query,omitempty"`
 	QuerySceneEnumCode *string `json:"querySceneEnumCode,omitempty" xml:"querySceneEnumCode,omitempty"`
+	SearchModel        *string `json:"searchModel,omitempty" xml:"searchModel,omitempty"`
 }
 
 func (s CommonAgentQuery) String() string {
@@ -39,6 +41,11 @@ func (s CommonAgentQuery) GoString() string {
 	return s.String()
 }
 
+func (s *CommonAgentQuery) SetLimit(v int32) *CommonAgentQuery {
+	s.Limit = &v
+	return s
+}
+
 func (s *CommonAgentQuery) SetQuery(v string) *CommonAgentQuery {
 	s.Query = &v
 	return s
@@ -46,6 +53,11 @@ func (s *CommonAgentQuery) SetQuery(v string) *CommonAgentQuery {
 
 func (s *CommonAgentQuery) SetQuerySceneEnumCode(v string) *CommonAgentQuery {
 	s.QuerySceneEnumCode = &v
+	return s
+}
+
+func (s *CommonAgentQuery) SetSearchModel(v string) *CommonAgentQuery {
+	s.SearchModel = &v
 	return s
 }
 
