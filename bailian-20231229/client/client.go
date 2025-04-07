@@ -458,7 +458,8 @@ type ApplyFileUploadLeaseRequest struct {
 	// example:
 	//
 	// 1000
-	SizeInBytes *string `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
+	SizeInBytes         *string `json:"SizeInBytes,omitempty" xml:"SizeInBytes,omitempty"`
+	UseInternalEndpoint *bool   `json:"UseInternalEndpoint,omitempty" xml:"UseInternalEndpoint,omitempty"`
 }
 
 func (s ApplyFileUploadLeaseRequest) String() string {
@@ -486,6 +487,11 @@ func (s *ApplyFileUploadLeaseRequest) SetMd5(v string) *ApplyFileUploadLeaseRequ
 
 func (s *ApplyFileUploadLeaseRequest) SetSizeInBytes(v string) *ApplyFileUploadLeaseRequest {
 	s.SizeInBytes = &v
+	return s
+}
+
+func (s *ApplyFileUploadLeaseRequest) SetUseInternalEndpoint(v bool) *ApplyFileUploadLeaseRequest {
+	s.UseInternalEndpoint = &v
 	return s
 }
 
@@ -9011,6 +9017,10 @@ func (client *Client) ApplyFileUploadLeaseWithOptions(CategoryId *string, Worksp
 
 	if !tea.BoolValue(util.IsUnset(request.SizeInBytes)) {
 		body["SizeInBytes"] = request.SizeInBytes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseInternalEndpoint)) {
+		body["UseInternalEndpoint"] = request.UseInternalEndpoint
 	}
 
 	req := &openapi.OpenApiRequest{
