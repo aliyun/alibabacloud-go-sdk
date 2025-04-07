@@ -10567,7 +10567,8 @@ type RebootAndroidInstancesInGroupRequest struct {
 	// example:
 	//
 	// false
-	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	ForceStop *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s RebootAndroidInstancesInGroupRequest) String() string {
@@ -10585,6 +10586,11 @@ func (s *RebootAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string
 
 func (s *RebootAndroidInstancesInGroupRequest) SetForceStop(v bool) *RebootAndroidInstancesInGroupRequest {
 	s.ForceStop = &v
+	return s
+}
+
+func (s *RebootAndroidInstancesInGroupRequest) SetSaleMode(v string) *RebootAndroidInstancesInGroupRequest {
+	s.SaleMode = &v
 	return s
 }
 
@@ -11092,6 +11098,7 @@ func (s *RenewCloudPhoneNodesResponse) SetBody(v *RenewCloudPhoneNodesResponseBo
 type ResetAndroidInstancesInGroupRequest struct {
 	// The IDs of the cloud phone instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	SaleMode           *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s ResetAndroidInstancesInGroupRequest) String() string {
@@ -11104,6 +11111,11 @@ func (s ResetAndroidInstancesInGroupRequest) GoString() string {
 
 func (s *ResetAndroidInstancesInGroupRequest) SetAndroidInstanceIds(v []*string) *ResetAndroidInstancesInGroupRequest {
 	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *ResetAndroidInstancesInGroupRequest) SetSaleMode(v string) *ResetAndroidInstancesInGroupRequest {
+	s.SaleMode = &v
 	return s
 }
 
@@ -11598,6 +11610,7 @@ func (s *SetAdbSecureResponse) SetBody(v *SetAdbSecureResponseBody) *SetAdbSecur
 type StartAndroidInstanceRequest struct {
 	// List of instances.
 	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	SaleMode           *string   `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s StartAndroidInstanceRequest) String() string {
@@ -11610,6 +11623,11 @@ func (s StartAndroidInstanceRequest) GoString() string {
 
 func (s *StartAndroidInstanceRequest) SetAndroidInstanceIds(v []*string) *StartAndroidInstanceRequest {
 	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *StartAndroidInstanceRequest) SetSaleMode(v string) *StartAndroidInstanceRequest {
+	s.SaleMode = &v
 	return s
 }
 
@@ -11672,7 +11690,8 @@ type StopAndroidInstanceRequest struct {
 	// example:
 	//
 	// false
-	ForceStop *bool `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	ForceStop *bool   `json:"ForceStop,omitempty" xml:"ForceStop,omitempty"`
+	SaleMode  *string `json:"SaleMode,omitempty" xml:"SaleMode,omitempty"`
 }
 
 func (s StopAndroidInstanceRequest) String() string {
@@ -11690,6 +11709,11 @@ func (s *StopAndroidInstanceRequest) SetAndroidInstanceIds(v []*string) *StopAnd
 
 func (s *StopAndroidInstanceRequest) SetForceStop(v bool) *StopAndroidInstanceRequest {
 	s.ForceStop = &v
+	return s
+}
+
+func (s *StopAndroidInstanceRequest) SetSaleMode(v string) *StopAndroidInstanceRequest {
+	s.SaleMode = &v
 	return s
 }
 
@@ -16615,6 +16639,10 @@ func (client *Client) RebootAndroidInstancesInGroupWithOptions(request *RebootAn
 		query["ForceStop"] = request.ForceStop
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
+		query["SaleMode"] = request.SaleMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -16957,6 +16985,10 @@ func (client *Client) ResetAndroidInstancesInGroupWithOptions(request *ResetAndr
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
+		query["SaleMode"] = request.SaleMode
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17303,6 +17335,10 @@ func (client *Client) StartAndroidInstanceWithOptions(request *StartAndroidInsta
 		query["AndroidInstanceIds"] = request.AndroidInstanceIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
+		query["SaleMode"] = request.SaleMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -17384,6 +17420,10 @@ func (client *Client) StopAndroidInstanceWithOptions(request *StopAndroidInstanc
 
 	if !tea.BoolValue(util.IsUnset(request.ForceStop)) {
 		query["ForceStop"] = request.ForceStop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
+		query["SaleMode"] = request.SaleMode
 	}
 
 	req := &openapi.OpenApiRequest{
