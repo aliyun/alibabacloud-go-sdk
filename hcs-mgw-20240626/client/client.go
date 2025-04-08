@@ -3359,9 +3359,9 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 //
 // Description:
 //
-//   To create a data address, you must have the permission on mgw:CreateImportAddress.
+//	  To create a data address, you must have the permission on mgw:CreateImportAddress.
 //
-// 	- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
+//		- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
 //
 // @param request - CreateAddressRequest
 //
@@ -3413,9 +3413,9 @@ func (client *Client) CreateAddressWithOptions(userid *string, request *CreateAd
 //
 // Description:
 //
-//   To create a data address, you must have the permission on mgw:CreateImportAddress.
+//	  To create a data address, you must have the permission on mgw:CreateImportAddress.
 //
-// 	- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
+//		- If you want to use an agent to migrate data, you must create an agent first and then associate the agent with a data address when you create the data address.
 //
 // @param request - CreateAddressRequest
 //
@@ -3438,11 +3438,11 @@ func (client *Client) CreateAddress(userid *string, request *CreateAddressReques
 //
 // Description:
 //
-//   To create an agent, you must have the permission on mgw:CreateImportAgent.
+//	  To create an agent, you must have the permission on mgw:CreateImportAgent.
 //
-// 	- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+//		- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
 //
-// 	- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
+//		- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
 //
 // @param request - CreateAgentRequest
 //
@@ -3494,11 +3494,11 @@ func (client *Client) CreateAgentWithOptions(userid *string, request *CreateAgen
 //
 // Description:
 //
-//   To create an agent, you must have the permission on mgw:CreateImportAgent.
+//	  To create an agent, you must have the permission on mgw:CreateImportAgent.
 //
-// 	- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
+//		- If you want to migrate data to Alibaba Cloud over an Express Connect circuit or a VPN gateway, or migrate data from a self-managed storage space to Alibaba Cloud, you can deploy an agent.
 //
-// 	- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
+//		- Before you create an agent, you must create a tunnel. An agent must be associated with a tunnel.
 //
 // @param request - CreateAgentRequest
 //
@@ -3521,11 +3521,11 @@ func (client *Client) CreateAgent(userid *string, request *CreateAgentRequest) (
 //
 // Description:
 //
-//   To create a migration task, you must have the permission on mgw:CreateImportJob.
+//	  To create a migration task, you must have the permission on mgw:CreateImportJob.
 //
-// 	- Before you create a migration task, you must create data addresses.
+//		- Before you create a migration task, you must create data addresses.
 //
-// 	- A migration task can run multiple rounds. Each round has an execution ID.
+//		- A migration task can run multiple rounds. Each round has an execution ID.
 //
 // @param request - CreateJobRequest
 //
@@ -3577,11 +3577,11 @@ func (client *Client) CreateJobWithOptions(userid *string, request *CreateJobReq
 //
 // Description:
 //
-//   To create a migration task, you must have the permission on mgw:CreateImportJob.
+//	  To create a migration task, you must have the permission on mgw:CreateImportJob.
 //
-// 	- Before you create a migration task, you must create data addresses.
+//		- Before you create a migration task, you must create data addresses.
 //
-// 	- A migration task can run multiple rounds. Each round has an execution ID.
+//		- A migration task can run multiple rounds. Each round has an execution ID.
 //
 // @param request - CreateJobRequest
 //
@@ -3604,9 +3604,9 @@ func (client *Client) CreateJob(userid *string, request *CreateJobRequest) (_res
 //
 // Description:
 //
-//   To create a migration report, you must have the permission on mgw:CreateImportReport.
+//	  To create a migration report, you must have the permission on mgw:CreateImportReport.
 //
-// 	- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
+//		- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
 //
 // @param request - CreateReportRequest
 //
@@ -3658,9 +3658,9 @@ func (client *Client) CreateReportWithOptions(userid *string, request *CreateRep
 //
 // Description:
 //
-//   To create a migration report, you must have the permission on mgw:CreateImportReport.
+//	  To create a migration report, you must have the permission on mgw:CreateImportReport.
 //
-// 	- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
+//		- If you specify that a migration report is to be generated when you create a migration task, you do not need to call this operation. If you do not specify that a migration report is to be generated when you create a migration task, you can call this operation to create a migration report for an execution with the specified ID.
 //
 // @param request - CreateReportRequest
 //
@@ -3683,11 +3683,11 @@ func (client *Client) CreateReport(userid *string, request *CreateReportRequest)
 //
 // Description:
 //
-//   To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+//	  To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
 //
-// 	- When you use an agent to migrate data, the agent must be associated with a tunnel.
+//		- When you use an agent to migrate data, the agent must be associated with a tunnel.
 //
-// 	- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
+//		- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
 //
 // @param request - CreateTunnelRequest
 //
@@ -3739,11 +3739,11 @@ func (client *Client) CreateTunnelWithOptions(userid *string, request *CreateTun
 //
 // Description:
 //
-//   To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
+//	  To create a tunnel, you must have the permission on mgw:CreateImportTunnel.
 //
-// 	- When you use an agent to migrate data, the agent must be associated with a tunnel.
+//		- When you use an agent to migrate data, the agent must be associated with a tunnel.
 //
-// 	- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
+//		- A tunnel can be associated with multiple agents. You can throttle the traffic of the agents that are associated with the same tunnel by setting the bandwidth and the number of requests per second for the tunnel.
 //
 // @param request - CreateTunnelRequest
 //
@@ -3766,7 +3766,7 @@ func (client *Client) CreateTunnel(userid *string, request *CreateTunnelRequest)
 //
 // Description:
 //
-//   To delete a data address, you must have the permission on mgw:DeleteImportAddress.
+//	To delete a data address, you must have the permission on mgw:DeleteImportAddress.
 //
 // @param headers - map
 //
@@ -3806,7 +3806,7 @@ func (client *Client) DeleteAddressWithOptions(userid *string, addressName *stri
 //
 // Description:
 //
-//   To delete a data address, you must have the permission on mgw:DeleteImportAddress.
+//	To delete a data address, you must have the permission on mgw:DeleteImportAddress.
 //
 // @return DeleteAddressResponse
 func (client *Client) DeleteAddress(userid *string, addressName *string) (_result *DeleteAddressResponse, _err error) {
@@ -3827,7 +3827,7 @@ func (client *Client) DeleteAddress(userid *string, addressName *string) (_resul
 //
 // Description:
 //
-//   To delete an agent, you must have the permission on mgw:DeleteImportAgent.
+//	To delete an agent, you must have the permission on mgw:DeleteImportAgent.
 //
 // @param headers - map
 //
@@ -3867,7 +3867,7 @@ func (client *Client) DeleteAgentWithOptions(userid *string, agentName *string, 
 //
 // Description:
 //
-//   To delete an agent, you must have the permission on mgw:DeleteImportAgent.
+//	To delete an agent, you must have the permission on mgw:DeleteImportAgent.
 //
 // @return DeleteAgentResponse
 func (client *Client) DeleteAgent(userid *string, agentName *string) (_result *DeleteAgentResponse, _err error) {
@@ -3888,9 +3888,9 @@ func (client *Client) DeleteAgent(userid *string, agentName *string) (_result *D
 //
 // Description:
 //
-//   To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+//	  To delete a migration task, you must have the permission on mgw:DeleteImportJob.
 //
-// 	- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+//		- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
 //
 // @param request - DeleteJobRequest
 //
@@ -3942,9 +3942,9 @@ func (client *Client) DeleteJobWithOptions(userid *string, jobName *string, requ
 //
 // Description:
 //
-//   To delete a migration task, you must have the permission on mgw:DeleteImportJob.
+//	  To delete a migration task, you must have the permission on mgw:DeleteImportJob.
 //
-// 	- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
+//		- The operation to delete a migration task is asynchronous. The migration task remains in the Deleting state until it is deleted.
 //
 // @param request - DeleteJobRequest
 //
@@ -3967,7 +3967,7 @@ func (client *Client) DeleteJob(userid *string, jobName *string, request *Delete
 //
 // Description:
 //
-//   To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
+//	To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
 //
 // @param headers - map
 //
@@ -4007,7 +4007,7 @@ func (client *Client) DeleteTunnelWithOptions(userid *string, tunnelId *string, 
 //
 // Description:
 //
-//   To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
+//	To delete a tunnel, you must have the permission on mgw:DeleteImportTunnel.
 //
 // @return DeleteTunnelResponse
 func (client *Client) DeleteTunnel(userid *string, tunnelId *string) (_result *DeleteTunnelResponse, _err error) {
@@ -4028,7 +4028,7 @@ func (client *Client) DeleteTunnel(userid *string, tunnelId *string) (_result *D
 //
 // Description:
 //
-//   To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+//	To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @param headers - map
 //
@@ -4068,7 +4068,7 @@ func (client *Client) GetAddressWithOptions(userid *string, addressName *string,
 //
 // Description:
 //
-//   To query the information about a data address, you must have the permission on mgw:GetImportAddress.
+//	To query the information about a data address, you must have the permission on mgw:GetImportAddress.
 //
 // @return GetAddressResponse
 func (client *Client) GetAddress(userid *string, addressName *string) (_result *GetAddressResponse, _err error) {
@@ -4089,7 +4089,7 @@ func (client *Client) GetAddress(userid *string, addressName *string) (_result *
 //
 // Description:
 //
-//   To query the information about an agent, you must have the permission on mgw:GetImportAgent.
+//	To query the information about an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @param headers - map
 //
@@ -4129,7 +4129,7 @@ func (client *Client) GetAgentWithOptions(userid *string, agentName *string, hea
 //
 // Description:
 //
-//   To query the information about an agent, you must have the permission on mgw:GetImportAgent.
+//	To query the information about an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @return GetAgentResponse
 func (client *Client) GetAgent(userid *string, agentName *string) (_result *GetAgentResponse, _err error) {
@@ -4150,7 +4150,7 @@ func (client *Client) GetAgent(userid *string, agentName *string) (_result *GetA
 //
 // Description:
 //
-//   To query the status of an agent, you must have the permission on mgw:GetImportAgent.
+//	To query the status of an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @param headers - map
 //
@@ -4190,7 +4190,7 @@ func (client *Client) GetAgentStatusWithOptions(userid *string, agentName *strin
 //
 // Description:
 //
-//   To query the status of an agent, you must have the permission on mgw:GetImportAgent.
+//	To query the status of an agent, you must have the permission on mgw:GetImportAgent.
 //
 // @return GetAgentStatusResponse
 func (client *Client) GetAgentStatus(userid *string, agentName *string) (_result *GetAgentStatusResponse, _err error) {
@@ -4211,7 +4211,7 @@ func (client *Client) GetAgentStatus(userid *string, agentName *string) (_result
 //
 // Description:
 //
-//   To query the information about a migration task, you must have the permission on mgw:GetImportJob.
+//	To query the information about a migration task, you must have the permission on mgw:GetImportJob.
 //
 // @param request - GetJobRequest
 //
@@ -4263,7 +4263,7 @@ func (client *Client) GetJobWithOptions(userid *string, jobName *string, request
 //
 // Description:
 //
-//   To query the information about a migration task, you must have the permission on mgw:GetImportJob.
+//	To query the information about a migration task, you must have the permission on mgw:GetImportJob.
 //
 // @param request - GetJobRequest
 //
@@ -4286,9 +4286,9 @@ func (client *Client) GetJob(userid *string, jobName *string, request *GetJobReq
 //
 // Description:
 //
-//   To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+//	  To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
 //
-// 	- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
+//		- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
 //
 // @param request - GetJobResultRequest
 //
@@ -4340,9 +4340,9 @@ func (client *Client) GetJobResultWithOptions(userid *string, jobName *string, r
 //
 // Description:
 //
-//   To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
+//	  To query the retry information about a migration task, you must have the permission on mgw:GetImportJobResult.
 //
-// 	- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
+//		- If files fail to be migrated during a migration task, a list of files that fail to be migrated is generated. You can call this operation to query this list. You can create a data address based on this list and create a subtask. This way, you can migrate these files again.
 //
 // @param request - GetJobResultRequest
 //
@@ -4365,9 +4365,9 @@ func (client *Client) GetJobResult(userid *string, jobName *string, request *Get
 //
 // Description:
 //
-//   To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+//	  To query the information about a migration report, you must have the permission on mgw:GetImportReport.
 //
-// 	- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
+//		- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
 //
 // @param request - GetReportRequest
 //
@@ -4423,9 +4423,9 @@ func (client *Client) GetReportWithOptions(userid *string, request *GetReportReq
 //
 // Description:
 //
-//   To query the information about a migration report, you must have the permission on mgw:GetImportReport.
+//	  To query the information about a migration report, you must have the permission on mgw:GetImportReport.
 //
-// 	- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
+//		- The migration report is pushed to the destination data address. For more information, see the "View a migration report" section of the "Subsequent operations" topic in migration tutorials.
 //
 // @param request - GetReportRequest
 //
@@ -4448,7 +4448,7 @@ func (client *Client) GetReport(userid *string, request *GetReportRequest) (_res
 //
 // Description:
 //
-//   To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
+//	To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
 //
 // @param headers - map
 //
@@ -4488,7 +4488,7 @@ func (client *Client) GetTunnelWithOptions(userid *string, tunnelId *string, hea
 //
 // Description:
 //
-//   To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
+//	To query the information about a tunnel, you must have the permission on mgw:GetImportTunnel.
 //
 // @return GetTunnelResponse
 func (client *Client) GetTunnel(userid *string, tunnelId *string) (_result *GetTunnelResponse, _err error) {
@@ -4509,7 +4509,7 @@ func (client *Client) GetTunnel(userid *string, tunnelId *string) (_result *GetT
 //
 // Description:
 //
-//   To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+//	To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -4565,7 +4565,7 @@ func (client *Client) ListAddressWithOptions(userid *string, request *ListAddres
 //
 // Description:
 //
-//   To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
+//	To query a list of data addresses, you must have the permission on mgw:ListImportAddress.
 //
 // @param request - ListAddressRequest
 //
@@ -4588,7 +4588,7 @@ func (client *Client) ListAddress(userid *string, request *ListAddressRequest) (
 //
 // Description:
 //
-//   To query a list of agents, you must have the permission on mgw:ListImportAgent.
+//	To query a list of agents, you must have the permission on mgw:ListImportAgent.
 //
 // @param request - ListAgentRequest
 //
@@ -4644,7 +4644,7 @@ func (client *Client) ListAgentWithOptions(userid *string, request *ListAgentReq
 //
 // Description:
 //
-//   To query a list of agents, you must have the permission on mgw:ListImportAgent.
+//	To query a list of agents, you must have the permission on mgw:ListImportAgent.
 //
 // @param request - ListAgentRequest
 //
@@ -4667,7 +4667,7 @@ func (client *Client) ListAgent(userid *string, request *ListAgentRequest) (_res
 //
 // Description:
 //
-//   To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
+//	To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
 //
 // @param request - ListJobRequest
 //
@@ -4731,7 +4731,7 @@ func (client *Client) ListJobWithOptions(userid *string, request *ListJobRequest
 //
 // Description:
 //
-//   To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
+//	To query a list of migration tasks, you must have the permission on mgw:ListImportJob.
 //
 // @param request - ListJobRequest
 //
@@ -4754,11 +4754,11 @@ func (client *Client) ListJob(userid *string, request *ListJobRequest) (_result 
 //
 // Description:
 //
-//   To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+//	  To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
 //
-// 	- A migration task can run multiple rounds. A unique execution ID is generated for each round.
+//		- A migration task can run multiple rounds. A unique execution ID is generated for each round.
 //
-// 	- The execution history of a migration task records the change history of the task status.
+//		- The execution history of a migration task records the change history of the task status.
 //
 // @param request - ListJobHistoryRequest
 //
@@ -4818,11 +4818,11 @@ func (client *Client) ListJobHistoryWithOptions(userid *string, jobName *string,
 //
 // Description:
 //
-//   To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
+//	  To query the execution history of a migration task, you must have the permission on mgw:ListImportJobHistory.
 //
-// 	- A migration task can run multiple rounds. A unique execution ID is generated for each round.
+//		- A migration task can run multiple rounds. A unique execution ID is generated for each round.
 //
-// 	- The execution history of a migration task records the change history of the task status.
+//		- The execution history of a migration task records the change history of the task status.
 //
 // @param request - ListJobHistoryRequest
 //
@@ -4845,7 +4845,7 @@ func (client *Client) ListJobHistory(userid *string, jobName *string, request *L
 //
 // Description:
 //
-//   To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
+//	To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
 //
 // @param request - ListTunnelRequest
 //
@@ -4901,7 +4901,7 @@ func (client *Client) ListTunnelWithOptions(userid *string, request *ListTunnelR
 //
 // Description:
 //
-//   To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
+//	To query a list of tunnels, you must have the permission on mgw:ListImportTunnel.
 //
 // @param request - ListTunnelRequest
 //
@@ -4924,9 +4924,9 @@ func (client *Client) ListTunnel(userid *string, request *ListTunnelRequest) (_r
 //
 // Description:
 //
-//   To update a data address, you must have the permission on mgw:UpdateImportAddress.
+//	  To update a data address, you must have the permission on mgw:UpdateImportAddress.
 //
-// 	- If the data address is associated with an agent, you can scale up or down the agent.
+//		- If the data address is associated with an agent, you can scale up or down the agent.
 //
 // @param request - UpdateAddressRequest
 //
@@ -4978,9 +4978,9 @@ func (client *Client) UpdateAddressWithOptions(userid *string, addressName *stri
 //
 // Description:
 //
-//   To update a data address, you must have the permission on mgw:UpdateImportAddress.
+//	  To update a data address, you must have the permission on mgw:UpdateImportAddress.
 //
-// 	- If the data address is associated with an agent, you can scale up or down the agent.
+//		- If the data address is associated with an agent, you can scale up or down the agent.
 //
 // @param request - UpdateAddressRequest
 //
@@ -5003,9 +5003,9 @@ func (client *Client) UpdateAddress(userid *string, addressName *string, request
 //
 // Description:
 //
-//   To update a migration task, you must have the permission on mgw:UpdateImportJob.
+//	  To update a migration task, you must have the permission on mgw:UpdateImportJob.
 //
-// 	- You can update only the status or throttling settings of a task in a single request.
+//		- You can update only the status or throttling settings of a task in a single request.
 //
 // @param request - UpdateJobRequest
 //
@@ -5057,9 +5057,9 @@ func (client *Client) UpdateJobWithOptions(userid *string, jobName *string, requ
 //
 // Description:
 //
-//   To update a migration task, you must have the permission on mgw:UpdateImportJob.
+//	  To update a migration task, you must have the permission on mgw:UpdateImportJob.
 //
-// 	- You can update only the status or throttling settings of a task in a single request.
+//		- You can update only the status or throttling settings of a task in a single request.
 //
 // @param request - UpdateJobRequest
 //
@@ -5082,7 +5082,7 @@ func (client *Client) UpdateJob(userid *string, jobName *string, request *Update
 //
 // Description:
 //
-//   To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
+//	To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
 //
 // @param request - UpdateTunnelRequest
 //
@@ -5134,7 +5134,7 @@ func (client *Client) UpdateTunnelWithOptions(userid *string, tunnelId *string, 
 //
 // Description:
 //
-//   To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
+//	To update a tunnel, you must have the permission on mgw:UpdateImportTunnel.
 //
 // @param request - UpdateTunnelRequest
 //
