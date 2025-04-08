@@ -735,78 +735,132 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBInstanceRequest struct {
+	// The reserved cache size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200GB
 	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// AB
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance endpoint.
+	//
 	// example:
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The specifications of the instance. Valid values:
+	//
+	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
+	//
+	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
+	//
+	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.xlarge
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// The instance is created for testing.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The type of the database. Default value: **selectdb**.
+	DeployScheme          *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
+	// The database engine of the instance. Default value: **selectdb**.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version of the instance. Default value: **2.4**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// if can be null:
+	// false
+	MultiZone []*CreateDBInstanceRequestMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
+	// The unit of the subscription duration of the cluster. Valid values:
+	//
+	// 	- **Year**: subscription on a yearly basis.
+	//
+	// 	- **Month**: subscription on a monthly basis.
+	//
+	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 代表资源组的资源属性字段
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzt2zaluvuvqa_fake
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
+	//
 	// example:
 	//
 	// 192.168.1.1
-	SecurityIPList *string                       `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	Tag            []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	// The instance tags.
+	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The subscription duration of the instance.
+	//
+	// 	- Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+	//
+	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
+	//
+	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The virtual private cloud (VPC) ID.
 	//
 	// This parameter is required.
 	//
@@ -814,6 +868,8 @@ type CreateDBInstanceRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -860,6 +916,11 @@ func (s *CreateDBInstanceRequest) SetDBInstanceDescription(v string) *CreateDBIn
 	return s
 }
 
+func (s *CreateDBInstanceRequest) SetDeployScheme(v string) *CreateDBInstanceRequest {
+	s.DeployScheme = &v
+	return s
+}
+
 func (s *CreateDBInstanceRequest) SetEngine(v string) *CreateDBInstanceRequest {
 	s.Engine = &v
 	return s
@@ -867,6 +928,11 @@ func (s *CreateDBInstanceRequest) SetEngine(v string) *CreateDBInstanceRequest {
 
 func (s *CreateDBInstanceRequest) SetEngineVersion(v string) *CreateDBInstanceRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetMultiZone(v []*CreateDBInstanceRequestMultiZone) *CreateDBInstanceRequest {
+	s.MultiZone = v
 	return s
 }
 
@@ -920,11 +986,38 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 	return s
 }
 
+type CreateDBInstanceRequestMultiZone struct {
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ZoneId     *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CreateDBInstanceRequestMultiZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBInstanceRequestMultiZone) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBInstanceRequestMultiZone) SetVSwitchIds(v []*string) *CreateDBInstanceRequestMultiZone {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *CreateDBInstanceRequestMultiZone) SetZoneId(v string) *CreateDBInstanceRequestMultiZone {
+	s.ZoneId = &v
+	return s
+}
+
 type CreateDBInstanceRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue
@@ -950,78 +1043,132 @@ func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequest
 }
 
 type CreateDBInstanceShrinkRequest struct {
+	// The reserved cache size.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 200GB
 	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The billing method of the instance. Valid values:
+	//
+	// 	- **Postpaid**: pay-as-you-go
+	//
+	// 	- **Prepaid**: subscription
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	//
 	// example:
 	//
 	// AB
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The instance endpoint.
+	//
 	// example:
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	// The specifications of the instance. Valid values:
+	//
+	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
+	//
+	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
+	//
+	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// selectdb.xlarge
-	DBInstanceClass       *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	DBInstanceClass *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
+	// The instance description.
+	//
+	// example:
+	//
+	// The instance is created for testing.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The type of the database. Default value: **selectdb**.
+	DeployScheme          *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
+	// The database engine of the instance. Default value: **selectdb**.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The database engine version of the instance. Default value: **2.4**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// if can be null:
+	// false
+	MultiZoneShrink *string `json:"MultiZone,omitempty" xml:"MultiZone,omitempty"`
+	// The unit of the subscription duration of the cluster. Valid values:
+	//
+	// 	- **Year**: subscription on a yearly basis.
+	//
+	// 	- **Month**: subscription on a monthly basis.
+	//
+	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 代表资源组的资源属性字段
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzt2zaluvuvqa_fake
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The IP addresses in the whitelist of the instance. Separate multiple IP addresses with commas (,).
+	//
 	// example:
 	//
 	// 192.168.1.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	TagShrink      *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The instance tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The subscription duration of the instance.
+	//
+	// 	- Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+	//
+	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
+	//
+	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
+	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
+	// The vSwitch ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The virtual private cloud (VPC) ID.
 	//
 	// This parameter is required.
 	//
@@ -1029,6 +1176,8 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// vpc-bp175iuvg8nxqraf2****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The zone ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1075,6 +1224,11 @@ func (s *CreateDBInstanceShrinkRequest) SetDBInstanceDescription(v string) *Crea
 	return s
 }
 
+func (s *CreateDBInstanceShrinkRequest) SetDeployScheme(v string) *CreateDBInstanceShrinkRequest {
+	s.DeployScheme = &v
+	return s
+}
+
 func (s *CreateDBInstanceShrinkRequest) SetEngine(v string) *CreateDBInstanceShrinkRequest {
 	s.Engine = &v
 	return s
@@ -1082,6 +1236,11 @@ func (s *CreateDBInstanceShrinkRequest) SetEngine(v string) *CreateDBInstanceShr
 
 func (s *CreateDBInstanceShrinkRequest) SetEngineVersion(v string) *CreateDBInstanceShrinkRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetMultiZoneShrink(v string) *CreateDBInstanceShrinkRequest {
+	s.MultiZoneShrink = &v
 	return s
 }
 
@@ -1136,7 +1295,10 @@ func (s *CreateDBInstanceShrinkRequest) SetZoneId(v string) *CreateDBInstanceShr
 }
 
 type CreateDBInstanceResponseBody struct {
+	// The returned result.
 	Data *CreateDBInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
@@ -1162,10 +1324,14 @@ func (s *CreateDBInstanceResponseBody) SetRequestId(v string) *CreateDBInstanceR
 }
 
 type CreateDBInstanceResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 21137950671****
@@ -2763,6 +2929,7 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DeployScheme *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
 	// The description of the instance.
 	//
 	// example:
@@ -2823,6 +2990,9 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	//
 	// 1970-01-01T02:00Z
 	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	// if can be null:
+	// true
+	MultiZone []*DescribeDBInstanceAttributeResponseBodyMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
 	// The storage capacity of the instance.
 	//
 	// example:
@@ -2884,7 +3054,8 @@ type DescribeDBInstanceAttributeResponseBody struct {
 	// cn-beijing-h-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	// The tags that are added to the instances. Each tag is a key-value pair that consists of two parts: TagKey and TagValue. Format: `{"key1":"value1"}`.
-	Tags []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags      []*DescribeDBInstanceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VSwitchId *string                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The VPC ID.
 	//
 	// example:
@@ -2929,6 +3100,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetDBClusterList(v []*Describe
 
 func (s *DescribeDBInstanceAttributeResponseBody) SetDBInstanceId(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBody) SetDeployScheme(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.DeployScheme = &v
 	return s
 }
 
@@ -2982,6 +3158,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetMaintainStarttime(v string)
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetMultiZone(v []*DescribeDBInstanceAttributeResponseBodyMultiZone) *DescribeDBInstanceAttributeResponseBody {
+	s.MultiZone = v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetObjectStoreSize(v int64) *DescribeDBInstanceAttributeResponseBody {
 	s.ObjectStoreSize = &v
 	return s
@@ -3027,6 +3208,11 @@ func (s *DescribeDBInstanceAttributeResponseBody) SetTags(v []*DescribeDBInstanc
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBody) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBody) SetVpcId(v string) *DescribeDBInstanceAttributeResponseBody {
 	s.VpcId = &v
 	return s
@@ -3059,7 +3245,8 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// Prepaid
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ChargeType     *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	ClusterBinding *string `json:"ClusterBinding,omitempty" xml:"ClusterBinding,omitempty"`
 	// The number of CPU cores.
 	//
 	// example:
@@ -3152,7 +3339,10 @@ type DescribeDBInstanceAttributeResponseBodyDBClusterList struct {
 	// example:
 	//
 	// ACTIVATION
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDBInstanceAttributeResponseBodyDBClusterList) String() string {
@@ -3175,6 +3365,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetCacheStorageTy
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetChargeType(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.ChargeType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetClusterBinding(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.ClusterBinding = &v
 	return s
 }
 
@@ -3235,6 +3430,56 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStartTime(v st
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetStatus(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetSubDomain(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.SubDomain = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetVSwitchId(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBClusterList) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyDBClusterList {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeDBInstanceAttributeResponseBodyMultiZone struct {
+	AvailableIpCount *int64    `json:"AvailableIpCount,omitempty" xml:"AvailableIpCount,omitempty"`
+	Cidr             *string   `json:"Cidr,omitempty" xml:"Cidr,omitempty"`
+	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ZoneId           *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyMultiZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceAttributeResponseBodyMultiZone) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyMultiZone) SetAvailableIpCount(v int64) *DescribeDBInstanceAttributeResponseBodyMultiZone {
+	s.AvailableIpCount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyMultiZone) SetCidr(v string) *DescribeDBInstanceAttributeResponseBodyMultiZone {
+	s.Cidr = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyMultiZone) SetVSwitchIds(v []*string) *DescribeDBInstanceAttributeResponseBodyMultiZone {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyMultiZone) SetZoneId(v string) *DescribeDBInstanceAttributeResponseBodyMultiZone {
+	s.ZoneId = &v
 	return s
 }
 
@@ -4055,6 +4300,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DeployScheme *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
 	// The description of the instance.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The database engine of the instance.
@@ -4062,7 +4308,8 @@ type DescribeDBInstancesResponseBodyItems struct {
 	// example:
 	//
 	// selectdb
-	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineMinorVersion *string `json:"EngineMinorVersion,omitempty" xml:"EngineMinorVersion,omitempty"`
 	// The database engine version of the instance.
 	//
 	// example:
@@ -4124,7 +4371,8 @@ type DescribeDBInstancesResponseBodyItems struct {
 	// The start timestamp of the maintenance window.
 	MaintainStartTimeStr *string `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
 	// The start time of the instance maintenance window.
-	MaintainStarttime *string `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	MaintainStarttime *string                                          `json:"MaintainStarttime,omitempty" xml:"MaintainStarttime,omitempty"`
+	MultiZone         []*DescribeDBInstancesResponseBodyItemsMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
 	// The storage capacity of the instance. Unit: GB.
 	//
 	// example:
@@ -4255,6 +4503,11 @@ func (s *DescribeDBInstancesResponseBodyItems) SetDBInstanceId(v string) *Descri
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyItems) SetDeployScheme(v string) *DescribeDBInstancesResponseBodyItems {
+	s.DeployScheme = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyItems) SetDescription(v string) *DescribeDBInstancesResponseBodyItems {
 	s.Description = &v
 	return s
@@ -4262,6 +4515,11 @@ func (s *DescribeDBInstancesResponseBodyItems) SetDescription(v string) *Describ
 
 func (s *DescribeDBInstancesResponseBodyItems) SetEngine(v string) *DescribeDBInstancesResponseBodyItems {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItems) SetEngineMinorVersion(v string) *DescribeDBInstancesResponseBodyItems {
+	s.EngineMinorVersion = &v
 	return s
 }
 
@@ -4322,6 +4580,11 @@ func (s *DescribeDBInstancesResponseBodyItems) SetMaintainStartTimeStr(v string)
 
 func (s *DescribeDBInstancesResponseBodyItems) SetMaintainStarttime(v string) *DescribeDBInstancesResponseBodyItems {
 	s.MaintainStarttime = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItems) SetMultiZone(v []*DescribeDBInstancesResponseBodyItemsMultiZone) *DescribeDBInstancesResponseBodyItems {
+	s.MultiZone = v
 	return s
 }
 
@@ -4422,6 +4685,29 @@ func (s *DescribeDBInstancesResponseBodyItems) SetZoneId(v string) *DescribeDBIn
 
 func (s *DescribeDBInstancesResponseBodyItems) SetConnectionString(v string) *DescribeDBInstancesResponseBodyItems {
 	s.ConnectionString = &v
+	return s
+}
+
+type DescribeDBInstancesResponseBodyItemsMultiZone struct {
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ZoneId     *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeDBInstancesResponseBodyItemsMultiZone) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstancesResponseBodyItemsMultiZone) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsMultiZone) SetVSwitchIds(v []*string) *DescribeDBInstancesResponseBodyItemsMultiZone {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyItemsMultiZone) SetZoneId(v string) *DescribeDBInstancesResponseBodyItemsMultiZone {
+	s.ZoneId = &v
 	return s
 }
 
@@ -4708,10 +4994,14 @@ func (s *DescribeElasticRulesResponse) SetBody(v *DescribeElasticRulesResponseBo
 }
 
 type DescribeRegionsRequest struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-beijing-h
@@ -4737,7 +5027,10 @@ func (s *DescribeRegionsRequest) SetZoneId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
+	// An array of regions.
 	RegionModelList []*DescribeRegionsResponseBodyRegionModelList `json:"RegionModelList,omitempty" xml:"RegionModelList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
@@ -4763,11 +5056,14 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegionModelList struct {
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionId *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Zones    []*DescribeRegionsResponseBodyRegionModelListZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// An array of zones.
+	Zones []*DescribeRegionsResponseBodyRegionModelListZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeRegionsResponseBodyRegionModelList) String() string {
@@ -4789,28 +5085,42 @@ func (s *DescribeRegionsResponseBodyRegionModelList) SetZones(v []*DescribeRegio
 }
 
 type DescribeRegionsResponseBodyRegionModelListZones struct {
+	// The zone description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether the VPC is disabled.
+	//
 	// example:
 	//
 	// false
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// The label.
+	//
 	// example:
 	//
 	// test
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The zone name.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The subdomain.
+	//
 	// example:
 	//
 	// cn-beijing-h-aliyun
 	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
+	// Indicates whether the VPC is enabled.
+	//
 	// example:
 	//
 	// true
 	VpcEnabled *bool `json:"VpcEnabled,omitempty" xml:"VpcEnabled,omitempty"`
+	// Indicates whether the virtual private cloud (VPC) is available.
+	//
 	// example:
 	//
 	// cn-beijing-h
@@ -7780,7 +8090,7 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 
 // Summary:
 //
-// SelectDB实例创建前检查
+// # SelectDB实例创建前检查
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -7897,7 +8207,7 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 
 // Summary:
 //
-// SelectDB实例创建前检查
+// # SelectDB实例创建前检查
 //
 // @param request - CheckCreateDBInstanceRequest
 //
@@ -8123,7 +8433,7 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 
 // Summary:
 //
-// 创建SelectDB实例
+// Creates an ApsaraDB for SelectDB instance.
 //
 // @param tmpReq - CreateDBInstanceRequest
 //
@@ -8137,6 +8447,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 	}
 	request := &CreateDBInstanceShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MultiZone)) {
+		request.MultiZoneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MultiZone, tea.String("MultiZone"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
 		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
 	}
@@ -8166,12 +8480,20 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		query["DBInstanceDescription"] = request.DBInstanceDescription
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeployScheme)) {
+		query["DeployScheme"] = request.DeployScheme
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Engine)) {
 		query["Engine"] = request.Engine
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
 		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiZoneShrink)) {
+		query["MultiZone"] = request.MultiZoneShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
@@ -8252,7 +8574,7 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 // Summary:
 //
-// 创建SelectDB实例
+// Creates an ApsaraDB for SelectDB instance.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -9284,7 +9606,7 @@ func (client *Client) DescribeElasticRules(request *DescribeElasticRulesRequest)
 
 // Summary:
 //
-// 获取Region信息
+// Queries available regions and zones.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -9333,7 +9655,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 获取Region信息
+// Queries available regions and zones.
 //
 // @param request - DescribeRegionsRequest
 //
