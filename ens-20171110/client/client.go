@@ -47547,8 +47547,6 @@ type ImportImageRequest struct {
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 6.8
@@ -47711,8 +47709,6 @@ type ImportImageShrinkRequest struct {
 	//
 	// linux
 	OSType *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 6.8

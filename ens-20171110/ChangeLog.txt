@@ -1,3 +1,6 @@
+2025-04-08 Version: v10.0.3
+- Generated golang 2017-11-10 for Ens.
+
 2025-04-07 Version: v10.0.2
 - Update API CreateNatGateway: add request parameters InstanceBillingCycle.
 
