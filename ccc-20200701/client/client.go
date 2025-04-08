@@ -46819,6 +46819,7 @@ type ListRealtimeAgentStatesResponseBodyDataList struct {
 	// agent1@ccc-test
 	AgentId   *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	BreakCode *string `json:"BreakCode,omitempty" xml:"BreakCode,omitempty"`
 	// example:
 	//
 	// Outbound
@@ -46882,6 +46883,11 @@ func (s *ListRealtimeAgentStatesResponseBodyDataList) SetAgentId(v string) *List
 
 func (s *ListRealtimeAgentStatesResponseBodyDataList) SetAgentName(v string) *ListRealtimeAgentStatesResponseBodyDataList {
 	s.AgentName = &v
+	return s
+}
+
+func (s *ListRealtimeAgentStatesResponseBodyDataList) SetBreakCode(v string) *ListRealtimeAgentStatesResponseBodyDataList {
+	s.BreakCode = &v
 	return s
 }
 
@@ -51902,6 +51908,273 @@ func (s *ListUsersResponse) SetBody(v *ListUsersResponseBody) *ListUsersResponse
 	return s
 }
 
+type ListVisitorChatMessagesRequest struct {
+	// example:
+	//
+	// cf584733-***-***-9699-cb77aa3b7aa6
+	AccessChannelId *string `json:"AccessChannelId,omitempty" xml:"AccessChannelId,omitempty"`
+	// example:
+	//
+	// 9XYGTGWtq2wXzVikKuip_zeVGl6O4VJ-l-*-*-JPofhap4P7fAevuE=
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// example:
+	//
+	// 1650316799000
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// ccc-test
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 1737193352340::7463707254.EAUNIT
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// example:
+	//
+	// 100
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// DESC
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// example:
+	//
+	// 1647325450000
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// fcd020fe-****-1a272a174a7d
+	VisitorId *string `json:"VisitorId,omitempty" xml:"VisitorId,omitempty"`
+}
+
+func (s ListVisitorChatMessagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVisitorChatMessagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVisitorChatMessagesRequest) SetAccessChannelId(v string) *ListVisitorChatMessagesRequest {
+	s.AccessChannelId = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetAccessToken(v string) *ListVisitorChatMessagesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetEndTime(v string) *ListVisitorChatMessagesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetInstanceId(v string) *ListVisitorChatMessagesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetNextPageToken(v string) *ListVisitorChatMessagesRequest {
+	s.NextPageToken = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetPageSize(v int32) *ListVisitorChatMessagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetSortOrder(v string) *ListVisitorChatMessagesRequest {
+	s.SortOrder = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetStartTime(v int64) *ListVisitorChatMessagesRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesRequest) SetVisitorId(v string) *ListVisitorChatMessagesRequest {
+	s.VisitorId = &v
+	return s
+}
+
+type ListVisitorChatMessagesResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListVisitorChatMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 8707EB29-BAED-4302-B999-40BA61877437
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListVisitorChatMessagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVisitorChatMessagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVisitorChatMessagesResponseBody) SetCode(v string) *ListVisitorChatMessagesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBody) SetData(v *ListVisitorChatMessagesResponseBodyData) *ListVisitorChatMessagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBody) SetHttpStatusCode(v int32) *ListVisitorChatMessagesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBody) SetMessage(v string) *ListVisitorChatMessagesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBody) SetRequestId(v string) *ListVisitorChatMessagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListVisitorChatMessagesResponseBodyData struct {
+	Messages []*ListVisitorChatMessagesResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1737193352340::7463707254.EAUNIT
+	NextPageToken *string `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+}
+
+func (s ListVisitorChatMessagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVisitorChatMessagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListVisitorChatMessagesResponseBodyData) SetMessages(v []*ListVisitorChatMessagesResponseBodyDataMessages) *ListVisitorChatMessagesResponseBodyData {
+	s.Messages = v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyData) SetNextPageToken(v string) *ListVisitorChatMessagesResponseBodyData {
+	s.NextPageToken = &v
+	return s
+}
+
+type ListVisitorChatMessagesResponseBodyDataMessages struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// chat-65382141036853491
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// http://xxxxx.com/avatar.png
+	SenderAvatarUrl *string `json:"SenderAvatarUrl,omitempty" xml:"SenderAvatarUrl,omitempty"`
+	// example:
+	//
+	// fcd020fe-****-1a272a174a7d
+	SenderId   *string `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
+	SenderName *string `json:"SenderName,omitempty" xml:"SenderName,omitempty"`
+	// example:
+	//
+	// CUSTOMER
+	SenderType *string `json:"SenderType,omitempty" xml:"SenderType,omitempty"`
+	// example:
+	//
+	// 1696126980371
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ListVisitorChatMessagesResponseBodyDataMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVisitorChatMessagesResponseBodyDataMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetContent(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetJobId(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetSenderAvatarUrl(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.SenderAvatarUrl = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetSenderId(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.SenderId = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetSenderName(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.SenderName = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetSenderType(v string) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.SenderType = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponseBodyDataMessages) SetTimestamp(v int64) *ListVisitorChatMessagesResponseBodyDataMessages {
+	s.Timestamp = &v
+	return s
+}
+
+type ListVisitorChatMessagesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVisitorChatMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVisitorChatMessagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVisitorChatMessagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVisitorChatMessagesResponse) SetHeaders(v map[string]*string) *ListVisitorChatMessagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponse) SetStatusCode(v int32) *ListVisitorChatMessagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVisitorChatMessagesResponse) SetBody(v *ListVisitorChatMessagesResponseBody) *ListVisitorChatMessagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListVoicemailsRequest struct {
 	// example:
 	//
@@ -52660,6 +52933,7 @@ type MakeCallResponseBodyDataCallContext struct {
 	//
 	// OUTBOUND
 	CallType        *string                                               `json:"CallType,omitempty" xml:"CallType,omitempty"`
+	CallVariables   *string                                               `json:"CallVariables,omitempty" xml:"CallVariables,omitempty"`
 	ChannelContexts []*MakeCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -52681,6 +52955,11 @@ func (s MakeCallResponseBodyDataCallContext) GoString() string {
 
 func (s *MakeCallResponseBodyDataCallContext) SetCallType(v string) *MakeCallResponseBodyDataCallContext {
 	s.CallType = &v
+	return s
+}
+
+func (s *MakeCallResponseBodyDataCallContext) SetCallVariables(v string) *MakeCallResponseBodyDataCallContext {
+	s.CallVariables = &v
 	return s
 }
 
@@ -71720,7 +71999,7 @@ func (client *Client) FinishTicketTask(request *FinishTicketTaskRequest) (_resul
 
 // Summary:
 //
-// GetAccessChannelOfStaging
+// # GetAccessChannelOfStaging
 //
 // @param request - GetAccessChannelOfStagingRequest
 //
@@ -71769,7 +72048,7 @@ func (client *Client) GetAccessChannelOfStagingWithOptions(request *GetAccessCha
 
 // Summary:
 //
-// GetAccessChannelOfStaging
+// # GetAccessChannelOfStaging
 //
 // @param request - GetAccessChannelOfStagingRequest
 //
@@ -75540,7 +75819,7 @@ func (client *Client) ListAgentStateLogs(request *ListAgentStateLogsRequest) (_r
 //
 // Summary:
 //
-// ListAgentStates for ACC
+// # ListAgentStates for ACC
 //
 // @param request - ListAgentStatesRequest
 //
@@ -75620,7 +75899,7 @@ func (client *Client) ListAgentStatesWithOptions(request *ListAgentStatesRequest
 //
 // Summary:
 //
-// ListAgentStates for ACC
+// # ListAgentStates for ACC
 //
 // @param request - ListAgentStatesRequest
 //
@@ -75641,7 +75920,7 @@ func (client *Client) ListAgentStates(request *ListAgentStatesRequest) (_result 
 //
 // Summary:
 //
-// ListAgentSummaryReportsSinceMidnight for acc
+// # ListAgentSummaryReportsSinceMidnight for acc
 //
 // @param request - ListAgentSummaryReportsSinceMidnightRequest
 //
@@ -75693,7 +75972,7 @@ func (client *Client) ListAgentSummaryReportsSinceMidnightWithOptions(request *L
 //
 // Summary:
 //
-// ListAgentSummaryReportsSinceMidnight for acc
+// # ListAgentSummaryReportsSinceMidnight for acc
 //
 // @param request - ListAgentSummaryReportsSinceMidnightRequest
 //
@@ -77525,7 +77804,7 @@ func (client *Client) ListFlashSmsTemplates(request *ListFlashSmsTemplatesReques
 
 // Summary:
 //
-// ListGroupChatMessages
+// # ListGroupChatMessages
 //
 // @param request - ListGroupChatMessagesRequest
 //
@@ -77594,7 +77873,7 @@ func (client *Client) ListGroupChatMessagesWithOptions(request *ListGroupChatMes
 
 // Summary:
 //
-// ListGroupChatMessages
+// # ListGroupChatMessages
 //
 // @param request - ListGroupChatMessagesRequest
 //
@@ -77705,7 +77984,7 @@ func (client *Client) ListHistoricalAgentReport(request *ListHistoricalAgentRepo
 
 // Summary:
 //
-// ListHistoricalAgentSkillGroupReport
+// # ListHistoricalAgentSkillGroupReport
 //
 // @param request - ListHistoricalAgentSkillGroupReportRequest
 //
@@ -77788,7 +78067,7 @@ func (client *Client) ListHistoricalAgentSkillGroupReportWithOptions(request *Li
 
 // Summary:
 //
-// ListHistoricalAgentSkillGroupReport
+// # ListHistoricalAgentSkillGroupReport
 //
 // @param request - ListHistoricalAgentSkillGroupReportRequest
 //
@@ -78112,7 +78391,7 @@ func (client *Client) ListIntervalAgentReport(request *ListIntervalAgentReportRe
 
 // Summary:
 //
-// ListIntervalAgentSkillGroupReport
+// # ListIntervalAgentSkillGroupReport
 //
 // @param request - ListIntervalAgentSkillGroupReportRequest
 //
@@ -78161,7 +78440,7 @@ func (client *Client) ListIntervalAgentSkillGroupReportWithOptions(request *List
 
 // Summary:
 //
-// ListIntervalAgentSkillGroupReport
+// # ListIntervalAgentSkillGroupReport
 //
 // @param request - ListIntervalAgentSkillGroupReportRequest
 //
@@ -78414,7 +78693,7 @@ func (client *Client) ListIvrTrackingDetails(request *ListIvrTrackingDetailsRequ
 //
 // Summary:
 //
-// ListLegacyAgentEventLogs
+// # ListLegacyAgentEventLogs
 //
 // @param request - ListLegacyAgentEventLogsRequest
 //
@@ -78490,7 +78769,7 @@ func (client *Client) ListLegacyAgentEventLogsWithOptions(request *ListLegacyAge
 //
 // Summary:
 //
-// ListLegacyAgentEventLogs
+// # ListLegacyAgentEventLogs
 //
 // @param request - ListLegacyAgentEventLogsRequest
 //
@@ -78511,7 +78790,7 @@ func (client *Client) ListLegacyAgentEventLogs(request *ListLegacyAgentEventLogs
 //
 // Summary:
 //
-// ListLegacyAgentStatusLogs
+// # ListLegacyAgentStatusLogs
 //
 // @param request - ListLegacyAgentStatusLogsRequest
 //
@@ -78587,7 +78866,7 @@ func (client *Client) ListLegacyAgentStatusLogsWithOptions(request *ListLegacyAg
 //
 // Summary:
 //
-// ListLegacyAgentStatusLogs
+// # ListLegacyAgentStatusLogs
 //
 // @param request - ListLegacyAgentStatusLogsRequest
 //
@@ -78606,7 +78885,7 @@ func (client *Client) ListLegacyAgentStatusLogs(request *ListLegacyAgentStatusLo
 
 // Summary:
 //
-// ListLegacyAppraiseLogs
+// # ListLegacyAppraiseLogs
 //
 // @param request - ListLegacyAppraiseLogsRequest
 //
@@ -78675,7 +78954,7 @@ func (client *Client) ListLegacyAppraiseLogsWithOptions(request *ListLegacyAppra
 
 // Summary:
 //
-// ListLegacyAppraiseLogs
+// # ListLegacyAppraiseLogs
 //
 // @param request - ListLegacyAppraiseLogsRequest
 //
@@ -78693,7 +78972,7 @@ func (client *Client) ListLegacyAppraiseLogs(request *ListLegacyAppraiseLogsRequ
 
 // Summary:
 //
-// ListLegacyQueueEventLogs
+// # ListLegacyQueueEventLogs
 //
 // @param request - ListLegacyQueueEventLogsRequest
 //
@@ -78766,7 +79045,7 @@ func (client *Client) ListLegacyQueueEventLogsWithOptions(request *ListLegacyQue
 
 // Summary:
 //
-// ListLegacyQueueEventLogs
+// # ListLegacyQueueEventLogs
 //
 // @param request - ListLegacyQueueEventLogsRequest
 //
@@ -79736,7 +80015,7 @@ func (client *Client) ListRoles(request *ListRolesRequest) (_result *ListRolesRe
 //
 // Summary:
 //
-// ListSkillGroupStates for acc
+// # ListSkillGroupStates for acc
 //
 // @param request - ListSkillGroupStatesRequest
 //
@@ -79788,7 +80067,7 @@ func (client *Client) ListSkillGroupStatesWithOptions(request *ListSkillGroupSta
 //
 // Summary:
 //
-// ListSkillGroupStates for acc
+// # ListSkillGroupStates for acc
 //
 // @param request - ListSkillGroupStatesRequest
 //
@@ -79809,7 +80088,7 @@ func (client *Client) ListSkillGroupStates(request *ListSkillGroupStatesRequest)
 //
 // Summary:
 //
-// ListSkillGroupSummaryReportsSinceMidnight for acc
+// # ListSkillGroupSummaryReportsSinceMidnight for acc
 //
 // @param request - ListSkillGroupSummaryReportsSinceMidnightRequest
 //
@@ -79861,7 +80140,7 @@ func (client *Client) ListSkillGroupSummaryReportsSinceMidnightWithOptions(reque
 //
 // Summary:
 //
-// ListSkillGroupSummaryReportsSinceMidnight for acc
+// # ListSkillGroupSummaryReportsSinceMidnight for acc
 //
 // @param request - ListSkillGroupSummaryReportsSinceMidnightRequest
 //
@@ -80618,6 +80897,109 @@ func (client *Client) ListUsers(request *ListUsersRequest) (_result *ListUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersResponse{}
 	_body, _err := client.ListUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListVisitorChatMessages
+//
+// @param request - ListVisitorChatMessagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVisitorChatMessagesResponse
+func (client *Client) ListVisitorChatMessagesWithOptions(request *ListVisitorChatMessagesRequest, runtime *util.RuntimeOptions) (_result *ListVisitorChatMessagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessChannelId)) {
+		query["AccessChannelId"] = request.AccessChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPageToken)) {
+		query["NextPageToken"] = request.NextPageToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortOrder)) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisitorId)) {
+		query["VisitorId"] = request.VisitorId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVisitorChatMessages"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListVisitorChatMessagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListVisitorChatMessagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # ListVisitorChatMessages
+//
+// @param request - ListVisitorChatMessagesRequest
+//
+// @return ListVisitorChatMessagesResponse
+func (client *Client) ListVisitorChatMessages(request *ListVisitorChatMessagesRequest) (_result *ListVisitorChatMessagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVisitorChatMessagesResponse{}
+	_body, _err := client.ListVisitorChatMessagesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -81887,7 +82269,7 @@ func (client *Client) PollUserStatus(request *PollUserStatusRequest) (_result *P
 
 // Summary:
 //
-// ProcessAliMeCallbackOfStaging
+// # ProcessAliMeCallbackOfStaging
 //
 // @param request - ProcessAliMeCallbackOfStagingRequest
 //
@@ -81944,7 +82326,7 @@ func (client *Client) ProcessAliMeCallbackOfStagingWithOptions(request *ProcessA
 
 // Summary:
 //
-// ProcessAliMeCallbackOfStaging
+// # ProcessAliMeCallbackOfStaging
 //
 // @param request - ProcessAliMeCallbackOfStagingRequest
 //
@@ -85585,7 +85967,7 @@ func (client *Client) UpdateCallSummary(request *UpdateCallSummaryRequest) (_res
 
 // Summary:
 //
-// Update campaign
+// # Update campaign
 //
 // @param request - UpdateCampaignRequest
 //
@@ -85666,7 +86048,7 @@ func (client *Client) UpdateCampaignWithOptions(request *UpdateCampaignRequest, 
 
 // Summary:
 //
-// Update campaign
+// # Update campaign
 //
 // @param request - UpdateCampaignRequest
 //
