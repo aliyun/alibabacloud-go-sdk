@@ -358,7 +358,7 @@ type AttachAlbServerGroupsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to add the existing Elastic Compute Service (ECS) instances or elastic container instances in the scaling group to the new ALB server group. Valid values:
 	//
-	// 	- true: adds the existing ECS instances or elastic container instances in the scaling group to the new ALB server group. In this case, the system returns the value of `ScalingActivityId`.
+	// 	- true: adds the existing ECS instances or elastic container instances in the scaling group to the new ALB server group and returns the value of `ScalingActivityId`. You can query the value of ScalingActivityId to check whether the existing ECS instances are added to the ALB server group.
 	//
 	// 	- false: does not add the existing ECS instances or elastic container instances in the scaling group to the new ALB server group.
 	//
@@ -578,7 +578,7 @@ type AttachDBInstancesRequest struct {
 	//
 	// This parameter is required.
 	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// Specifies whether to add the private IP addresses of all ECS instances in the scaling group to the IP address whitelist of an ApsaraDB RDS instance when you attach the ApsaraDB RDS instance to the scaling group. Valid values:
+	// Specifies whether to add the private IP addresses of all ECS instances in the scaling group to the IP address whitelist of the ApsaraDB RDS instance that you want to attach to the scaling group. Valid values:
 	//
 	// 	- true
 	//
@@ -2151,13 +2151,13 @@ type CreateAlarmRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The method that you want to use to aggregate the metric data. Valid values:
+	// The statistical method of the metric data. Valid values:
 	//
-	// 	- Average: the average value.
+	// 	- Average: calculates the average value of the metric data.
 	//
-	// 	- Minimum: the minimum value.
+	// 	- Minimum: calculates the minimum value of the metric data.
 	//
-	// 	- Maximum: the maximum value.
+	// 	- Maximum: calculates the maximum value of the metric data.
 	//
 	// Default value: Average.
 	//
@@ -2886,7 +2886,7 @@ type CreateEciScalingConfigurationRequest struct {
 	// The endpoints of the Network Time Protocol (NTP) servers.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
 	OwnerId    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the instance Resource Access Management (RAM) role. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
+	// The name of the instance Resource Access Management (RAM) role. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [RAM roles](https://help.aliyun.com/document_detail/61175.html).
 	//
 	// example:
 	//
@@ -6967,7 +6967,10 @@ func (s *CreateScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 
 type CreateScalingConfigurationRequestResourcePoolOptions struct {
 	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
-	Strategy       *string   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s CreateScalingConfigurationRequestResourcePoolOptions) String() string {
@@ -8730,7 +8733,10 @@ func (s *CreateScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGr
 
 type CreateScalingConfigurationShrinkRequestResourcePoolOptions struct {
 	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
-	Strategy       *string   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s CreateScalingConfigurationShrinkRequestResourcePoolOptions) String() string {
@@ -10359,7 +10365,7 @@ type CreateScalingRuleRequest struct {
 	//
 	// 	- StepScalingRule: a step scaling rule. After you execute a step scaling rule, Auto Scaling scales instances step by step based on the predefined thresholds and metric values.
 	//
-	// 	- PredictiveScalingRule: a predictive scaling rule. After you execute a predictive scaling rule, Auto Scaling uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to specify the value range for the scaling group.
+	// 	- PredictiveScalingRule: a predictive scaling rule. After you execute a predictive scaling rule, Auto Scaling uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
 	//
 	// Default value: SimpleScalingRule.
 	//
@@ -15677,7 +15683,7 @@ func (s *DescribeEciScalingConfigurationDetailResponse) SetBody(v *DescribeEciSc
 type DescribeEciScalingConfigurationsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -15685,7 +15691,7 @@ type DescribeEciScalingConfigurationsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Maximum value: 50.
+	// The number of entries per page. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -18146,6 +18152,9 @@ func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeEla
 }
 
 type DescribeElasticStrengthResponseBody struct {
+	// example:
+	//
+	// Strong
 	ElasticStrength *string `json:"ElasticStrength,omitempty" xml:"ElasticStrength,omitempty"`
 	// The scaling strength models.
 	ElasticStrengthModels []*DescribeElasticStrengthResponseBodyElasticStrengthModels `json:"ElasticStrengthModels,omitempty" xml:"ElasticStrengthModels,omitempty" type:"Repeated"`
@@ -18450,7 +18459,10 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	// example:
 	//
 	// The instanceType does not support the image in the configuration.
-	Msg    *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// example:
+	//
+	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The scaling strength of the resource pool.
 	//
@@ -18517,10 +18529,22 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) SetZoneId(v string) *
 }
 
 type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {
+	// example:
+	//
+	// 3
 	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
-	HealthScore   *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
-	HotScore      *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
-	SupplyScore   *int32 `json:"SupplyScore,omitempty" xml:"SupplyScore,omitempty"`
+	// example:
+	//
+	// 3
+	HealthScore *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
+	// example:
+	//
+	// 3
+	HotScore *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// example:
+	//
+	// 3
+	SupplyScore *int32 `json:"SupplyScore,omitempty" xml:"SupplyScore,omitempty"`
 }
 
 func (s DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth) String() string {
@@ -23127,7 +23151,10 @@ func (s *DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkIn
 
 type DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions struct {
 	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
-	Strategy       *string   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s DescribeScalingConfigurationsResponseBodyScalingConfigurationsResourcePoolOptions) String() string {
@@ -28499,7 +28526,7 @@ type DetachLoadBalancersRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the Server Load Balancer (SLB) instance. Valid values:
+	// Specifies whether to remove Elastic Compute Service (ECS) instances in the scaling group from the backend server groups of the load balancer. Valid values:
 	//
 	// 	- true
 	//
@@ -30743,7 +30770,7 @@ type ModifyAlarmRequest struct {
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	// The metric type. Valid values:
 	//
-	// 	- system: system metrics of CloudMonitor
+	// 	- system: system metrics of CloudMonitor.
 	//
 	// 	- custom: custom metrics that are reported to CloudMonitor.
 	//
@@ -33576,13 +33603,12 @@ type ModifyInstanceAttributeRequest struct {
 	Entrusted *bool `json:"Entrusted,omitempty" xml:"Entrusted,omitempty"`
 	// The ID of the ECS instance.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// i-bp109k5j3dum1ce6****
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the scaling group.
 	//
 	// This parameter is required.
@@ -33617,6 +33643,11 @@ func (s *ModifyInstanceAttributeRequest) SetEntrusted(v bool) *ModifyInstanceAtt
 
 func (s *ModifyInstanceAttributeRequest) SetInstanceId(v string) *ModifyInstanceAttributeRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceAttributeRequest) SetInstanceIds(v []*string) *ModifyInstanceAttributeRequest {
+	s.InstanceIds = v
 	return s
 }
 
@@ -35737,7 +35768,10 @@ func (s *ModifyScalingConfigurationRequestNetworkInterfaces) SetSecurityGroupIds
 
 type ModifyScalingConfigurationRequestResourcePoolOptions struct {
 	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
-	Strategy       *string   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s ModifyScalingConfigurationRequestResourcePoolOptions) String() string {
@@ -37484,7 +37518,10 @@ func (s *ModifyScalingConfigurationShrinkRequestNetworkInterfaces) SetSecurityGr
 
 type ModifyScalingConfigurationShrinkRequestResourcePoolOptions struct {
 	PrivatePoolIds []*string `json:"PrivatePoolIds,omitempty" xml:"PrivatePoolIds,omitempty" type:"Repeated"`
-	Strategy       *string   `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// example:
+	//
+	// PrivatePoolFirst
+	Strategy *string `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
 }
 
 func (s ModifyScalingConfigurationShrinkRequestResourcePoolOptions) String() string {
@@ -50577,6 +50614,10 @@ func (client *Client) ModifyInstanceAttributeWithOptions(request *ModifyInstance
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
