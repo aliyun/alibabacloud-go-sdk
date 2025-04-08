@@ -17499,10 +17499,12 @@ func (s *DescribeNotifyConfigRequest) SetAIAgentId(v string) *DescribeNotifyConf
 }
 
 type DescribeNotifyConfigResponseBody struct {
+	AudioOssPath *string `json:"AudioOssPath,omitempty" xml:"AudioOssPath,omitempty"`
 	// example:
 	//
 	// http://customer.com/callback
-	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	EnableAudioRecording *bool   `json:"EnableAudioRecording,omitempty" xml:"EnableAudioRecording,omitempty"`
 	// example:
 	//
 	// true
@@ -17537,8 +17539,18 @@ func (s DescribeNotifyConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeNotifyConfigResponseBody) SetAudioOssPath(v string) *DescribeNotifyConfigResponseBody {
+	s.AudioOssPath = &v
+	return s
+}
+
 func (s *DescribeNotifyConfigResponseBody) SetCallbackUrl(v string) *DescribeNotifyConfigResponseBody {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *DescribeNotifyConfigResponseBody) SetEnableAudioRecording(v bool) *DescribeNotifyConfigResponseBody {
+	s.EnableAudioRecording = &v
 	return s
 }
 
@@ -40754,6 +40766,7 @@ func (s *ListAIAgentDialoguesResponseBody) SetRequestId(v string) *ListAIAgentDi
 }
 
 type ListAIAgentDialoguesResponseBodyDialogues struct {
+	AttachedFileList []*ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList `json:"AttachedFileList,omitempty" xml:"AttachedFileList,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 19de81b3b3d94abda22****
@@ -40782,6 +40795,11 @@ func (s ListAIAgentDialoguesResponseBodyDialogues) String() string {
 
 func (s ListAIAgentDialoguesResponseBodyDialogues) GoString() string {
 	return s.String()
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetAttachedFileList(v []*ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.AttachedFileList = v
+	return s
 }
 
 func (s *ListAIAgentDialoguesResponseBodyDialogues) SetDialogueId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
@@ -40821,6 +40839,47 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) SetTime(v int64) *ListAIAgen
 
 func (s *ListAIAgentDialoguesResponseBodyDialogues) SetType(v string) *ListAIAgentDialoguesResponseBodyDialogues {
 	s.Type = &v
+	return s
+}
+
+type ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList struct {
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type   *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) SetFormat(v string) *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList {
+	s.Format = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) SetId(v string) *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) SetName(v string) *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) SetType(v int32) *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList) SetUrl(v string) *ListAIAgentDialoguesResponseBodyDialoguesAttachedFileList {
+	s.Url = &v
 	return s
 }
 
@@ -69783,13 +69842,15 @@ type SetNotifyConfigRequest struct {
 	// example:
 	//
 	// 39f8e0bc005e4f309379701645f4****
-	AIAgentId *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AIAgentId    *string `json:"AIAgentId,omitempty" xml:"AIAgentId,omitempty"`
+	AudioOssPath *string `json:"AudioOssPath,omitempty" xml:"AudioOssPath,omitempty"`
 	// The URL for receiving callback notifications. By default, this parameter is left empty.
 	//
 	// example:
 	//
 	// http://customer.com/callback
-	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	CallbackUrl          *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	EnableAudioRecording *bool   `json:"EnableAudioRecording,omitempty" xml:"EnableAudioRecording,omitempty"`
 	// Specifies whether to enable event notifications.
 	//
 	// This parameter is required.
@@ -69831,8 +69892,18 @@ func (s *SetNotifyConfigRequest) SetAIAgentId(v string) *SetNotifyConfigRequest 
 	return s
 }
 
+func (s *SetNotifyConfigRequest) SetAudioOssPath(v string) *SetNotifyConfigRequest {
+	s.AudioOssPath = &v
+	return s
+}
+
 func (s *SetNotifyConfigRequest) SetCallbackUrl(v string) *SetNotifyConfigRequest {
 	s.CallbackUrl = &v
+	return s
+}
+
+func (s *SetNotifyConfigRequest) SetEnableAudioRecording(v bool) *SetNotifyConfigRequest {
+	s.EnableAudioRecording = &v
 	return s
 }
 
@@ -115228,8 +115299,16 @@ func (client *Client) SetNotifyConfigWithOptions(request *SetNotifyConfigRequest
 		query["AIAgentId"] = request.AIAgentId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AudioOssPath)) {
+		query["AudioOssPath"] = request.AudioOssPath
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CallbackUrl)) {
 		query["CallbackUrl"] = request.CallbackUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAudioRecording)) {
+		query["EnableAudioRecording"] = request.EnableAudioRecording
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnableNotify)) {
