@@ -3298,6 +3298,461 @@ func (s *SearchImageByPicResponse) SetBody(v *SearchImageByPicResponseBody) *Sea
 	return s
 }
 
+type SearchImageByTextRequest struct {
+	// example:
+	//
+	// false
+	DistinctProductId *bool `json:"DistinctProductId,omitempty" xml:"DistinctProductId,omitempty"`
+	// example:
+	//
+	// int_attr=1000 AND str_attr="value1"
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demoinstance1
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// example:
+	//
+	// 10
+	Num *int32 `json:"Num,omitempty" xml:"Num,omitempty"`
+	// example:
+	//
+	// 0
+	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s SearchImageByTextRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextRequest) SetDistinctProductId(v bool) *SearchImageByTextRequest {
+	s.DistinctProductId = &v
+	return s
+}
+
+func (s *SearchImageByTextRequest) SetFilter(v string) *SearchImageByTextRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *SearchImageByTextRequest) SetInstanceName(v string) *SearchImageByTextRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *SearchImageByTextRequest) SetNum(v int32) *SearchImageByTextRequest {
+	s.Num = &v
+	return s
+}
+
+func (s *SearchImageByTextRequest) SetStart(v int32) *SearchImageByTextRequest {
+	s.Start = &v
+	return s
+}
+
+func (s *SearchImageByTextRequest) SetText(v string) *SearchImageByTextRequest {
+	s.Text = &v
+	return s
+}
+
+type SearchImageByTextResponseBody struct {
+	AccessDeniedDetail *SearchImageByTextResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	Auctions           []*SearchImageByTextResponseBodyAuctions         `json:"Auctions,omitempty" xml:"Auctions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Head *SearchImageByTextResponseBodyHead `json:"Head,omitempty" xml:"Head,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Msg     *string                               `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	PicInfo *SearchImageByTextResponseBodyPicInfo `json:"PicInfo,omitempty" xml:"PicInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// B3137727-7D6E-488C-BA21-0E034C38A879
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SearchImageByTextResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBody) SetAccessDeniedDetail(v *SearchImageByTextResponseBodyAccessDeniedDetail) *SearchImageByTextResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetAuctions(v []*SearchImageByTextResponseBodyAuctions) *SearchImageByTextResponseBody {
+	s.Auctions = v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetCode(v int32) *SearchImageByTextResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetHead(v *SearchImageByTextResponseBodyHead) *SearchImageByTextResponseBody {
+	s.Head = v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetMsg(v string) *SearchImageByTextResponseBody {
+	s.Msg = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetPicInfo(v *SearchImageByTextResponseBodyPicInfo) *SearchImageByTextResponseBody {
+	s.PicInfo = v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetRequestId(v string) *SearchImageByTextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBody) SetSuccess(v bool) *SearchImageByTextResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SearchImageByTextResponseBodyAccessDeniedDetail struct {
+	// example:
+	//
+	// xxx
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// 111
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// example:
+	//
+	// 222
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// xxxxxx
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// example:
+	//
+	// PauseNotify
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s SearchImageByTextResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetAuthAction(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAccessDeniedDetail) SetPolicyType(v string) *SearchImageByTextResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type SearchImageByTextResponseBodyAuctions struct {
+	// example:
+	//
+	// 8888888
+	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// example:
+	//
+	// zidingyi
+	CustomContent *string `json:"CustomContent,omitempty" xml:"CustomContent,omitempty"`
+	// example:
+	//
+	// 2
+	IntAttr *int32 `json:"IntAttr,omitempty" xml:"IntAttr,omitempty"`
+	// example:
+	//
+	// 2
+	IntAttr2 *int32 `json:"IntAttr2,omitempty" xml:"IntAttr2,omitempty"`
+	// example:
+	//
+	// 2
+	IntAttr3 *int32 `json:"IntAttr3,omitempty" xml:"IntAttr3,omitempty"`
+	// example:
+	//
+	// 2
+	IntAttr4 *int32 `json:"IntAttr4,omitempty" xml:"IntAttr4,omitempty"`
+	// example:
+	//
+	// 2092061_1.jpg
+	PicName *string `json:"PicName,omitempty" xml:"PicName,omitempty"`
+	// example:
+	//
+	// 2092061_1
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	// example:
+	//
+	// 1
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	// example:
+	//
+	// xxxx
+	StrAttr *string `json:"StrAttr,omitempty" xml:"StrAttr,omitempty"`
+	// example:
+	//
+	// xxxx
+	StrAttr2 *string `json:"StrAttr2,omitempty" xml:"StrAttr2,omitempty"`
+	// example:
+	//
+	// xxxx
+	StrAttr3 *string `json:"StrAttr3,omitempty" xml:"StrAttr3,omitempty"`
+	// example:
+	//
+	// xxxx
+	StrAttr4 *string `json:"StrAttr4,omitempty" xml:"StrAttr4,omitempty"`
+}
+
+func (s SearchImageByTextResponseBodyAuctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBodyAuctions) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetCategoryId(v int32) *SearchImageByTextResponseBodyAuctions {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetCustomContent(v string) *SearchImageByTextResponseBodyAuctions {
+	s.CustomContent = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetIntAttr(v int32) *SearchImageByTextResponseBodyAuctions {
+	s.IntAttr = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetIntAttr2(v int32) *SearchImageByTextResponseBodyAuctions {
+	s.IntAttr2 = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetIntAttr3(v int32) *SearchImageByTextResponseBodyAuctions {
+	s.IntAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetIntAttr4(v int32) *SearchImageByTextResponseBodyAuctions {
+	s.IntAttr4 = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetPicName(v string) *SearchImageByTextResponseBodyAuctions {
+	s.PicName = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetProductId(v string) *SearchImageByTextResponseBodyAuctions {
+	s.ProductId = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetScore(v float32) *SearchImageByTextResponseBodyAuctions {
+	s.Score = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetStrAttr(v string) *SearchImageByTextResponseBodyAuctions {
+	s.StrAttr = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetStrAttr2(v string) *SearchImageByTextResponseBodyAuctions {
+	s.StrAttr2 = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetStrAttr3(v string) *SearchImageByTextResponseBodyAuctions {
+	s.StrAttr3 = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyAuctions) SetStrAttr4(v string) *SearchImageByTextResponseBodyAuctions {
+	s.StrAttr4 = &v
+	return s
+}
+
+type SearchImageByTextResponseBodyHead struct {
+	// example:
+	//
+	// 10
+	DocsFound *int32 `json:"DocsFound,omitempty" xml:"DocsFound,omitempty"`
+	// example:
+	//
+	// 10000
+	DocsReturn *int32 `json:"DocsReturn,omitempty" xml:"DocsReturn,omitempty"`
+	// example:
+	//
+	// 95
+	SearchTime *int32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
+}
+
+func (s SearchImageByTextResponseBodyHead) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBodyHead) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBodyHead) SetDocsFound(v int32) *SearchImageByTextResponseBodyHead {
+	s.DocsFound = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyHead) SetDocsReturn(v int32) *SearchImageByTextResponseBodyHead {
+	s.DocsReturn = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyHead) SetSearchTime(v int32) *SearchImageByTextResponseBodyHead {
+	s.SearchTime = &v
+	return s
+}
+
+type SearchImageByTextResponseBodyPicInfo struct {
+	AllCategories []*SearchImageByTextResponseBodyPicInfoAllCategories `json:"AllCategories,omitempty" xml:"AllCategories,omitempty" type:"Repeated"`
+}
+
+func (s SearchImageByTextResponseBodyPicInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBodyPicInfo) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBodyPicInfo) SetAllCategories(v []*SearchImageByTextResponseBodyPicInfoAllCategories) *SearchImageByTextResponseBodyPicInfo {
+	s.AllCategories = v
+	return s
+}
+
+type SearchImageByTextResponseBodyPicInfoAllCategories struct {
+	// example:
+	//
+	// 88888888
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// other
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s SearchImageByTextResponseBodyPicInfoAllCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponseBodyPicInfoAllCategories) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponseBodyPicInfoAllCategories) SetId(v int32) *SearchImageByTextResponseBodyPicInfoAllCategories {
+	s.Id = &v
+	return s
+}
+
+func (s *SearchImageByTextResponseBodyPicInfoAllCategories) SetName(v string) *SearchImageByTextResponseBodyPicInfoAllCategories {
+	s.Name = &v
+	return s
+}
+
+type SearchImageByTextResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SearchImageByTextResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SearchImageByTextResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchImageByTextResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchImageByTextResponse) SetHeaders(v map[string]*string) *SearchImageByTextResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchImageByTextResponse) SetStatusCode(v int32) *SearchImageByTextResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchImageByTextResponse) SetBody(v *SearchImageByTextResponseBody) *SearchImageByTextResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateImageRequest struct {
 	// The user-defined content. The value can be up to 4,096 characters in length.
 	//
@@ -4991,6 +5446,97 @@ func (client *Client) SearchImageByPicAdvance(request *SearchImageByPicAdvanceRe
 	}
 
 	_result = searchImageByPicResp
+	return _result, _err
+}
+
+// Summary:
+//
+// # SearchImageByText
+//
+// @param request - SearchImageByTextRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SearchImageByTextResponse
+func (client *Client) SearchImageByTextWithOptions(request *SearchImageByTextRequest, runtime *util.RuntimeOptions) (_result *SearchImageByTextResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DistinctProductId)) {
+		body["DistinctProductId"] = request.DistinctProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		body["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Num)) {
+		body["Num"] = request.Num
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		body["Start"] = request.Start
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchImageByText"),
+		Version:     tea.String("2020-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SearchImageByTextResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SearchImageByTextResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// # SearchImageByText
+//
+// @param request - SearchImageByTextRequest
+//
+// @return SearchImageByTextResponse
+func (client *Client) SearchImageByText(request *SearchImageByTextRequest) (_result *SearchImageByTextResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchImageByTextResponse{}
+	_body, _err := client.SearchImageByTextWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
 
