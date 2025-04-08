@@ -11768,12 +11768,6 @@ type CreateRoutineRequest struct {
 	//
 	// test-routine1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The specification of the routine.
-	//
-	// example:
-	//
-	// 5ms
-	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s CreateRoutineRequest) String() string {
@@ -11791,11 +11785,6 @@ func (s *CreateRoutineRequest) SetDescription(v string) *CreateRoutineRequest {
 
 func (s *CreateRoutineRequest) SetName(v string) *CreateRoutineRequest {
 	s.Name = &v
-	return s
-}
-
-func (s *CreateRoutineRequest) SetSpecName(v string) *CreateRoutineRequest {
-	s.SpecName = &v
 	return s
 }
 
@@ -35261,12 +35250,6 @@ type GetRoutineResponseBodyEnvs struct {
 	//
 	// production
 	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The specification.
-	//
-	// example:
-	//
-	// 5ms
-	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
 }
 
 func (s GetRoutineResponseBodyEnvs) String() string {
@@ -35294,11 +35277,6 @@ func (s *GetRoutineResponseBodyEnvs) SetCodeVersion(v string) *GetRoutineRespons
 
 func (s *GetRoutineResponseBodyEnvs) SetEnv(v string) *GetRoutineResponseBodyEnvs {
 	s.Env = &v
-	return s
-}
-
-func (s *GetRoutineResponseBodyEnvs) SetSpecName(v string) *GetRoutineResponseBodyEnvs {
-	s.SpecName = &v
 	return s
 }
 
@@ -52051,97 +52029,180 @@ func (s *ListRoutineCanaryAreasResponse) SetBody(v *ListRoutineCanaryAreasRespon
 	return s
 }
 
-type ListRoutineOptionalSpecsResponseBody struct {
-	// The request ID.
+type ListRoutineRelatedRecordsRequest struct {
+	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234567890ABCDEF01234567890ABCDEF
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The available specifications.
-	Specs []*ListRoutineOptionalSpecsResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// hello
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
 }
 
-func (s ListRoutineOptionalSpecsResponseBody) String() string {
+func (s ListRoutineRelatedRecordsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRoutineOptionalSpecsResponseBody) GoString() string {
+func (s ListRoutineRelatedRecordsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListRoutineOptionalSpecsResponseBody) SetRequestId(v string) *ListRoutineOptionalSpecsResponseBody {
+func (s *ListRoutineRelatedRecordsRequest) SetName(v string) *ListRoutineRelatedRecordsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsRequest) SetPageNumber(v int64) *ListRoutineRelatedRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsRequest) SetPageSize(v int64) *ListRoutineRelatedRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsRequest) SetSearchKeyWord(v string) *ListRoutineRelatedRecordsRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+type ListRoutineRelatedRecordsResponseBody struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize       *int64                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RelatedRecords []*ListRoutineRelatedRecordsResponseBodyRelatedRecords `json:"RelatedRecords,omitempty" xml:"RelatedRecords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 15C66C7B-671A-4297-9187-2C4477247A74
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 16
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRoutineRelatedRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineRelatedRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineRelatedRecordsResponseBody) SetPageNumber(v int64) *ListRoutineRelatedRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsResponseBody) SetPageSize(v int64) *ListRoutineRelatedRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsResponseBody) SetRelatedRecords(v []*ListRoutineRelatedRecordsResponseBodyRelatedRecords) *ListRoutineRelatedRecordsResponseBody {
+	s.RelatedRecords = v
+	return s
+}
+
+func (s *ListRoutineRelatedRecordsResponseBody) SetRequestId(v string) *ListRoutineRelatedRecordsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListRoutineOptionalSpecsResponseBody) SetSpecs(v []*ListRoutineOptionalSpecsResponseBodySpecs) *ListRoutineOptionalSpecsResponseBody {
-	s.Specs = v
+func (s *ListRoutineRelatedRecordsResponseBody) SetTotalCount(v int64) *ListRoutineRelatedRecordsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-type ListRoutineOptionalSpecsResponseBodySpecs struct {
-	// Indicates whether the specification is available. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
+type ListRoutineRelatedRecordsResponseBodyRelatedRecords struct {
 	// example:
 	//
-	// true
-	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
-	// The specification name.
-	//
+	// 509348423011904
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// example:
 	//
-	// 5ms
-	SpecName *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// test-record-1.example.com
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// example:
+	//
+	// 54362329990032
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
 }
 
-func (s ListRoutineOptionalSpecsResponseBodySpecs) String() string {
+func (s ListRoutineRelatedRecordsResponseBodyRelatedRecords) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRoutineOptionalSpecsResponseBodySpecs) GoString() string {
+func (s ListRoutineRelatedRecordsResponseBodyRelatedRecords) GoString() string {
 	return s.String()
 }
 
-func (s *ListRoutineOptionalSpecsResponseBodySpecs) SetIsAvailable(v bool) *ListRoutineOptionalSpecsResponseBodySpecs {
-	s.IsAvailable = &v
+func (s *ListRoutineRelatedRecordsResponseBodyRelatedRecords) SetRecordId(v int64) *ListRoutineRelatedRecordsResponseBodyRelatedRecords {
+	s.RecordId = &v
 	return s
 }
 
-func (s *ListRoutineOptionalSpecsResponseBodySpecs) SetSpecName(v string) *ListRoutineOptionalSpecsResponseBodySpecs {
-	s.SpecName = &v
+func (s *ListRoutineRelatedRecordsResponseBodyRelatedRecords) SetRecordName(v string) *ListRoutineRelatedRecordsResponseBodyRelatedRecords {
+	s.RecordName = &v
 	return s
 }
 
-type ListRoutineOptionalSpecsResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListRoutineOptionalSpecsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+func (s *ListRoutineRelatedRecordsResponseBodyRelatedRecords) SetSiteId(v int64) *ListRoutineRelatedRecordsResponseBodyRelatedRecords {
+	s.SiteId = &v
+	return s
 }
 
-func (s ListRoutineOptionalSpecsResponse) String() string {
+func (s *ListRoutineRelatedRecordsResponseBodyRelatedRecords) SetSiteName(v string) *ListRoutineRelatedRecordsResponseBodyRelatedRecords {
+	s.SiteName = &v
+	return s
+}
+
+type ListRoutineRelatedRecordsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoutineRelatedRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRoutineRelatedRecordsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListRoutineOptionalSpecsResponse) GoString() string {
+func (s ListRoutineRelatedRecordsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListRoutineOptionalSpecsResponse) SetHeaders(v map[string]*string) *ListRoutineOptionalSpecsResponse {
+func (s *ListRoutineRelatedRecordsResponse) SetHeaders(v map[string]*string) *ListRoutineRelatedRecordsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListRoutineOptionalSpecsResponse) SetStatusCode(v int32) *ListRoutineOptionalSpecsResponse {
+func (s *ListRoutineRelatedRecordsResponse) SetStatusCode(v int32) *ListRoutineRelatedRecordsResponse {
 	s.StatusCode = &v
 	return s
 }
 
-func (s *ListRoutineOptionalSpecsResponse) SetBody(v *ListRoutineOptionalSpecsResponseBody) *ListRoutineOptionalSpecsResponse {
+func (s *ListRoutineRelatedRecordsResponse) SetBody(v *ListRoutineRelatedRecordsResponseBody) *ListRoutineRelatedRecordsResponse {
 	s.Body = v
 	return s
 }
@@ -52288,7 +52349,7 @@ type ListRoutineRoutesResponseBodyConfigs struct {
 	// example:
 	//
 	// 554889455535696
-	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
 	// example:
 	//
 	// test.com
@@ -52352,7 +52413,7 @@ func (s *ListRoutineRoutesResponseBodyConfigs) SetSequence(v int32) *ListRoutine
 	return s
 }
 
-func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteId(v string) *ListRoutineRoutesResponseBodyConfigs {
+func (s *ListRoutineRoutesResponseBodyConfigs) SetSiteId(v int64) *ListRoutineRoutesResponseBodyConfigs {
 	s.SiteId = &v
 	return s
 }
@@ -55292,6 +55353,150 @@ func (s *ListUserRatePlanInstancesResponse) SetStatusCode(v int32) *ListUserRate
 }
 
 func (s *ListUserRatePlanInstancesResponse) SetBody(v *ListUserRatePlanInstancesResponseBody) *ListUserRatePlanInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListUserRoutinesRequest struct {
+	// example:
+	//
+	// ListUserRoutines
+	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+}
+
+func (s ListUserRoutinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRoutinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRoutinesRequest) SetPageNumber(v int64) *ListUserRoutinesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserRoutinesRequest) SetPageSize(v int64) *ListUserRoutinesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRoutinesRequest) SetSearchKeyWord(v string) *ListUserRoutinesRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+type ListUserRoutinesResponseBody struct {
+	PageNumber         *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QuotaRoutineNumber *int64 `json:"QuotaRoutineNumber,omitempty" xml:"QuotaRoutineNumber,omitempty"`
+	// Id of the request
+	RequestId         *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Routines          []*ListUserRoutinesResponseBodyRoutines `json:"Routines,omitempty" xml:"Routines,omitempty" type:"Repeated"`
+	TotalCount        *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UsedRoutineNumber *int64                                  `json:"UsedRoutineNumber,omitempty" xml:"UsedRoutineNumber,omitempty"`
+}
+
+func (s ListUserRoutinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRoutinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRoutinesResponseBody) SetPageNumber(v int64) *ListUserRoutinesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetPageSize(v int64) *ListUserRoutinesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetQuotaRoutineNumber(v int64) *ListUserRoutinesResponseBody {
+	s.QuotaRoutineNumber = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetRequestId(v string) *ListUserRoutinesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetRoutines(v []*ListUserRoutinesResponseBodyRoutines) *ListUserRoutinesResponseBody {
+	s.Routines = v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetTotalCount(v int64) *ListUserRoutinesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBody) SetUsedRoutineNumber(v int64) *ListUserRoutinesResponseBody {
+	s.UsedRoutineNumber = &v
+	return s
+}
+
+type ListUserRoutinesResponseBodyRoutines struct {
+	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	RoutineName *string `json:"RoutineName,omitempty" xml:"RoutineName,omitempty"`
+}
+
+func (s ListUserRoutinesResponseBodyRoutines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRoutinesResponseBodyRoutines) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRoutinesResponseBodyRoutines) SetCreateTime(v string) *ListUserRoutinesResponseBodyRoutines {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBodyRoutines) SetDescription(v string) *ListUserRoutinesResponseBodyRoutines {
+	s.Description = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponseBodyRoutines) SetRoutineName(v string) *ListUserRoutinesResponseBodyRoutines {
+	s.RoutineName = &v
+	return s
+}
+
+type ListUserRoutinesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserRoutinesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserRoutinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserRoutinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserRoutinesResponse) SetHeaders(v map[string]*string) *ListUserRoutinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserRoutinesResponse) SetStatusCode(v int32) *ListUserRoutinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserRoutinesResponse) SetBody(v *ListUserRoutinesResponseBody) *ListUserRoutinesResponse {
 	s.Body = v
 	return s
 }
@@ -58572,14 +58777,6 @@ func (s *PublishEdgeContainerAppVersionResponse) SetBody(v *PublishEdgeContainer
 }
 
 type PublishRoutineCodeVersionRequest struct {
-	// The regions for canary release.
-	CanaryAreaList []*string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty" type:"Repeated"`
-	// The version number for canary release.
-	//
-	// example:
-	//
-	// 1710120201067203242
-	CanaryCodeVersion *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
 	// The code version to be released.
 	//
 	// example:
@@ -58612,16 +58809,6 @@ func (s PublishRoutineCodeVersionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PublishRoutineCodeVersionRequest) SetCanaryAreaList(v []*string) *PublishRoutineCodeVersionRequest {
-	s.CanaryAreaList = v
-	return s
-}
-
-func (s *PublishRoutineCodeVersionRequest) SetCanaryCodeVersion(v string) *PublishRoutineCodeVersionRequest {
-	s.CanaryCodeVersion = &v
-	return s
-}
-
 func (s *PublishRoutineCodeVersionRequest) SetCodeVersion(v string) *PublishRoutineCodeVersionRequest {
 	s.CodeVersion = &v
 	return s
@@ -58633,72 +58820,6 @@ func (s *PublishRoutineCodeVersionRequest) SetEnv(v string) *PublishRoutineCodeV
 }
 
 func (s *PublishRoutineCodeVersionRequest) SetName(v string) *PublishRoutineCodeVersionRequest {
-	s.Name = &v
-	return s
-}
-
-type PublishRoutineCodeVersionShrinkRequest struct {
-	// The regions for canary release.
-	CanaryAreaListShrink *string `json:"CanaryAreaList,omitempty" xml:"CanaryAreaList,omitempty"`
-	// The version number for canary release.
-	//
-	// example:
-	//
-	// 1710120201067203242
-	CanaryCodeVersion *string `json:"CanaryCodeVersion,omitempty" xml:"CanaryCodeVersion,omitempty"`
-	// The code version to be released.
-	//
-	// example:
-	//
-	// 1710120201067203242
-	CodeVersion *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
-	// The environment name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// production
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// The routine name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// PublishRoutineCodeVersion
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s PublishRoutineCodeVersionShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishRoutineCodeVersionShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PublishRoutineCodeVersionShrinkRequest) SetCanaryAreaListShrink(v string) *PublishRoutineCodeVersionShrinkRequest {
-	s.CanaryAreaListShrink = &v
-	return s
-}
-
-func (s *PublishRoutineCodeVersionShrinkRequest) SetCanaryCodeVersion(v string) *PublishRoutineCodeVersionShrinkRequest {
-	s.CanaryCodeVersion = &v
-	return s
-}
-
-func (s *PublishRoutineCodeVersionShrinkRequest) SetCodeVersion(v string) *PublishRoutineCodeVersionShrinkRequest {
-	s.CodeVersion = &v
-	return s
-}
-
-func (s *PublishRoutineCodeVersionShrinkRequest) SetEnv(v string) *PublishRoutineCodeVersionShrinkRequest {
-	s.Env = &v
-	return s
-}
-
-func (s *PublishRoutineCodeVersionShrinkRequest) SetName(v string) *PublishRoutineCodeVersionShrinkRequest {
 	s.Name = &v
 	return s
 }
@@ -60243,13 +60364,15 @@ type RollbackEdgeContainerAppVersionRequest struct {
 	// example:
 	//
 	// app-88068867578379****
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Percentage *int32  `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
 	// The remarks.
 	//
 	// example:
 	//
 	// test rollback app
-	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	Remarks     *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
+	UsedPercent *bool   `json:"UsedPercent,omitempty" xml:"UsedPercent,omitempty"`
 	// The ID of version that you want to roll back.
 	//
 	// This parameter is required.
@@ -60273,8 +60396,18 @@ func (s *RollbackEdgeContainerAppVersionRequest) SetAppId(v string) *RollbackEdg
 	return s
 }
 
+func (s *RollbackEdgeContainerAppVersionRequest) SetPercentage(v int32) *RollbackEdgeContainerAppVersionRequest {
+	s.Percentage = &v
+	return s
+}
+
 func (s *RollbackEdgeContainerAppVersionRequest) SetRemarks(v string) *RollbackEdgeContainerAppVersionRequest {
 	s.Remarks = &v
+	return s
+}
+
+func (s *RollbackEdgeContainerAppVersionRequest) SetUsedPercent(v bool) *RollbackEdgeContainerAppVersionRequest {
+	s.UsedPercent = &v
 	return s
 }
 
@@ -76625,10 +76758,6 @@ func (client *Client) CreateRoutineWithOptions(request *CreateRoutineRequest, ru
 		body["Name"] = request.Name
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SpecName)) {
-		body["SpecName"] = request.SpecName
-	}
-
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -90369,21 +90498,40 @@ func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasR
 
 // Summary:
 //
-// Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+// 查询函数关联域名列表
 //
-// Description:
-//
-// You can call this operation to query the specifications that you can select for a routine.
-//
-// @param request - ListRoutineOptionalSpecsRequest
+// @param request - ListRoutineRelatedRecordsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
-// @return ListRoutineOptionalSpecsResponse
-func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeOptions) (_result *ListRoutineOptionalSpecsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+// @return ListRoutineRelatedRecordsResponse
+func (client *Client) ListRoutineRelatedRecordsWithOptions(request *ListRoutineRelatedRecordsRequest, runtime *util.RuntimeOptions) (_result *ListRoutineRelatedRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
 	params := &openapi.Params{
-		Action:      tea.String("ListRoutineOptionalSpecs"),
+		Action:      tea.String("ListRoutineRelatedRecords"),
 		Version:     tea.String("2024-09-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -90394,7 +90542,7 @@ func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeO
 		BodyType:    tea.String("json"),
 	}
 	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRoutineOptionalSpecsResponse{}
+		_result = &ListRoutineRelatedRecordsResponse{}
 		_body, _err := client.CallApi(params, req, runtime)
 		if _err != nil {
 			return _result, _err
@@ -90402,7 +90550,7 @@ func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeO
 		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	} else {
-		_result = &ListRoutineOptionalSpecsResponse{}
+		_result = &ListRoutineRelatedRecordsResponse{}
 		_body, _err := client.Execute(params, req, runtime)
 		if _err != nil {
 			return _result, _err
@@ -90415,17 +90563,15 @@ func (client *Client) ListRoutineOptionalSpecsWithOptions(runtime *util.RuntimeO
 
 // Summary:
 //
-// Queries the specifications that you can select for a routine based on the plan type. The response contains all specifications that you can select for a routine. The IsAvailable parameter indicates whether a specification is available.
+// 查询函数关联域名列表
 //
-// Description:
+// @param request - ListRoutineRelatedRecordsRequest
 //
-// You can call this operation to query the specifications that you can select for a routine.
-//
-// @return ListRoutineOptionalSpecsResponse
-func (client *Client) ListRoutineOptionalSpecs() (_result *ListRoutineOptionalSpecsResponse, _err error) {
+// @return ListRoutineRelatedRecordsResponse
+func (client *Client) ListRoutineRelatedRecords(request *ListRoutineRelatedRecordsRequest) (_result *ListRoutineRelatedRecordsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &ListRoutineOptionalSpecsResponse{}
-	_body, _err := client.ListRoutineOptionalSpecsWithOptions(runtime)
+	_result = &ListRoutineRelatedRecordsResponse{}
+	_body, _err := client.ListRoutineRelatedRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -91170,6 +91316,85 @@ func (client *Client) ListUserRatePlanInstances(request *ListUserRatePlanInstanc
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserRatePlanInstancesResponse{}
 	_body, _err := client.ListUserRatePlanInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的Routine列表
+//
+// @param request - ListUserRoutinesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserRoutinesResponse
+func (client *Client) ListUserRoutinesWithOptions(request *ListUserRoutinesRequest, runtime *util.RuntimeOptions) (_result *ListUserRoutinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		query["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserRoutines"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListUserRoutinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListUserRoutinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询用户的Routine列表
+//
+// @param request - ListUserRoutinesRequest
+//
+// @return ListUserRoutinesResponse
+func (client *Client) ListUserRoutines(request *ListUserRoutinesRequest) (_result *ListUserRoutinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserRoutinesResponse{}
+	_body, _err := client.ListUserRoutinesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -92144,31 +92369,17 @@ func (client *Client) PublishEdgeContainerAppVersion(request *PublishEdgeContain
 //
 // Releases a code version of a routine to the staging, canary, or production environment. You can specify the regions where the canary environment is deployed to release your code.
 //
-// @param tmpReq - PublishRoutineCodeVersionRequest
+// @param request - PublishRoutineCodeVersionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return PublishRoutineCodeVersionResponse
-func (client *Client) PublishRoutineCodeVersionWithOptions(tmpReq *PublishRoutineCodeVersionRequest, runtime *util.RuntimeOptions) (_result *PublishRoutineCodeVersionResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) PublishRoutineCodeVersionWithOptions(request *PublishRoutineCodeVersionRequest, runtime *util.RuntimeOptions) (_result *PublishRoutineCodeVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &PublishRoutineCodeVersionShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.CanaryAreaList)) {
-		request.CanaryAreaListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CanaryAreaList, tea.String("CanaryAreaList"), tea.String("json"))
-	}
-
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CanaryAreaListShrink)) {
-		body["CanaryAreaList"] = request.CanaryAreaListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CanaryCodeVersion)) {
-		body["CanaryCodeVersion"] = request.CanaryCodeVersion
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CodeVersion)) {
 		body["CodeVersion"] = request.CodeVersion
 	}
@@ -93191,6 +93402,14 @@ func (client *Client) RollbackEdgeContainerAppVersionWithOptions(request *Rollba
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Percentage)) {
+		query["Percentage"] = request.Percentage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsedPercent)) {
+		query["UsedPercent"] = request.UsedPercent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
 		query["VersionId"] = request.VersionId
 	}
