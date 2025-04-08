@@ -1801,6 +1801,8 @@ type AddGatewayRequest struct {
 	//
 	// false
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
+	// Deprecated
+	//
 	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- slb.s1.small
@@ -1819,6 +1821,10 @@ type AddGatewayRequest struct {
 	//
 	// slb.s2.small
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	// example:
+	//
+	// pubnet
+	ManagedEntryNetworkType *string `json:"ManagedEntryNetworkType,omitempty" xml:"ManagedEntryNetworkType,omitempty"`
 	// The MSE instance type. Valid values:
 	//
 	// 	- mse_pro: ordinary instance
@@ -1889,6 +1895,8 @@ type AddGatewayRequest struct {
 	//
 	// rg-acfm34x43l*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- slb.s1.small
@@ -1998,6 +2006,11 @@ func (s *AddGatewayRequest) SetEnterpriseSecurityGroup(v bool) *AddGatewayReques
 
 func (s *AddGatewayRequest) SetInternetSlbSpec(v string) *AddGatewayRequest {
 	s.InternetSlbSpec = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetManagedEntryNetworkType(v string) *AddGatewayRequest {
+	s.ManagedEntryNetworkType = &v
 	return s
 }
 
@@ -2201,6 +2214,8 @@ type AddGatewayShrinkRequest struct {
 	//
 	// false
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
+	// Deprecated
+	//
 	// The specifications of the Internet-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- slb.s1.small
@@ -2219,6 +2234,10 @@ type AddGatewayShrinkRequest struct {
 	//
 	// slb.s2.small
 	InternetSlbSpec *string `json:"InternetSlbSpec,omitempty" xml:"InternetSlbSpec,omitempty"`
+	// example:
+	//
+	// pubnet
+	ManagedEntryNetworkType *string `json:"ManagedEntryNetworkType,omitempty" xml:"ManagedEntryNetworkType,omitempty"`
 	// The MSE instance type. Valid values:
 	//
 	// 	- mse_pro: ordinary instance
@@ -2289,6 +2308,8 @@ type AddGatewayShrinkRequest struct {
 	//
 	// rg-acfm34x43l*****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Deprecated
+	//
 	// The specifications of the internal-facing Server Load Balancer (SLB) instance. Valid values:
 	//
 	// 	- slb.s1.small
@@ -2398,6 +2419,11 @@ func (s *AddGatewayShrinkRequest) SetEnterpriseSecurityGroup(v bool) *AddGateway
 
 func (s *AddGatewayShrinkRequest) SetInternetSlbSpec(v string) *AddGatewayShrinkRequest {
 	s.InternetSlbSpec = &v
+	return s
+}
+
+func (s *AddGatewayShrinkRequest) SetManagedEntryNetworkType(v string) *AddGatewayShrinkRequest {
+	s.ManagedEntryNetworkType = &v
 	return s
 }
 
@@ -26701,7 +26727,8 @@ type GetGatewayConfigResponseBodyData struct {
 	// example:
 	//
 	// false
-	EnableGzip *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	EnableGzip                   *bool `json:"EnableGzip,omitempty" xml:"EnableGzip,omitempty"`
+	EnableGzipHardwareAccelerate *bool `json:"EnableGzipHardwareAccelerate,omitempty" xml:"EnableGzipHardwareAccelerate,omitempty"`
 	// example:
 	//
 	// true
@@ -26824,6 +26851,11 @@ func (s *GetGatewayConfigResponseBodyData) SetEnableGenerateRequestId(v bool) *G
 
 func (s *GetGatewayConfigResponseBodyData) SetEnableGzip(v bool) *GetGatewayConfigResponseBodyData {
 	s.EnableGzip = &v
+	return s
+}
+
+func (s *GetGatewayConfigResponseBodyData) SetEnableGzipHardwareAccelerate(v bool) *GetGatewayConfigResponseBodyData {
+	s.EnableGzipHardwareAccelerate = &v
 	return s
 }
 
@@ -27437,7 +27469,8 @@ type GetGatewayDomainDetailResponseBodyData struct {
 	// example:
 	//
 	// 12
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id        *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsManaged *bool  `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 	// The issuer.
 	//
 	// example:
@@ -27557,6 +27590,11 @@ func (s *GetGatewayDomainDetailResponseBodyData) SetHttp2(v string) *GetGatewayD
 
 func (s *GetGatewayDomainDetailResponseBodyData) SetId(v int64) *GetGatewayDomainDetailResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *GetGatewayDomainDetailResponseBodyData) SetIsManaged(v bool) *GetGatewayDomainDetailResponseBodyData {
+	s.IsManaged = &v
 	return s
 }
 
@@ -47134,7 +47172,8 @@ type ListGatewayDomainResponseBodyData struct {
 	// example:
 	//
 	// 243
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id        *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsManaged *bool  `json:"IsManaged,omitempty" xml:"IsManaged,omitempty"`
 	// Indicates whether HTTPS is forcefully used.
 	//
 	// example:
@@ -47240,6 +47279,11 @@ func (s *ListGatewayDomainResponseBodyData) SetHttp2(v string) *ListGatewayDomai
 
 func (s *ListGatewayDomainResponseBodyData) SetId(v int64) *ListGatewayDomainResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *ListGatewayDomainResponseBodyData) SetIsManaged(v bool) *ListGatewayDomainResponseBodyData {
+	s.IsManaged = &v
 	return s
 }
 
@@ -51461,7 +51505,8 @@ type ListGatewayZoneResponseBodyData struct {
 	// example:
 	//
 	// I
-	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	LocalName  *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	SupportQat *bool   `json:"SupportQat,omitempty" xml:"SupportQat,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -51480,6 +51525,11 @@ func (s ListGatewayZoneResponseBodyData) GoString() string {
 
 func (s *ListGatewayZoneResponseBodyData) SetLocalName(v string) *ListGatewayZoneResponseBodyData {
 	s.LocalName = &v
+	return s
+}
+
+func (s *ListGatewayZoneResponseBodyData) SetSupportQat(v bool) *ListGatewayZoneResponseBodyData {
+	s.SupportQat = &v
 	return s
 }
 
@@ -80507,6 +80557,10 @@ func (client *Client) AddGatewayWithOptions(tmpReq *AddGatewayRequest, runtime *
 
 	if !tea.BoolValue(util.IsUnset(request.InternetSlbSpec)) {
 		query["InternetSlbSpec"] = request.InternetSlbSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ManagedEntryNetworkType)) {
+		query["ManagedEntryNetworkType"] = request.ManagedEntryNetworkType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MserVersion)) {
