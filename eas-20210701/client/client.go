@@ -12830,7 +12830,8 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// foo
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IncludeNoWorkspace *bool   `json:"IncludeNoWorkspace,omitempty" xml:"IncludeNoWorkspace,omitempty"`
 	// The tag that is used to filter services.
 	Label map[string]*string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sorting order. Valid values:
@@ -13149,6 +13150,11 @@ func (s *ListServicesRequest) SetGroupName(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetIncludeNoWorkspace(v bool) *ListServicesRequest {
+	s.IncludeNoWorkspace = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetLabel(v map[string]*string) *ListServicesRequest {
 	s.Label = v
 	return s
@@ -13242,7 +13248,8 @@ type ListServicesShrinkRequest struct {
 	// example:
 	//
 	// foo
-	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IncludeNoWorkspace *bool   `json:"IncludeNoWorkspace,omitempty" xml:"IncludeNoWorkspace,omitempty"`
 	// The tag that is used to filter services.
 	LabelShrink *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The sorting order. Valid values:
@@ -13558,6 +13565,11 @@ func (s *ListServicesShrinkRequest) SetGateway(v string) *ListServicesShrinkRequ
 
 func (s *ListServicesShrinkRequest) SetGroupName(v string) *ListServicesShrinkRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetIncludeNoWorkspace(v bool) *ListServicesShrinkRequest {
+	s.IncludeNoWorkspace = &v
 	return s
 }
 
@@ -22317,6 +22329,10 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeNoWorkspace)) {
+		query["IncludeNoWorkspace"] = request.IncludeNoWorkspace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LabelShrink)) {
