@@ -118,6 +118,184 @@ func (s *GenericSearchResult) SetWeiboItems(v []*WeiboItem) *GenericSearchResult
 	return s
 }
 
+type GlobalPageItem struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://baijiahao.baidu.com/s?id=1787881554557805096
+	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+	// example:
+	//
+	// 100km/h-0制动能力上，仅有33.3m，不黑不吹，单看这个，小米SU7确实表现不错。而续航方面，101kWh电池容量，实现CLTC续航800km，还有现5分钟补能220km，15分钟补能510km的800V高压平台。而在...
+	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 小米SU7售价22.99万元起 高管亲自辟谣：发布前不会有价格
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s GlobalPageItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalPageItem) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalPageItem) SetLink(v string) *GlobalPageItem {
+	s.Link = &v
+	return s
+}
+
+func (s *GlobalPageItem) SetSnippet(v string) *GlobalPageItem {
+	s.Snippet = &v
+	return s
+}
+
+func (s *GlobalPageItem) SetTitle(v string) *GlobalPageItem {
+	s.Title = &v
+	return s
+}
+
+type GlobalQueryContext struct {
+	OriginalQuery *GlobalQueryContextOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty" type:"Struct"`
+}
+
+func (s GlobalQueryContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalQueryContext) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalQueryContext) SetOriginalQuery(v *GlobalQueryContextOriginalQuery) *GlobalQueryContext {
+	s.OriginalQuery = v
+	return s
+}
+
+type GlobalQueryContextOriginalQuery struct {
+	Page      *string `json:"page,omitempty" xml:"page,omitempty"`
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s GlobalQueryContextOriginalQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalQueryContextOriginalQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalQueryContextOriginalQuery) SetPage(v string) *GlobalQueryContextOriginalQuery {
+	s.Page = &v
+	return s
+}
+
+func (s *GlobalQueryContextOriginalQuery) SetQuery(v string) *GlobalQueryContextOriginalQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *GlobalQueryContextOriginalQuery) SetTimeRange(v string) *GlobalQueryContextOriginalQuery {
+	s.TimeRange = &v
+	return s
+}
+
+type GlobalSceneItem struct {
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GlobalSceneItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalSceneItem) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalSceneItem) SetDetail(v string) *GlobalSceneItem {
+	s.Detail = &v
+	return s
+}
+
+func (s *GlobalSceneItem) SetType(v string) *GlobalSceneItem {
+	s.Type = &v
+	return s
+}
+
+type GlobalSearchInformation struct {
+	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
+	Total      *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s GlobalSearchInformation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalSearchInformation) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalSearchInformation) SetSearchTime(v int64) *GlobalSearchInformation {
+	s.SearchTime = &v
+	return s
+}
+
+func (s *GlobalSearchInformation) SetTotal(v int64) *GlobalSearchInformation {
+	s.Total = &v
+	return s
+}
+
+type GlobalSearchResult struct {
+	PageItems    []*GlobalPageItem   `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	QueryContext *GlobalQueryContext `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	// example:
+	//
+	// 123456
+	RequestId         *string                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SceneItems        []*GlobalSceneItem       `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	SearchInformation *GlobalSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
+}
+
+func (s GlobalSearchResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalSearchResult) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalSearchResult) SetPageItems(v []*GlobalPageItem) *GlobalSearchResult {
+	s.PageItems = v
+	return s
+}
+
+func (s *GlobalSearchResult) SetQueryContext(v *GlobalQueryContext) *GlobalSearchResult {
+	s.QueryContext = v
+	return s
+}
+
+func (s *GlobalSearchResult) SetRequestId(v string) *GlobalSearchResult {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GlobalSearchResult) SetSceneItems(v []*GlobalSceneItem) *GlobalSearchResult {
+	s.SceneItems = v
+	return s
+}
+
+func (s *GlobalSearchResult) SetSearchInformation(v *GlobalSearchInformation) *GlobalSearchResult {
+	s.SearchInformation = v
+	return s
+}
+
 type IncludeImage struct {
 	// example:
 	//
@@ -962,6 +1140,80 @@ func (s *GenericSearchResponse) SetBody(v *GenericSearchResult) *GenericSearchRe
 	return s
 }
 
+type GlobalSearchRequest struct {
+	// example:
+	//
+	// 1
+	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// This parameter is required.
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// example:
+	//
+	// OneWeek
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s GlobalSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalSearchRequest) SetPage(v int32) *GlobalSearchRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *GlobalSearchRequest) SetPageSize(v int32) *GlobalSearchRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GlobalSearchRequest) SetQuery(v string) *GlobalSearchRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GlobalSearchRequest) SetTimeRange(v string) *GlobalSearchRequest {
+	s.TimeRange = &v
+	return s
+}
+
+type GlobalSearchResponse struct {
+	Headers    map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GlobalSearchResult `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GlobalSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GlobalSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GlobalSearchResponse) SetHeaders(v map[string]*string) *GlobalSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GlobalSearchResponse) SetStatusCode(v int32) *GlobalSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GlobalSearchResponse) SetBody(v *GlobalSearchResult) *GlobalSearchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1287,6 +1539,93 @@ func (client *Client) GenericSearch(request *GenericSearchRequest) (_result *Gen
 	headers := make(map[string]*string)
 	_result = &GenericSearchResponse{}
 	_body, _err := client.GenericSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通晓搜索-出海版(全球信息搜索)
+//
+// @param request - GlobalSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GlobalSearchResponse
+func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GlobalSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["timeRange"] = request.TimeRange
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GlobalSearch"),
+		Version:     tea.String("2024-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GlobalSearchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GlobalSearchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 通晓搜索-出海版(全球信息搜索)
+//
+// @param request - GlobalSearchRequest
+//
+// @return GlobalSearchResponse
+func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *GlobalSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GlobalSearchResponse{}
+	_body, _err := client.GlobalSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
