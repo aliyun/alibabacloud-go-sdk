@@ -1461,8 +1461,9 @@ type BatchCreateAICoachTaskRequest struct {
 	// example:
 	//
 	// 1
-	ScriptRecordId *string   `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
-	StudentIds     []*string `json:"studentIds,omitempty" xml:"studentIds,omitempty" type:"Repeated"`
+	ScriptRecordId *string                                     `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	StudentIds     []*string                                   `json:"studentIds,omitempty" xml:"studentIds,omitempty" type:"Repeated"`
+	StudentList    []*BatchCreateAICoachTaskRequestStudentList `json:"studentList,omitempty" xml:"studentList,omitempty" type:"Repeated"`
 }
 
 func (s BatchCreateAICoachTaskRequest) String() string {
@@ -1485,6 +1486,34 @@ func (s *BatchCreateAICoachTaskRequest) SetScriptRecordId(v string) *BatchCreate
 
 func (s *BatchCreateAICoachTaskRequest) SetStudentIds(v []*string) *BatchCreateAICoachTaskRequest {
 	s.StudentIds = v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskRequest) SetStudentList(v []*BatchCreateAICoachTaskRequestStudentList) *BatchCreateAICoachTaskRequest {
+	s.StudentList = v
+	return s
+}
+
+type BatchCreateAICoachTaskRequestStudentList struct {
+	StudentAudioUrl *string `json:"studentAudioUrl,omitempty" xml:"studentAudioUrl,omitempty"`
+	StudentId       *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+}
+
+func (s BatchCreateAICoachTaskRequestStudentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateAICoachTaskRequestStudentList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateAICoachTaskRequestStudentList) SetStudentAudioUrl(v string) *BatchCreateAICoachTaskRequestStudentList {
+	s.StudentAudioUrl = &v
+	return s
+}
+
+func (s *BatchCreateAICoachTaskRequestStudentList) SetStudentId(v string) *BatchCreateAICoachTaskRequestStudentList {
+	s.StudentId = &v
 	return s
 }
 
@@ -2669,9 +2698,10 @@ type CreateAICoachTaskRequest struct {
 	// example:
 	//
 	// 541E7123-2E8A-5BA2-AC38-665650C84129
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ScriptRecordId *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
-	StudentId      *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
+	RequestId       *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ScriptRecordId  *string `json:"scriptRecordId,omitempty" xml:"scriptRecordId,omitempty"`
+	StudentAudioUrl *string `json:"studentAudioUrl,omitempty" xml:"studentAudioUrl,omitempty"`
+	StudentId       *string `json:"studentId,omitempty" xml:"studentId,omitempty"`
 }
 
 func (s CreateAICoachTaskRequest) String() string {
@@ -2689,6 +2719,11 @@ func (s *CreateAICoachTaskRequest) SetRequestId(v string) *CreateAICoachTaskRequ
 
 func (s *CreateAICoachTaskRequest) SetScriptRecordId(v string) *CreateAICoachTaskRequest {
 	s.ScriptRecordId = &v
+	return s
+}
+
+func (s *CreateAICoachTaskRequest) SetStudentAudioUrl(v string) *CreateAICoachTaskRequest {
+	s.StudentAudioUrl = &v
 	return s
 }
 
@@ -4161,10 +4196,12 @@ func (s *GetAICoachScriptRequest) SetScriptRecordId(v string) *GetAICoachScriptR
 }
 
 type GetAICoachScriptResponseBody struct {
+	AppendQuestionFlag *bool `json:"appendQuestionFlag,omitempty" xml:"appendQuestionFlag,omitempty"`
 	// example:
 	//
 	// point
 	AssessmentScope  *string                                       `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
+	CheckCheatConfig *GetAICoachScriptResponseBodyCheckCheatConfig `json:"checkCheatConfig,omitempty" xml:"checkCheatConfig,omitempty" type:"Struct"`
 	CompleteStrategy *GetAICoachScriptResponseBodyCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -4260,8 +4297,18 @@ func (s GetAICoachScriptResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *GetAICoachScriptResponseBody) SetAppendQuestionFlag(v bool) *GetAICoachScriptResponseBody {
+	s.AppendQuestionFlag = &v
+	return s
+}
+
 func (s *GetAICoachScriptResponseBody) SetAssessmentScope(v string) *GetAICoachScriptResponseBody {
 	s.AssessmentScope = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetCheckCheatConfig(v *GetAICoachScriptResponseBodyCheckCheatConfig) *GetAICoachScriptResponseBody {
+	s.CheckCheatConfig = v
 	return s
 }
 
@@ -4402,6 +4449,29 @@ func (s *GetAICoachScriptResponseBody) SetType(v int32) *GetAICoachScriptRespons
 
 func (s *GetAICoachScriptResponseBody) SetWeights(v *GetAICoachScriptResponseBodyWeights) *GetAICoachScriptResponseBody {
 	s.Weights = v
+	return s
+}
+
+type GetAICoachScriptResponseBodyCheckCheatConfig struct {
+	CheckImage *bool `json:"checkImage,omitempty" xml:"checkImage,omitempty"`
+	CheckVoice *bool `json:"checkVoice,omitempty" xml:"checkVoice,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyCheckCheatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyCheckCheatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyCheckCheatConfig) SetCheckImage(v bool) *GetAICoachScriptResponseBodyCheckCheatConfig {
+	s.CheckImage = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyCheckCheatConfig) SetCheckVoice(v bool) *GetAICoachScriptResponseBodyCheckCheatConfig {
+	s.CheckVoice = &v
 	return s
 }
 
@@ -10356,6 +10426,10 @@ func (client *Client) BatchCreateAICoachTaskWithOptions(request *BatchCreateAICo
 		body["studentIds"] = request.StudentIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StudentList)) {
+		body["studentList"] = request.StudentList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -11006,6 +11080,10 @@ func (client *Client) CreateAICoachTaskWithOptions(request *CreateAICoachTaskReq
 
 	if !tea.BoolValue(util.IsUnset(request.ScriptRecordId)) {
 		body["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StudentAudioUrl)) {
+		body["studentAudioUrl"] = request.StudentAudioUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StudentId)) {
