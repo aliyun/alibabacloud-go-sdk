@@ -5870,10 +5870,11 @@ type SearchProductsResponseBodyProductsCategoryChain struct {
 	//
 	// 201792301
 	CategoryId *int64 `json:"categoryId,omitempty" xml:"categoryId,omitempty"`
+	IsLeaf     *bool  `json:"isLeaf,omitempty" xml:"isLeaf,omitempty"`
 	// example:
 	//
 	// 1
-	Level *bool   `json:"level,omitempty" xml:"level,omitempty"`
+	Level *int32  `json:"level,omitempty" xml:"level,omitempty"`
 	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
 	//
@@ -5894,7 +5895,12 @@ func (s *SearchProductsResponseBodyProductsCategoryChain) SetCategoryId(v int64)
 	return s
 }
 
-func (s *SearchProductsResponseBodyProductsCategoryChain) SetLevel(v bool) *SearchProductsResponseBodyProductsCategoryChain {
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetIsLeaf(v bool) *SearchProductsResponseBodyProductsCategoryChain {
+	s.IsLeaf = &v
+	return s
+}
+
+func (s *SearchProductsResponseBodyProductsCategoryChain) SetLevel(v int32) *SearchProductsResponseBodyProductsCategoryChain {
 	s.Level = &v
 	return s
 }
