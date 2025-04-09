@@ -10,21 +10,21 @@ import (
 )
 
 type AddServersToServerGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not add the servers to the server group. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type AddServersToServerGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +46,9 @@ type AddServersToServerGroupRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The backend servers.
+	// The backend servers that you want to add.
 	//
-	// >  You can add at most 200 backend servers in each call.
+	// >  You can add up to 200 backend servers in each call.
 	//
 	// This parameter is required.
 	Servers []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -96,19 +96,19 @@ type AddServersToServerGroupRequestServers struct {
 	//
 	// ECS
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server. Valid values: **0 to 65535**. If you do not specify a port, the default value **0*	- is used.
+	// The port that is used by the backend server to provide services. Valid values: **0 to 65535**. If you do not set this parameter, the default value **0*	- is used.
 	//
-	// If you enable all-port forwarding, you do not need to specify a port when you add a backend server. The default port is port 0. NLB forwards requests to the requested ports. To determine whether all-port forwarding is enabled, call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) API operation and check the value of the **AnyPortEnabled*	- parameter.
+	// If multi-port forwarding is enabled, you do not need to set this parameter. The default value 0 is used. NLB forwards requests to the requested ports. To determine whether multi-port forwarding is enabled, call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation and check the value of the **AnyPortEnabled*	- parameter.
 	//
 	// example:
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the server group.
+	// The backend server ID.
 	//
 	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
 	//
-	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
+	// 	- If the server group is of the **Ip*	- type, set ServerId to IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +116,7 @@ type AddServersToServerGroupRequestServers struct {
 	//
 	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
+	// The IP address of the backend server. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type AddServersToServerGroupRequestServers struct {
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **Ecs**: ECS instance
+	// 	- **Ecs**: the ECS instance
 	//
-	// 	- **Eni**: ENI
+	// 	- **Eni**: the ENI
 	//
-	// 	- **Eci**: elastic container instance
+	// 	- **Eci**: the elastic container instance
 	//
-	// 	- **Ip**: IP address
+	// 	- **Ip**: the IP address
 	//
 	// This parameter is required.
 	//
@@ -138,7 +138,7 @@ type AddServersToServerGroupRequestServers struct {
 	//
 	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
-	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
+	// The weight of the backend server. Valid values: **0*	- to **100**. Default value: **100**. If this parameter is set to **0**, no requests are forwarded to the server.
 	//
 	// example:
 	//
@@ -258,31 +258,31 @@ func (s *AddServersToServerGroupResponse) SetBody(v *AddServersToServerGroupResp
 }
 
 type AssociateAdditionalCertificatesWithListenerRequest struct {
-	// The additional certificates. You can associate at most 15 additional certificates with a listener in each call.
+	// The additional certificates. You can associate up to 15 additional certificates with a listener in each call.
 	//
 	// This parameter is required.
 	AdditionalCertificateIds []*string `json:"AdditionalCertificateIds,omitempty" xml:"AdditionalCertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The listener ID. Only TCP/SSL listener IDs are supported.
+	// The listener ID. Only TCPSSL listener IDs are supported.
 	//
 	// This parameter is required.
 	//
@@ -290,7 +290,7 @@ type AssociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// lsn-bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The region ID of the Network Load Balancer (NLB) instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -396,7 +396,7 @@ func (s *AssociateAdditionalCertificatesWithListenerResponse) SetBody(v *Associa
 }
 
 type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -404,21 +404,21 @@ type AttachCommonBandwidthPackageToLoadBalancerRequest struct {
 	//
 	// cbwp-bp1pzf0ym72pu3y76****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not associate the EIP bandwidth plan with the NLB instance. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -538,27 +538,27 @@ func (s *AttachCommonBandwidthPackageToLoadBalancerResponse) SetBody(v *AttachCo
 }
 
 type CancelShiftLoadBalancerZonesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The NLB instance ID.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -566,7 +566,7 @@ type CancelShiftLoadBalancerZonesRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -574,9 +574,9 @@ type CancelShiftLoadBalancerZonesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The mappings between zones and vSwitches.
+	// The mapping between the zone and the vSwitch.
 	//
-	// > You can add at most one zone in each call.
+	// >  You can specify only one zone ID in each call.
 	//
 	// This parameter is required.
 	ZoneMappings []*CancelShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -626,7 +626,7 @@ type CancelShiftLoadBalancerZonesRequestZoneMappings struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the NLB instance.
 	//
-	// > You can add at most one zone in each call.
+	// >  You can specify only one zone ID in each call.
 	//
 	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
 	//
@@ -720,25 +720,23 @@ type CreateListenerRequest struct {
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
 	// The ALPN policy. Valid values:
 	//
-	// 	- HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// 	- **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Only: uses only HTTP 2.0.
+	// 	- **HTTP2Only**: uses only HTTP 2.0.
 	//
-	// 	- HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// 	- **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
 	//
-	// Note
+	// 	- **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-	//
-	// > This parameter is required if AlpnEnabled is set to true.
+	// >  This parameter is required if **AlpnEnabled*	- is set to true.
 	//
 	// example:
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	// The certificate authority (CA) certificate. This parameter is supported only by TCLSSL listeners.
 	//
-	// > You can specify only one CA certificate.
+	// >  You can specify only one CA certificate.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
@@ -750,15 +748,15 @@ type CreateListenerRequest struct {
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	// The server certificate. This parameter is supported only by TCLSSL listeners.
 	//
-	// > You can specify only one server certificate.
+	// >  You can specify only one server certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -770,29 +768,29 @@ type CreateListenerRequest struct {
 	//
 	// 100
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The last port in the listener port range. Valid values: **0*	- to **65535**. The number of the last port must be greater than the number of the first port.
+	// The last port in the listener port range. Valid values: **0*	- to **65535**. The port number of the last port must be greater than the port number of the first port.
 	//
-	// > This parameter is required when **ListenerPort*	- is set to **0**.
+	// >  This parameter is required when **ListenerPort*	- is set to **0**.
 	//
 	// example:
 	//
 	// 566
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds
+	// The timeout period for idle connections. Unit: seconds.
 	//
-	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, the timeout period of idle connections can be set to **10*	- to **900*	- seconds. Default value: **900**.
+	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, this parameter can be set to a value ranging from **10*	- to **900**. Default value: **900**.
 	//
-	// 	- If **ListenerProtocol*	- is set to **UDP**, the timeout period of idle connections can be set to **10*	- to **20*	- seconds. Default value: **20**.
+	// 	- If **ListenerProtocol*	- is set to **UDP**, this parameter can be set to a value ranging from **10*	- to **20**. Default value: **20**.
 	//
 	// example:
 	//
@@ -808,7 +806,7 @@ type CreateListenerRequest struct {
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The listener port. Valid values: **0*	- to **65535**.
 	//
-	// If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must specify **StartPort*	- and **EndPort**.
+	// If you set this parameter to **0**, the listener listens by port range. If you set this parameter to **0**, you must also set the **StartPort*	- and **EndPort*	- parameters.
 	//
 	// This parameter is required.
 	//
@@ -824,7 +822,7 @@ type CreateListenerRequest struct {
 	//
 	// TCP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The ID of the Network Load Balancer (NLB) instance.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -832,9 +830,9 @@ type CreateListenerRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The maximum size of a TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged.
+	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the maximum segment size (MSS) value of TCP packets remains unchanged.
 	//
-	// > This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+	// >  This parameter takes effect only for TCP and TCPSSL listeners.
 	//
 	// example:
 	//
@@ -850,9 +848,9 @@ type CreateListenerRequest struct {
 	//
 	// false
 	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
+	// Specifies whether to use the Proxy protocol to pass the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2Config *CreateListenerRequestProxyProtocolV2Config `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty" type:"Struct"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -870,17 +868,17 @@ type CreateListenerRequest struct {
 	//
 	// false
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// The security policy ID. System security policies and custom security policies are supported.
+	// The ID of the security policy. System security policies and custom security policies are supported.
 	//
-	// - Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	// 	- Valid values for system security policies: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
 	//
-	// - Custom security policy: the ID of the custom security policy.
+	// 	- For a custom security policy, enter the policy ID.
 	//
-	//     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+	//     	- For information about creating a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/445901.html).
 	//
-	//     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
+	//     	- For information about querying security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/445900.html).
 	//
-	// > This parameter takes effect only for listeners that use SSL over TCP.
+	// >  This parameter takes effect only for TCPSSL listeners.
 	//
 	// example:
 	//
@@ -888,11 +886,11 @@ type CreateListenerRequest struct {
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The server group ID.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	// >  	- If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
 	//
-	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	// >  	- If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
+	// >  	- If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// This parameter is required.
 	//
@@ -902,7 +900,7 @@ type CreateListenerRequest struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The first port in the listener port range. Valid values: **0*	- to **65535**.
 	//
-	// > This parameter is required when **ListenerPort*	- is set to **0**.
+	// >  This parameter is required when **ListenerPort*	- is set to **0**.
 	//
 	// example:
 	//
@@ -1095,17 +1093,17 @@ func (s *CreateListenerRequestProxyProtocolV2Config) SetPpv2VpcIdEnabled(v bool)
 }
 
 type CreateListenerRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. The tag key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
@@ -1144,25 +1142,23 @@ type CreateListenerShrinkRequest struct {
 	AlpnEnabled *bool `json:"AlpnEnabled,omitempty" xml:"AlpnEnabled,omitempty"`
 	// The ALPN policy. Valid values:
 	//
-	// 	- HTTP1Only: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// 	- **HTTP1Only**: uses only HTTP 1.x. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Only: uses only HTTP 2.0.
+	// 	- **HTTP2Only**: uses only HTTP 2.0.
 	//
-	// 	- HTTP2Preferred: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
+	// 	- **HTTP2Optional**: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
 	//
-	// Note
+	// 	- **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// 	- HTTP2Optional: preferentially uses HTTP 1.x over HTTP 2.0. The priority of HTTP 1.1 is higher than the priority of HTTP 1.0, and the priority of HTTP 1.0 is higher than the priority of HTTP 2.0.
-	//
-	// > This parameter is required if AlpnEnabled is set to true.
+	// >  This parameter is required if **AlpnEnabled*	- is set to true.
 	//
 	// example:
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	// The certificate authority (CA) certificate. This parameter is supported only by TCLSSL listeners.
 	//
-	// > You can specify only one CA certificate.
+	// >  You can specify only one CA certificate.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
@@ -1174,15 +1170,15 @@ type CreateListenerShrinkRequest struct {
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificates. This parameter takes effect only for listeners that use SSL over TCP.
+	// The server certificate. This parameter is supported only by TCLSSL listeners.
 	//
-	// > You can specify only one server certificate.
+	// >  You can specify only one server certificate.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -1194,29 +1190,29 @@ type CreateListenerShrinkRequest struct {
 	//
 	// 100
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The last port in the listener port range. Valid values: **0*	- to **65535**. The number of the last port must be greater than the number of the first port.
+	// The last port in the listener port range. Valid values: **0*	- to **65535**. The port number of the last port must be greater than the port number of the first port.
 	//
-	// > This parameter is required when **ListenerPort*	- is set to **0**.
+	// >  This parameter is required when **ListenerPort*	- is set to **0**.
 	//
 	// example:
 	//
 	// 566
 	EndPort *int32 `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
-	// The timeout period of idle connections. Unit: seconds
+	// The timeout period for idle connections. Unit: seconds.
 	//
-	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, the timeout period of idle connections can be set to **10*	- to **900*	- seconds. Default value: **900**.
+	// 	- If you set **ListenerProtocol*	- to **TCP*	- or **TCPSSL**, this parameter can be set to a value ranging from **10*	- to **900**. Default value: **900**.
 	//
-	// 	- If **ListenerProtocol*	- is set to **UDP**, the timeout period of idle connections can be set to **10*	- to **20*	- seconds. Default value: **20**.
+	// 	- If **ListenerProtocol*	- is set to **UDP**, this parameter can be set to a value ranging from **10*	- to **20**. Default value: **20**.
 	//
 	// example:
 	//
@@ -1232,7 +1228,7 @@ type CreateListenerShrinkRequest struct {
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
 	// The listener port. Valid values: **0*	- to **65535**.
 	//
-	// If you set the value to **0**, the listener listens by port range. If you set the value to **0**, you must specify **StartPort*	- and **EndPort**.
+	// If you set this parameter to **0**, the listener listens by port range. If you set this parameter to **0**, you must also set the **StartPort*	- and **EndPort*	- parameters.
 	//
 	// This parameter is required.
 	//
@@ -1248,7 +1244,7 @@ type CreateListenerShrinkRequest struct {
 	//
 	// TCP
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The ID of the Network Load Balancer (NLB) instance.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -1256,9 +1252,9 @@ type CreateListenerShrinkRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The maximum size of a TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged.
+	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the maximum segment size (MSS) value of TCP packets remains unchanged.
 	//
-	// > This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
+	// >  This parameter takes effect only for TCP and TCPSSL listeners.
 	//
 	// example:
 	//
@@ -1274,9 +1270,9 @@ type CreateListenerShrinkRequest struct {
 	//
 	// false
 	ProxyProtocolEnabled *bool `json:"ProxyProtocolEnabled,omitempty" xml:"ProxyProtocolEnabled,omitempty"`
-	// Specifies that the Proxy protocol passes the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
+	// Specifies whether to use the Proxy protocol to pass the VpcId, PrivateLinkEpId, and PrivateLinkEpsId parameters to backend servers.
 	ProxyProtocolV2ConfigShrink *string `json:"ProxyProtocolV2Config,omitempty" xml:"ProxyProtocolV2Config,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -1294,17 +1290,17 @@ type CreateListenerShrinkRequest struct {
 	//
 	// false
 	SecSensorEnabled *bool `json:"SecSensorEnabled,omitempty" xml:"SecSensorEnabled,omitempty"`
-	// The security policy ID. System security policies and custom security policies are supported.
+	// The ID of the security policy. System security policies and custom security policies are supported.
 	//
-	// - Valid values: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
+	// 	- Valid values for system security policies: **tls_cipher_policy_1_0*	- (default), **tls_cipher_policy_1_1**, **tls_cipher_policy_1_2**, **tls_cipher_policy_1_2_strict**, and **tls_cipher_policy_1_2_strict_with_1_3**.
 	//
-	// - Custom security policy: the ID of the custom security policy.
+	// 	- For a custom security policy, enter the policy ID.
 	//
-	//     - For more information about how to create a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/2399231.html) .
+	//     	- For information about creating a custom security policy, see [CreateSecurityPolicy](https://help.aliyun.com/document_detail/445901.html).
 	//
-	//     - For more information about how to query security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/2399234.html) .
+	//     	- For information about querying security policies, see [ListSecurityPolicy](https://help.aliyun.com/document_detail/445900.html).
 	//
-	// > This parameter takes effect only for listeners that use SSL over TCP.
+	// >  This parameter takes effect only for TCPSSL listeners.
 	//
 	// example:
 	//
@@ -1312,11 +1308,11 @@ type CreateListenerShrinkRequest struct {
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// The server group ID.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	// >  	- If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
 	//
-	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	// >  	- If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
+	// >  	- If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
 	//
 	// This parameter is required.
 	//
@@ -1326,7 +1322,7 @@ type CreateListenerShrinkRequest struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The first port in the listener port range. Valid values: **0*	- to **65535**.
 	//
-	// > This parameter is required when **ListenerPort*	- is set to **0**.
+	// >  This parameter is required when **ListenerPort*	- is set to **0**.
 	//
 	// example:
 	//
@@ -1463,17 +1459,17 @@ func (s *CreateListenerShrinkRequest) SetTag(v []*CreateListenerShrinkRequestTag
 }
 
 type CreateListenerShrinkRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. The tag key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
@@ -1573,21 +1569,21 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	// The version of the protocol. Valid values:
+	// The IP version of the NLB instance. Valid values:
 	//
-	// 	- **ipv4*	- (default)
+	// 	- **ipv4*	- (default): IPv4
 	//
-	// 	- **DualStack**
+	// 	- **DualStack**: dual-stack
 	//
 	// example:
 	//
 	// ipv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	// The network type of the IPv4 address used by the NLB instance. Valid values:
+	// The type of the IPv4 address used by the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance is assigned a public IP address. The domain name is resolved to the public IP address. The NLB instance is accessible over the Internet.
+	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the instance is resolved to the public IP address. The instance is accessible over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance is assigned only a private IP address. The domain name is resolved to the private IP address. The NLB instance is accessible only within the VPC of the NLB instance.
+	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the instance is resolved to the private IP address. The instance is accessible only within the virtual private cloud (VPC) where the instance is deployed.
 	//
 	// >  To enable a public IPv6 address for a dual-stack NLB instance, call the [EnableLoadBalancerIpv6Internet](https://help.aliyun.com/document_detail/445878.html) operation.
 	//
@@ -1597,17 +1593,17 @@ type CreateLoadBalancerRequest struct {
 	//
 	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The ID of the EIP bandwidth plan that is associated with the Internet-facing NLB instance.
+	// The ID of the Internet Shared Bandwidth instance that is associated with the Internet-facing NLB instance.
 	//
 	// example:
 	//
 	// cbwp-bp1vevu8h3ieh****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request is different.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -1615,11 +1611,11 @@ type CreateLoadBalancerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The configuration of the deletion protection feature.
 	DeletionProtectionConfig *CreateLoadBalancerRequestDeletionProtectionConfig `json:"DeletionProtectionConfig,omitempty" xml:"DeletionProtectionConfig,omitempty" type:"Struct"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -1629,13 +1625,13 @@ type CreateLoadBalancerRequest struct {
 	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	// The name of the NLB instance.
 	//
-	// The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+	// It must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
 	// example:
 	//
 	// NLB1
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	// The type of the instance. Set the value to **network**, which specifies an NLB instance.
+	// The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
 	//
 	// example:
 	//
@@ -1651,7 +1647,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -1662,7 +1658,7 @@ type CreateLoadBalancerRequest struct {
 	// if can be null:
 	// true
 	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the VPC where the NLB instance is deployed.
+	// The ID of the VPC where you want to create the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -1670,7 +1666,7 @@ type CreateLoadBalancerRequest struct {
 	//
 	// vpc-bp1b49rqrybk45nio****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The mappings between zones and vSwitches. You must add at least two zones. You can add a maximum of 10 zones.
+	// The mappings between zones and vSwitches. An NLB instance can be deployed in up to 10 zones. If the region supports two or more zones, you must specify at least two zones.
 	//
 	// This parameter is required.
 	ZoneMappings []*CreateLoadBalancerRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -1760,17 +1756,17 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 }
 
 type CreateLoadBalancerRequestDeletionProtectionConfig struct {
-	// Specifies whether to enable deletion protection. Valid values:
+	// Specifies whether to enable the deletion protection feature. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false*	- (default): no
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
 	// false
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The reason why the deletion protection feature is enabled or disabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+	// The reason why the deletion protection feature is enabled or disabled. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
 	// example:
 	//
@@ -1821,9 +1817,9 @@ func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string
 }
 
 type CreateLoadBalancerRequestModificationProtectionConfig struct {
-	// The reason why the configuration read-only mode is enabled. The value must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The value must start with a letter.
+	// The reason for enabling the configuration read-only mode. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
-	// >  This parameter takes effect only if the **Status*	- parameter is set to **ConsoleProtection**.
+	// >  This parameter takes effect only when **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
@@ -1835,7 +1831,7 @@ type CreateLoadBalancerRequestModificationProtectionConfig struct {
 	//
 	// 	- **ConsoleProtection**: enables the configuration read-only mode. You can set the **Reason*	- parameter.
 	//
-	// >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// >  If the parameter is set to **ConsoleProtection**, the configuration read-only mode is enabled. You cannot modify the configurations of the NLB instance in the NLB console. However, you can call API operations to modify the configurations of the NLB instance.
 	//
 	// example:
 	//
@@ -1862,17 +1858,17 @@ func (s *CreateLoadBalancerRequestModificationProtectionConfig) SetStatus(v stri
 }
 
 type CreateLoadBalancerRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. The tag key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag key can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
@@ -1899,29 +1895,29 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
-	// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. You can specify one EIP for each zone. You must add at least two zones. You can add a maximum of 10 zones.
+	// The ID of the elastic IP address (EIP) that is associated with the Internet-facing NLB instance. Each zone is assigned one EIP. An NLB instance can be deployed in up to 10 zones. If the region supports two or more zones, specify at least two zones.
 	//
 	// example:
 	//
 	// eip-bp1aedxso6u80u0qf****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IPv4 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
+	// The local IPv4 addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
 	Ipv4LocalAddresses []*string `json:"Ipv4LocalAddresses,omitempty" xml:"Ipv4LocalAddresses,omitempty" type:"Repeated"`
-	// The IPv6 address. The IPv6 address that the NLB instance uses to provide external services.
+	// The VIP of the IPv6 version. The IPv6 address that the NLB instance uses to provide external services.
 	//
 	// example:
 	//
 	// 2408:400a:d5:3080:b409:840a:ca:e8e5
 	Ipv6Address *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
-	// The IPv6 link-local addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
+	// The local IPv6 addresses. The IP addresses that the NLB instance uses to communicate with the backend servers. The number of IP addresses must be an even number, which must be at least 2 and at most 8.
 	Ipv6LocalAddresses []*string `json:"Ipv6LocalAddresses,omitempty" xml:"Ipv6LocalAddresses,omitempty" type:"Repeated"`
-	// The private IP address. You must add at least two zones. You can add a maximum of 10 zones.
+	// The private virtual IP address (VIP) of the IPv4 version. The private IPv4 address that the NLB instance uses to provide external services.
 	//
 	// example:
 	//
 	// 192.168.10.1
 	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance. An NLB instance can be deployed in up to 10 zones. If the region supports two or more zones, you must specify at least two zones.
 	//
 	// This parameter is required.
 	//
@@ -1929,7 +1925,7 @@ type CreateLoadBalancerRequestZoneMappings struct {
 	//
 	// vsw-sersdf****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone of the NLB instance. You must add at least two zones. You can add a maximum of 10 zones.
+	// The ID of the zone where the NLB instance is deployed. An NLB instance can be deployed in up to 10 zones. If the region supports two or more zones, specify at least two zones.
 	//
 	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
 	//
@@ -2058,9 +2054,9 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateSecurityPolicyRequest struct {
-	// The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
+	// The cipher suites supported by the security policy. Valid values of this parameter vary based on TlsVersions. A security policy supports up to 32 cipher suites.
 	//
-	// TLS 1.0 and TLS 1.1 support the following cipher suites:
+	// TLSv1.0 and TLSv1.1 support the following cipher suites:
 	//
 	// 	- **ECDHE-ECDSA-AES128-SHA**
 	//
@@ -2076,7 +2072,7 @@ type CreateSecurityPolicyRequest struct {
 	//
 	// 	- **DES-CBC3-SHA**
 	//
-	// TLS 1.2 supports the following cipher suites:
+	// TLSv1.2 supports the following cipher suites:
 	//
 	// 	- **ECDHE-ECDSA-AES128-SHA**
 	//
@@ -2116,7 +2112,7 @@ type CreateSecurityPolicyRequest struct {
 	//
 	// 	- **AES256-SHA256**
 	//
-	// TLS 1.3 supports the following cipher suites:
+	// TLSv1.3 supports the following cipher suites:
 	//
 	// 	- **TLS_AES_128_GCM_SHA256**
 	//
@@ -2130,21 +2126,21 @@ type CreateSecurityPolicyRequest struct {
 	//
 	// This parameter is required.
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: checks the request but does not create the security policy. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -2158,7 +2154,7 @@ type CreateSecurityPolicyRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the security policy belongs.
 	//
 	// example:
 	//
@@ -2166,7 +2162,7 @@ type CreateSecurityPolicyRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The name of the security policy.
 	//
-	// The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// It must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
@@ -2177,7 +2173,7 @@ type CreateSecurityPolicyRequest struct {
 	// if can be null:
 	// true
 	Tag []*CreateSecurityPolicyRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
+	// The Transport Layer Security (TLS) versions supported by the security policy. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**.
 	//
 	// This parameter is required.
 	TlsVersions []*string `json:"TlsVersions,omitempty" xml:"TlsVersions,omitempty" type:"Repeated"`
@@ -2232,17 +2228,17 @@ func (s *CreateSecurityPolicyRequest) SetTlsVersions(v []*string) *CreateSecurit
 }
 
 type CreateSecurityPolicyRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. It must be 1 to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. It can contain letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), minus signs (-), and at signs (@).
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// You can add up to 20 tags for the security policy in each call.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The value of the tag. It must be 1 to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. It can contain letters, digits, underscores (_), periods (.), colons (:), forward slashes (/), equal signs (=), plus signs (+), minus signs (-), and at signs (@).
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	// You can add up to 20 tags for the security policy in each call.
 	//
 	// example:
 	//
@@ -2342,19 +2338,19 @@ func (s *CreateSecurityPolicyResponse) SetBody(v *CreateSecurityPolicyResponseBo
 }
 
 type CreateServerGroupRequest struct {
-	// The protocol version. Valid values:
+	// The IP version. Valid values:
 	//
 	// 	- **ipv4*	- (default): IPv4
 	//
-	// 	- **DualStack**: dual stack
+	// 	- **DualStack**: dual-stack
 	//
 	// example:
 	//
 	// ipv4
 	AddressIPVersion *string `json:"AddressIPVersion,omitempty" xml:"AddressIPVersion,omitempty"`
-	// Specifies whether to enable all-port forwarding. Valid values:
+	// Specifies whether to enable multi-port forwarding. Valid values:
 	//
-	// 	- **true**
+	// 	- **true:**
 	//
 	// 	- **false*	- (default)
 	//
@@ -2362,11 +2358,11 @@ type CreateServerGroupRequest struct {
 	//
 	// false
 	AnyPortEnabled *bool `json:"AnyPortEnabled,omitempty" xml:"AnyPortEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -2374,7 +2370,7 @@ type CreateServerGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to enable connection draining. Valid values:
 	//
-	// 	- **true**
+	// 	- **true:**
 	//
 	// 	- **false*	- (default)
 	//
@@ -2382,23 +2378,23 @@ type CreateServerGroupRequest struct {
 	//
 	// false
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// The timeout period of connection draining. Unit: seconds. Valid values: **0*	- to **900**.
+	// Specifies a timeout period for connection draining. Unit: seconds Valid values: **0*	- to **900**.
 	//
 	// example:
 	//
 	// 10
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true:**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configuration of health checks.
+	// The configurations of health checks.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	//
@@ -2406,14 +2402,14 @@ type CreateServerGroupRequest struct {
 	//
 	// 	- **false**
 	//
-	// >  If you set the value to **true*	- and **Protocol*	- to **TCP**, the server group cannot be associated with **TCPSSL*	- listeners.
+	// >  If you set this parameter to **true*	- and **Protocol*	- to **TCP**, the server group cannot be associated with **TCPSSL*	- listeners.
 	//
 	// if can be null:
 	// false
 	//
 	// example:
 	//
-	// false
+	// true
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
 	// The protocol between the NLB instance and backend servers. Valid values:
 	//
@@ -2423,19 +2419,19 @@ type CreateServerGroupRequest struct {
 	//
 	// 	- **TCP_UDP**
 	//
-	// > 	- If you set the value to **UDP**, you can associate the server group only with **UDP*	- listeners.
+	// > 	- If you set this parameter to **UDP**, you can associate the server group only with **UDP*	- listeners.
 	//
-	// > 	- If you set the value to **TCP*	- and **PreserveClientIpEnabled*	- to **true**, you can associate the server group only with **TCP*	- listeners.
+	// > 	- If you set this parameter to **TCP*	- and **PreserveClientIpEnabled*	- to **true**, you can associate the server group only with **TCP*	- listeners.
 	//
-	// > 	- If you set the value to **TCP*	- and **PreserveClientIpEnabled*	- to **false**, you can associate the server group with **TCP/SSL*	- and **TCP*	- listeners.
+	// > 	- If you set this parameter to **TCP*	- and **PreserveClientIpEnabled*	- to **false**, you can associate the server group with **TCPSSL*	- and **TCP*	- listeners.
 	//
-	// > 	- If you set the value to **TCP_UDP**, you can associate the server group with **TCP*	- and **UDP*	- listeners.
+	// > 	- If you set this parameter to **TCP_UDP**, you can associate the server group with **TCP*	- and **UDP*	- listeners.
 	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -2451,25 +2447,27 @@ type CreateServerGroupRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The scheduling algorithm. Valid values:
 	//
-	// 	- **Wrr:*	- The weighted round-robin algorithm is used. Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+	// 	- **Wrr*	- (default): weighted round-robin. Backend servers with higher weights receive more requests.
 	//
-	// 	- **rr:*	- The round-robin algorithm is used. Requests are forwarded to backend servers in sequence.
+	// 	- **Wlc**: weighted least connections. Requests are distributed based on the weights and the number of connections to backend servers. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least connections.
 	//
-	// 	- **sch:*	- Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// 	- **rr**: Requests are forwarded to backend servers in sequence.
 	//
-	// 	- **tch:*	- Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// 	- **sch**: source IP hash. Requests from the same source IP address are forwarded to the same backend server.
 	//
-	// 	- **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
+	// 	- **tch**: consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same four factors are forwarded to the same backend server.
 	//
-	// > QUIC ID hashing is supported only when the backend protocol is set to UDP.
+	// 	- **qch**: QUIC ID hash. Requests that contain the same QUIC ID are forwarded to the same backend server.
+	//
+	// >  QUIC ID hash is supported only when the backend protocol is set to UDP.
 	//
 	// example:
 	//
 	// Wrr
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
-	// The name of the server group.
+	// The server group name.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, can contain digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
 	// This parameter is required.
 	//
@@ -2477,11 +2475,11 @@ type CreateServerGroupRequest struct {
 	//
 	// NLB_ServerGroup
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
-	// The type of server group. Valid values:
+	// The type of the server group. Valid values:
 	//
 	// 	- **Instance*	- (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	// 	- **Ip**: allows you to specify IP addresses.
 	//
 	// example:
 	//
@@ -2492,9 +2490,9 @@ type CreateServerGroupRequest struct {
 	// if can be null:
 	// true
 	Tag []*CreateServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) to which the server group belongs.
+	// The ID of the virtual private cloud (VPC) where the server group is deployed.
 	//
-	// > If **ServerGroupType*	- is set to **Instance**, only servers in the specified VPC can be added to the server group.
+	// >  If **ServerGroupType*	- is set to **Instance**, only servers in the specified VPC can be added to the server group.
 	//
 	// This parameter is required.
 	//
@@ -2597,13 +2595,13 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// Valid values: **0*	- to **65535**.
 	//
-	// Default value: **0**. If you set the value to 0, the port of a backend server is used for health checks.
+	// Default value: **0**. If you set this parameter to 0, the port that the backend server uses to provide services is also used for health checks.
 	//
 	// example:
 	//
 	// 0
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check. Unit: seconds. Valid values: **1*	- to **300**. Default value: **5**.
+	// The timeout period for a health check response. Unit: seconds Valid values: **1*	- to **300*	- Default value: **5**.
 	//
 	// example:
 	//
@@ -2621,7 +2619,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable health checks. Valid values:
 	//
 	// 	- **true*	- (default)
 	//
@@ -2631,7 +2629,7 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// true
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+	// The response string that backend servers return to UDP listeners for health checks. The string must be 1 to 512 characters in length and can contain only letters and digits.
 	//
 	// example:
 	//
@@ -2641,23 +2639,27 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// The interval at which health checks are performed. Unit: seconds.
+	// example:
 	//
-	// Valid values: **1*	- to **50**.
+	// HTTP1.0
+	HealthCheckHttpVersion *string `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds Default value: **5**
 	//
-	// Default value: **10**.
+	// 	- If you set **HealthCheckType*	- to **TCP*	- or **HTTP**, valid values are **1*	- to **50**.
+	//
+	// 	- If you set **HealthCheckType*	- to **UDP**, valid values are **1*	- to **300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
 	//
 	// example:
 	//
-	// 10
+	// 5
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The request string for UDP listener health checks. The string must be 1 to 64 characters in length and can contain only letters and digits.
+	// The request string that UDP listeners send to backend servers for health checks. The string must be 1 to 512 characters in length and can contain only letters and digits.
 	//
 	// example:
 	//
 	// hello
 	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The protocol that is used for health checks. Valid values:
+	// The protocol that you want to use for health checks. Valid values:
 	//
 	// 	- **TCP**
 	//
@@ -2669,9 +2671,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	//
 	// TCP
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The URL that is used for health checks.
+	// The URL path to which health check probes are sent.
 	//
-	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `. The URL must start with a forward slash (/).
+	// The URL path must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `. It must start with a forward slash (/).
 	//
 	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
@@ -2681,9 +2683,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HealthCheckUrl *string `json:"HealthCheckUrl,omitempty" xml:"HealthCheckUrl,omitempty"`
 	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
 	//
-	// Valid values: **2*	- to **10**.
+	// Valid values: **2*	- to **10**
 	//
-	// Default value: **2**.
+	// Default value: **2**
 	//
 	// example:
 	//
@@ -2699,9 +2701,9 @@ type CreateServerGroupRequestHealthCheckConfig struct {
 	HttpCheckMethod *string `json:"HttpCheckMethod,omitempty" xml:"HttpCheckMethod,omitempty"`
 	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
 	//
-	// Valid values: **2*	- to **10**.
+	// Valid values: **2*	- to **10**
 	//
-	// Default value: **2**.
+	// Default value: **2**
 	//
 	// example:
 	//
@@ -2747,6 +2749,11 @@ func (s *CreateServerGroupRequestHealthCheckConfig) SetHealthCheckHttpCode(v []*
 	return s
 }
 
+func (s *CreateServerGroupRequestHealthCheckConfig) SetHealthCheckHttpVersion(v string) *CreateServerGroupRequestHealthCheckConfig {
+	s.HealthCheckHttpVersion = &v
+	return s
+}
+
 func (s *CreateServerGroupRequestHealthCheckConfig) SetHealthCheckInterval(v int32) *CreateServerGroupRequestHealthCheckConfig {
 	s.HealthCheckInterval = &v
 	return s
@@ -2783,17 +2790,17 @@ func (s *CreateServerGroupRequestHealthCheckConfig) SetUnhealthyThreshold(v int3
 }
 
 type CreateServerGroupRequestTag struct {
-	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The key of the tag. The tag key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag key can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
@@ -2893,21 +2900,21 @@ func (s *CreateServerGroupResponse) SetBody(v *CreateServerGroupResponseBody) *C
 }
 
 type DeleteListenerRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not delete the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -2921,7 +2928,7 @@ type DeleteListenerRequest struct {
 	//
 	// lsn-bp1bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -3022,21 +3029,21 @@ func (s *DeleteListenerResponse) SetBody(v *DeleteListenerResponseBody) *DeleteL
 }
 
 type DeleteLoadBalancerRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to only precheck this request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request without deleting the NLB instance. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -3151,29 +3158,29 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 }
 
 type DeleteSecurityPolicyRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. **RequestId*	- of each API request may be different.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the available regions.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -3269,11 +3276,11 @@ func (s *DeleteSecurityPolicyResponse) SetBody(v *DeleteSecurityPolicyResponseBo
 }
 
 type DeleteServerGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The token can only contain ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. **RequestId*	- of each API request may be different.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -3281,9 +3288,9 @@ type DeleteServerGroupRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -3297,7 +3304,7 @@ type DeleteServerGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
 	// This parameter is required.
 	//
@@ -3398,6 +3405,8 @@ func (s *DeleteServerGroupResponse) SetBody(v *DeleteServerGroupResponseBody) *D
 }
 
 type DescribeHdMonitorRegionConfigRequest struct {
+	// The ID of the region where the resources are deployed.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3418,18 +3427,28 @@ func (s *DescribeHdMonitorRegionConfigRequest) SetRegionId(v string) *DescribeHd
 }
 
 type DescribeHdMonitorRegionConfigResponseBody struct {
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-223794579283657556
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The name of the Metricstore in Simple Log Service.
+	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-metricStore-1
 	MetricStore *string `json:"MetricStore,omitempty" xml:"MetricStore,omitempty"`
+	// The region ID of the NLB instance.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
@@ -3506,11 +3525,11 @@ type DescribeRegionsRequest struct {
 	//
 	// en-US
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
@@ -3662,11 +3681,11 @@ type DescribeZonesRequest struct {
 	//
 	// zh-CN
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, the system uses **RequestId*	- as **ClientToken**. **RequestId*	- may be different for each API request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
@@ -3806,7 +3825,7 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
-	// The ID of the EIP bandwidth plan.
+	// The ID of the Internet Shared Bandwidth instance.
 	//
 	// This parameter is required.
 	//
@@ -3814,21 +3833,21 @@ type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
 	//
 	// cbwp-bp1pzf0ym72pu3y76****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not disassociate the NLB instance from the EIP bandwidth plan. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -3842,7 +3861,7 @@ type DetachCommonBandwidthPackageFromLoadBalancerRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -3948,21 +3967,21 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerResponse) SetBody(v *Detach
 }
 
 type DisableLoadBalancerIpv6InternetRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -4066,25 +4085,25 @@ func (s *DisableLoadBalancerIpv6InternetResponse) SetBody(v *DisableLoadBalancer
 }
 
 type DisassociateAdditionalCertificatesWithListenerRequest struct {
-	// The additional certificates. You can disassociate up to 15 additional certificates from a listener in each request.
+	// The additional certificates. You can disassociate up to 15 additional certificates in each call.
 	//
 	// This parameter is required.
 	AdditionalCertificateIds []*string `json:"AdditionalCertificateIds,omitempty" xml:"AdditionalCertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: Validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -4098,7 +4117,7 @@ type DisassociateAdditionalCertificatesWithListenerRequest struct {
 	//
 	// lsn-bpn0kn908w4nbw****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The region ID of the Network Load Balancer (NLB) instance.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -4206,25 +4225,25 @@ func (s *DisassociateAdditionalCertificatesWithListenerResponse) SetBody(v *Disa
 type EnableLoadBalancerIpv6InternetRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not change the network type of the NLB instance. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the NLB instance.
+	// The NLB instance ID.
 	//
 	// This parameter is required.
 	//
@@ -4232,7 +4251,7 @@ type EnableLoadBalancerIpv6InternetRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -4322,17 +4341,17 @@ func (s *EnableLoadBalancerIpv6InternetResponse) SetBody(v *EnableLoadBalancerIp
 }
 
 type GetJobStatusRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the asynchronous task.
+	// The ID of the asynchronous job.
 	//
 	// This parameter is required.
 	//
@@ -4431,23 +4450,23 @@ type GetListenerAttributeRequest struct {
 	//
 	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- of each API request may be different.
+	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: checks the request but does not query the listener details. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// This parameter is required.
 	//
@@ -4455,7 +4474,7 @@ type GetListenerAttributeRequest struct {
 	//
 	// lsn-bp1bpn0kn908w4nbw****@233
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The ID of the region where the Network Load Balancer (NLB) instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -4930,7 +4949,7 @@ func (s *GetListenerAttributeResponse) SetBody(v *GetListenerAttributeResponseBo
 }
 
 type GetListenerHealthStatusRequest struct {
-	// The ID of the listener of the NLB instance.
+	// The ID of the listener on the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -4967,7 +4986,7 @@ func (s *GetListenerHealthStatusRequest) SetRegionId(v string) *GetListenerHealt
 }
 
 type GetListenerHealthStatusResponseBody struct {
-	// The health check status of the server groups that are associated with the listener.
+	// The health check status of the server group of the listener.
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
 	// The number of entries returned per page.
 	//
@@ -5154,8 +5173,6 @@ type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosNonN
 	//
 	// 	- **Unhealthy**: indicates that the backend server consecutively fails health checks.
 	//
-	// 	- **Unused**: indicates that the weight of the backend server is 0.
-	//
 	// 	- **Unavailable**: indicates that health checks are disabled.
 	//
 	// example:
@@ -5263,25 +5280,25 @@ func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResp
 type GetLoadBalancerAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must ensure that it is unique among all requests. ClientToken can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, **ClientToken*	- is set to the value of **RequestId**. The value of **RequestId*	- for each API request may be different.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: checks the request but does not query the listener details. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the NLB instance.
+	// The NLB instance ID.
 	//
 	// This parameter is required.
 	//
@@ -5289,7 +5306,7 @@ type GetLoadBalancerAttributeRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The ID of the region where the NLB instance is deployed.
+	// The region ID of the NLB instance.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -6021,9 +6038,9 @@ type ListListenerCertificatesRequest struct {
 	//
 	// Ca
 	CertType *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
-	// The server certificates. Only one server certificate is supported.
+	// The server certificate. Only one server certificate is supported.
 	//
-	// > This parameter takes effect only for listeners that use SSL over TCP.
+	// >  This parameter takes effect only for TCP/SSL listeners.
 	//
 	// if can be null:
 	// true
@@ -6036,7 +6053,7 @@ type ListListenerCertificatesRequest struct {
 	//
 	// lsn-j49ht1jxxqyg45****@80
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return on each page. Valid values: **1*	- to **50**. Default value: **20**.
 	//
 	// example:
 	//
@@ -6105,7 +6122,7 @@ type ListListenerCertificatesResponseBody struct {
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
 	// The certificates.
 	Certificates []*ListListenerCertificatesResponseBodyCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
-	// The number of entries returned per page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries returned per page. Valid values: **1*	- to **50**. Default value: **20**.
 	//
 	// example:
 	//
@@ -6268,27 +6285,27 @@ func (s *ListListenerCertificatesResponse) SetBody(v *ListListenerCertificatesRe
 }
 
 type ListListenersRequest struct {
-	// The listener IDs.
+	// The listener IDs. You can specify up to 20 listeners.
 	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
-	// The listening protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
+	// The listener protocol. Valid values: **TCP**, **UDP**, and **TCPSSL**.
 	//
 	// example:
 	//
 	// TCPSSL
 	ListenerProtocol *string `json:"ListenerProtocol,omitempty" xml:"ListenerProtocol,omitempty"`
-	// The ID of the NLB instance. You can query up to 20 NLB instances at a time.
+	// The IDs of the NLB instances. You can specify up to 20 instances.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token used to specify a particular page of results. Valid values:
 	//
-	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
+	// 	- Leave this parameter empty for the first query or the only query.
 	//
-	// 	- If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- Set this parameter to the value of NextToken obtained from the previous query.
 	//
 	// example:
 	//
@@ -6304,9 +6321,9 @@ type ListListenersRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -6365,17 +6382,17 @@ func (s *ListListenersRequest) SetTag(v []*ListListenersRequestTag) *ListListene
 }
 
 type ListListenersRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// It can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 10 tag values.
+	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// It can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -6884,11 +6901,11 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
-	// The protocol version. Valid values:
+	// The IP version of the NLB instance. Valid values:
 	//
 	// 	- **ipv4**: IPv4
 	//
-	// 	- **DualStack**: dual stack
+	// 	- **DualStack**: dual-stack
 	//
 	// example:
 	//
@@ -6896,9 +6913,9 @@ type ListLoadBalancersRequest struct {
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	// The type of IPv4 address used by the NLB instance. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
+	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	//
 	// example:
 	//
@@ -6912,9 +6929,9 @@ type ListLoadBalancersRequest struct {
 	DNSName *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
 	// The type of IPv6 address used by the NLB instance. Valid values:
 	//
-	// 	- **Internet**: a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance can be accessed over the Internet.
 	//
-	// 	- **Intranet**: a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the VPC where the NLB instance is deployed.
+	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the VPC where the NLB instance is deployed.
 	//
 	// example:
 	//
@@ -6930,13 +6947,13 @@ type ListLoadBalancersRequest struct {
 	//
 	// Normal
 	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	// The ID of the NLB instance. You can query up to 20 NLB instances at a time.
+	// The NLB instance IDs. You can specify up to 20 IDs in each call.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// The name of the NLB instance. You can specify up to 20 names at a time.
+	// The names of the NLB instances. You can specify up to 20 names in each call.
 	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
 	// The status of the NLB instance. Valid values:
 	//
-	// 	- **Inactive**: The NLB instance is disabled. Listeners of NLB instances in the Inactive state do not forward traffic.
+	// 	- **Inactive**: The NLB instance is disabled. Listeners of an NLB instance in the Inactive state do not forward traffic.
 	//
 	// 	- **Active**: The NLB instance is running.
 	//
@@ -6952,23 +6969,23 @@ type ListLoadBalancersRequest struct {
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
-	// The type of the Server Load Balancer (SLB) instance. Set the value to **network**, which specifies NLB.
+	// The type of the Server Load Balancer (SLB) instances. Set the value to **network**, which specifies NLB.
 	//
 	// example:
 	//
 	// network
 	LoadBalancerType *string `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that determines the start point of the next query. Valid values:
+	// The pagination token used to specify a particular page of results. Valid values:
 	//
-	// 	- If this is your first query and no subsequent queries are to be sent, ignore this parameter.
+	// 	- Leave this parameter empty for the first query or the only query.
 	//
-	// 	- If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- Set this parameter to the value of NextToken obtained from the previous query.
 	//
 	// example:
 	//
@@ -6982,7 +6999,7 @@ type ListLoadBalancersRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -6990,9 +7007,9 @@ type ListLoadBalancersRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The tags of the NLB instance.
 	Tag []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) where the NLB instance is deployed. You can specify up to 10 VPC IDs at a time.
+	// The IDs of the virtual private clouds (VPCs) where the NLB instances are deployed. You can specify up to 10 VPC IDs in each call.
 	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
-	// The name of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
+	// The ID of the zone. You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
 	//
 	// example:
 	//
@@ -7089,17 +7106,17 @@ func (s *ListLoadBalancersRequest) SetZoneId(v string) *ListLoadBalancersRequest
 }
 
 type ListLoadBalancersRequestTag struct {
-	// The key of the tag. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The key of the tag. You can specify up to 20 tags. The tag key cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// It must be 1 to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// KeyTest
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+	// The value of the tag. You can specify up to 20 tags. The tag value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -7919,7 +7936,7 @@ func (s *ListSecurityPolicyRequest) SetTag(v []*ListSecurityPolicyRequestTag) *L
 type ListSecurityPolicyRequestTag struct {
 	// The tag key. You can specify up to 10 tag keys.
 	//
-	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -7927,7 +7944,7 @@ type ListSecurityPolicyRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value. You can specify up to 10 tag values.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -8315,17 +8332,17 @@ func (s *ListSecurityPolicyResponse) SetBody(v *ListSecurityPolicyResponseBody) 
 }
 
 type ListServerGroupServersRequest struct {
-	// The number of entries to return on each page. Valid values: **1*	- to **100**. Default value: **20**.
+	// The number of entries to return in each call. Valid values: **1*	- to **100**. Default value: **20**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used for the next query. Valid values:
+	// The pagination token used to specify a particular page of results. Valid values:
 	//
-	// 	- If this is your first query or no next query is to be sent, ignore this parameter.
+	// 	- Left this parameter empty if this is the first query or the only query.
 	//
-	// 	- If a next query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+	// 	- Set this parameter to the value of NextToken obtained from the previous query.
 	//
 	// example:
 	//
@@ -8345,9 +8362,9 @@ type ListServerGroupServersRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The server IDs. You can specify at most 40 servers in each call.
+	// The IDs of the backend servers. You can specify up to 40 backend servers in each call.
 	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	// A list of server IP addresses. You can specify at most 40 servers in each call.
+	// The IP addresses of the backend servers. You can specify up to 40 backend servers in each call.
 	ServerIps []*string `json:"ServerIps,omitempty" xml:"ServerIps,omitempty" type:"Repeated"`
 }
 
@@ -8478,7 +8495,7 @@ type ListServerGroupServersResponseBodyServers struct {
 	//
 	// example:
 	//
-	// ecs-bp67acfmxazb4p****
+	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The IP address of the backend server.
 	//
@@ -8617,11 +8634,11 @@ type ListServerGroupsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token used in the next request to retrieve a new page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// 	- For the first request and last request, you do not need to specify this parameter.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// 	- You must specify the token obtained from the previous query as the value of NextToken.
 	//
 	// example:
 	//
@@ -8641,13 +8658,13 @@ type ListServerGroupsRequest struct {
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The server group ID. You can specify up to 20 server group IDs in each call.
+	// The server group IDs. You can specify up to 20 server group IDs in each call.
 	ServerGroupIds []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
 	// The names of the server groups to be queried. You can specify up to 20 names in each call.
 	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
 	// The type of server group. Valid values:
 	//
-	// 	- **Instance*	- : allows you to add servers of the **Ecs**, **Ens**, and **Eci*	- types.
+	// 	- **Instance**: allows you to add servers of the **Ecs**, **Ens**, and **Eci*	- types.
 	//
 	// 	- **Ip**: allows you to add servers by specifying IP addresses.
 	//
@@ -8657,7 +8674,7 @@ type ListServerGroupsRequest struct {
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
 	// The tags.
 	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) to which the server group belongs.
+	// The ID of the virtual private cloud (VPC) in which the server group is deployed.
 	//
 	// example:
 	//
@@ -8721,7 +8738,7 @@ func (s *ListServerGroupsRequest) SetVpcId(v string) *ListServerGroupsRequest {
 type ListServerGroupsRequestTag struct {
 	// The key of the tag. You can specify up to 10 tag keys.
 	//
-	// The tag key can be up to 64 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -8729,7 +8746,7 @@ type ListServerGroupsRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag. You can specify up to 10 tag values.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`. It cannot start with `aliyun` or `acs:`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` and `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -9078,7 +9095,9 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
 	//
 	// 200
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check. Unit: seconds. Valid values: **1*	- to **300**.
+	// The maximum timeout period of a health check response. Unit: seconds. Default value: **5**.
+	//
+	// Valid values: **1*	- to **300**
 	//
 	// example:
 	//
@@ -9106,7 +9125,7 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
 	//
 	// false
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
-	// The response string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
+	// The response string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
 	//
 	// example:
 	//
@@ -9115,16 +9134,19 @@ type ListServerGroupsResponseBodyServerGroupsHealthCheck struct {
 	// The HTTP status codes returned for health checks. Multiple HTTP status codes are separated by commas (,). Valid values: **http_2xx**, **http_3xx**, **http_4xx**, and **http_5xx**.
 	//
 	// > This parameter takes effect only when **HealthCheckType*	- is set to **HTTP**.
-	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// The interval at which health checks are performed. Unit: seconds.
+	HealthCheckHttpCode    []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	HealthCheckHttpVersion *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds. Default value: **5**.
 	//
-	// Valid values: **5*	- to **50**.
+	// 	- If you set **HealthCheckType*	- to **TCP*	- or **HTTP**, valid values are **1 to 50**.
+	//
+	// 	- If you set **HealthCheckType*	- to **UDP**, valid values are **1 to 300**. Set the health check interval equal to or larger than the response timeout period to ensure that UDP response timeouts are not determined as no responses.
 	//
 	// example:
 	//
 	// 200
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The request string of UDP health checks. The string must be 1 to 64 characters in length, and can contain letters and digits.
+	// The request string of UDP health checks. The string must be 1 to 512 characters in length, and can contain letters and digits.
 	//
 	// example:
 	//
@@ -9211,6 +9233,11 @@ func (s *ListServerGroupsResponseBodyServerGroupsHealthCheck) SetHealthCheckExp(
 
 func (s *ListServerGroupsResponseBodyServerGroupsHealthCheck) SetHealthCheckHttpCode(v []*string) *ListServerGroupsResponseBodyServerGroupsHealthCheck {
 	s.HealthCheckHttpCode = v
+	return s
+}
+
+func (s *ListServerGroupsResponseBodyServerGroupsHealthCheck) SetHealthCheckHttpVersion(v string) *ListServerGroupsResponseBodyServerGroupsHealthCheck {
+	s.HealthCheckHttpVersion = &v
 	return s
 }
 
@@ -9453,17 +9480,17 @@ func (s *ListSystemSecurityPolicyResponse) SetBody(v *ListSystemSecurityPolicyRe
 }
 
 type ListTagResourcesRequest struct {
-	// The number of entries per page. Valid values: **1*	- to **50**. Default value: **50**.
+	// The number of entries to return in each call. Valid values: **1*	- to **50**. Default value: **50**.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token used to specify a particular page of results. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// 	- Leave this parameter empty for the first query or the only query.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// 	- Set this parameter to the value of NextToken obtained from the previous query.
 	//
 	// example:
 	//
@@ -9475,17 +9502,17 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID.
+	// The IDs of the resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of resource to query. Valid values:
+	// The type of the resource. Valid values:
 	//
-	// 	- **loadbalancer**: a Network Load Balancer (NLB) instance
+	// 	- **loadbalancer**: the Network Load Balancer (NLB) instance
 	//
-	// 	- **securitypolicy**: a security policy
+	// 	- **securitypolicy**: the security policy
 	//
-	// 	- **servergroup**: a server group
+	// 	- **servergroup**: the server group
 	//
-	// 	- **listener**: a listener
+	// 	- **listener**: the listener
 	//
 	// This parameter is required.
 	//
@@ -9493,7 +9520,7 @@ type ListTagResourcesRequest struct {
 	//
 	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags.
+	// The tags
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -9536,13 +9563,13 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The key of the tag. The tag key can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -9777,25 +9804,25 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 type LoadBalancerJoinSecurityGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: prechecks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ID of the NLB instance to be associated with the security group.
+	// The ID of the NLB instance which you want to add to a security group.
 	//
 	// This parameter is required.
 	//
@@ -9915,19 +9942,19 @@ func (s *LoadBalancerJoinSecurityGroupResponse) SetBody(v *LoadBalancerJoinSecur
 type LoadBalancerLeaveSecurityGroupRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: checks the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: checks the request without performing the operation. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -9943,7 +9970,7 @@ type LoadBalancerLeaveSecurityGroupRequest struct {
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	// The region ID of the NLB instance.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -10059,7 +10086,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// rg-aekzjcnrv3vvqhq
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
-	// The region ID of the NLB instance.
+	// The region ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -10067,7 +10094,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource.
 	//
 	// This parameter is required.
 	//
@@ -10075,7 +10102,7 @@ type MoveResourceGroupRequest struct {
 	//
 	// nlb-nrnrxwd15en27r****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Valid values:
+	// The type of resource. Valid values:
 	//
 	// 	- **loadbalancer**: a Network Load Balancer (NLB) instance
 	//
@@ -10226,27 +10253,27 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RemoveServersFromServerGroupRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -10262,7 +10289,7 @@ type RemoveServersFromServerGroupRequest struct {
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	// The server groups. You can specify at most 200 server groups in each call.
+	// The backend servers. You can specify up to 200 backend servers in each call.
 	//
 	// This parameter is required.
 	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
@@ -10302,7 +10329,7 @@ func (s *RemoveServersFromServerGroupRequest) SetServers(v []*RemoveServersFromS
 }
 
 type RemoveServersFromServerGroupRequestServers struct {
-	// The port that is used by the backend server. Valid values: **1*	- to **65535**.
+	// The port that is used by the backend server. Valid values: **0*	- to **65535**. If you do not set this parameter, the default value **0*	- is used.
 	//
 	// if can be null:
 	// true
@@ -10311,11 +10338,11 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the server group.
+	// The backend server ID.
 	//
-	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
-	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
+	// 	- If the server group is of the **Ip*	- type, set ServerId to IP addresses.
 	//
 	// This parameter is required.
 	//
@@ -10323,21 +10350,21 @@ type RemoveServersFromServerGroupRequestServers struct {
 	//
 	// ecs-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// The IP addresses of servers. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
+	// The IP addresses of the server. If the server group type is **Ip**, set the ServerId parameter to IP addresses.
 	//
 	// example:
 	//
 	// 192.168.6.6
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
-	// The type of backend server. Valid values:
+	// The type of the backend server. Valid values:
 	//
-	// 	- **Ecs**: ECS instance
+	// 	- **Ecs**: the Elastic Compute Service (ECS) instance
 	//
-	// 	- **Eni**: ENI
+	// 	- **Eni**: the elastic network interface (ENI)
 	//
-	// 	- **Eci**: elastic container instance
+	// 	- **Eci**: the elastic container instance
 	//
-	// 	- **Ip**: IP address
+	// 	- **Ip**: the IP address
 	//
 	// This parameter is required.
 	//
@@ -10449,18 +10476,26 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 }
 
 type SetHdMonitorRegionConfigRequest struct {
+	// The name of the Log Service project.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-223794579283657556
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The name of the MetricStore in Simple Log Service.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-metricStore-1
 	MetricStore *string `json:"MetricStore,omitempty" xml:"MetricStore,omitempty"`
+	// The region ID of the NLB instance.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2399192.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -10491,18 +10526,28 @@ func (s *SetHdMonitorRegionConfigRequest) SetRegionId(v string) *SetHdMonitorReg
 }
 
 type SetHdMonitorRegionConfigResponseBody struct {
+	// The name of the Log Service project.
+	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-223794579283657556
 	LogProject *string `json:"LogProject,omitempty" xml:"LogProject,omitempty"`
+	// The name of the MetricStore in Simple Log Service.
+	//
 	// example:
 	//
 	// hdmonitor-cn-hangzhou-metricStore-1
 	MetricStore *string `json:"MetricStore,omitempty" xml:"MetricStore,omitempty"`
+	// The region ID of the NLB instance.
+	//
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2399192.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// CEF72CEB-54B6-4AE8-B225-F876FF7BA984
@@ -10569,19 +10614,19 @@ func (s *SetHdMonitorRegionConfigResponse) SetBody(v *SetHdMonitorRegionConfigRe
 type StartListenerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -10698,19 +10743,19 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 type StartShiftLoadBalancerZonesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -10734,7 +10779,7 @@ type StartShiftLoadBalancerZonesRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The mappings between zones and vSwitches.
 	//
-	// > You can remove only one zone in each call.
+	// >  You can remove only one IP address (or zone) in each call.
 	//
 	// This parameter is required.
 	ZoneMappings []*StartShiftLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -10774,7 +10819,7 @@ func (s *StartShiftLoadBalancerZonesRequest) SetZoneMappings(v []*StartShiftLoad
 }
 
 type StartShiftLoadBalancerZonesRequestZoneMappings struct {
-	// The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+	// The ID of the vSwitch in the zone. By default, each zone uses one vSwitch and one subnet.
 	//
 	// This parameter is required.
 	//
@@ -10784,7 +10829,7 @@ type StartShiftLoadBalancerZonesRequestZoneMappings struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The zone ID of the NLB instance.
 	//
-	// > You can remove only one zone in each call.
+	// >  You can remove only one IP address (or zone) in each call.
 	//
 	// You can call the [DescribeZones](https://help.aliyun.com/document_detail/443890.html) operation to query the most recent zone list.
 	//
@@ -10868,19 +10913,19 @@ func (s *StartShiftLoadBalancerZonesResponse) SetBody(v *StartShiftLoadBalancerZ
 type StopListenerRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs a dry run without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -10995,11 +11040,11 @@ func (s *StopListenerResponse) SetBody(v *StopListenerResponseBody) *StopListene
 }
 
 type TagResourcesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The value of **RequestId*	- is different for each API request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -11007,15 +11052,15 @@ type TagResourcesRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the resource.
+	// The ID of the region where the resources are deployed.
 	//
 	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
@@ -11023,17 +11068,17 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. You can specify up to 50 resource IDs in each call.
+	// The IDs of the resources. You can specify up to 50 resource IDs in each call.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Valid values:
+	// The type of the resources. Valid values:
 	//
-	// 	- **loadbalancer**: a Network Load Balancer (NLB) instance
+	// 	- **loadbalancer**: the Network Load Balancer (NLB) instance
 	//
-	// 	- **securitypolicy**: a security policy
+	// 	- **securitypolicy**: the security policy
 	//
-	// 	- **servergroup**: a server group
+	// 	- **servergroup**: the server group
 	//
 	// This parameter is required.
 	//
@@ -11086,17 +11131,17 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The key of the tag. The tag key can be up to 64 characters in length, cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag key can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
 	// env
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The value of the tag. The tag value can be up to 128 characters in length, cannot start with `acs:` or `aliyun`, and cannot contain `http://` or `https://`. The tag value can contain letters, digits, and the following special characters: _ . : / = + - @
 	//
-	// You can add up to 20 tags in each call.
+	// You can specify up to 20 tags in each call.
 	//
 	// example:
 	//
@@ -11178,7 +11223,7 @@ type UntagResourcesRequest struct {
 	//
 	// 	- **true**: removes all tags from the specified resource.
 	//
-	// 	- **false**: does not remove all tags from the specified resource. This is the default value.
+	// 	- **false*	- (default): does not remove all tags from the specified resource.
 	//
 	// example:
 	//
@@ -11186,19 +11231,19 @@ type UntagResourcesRequest struct {
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the value, but you must make sure that it is unique among different requests. The client token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not set this parameter, the system automatically uses the value of **RequestId*	- as the value of **ClientToken**. The value of **RequestId*	- is different for each API request.
+	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
-	// 	- **true**: performs a dry run. The system checks the required parameters, request syntax, and limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: performs a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: performs a dry run and sends the request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed. This is the default value.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -11212,11 +11257,11 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource. You can specify up to 50 resource IDs in each call.
+	// The ID of the resource. You can specify at most 50 resource IDs in each call.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource from which you want to remove tags. Valid values:
+	// The type of the resource. Valid values:
 	//
 	// 	- **loadbalancer**: a Network Load Balancer (NLB) instance
 	//
@@ -11230,7 +11275,7 @@ type UntagResourcesRequest struct {
 	//
 	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag that you want to remove. You can remove up to 20 tags in each call.
+	// The keys of the tags that you want to remove. You can remove at most 20 tags in each call.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
@@ -11331,9 +11376,9 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 type UpdateListenerAttributeRequest struct {
 	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11349,7 +11394,7 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// 	- **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// > This parameter is required if AlpnEnabled is set to true.
+	// >  This parameter is required if AlpnEnabled is set to true.
 	//
 	// if can be null:
 	// true
@@ -11358,27 +11403,29 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The CA certificates. Only one CA certificate is supported.
+	// The CA certificate. You can specify only one CA certificate.
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false*	- (default): no
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificates.
+	// The server certificate. Only one server certificate is supported.
+	//
+	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -11390,35 +11437,35 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// 10000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not update the configurations of the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The timeout period of idle connections. Unit: seconds
+	// The timeout period for idle connections. Unit: seconds
 	//
-	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set the timeout period of idle connections to **10*	- to **900*	- seconds. Default value: **900**.
+	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set this parameter to a value ranging from **10*	- to **900**. Default value: **900**
 	//
-	// 	- If the listener uses **UDP**, you can set the timeout period of idle connections to **10*	- to **20*	- seconds. Default value: **20**.
+	// 	- If the listener uses **UDP**, you can set this parameter to a value ranging from **10*	- to **20**. Default value: **20**
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Enter a name for the listener.
+	// The name of the listener.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// tcpssl_443
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// This parameter is required.
 	//
@@ -11426,17 +11473,17 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The size of the largest TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
+	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the maximum segment size (MSS) remains unchanged. This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	//
 	// example:
 	//
 	// 344
 	Mss *int32 `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	// Specifies whether to use the Proxy protocol to pass the client IP address to the backend server. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11454,9 +11501,9 @@ type UpdateListenerAttributeRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11470,13 +11517,15 @@ type UpdateListenerAttributeRequest struct {
 	//
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	// >
 	//
-	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	// 	- If the listener uses **TCP**, you can specify server groups whose protocol is **TCP*	- or **TCP_UDP**. **UDP*	- server groups are not supported.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
+	// 	- If the listener uses **UDP**, you can specify server groups whose protocol is **UDP*	- or **TCP_UDP**. **TCP*	- server groups are not supported.
+	//
+	// 	- If the listener uses **TCPSSL**, you can specify server groups whose protocol is **TCP*	- and whose **client IP preservation is disabled**. **TCP*	- server groups for which **client IP preservation is enabled*	- and server groups whose protocol is **UDP*	- or **TCP_UDP*	- are not supported.
 	//
 	// example:
 	//
@@ -11641,9 +11690,9 @@ func (s *UpdateListenerAttributeRequestProxyProtocolV2Config) SetPpv2VpcIdEnable
 type UpdateListenerAttributeShrinkRequest struct {
 	// Specifies whether to enable Application-Layer Protocol Negotiation (ALPN). Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11659,7 +11708,7 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// 	- **HTTP2Preferred**: preferentially uses HTTP 2.0 over HTTP 1.x. The priority of HTTP 2.0 is higher than the priority of HTTP 1.1, and the priority of HTTP 1.1 is higher than the priority of HTTP 1.0.
 	//
-	// > This parameter is required if AlpnEnabled is set to true.
+	// >  This parameter is required if AlpnEnabled is set to true.
 	//
 	// if can be null:
 	// true
@@ -11668,27 +11717,29 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// HTTP1Only
 	AlpnPolicy *string `json:"AlpnPolicy,omitempty" xml:"AlpnPolicy,omitempty"`
-	// The CA certificates. Only one CA certificate is supported.
+	// The CA certificate. You can specify only one CA certificate.
 	//
 	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CaCertificateIds []*string `json:"CaCertificateIds,omitempty" xml:"CaCertificateIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable mutual authentication. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false*	- (default): no
+	// 	- **false**
 	//
 	// example:
 	//
 	// false
 	CaEnabled *bool `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
-	// The server certificates.
+	// The server certificate. Only one server certificate is supported.
+	//
+	// >  This parameter takes effect only for listeners that use SSL over TCP.
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -11700,35 +11751,35 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// 10000
 	Cps *int32 `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	// Specifies whether only to precheck the request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: prechecks the request but does not update the configurations of the listener. The system prechecks the required parameters, request syntax, and limits. If the request fails the precheck, an error message is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): sends the request. If the request passes the precheck, an HTTP 2xx status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The timeout period of idle connections. Unit: seconds
+	// The timeout period for idle connections. Unit: seconds
 	//
-	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set the timeout period of idle connections to **10*	- to **900*	- seconds. Default value: **900**.
+	// 	- If the listener uses **TCP*	- or **TCPSSL**, you can set this parameter to a value ranging from **10*	- to **900**. Default value: **900**
 	//
-	// 	- If the listener uses **UDP**, you can set the timeout period of idle connections to **10*	- to **20*	- seconds. Default value: **20**.
+	// 	- If the listener uses **UDP**, you can set this parameter to a value ranging from **10*	- to **20**. Default value: **20**
 	//
 	// example:
 	//
 	// 900
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Enter a name for the listener.
+	// The name of the listener.
 	//
-	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	// The name must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
 	// tcpssl_443
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
-	// The ID of the listener.
+	// The listener ID.
 	//
 	// This parameter is required.
 	//
@@ -11736,17 +11787,17 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// lsn-bp1bpn0kn908w4nbw****@443
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	// The size of the largest TCP segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- specifies that the maximum segment size remains unchanged. This parameter is supported only by listeners that use SSL over TCP.
+	// The size of the largest TCP packet segment. Unit: bytes. Valid values: **0*	- to **1500**. **0*	- indicates that the maximum segment size (MSS) remains unchanged. This parameter is supported only by TCP listeners and listeners that use SSL over TCP.
 	//
 	// example:
 	//
 	// 344
 	Mss *int32 `json:"Mss,omitempty" xml:"Mss,omitempty"`
-	// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Valid values:
+	// Specifies whether to use the Proxy protocol to pass the client IP address to the backend server. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11764,9 +11815,9 @@ type UpdateListenerAttributeShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Specifies whether to enable fine-grained monitoring. Valid values:
 	//
-	// 	- **true**: yes
+	// 	- **true**
 	//
-	// 	- **false**: no
+	// 	- **false**
 	//
 	// example:
 	//
@@ -11780,13 +11831,15 @@ type UpdateListenerAttributeShrinkRequest struct {
 	//
 	// tls_cipher_policy_1_1
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
-	// The ID of the server group.
+	// The server group ID.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCP**, you can associate the listener with server groups whose backend protocol is **TCP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **UDP**.
+	// >
 	//
-	// > - If you set **ListenerProtocol*	- to **UDP**, you can associate the listener with server groups whose backend protocol is **UDP*	- or **TCP_UDP**. You cannot associate the listener with server groups whose backend protocol is **TCP**.
+	// 	- If the listener uses **TCP**, you can specify server groups whose protocol is **TCP*	- or **TCP_UDP**. **UDP*	- server groups are not supported.
 	//
-	// > - If you set **ListenerProtocol*	- to **TCPSSL**, you can associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation disabled**. You cannot associate the listener with server groups whose backend protocol is **TCP*	- and have **client IP preservation enabled*	- or server groups whose backend protocol is **UDP*	- or **TCP_UDP**.
+	// 	- If the listener uses **UDP**, you can specify server groups whose protocol is **UDP*	- or **TCP_UDP**. **TCP*	- server groups are not supported.
+	//
+	// 	- If the listener uses **TCPSSL**, you can specify server groups whose protocol is **TCP*	- and whose **client IP preservation is disabled**. **TCP*	- server groups for which **client IP preservation is enabled*	- and server groups whose protocol is **UDP*	- or **TCP_UDP*	- are not supported.
 	//
 	// example:
 	//
@@ -11957,9 +12010,9 @@ func (s *UpdateListenerAttributeResponse) SetBody(v *UpdateListenerAttributeResp
 type UpdateLoadBalancerAddressTypeConfigRequest struct {
 	// The new network type. Valid values:
 	//
-	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. Therefore, the NLB instance can be accessed over the Internet.
+	// 	- **Internet**: The NLB instance uses a public IP address. The domain name of the NLB instance is resolved to the public IP address. The NLB instance is accessible over the Internet.
 	//
-	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. In this case, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
+	// 	- **Intranet**: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. The NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
 	//
 	// This parameter is required.
 	//
@@ -11967,27 +12020,27 @@ type UpdateLoadBalancerAddressTypeConfigRequest struct {
 	//
 	// Internet
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The NLB instance ID.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -12003,7 +12056,7 @@ type UpdateLoadBalancerAddressTypeConfigRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The mappings between zones and vSwitches. You can specify at most 10 zones in each call.
+	// The mappings between zones and vSwitches. You can specify up to 10 zones.
 	ZoneMappings []*UpdateLoadBalancerAddressTypeConfigRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -12054,17 +12107,17 @@ type UpdateLoadBalancerAddressTypeConfigRequestZoneMappings struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The type of the EIP. Valid values:
 	//
-	// 	- **Common**
+	// 	- **Common**: an EIP
 	//
-	// 	- **Anycast**
+	// 	- **Anycast**: an Anycast EIP
 	//
-	// > Anycast EIPs are supported only by NLB instances in the China (Hong Kong) region. This parameter is required when **AddressType*	- is set to **Internet**.
+	// >  This parameter is required only if **AddressType*	- is set to **Internet**.
 	//
 	// example:
 	//
 	// Common
 	EipType *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
-	// The ID of the vSwitch in the zone. Each zone can contain only one vSwitch and one subnet.
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of an NLB instance.
 	//
 	// example:
 	//
@@ -12173,15 +12226,15 @@ func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetBody(v *UpdateLoadBalan
 type UpdateLoadBalancerAttributeRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the system uses the **request ID*	- as the **client token**. The **request ID*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The maximum number of new connections per second supported by the NLB instance in each zone (virtual IP address). Valid values: **1*	- to **1000000**.
+	// The maximum number of new connections per second in each zone supported by the NLB instance (virtual IP address). Valid values: **1*	- to **1000000**.
 	//
 	// example:
 	//
@@ -12197,11 +12250,11 @@ type UpdateLoadBalancerAttributeRequest struct {
 	//
 	// false
 	CrossZoneEnabled *bool `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -12339,11 +12392,11 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 }
 
 type UpdateLoadBalancerProtectionRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
@@ -12359,25 +12412,25 @@ type UpdateLoadBalancerProtectionRequest struct {
 	//
 	// false
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
-	// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+	// The reason why deletion protection is enabled. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
-	// > This parameter takes effect only when **DeletionProtectionEnabled*	- is set to **true**.
+	// >  This parameter takes effect only when **DeletionProtectionEnabled*	- is set to **true**.
 	//
 	// example:
 	//
 	// Instance_Is_Bound_By_Acceleration_Instance
 	DeletionProtectionReason *string `json:"DeletionProtectionReason,omitempty" xml:"DeletionProtectionReason,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): sends a request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The NLB instance ID.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -12385,9 +12438,9 @@ type UpdateLoadBalancerProtectionRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The reason must start with a letter.
+	// The reason why the configuration read-only mode is enabled. The reason must be 2 to 128 characters in length, can contain letters, digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
-	// > This parameter takes effect only if **Status*	- is set to **ConsoleProtection**.
+	// >  This parameter takes effect only when **Status*	- is set to **ConsoleProtection**.
 	//
 	// example:
 	//
@@ -12399,7 +12452,7 @@ type UpdateLoadBalancerProtectionRequest struct {
 	//
 	// 	- **ConsoleProtection**: enables the configuration read-only mode. In this case, you can specify **ModificationProtectionReason**.
 	//
-	// > If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify instance configurations. However, you can call API operations to modify instance configurations.
+	// >  If you set this parameter to **ConsoleProtection**, you cannot use the NLB console to modify configurations of the NLB instance. However, you can call API operations to modify the instance configurations.
 	//
 	// example:
 	//
@@ -12515,27 +12568,27 @@ func (s *UpdateLoadBalancerProtectionResponse) SetBody(v *UpdateLoadBalancerProt
 }
 
 type UpdateLoadBalancerZonesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**: sends the request. If the request passes the check, an HTTP 2xx status code is returned and the operation is performed. This is the default value.
+	// 	- **false*	- (default): validates the request and performs the request. If the request passes the validation, an HTTP 2xx status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The NLB instance ID.
+	// The ID of the NLB instance.
 	//
 	// This parameter is required.
 	//
@@ -12543,15 +12596,15 @@ type UpdateLoadBalancerZonesRequest struct {
 	//
 	// nlb-83ckzc8d4xlp8o****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of region where the NLB instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The mappings between zones and vSwitches. You can specify at most 10 zones.
+	// The mappings between the zones and the vSwitches. You can specify up to 10 zones.
 	//
 	// This parameter is required.
 	ZoneMappings []*UpdateLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
@@ -12599,17 +12652,17 @@ type UpdateLoadBalancerZonesRequestZoneMappings struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	// The type of the EIP. Valid values:
 	//
-	// 	- **Common**
+	// 	- **Common**: an EIP
 	//
-	// 	- **Anycast**
+	// 	- **Anycast**: an Anycast EIP
 	//
-	// > Anycast EIPs are supported only by NLB instances in the China (Hong Kong) region. This parameter is required when **AddressType*	- is set to **Internet**.
+	// >  For regions that support Anycast EIPs, see [Limits](https://help.aliyun.com/document_detail/470000.html).This parameter is required if **AddressType*	- is set to **Internet**.
 	//
 	// example:
 	//
 	// Common
 	EipType *string `json:"EipType,omitempty" xml:"EipType,omitempty"`
-	// The private IP addresses.
+	// The private IP address.
 	//
 	// example:
 	//
@@ -12729,9 +12782,9 @@ func (s *UpdateLoadBalancerZonesResponse) SetBody(v *UpdateLoadBalancerZonesResp
 }
 
 type UpdateSecurityPolicyAttributeRequest struct {
-	// The supported cipher suites, which are determined by the TLS protocol version. You can specify at most 32 cipher suites.
+	// The supported cipher suites. Valid values of this parameter vary base on the value of TlsVersions. You can specify up to 32 cipher suites.
 	//
-	// TLS 1.0 and TLS 1.1 support the following cipher suites:
+	// TLSv1.0 and TLSv1.1 support the following cipher suites:
 	//
 	// 	- **ECDHE-ECDSA-AES128-SHA**
 	//
@@ -12747,7 +12800,7 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	//
 	// 	- **DES-CBC3-SHA**
 	//
-	// TLS 1.2 supports the following cipher suites:
+	// TLSv1.2 supports the following cipher suites:
 	//
 	// 	- **ECDHE-ECDSA-AES128-SHA**
 	//
@@ -12787,7 +12840,7 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	//
 	// 	- **AES256-SHA256**
 	//
-	// TLS 1.3 supports the following cipher suites:
+	// TLSv1.3 supports the following cipher suites:
 	//
 	// 	- **TLS_AES_128_GCM_SHA256**
 	//
@@ -12799,29 +12852,29 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	//
 	// 	- **TLS_AES_128_CCM_8_SHA256**
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not set this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
@@ -12843,7 +12896,7 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	//
 	// TLSCipherPolicy
 	SecurityPolicyName *string `json:"SecurityPolicyName,omitempty" xml:"SecurityPolicyName,omitempty"`
-	// The supported versions of the Transport Layer Security (TLS) protocol. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**. You can specify at most four TLS protocol versions.
+	// The supported TLS versions. Valid values: **TLSv1.0**, **TLSv1.1**, **TLSv1.2**, and **TLSv1.3**. You can specify up to four TLS versions.
 	TlsVersions []*string `json:"TlsVersions,omitempty" xml:"TlsVersions,omitempty" type:"Repeated"`
 }
 
@@ -12964,11 +13017,11 @@ func (s *UpdateSecurityPolicyAttributeResponse) SetBody(v *UpdateSecurityPolicyA
 }
 
 type UpdateServerGroupAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the token. Ensure that the token is unique among different requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- The value of **RequestId*	- is different for each request.
 	//
 	// example:
 	//
@@ -12984,23 +13037,23 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// false
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
-	// The timeout period of connection draining. Unit: seconds. Valid values: **10*	- to **900**.
+	// Specify a timeout period for connection draining. Unit: seconds. Valid values: **0*	- to **900**.
 	//
 	// example:
 	//
 	// 10
 	ConnectionDrainTimeout *int32 `json:"ConnectionDrainTimeout,omitempty" xml:"ConnectionDrainTimeout,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// 	- **true**: validates the request without performing the operation. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the validation, the corresponding error message is returned. If the request passes the validation, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): validates the request and performs the operation. If the request passes the validation, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The configuration of health checks.
+	// Health check configurations.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
 	// Specifies whether to enable client IP preservation. Valid values:
 	//
@@ -13008,33 +13061,35 @@ type UpdateServerGroupAttributeRequest struct {
 	//
 	// 	- **false**
 	//
-	// >  You cannot set this parameter to **true*	- if **PreserveClientIpEnabled*	- is set to **false*	- and the server group is associated with a **TCP/SSL*	- listener.
+	// >  You cannot set this parameter to **true*	- if **PreserveClientIpEnabled*	- is set to **false*	- and the server group is associated with a listener that uses **SSL over TCP**.
 	//
 	// example:
 	//
 	// false
 	PreserveClientIpEnabled *bool `json:"PreserveClientIpEnabled,omitempty" xml:"PreserveClientIpEnabled,omitempty"`
-	// The region ID of the NLB instance.
+	// The ID of the region where the NLB instance is deployed.
 	//
-	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to obtain the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/443657.html) operation to query the most recent region list.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
-	// 	- **Wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights.
+	// 	- **Wrr**: weighted round-robin. Backend servers with higher weights receive more requests.
+	//
+	// 	- **Wlc**: weighted least connections. Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If multiple backend servers have the same weight, requests are forwarded to the backend server with the least connections.
 	//
 	// 	- **rr**: Requests are forwarded to backend servers in sequence.
 	//
-	// 	- **sch:*	- Source IP hashing is used. Requests from the same source IP address are forwarded to the same backend server.
+	// 	- **sch**: source IP hash. Requests from the same source IP address are forwarded to the same backend server.
 	//
-	// 	- **tch:*	- Four-element hashing is used. It specifies consistent hashing that is based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same information based on the four factors are forwarded to the same backend server.
+	// 	- **tch**: consistent hashing based on four factors: source IP address, destination IP address, source port, and destination port. Requests that contain the same four factors are forwarded to the same backend server.
 	//
-	// 	- **qch**: QUIC ID hashing. Requests that contain the same QUIC ID are forwarded to the same backend server.
+	// 	- **qch**: QUIC ID hash. Requests that contain the same QUIC ID are forwarded to the same backend server.
 	//
-	// > QUIC ID hashing is supported only when the backend protocol is set to UDP.
+	// >  QUIC ID hash is supported only when the backend protocol is set to UDP.
 	//
 	// example:
 	//
@@ -13050,7 +13105,7 @@ type UpdateServerGroupAttributeRequest struct {
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
 	// The new name of the server group.
 	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	// The name must be 2 to 128 characters in length, can contain digits, periods (.), underscores (_), and hyphens (-), and must start with a letter.
 	//
 	// example:
 	//
@@ -13117,31 +13172,31 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *Update
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
-	// The backend port that is used for health checks. Valid values: **0*	- to **65535**. If you set the value to **0**, the port of a backend server is used for health checks.
+	// The backend port that is used for health checks. Valid values: **0*	- to **65535**. If you set this parameter to **0**, the port that the backend server uses to provide services is also used for health checks.
 	//
 	// example:
 	//
 	// 0
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The maximum timeout period of a health check. Unit: seconds Valid values: **1 to 300**. Default value: 5****
+	// The timeout period for a health check response. Unit: seconds. Valid values: **1 to 300**. Default value: **5**
 	//
 	// example:
 	//
 	// 100
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
-	// The domain name that is used for health checks. Valid values:
+	// The domain name used for health checks. Valid values:
 	//
 	// 	- **$SERVER_IP**: the internal IP address of a backend server.
 	//
 	// 	- **domain**: the specified domain name. The domain name must be 1 to 80 characters in length, and can contain lowercase letters, digits, hyphens (-), and periods (.).
 	//
-	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Specifies whether to enable health checks. Valid values:
 	//
 	// 	- **true**
 	//
@@ -13159,9 +13214,10 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	HealthCheckExp *string `json:"HealthCheckExp,omitempty" xml:"HealthCheckExp,omitempty"`
 	// The HTTP status codes to return for health checks. Separate multiple HTTP status codes with commas (,). Valid values: **http_2xx*	- (default), **http_3xx**, **http_4xx**, and **http_5xx**.
 	//
-	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
-	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
-	// The interval at which health checks are performed. Unit: seconds. Default value: 5.****
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
+	HealthCheckHttpCode    []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	HealthCheckHttpVersion *string   `json:"HealthCheckHttpVersion,omitempty" xml:"HealthCheckHttpVersion,omitempty"`
+	// The interval at which health checks are performed. Unit: seconds. Default value: **5**
 	//
 	// 	- If you set **HealthCheckType*	- to **TCP*	- or **HTTP**, valid values are **1 to 50**.
 	//
@@ -13177,7 +13233,7 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// hello
 	HealthCheckReq *string `json:"HealthCheckReq,omitempty" xml:"HealthCheckReq,omitempty"`
-	// The protocol that is used for health checks. Valid values:
+	// The protocol that you want to use for health checks. Valid values:
 	//
 	// 	- **TCP**
 	//
@@ -13189,11 +13245,11 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// TCP
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The URL that is used for health checks.
+	// The path to which health check probes are sent.
 	//
-	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. The URL must start with a forward slash (/).
+	// The path must be 1 to 80 characters in length and can contain only letters, digits, and the following special characters: `- / . % ? # & =`. It can also contain the following extended characters: `_ ; ~ ! ( ) 	- [ ] @ $ ^ : \\" , +`. It must start with a forward slash (/).
 	//
-	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -13205,9 +13261,9 @@ type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
 	//
 	// 3
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
-	// The HTTP method that is used for health checks. Valid values: **GET*	- and **HEAD**.
+	// The HTTP method used for health checks. Valid values: **GET*	- and **HEAD**.
 	//
-	// > This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
+	// >  This parameter takes effect only if you set **HealthCheckType*	- to **HTTP**.
 	//
 	// example:
 	//
@@ -13256,6 +13312,11 @@ func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetHealthCheckExp(v
 
 func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetHealthCheckHttpCode(v []*string) *UpdateServerGroupAttributeRequestHealthCheckConfig {
 	s.HealthCheckHttpCode = v
+	return s
+}
+
+func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetHealthCheckHttpVersion(v string) *UpdateServerGroupAttributeRequestHealthCheckConfig {
+	s.HealthCheckHttpVersion = &v
 	return s
 }
 
@@ -13368,21 +13429,21 @@ func (s *UpdateServerGroupAttributeResponse) SetBody(v *UpdateServerGroupAttribu
 }
 
 type UpdateServerGroupServersAttributeRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
+	// The client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate this value. Ensure that the value is unique among all requests. Only ASCII characters are allowed.
 	//
-	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// >  If you do not specify this parameter, the value of **RequestId*	- is used.***	- **RequestId*	- of each request is different.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
 	//
 	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
 	//
-	// 	- **false**(default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	// 	- **false*	- (default): performs a dry run and sends the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	//
 	// example:
 	//
@@ -13452,7 +13513,7 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The port that is used by the backend server. Valid values: **1*	- to **65535**.
+	// The port used by the backend server. Valid values: **1*	- to **65535**.
 	//
 	// >  This parameter cannot be modified.
 	//
@@ -13462,9 +13523,9 @@ type UpdateServerGroupServersAttributeRequestServers struct {
 	//
 	// 443
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the server group.
+	// The backend server ID.
 	//
-	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of **Elastic Compute Service (ECS) instances**, **elastic network interfaces (ENIs)**, or **elastic container instances**.
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci*	- type.
 	//
 	// 	- If the server group is of the **Ip*	- type, set this parameter to IP addresses.
 	//
@@ -13760,9 +13821,9 @@ func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRe
 //
 // *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
 //
-// 	- If the listener is in the **Associating*	- state, the additional certificates are being associated.
+//   - If the listener is in the **Associating*	- state, the additional certificates are being associated.
 //
-// 	- If the listener is in the **Associated*	- state, the additional certificates are associated.
+//   - If the listener is in the **Associated*	- state, the additional certificates are associated.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -13837,9 +13898,9 @@ func (client *Client) AssociateAdditionalCertificatesWithListenerWithOptions(req
 //
 // *AssociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
 //
-// 	- If the listener is in the **Associating*	- state, the additional certificates are being associated.
+//   - If the listener is in the **Associating*	- state, the additional certificates are being associated.
 //
-// 	- If the listener is in the **Associated*	- state, the additional certificates are associated.
+//   - If the listener is in the **Associated*	- state, the additional certificates are associated.
 //
 // @param request - AssociateAdditionalCertificatesWithListenerRequest
 //
@@ -14208,13 +14269,13 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 //
 // Description:
 //
-//   When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+//	  When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
 //
-// 	- **CreateLoadBalancer*	- is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+//		- **CreateLoadBalancer*	- is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
 //
-//     	- If an NLB instance is in the **Provisioning*	- state, the NLB instance is being created.
+//	    	- If an NLB instance is in the **Provisioning*	- state, the NLB instance is being created.
 //
-//     	- If an NLB instance is in the **Active*	- state, the NLB instance is created.
+//	    	- If an NLB instance is in the **Active*	- state, the NLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -14330,13 +14391,13 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 //
 // Description:
 //
-//   When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
+//	  When you create an NLB instance, the service-linked role AliyunServiceRoleForNlb is automatically created and assigned to you.
 //
-// 	- **CreateLoadBalancer*	- is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
+//		- **CreateLoadBalancer*	- is an asynchronous operation. After you send a request, the system returns an instance ID and runs the task in the background. You can call [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) to query the status of an NLB instance.
 //
-//     	- If an NLB instance is in the **Provisioning*	- state, the NLB instance is being created.
+//	    	- If an NLB instance is in the **Provisioning*	- state, the NLB instance is being created.
 //
-//     	- If an NLB instance is in the **Active*	- state, the NLB instance is created.
+//	    	- If an NLB instance is in the **Active*	- state, the NLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -14457,15 +14518,11 @@ func (client *Client) CreateSecurityPolicy(request *CreateSecurityPolicyRequest)
 //
 // Description:
 //
-//   **protocol*	- specifies the protocol used to forward requests to the backend servers.
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
 //
-// 	- NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+//   - If the task is in the **Succeeded*	- status, the server group is created.
 //
-// 	- **CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-//
-//     	- If the task is in the **Succeeded*	- status, the server group is created.
-//
-//     	- If the task is in the **Processing*	- status, the server group is being created.
+// -    If the task is in the **Processing*	- status, the server group is being created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -14585,15 +14642,11 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 //
 // Description:
 //
-//   **protocol*	- specifies the protocol used to forward requests to the backend servers.
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
 //
-// 	- NLB instances support only backend server groups that use TCP, UDP, or SSL over TCP.
+//   - If the task is in the **Succeeded*	- status, the server group is created.
 //
-// 	- **CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the creation status of the task.
-//
-//     	- If the task is in the **Succeeded*	- status, the server group is created.
-//
-//     	- If the task is in the **Processing*	- status, the server group is being created.
+// -    If the task is in the **Processing*	- status, the server group is being created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -14951,7 +15004,7 @@ func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_res
 
 // Summary:
 //
-// 查询秒级监控存储配置
+// Queries the storage configurations of fine-grained monitoring.
 //
 // @param request - DescribeHdMonitorRegionConfigRequest
 //
@@ -15004,7 +15057,7 @@ func (client *Client) DescribeHdMonitorRegionConfigWithOptions(request *Describe
 
 // Summary:
 //
-// 查询秒级监控存储配置
+// Queries the storage configurations of fine-grained monitoring.
 //
 // @param request - DescribeHdMonitorRegionConfigRequest
 //
@@ -15362,9 +15415,9 @@ func (client *Client) DisableLoadBalancerIpv6Internet(request *DisableLoadBalanc
 //
 // *DisassociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
 //
-// 	- If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated.
+//   - If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated.
 //
-// 	- If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
+//   - If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
 //
 // @param request - DisassociateAdditionalCertificatesWithListenerRequest
 //
@@ -15439,9 +15492,9 @@ func (client *Client) DisassociateAdditionalCertificatesWithListenerWithOptions(
 //
 // *DisassociateAdditionalCertificatesWithListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [ListListenerCertificates](https://help.aliyun.com/document_detail/615175.html) operation to query the status of the task:
 //
-// 	- If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated.
+//   - If an additional certificate is in the **Dissociating*	- state, the additional certificate is being disassociated.
 //
-// 	- If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
+//   - If an additional certificate is in the **Dissociated*	- state, the additional certificate is disassociated.
 //
 // @param request - DisassociateAdditionalCertificatesWithListenerRequest
 //
@@ -15459,7 +15512,7 @@ func (client *Client) DisassociateAdditionalCertificatesWithListener(request *Di
 
 // Summary:
 //
-// Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+// Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
 //
 // @param request - EnableLoadBalancerIpv6InternetRequest
 //
@@ -15524,7 +15577,7 @@ func (client *Client) EnableLoadBalancerIpv6InternetWithOptions(request *EnableL
 
 // Summary:
 //
-// Changes the network type of the IPv6 address of a dual-stack NLB instance from private to the public.
+// Changes the network type of the IPv6 address of a dual-stack Network Load Balancer (NLB) instance from internal-facing to Internet-facing.
 //
 // @param request - EnableLoadBalancerIpv6InternetRequest
 //
@@ -16048,7 +16101,7 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 
 // Summary:
 //
-// Queries the basic information about a Network Load Balancer (NLB) instance.
+// Queries the basic information about Network Load Balancer (NLB) instances.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -16161,7 +16214,7 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 
 // Summary:
 //
-// Queries the basic information about a Network Load Balancer (NLB) instance.
+// Queries the basic information about Network Load Balancer (NLB) instances.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -16641,17 +16694,17 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // Description:
 //
-//   Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+//	  Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
 //
-// 	- An NLB instance can be associated with up to four security groups.
+//		- An NLB instance can be associated with up to four security groups.
 //
-// 	- You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+//		- You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
 //
-// 	- LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+//		- LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
 //
-//     	- If the task is in the **Succeeded*	- state, the security group is associated.
+//	    	- If the task is in the **Succeeded*	- state, the security group is associated.
 //
-//     	- If the task is in the **Processing*	- state, the security group is being associated. In this case, you can perform only query operations.
+//	    	- If the task is in the **Processing*	- state, the security group is being associated. In this case, you can perform only query operations.
 //
 // @param request - LoadBalancerJoinSecurityGroupRequest
 //
@@ -16724,17 +16777,17 @@ func (client *Client) LoadBalancerJoinSecurityGroupWithOptions(request *LoadBala
 //
 // Description:
 //
-//   Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
+//	  Make sure that you have created a security group. For more information about how to create a security group, see [CreateSecurityGroup](https://help.aliyun.com/document_detail/25553.html).
 //
-// 	- An NLB instance can be associated with up to four security groups.
+//		- An NLB instance can be associated with up to four security groups.
 //
-// 	- You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
+//		- You can query the security groups that are associated with an NLB instance by calling the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/214362.html) operation.
 //
-// 	- LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
+//		- LoadBalancerJoinSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
 //
-//     	- If the task is in the **Succeeded*	- state, the security group is associated.
+//	    	- If the task is in the **Succeeded*	- state, the security group is associated.
 //
-//     	- If the task is in the **Processing*	- state, the security group is being associated. In this case, you can perform only query operations.
+//	    	- If the task is in the **Processing*	- state, the security group is being associated. In this case, you can perform only query operations.
 //
 // @param request - LoadBalancerJoinSecurityGroupRequest
 //
@@ -16758,9 +16811,9 @@ func (client *Client) LoadBalancerJoinSecurityGroup(request *LoadBalancerJoinSec
 //
 // LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
 //
-// 	- If the task is in the **Succeeded*	- state, the security group is disassociated.
+//   - If the task is in the **Succeeded*	- state, the security group is disassociated.
 //
-// 	- If the task is in the **Processing*	- state, the security group is being disassociated. In this case, you can perform only query operations.
+//   - If the task is in the **Processing*	- state, the security group is being disassociated. In this case, you can perform only query operations.
 //
 // @param request - LoadBalancerLeaveSecurityGroupRequest
 //
@@ -16835,9 +16888,9 @@ func (client *Client) LoadBalancerLeaveSecurityGroupWithOptions(request *LoadBal
 //
 // LoadBalancerLeaveSecurityGroup is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the status of a task.
 //
-// 	- If the task is in the **Succeeded*	- state, the security group is disassociated.
+//   - If the task is in the **Succeeded*	- state, the security group is disassociated.
 //
-// 	- If the task is in the **Processing*	- state, the security group is being disassociated. In this case, you can perform only query operations.
+//   - If the task is in the **Processing*	- state, the security group is being disassociated. In this case, you can perform only query operations.
 //
 // @param request - LoadBalancerLeaveSecurityGroupRequest
 //
@@ -17025,7 +17078,11 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 
 // Summary:
 //
-// 配置秒级监控存储
+// Configures storage for fine-grained monitoring.
+//
+// Description:
+//
+// This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
 //
 // @param request - SetHdMonitorRegionConfigRequest
 //
@@ -17086,7 +17143,11 @@ func (client *Client) SetHdMonitorRegionConfigWithOptions(request *SetHdMonitorR
 
 // Summary:
 //
-// 配置秒级监控存储
+// Configures storage for fine-grained monitoring.
+//
+// Description:
+//
+// This operation is used to configure a data warehouse for the fine-grained monitoring feature. If a listener in the current region has fine-grained monitoring enabled, you must disable fine-grained monitoring before you can configure a warehouse.
 //
 // @param request - SetHdMonitorRegionConfigRequest
 //
@@ -17187,11 +17248,11 @@ func (client *Client) StartListener(request *StartListenerRequest) (_result *Sta
 
 // Summary:
 //
-// Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+// Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
 //
 // Description:
 //
-// > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+// >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
 //
 // @param request - StartShiftLoadBalancerZonesRequest
 //
@@ -17260,11 +17321,11 @@ func (client *Client) StartShiftLoadBalancerZonesWithOptions(request *StartShift
 
 // Summary:
 //
-// Removes the elastic IP address (EIP) or virtual IP address (VIP) from a zone.
+// Removes the elastic IP address (EIP) or virtual IP address (VIP) used in a zone from the DNS record.
 //
 // Description:
 //
-// > If a Network Load Balancer (NLB) instance is deployed only in one zone, you cannot remove the NLB instance from the zone.
+// >  If the NLB instance is deployed in only one zone, you cannot remove the EIP or VIP from the DNS record.
 //
 // @param request - StartShiftLoadBalancerZonesRequest
 //
@@ -17706,15 +17767,15 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 //
 // Description:
 //
-//   Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+//	  Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
 //
-// 	- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType*	- value of an NLB instance after you change the network type.
+//		- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType*	- value of an NLB instance after you change the network type.
 //
-// 	- **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+//		- **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
 //
-//     	- If the task is in the **Succeeded*	- state, the network type of the IPv4 address of the NLB instance is changed.
+//	    	- If the task is in the **Succeeded*	- state, the network type of the IPv4 address of the NLB instance is changed.
 //
-//     	- If the task is in the **Processing*	- state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+//	    	- If the task is in the **Processing*	- state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
 //
 // @param request - UpdateLoadBalancerAddressTypeConfigRequest
 //
@@ -17791,15 +17852,15 @@ func (client *Client) UpdateLoadBalancerAddressTypeConfigWithOptions(request *Up
 //
 // Description:
 //
-//   Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+//	  Make sure that an NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
 //
-// 	- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType*	- value of an NLB instance after you change the network type.
+//		- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the **AddressType*	- value of an NLB instance after you change the network type.
 //
-// 	- **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
+//		- **UpdateLoadBalancerAddressTypeConfig*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation to query the task status:
 //
-//     	- If the task is in the **Succeeded*	- state, the network type of the IPv4 address of the NLB instance is changed.
+//	    	- If the task is in the **Succeeded*	- state, the network type of the IPv4 address of the NLB instance is changed.
 //
-//     	- If the task is in the **Processing*	- state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
+//	    	- If the task is in the **Processing*	- state, the network type of the IPv4 address of the NLB instance is being changed. In this case, you can perform only query operations.
 //
 // @param request - UpdateLoadBalancerAddressTypeConfigRequest
 //
@@ -18027,15 +18088,15 @@ func (client *Client) UpdateLoadBalancerProtection(request *UpdateLoadBalancerPr
 //
 // Prerequisites
 //
-// 	- An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+//   - An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
 //
-// 	- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+//   - You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
 //
-// 	- **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+//   - **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
 //
-//     	- If the task is in the **Succeeded*	- state, the zones and zone attributes are modified.
+//   - If the task is in the **Succeeded*	- state, the zones and zone attributes are modified.
 //
-//     	- If the task is in the **Processing*	- state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+//   - If the task is in the **Processing*	- state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
@@ -18112,15 +18173,15 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 //
 // Prerequisites
 //
-// 	- An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
+//   - An NLB instance is created. For more information, see [CreateLoadBalancer](https://help.aliyun.com/document_detail/445868.html).
 //
-// 	- You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
+//   - You can call the [GetLoadBalancerAttribute](https://help.aliyun.com/document_detail/445873.html) operation to query the zones and zone attributes of an NLB instance.
 //
-// 	- **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
+//   - **UpdateLoadBalancerZones*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the [GetJobStatus](https://help.aliyun.com/document_detail/445904.html) operation query to query the status of a task:
 //
-//     	- If the task is in the **Succeeded*	- state, the zones and zone attributes are modified.
+//   - If the task is in the **Succeeded*	- state, the zones and zone attributes are modified.
 //
-//     	- If the task is in the **Processing*	- state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
+//   - If the task is in the **Processing*	- state, the zones and zone attributes are being modified. In this case, you can perform only query operations.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
@@ -18351,15 +18412,15 @@ func (client *Client) UpdateServerGroupAttribute(request *UpdateServerGroupAttri
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, the server group is running.
+//   - If a server group is in the **Available*	- state, the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//   - If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
 //
-//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the backend server is running.
 //
 // @param request - UpdateServerGroupServersAttributeRequest
 //
@@ -18436,15 +18497,15 @@ func (client *Client) UpdateServerGroupServersAttributeWithOptions(request *Upda
 //
 // 1.  You can call the [ListServerGroups](https://help.aliyun.com/document_detail/445895.html) operation to query the status of a server group.
 //
-//     	- If a server group is in the **Configuring*	- state, the server group is being modified.
+//   - If a server group is in the **Configuring*	- state, the server group is being modified.
 //
-//     	- If a server group is in the **Available*	- state, the server group is running.
+//   - If a server group is in the **Available*	- state, the server group is running.
 //
 // 2.  You can call the [ListServerGroupServers](https://help.aliyun.com/document_detail/445896.html) operation to query the status of a backend server.
 //
-//     	- If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
+//   - If a backend server is in the **Configuring*	- state, it indicates that the backend server is being modified.
 //
-//     	- If a backend server is in the **Available*	- state, it indicates that the backend server is running.
+//   - If a backend server is in the **Available*	- state, it indicates that the backend server is running.
 //
 // @param request - UpdateServerGroupServersAttributeRequest
 //
