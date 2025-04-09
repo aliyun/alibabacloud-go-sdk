@@ -6637,7 +6637,9 @@ type GetAllowedIpListResponseBodyAllowedListInternetList struct {
 	// The group to which the IP address whitelist belongs.
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
 	// The information about the IP address whitelist.
-	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	AllowedIpList []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	BlackIPList   []*string          `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
+	BlackIPMap    map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
 	// The port range. Valid value:
 	//
 	// **9093/9093**.
@@ -6645,7 +6647,9 @@ type GetAllowedIpListResponseBodyAllowedListInternetList struct {
 	// example:
 	//
 	// 9093/9093
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	PortRange                      *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	SecurityGroupId                *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	UserDefinedSharedSecurityGroup *bool   `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListInternetList) String() string {
@@ -6666,8 +6670,28 @@ func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetAllowedIpList(v
 	return s
 }
 
+func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetBlackIPList(v []*string) *GetAllowedIpListResponseBodyAllowedListInternetList {
+	s.BlackIPList = v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetBlackIPMap(v map[string]*string) *GetAllowedIpListResponseBodyAllowedListInternetList {
+	s.BlackIPMap = v
+	return s
+}
+
 func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetPortRange(v string) *GetAllowedIpListResponseBodyAllowedListInternetList {
 	s.PortRange = &v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetSecurityGroupId(v string) *GetAllowedIpListResponseBodyAllowedListInternetList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListInternetList) SetUserDefinedSharedSecurityGroup(v bool) *GetAllowedIpListResponseBodyAllowedListInternetList {
+	s.UserDefinedSharedSecurityGroup = &v
 	return s
 }
 
@@ -6675,7 +6699,9 @@ type GetAllowedIpListResponseBodyAllowedListVpcList struct {
 	// The group to which the IP address whitelist belongs.
 	AllowedIpGroup map[string]*string `json:"AllowedIpGroup,omitempty" xml:"AllowedIpGroup,omitempty"`
 	// The information about the IP address whitelist.
-	AllowedIpList []*string `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	AllowedIpList []*string          `json:"AllowedIpList,omitempty" xml:"AllowedIpList,omitempty" type:"Repeated"`
+	BlackIPList   []*string          `json:"BlackIPList,omitempty" xml:"BlackIPList,omitempty" type:"Repeated"`
+	BlackIPMap    map[string]*string `json:"BlackIPMap,omitempty" xml:"BlackIPMap,omitempty"`
 	// The port range. Valid value:
 	//
 	// **9092/9092**.
@@ -6683,7 +6709,9 @@ type GetAllowedIpListResponseBodyAllowedListVpcList struct {
 	// example:
 	//
 	// 9092/9092
-	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	PortRange                      *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	SecurityGroupId                *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	UserDefinedSharedSecurityGroup *bool   `json:"UserDefinedSharedSecurityGroup,omitempty" xml:"UserDefinedSharedSecurityGroup,omitempty"`
 }
 
 func (s GetAllowedIpListResponseBodyAllowedListVpcList) String() string {
@@ -6704,8 +6732,28 @@ func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetAllowedIpList(v []*s
 	return s
 }
 
+func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetBlackIPList(v []*string) *GetAllowedIpListResponseBodyAllowedListVpcList {
+	s.BlackIPList = v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetBlackIPMap(v map[string]*string) *GetAllowedIpListResponseBodyAllowedListVpcList {
+	s.BlackIPMap = v
+	return s
+}
+
 func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetPortRange(v string) *GetAllowedIpListResponseBodyAllowedListVpcList {
 	s.PortRange = &v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetSecurityGroupId(v string) *GetAllowedIpListResponseBodyAllowedListVpcList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetAllowedIpListResponseBodyAllowedListVpcList) SetUserDefinedSharedSecurityGroup(v bool) *GetAllowedIpListResponseBodyAllowedListVpcList {
+	s.UserDefinedSharedSecurityGroup = &v
 	return s
 }
 
@@ -15868,9 +15916,9 @@ func (client *Client) CreatePrePayInstance(request *CreatePrePayInstanceRequest)
 //
 // Description:
 //
-//   Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+//	  Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
-// 	- If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
+//		- If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
 //
 // @param tmpReq - CreatePrePayOrderRequest
 //
@@ -15989,9 +16037,9 @@ func (client *Client) CreatePrePayOrderWithOptions(tmpReq *CreatePrePayOrderRequ
 //
 // Description:
 //
-//   Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
+//	  Before you call this operation, make sure that you understand the billing methods and pricing of subscription ApsaraMQ for Kafka instances. For more information, see [Billing](https://help.aliyun.com/document_detail/84737.html).
 //
-// 	- If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
+//		- If you create an ApsaraMQ for Kafka instance by calling this operation, the subscription duration is one month and the auto-renewal feature is enabled by default. The auto-renewal cycle is also one month. If you want to change the auto-renewal cycle or disable the auto-renewal feature, you can go to the [Renewal](https://renew.console.aliyun.com/#/ecs) page in the Alibaba Cloud Management Console.
 //
 // @param request - CreatePrePayOrderRequest
 //
@@ -16233,9 +16281,9 @@ func (client *Client) CreateScheduledScalingRule(request *CreateScheduledScaling
 //
 // Description:
 //
-//   Each Alibaba Cloud account can call this operation up to once per second.
+//	  Each Alibaba Cloud account can call this operation up to once per second.
 //
-// 	- The maximum number of topics that you can create in an instance is determined by the specification of the instance.
+//		- The maximum number of topics that you can create in an instance is determined by the specification of the instance.
 //
 // @param request - CreateTopicRequest
 //
@@ -16332,9 +16380,9 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 //
 // Description:
 //
-//   Each Alibaba Cloud account can call this operation up to once per second.
+//	  Each Alibaba Cloud account can call this operation up to once per second.
 //
-// 	- The maximum number of topics that you can create in an instance is determined by the specification of the instance.
+//		- The maximum number of topics that you can create in an instance is determined by the specification of the instance.
 //
 // @param request - CreateTopicRequest
 //
@@ -17787,11 +17835,11 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 //
 // Description:
 //
-//   The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+//	  The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
 //
-// 	- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+//		- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
 //
-// 	- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+//		- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
 //
 // @param request - GetKafkaClientIpRequest
 //
@@ -17872,11 +17920,11 @@ func (client *Client) GetKafkaClientIpWithOptions(request *GetKafkaClientIpReque
 //
 // Description:
 //
-//   The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
+//	  The IP information is obtained from the sampled logs generated for the requests that the client sends to the broker by calling the API operations of ApsaraMQ for Kafka.
 //
-// 	- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
+//		- Statistics refers to the number of connections on different ports of an IP address within a specific period of time.
 //
-// 	- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
+//		- If the broker is not of the latest minor version, the sampled logs may not be accurate. This may cause inaccurate IP information. Therefore, we recommend that you update your broker to the latest version at the earliest opportunity.
 //
 // @param request - GetKafkaClientIpRequest
 //
@@ -19391,11 +19439,11 @@ func (client *Client) UpdateAllowedIp(request *UpdateAllowedIpRequest) (_result 
 //
 // You can call this operation to reset the consumer offset of a specific consumer group. You can use the timestamp or offset parameter to reset the consumer offset of a consumer group. You can implement the following features by configuring a combination of different parameters:
 //
-// 	- Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
+//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
 //
-// 	- Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
+//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
 //
-// 	- Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
+//   - Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
 //
 // @param tmpReq - UpdateConsumerOffsetRequest
 //
@@ -19484,11 +19532,11 @@ func (client *Client) UpdateConsumerOffsetWithOptions(tmpReq *UpdateConsumerOffs
 //
 // You can call this operation to reset the consumer offset of a specific consumer group. You can use the timestamp or offset parameter to reset the consumer offset of a consumer group. You can implement the following features by configuring a combination of different parameters:
 //
-// 	- Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
+//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to the latest offset. This way, you can consume messages in the topics from the latest offset.
 //
-// 	- Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
+//   - Reset the consumer offsets of one or all subscribed topics of a consumer group to a specific point in time. This way, you can consume messages in the topics from the specified point in time.
 //
-// 	- Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
+//   - Reset the consumer offset of one subscribed topic of a consumer group to a specific offset in a specific partition. This way, you can consume messages from the specified offset in the specified partition.
 //
 // @param request - UpdateConsumerOffsetRequest
 //
