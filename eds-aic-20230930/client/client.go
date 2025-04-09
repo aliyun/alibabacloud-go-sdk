@@ -734,6 +734,145 @@ func (s *BatchGetAcpConnectionTicketResponse) SetBody(v *BatchGetAcpConnectionTi
 	return s
 }
 
+type ChangeCloudPhoneNodeRequest struct {
+	// example:
+	//
+	// ac.max
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// example:
+	//
+	// cpn-0ugbptfu473fy****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 20
+	PhoneCount *int32 `json:"PhoneCount,omitempty" xml:"PhoneCount,omitempty"`
+}
+
+func (s ChangeCloudPhoneNodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCloudPhoneNodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetInstanceType(v string) *ChangeCloudPhoneNodeRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetNodeId(v string) *ChangeCloudPhoneNodeRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeRequest) SetPhoneCount(v int32) *ChangeCloudPhoneNodeRequest {
+	s.PhoneCount = &v
+	return s
+}
+
+type ChangeCloudPhoneNodeResponseBody struct {
+	NodeInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 4610632D-D661-5982-B3D7-5D3FD183F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ChangeCloudPhoneNodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCloudPhoneNodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeResponseBody) SetNodeInfos(v []*ChangeCloudPhoneNodeResponseBodyNodeInfos) *ChangeCloudPhoneNodeResponseBody {
+	s.NodeInfos = v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponseBody) SetRequestId(v string) *ChangeCloudPhoneNodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChangeCloudPhoneNodeResponseBodyNodeInfos struct {
+	InstanceInfos []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos `json:"InstanceInfos,omitempty" xml:"InstanceInfos,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cpn-e5kxgjyt8s1mb****
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+}
+
+func (s ChangeCloudPhoneNodeResponseBodyNodeInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCloudPhoneNodeResponseBodyNodeInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetInstanceInfos(v []*ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) *ChangeCloudPhoneNodeResponseBodyNodeInfos {
+	s.InstanceInfos = v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfos) SetNodeId(v string) *ChangeCloudPhoneNodeResponseBodyNodeInfos {
+	s.NodeId = &v
+	return s
+}
+
+type ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos struct {
+	// example:
+	//
+	// cpn-jewjt8xryuitu****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos) SetInstanceId(v string) *ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos {
+	s.InstanceId = &v
+	return s
+}
+
+type ChangeCloudPhoneNodeResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeCloudPhoneNodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeCloudPhoneNodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeCloudPhoneNodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeCloudPhoneNodeResponse) SetHeaders(v map[string]*string) *ChangeCloudPhoneNodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponse) SetStatusCode(v int32) *ChangeCloudPhoneNodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeCloudPhoneNodeResponse) SetBody(v *ChangeCloudPhoneNodeResponseBody) *ChangeCloudPhoneNodeResponse {
+	s.Body = v
+	return s
+}
+
 type CheckResourceStockRequest struct {
 	// Specification ID.
 	//
@@ -8412,6 +8551,108 @@ func (s *EndCoordinationResponse) SetBody(v *EndCoordinationResponseBody) *EndCo
 	return s
 }
 
+type ExpandDataVolumeRequest struct {
+	// example:
+	//
+	// true
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	BizRegionId *string   `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	NodeIds     []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	ShareDataVolume *int32 `json:"ShareDataVolume,omitempty" xml:"ShareDataVolume,omitempty"`
+}
+
+func (s ExpandDataVolumeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandDataVolumeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandDataVolumeRequest) SetAutoPay(v bool) *ExpandDataVolumeRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ExpandDataVolumeRequest) SetBizRegionId(v string) *ExpandDataVolumeRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *ExpandDataVolumeRequest) SetNodeIds(v []*string) *ExpandDataVolumeRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *ExpandDataVolumeRequest) SetShareDataVolume(v int32) *ExpandDataVolumeRequest {
+	s.ShareDataVolume = &v
+	return s
+}
+
+type ExpandDataVolumeResponseBody struct {
+	// example:
+	//
+	// 22326560487****
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// 5C5CEF0A-D6E1-58D3-8750-67DB4F82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExpandDataVolumeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandDataVolumeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandDataVolumeResponseBody) SetOrderId(v string) *ExpandDataVolumeResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ExpandDataVolumeResponseBody) SetRequestId(v string) *ExpandDataVolumeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExpandDataVolumeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExpandDataVolumeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExpandDataVolumeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExpandDataVolumeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExpandDataVolumeResponse) SetHeaders(v map[string]*string) *ExpandDataVolumeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExpandDataVolumeResponse) SetStatusCode(v int32) *ExpandDataVolumeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExpandDataVolumeResponse) SetBody(v *ExpandDataVolumeResponseBody) *ExpandDataVolumeResponse {
+	s.Body = v
+	return s
+}
+
 type FetchFileRequest struct {
 	// The IDs of the cloud phone instances.
 	//
@@ -12575,6 +12816,85 @@ func (client *Client) BatchGetAcpConnectionTicket(request *BatchGetAcpConnection
 
 // Summary:
 //
+// 修改云手机矩阵的配置
+//
+// @param request - ChangeCloudPhoneNodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeCloudPhoneNodeResponse
+func (client *Client) ChangeCloudPhoneNodeWithOptions(request *ChangeCloudPhoneNodeRequest, runtime *util.RuntimeOptions) (_result *ChangeCloudPhoneNodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneCount)) {
+		query["PhoneCount"] = request.PhoneCount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeCloudPhoneNode"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ChangeCloudPhoneNodeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ChangeCloudPhoneNodeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 修改云手机矩阵的配置
+//
+// @param request - ChangeCloudPhoneNodeRequest
+//
+// @return ChangeCloudPhoneNodeResponse
+func (client *Client) ChangeCloudPhoneNode(request *ChangeCloudPhoneNodeRequest) (_result *ChangeCloudPhoneNodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeCloudPhoneNodeResponse{}
+	_body, _err := client.ChangeCloudPhoneNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Check the resource inventory.
 //
 // @param request - CheckResourceStockRequest
@@ -15500,6 +15820,89 @@ func (client *Client) EndCoordination(request *EndCoordinationRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &EndCoordinationResponse{}
 	_body, _err := client.EndCoordinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 存储扩容
+//
+// @param request - ExpandDataVolumeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExpandDataVolumeResponse
+func (client *Client) ExpandDataVolumeWithOptions(request *ExpandDataVolumeRequest, runtime *util.RuntimeOptions) (_result *ExpandDataVolumeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		query["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		query["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShareDataVolume)) {
+		query["ShareDataVolume"] = request.ShareDataVolume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExpandDataVolume"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExpandDataVolumeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExpandDataVolumeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 存储扩容
+//
+// @param request - ExpandDataVolumeRequest
+//
+// @return ExpandDataVolumeResponse
+func (client *Client) ExpandDataVolume(request *ExpandDataVolumeRequest) (_result *ExpandDataVolumeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExpandDataVolumeResponse{}
+	_body, _err := client.ExpandDataVolumeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
