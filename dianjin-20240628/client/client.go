@@ -3627,6 +3627,285 @@ func (s *GetDialogAnalysisResultResponse) SetBody(v *GetDialogAnalysisResultResp
 	return s
 }
 
+type GetDialogDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1906623923815534xxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s GetDialogDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDialogDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDialogDetailRequest) SetSessionId(v string) *GetDialogDetailRequest {
+	s.SessionId = &v
+	return s
+}
+
+type GetDialogDetailResponseBody struct {
+	// example:
+	//
+	// null
+	Cost *int64                           `json:"cost,omitempty" xml:"cost,omitempty"`
+	Data *GetDialogDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// null
+	DataType *string `json:"dataType,omitempty" xml:"dataType,omitempty"`
+	// example:
+	//
+	// 0
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 5E3FBAF1-17AF-53B7-AF0A-CDCEEB6DE658
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 2024-04-24 11:54:34
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+}
+
+func (s GetDialogDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDialogDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDialogDetailResponseBody) SetCost(v int64) *GetDialogDetailResponseBody {
+	s.Cost = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetData(v *GetDialogDetailResponseBodyData) *GetDialogDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetDataType(v string) *GetDialogDetailResponseBody {
+	s.DataType = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetErrCode(v string) *GetDialogDetailResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetMessage(v string) *GetDialogDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetRequestId(v string) *GetDialogDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetSuccess(v bool) *GetDialogDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBody) SetTime(v string) *GetDialogDetailResponseBody {
+	s.Time = &v
+	return s
+}
+
+type GetDialogDetailResponseBodyData struct {
+	DialogueList []*GetDialogDetailResponseBodyDataDialogueList `json:"dialogueList,omitempty" xml:"dialogueList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-27 11:23:20
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// COMPLETED
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// 10
+	TotalDialogTurns *int32 `json:"totalDialogTurns,omitempty" xml:"totalDialogTurns,omitempty"`
+	// example:
+	//
+	// 5
+	ValidDialogTurns *int32 `json:"validDialogTurns,omitempty" xml:"validDialogTurns,omitempty"`
+}
+
+func (s GetDialogDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDialogDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDialogDetailResponseBodyData) SetDialogueList(v []*GetDialogDetailResponseBodyDataDialogueList) *GetDialogDetailResponseBodyData {
+	s.DialogueList = v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyData) SetGmtCreate(v string) *GetDialogDetailResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyData) SetStatus(v string) *GetDialogDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyData) SetTotalDialogTurns(v int32) *GetDialogDetailResponseBodyData {
+	s.TotalDialogTurns = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyData) SetValidDialogTurns(v int32) *GetDialogDetailResponseBodyData {
+	s.ValidDialogTurns = &v
+	return s
+}
+
+type GetDialogDetailResponseBodyDataDialogueList struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// 123761283
+	CustomerId *string `json:"customerId,omitempty" xml:"customerId,omitempty"`
+	// example:
+	//
+	// BOT
+	CustomerServiceId *string `json:"customerServiceId,omitempty" xml:"customerServiceId,omitempty"`
+	// example:
+	//
+	// 0
+	CustomerServiceType *string `json:"customerServiceType,omitempty" xml:"customerServiceType,omitempty"`
+	// example:
+	//
+	// true
+	HangUpDialog *bool `json:"hangUpDialog,omitempty" xml:"hangUpDialog,omitempty"`
+	// example:
+	//
+	// 1742869659849
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// 193874634xxx
+	IntentCode *string `json:"intentCode,omitempty" xml:"intentCode,omitempty"`
+	IntentName *string `json:"intentName,omitempty" xml:"intentName,omitempty"`
+	// example:
+	//
+	// 0
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetDialogDetailResponseBodyDataDialogueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDialogDetailResponseBodyDataDialogueList) GoString() string {
+	return s.String()
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetContent(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.Content = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetCustomerId(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.CustomerId = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetCustomerServiceId(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.CustomerServiceId = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetCustomerServiceType(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.CustomerServiceType = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetHangUpDialog(v bool) *GetDialogDetailResponseBodyDataDialogueList {
+	s.HangUpDialog = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetId(v int64) *GetDialogDetailResponseBodyDataDialogueList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetIntentCode(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.IntentCode = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetIntentName(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.IntentName = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetRole(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.Role = &v
+	return s
+}
+
+func (s *GetDialogDetailResponseBodyDataDialogueList) SetType(v string) *GetDialogDetailResponseBodyDataDialogueList {
+	s.Type = &v
+	return s
+}
+
+type GetDialogDetailResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDialogDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDialogDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDialogDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDialogDetailResponse) SetHeaders(v map[string]*string) *GetDialogDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDialogDetailResponse) SetStatusCode(v int32) *GetDialogDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDialogDetailResponse) SetBody(v *GetDialogDetailResponseBody) *GetDialogDetailResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocumentChunkListRequest struct {
 	ChunkIdList []*string `json:"chunkIdList,omitempty" xml:"chunkIdList,omitempty" type:"Repeated"`
 	// This parameter is required.
@@ -14613,6 +14892,81 @@ func (client *Client) GetDialogAnalysisResult(workspaceId *string, request *GetD
 	headers := make(map[string]*string)
 	_result = &GetDialogAnalysisResultResponse{}
 	_body, _err := client.GetDialogAnalysisResultWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取异步任务的结果
+//
+// @param request - GetDialogDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDialogDetailResponse
+func (client *Client) GetDialogDetailWithOptions(workspaceId *string, request *GetDialogDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDialogDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDialogDetail"),
+		Version:     tea.String("2024-06-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/api/virtualHuman/dialog/detail"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDialogDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDialogDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取异步任务的结果
+//
+// @param request - GetDialogDetailRequest
+//
+// @return GetDialogDetailResponse
+func (client *Client) GetDialogDetail(workspaceId *string, request *GetDialogDetailRequest) (_result *GetDialogDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDialogDetailResponse{}
+	_body, _err := client.GetDialogDetailWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
