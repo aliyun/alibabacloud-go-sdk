@@ -802,7 +802,20 @@ type CreateAccountRequest struct {
 	//
 	// Test123456!
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	CharacterType   *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
+	// The type of the account that you want to create. Valid values:
+	//
+	// 	- **db*	- (default): shard account (available)
+	//
+	// 	- **cs**: ConfigServer account
+	//
+	// 	- **normal**: replica set account
+	//
+	// >  You can set this parameter only to **db**.
+	//
+	// example:
+	//
+	// db
+	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The cluster ID.
 	//
 	// This parameter is required.
@@ -2535,11 +2548,13 @@ func (s *CreateNodeBatchResponse) SetBody(v *CreateNodeBatchResponseBody) *Creat
 type CreateShardingDBInstanceRequest struct {
 	// The password of the root account. The password must meet the following requirements:
 	//
-	// 	- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
+	// 	- The password contains at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- The special characters include ! # $ % ^ & \\	- ( ) _ + - =
+	// 	- The following special characters are supported: ! @ # $ % ^ & \\	- ( ) _ + - =.
 	//
-	// 	- The password of the account must be 8 to 32 characters in length.
+	// 	- The password must be 8 to 32 characters in length.
+	//
+	// >  For more information about how to resolve failed database connections due to special characters, see [What do I do if my instance is not connected due to special characters in the password in the connection string of the instance?](https://help.aliyun.com/document_detail/471568.html)
 	//
 	// example:
 	//
@@ -2571,7 +2586,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// 	- **PrePaid**: subscription
 	//
-	// >  If this parameter is set to **PrePaid**, you must also configure the **Period*	- parameter.
+	// >  If you set this parameter to **PrePaid**, you must also configure the **Period*	- parameter.
 	//
 	// example:
 	//
@@ -2607,7 +2622,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	DestRegion *string `json:"DestRegion,omitempty" xml:"DestRegion,omitempty"`
-	// Indicates whether disk encryption is enabled.
+	// Specifies whether to enable disk encryption.
 	//
 	// example:
 	//
@@ -2641,9 +2656,11 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// 	- **4.0**
 	//
-	// > 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+	// >
 	//
-	// > 	- If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
+	// 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+	//
+	// 	- If you call this operation to clone an instance, set the value of this parameter to the database engine version of the source instance.
 	//
 	// This parameter is required.
 	//
@@ -2709,9 +2726,9 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// This parameter is required.
 	Mongos []*CreateShardingDBInstanceRequestMongos `json:"Mongos,omitempty" xml:"Mongos,omitempty" type:"Repeated"`
-	// The network type of the instance.
+	// The network type of the instance. Set the value to VPC.
 	//
-	// Set the value to **VPC**.
+	// ****
 	//
 	// example:
 	//
@@ -2753,7 +2770,7 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information of the shard node.
+	// The information of the shard component.
 	//
 	// This parameter is required.
 	ReplicaSet []*CreateShardingDBInstanceRequestReplicaSet `json:"ReplicaSet,omitempty" xml:"ReplicaSet,omitempty" type:"Repeated"`
@@ -2773,13 +2790,13 @@ type CreateShardingDBInstanceRequest struct {
 	//
 	// 2022-03-08T02:30:25Z
 	RestoreTime *string `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
-	// The backup restore type of the instance.
+	// The restoration type of the instance. Valid values:
 	//
-	// - 1:  restore an instance to the specified time.
+	// 	- 1: restores the instance data to the specified point in time.
 	//
-	// - 2: restore an  released instance to the specified backup set.
+	// 	- 2: restores the data of the released instance to the specified backup set.
 	//
-	// - 3：restore an instance to the specified cross-regional backup set.
+	// 	- 3: restores the instance data to the specified cross-region backup set.
 	//
 	// example:
 	//
@@ -2867,9 +2884,11 @@ type CreateShardingDBInstanceRequest struct {
 	SrcRegion *string `json:"SrcRegion,omitempty" xml:"SrcRegion,omitempty"`
 	// The storage engine of the instance. Set the value to **WiredTiger**.
 	//
-	// > 	- If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
+	// >
 	//
-	// > 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
+	// 	- If you call this operation to clone an instance, set the value of this parameter to the storage engine of the source instance.
+	//
+	// 	- For more information about the limits on database versions and storage engines, see [MongoDB versions and storage engines](https://help.aliyun.com/document_detail/61906.html).
 	//
 	// example:
 	//
@@ -3185,11 +3204,13 @@ func (s *CreateShardingDBInstanceRequestMongos) SetClass(v string) *CreateShardi
 }
 
 type CreateShardingDBInstanceRequestReplicaSet struct {
-	// The instance type of the shard node. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// The instance type of the shard component. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
 	//
-	// > 	- **N*	- specifies the serial number of the shard node for which the instance type is specified. For example, **ReplicaSet.2.Class*	- specifies the instance type of the second shard node.
+	// >
 	//
-	// > 	- Valid values of **N**: **2*	- to **32**.
+	// 	- **N*	- specifies the serial number of the shard component for which the instance type is specified. For example, **ReplicaSet.2.Class*	- specifies the instance type of the second shard component.
+	//
+	// 	- Valid values of **N**: **2*	- to **32**.
 	//
 	// This parameter is required.
 	//
@@ -3197,21 +3218,23 @@ type CreateShardingDBInstanceRequestReplicaSet struct {
 	//
 	// dds.shard.standard
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
-	// The number of read-only nodes in the shard node.
+	// The number of read-only nodes in the shard component.
 	//
 	// Valid values: **0**, **1, 2, 3, 4, and 5**. Default value: **0**.
 	//
-	// >  **N*	- specifies the serial number of the shard node for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard node.
+	// >  **N*	- specifies the serial number of the shard component for which you want to set the number of read-only nodes. **ReplicaSet.2.ReadonlyReplicas*	- specifies the number of read-only nodes in the second shard component.
 	//
 	// example:
 	//
 	// 0
 	ReadonlyReplicas *int32 `json:"ReadonlyReplicas,omitempty" xml:"ReadonlyReplicas,omitempty"`
-	// The storage capacity of the shard node. Unit: GB.
+	// The storage capacity of the shard component. Unit: GB.
 	//
-	// > 	- The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	// >
 	//
-	// > 	- **N*	- specifies the serial number of the shard node for which the storage space is specified. For example, **ReplicaSet.2.Storage*	- specifies the storage space of the second shard node.
+	// 	- The values that can be specified for this parameter vary based on the instance types. For more information, see [Sharded cluster instance types](https://help.aliyun.com/document_detail/311414.html).
+	//
+	// 	- **N*	- specifies the serial number of the shard component for which the storage capacity is specified. For example, **ReplicaSet.2.Storage*	- specifies the storage capacity of the second shard component.
 	//
 	// This parameter is required.
 	//
@@ -5059,13 +5082,13 @@ type DescribeActiveOperationTasksRequest struct {
 	InsName      *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the page to return.
+	// The number of the page to return. Specify the parameter to a positive integer that is greater than **0**. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values: **30, 50, and 100**. Default value: **30**.
+	// The number of entries to return on each page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
@@ -5084,7 +5107,13 @@ type DescribeActiveOperationTasksRequest struct {
 	// example:
 	//
 	// cn-beijing
-	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The status of the task. Valid values:
@@ -5169,6 +5198,11 @@ func (s *DescribeActiveOperationTasksRequest) SetProductId(v string) *DescribeAc
 
 func (s *DescribeActiveOperationTasksRequest) SetRegion(v string) *DescribeActiveOperationTasksRequest {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeActiveOperationTasksRequest) SetResourceGroupId(v string) *DescribeActiveOperationTasksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6258,7 +6292,7 @@ func (s *DescribeAuditRecordsResponse) SetBody(v *DescribeAuditRecordsResponseBo
 }
 
 type DescribeAvailabilityZonesRequest struct {
-	// The language of the values of the returned **RegionName*	- and **ZoneName*	- parameters. Valid values:
+	// The language of the returned **RegionName*	- and **ZoneName*	- parameter values. Valid values:
 	//
 	// 	- **zh*	- (default): Chinese
 	//
@@ -6302,16 +6336,26 @@ type DescribeAvailabilityZonesRequest struct {
 	//
 	// cn-shanghai-g
 	ExcludeZoneId *string `json:"ExcludeZoneId,omitempty" xml:"ExcludeZoneId,omitempty"`
-	// The billing method. Valid values:
+	// The billing method of the product. Valid values:
 	//
-	// 	- **PrePaid*	- (default): subscription
+	// 	- **PrePaid**: subscription
 	//
-	// 	- **PostPaid**: pay-as-you-go
+	// 	- **PostPaid:*	- pay-as-you-go
 	//
 	// example:
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	// The architecture of the instance. Valid values:
+	//
+	// 	- **sharding**: sharded cluster instance
+	//
+	// 	- **replicate**: replica set or standalone instance
+	//
+	// example:
+	//
+	// replicate
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// The edition of the instance. High-Available Edition and Preview Edition (dbfs) are supported.
 	//
 	// example:
@@ -6328,7 +6372,19 @@ type DescribeAvailabilityZonesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of nodes. This parameter is available only for replica set instances.
+	// The number of nodes in the instance.
+	//
+	// >  This parameter is available only for replica set instances.
+	//
+	// Valid values:
+	//
+	// 	- 1
+	//
+	// 	- 3
+	//
+	// 	- 5
+	//
+	// 	- 7
 	//
 	// example:
 	//
@@ -6342,31 +6398,33 @@ type DescribeAvailabilityZonesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The storage type of the instance.
+	// The storage type. Valid values:
 	//
-	// - **cloud**: The system displays only zones in which cloud disk-based instances can be deployed.
+	// 	- **cloud**: displays only zones available for instances that use cloud disks.
 	//
-	// - **local**: The system displays only zones in which local disk-based instances can be deployed.
+	// 	- **local**: only displays zones available for instances that use local disks instances.
 	//
-	// - **default*	- or null: The system displays only zones in which cloud disk-based and local disk-based instances can be deployed.
+	// 	- **default*	- or unspecified: displays zones available for instances that use cloud disks and those that use local disks.
 	//
 	// example:
 	//
 	// local
 	StorageSupport *string `json:"StorageSupport,omitempty" xml:"StorageSupport,omitempty"`
-	// The storage type of the instance. Valid values:
+	// The disk type. Valid values:
 	//
-	// 	- **cloud_essd1**: PL1 enhanced SSD (ESSD)
+	// 	- **cloud_essd**: PL1 Enterprise SSD (ESSD)
 	//
 	// 	- **cloud_essd2**: PL2 ESSD
 	//
 	// 	- **cloud_essd3**: PL3 ESSD
 	//
-	// 	- **local_ssd**: Local SSD
+	// 	- **dhg_local_ssd**: local SSD
 	//
-	// > 	- Instances that run MongoDB 4.4 or later support only cloud disks. **cloud_essd1*	- is selected if you leave this parameter empty.
+	// >
 	//
-	// > 	- Instances that run MongoDB 4.2 and earlier support only local disks. **local_ssd*	- is selected if you leave this parameter empty.
+	// 	- Instances that run MongoDB 4.4 or later only use cloud disks to store data. If you do not specify this parameter, the value **cloud_essd1*	- is used by default.
+	//
+	// 	- Instances that run MongoDB 4.2 and earlier only use local disks to store data. If you do not specify this parameter, the value **local_ssd*	- is used by default.
 	//
 	// example:
 	//
@@ -6420,6 +6478,11 @@ func (s *DescribeAvailabilityZonesRequest) SetExcludeZoneId(v string) *DescribeA
 
 func (s *DescribeAvailabilityZonesRequest) SetInstanceChargeType(v string) *DescribeAvailabilityZonesRequest {
 	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeAvailabilityZonesRequest) SetInstanceType(v string) *DescribeAvailabilityZonesRequest {
+	s.InstanceType = &v
 	return s
 }
 
@@ -8096,7 +8159,7 @@ func (s *DescribeBackupStorageResponse) SetBody(v *DescribeBackupStorageResponse
 type DescribeBackupTasksRequest struct {
 	// The ID of the backup task.
 	//
-	// >  If you call the [CreateBackup](https://help.aliyun.com/document_detail/61075.html) operation to perform a manual backup task, you can set this parameter to the returned backup ID to query the backup progress of the task.
+	// >  If you call the [CreateBackup](https://help.aliyun.com/document_detail/468439.html) operation to perform a manual backup task, you can set this parameter to the returned backup ID to query the backup progress of the task.
 	//
 	// example:
 	//
@@ -8339,7 +8402,7 @@ type DescribeBackupsRequest struct {
 	NodeId       *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. The value must be a positive integer that does not exceed the maximum value of the INTEGER data type. Default value: **1**.
+	// The page number. Pages start from page 1. Default value: **1**.
 	//
 	// example:
 	//
@@ -10620,7 +10683,12 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceMongosListMongo
 	// example:
 	//
 	// s-bp1d8c262a15****.mongodb.rds.aliyuncs.com
-	ConnectSting  *string `json:"ConnectSting,omitempty" xml:"ConnectSting,omitempty"`
+	ConnectSting *string `json:"ConnectSting,omitempty" xml:"ConnectSting,omitempty"`
+	// The endpoint of the mongos node.
+	//
+	// example:
+	//
+	// s-bp1d8c262a15****.mongodb.rds.aliyuncs.com
 	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
 	// The minor version of the current MongoDB kernel.
 	//
@@ -11958,6 +12026,131 @@ func (s *DescribeDBInstanceSSLResponse) SetStatusCode(v int32) *DescribeDBInstan
 }
 
 func (s *DescribeDBInstanceSSLResponse) SetBody(v *DescribeDBInstanceSSLResponseBody) *DescribeDBInstanceSSLResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceSpecInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mdb.shard.4x.large.d
+	InstanceClass        *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeDBInstanceSpecInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSpecInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetInstanceClass(v string) *DescribeDBInstanceSpecInfoRequest {
+	s.InstanceClass = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetOwnerAccount(v string) *DescribeDBInstanceSpecInfoRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetOwnerId(v int64) *DescribeDBInstanceSpecInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetResourceOwnerAccount(v string) *DescribeDBInstanceSpecInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetResourceOwnerId(v int64) *DescribeDBInstanceSpecInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoRequest) SetSecurityToken(v string) *DescribeDBInstanceSpecInfoRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeDBInstanceSpecInfoResponseBody struct {
+	// example:
+	//
+	// 2
+	CPU         *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 8
+	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// example:
+	//
+	// 6B82A9EF-9961-5A31-A19F-009B709xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDBInstanceSpecInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSpecInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSpecInfoResponseBody) SetCPU(v string) *DescribeDBInstanceSpecInfoResponseBody {
+	s.CPU = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoResponseBody) SetDescription(v string) *DescribeDBInstanceSpecInfoResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoResponseBody) SetMemory(v string) *DescribeDBInstanceSpecInfoResponseBody {
+	s.Memory = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoResponseBody) SetRequestId(v string) *DescribeDBInstanceSpecInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDBInstanceSpecInfoResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDBInstanceSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDBInstanceSpecInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceSpecInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceSpecInfoResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceSpecInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoResponse) SetStatusCode(v int32) *DescribeDBInstanceSpecInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceSpecInfoResponse) SetBody(v *DescribeDBInstanceSpecInfoResponseBody) *DescribeDBInstanceSpecInfoResponse {
 	s.Body = v
 	return s
 }
@@ -13612,7 +13805,12 @@ type DescribeDBInstancesOverviewRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	ShowTags             *bool   `json:"ShowTags,omitempty" xml:"ShowTags,omitempty"`
+	// Specifies whether to display instance tags. Default value: False.
+	//
+	// example:
+	//
+	// false
+	ShowTags *bool `json:"ShowTags,omitempty" xml:"ShowTags,omitempty"`
 	// The ID of the vSwitch to which the instance is connected.
 	//
 	// example:
@@ -15052,13 +15250,13 @@ type DescribeHistoryTasksRequest struct {
 	//
 	// Instance
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The number of the page to return. The value must be a positive integer. Default value: 1
+	// The number of the page to return. The value must be a positive integer. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 10 to 100. Default value: 10
+	// The number of entries per page. Valid values: 10 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -15069,7 +15267,13 @@ type DescribeHistoryTasksRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-aek2inrfrnw3xby
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task status. Valid values:
@@ -15208,6 +15412,11 @@ func (s *DescribeHistoryTasksRequest) SetPageSize(v int32) *DescribeHistoryTasks
 
 func (s *DescribeHistoryTasksRequest) SetRegionId(v string) *DescribeHistoryTasksRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksRequest) SetResourceGroupId(v string) *DescribeHistoryTasksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15466,7 +15675,7 @@ type DescribeHistoryTasksResponseBodyItems struct {
 	// example:
 	//
 	// Succeed
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The details of the task. The task details vary based on the value of the taskType parameter.
 	//
 	// example:
@@ -15622,7 +15831,7 @@ func (s *DescribeHistoryTasksResponseBodyItems) SetStartTime(v string) *Describe
 	return s
 }
 
-func (s *DescribeHistoryTasksResponseBodyItems) SetStatus(v int32) *DescribeHistoryTasksResponseBodyItems {
+func (s *DescribeHistoryTasksResponseBodyItems) SetStatus(v string) *DescribeHistoryTasksResponseBodyItems {
 	s.Status = &v
 	return s
 }
@@ -15704,7 +15913,13 @@ type DescribeHistoryTasksStatRequest struct {
 	// example:
 	//
 	// cn-beijing
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The task status. Valid values:
@@ -15828,6 +16043,11 @@ func (s *DescribeHistoryTasksStatRequest) SetInstanceId(v string) *DescribeHisto
 
 func (s *DescribeHistoryTasksStatRequest) SetRegionId(v string) *DescribeHistoryTasksStatRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHistoryTasksStatRequest) SetResourceGroupId(v string) *DescribeHistoryTasksStatRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -19187,7 +19407,7 @@ type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance stru
 	PricingModule *bool `json:"PricingModule,omitempty" xml:"PricingModule,omitempty"`
 	// The promotion details.
 	PromDetailList *DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstancePromDetailList `json:"PromDetailList,omitempty" xml:"PromDetailList,omitempty" type:"Struct"`
-	// The discount.
+	// The discounted price.
 	//
 	// example:
 	//
@@ -19205,8 +19425,18 @@ type DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance stru
 	//
 	// 0.0
 	TotalProductFee *float64 `json:"TotalProductFee,omitempty" xml:"TotalProductFee,omitempty"`
-	PriceType       *string  `json:"priceType,omitempty" xml:"priceType,omitempty"`
-	PriceUnit       *string  `json:"priceUnit,omitempty" xml:"priceUnit,omitempty"`
+	// The price type.
+	//
+	// example:
+	//
+	// monthPrice
+	PriceType *string `json:"priceType,omitempty" xml:"priceType,omitempty"`
+	// The unit of the price.
+	//
+	// example:
+	//
+	// xxxx
+	PriceUnit *string `json:"priceUnit,omitempty" xml:"priceUnit,omitempty"`
 }
 
 func (s DescribePriceResponseBodySubOrdersSubOrderModuleInstanceModuleInstance) String() string {
@@ -19662,7 +19892,7 @@ type DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromoti
 	//
 	// 1512010241xxxxx
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// The IDs of the rules that correspond to the coupon.
+	// The promotion IDs.
 	PromotionRuleIdList *DescribePriceResponseBodySubOrdersSubOrderOptionalPromotionsOptionalPromotionPromotionRuleIdList `json:"PromotionRuleIdList,omitempty" xml:"PromotionRuleIdList,omitempty" type:"Struct"`
 	// Indicates whether
 	//
@@ -24250,11 +24480,9 @@ func (s *MigrateAvailableZoneResponse) SetBody(v *MigrateAvailableZoneResponseBo
 type MigrateToOtherZoneRequest struct {
 	// The time when the instance is migrated to the destination zone. Valid values:
 	//
-	// 	- **Immediately**: The instance is immediately migrated to the destination zone.
+	// 	- **Immediately*	- (default): The instance is migrated immediately.
 	//
-	// 	- **MaintainTime**: The instance is migrated during the maintenance period of the instance.
-	//
-	// Default value: **Immediately**.
+	// 	- **MaintainTime**: The instance is migrated during its maintenance window.
 	//
 	// example:
 	//
@@ -24415,7 +24643,20 @@ type ModifyAccountDescriptionRequest struct {
 	// example:
 	//
 	// root
-	AccountName   *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The type of the account whose description you can modify. Valid values:
+	//
+	// 	- **db**: shard account
+	//
+	// 	- **cs**: ConfigServer account
+	//
+	// 	- **normal*	- (default): replica set account (available)
+	//
+	// >  You can set this parameter only to **normal**.
+	//
+	// example:
+	//
+	// normal
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
 	// The instance ID.
 	//
@@ -24554,9 +24795,15 @@ type ModifyActiveOperationTasksRequest struct {
 	// example:
 	//
 	// 0
-	ImmediateStart       *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ImmediateStart *int32  `json:"ImmediateStart,omitempty" xml:"ImmediateStart,omitempty"`
+	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the resource group.
+	//
+	// example:
+	//
+	// rg-acfmyiu4ekp****
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The scheduled switching time that you want to specify. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
@@ -24596,6 +24843,11 @@ func (s *ModifyActiveOperationTasksRequest) SetOwnerAccount(v string) *ModifyAct
 
 func (s *ModifyActiveOperationTasksRequest) SetOwnerId(v int64) *ModifyActiveOperationTasksRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyActiveOperationTasksRequest) SetResourceGroupId(v string) *ModifyActiveOperationTasksRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -31202,33 +31454,26 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-wulanchabu":               tea.String("mongodb.aliyuncs.com"),
 		"cn-hangzhou":                 tea.String("mongodb.aliyuncs.com"),
 		"cn-shanghai":                 tea.String("mongodb.aliyuncs.com"),
-		"cn-nanjing":                  tea.String("mongodb.cn-nanjing.aliyuncs.com"),
-		"cn-fuzhou":                   tea.String("mongodb.cn-fuzhou.aliyuncs.com"),
 		"cn-shenzhen":                 tea.String("mongodb.aliyuncs.com"),
 		"cn-heyuan":                   tea.String("mongodb.aliyuncs.com"),
 		"cn-guangzhou":                tea.String("mongodb.aliyuncs.com"),
 		"cn-chengdu":                  tea.String("mongodb.cn-chengdu.aliyuncs.com"),
 		"cn-hongkong":                 tea.String("mongodb.cn-hongkong.aliyuncs.com"),
 		"ap-northeast-1":              tea.String("mongodb.ap-northeast-1.aliyuncs.com"),
-		"ap-northeast-2":              tea.String("mongodb.ap-northeast-2.aliyuncs.com"),
 		"ap-southeast-1":              tea.String("mongodb.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("mongodb.ap-southeast-2.aliyuncs.com"),
 		"ap-southeast-3":              tea.String("mongodb.ap-southeast-3.aliyuncs.com"),
 		"ap-southeast-5":              tea.String("mongodb.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-6":              tea.String("mongodb.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-7":              tea.String("mongodb.ap-southeast-7.aliyuncs.com"),
-		"cn-zhengzhou-jva":            tea.String("mongodb.cn-zhengzhou-jva.aliyuncs.com"),
 		"us-east-1":                   tea.String("mongodb.us-east-1.aliyuncs.com"),
 		"us-west-1":                   tea.String("mongodb.us-west-1.aliyuncs.com"),
 		"eu-west-1":                   tea.String("mongodb.eu-west-1.aliyuncs.com"),
 		"eu-central-1":                tea.String("mongodb.eu-central-1.aliyuncs.com"),
 		"ap-south-1":                  tea.String("mongodb.ap-south-1.aliyuncs.com"),
 		"me-east-1":                   tea.String("mongodb.me-east-1.aliyuncs.com"),
-		"me-central-1":                tea.String("mongodb.me-central-1.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("mongodb.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("mongodb.aliyuncs.com"),
 		"cn-shenzhen-finance-1":       tea.String("mongodb.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("mongodb.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("mongodb.cn-north-2-gov-1.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("mongodb.aliyuncs.com"),
 		"cn-beijing-finance-1":        tea.String("mongodb.aliyuncs.com"),
 		"cn-beijing-finance-pop":      tea.String("mongodb.aliyuncs.com"),
@@ -31822,9 +32067,9 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 //
 // Description:
 //
-//   You can create an account for shard nodes only in an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
+//	  You can create an account for shard nodes only in an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
 //
-// 	- The account is granted read-only permissions.
+//		- The account is granted read-only permissions.
 //
 // @param request - CreateAccountRequest
 //
@@ -31909,9 +32154,9 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 //
 // Description:
 //
-//   You can create an account for shard nodes only in an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
+//	  You can create an account for shard nodes only in an ApsaraDB for MongoDB sharded cluster instance that uses cloud disks.
 //
-// 	- The account is granted read-only permissions.
+//		- The account is granted read-only permissions.
 //
 // @param request - CreateAccountRequest
 //
@@ -32656,11 +32901,11 @@ func (client *Client) CreateNodeBatch(request *CreateNodeBatchRequest) (_result 
 //
 // Description:
 //
-//   Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+//	  Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
 //
-// 	- For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//		- For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
-// 	- To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
+//		- To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
 //
 // @param request - CreateShardingDBInstanceRequest
 //
@@ -32865,11 +33110,11 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 //
 // Description:
 //
-//   Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
+//	  Make sure that you fully understand the billing methods and [pricing](https://www.alibabacloud.com/product/apsaradb-for-mongodb/pricing) of ApsaraDB for MongoDB before you call this operation.
 //
-// 	- For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//		- For more information about the instance types of ApsaraDB for MongoDB, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
-// 	- To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
+//		- To create standalone instances and replica set instances, you can call the [CreateDBInstance](https://help.aliyun.com/document_detail/61763.html) operation.
 //
 // @param request - CreateShardingDBInstanceRequest
 //
@@ -32893,9 +33138,9 @@ func (client *Client) CreateShardingDBInstance(request *CreateShardingDBInstance
 //
 // Before you call this operation, make sure that the instance meets the following requirements
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
 // > After an instance is released, all data in the instance is cleared and cannot be recovered. Proceed with caution.
 //
@@ -32976,9 +33221,9 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 //
 // Before you call this operation, make sure that the instance meets the following requirements
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
 // > After an instance is released, all data in the instance is cleared and cannot be recovered. Proceed with caution.
 //
@@ -33103,13 +33348,13 @@ func (client *Client) DeleteGlobalSecurityIPGroup(request *DeleteGlobalSecurityI
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a sharded cluster instance.
+//   - The instance is a sharded cluster instance.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
-// 	- The number of the shard or mongos nodes in the instance is greater than two.
+//   - The number of the shard or mongos nodes in the instance is greater than two.
 //
 // @param request - DeleteNodeRequest
 //
@@ -33192,13 +33437,13 @@ func (client *Client) DeleteNodeWithOptions(request *DeleteNodeRequest, runtime 
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a sharded cluster instance.
+//   - The instance is a sharded cluster instance.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
-// 	- The number of the shard or mongos nodes in the instance is greater than two.
+//   - The number of the shard or mongos nodes in the instance is greater than two.
 //
 // @param request - DeleteNodeRequest
 //
@@ -33823,6 +34068,10 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 		query["Region"] = request.Region
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -33897,11 +34146,11 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditLogFilterRequest
 //
@@ -33978,11 +34227,11 @@ func (client *Client) DescribeAuditLogFilterWithOptions(request *DescribeAuditLo
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditLogFilterRequest
 //
@@ -34004,11 +34253,11 @@ func (client *Client) DescribeAuditLogFilter(request *DescribeAuditLogFilterRequ
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditPolicyRequest
 //
@@ -34081,11 +34330,11 @@ func (client *Client) DescribeAuditPolicyWithOptions(request *DescribeAuditPolic
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditPolicyRequest
 //
@@ -34107,11 +34356,11 @@ func (client *Client) DescribeAuditPolicy(request *DescribeAuditPolicyRequest) (
 //
 // Description:
 //
-//   When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+//	  When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditRecordsRequest
 //
@@ -34228,11 +34477,11 @@ func (client *Client) DescribeAuditRecordsWithOptions(request *DescribeAuditReco
 //
 // Description:
 //
-//   When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
+//	  When you call this operation, ensure that the audit log feature of the instance is enabled. Otherwise, the operation returns an empty audit log.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeAuditRecordsRequest
 //
@@ -34293,6 +34542,10 @@ func (client *Client) DescribeAvailabilityZonesWithOptions(request *DescribeAvai
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
 		query["InstanceChargeType"] = request.InstanceChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MongoType)) {
@@ -34611,15 +34864,15 @@ func (client *Client) DescribeAvailableResource(request *DescribeAvailableResour
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance was created after March 26, 2019.
+//   - The instance was created after March 26, 2019.
 //
-// 	- The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
+//   - The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
+//   - The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
 // @param request - DescribeBackupDBsRequest
 //
@@ -34720,15 +34973,15 @@ func (client *Client) DescribeBackupDBsWithOptions(request *DescribeBackupDBsReq
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance was created after March 26, 2019.
+//   - The instance was created after March 26, 2019.
 //
-// 	- The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
+//   - The instance is located in the China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Hangzhou), China (Shanghai), China (Shenzhen), or Singapore region. Other regions are not supported.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
+//   - The instance runs MongoDB 3.4, MongoDB 4.0, or MongoDB 4.2. In addition, the instance uses local disks to store data.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
 // @param request - DescribeBackupDBsRequest
 //
@@ -35233,9 +35486,9 @@ func (client *Client) DescribeClusterBackups(request *DescribeClusterBackupsRequ
 //
 // Description:
 //
-//   The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+//	  The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
 //
-// 	- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. The DescribeClusterRecoverTime operation is applicable only to instances that are switched to the cluster backup mode or instances that are created on or after October 19, 2023.
+//		- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. The DescribeClusterRecoverTime operation is applicable only to instances that are switched to the cluster backup mode or instances that are created on or after October 19, 2023.
 //
 // @param request - DescribeClusterRecoverTimeRequest
 //
@@ -35288,9 +35541,9 @@ func (client *Client) DescribeClusterRecoverTimeWithOptions(request *DescribeClu
 //
 // Description:
 //
-//   The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+//	  The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
 //
-// 	- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. The DescribeClusterRecoverTime operation is applicable only to instances that are switched to the cluster backup mode or instances that are created on or after October 19, 2023.
+//		- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. The DescribeClusterRecoverTime operation is applicable only to instances that are switched to the cluster backup mode or instances that are created on or after October 19, 2023.
 //
 // @param request - DescribeClusterRecoverTimeRequest
 //
@@ -35718,11 +35971,11 @@ func (client *Client) DescribeDBInstancePerformance(request *DescribeDBInstanceP
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The instance runs MongoDB 3.4 or later.
+//   - The instance runs MongoDB 3.4 or later.
 //
 // @param request - DescribeDBInstanceSSLRequest
 //
@@ -35797,11 +36050,11 @@ func (client *Client) DescribeDBInstanceSSLWithOptions(request *DescribeDBInstan
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The instance runs MongoDB 3.4 or later.
+//   - The instance runs MongoDB 3.4 or later.
 //
 // @param request - DescribeDBInstanceSSLRequest
 //
@@ -35819,15 +36072,106 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 
 // Summary:
 //
+// 查看规格信息详情
+//
+// @param request - DescribeDBInstanceSpecInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDBInstanceSpecInfoResponse
+func (client *Client) DescribeDBInstanceSpecInfoWithOptions(request *DescribeDBInstanceSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceSpecInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceClass)) {
+		query["InstanceClass"] = request.InstanceClass
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceSpecInfo"),
+		Version:     tea.String("2015-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBInstanceSpecInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBInstanceSpecInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查看规格信息详情
+//
+// @param request - DescribeDBInstanceSpecInfoRequest
+//
+// @return DescribeDBInstanceSpecInfoResponse
+func (client *Client) DescribeDBInstanceSpecInfo(request *DescribeDBInstanceSpecInfoRequest) (_result *DescribeDBInstanceSpecInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceSpecInfoResponse{}
+	_body, _err := client.DescribeDBInstanceSpecInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the primary/secondary switching logs of an ApsaraDB for MongoDB instance.
 //
 // Description:
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The instance uses local physical disks to store data.
+//   - The instance uses local physical disks to store data.
 //
 // @param request - DescribeDBInstanceSwitchLogRequest
 //
@@ -35906,9 +36250,9 @@ func (client *Client) DescribeDBInstanceSwitchLogWithOptions(request *DescribeDB
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The instance uses local physical disks to store data.
+//   - The instance uses local physical disks to store data.
 //
 // @param request - DescribeDBInstanceSwitchLogRequest
 //
@@ -35934,11 +36278,11 @@ func (client *Client) DescribeDBInstanceSwitchLog(request *DescribeDBInstanceSwi
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
-// 	- The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
+//   - The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
 //
 // @param request - DescribeDBInstanceTDEInfoRequest
 //
@@ -36015,11 +36359,11 @@ func (client *Client) DescribeDBInstanceTDEInfoWithOptions(request *DescribeDBIn
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
-// 	- The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
+//   - The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
 //
 // @param request - DescribeDBInstanceTDEInfoRequest
 //
@@ -36220,9 +36564,9 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 //
 // Description:
 //
-//   If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
+//	  If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
 //
-// 	- Paged query is disabled for this operation.
+//		- Paged query is disabled for this operation.
 //
 // @param request - DescribeDBInstancesOverviewRequest
 //
@@ -36343,9 +36687,9 @@ func (client *Client) DescribeDBInstancesOverviewWithOptions(request *DescribeDB
 //
 // Description:
 //
-//   If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
+//	  If you do not specify an instance when you call this operation, the overview information of all instances in a specific region within this account is returned.
 //
-// 	- Paged query is disabled for this operation.
+//		- Paged query is disabled for this operation.
 //
 // @param request - DescribeDBInstancesOverviewRequest
 //
@@ -36367,9 +36711,9 @@ func (client *Client) DescribeDBInstancesOverview(request *DescribeDBInstancesOv
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeErrorLogRecordsRequest
 //
@@ -36482,9 +36826,9 @@ func (client *Client) DescribeErrorLogRecordsWithOptions(request *DescribeErrorL
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeErrorLogRecordsRequest
 //
@@ -36677,6 +37021,10 @@ func (client *Client) DescribeHistoryTasksWithOptions(request *DescribeHistoryTa
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -36786,6 +37134,10 @@ func (client *Client) DescribeHistoryTasksStatWithOptions(request *DescribeHisto
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -37234,9 +37586,9 @@ func (client *Client) DescribeKmsKeys(request *DescribeKmsKeysRequest) (_result 
 //
 // This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business requirements. For more information, see [Enable the audit log feature](https://help.aliyun.com/document_detail/59903.html).
 //
-// 	- Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](https://help.aliyun.com/document_detail/377480.html)
+//   - Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](https://help.aliyun.com/document_detail/377480.html)
 //
-// 	- You are charged for the official edition of the audit log feature based on the storage capacity that is consumed by audit logs and the retention period of the audit logs. For more information, see [Pricing of ApsaraDB for MongoDB instances](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+//   - You are charged for the official edition of the audit log feature based on the storage capacity that is consumed by audit logs and the retention period of the audit logs. For more information, see [Pricing of ApsaraDB for MongoDB instances](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
 //
 // @param request - DescribeMongoDBLogConfigRequest
 //
@@ -37313,9 +37665,9 @@ func (client *Client) DescribeMongoDBLogConfigWithOptions(request *DescribeMongo
 //
 // This operation depends on the audit log feature of ApsaraDB for MongoDB. You can enable the audit log feature based on your business requirements. For more information, see [Enable the audit log feature](https://help.aliyun.com/document_detail/59903.html).
 //
-// 	- Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](https://help.aliyun.com/document_detail/377480.html)
+//   - Starting from January 6, 2022, the official edition of the audit log feature has been launched in all regions, and new applications for the free trial edition have ended. For more information, see [Notice on official launch of the pay-as-you-go audit log feature and no more application for the free trial edition](https://help.aliyun.com/document_detail/377480.html)
 //
-// 	- You are charged for the official edition of the audit log feature based on the storage capacity that is consumed by audit logs and the retention period of the audit logs. For more information, see [Pricing of ApsaraDB for MongoDB instances](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
+//   - You are charged for the official edition of the audit log feature based on the storage capacity that is consumed by audit logs and the retention period of the audit logs. For more information, see [Pricing of ApsaraDB for MongoDB instances](https://www.alibabacloud.com/zh/product/apsaradb-for-mongodb/pricing).
 //
 // @param request - DescribeMongoDBLogConfigRequest
 //
@@ -37634,7 +37986,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+// Queries the pricing information of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribePriceRequest
 //
@@ -37735,7 +38087,7 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 
 // Summary:
 //
-// Queries the fees incurred when you create, upgrade, or renew an ApsaraDB for MongoDB instance.
+// Queries the pricing information of an ApsaraDB for MongoDB instance.
 //
 // @param request - DescribePriceRequest
 //
@@ -38252,9 +38604,9 @@ func (client *Client) DescribeRoleZoneInfo(request *DescribeRoleZoneInfoRequest)
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeRunningLogRecordsRequest
 //
@@ -38375,9 +38727,9 @@ func (client *Client) DescribeRunningLogRecordsWithOptions(request *DescribeRunn
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeRunningLogRecordsRequest
 //
@@ -38676,9 +39028,9 @@ func (client *Client) DescribeShardingNetworkAddress(request *DescribeShardingNe
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -38791,9 +39143,9 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -39015,11 +39367,11 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a replica set instance or a sharded cluster instance that uses local disks.
+//   - The instance is a replica set instance or a sharded cluster instance that uses local disks.
 //
-// 	- The billing method of the instance is subscription.
+//   - The billing method of the instance is subscription.
 //
-// 	- The instance has expired and is in the **Locking*	- state.
+//   - The instance has expired and is in the **Locking*	- state.
 //
 // **
 //
@@ -39110,11 +39462,11 @@ func (client *Client) DestroyInstanceWithOptions(request *DestroyInstanceRequest
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is a replica set instance or a sharded cluster instance that uses local disks.
+//   - The instance is a replica set instance or a sharded cluster instance that uses local disks.
 //
-// 	- The billing method of the instance is subscription.
+//   - The billing method of the instance is subscription.
 //
-// 	- The instance has expired and is in the **Locking*	- state.
+//   - The instance has expired and is in the **Locking*	- state.
 //
 // **
 //
@@ -39378,15 +39730,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // Description:
 //
-//   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+//	  This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
 //
-// 	- If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+//		- If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation to release the public endpoint before you call the MigrateAvailableZone operation.
 //
-// 	- Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
+//		- Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
 //
-// 	- The source zone and the destination zone belong to the same region.
+//		- The source zone and the destination zone belong to the same region.
 //
-// 	- A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](https://help.aliyun.com/document_detail/65387.html).
+//		- A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](https://help.aliyun.com/document_detail/65387.html).
 //
 // @param request - MigrateAvailableZoneRequest
 //
@@ -39479,15 +39831,15 @@ func (client *Client) MigrateAvailableZoneWithOptions(request *MigrateAvailableZ
 //
 // Description:
 //
-//   This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
+//	  This operation is available only for replica set instances that run MongoDB 4.2 or earlier and sharded cluster instances.
 //
-// 	- If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation to release the public endpoint before you call the MigrateAvailableZone operation.
+//		- If you have applied for a public endpoint for the ApsaraDB for MongoDB instance, you must call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation to release the public endpoint before you call the MigrateAvailableZone operation.
 //
-// 	- Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
+//		- Transparent data encryption (TDE) is disabled for the ApsaraDB for MongoDB instance.
 //
-// 	- The source zone and the destination zone belong to the same region.
+//		- The source zone and the destination zone belong to the same region.
 //
-// 	- A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](https://help.aliyun.com/document_detail/65387.html).
+//		- A vSwitch is created in the destination zone. This prerequisite must be met if the instance resides in a virtual private cloud (VPC). For more information about how to create a vSwitch, see [Work with vSwitches](https://help.aliyun.com/document_detail/65387.html).
 //
 // @param request - MigrateAvailableZoneRequest
 //
@@ -39744,6 +40096,10 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -39814,11 +40170,11 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- or **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- or **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ModifyAuditLogFilterRequest
 //
@@ -39899,11 +40255,11 @@ func (client *Client) ModifyAuditLogFilterWithOptions(request *ModifyAuditLogFil
 //
 // Description:
 //
-//   The instance must be in the running state when you call this operation.
+//	  The instance must be in the running state when you call this operation.
 //
-// 	- This operation is applicable only to **general-purpose local-disk*	- or **dedicated local-disk*	- instances.
+//		- This operation is applicable only to **general-purpose local-disk*	- or **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ModifyAuditLogFilterRequest
 //
@@ -39925,9 +40281,9 @@ func (client *Client) ModifyAuditLogFilter(request *ModifyAuditLogFilterRequest)
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ModifyAuditPolicyRequest
 //
@@ -40016,9 +40372,9 @@ func (client *Client) ModifyAuditPolicyWithOptions(request *ModifyAuditPolicyReq
 //
 // Description:
 //
-//   This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
+//	  This operation is applicable only to **general-purpose local-disk*	- and **dedicated local-disk*	- instances.
 //
-// 	- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
+//		- You can call this operation up to 30 times per minute. To call this operation at a higher frequency, use a Logstore. For more information, see [Manage a Logstore](https://help.aliyun.com/document_detail/48990.html).
 //
 // @param request - ModifyAuditPolicyRequest
 //
@@ -40308,9 +40664,9 @@ func (client *Client) ModifyDBInstanceConfig(request *ModifyDBInstanceConfigRequ
 //
 // You can modify the connection strings and ports of the following instances:
 //
-// 	- You can modify the connection strings of instances that use local or cloud disks.
+//   - You can modify the connection strings of instances that use local or cloud disks.
 //
-// 	- You can only modify the ports of instances that use cloud disks.
+//   - You can only modify the ports of instances that use cloud disks.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -40401,9 +40757,9 @@ func (client *Client) ModifyDBInstanceConnectionStringWithOptions(request *Modif
 //
 // You can modify the connection strings and ports of the following instances:
 //
-// 	- You can modify the connection strings of instances that use local or cloud disks.
+//   - You can modify the connection strings of instances that use local or cloud disks.
 //
-// 	- You can only modify the ports of instances that use cloud disks.
+//   - You can only modify the ports of instances that use cloud disks.
 //
 // @param request - ModifyDBInstanceConnectionStringRequest
 //
@@ -40726,9 +41082,9 @@ func (client *Client) ModifyDBInstanceMaintainTime(request *ModifyDBInstanceMain
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- A replica set or sharded cluster instance is used.
+//   - A replica set or sharded cluster instance is used.
 //
-// 	- MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
+//   - MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -40809,9 +41165,9 @@ func (client *Client) ModifyDBInstanceMonitorWithOptions(request *ModifyDBInstan
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- A replica set or sharded cluster instance is used.
+//   - A replica set or sharded cluster instance is used.
 //
-// 	- MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
+//   - MongoDB 3.4 (the latest minor version) or MongoDB 4.0 is selected.
 //
 // @param request - ModifyDBInstanceMonitorRequest
 //
@@ -40835,9 +41191,9 @@ func (client *Client) ModifyDBInstanceMonitor(request *ModifyDBInstanceMonitorRe
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The network of the instance is in hybrid access mode.
+//   - The network of the instance is in hybrid access mode.
 //
 // >  This operation is supported by replica set instances and sharded cluster instances. This operation is not supported by standalone instances.
 //
@@ -40922,9 +41278,9 @@ func (client *Client) ModifyDBInstanceNetExpireTimeWithOptions(request *ModifyDB
 //
 // Before you call this operation, make sure that the instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The network of the instance is in hybrid access mode.
+//   - The network of the instance is in hybrid access mode.
 //
 // >  This operation is supported by replica set instances and sharded cluster instances. This operation is not supported by standalone instances.
 //
@@ -41071,11 +41427,11 @@ func (client *Client) ModifyDBInstanceNetworkType(request *ModifyDBInstanceNetwo
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The instance is in the running state.
+//   - The instance is in the running state.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The engine version of the instance is 3.4 or 4.0.
+//   - The engine version of the instance is 3.4 or 4.0.
 //
 // >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
 //
@@ -41158,11 +41514,11 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 //
 // Before you call this operation, make sure that the following requirements are met:
 //
-// 	- The instance is in the running state.
+//   - The instance is in the running state.
 //
-// 	- The instance is a replica set instance.
+//   - The instance is a replica set instance.
 //
-// 	- The engine version of the instance is 3.4 or 4.0.
+//   - The engine version of the instance is 3.4 or 4.0.
 //
 // >  When you enable or disable SSL encryption or update the SSL certificate, the instance restarts. We recommend that you call this operation during off-peak hours.
 //
@@ -41331,13 +41687,13 @@ func (client *Client) ModifyDBInstanceSpec(request *ModifyDBInstanceSpecRequest)
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- A replica set or sharded cluster instance is used.
+//   - A replica set or sharded cluster instance is used.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
-// 	- The instance uses local disks to store data.
+//   - The instance uses local disks to store data.
 //
-// 	- The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
+//   - The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
 //
 // @param request - ModifyDBInstanceTDERequest
 //
@@ -41432,13 +41788,13 @@ func (client *Client) ModifyDBInstanceTDEWithOptions(request *ModifyDBInstanceTD
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- A replica set or sharded cluster instance is used.
+//   - A replica set or sharded cluster instance is used.
 //
-// 	- The storage engine of the instance is WiredTiger.
+//   - The storage engine of the instance is WiredTiger.
 //
-// 	- The instance uses local disks to store data.
+//   - The instance uses local disks to store data.
 //
-// 	- The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
+//   - The database engine version of the instance is 4.0 or 4.2. If the database engine version is earlier than 4.0, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine.
 //
 // @param request - ModifyDBInstanceTDERequest
 //
@@ -41866,13 +42222,13 @@ func (client *Client) ModifyInstanceAutoRenewalAttribute(request *ModifyInstance
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The database engine version of the instance is 4.0 (with the minor version of mongodb_20190408_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine version of the instance.
+//   - The database engine version of the instance is 4.0 (with the minor version of mongodb_20190408_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine version of the instance.
 //
-// 	- The network type of the instance must be VPC. If the network type of the instance is classic network, you must call the [ModifyDBInstanceNetworkType](https://help.aliyun.com/document_detail/62138.html) operation to change the network type to VPC.
+//   - The network type of the instance must be VPC. If the network type of the instance is classic network, you must call the [ModifyDBInstanceNetworkType](https://help.aliyun.com/document_detail/62138.html) operation to change the network type to VPC.
 //
-// 	- You can only disable but not enable password-free access over VPC.
+//   - You can only disable but not enable password-free access over VPC.
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -41955,13 +42311,13 @@ func (client *Client) ModifyInstanceVpcAuthModeWithOptions(request *ModifyInstan
 //
 // Before you call this operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is a replica set or sharded cluster instance.
+//   - The instance is a replica set or sharded cluster instance.
 //
-// 	- The database engine version of the instance is 4.0 (with the minor version of mongodb_20190408_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine version of the instance.
+//   - The database engine version of the instance is 4.0 (with the minor version of mongodb_20190408_3.0.11 or later) or 4.2. You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/62010.html) operation to view the database engine version of the instance. If necessary, you can call the [UpgradeDBInstanceEngineVersion](https://help.aliyun.com/document_detail/67608.html) operation to upgrade the database engine version of the instance.
 //
-// 	- The network type of the instance must be VPC. If the network type of the instance is classic network, you must call the [ModifyDBInstanceNetworkType](https://help.aliyun.com/document_detail/62138.html) operation to change the network type to VPC.
+//   - The network type of the instance must be VPC. If the network type of the instance is classic network, you must call the [ModifyDBInstanceNetworkType](https://help.aliyun.com/document_detail/62138.html) operation to change the network type to VPC.
 //
-// 	- You can only disable but not enable password-free access over VPC.
+//   - You can only disable but not enable password-free access over VPC.
 //
 // @param request - ModifyInstanceVpcAuthModeRequest
 //
@@ -42265,9 +42621,9 @@ func (client *Client) ModifyNodeSpecBatch(request *ModifyNodeSpecBatchRequest) (
 //
 // Description:
 //
-//   The instance must be in the Running state when you call this operation.
+//	  The instance must be in the Running state when you call this operation.
 //
-// 	- If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the parameters that take effect only after the instance is restarted.
+//		- If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the parameters that take effect only after the instance is restarted.
 //
 // @param request - ModifyParametersRequest
 //
@@ -42356,9 +42712,9 @@ func (client *Client) ModifyParametersWithOptions(request *ModifyParametersReque
 //
 // Description:
 //
-//   The instance must be in the Running state when you call this operation.
+//	  The instance must be in the Running state when you call this operation.
 //
-// 	- If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the parameters that take effect only after the instance is restarted.
+//		- If you call this operation to modify specific instance parameters and the modification for part of the parameters can take effect only after an instance restart, the instance is automatically restarted after this operation is called. You can call the [DescribeParameterTemplates](https://help.aliyun.com/document_detail/67618.html) operation to query the parameters that take effect only after the instance is restarted.
 //
 // @param request - ModifyParametersRequest
 //
@@ -42788,9 +43144,9 @@ func (client *Client) ModifyTaskInfo(request *ModifyTaskInfoRequest) (_result *M
 //
 // Description:
 //
-//   This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
+//	  This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
 //
-// 	- To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+//		- To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
 //
 // @param request - ReleaseNodePrivateNetworkAddressRequest
 //
@@ -42875,9 +43231,9 @@ func (client *Client) ReleaseNodePrivateNetworkAddressWithOptions(request *Relea
 //
 // Description:
 //
-//   This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
+//	  This operation can be used to release the internal endpoint of a shard or Configserver node in a sharded cluster instance. For more information, see [Release the endpoint of a shard or Configserver node](https://help.aliyun.com/document_detail/134067.html).
 //
-// 	- To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
+//		- To release the public endpoint of a shard or Configserver node in a sharded cluster instance, you can call the [ReleasePublicNetworkAddress](https://help.aliyun.com/document_detail/67604.html) operation.
 //
 // @param request - ReleaseNodePrivateNetworkAddressRequest
 //
@@ -43327,9 +43683,9 @@ func (client *Client) RestartDBInstance(request *RestartDBInstanceRequest) (_res
 //
 // >  When you call this operation, the instance must meet the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a replica set or sharded cluster instance of the standard edition.
+//   - The instance is a replica set or sharded cluster instance of the standard edition.
 //
 // @param request - RestartNodeRequest
 //
@@ -43414,9 +43770,9 @@ func (client *Client) RestartNodeWithOptions(request *RestartNodeRequest, runtim
 //
 // >  When you call this operation, the instance must meet the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- The instance is a replica set or sharded cluster instance of the standard edition.
+//   - The instance is a replica set or sharded cluster instance of the standard edition.
 //
 // @param request - RestartNodeRequest
 //
@@ -43442,9 +43798,9 @@ func (client *Client) RestartNode(request *RestartNodeRequest) (_result *Restart
 //
 // >
 //
-// 	- This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+//   - This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
 //
-// 	- On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+//   - On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
 //
 // @param request - SwitchDBInstanceHARequest
 //
@@ -43533,9 +43889,9 @@ func (client *Client) SwitchDBInstanceHAWithOptions(request *SwitchDBInstanceHAR
 //
 // >
 //
-// 	- This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
+//   - This operation is applicable to replica set instances and sharded cluster instances, but cannot be performed on standalone instances.
 //
-// 	- On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
+//   - On replica set instances, the switch is performed between instances. On sharded cluster instances, the switch is performed between shards.
 //
 // @param request - SwitchDBInstanceHARequest
 //
@@ -43559,15 +43915,15 @@ func (client *Client) SwitchDBInstanceHA(request *SwitchDBInstanceHARequest) (_r
 //
 // If you have a large number of instances, you can create multiple tags, bind the tags to the instances, and filter the instances by tag.
 //
-// 	- A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+//   - A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
 //
-// 	- If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+//   - If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
 //
-// 	- If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+//   - If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
 //
-// 	- You can bind up to 20 tags to each instance.
+//   - You can bind up to 20 tags to each instance.
 //
-// 	- You can bind tags to up to 50 instances each time you call the operation.
+//   - You can bind tags to up to 50 instances each time you call the operation.
 //
 // @param request - TagResourcesRequest
 //
@@ -43658,15 +44014,15 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // If you have a large number of instances, you can create multiple tags, bind the tags to the instances, and filter the instances by tag.
 //
-// 	- A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
+//   - A tag consists of a key and a value. Each key must be unique in a region for an Alibaba Cloud account. Different keys can be mapped to the same value.
 //
-// 	- If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
+//   - If the tag that you specify does not exist, this tag is automatically created and bound to the specified instance.
 //
-// 	- If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
+//   - If a tag that has the same key is already bound to the instance, the new tag overwrites the existing tag.
 //
-// 	- You can bind up to 20 tags to each instance.
+//   - You can bind up to 20 tags to each instance.
 //
-// 	- You can bind tags to up to 50 instances each time you call the operation.
+//   - You can bind tags to up to 50 instances each time you call the operation.
 //
 // @param request - TagResourcesRequest
 //
@@ -43688,9 +44044,9 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Description:
 //
-//   The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+//	  The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
 //
-// 	- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
+//		- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
 //
 // @param request - TransferClusterBackupRequest
 //
@@ -43763,9 +44119,9 @@ func (client *Client) TransferClusterBackupWithOptions(request *TransferClusterB
 //
 // Description:
 //
-//   The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
+//	  The instance is an ApsaraDB for MongoDB sharded cluster instance that runs MongoDB 4.4 or later and uses enhanced SSDs (ESSDs) to store data.
 //
-// 	- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
+//		- You can call the TransferClusterBackup operation only for instances that are created before October 19, 2023 to switch the instances to the cluster backup mode. Cloud disk-based sharded cluster instances that are created on or after October 19, 2023 are set to the cluster backup mode by default.
 //
 // @param request - TransferClusterBackupRequest
 //
@@ -43791,11 +44147,11 @@ func (client *Client) TransferClusterBackup(request *TransferClusterBackupReques
 //
 // Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- Your instance has no unpaid billing method change orders.
+//   - Your instance has no unpaid billing method change orders.
 //
-// 	- The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//   - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
 // > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
 //
@@ -43902,11 +44258,11 @@ func (client *Client) TransformInstanceChargeTypeWithOptions(request *TransformI
 //
 // Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is in the Running state.
+//   - The instance is in the Running state.
 //
-// 	- Your instance has no unpaid billing method change orders.
+//   - Your instance has no unpaid billing method change orders.
 //
-// 	- The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//   - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
 // > To change the billing method of an instance whose instance type is no longer available to purchase, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to change the instance type first.
 //
@@ -43936,13 +44292,13 @@ func (client *Client) TransformInstanceChargeType(request *TransformInstanceChar
 //
 // Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is in the running state.
+//   - The instance is in the running state.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
-// 	- The instance has no unpaid subscription orders.
+//   - The instance has no unpaid subscription orders.
 //
-// 	- The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//   - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
 // >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
 //
@@ -44043,13 +44399,13 @@ func (client *Client) TransformToPrePaidWithOptions(request *TransformToPrePaidR
 //
 // Before you call this API operation, make sure that the ApsaraDB for MongoDB instance meets the following requirements:
 //
-// 	- The instance is in the running state.
+//   - The instance is in the running state.
 //
-// 	- The billing method of the instance is pay-as-you-go.
+//   - The billing method of the instance is pay-as-you-go.
 //
-// 	- The instance has no unpaid subscription orders.
+//   - The instance has no unpaid subscription orders.
 //
-// 	- The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
+//   - The instance type is available for purchase. For more information about unavailable instance types, see [Instance types](https://help.aliyun.com/document_detail/57141.html).
 //
 // >  To change the billing method of an instance whose instance type is no longer available to subscription, call the [ModifyDBInstanceSpec](https://help.aliyun.com/document_detail/61816.html) or [ModifyNodeSpec](https://help.aliyun.com/document_detail/61923.html) operation to first change the instance type.
 //
@@ -44075,9 +44431,9 @@ func (client *Client) TransformToPrePaid(request *TransformToPrePaidRequest) (_r
 //
 // >
 //
-// 	- You can remove up to 20 tags at a time.
+//   - You can remove up to 20 tags at a time.
 //
-// 	- If you remove a tag from all instances, the tag is automatically deleted.
+//   - If you remove a tag from all instances, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -44172,9 +44528,9 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // >
 //
-// 	- You can remove up to 20 tags at a time.
+//   - You can remove up to 20 tags at a time.
 //
-// 	- If you remove a tag from all instances, the tag is automatically deleted.
+//   - If you remove a tag from all instances, the tag is automatically deleted.
 //
 // @param request - UntagResourcesRequest
 //
