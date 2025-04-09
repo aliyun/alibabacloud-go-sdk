@@ -597,7 +597,8 @@ type CreateDBInstanceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum capacity for auto scaling.
 	//
 	// example:
@@ -681,6 +682,11 @@ func (s *CreateDBInstanceRequest) SetMultiZone(v []*CreateDBInstanceRequestMulti
 
 func (s *CreateDBInstanceRequest) SetRegionId(v string) *CreateDBInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetResourceGroupId(v string) *CreateDBInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -793,7 +799,8 @@ type CreateDBInstanceShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The maximum capacity for auto scaling.
 	//
 	// example:
@@ -877,6 +884,11 @@ func (s *CreateDBInstanceShrinkRequest) SetMultiZoneShrink(v string) *CreateDBIn
 
 func (s *CreateDBInstanceShrinkRequest) SetRegionId(v string) *CreateDBInstanceShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetResourceGroupId(v string) *CreateDBInstanceShrinkRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7113,6 +7125,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScaleMax)) {
