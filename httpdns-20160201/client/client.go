@@ -381,7 +381,9 @@ type GetAccountInfoResponseBodyAccountInfo struct {
 	// example:
 	//
 	// 1500000
-	MonthFreeCount *int32 `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
+	MonthFreeCount            *int32 `json:"MonthFreeCount,omitempty" xml:"MonthFreeCount,omitempty"`
+	MonthHttpAesResolveCount  *int64 `json:"MonthHttpAesResolveCount,omitempty" xml:"MonthHttpAesResolveCount,omitempty"`
+	MonthHttpsAesResolveCount *int64 `json:"MonthHttpsAesResolveCount,omitempty" xml:"MonthHttpsAesResolveCount,omitempty"`
 	// example:
 	//
 	// 3
@@ -446,6 +448,16 @@ func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthDohResolveCount(v int64)
 
 func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthFreeCount(v int32) *GetAccountInfoResponseBodyAccountInfo {
 	s.MonthFreeCount = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthHttpAesResolveCount(v int64) *GetAccountInfoResponseBodyAccountInfo {
+	s.MonthHttpAesResolveCount = &v
+	return s
+}
+
+func (s *GetAccountInfoResponseBodyAccountInfo) SetMonthHttpsAesResolveCount(v int64) *GetAccountInfoResponseBodyAccountInfo {
+	s.MonthHttpsAesResolveCount = &v
 	return s
 }
 
@@ -586,7 +598,8 @@ type GetResolveCountSummaryResponseBodyResolveSummary struct {
 	// example:
 	//
 	// 123
-	Http6 *int64 `json:"Http6,omitempty" xml:"Http6,omitempty"`
+	Http6   *int64  `json:"Http6,omitempty" xml:"Http6,omitempty"`
+	HttpAes *string `json:"HttpAes,omitempty" xml:"HttpAes,omitempty"`
 	// example:
 	//
 	// 123
@@ -594,7 +607,8 @@ type GetResolveCountSummaryResponseBodyResolveSummary struct {
 	// example:
 	//
 	// 123
-	Https6 *int64 `json:"Https6,omitempty" xml:"Https6,omitempty"`
+	Https6   *int64  `json:"Https6,omitempty" xml:"Https6,omitempty"`
+	HttpsAes *string `json:"HttpsAes,omitempty" xml:"HttpsAes,omitempty"`
 }
 
 func (s GetResolveCountSummaryResponseBodyResolveSummary) String() string {
@@ -620,6 +634,11 @@ func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttp6(v int64) *Ge
 	return s
 }
 
+func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttpAes(v string) *GetResolveCountSummaryResponseBodyResolveSummary {
+	s.HttpAes = &v
+	return s
+}
+
 func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttps(v int64) *GetResolveCountSummaryResponseBodyResolveSummary {
 	s.Https = &v
 	return s
@@ -627,6 +646,11 @@ func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttps(v int64) *Ge
 
 func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttps6(v int64) *GetResolveCountSummaryResponseBodyResolveSummary {
 	s.Https6 = &v
+	return s
+}
+
+func (s *GetResolveCountSummaryResponseBodyResolveSummary) SetHttpsAes(v string) *GetResolveCountSummaryResponseBodyResolveSummary {
+	s.HttpsAes = &v
 	return s
 }
 
@@ -928,7 +952,9 @@ type ListDomainsResponseBodyDomainInfosDomainInfo struct {
 	// example:
 	//
 	// www.example.com
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainName      *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	ResolveHttpAes  *int64  `json:"ResolveHttpAes,omitempty" xml:"ResolveHttpAes,omitempty"`
+	ResolveHttpsAes *int64  `json:"ResolveHttpsAes,omitempty" xml:"ResolveHttpsAes,omitempty"`
 	// example:
 	//
 	// 10
@@ -959,6 +985,16 @@ func (s ListDomainsResponseBodyDomainInfosDomainInfo) GoString() string {
 
 func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetDomainName(v string) *ListDomainsResponseBodyDomainInfosDomainInfo {
 	s.DomainName = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolveHttpAes(v int64) *ListDomainsResponseBodyDomainInfosDomainInfo {
+	s.ResolveHttpAes = &v
+	return s
+}
+
+func (s *ListDomainsResponseBodyDomainInfosDomainInfo) SetResolveHttpsAes(v int64) *ListDomainsResponseBodyDomainInfosDomainInfo {
+	s.ResolveHttpsAes = &v
 	return s
 }
 
@@ -1208,13 +1244,24 @@ func (client *Client) AddDomainWithOptions(request *AddDomainRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AddDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1272,13 +1319,24 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDomainResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1336,13 +1394,24 @@ func (client *Client) DescribeDomainsWithOptions(request *DescribeDomainsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - DescribeDomainsRequest
@@ -1381,13 +1450,24 @@ func (client *Client) GetAccountInfoWithOptions(runtime *util.RuntimeOptions) (_
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1443,13 +1523,24 @@ func (client *Client) GetResolveCountSummaryWithOptions(request *GetResolveCount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResolveCountSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResolveCountSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResolveCountSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1511,13 +1602,24 @@ func (client *Client) GetResolveStatisticsWithOptions(request *GetResolveStatist
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetResolveStatisticsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetResolveStatisticsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetResolveStatisticsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // @param request - GetResolveStatisticsRequest
@@ -1579,13 +1681,24 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDomainsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDomainsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -1645,13 +1758,24 @@ func (client *Client) RefreshResolveCacheWithOptions(tmpReq *RefreshResolveCache
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RefreshResolveCacheResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RefreshResolveCacheResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RefreshResolveCacheResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
