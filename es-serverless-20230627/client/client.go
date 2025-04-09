@@ -374,6 +374,7 @@ func (s *CreateAppResponseBody) SetResult(v *CreateAppResponseBodyResult) *Creat
 }
 
 type CreateAppResponseBodyResult struct {
+	AppId *string `json:"appId,omitempty" xml:"appId,omitempty"`
 	// example:
 	//
 	// es-serverless-cn-xxx
@@ -386,6 +387,11 @@ func (s CreateAppResponseBodyResult) String() string {
 
 func (s CreateAppResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAppResponseBodyResult) SetAppId(v string) *CreateAppResponseBodyResult {
+	s.AppId = &v
+	return s
 }
 
 func (s *CreateAppResponseBodyResult) SetInstaneId(v string) *CreateAppResponseBodyResult {
