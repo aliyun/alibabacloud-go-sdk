@@ -12,6 +12,7 @@ import (
 type CreateDocumentAnalyzeTaskRequest struct {
 	Document *CreateDocumentAnalyzeTaskRequestDocument `json:"document,omitempty" xml:"document,omitempty" type:"Struct"`
 	Output   *CreateDocumentAnalyzeTaskRequestOutput   `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Strategy *CreateDocumentAnalyzeTaskRequestStrategy `json:"strategy,omitempty" xml:"strategy,omitempty" type:"Struct"`
 }
 
 func (s CreateDocumentAnalyzeTaskRequest) String() string {
@@ -29,6 +30,11 @@ func (s *CreateDocumentAnalyzeTaskRequest) SetDocument(v *CreateDocumentAnalyzeT
 
 func (s *CreateDocumentAnalyzeTaskRequest) SetOutput(v *CreateDocumentAnalyzeTaskRequestOutput) *CreateDocumentAnalyzeTaskRequest {
 	s.Output = v
+	return s
+}
+
+func (s *CreateDocumentAnalyzeTaskRequest) SetStrategy(v *CreateDocumentAnalyzeTaskRequestStrategy) *CreateDocumentAnalyzeTaskRequest {
+	s.Strategy = v
 	return s
 }
 
@@ -81,6 +87,23 @@ func (s CreateDocumentAnalyzeTaskRequestOutput) GoString() string {
 
 func (s *CreateDocumentAnalyzeTaskRequestOutput) SetImageStorage(v string) *CreateDocumentAnalyzeTaskRequestOutput {
 	s.ImageStorage = &v
+	return s
+}
+
+type CreateDocumentAnalyzeTaskRequestStrategy struct {
+	EnableSemantic *bool `json:"enable_semantic,omitempty" xml:"enable_semantic,omitempty"`
+}
+
+func (s CreateDocumentAnalyzeTaskRequestStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDocumentAnalyzeTaskRequestStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDocumentAnalyzeTaskRequestStrategy) SetEnableSemantic(v bool) *CreateDocumentAnalyzeTaskRequestStrategy {
+	s.EnableSemantic = &v
 	return s
 }
 
@@ -2260,6 +2283,10 @@ func (client *Client) CreateDocumentAnalyzeTaskWithOptions(workspaceName *string
 
 	if !tea.BoolValue(util.IsUnset(request.Output)) {
 		body["output"] = request.Output
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		body["strategy"] = request.Strategy
 	}
 
 	req := &openapi.OpenApiRequest{
