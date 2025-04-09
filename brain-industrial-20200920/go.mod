@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/brain-industrial-20200920
+module github.com/alibabacloud-go/brain-industrial-20200920/v2
 
 go 1.14
 
