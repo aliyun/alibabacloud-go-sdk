@@ -1013,7 +1013,7 @@ type AddUserToDesktopGroupRequest struct {
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	// The IDs of the cloud computer shares.
 	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
-	// The regular users to whom you want to assign the desktop group.
+	// The IDs of the users to whom you want to grant permissions.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
 	// The ID of the region.
 	//
@@ -2890,30 +2890,48 @@ func (s *CancelCopyImageResponse) SetBody(v *CancelCopyImageResponseBody) *Cance
 }
 
 type CloneCenterPolicyRequest struct {
+	// The business type. Valid values:
+	//
+	// 	- 1: public cloud.
+	//
+	// 	- 8: commercial edition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The name of the cloud computer policy that you want to clone.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testPolicyGroupName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the cloud computer policy that you want to clone.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- desktop: cloud computers.
+	//
+	// 	- app: cloud applications.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2956,10 +2974,14 @@ func (s *CloneCenterPolicyRequest) SetResourceType(v string) *CloneCenterPolicyR
 }
 
 type CloneCenterPolicyResponseBody struct {
+	// The ID of the duplicated cloud computer policy.
+	//
 	// example:
 	//
 	// pg-gx2x1dhsmthe9****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -7923,7 +7945,7 @@ func (s *CreateCloudDriveUsersResponse) SetBody(v *CreateCloudDriveUsersResponse
 }
 
 type CreateConfigGroupRequest struct {
-	// The list of configuration groups.
+	// The scheduled task groups.
 	ConfigTimers []*CreateConfigGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	//
@@ -7957,11 +7979,11 @@ type CreateConfigGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the configuration group.
+	// The group type.
 	//
 	// Valid value:
 	//
-	// 	- Timer: the scheduled task type.
+	// 	- Timer: a scheduled task group.
 	//
 	// This parameter is required.
 	//
@@ -8010,13 +8032,13 @@ func (s *CreateConfigGroupRequest) SetType(v string) *CreateConfigGroupRequest {
 }
 
 type CreateConfigGroupRequestConfigTimers struct {
-	// Specifies whether to allow end users to configure scheduled tasks.
+	// Specifies whether to allow end users to configure the scheduled task.
 	//
 	// example:
 	//
 	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The CRON expression for the scheduled task.
+	// The cron expression specified in the scheduled task.
 	//
 	// >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\	- 1,2,3,4,5,6,7
 	//
@@ -8024,7 +8046,7 @@ type CreateConfigGroupRequestConfigTimers struct {
 	//
 	// 0 0 16 ? 	- 1,2,3,4,5,6,7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// Specifies whether to forcibly execute the scheduled task.
+	// Specifies whether to forcefully execute the scheduled task.
 	//
 	// example:
 	//
@@ -8049,23 +8071,23 @@ type CreateConfigGroupRequestConfigTimers struct {
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
+	// The process whitelist. If whitelisted processes are running, the scheduled task does not take effect.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// The reset operation for cloud computers.
+	// The reset option.
 	//
 	// Valid values:
 	//
-	// 	- RESET_TYPE_SYSTEM: resets only the system disks of cloud computers.
+	// 	- RESET_TYPE_SYSTEM: resets only the system disk.
 	//
-	// 	- RESET_TYPE_USER_DISK: resets only the data disks of cloud computers.
+	// 	- RESET_TYPE_USER_DISK: resets only the data disk.
 	//
-	// 	- RESET_TYPE_BOTH: resets the system disks and data disks of cloud computers.
+	// 	- RESET_TYPE_BOTH: resets the system and data disks.
 	//
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The type of the scheduled task.
+	// The scheduled task type.
 	//
 	// Valid values:
 	//
@@ -11408,7 +11430,8 @@ type CreateImageRequest struct {
 	// example:
 	//
 	// false
-	AutoCleanUserdata *bool `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
+	AutoCleanUserdata *bool     `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
+	DataSnapshotIds   []*string `json:"DataSnapshotIds,omitempty" xml:"DataSnapshotIds,omitempty" type:"Repeated"`
 	// The description of the custom image. The description must be 2 to 256 characters in length. It cannot start with `http://` or `https://`.
 	//
 	// example:
@@ -11473,6 +11496,11 @@ func (s CreateImageRequest) GoString() string {
 
 func (s *CreateImageRequest) SetAutoCleanUserdata(v bool) *CreateImageRequest {
 	s.AutoCleanUserdata = &v
+	return s
+}
+
+func (s *CreateImageRequest) SetDataSnapshotIds(v []*string) *CreateImageRequest {
+	s.DataSnapshotIds = v
 	return s
 }
 
@@ -14708,20 +14736,40 @@ func (s *DeleteCdsFileResponse) SetBody(v *DeleteCdsFileResponseBody) *DeleteCds
 }
 
 type DeleteCenterPolicyRequest struct {
+	// The business type.
+	//
+	// Valid values:
+	//
+	// 	- 1: public cloud.
+	//
+	// 	- 8: commercial edition.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// The policy IDs.
+	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- app: cloud applications.
+	//
+	// 	- desktop: cloud computers.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -14759,6 +14807,8 @@ func (s *DeleteCenterPolicyRequest) SetResourceType(v string) *DeleteCenterPolic
 }
 
 type DeleteCenterPolicyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 72E47B1E-6B11-5A11-A27C-7A80F866****
@@ -22152,6 +22202,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// m-gq15cq5ydlvwn****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	IsLdap  *bool   `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
 	// The keep-alive duration of a session after the session is disconnected. Valid values: 180000 (3 minutes) to 345600000 (4 days). Unit: milliseconds. If you set this parameter to 0, the session is permanently retained after it is disconnected.
 	//
 	// When a session is disconnected, take note of the following situations: If an end user does not resume the session within the specified duration, the session is closed and all unsaved data is cleared. If the end user resumes the session within the specified duration, the end user can continue to access data of the session.
@@ -22524,6 +22575,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetIdleDisconnectDurati
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetImageId(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetIsLdap(v bool) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.IsLdap = &v
 	return s
 }
 
@@ -25477,6 +25533,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	//
 	// m-4zfb6zj728hhr****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	IsLdap  *bool   `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
 	// The flag that is used to manage the cloud computer.
 	//
 	// Valid values:
@@ -25862,6 +25919,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetHostName(v string) *DescribeDe
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetImageId(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetIsLdap(v bool) *DescribeDesktopsResponseBodyDesktops {
+	s.IsLdap = &v
 	return s
 }
 
@@ -33233,7 +33295,7 @@ type DescribeOfficeSitesResponseBody struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The information about office networks.
+	// The office networks.
 	OfficeSites []*DescribeOfficeSitesResponseBodyOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -33348,13 +33410,13 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 2021-05-06T05:58Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The custom gateway.
+	// The custom endpoint of the access gateway.
 	//
 	// example:
 	//
 	// gw-****.com
 	CustomAccessPoint *string `json:"CustomAccessPoint,omitempty" xml:"CustomAccessPoint,omitempty"`
-	// The array of custom DNS addresses.
+	// The custom DNS addresses.
 	CustomDnsAddress []*string `json:"CustomDnsAddress,omitempty" xml:"CustomDnsAddress,omitempty" type:"Repeated"`
 	// The ID of the security group.
 	//
@@ -33390,7 +33452,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// http://ep-bp1s2vmbj55r5rzc****.epsrv-bp1pcfhpwvlpny01****.cn-hangzhou.privatelink.aliyuncs.com
 	DesktopVpcEndpoint *string `json:"DesktopVpcEndpoint,omitempty" xml:"DesktopVpcEndpoint,omitempty"`
-	// The array of DNS addresses in the AD domains.
+	// The DNS addresses for the AD domains.
 	DnsAddress []*string `json:"DnsAddress,omitempty" xml:"DnsAddress,omitempty" type:"Repeated"`
 	// The username of a Domain Name System (DNS) user.
 	//
@@ -33486,11 +33548,13 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// np-amtp8e8q1o9e4****
 	NetworkPackageId *string `json:"NetworkPackageId,omitempty" xml:"NetworkPackageId,omitempty"`
-	// The network version. App Streaming is supported by the new version. Valid values:
+	// The network version. The new version supports App Streaming.
 	//
-	// - DEFAULT: the legacy version
+	// Valid values:
 	//
-	// - NM: the new version
+	// 	- DEFAULT: the old version.
+	//
+	// 	- NM: the new version.
 	//
 	// example:
 	//
@@ -33550,7 +33614,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 2
 	RdsLicenseStatus *string `json:"RdsLicenseStatus,omitempty" xml:"RdsLicenseStatus,omitempty"`
-	// The amount of resources.
+	// The number of resources.
 	ResourceAmounts []*DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts `json:"ResourceAmounts,omitempty" xml:"ResourceAmounts,omitempty" type:"Repeated"`
 	// The security protection setting of the office network.
 	//
@@ -33606,7 +33670,7 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// REGISTERED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// An array of DNS addresses for AD subdomains.
+	// The DNS addresses for the AD subdomains.
 	SubDnsAddress []*string `json:"SubDnsAddress,omitempty" xml:"SubDnsAddress,omitempty" type:"Repeated"`
 	// The username of enterprise AD subdomain.
 	//
@@ -33632,13 +33696,13 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	//
 	// 0
 	TotalEdsCount *int64 `json:"TotalEdsCount,omitempty" xml:"TotalEdsCount,omitempty"`
-	// The number of pooled cloud computers in the cloud computer pool.
+	// The number of cloud computers in the cloud computer share.
 	//
 	// example:
 	//
 	// 0
 	TotalEdsCountForGroup *int64 `json:"TotalEdsCountForGroup,omitempty" xml:"TotalEdsCountForGroup,omitempty"`
-	// The total number of network cards.
+	// The number of network interface controllers (NICs).
 	//
 	// example:
 	//
@@ -34121,17 +34185,19 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSitesLogs) SetTimeStamp(v string) 
 }
 
 type DescribeOfficeSitesResponseBodyOfficeSitesResourceAmounts struct {
-	// The amount of resources.
+	// The number of resources.
 	//
 	// example:
 	//
 	// 1
 	Amount *int64 `json:"amount,omitempty" xml:"amount,omitempty"`
-	// The resource type. Valid values:
+	// The resource type.
 	//
-	// - desktop: cloud computers
+	// Valid values:
 	//
-	// - desktopGroup: shared cloud computers
+	// 	- desktop: the cloud computer.
+	//
+	// 	- DesktopGroup: the cloud computer share.
 	//
 	// example:
 	//
@@ -38081,24 +38147,48 @@ func (s *DescribeRenewalPriceResponse) SetBody(v *DescribeRenewalPriceResponseBo
 }
 
 type DescribeResourceByCenterPolicyIdRequest struct {
+	// The number of entries per page.
+	//
+	// 	- Maximum value: 100.
+	//
+	// 	- Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token.
+	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6l69tQX7yFxx6/4dbooBAOc
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The policy ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pg-53iyi2aar0nd6****
 	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// The service type.
+	//
+	// Valid values:
+	//
+	// 	- app: cloud applications.
+	//
+	// 	- resourceGroup: resource groups.
+	//
+	// 	- desktop: cloud computers.
+	//
+	// 	- desktopGroup: cloud computer shares.
+	//
 	// example:
 	//
 	// desktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// ecd-ia2zw38bi6cm7****
@@ -38139,18 +38229,25 @@ func (s *DescribeResourceByCenterPolicyIdRequest) SetResourceId(v string) *Descr
 }
 
 type DescribeResourceByCenterPolicyIdResponseBody struct {
+	// The total number of resources.
+	//
 	// example:
 	//
 	// 2
 	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 48174475-5EB2-5F99-A9E9-6F892D645****
-	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources.
 	ResourceModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelList `json:"ResourceModelList,omitempty" xml:"ResourceModelList,omitempty" type:"Repeated"`
 }
 
@@ -38183,68 +38280,102 @@ func (s *DescribeResourceByCenterPolicyIdResponseBody) SetResourceModelList(v []
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelList struct {
+	// The cloud applications.
 	AppModelList []*DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList `json:"AppModelList,omitempty" xml:"AppModelList,omitempty" type:"Repeated"`
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 64
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	// The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the cloud computer types supported by Alibaba Cloud Workspace.
+	//
 	// example:
 	//
 	// eds.enterprise_office.8c32g
 	DesktopType *string `json:"DesktopType,omitempty" xml:"DesktopType,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 0.125
 	GpuCount *float64 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// 2GiB
 	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	// The memory size. Unit: MiB.
+	//
 	// example:
 	//
 	// 10240
 	Memory *int64 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The OS type.
+	//
 	// example:
 	//
 	// Linux
 	OsType *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// postPaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// The service type.
+	//
 	// example:
 	//
 	// desktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The protocol type.
+	//
 	// example:
 	//
 	// ASP
 	ProtocolType *string `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-d7pasxsd3b9nhq**
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource group name.
+	//
 	// example:
 	//
 	// test
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The number of associated resource groups
+	//
 	// example:
 	//
 	// 10
 	ResourceGroupRelCount *int32 `json:"ResourceGroupRelCount,omitempty" xml:"ResourceGroupRelCount,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// ecd-7o96aa08fr****
-	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource name.
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The region ID of the resource.
+	//
 	// example:
 	//
 	// cn-shenzhen
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource status.
+	//
 	// example:
 	//
 	// Stopped
@@ -38350,10 +38481,14 @@ func (s *DescribeResourceByCenterPolicyIdResponseBodyResourceModelList) SetStatu
 }
 
 type DescribeResourceByCenterPolicyIdResponseBodyResourceModelListAppModelList struct {
+	// The application ID. This parameter is only applicable to cloud applications.
+	//
 	// example:
 	//
 	// 18
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application name.
+	//
 	// example:
 	//
 	// alipic-powergem
@@ -38631,7 +38766,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// 8051af8d01b5479bec9f5ddf02e4a8fbd0ab6e7e43f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -38683,27 +38818,15 @@ type DescribeSnapshotsRequest struct {
 	//
 	// user
 	SnapshotType *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	// The type of the disk for which the snapshot is created.
+	// The disk for which you want to create a snapshot.
 	//
 	// >  The value of this parameter is not case-sensitive.
 	//
 	// Valid values:
 	//
-	// 	- Data: data disk
+	// 	- Data: the data disk.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- System: system disk
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- System: the system disk.
 	//
 	// example:
 	//
@@ -38798,7 +38921,7 @@ type DescribeSnapshotsResponseBody struct {
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details of the queried snapshots.
+	// The snapshots.
 	Snapshots []*DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
 }
 
@@ -39221,7 +39344,7 @@ func (s *DescribeTimerGroupRequest) SetRegionId(v string) *DescribeTimerGroupReq
 }
 
 type DescribeTimerGroupResponseBody struct {
-	// The information about the configuration group.
+	// The information about the scheduled task group.
 	Data *DescribeTimerGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -39258,7 +39381,7 @@ type DescribeTimerGroupResponseBodyData struct {
 	BindCount *int32 `json:"BindCount,omitempty" xml:"BindCount,omitempty"`
 	// The number of bound resources.
 	BindCountMap map[string]*int32 `json:"BindCountMap,omitempty" xml:"BindCountMap,omitempty"`
-	// The scheduled task configuration groups.
+	// The scheduled task configurations.
 	ConfigTimers []*DescribeTimerGroupResponseBodyDataConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -40406,19 +40529,7 @@ type DescribeUsersInGroupRequest struct {
 	//
 	// 	- true (default)
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- false
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -40590,7 +40701,8 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	// example:
 	//
 	// alice
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The email address of the authorized user.
 	//
 	// example:
@@ -40640,7 +40752,8 @@ type DescribeUsersInGroupResponseBodyEndUsers struct {
 	// example:
 	//
 	// ud-i896ze8hazpvl****
-	UserDesktopId *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
+	UserDesktopId     *string `json:"UserDesktopId,omitempty" xml:"UserDesktopId,omitempty"`
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 	// Details about the seats of users.
 	UserSetPropertiesModels []*DescribeUsersInGroupResponseBodyEndUsersUserSetPropertiesModels `json:"UserSetPropertiesModels,omitempty" xml:"UserSetPropertiesModels,omitempty" type:"Repeated"`
 }
@@ -40670,6 +40783,11 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetDesktopName(v string) *Des
 
 func (s *DescribeUsersInGroupResponseBodyEndUsers) SetDisplayName(v string) *DescribeUsersInGroupResponseBodyEndUsers {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBodyEndUsers) SetDisplayNameNew(v string) *DescribeUsersInGroupResponseBodyEndUsers {
+	s.DisplayNameNew = &v
 	return s
 }
 
@@ -40710,6 +40828,11 @@ func (s *DescribeUsersInGroupResponseBodyEndUsers) SetExternalInfo(v *DescribeUs
 
 func (s *DescribeUsersInGroupResponseBodyEndUsers) SetUserDesktopId(v string) *DescribeUsersInGroupResponseBodyEndUsers {
 	s.UserDesktopId = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBodyEndUsers) SetUserPrincipalName(v string) *DescribeUsersInGroupResponseBodyEndUsers {
+	s.UserPrincipalName = &v
 	return s
 }
 
@@ -42184,13 +42307,13 @@ func (s *DownloadCdsFileResponse) SetBody(v *DownloadCdsFileResponseBody) *Downl
 }
 
 type ExportClientEventsRequest struct {
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud computer name.
 	//
 	// example:
 	//
@@ -42210,37 +42333,39 @@ type ExportClientEventsRequest struct {
 	//
 	// user01
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The type of event that you want to query. Valid values:
+	// The type of the event that you want to query. If you provide multiple values for EventTypes, the response will include events of all the specified types. If you provide no values for EventTypes and EventType, the response will include all events in the designated region.
 	//
-	// 	- DESKTOP_CONNECT: The desktop session is established.
+	// Valid values:
 	//
-	// 	- DESKTOP_DISCONNECT: The desktop session is disconnected.
+	// 	- DESKTOP_STOP: the shutdown event.
 	//
-	// 	- DESKTOP_REBOOT: The cloud desktop is restarted.
+	// 	- GET_LITE_CONNECTION_TICKET: the event of retrieving the connection ticket.
 	//
-	// 	- CLIENT_AD_LOGIN: The AD user logs on to the client.
+	// 	- DESKTOP_DISCONNECT: the session disconnection event.
 	//
-	// 	- GET_CONNECTION_TICKET: The request to connect to the cloud desktop is sent.
+	// 	- CLIENT_LOGIN: the user logon event.
 	//
-	// 	- DESKTOP_START: The cloud desktop is started.
+	// 	- GET_CONNECTION_TICKET: the connection credential retrieval event.
 	//
-	// 	- DESKTOP_STOP: The cloud desktop is stopped.
+	// 	- DESKTOP_REBOOT: the restart event.
 	//
-	// If you do not specify a value for this parameter, events of all types are queried.
+	// 	- DESKTOP_CONNECT: the session establishment event.
+	//
+	// 	- DESKTOP_START: the start event.
 	//
 	// example:
 	//
 	// CLIENT_LOGIN
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The types of event.
+	// The types of the events that you want to query. You can include multiple event types, and the response will return events matching the specified types or all events if none are specified.
 	EventTypes []*string `json:"EventTypes,omitempty" xml:"EventTypes,omitempty" type:"Repeated"`
-	// The language in which the cloud desktop is displayed in the console UI. You can export the list of cloud desktops in the specified language. Valid values:
+	// The language displayed on the frontend page. The backend uses this setting to define the language of exported files.
 	//
-	// 	- `zh-CN`: Simplified Chinese
+	// Valid values:
 	//
-	// 	- `en-GB`: English (United Kingdom)
+	// 	- zh-CN: Simplified Chinese.
 	//
-	// Default value: `zh-CN`.
+	// 	- en-GB: British English.
 	//
 	// example:
 	//
@@ -42256,19 +42381,19 @@ type ExportClientEventsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The ID of the workspace.
+	// The office network ID.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the workspace.
+	// The office network name.
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The ID of the region.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -42361,7 +42486,7 @@ type ExportClientEventsResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The download address from which you can export desktop groups.
+	// The download URL of the exported files.
 	//
 	// example:
 	//
@@ -46004,7 +46129,8 @@ type ListDirectoryUsersResponseBodyUsers struct {
 	// example:
 	//
 	// Alice
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
 	// The email address.
 	//
 	// example:
@@ -46022,7 +46148,8 @@ type ListDirectoryUsersResponseBodyUsers struct {
 	// example:
 	//
 	// 130********
-	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListDirectoryUsersResponseBodyUsers) String() string {
@@ -46043,6 +46170,11 @@ func (s *ListDirectoryUsersResponseBodyUsers) SetDisplayName(v string) *ListDire
 	return s
 }
 
+func (s *ListDirectoryUsersResponseBodyUsers) SetDisplayNameNew(v string) *ListDirectoryUsersResponseBodyUsers {
+	s.DisplayNameNew = &v
+	return s
+}
+
 func (s *ListDirectoryUsersResponseBodyUsers) SetEmail(v string) *ListDirectoryUsersResponseBodyUsers {
 	s.Email = &v
 	return s
@@ -46055,6 +46187,11 @@ func (s *ListDirectoryUsersResponseBodyUsers) SetEndUser(v string) *ListDirector
 
 func (s *ListDirectoryUsersResponseBodyUsers) SetPhone(v string) *ListDirectoryUsersResponseBodyUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *ListDirectoryUsersResponseBodyUsers) SetUserPrincipalName(v string) *ListDirectoryUsersResponseBodyUsers {
+	s.UserPrincipalName = &v
 	return s
 }
 
@@ -46761,15 +46898,17 @@ type ListOfficeSiteUsersResponseBodyUsers struct {
 	// example:
 	//
 	// Alice
-	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Email       *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	DisplayName    *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	DisplayNameNew *string `json:"DisplayNameNew,omitempty" xml:"DisplayNameNew,omitempty"`
+	Email          *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The name of the AD user.
 	//
 	// example:
 	//
 	// Alice
-	EndUser *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
-	Phone   *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	EndUser           *string `json:"EndUser,omitempty" xml:"EndUser,omitempty"`
+	Phone             *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
 }
 
 func (s ListOfficeSiteUsersResponseBodyUsers) String() string {
@@ -46790,6 +46929,11 @@ func (s *ListOfficeSiteUsersResponseBodyUsers) SetDisplayName(v string) *ListOff
 	return s
 }
 
+func (s *ListOfficeSiteUsersResponseBodyUsers) SetDisplayNameNew(v string) *ListOfficeSiteUsersResponseBodyUsers {
+	s.DisplayNameNew = &v
+	return s
+}
+
 func (s *ListOfficeSiteUsersResponseBodyUsers) SetEmail(v string) *ListOfficeSiteUsersResponseBodyUsers {
 	s.Email = &v
 	return s
@@ -46802,6 +46946,11 @@ func (s *ListOfficeSiteUsersResponseBodyUsers) SetEndUser(v string) *ListOfficeS
 
 func (s *ListOfficeSiteUsersResponseBodyUsers) SetPhone(v string) *ListOfficeSiteUsersResponseBodyUsers {
 	s.Phone = &v
+	return s
+}
+
+func (s *ListOfficeSiteUsersResponseBodyUsers) SetUserPrincipalName(v string) *ListOfficeSiteUsersResponseBodyUsers {
+	s.UserPrincipalName = &v
 	return s
 }
 
@@ -56171,28 +56320,62 @@ func (s *ModifyPolicyGroupResponse) SetBody(v *ModifyPolicyGroupResponseBody) *M
 }
 
 type ModifyResourceCenterPolicyRequest struct {
+	// The IDs of the cloud computer policies that you want to associate with cloud computers.
+	//
+	// >  You can specify up to one cloud computer policy that takes effect globally, and up to four cloud computer policies that apply to specific IP addresses. If multiple cloud computer policies are configured for global enforcement, only the earliest-associated policy will take effect
+	//
 	// This parameter is required.
 	PolicyGroupIds []*string `json:"PolicyGroupIds,omitempty" xml:"PolicyGroupIds,omitempty" type:"Repeated"`
+	// The policy type.
+	//
+	// Valid values:
+	//
+	// 	- general: a general policy.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// general
 	PolicyGroupType *string `json:"PolicyGroupType,omitempty" xml:"PolicyGroupType,omitempty"`
+	// The service type.
+	//
+	// Valid values:
+	//
+	// 	- app: cloud applications.
+	//
+	// 	- resourceGroup: resource groups.
+	//
+	// 	- desktop: cloud computers.
+	//
+	// 	- desktopGroup: cloud computer shares.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// desktop
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The resource IDs. You can specify up to 100 resource IDs.
+	//
 	// This parameter is required.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The region ID of the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	// The resource type.
+	//
+	// Valid values:
+	//
+	// 	- app: cloud applications.
+	//
+	// 	- desktop: cloud computers.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -56240,7 +56423,10 @@ func (s *ModifyResourceCenterPolicyRequest) SetResourceType(v string) *ModifyRes
 }
 
 type ModifyResourceCenterPolicyResponseBody struct {
+	// The modification results.
 	ModifyResults []*ModifyResourceCenterPolicyResponseBodyModifyResults `json:"ModifyResults,omitempty" xml:"ModifyResults,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 51592A88-0F2C-55E6-AD2C-2AD9C10D****
@@ -56266,10 +56452,14 @@ func (s *ModifyResourceCenterPolicyResponseBody) SetRequestId(v string) *ModifyR
 }
 
 type ModifyResourceCenterPolicyResponseBodyModifyResults struct {
+	// The verification result.
+	//
 	// example:
 	//
 	// true
 	CheckResult *bool `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// ecd-e254cpyt9bb*****
@@ -56324,7 +56514,7 @@ func (s *ModifyResourceCenterPolicyResponse) SetBody(v *ModifyResourceCenterPoli
 }
 
 type ModifyTimerGroupRequest struct {
-	// The configuration groups.
+	// The scheduled task groups.
 	ConfigTimers []*ModifyTimerGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
 	// The description of the configuration group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -56386,7 +56576,7 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// true
 	AllowClientSetting *bool `json:"AllowClientSetting,omitempty" xml:"AllowClientSetting,omitempty"`
-	// The CRON expression for the scheduled task.
+	// The cron expression specified in the scheduled task.
 	//
 	// >  The time must be in UTC. For example, for 24:00 (UTC+8), you must set the value to 0 0 16 ? \\	- 1,2,3,4,5,6,7.
 	//
@@ -56419,9 +56609,9 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// Shutdown
 	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
-	// The process whitelist. If whitelisted processes are running, the scheduled task upon inactivity does not take effect.
+	// The process whitelist. If whitelisted processes are running, the scheduled task triggered by inactivity does not take effect.
 	ProcessWhitelist []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
-	// The reset operation.
+	// The reset option.
 	//
 	// Valid values:
 	//
@@ -56435,7 +56625,7 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	//
 	// RESET_TYPE_SYSTEM
 	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	// The type of the scheduled task.
+	// The scheduled task type.
 	//
 	// Valid values:
 	//
@@ -57191,6 +57381,7 @@ func (s *RebootDesktopsResponse) SetBody(v *RebootDesktopsResponseBody) *RebootD
 }
 
 type RebuildDesktopsRequest struct {
+	AfterStatus *string `json:"AfterStatus,omitempty" xml:"AfterStatus,omitempty"`
 	// The cloud computer IDs. You can specify the IDs of 1 to 20 cloud computers.
 	//
 	// This parameter is required.
@@ -57263,6 +57454,11 @@ func (s RebuildDesktopsRequest) String() string {
 
 func (s RebuildDesktopsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RebuildDesktopsRequest) SetAfterStatus(v string) *RebuildDesktopsRequest {
+	s.AfterStatus = &v
+	return s
 }
 
 func (s *RebuildDesktopsRequest) SetDesktopId(v []*string) *RebuildDesktopsRequest {
@@ -67048,6 +67244,10 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		query["AutoCleanUserdata"] = request.AutoCleanUserdata
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataSnapshotIds)) {
+		query["DataSnapshotIds"] = request.DataSnapshotIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -68239,6 +68439,10 @@ func (client *Client) DeleteCdsFile(request *DeleteCdsFileRequest) (_result *Del
 	return _result, _err
 }
 
+// Summary:
+//
+// # Deletes a center policy
+//
 // @param request - DeleteCenterPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -68300,6 +68504,10 @@ func (client *Client) DeleteCenterPolicyWithOptions(request *DeleteCenterPolicyR
 
 }
 
+// Summary:
+//
+// # Deletes a center policy
+//
 // @param request - DeleteCenterPolicyRequest
 //
 // @return DeleteCenterPolicyResponse
@@ -82317,6 +82525,10 @@ func (client *Client) RebuildDesktopsWithOptions(request *RebuildDesktopsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AfterStatus)) {
+		query["AfterStatus"] = request.AfterStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
 		query["DesktopId"] = request.DesktopId
 	}
