@@ -6553,7 +6553,8 @@ type RetrieveRequest struct {
 	// 5pwe0m2g6t
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
 	// The input query prompt. The length and characters of the query are not limited.
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query        *string                        `json:"Query,omitempty" xml:"Query,omitempty"`
+	QueryHistory []*RetrieveRequestQueryHistory `json:"QueryHistory,omitempty" xml:"QueryHistory,omitempty" type:"Repeated"`
 	// Ranking configurations.
 	Rerank []*RetrieveRequestRerank `json:"Rerank,omitempty" xml:"Rerank,omitempty" type:"Repeated"`
 	// Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
@@ -6634,6 +6635,11 @@ func (s *RetrieveRequest) SetQuery(v string) *RetrieveRequest {
 	return s
 }
 
+func (s *RetrieveRequest) SetQueryHistory(v []*RetrieveRequestQueryHistory) *RetrieveRequest {
+	s.QueryHistory = v
+	return s
+}
+
 func (s *RetrieveRequest) SetRerank(v []*RetrieveRequestRerank) *RetrieveRequest {
 	s.Rerank = v
 	return s
@@ -6666,6 +6672,29 @@ func (s *RetrieveRequest) SetSearchFilters(v []map[string]*string) *RetrieveRequ
 
 func (s *RetrieveRequest) SetSparseSimilarityTopK(v int32) *RetrieveRequest {
 	s.SparseSimilarityTopK = &v
+	return s
+}
+
+type RetrieveRequestQueryHistory struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s RetrieveRequestQueryHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrieveRequestQueryHistory) GoString() string {
+	return s.String()
+}
+
+func (s *RetrieveRequestQueryHistory) SetContent(v string) *RetrieveRequestQueryHistory {
+	s.Content = &v
+	return s
+}
+
+func (s *RetrieveRequestQueryHistory) SetRole(v string) *RetrieveRequestQueryHistory {
+	s.Role = &v
 	return s
 }
 
@@ -6764,7 +6793,8 @@ type RetrieveShrinkRequest struct {
 	// 5pwe0m2g6t
 	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
 	// The input query prompt. The length and characters of the query are not limited.
-	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Query              *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	QueryHistoryShrink *string `json:"QueryHistory,omitempty" xml:"QueryHistory,omitempty"`
 	// Ranking configurations.
 	RerankShrink *string `json:"Rerank,omitempty" xml:"Rerank,omitempty"`
 	// Similarity Threshold The lowest similarity score of chunks that can be returned. This parameter is used to filter text chunks returned by the rank model. For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values: [0.01-1.00]. The priority of this parameter is greater than the similarity threshold configured for the knowledge base.
@@ -6842,6 +6872,11 @@ func (s *RetrieveShrinkRequest) SetIndexId(v string) *RetrieveShrinkRequest {
 
 func (s *RetrieveShrinkRequest) SetQuery(v string) *RetrieveShrinkRequest {
 	s.Query = &v
+	return s
+}
+
+func (s *RetrieveShrinkRequest) SetQueryHistoryShrink(v string) *RetrieveShrinkRequest {
+	s.QueryHistoryShrink = &v
 	return s
 }
 
@@ -11433,6 +11468,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 		request.ImagesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Images, tea.String("Images"), tea.String("simple"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryHistory)) {
+		request.QueryHistoryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryHistory, tea.String("QueryHistory"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rerank)) {
 		request.RerankShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rerank, tea.String("Rerank"), tea.String("json"))
 	}
@@ -11468,6 +11507,10 @@ func (client *Client) RetrieveWithOptions(WorkspaceId *string, tmpReq *RetrieveR
 
 	if !tea.BoolValue(util.IsUnset(request.Query)) {
 		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryHistoryShrink)) {
+		query["QueryHistory"] = request.QueryHistoryShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RerankShrink)) {
