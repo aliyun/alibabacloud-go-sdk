@@ -4175,6 +4175,296 @@ func (s *FinishAICoachTaskSessionResponse) SetBody(v *FinishAICoachTaskSessionRe
 	return s
 }
 
+type GetAICoachCheatDetectionRequest struct {
+	// example:
+	//
+	// 79e954faffe2415ebd18188ba787d78e
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionRequest) SetSessionId(v string) *GetAICoachCheatDetectionRequest {
+	s.SessionId = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBody struct {
+	// example:
+	//
+	// 1
+	CheatId *string `json:"cheatId,omitempty" xml:"cheatId,omitempty"`
+	// example:
+	//
+	// success
+	ErrorCode    *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// 2025-02-24 12:00:00
+	GmtCreate  *string                                         `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	ImageCheat *GetAICoachCheatDetectionResponseBodyImageCheat `json:"imageCheat,omitempty" xml:"imageCheat,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// true
+	//
+	// example:
+	//
+	// True
+	Success    *bool                                           `json:"success,omitempty" xml:"success,omitempty"`
+	VoiceCheat *GetAICoachCheatDetectionResponseBodyVoiceCheat `json:"voiceCheat,omitempty" xml:"voiceCheat,omitempty" type:"Struct"`
+}
+
+func (s GetAICoachCheatDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetCheatId(v string) *GetAICoachCheatDetectionResponseBody {
+	s.CheatId = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetErrorCode(v string) *GetAICoachCheatDetectionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetErrorMessage(v string) *GetAICoachCheatDetectionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetGmtCreate(v string) *GetAICoachCheatDetectionResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetImageCheat(v *GetAICoachCheatDetectionResponseBodyImageCheat) *GetAICoachCheatDetectionResponseBody {
+	s.ImageCheat = v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetRequestId(v string) *GetAICoachCheatDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetStatus(v int32) *GetAICoachCheatDetectionResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetSuccess(v bool) *GetAICoachCheatDetectionResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBody) SetVoiceCheat(v *GetAICoachCheatDetectionResponseBodyVoiceCheat) *GetAICoachCheatDetectionResponseBody {
+	s.VoiceCheat = v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBodyImageCheat struct {
+	// example:
+	//
+	// demo
+	Desc *string                                               `json:"desc,omitempty" xml:"desc,omitempty"`
+	List []*GetAICoachCheatDetectionResponseBodyImageCheatList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponseBodyImageCheat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBodyImageCheat) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyImageCheat) SetDesc(v string) *GetAICoachCheatDetectionResponseBodyImageCheat {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyImageCheat) SetList(v []*GetAICoachCheatDetectionResponseBodyImageCheatList) *GetAICoachCheatDetectionResponseBodyImageCheat {
+	s.List = v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyImageCheat) SetStatus(v int32) *GetAICoachCheatDetectionResponseBodyImageCheat {
+	s.Status = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBodyImageCheatList struct {
+	// example:
+	//
+	// 2025-03-22 10:05:07
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// https://demo.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponseBodyImageCheatList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBodyImageCheatList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyImageCheatList) SetTime(v string) *GetAICoachCheatDetectionResponseBodyImageCheatList {
+	s.Time = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyImageCheatList) SetUrl(v string) *GetAICoachCheatDetectionResponseBodyImageCheatList {
+	s.Url = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBodyVoiceCheat struct {
+	ComparisonList []*GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList `json:"comparisonList,omitempty" xml:"comparisonList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo
+	Desc         *string                                                       `json:"desc,omitempty" xml:"desc,omitempty"`
+	OriginalList []*GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList `json:"originalList,omitempty" xml:"originalList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheat) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheat) SetComparisonList(v []*GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) *GetAICoachCheatDetectionResponseBodyVoiceCheat {
+	s.ComparisonList = v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheat) SetDesc(v string) *GetAICoachCheatDetectionResponseBodyVoiceCheat {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheat) SetOriginalList(v []*GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList) *GetAICoachCheatDetectionResponseBodyVoiceCheat {
+	s.OriginalList = v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheat) SetStatus(v int32) *GetAICoachCheatDetectionResponseBodyVoiceCheat {
+	s.Status = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList struct {
+	// example:
+	//
+	// 2024-12-11 10:07:23
+	Time *string `json:"time,omitempty" xml:"time,omitempty"`
+	// example:
+	//
+	// https://demo.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) SetTime(v string) *GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList {
+	s.Time = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList) SetUrl(v string) *GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList {
+	s.Url = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList struct {
+	// example:
+	//
+	// https://demo.com
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList) SetUrl(v string) *GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList {
+	s.Url = &v
+	return s
+}
+
+type GetAICoachCheatDetectionResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAICoachCheatDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAICoachCheatDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachCheatDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachCheatDetectionResponse) SetHeaders(v map[string]*string) *GetAICoachCheatDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponse) SetStatusCode(v int32) *GetAICoachCheatDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAICoachCheatDetectionResponse) SetBody(v *GetAICoachCheatDetectionResponseBody) *GetAICoachCheatDetectionResponse {
+	s.Body = v
+	return s
+}
+
 type GetAICoachScriptRequest struct {
 	// example:
 	//
@@ -8964,6 +9254,7 @@ func (s *SelectResourceRequest) SetIdempotentId(v string) *SelectResourceRequest
 }
 
 type SelectResourceResponseBody struct {
+	AliyunUid *string `json:"aliyunUid,omitempty" xml:"aliyunUid,omitempty"`
 	// example:
 	//
 	// 0E8B1746-AE35-5C4B-A3A8-345B274AE32C
@@ -8977,6 +9268,11 @@ func (s SelectResourceResponseBody) String() string {
 
 func (s SelectResourceResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *SelectResourceResponseBody) SetAliyunUid(v string) *SelectResourceResponseBody {
+	s.AliyunUid = &v
+	return s
 }
 
 func (s *SelectResourceResponseBody) SetRequestId(v string) *SelectResourceResponseBody {
@@ -12224,6 +12520,81 @@ func (client *Client) FinishAICoachTaskSession(request *FinishAICoachTaskSession
 	headers := make(map[string]*string)
 	_result = &FinishAICoachTaskSessionResponse{}
 	_body, _err := client.FinishAICoachTaskSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询作弊检测详情
+//
+// @param request - GetAICoachCheatDetectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachCheatDetectionResponse
+func (client *Client) GetAICoachCheatDetectionWithOptions(request *GetAICoachCheatDetectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAICoachCheatDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		query["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAICoachCheatDetection"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/getCheatDetection"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAICoachCheatDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAICoachCheatDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询作弊检测详情
+//
+// @param request - GetAICoachCheatDetectionRequest
+//
+// @return GetAICoachCheatDetectionResponse
+func (client *Client) GetAICoachCheatDetection(request *GetAICoachCheatDetectionRequest) (_result *GetAICoachCheatDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachCheatDetectionResponse{}
+	_body, _err := client.GetAICoachCheatDetectionWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
