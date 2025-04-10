@@ -1047,7 +1047,8 @@ type CreateClusterRequestNodeGroups struct {
 	// emr-default
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// Node list
-	Nodes []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Nodes      []*CreateClusterRequestNodeGroupsNodes    `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	SystemDisk *CreateClusterRequestNodeGroupsSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
 	//
 	// example:
@@ -1092,6 +1093,11 @@ func (s *CreateClusterRequestNodeGroups) SetNodeGroupName(v string) *CreateClust
 
 func (s *CreateClusterRequestNodeGroups) SetNodes(v []*CreateClusterRequestNodeGroupsNodes) *CreateClusterRequestNodeGroups {
 	s.Nodes = v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroups) SetSystemDisk(v *CreateClusterRequestNodeGroupsSystemDisk) *CreateClusterRequestNodeGroups {
+	s.SystemDisk = v
 	return s
 }
 
@@ -1168,6 +1174,35 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetVSwitchId(v string) *CreateClus
 
 func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterRequestNodeGroupsNodes {
 	s.VpcId = &v
+	return s
+}
+
+type CreateClusterRequestNodeGroupsSystemDisk struct {
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateClusterRequestNodeGroupsSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterRequestNodeGroupsSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterRequestNodeGroupsSystemDisk) SetCategory(v string) *CreateClusterRequestNodeGroupsSystemDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroupsSystemDisk) SetPerformanceLevel(v string) *CreateClusterRequestNodeGroupsSystemDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroupsSystemDisk) SetSize(v int32) *CreateClusterRequestNodeGroupsSystemDisk {
+	s.Size = &v
 	return s
 }
 
@@ -2351,15 +2386,20 @@ func (s *CreateNetTestTaskResponse) SetBody(v *CreateNetTestTaskResponseBody) *C
 }
 
 type CreateNodeGroupRequest struct {
+	// Cluster ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i118191731740041623425
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Node ID.
+	//
 	// This parameter is required.
 	NodeGroup *CreateNodeGroupRequestNodeGroup `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty" type:"Struct"`
-	NodeUnit  map[string]interface{}           `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
+	// Node information
+	NodeUnit map[string]interface{} `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
 }
 
 func (s CreateNodeGroupRequest) String() string {
@@ -2386,32 +2426,55 @@ func (s *CreateNodeGroupRequest) SetNodeUnit(v map[string]interface{}) *CreateNo
 }
 
 type CreateNodeGroupRequestNodeGroup struct {
+	// Availability Zone
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-wulanchabu-b
 	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	// Image ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i191887641687336652616
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// Machine type
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mock-machine-type3
-	MachineType          *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	MachineType *string `json:"MachineType,omitempty" xml:"MachineType,omitempty"`
+	// Node group description
+	//
+	// example:
+	//
+	// describe for node group
 	NodeGroupDescription *string `json:"NodeGroupDescription,omitempty" xml:"NodeGroupDescription,omitempty"`
+	// Node group name
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PAI-LINGJUN
-	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	NodeGroupName *string                                    `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	SystemDisk    *CreateNodeGroupRequestNodeGroupSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// user data
+	//
+	// example:
+	//
+	// #!/bin/bash
+	//
+	// uptime
+	//
+	// echo "aaaaaaa" >> /tmp/ttttt20250110141010.sh
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s CreateNodeGroupRequestNodeGroup) String() string {
@@ -2447,21 +2510,60 @@ func (s *CreateNodeGroupRequestNodeGroup) SetNodeGroupName(v string) *CreateNode
 	return s
 }
 
+func (s *CreateNodeGroupRequestNodeGroup) SetSystemDisk(v *CreateNodeGroupRequestNodeGroupSystemDisk) *CreateNodeGroupRequestNodeGroup {
+	s.SystemDisk = v
+	return s
+}
+
 func (s *CreateNodeGroupRequestNodeGroup) SetUserData(v string) *CreateNodeGroupRequestNodeGroup {
 	s.UserData = &v
 	return s
 }
 
+type CreateNodeGroupRequestNodeGroupSystemDisk struct {
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateNodeGroupRequestNodeGroupSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNodeGroupRequestNodeGroupSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNodeGroupRequestNodeGroupSystemDisk) SetCategory(v string) *CreateNodeGroupRequestNodeGroupSystemDisk {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroupSystemDisk) SetPerformanceLevel(v string) *CreateNodeGroupRequestNodeGroupSystemDisk {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroupSystemDisk) SetSize(v int32) *CreateNodeGroupRequestNodeGroupSystemDisk {
+	s.Size = &v
+	return s
+}
+
 type CreateNodeGroupShrinkRequest struct {
+	// Cluster ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i118191731740041623425
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Node ID.
+	//
 	// This parameter is required.
 	NodeGroupShrink *string `json:"NodeGroup,omitempty" xml:"NodeGroup,omitempty"`
-	NodeUnitShrink  *string `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
+	// Node information
+	NodeUnitShrink *string `json:"NodeUnit,omitempty" xml:"NodeUnit,omitempty"`
 }
 
 func (s CreateNodeGroupShrinkRequest) String() string {
@@ -2488,15 +2590,19 @@ func (s *CreateNodeGroupShrinkRequest) SetNodeUnitShrink(v string) *CreateNodeGr
 }
 
 type CreateNodeGroupResponseBody struct {
+	// Node group ID
+	//
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// Node group name
+	//
 	// example:
 	//
 	// emr-default
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -2775,10 +2881,14 @@ func (s *DeleteClusterResponse) SetBody(v *DeleteClusterResponseBody) *DeleteClu
 }
 
 type DeleteNodeGroupRequest struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i114444141733395242745
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Node Group ID
+	//
 	// example:
 	//
 	// i121824791737080429819
@@ -2804,7 +2914,7 @@ func (s *DeleteNodeGroupRequest) SetNodeGroupId(v string) *DeleteNodeGroupReques
 }
 
 type DeleteNodeGroupResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -3164,6 +3274,8 @@ func (s *DescribeClusterResponse) SetBody(v *DescribeClusterResponseBody) *Descr
 }
 
 type DescribeDiagnosticResultRequest struct {
+	// Diagnostic ID
+	//
 	// example:
 	//
 	// diag-i151942361720577788844
@@ -3184,32 +3296,48 @@ func (s *DescribeDiagnosticResultRequest) SetDiagnosticId(v string) *DescribeDia
 }
 
 type DescribeDiagnosticResultResponseBody struct {
+	// Cluster ID
+	//
 	// example:
 	//
 	// i118913031696573280136
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Device creation time.
+	//
 	// example:
 	//
 	// 2024-06-15T10:17:56
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// Diagnostic ID
+	//
 	// example:
 	//
 	// diag-i155363241720059671316
-	DiagnosticId      *string       `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+	DiagnosticId *string `json:"DiagnosticId,omitempty" xml:"DiagnosticId,omitempty"`
+	// Diagnostic Information
 	DiagnosticResults []interface{} `json:"DiagnosticResults,omitempty" xml:"DiagnosticResults,omitempty" type:"Repeated"`
+	// Diagnostic State
+	//
 	// example:
 	//
 	// Fault
 	DiagnosticState *string `json:"DiagnosticState,omitempty" xml:"DiagnosticState,omitempty"`
+	// Diagnostic Type
+	//
 	// example:
 	//
 	// CheckByAiJobLogs
 	DiagnosticType *string `json:"DiagnosticType,omitempty" xml:"DiagnosticType,omitempty"`
+	// End time of node anomaly issues. Represented according to the ISO8601 standard, in a timezone-aware format, formatted as yyyy-MM-ddTHH:mm:ss+0800
+	//
 	// example:
 	//
 	// 2024-06-11T10:00:30
-	EndTime *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// List of Node IDs
 	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8F065DDD-6996-5973-9691-9EC57BD0072E
@@ -4589,7 +4717,8 @@ type DescribeNodeResponseBody struct {
 	// example:
 	//
 	// 2022-09-30T03:35:53Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Disks      []*DescribeNodeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// Expiration time
 	//
 	// example:
@@ -4658,7 +4787,7 @@ type DescribeNodeResponseBody struct {
 	//
 	// AC4F0004-7BCE-52E0-891B-CAC7D64E3368
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源组ID
+	// Resource group ID
 	//
 	// example:
 	//
@@ -4669,7 +4798,16 @@ type DescribeNodeResponseBody struct {
 	// example:
 	//
 	// sag42ckf4jx
-	Sn       *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// The script by user defined
+	//
+	// example:
+	//
+	// #!/bin/bash
+	//
+	// uptime
+	//
+	// echo "aaaaaaa" >> /tmp/ttttt20250110141010.sh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 	// Zone ID
 	//
@@ -4699,6 +4837,11 @@ func (s *DescribeNodeResponseBody) SetClusterName(v string) *DescribeNodeRespons
 
 func (s *DescribeNodeResponseBody) SetCreateTime(v string) *DescribeNodeResponseBody {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBody) SetDisks(v []*DescribeNodeResponseBodyDisks) *DescribeNodeResponseBody {
+	s.Disks = v
 	return s
 }
 
@@ -4779,6 +4922,47 @@ func (s *DescribeNodeResponseBody) SetUserData(v string) *DescribeNodeResponseBo
 
 func (s *DescribeNodeResponseBody) SetZoneId(v string) *DescribeNodeResponseBody {
 	s.ZoneId = &v
+	return s
+}
+
+type DescribeNodeResponseBodyDisks struct {
+	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	DiskId           *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeNodeResponseBodyDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNodeResponseBodyDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNodeResponseBodyDisks) SetCategory(v string) *DescribeNodeResponseBodyDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBodyDisks) SetDiskId(v string) *DescribeNodeResponseBodyDisks {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBodyDisks) SetPerformanceLevel(v string) *DescribeNodeResponseBodyDisks {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBodyDisks) SetSize(v int32) *DescribeNodeResponseBodyDisks {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeNodeResponseBodyDisks) SetType(v string) *DescribeNodeResponseBodyDisks {
+	s.Type = &v
 	return s
 }
 
@@ -6176,8 +6360,13 @@ func (s *ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds) SetSubnet
 
 type ExtendClusterRequestIpAllocationPolicyNodePolicy struct {
 	// Bond information
-	Bonds    []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
-	Hostname *string                                                  `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Bonds []*ExtendClusterRequestIpAllocationPolicyNodePolicyBonds `json:"Bonds,omitempty" xml:"Bonds,omitempty" type:"Repeated"`
+	// Host name
+	//
+	// example:
+	//
+	// i22c11282.eu95sqa
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// Node ID
 	//
 	// example:
@@ -6243,21 +6432,80 @@ func (s *ExtendClusterRequestIpAllocationPolicyNodePolicyBonds) SetSubnet(v stri
 }
 
 type ExtendClusterRequestNodeGroups struct {
-	Amount        *int64    `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	AutoRenew     *bool     `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	ChargeType    *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	Hostnames     []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	LoginPassword *string   `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// Number of nodes to purchase. Value range: 0–500.
+	//
+	// If the Amount parameter is set to 0, no nodes will be purchased. Existing nodes will be used for scaling.
+	//
+	// If the Amount parameter is set to 1–500, the specified number of nodes will be purchased and used for scaling.
+	//
+	// Default value: 0
+	//
+	// example:
+	//
+	// 4
+	Amount *int64 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// Whether to enable auto-renewal for purchased nodes.
+	//
+	// Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
+	//
+	// Valid values:
+	//
+	// True: Enable auto-renewal.
+	//
+	// False: Disable auto-renewal.
+	//
+	// Default value: False
+	//
+	// example:
+	//
+	// True
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// Billing method for nodes.
+	//
+	// This parameter takes effect only when the Amount parameter is set to a value other than 0.
+	//
+	// Valid values:
+	//
+	// PrePaid: Subscription (prepaid).
+	//
+	// PostPaid: Pay-as-you-go (postpaid).
+	//
+	// Default value: PrePaid
+	//
+	// example:
+	//
+	// PostPaid
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The hostnames of purchased nodes.
+	//
+	// This parameter takes effect only when the Amount parameter is set to a non-zero value.
+	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
+	// The login password of node.
+	//
+	// example:
+	//
+	// Addk(*78
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
 	// Node Group ID
 	//
 	// example:
 	//
 	// i16d4883a46cbadeb4bc9
-	NodeGroupId *string                                  `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	NodeTag     []*ExtendClusterRequestNodeGroupsNodeTag `json:"NodeTag,omitempty" xml:"NodeTag,omitempty" type:"Repeated"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// The tag of node
+	NodeTag []*ExtendClusterRequestNodeGroupsNodeTag `json:"NodeTag,omitempty" xml:"NodeTag,omitempty" type:"Repeated"`
 	// List of Nodes
-	Nodes  []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	Period *int64                                 `json:"Period,omitempty" xml:"Period,omitempty"`
+	Nodes []*ExtendClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Purchase duration for nodes (unit: month).
+	//
+	// Valid values: 1, 6, 12, 24, 36, 48.
+	//
+	// Conditions: This parameter takes effect only when the Amount parameter is set to a non-zero value and the ChargeType is PrePaid.
+	//
+	// example:
+	//
+	// 6
+	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// Custom Data
 	//
 	// example:
@@ -6265,9 +6513,19 @@ type ExtendClusterRequestNodeGroups struct {
 	// #!/bin/sh
 	//
 	// echo "Hello World. The time is now $(date -R)!" | tee /root/userdata_test.txt
-	UserData  *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// VSwitch Id
+	//
+	// example:
+	//
+	// vsw-0jly2d537ejphyq6h13ke
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	VpcId     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// Vpc Id
+	//
+	// example:
+	//
+	// vpc-zq1econyv63tvyci5hefw
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	// Zone ID
 	//
 	// example:
@@ -6350,7 +6608,17 @@ func (s *ExtendClusterRequestNodeGroups) SetZoneId(v string) *ExtendClusterReque
 }
 
 type ExtendClusterRequestNodeGroupsNodeTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag.
+	//
+	// example:
+	//
+	// my_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag.
+	//
+	// example:
+	//
+	// my_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6591,9 +6859,15 @@ type ListClusterNodesRequest struct {
 	// example:
 	//
 	// ng-ec3c96ff0aa4c60d
-	NodeGroupId     *string                        `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListClusterNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
+	// resource group id
+	//
+	// example:
+	//
+	// rg-xxkxkllss
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// tag information
+	Tags []*ListClusterNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListClusterNodesRequest) String() string {
@@ -6635,7 +6909,17 @@ func (s *ListClusterNodesRequest) SetTags(v []*ListClusterNodesRequestTags) *Lis
 }
 
 type ListClusterNodesRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
+	// example:
+	//
+	// aa_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// aa_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -6698,6 +6982,11 @@ func (s *ListClusterNodesResponseBody) SetRequestId(v string) *ListClusterNodesR
 }
 
 type ListClusterNodesResponseBodyNodes struct {
+	// product code
+	//
+	// example:
+	//
+	// bcccluster
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// Creation time
 	//
@@ -6728,7 +7017,12 @@ type ListClusterNodesResponseBodyNodes struct {
 	// example:
 	//
 	// i190297201669099844192
-	ImageId   *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// image name
+	//
+	// example:
+	//
+	// Alinux3_x86_AMD_R_Host_D3_E3_24.13.00_UEFI_N_250121
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	// Machine type
 	//
@@ -6767,16 +7061,22 @@ type ListClusterNodesResponseBodyNodes struct {
 	// example:
 	//
 	// sn_tOuUk
-	Sn     *string                                  `json:"Sn,omitempty" xml:"Sn,omitempty"`
-	Tags   []*ListClusterNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	TaskId *string                                  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// 专有网络交换机ID
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// tag information
+	Tags []*ListClusterNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// task id
+	//
+	// example:
+	//
+	// i28ddkdkkdkdd
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1mxqhw8o20tgv3xk47h
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// 专有网络ID
+	// VPC ID
 	//
 	// example:
 	//
@@ -6949,7 +7249,17 @@ func (s *ListClusterNodesResponseBodyNodesNetworks) SetVpdId(v string) *ListClus
 }
 
 type ListClusterNodesResponseBodyNodesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
+	// example:
+	//
+	// aa_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// aa_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7018,8 +7328,9 @@ type ListClustersRequest struct {
 	// example:
 	//
 	// rg-aek2bg6wyoox6jq
-	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListClustersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// tag info
+	Tags []*ListClustersRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListClustersRequest) String() string {
@@ -7051,7 +7362,17 @@ func (s *ListClustersRequest) SetTags(v []*ListClustersRequestTags) *ListCluster
 }
 
 type ListClustersRequestTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
+	// example:
+	//
+	// key_aa
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// value_aa
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7185,8 +7506,9 @@ type ListClustersResponseBodyClusters struct {
 	// example:
 	//
 	// rg-aek2ajbjoloa23q
-	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListClustersResponseBodyClustersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// tag information
+	Tags []*ListClustersResponseBodyClustersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Task ID
 	//
 	// example:
@@ -7296,7 +7618,17 @@ func (s *ListClustersResponseBodyClusters) SetVpcId(v string) *ListClustersRespo
 }
 
 type ListClustersResponseBodyClustersTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
+	// example:
+	//
+	// aa_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// aa_value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7645,8 +7977,9 @@ type ListFreeNodesRequest struct {
 	// example:
 	//
 	// rg-acfmxno4vh5muoq
-	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListFreeNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Tag information
+	Tags []*ListFreeNodesRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListFreeNodesRequest) String() string {
@@ -7688,10 +8021,17 @@ func (s *ListFreeNodesRequest) SetTags(v []*ListFreeNodesRequestTags) *ListFreeN
 }
 
 type ListFreeNodesRequestTags struct {
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
 	// example:
 	//
-	// 129
+	// key_aa
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// value_aa
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -7754,6 +8094,11 @@ func (s *ListFreeNodesResponseBody) SetRequestId(v string) *ListFreeNodesRespons
 }
 
 type ListFreeNodesResponseBodyNodes struct {
+	// Product Code
+	//
+	// example:
+	//
+	// bccluster_eflocomputing_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// Creation time
 	//
@@ -7784,7 +8129,12 @@ type ListFreeNodesResponseBodyNodes struct {
 	// example:
 	//
 	// e01-cn-7pp2x193801
-	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Node status
+	//
+	// example:
+	//
+	// Unused
 	OperatingState *string `json:"OperatingState,omitempty" xml:"OperatingState,omitempty"`
 	// Resource group ID
 	//
@@ -7797,7 +8147,8 @@ type ListFreeNodesResponseBodyNodes struct {
 	// example:
 	//
 	// sn_pozkHBgicd
-	Sn   *string                               `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	Sn *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
+	// Tags Info
 	Tags []*ListFreeNodesResponseBodyNodesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Availability zone ID
 	//
@@ -7871,7 +8222,17 @@ func (s *ListFreeNodesResponseBodyNodes) SetZoneId(v string) *ListFreeNodesRespo
 }
 
 type ListFreeNodesResponseBodyNodesTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The key of tag object
+	//
+	// example:
+	//
+	// aa_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of tag object
+	//
+	// example:
+	//
+	// aa_vakye
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -11871,15 +12232,28 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateNodeGroupRequest struct {
+	// Node group name
+	//
 	// example:
 	//
 	// test-update
 	NewNodeGroupName *string `json:"NewNodeGroupName,omitempty" xml:"NewNodeGroupName,omitempty"`
+	// Node group ID
+	//
 	// example:
 	//
 	// i120021051733814190732
 	NodeGroupId *string `json:"NodeGroupId,omitempty" xml:"NodeGroupId,omitempty"`
-	UserData    *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	// user data
+	//
+	// example:
+	//
+	// #!/bin/bash
+	//
+	// uptime
+	//
+	// echo "aaaaaaa" >> /tmp/ttttt20250110141010.sh
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
 }
 
 func (s UpdateNodeGroupRequest) String() string {
@@ -12595,7 +12969,11 @@ func (client *Client) CreateNetTestTask(request *CreateNetTestTaskRequest) (_res
 
 // Summary:
 //
-// 创建集群下的节点分组
+// # Create Node Group under Cluster
+//
+// Description:
+//
+// # An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
 //
 // @param tmpReq - CreateNodeGroupRequest
 //
@@ -12666,7 +13044,11 @@ func (client *Client) CreateNodeGroupWithOptions(tmpReq *CreateNodeGroupRequest,
 
 // Summary:
 //
-// 创建集群下的节点分组
+// # Create Node Group under Cluster
+//
+// Description:
+//
+// # An interface for creating a session, which returns the frontend EndPoint and initiates a periodic task to track the session status
 //
 // @param request - CreateNodeGroupRequest
 //
@@ -12842,7 +13224,11 @@ func (client *Client) DeleteCluster(request *DeleteClusterRequest) (_result *Del
 
 // Summary:
 //
-// 删除节点分组
+// # Delete Node Group
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - DeleteNodeGroupRequest
 //
@@ -12899,7 +13285,11 @@ func (client *Client) DeleteNodeGroupWithOptions(request *DeleteNodeGroupRequest
 
 // Summary:
 //
-// 删除节点分组
+// # Delete Node Group
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - DeleteNodeGroupRequest
 //
@@ -12988,7 +13378,11 @@ func (client *Client) DescribeCluster(request *DescribeClusterRequest) (_result 
 
 // Summary:
 //
-// 诊断任务查询接口
+// # Diagnostic Task Query Interface
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - DescribeDiagnosticResultRequest
 //
@@ -13041,7 +13435,11 @@ func (client *Client) DescribeDiagnosticResultWithOptions(request *DescribeDiagn
 
 // Summary:
 //
-// 诊断任务查询接口
+// # Diagnostic Task Query Interface
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - DescribeDiagnosticResultRequest
 //
@@ -15458,7 +15856,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新节点分组
+// # Update Node Group
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - UpdateNodeGroupRequest
 //
@@ -15519,7 +15921,11 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 
 // Summary:
 //
-// 更新节点分组
+// # Update Node Group
+//
+// Description:
+//
+// An interface for creating a session, which returns the front-end EndPoint and initiates a periodic task to track the session status.
 //
 // @param request - UpdateNodeGroupRequest
 //
