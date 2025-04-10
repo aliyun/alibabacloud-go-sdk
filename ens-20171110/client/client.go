@@ -19897,7 +19897,8 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) String() string {
@@ -19980,6 +19981,51 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetStandby(v
 
 func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetStatus(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress) SetTags(v *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddress {
+	s.Tags = v
+	return s
+}
+
+type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags struct {
+	Tag []*DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v []*DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) SetTagKey(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) SetTagValue(v string) *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -35037,7 +35083,8 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeNatGatewaysResponseBodyNatGatewaysTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -35091,6 +35138,11 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetSpec(v string) *Describe
 
 func (s *DescribeNatGatewaysResponseBodyNatGateways) SetStatus(v string) *DescribeNatGatewaysResponseBodyNatGateways {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetTags(v []*DescribeNatGatewaysResponseBodyNatGatewaysTags) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.Tags = v
 	return s
 }
 
@@ -35148,6 +35200,29 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetIpAddress(v strin
 
 func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetUsingStatus(v string) *DescribeNatGatewaysResponseBodyNatGatewaysIpLists {
 	s.UsingStatus = &v
+	return s
+}
+
+type DescribeNatGatewaysResponseBodyNatGatewaysTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGatewaysTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysTags) SetTagKey(v string) *DescribeNatGatewaysResponseBodyNatGatewaysTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGatewaysTags) SetTagValue(v string) *DescribeNatGatewaysResponseBodyNatGatewaysTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -37002,7 +37077,8 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeNetworksResponseBodyNetworksNetworkTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The list of vSwitches in the network.
 	VSwitchIds *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
@@ -37075,6 +37151,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetStatus(v string) *Descr
 	return s
 }
 
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetTags(v *DescribeNetworksResponseBodyNetworksNetworkTags) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetVSwitchIds(v *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.VSwitchIds = v
 	return s
@@ -37094,6 +37175,46 @@ func (s DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) GoString() str
 
 func (s *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds) SetRouteTableId(v []*string) *DescribeNetworksResponseBodyNetworksNetworkRouteTableIds {
 	s.RouteTableId = v
+	return s
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkTags struct {
+	Tag []*DescribeNetworksResponseBodyNetworksNetworkTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkTags) SetTag(v []*DescribeNetworksResponseBodyNetworksNetworkTagsTag) *DescribeNetworksResponseBodyNetworksNetworkTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworksResponseBodyNetworksNetworkTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkTagsTag) SetTagKey(v string) *DescribeNetworksResponseBodyNetworksNetworkTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetworkTagsTag) SetTagValue(v string) *DescribeNetworksResponseBodyNetworksNetworkTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -45691,7 +45812,8 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitch struct {
 	// example:
 	//
 	// Pending
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -45749,6 +45871,11 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetStatus(v string) *Des
 	return s
 }
 
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetTags(v *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetVSwitchId(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
 	s.VSwitchId = &v
 	return s
@@ -45756,6 +45883,46 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetVSwitchId(v string) *
 
 func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitch) SetVSwitchName(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitch {
 	s.VSwitchName = &v
+	return s
+}
+
+type DescribeVSwitchesResponseBodyVSwitchesVSwitchTags struct {
+	Tag []*DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) SetTag(v []*DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) SetTagKey(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) SetTagValue(v string) *DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag {
+	s.TagValue = &v
 	return s
 }
 
