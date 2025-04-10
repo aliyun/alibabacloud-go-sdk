@@ -193,7 +193,7 @@ func (s *BatchEnrollAccountsResponse) SetBody(v *BatchEnrollAccountsResponseBody
 }
 
 type CreateAccountFactoryBaselineRequest struct {
-	// The baseline items.
+	// An array that contains the baseline items.
 	//
 	// You can call the [ListAccountFactoryBaselineItems](~~ListAccountFactoryBaselineItems~~) operation to query a list of baseline items supported by the account factory in Cloud Governance Center.
 	BaselineItems []*CreateAccountFactoryBaselineRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
@@ -464,9 +464,9 @@ type EnrollAccountRequest struct {
 	//
 	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// An array that contains baseline items.
+	// The array that contains baseline items.
 	//
-	// If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
+	// If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
 	BaselineItems []*EnrollAccountRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The display name of the account.
 	//
@@ -591,7 +591,7 @@ type EnrollAccountRequestBaselineItems struct {
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to skip the baseline item. Valid values:
+	// Whether to skip the baseline item. Valid values:
 	//
 	// 	- false: The baseline item is not skipped.
 	//
@@ -699,9 +699,9 @@ type EnrollAccountShrinkRequest struct {
 	//
 	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// An array that contains baseline items.
+	// The array that contains baseline items.
 	//
-	// If this parameter is specified, the configurations of the baseline items are merged with the baseline of the specified account. The configurations of the same baseline items are subject to the configuration of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configuration of the account baseline to the account.
+	// If this parameter is specified, the configurations of the baseline items are merged with the baseline applied to the specified account. The configurations of the same baseline items are subject to the configurations of this parameter. We recommend that you leave this parameter empty and configure the `BaselineId` parameter to specify an account baseline and apply the configurations of the account baseline to the account.
 	BaselineItems []*EnrollAccountShrinkRequestBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The display name of the account.
 	//
@@ -826,7 +826,7 @@ type EnrollAccountShrinkRequestBaselineItems struct {
 	//
 	// ACS-BP_ACCOUNT_FACTORY_VPC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether to skip the baseline item. Valid values:
+	// Whether to skip the baseline item. Valid values:
 	//
 	// 	- false: The baseline item is not skipped.
 	//
@@ -1189,7 +1189,7 @@ type GetEnrolledAccountResponseBody struct {
 	//
 	// afb-bp1adadfadsf***
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// An array that contains baseline items.
+	// The array that contains baseline items.
 	BaselineItems []*GetEnrolledAccountResponseBodyBaselineItems `json:"BaselineItems,omitempty" xml:"BaselineItems,omitempty" type:"Repeated"`
 	// The time when the account was created.
 	//
@@ -1223,7 +1223,7 @@ type GetEnrolledAccountResponseBody struct {
 	//
 	// true
 	Initialized *bool `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// The input parameters that are used when the account was registered.
+	// Input parameters used to create an account.
 	Inputs *GetEnrolledAccountResponseBodyInputs `json:"Inputs,omitempty" xml:"Inputs,omitempty" type:"Struct"`
 	// The ID of the management account of the resource directory to which the account belongs.
 	//
@@ -1263,7 +1263,7 @@ type GetEnrolledAccountResponseBody struct {
 	//
 	// Finished
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information about the account was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -1355,7 +1355,7 @@ func (s *GetEnrolledAccountResponseBody) SetUpdateTime(v string) *GetEnrolledAcc
 }
 
 type GetEnrolledAccountResponseBodyBaselineItems struct {
-	// The configurations of the baseline item.
+	// The configuration of the baseline item.
 	//
 	// example:
 	//
@@ -1500,8 +1500,9 @@ type GetEnrolledAccountResponseBodyInputs struct {
 	// example:
 	//
 	// 19534534552*****
-	PayerAccountUid *int64                                     `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
-	Tag             []*GetEnrolledAccountResponseBodyInputsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
+	// The tag.
+	Tag []*GetEnrolledAccountResponseBodyInputsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetEnrolledAccountResponseBodyInputs) String() string {
@@ -1607,7 +1608,17 @@ func (s *GetEnrolledAccountResponseBodyInputsBaselineItems) SetVersion(v string)
 }
 
 type GetEnrolledAccountResponseBodyInputsTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// product
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// governance
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1700,9 +1711,9 @@ func (s *GetEnrolledAccountResponse) SetBody(v *GetEnrolledAccountResponseBody) 
 }
 
 type ListAccountFactoryBaselineItemsRequest struct {
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
-	// Valid values: 1 to 100. Default value: 10
+	// Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -2144,7 +2155,7 @@ func (s *ListAccountFactoryBaselinesResponse) SetBody(v *ListAccountFactoryBasel
 }
 
 type ListEnrolledAccountsRequest struct {
-	// The maximum number of entries to return on each page.
+	// The maximum number of entries per page.
 	//
 	// Valid values: 1 to 100. Default value: 10.
 	//
@@ -2152,7 +2163,9 @@ type ListEnrolledAccountsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
+	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
+	//
+	// You do not need to specify this parameter for the first request.
 	//
 	// example:
 	//
@@ -2190,7 +2203,7 @@ func (s *ListEnrolledAccountsRequest) SetRegionId(v string) *ListEnrolledAccount
 }
 
 type ListEnrolledAccountsResponseBody struct {
-	// The accounts.
+	// The enrolled accounts.
 	EnrolledAccounts []*ListEnrolledAccountsResponseBodyEnrolledAccounts `json:"EnrolledAccounts,omitempty" xml:"EnrolledAccounts,omitempty" type:"Repeated"`
 	// The returned value of NextToken is a pagination token, which can be used in the next request to retrieve a new page of results.
 	//
@@ -2236,13 +2249,13 @@ type ListEnrolledAccountsResponseBodyEnrolledAccounts struct {
 	//
 	// 19534534552*****
 	AccountUid *int64 `json:"AccountUid,omitempty" xml:"AccountUid,omitempty"`
-	// The baseline ID.
+	// The ID of the baseline that is implemented.
 	//
 	// example:
 	//
 	// afb-bp1durvn3lgqe28v****
 	BaselineId *string `json:"BaselineId,omitempty" xml:"BaselineId,omitempty"`
-	// The time at which the account was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -2260,31 +2273,31 @@ type ListEnrolledAccountsResponseBodyEnrolledAccounts struct {
 	//
 	// fd-5ESoku****
 	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
-	// The ID of the billing account.
+	// The ID of the settlement account.
 	//
 	// example:
 	//
 	// 13161210500*****
 	PayerAccountUid *int64 `json:"PayerAccountUid,omitempty" xml:"PayerAccountUid,omitempty"`
-	// The creation status of the account. Valid values:
+	// The creation status. Valid values:
 	//
-	// 	- Pending: The account is waiting to be created.
+	// 	- Pending: The account is pending to be created.
 	//
 	// 	- Running: The account is being created.
 	//
 	// 	- Finished: The account is created.
 	//
-	// 	- Failed: The account failed to be created.
+	// 	- Failed: The account fails to be created.
 	//
 	// 	- Scheduling: The account is being scheduled.
 	//
-	// 	- ScheduleFailed: The account failed to be scheduled.
+	// 	- ScheduleFailed: The account fails to be scheduled.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information about the account was updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -2474,8 +2487,16 @@ type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadata struct {
 	// Security
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The description of the check item.
+	//
+	// example:
+	//
+	// If you use an AccessKey pair of an Alibaba Cloud account, you have full permissions on the resources of the account. You cannot set limits on the account, such as setting limits on source IP addresses or access duration. If the AccessKey pair is leaked, resources within the account are exposed to high security risks. If your Alibaba Cloud account has an existing AccessKey pair, the check result is Non-compliant.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The display name of the check item.
+	//
+	// example:
+	//
+	// An AccessKey pair is enabled for the Alibaba Cloud account.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The ID of the metadata.
 	//
@@ -2631,18 +2652,34 @@ type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMeta
 	// UnusedAccessKeyInRamUser
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
 	// The fixing cost.
+	//
+	// example:
+	//
+	// You are not charged for this operation.
 	CostDescription *string `json:"CostDescription,omitempty" xml:"CostDescription,omitempty"`
 	// The description of the fixing item.
 	//
 	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	//
+	// example:
+	//
+	// Console logon is enabled for the RAM user. The RAM user owns an AccessKey pair that is never used.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The content of the fixing items.
 	Guidance []*ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance `json:"Guidance,omitempty" xml:"Guidance,omitempty" type:"Repeated"`
 	// The usage notes of the fixing item.
+	//
+	// example:
+	//
+	// The BestPracticesForIdentityAndPermissions compliance package is enabled in Cloud Config to check the settings and usage of the AccessKey pair, Alibaba Cloud account, and RAM users.
 	Notice *string `json:"Notice,omitempty" xml:"Notice,omitempty"`
 	// The fixing suggestion.
 	//
 	// >  This parameter is returned only if the value of `RemediationType` is `Analysis`.
+	//
+	// example:
+	//
+	// Console logon is enabled for the RAM user and the RAM user owns an AccessKey pair, while the AccessKey pair has never been used by the RAM user. We recommend that you disable the AccessKey pair for 90 days. If no related issue occurs during this period, you can delete the AccessKey pair.
 	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
 }
 
@@ -2686,6 +2723,10 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediation
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMetadataRemediationActionsGuidance struct {
 	// The display name of the fixing button.
+	//
+	// example:
+	//
+	// Manual fixing
 	ButtonName *string `json:"ButtonName,omitempty" xml:"ButtonName,omitempty"`
 	// The navigation URL of the fixing button.
 	//
@@ -2694,8 +2735,16 @@ type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataRemediationMeta
 	// https://ram.console.aliyun.com/users
 	ButtonRef *string `json:"ButtonRef,omitempty" xml:"ButtonRef,omitempty"`
 	// The fixing procedure.
+	//
+	// example:
+	//
+	// You must replace the AccessKey pair of your Alibaba Cloud account. To do so, perform the following steps:</br>1. Log on to the RAM console. In the left-side navigation pane, choose Identities > Users. On the Users page, click Create User.</br>2. On the Create User page, enter a logon name and select OpenAPI Access for the Access Mode parameter.</br>3. After the RAM user is created, save the AccessKey pair. Then, find the user that you created on the Users page and click Add Permissions in the Actions column. In the Grant Permission panel, find the AdministratorAccess policy and attach it to the RAM user.</br>4. In a program, replace the AccessKey pair of the Alibaba Cloud account with the AccessKey pair of the RAM user created in the previous step and check whether the program runs as expected in the test environment.</br>5. If the program runs as expected, publish the program to the production environment and disable the previous AccessKey pair of your Alibaba Cloud account. Then, check whether the program runs as expected.</br>6. If the program runs as expected, delete the disabled AccessKey pair after the specified period of time, such as 90 days.
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The title of the fixing procedure.
+	//
+	// example:
+	//
+	// Scenario 3: AccessKey pair that is used within the last 90 days
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -2747,6 +2796,10 @@ func (s *ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMet
 
 type ListEvaluationMetadataResponseBodyEvaluationMetadataMetadataResourceMetadataResourcePropertyMetadata struct {
 	// The display name of the resource property.
+	//
+	// example:
+	//
+	// AccessKey Pair Last Used At
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The name of the resource property.
 	//
@@ -2815,7 +2868,7 @@ func (s *ListEvaluationMetadataResponse) SetBody(v *ListEvaluationMetadataRespon
 }
 
 type ListEvaluationMetricDetailsRequest struct {
-	// The account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
+	// The Alibaba Cloud account ID of the member. This parameter takes effect only when a multi-account governance maturity check is performed.
 	//
 	// example:
 	//
@@ -2846,7 +2899,8 @@ type ListEvaluationMetricDetailsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s ListEvaluationMetricDetailsRequest) String() string {
@@ -2879,6 +2933,11 @@ func (s *ListEvaluationMetricDetailsRequest) SetNextToken(v string) *ListEvaluat
 
 func (s *ListEvaluationMetricDetailsRequest) SetRegionId(v string) *ListEvaluationMetricDetailsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetSnapshotId(v string) *ListEvaluationMetricDetailsRequest {
+	s.SnapshotId = &v
 	return s
 }
 
@@ -2923,15 +2982,15 @@ func (s *ListEvaluationMetricDetailsResponseBody) SetResources(v []*ListEvaluati
 }
 
 type ListEvaluationMetricDetailsResponseBodyResources struct {
-	// 合规状态。取值：
+	// The compliance status of the resource. Valid values:
 	//
-	// - NonCompliant：不合规。
+	// 	- NonCompliant: non-compliant.
 	//
-	// - Excluded：已忽略。
+	// 	- Excluded: ignored.
 	//
-	// - PendingExclusion：已忽略未生效。
+	// 	- PendingExclusion: to be ignored.
 	//
-	// - PendingInclusion：已取消忽略未生效。
+	// 	- PendingInclusion: to be unignored.
 	//
 	// example:
 	//
@@ -2951,13 +3010,17 @@ type ListEvaluationMetricDetailsResponseBodyResources struct {
 	//
 	// RecentUnloginRamUser
 	ResourceClassification *string `json:"ResourceClassification,omitempty" xml:"ResourceClassification,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// 26435103783237****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// The name of the resource.
+	//
+	// example:
+	//
+	// test
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The ID of the Alibaba Cloud account that owns the resource.
 	//
@@ -3031,6 +3094,10 @@ type ListEvaluationMetricDetailsResponseBodyResourcesResourceProperties struct {
 	// DisplayName
 	PropertyName *string `json:"PropertyName,omitempty" xml:"PropertyName,omitempty"`
 	// The value of the resource attribute.
+	//
+	// example:
+	//
+	// example
 	PropertyValue *string `json:"PropertyValue,omitempty" xml:"PropertyValue,omitempty"`
 }
 
@@ -3088,12 +3155,15 @@ type ListEvaluationResultsRequest struct {
 	//
 	// 176618589410****
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The filter conditions.
+	Filters []*ListEvaluationResultsRequestFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
 func (s ListEvaluationResultsRequest) String() string {
@@ -3109,8 +3179,53 @@ func (s *ListEvaluationResultsRequest) SetAccountId(v int64) *ListEvaluationResu
 	return s
 }
 
+func (s *ListEvaluationResultsRequest) SetFilters(v []*ListEvaluationResultsRequestFilters) *ListEvaluationResultsRequest {
+	s.Filters = v
+	return s
+}
+
 func (s *ListEvaluationResultsRequest) SetRegionId(v string) *ListEvaluationResultsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsRequest) SetSnapshotId(v string) *ListEvaluationResultsRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+type ListEvaluationResultsRequestFilters struct {
+	// The key of the filter condition. Valid values:
+	//
+	// 	- ResourceId: the resource ID.
+	//
+	// 	- ResourceName: the name of the resource.
+	//
+	// 	- ResourceType: the resource type.
+	//
+	// example:
+	//
+	// ResourceId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The list of filter condition values.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListEvaluationResultsRequestFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsRequestFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsRequestFilters) SetKey(v string) *ListEvaluationResultsRequestFilters {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEvaluationResultsRequestFilters) SetValues(v []*string) *ListEvaluationResultsRequestFilters {
+	s.Values = v
 	return s
 }
 
@@ -3565,7 +3680,8 @@ type RunEvaluationRequest struct {
 	// example:
 	//
 	// 176618589410****
-	AccountId *int64    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The IDs of the check items to be checked.
 	MetricIds []*string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -3619,7 +3735,8 @@ type RunEvaluationShrinkRequest struct {
 	// example:
 	//
 	// 176618589410****
-	AccountId       *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The IDs of the check items to be checked.
 	MetricIdsShrink *string `json:"MetricIds,omitempty" xml:"MetricIds,omitempty"`
 	// The region ID.
 	//
@@ -3968,13 +4085,24 @@ func (client *Client) BatchEnrollAccountsWithOptions(request *BatchEnrollAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchEnrollAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchEnrollAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchEnrollAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4046,13 +4174,24 @@ func (client *Client) CreateAccountFactoryBaselineWithOptions(request *CreateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4110,13 +4249,24 @@ func (client *Client) DeleteAccountFactoryBaselineWithOptions(request *DeleteAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4218,13 +4368,24 @@ func (client *Client) EnrollAccountWithOptions(tmpReq *EnrollAccountRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnrollAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnrollAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnrollAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4288,13 +4449,24 @@ func (client *Client) GetAccountFactoryBaselineWithOptions(request *GetAccountFa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4352,13 +4524,24 @@ func (client *Client) GetEnrolledAccountWithOptions(request *GetEnrolledAccountR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetEnrolledAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetEnrolledAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetEnrolledAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4432,13 +4615,24 @@ func (client *Client) ListAccountFactoryBaselineItemsWithOptions(request *ListAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccountFactoryBaselineItemsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccountFactoryBaselineItemsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccountFactoryBaselineItemsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4500,13 +4694,24 @@ func (client *Client) ListAccountFactoryBaselinesWithOptions(request *ListAccoun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListAccountFactoryBaselinesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListAccountFactoryBaselinesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListAccountFactoryBaselinesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4568,13 +4773,24 @@ func (client *Client) ListEnrolledAccountsWithOptions(request *ListEnrolledAccou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEnrolledAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEnrolledAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEnrolledAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4632,13 +4848,24 @@ func (client *Client) ListEvaluationMetadataWithOptions(request *ListEvaluationM
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationMetadataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationMetadataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationMetadataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4694,6 +4921,10 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4708,13 +4939,24 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationMetricDetailsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationMetricDetailsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationMetricDetailsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4737,7 +4979,7 @@ func (client *Client) ListEvaluationMetricDetails(request *ListEvaluationMetricD
 
 // Summary:
 //
-// Queries the result and status of a governance maturity check.
+// Queries the result and status of a governance check.
 //
 // @param request - ListEvaluationResultsRequest
 //
@@ -4754,8 +4996,16 @@ func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationRe
 		query["AccountId"] = request.AccountId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
+		query["SnapshotId"] = request.SnapshotId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -4772,18 +5022,29 @@ func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationResultsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationResultsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationResultsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the result and status of a governance maturity check.
+// Queries the result and status of a governance check.
 //
 // @param request - ListEvaluationResultsRequest
 //
@@ -4844,13 +5105,24 @@ func (client *Client) ListEvaluationScoreHistoryWithOptions(request *ListEvaluat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListEvaluationScoreHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEvaluationScoreHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEvaluationScoreHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4922,13 +5194,24 @@ func (client *Client) RunEvaluationWithOptions(tmpReq *RunEvaluationRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RunEvaluationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RunEvaluationResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RunEvaluationResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -4998,13 +5281,24 @@ func (client *Client) UpdateAccountFactoryBaselineWithOptions(request *UpdateAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateAccountFactoryBaselineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateAccountFactoryBaselineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateAccountFactoryBaselineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
