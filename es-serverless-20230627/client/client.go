@@ -83,7 +83,9 @@ type CreateAppRequest struct {
 	QuotaInfo      *CreateAppRequestQuotaInfo        `json:"quotaInfo,omitempty" xml:"quotaInfo,omitempty" type:"Struct"`
 	RegionId       *string                           `json:"regionId,omitempty" xml:"regionId,omitempty"`
 	Scenario       *string                           `json:"scenario,omitempty" xml:"scenario,omitempty"`
+	Tags           []*CreateAppRequestTags           `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	Version        *string                           `json:"version,omitempty" xml:"version,omitempty"`
+	ClientToken    *string                           `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
 	DryRun         *bool                             `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
@@ -140,8 +142,18 @@ func (s *CreateAppRequest) SetScenario(v string) *CreateAppRequest {
 	return s
 }
 
+func (s *CreateAppRequest) SetTags(v []*CreateAppRequestTags) *CreateAppRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateAppRequest) SetVersion(v string) *CreateAppRequest {
 	s.Version = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetClientToken(v string) *CreateAppRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -344,6 +356,29 @@ func (s *CreateAppRequestQuotaInfo) SetCu(v int32) *CreateAppRequestQuotaInfo {
 
 func (s *CreateAppRequestQuotaInfo) SetStorage(v int32) *CreateAppRequestQuotaInfo {
 	s.Storage = &v
+	return s
+}
+
+type CreateAppRequestTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateAppRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequestTags) SetKey(v string) *CreateAppRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateAppRequestTags) SetValue(v string) *CreateAppRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -1014,8 +1049,9 @@ type GetAppResponseBodyResult struct {
 	// example:
 	//
 	// es-severless-test-app
-	AppName *string `json:"appName,omitempty" xml:"appName,omitempty"`
-	AppType *string `json:"appType,omitempty" xml:"appType,omitempty"`
+	AppName    *string `json:"appName,omitempty" xml:"appName,omitempty"`
+	AppType    *string `json:"appType,omitempty" xml:"appType,omitempty"`
+	ChargeType *string `json:"chargeType,omitempty" xml:"chargeType,omitempty"`
 	// example:
 	//
 	// 2022-08-15T11:20:52.370Z
@@ -1036,10 +1072,12 @@ type GetAppResponseBodyResult struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	Scenario *string `json:"scenario,omitempty" xml:"scenario,omitempty"`
 	// example:
 	//
 	// ACTIVE
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string                         `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   []*GetAppResponseBodyResultTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 7.10
@@ -1066,6 +1104,11 @@ func (s *GetAppResponseBodyResult) SetAppName(v string) *GetAppResponseBodyResul
 
 func (s *GetAppResponseBodyResult) SetAppType(v string) *GetAppResponseBodyResult {
 	s.AppType = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetChargeType(v string) *GetAppResponseBodyResult {
+	s.ChargeType = &v
 	return s
 }
 
@@ -1109,8 +1152,18 @@ func (s *GetAppResponseBodyResult) SetRegionId(v string) *GetAppResponseBodyResu
 	return s
 }
 
+func (s *GetAppResponseBodyResult) SetScenario(v string) *GetAppResponseBodyResult {
+	s.Scenario = &v
+	return s
+}
+
 func (s *GetAppResponseBodyResult) SetStatus(v string) *GetAppResponseBodyResult {
 	s.Status = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResult) SetTags(v []*GetAppResponseBodyResultTags) *GetAppResponseBodyResult {
+	s.Tags = v
 	return s
 }
 
@@ -1256,6 +1309,29 @@ func (s *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) SetGroupName(v stri
 
 func (s *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup) SetIps(v []*string) *GetAppResponseBodyResultPrivateNetworkWhiteIpGroup {
 	s.Ips = v
+	return s
+}
+
+type GetAppResponseBodyResultTags struct {
+	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAppResponseBodyResultTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppResponseBodyResultTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppResponseBodyResultTags) SetKey(v string) *GetAppResponseBodyResultTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetAppResponseBodyResultTags) SetValue(v string) *GetAppResponseBodyResultTags {
+	s.Value = &v
 	return s
 }
 
@@ -1981,6 +2057,7 @@ type ListAppsRequest struct {
 	//
 	// ACTIVE
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	Tags   *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
 func (s ListAppsRequest) String() string {
@@ -2023,6 +2100,11 @@ func (s *ListAppsRequest) SetPageSize(v int32) *ListAppsRequest {
 
 func (s *ListAppsRequest) SetStatus(v string) *ListAppsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListAppsRequest) SetTags(v string) *ListAppsRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -3901,6 +3983,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["clientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		query["dryRun"] = request.DryRun
 	}
@@ -3940,6 +4026,10 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, headers ma
 
 	if !tea.BoolValue(util.IsUnset(request.Scenario)) {
 		body["scenario"] = request.Scenario
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Version)) {
@@ -4808,6 +4898,10 @@ func (client *Client) ListAppsWithOptions(request *ListAppsRequest, headers map[
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
