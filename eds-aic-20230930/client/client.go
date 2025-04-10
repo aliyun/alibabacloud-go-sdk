@@ -4444,7 +4444,8 @@ type DescribeAndroidInstancesRequest struct {
 	// example:
 	//
 	// node_name
-	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeName      *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
 	// The sales mode.
 	//
 	// Valid values:
@@ -4564,6 +4565,11 @@ func (s *DescribeAndroidInstancesRequest) SetNodeId(v string) *DescribeAndroidIn
 
 func (s *DescribeAndroidInstancesRequest) SetNodeName(v string) *DescribeAndroidInstancesRequest {
 	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetOfficeSiteIds(v []*string) *DescribeAndroidInstancesRequest {
+	s.OfficeSiteIds = v
 	return s
 }
 
@@ -14457,6 +14463,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
 		query["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OfficeSiteIds)) {
+		query["OfficeSiteIds"] = request.OfficeSiteIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
