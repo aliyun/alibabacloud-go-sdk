@@ -7118,6 +7118,7 @@ type CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Request header value.
 	//
 	// example:
@@ -7141,6 +7142,11 @@ func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification
 
 func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetOperation(v string) *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetType(v string) *CreateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -7416,6 +7422,7 @@ type CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification s
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Response header value.
 	//
 	// example:
@@ -7439,6 +7446,11 @@ func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModificati
 
 func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetOperation(v string) *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetType(v string) *CreateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -28902,6 +28914,7 @@ type GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification s
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Request header value.
 	//
 	// example:
@@ -28925,6 +28938,11 @@ func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModificati
 
 func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) SetOperation(v string) *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification) SetType(v string) *GetHttpRequestHeaderModificationRuleResponseBodyRequestHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -29136,6 +29154,7 @@ type GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Response header value.
 	//
 	// example:
@@ -29159,6 +29178,11 @@ func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModifica
 
 func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) SetOperation(v string) *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification) SetType(v string) *GetHttpResponseHeaderModificationRuleResponseBodyResponseHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -40618,6 +40642,319 @@ func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *Lis
 	return s
 }
 
+type ListCertificatesByRecordRequest struct {
+	Detail *bool `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// This parameter is required.
+	RecordName *string `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890123
+	SiteId    *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	ValidOnly *bool  `json:"ValidOnly,omitempty" xml:"ValidOnly,omitempty"`
+}
+
+func (s ListCertificatesByRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesByRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesByRecordRequest) SetDetail(v bool) *ListCertificatesByRecordRequest {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordRequest) SetRecordName(v string) *ListCertificatesByRecordRequest {
+	s.RecordName = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordRequest) SetSiteId(v int64) *ListCertificatesByRecordRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordRequest) SetValidOnly(v bool) *ListCertificatesByRecordRequest {
+	s.ValidOnly = &v
+	return s
+}
+
+type ListCertificatesByRecordResponseBody struct {
+	RequestId  *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result     []*ListCertificatesByRecordResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	SiteId     *int64                                        `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	SiteName   *string                                       `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	TotalCount *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCertificatesByRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesByRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesByRecordResponseBody) SetRequestId(v string) *ListCertificatesByRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBody) SetResult(v []*ListCertificatesByRecordResponseBodyResult) *ListCertificatesByRecordResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBody) SetSiteId(v int64) *ListCertificatesByRecordResponseBody {
+	s.SiteId = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBody) SetSiteName(v string) *ListCertificatesByRecordResponseBody {
+	s.SiteName = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBody) SetTotalCount(v int64) *ListCertificatesByRecordResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCertificatesByRecordResponseBodyResult struct {
+	ApplylingCount *int64                                                    `json:"ApplylingCount,omitempty" xml:"ApplylingCount,omitempty"`
+	Certificates   []*ListCertificatesByRecordResponseBodyResultCertificates `json:"Certificates,omitempty" xml:"Certificates,omitempty" type:"Repeated"`
+	Count          *int64                                                    `json:"Count,omitempty" xml:"Count,omitempty"`
+	RecordName     *string                                                   `json:"RecordName,omitempty" xml:"RecordName,omitempty"`
+	Status         *string                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCertificatesByRecordResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesByRecordResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesByRecordResponseBodyResult) SetApplylingCount(v int64) *ListCertificatesByRecordResponseBodyResult {
+	s.ApplylingCount = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResult) SetCertificates(v []*ListCertificatesByRecordResponseBodyResultCertificates) *ListCertificatesByRecordResponseBodyResult {
+	s.Certificates = v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResult) SetCount(v int64) *ListCertificatesByRecordResponseBodyResult {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResult) SetRecordName(v string) *ListCertificatesByRecordResponseBodyResult {
+	s.RecordName = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResult) SetStatus(v string) *ListCertificatesByRecordResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type ListCertificatesByRecordResponseBodyResultCertificates struct {
+	// example:
+	//
+	// 30000137
+	CasId *string `json:"CasId,omitempty" xml:"CasId,omitempty"`
+	// example:
+	//
+	// www.example.com
+	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	// example:
+	//
+	// 2023-02-28 06:17:11
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1dc5fc9af4eead2570c70d94b416130baeb6d4429b51fd3557379588456aca66
+	FingerprintSha256 *string `json:"FingerprintSha256,omitempty" xml:"FingerprintSha256,omitempty"`
+	Id                *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// GlobalSign nv-sa
+	Issuer *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	// example:
+	//
+	// GlobalSign Organization Validation CA - SHA256 - G3
+	IssuerCN *string `json:"IssuerCN,omitempty" xml:"IssuerCN,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2024-02-28 06:17:11
+	NotAfter *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
+	// example:
+	//
+	// 2023-02-28 06:17:11
+	NotBefore *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	// example:
+	//
+	// RSA
+	PubAlg *string `json:"PubAlg,omitempty" xml:"PubAlg,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// example:
+	//
+	// www.example.com,*.example.com
+	SAN *string `json:"SAN,omitempty" xml:"SAN,omitempty"`
+	// example:
+	//
+	// baba39055622c008b90285a8838ed09a
+	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	// example:
+	//
+	// SHA256-RSA
+	SigAlg *string `json:"SigAlg,omitempty" xml:"SigAlg,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// free
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 2023-02-28 06:17:11
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListCertificatesByRecordResponseBodyResultCertificates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesByRecordResponseBodyResultCertificates) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetCasId(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.CasId = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetCommonName(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.CommonName = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetCreateTime(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetFingerprintSha256(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.FingerprintSha256 = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetId(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Id = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetIssuer(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Issuer = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetIssuerCN(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.IssuerCN = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetName(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetNotAfter(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.NotAfter = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetNotBefore(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.NotBefore = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetPubAlg(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.PubAlg = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetRegion(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Region = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetSAN(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.SAN = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetSerialNumber(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetSigAlg(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.SigAlg = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetStatus(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetType(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.Type = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponseBodyResultCertificates) SetUpdateTime(v string) *ListCertificatesByRecordResponseBodyResultCertificates {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListCertificatesByRecordResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCertificatesByRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCertificatesByRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCertificatesByRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCertificatesByRecordResponse) SetHeaders(v map[string]*string) *ListCertificatesByRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponse) SetStatusCode(v int32) *ListCertificatesByRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCertificatesByRecordResponse) SetBody(v *ListCertificatesByRecordResponseBody) *ListCertificatesByRecordResponse {
+	s.Body = v
+	return s
+}
+
 type ListCiphersRequest struct {
 	// The name of the cipher suite group, which can be: all, strict, custom.
 	//
@@ -44019,6 +44356,7 @@ type ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModif
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// The value of the request header.
 	//
 	// example:
@@ -44042,6 +44380,11 @@ func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderM
 
 func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) SetOperation(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification) SetType(v string) *ListHttpRequestHeaderModificationRulesResponseBodyConfigsRequestHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -44374,6 +44717,7 @@ type ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderMod
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Response header value.
 	//
 	// example:
@@ -44397,6 +44741,11 @@ func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeade
 
 func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) SetOperation(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification) SetType(v string) *ListHttpResponseHeaderModificationRulesResponseBodyConfigsResponseHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -63556,6 +63905,7 @@ type UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification str
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Request header value.
 	//
 	// example:
@@ -63579,6 +63929,11 @@ func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification
 
 func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetOperation(v string) *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification) SetType(v string) *UpdateHttpRequestHeaderModificationRuleRequestRequestHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -63843,6 +64198,7 @@ type UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification s
 	//
 	// add
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	// Response header value.
 	//
 	// example:
@@ -63866,6 +64222,11 @@ func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModificati
 
 func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetOperation(v string) *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
 	s.Operation = &v
+	return s
+}
+
+func (s *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification) SetType(v string) *UpdateHttpResponseHeaderModificationRuleRequestResponseHeaderModification {
+	s.Type = &v
 	return s
 }
 
@@ -88180,6 +88541,73 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCertificatesResponse{}
 	_body, _err := client.ListCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询匹配记录名的站点证书列表
+//
+// @param request - ListCertificatesByRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCertificatesByRecordResponse
+func (client *Client) ListCertificatesByRecordWithOptions(request *ListCertificatesByRecordRequest, runtime *util.RuntimeOptions) (_result *ListCertificatesByRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCertificatesByRecord"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCertificatesByRecordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCertificatesByRecordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询匹配记录名的站点证书列表
+//
+// @param request - ListCertificatesByRecordRequest
+//
+// @return ListCertificatesByRecordResponse
+func (client *Client) ListCertificatesByRecord(request *ListCertificatesByRecordRequest) (_result *ListCertificatesByRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCertificatesByRecordResponse{}
+	_body, _err := client.ListCertificatesByRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
