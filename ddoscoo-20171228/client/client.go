@@ -374,8 +374,9 @@ type ConfigLayer4RuleRequest struct {
 	// example:
 	//
 	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
-	Listeners   *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	Listeners   *string                           `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable *int64                            `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	UsTimeout   *ConfigLayer4RuleRequestUsTimeout `json:"UsTimeout,omitempty" xml:"UsTimeout,omitempty" type:"Struct"`
 }
 
 func (s ConfigLayer4RuleRequest) String() string {
@@ -393,6 +394,68 @@ func (s *ConfigLayer4RuleRequest) SetListeners(v string) *ConfigLayer4RuleReques
 
 func (s *ConfigLayer4RuleRequest) SetProxyEnable(v int64) *ConfigLayer4RuleRequest {
 	s.ProxyEnable = &v
+	return s
+}
+
+func (s *ConfigLayer4RuleRequest) SetUsTimeout(v *ConfigLayer4RuleRequestUsTimeout) *ConfigLayer4RuleRequest {
+	s.UsTimeout = v
+	return s
+}
+
+type ConfigLayer4RuleRequestUsTimeout struct {
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	RsTimeout      *int64 `json:"RsTimeout,omitempty" xml:"RsTimeout,omitempty"`
+}
+
+func (s ConfigLayer4RuleRequestUsTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigLayer4RuleRequestUsTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigLayer4RuleRequestUsTimeout) SetConnectTimeout(v int64) *ConfigLayer4RuleRequestUsTimeout {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *ConfigLayer4RuleRequestUsTimeout) SetRsTimeout(v int64) *ConfigLayer4RuleRequestUsTimeout {
+	s.RsTimeout = &v
+	return s
+}
+
+type ConfigLayer4RuleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
+	Listeners       *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable     *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	UsTimeoutShrink *string `json:"UsTimeout,omitempty" xml:"UsTimeout,omitempty"`
+}
+
+func (s ConfigLayer4RuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigLayer4RuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigLayer4RuleShrinkRequest) SetListeners(v string) *ConfigLayer4RuleShrinkRequest {
+	s.Listeners = &v
+	return s
+}
+
+func (s *ConfigLayer4RuleShrinkRequest) SetProxyEnable(v int64) *ConfigLayer4RuleShrinkRequest {
+	s.ProxyEnable = &v
+	return s
+}
+
+func (s *ConfigLayer4RuleShrinkRequest) SetUsTimeoutShrink(v string) *ConfigLayer4RuleShrinkRequest {
+	s.UsTimeoutShrink = &v
 	return s
 }
 
@@ -1249,8 +1312,9 @@ type CreateLayer4RuleRequest struct {
 	// example:
 	//
 	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
-	Listeners   *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
-	ProxyEnable *int32  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	Listeners   *string                           `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable *int32                            `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	UsTimeout   *CreateLayer4RuleRequestUsTimeout `json:"UsTimeout,omitempty" xml:"UsTimeout,omitempty" type:"Struct"`
 }
 
 func (s CreateLayer4RuleRequest) String() string {
@@ -1268,6 +1332,68 @@ func (s *CreateLayer4RuleRequest) SetListeners(v string) *CreateLayer4RuleReques
 
 func (s *CreateLayer4RuleRequest) SetProxyEnable(v int32) *CreateLayer4RuleRequest {
 	s.ProxyEnable = &v
+	return s
+}
+
+func (s *CreateLayer4RuleRequest) SetUsTimeout(v *CreateLayer4RuleRequestUsTimeout) *CreateLayer4RuleRequest {
+	s.UsTimeout = v
+	return s
+}
+
+type CreateLayer4RuleRequestUsTimeout struct {
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	RsTimeout      *int64 `json:"RsTimeout,omitempty" xml:"RsTimeout,omitempty"`
+}
+
+func (s CreateLayer4RuleRequestUsTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLayer4RuleRequestUsTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLayer4RuleRequestUsTimeout) SetConnectTimeout(v int64) *CreateLayer4RuleRequestUsTimeout {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *CreateLayer4RuleRequestUsTimeout) SetRsTimeout(v int64) *CreateLayer4RuleRequestUsTimeout {
+	s.RsTimeout = &v
+	return s
+}
+
+type CreateLayer4RuleShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{"InstanceId":"xxxxxx-xxxxxx-xxxxxx-xxxxxxx","Protocol":"tcp","FrontendPort":80,"BackendPort":5,"RealServers":"1.1.1.1","2.2.2.2"}]
+	Listeners       *string `json:"Listeners,omitempty" xml:"Listeners,omitempty"`
+	ProxyEnable     *int32  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	UsTimeoutShrink *string `json:"UsTimeout,omitempty" xml:"UsTimeout,omitempty"`
+}
+
+func (s CreateLayer4RuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLayer4RuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLayer4RuleShrinkRequest) SetListeners(v string) *CreateLayer4RuleShrinkRequest {
+	s.Listeners = &v
+	return s
+}
+
+func (s *CreateLayer4RuleShrinkRequest) SetProxyEnable(v int32) *CreateLayer4RuleShrinkRequest {
+	s.ProxyEnable = &v
+	return s
+}
+
+func (s *CreateLayer4RuleShrinkRequest) SetUsTimeoutShrink(v string) *CreateLayer4RuleShrinkRequest {
+	s.UsTimeoutShrink = &v
 	return s
 }
 
@@ -6207,7 +6333,8 @@ type DescribeLayer4RulesResponseBodyListeners struct {
 	// example:
 	//
 	// test-remark
-	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Remark    *string                                            `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	UsTimeout *DescribeLayer4RulesResponseBodyListenersUsTimeout `json:"UsTimeout,omitempty" xml:"UsTimeout,omitempty" type:"Struct"`
 }
 
 func (s DescribeLayer4RulesResponseBodyListeners) String() string {
@@ -6280,6 +6407,34 @@ func (s *DescribeLayer4RulesResponseBodyListeners) SetRealServers(v []*string) *
 
 func (s *DescribeLayer4RulesResponseBodyListeners) SetRemark(v string) *DescribeLayer4RulesResponseBodyListeners {
 	s.Remark = &v
+	return s
+}
+
+func (s *DescribeLayer4RulesResponseBodyListeners) SetUsTimeout(v *DescribeLayer4RulesResponseBodyListenersUsTimeout) *DescribeLayer4RulesResponseBodyListeners {
+	s.UsTimeout = v
+	return s
+}
+
+type DescribeLayer4RulesResponseBodyListenersUsTimeout struct {
+	ConnectTimeout *int64 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
+	RsTimeout      *int64 `json:"RsTimeout,omitempty" xml:"RsTimeout,omitempty"`
+}
+
+func (s DescribeLayer4RulesResponseBodyListenersUsTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLayer4RulesResponseBodyListenersUsTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLayer4RulesResponseBodyListenersUsTimeout) SetConnectTimeout(v int64) *DescribeLayer4RulesResponseBodyListenersUsTimeout {
+	s.ConnectTimeout = &v
+	return s
+}
+
+func (s *DescribeLayer4RulesResponseBodyListenersUsTimeout) SetRsTimeout(v int64) *DescribeLayer4RulesResponseBodyListenersUsTimeout {
+	s.RsTimeout = &v
 	return s
 }
 
@@ -10069,16 +10224,22 @@ func (client *Client) ConfigHealthCheck(request *ConfigHealthCheckRequest) (_res
 	return _result, _err
 }
 
-// @param request - ConfigLayer4RuleRequest
+// @param tmpReq - ConfigLayer4RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ConfigLayer4RuleResponse
-func (client *Client) ConfigLayer4RuleWithOptions(request *ConfigLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ConfigLayer4RuleWithOptions(tmpReq *ConfigLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *ConfigLayer4RuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ConfigLayer4RuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UsTimeout)) {
+		request.UsTimeoutShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UsTimeout, tea.String("UsTimeout"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Listeners)) {
 		query["Listeners"] = request.Listeners
@@ -10086,6 +10247,10 @@ func (client *Client) ConfigLayer4RuleWithOptions(request *ConfigLayer4RuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
 		query["ProxyEnable"] = request.ProxyEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsTimeoutShrink)) {
+		query["UsTimeout"] = request.UsTimeoutShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10701,16 +10866,22 @@ func (client *Client) CreateAsyncTask(request *CreateAsyncTaskRequest) (_result 
 	return _result, _err
 }
 
-// @param request - CreateLayer4RuleRequest
+// @param tmpReq - CreateLayer4RuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return CreateLayer4RuleResponse
-func (client *Client) CreateLayer4RuleWithOptions(request *CreateLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *CreateLayer4RuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateLayer4RuleWithOptions(tmpReq *CreateLayer4RuleRequest, runtime *util.RuntimeOptions) (_result *CreateLayer4RuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateLayer4RuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UsTimeout)) {
+		request.UsTimeoutShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UsTimeout, tea.String("UsTimeout"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Listeners)) {
 		query["Listeners"] = request.Listeners
@@ -10718,6 +10889,10 @@ func (client *Client) CreateLayer4RuleWithOptions(request *CreateLayer4RuleReque
 
 	if !tea.BoolValue(util.IsUnset(request.ProxyEnable)) {
 		query["ProxyEnable"] = request.ProxyEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsTimeoutShrink)) {
+		query["UsTimeout"] = request.UsTimeoutShrink
 	}
 
 	req := &openapi.OpenApiRequest{
