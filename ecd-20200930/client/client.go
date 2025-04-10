@@ -33510,6 +33510,8 @@ type DescribeOfficeSitesResponseBodyOfficeSites struct {
 	EnableServiceRoute *bool `json:"EnableServiceRoute,omitempty" xml:"EnableServiceRoute,omitempty"`
 	// An array of File Storage NAS (NAS) file system IDs.
 	FileSystemIds []*string `json:"FileSystemIds,omitempty" xml:"FileSystemIds,omitempty" type:"Repeated"`
+	IsLdap        *bool     `json:"IsLdap,omitempty" xml:"IsLdap,omitempty"`
+	LdapUrl       *string   `json:"LdapUrl,omitempty" xml:"LdapUrl,omitempty"`
 	// Details about registration logs.
 	Logs []*DescribeOfficeSitesResponseBodyOfficeSitesLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// Indicates whether multi-factor authentication (MFA) is enabled.
@@ -33878,6 +33880,16 @@ func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetEnableServiceRoute(v boo
 
 func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetFileSystemIds(v []*string) *DescribeOfficeSitesResponseBodyOfficeSites {
 	s.FileSystemIds = v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetIsLdap(v bool) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.IsLdap = &v
+	return s
+}
+
+func (s *DescribeOfficeSitesResponseBodyOfficeSites) SetLdapUrl(v string) *DescribeOfficeSitesResponseBodyOfficeSites {
+	s.LdapUrl = &v
 	return s
 }
 
@@ -38766,6 +38778,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// 8051af8d01b5479bec9f5ddf02e4a8fbd0ab6e7e43f8****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OsType    *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
@@ -38875,6 +38888,11 @@ func (s *DescribeSnapshotsRequest) SetMaxResults(v int32) *DescribeSnapshotsRequ
 
 func (s *DescribeSnapshotsRequest) SetNextToken(v string) *DescribeSnapshotsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeSnapshotsRequest) SetOsType(v string) *DescribeSnapshotsRequest {
+	s.OsType = &v
 	return s
 }
 
@@ -39009,6 +39027,8 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	DiskStatus    *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
+	OsType        *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	// The progress of creating the snapshot. Unit: %.
 	//
 	// example:
@@ -39211,6 +39231,16 @@ func (s *DescribeSnapshotsResponseBodySnapshots) SetDesktopName(v string) *Descr
 
 func (s *DescribeSnapshotsResponseBodySnapshots) SetDesktopStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
 	s.DesktopStatus = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetDiskStatus(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.DiskStatus = &v
+	return s
+}
+
+func (s *DescribeSnapshotsResponseBodySnapshots) SetOsType(v string) *DescribeSnapshotsResponseBodySnapshots {
+	s.OsType = &v
 	return s
 }
 
@@ -74687,6 +74717,10 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OsType)) {
+		query["OsType"] = request.OsType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
