@@ -5727,6 +5727,7 @@ func (s *RunStyleWritingResponse) SetBody(v *RunStyleWritingResponseBody) *RunSt
 }
 
 type RunTagMiningAnalysisRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -5762,6 +5763,11 @@ func (s RunTagMiningAnalysisRequest) String() string {
 
 func (s RunTagMiningAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunTagMiningAnalysisRequest) SetApiKey(v string) *RunTagMiningAnalysisRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunTagMiningAnalysisRequest) SetBusinessType(v string) *RunTagMiningAnalysisRequest {
@@ -5829,6 +5835,7 @@ func (s *RunTagMiningAnalysisRequestTags) SetTagName(v string) *RunTagMiningAnal
 }
 
 type RunTagMiningAnalysisShrinkRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -5864,6 +5871,11 @@ func (s RunTagMiningAnalysisShrinkRequest) String() string {
 
 func (s RunTagMiningAnalysisShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunTagMiningAnalysisShrinkRequest) SetApiKey(v string) *RunTagMiningAnalysisShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunTagMiningAnalysisShrinkRequest) SetBusinessType(v string) *RunTagMiningAnalysisShrinkRequest {
@@ -7428,6 +7440,7 @@ func (s *RunVideoAnalysisResponse) SetBody(v *RunVideoAnalysisResponseBody) *Run
 }
 
 type SubmitTagMiningAnalysisTaskRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -7462,6 +7475,11 @@ func (s SubmitTagMiningAnalysisTaskRequest) String() string {
 
 func (s SubmitTagMiningAnalysisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTagMiningAnalysisTaskRequest) SetApiKey(v string) *SubmitTagMiningAnalysisTaskRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitTagMiningAnalysisTaskRequest) SetBusinessType(v string) *SubmitTagMiningAnalysisTaskRequest {
@@ -7534,6 +7552,7 @@ func (s *SubmitTagMiningAnalysisTaskRequestTags) SetTagName(v string) *SubmitTag
 }
 
 type SubmitTagMiningAnalysisTaskShrinkRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -7568,6 +7587,11 @@ func (s SubmitTagMiningAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitTagMiningAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTagMiningAnalysisTaskShrinkRequest) SetApiKey(v string) *SubmitTagMiningAnalysisTaskShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitTagMiningAnalysisTaskShrinkRequest) SetBusinessType(v string) *SubmitTagMiningAnalysisTaskShrinkRequest {
@@ -9841,6 +9865,10 @@ func (client *Client) RunTagMiningAnalysisWithOptions(workspaceId *string, tmpRe
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		body["businessType"] = request.BusinessType
 	}
@@ -10119,6 +10147,10 @@ func (client *Client) SubmitTagMiningAnalysisTaskWithOptions(workspaceId *string
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		body["businessType"] = request.BusinessType
 	}
