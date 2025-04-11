@@ -2900,6 +2900,7 @@ type ListEvaluationMetricDetailsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -2933,6 +2934,11 @@ func (s *ListEvaluationMetricDetailsRequest) SetNextToken(v string) *ListEvaluat
 
 func (s *ListEvaluationMetricDetailsRequest) SetRegionId(v string) *ListEvaluationMetricDetailsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationMetricDetailsRequest) SetScope(v string) *ListEvaluationMetricDetailsRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -3163,6 +3169,7 @@ type ListEvaluationResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Scope      *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 }
 
@@ -3186,6 +3193,11 @@ func (s *ListEvaluationResultsRequest) SetFilters(v []*ListEvaluationResultsRequ
 
 func (s *ListEvaluationResultsRequest) SetRegionId(v string) *ListEvaluationResultsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListEvaluationResultsRequest) SetScope(v string) *ListEvaluationResultsRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -3327,6 +3339,7 @@ func (s *ListEvaluationResultsResponseBodyResults) SetTotalScore(v float64) *Lis
 }
 
 type ListEvaluationResultsResponseBodyResultsMetricResults struct {
+	AccountSummary *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary `json:"AccountSummary,omitempty" xml:"AccountSummary,omitempty" type:"Struct"`
 	// The error information.
 	//
 	// >  This parameter is returned only if the value of `Status` is `Failed`.
@@ -3385,6 +3398,11 @@ func (s ListEvaluationResultsResponseBodyResultsMetricResults) GoString() string
 	return s.String()
 }
 
+func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetAccountSummary(v *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) *ListEvaluationResultsResponseBodyResultsMetricResults {
+	s.AccountSummary = v
+	return s
+}
+
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetErrorInfo(v *ListEvaluationResultsResponseBodyResultsMetricResultsErrorInfo) *ListEvaluationResultsResponseBodyResultsMetricResults {
 	s.ErrorInfo = v
 	return s
@@ -3417,6 +3435,23 @@ func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetRisk(v string
 
 func (s *ListEvaluationResultsResponseBodyResultsMetricResults) SetStatus(v string) *ListEvaluationResultsResponseBodyResultsMetricResults {
 	s.Status = &v
+	return s
+}
+
+type ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary struct {
+	NonCompliant *int32 `json:"NonCompliant,omitempty" xml:"NonCompliant,omitempty"`
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) GoString() string {
+	return s.String()
+}
+
+func (s *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary) SetNonCompliant(v int32) *ListEvaluationResultsResponseBodyResultsMetricResultsAccountSummary {
+	s.NonCompliant = &v
 	return s
 }
 
@@ -4921,6 +4956,10 @@ func (client *Client) ListEvaluationMetricDetailsWithOptions(request *ListEvalua
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
 		query["SnapshotId"] = request.SnapshotId
 	}
@@ -5002,6 +5041,10 @@ func (client *Client) ListEvaluationResultsWithOptions(request *ListEvaluationRe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotId)) {
