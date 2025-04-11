@@ -510,17 +510,25 @@ type AuthorizeInstanceGroupRequest struct {
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
-	AppInstanceGroupId      *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstancePersistentId *string   `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	AuthorizeUserIds        []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// 持久会话ID。
+	//
+	// example:
+	//
+	// p-0cc7s3mw2fg4j****
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
+	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
-	ProductType        *string                                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	UnAuthorizeUserIds []*string                              `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
-	UserMeta           *AuthorizeInstanceGroupRequestUserMeta `json:"UserMeta,omitempty" xml:"UserMeta,omitempty" type:"Struct"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
+	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
+	// The user information.
+	UserMeta *AuthorizeInstanceGroupRequestUserMeta `json:"UserMeta,omitempty" xml:"UserMeta,omitempty" type:"Struct"`
 }
 
 func (s AuthorizeInstanceGroupRequest) String() string {
@@ -562,8 +570,24 @@ func (s *AuthorizeInstanceGroupRequest) SetUserMeta(v *AuthorizeInstanceGroupReq
 }
 
 type AuthorizeInstanceGroupRequestUserMeta struct {
+	// The AD domain name.
+	//
+	// example:
+	//
+	// example.com
 	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user type.
+	//
+	// Valid values:
+	//
+	// 	- ad: Active Directory (AD) account
+	//
+	// 	- simple: convenience account
+	//
+	// example:
+	//
+	// simple
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s AuthorizeInstanceGroupRequestUserMeta) String() string {
@@ -590,17 +614,25 @@ type AuthorizeInstanceGroupShrinkRequest struct {
 	// example:
 	//
 	// aig-9ciijz60n4xsv****
-	AppInstanceGroupId      *string   `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
-	AppInstancePersistentId *string   `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
-	AuthorizeUserIds        []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
+	AppInstanceGroupId *string `json:"AppInstanceGroupId,omitempty" xml:"AppInstanceGroupId,omitempty"`
+	// 持久会话ID。
+	//
+	// example:
+	//
+	// p-0cc7s3mw2fg4j****
+	AppInstancePersistentId *string `json:"AppInstancePersistentId,omitempty" xml:"AppInstancePersistentId,omitempty"`
+	// The IDs of the users that you want to add to the authorization list of the delivery group. You can specify 1 to 100 user IDs.
+	AuthorizeUserIds []*string `json:"AuthorizeUserIds,omitempty" xml:"AuthorizeUserIds,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// CloudApp
-	ProductType        *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The IDs of the users that you want to remove from the authorization list of the delivery group. You can specify 1 to 100 user IDs.
 	UnAuthorizeUserIds []*string `json:"UnAuthorizeUserIds,omitempty" xml:"UnAuthorizeUserIds,omitempty" type:"Repeated"`
-	UserMetaShrink     *string   `json:"UserMeta,omitempty" xml:"UserMeta,omitempty"`
+	// The user information.
+	UserMetaShrink *string `json:"UserMeta,omitempty" xml:"UserMeta,omitempty"`
 }
 
 func (s AuthorizeInstanceGroupShrinkRequest) String() string {
