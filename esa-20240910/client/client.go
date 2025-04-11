@@ -57456,6 +57456,7 @@ func (s *ListWafTemplateRulesRequest) SetSiteId(v int64) *ListWafTemplateRulesRe
 }
 
 type ListWafTemplateRulesRequestQueryArgs struct {
+	Kinds []*string `json:"Kinds,omitempty" xml:"Kinds,omitempty" type:"Repeated"`
 	// Rule type.
 	//
 	// example:
@@ -57470,6 +57471,11 @@ func (s ListWafTemplateRulesRequestQueryArgs) String() string {
 
 func (s ListWafTemplateRulesRequestQueryArgs) GoString() string {
 	return s.String()
+}
+
+func (s *ListWafTemplateRulesRequestQueryArgs) SetKinds(v []*string) *ListWafTemplateRulesRequestQueryArgs {
+	s.Kinds = v
+	return s
 }
 
 func (s *ListWafTemplateRulesRequestQueryArgs) SetType(v string) *ListWafTemplateRulesRequestQueryArgs {
