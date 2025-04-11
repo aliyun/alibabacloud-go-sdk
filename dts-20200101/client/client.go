@@ -15328,6 +15328,7 @@ func (s *DescribeDtsJobDetailResponseBodyDataSynchronizationStatus) SetStatus(v 
 }
 
 type DescribeDtsJobDetailResponseBodyDestinationEndpoint struct {
+	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 	// Indicates whether the password can be modified. Valid values:
 	//
 	// 	- **true**
@@ -15387,7 +15388,8 @@ type DescribeDtsJobDetailResponseBodyDestinationEndpoint struct {
 	// example:
 	//
 	// cn-hangzhou
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RoleName *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
 	// 	- **DISABLE**: SSL encryption is disabled.
@@ -15416,6 +15418,11 @@ func (s DescribeDtsJobDetailResponseBodyDestinationEndpoint) String() string {
 
 func (s DescribeDtsJobDetailResponseBodyDestinationEndpoint) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDestinationEndpoint) SetAliyunUid(v string) *DescribeDtsJobDetailResponseBodyDestinationEndpoint {
+	s.AliyunUid = &v
+	return s
 }
 
 func (s *DescribeDtsJobDetailResponseBodyDestinationEndpoint) SetCanModifyPassword(v bool) *DescribeDtsJobDetailResponseBodyDestinationEndpoint {
@@ -15460,6 +15467,11 @@ func (s *DescribeDtsJobDetailResponseBodyDestinationEndpoint) SetPort(v string) 
 
 func (s *DescribeDtsJobDetailResponseBodyDestinationEndpoint) SetRegion(v string) *DescribeDtsJobDetailResponseBodyDestinationEndpoint {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBodyDestinationEndpoint) SetRoleName(v string) *DescribeDtsJobDetailResponseBodyDestinationEndpoint {
+	s.RoleName = &v
 	return s
 }
 
@@ -46426,7 +46438,8 @@ type ModifyDtsJobEndpointRequest struct {
 	// example:
 	//
 	// dtstest
-	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	ZeroEtlJob *bool   `json:"ZeroEtlJob,omitempty" xml:"ZeroEtlJob,omitempty"`
 }
 
 func (s ModifyDtsJobEndpointRequest) String() string {
@@ -46534,6 +46547,11 @@ func (s *ModifyDtsJobEndpointRequest) SetSynchronizationDirection(v string) *Mod
 
 func (s *ModifyDtsJobEndpointRequest) SetUsername(v string) *ModifyDtsJobEndpointRequest {
 	s.Username = &v
+	return s
+}
+
+func (s *ModifyDtsJobEndpointRequest) SetZeroEtlJob(v bool) *ModifyDtsJobEndpointRequest {
+	s.ZeroEtlJob = &v
 	return s
 }
 
@@ -63486,6 +63504,10 @@ func (client *Client) ModifyDtsJobEndpointWithOptions(request *ModifyDtsJobEndpo
 
 	if !tea.BoolValue(util.IsUnset(request.Username)) {
 		query["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZeroEtlJob)) {
+		query["ZeroEtlJob"] = request.ZeroEtlJob
 	}
 
 	req := &openapi.OpenApiRequest{
