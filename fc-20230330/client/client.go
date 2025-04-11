@@ -5971,12 +5971,64 @@ func (s *DeleteVpcBindingResponse) SetStatusCode(v int32) *DeleteVpcBindingRespo
 	return s
 }
 
+type DescribeRegionsRequest struct {
+	// example:
+	//
+	// zh-CN
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s DescribeRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers    map[string]*string               `json:"headers" xml:"headers"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenStructDescribeRegionsOutput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *OpenStructDescribeRegionsOutput) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type DisableFunctionInvocationRequest struct {
+	// Specifies whether to immediately terminate all ongoing requests.
+	//
 	// example:
 	//
 	// false
-	AbortOngoingRequest *bool   `json:"abortOngoingRequest,omitempty" xml:"abortOngoingRequest,omitempty"`
-	Reason              *string `json:"reason,omitempty" xml:"reason,omitempty"`
+	AbortOngoingRequest *bool `json:"abortOngoingRequest,omitempty" xml:"abortOngoingRequest,omitempty"`
+	// The reason for disabling the function\\"s invocation.
+	Reason *string `json:"reason,omitempty" xml:"reason,omitempty"`
 }
 
 func (s DisableFunctionInvocationRequest) String() string {
@@ -5998,6 +6050,8 @@ func (s *DisableFunctionInvocationRequest) SetReason(v string) *DisableFunctionI
 }
 
 type DisableFunctionInvocationResponseBody struct {
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -7173,14 +7227,30 @@ func (s *ListFunctionVersionsResponse) SetBody(v *ListVersionsOutput) *ListFunct
 }
 
 type ListFunctionsRequest struct {
+	// The description of the functions to retrieve.
+	//
+	// example:
+	//
+	// test_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+	// The version of Function Compute to which the functions belong.
+	//
+	// 	- v3: Only lists functions of Function Compute 3.0.
+	//
+	// 	- v2: Only lists functions of Function Compute 2.0.
+	//
+	// By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
 	//
 	// example:
 	//
 	// v3
 	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
-	GpuType   *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
+	// The GPU type of the functions to retrieve.
+	//
+	// example:
+	//
+	// fc.gpu.tesla.1
+	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	//
 	// example:
@@ -7198,9 +7268,15 @@ type ListFunctionsRequest struct {
 	// example:
 	//
 	// my-func
-	Prefix  *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The runtime of the functions to retrieve.
+	//
+	// example:
+	//
+	// python3.10
 	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Tags    []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
+	// The tag of the functions to retrieve.
+	Tags []*Tag `json:"tags" xml:"tags" type:"Repeated"`
 }
 
 func (s ListFunctionsRequest) String() string {
@@ -7252,14 +7328,30 @@ func (s *ListFunctionsRequest) SetTags(v []*Tag) *ListFunctionsRequest {
 }
 
 type ListFunctionsShrinkRequest struct {
+	// The description of the functions to retrieve.
+	//
+	// example:
+	//
+	// test_description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of Function Compute to which the functions belong. Valid values: v3 and v2. v3: only lists functions of Function Compute 3.0. v2: only lists functions of Function Compute 2.0. By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
+	// The version of Function Compute to which the functions belong.
+	//
+	// 	- v3: Only lists functions of Function Compute 3.0.
+	//
+	// 	- v2: Only lists functions of Function Compute 2.0.
+	//
+	// By default, this parameter is left empty and functions in both Function Compute 3.0 and Function Compute 2.0 are listed.
 	//
 	// example:
 	//
 	// v3
 	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
-	GpuType   *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
+	// The GPU type of the functions to retrieve.
+	//
+	// example:
+	//
+	// fc.gpu.tesla.1
+	GpuType *string `json:"gpuType,omitempty" xml:"gpuType,omitempty"`
 	// The number of functions to return. The minimum value is 1 and the maximum value is 100.
 	//
 	// example:
@@ -7277,8 +7369,14 @@ type ListFunctionsShrinkRequest struct {
 	// example:
 	//
 	// my-func
-	Prefix     *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
-	Runtime    *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// The runtime of the functions to retrieve.
+	//
+	// example:
+	//
+	// python3.10
+	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	// The tag of the functions to retrieve.
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 
@@ -9856,7 +9954,86 @@ func (client *Client) DeleteVpcBinding(functionName *string, vpcId *string) (_re
 
 // Summary:
 //
-// 禁止函数调用
+// 查询产品的地域信息列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2023-03-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2023-03-30/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询产品的地域信息列表
+//
+// @param request - DescribeRegionsRequest
+//
+// @return DescribeRegionsResponse
+func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+//
+// Description:
+//
+// Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
 //
 // @param request - DisableFunctionInvocationRequest
 //
@@ -9916,7 +10093,11 @@ func (client *Client) DisableFunctionInvocationWithOptions(functionName *string,
 
 // Summary:
 //
-// 禁止函数调用
+// The DisableFunctionInvocation operation prevents a function from being invoked and optionally terminates all requests that are being processed. Once a function\\"s invocation is disabled, no new instances can be created, and the existing provisioned instances are destroyed. This operation is currently in private preview.
+//
+// Description:
+//
+// Exercise caution when you call this operation on a function in a production environment, as improper deactivation may lead to business disruptions.
 //
 // @param request - DisableFunctionInvocationRequest
 //
@@ -11377,6 +11558,10 @@ func (client *Client) ListFunctionVersions(functionName *string, request *ListFu
 //
 // 列出函数。
 //
+// Description:
+//
+// ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
+//
 // @param tmpReq - ListFunctionsRequest
 //
 // @param headers - map
@@ -11466,6 +11651,10 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 // Summary:
 //
 // 列出函数。
+//
+// Description:
+//
+// ListFunctions returns only a subset of a function\\"s attribute fields. To obtain the additional fields, which include state, stateReasonCode, stateReason, lastUpdateStatus, lastUpdateStatusReasonCode, and lastUpdateStatusReason, use [GetFunction](https://help.aliyun.com/document_detail/2618610.html).
 //
 // @param request - ListFunctionsRequest
 //
