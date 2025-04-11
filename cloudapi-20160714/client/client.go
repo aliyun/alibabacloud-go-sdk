@@ -23303,7 +23303,12 @@ type DescribeDatasetListRequest struct {
 	// example:
 	//
 	// 4add6a61804e47858266883e********
-	DatasetIds  *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	DatasetIds *string `json:"DatasetIds,omitempty" xml:"DatasetIds,omitempty"`
+	// The name of the dataset.
+	//
+	// example:
+	//
+	// IPwhitelist
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
 	// The number of the page to return. Pages start from page 1. Default value: 1.
 	//
@@ -47942,6 +47947,12 @@ type SetDomainCertificateRequest struct {
 	// 927d50c0f2e54b359919923d908bb015
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	// If enable ssl OCSP cache.
+	//
+	// example:
+	//
+	// True
+	SslOcspCacheEnable *bool `json:"SslOcspCacheEnable,omitempty" xml:"SslOcspCacheEnable,omitempty"`
 	// If enable ssl OCSP.
 	//
 	// example:
@@ -48001,6 +48012,11 @@ func (s *SetDomainCertificateRequest) SetGroupId(v string) *SetDomainCertificate
 
 func (s *SetDomainCertificateRequest) SetSecurityToken(v string) *SetDomainCertificateRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *SetDomainCertificateRequest) SetSslOcspCacheEnable(v bool) *SetDomainCertificateRequest {
+	s.SslOcspCacheEnable = &v
 	return s
 }
 
@@ -49796,11 +49812,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // Description:
 //
-//   This operation is intended for API providers and is the opposite of DeployApi.
+//	  This operation is intended for API providers and is the opposite of DeployApi.
 //
-// 	- An API can be unpublished from a specified runtime environment in under 5 seconds.
+//		- An API can be unpublished from a specified runtime environment in under 5 seconds.
 //
-// 	- An unpublished API cannot be called in the specified runtime environment.
+//		- An unpublished API cannot be called in the specified runtime environment.
 //
 // @param request - AbolishApiRequest
 //
@@ -49869,11 +49885,11 @@ func (client *Client) AbolishApiWithOptions(request *AbolishApiRequest, runtime 
 //
 // Description:
 //
-//   This operation is intended for API providers and is the opposite of DeployApi.
+//	  This operation is intended for API providers and is the opposite of DeployApi.
 //
-// 	- An API can be unpublished from a specified runtime environment in under 5 seconds.
+//		- An API can be unpublished from a specified runtime environment in under 5 seconds.
 //
-// 	- An unpublished API cannot be called in the specified runtime environment.
+//		- An unpublished API cannot be called in the specified runtime environment.
 //
 // @param request - AbolishApiRequest
 //
@@ -49976,11 +49992,11 @@ func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEnt
 //
 // When you call this operation, note that:
 //
-// 	- This operation is intended for API providers.
+//   - This operation is intended for API providers.
 //
-// 	- An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+//   - An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
 //
-// 	- A maximum of 100 policies can be added to an ACL.
+//   - A maximum of 100 policies can be added to an ACL.
 //
 // @param request - AddIpControlPolicyItemRequest
 //
@@ -50051,11 +50067,11 @@ func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPol
 //
 // When you call this operation, note that:
 //
-// 	- This operation is intended for API providers.
+//   - This operation is intended for API providers.
 //
-// 	- An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
+//   - An added policy immediately takes effect on all APIs that are bound to the access control list (ACL).
 //
-// 	- A maximum of 100 policies can be added to an ACL.
+//   - A maximum of 100 policies can be added to an ACL.
 //
 // @param request - AddIpControlPolicyItemRequest
 //
@@ -50077,11 +50093,11 @@ func (client *Client) AddIpControlPolicyItem(request *AddIpControlPolicyItemRequ
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+//		- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
 //
-// 	- Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+//		- Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
 //
 // @param request - AddTrafficSpecialControlRequest
 //
@@ -50154,11 +50170,11 @@ func (client *Client) AddTrafficSpecialControlWithOptions(request *AddTrafficSpe
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
+//		- If the input SpecialKey already exists, the previous configuration is overwritten. Use caution when calling this operation.
 //
-// 	- Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
+//		- Special throttling policies must be added to an existing throttling policy, and can take effect on all the APIs to which the throttling policy is bound.
 //
 // @param request - AddTrafficSpecialControlRequest
 //
@@ -50437,13 +50453,13 @@ func (client *Client) AttachGroupPlugin(request *AttachGroupPluginRequest) (_res
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You can only bind plug-ins to published APIs.
+//		- You can only bind plug-ins to published APIs.
 //
-// 	- The plug-in takes effect immediately after it is bound to an API.
+//		- The plug-in takes effect immediately after it is bound to an API.
 //
-// 	- If you bind a different plug-in to an API, this plug-in takes effect immediately.
+//		- If you bind a different plug-in to an API, this plug-in takes effect immediately.
 //
 // @param request - AttachPluginRequest
 //
@@ -50520,13 +50536,13 @@ func (client *Client) AttachPluginWithOptions(request *AttachPluginRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You can only bind plug-ins to published APIs.
+//		- You can only bind plug-ins to published APIs.
 //
-// 	- The plug-in takes effect immediately after it is bound to an API.
+//		- The plug-in takes effect immediately after it is bound to an API.
 //
-// 	- If you bind a different plug-in to an API, this plug-in takes effect immediately.
+//		- If you bind a different plug-in to an API, this plug-in takes effect immediately.
 //
 // @param request - AttachPluginRequest
 //
@@ -50785,13 +50801,13 @@ func (client *Client) CreateAccessControlList(request *CreateAccessControlListRe
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The name of an API must be unique within an API group.
+//		- The name of an API must be unique within an API group.
 //
-// 	- A request path must be unique within an API group.
+//		- A request path must be unique within an API group.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateApiRequest
 //
@@ -50958,13 +50974,13 @@ func (client *Client) CreateApiWithOptions(request *CreateApiRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The name of an API must be unique within an API group.
+//		- The name of an API must be unique within an API group.
 //
-// 	- A request path must be unique within an API group.
+//		- A request path must be unique within an API group.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateApiRequest
 //
@@ -51077,7 +51093,7 @@ func (client *Client) CreateApiGroup(request *CreateApiGroupRequest) (_result *C
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - CreateApiStageVariableRequest
 //
@@ -51158,7 +51174,7 @@ func (client *Client) CreateApiStageVariableWithOptions(request *CreateApiStageV
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - CreateApiStageVariableRequest
 //
@@ -51180,17 +51196,17 @@ func (client *Client) CreateApiStageVariable(request *CreateApiStageVariableRequ
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- Each application has a key-value pair which is used for identity verification when you call an API.
+//		- Each application has a key-value pair which is used for identity verification when you call an API.
 //
-// 	- An application must be authorized to call an API.
+//		- An application must be authorized to call an API.
 //
-// 	- Each application has only one key-value pair, which can be reset if the pair is leaked.
+//		- Each application has only one key-value pair, which can be reset if the pair is leaked.
 //
-// 	- A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+//		- A maximum of 1,000 applications can be created for each Alibaba Cloud account.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - CreateAppRequest
 //
@@ -51275,17 +51291,17 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- Each application has a key-value pair which is used for identity verification when you call an API.
+//		- Each application has a key-value pair which is used for identity verification when you call an API.
 //
-// 	- An application must be authorized to call an API.
+//		- An application must be authorized to call an API.
 //
-// 	- Each application has only one key-value pair, which can be reset if the pair is leaked.
+//		- Each application has only one key-value pair, which can be reset if the pair is leaked.
 //
-// 	- A maximum of 1,000 applications can be created for each Alibaba Cloud account.
+//		- A maximum of 1,000 applications can be created for each Alibaba Cloud account.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - CreateAppRequest
 //
@@ -52015,13 +52031,13 @@ func (client *Client) CreateIntranetDomain(request *CreateIntranetDomainRequest)
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+//		- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
 //
-// 	- You can add policies to an ACL when you create the ACL.
+//		- You can add policies to an ACL when you create the ACL.
 //
-// 	- If an ACL does not have any policy, the ACL is ineffective.
+//		- If an ACL does not have any policy, the ACL is ineffective.
 //
 // @param request - CreateIpControlRequest
 //
@@ -52094,13 +52110,13 @@ func (client *Client) CreateIpControlWithOptions(request *CreateIpControlRequest
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
+//		- An ACL must be bound to an API to take effect. After an ACL is bound to an API, the ACL takes effect on the API immediately.
 //
-// 	- You can add policies to an ACL when you create the ACL.
+//		- You can add policies to an ACL when you create the ACL.
 //
-// 	- If an ACL does not have any policy, the ACL is ineffective.
+//		- If an ACL does not have any policy, the ACL is ineffective.
 //
 // @param request - CreateIpControlRequest
 //
@@ -52209,9 +52225,9 @@ func (client *Client) CreateLogConfig(request *CreateLogConfigRequest) (_result 
 //
 // Description:
 //
-//   For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+//	  For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
 //
-// 	- JSON Schema supports only element attributes of the Object type.
+//		- JSON Schema supports only element attributes of the Object type.
 //
 // @param request - CreateModelRequest
 //
@@ -52284,9 +52300,9 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, runtim
 //
 // Description:
 //
-//   For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
+//	  For more information about the model definition, see [JSON Schema Draft 4](https://tools.ietf.org/html/draft-zyp-json-schema-04?spm=a2c4g.11186623.2.10.2e977ff7p4BpQd).
 //
-// 	- JSON Schema supports only element attributes of the Object type.
+//		- JSON Schema supports only element attributes of the Object type.
 //
 // @param request - CreateModelRequest
 //
@@ -52391,13 +52407,13 @@ func (client *Client) CreateMonitorGroup(request *CreateMonitorGroupRequest) (_r
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+//		- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
 //
-// 	- The plug-in definitions for advanced features are restricted.
+//		- The plug-in definitions for advanced features are restricted.
 //
-// 	- Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+//		- Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
 //
 // @param request - CreatePluginRequest
 //
@@ -52474,13 +52490,13 @@ func (client *Client) CreatePluginWithOptions(request *CreatePluginRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
+//		- The number of plug-ins of the same type that each user can create is limited. Different limits apply to different plug-in types.
 //
-// 	- The plug-in definitions for advanced features are restricted.
+//		- The plug-in definitions for advanced features are restricted.
 //
-// 	- Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
+//		- Plug-ins must be bound to APIs to take effect. After a plug-in is bound, it takes effect on that API immediately.
 //
 // @param request - CreatePluginRequest
 //
@@ -52601,13 +52617,13 @@ func (client *Client) CreatePrivateDNS(request *CreatePrivateDNSRequest) (_resul
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+//		- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
 //
-// 	- After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+//		- After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateSignatureRequest
 //
@@ -52676,13 +52692,13 @@ func (client *Client) CreateSignatureWithOptions(request *CreateSignatureRequest
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
+//		- The API operation only creates a key policy. You must call the binding operation to bind the key to an API.
 //
-// 	- After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
+//		- After the key is bound to the API, requests sent from API Gateway to the backend service contain signature strings. You can specify whether your backend service verifies these signature strings.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateSignatureRequest
 //
@@ -52704,11 +52720,11 @@ func (client *Client) CreateSignature(request *CreateSignatureRequest) (_result 
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+//		- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateTrafficControlRequest
 //
@@ -52789,11 +52805,11 @@ func (client *Client) CreateTrafficControlWithOptions(request *CreateTrafficCont
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
+//		- Throttling policies must be bound to APIs to take effect. After a policy is bound to an API, it goes into effect on that API immediately.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - CreateTrafficControlRequest
 //
@@ -52890,7 +52906,7 @@ func (client *Client) DeleteAccessControlList(request *DeleteAccessControlListRe
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DeleteAllTrafficSpecialControlRequest
 //
@@ -52951,7 +52967,7 @@ func (client *Client) DeleteAllTrafficSpecialControlWithOptions(request *DeleteA
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DeleteAllTrafficSpecialControlRequest
 //
@@ -52973,11 +52989,11 @@ func (client *Client) DeleteAllTrafficSpecialControl(request *DeleteAllTrafficSp
 //
 // Description:
 //
-//   This operation is intended for API providers and cannot be undone after it is complete.
+//	  This operation is intended for API providers and cannot be undone after it is complete.
 //
-// 	- An API that is running in the runtime environment must be unpublished before you can delete the API.****
+//		- An API that is running in the runtime environment must be unpublished before you can delete the API.****
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteApiRequest
 //
@@ -53042,11 +53058,11 @@ func (client *Client) DeleteApiWithOptions(request *DeleteApiRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API providers and cannot be undone after it is complete.
+//	  This operation is intended for API providers and cannot be undone after it is complete.
 //
-// 	- An API that is running in the runtime environment must be unpublished before you can delete the API.****
+//		- An API that is running in the runtime environment must be unpublished before you can delete the API.****
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteApiRequest
 //
@@ -53068,15 +53084,15 @@ func (client *Client) DeleteApi(request *DeleteApiRequest) (_result *DeleteApiRe
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+//		- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
 //
-// 	- After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+//		- After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
 //
-// 	- If the specified API group does not exist, a success response is returned.
+//		- If the specified API group does not exist, a success response is returned.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteApiGroupRequest
 //
@@ -53141,15 +53157,15 @@ func (client *Client) DeleteApiGroupWithOptions(request *DeleteApiGroupRequest, 
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
+//		- An API group that contains APIs cannot be deleted. To delete the API group, you must first delete its APIs.
 //
-// 	- After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
+//		- After an API group is deleted, the second-level domain name bound to the API group is automatically invalidated.
 //
-// 	- If the specified API group does not exist, a success response is returned.
+//		- If the specified API group does not exist, a success response is returned.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteApiGroupRequest
 //
@@ -53246,7 +53262,7 @@ func (client *Client) DeleteApiProduct(request *DeleteApiProductRequest) (_resul
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DeleteApiStageVariableRequest
 //
@@ -53315,7 +53331,7 @@ func (client *Client) DeleteApiStageVariableWithOptions(request *DeleteApiStageV
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DeleteApiStageVariableRequest
 //
@@ -53337,11 +53353,11 @@ func (client *Client) DeleteApiStageVariable(request *DeleteApiStageVariableRequ
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- After an application is deleted, the application and its API authorization cannot be restored.
+//		- After an application is deleted, the application and its API authorization cannot be restored.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DeleteAppRequest
 //
@@ -53406,11 +53422,11 @@ func (client *Client) DeleteAppWithOptions(request *DeleteAppRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- After an application is deleted, the application and its API authorization cannot be restored.
+//		- After an application is deleted, the application and its API authorization cannot be restored.
 //
-// 	- You can call this operation up to 50 times per second per account.
+//		- You can call this operation up to 50 times per second per account.
 //
 // @param request - DeleteAppRequest
 //
@@ -53894,11 +53910,11 @@ func (client *Client) DeleteDatasetItem(request *DeleteDatasetItemRequest) (_res
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- If the specified domain name does not exist, a successful response will still appear.
+//		- If the specified domain name does not exist, a successful response will still appear.
 //
-// 	- Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+//		- Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
 //
 // @param request - DeleteDomainRequest
 //
@@ -53963,11 +53979,11 @@ func (client *Client) DeleteDomainWithOptions(request *DeleteDomainRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- If the specified domain name does not exist, a successful response will still appear.
+//		- If the specified domain name does not exist, a successful response will still appear.
 //
-// 	- Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
+//		- Unbinding a domain name from an API group will affect access to the APIs in the group. Exercise caution when using this operation.
 //
 // @param request - DeleteDomainRequest
 //
@@ -54147,11 +54163,11 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+//		- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
 //
-// 	- If you call this operation on an ACL that does not exist, a success message is returned.
+//		- If you call this operation on an ACL that does not exist, a success message is returned.
 //
 // @param request - DeleteIpControlRequest
 //
@@ -54212,11 +54228,11 @@ func (client *Client) DeleteIpControlWithOptions(request *DeleteIpControlRequest
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
+//		- If the ACL is bound to an API, you must unbind the ACL from the API before you can delete the ACL. Otherwise, an error is returned.
 //
-// 	- If you call this operation on an ACL that does not exist, a success message is returned.
+//		- If you call this operation on an ACL that does not exist, a success message is returned.
 //
 // @param request - DeleteIpControlRequest
 //
@@ -54467,9 +54483,9 @@ func (client *Client) DeleteMonitorGroup(request *DeleteMonitorGroupRequest) (_r
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+//		- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
 //
 // @param request - DeletePluginRequest
 //
@@ -54534,9 +54550,9 @@ func (client *Client) DeletePluginWithOptions(request *DeletePluginRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
+//		- You must first unbind the plug-in from the API. Otherwise, an error is reported when you delete the plug-in.
 //
 // @param request - DeletePluginRequest
 //
@@ -54641,13 +54657,13 @@ func (client *Client) DeletePrivateDNS(request *DeletePrivateDNSRequest) (_resul
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API operation deletes an existing backend signature key.
+//		- This API operation deletes an existing backend signature key.
 //
-// 	- You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+//		- You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteSignatureRequest
 //
@@ -54708,13 +54724,13 @@ func (client *Client) DeleteSignatureWithOptions(request *DeleteSignatureRequest
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API operation deletes an existing backend signature key.
+//		- This API operation deletes an existing backend signature key.
 //
-// 	- You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
+//		- You cannot delete a key that is bound to an API. To delete the key, you must unbind it first.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteSignatureRequest
 //
@@ -54736,11 +54752,11 @@ func (client *Client) DeleteSignature(request *DeleteSignatureRequest) (_result 
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+//		- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteTrafficControlRequest
 //
@@ -54801,11 +54817,11 @@ func (client *Client) DeleteTrafficControlWithOptions(request *DeleteTrafficCont
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
+//		- If the throttling policy you want to delete is bound to APIs, you need to unbind the policy first. Otherwise, an error is reported when you delete the policy.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeleteTrafficControlRequest
 //
@@ -54827,9 +54843,9 @@ func (client *Client) DeleteTrafficControl(request *DeleteTrafficControlRequest)
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- You can obtain the input parameters required in this operation by calling other APIs.
+//		- You can obtain the input parameters required in this operation by calling other APIs.
 //
 // @param request - DeleteTrafficSpecialControlRequest
 //
@@ -54898,9 +54914,9 @@ func (client *Client) DeleteTrafficSpecialControlWithOptions(request *DeleteTraf
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- You can obtain the input parameters required in this operation by calling other APIs.
+//		- You can obtain the input parameters required in this operation by calling other APIs.
 //
 // @param request - DeleteTrafficSpecialControlRequest
 //
@@ -54922,11 +54938,11 @@ func (client *Client) DeleteTrafficSpecialControl(request *DeleteTrafficSpecialC
 //
 // Description:
 //
-//   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+//	  This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
 //
-// 	- An API is published to a cluster in under 5 seconds.
+//		- An API is published to a cluster in under 5 seconds.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeployApiRequest
 //
@@ -54999,11 +55015,11 @@ func (client *Client) DeployApiWithOptions(request *DeployApiRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
+//	  This operation is intended for API providers. Only the API that you have defined and published to a runtime environment can be called.
 //
-// 	- An API is published to a cluster in under 5 seconds.
+//		- An API is published to a cluster in under 5 seconds.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - DeployApiRequest
 //
@@ -55262,7 +55278,7 @@ func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlL
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiRequest
 //
@@ -55327,7 +55343,7 @@ func (client *Client) DescribeApiWithOptions(request *DescribeApiRequest, runtim
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiRequest
 //
@@ -55349,13 +55365,13 @@ func (client *Client) DescribeApi(request *DescribeApiRequest) (_result *Describ
 //
 // Description:
 //
-//   For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+//	  For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
 //
-// 	- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+//		- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
 //
-// 	- When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+//		- When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
 //
-// 	- Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+//		- Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
 //
 // @param request - DescribeApiDocRequest
 //
@@ -55424,13 +55440,13 @@ func (client *Client) DescribeApiDocWithOptions(request *DescribeApiDocRequest, 
 //
 // Description:
 //
-//   For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
+//	  For API callers, the specified API must be a public or authorized private API that has been published to a runtime environment.
 //
-// 	- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
+//		- When you call this operation as an API caller, the service information, parameter definitions, and other details of the API you specify are returned.
 //
-// 	- When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
+//		- When you call this operation as an API provider, the definition of the specified API running in the specified runtime environment is returned. The returned definition takes effect in the runtime environment, and may be different from the definition of the API you modify.
 //
-// 	- Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
+//		- Before you call this operation as an API provider, ensure that the API to be queried is a public one or that your application has been authorized to call the API, because authentication on API callers is required.
 //
 // @param request - DescribeApiDocRequest
 //
@@ -55452,7 +55468,7 @@ func (client *Client) DescribeApiDoc(request *DescribeApiDocRequest) (_result *D
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupRequest
 //
@@ -55517,7 +55533,7 @@ func (client *Client) DescribeApiGroupWithOptions(request *DescribeApiGroupReque
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupRequest
 //
@@ -55614,7 +55630,7 @@ func (client *Client) DescribeApiGroupVpcWhitelist(request *DescribeApiGroupVpcW
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -55707,7 +55723,7 @@ func (client *Client) DescribeApiGroupsWithOptions(request *DescribeApiGroupsReq
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - DescribeApiGroupsRequest
 //
@@ -55729,9 +55745,9 @@ func (client *Client) DescribeApiGroups(request *DescribeApiGroupsRequest) (_res
 //
 // Description:
 //
-//   This operation is intended for API providers. Only APIs that have been published have historical version records.
+//	  This operation is intended for API providers. Only APIs that have been published have historical version records.
 //
-// 	- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+//		- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
 //
 // @param request - DescribeApiHistoriesRequest
 //
@@ -55812,9 +55828,9 @@ func (client *Client) DescribeApiHistoriesWithOptions(request *DescribeApiHistor
 //
 // Description:
 //
-//   This operation is intended for API providers. Only APIs that have been published have historical version records.
+//	  This operation is intended for API providers. Only APIs that have been published have historical version records.
 //
-// 	- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
+//		- This operation allows you to obtain the historical versions of an API. This operation is always called by other operations.
 //
 // @param request - DescribeApiHistoriesRequest
 //
@@ -55838,9 +55854,9 @@ func (client *Client) DescribeApiHistories(request *DescribeApiHistoriesRequest)
 //
 // Queries the details of a specified historical version of a specified API definition.
 //
-// 	- This API is intended for API providers.
+//   - This API is intended for API providers.
 //
-// 	- API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+//   - API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
 //
 // @param request - DescribeApiHistoryRequest
 //
@@ -55915,9 +55931,9 @@ func (client *Client) DescribeApiHistoryWithOptions(request *DescribeApiHistoryR
 //
 // Queries the details of a specified historical version of a specified API definition.
 //
-// 	- This API is intended for API providers.
+//   - This API is intended for API providers.
 //
-// 	- API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
+//   - API Gateway records the time and definition of an API every time the API is published. You can use the version number obtained from other operations to query definition details at a certain publication.
 //
 // @param request - DescribeApiHistoryRequest
 //
@@ -55939,9 +55955,9 @@ func (client *Client) DescribeApiHistory(request *DescribeApiHistoryRequest) (_r
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- If an optional parameter is not specified, all results are returned on separate pages.
+//		- If an optional parameter is not specified, all results are returned on separate pages.
 //
 // ·
 //
@@ -56020,9 +56036,9 @@ func (client *Client) DescribeApiIpControlsWithOptions(request *DescribeApiIpCon
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- If an optional parameter is not specified, all results are returned on separate pages.
+//		- If an optional parameter is not specified, all results are returned on separate pages.
 //
 // ·
 //
@@ -56048,9 +56064,9 @@ func (client *Client) DescribeApiIpControls(request *DescribeApiIpControlsReques
 //
 // You can call this operation to query the latency metrics in milliseconds for a specified API.
 //
-// 	- This API is intended for API providers.
+//   - This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//   - Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiLatencyDataRequest
 //
@@ -56129,9 +56145,9 @@ func (client *Client) DescribeApiLatencyDataWithOptions(request *DescribeApiLate
 //
 // You can call this operation to query the latency metrics in milliseconds for a specified API.
 //
-// 	- This API is intended for API providers.
+//   - This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//   - Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiLatencyDataRequest
 //
@@ -56398,9 +56414,9 @@ func (client *Client) DescribeApiProductsByApp(request *DescribeApiProductsByApp
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//		- Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiQpsDataRequest
 //
@@ -56477,9 +56493,9 @@ func (client *Client) DescribeApiQpsDataWithOptions(request *DescribeApiQpsDataR
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//		- Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiQpsDataRequest
 //
@@ -56501,9 +56517,9 @@ func (client *Client) DescribeApiQpsData(request *DescribeApiQpsDataRequest) (_r
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+//		- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
 // @param request - DescribeApiSignaturesRequest
 //
@@ -56580,9 +56596,9 @@ func (client *Client) DescribeApiSignaturesWithOptions(request *DescribeApiSigna
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+//		- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
 // @param request - DescribeApiSignaturesRequest
 //
@@ -56604,9 +56620,9 @@ func (client *Client) DescribeApiSignatures(request *DescribeApiSignaturesReques
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+//		- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
 // @param request - DescribeApiTrafficControlsRequest
 //
@@ -56683,9 +56699,9 @@ func (client *Client) DescribeApiTrafficControlsWithOptions(request *DescribeApi
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
+//		- The ApiIds parameter is optional. If this parameter is not specified, all results in the specified environment of an API group are returned.
 //
 // @param request - DescribeApiTrafficControlsRequest
 //
@@ -56707,9 +56723,9 @@ func (client *Client) DescribeApiTrafficControls(request *DescribeApiTrafficCont
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//		- Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiTrafficDataRequest
 //
@@ -56786,9 +56802,9 @@ func (client *Client) DescribeApiTrafficDataWithOptions(request *DescribeApiTraf
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Only statistics for API calls made in the release environment are collected by default.
+//		- Only statistics for API calls made in the release environment are collected by default.
 //
 // @param request - DescribeApiTrafficDataRequest
 //
@@ -56810,11 +56826,11 @@ func (client *Client) DescribeApiTrafficData(request *DescribeApiTrafficDataRequ
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+//		- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
 //
-// 	- This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+//		- This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
 //
 // @param request - DescribeApisRequest
 //
@@ -56923,11 +56939,11 @@ func (client *Client) DescribeApisWithOptions(request *DescribeApisRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
+//		- This operation returns a list of all APIs that are being defined. The basic information about these APIs is also returned in the list.
 //
-// 	- This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
+//		- This operation returns all APIs that are being edited, regardless of their environments. The returned definitions may be different from the definitions in the environments.
 //
 // @param request - DescribeApisRequest
 //
@@ -57139,9 +57155,9 @@ func (client *Client) DescribeApisByBackend(request *DescribeApisByBackendReques
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- You can specify PageNumber to obtain the result on the specified page.
+//		- You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisByIpControlRequest
 //
@@ -57210,9 +57226,9 @@ func (client *Client) DescribeApisByIpControlWithOptions(request *DescribeApisBy
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- You can specify PageNumber to obtain the result on the specified page.
+//		- You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisByIpControlRequest
 //
@@ -57234,9 +57250,9 @@ func (client *Client) DescribeApisByIpControl(request *DescribeApisByIpControlRe
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+//		- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisBySignatureRequest
 //
@@ -57305,9 +57321,9 @@ func (client *Client) DescribeApisBySignatureWithOptions(request *DescribeApisBy
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
+//		- The results are returned on separate pages. You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisBySignatureRequest
 //
@@ -57329,9 +57345,9 @@ func (client *Client) DescribeApisBySignature(request *DescribeApisBySignatureRe
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- You can specify PageNumber to obtain the result on the specified page.
+//		- You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisByTrafficControlRequest
 //
@@ -57400,9 +57416,9 @@ func (client *Client) DescribeApisByTrafficControlWithOptions(request *DescribeA
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- You can specify PageNumber to obtain the result on the specified page.
+//		- You can specify PageNumber to obtain the result on the specified page.
 //
 // @param request - DescribeApisByTrafficControlRequest
 //
@@ -57685,9 +57701,9 @@ func (client *Client) DescribeApp(request *DescribeAppRequest) (_result *Describ
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- AppId is optional.
+//		- AppId is optional.
 //
 // @param request - DescribeAppAttributesRequest
 //
@@ -57784,9 +57800,9 @@ func (client *Client) DescribeAppAttributesWithOptions(request *DescribeAppAttri
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- AppId is optional.
+//		- AppId is optional.
 //
 // @param request - DescribeAppAttributesRequest
 //
@@ -57883,7 +57899,7 @@ func (client *Client) DescribeAppSecurities(request *DescribeAppSecuritiesReques
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	This operation is intended for API callers.
 //
 // @param request - DescribeAppSecurityRequest
 //
@@ -57948,7 +57964,7 @@ func (client *Client) DescribeAppSecurityWithOptions(request *DescribeAppSecurit
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	This operation is intended for API callers.
 //
 // @param request - DescribeAppSecurityRequest
 //
@@ -57970,11 +57986,11 @@ func (client *Client) DescribeAppSecurity(request *DescribeAppSecurityRequest) (
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
+//		- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
 //
-// 	- Each provider can call this operation for a maximum of 200 times every day in a region.
+//		- Each provider can call this operation for a maximum of 200 times every day in a region.
 //
 // @param request - DescribeAppsRequest
 //
@@ -58047,11 +58063,11 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
+//		- API providers can use the app IDs or their Alibaba Cloud accounts to query app information.
 //
-// 	- Each provider can call this operation for a maximum of 200 times every day in a region.
+//		- Each provider can call this operation for a maximum of 200 times every day in a region.
 //
 // @param request - DescribeAppsRequest
 //
@@ -58160,9 +58176,9 @@ func (client *Client) DescribeAppsByApiProduct(request *DescribeAppsByApiProduct
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- The specified application can call all APIs included in the responses.
+//		- The specified application can call all APIs included in the responses.
 //
 // @param request - DescribeAuthorizedApisRequest
 //
@@ -58231,9 +58247,9 @@ func (client *Client) DescribeAuthorizedApisWithOptions(request *DescribeAuthori
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- The specified application can call all APIs included in the responses.
+//		- The specified application can call all APIs included in the responses.
 //
 // @param request - DescribeAuthorizedApisRequest
 //
@@ -58255,9 +58271,9 @@ func (client *Client) DescribeAuthorizedApis(request *DescribeAuthorizedApisRequ
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- All applications included in the responses have access to the specified API.
+//		- All applications included in the responses have access to the specified API.
 //
 // @param request - DescribeAuthorizedAppsRequest
 //
@@ -58346,9 +58362,9 @@ func (client *Client) DescribeAuthorizedAppsWithOptions(request *DescribeAuthori
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- All applications included in the responses have access to the specified API.
+//		- All applications included in the responses have access to the specified API.
 //
 // @param request - DescribeAuthorizedAppsRequest
 //
@@ -59030,7 +59046,7 @@ func (client *Client) DescribeDeployedApi(request *DescribeDeployedApiRequest) (
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -59127,7 +59143,7 @@ func (client *Client) DescribeDeployedApisWithOptions(request *DescribeDeployedA
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeDeployedApisRequest
 //
@@ -60691,9 +60707,9 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You can filter the query results by policy ID.
+//		- You can filter the query results by policy ID.
 //
 // @param request - DescribeIpControlPolicyItemsRequest
 //
@@ -60766,9 +60782,9 @@ func (client *Client) DescribeIpControlPolicyItemsWithOptions(request *DescribeI
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You can filter the query results by policy ID.
+//		- You can filter the query results by policy ID.
 //
 // @param request - DescribeIpControlPolicyItemsRequest
 //
@@ -60790,13 +60806,13 @@ func (client *Client) DescribeIpControlPolicyItems(request *DescribeIpControlPol
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- This operation is used to query the ACLs in a region. Region is a system parameter.
+//		- This operation is used to query the ACLs in a region. Region is a system parameter.
 //
-// 	- You can filter the query results by ACL ID, name, or type.
+//		- You can filter the query results by ACL ID, name, or type.
 //
-// 	- This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+//		- This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
 //
 // @param request - DescribeIpControlsRequest
 //
@@ -60873,13 +60889,13 @@ func (client *Client) DescribeIpControlsWithOptions(request *DescribeIpControlsR
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- This operation is used to query the ACLs in a region. Region is a system parameter.
+//		- This operation is used to query the ACLs in a region. Region is a system parameter.
 //
-// 	- You can filter the query results by ACL ID, name, or type.
+//		- You can filter the query results by ACL ID, name, or type.
 //
-// 	- This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
+//		- This operation cannot be used to query specific policies. If you want to query specific policies, call the [DescribeIpControlPolicyItems](~~DescribeIpControlPolicyItems~~) operation.
 //
 // @param request - DescribeIpControlsRequest
 //
@@ -61051,7 +61067,7 @@ func (client *Client) DescribeMarketRemainsQuota(request *DescribeMarketRemainsQ
 //
 // Description:
 //
-//   Fuzzy queries are supported.
+//	Fuzzy queries are supported.
 //
 // @param request - DescribeModelsRequest
 //
@@ -61128,7 +61144,7 @@ func (client *Client) DescribeModelsWithOptions(request *DescribeModelsRequest, 
 //
 // Description:
 //
-//   Fuzzy queries are supported.
+//	Fuzzy queries are supported.
 //
 // @param request - DescribeModelsRequest
 //
@@ -61253,7 +61269,7 @@ func (client *Client) DescribePluginApis(request *DescribePluginApisRequest) (_r
 
 // Summary:
 //
-// Query the list of groups bound to a plugin based on the plugin ID
+// # Query the list of groups bound to a plugin based on the plugin ID
 //
 // @param request - DescribePluginGroupsRequest
 //
@@ -61330,7 +61346,7 @@ func (client *Client) DescribePluginGroupsWithOptions(request *DescribePluginGro
 
 // Summary:
 //
-// Query the list of groups bound to a plugin based on the plugin ID
+// # Query the list of groups bound to a plugin based on the plugin ID
 //
 // @param request - DescribePluginGroupsRequest
 //
@@ -61506,13 +61522,13 @@ func (client *Client) DescribePluginTemplates(request *DescribePluginTemplatesRe
 //
 // Description:
 //
-//   This operation supports pagination.
+//	  This operation supports pagination.
 //
-// 	- This operation allows you to query plug-ins by business type.
+//		- This operation allows you to query plug-ins by business type.
 //
-// 	- This operation allows you to query plug-ins by ID.
+//		- This operation allows you to query plug-ins by ID.
 //
-// 	- This operation allows you to query plug-ins by name.
+//		- This operation allows you to query plug-ins by name.
 //
 // @param request - DescribePluginsRequest
 //
@@ -61593,13 +61609,13 @@ func (client *Client) DescribePluginsWithOptions(request *DescribePluginsRequest
 //
 // Description:
 //
-//   This operation supports pagination.
+//	  This operation supports pagination.
 //
-// 	- This operation allows you to query plug-ins by business type.
+//		- This operation allows you to query plug-ins by business type.
 //
-// 	- This operation allows you to query plug-ins by ID.
+//		- This operation allows you to query plug-ins by ID.
 //
-// 	- This operation allows you to query plug-ins by name.
+//		- This operation allows you to query plug-ins by name.
 //
 // @param request - DescribePluginsRequest
 //
@@ -61621,9 +61637,9 @@ func (client *Client) DescribePlugins(request *DescribePluginsRequest) (_result 
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- This operation supports pagination.
+//		- This operation supports pagination.
 //
 // @param request - DescribePluginsByApiRequest
 //
@@ -61700,9 +61716,9 @@ func (client *Client) DescribePluginsByApiWithOptions(request *DescribePluginsBy
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- This operation supports pagination.
+//		- This operation supports pagination.
 //
 // @param request - DescribePluginsByApiRequest
 //
@@ -61720,7 +61736,7 @@ func (client *Client) DescribePluginsByApi(request *DescribePluginsByApiRequest)
 
 // Summary:
 //
-// Query Plugins Bound to API Group
+// # Query Plugins Bound to API Group
 //
 // @param request - DescribePluginsByGroupRequest
 //
@@ -61789,7 +61805,7 @@ func (client *Client) DescribePluginsByGroupWithOptions(request *DescribePlugins
 
 // Summary:
 //
-// Query Plugins Bound to API Group
+// # Query Plugins Bound to API Group
 //
 // @param request - DescribePluginsByGroupRequest
 //
@@ -62066,7 +62082,7 @@ func (client *Client) DescribePurchasedApis(request *DescribePurchasedApisReques
 //
 // This operation queries regions in which API Gateway is available.
 //
-// 	- This operation is intended for API providers and callers.
+//   - This operation is intended for API providers and callers.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -62129,7 +62145,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 //
 // This operation queries regions in which API Gateway is available.
 //
-// 	- This operation is intended for API providers and callers.
+//   - This operation is intended for API providers and callers.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -62151,9 +62167,9 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+//		- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
 //
 // @param request - DescribeSignaturesRequest
 //
@@ -62226,9 +62242,9 @@ func (client *Client) DescribeSignaturesWithOptions(request *DescribeSignaturesR
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
+//		- This operation is used to query the backend signature keys in a Region. Region is a system parameter.
 //
 // @param request - DescribeSignaturesRequest
 //
@@ -62250,7 +62266,7 @@ func (client *Client) DescribeSignatures(request *DescribeSignaturesRequest) (_r
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeSignaturesByApiRequest
 //
@@ -62319,7 +62335,7 @@ func (client *Client) DescribeSignaturesByApiWithOptions(request *DescribeSignat
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeSignaturesByApiRequest
 //
@@ -62412,9 +62428,9 @@ func (client *Client) DescribeSummaryData(request *DescribeSummaryDataRequest) (
 //
 // Description:
 //
-//   This API is intended for API callers.
+//	  This API is intended for API callers.
 //
-// 	- The response of this API contains the system parameters that are optional in API definitions.
+//		- The response of this API contains the system parameters that are optional in API definitions.
 //
 // @param request - DescribeSystemParametersRequest
 //
@@ -62471,9 +62487,9 @@ func (client *Client) DescribeSystemParametersWithOptions(request *DescribeSyste
 //
 // Description:
 //
-//   This API is intended for API callers.
+//	  This API is intended for API callers.
 //
-// 	- The response of this API contains the system parameters that are optional in API definitions.
+//		- The response of this API contains the system parameters that are optional in API definitions.
 //
 // @param request - DescribeSystemParametersRequest
 //
@@ -62495,11 +62511,11 @@ func (client *Client) DescribeSystemParameters(request *DescribeSystemParameters
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+//		- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
 //
-// 	- You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+//		- You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
 //
 // @param request - DescribeTrafficControlsRequest
 //
@@ -62584,11 +62600,11 @@ func (client *Client) DescribeTrafficControlsWithOptions(request *DescribeTraffi
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
+//		- This API can be used to query all existing throttling policies (including special throttling policies) and their details.
 //
-// 	- You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
+//		- You can specify query conditions. For example, you can query the throttling policies bound to a specified API or in a specified environment.
 //
 // @param request - DescribeTrafficControlsRequest
 //
@@ -62610,7 +62626,7 @@ func (client *Client) DescribeTrafficControls(request *DescribeTrafficControlsRe
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeTrafficControlsByApiRequest
 //
@@ -62679,7 +62695,7 @@ func (client *Client) DescribeTrafficControlsByApiWithOptions(request *DescribeT
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	This API is intended for API providers.
 //
 // @param request - DescribeTrafficControlsByApiRequest
 //
@@ -63108,7 +63124,7 @@ func (client *Client) DetachApiProduct(request *DetachApiProductRequest) (_resul
 
 // Summary:
 //
-// Unbind group plugin
+// # Unbind group plugin
 //
 // @param request - DetachGroupPluginRequest
 //
@@ -63173,7 +63189,7 @@ func (client *Client) DetachGroupPluginWithOptions(request *DetachGroupPluginReq
 
 // Summary:
 //
-// Unbind group plugin
+// # Unbind group plugin
 //
 // @param request - DetachGroupPluginRequest
 //
@@ -63852,9 +63868,9 @@ func (client *Client) ImportOAS(request *ImportOASRequest) (_result *ImportOASRe
 //
 // Description:
 //
-//   Alibaba Cloud supports extensions based on Swagger 2.0.
+//	  Alibaba Cloud supports extensions based on Swagger 2.0.
 //
-// 	- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+//		- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
 //
 // @param tmpReq - ImportSwaggerRequest
 //
@@ -63943,9 +63959,9 @@ func (client *Client) ImportSwaggerWithOptions(tmpReq *ImportSwaggerRequest, run
 //
 // Description:
 //
-//   Alibaba Cloud supports extensions based on Swagger 2.0.
+//	  Alibaba Cloud supports extensions based on Swagger 2.0.
 //
-// 	- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
+//		- Alibaba Cloud supports Swagger configuration files in JSON and YAML formats.
 //
 // @param request - ImportSwaggerRequest
 //
@@ -64054,23 +64070,23 @@ func (client *Client) ListPrivateDNS(request *ListPrivateDNSRequest) (_result *L
 //
 // Description:
 //
-//   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+//	  The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
 //
-// 	- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+//		- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
 //
-// 	- This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+//		- This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
 //
-// 	- You can query both user tags and visible system tags.
+//		- You can query both user tags and visible system tags.
 //
-// 	- In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+//		- In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
 //
-// 	- You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+//		- You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
 //
-// 	- At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+//		- At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
 //
-// 	- You can query tags of the same type or different types in a single operation.
+//		- You can query tags of the same type or different types in a single operation.
 //
-// 	- You can query all your user types and visible system tags.
+//		- You can query all your user types and visible system tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -64139,23 +64155,23 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // Description:
 //
-//   The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
+//	  The Tag.N.Key and Tag.N.Value parameters constitute a key-value pair.
 //
-// 	- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
+//		- ResourceId.N must meet all the key-value pairs that are entered. If you enter multiple key-value pairs, resources that contain the specified key-value pairs are returned.
 //
-// 	- This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
+//		- This operation is used to query resource tags based on conditions. If no relationship matches the conditions, an empty list is returned.
 //
-// 	- You can query both user tags and visible system tags.
+//		- You can query both user tags and visible system tags.
 //
-// 	- In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
+//		- In addition to the required parameters, you can also specify ResourceId.N to query the visible resource tags of a specified resource in a region.
 //
-// 	- You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
+//		- You can also specify Tag.N.Key to query the visible keys of a specified key in a region.
 //
-// 	- At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
+//		- At least one of ResourceId.N, Tag.N.Key, and Tag.N.Value exists.
 //
-// 	- You can query tags of the same type or different types in a single operation.
+//		- You can query tags of the same type or different types in a single operation.
 //
-// 	- You can query all your user types and visible system tags.
+//		- You can query all your user types and visible system tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -64179,13 +64195,13 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 //
 // *This operation is intended for API providers.**
 //
-// 	- This API operation requires a full update. Updates of partial parameters are not supported.
+//   - This API operation requires a full update. Updates of partial parameters are not supported.
 //
-// 	- When you modify an API name, make sure that the name of each API within the same group is unique.
+//   - When you modify an API name, make sure that the name of each API within the same group is unique.
 //
-// 	- When you modify the request path, make sure that each request path within the same group is unique.
+//   - When you modify the request path, make sure that each request path within the same group is unique.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//   - The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyApiRequest
 //
@@ -64354,13 +64370,13 @@ func (client *Client) ModifyApiWithOptions(request *ModifyApiRequest, runtime *u
 //
 // *This operation is intended for API providers.**
 //
-// 	- This API operation requires a full update. Updates of partial parameters are not supported.
+//   - This API operation requires a full update. Updates of partial parameters are not supported.
 //
-// 	- When you modify an API name, make sure that the name of each API within the same group is unique.
+//   - When you modify an API name, make sure that the name of each API within the same group is unique.
 //
-// 	- When you modify the request path, make sure that each request path within the same group is unique.
+//   - When you modify the request path, make sure that each request path within the same group is unique.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//   - The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyApiRequest
 //
@@ -64593,9 +64609,9 @@ func (client *Client) ModifyApiConfiguration(request *ModifyApiConfigurationRequ
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyApiGroupRequest
 //
@@ -64716,9 +64732,9 @@ func (client *Client) ModifyApiGroupWithOptions(request *ModifyApiGroupRequest, 
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyApiGroupRequest
 //
@@ -65005,11 +65021,11 @@ func (client *Client) ModifyApiGroupVpcWhitelist(request *ModifyApiGroupVpcWhite
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
+//		- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyAppRequest
 //
@@ -65086,11 +65102,11 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
+//		- AppName or Description can be modified. If these parameters are not specified, no modifications are made and the operation will directly return a successful response.********
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyAppRequest
 //
@@ -65842,9 +65858,9 @@ func (client *Client) ModifyIntranetDomainPolicy(request *ModifyIntranetDomainPo
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+//		- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
 //
 // @param request - ModifyIpControlRequest
 //
@@ -65913,9 +65929,9 @@ func (client *Client) ModifyIpControlWithOptions(request *ModifyIpControlRequest
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
+//		- This operation allows you to modify only the name and description of an ACL. You cannot modify the type of the ACL.
 //
 // @param request - ModifyIpControlRequest
 //
@@ -65937,11 +65953,11 @@ func (client *Client) ModifyIpControl(request *ModifyIpControlRequest) (_result 
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The modification immediately takes effect on all the APIs that are bound to the policy.
+//		- The modification immediately takes effect on all the APIs that are bound to the policy.
 //
-// 	- This operation causes a full modification of the content of a policy.
+//		- This operation causes a full modification of the content of a policy.
 //
 // @param request - ModifyIpControlPolicyItemRequest
 //
@@ -66014,11 +66030,11 @@ func (client *Client) ModifyIpControlPolicyItemWithOptions(request *ModifyIpCont
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The modification immediately takes effect on all the APIs that are bound to the policy.
+//		- The modification immediately takes effect on all the APIs that are bound to the policy.
 //
-// 	- This operation causes a full modification of the content of a policy.
+//		- This operation causes a full modification of the content of a policy.
 //
 // @param request - ModifyIpControlPolicyItemRequest
 //
@@ -66210,9 +66226,9 @@ func (client *Client) ModifyModel(request *ModifyModelRequest) (_result *ModifyM
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The name of the plug-in must be unique.
+//		- The name of the plug-in must be unique.
 //
 // @param request - ModifyPluginRequest
 //
@@ -66289,9 +66305,9 @@ func (client *Client) ModifyPluginWithOptions(request *ModifyPluginRequest, runt
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The name of the plug-in must be unique.
+//		- The name of the plug-in must be unique.
 //
 // @param request - ModifyPluginRequest
 //
@@ -66313,13 +66329,13 @@ func (client *Client) ModifyPlugin(request *ModifyPluginRequest) (_result *Modif
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API operation modifies the name, Key value, and Secret value of an existing signature key.
+//		- This API operation modifies the name, Key value, and Secret value of an existing signature key.
 //
-// 	- Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+//		- Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifySignatureRequest
 //
@@ -66392,13 +66408,13 @@ func (client *Client) ModifySignatureWithOptions(request *ModifySignatureRequest
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API operation modifies the name, Key value, and Secret value of an existing signature key.
+//		- This API operation modifies the name, Key value, and Secret value of an existing signature key.
 //
-// 	- Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
+//		- Note that the modification takes effect immediately. If the key has been bound to an API, you must adjust the backend signature verification based on the new key accordingly.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifySignatureRequest
 //
@@ -66420,11 +66436,11 @@ func (client *Client) ModifySignature(request *ModifySignatureRequest) (_result 
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The modifications take effect on the bound APIs instantly.
+//		- The modifications take effect on the bound APIs instantly.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyTrafficControlRequest
 //
@@ -66509,11 +66525,11 @@ func (client *Client) ModifyTrafficControlWithOptions(request *ModifyTrafficCont
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The modifications take effect on the bound APIs instantly.
+//		- The modifications take effect on the bound APIs instantly.
 //
-// 	- The QPS limit on this operation is 50 per user.
+//		- The QPS limit on this operation is 50 per user.
 //
 // @param request - ModifyTrafficControlRequest
 //
@@ -66771,13 +66787,13 @@ func (client *Client) QueryRequestLogs(request *QueryRequestLogsRequest) (_resul
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+//		- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
-// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
+//		- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
 //
-// 	- You can call this operation to reactivate the domain name to resume normal access.
+//		- You can call this operation to reactivate the domain name to resume normal access.
 //
 // @param request - ReactivateDomainRequest
 //
@@ -66842,13 +66858,13 @@ func (client *Client) ReactivateDomainWithOptions(request *ReactivateDomainReque
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
+//		- You must solve the problem that is mentioned in the domain name exception prompt before you can reactivate the domain name.
 //
-// 	- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
+//		- A typical reason why a custom domain name becomes abnormal is that the domain name does not have an ICP filing or the domain name is included in a blacklist by the administration. When a custom domain name is abnormal, users cannot use it to call APIs.
 //
-// 	- You can call this operation to reactivate the domain name to resume normal access.
+//		- You can call this operation to reactivate the domain name to resume normal access.
 //
 // @param request - ReactivateDomainRequest
 //
@@ -67034,9 +67050,9 @@ func (client *Client) RemoveApiProductsAuthorities(request *RemoveApiProductsAut
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+//		- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
 // @param request - RemoveApisAuthoritiesRequest
 //
@@ -67113,9 +67129,9 @@ func (client *Client) RemoveApisAuthoritiesWithOptions(request *RemoveApisAuthor
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+//		- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
 // @param request - RemoveApisAuthoritiesRequest
 //
@@ -67137,9 +67153,9 @@ func (client *Client) RemoveApisAuthorities(request *RemoveApisAuthoritiesReques
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+//		- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
 // @param request - RemoveAppsAuthoritiesRequest
 //
@@ -67212,9 +67228,9 @@ func (client *Client) RemoveAppsAuthoritiesWithOptions(request *RemoveAppsAuthor
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
+//		- Before you revoke access permissions, check by whom the permissions were granted. API providers can only revoke permissions granted by a Provider, and API callers can only revoke permissions granted by a Consumer.
 //
 // @param request - RemoveAppsAuthoritiesRequest
 //
@@ -67236,9 +67252,9 @@ func (client *Client) RemoveAppsAuthorities(request *RemoveAppsAuthoritiesReques
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+//		- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
 //
 // @param request - RemoveIpControlApisRequest
 //
@@ -67311,9 +67327,9 @@ func (client *Client) RemoveIpControlApisWithOptions(request *RemoveIpControlApi
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
+//		- The unbinding takes effect immediately. After the API is unbound from the ACL, the corresponding environment does not have any IP address access control in place for the API.
 //
 // @param request - RemoveIpControlApisRequest
 //
@@ -67335,7 +67351,7 @@ func (client *Client) RemoveIpControlApis(request *RemoveIpControlApisRequest) (
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - RemoveIpControlPolicyItemRequest
 //
@@ -67400,7 +67416,7 @@ func (client *Client) RemoveIpControlPolicyItemWithOptions(request *RemoveIpCont
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	This operation is intended for API providers.
 //
 // @param request - RemoveIpControlPolicyItemRequest
 //
@@ -67422,9 +67438,9 @@ func (client *Client) RemoveIpControlPolicyItem(request *RemoveIpControlPolicyIt
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+//		- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
 //
 // @param request - RemoveSignatureApisRequest
 //
@@ -67497,9 +67513,9 @@ func (client *Client) RemoveSignatureApisWithOptions(request *RemoveSignatureApi
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
+//		- The operation takes effect immediately. The request sent from API Gateway to the backend service does not contain the signature string. The corresponding verification step can be removed from the backend.
 //
 // @param request - RemoveSignatureApisRequest
 //
@@ -67521,9 +67537,9 @@ func (client *Client) RemoveSignatureApis(request *RemoveSignatureApisRequest) (
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+//		- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
 //
 // @param request - RemoveTrafficControlApisRequest
 //
@@ -67596,9 +67612,9 @@ func (client *Client) RemoveTrafficControlApisWithOptions(request *RemoveTraffic
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
+//		- This API allows you to unbind a specified throttling policy from up to 100 APIs at a time.
 //
 // @param request - RemoveTrafficControlApisRequest
 //
@@ -67620,9 +67636,9 @@ func (client *Client) RemoveTrafficControlApis(request *RemoveTrafficControlApis
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Revokes the permissions of API Gateway to access your VPC instance.
+//		- Revokes the permissions of API Gateway to access your VPC instance.
 //
 // >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
 //
@@ -67697,9 +67713,9 @@ func (client *Client) RemoveVpcAccessWithOptions(request *RemoveVpcAccessRequest
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- Revokes the permissions of API Gateway to access your VPC instance.
+//		- Revokes the permissions of API Gateway to access your VPC instance.
 //
 // >  Deleting an authorization affects the associated API. Before you delete the authorization, make sure that it is not used by the API.
 //
@@ -67889,11 +67905,11 @@ func (client *Client) ResetAppCode(request *ResetAppCodeRequest) (_result *Reset
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+//		- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
 //
-// 	- The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+//		- The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
 //
 // @param request - ResetAppSecretRequest
 //
@@ -67962,11 +67978,11 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
+//		- A new secret is automatically generated after you have called this operation. This secret cannot be customized.
 //
-// 	- The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
+//		- The results returned by this operation do not contain the application secret. You can obtain the secret by calling DescribeAppSecurity.
 //
 // @param request - ResetAppSecretRequest
 //
@@ -68397,11 +68413,11 @@ func (client *Client) SetApiProductsAuthorities(request *SetApiProductsAuthoriti
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize all applications to call their APIs.
+//		- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own applications to call the APIs that they have purchased.
+//		- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetApisAuthoritiesRequest
 //
@@ -68482,11 +68498,11 @@ func (client *Client) SetApisAuthoritiesWithOptions(request *SetApisAuthoritiesR
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize all applications to call their APIs.
+//		- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own applications to call the APIs that they have purchased.
+//		- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetApisAuthoritiesRequest
 //
@@ -68595,11 +68611,11 @@ func (client *Client) SetAppsAuthToApiProduct(request *SetAppsAuthToApiProductRe
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize all applications to call their APIs.
+//		- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own applications to call the APIs that they have purchased.
+//		- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetAppsAuthoritiesRequest
 //
@@ -68680,11 +68696,11 @@ func (client *Client) SetAppsAuthoritiesWithOptions(request *SetAppsAuthoritiesR
 //
 // Description:
 //
-//   This operation is intended for API providers and callers.
+//	  This operation is intended for API providers and callers.
 //
-// 	- API providers can authorize all applications to call their APIs.
+//		- API providers can authorize all applications to call their APIs.
 //
-// 	- API callers can authorize their own applications to call the APIs that they have purchased.
+//		- API callers can authorize their own applications to call the APIs that they have purchased.
 //
 // @param request - SetAppsAuthoritiesRequest
 //
@@ -68797,11 +68813,11 @@ func (client *Client) SetDomain(request *SetDomainRequest) (_result *SetDomainRe
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The SSL certificate must match the custom domain name.
+//		- The SSL certificate must match the custom domain name.
 //
-// 	- After the SSL certificate is bound, HTTPS-based API services become available.
+//		- After the SSL certificate is bound, HTTPS-based API services become available.
 //
 // @param request - SetDomainCertificateRequest
 //
@@ -68844,6 +68860,10 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SslOcspCacheEnable)) {
+		query["SslOcspCacheEnable"] = request.SslOcspCacheEnable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SslOcspEnable)) {
@@ -68894,11 +68914,11 @@ func (client *Client) SetDomainCertificateWithOptions(request *SetDomainCertific
 //
 // Description:
 //
-//   This operation is intended for API providers.
+//	  This operation is intended for API providers.
 //
-// 	- The SSL certificate must match the custom domain name.
+//		- The SSL certificate must match the custom domain name.
 //
-// 	- After the SSL certificate is bound, HTTPS-based API services become available.
+//		- After the SSL certificate is bound, HTTPS-based API services become available.
 //
 // @param request - SetDomainCertificateRequest
 //
@@ -69086,9 +69106,9 @@ func (client *Client) SetGroupAuthAppCode(request *SetGroupAuthAppCodeRequest) (
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- A maximum of 100 APIs can be bound at a time.
+//		- A maximum of 100 APIs can be bound at a time.
 //
 // @param request - SetIpControlApisRequest
 //
@@ -69161,9 +69181,9 @@ func (client *Client) SetIpControlApisWithOptions(request *SetIpControlApisReque
 //
 // Description:
 //
-//   This operation is intended for API callers.
+//	  This operation is intended for API callers.
 //
-// 	- A maximum of 100 APIs can be bound at a time.
+//		- A maximum of 100 APIs can be bound at a time.
 //
 // @param request - SetIpControlApisRequest
 //
@@ -69272,9 +69292,9 @@ func (client *Client) SetSignatureApis(request *SetSignatureApisRequest) (_resul
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+//		- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
 //
 // @param request - SetTrafficControlApisRequest
 //
@@ -69347,9 +69367,9 @@ func (client *Client) SetTrafficControlApisWithOptions(request *SetTrafficContro
 //
 // Description:
 //
-//   This API is intended for API providers.
+//	  This API is intended for API providers.
 //
-// 	- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
+//		- This API allows you to bind a specific throttling policy to up to 100 APIs at a time.
 //
 // @param request - SetTrafficControlApisRequest
 //
@@ -69373,7 +69393,7 @@ func (client *Client) SetTrafficControlApis(request *SetTrafficControlApisReques
 //
 // This operation is intended for API providers.
 //
-// 	- This operation is used to authorize API Gateway to access your VPC instance.
+//   - This operation is used to authorize API Gateway to access your VPC instance.
 //
 // @param request - SetVpcAccessRequest
 //
@@ -69460,7 +69480,7 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 //
 // This operation is intended for API providers.
 //
-// 	- This operation is used to authorize API Gateway to access your VPC instance.
+//   - This operation is used to authorize API Gateway to access your VPC instance.
 //
 // @param request - SetVpcAccessRequest
 //
@@ -69656,15 +69676,15 @@ func (client *Client) SwitchApi(request *SwitchApiRequest) (_result *SwitchApiRe
 //
 // Description:
 //
-//   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+//	  All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
 //
-// 	- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+//		- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
 //
-// 	- If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+//		- If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
 //
-// 	- If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+//		- If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
 //
-// 	- If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+//		- If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
 //
 // @param request - TagResourcesRequest
 //
@@ -69733,15 +69753,15 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 //
 // Description:
 //
-//   All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
+//	  All tags (key-value pairs) are applied to all resources of a specified ResourceId, with each resource specified as ResourceId.N.
 //
-// 	- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
+//		- Tag.N is a resource tag consisting of a key-value pair: Tag.N.Key and Tag.N.Value.
 //
-// 	- If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
+//		- If you call this operation to tag multiple resources simultaneously, either all or none of the resources will be tagged.
 //
-// 	- If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
+//		- If you specify Tag.1.Value in addition to required parameters, you must also specify Tag.1.Key. Otherwise, an InvalidParameter.TagKey error is reported. A tag that has a value must have the corresponding key, but the key can be an empty string.
 //
-// 	- If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
+//		- If a tag with the same key has been bound to a resource, the new tag will overwrite the existing one.
 //
 // @param request - TagResourcesRequest
 //
@@ -69763,15 +69783,15 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 //
 // Description:
 //
-//   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+//	  If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
 //
-// 	- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+//		- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
 //
-// 	- If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+//		- If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
 //
-// 	- When tag keys are specified, the All parameter is invalid.
+//		- When tag keys are specified, the All parameter is invalid.
 //
-// 	- When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+//		- When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
 //
 // @param request - UntagResourcesRequest
 //
@@ -69844,15 +69864,15 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // Description:
 //
-//   If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
+//	  If you call this operation to untag multiple resources simultaneously, either all or none of the resources will be untagged.
 //
-// 	- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
+//		- If you specify resource IDs without specifying tag keys and set the All parameter to true, all tags bound to the specified resources will be deleted. If a resource does not have any tags, the request is not processed but a success is returned.
 //
-// 	- If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
+//		- If you specify resource IDs without specifying tag keys and set the All parameter to false, the request is not processed but a success is returned.
 //
-// 	- When tag keys are specified, the All parameter is invalid.
+//		- When tag keys are specified, the All parameter is invalid.
 //
-// 	- When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
+//		- When multiple resources and key-value pairs are specified, the specified tags bound to the resources are deleted.
 //
 // @param request - UntagResourcesRequest
 //
