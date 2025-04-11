@@ -1541,6 +1541,7 @@ type CreateAppRequest struct {
 	//
 	// http://testApp.apk
 	OssAppUrl *string `json:"OssAppUrl,omitempty" xml:"OssAppUrl,omitempty"`
+	SignApk   *string `json:"SignApk,omitempty" xml:"SignApk,omitempty"`
 }
 
 func (s CreateAppRequest) String() string {
@@ -1593,6 +1594,11 @@ func (s *CreateAppRequest) SetInstallParam(v string) *CreateAppRequest {
 
 func (s *CreateAppRequest) SetOssAppUrl(v string) *CreateAppRequest {
 	s.OssAppUrl = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetSignApk(v string) *CreateAppRequest {
+	s.SignApk = &v
 	return s
 }
 
@@ -1744,6 +1750,7 @@ type CreateAppShrinkRequest struct {
 	//
 	// http://testApp.apk
 	OssAppUrl *string `json:"OssAppUrl,omitempty" xml:"OssAppUrl,omitempty"`
+	SignApk   *string `json:"SignApk,omitempty" xml:"SignApk,omitempty"`
 }
 
 func (s CreateAppShrinkRequest) String() string {
@@ -1796,6 +1803,11 @@ func (s *CreateAppShrinkRequest) SetInstallParam(v string) *CreateAppShrinkReque
 
 func (s *CreateAppShrinkRequest) SetOssAppUrl(v string) *CreateAppShrinkRequest {
 	s.OssAppUrl = &v
+	return s
+}
+
+func (s *CreateAppShrinkRequest) SetSignApk(v string) *CreateAppShrinkRequest {
+	s.SignApk = &v
 	return s
 }
 
@@ -5190,6 +5202,7 @@ type DescribeAppsRequest struct {
 	//
 	// defaultAppName
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// Region id.
 	//
 	// example:
@@ -5265,6 +5278,11 @@ func (s *DescribeAppsRequest) SetAppIdList(v []*string) *DescribeAppsRequest {
 
 func (s *DescribeAppsRequest) SetAppName(v string) *DescribeAppsRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsRequest) SetAppType(v string) *DescribeAppsRequest {
+	s.AppType = &v
 	return s
 }
 
@@ -5374,6 +5392,7 @@ type DescribeAppsResponseBodyData struct {
 	//
 	// testapp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// Region id.
 	//
 	// example:
@@ -5479,6 +5498,11 @@ func (s *DescribeAppsResponseBodyData) SetAppId(v int32) *DescribeAppsResponseBo
 
 func (s *DescribeAppsResponseBodyData) SetAppName(v string) *DescribeAppsResponseBodyData {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyData) SetAppType(v string) *DescribeAppsResponseBodyData {
+	s.AppType = &v
 	return s
 }
 
@@ -13230,6 +13254,10 @@ func (client *Client) CreateAppWithOptions(tmpReq *CreateAppRequest, runtime *ut
 		query["OssAppUrl"] = request.OssAppUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SignApk)) {
+		query["SignApk"] = request.SignApk
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14554,6 +14582,10 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
