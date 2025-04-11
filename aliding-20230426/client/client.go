@@ -22445,6 +22445,517 @@ func (s *GetAllSheetsResponse) SetBody(v *GetAllSheetsResponseBody) *GetAllSheet
 	return s
 }
 
+type GetAssistantCapabilityHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// example:
+	//
+	// 123456
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s GetAssistantCapabilityHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityHeaders) SetCommonHeaders(v map[string]*string) *GetAssistantCapabilityHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *GetAssistantCapabilityHeaders) SetAccountId(v string) *GetAssistantCapabilityHeaders {
+	s.AccountId = &v
+	return s
+}
+
+type GetAssistantCapabilityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// assistantId1
+	AssistantId *string `json:"assistantId,omitempty" xml:"assistantId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// []
+	Content []*GetAssistantCapabilityRequestContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	// example:
+	//
+	// id1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// originalAssistantId1
+	OriginalAssistantId *string `json:"originalAssistantId,omitempty" xml:"originalAssistantId,omitempty"`
+	// example:
+	//
+	// cfp
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// example:
+	//
+	// threadId
+	ThreadId *string `json:"threadId,omitempty" xml:"threadId,omitempty"`
+	// example:
+	//
+	// 5000
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequest) SetAssistantId(v string) *GetAssistantCapabilityRequest {
+	s.AssistantId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetContent(v []*GetAssistantCapabilityRequestContent) *GetAssistantCapabilityRequest {
+	s.Content = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetId(v string) *GetAssistantCapabilityRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityRequest {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetOriginalAssistantId(v string) *GetAssistantCapabilityRequest {
+	s.OriginalAssistantId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetProtocol(v string) *GetAssistantCapabilityRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetThreadId(v string) *GetAssistantCapabilityRequest {
+	s.ThreadId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequest) SetTimeout(v int32) *GetAssistantCapabilityRequest {
+	s.Timeout = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContent struct {
+	CardCallback *GetAssistantCapabilityRequestContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *GetAssistantCapabilityRequestContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *GetAssistantCapabilityRequestContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *GetAssistantCapabilityRequestContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *GetAssistantCapabilityRequestContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetCardCallback(v *GetAssistantCapabilityRequestContentCardCallback) *GetAssistantCapabilityRequestContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetDingCard(v *GetAssistantCapabilityRequestContentDingCard) *GetAssistantCapabilityRequestContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetImageUrl(v *GetAssistantCapabilityRequestContentImageUrl) *GetAssistantCapabilityRequestContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetMarkdown(v *GetAssistantCapabilityRequestContentMarkdown) *GetAssistantCapabilityRequestContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetText(v *GetAssistantCapabilityRequestContentText) *GetAssistantCapabilityRequestContent {
+	s.Text = v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContent) SetType(v string) *GetAssistantCapabilityRequestContent {
+	s.Type = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContentCardCallback struct {
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	// example:
+	//
+	// 012345
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContentCardCallback) SetContent(v string) *GetAssistantCapabilityRequestContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentCardCallback) SetTemplateId(v string) *GetAssistantCapabilityRequestContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentCardCallback) SetUserId(v string) *GetAssistantCapabilityRequestContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContentDingCard struct {
+	// example:
+	//
+	// 卡片描述
+	CardDesc *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	// example:
+	//
+	// {}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// basic_card_schema
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	// example:
+	//
+	// true
+	Finished *bool `json:"finished,omitempty" xml:"finished,omitempty"`
+	// example:
+	//
+	// templateId123
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContentDingCard) SetCardDesc(v string) *GetAssistantCapabilityRequestContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentDingCard) SetContent(v string) *GetAssistantCapabilityRequestContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentDingCard) SetContentType(v string) *GetAssistantCapabilityRequestContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentDingCard) SetFinished(v bool) *GetAssistantCapabilityRequestContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentDingCard) SetTemplateId(v string) *GetAssistantCapabilityRequestContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContentImageUrl struct {
+	// example:
+	//
+	// auto
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	// example:
+	//
+	// 这是一张小猫钓鱼图
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	// example:
+	//
+	// https://img.alicdn.com/1234.png
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContentImageUrl) SetDetail(v string) *GetAssistantCapabilityRequestContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentImageUrl) SetImageDesc(v string) *GetAssistantCapabilityRequestContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityRequestContentImageUrl) SetUrl(v string) *GetAssistantCapabilityRequestContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContentMarkdown struct {
+	// example:
+	//
+	// 1. markdown内容
+	//
+	// 2. markdown内容
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContentMarkdown) SetValue(v string) *GetAssistantCapabilityRequestContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type GetAssistantCapabilityRequestContentText struct {
+	// example:
+	//
+	// 你好！
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAssistantCapabilityRequestContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityRequestContentText) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityRequestContentText) SetValue(v string) *GetAssistantCapabilityRequestContentText {
+	s.Value = &v
+	return s
+}
+
+type GetAssistantCapabilityResponseBody struct {
+	// example:
+	//
+	// 助理描述
+	AssistantDescription *string `json:"assistantDescription,omitempty" xml:"assistantDescription,omitempty"`
+	// example:
+	//
+	// true
+	CanHandle *bool `json:"canHandle,omitempty" xml:"canHandle,omitempty"`
+	// example:
+	//
+	// {}
+	CapabilityAssessment *GetAssistantCapabilityResponseBodyCapabilityAssessment `json:"capabilityAssessment,omitempty" xml:"capabilityAssessment,omitempty" type:"Struct"`
+	// example:
+	//
+	// id1
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// requestId
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetAssistantCapabilityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetAssistantDescription(v string) *GetAssistantCapabilityResponseBody {
+	s.AssistantDescription = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetCanHandle(v bool) *GetAssistantCapabilityResponseBody {
+	s.CanHandle = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetCapabilityAssessment(v *GetAssistantCapabilityResponseBodyCapabilityAssessment) *GetAssistantCapabilityResponseBody {
+	s.CapabilityAssessment = v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetId(v string) *GetAssistantCapabilityResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBody) SetRequestId(v string) *GetAssistantCapabilityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAssistantCapabilityResponseBodyCapabilityAssessment struct {
+	// example:
+	//
+	// 能力概览
+	BriefCapability *string `json:"briefCapability,omitempty" xml:"briefCapability,omitempty"`
+	// example:
+	//
+	// []
+	CapabilityList []*GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList `json:"capabilityList,omitempty" xml:"capabilityList,omitempty" type:"Repeated"`
+}
+
+func (s GetAssistantCapabilityResponseBodyCapabilityAssessment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityResponseBodyCapabilityAssessment) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessment) SetBriefCapability(v string) *GetAssistantCapabilityResponseBodyCapabilityAssessment {
+	s.BriefCapability = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessment) SetCapabilityList(v []*GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) *GetAssistantCapabilityResponseBodyCapabilityAssessment {
+	s.CapabilityList = v
+	return s
+}
+
+type GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList struct {
+	// example:
+	//
+	// 能力概览
+	CapabilityOverview *string `json:"capabilityOverview,omitempty" xml:"capabilityOverview,omitempty"`
+	// example:
+	//
+	// 能力描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata map[string]interface{} `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	// example:
+	//
+	// 能力名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetCapabilityOverview(v string) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
+	s.CapabilityOverview = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetDescription(v string) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetMetadata(v map[string]interface{}) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
+	s.Metadata = v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList) SetName(v string) *GetAssistantCapabilityResponseBodyCapabilityAssessmentCapabilityList {
+	s.Name = &v
+	return s
+}
+
+type GetAssistantCapabilityResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAssistantCapabilityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAssistantCapabilityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAssistantCapabilityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAssistantCapabilityResponse) SetHeaders(v map[string]*string) *GetAssistantCapabilityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponse) SetStatusCode(v int32) *GetAssistantCapabilityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAssistantCapabilityResponse) SetBody(v *GetAssistantCapabilityResponseBody) *GetAssistantCapabilityResponse {
+	s.Body = v
+	return s
+}
+
 type GetConversaionSpaceHeaders struct {
 	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *GetConversaionSpaceHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -87591,6 +88102,118 @@ func (client *Client) GetAllSheets(request *GetAllSheetsRequest) (_result *GetAl
 	headers := &GetAllSheetsHeaders{}
 	_result = &GetAllSheetsResponse{}
 	_body, _err := client.GetAllSheetsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取助理能力
+//
+// @param request - GetAssistantCapabilityRequest
+//
+// @param headers - GetAssistantCapabilityHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAssistantCapabilityResponse
+func (client *Client) GetAssistantCapabilityWithOptions(request *GetAssistantCapabilityRequest, headers *GetAssistantCapabilityHeaders, runtime *util.RuntimeOptions) (_result *GetAssistantCapabilityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssistantId)) {
+		body["assistantId"] = request.AssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Metadata)) {
+		body["metadata"] = request.Metadata
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalAssistantId)) {
+		body["originalAssistantId"] = request.OriginalAssistantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		body["protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThreadId)) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["timeout"] = request.Timeout
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountId)) {
+		realHeaders["accountId"] = util.ToJSONString(headers.AccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAssistantCapability"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/ai/v1/assistant/getAssistantCapability"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetAssistantCapabilityResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetAssistantCapabilityResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取助理能力
+//
+// @param request - GetAssistantCapabilityRequest
+//
+// @return GetAssistantCapabilityResponse
+func (client *Client) GetAssistantCapability(request *GetAssistantCapabilityRequest) (_result *GetAssistantCapabilityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &GetAssistantCapabilityHeaders{}
+	_result = &GetAssistantCapabilityResponse{}
+	_body, _err := client.GetAssistantCapabilityWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
