@@ -9,6 +9,175 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddCouponDeductTagRequest struct {
+	CouponId       *string                                    `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIds []*AddCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid           *string                                    `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	Tags           []*AddCouponDeductTagRequestTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s AddCouponDeductTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagRequest) SetCouponId(v string) *AddCouponDeductTagRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *AddCouponDeductTagRequest) SetEcIdAccountIds(v []*AddCouponDeductTagRequestEcIdAccountIds) *AddCouponDeductTagRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *AddCouponDeductTagRequest) SetNbid(v string) *AddCouponDeductTagRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *AddCouponDeductTagRequest) SetTags(v []*AddCouponDeductTagRequestTags) *AddCouponDeductTagRequest {
+	s.Tags = v
+	return s
+}
+
+type AddCouponDeductTagRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s AddCouponDeductTagRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagRequestEcIdAccountIds) SetAccountIds(v []*int64) *AddCouponDeductTagRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *AddCouponDeductTagRequestEcIdAccountIds) SetEcId(v string) *AddCouponDeductTagRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type AddCouponDeductTagRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s AddCouponDeductTagRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagRequestTags) SetKey(v string) *AddCouponDeductTagRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *AddCouponDeductTagRequestTags) SetValue(v string) *AddCouponDeductTagRequestTags {
+	s.Value = &v
+	return s
+}
+
+type AddCouponDeductTagShrinkRequest struct {
+	CouponId             *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	TagsShrink           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s AddCouponDeductTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagShrinkRequest) SetCouponId(v string) *AddCouponDeductTagShrinkRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *AddCouponDeductTagShrinkRequest) SetEcIdAccountIdsShrink(v string) *AddCouponDeductTagShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *AddCouponDeductTagShrinkRequest) SetNbid(v string) *AddCouponDeductTagShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *AddCouponDeductTagShrinkRequest) SetTagsShrink(v string) *AddCouponDeductTagShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type AddCouponDeductTagResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddCouponDeductTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagResponseBody) SetData(v bool) *AddCouponDeductTagResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *AddCouponDeductTagResponseBody) SetRequestId(v string) *AddCouponDeductTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddCouponDeductTagResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddCouponDeductTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddCouponDeductTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddCouponDeductTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddCouponDeductTagResponse) SetHeaders(v map[string]*string) *AddCouponDeductTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddCouponDeductTagResponse) SetStatusCode(v int32) *AddCouponDeductTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddCouponDeductTagResponse) SetBody(v *AddCouponDeductTagResponseBody) *AddCouponDeductTagResponse {
+	s.Body = v
+	return s
+}
+
 type CancelFundAccountLowAvailableAmountAlarmRequest struct {
 	// example:
 	//
@@ -238,6 +407,976 @@ func (s *CreateFundAccountTransferResponse) SetStatusCode(v int32) *CreateFundAc
 }
 
 func (s *CreateFundAccountTransferResponse) SetBody(v *CreateFundAccountTransferResponseBody) *CreateFundAccountTransferResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCouponDeductTagRequest struct {
+	CouponId       *string                                       `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIds []*DeleteCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid           *string                                       `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	TagKeys        []*string                                     `json:"TagKeys,omitempty" xml:"TagKeys,omitempty" type:"Repeated"`
+}
+
+func (s DeleteCouponDeductTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponDeductTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponDeductTagRequest) SetCouponId(v string) *DeleteCouponDeductTagRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagRequest) SetEcIdAccountIds(v []*DeleteCouponDeductTagRequestEcIdAccountIds) *DeleteCouponDeductTagRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *DeleteCouponDeductTagRequest) SetNbid(v string) *DeleteCouponDeductTagRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagRequest) SetTagKeys(v []*string) *DeleteCouponDeductTagRequest {
+	s.TagKeys = v
+	return s
+}
+
+type DeleteCouponDeductTagRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s DeleteCouponDeductTagRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponDeductTagRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponDeductTagRequestEcIdAccountIds) SetAccountIds(v []*int64) *DeleteCouponDeductTagRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *DeleteCouponDeductTagRequestEcIdAccountIds) SetEcId(v string) *DeleteCouponDeductTagRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type DeleteCouponDeductTagShrinkRequest struct {
+	CouponId             *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	TagKeysShrink        *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
+}
+
+func (s DeleteCouponDeductTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponDeductTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponDeductTagShrinkRequest) SetCouponId(v string) *DeleteCouponDeductTagShrinkRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagShrinkRequest) SetEcIdAccountIdsShrink(v string) *DeleteCouponDeductTagShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagShrinkRequest) SetNbid(v string) *DeleteCouponDeductTagShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagShrinkRequest) SetTagKeysShrink(v string) *DeleteCouponDeductTagShrinkRequest {
+	s.TagKeysShrink = &v
+	return s
+}
+
+type DeleteCouponDeductTagResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteCouponDeductTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponDeductTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponDeductTagResponseBody) SetData(v bool) *DeleteCouponDeductTagResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagResponseBody) SetRequestId(v string) *DeleteCouponDeductTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteCouponDeductTagResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteCouponDeductTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteCouponDeductTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCouponDeductTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCouponDeductTagResponse) SetHeaders(v map[string]*string) *DeleteCouponDeductTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCouponDeductTagResponse) SetStatusCode(v int32) *DeleteCouponDeductTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCouponDeductTagResponse) SetBody(v *DeleteCouponDeductTagResponseBody) *DeleteCouponDeductTagResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCouponRequest struct {
+	// example:
+	//
+	// 351430260343
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 554863270150
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// CERTAIN
+	CouponType *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage    *int32                                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIds []*DescribeCouponRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1708423156000
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// example:
+	//
+	// 1684750028000
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	// example:
+	//
+	// 1708423156000
+	ExpireEndDate *int64 `json:"ExpireEndDate,omitempty" xml:"ExpireEndDate,omitempty"`
+	// example:
+	//
+	// 1684750028000
+	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCouponRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponRequest) SetCouponId(v int64) *DescribeCouponRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetCouponNo(v string) *DescribeCouponRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetCouponType(v string) *DescribeCouponRequest {
+	s.CouponType = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetCurrentPage(v int32) *DescribeCouponRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetEcIdAccountIds(v []*DescribeCouponRequestEcIdAccountIds) *DescribeCouponRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetEffectiveEndTime(v int64) *DescribeCouponRequest {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetEffectiveStartTime(v int64) *DescribeCouponRequest {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetExpireEndDate(v int64) *DescribeCouponRequest {
+	s.ExpireEndDate = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetExpireStartDate(v int64) *DescribeCouponRequest {
+	s.ExpireStartDate = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetNbid(v string) *DescribeCouponRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetPageSize(v int32) *DescribeCouponRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponRequest) SetStatus(v string) *DescribeCouponRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeCouponRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1501603440974415
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s DescribeCouponRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponRequestEcIdAccountIds) SetAccountIds(v []*int64) *DescribeCouponRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *DescribeCouponRequestEcIdAccountIds) SetEcId(v string) *DescribeCouponRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type DescribeCouponShrinkRequest struct {
+	// example:
+	//
+	// 351430260343
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 554863270150
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// CERTAIN
+	CouponType *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	// example:
+	//
+	// 1708423156000
+	EffectiveEndTime *int64 `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
+	// example:
+	//
+	// 1684750028000
+	EffectiveStartTime *int64 `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
+	// example:
+	//
+	// 1708423156000
+	ExpireEndDate *int64 `json:"ExpireEndDate,omitempty" xml:"ExpireEndDate,omitempty"`
+	// example:
+	//
+	// 1684750028000
+	ExpireStartDate *int64 `json:"ExpireStartDate,omitempty" xml:"ExpireStartDate,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AVAILABLE
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeCouponShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponShrinkRequest) SetCouponId(v int64) *DescribeCouponShrinkRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetCouponNo(v string) *DescribeCouponShrinkRequest {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetCouponType(v string) *DescribeCouponShrinkRequest {
+	s.CouponType = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetCurrentPage(v int32) *DescribeCouponShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetEcIdAccountIdsShrink(v string) *DescribeCouponShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetEffectiveEndTime(v int64) *DescribeCouponShrinkRequest {
+	s.EffectiveEndTime = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetEffectiveStartTime(v int64) *DescribeCouponShrinkRequest {
+	s.EffectiveStartTime = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetExpireEndDate(v int64) *DescribeCouponShrinkRequest {
+	s.ExpireEndDate = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetExpireStartDate(v int64) *DescribeCouponShrinkRequest {
+	s.ExpireStartDate = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetNbid(v string) *DescribeCouponShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetPageSize(v int32) *DescribeCouponShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponShrinkRequest) SetStatus(v string) *DescribeCouponShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type DescribeCouponResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                            `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*DescribeCouponResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// C880B065-A781-4F19-B6DD-3E0E3B715C64
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCouponResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponResponseBody) SetCurrentPage(v int32) *DescribeCouponResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBody) SetData(v []*DescribeCouponResponseBodyData) *DescribeCouponResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCouponResponseBody) SetPageSize(v int32) *DescribeCouponResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBody) SetRequestId(v string) *DescribeCouponResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBody) SetTotalCount(v int32) *DescribeCouponResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCouponResponseBodyData struct {
+	// example:
+	//
+	// 9929.750000
+	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// example:
+	//
+	// 59243658
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 731074910070
+	CouponNo *string `json:"CouponNo,omitempty" xml:"CouponNo,omitempty"`
+	// example:
+	//
+	// CERTAIN
+	CouponType     *string `json:"CouponType,omitempty" xml:"CouponType,omitempty"`
+	CouponTypeName *string `json:"CouponTypeName,omitempty" xml:"CouponTypeName,omitempty"`
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 2021-03-06T15:12Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 2021-03-02T15:12Z
+	GmtCreate     *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	ItemNames     []*string `json:"ItemNames,omitempty" xml:"ItemNames,omitempty" type:"Repeated"`
+	MoneyLimit    *string   `json:"MoneyLimit,omitempty" xml:"MoneyLimit,omitempty"`
+	OrderTimeRule *string   `json:"OrderTimeRule,omitempty" xml:"OrderTimeRule,omitempty"`
+	// example:
+	//
+	// 100.00
+	RemainAmount *string                                       `json:"RemainAmount,omitempty" xml:"RemainAmount,omitempty"`
+	Remark       *string                                       `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ShareUidList []*DescribeCouponResponseBodyDataShareUidList `json:"ShareUidList,omitempty" xml:"ShareUidList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	ShowSetDeductTagButton *bool `json:"ShowSetDeductTagButton,omitempty" xml:"ShowSetDeductTagButton,omitempty"`
+	// example:
+	//
+	// CHINA
+	Site     *string `json:"Site,omitempty" xml:"Site,omitempty"`
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+	// example:
+	//
+	// 2021-03-02T15:12Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// Available
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1902671110151254
+	SuitAccount *string `json:"SuitAccount,omitempty" xml:"SuitAccount,omitempty"`
+	// example:
+	//
+	// all
+	SuitItemType *string `json:"SuitItemType,omitempty" xml:"SuitItemType,omitempty"`
+	// example:
+	//
+	// UNIVERSAL
+	UniversalType *string   `json:"UniversalType,omitempty" xml:"UniversalType,omitempty"`
+	YhOrderTypes  []*string `json:"YhOrderTypes,omitempty" xml:"YhOrderTypes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCouponResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponResponseBodyData) SetAmount(v string) *DescribeCouponResponseBodyData {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCouponId(v int64) *DescribeCouponResponseBodyData {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCouponNo(v string) *DescribeCouponResponseBodyData {
+	s.CouponNo = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCouponType(v string) *DescribeCouponResponseBodyData {
+	s.CouponType = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCouponTypeName(v string) *DescribeCouponResponseBodyData {
+	s.CouponTypeName = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCurrency(v string) *DescribeCouponResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetEndTime(v string) *DescribeCouponResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetGmtCreate(v string) *DescribeCouponResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetItemNames(v []*string) *DescribeCouponResponseBodyData {
+	s.ItemNames = v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetMoneyLimit(v string) *DescribeCouponResponseBodyData {
+	s.MoneyLimit = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetOrderTimeRule(v string) *DescribeCouponResponseBodyData {
+	s.OrderTimeRule = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetRemainAmount(v string) *DescribeCouponResponseBodyData {
+	s.RemainAmount = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetRemark(v string) *DescribeCouponResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetShareUidList(v []*DescribeCouponResponseBodyDataShareUidList) *DescribeCouponResponseBodyData {
+	s.ShareUidList = v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetShowSetDeductTagButton(v bool) *DescribeCouponResponseBodyData {
+	s.ShowSetDeductTagButton = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetSite(v string) *DescribeCouponResponseBodyData {
+	s.Site = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetSiteName(v string) *DescribeCouponResponseBodyData {
+	s.SiteName = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetStartTime(v string) *DescribeCouponResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetStatus(v string) *DescribeCouponResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetSuitAccount(v string) *DescribeCouponResponseBodyData {
+	s.SuitAccount = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetSuitItemType(v string) *DescribeCouponResponseBodyData {
+	s.SuitItemType = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetUniversalType(v string) *DescribeCouponResponseBodyData {
+	s.UniversalType = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetYhOrderTypes(v []*string) *DescribeCouponResponseBodyData {
+	s.YhOrderTypes = v
+	return s
+}
+
+type DescribeCouponResponseBodyDataShareUidList struct {
+	// example:
+	//
+	// 1902671110151254
+	Uid      *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+}
+
+func (s DescribeCouponResponseBodyDataShareUidList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponResponseBodyDataShareUidList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponResponseBodyDataShareUidList) SetUid(v string) *DescribeCouponResponseBodyDataShareUidList {
+	s.Uid = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyDataShareUidList) SetUserNick(v string) *DescribeCouponResponseBodyDataShareUidList {
+	s.UserNick = &v
+	return s
+}
+
+type DescribeCouponResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCouponResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCouponResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponResponse) SetHeaders(v map[string]*string) *DescribeCouponResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCouponResponse) SetStatusCode(v int32) *DescribeCouponResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCouponResponse) SetBody(v *DescribeCouponResponseBody) *DescribeCouponResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCouponItemListRequest struct {
+	// example:
+	//
+	// 59104570
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage    *int32                                         `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIds []*DescribeCouponItemListRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Name           *string                                        `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCouponItemListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListRequest) SetCouponId(v int64) *DescribeCouponItemListRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DescribeCouponItemListRequest) SetCurrentPage(v int32) *DescribeCouponItemListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponItemListRequest) SetEcIdAccountIds(v []*DescribeCouponItemListRequestEcIdAccountIds) *DescribeCouponItemListRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *DescribeCouponItemListRequest) SetName(v string) *DescribeCouponItemListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCouponItemListRequest) SetNbid(v string) *DescribeCouponItemListRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DescribeCouponItemListRequest) SetPageSize(v int32) *DescribeCouponItemListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCouponItemListRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1004064243473974
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s DescribeCouponItemListRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListRequestEcIdAccountIds) SetAccountIds(v []*int64) *DescribeCouponItemListRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *DescribeCouponItemListRequestEcIdAccountIds) SetEcId(v string) *DescribeCouponItemListRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type DescribeCouponItemListShrinkRequest struct {
+	// example:
+	//
+	// 59104570
+	CouponId *int64 `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 2684201000001
+	Nbid *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCouponItemListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetCouponId(v int64) *DescribeCouponItemListShrinkRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetCurrentPage(v int32) *DescribeCouponItemListShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetEcIdAccountIdsShrink(v string) *DescribeCouponItemListShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetName(v string) *DescribeCouponItemListShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetNbid(v string) *DescribeCouponItemListShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *DescribeCouponItemListShrinkRequest) SetPageSize(v int32) *DescribeCouponItemListShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCouponItemListResponseBody struct {
+	// example:
+	//
+	// 1
+	CurrentPage *int32                                    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Data        []*DescribeCouponItemListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// EAE08A27-386C-579E-966D-8853EC3C5D0E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 5
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCouponItemListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListResponseBody) SetCurrentPage(v int32) *DescribeCouponItemListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeCouponItemListResponseBody) SetData(v []*DescribeCouponItemListResponseBodyData) *DescribeCouponItemListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeCouponItemListResponseBody) SetPageSize(v int32) *DescribeCouponItemListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCouponItemListResponseBody) SetRequestId(v string) *DescribeCouponItemListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCouponItemListResponseBody) SetTotalCount(v int32) *DescribeCouponItemListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCouponItemListResponseBodyData struct {
+	// example:
+	//
+	// vm
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeCouponItemListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListResponseBodyData) SetCode(v string) *DescribeCouponItemListResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCouponItemListResponseBodyData) SetName(v string) *DescribeCouponItemListResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type DescribeCouponItemListResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeCouponItemListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeCouponItemListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCouponItemListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCouponItemListResponse) SetHeaders(v map[string]*string) *DescribeCouponItemListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCouponItemListResponse) SetStatusCode(v int32) *DescribeCouponItemListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCouponItemListResponse) SetBody(v *DescribeCouponItemListResponseBody) *DescribeCouponItemListResponse {
 	s.Body = v
 	return s
 }
@@ -1861,6 +3000,163 @@ func (s *GetFundAccountTransactionDetailsResponse) SetBody(v *GetFundAccountTran
 	return s
 }
 
+type ListCouponDeductTagRequest struct {
+	CouponId       *string                                     `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIds []*ListCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid           *string                                     `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s ListCouponDeductTagRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagRequest) SetCouponId(v string) *ListCouponDeductTagRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *ListCouponDeductTagRequest) SetEcIdAccountIds(v []*ListCouponDeductTagRequestEcIdAccountIds) *ListCouponDeductTagRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *ListCouponDeductTagRequest) SetNbid(v string) *ListCouponDeductTagRequest {
+	s.Nbid = &v
+	return s
+}
+
+type ListCouponDeductTagRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s ListCouponDeductTagRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagRequestEcIdAccountIds) SetAccountIds(v []*int64) *ListCouponDeductTagRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *ListCouponDeductTagRequestEcIdAccountIds) SetEcId(v string) *ListCouponDeductTagRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type ListCouponDeductTagShrinkRequest struct {
+	CouponId             *string `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s ListCouponDeductTagShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagShrinkRequest) SetCouponId(v string) *ListCouponDeductTagShrinkRequest {
+	s.CouponId = &v
+	return s
+}
+
+func (s *ListCouponDeductTagShrinkRequest) SetEcIdAccountIdsShrink(v string) *ListCouponDeductTagShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *ListCouponDeductTagShrinkRequest) SetNbid(v string) *ListCouponDeductTagShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type ListCouponDeductTagResponseBody struct {
+	Data      []*ListCouponDeductTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCouponDeductTagResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagResponseBody) SetData(v []*ListCouponDeductTagResponseBodyData) *ListCouponDeductTagResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCouponDeductTagResponseBody) SetRequestId(v string) *ListCouponDeductTagResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCouponDeductTagResponseBodyData struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListCouponDeductTagResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagResponseBodyData) SetKey(v string) *ListCouponDeductTagResponseBodyData {
+	s.Key = &v
+	return s
+}
+
+func (s *ListCouponDeductTagResponseBodyData) SetValue(v string) *ListCouponDeductTagResponseBodyData {
+	s.Value = &v
+	return s
+}
+
+type ListCouponDeductTagResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCouponDeductTagResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCouponDeductTagResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCouponDeductTagResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCouponDeductTagResponse) SetHeaders(v map[string]*string) *ListCouponDeductTagResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCouponDeductTagResponse) SetStatusCode(v int32) *ListCouponDeductTagResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCouponDeductTagResponse) SetBody(v *ListCouponDeductTagResponseBody) *ListCouponDeductTagResponse {
+	s.Body = v
+	return s
+}
+
 type ListFundAccountRequest struct {
 	// example:
 	//
@@ -2450,6 +3746,102 @@ func (s *SetFundAccountCreditAmountResponse) SetBody(v *SetFundAccountCreditAmou
 	return s
 }
 
+type SetFundAccountLowAvailableAmountAlarmRequest struct {
+	// example:
+	//
+	// 12321213
+	FundAccountId *int64 `json:"FundAccountId,omitempty" xml:"FundAccountId,omitempty"`
+	// example:
+	//
+	// 100
+	ThresholdAmount *string `json:"ThresholdAmount,omitempty" xml:"ThresholdAmount,omitempty"`
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmRequest) SetFundAccountId(v int64) *SetFundAccountLowAvailableAmountAlarmRequest {
+	s.FundAccountId = &v
+	return s
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmRequest) SetThresholdAmount(v string) *SetFundAccountLowAvailableAmountAlarmRequest {
+	s.ThresholdAmount = &v
+	return s
+}
+
+type SetFundAccountLowAvailableAmountAlarmResponseBody struct {
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// {}
+	Metadata interface{} `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// 08108BF5-1AA3-518E-9986-95A3616E8DA9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponseBody) SetData(v bool) *SetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponseBody) SetMetadata(v interface{}) *SetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.Metadata = v
+	return s
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponseBody) SetRequestId(v string) *SetFundAccountLowAvailableAmountAlarmResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetFundAccountLowAvailableAmountAlarmResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetFundAccountLowAvailableAmountAlarmResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetFundAccountLowAvailableAmountAlarmResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponse) SetHeaders(v map[string]*string) *SetFundAccountLowAvailableAmountAlarmResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponse) SetStatusCode(v int32) *SetFundAccountLowAvailableAmountAlarmResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetFundAccountLowAvailableAmountAlarmResponse) SetBody(v *SetFundAccountLowAvailableAmountAlarmResponseBody) *SetFundAccountLowAvailableAmountAlarmResponse {
+	s.Body = v
+	return s
+}
+
 type SetSavingPlanUserDeductRuleRequest struct {
 	EcIdAccountIds  []*SetSavingPlanUserDeductRuleRequestEcIdAccountIds  `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
 	Nbid            *string                                              `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
@@ -2733,6 +4125,99 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 添加优惠券抵扣标签
+//
+// @param tmpReq - AddCouponDeductTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddCouponDeductTagResponse
+func (client *Client) AddCouponDeductTagWithOptions(tmpReq *AddCouponDeductTagRequest, runtime *util.RuntimeOptions) (_result *AddCouponDeductTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddCouponDeductTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CouponId)) {
+		query["CouponId"] = request.CouponId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddCouponDeductTag"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddCouponDeductTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddCouponDeductTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 添加优惠券抵扣标签
+//
+// @param request - AddCouponDeductTagRequest
+//
+// @return AddCouponDeductTagResponse
+func (client *Client) AddCouponDeductTag(request *AddCouponDeductTagRequest) (_result *AddCouponDeductTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddCouponDeductTagResponse{}
+	_body, _err := client.AddCouponDeductTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 取消资金账户低额预警
 //
 // @param request - CancelFundAccountLowAvailableAmountAlarmRequest
@@ -2890,6 +4375,245 @@ func (client *Client) CreateFundAccountTransfer(request *CreateFundAccountTransf
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFundAccountTransferResponse{}
 	_body, _err := client.CreateFundAccountTransferWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除优惠券的抵扣标签
+//
+// @param tmpReq - DeleteCouponDeductTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteCouponDeductTagResponse
+func (client *Client) DeleteCouponDeductTagWithOptions(tmpReq *DeleteCouponDeductTagRequest, runtime *util.RuntimeOptions) (_result *DeleteCouponDeductTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteCouponDeductTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TagKeys)) {
+		request.TagKeysShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TagKeys, tea.String("TagKeys"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CouponId)) {
+		query["CouponId"] = request.CouponId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeysShrink)) {
+		query["TagKeys"] = request.TagKeysShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCouponDeductTag"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteCouponDeductTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteCouponDeductTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除优惠券的抵扣标签
+//
+// @param request - DeleteCouponDeductTagRequest
+//
+// @return DeleteCouponDeductTagResponse
+func (client *Client) DeleteCouponDeductTag(request *DeleteCouponDeductTagRequest) (_result *DeleteCouponDeductTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCouponDeductTagResponse{}
+	_body, _err := client.DeleteCouponDeductTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优惠券列表
+//
+// @param tmpReq - DescribeCouponRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCouponResponse
+func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, runtime *util.RuntimeOptions) (_result *DescribeCouponResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCouponShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCoupon"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCouponResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCouponResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询优惠券列表
+//
+// @param request - DescribeCouponRequest
+//
+// @return DescribeCouponResponse
+func (client *Client) DescribeCoupon(request *DescribeCouponRequest) (_result *DescribeCouponResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCouponResponse{}
+	_body, _err := client.DescribeCouponWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询优惠券可用商品列表
+//
+// @param tmpReq - DescribeCouponItemListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeCouponItemListResponse
+func (client *Client) DescribeCouponItemListWithOptions(tmpReq *DescribeCouponItemListRequest, runtime *util.RuntimeOptions) (_result *DescribeCouponItemListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeCouponItemListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCouponItemList"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCouponItemListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCouponItemListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询优惠券可用商品列表
+//
+// @param request - DescribeCouponItemListRequest
+//
+// @return DescribeCouponItemListResponse
+func (client *Client) DescribeCouponItemList(request *DescribeCouponItemListRequest) (_result *DescribeCouponItemListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCouponItemListResponse{}
+	_body, _err := client.DescribeCouponItemListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3460,6 +5184,91 @@ func (client *Client) GetFundAccountTransactionDetails(request *GetFundAccountTr
 
 // Summary:
 //
+// 查询优惠券设置的抵扣标签
+//
+// @param tmpReq - ListCouponDeductTagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCouponDeductTagResponse
+func (client *Client) ListCouponDeductTagWithOptions(tmpReq *ListCouponDeductTagRequest, runtime *util.RuntimeOptions) (_result *ListCouponDeductTagResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCouponDeductTagShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CouponId)) {
+		query["CouponId"] = request.CouponId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCouponDeductTag"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCouponDeductTagResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCouponDeductTagResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询优惠券设置的抵扣标签
+//
+// @param request - ListCouponDeductTagRequest
+//
+// @return ListCouponDeductTagResponse
+func (client *Client) ListCouponDeductTag(request *ListCouponDeductTagRequest) (_result *ListCouponDeductTagResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCouponDeductTagResponse{}
+	_body, _err := client.ListCouponDeductTagWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询资金账户列表
 //
 // @param request - ListFundAccountRequest
@@ -3700,6 +5509,81 @@ func (client *Client) SetFundAccountCreditAmount(request *SetFundAccountCreditAm
 	runtime := &util.RuntimeOptions{}
 	_result = &SetFundAccountCreditAmountResponse{}
 	_body, _err := client.SetFundAccountCreditAmountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 设置资金账户低额预警
+//
+// @param request - SetFundAccountLowAvailableAmountAlarmRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) SetFundAccountLowAvailableAmountAlarmWithOptions(request *SetFundAccountLowAvailableAmountAlarmRequest, runtime *util.RuntimeOptions) (_result *SetFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FundAccountId)) {
+		body["FundAccountId"] = request.FundAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThresholdAmount)) {
+		body["ThresholdAmount"] = request.ThresholdAmount
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetFundAccountLowAvailableAmountAlarm"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 设置资金账户低额预警
+//
+// @param request - SetFundAccountLowAvailableAmountAlarmRequest
+//
+// @return SetFundAccountLowAvailableAmountAlarmResponse
+func (client *Client) SetFundAccountLowAvailableAmountAlarm(request *SetFundAccountLowAvailableAmountAlarmRequest) (_result *SetFundAccountLowAvailableAmountAlarmResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.SetFundAccountLowAvailableAmountAlarmWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
