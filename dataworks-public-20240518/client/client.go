@@ -14,6 +14,259 @@ import (
 	"io"
 )
 
+type Catalog struct {
+	Comment            *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifyTime         *int64  `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	Type               *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s Catalog) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Catalog) GoString() string {
+	return s.String()
+}
+
+func (s *Catalog) SetComment(v string) *Catalog {
+	s.Comment = &v
+	return s
+}
+
+func (s *Catalog) SetCreateTime(v int64) *Catalog {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Catalog) SetId(v string) *Catalog {
+	s.Id = &v
+	return s
+}
+
+func (s *Catalog) SetModifyTime(v int64) *Catalog {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Catalog) SetName(v string) *Catalog {
+	s.Name = &v
+	return s
+}
+
+func (s *Catalog) SetParentMetaEntityId(v string) *Catalog {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *Catalog) SetType(v string) *Catalog {
+	s.Type = &v
+	return s
+}
+
+type Column struct {
+	BusinessMetadata *ColumnBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// 字段1
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// false
+	ForeignKey *bool `json:"ForeignKey,omitempty" xml:"ForeignKey,omitempty"`
+	// example:
+	//
+	// maxcompute-column:123456::test_project:default:test_tbl:col1
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// col1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// false
+	PartitionKey *bool `json:"PartitionKey,omitempty" xml:"PartitionKey,omitempty"`
+	// example:
+	//
+	// 1
+	Position *int32 `json:"Position,omitempty" xml:"Position,omitempty"`
+	// example:
+	//
+	// false
+	PrimaryKey *bool `json:"PrimaryKey,omitempty" xml:"PrimaryKey,omitempty"`
+	// example:
+	//
+	// maxcompute-table:123456::test_project:default:test_tbl
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// example:
+	//
+	// bigint
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s Column) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Column) GoString() string {
+	return s.String()
+}
+
+func (s *Column) SetBusinessMetadata(v *ColumnBusinessMetadata) *Column {
+	s.BusinessMetadata = v
+	return s
+}
+
+func (s *Column) SetComment(v string) *Column {
+	s.Comment = &v
+	return s
+}
+
+func (s *Column) SetForeignKey(v bool) *Column {
+	s.ForeignKey = &v
+	return s
+}
+
+func (s *Column) SetId(v string) *Column {
+	s.Id = &v
+	return s
+}
+
+func (s *Column) SetName(v string) *Column {
+	s.Name = &v
+	return s
+}
+
+func (s *Column) SetPartitionKey(v bool) *Column {
+	s.PartitionKey = &v
+	return s
+}
+
+func (s *Column) SetPosition(v int32) *Column {
+	s.Position = &v
+	return s
+}
+
+func (s *Column) SetPrimaryKey(v bool) *Column {
+	s.PrimaryKey = &v
+	return s
+}
+
+func (s *Column) SetTableId(v string) *Column {
+	s.TableId = &v
+	return s
+}
+
+func (s *Column) SetType(v string) *Column {
+	s.Type = &v
+	return s
+}
+
+type ColumnBusinessMetadata struct {
+	// example:
+	//
+	// 字段1的业务描述
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+}
+
+func (s ColumnBusinessMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ColumnBusinessMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *ColumnBusinessMetadata) SetDescription(v string) *ColumnBusinessMetadata {
+	s.Description = &v
+	return s
+}
+
+type CrawlerType struct {
+	// example:
+	//
+	// Data Lake Formation
+	DisplayName          *string                            `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	SupportedEntityTypes []*CrawlerTypeSupportedEntityTypes `json:"SupportedEntityTypes,omitempty" xml:"SupportedEntityTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// dlf
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CrawlerType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrawlerType) GoString() string {
+	return s.String()
+}
+
+func (s *CrawlerType) SetDisplayName(v string) *CrawlerType {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CrawlerType) SetSupportedEntityTypes(v []*CrawlerTypeSupportedEntityTypes) *CrawlerType {
+	s.SupportedEntityTypes = v
+	return s
+}
+
+func (s *CrawlerType) SetType(v string) *CrawlerType {
+	s.Type = &v
+	return s
+}
+
+type CrawlerTypeSupportedEntityTypes struct {
+	// example:
+	//
+	// 如对于maxcompute-schema类型，schema层级是否存在可选（是否开启三层模型）
+	Optional *bool `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	// example:
+	//
+	// database
+	ParentSubType *string `json:"ParentSubType,omitempty" xml:"ParentSubType,omitempty"`
+	// example:
+	//
+	// table
+	SubType *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
+	// example:
+	//
+	// dlf-table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CrawlerTypeSupportedEntityTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CrawlerTypeSupportedEntityTypes) GoString() string {
+	return s.String()
+}
+
+func (s *CrawlerTypeSupportedEntityTypes) SetOptional(v bool) *CrawlerTypeSupportedEntityTypes {
+	s.Optional = &v
+	return s
+}
+
+func (s *CrawlerTypeSupportedEntityTypes) SetParentSubType(v string) *CrawlerTypeSupportedEntityTypes {
+	s.ParentSubType = &v
+	return s
+}
+
+func (s *CrawlerTypeSupportedEntityTypes) SetSubType(v string) *CrawlerTypeSupportedEntityTypes {
+	s.SubType = &v
+	return s
+}
+
+func (s *CrawlerTypeSupportedEntityTypes) SetType(v string) *CrawlerTypeSupportedEntityTypes {
+	s.Type = &v
+	return s
+}
+
 type DataQualityEvaluationTask struct {
 	// example:
 	//
@@ -1672,6 +1925,701 @@ func (s *DataQualityRuleTemplateSamplingConfig) SetSettingConfig(v string) *Data
 	return s
 }
 
+type Database struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// holo-database:h-xxxx::test_db
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test_db
+	LocationUri *string `json:"LocationUri,omitempty" xml:"LocationUri,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_db
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// holo:h-xxxx
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+}
+
+func (s Database) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Database) GoString() string {
+	return s.String()
+}
+
+func (s *Database) SetComment(v string) *Database {
+	s.Comment = &v
+	return s
+}
+
+func (s *Database) SetCreateTime(v int64) *Database {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Database) SetId(v string) *Database {
+	s.Id = &v
+	return s
+}
+
+func (s *Database) SetLocationUri(v string) *Database {
+	s.LocationUri = &v
+	return s
+}
+
+func (s *Database) SetModifyTime(v int64) *Database {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Database) SetName(v string) *Database {
+	s.Name = &v
+	return s
+}
+
+func (s *Database) SetParentMetaEntityId(v string) *Database {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+type LineageEntity struct {
+	// example:
+	//
+	// {"key1":"value1"}
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// maxcompute-table:123456::test_project::test_tbl
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test_tbl
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s LineageEntity) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageEntity) GoString() string {
+	return s.String()
+}
+
+func (s *LineageEntity) SetAttributes(v map[string]*string) *LineageEntity {
+	s.Attributes = v
+	return s
+}
+
+func (s *LineageEntity) SetId(v string) *LineageEntity {
+	s.Id = &v
+	return s
+}
+
+func (s *LineageEntity) SetName(v string) *LineageEntity {
+	s.Name = &v
+	return s
+}
+
+type LineageRelationship struct {
+	// example:
+	//
+	// 1743040581000
+	CreateTime *int64         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DstEntity  *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	// example:
+	//
+	// maxcompute-table.p.table:custom-table.xxx:custom-sql.123
+	Id        *string        `json:"Id,omitempty" xml:"Id,omitempty"`
+	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	Task      *LineageTask   `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s LineageRelationship) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageRelationship) GoString() string {
+	return s.String()
+}
+
+func (s *LineageRelationship) SetCreateTime(v int64) *LineageRelationship {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *LineageRelationship) SetDstEntity(v *LineageEntity) *LineageRelationship {
+	s.DstEntity = v
+	return s
+}
+
+func (s *LineageRelationship) SetId(v string) *LineageRelationship {
+	s.Id = &v
+	return s
+}
+
+func (s *LineageRelationship) SetSrcEntity(v *LineageEntity) *LineageRelationship {
+	s.SrcEntity = v
+	return s
+}
+
+func (s *LineageRelationship) SetTask(v *LineageTask) *LineageRelationship {
+	s.Task = v
+	return s
+}
+
+type LineageTask struct {
+	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
+	// example:
+	//
+	// 12345
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// custom-sql
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s LineageTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LineageTask) GoString() string {
+	return s.String()
+}
+
+func (s *LineageTask) SetAttributes(v map[string]*string) *LineageTask {
+	s.Attributes = v
+	return s
+}
+
+func (s *LineageTask) SetId(v string) *LineageTask {
+	s.Id = &v
+	return s
+}
+
+func (s *LineageTask) SetType(v string) *LineageTask {
+	s.Type = &v
+	return s
+}
+
+type Partition struct {
+	// example:
+	//
+	// 1700192563000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 4096
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 1700192563000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// ds=20250101
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000000
+	RecordCount *int64 `json:"RecordCount,omitempty" xml:"RecordCount,omitempty"`
+	// example:
+	//
+	// maxcompute-table:accountId::project::table
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s Partition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Partition) GoString() string {
+	return s.String()
+}
+
+func (s *Partition) SetCreateTime(v int64) *Partition {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Partition) SetDataSize(v int64) *Partition {
+	s.DataSize = &v
+	return s
+}
+
+func (s *Partition) SetModifyTime(v int64) *Partition {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Partition) SetName(v string) *Partition {
+	s.Name = &v
+	return s
+}
+
+func (s *Partition) SetRecordCount(v int64) *Partition {
+	s.RecordCount = &v
+	return s
+}
+
+func (s *Partition) SetTableId(v string) *Partition {
+	s.TableId = &v
+	return s
+}
+
+type Schema struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// maxcompute-schema:123456::test_project:default
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_db
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// maxcompute-project:123456::test_project
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// MANAGED
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s Schema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Schema) GoString() string {
+	return s.String()
+}
+
+func (s *Schema) SetComment(v string) *Schema {
+	s.Comment = &v
+	return s
+}
+
+func (s *Schema) SetCreateTime(v int64) *Schema {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Schema) SetId(v string) *Schema {
+	s.Id = &v
+	return s
+}
+
+func (s *Schema) SetModifyTime(v int64) *Schema {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Schema) SetName(v string) *Schema {
+	s.Name = &v
+	return s
+}
+
+func (s *Schema) SetParentMetaEntityId(v string) *Schema {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *Schema) SetType(v string) *Schema {
+	s.Type = &v
+	return s
+}
+
+type Table struct {
+	BusinessMetadata *TableBusinessMetadata `json:"BusinessMetadata,omitempty" xml:"BusinessMetadata,omitempty" type:"Struct"`
+	// example:
+	//
+	// 测试表
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// maxcompute-table:123456::test_project::test_tbl
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1736852168000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_tbl
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// maxcompute-project:123456::test_project
+	ParentMetaEntityId *string   `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	PartitionKeys      []*string `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty" type:"Repeated"`
+	// example:
+	//
+	// TABLE
+	TableType         *string                 `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	TechnicalMetadata *TableTechnicalMetadata `json:"TechnicalMetadata,omitempty" xml:"TechnicalMetadata,omitempty" type:"Struct"`
+}
+
+func (s Table) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Table) GoString() string {
+	return s.String()
+}
+
+func (s *Table) SetBusinessMetadata(v *TableBusinessMetadata) *Table {
+	s.BusinessMetadata = v
+	return s
+}
+
+func (s *Table) SetComment(v string) *Table {
+	s.Comment = &v
+	return s
+}
+
+func (s *Table) SetCreateTime(v int64) *Table {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Table) SetId(v string) *Table {
+	s.Id = &v
+	return s
+}
+
+func (s *Table) SetModifyTime(v int64) *Table {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Table) SetName(v string) *Table {
+	s.Name = &v
+	return s
+}
+
+func (s *Table) SetParentMetaEntityId(v string) *Table {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *Table) SetPartitionKeys(v []*string) *Table {
+	s.PartitionKeys = v
+	return s
+}
+
+func (s *Table) SetTableType(v string) *Table {
+	s.TableType = &v
+	return s
+}
+
+func (s *Table) SetTechnicalMetadata(v *TableTechnicalMetadata) *Table {
+	s.TechnicalMetadata = v
+	return s
+}
+
+type TableBusinessMetadata struct {
+	Categories [][]*TableBusinessMetadataCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
+	Extension  *TableBusinessMetadataExtension      `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	// example:
+	//
+	// ## 使用说明
+	Readme        *string                               `json:"Readme,omitempty" xml:"Readme,omitempty"`
+	Tags          []*TableBusinessMetadataTags          `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UpstreamTasks []*TableBusinessMetadataUpstreamTasks `json:"UpstreamTasks,omitempty" xml:"UpstreamTasks,omitempty" type:"Repeated"`
+}
+
+func (s TableBusinessMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableBusinessMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *TableBusinessMetadata) SetCategories(v [][]*TableBusinessMetadataCategories) *TableBusinessMetadata {
+	s.Categories = v
+	return s
+}
+
+func (s *TableBusinessMetadata) SetExtension(v *TableBusinessMetadataExtension) *TableBusinessMetadata {
+	s.Extension = v
+	return s
+}
+
+func (s *TableBusinessMetadata) SetReadme(v string) *TableBusinessMetadata {
+	s.Readme = &v
+	return s
+}
+
+func (s *TableBusinessMetadata) SetTags(v []*TableBusinessMetadataTags) *TableBusinessMetadata {
+	s.Tags = v
+	return s
+}
+
+func (s *TableBusinessMetadata) SetUpstreamTasks(v []*TableBusinessMetadataUpstreamTasks) *TableBusinessMetadata {
+	s.UpstreamTasks = v
+	return s
+}
+
+type TableBusinessMetadataCategories struct {
+	// example:
+	//
+	// CATEGORY.456
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 测试类目
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// CATEGORY.123
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+}
+
+func (s TableBusinessMetadataCategories) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableBusinessMetadataCategories) GoString() string {
+	return s.String()
+}
+
+func (s *TableBusinessMetadataCategories) SetId(v string) *TableBusinessMetadataCategories {
+	s.Id = &v
+	return s
+}
+
+func (s *TableBusinessMetadataCategories) SetName(v string) *TableBusinessMetadataCategories {
+	s.Name = &v
+	return s
+}
+
+func (s *TableBusinessMetadataCategories) SetParentId(v string) *TableBusinessMetadataCategories {
+	s.ParentId = &v
+	return s
+}
+
+type TableBusinessMetadataExtension struct {
+	// example:
+	//
+	// Dev
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 0
+	FavorCount *int64 `json:"FavorCount,omitempty" xml:"FavorCount,omitempty"`
+	// example:
+	//
+	// 234
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 0
+	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	// example:
+	//
+	// 0
+	ViewCount *int64 `json:"ViewCount,omitempty" xml:"ViewCount,omitempty"`
+}
+
+func (s TableBusinessMetadataExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableBusinessMetadataExtension) GoString() string {
+	return s.String()
+}
+
+func (s *TableBusinessMetadataExtension) SetEnvType(v string) *TableBusinessMetadataExtension {
+	s.EnvType = &v
+	return s
+}
+
+func (s *TableBusinessMetadataExtension) SetFavorCount(v int64) *TableBusinessMetadataExtension {
+	s.FavorCount = &v
+	return s
+}
+
+func (s *TableBusinessMetadataExtension) SetProjectId(v int64) *TableBusinessMetadataExtension {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *TableBusinessMetadataExtension) SetReadCount(v int64) *TableBusinessMetadataExtension {
+	s.ReadCount = &v
+	return s
+}
+
+func (s *TableBusinessMetadataExtension) SetViewCount(v int64) *TableBusinessMetadataExtension {
+	s.ViewCount = &v
+	return s
+}
+
+type TableBusinessMetadataTags struct {
+	// example:
+	//
+	// tag_key
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// if can be null:
+	// true
+	//
+	// example:
+	//
+	// tag_value
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TableBusinessMetadataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableBusinessMetadataTags) GoString() string {
+	return s.String()
+}
+
+func (s *TableBusinessMetadataTags) SetKey(v string) *TableBusinessMetadataTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TableBusinessMetadataTags) SetValue(v string) *TableBusinessMetadataTags {
+	s.Value = &v
+	return s
+}
+
+type TableBusinessMetadataUpstreamTasks struct {
+	// example:
+	//
+	// 123456
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// test_task
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s TableBusinessMetadataUpstreamTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableBusinessMetadataUpstreamTasks) GoString() string {
+	return s.String()
+}
+
+func (s *TableBusinessMetadataUpstreamTasks) SetId(v int64) *TableBusinessMetadataUpstreamTasks {
+	s.Id = &v
+	return s
+}
+
+func (s *TableBusinessMetadataUpstreamTasks) SetName(v string) *TableBusinessMetadataUpstreamTasks {
+	s.Name = &v
+	return s
+}
+
+type TableTechnicalMetadata struct {
+	// example:
+	//
+	// false
+	Compressed *bool `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
+	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
+	// example:
+	//
+	// oss://test-bucket/test_tbl
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetOutputFormat
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// example:
+	//
+	// 123456789
+	Owner      *string            `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// example:
+	//
+	// org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe
+	SerializationLibrary *string `json:"SerializationLibrary,omitempty" xml:"SerializationLibrary,omitempty"`
+}
+
+func (s TableTechnicalMetadata) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TableTechnicalMetadata) GoString() string {
+	return s.String()
+}
+
+func (s *TableTechnicalMetadata) SetCompressed(v bool) *TableTechnicalMetadata {
+	s.Compressed = &v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetInputFormat(v string) *TableTechnicalMetadata {
+	s.InputFormat = &v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetLocation(v string) *TableTechnicalMetadata {
+	s.Location = &v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetOutputFormat(v string) *TableTechnicalMetadata {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetOwner(v string) *TableTechnicalMetadata {
+	s.Owner = &v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetParameters(v map[string]*string) *TableTechnicalMetadata {
+	s.Parameters = v
+	return s
+}
+
+func (s *TableTechnicalMetadata) SetSerializationLibrary(v string) *TableTechnicalMetadata {
+	s.SerializationLibrary = &v
+	return s
+}
+
 type SuccessInfoValue struct {
 	// Indicates whether the request was successful.
 	//
@@ -1806,6 +2754,96 @@ func (s *AbolishDeploymentResponse) SetStatusCode(v int32) *AbolishDeploymentRes
 }
 
 func (s *AbolishDeploymentResponse) SetBody(v *AbolishDeploymentResponseBody) *AbolishDeploymentResponse {
+	s.Body = v
+	return s
+}
+
+type AddEntityIntoMetaCollectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	MetaCollectionId *string `json:"MetaCollectionId,omitempty" xml:"MetaCollectionId,omitempty"`
+	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+}
+
+func (s AddEntityIntoMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntityIntoMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntityIntoMetaCollectionRequest) SetId(v string) *AddEntityIntoMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *AddEntityIntoMetaCollectionRequest) SetMetaCollectionId(v string) *AddEntityIntoMetaCollectionRequest {
+	s.MetaCollectionId = &v
+	return s
+}
+
+func (s *AddEntityIntoMetaCollectionRequest) SetRemark(v string) *AddEntityIntoMetaCollectionRequest {
+	s.Remark = &v
+	return s
+}
+
+type AddEntityIntoMetaCollectionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddEntityIntoMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntityIntoMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntityIntoMetaCollectionResponseBody) SetRequestId(v string) *AddEntityIntoMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddEntityIntoMetaCollectionResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddEntityIntoMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddEntityIntoMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddEntityIntoMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddEntityIntoMetaCollectionResponse) SetHeaders(v map[string]*string) *AddEntityIntoMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddEntityIntoMetaCollectionResponse) SetStatusCode(v int32) *AddEntityIntoMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddEntityIntoMetaCollectionResponse) SetBody(v *AddEntityIntoMetaCollectionResponseBody) *AddEntityIntoMetaCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -2099,7 +3137,7 @@ func (s *BatchUpdateTasksRequest) SetTasks(v []*BatchUpdateTasksRequestTasks) *B
 type BatchUpdateTasksRequestTasks struct {
 	// The information about the associated data source.
 	DataSource *BatchUpdateTasksRequestTasksDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
-	// The description of the task.
+	// The description.
 	//
 	// example:
 	//
@@ -2123,7 +3161,7 @@ type BatchUpdateTasksRequestTasks struct {
 	//
 	// 1234
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The name of the task.
+	// The name.
 	//
 	// example:
 	//
@@ -2348,13 +3386,13 @@ func (s *BatchUpdateTasksRequestTasksTags) SetValue(v string) *BatchUpdateTasksR
 }
 
 type BatchUpdateTasksRequestTasksTrigger struct {
-	// The CRON expression of the task. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The CRON expression. This parameter takes effect only if the Type parameter is set to Scheduler.
 	//
 	// example:
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -2372,7 +3410,7 @@ type BatchUpdateTasksRequestTasksTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler.
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss`.
 	//
 	// example:
 	//
@@ -2380,9 +3418,9 @@ type BatchUpdateTasksRequestTasksTrigger struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: periodic scheduling
+	// 	- Scheduler: scheduling cycle-based trigger
 	//
-	// 	- Manual: manual scheduling
+	// 	- Manual: manual trigger
 	//
 	// example:
 	//
@@ -2676,33 +3714,33 @@ func (s *CreateAlertRuleRequest) SetTriggerCondition(v *CreateAlertRuleRequestTr
 }
 
 type CreateAlertRuleRequestNotification struct {
-	// The alert channels.
+	// The alert notification channels.
 	//
 	// This parameter is required.
 	Channels []*string `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	// The interval at which an alert notification is sent. Unit: minutes. Valid values: 5 to 10,000.
+	// The interval at which an alert notification is sent. Unit: minutes. Valid values: [5,10000].
 	//
 	// example:
 	//
 	// 30
 	IntervalInMinutes *int32 `json:"IntervalInMinutes,omitempty" xml:"IntervalInMinutes,omitempty"`
-	// The maximum number of times an alert notification is sent within one calendar day. Valid values: 1 to 10,000.
+	// The maximum number of times an alert notification can be sent within a calendar day. Valid values: [1, 10000].
 	//
 	// example:
 	//
 	// 3
 	Maximum *int32 `json:"Maximum,omitempty" xml:"Maximum,omitempty"`
-	// The alert recipient.
+	// The alert recipients.
 	//
 	// This parameter is required.
 	Receivers []*CreateAlertRuleRequestNotificationReceivers `json:"Receivers,omitempty" xml:"Receivers,omitempty" type:"Repeated"`
-	// The end of the time range for silence. The time is in the HH:mm:ss format.
+	// The end time for silence. The time is in the HH:mm format.
 	//
 	// example:
 	//
 	// 00:00:00
 	SilenceEndTime *string `json:"SilenceEndTime,omitempty" xml:"SilenceEndTime,omitempty"`
-	// The beginning of the time range for silence. The time is in the HH:mm:ss format.
+	// The start time for silence. The time is in the HH:mm format.
 	//
 	// example:
 	//
@@ -2759,25 +3797,25 @@ type CreateAlertRuleRequestNotificationReceivers struct {
 	//
 	// 	- AliUid: Alibaba Cloud account ID.
 	//
-	// 	- Shift Schedules: The personnel in a shift schedule.
+	// 	- Shift Schedules: the personnel in a shift schedule.
 	//
-	// 	- TaskOwner: The node owner. This parameter is available for custom alerts and event alerts.
+	// 	- TaskOwner: the task owner. The task owner can receive custom alerts and event alerts.
 	//
-	// 	- Owner: The baseline owner. This parameter is available for baseline alerts.
+	// 	- Owner: the baseline owner. The baseline owner can receive baseline alerts.
 	//
 	// 	- WebhookUrl: URL of a custom webhook.
 	//
-	// 	- DingdingUrl: DingTalk chatbot URL.
+	// 	- DingdingUrl: DingTalk webhook URL.
 	//
-	// 	- FeishuUrl: Lark chatbot URL.
+	// 	- FeishuUrl: Lark webhook URL.
 	//
-	// 	- WeixinUrl: WeCom chatbot URL.
+	// 	- WeixinUrl: WeCom webhook URL.
 	//
 	// example:
 	//
 	// TaskOwner
 	ReceiverType *string `json:"ReceiverType,omitempty" xml:"ReceiverType,omitempty"`
-	// The IDs of the alert recipients.
+	// The ID of the alert recipient.
 	ReceiverValues []*string `json:"ReceiverValues,omitempty" xml:"ReceiverValues,omitempty" type:"Repeated"`
 }
 
@@ -3824,13 +4862,13 @@ type CreateDIJobRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettings *CreateDIJobRequestJobSettings `json:"JobSettings,omitempty" xml:"JobSettings,omitempty" type:"Struct"`
-	// 任务类型，可选
+	// The type of the task. This parameter is optional. Valid values:
 	//
-	//  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+	// 	- DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
 	//
-	//  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+	// 	- DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
 	//
-	//  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
+	// 	- SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
 	//
 	// example:
 	//
@@ -4243,11 +5281,11 @@ func (s *CreateDIJobRequestJobSettingsRuntimeSettings) SetValue(v string) *Creat
 }
 
 type CreateDIJobRequestResourceSettings struct {
-	// The resource used for batch synchronization.
+	// The resource settings for batch synchronization.
 	OfflineResourceSettings *CreateDIJobRequestResourceSettingsOfflineResourceSettings `json:"OfflineResourceSettings,omitempty" xml:"OfflineResourceSettings,omitempty" type:"Struct"`
-	// The resource used for real-time synchronization.
+	// The resource settings for real-time synchronization.
 	RealtimeResourceSettings *CreateDIJobRequestResourceSettingsRealtimeResourceSettings `json:"RealtimeResourceSettings,omitempty" xml:"RealtimeResourceSettings,omitempty" type:"Struct"`
-	// The resource used for scheduling.
+	// The resource settings for scheduling.
 	ScheduleResourceSettings *CreateDIJobRequestResourceSettingsScheduleResourceSettings `json:"ScheduleResourceSettings,omitempty" xml:"ScheduleResourceSettings,omitempty" type:"Struct"`
 }
 
@@ -4281,7 +5319,7 @@ type CreateDIJobRequestResourceSettingsOfflineResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for Data Integration used for batch synchronization.
+	// The name of the resource group for Data Integration that are used for batch synchronization.
 	//
 	// example:
 	//
@@ -4314,7 +5352,7 @@ type CreateDIJobRequestResourceSettingsRealtimeResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for Data Integration used for real-time synchronization.
+	// The name of the resource group for Data Integration that are used for real-time synchronization.
 	//
 	// example:
 	//
@@ -4347,7 +5385,7 @@ type CreateDIJobRequestResourceSettingsScheduleResourceSettings struct {
 	//
 	// 2.0
 	RequestedCu *float64 `json:"RequestedCu,omitempty" xml:"RequestedCu,omitempty"`
-	// The identifier of the resource group for scheduling used for batch synchronization.
+	// The name of the resource group for scheduling that is used for batch synchronization.
 	//
 	// example:
 	//
@@ -4749,13 +5787,13 @@ type CreateDIJobShrinkRequest struct {
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	// The settings for the dimension of the synchronization task. The settings include processing policies for DDL messages, policies for data type mappings between source fields and destination fields, and runtime parameters of the synchronization task.
 	JobSettingsShrink *string `json:"JobSettings,omitempty" xml:"JobSettings,omitempty"`
-	// 任务类型，可选
+	// The type of the task. This parameter is optional. Valid values:
 	//
-	//  - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
+	// 	- DatabaseRealtimeMigration: A real-time synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
 	//
-	//  - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+	// 	- DatabaseOfflineMigration: A batch synchronization task used to synchronize only full data, only incremental data, or full and incremental data in multiple tables of multiple databases at the source.
 	//
-	//  - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步
+	// 	- SingleTableRealtimeMigration: A real-time synchronization task used to synchronize only data in single table at the source.
 	//
 	// example:
 	//
@@ -6486,7 +7524,7 @@ type CreateDataQualityRuleRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfig *CreateDataQualityRuleRequestSamplingConfig `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty" type:"Struct"`
-	// The strength of the monitoring rule. Valid values:
+	// The strength of the rule. Valid values:
 	//
 	// 	- Normal
 	//
@@ -7076,7 +8114,7 @@ type CreateDataQualityRuleShrinkRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	// The sampling settings.
 	SamplingConfigShrink *string `json:"SamplingConfig,omitempty" xml:"SamplingConfig,omitempty"`
-	// The strength of the monitoring rule. Valid values:
+	// The strength of the rule. Valid values:
 	//
 	// 	- Normal
 	//
@@ -7620,7 +8658,7 @@ type CreateDataSourceRequest struct {
 	//
 	// 2
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The type of the data source. More than 70 types of data sources are supported in DataWorks.
+	// The type of the data source. More than 70 types of data sources are supported in DataWorks. For more information, see [Data source types](https://help.aliyun.com/document_detail/2852465.html).
 	//
 	// This parameter is required.
 	//
@@ -8192,6 +9230,242 @@ func (s *CreateFunctionResponse) SetStatusCode(v int32) *CreateFunctionResponse 
 }
 
 func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLineageRelationshipRequest struct {
+	DstEntity *LineageEntity `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	SrcEntity *LineageEntity `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	Task      *LineageTask   `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s CreateLineageRelationshipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLineageRelationshipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLineageRelationshipRequest) SetDstEntity(v *LineageEntity) *CreateLineageRelationshipRequest {
+	s.DstEntity = v
+	return s
+}
+
+func (s *CreateLineageRelationshipRequest) SetSrcEntity(v *LineageEntity) *CreateLineageRelationshipRequest {
+	s.SrcEntity = v
+	return s
+}
+
+func (s *CreateLineageRelationshipRequest) SetTask(v *LineageTask) *CreateLineageRelationshipRequest {
+	s.Task = v
+	return s
+}
+
+type CreateLineageRelationshipShrinkRequest struct {
+	DstEntityShrink *string `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	SrcEntityShrink *string `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+	TaskShrink      *string `json:"Task,omitempty" xml:"Task,omitempty"`
+}
+
+func (s CreateLineageRelationshipShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLineageRelationshipShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLineageRelationshipShrinkRequest) SetDstEntityShrink(v string) *CreateLineageRelationshipShrinkRequest {
+	s.DstEntityShrink = &v
+	return s
+}
+
+func (s *CreateLineageRelationshipShrinkRequest) SetSrcEntityShrink(v string) *CreateLineageRelationshipShrinkRequest {
+	s.SrcEntityShrink = &v
+	return s
+}
+
+func (s *CreateLineageRelationshipShrinkRequest) SetTaskShrink(v string) *CreateLineageRelationshipShrinkRequest {
+	s.TaskShrink = &v
+	return s
+}
+
+type CreateLineageRelationshipResponseBody struct {
+	// example:
+	//
+	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateLineageRelationshipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLineageRelationshipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLineageRelationshipResponseBody) SetId(v string) *CreateLineageRelationshipResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateLineageRelationshipResponseBody) SetRequestId(v string) *CreateLineageRelationshipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLineageRelationshipResponseBody) SetSuccess(v bool) *CreateLineageRelationshipResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateLineageRelationshipResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLineageRelationshipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLineageRelationshipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLineageRelationshipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLineageRelationshipResponse) SetHeaders(v map[string]*string) *CreateLineageRelationshipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLineageRelationshipResponse) SetStatusCode(v int32) *CreateLineageRelationshipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLineageRelationshipResponse) SetBody(v *CreateLineageRelationshipResponseBody) *CreateLineageRelationshipResponse {
+	s.Body = v
+	return s
+}
+
+type CreateMetaCollectionRequest struct {
+	// example:
+	//
+	// test comment
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_album
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// category.123
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Category
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionRequest) SetDescription(v string) *CreateMetaCollectionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetName(v string) *CreateMetaCollectionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetParentId(v string) *CreateMetaCollectionRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *CreateMetaCollectionRequest) SetType(v string) *CreateMetaCollectionRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMetaCollectionResponseBody struct {
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// E6F0DBDD-5AD****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionResponseBody) SetId(v string) *CreateMetaCollectionResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponseBody) SetRequestId(v string) *CreateMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMetaCollectionResponse) SetHeaders(v map[string]*string) *CreateMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMetaCollectionResponse) SetStatusCode(v int32) *CreateMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMetaCollectionResponse) SetBody(v *CreateMetaCollectionResponseBody) *CreateMetaCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -10056,9 +11330,13 @@ type CreateWorkflowInstancesRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData
+	// 	- SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
 	//
-	// 	- ManualWorkflow
+	// 	- ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	//
+	// 	- Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	//
+	// 	- SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
 	//
 	// This parameter is required.
 	//
@@ -10551,9 +11829,13 @@ type CreateWorkflowInstancesShrinkRequest struct {
 	TaskParameters *string `json:"TaskParameters,omitempty" xml:"TaskParameters,omitempty"`
 	// The type of the workflow instance. Valid values:
 	//
-	// 	- SupplementData
+	// 	- SupplementData The values of the RootTaskIds and IncludeTaskIds parameters vary based on the value of the Mode parameter. For more information, see the Mode parameter in this API operation.
 	//
-	// 	- ManualWorkflow
+	// 	- ManualWorkflow You must set the WorkflowId parameter to the ID of the manually triggered workflow. The RootTaskIds parameter is optional. If you do not specify the RootTaskIds parameter, the IDs of the default root nodes of the manually triggered workflow are used.
+	//
+	// 	- Manual You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the manually triggered tasks that need to be run.
+	//
+	// 	- SmokeTest You need to specify only the RootTaskIds parameter. The RootTaskIds parameter specifies the IDs of the test tasks that need to be run.
 	//
 	// This parameter is required.
 	//
@@ -11807,6 +13089,159 @@ func (s *DeleteFunctionResponse) SetStatusCode(v int32) *DeleteFunctionResponse 
 }
 
 func (s *DeleteFunctionResponse) SetBody(v *DeleteFunctionResponseBody) *DeleteFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLineageRelationshipRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteLineageRelationshipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationshipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationshipRequest) SetId(v string) *DeleteLineageRelationshipRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteLineageRelationshipResponseBody struct {
+	// example:
+	//
+	// 952795279527ab****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteLineageRelationshipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationshipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationshipResponseBody) SetRequestId(v string) *DeleteLineageRelationshipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLineageRelationshipResponseBody) SetSuccess(v bool) *DeleteLineageRelationshipResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteLineageRelationshipResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLineageRelationshipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLineageRelationshipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLineageRelationshipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLineageRelationshipResponse) SetHeaders(v map[string]*string) *DeleteLineageRelationshipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLineageRelationshipResponse) SetStatusCode(v int32) *DeleteLineageRelationshipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLineageRelationshipResponse) SetBody(v *DeleteLineageRelationshipResponseBody) *DeleteLineageRelationshipResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMetaCollectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionRequest) SetId(v string) *DeleteMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteMetaCollectionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 45D14A7A-7C28-5547-AB0A-35FBCD9DE7B5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionResponseBody) SetRequestId(v string) *DeleteMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMetaCollectionResponse) SetHeaders(v map[string]*string) *DeleteMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponse) SetStatusCode(v int32) *DeleteMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMetaCollectionResponse) SetBody(v *DeleteMetaCollectionResponseBody) *DeleteMetaCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -14409,6 +15844,94 @@ func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRul
 	return s
 }
 
+type GetCatalogRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dlf-catalog:123456XXX:test_catalog
+	//
+	// starrocks-catalog:c-abc123xxx:default_catalog
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetCatalogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogRequest) SetId(v string) *GetCatalogRequest {
+	s.Id = &v
+	return s
+}
+
+type GetCatalogResponseBody struct {
+	Catalog *Catalog `json:"Catalog,omitempty" xml:"Catalog,omitempty"`
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCatalogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogResponseBody) SetCatalog(v *Catalog) *GetCatalogResponseBody {
+	s.Catalog = v
+	return s
+}
+
+func (s *GetCatalogResponseBody) SetRequestId(v string) *GetCatalogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCatalogResponseBody) SetSuccess(v bool) *GetCatalogResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCatalogResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetCatalogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetCatalogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCatalogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCatalogResponse) SetHeaders(v map[string]*string) *GetCatalogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCatalogResponse) SetStatusCode(v int32) *GetCatalogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCatalogResponse) SetBody(v *GetCatalogResponseBody) *GetCatalogResponse {
+	s.Body = v
+	return s
+}
+
 type GetCertificateRequest struct {
 	// The ID of the certificate file.
 	//
@@ -14586,6 +16109,92 @@ func (s *GetCertificateResponse) SetStatusCode(v int32) *GetCertificateResponse 
 }
 
 func (s *GetCertificateResponse) SetBody(v *GetCertificateResponseBody) *GetCertificateResponse {
+	s.Body = v
+	return s
+}
+
+type GetColumnRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-column:11075xxxx::test_project:test_schema:test_table:test_column
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetColumnRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetColumnRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetColumnRequest) SetId(v string) *GetColumnRequest {
+	s.Id = &v
+	return s
+}
+
+type GetColumnResponseBody struct {
+	Column *Column `json:"Column,omitempty" xml:"Column,omitempty"`
+	// example:
+	//
+	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetColumnResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetColumnResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetColumnResponseBody) SetColumn(v *Column) *GetColumnResponseBody {
+	s.Column = v
+	return s
+}
+
+func (s *GetColumnResponseBody) SetRequestId(v string) *GetColumnResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetColumnResponseBody) SetSuccess(v bool) *GetColumnResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetColumnResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetColumnResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetColumnResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetColumnResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetColumnResponse) SetHeaders(v map[string]*string) *GetColumnResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetColumnResponse) SetStatusCode(v int32) *GetColumnResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetColumnResponse) SetBody(v *GetColumnResponseBody) *GetColumnResponse {
 	s.Body = v
 	return s
 }
@@ -14849,11 +16458,13 @@ type GetDIJobResponseBodyPagingInfo struct {
 	//
 	// Running
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// DatabaseRealtimeMigration (Full Database Real-Time): Perform stream synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+	// 任务类型
 	//
-	// DatabaseOfflineMigration (Full Database Offline): Perform batch synchronization of multiple tables from multiple source databases. Supports full data only, incremental only, or full + incremental.
+	// - DatabaseRealtimeMigration(整库实时):将源端多个库的多个表进行流同步，支持仅全量，仅增量，或全量+增量。
 	//
-	// SingleTableRealtimeMigration (Single Table Real-Time): Perform stream synchronization of a single table from the source.
+	// - DatabaseOfflineMigration(整库离线):将源端多个库的多个表进行批同步，支持仅全量，仅增量，或全量+增量。
+	//
+	// - SingleTableRealtimeMigration(单表实时):将源端单个表进行流同步。
 	//
 	// example:
 	//
@@ -14861,15 +16472,15 @@ type GetDIJobResponseBodyPagingInfo struct {
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	// The synchronization type. Valid values:
 	//
-	// 	- FullAndRealtimeIncremental: one-time full synchronization and real-time incremental synchronization
+	// 	- FullAndRealtimeIncremental: full synchronization and real-time incremental synchronization of data in an entire database
 	//
-	// 	- RealtimeIncremental: real-time incremental synchronization
+	// 	- RealtimeIncremental: real-time incremental synchronization of data in a single table
 	//
-	// 	- Full: full synchronization
+	// 	- Full: full batch synchronization of data in an entire database
 	//
-	// 	- OfflineIncremental: batch incremental synchronization
+	// 	- OfflineIncremental: batch incremental synchronization of data in an entire database
 	//
-	// 	- FullAndOfflineIncremental: one-time full synchronization and batch incremental synchronization
+	// 	- FullAndOfflineIncremental: full synchronization and batch incremental synchronization of data in an entire database
 	//
 	// example:
 	//
@@ -16076,11 +17687,11 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTask) SetT
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks struct {
-	// Hook trigger condition. When this condition is met, hook action is triggered. Currently, only two conditional expressions are supported:
+	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
 	//
-	// - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -16115,11 +17726,11 @@ func (s *GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskHooks)
 }
 
 type GetDataQualityEvaluationTaskResponseBodyDataQualityEvaluationTaskNotifications struct {
-	// The notification trigger condition. When this condition is met, a message notification is triggered. Currently, only two conditional expressions are supported:
+	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
 	//
-	// - Specify only one set of rule severity types AND rule verification status, such as `${severity} = = "High" AND ${status} = = "Critical"`, which indicates that in the executed rule, if the rule verification result of severity High is Critical, the condition is met.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// - Specify multiple sets of rule severity types AND rule verification status, such as `(${severity} = = "High" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Critical") OR (${severity} = "Normal" AND ${status} = "Error")`, if the rule verification result of severity High is Critical, the rule verification result of severity Normal is Critical, or the rule verification result of severity Normal is Error, the enumeration that satisfies the condition expression severity is consistent with the enumeration DataQualityRule in severity, and the enumeration of status is consistent with the status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High"AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -18505,6 +20116,92 @@ func (s *GetDataSourceResponse) SetBody(v *GetDataSourceResponseBody) *GetDataSo
 	return s
 }
 
+type GetDatabaseRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysql-database:rm-abc123xxx::test_db
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetDatabaseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseRequest) SetId(v string) *GetDatabaseRequest {
+	s.Id = &v
+	return s
+}
+
+type GetDatabaseResponseBody struct {
+	Database *Database `json:"Database,omitempty" xml:"Database,omitempty"`
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDatabaseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponseBody) SetDatabase(v *Database) *GetDatabaseResponseBody {
+	s.Database = v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetRequestId(v string) *GetDatabaseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDatabaseResponseBody) SetSuccess(v bool) *GetDatabaseResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDatabaseResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatabaseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatabaseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatabaseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatabaseResponse) SetHeaders(v map[string]*string) *GetDatabaseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatabaseResponse) SetStatusCode(v int32) *GetDatabaseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseResponse {
+	s.Body = v
+	return s
+}
+
 type GetDeploymentRequest struct {
 	// The ID of the process.
 	//
@@ -19248,6 +20945,248 @@ func (s *GetJobStatusResponse) SetBody(v *GetJobStatusResponseBody) *GetJobStatu
 	return s
 }
 
+type GetLineageRelationshipRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 110xxxx:custom-table.xxxxx:maxcompute-table.project.test_big_lineage_080901:custom-sqlxx.00001
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetLineageRelationshipRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageRelationshipRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageRelationshipRequest) SetId(v string) *GetLineageRelationshipRequest {
+	s.Id = &v
+	return s
+}
+
+type GetLineageRelationshipResponseBody struct {
+	LineageRelationship *LineageRelationship `json:"LineageRelationship,omitempty" xml:"LineageRelationship,omitempty"`
+	// example:
+	//
+	// 58D5334A-B013-430E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetLineageRelationshipResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageRelationshipResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageRelationshipResponseBody) SetLineageRelationship(v *LineageRelationship) *GetLineageRelationshipResponseBody {
+	s.LineageRelationship = v
+	return s
+}
+
+func (s *GetLineageRelationshipResponseBody) SetRequestId(v string) *GetLineageRelationshipResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetLineageRelationshipResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLineageRelationshipResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLineageRelationshipResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLineageRelationshipResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLineageRelationshipResponse) SetHeaders(v map[string]*string) *GetLineageRelationshipResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLineageRelationshipResponse) SetStatusCode(v int32) *GetLineageRelationshipResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLineageRelationshipResponse) SetBody(v *GetLineageRelationshipResponseBody) *GetLineageRelationshipResponse {
+	s.Body = v
+	return s
+}
+
+type GetMetaCollectionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionRequest) SetId(v string) *GetMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+type GetMetaCollectionResponseBody struct {
+	MetaCollection *GetMetaCollectionResponseBodyMetaCollection `json:"MetaCollection,omitempty" xml:"MetaCollection,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1AFAE64E-D1BE-432B-A9****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionResponseBody) SetMetaCollection(v *GetMetaCollectionResponseBodyMetaCollection) *GetMetaCollectionResponseBody {
+	s.MetaCollection = v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBody) SetRequestId(v string) *GetMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMetaCollectionResponseBodyMetaCollection struct {
+	Administrators []*int64 `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1668568601000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 456789
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1668568601000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_category
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// category.12
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Category
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetMetaCollectionResponseBodyMetaCollection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionResponseBodyMetaCollection) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetAdministrators(v []*int64) *GetMetaCollectionResponseBodyMetaCollection {
+	s.Administrators = v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetCreateTime(v int64) *GetMetaCollectionResponseBodyMetaCollection {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetCreateUser(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetDescription(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.Description = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetId(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.Id = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetModifyTime(v int64) *GetMetaCollectionResponseBodyMetaCollection {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetName(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.Name = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetParentId(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.ParentId = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponseBodyMetaCollection) SetType(v string) *GetMetaCollectionResponseBodyMetaCollection {
+	s.Type = &v
+	return s
+}
+
+type GetMetaCollectionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMetaCollectionResponse) SetHeaders(v map[string]*string) *GetMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMetaCollectionResponse) SetStatusCode(v int32) *GetMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMetaCollectionResponse) SetBody(v *GetMetaCollectionResponseBody) *GetMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type GetNetworkRequest struct {
 	// The network ID.
 	//
@@ -19806,6 +21745,103 @@ func (s *GetNodeResponse) SetStatusCode(v int32) *GetNodeResponse {
 }
 
 func (s *GetNodeResponse) SetBody(v *GetNodeResponseBody) *GetNodeResponse {
+	s.Body = v
+	return s
+}
+
+type GetPartitionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ds=20250101
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s GetPartitionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionRequest) SetName(v string) *GetPartitionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetPartitionRequest) SetTableId(v string) *GetPartitionRequest {
+	s.TableId = &v
+	return s
+}
+
+type GetPartitionResponseBody struct {
+	Partition *Partition `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// example:
+	//
+	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPartitionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionResponseBody) SetPartition(v *Partition) *GetPartitionResponseBody {
+	s.Partition = v
+	return s
+}
+
+func (s *GetPartitionResponseBody) SetRequestId(v string) *GetPartitionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPartitionResponseBody) SetSuccess(v bool) *GetPartitionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPartitionResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPartitionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPartitionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPartitionResponse) SetHeaders(v map[string]*string) *GetPartitionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPartitionResponse) SetStatusCode(v int32) *GetPartitionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPartitionResponse) SetBody(v *GetPartitionResponseBody) *GetPartitionResponse {
 	s.Body = v
 	return s
 }
@@ -20721,7 +22757,7 @@ func (s *GetResourceResponse) SetBody(v *GetResourceResponseBody) *GetResourceRe
 }
 
 type GetResourceGroupRequest struct {
-	// Unique identifier of a common resource group.
+	// The ID of the resource group.
 	//
 	// This parameter is required.
 	//
@@ -20745,7 +22781,7 @@ func (s *GetResourceGroupRequest) SetId(v string) *GetResourceGroupRequest {
 }
 
 type GetResourceGroupResponseBody struct {
-	// The ID of the request. It is used to locate logs and troubleshoot problems.
+	// The request ID.
 	//
 	// example:
 	//
@@ -20753,7 +22789,7 @@ type GetResourceGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The details about the resource group.
 	ResourceGroup *GetResourceGroupResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Struct"`
-	// Whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -20793,31 +22829,31 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	AliyunResourceGroupId *string `json:"AliyunResourceGroupId,omitempty" xml:"AliyunResourceGroupId,omitempty"`
 	// The tags.
 	AliyunResourceTags []*GetResourceGroupResponseBodyResourceGroupAliyunResourceTags `json:"AliyunResourceTags,omitempty" xml:"AliyunResourceTags,omitempty" type:"Repeated"`
-	// The creation time, which is a 64-bit timestamp.
+	// The time when the resource group was created. The value is a 64-bit timestamp.
 	//
 	// example:
 	//
 	// 1727055811000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the user who created the resource group.
+	// The ID of the account that is used to create the resource group.
 	//
 	// example:
 	//
 	// 11075500042XXXXX
 	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	// The default VPC ID bound to the common resource group.
+	// The ID of the virtual private cloud (VPC) with which the resource group is associated by default.
 	//
 	// example:
 	//
 	// vpc-m2et4f3oc8msfbccXXXXX
 	DefaultVpcId *string `json:"DefaultVpcId,omitempty" xml:"DefaultVpcId,omitempty"`
-	// The default switch ID bound to the common resource group.
+	// The ID of the vSwitch with which the resource group is associated by default.
 	//
 	// example:
 	//
 	// vsw-uf8usrhs7hjd9amsXXXXX
 	DefaultVswitchId *string `json:"DefaultVswitchId,omitempty" xml:"DefaultVswitchId,omitempty"`
-	// The unique identifier of the resource group.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -20829,7 +22865,7 @@ type GetResourceGroupResponseBodyResourceGroup struct {
 	//
 	// common_resource_group
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the order instance of the resource group.
+	// The instance ID of the order that is used to create the resource group.
 	//
 	// example:
 	//
@@ -21013,7 +23049,7 @@ type GetResourceGroupResponseBodyResourceGroupSpec struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// Specification details.
+	// The number of compute units (CUs) in the resource group.
 	//
 	// example:
 	//
@@ -21234,6 +23270,195 @@ func (s *GetRouteResponse) SetStatusCode(v int32) *GetRouteResponse {
 }
 
 func (s *GetRouteResponse) SetBody(v *GetRouteResponseBody) *GetRouteResponse {
+	s.Body = v
+	return s
+}
+
+type GetSchemaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-schema:123456XXX::test_project:default
+	//
+	// holo-schema:h-abc123xxx::test_db:test_schema
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetSchemaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemaRequest) SetId(v string) *GetSchemaRequest {
+	s.Id = &v
+	return s
+}
+
+type GetSchemaResponseBody struct {
+	// example:
+	//
+	// A89B5D9D-74EA-XXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Schema    *Schema `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSchemaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemaResponseBody) SetRequestId(v string) *GetSchemaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSchemaResponseBody) SetSchema(v *Schema) *GetSchemaResponseBody {
+	s.Schema = v
+	return s
+}
+
+func (s *GetSchemaResponseBody) SetSuccess(v bool) *GetSchemaResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSchemaResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSchemaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSchemaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSchemaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSchemaResponse) SetHeaders(v map[string]*string) *GetSchemaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSchemaResponse) SetStatusCode(v int32) *GetSchemaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSchemaResponse) SetBody(v *GetSchemaResponseBody) *GetSchemaResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	IncludeBusinessMetadata *bool `json:"IncludeBusinessMetadata,omitempty" xml:"IncludeBusinessMetadata,omitempty"`
+}
+
+func (s GetTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableRequest) SetId(v string) *GetTableRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTableRequest) SetIncludeBusinessMetadata(v bool) *GetTableRequest {
+	s.IncludeBusinessMetadata = &v
+	return s
+}
+
+type GetTableResponseBody struct {
+	// example:
+	//
+	// 7B3435F4-2D91-XXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool  `json:"Success,omitempty" xml:"Success,omitempty"`
+	Table   *Table `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s GetTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableResponseBody) SetRequestId(v string) *GetTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableResponseBody) SetSuccess(v bool) *GetTableResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetTableResponseBody) SetTable(v *Table) *GetTableResponseBody {
+	s.Table = v
+	return s
+}
+
+type GetTableResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableResponse) SetHeaders(v map[string]*string) *GetTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableResponse) SetStatusCode(v int32) *GetTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableResponse) SetBody(v *GetTableResponseBody) *GetTableResponse {
 	s.Body = v
 	return s
 }
@@ -23867,9 +26092,9 @@ type GetWorkflowResponseBodyWorkflowTasks struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The environment of the workspace. Valid values:
 	//
-	// 	- Prod: production environment
+	// 	- Prod
 	//
-	// 	- Dev: development environment
+	// 	- Dev
 	//
 	// example:
 	//
@@ -26389,6 +28614,282 @@ func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAle
 	return s
 }
 
+type ListCatalogsRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dlf
+	//
+	// starrocks:c-abc123xxx
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListCatalogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCatalogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCatalogsRequest) SetComment(v string) *ListCatalogsRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetName(v string) *ListCatalogsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetOrder(v string) *ListCatalogsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetPageNumber(v int32) *ListCatalogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetPageSize(v int32) *ListCatalogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetParentMetaEntityId(v string) *ListCatalogsRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetSortBy(v string) *ListCatalogsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListCatalogsRequest) SetTypes(v []*string) *ListCatalogsRequest {
+	s.Types = v
+	return s
+}
+
+type ListCatalogsShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dlf
+	//
+	// starrocks:c-abc123xxx
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListCatalogsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCatalogsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCatalogsShrinkRequest) SetComment(v string) *ListCatalogsShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetName(v string) *ListCatalogsShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetOrder(v string) *ListCatalogsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetPageNumber(v int32) *ListCatalogsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetPageSize(v int32) *ListCatalogsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetParentMetaEntityId(v string) *ListCatalogsShrinkRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetSortBy(v string) *ListCatalogsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListCatalogsShrinkRequest) SetTypesShrink(v string) *ListCatalogsShrinkRequest {
+	s.TypesShrink = &v
+	return s
+}
+
+type ListCatalogsResponseBody struct {
+	PagingInfo *ListCatalogsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 317CD7D0-AB36-XXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCatalogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCatalogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCatalogsResponseBody) SetPagingInfo(v *ListCatalogsResponseBodyPagingInfo) *ListCatalogsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListCatalogsResponseBody) SetRequestId(v string) *ListCatalogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCatalogsResponseBody) SetSuccess(v bool) *ListCatalogsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCatalogsResponseBodyPagingInfo struct {
+	Catalogs []*Catalog `json:"Catalogs,omitempty" xml:"Catalogs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCatalogsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCatalogsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCatalogsResponseBodyPagingInfo) SetCatalogs(v []*Catalog) *ListCatalogsResponseBodyPagingInfo {
+	s.Catalogs = v
+	return s
+}
+
+func (s *ListCatalogsResponseBodyPagingInfo) SetPageNumber(v int32) *ListCatalogsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCatalogsResponseBodyPagingInfo) SetPageSize(v int32) *ListCatalogsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCatalogsResponseBodyPagingInfo) SetTotalCount(v int64) *ListCatalogsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCatalogsResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCatalogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCatalogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCatalogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCatalogsResponse) SetHeaders(v map[string]*string) *ListCatalogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCatalogsResponse) SetStatusCode(v int32) *ListCatalogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCatalogsResponse) SetBody(v *ListCatalogsResponseBody) *ListCatalogsResponse {
+	s.Body = v
+	return s
+}
+
 type ListCertificatesRequest struct {
 	// The ID of the user who created the certificate files.
 	//
@@ -26683,6 +29184,254 @@ func (s *ListCertificatesResponse) SetStatusCode(v int32) *ListCertificatesRespo
 }
 
 func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *ListCertificatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListColumnsRequest struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// test_table
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Position
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s ListColumnsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnsRequest) SetComment(v string) *ListColumnsRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetName(v string) *ListColumnsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetOrder(v string) *ListColumnsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetPageNumber(v int32) *ListColumnsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetPageSize(v int32) *ListColumnsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetSortBy(v string) *ListColumnsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListColumnsRequest) SetTableId(v string) *ListColumnsRequest {
+	s.TableId = &v
+	return s
+}
+
+type ListColumnsResponseBody struct {
+	PagingInfo *ListColumnsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListColumnsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnsResponseBody) SetPagingInfo(v *ListColumnsResponseBodyPagingInfo) *ListColumnsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListColumnsResponseBody) SetRequestId(v string) *ListColumnsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListColumnsResponseBody) SetSuccess(v bool) *ListColumnsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListColumnsResponseBodyPagingInfo struct {
+	Columns []*Column `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListColumnsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnsResponseBodyPagingInfo) SetColumns(v []*Column) *ListColumnsResponseBodyPagingInfo {
+	s.Columns = v
+	return s
+}
+
+func (s *ListColumnsResponseBodyPagingInfo) SetPageNumber(v int32) *ListColumnsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListColumnsResponseBodyPagingInfo) SetPageSize(v int32) *ListColumnsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListColumnsResponseBodyPagingInfo) SetTotalCount(v int64) *ListColumnsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListColumnsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListColumnsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListColumnsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListColumnsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListColumnsResponse) SetHeaders(v map[string]*string) *ListColumnsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListColumnsResponse) SetStatusCode(v int32) *ListColumnsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListColumnsResponse) SetBody(v *ListColumnsResponseBody) *ListColumnsResponse {
+	s.Body = v
+	return s
+}
+
+type ListCrawlerTypesResponseBody struct {
+	CrawlerTypes []*CrawlerType `json:"CrawlerTypes,omitempty" xml:"CrawlerTypes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCrawlerTypesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCrawlerTypesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCrawlerTypesResponseBody) SetCrawlerTypes(v []*CrawlerType) *ListCrawlerTypesResponseBody {
+	s.CrawlerTypes = v
+	return s
+}
+
+func (s *ListCrawlerTypesResponseBody) SetRequestId(v string) *ListCrawlerTypesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCrawlerTypesResponseBody) SetSuccess(v bool) *ListCrawlerTypesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCrawlerTypesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListCrawlerTypesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListCrawlerTypesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCrawlerTypesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCrawlerTypesResponse) SetHeaders(v map[string]*string) *ListCrawlerTypesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCrawlerTypesResponse) SetStatusCode(v int32) *ListCrawlerTypesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCrawlerTypesResponse) SetBody(v *ListCrawlerTypesResponseBody) *ListCrawlerTypesResponse {
 	s.Body = v
 	return s
 }
@@ -31505,23 +34254,23 @@ func (s *ListDataQualityResultsResponse) SetBody(v *ListDataQualityResultsRespon
 }
 
 type ListDataQualityRuleTemplatesRequest struct {
-	// The source of the rule template. Required.
+	// The source of the template. This parameter is required. Valid values:
 	//
-	// - System: System Template
+	// 	- System
 	//
-	// - UserDefined: user-defined Template
+	// 	- UserDefined
 	//
 	// example:
 	//
 	// System
 	CreationSource *string `json:"CreationSource,omitempty" xml:"CreationSource,omitempty"`
-	// The category directory where the custom template is stored, slash/divider level. Each level name can be up to 1024 characters in length and cannot contain white space characters or backslashes.
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// Fuzzy matching of template rule names. If it is a system template, the internationalized name of the system template will be fuzzy matching based on the language.
+	// The name of the template. If you want to query a system template, set this parameter to the name of the system template. Fuzzy match is supported.
 	//
 	// example:
 	//
@@ -31539,7 +34288,7 @@ type ListDataQualityRuleTemplatesRequest struct {
 	//
 	// 1
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// DataWorks workspace ID.
+	// The DataWorks workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -31588,7 +34337,7 @@ func (s *ListDataQualityRuleTemplatesRequest) SetProjectId(v int64) *ListDataQua
 }
 
 type ListDataQualityRuleTemplatesResponseBody struct {
-	// Quality Rule template pagination query results
+	// The pagination information.
 	PagingInfo *ListDataQualityRuleTemplatesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -31617,7 +34366,7 @@ func (s *ListDataQualityRuleTemplatesResponseBody) SetRequestId(v string) *ListD
 }
 
 type ListDataQualityRuleTemplatesResponseBodyPagingInfo struct {
-	// Rule template list
+	// The templates.
 	DataQualityRuleTemplates []*ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates `json:"DataQualityRuleTemplates,omitempty" xml:"DataQualityRuleTemplates,omitempty" type:"Repeated"`
 	// Page number
 	//
@@ -31676,13 +34425,13 @@ type ListDataQualityRuleTemplatesResponseBodyPagingInfoDataQualityRuleTemplates 
 	//
 	// USER_DEFINED:123
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The category directory where the custom template is stored, separated by slashes. Each level name can be up to 1024 characters in length and cannot contain white space characters or slashes.
+	// The directory in which the template is stored. Slashes (/) are used to separate directory levels. The name of each directory level can be up to 1,024 characters in length. It cannot contain whitespace characters or slashes (/).
 	//
 	// example:
 	//
 	// /ods/order_data
 	DirectoryPath *string `json:"DirectoryPath,omitempty" xml:"DirectoryPath,omitempty"`
-	// Rule template name, a combination of numbers, English letters, Chinese characters, and half-width punctuation marks, up to 512 characters in length
+	// The name of the template. The name can be up to 512 characters in length and can contain digits, letters, and punctuation marks.
 	//
 	// example:
 	//
@@ -33423,6 +36172,192 @@ func (s *ListDataSourcesResponse) SetStatusCode(v int32) *ListDataSourcesRespons
 }
 
 func (s *ListDataSourcesResponse) SetBody(v *ListDataSourcesResponseBody) *ListDataSourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatabasesRequest struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// test_tbl
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mysql:rm-abc123xxx
+	//
+	// dlf-catalog:123456XXX:test_catalog
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesRequest) SetComment(v string) *ListDatabasesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetName(v string) *ListDatabasesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetOrder(v string) *ListDatabasesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetPageNumber(v int32) *ListDatabasesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetPageSize(v int32) *ListDatabasesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetParentMetaEntityId(v string) *ListDatabasesRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListDatabasesRequest) SetSortBy(v string) *ListDatabasesRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListDatabasesResponseBody struct {
+	PagingInfo *ListDatabasesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 9DD08926-38B9-XXXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBody) SetPagingInfo(v *ListDatabasesResponseBodyPagingInfo) *ListDatabasesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetRequestId(v string) *ListDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBody) SetSuccess(v bool) *ListDatabasesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDatabasesResponseBodyPagingInfo struct {
+	Databases []*Database `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDatabasesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponseBodyPagingInfo) SetDatabases(v []*Database) *ListDatabasesResponseBodyPagingInfo {
+	s.Databases = v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDatabasesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyPagingInfo) SetPageSize(v int32) *ListDatabasesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatabasesResponseBodyPagingInfo) SetTotalCount(v int64) *ListDatabasesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDatabasesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatabasesResponse) SetHeaders(v map[string]*string) *ListDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetStatusCode(v int32) *ListDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatabasesResponse {
 	s.Body = v
 	return s
 }
@@ -36145,6 +39080,257 @@ func (s *ListDownstreamTasksResponse) SetBody(v *ListDownstreamTasksResponseBody
 	return s
 }
 
+type ListEntitiesInMetaCollectionRequest struct {
+	EntityDescription *string `json:"EntityDescription,omitempty" xml:"EntityDescription,omitempty"`
+	// example:
+	//
+	// test1
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// example:
+	//
+	// dlf-table
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Name
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListEntitiesInMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesInMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetEntityDescription(v string) *ListEntitiesInMetaCollectionRequest {
+	s.EntityDescription = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetEntityName(v string) *ListEntitiesInMetaCollectionRequest {
+	s.EntityName = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetEntityType(v string) *ListEntitiesInMetaCollectionRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetId(v string) *ListEntitiesInMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetOrder(v string) *ListEntitiesInMetaCollectionRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetPageNumber(v int32) *ListEntitiesInMetaCollectionRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetPageSize(v int32) *ListEntitiesInMetaCollectionRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionRequest) SetSortBy(v string) *ListEntitiesInMetaCollectionRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListEntitiesInMetaCollectionResponseBody struct {
+	PagingInfo *ListEntitiesInMetaCollectionResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F05080B0-CCE6-5D22-B284-34A51C5D4E28
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListEntitiesInMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesInMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBody) SetPagingInfo(v *ListEntitiesInMetaCollectionResponseBodyPagingInfo) *ListEntitiesInMetaCollectionResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBody) SetRequestId(v string) *ListEntitiesInMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListEntitiesInMetaCollectionResponseBodyPagingInfo struct {
+	Entities []*ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListEntitiesInMetaCollectionResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesInMetaCollectionResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) SetEntities(v []*ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) *ListEntitiesInMetaCollectionResponseBodyPagingInfo {
+	s.Entities = v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) SetPageNumber(v int32) *ListEntitiesInMetaCollectionResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) SetPageSize(v int32) *ListEntitiesInMetaCollectionResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfo) SetTotalCount(v int32) *ListEntitiesInMetaCollectionResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities struct {
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1737078994080
+	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// dlf-table:123456789:test_catalog:test_database::test_table
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1737078994080
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_table
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// dlf-table
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetComment(v string) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetCreateTime(v int64) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetDescription(v string) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.Description = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetId(v string) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.Id = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetModifyTime(v int64) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetName(v string) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.Name = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities) SetType(v string) *ListEntitiesInMetaCollectionResponseBodyPagingInfoEntities {
+	s.Type = &v
+	return s
+}
+
+type ListEntitiesInMetaCollectionResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListEntitiesInMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListEntitiesInMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEntitiesInMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEntitiesInMetaCollectionResponse) SetHeaders(v map[string]*string) *ListEntitiesInMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponse) SetStatusCode(v int32) *ListEntitiesInMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEntitiesInMetaCollectionResponse) SetBody(v *ListEntitiesInMetaCollectionResponseBody) *ListEntitiesInMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
 type ListFunctionsRequest struct {
 	// The ID of the owner of the UDF. This parameter specifies a filter condition.
 	//
@@ -36732,6 +39918,757 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 	return s
 }
 
+type ListLineageRelationshipsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	//
+	// custom-api:api123
+	//
+	// custom-table:table456
+	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
+	// example:
+	//
+	// dstName
+	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Name
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	//
+	// custom-api:api123
+	//
+	// custom-table:table456
+	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
+	// example:
+	//
+	// srcName
+	SrcEntityName *string `json:"SrcEntityName,omitempty" xml:"SrcEntityName,omitempty"`
+}
+
+func (s ListLineageRelationshipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageRelationshipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageRelationshipsRequest) SetDstEntityId(v string) *ListLineageRelationshipsRequest {
+	s.DstEntityId = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetDstEntityName(v string) *ListLineageRelationshipsRequest {
+	s.DstEntityName = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetOrder(v string) *ListLineageRelationshipsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetPageNumber(v int32) *ListLineageRelationshipsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetPageSize(v int32) *ListLineageRelationshipsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetSortBy(v string) *ListLineageRelationshipsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetSrcEntityId(v string) *ListLineageRelationshipsRequest {
+	s.SrcEntityId = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsRequest) SetSrcEntityName(v string) *ListLineageRelationshipsRequest {
+	s.SrcEntityName = &v
+	return s
+}
+
+type ListLineageRelationshipsResponseBody struct {
+	PagingInfo *ListLineageRelationshipsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// SDFSDFSDF-SDFSDF-SDFDSF-SDFSDF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListLineageRelationshipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageRelationshipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageRelationshipsResponseBody) SetPagingInfo(v *ListLineageRelationshipsResponseBodyPagingInfo) *ListLineageRelationshipsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponseBody) SetRequestId(v string) *ListLineageRelationshipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponseBody) SetSuccess(v bool) *ListLineageRelationshipsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListLineageRelationshipsResponseBodyPagingInfo struct {
+	LineageRelationships []*LineageRelationship `json:"LineageRelationships,omitempty" xml:"LineageRelationships,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 123
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLineageRelationshipsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageRelationshipsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageRelationshipsResponseBodyPagingInfo) SetLineageRelationships(v []*LineageRelationship) *ListLineageRelationshipsResponseBodyPagingInfo {
+	s.LineageRelationships = v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponseBodyPagingInfo) SetPageNumber(v int32) *ListLineageRelationshipsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponseBodyPagingInfo) SetPageSize(v int32) *ListLineageRelationshipsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponseBodyPagingInfo) SetTotalCount(v int64) *ListLineageRelationshipsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLineageRelationshipsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLineageRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLineageRelationshipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineageRelationshipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineageRelationshipsResponse) SetHeaders(v map[string]*string) *ListLineageRelationshipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponse) SetStatusCode(v int32) *ListLineageRelationshipsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLineageRelationshipsResponse) SetBody(v *ListLineageRelationshipsResponseBody) *ListLineageRelationshipsResponse {
+	s.Body = v
+	return s
+}
+
+type ListLineagesRequest struct {
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	//
+	// custom-api:api123
+	//
+	// custom-table:table456
+	DstEntityId *string `json:"DstEntityId,omitempty" xml:"DstEntityId,omitempty"`
+	// example:
+	//
+	// dstName1
+	DstEntityName *string `json:"DstEntityName,omitempty" xml:"DstEntityName,omitempty"`
+	// example:
+	//
+	// false
+	NeedAttachRelationship *bool `json:"NeedAttachRelationship,omitempty" xml:"NeedAttachRelationship,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// Name
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	//
+	// custom-api:api123
+	//
+	// custom-table:table456
+	SrcEntityId *string `json:"SrcEntityId,omitempty" xml:"SrcEntityId,omitempty"`
+	// example:
+	//
+	// srcName1
+	SrcEntityName *string `json:"SrcEntityName,omitempty" xml:"SrcEntityName,omitempty"`
+}
+
+func (s ListLineagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineagesRequest) SetDstEntityId(v string) *ListLineagesRequest {
+	s.DstEntityId = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetDstEntityName(v string) *ListLineagesRequest {
+	s.DstEntityName = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetNeedAttachRelationship(v bool) *ListLineagesRequest {
+	s.NeedAttachRelationship = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetOrder(v string) *ListLineagesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetPageNumber(v int32) *ListLineagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetPageSize(v int32) *ListLineagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetSortBy(v string) *ListLineagesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetSrcEntityId(v string) *ListLineagesRequest {
+	s.SrcEntityId = &v
+	return s
+}
+
+func (s *ListLineagesRequest) SetSrcEntityName(v string) *ListLineagesRequest {
+	s.SrcEntityName = &v
+	return s
+}
+
+type ListLineagesResponseBody struct {
+	PagingInfo *ListLineagesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListLineagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineagesResponseBody) SetPagingInfo(v *ListLineagesResponseBodyPagingInfo) *ListLineagesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListLineagesResponseBody) SetRequestId(v string) *ListLineagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLineagesResponseBody) SetSuccess(v bool) *ListLineagesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListLineagesResponseBodyPagingInfo struct {
+	Lineages []*ListLineagesResponseBodyPagingInfoLineages `json:"Lineages,omitempty" xml:"Lineages,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 12
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLineagesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineagesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineagesResponseBodyPagingInfo) SetLineages(v []*ListLineagesResponseBodyPagingInfoLineages) *ListLineagesResponseBodyPagingInfo {
+	s.Lineages = v
+	return s
+}
+
+func (s *ListLineagesResponseBodyPagingInfo) SetPageNumber(v int32) *ListLineagesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLineagesResponseBodyPagingInfo) SetPageSize(v int32) *ListLineagesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLineagesResponseBodyPagingInfo) SetTotalCount(v int64) *ListLineagesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLineagesResponseBodyPagingInfoLineages struct {
+	DstEntity     *LineageEntity         `json:"DstEntity,omitempty" xml:"DstEntity,omitempty"`
+	Relationships []*LineageRelationship `json:"Relationships,omitempty" xml:"Relationships,omitempty" type:"Repeated"`
+	SrcEntity     *LineageEntity         `json:"SrcEntity,omitempty" xml:"SrcEntity,omitempty"`
+}
+
+func (s ListLineagesResponseBodyPagingInfoLineages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineagesResponseBodyPagingInfoLineages) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineagesResponseBodyPagingInfoLineages) SetDstEntity(v *LineageEntity) *ListLineagesResponseBodyPagingInfoLineages {
+	s.DstEntity = v
+	return s
+}
+
+func (s *ListLineagesResponseBodyPagingInfoLineages) SetRelationships(v []*LineageRelationship) *ListLineagesResponseBodyPagingInfoLineages {
+	s.Relationships = v
+	return s
+}
+
+func (s *ListLineagesResponseBodyPagingInfoLineages) SetSrcEntity(v *LineageEntity) *ListLineagesResponseBodyPagingInfoLineages {
+	s.SrcEntity = v
+	return s
+}
+
+type ListLineagesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLineagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLineagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLineagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLineagesResponse) SetHeaders(v map[string]*string) *ListLineagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLineagesResponse) SetStatusCode(v int32) *ListLineagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLineagesResponse) SetBody(v *ListLineagesResponseBody) *ListLineagesResponse {
+	s.Body = v
+	return s
+}
+
+type ListMetaCollectionsRequest struct {
+	// example:
+	//
+	// 12345
+	Administrator *string `json:"Administrator,omitempty" xml:"Administrator,omitempty"`
+	// example:
+	//
+	// 123456
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// category.123
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Name
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Category
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListMetaCollectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsRequest) SetAdministrator(v string) *ListMetaCollectionsRequest {
+	s.Administrator = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetCreateUser(v string) *ListMetaCollectionsRequest {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetDescription(v string) *ListMetaCollectionsRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetName(v string) *ListMetaCollectionsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetOrder(v string) *ListMetaCollectionsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetPageNumber(v int32) *ListMetaCollectionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetPageSize(v int32) *ListMetaCollectionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetParentId(v string) *ListMetaCollectionsRequest {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetSortBy(v string) *ListMetaCollectionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListMetaCollectionsRequest) SetType(v string) *ListMetaCollectionsRequest {
+	s.Type = &v
+	return s
+}
+
+type ListMetaCollectionsResponseBody struct {
+	Data *ListMetaCollectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// E25887B7-579C-54A5-9C4F-83A0DE367DDE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMetaCollectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponseBody) SetData(v *ListMetaCollectionsResponseBodyData) *ListMetaCollectionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBody) SetRequestId(v string) *ListMetaCollectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMetaCollectionsResponseBodyData struct {
+	MetaCollections []*ListMetaCollectionsResponseBodyDataMetaCollections `json:"MetaCollections,omitempty" xml:"MetaCollections,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListMetaCollectionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetMetaCollections(v []*ListMetaCollectionsResponseBodyDataMetaCollections) *ListMetaCollectionsResponseBodyData {
+	s.MetaCollections = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetPageNumber(v int32) *ListMetaCollectionsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetPageSize(v int32) *ListMetaCollectionsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyData) SetTotalCount(v int32) *ListMetaCollectionsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListMetaCollectionsResponseBodyDataMetaCollections struct {
+	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1668568601000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 456789
+	CreateUser  *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 1668568601000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test_category
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// category.1
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// Category
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListMetaCollectionsResponseBodyDataMetaCollections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponseBodyDataMetaCollections) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetAdministrators(v []*string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.Administrators = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetCreateTime(v int64) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetCreateUser(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetDescription(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.Description = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetId(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.Id = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetModifyTime(v int64) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetName(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.Name = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetParentId(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponseBodyDataMetaCollections) SetType(v string) *ListMetaCollectionsResponseBodyDataMetaCollections {
+	s.Type = &v
+	return s
+}
+
+type ListMetaCollectionsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListMetaCollectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListMetaCollectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMetaCollectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMetaCollectionsResponse) SetHeaders(v map[string]*string) *ListMetaCollectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMetaCollectionsResponse) SetStatusCode(v int32) *ListMetaCollectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMetaCollectionsResponse) SetBody(v *ListMetaCollectionsResponseBody) *ListMetaCollectionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListNetworksRequest struct {
 	// The page number.
 	//
@@ -36745,7 +40682,7 @@ type ListNetworksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique identifier of a Serverless resource group
+	// The ID of the resource group.
 	//
 	// This parameter is required.
 	//
@@ -36808,7 +40745,7 @@ type ListNetworksResponseBody struct {
 	//
 	// 6A6CBE87-9F91-1323-B680-E7A7065XXXXX
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Whether the request is successful
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -39181,6 +43118,181 @@ func (s *ListNodesResponse) SetStatusCode(v int32) *ListNodesResponse {
 }
 
 func (s *ListNodesResponse) SetBody(v *ListNodesResponseBody) *ListNodesResponse {
+	s.Body = v
+	return s
+}
+
+type ListPartitionsRequest struct {
+	// example:
+	//
+	// ds=20250101
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-column:11075xxxx::test_project:test_schema:test_table
+	TableId *string `json:"TableId,omitempty" xml:"TableId,omitempty"`
+}
+
+func (s ListPartitionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsRequest) SetName(v string) *ListPartitionsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPartitionsRequest) SetOrder(v string) *ListPartitionsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListPartitionsRequest) SetPageNumber(v int32) *ListPartitionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPartitionsRequest) SetPageSize(v int32) *ListPartitionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPartitionsRequest) SetSortBy(v string) *ListPartitionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListPartitionsRequest) SetTableId(v string) *ListPartitionsRequest {
+	s.TableId = &v
+	return s
+}
+
+type ListPartitionsResponseBody struct {
+	PagingInfo *ListPartitionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListPartitionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsResponseBody) SetPagingInfo(v *ListPartitionsResponseBodyPagingInfo) *ListPartitionsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListPartitionsResponseBody) SetRequestId(v string) *ListPartitionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListPartitionsResponseBody) SetSuccess(v bool) *ListPartitionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListPartitionsResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize      *int32       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PartitionList []*Partition `json:"PartitionList,omitempty" xml:"PartitionList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPartitionsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsResponseBodyPagingInfo) SetPageNumber(v int32) *ListPartitionsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPartitionsResponseBodyPagingInfo) SetPageSize(v int32) *ListPartitionsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPartitionsResponseBodyPagingInfo) SetPartitionList(v []*Partition) *ListPartitionsResponseBodyPagingInfo {
+	s.PartitionList = v
+	return s
+}
+
+func (s *ListPartitionsResponseBodyPagingInfo) SetTotalCount(v int64) *ListPartitionsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPartitionsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPartitionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPartitionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPartitionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPartitionsResponse) SetHeaders(v map[string]*string) *ListPartitionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPartitionsResponse) SetStatusCode(v int32) *ListPartitionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPartitionsResponse) SetBody(v *ListPartitionsResponseBody) *ListPartitionsResponse {
 	s.Body = v
 	return s
 }
@@ -41851,6 +45963,574 @@ func (s *ListRoutesResponse) SetBody(v *ListRoutesResponseBody) *ListRoutesRespo
 	return s
 }
 
+type ListSchemasRequest struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-project:123456XXX::test_project
+	//
+	// holo-database:h-abc123xxx::test_db
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Types  []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListSchemasRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasRequest) SetComment(v string) *ListSchemasRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetName(v string) *ListSchemasRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetOrder(v string) *ListSchemasRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetPageNumber(v int32) *ListSchemasRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetPageSize(v int32) *ListSchemasRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetParentMetaEntityId(v string) *ListSchemasRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetSortBy(v string) *ListSchemasRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListSchemasRequest) SetTypes(v []*string) *ListSchemasRequest {
+	s.Types = v
+	return s
+}
+
+type ListSchemasShrinkRequest struct {
+	// example:
+	//
+	// test comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-project:123456XXX::test_project
+	//
+	// holo-database:h-abc123xxx::test_db
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy      *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TypesShrink *string `json:"Types,omitempty" xml:"Types,omitempty"`
+}
+
+func (s ListSchemasShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasShrinkRequest) SetComment(v string) *ListSchemasShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetName(v string) *ListSchemasShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetOrder(v string) *ListSchemasShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetPageNumber(v int32) *ListSchemasShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetPageSize(v int32) *ListSchemasShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetParentMetaEntityId(v string) *ListSchemasShrinkRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetSortBy(v string) *ListSchemasShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListSchemasShrinkRequest) SetTypesShrink(v string) *ListSchemasShrinkRequest {
+	s.TypesShrink = &v
+	return s
+}
+
+type ListSchemasResponseBody struct {
+	PagingInfo *ListSchemasResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 235BBA5E-3428-XXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListSchemasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponseBody) SetPagingInfo(v *ListSchemasResponseBodyPagingInfo) *ListSchemasResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetRequestId(v string) *ListSchemasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSchemasResponseBody) SetSuccess(v bool) *ListSchemasResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListSchemasResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Schemas  []*Schema `json:"Schemas,omitempty" xml:"Schemas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSchemasResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponseBodyPagingInfo) SetPageNumber(v int32) *ListSchemasResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSchemasResponseBodyPagingInfo) SetPageSize(v int32) *ListSchemasResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSchemasResponseBodyPagingInfo) SetSchemas(v []*Schema) *ListSchemasResponseBodyPagingInfo {
+	s.Schemas = v
+	return s
+}
+
+func (s *ListSchemasResponseBodyPagingInfo) SetTotalCount(v int64) *ListSchemasResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSchemasResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSchemasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSchemasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSchemasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSchemasResponse) SetHeaders(v map[string]*string) *ListSchemasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSchemasResponse) SetStatusCode(v int32) *ListSchemasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSchemasResponse) SetBody(v *ListSchemasResponseBody) *ListSchemasResponse {
+	s.Body = v
+	return s
+}
+
+type ListTablesRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-schema:123456XXX::test_project_with_schema:default
+	//
+	// maxcompute-project:123456XXX::test_project_without_schema
+	//
+	// dlf-database:123456XXX:test_catalog:test_db
+	//
+	// hms-database:c-abc123xxx::test_db
+	//
+	// holo-schema:h-abc123xxx::test_db:test_schema
+	//
+	// mysql-database:jdbc%3Amysql%3A%2F%2F127.0.0.1%3A3306%2Ftest_db::test_db
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy     *string   `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TableTypes []*string `json:"TableTypes,omitempty" xml:"TableTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesRequest) SetComment(v string) *ListTablesRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetName(v string) *ListTablesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetOrder(v string) *ListTablesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetPageNumber(v int32) *ListTablesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetPageSize(v int32) *ListTablesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetParentMetaEntityId(v string) *ListTablesRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetSortBy(v string) *ListTablesRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTablesRequest) SetTableTypes(v []*string) *ListTablesRequest {
+	s.TableTypes = v
+	return s
+}
+
+type ListTablesShrinkRequest struct {
+	// example:
+	//
+	// this is a comment
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// abc
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-schema:123456XXX::test_project_with_schema:default
+	//
+	// maxcompute-project:123456XXX::test_project_without_schema
+	//
+	// dlf-database:123456XXX:test_catalog:test_db
+	//
+	// hms-database:c-abc123xxx::test_db
+	//
+	// holo-schema:h-abc123xxx::test_db:test_schema
+	//
+	// mysql-database:jdbc%3Amysql%3A%2F%2F127.0.0.1%3A3306%2Ftest_db::test_db
+	ParentMetaEntityId *string `json:"ParentMetaEntityId,omitempty" xml:"ParentMetaEntityId,omitempty"`
+	// example:
+	//
+	// CreateTime
+	SortBy           *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TableTypesShrink *string `json:"TableTypes,omitempty" xml:"TableTypes,omitempty"`
+}
+
+func (s ListTablesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesShrinkRequest) SetComment(v string) *ListTablesShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetName(v string) *ListTablesShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetOrder(v string) *ListTablesShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetPageNumber(v int32) *ListTablesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetPageSize(v int32) *ListTablesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetParentMetaEntityId(v string) *ListTablesShrinkRequest {
+	s.ParentMetaEntityId = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetSortBy(v string) *ListTablesShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListTablesShrinkRequest) SetTableTypesShrink(v string) *ListTablesShrinkRequest {
+	s.TableTypesShrink = &v
+	return s
+}
+
+type ListTablesResponseBody struct {
+	PagingInfo *ListTablesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// E25887B7-579C-54A5-9C4F-83A****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBody) SetPagingInfo(v *ListTablesResponseBodyPagingInfo) *ListTablesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetRequestId(v string) *ListTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTablesResponseBody) SetSuccess(v bool) *ListTablesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListTablesResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tables   []*Table `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTablesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponseBodyPagingInfo) SetPageNumber(v int32) *ListTablesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyPagingInfo) SetPageSize(v int32) *ListTablesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTablesResponseBodyPagingInfo) SetTables(v []*Table) *ListTablesResponseBodyPagingInfo {
+	s.Tables = v
+	return s
+}
+
+func (s *ListTablesResponseBodyPagingInfo) SetTotalCount(v int64) *ListTablesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTablesResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTablesResponse) SetHeaders(v map[string]*string) *ListTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTablesResponse) SetStatusCode(v int32) *ListTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesResponse {
+	s.Body = v
+	return s
+}
+
 type ListTaskInstanceOperationLogsRequest struct {
 	// The operation date, accurate to the day. The default value is the current day. You can query only the operation logs generated within the previous 31 days. This value is a UNIX timestamp.
 	//
@@ -42084,7 +46764,7 @@ func (s *ListTaskInstanceOperationLogsResponse) SetBody(v *ListTaskInstanceOpera
 }
 
 type ListTaskInstancesRequest struct {
-	// The data timestamp.
+	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -42336,7 +47016,7 @@ func (s *ListTaskInstancesRequest) SetWorkflowInstanceType(v string) *ListTaskIn
 }
 
 type ListTaskInstancesShrinkRequest struct {
-	// The data timestamp.
+	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
 	//
 	// This parameter is required.
 	//
@@ -44640,9 +49320,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// Deprecated
 	//
-	// The environment of the workspace.
-	//
-	// Valid values:
+	// The environment of the workspace. Valid values:
 	//
 	// 	- Prod: production environment
 	//
@@ -44658,15 +49336,13 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 100
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The rerun mode.
+	// The rerun mode. Valid values:
 	//
-	// Valid values:
-	//
-	// 	- AllDenied: The task cannot be rerun regardless of whether it is successfully run or fails to run.
+	// 	- AllDenied: The task cannot be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// 	- FailureAllowed: The task can be rerun only after it fails to run.
 	//
-	// 	- AllAllowed: The task can be rerun regardless of whether it is successfully run or fails to run.
+	// 	- AllAllowed: The task can be rerun regardless of whether the task is successfully run or fails to run.
 	//
 	// example:
 	//
@@ -44688,9 +49364,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the instance.
-	//
-	// Valid values:
+	// The status of the instance. Valid values:
 	//
 	// 	- NotRun: The instance is not run.
 	//
@@ -44746,9 +49420,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1
 	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler.
-	//
-	// Valid values:
+	// The running mode of the instance after it is triggered. This parameter takes effect only if the TriggerType parameter is set to Scheduler. Valid values:
 	//
 	// 	- Pause
 	//
@@ -44766,9 +49438,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1710239005403
 	TriggerTime *int64 `json:"TriggerTime,omitempty" xml:"TriggerTime,omitempty"`
-	// The method to trigger instance scheduling.
-	//
-	// Valid values:
+	// The trigger type. Valid values:
 	//
 	// 	- Scheduler: scheduling cycle-based trigger
 	//
@@ -44790,9 +49460,7 @@ type ListUpstreamTaskInstancesResponseBodyPagingInfoTaskInstances struct {
 	//
 	// 1234
 	WorkflowInstanceId *int64 `json:"WorkflowInstanceId,omitempty" xml:"WorkflowInstanceId,omitempty"`
-	// The type of the workflow instance.
-	//
-	// Valid values:
+	// The type of the workflow instance. Valid values:
 	//
 	// 	- SmokeTest
 	//
@@ -47079,6 +51747,8 @@ func (s *ListWorkflowDefinitionsResponse) SetBody(v *ListWorkflowDefinitionsResp
 }
 
 type ListWorkflowInstancesRequest struct {
+	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47220,6 +51890,8 @@ func (s *ListWorkflowInstancesRequest) SetWorkflowId(v int64) *ListWorkflowInsta
 }
 
 type ListWorkflowInstancesShrinkRequest struct {
+	// The data timestamp. The value of this parameter is 00:00:00 of the day before the scheduling time of the instance. The value is a UNIX timestamp. Unit: milliseconds. Example: 1743350400000.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -47711,9 +52383,9 @@ type ListWorkflowsRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// 	- Scheduler
 	//
-	// 	- Manual: manual trigger
+	// 	- Manual
 	//
 	// example:
 	//
@@ -47835,9 +52507,9 @@ type ListWorkflowsShrinkRequest struct {
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// 	- Scheduler: scheduling cycle-based trigger
+	// 	- Scheduler
 	//
-	// 	- Manual: manual trigger
+	// 	- Manual
 	//
 	// example:
 	//
@@ -48711,6 +53383,86 @@ func (s *MoveWorkflowDefinitionResponse) SetStatusCode(v int32) *MoveWorkflowDef
 }
 
 func (s *MoveWorkflowDefinitionResponse) SetBody(v *MoveWorkflowDefinitionResponseBody) *MoveWorkflowDefinitionResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveEntityFromMetaCollectionRequest struct {
+	// example:
+	//
+	// dlf-table:123456789:test_catalog:test_database::test_table
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// category.123
+	MetaCollectionId *string `json:"MetaCollectionId,omitempty" xml:"MetaCollectionId,omitempty"`
+}
+
+func (s RemoveEntityFromMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityFromMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityFromMetaCollectionRequest) SetId(v string) *RemoveEntityFromMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *RemoveEntityFromMetaCollectionRequest) SetMetaCollectionId(v string) *RemoveEntityFromMetaCollectionRequest {
+	s.MetaCollectionId = &v
+	return s
+}
+
+type RemoveEntityFromMetaCollectionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 6D6CD444-DFA0-5180-9763-4A8730F2B382
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveEntityFromMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityFromMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityFromMetaCollectionResponseBody) SetRequestId(v string) *RemoveEntityFromMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveEntityFromMetaCollectionResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveEntityFromMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveEntityFromMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveEntityFromMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveEntityFromMetaCollectionResponse) SetHeaders(v map[string]*string) *RemoveEntityFromMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveEntityFromMetaCollectionResponse) SetStatusCode(v int32) *RemoveEntityFromMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveEntityFromMetaCollectionResponse) SetBody(v *RemoveEntityFromMetaCollectionResponseBody) *RemoveEntityFromMetaCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -52185,6 +56937,95 @@ func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *Updat
 	return s
 }
 
+type UpdateColumnBusinessMetadataRequest struct {
+	// example:
+	//
+	// test description
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-column:11075xxxx::test_project:test_schema:test_table:test_column
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateColumnBusinessMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnBusinessMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnBusinessMetadataRequest) SetDescription(v string) *UpdateColumnBusinessMetadataRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateColumnBusinessMetadataRequest) SetId(v string) *UpdateColumnBusinessMetadataRequest {
+	s.Id = &v
+	return s
+}
+
+type UpdateColumnBusinessMetadataResponseBody struct {
+	// example:
+	//
+	// D1E2E5BC-xxxx-xxxx-xxxx-xxxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateColumnBusinessMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnBusinessMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnBusinessMetadataResponseBody) SetRequestId(v string) *UpdateColumnBusinessMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateColumnBusinessMetadataResponseBody) SetSuccess(v bool) *UpdateColumnBusinessMetadataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateColumnBusinessMetadataResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateColumnBusinessMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateColumnBusinessMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateColumnBusinessMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateColumnBusinessMetadataResponse) SetHeaders(v map[string]*string) *UpdateColumnBusinessMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateColumnBusinessMetadataResponse) SetStatusCode(v int32) *UpdateColumnBusinessMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateColumnBusinessMetadataResponse) SetBody(v *UpdateColumnBusinessMetadataResponseBody) *UpdateColumnBusinessMetadataResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDIAlarmRuleRequest struct {
 	// Deprecated
 	//
@@ -54348,9 +59189,9 @@ func (s *UpdateDataQualityEvaluationTaskRequestDataQualityRulesSamplingConfig) S
 type UpdateDataQualityEvaluationTaskRequestHooks struct {
 	// The hook trigger condition. When this condition is met, the hook action is triggered. Only two conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as ${severity} == "High" AND ${status} == "Critical". In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error"). In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -54387,9 +59228,9 @@ func (s *UpdateDataQualityEvaluationTaskRequestHooks) SetType(v string) *UpdateD
 type UpdateDataQualityEvaluationTaskRequestNotifications struct {
 	// The notification trigger condition. When this condition is met, the alert notification is triggered. Only two conditional expressions are supported:
 	//
-	// 	- Specify only one group of rule strength type and rule check status, such as ${severity} == "High" AND ${status} == "Critical". In this expression, the hook trigger condition is met if severity is High and status is Critical.
+	// 	- Specify only one group of rule strength type and rule check status, such as `${severity} == "High" AND ${status} == "Critical"`. In this expression, the hook trigger condition is met if severity is High and status is Critical.
 	//
-	// 	- Specify multiple groups of rule strength types and rule check status, such as (${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error"). In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
+	// 	- Specify multiple groups of rule strength types and rule check status, such as `(${severity} == "High" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Critical") OR (${severity} == "Normal" AND ${status} == "Error")`. In this expression, the hook trigger condition is met if severity is High and status is Critical, severity is Normal and status is Critical, or severity is Normal and status is Error. The enumeration of severity in a conditional expression is the same as the enumeration of severity in DataQualityRule. The enumeration of status in a conditional expression is the same as the enumeration of status in DataQualityResult.
 	//
 	// example:
 	//
@@ -54465,6 +59306,12 @@ type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificatio
 	//
 	// 	- atAll: specifies that all members in a group are mentioned when alerts are sent by using DingTalk. This parameter is valid only if you set ReceiverType to DingdingUrl.
 	//
+	// example:
+	//
+	// {  "atAll": true }
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// The type of the alert recipient.
+	//
 	// Valid values:
 	//
 	// 	- WebhookUrl
@@ -54476,12 +59323,6 @@ type UpdateDataQualityEvaluationTaskRequestNotificationsNotificationsNotificatio
 	// 	- WeixinUrl
 	//
 	// 	- AliUid
-	//
-	// example:
-	//
-	// {  "atAll": true }
-	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// The type of the alert recipient.
 	//
 	// example:
 	//
@@ -55823,8 +60664,6 @@ type UpdateDataSourceRequest struct {
 	//
 	// 	- UrlMode: connection string mode
 	//
-	// 	- CdhMode: CDH cluster mode
-	//
 	// example:
 	//
 	// UrlMode
@@ -56112,6 +60951,149 @@ func (s *UpdateFunctionResponse) SetStatusCode(v int32) *UpdateFunctionResponse 
 }
 
 func (s *UpdateFunctionResponse) SetBody(v *UpdateFunctionResponseBody) *UpdateFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMetaCollectionRequest struct {
+	Administrators []*string `json:"Administrators,omitempty" xml:"Administrators,omitempty" type:"Repeated"`
+	// example:
+	//
+	// new comment
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// new_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateMetaCollectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionRequest) SetAdministrators(v []*string) *UpdateMetaCollectionRequest {
+	s.Administrators = v
+	return s
+}
+
+func (s *UpdateMetaCollectionRequest) SetDescription(v string) *UpdateMetaCollectionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionRequest) SetId(v string) *UpdateMetaCollectionRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionRequest) SetName(v string) *UpdateMetaCollectionRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateMetaCollectionShrinkRequest struct {
+	AdministratorsShrink *string `json:"Administrators,omitempty" xml:"Administrators,omitempty"`
+	// example:
+	//
+	// new comment
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// category.123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// new_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateMetaCollectionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionShrinkRequest) SetAdministratorsShrink(v string) *UpdateMetaCollectionShrinkRequest {
+	s.AdministratorsShrink = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionShrinkRequest) SetDescription(v string) *UpdateMetaCollectionShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionShrinkRequest) SetId(v string) *UpdateMetaCollectionShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionShrinkRequest) SetName(v string) *UpdateMetaCollectionShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateMetaCollectionResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0E1C0122-F79F-5C26-B546-47A321691868
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMetaCollectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionResponseBody) SetRequestId(v string) *UpdateMetaCollectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMetaCollectionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMetaCollectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMetaCollectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMetaCollectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMetaCollectionResponse) SetHeaders(v map[string]*string) *UpdateMetaCollectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponse) SetStatusCode(v int32) *UpdateMetaCollectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMetaCollectionResponse) SetBody(v *UpdateMetaCollectionResponseBody) *UpdateMetaCollectionResponse {
 	s.Body = v
 	return s
 }
@@ -56911,6 +61893,101 @@ func (s *UpdateRouteResponse) SetBody(v *UpdateRouteResponseBody) *UpdateRouteRe
 	return s
 }
 
+type UpdateTableBusinessMetadataRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// maxcompute-table:123456XXX::test_project::test_tbl
+	//
+	// dlf-table:123456XXX:test_catalog:test_db::test_tbl
+	//
+	// hms-table:c-abc123xxx::test_db::test_tbl
+	//
+	// holo-table:h-abc123xxx::test_db:test_schema:test_tbl
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// ## introduction
+	Readme *string `json:"Readme,omitempty" xml:"Readme,omitempty"`
+}
+
+func (s UpdateTableBusinessMetadataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableBusinessMetadataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableBusinessMetadataRequest) SetId(v string) *UpdateTableBusinessMetadataRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateTableBusinessMetadataRequest) SetReadme(v string) *UpdateTableBusinessMetadataRequest {
+	s.Readme = &v
+	return s
+}
+
+type UpdateTableBusinessMetadataResponseBody struct {
+	// example:
+	//
+	// 7C352CB7-CD88-XXXXXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateTableBusinessMetadataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableBusinessMetadataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableBusinessMetadataResponseBody) SetRequestId(v string) *UpdateTableBusinessMetadataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateTableBusinessMetadataResponseBody) SetSuccess(v bool) *UpdateTableBusinessMetadataResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateTableBusinessMetadataResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateTableBusinessMetadataResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateTableBusinessMetadataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateTableBusinessMetadataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateTableBusinessMetadataResponse) SetHeaders(v map[string]*string) *UpdateTableBusinessMetadataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateTableBusinessMetadataResponse) SetStatusCode(v int32) *UpdateTableBusinessMetadataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateTableBusinessMetadataResponse) SetBody(v *UpdateTableBusinessMetadataResponseBody) *UpdateTableBusinessMetadataResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTaskRequest struct {
 	// The unique code of the client. This code uniquely identifies a task. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
 	//
@@ -57495,7 +62572,7 @@ type UpdateTaskRequestTrigger struct {
 	//
 	// 00 00 00 	- 	- ?
 	Cron *string `json:"Cron,omitempty" xml:"Cron,omitempty"`
-	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
+	// The end time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -57513,7 +62590,7 @@ type UpdateTaskRequestTrigger struct {
 	//
 	// Normal
 	Recurrence *string `json:"Recurrence,omitempty" xml:"Recurrence,omitempty"`
-	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the `yyyy-mm-dd hh:mm:ss` format.
+	// The start time of the time range during which the task is periodically scheduled. This parameter takes effect only if the Type parameter is set to Scheduler. The value of this parameter is in the`yyyy-mm-dd hh:mm:ss` format.
 	//
 	// example:
 	//
@@ -58306,7 +63383,7 @@ type UpdateWorkflowRequestTasks struct {
 	//
 	// 1234
 	BaseLineId *int64 `json:"BaseLineId,omitempty" xml:"BaseLineId,omitempty"`
-	// The unique code of the client. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the task, the system automatically generates a unique code. The unique code is uniquely associated with the task ID. If you specify this parameter when you update or delete the task, the value of this parameter must be the unique code that is used to create the task.
+	// The unique code of the client. This parameter is used to create a task asynchronously and implement the idempotence of the task. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
 	//
 	// example:
 	//
@@ -59548,6 +64625,85 @@ func (client *Client) AbolishDeployment(request *AbolishDeploymentRequest) (_res
 
 // Summary:
 //
+// 从集合中移除实体对象
+//
+// @param request - AddEntityIntoMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddEntityIntoMetaCollectionResponse
+func (client *Client) AddEntityIntoMetaCollectionWithOptions(request *AddEntityIntoMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *AddEntityIntoMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaCollectionId)) {
+		query["MetaCollectionId"] = request.MetaCollectionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddEntityIntoMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AddEntityIntoMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AddEntityIntoMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 从集合中移除实体对象
+//
+// @param request - AddEntityIntoMetaCollectionRequest
+//
+// @return AddEntityIntoMetaCollectionResponse
+func (client *Client) AddEntityIntoMetaCollection(request *AddEntityIntoMetaCollectionRequest) (_result *AddEntityIntoMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddEntityIntoMetaCollectionResponse{}
+	_body, _err := client.AddEntityIntoMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Associates a resource group with a workspace.
 //
 // Description:
@@ -59639,7 +64795,7 @@ func (client *Client) AssociateProjectToResourceGroup(request *AssociateProjectT
 
 // Summary:
 //
-// # Associates monitoring rules with a monitor
+// Associates monitoring rules with a data quality monitoring task.
 //
 // @param tmpReq - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -59706,7 +64862,7 @@ func (client *Client) AttachDataQualityRulesToEvaluationTaskWithOptions(tmpReq *
 
 // Summary:
 //
-// # Associates monitoring rules with a monitor
+// Associates monitoring rules with a data quality monitoring task.
 //
 // @param request - AttachDataQualityRulesToEvaluationTaskRequest
 //
@@ -61117,6 +66273,182 @@ func (client *Client) CreateFunction(request *CreateFunctionRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateFunctionResponse{}
 	_body, _err := client.CreateFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 注册血缘关系
+//
+// @param tmpReq - CreateLineageRelationshipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLineageRelationshipResponse
+func (client *Client) CreateLineageRelationshipWithOptions(tmpReq *CreateLineageRelationshipRequest, runtime *util.RuntimeOptions) (_result *CreateLineageRelationshipResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateLineageRelationshipShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DstEntity)) {
+		request.DstEntityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DstEntity, tea.String("DstEntity"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SrcEntity)) {
+		request.SrcEntityShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SrcEntity, tea.String("SrcEntity"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Task)) {
+		request.TaskShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Task, tea.String("Task"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DstEntityShrink)) {
+		query["DstEntity"] = request.DstEntityShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SrcEntityShrink)) {
+		query["SrcEntity"] = request.SrcEntityShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskShrink)) {
+		query["Task"] = request.TaskShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLineageRelationship"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLineageRelationshipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLineageRelationshipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 注册血缘关系
+//
+// @param request - CreateLineageRelationshipRequest
+//
+// @return CreateLineageRelationshipResponse
+func (client *Client) CreateLineageRelationship(request *CreateLineageRelationshipRequest) (_result *CreateLineageRelationshipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLineageRelationshipResponse{}
+	_body, _err := client.CreateLineageRelationshipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建集合
+//
+// @param request - CreateMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMetaCollectionResponse
+func (client *Client) CreateMetaCollectionWithOptions(request *CreateMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *CreateMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 创建集合
+//
+// @param request - CreateMetaCollectionRequest
+//
+// @return CreateMetaCollectionResponse
+func (client *Client) CreateMetaCollection(request *CreateMetaCollectionRequest) (_result *CreateMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMetaCollectionResponse{}
+	_body, _err := client.CreateMetaCollectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62872,6 +68204,148 @@ func (client *Client) DeleteFunction(request *DeleteFunctionRequest) (_result *D
 
 // Summary:
 //
+// 删除血缘关系
+//
+// @param request - DeleteLineageRelationshipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLineageRelationshipResponse
+func (client *Client) DeleteLineageRelationshipWithOptions(request *DeleteLineageRelationshipRequest, runtime *util.RuntimeOptions) (_result *DeleteLineageRelationshipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLineageRelationship"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLineageRelationshipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLineageRelationshipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除血缘关系
+//
+// @param request - DeleteLineageRelationshipRequest
+//
+// @return DeleteLineageRelationshipResponse
+func (client *Client) DeleteLineageRelationship(request *DeleteLineageRelationshipRequest) (_result *DeleteLineageRelationshipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLineageRelationshipResponse{}
+	_body, _err := client.DeleteLineageRelationshipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除集合
+//
+// @param request - DeleteMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMetaCollectionResponse
+func (client *Client) DeleteMetaCollectionWithOptions(request *DeleteMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *DeleteMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 删除集合
+//
+// @param request - DeleteMetaCollectionRequest
+//
+// @return DeleteMetaCollectionResponse
+func (client *Client) DeleteMetaCollection(request *DeleteMetaCollectionRequest) (_result *DeleteMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMetaCollectionResponse{}
+	_body, _err := client.DeleteMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Disassociates and deletes a network from a general resource group.
 //
 // Description:
@@ -63696,7 +69170,7 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 
 // Summary:
 //
-// # Disassociates monitoring rules from a monitor
+// Disassociates monitoring rules from a data quality monitoring task.
 //
 // @param tmpReq - DetachDataQualityRulesFromEvaluationTaskRequest
 //
@@ -63763,7 +69237,7 @@ func (client *Client) DetachDataQualityRulesFromEvaluationTaskWithOptions(tmpReq
 
 // Summary:
 //
-// # Disassociates monitoring rules from a monitor
+// Disassociates monitoring rules from a data quality monitoring task.
 //
 // @param request - DetachDataQualityRulesFromEvaluationTaskRequest
 //
@@ -64137,6 +69611,73 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 
 // Summary:
 //
+// 获取数据目录详情
+//
+// @param request - GetCatalogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetCatalogResponse
+func (client *Client) GetCatalogWithOptions(request *GetCatalogRequest, runtime *util.RuntimeOptions) (_result *GetCatalogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCatalog"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCatalogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCatalogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取数据目录详情
+//
+// @param request - GetCatalogRequest
+//
+// @return GetCatalogResponse
+func (client *Client) GetCatalog(request *GetCatalogRequest) (_result *GetCatalogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCatalogResponse{}
+	_body, _err := client.GetCatalogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a certificate file.
 //
 // Description:
@@ -64207,6 +69748,73 @@ func (client *Client) GetCertificate(request *GetCertificateRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetCertificateResponse{}
 	_body, _err := client.GetCertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取字段详情
+//
+// @param request - GetColumnRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetColumnResponse
+func (client *Client) GetColumnWithOptions(request *GetColumnRequest, runtime *util.RuntimeOptions) (_result *GetColumnResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetColumn"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetColumnResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetColumnResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取字段详情
+//
+// @param request - GetColumnRequest
+//
+// @return GetColumnResponse
+func (client *Client) GetColumn(request *GetColumnRequest) (_result *GetColumnResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetColumnResponse{}
+	_body, _err := client.GetColumnWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -64808,6 +70416,73 @@ func (client *Client) GetDataSource(request *GetDataSourceRequest) (_result *Get
 
 // Summary:
 //
+// 获取数据库详情
+//
+// @param request - GetDatabaseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatabaseResponse
+func (client *Client) GetDatabaseWithOptions(request *GetDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetDatabaseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatabase"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDatabaseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDatabaseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取数据库详情
+//
+// @param request - GetDatabaseRequest
+//
+// @return GetDatabaseResponse
+func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetDatabaseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDatabaseResponse{}
+	_body, _err := client.GetDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a process for deploying or undeploying an entity.
 //
 // @param request - GetDeploymentRequest
@@ -65009,6 +70684,140 @@ func (client *Client) GetJobStatus(request *GetJobStatusRequest) (_result *GetJo
 
 // Summary:
 //
+// 获取血缘关系详情
+//
+// @param request - GetLineageRelationshipRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLineageRelationshipResponse
+func (client *Client) GetLineageRelationshipWithOptions(request *GetLineageRelationshipRequest, runtime *util.RuntimeOptions) (_result *GetLineageRelationshipResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLineageRelationship"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLineageRelationshipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLineageRelationshipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取血缘关系详情
+//
+// @param request - GetLineageRelationshipRequest
+//
+// @return GetLineageRelationshipResponse
+func (client *Client) GetLineageRelationship(request *GetLineageRelationshipRequest) (_result *GetLineageRelationshipResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLineageRelationshipResponse{}
+	_body, _err := client.GetLineageRelationshipWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 请求collection详情
+//
+// @param request - GetMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMetaCollectionResponse
+func (client *Client) GetMetaCollectionWithOptions(request *GetMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *GetMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 请求collection详情
+//
+// @param request - GetMetaCollectionRequest
+//
+// @return GetMetaCollectionResponse
+func (client *Client) GetMetaCollection(request *GetMetaCollectionRequest) (_result *GetMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMetaCollectionResponse{}
+	_body, _err := client.GetMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about a network resource.
 //
 // Description:
@@ -65142,6 +70951,73 @@ func (client *Client) GetNode(request *GetNodeRequest) (_result *GetNodeResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNodeResponse{}
 	_body, _err := client.GetNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据表的分区详情
+//
+// @param request - GetPartitionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPartitionResponse
+func (client *Client) GetPartitionWithOptions(request *GetPartitionRequest, runtime *util.RuntimeOptions) (_result *GetPartitionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPartition"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetPartitionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetPartitionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取数据表的分区详情
+//
+// @param request - GetPartitionRequest
+//
+// @return GetPartitionResponse
+func (client *Client) GetPartition(request *GetPartitionRequest) (_result *GetPartitionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPartitionResponse{}
+	_body, _err := client.GetPartitionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -65600,6 +71476,140 @@ func (client *Client) GetRoute(request *GetRouteRequest) (_result *GetRouteRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &GetRouteResponse{}
 	_body, _err := client.GetRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取模式详情
+//
+// @param request - GetSchemaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSchemaResponse
+func (client *Client) GetSchemaWithOptions(request *GetSchemaRequest, runtime *util.RuntimeOptions) (_result *GetSchemaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSchema"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSchemaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSchemaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取模式详情
+//
+// @param request - GetSchemaRequest
+//
+// @return GetSchemaResponse
+func (client *Client) GetSchema(request *GetSchemaRequest) (_result *GetSchemaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSchemaResponse{}
+	_body, _err := client.GetSchemaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取表详情
+//
+// @param request - GetTableRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableResponse
+func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *util.RuntimeOptions) (_result *GetTableResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTable"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 获取表详情
+//
+// @param request - GetTableRequest
+//
+// @return GetTableResponse
+func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableResponse{}
+	_body, _err := client.GetTableWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66526,6 +72536,79 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 
 // Summary:
 //
+// 查询数据目录列表
+//
+// @param tmpReq - ListCatalogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogsWithOptions(tmpReq *ListCatalogsRequest, runtime *util.RuntimeOptions) (_result *ListCatalogsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListCatalogsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("simple"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCatalogs"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCatalogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCatalogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询数据目录列表
+//
+// @param request - ListCatalogsRequest
+//
+// @return ListCatalogsResponse
+func (client *Client) ListCatalogs(request *ListCatalogsRequest) (_result *ListCatalogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCatalogsResponse{}
+	_body, _err := client.ListCatalogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of certificate files.
 //
 // Description:
@@ -66596,6 +72679,131 @@ func (client *Client) ListCertificates(request *ListCertificatesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCertificatesResponse{}
 	_body, _err := client.ListCertificatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询字段列表
+//
+// @param request - ListColumnsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListColumnsResponse
+func (client *Client) ListColumnsWithOptions(request *ListColumnsRequest, runtime *util.RuntimeOptions) (_result *ListColumnsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListColumns"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListColumnsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListColumnsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询字段列表
+//
+// @param request - ListColumnsRequest
+//
+// @return ListColumnsResponse
+func (client *Client) ListColumns(request *ListColumnsRequest) (_result *ListColumnsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListColumnsResponse{}
+	_body, _err := client.ListColumnsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询元数据采集器类型列表
+//
+// @param request - ListCrawlerTypesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListCrawlerTypesResponse
+func (client *Client) ListCrawlerTypesWithOptions(runtime *util.RuntimeOptions) (_result *ListCrawlerTypesResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListCrawlerTypes"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListCrawlerTypesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListCrawlerTypesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询元数据采集器类型列表
+//
+// @return ListCrawlerTypesResponse
+func (client *Client) ListCrawlerTypes() (_result *ListCrawlerTypesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCrawlerTypesResponse{}
+	_body, _err := client.ListCrawlerTypesWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -66903,7 +73111,7 @@ func (client *Client) ListDIJobRunDetails(request *ListDIJobRunDetailsRequest) (
 
 // Summary:
 //
-// Queries a list of synchronization tasks.
+// Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
 //
 // Description:
 //
@@ -66956,7 +73164,7 @@ func (client *Client) ListDIJobsWithOptions(request *ListDIJobsRequest, runtime 
 
 // Summary:
 //
-// Queries a list of synchronization tasks.
+// Queries a list of new-version synchronization tasks in Data Integration. A new-version synchronization task can be a real-time synchronization task used to synchronize full or incremental data in a database, a batch synchronization task used to synchronize full or incremental data in a database, or a real-time synchronization task used to synchronize incremental data in a single table.
 //
 // Description:
 //
@@ -67669,6 +73877,73 @@ func (client *Client) ListDataSources(request *ListDataSourcesRequest) (_result 
 
 // Summary:
 //
+// 查询数据库列表
+//
+// @param request - ListDatabasesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabasesWithOptions(request *ListDatabasesRequest, runtime *util.RuntimeOptions) (_result *ListDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatabases"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListDatabasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListDatabasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询数据库列表
+//
+// @param request - ListDatabasesRequest
+//
+// @return ListDatabasesResponse
+func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *ListDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDatabasesResponse{}
+	_body, _err := client.ListDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of processes that are used to deploy or undeploy entities in DataStudio. You can also specify filter conditions to query specific processes.
 //
 // @param request - ListDeploymentsRequest
@@ -67878,6 +74153,73 @@ func (client *Client) ListDownstreamTasks(request *ListDownstreamTasksRequest) (
 
 // Summary:
 //
+// 查询集合中的实体列表
+//
+// @param request - ListEntitiesInMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListEntitiesInMetaCollectionResponse
+func (client *Client) ListEntitiesInMetaCollectionWithOptions(request *ListEntitiesInMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *ListEntitiesInMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEntitiesInMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListEntitiesInMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListEntitiesInMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询集合中的实体列表
+//
+// @param request - ListEntitiesInMetaCollectionRequest
+//
+// @return ListEntitiesInMetaCollectionResponse
+func (client *Client) ListEntitiesInMetaCollection(request *ListEntitiesInMetaCollectionRequest) (_result *ListEntitiesInMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListEntitiesInMetaCollectionResponse{}
+	_body, _err := client.ListEntitiesInMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of user-defined functions (UDFs) in DataStudio. You can also specify filter conditions to query specific UDFs.
 //
 // @param request - ListFunctionsRequest
@@ -67936,6 +74278,207 @@ func (client *Client) ListFunctions(request *ListFunctionsRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFunctionsResponse{}
 	_body, _err := client.ListFunctionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询血缘关系
+//
+// @param request - ListLineageRelationshipsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLineageRelationshipsResponse
+func (client *Client) ListLineageRelationshipsWithOptions(request *ListLineageRelationshipsRequest, runtime *util.RuntimeOptions) (_result *ListLineageRelationshipsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLineageRelationships"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLineageRelationshipsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLineageRelationshipsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询血缘关系
+//
+// @param request - ListLineageRelationshipsRequest
+//
+// @return ListLineageRelationshipsResponse
+func (client *Client) ListLineageRelationships(request *ListLineageRelationshipsRequest) (_result *ListLineageRelationshipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLineageRelationshipsResponse{}
+	_body, _err := client.ListLineageRelationshipsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询实体血缘
+//
+// @param request - ListLineagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLineagesResponse
+func (client *Client) ListLineagesWithOptions(request *ListLineagesRequest, runtime *util.RuntimeOptions) (_result *ListLineagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLineages"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLineagesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLineagesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询实体血缘
+//
+// @param request - ListLineagesRequest
+//
+// @return ListLineagesResponse
+func (client *Client) ListLineages(request *ListLineagesRequest) (_result *ListLineagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLineagesResponse{}
+	_body, _err := client.ListLineagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Collection列表
+//
+// @param request - ListMetaCollectionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListMetaCollectionsResponse
+func (client *Client) ListMetaCollectionsWithOptions(request *ListMetaCollectionsRequest, runtime *util.RuntimeOptions) (_result *ListMetaCollectionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMetaCollections"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListMetaCollectionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListMetaCollectionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询Collection列表
+//
+// @param request - ListMetaCollectionsRequest
+//
+// @return ListMetaCollectionsResponse
+func (client *Client) ListMetaCollections(request *ListMetaCollectionsRequest) (_result *ListMetaCollectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMetaCollectionsResponse{}
+	_body, _err := client.ListMetaCollectionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68145,6 +74688,73 @@ func (client *Client) ListNodes(request *ListNodesRequest) (_result *ListNodesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListNodesResponse{}
 	_body, _err := client.ListNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据表的分区列表
+//
+// @param request - ListPartitionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPartitionsResponse
+func (client *Client) ListPartitionsWithOptions(request *ListPartitionsRequest, runtime *util.RuntimeOptions) (_result *ListPartitionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPartitions"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListPartitionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListPartitionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询数据表的分区列表
+//
+// @param request - ListPartitionsRequest
+//
+// @return ListPartitionsResponse
+func (client *Client) ListPartitions(request *ListPartitionsRequest) (_result *ListPartitionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPartitionsResponse{}
+	_body, _err := client.ListPartitionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68703,6 +75313,152 @@ func (client *Client) ListRoutes(request *ListRoutesRequest) (_result *ListRoute
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRoutesResponse{}
 	_body, _err := client.ListRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模式列表
+//
+// @param tmpReq - ListSchemasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSchemasResponse
+func (client *Client) ListSchemasWithOptions(tmpReq *ListSchemasRequest, runtime *util.RuntimeOptions) (_result *ListSchemasResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListSchemasShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Types)) {
+		request.TypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Types, tea.String("Types"), tea.String("simple"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSchemas"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSchemasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSchemasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询模式列表
+//
+// @param request - ListSchemasRequest
+//
+// @return ListSchemasResponse
+func (client *Client) ListSchemas(request *ListSchemasRequest) (_result *ListSchemasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSchemasResponse{}
+	_body, _err := client.ListSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询数据表列表
+//
+// @param tmpReq - ListTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTablesResponse
+func (client *Client) ListTablesWithOptions(tmpReq *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTablesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableTypes)) {
+		request.TableTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableTypes, tea.String("TableTypes"), tea.String("simple"))
+	}
+
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTables"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询数据表列表
+//
+// @param request - ListTablesRequest
+//
+// @return ListTablesResponse
+func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTablesResponse{}
+	_body, _err := client.ListTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69910,6 +76666,81 @@ func (client *Client) MoveWorkflowDefinition(request *MoveWorkflowDefinitionRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &MoveWorkflowDefinitionResponse{}
 	_body, _err := client.MoveWorkflowDefinitionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 从集合中移除实体对象
+//
+// @param request - RemoveEntityFromMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveEntityFromMetaCollectionResponse
+func (client *Client) RemoveEntityFromMetaCollectionWithOptions(request *RemoveEntityFromMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *RemoveEntityFromMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetaCollectionId)) {
+		query["MetaCollectionId"] = request.MetaCollectionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveEntityFromMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RemoveEntityFromMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RemoveEntityFromMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 从集合中移除实体对象
+//
+// @param request - RemoveEntityFromMetaCollectionRequest
+//
+// @return RemoveEntityFromMetaCollectionResponse
+func (client *Client) RemoveEntityFromMetaCollection(request *RemoveEntityFromMetaCollectionRequest) (_result *RemoveEntityFromMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveEntityFromMetaCollectionResponse{}
+	_body, _err := client.RemoveEntityFromMetaCollectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71697,6 +78528,81 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 
 // Summary:
 //
+// 更新字段业务元数据
+//
+// @param request - UpdateColumnBusinessMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateColumnBusinessMetadataResponse
+func (client *Client) UpdateColumnBusinessMetadataWithOptions(request *UpdateColumnBusinessMetadataRequest, runtime *util.RuntimeOptions) (_result *UpdateColumnBusinessMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateColumnBusinessMetadata"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateColumnBusinessMetadataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateColumnBusinessMetadataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新字段业务元数据
+//
+// @param request - UpdateColumnBusinessMetadataRequest
+//
+// @return UpdateColumnBusinessMetadataResponse
+func (client *Client) UpdateColumnBusinessMetadata(request *UpdateColumnBusinessMetadataRequest) (_result *UpdateColumnBusinessMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateColumnBusinessMetadataResponse{}
+	_body, _err := client.UpdateColumnBusinessMetadataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates an alert rule configured for a synchronization task.
 //
 // @param tmpReq - UpdateDIAlarmRuleRequest
@@ -72517,6 +79423,95 @@ func (client *Client) UpdateFunction(request *UpdateFunctionRequest) (_result *U
 
 // Summary:
 //
+// 更新集合
+//
+// @param tmpReq - UpdateMetaCollectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMetaCollectionResponse
+func (client *Client) UpdateMetaCollectionWithOptions(tmpReq *UpdateMetaCollectionRequest, runtime *util.RuntimeOptions) (_result *UpdateMetaCollectionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMetaCollectionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Administrators)) {
+		request.AdministratorsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Administrators, tea.String("Administrators"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdministratorsShrink)) {
+		query["Administrators"] = request.AdministratorsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMetaCollection"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateMetaCollectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateMetaCollectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新集合
+//
+// @param request - UpdateMetaCollectionRequest
+//
+// @return UpdateMetaCollectionResponse
+func (client *Client) UpdateMetaCollection(request *UpdateMetaCollectionRequest) (_result *UpdateMetaCollectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMetaCollectionResponse{}
+	_body, _err := client.UpdateMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Updates the basic information about a node in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
 //
 // @param request - UpdateNodeRequest
@@ -72935,6 +79930,81 @@ func (client *Client) UpdateRoute(request *UpdateRouteRequest) (_result *UpdateR
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateRouteResponse{}
 	_body, _err := client.UpdateRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据表业务元数据
+//
+// @param request - UpdateTableBusinessMetadataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateTableBusinessMetadataResponse
+func (client *Client) UpdateTableBusinessMetadataWithOptions(request *UpdateTableBusinessMetadataRequest, runtime *util.RuntimeOptions) (_result *UpdateTableBusinessMetadataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Readme)) {
+		body["Readme"] = request.Readme
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateTableBusinessMetadata"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateTableBusinessMetadataResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateTableBusinessMetadataResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 更新数据表业务元数据
+//
+// @param request - UpdateTableBusinessMetadataRequest
+//
+// @return UpdateTableBusinessMetadataResponse
+func (client *Client) UpdateTableBusinessMetadata(request *UpdateTableBusinessMetadataRequest) (_result *UpdateTableBusinessMetadataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateTableBusinessMetadataResponse{}
+	_body, _err := client.UpdateTableBusinessMetadataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
