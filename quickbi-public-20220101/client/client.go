@@ -428,6 +428,8 @@ type AddUserRequest struct {
 	//
 	// xxxxxx@163.com
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Deprecated
+	//
 	// Add organization members.
 	//
 	// if can be null:
@@ -437,6 +439,8 @@ type AddUserRequest struct {
 	//
 	// true
 	AdminUser *bool `json:"AdminUser,omitempty" xml:"AdminUser,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// true
@@ -2288,6 +2292,8 @@ func (s *CheckReadableResponse) SetBody(v *CheckReadableResponseBody) *CheckRead
 }
 
 type CreateTicketRequest struct {
+	// Deprecated
+	//
 	// The user\\"s account name.
 	//
 	// - If the user is an Alibaba Cloud primary account **wangwu**, the format is **[Primary Account]**, for example, **wangwu**.
@@ -2300,6 +2306,8 @@ type CreateTicketRequest struct {
 	//
 	// test user
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// Deprecated
+	//
 	// The type of the user\\"s account.
 	//
 	// - 1: Alibaba Cloud account
@@ -20651,9 +20659,13 @@ func (s *SmartqQueryAbilityResponseBody) SetSuccess(v bool) *SmartqQueryAbilityR
 }
 
 type SmartqQueryAbilityResponseBodyResult struct {
-	ChartType *string                                         `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
-	MetaType  []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
-	Values    []*SmartqQueryAbilityResponseBodyResultValues   `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+	ChartType *string `json:"ChartType,omitempty" xml:"ChartType,omitempty"`
+	// if can be null:
+	// true
+	ConclusionText *string                                         `json:"ConclusionText,omitempty" xml:"ConclusionText,omitempty"`
+	LogicSql       *string                                         `json:"LogicSql,omitempty" xml:"LogicSql,omitempty"`
+	MetaType       []*SmartqQueryAbilityResponseBodyResultMetaType `json:"MetaType,omitempty" xml:"MetaType,omitempty" type:"Repeated"`
+	Values         []*SmartqQueryAbilityResponseBodyResultValues   `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
 func (s SmartqQueryAbilityResponseBodyResult) String() string {
@@ -20666,6 +20678,16 @@ func (s SmartqQueryAbilityResponseBodyResult) GoString() string {
 
 func (s *SmartqQueryAbilityResponseBodyResult) SetChartType(v string) *SmartqQueryAbilityResponseBodyResult {
 	s.ChartType = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBodyResult) SetConclusionText(v string) *SmartqQueryAbilityResponseBodyResult {
+	s.ConclusionText = &v
+	return s
+}
+
+func (s *SmartqQueryAbilityResponseBodyResult) SetLogicSql(v string) *SmartqQueryAbilityResponseBodyResult {
+	s.LogicSql = &v
 	return s
 }
 
@@ -20709,6 +20731,8 @@ func (s *SmartqQueryAbilityResponseBodyResultMetaType) SetValue(v string) *Smart
 }
 
 type SmartqQueryAbilityResponseBodyResultValues struct {
+	// if can be null:
+	// true
 	Row []*string `json:"Row,omitempty" xml:"Row,omitempty" type:"Repeated"`
 }
 
@@ -22974,6 +22998,8 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 	return _result, _err
 }
 
+// Deprecated: OpenAPI BatchAddFeishuUsers is deprecated
+//
 // Summary:
 //
 // 批量添加飞书用户。
@@ -22983,6 +23009,7 @@ func (client *Client) AuthorizeMenu(request *AuthorizeMenuRequest) (_result *Aut
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return BatchAddFeishuUsersResponse
+// Deprecated
 func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUsersRequest, runtime *util.RuntimeOptions) (_result *BatchAddFeishuUsersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23043,6 +23070,8 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 
 }
 
+// Deprecated: OpenAPI BatchAddFeishuUsers is deprecated
+//
 // Summary:
 //
 // 批量添加飞书用户。
@@ -23050,6 +23079,7 @@ func (client *Client) BatchAddFeishuUsersWithOptions(request *BatchAddFeishuUser
 // @param request - BatchAddFeishuUsersRequest
 //
 // @return BatchAddFeishuUsersResponse
+// Deprecated
 func (client *Client) BatchAddFeishuUsers(request *BatchAddFeishuUsersRequest) (_result *BatchAddFeishuUsersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchAddFeishuUsersResponse{}
@@ -24639,7 +24669,7 @@ func (client *Client) DeleteUserTagMeta(request *DeleteUserTagMetaRequest) (_res
 
 // Summary:
 //
-// Get Data Source Information
+// # Get Data Source Information
 //
 // @param request - GetDataSourceConnectionInfoRequest
 //
@@ -24692,7 +24722,7 @@ func (client *Client) GetDataSourceConnectionInfoWithOptions(request *GetDataSou
 
 // Summary:
 //
-// Get Data Source Information
+// # Get Data Source Information
 //
 // @param request - GetDataSourceConnectionInfoRequest
 //
@@ -24710,7 +24740,7 @@ func (client *Client) GetDataSourceConnectionInfo(request *GetDataSourceConnecti
 
 // Summary:
 //
-// Check the running status of mail tasks within an organization
+// # Check the running status of mail tasks within an organization
 //
 // @param request - GetMailTaskStatusRequest
 //
@@ -24767,7 +24797,7 @@ func (client *Client) GetMailTaskStatusWithOptions(request *GetMailTaskStatusReq
 
 // Summary:
 //
-// Check the running status of mail tasks within an organization
+// # Check the running status of mail tasks within an organization
 //
 // @param request - GetMailTaskStatusRequest
 //
@@ -24785,7 +24815,7 @@ func (client *Client) GetMailTaskStatus(request *GetMailTaskStatusRequest) (_res
 
 // Summary:
 //
-// Test description
+// # Test description
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -24838,7 +24868,7 @@ func (client *Client) GetUserGroupInfoWithOptions(request *GetUserGroupInfoReque
 
 // Summary:
 //
-// Test description
+// # Test description
 //
 // @param request - GetUserGroupInfoRequest
 //
@@ -24856,7 +24886,7 @@ func (client *Client) GetUserGroupInfo(request *GetUserGroupInfoRequest) (_resul
 
 // Summary:
 //
-// Query the list of embedded reports
+// # Query the list of embedded reports
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -24925,7 +24955,7 @@ func (client *Client) GetWorksEmbedListWithOptions(request *GetWorksEmbedListReq
 
 // Summary:
 //
-// Query the list of embedded reports
+// # Query the list of embedded reports
 //
 // @param request - GetWorksEmbedListRequest
 //
@@ -25334,7 +25364,7 @@ func (client *Client) ListDataLevelPermissionWhiteList(request *ListDataLevelPer
 
 // Summary:
 //
-// Query all data sources under the specified space
+// # Query all data sources under the specified space
 //
 // @param request - ListDataSourceRequest
 //
@@ -25391,7 +25421,7 @@ func (client *Client) ListDataSourceWithOptions(request *ListDataSourceRequest, 
 
 // Summary:
 //
-// Query all data sources under the specified space
+// # Query all data sources under the specified space
 //
 // @param request - ListDataSourceRequest
 //
@@ -25953,7 +25983,7 @@ func (client *Client) ListSharedReports(request *ListSharedReportsRequest) (_res
 
 // Summary:
 //
-// Description
+// # Description
 //
 // @param request - ListUserGroupsByUserIdRequest
 //
@@ -26006,7 +26036,7 @@ func (client *Client) ListUserGroupsByUserIdWithOptions(request *ListUserGroupsB
 
 // Summary:
 //
-// Description
+// # Description
 //
 // @param request - ListUserGroupsByUserIdRequest
 //
@@ -26182,7 +26212,7 @@ func (client *Client) ListWorkspaceRoles(request *ListWorkspaceRolesRequest) (_r
 
 // Summary:
 //
-// Manually Execute Email Task
+// # Manually Execute Email Task
 //
 // @param request - ManualRunMailTaskRequest
 //
@@ -26235,7 +26265,7 @@ func (client *Client) ManualRunMailTaskWithOptions(request *ManualRunMailTaskReq
 
 // Summary:
 //
-// Manually Execute Email Task
+// # Manually Execute Email Task
 //
 // @param request - ManualRunMailTaskRequest
 //
@@ -26939,11 +26969,11 @@ func (client *Client) QueryCubePerformance(request *QueryCubePerformanceRequest)
 //
 // ### Usage Restrictions
 //
-// 	- The data service feature is only available to professional edition customers.
+//   - The data service feature is only available to professional edition customers.
 //
-// 	- The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
 //
-// 	- If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
 //
 // @param request - QueryDataRequest
 //
@@ -27018,11 +27048,11 @@ func (client *Client) QueryDataWithOptions(request *QueryDataRequest, runtime *u
 //
 // ### Usage Restrictions
 //
-// 	- The data service feature is only available to professional edition customers.
+//   - The data service feature is only available to professional edition customers.
 //
-// 	- The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
 //
-// 	- If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call will also be intercepted by the row-level permission policy.
 //
 // @param request - QueryDataRequest
 //
@@ -27113,6 +27143,8 @@ func (client *Client) QueryDataRange(request *QueryDataRangeRequest) (_result *Q
 	return _result, _err
 }
 
+// Deprecated: OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+//
 // Summary:
 //
 // Invoke an already created API in the data service.
@@ -27125,17 +27157,18 @@ func (client *Client) QueryDataRange(request *QueryDataRangeRequest) (_result *Q
 //
 // #### Usage Restrictions
 //
-// 	- The data service feature is only available to professional edition customers.
+//   - The data service feature is only available to professional edition customers.
 //
-// 	- The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
 //
-// 	- If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
 //
 // @param request - QueryDataServiceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return QueryDataServiceResponse
+// Deprecated
 func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceRequest, runtime *util.RuntimeOptions) (_result *QueryDataServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27188,6 +27221,8 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 
 }
 
+// Deprecated: OpenAPI QueryDataService is deprecated, please use quickbi-public::2022-01-01::QueryData instead.
+//
 // Summary:
 //
 // Invoke an already created API in the data service.
@@ -27200,15 +27235,16 @@ func (client *Client) QueryDataServiceWithOptions(request *QueryDataServiceReque
 //
 // #### Usage Restrictions
 //
-// 	- The data service feature is only available to professional edition customers.
+//   - The data service feature is only available to professional edition customers.
 //
-// 	- The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
+//   - The timeout for data service API calls is 60s, and the QPS for a single API is 10 times/second.
 //
-// 	- If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
+//   - If row-level permissions are enabled on the dataset referenced by the data service API, the API call may be intercepted by the row-level permission policy.
 //
 // @param request - QueryDataServiceRequest
 //
 // @return QueryDataServiceResponse
+// Deprecated
 func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_result *QueryDataServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDataServiceResponse{}
@@ -27222,7 +27258,7 @@ func (client *Client) QueryDataService(request *QueryDataServiceRequest) (_resul
 
 // Summary:
 //
-// Query Data Service API List
+// # Query Data Service API List
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -27287,7 +27323,7 @@ func (client *Client) QueryDataServiceListWithOptions(request *QueryDataServiceL
 
 // Summary:
 //
-// Query Data Service API List
+// # Query Data Service API List
 //
 // @param request - QueryDataServiceListRequest
 //
@@ -27386,9 +27422,9 @@ func (client *Client) QueryDatasetDetailInfo(request *QueryDatasetDetailInfoRequ
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-// 	- true: custom SQL table
+//   - true: custom SQL table
 //
-// 	- false: non-custom SQL table
+//   - false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -27443,9 +27479,9 @@ func (client *Client) QueryDatasetInfoWithOptions(request *QueryDatasetInfoReque
 //
 // Indicates whether the table is a custom SQL table. Valid values:
 //
-// 	- true: custom SQL table
+//   - true: custom SQL table
 //
-// 	- false: non-custom SQL table
+//   - false: non-custom SQL table
 //
 // @param request - QueryDatasetInfoRequest
 //
@@ -27896,7 +27932,7 @@ func (client *Client) QueryLlmCubeWithThemeListByUserId(request *QueryLlmCubeWit
 
 // Summary:
 //
-// Retrieve Configuration Information for a Specified Organization Role
+// # Retrieve Configuration Information for a Specified Organization Role
 //
 // @param request - QueryOrganizationRoleConfigRequest
 //
@@ -27949,7 +27985,7 @@ func (client *Client) QueryOrganizationRoleConfigWithOptions(request *QueryOrgan
 
 // Summary:
 //
-// Retrieve Configuration Information for a Specified Organization Role
+// # Retrieve Configuration Information for a Specified Organization Role
 //
 // @param request - QueryOrganizationRoleConfigRequest
 //
@@ -28216,7 +28252,7 @@ func (client *Client) QueryReportPerformance(request *QueryReportPerformanceRequ
 
 // Summary:
 //
-// Xiao Zhang
+// # Xiao Zhang
 //
 // @param request - QueryShareListRequest
 //
@@ -28269,7 +28305,7 @@ func (client *Client) QueryShareListWithOptions(request *QueryShareListRequest, 
 
 // Summary:
 //
-// Xiao Zhang
+// # Xiao Zhang
 //
 // @param request - QueryShareListRequest
 //
@@ -29383,7 +29419,7 @@ func (client *Client) QueryWorksByWorkspace(request *QueryWorksByWorkspaceReques
 
 // Summary:
 //
-// Get Configuration Information for a Specified Workspace Role
+// # Get Configuration Information for a Specified Workspace Role
 //
 // @param request - QueryWorkspaceRoleConfigRequest
 //
@@ -29436,7 +29472,7 @@ func (client *Client) QueryWorkspaceRoleConfigWithOptions(request *QueryWorkspac
 
 // Summary:
 //
-// Get Configuration Information for a Specified Workspace Role
+// # Get Configuration Information for a Specified Workspace Role
 //
 // @param request - QueryWorkspaceRoleConfigRequest
 //
@@ -30163,17 +30199,17 @@ func (client *Client) SmartqQueryAbility(request *SmartqQueryAbilityRequest) (_r
 //
 // Indicates whether the request is successful. Valid values:
 //
-// 	- true: The request was successful.
+//   - true: The request was successful.
 //
-// 	- false: The request failed.
+//   - false: The request failed.
 //
 // Description:
 //
 // The execution result of the interface. Valid values:
 //
-// 	- true: The request was successful.
+//   - true: The request was successful.
 //
-// 	- false: The request failed.
+//   - false: The request failed.
 //
 // @param request - UpdateDataLevelPermissionStatusRequest
 //
@@ -30236,17 +30272,17 @@ func (client *Client) UpdateDataLevelPermissionStatusWithOptions(request *Update
 //
 // Indicates whether the request is successful. Valid values:
 //
-// 	- true: The request was successful.
+//   - true: The request was successful.
 //
-// 	- false: The request failed.
+//   - false: The request failed.
 //
 // Description:
 //
 // The execution result of the interface. Valid values:
 //
-// 	- true: The request was successful.
+//   - true: The request was successful.
 //
-// 	- false: The request failed.
+//   - false: The request failed.
 //
 // @param request - UpdateDataLevelPermissionStatusRequest
 //
@@ -30588,7 +30624,7 @@ func (client *Client) UpdateUserGroup(request *UpdateUserGroupRequest) (_result 
 
 // Summary:
 //
-// Used for updating the metadata of organization member tags
+// # Used for updating the metadata of organization member tags
 //
 // @param request - UpdateUserTagMetaRequest
 //
@@ -30649,7 +30685,7 @@ func (client *Client) UpdateUserTagMetaWithOptions(request *UpdateUserTagMetaReq
 
 // Summary:
 //
-// Used for updating the metadata of organization member tags
+// # Used for updating the metadata of organization member tags
 //
 // @param request - UpdateUserTagMetaRequest
 //
