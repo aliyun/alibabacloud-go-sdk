@@ -10,6 +10,12 @@ import (
 )
 
 type AddAutoCcBlacklistRequest struct {
+	// The IP addresses that you want to manage. This parameter is a JSON string. The string contains the following field:
+	//
+	// 	- **src**: the IP address. This field is required and must be of the STRING type.
+	//
+	// >  You can manually add up to 2,000 IP addresses to the IP address blacklist. Separate multiple IP addresses with spaces or line breaks.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -549,6 +555,88 @@ func (s *ConfigDomainSecurityProfileResponse) SetStatusCode(v int32) *ConfigDoma
 }
 
 func (s *ConfigDomainSecurityProfileResponse) SetBody(v *ConfigDomainSecurityProfileResponseBody) *ConfigDomainSecurityProfileResponse {
+	s.Body = v
+	return s
+}
+
+type ConfigL7GlobalRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [{\\"RuleId\\":\\"global_01\\",\\"Action\\":\\"block\\",\\"Enabled\\":0}]
+	RuleAttr *string `json:"RuleAttr,omitempty" xml:"RuleAttr,omitempty"`
+}
+
+func (s ConfigL7GlobalRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7GlobalRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7GlobalRuleRequest) SetDomain(v string) *ConfigL7GlobalRuleRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ConfigL7GlobalRuleRequest) SetRuleAttr(v string) *ConfigL7GlobalRuleRequest {
+	s.RuleAttr = &v
+	return s
+}
+
+type ConfigL7GlobalRuleResponseBody struct {
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ConfigL7GlobalRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7GlobalRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7GlobalRuleResponseBody) SetRequestId(v string) *ConfigL7GlobalRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ConfigL7GlobalRuleResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ConfigL7GlobalRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ConfigL7GlobalRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConfigL7GlobalRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ConfigL7GlobalRuleResponse) SetHeaders(v map[string]*string) *ConfigL7GlobalRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ConfigL7GlobalRuleResponse) SetStatusCode(v int32) *ConfigL7GlobalRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ConfigL7GlobalRuleResponse) SetBody(v *ConfigL7GlobalRuleResponseBody) *ConfigL7GlobalRuleResponse {
 	s.Body = v
 	return s
 }
@@ -2442,9 +2530,9 @@ type CreateSceneDefensePolicyRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The template of the policy. Valid values:
 	//
-	// 	- **promotion**: important activity
+	// 	- **promotion**: important activity.
 	//
-	// 	- **bypass**: all traffic forwarded
+	// 	- **bypass**: all traffic forwarded.
 	//
 	// This parameter is required.
 	//
@@ -3710,7 +3798,7 @@ type DeletePortRequest struct {
 	//
 	// 55
 	FrontendPort *string `json:"FrontendPort,omitempty" xml:"FrontendPort,omitempty"`
-	// The type of the protocol. Valid values:
+	// The type of the forwarding protocol. Valid values:
 	//
 	// 	- **tcp**
 	//
@@ -6123,6 +6211,10 @@ func (s *DescribeCertsResponse) SetBody(v *DescribeCertsResponseBody) *DescribeC
 }
 
 type DescribeCnameReusesRequest struct {
+	// The domain names of the websites. You can specify the domain names of up to 200 websites.
+	//
+	// >  A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6610,7 +6702,7 @@ func (s *DescribeDDosAllEventListRequest) SetStartTime(v int64) *DescribeDDosAll
 }
 
 type DescribeDDosAllEventListResponseBody struct {
-	// An array that consists of attack events.
+	// The DDoS attack events.
 	AttackEvents []*DescribeDDosAllEventListResponseBodyAttackEvents `json:"AttackEvents,omitempty" xml:"AttackEvents,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -11862,6 +11954,7 @@ type DescribeDomainViewTopUrlRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Inerval *int64 `json:"Inerval,omitempty" xml:"Inerval,omitempty"`
 	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
 	// example:
@@ -11903,6 +11996,11 @@ func (s *DescribeDomainViewTopUrlRequest) SetDomain(v string) *DescribeDomainVie
 
 func (s *DescribeDomainViewTopUrlRequest) SetEndTime(v int64) *DescribeDomainViewTopUrlRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDomainViewTopUrlRequest) SetInerval(v int64) *DescribeDomainViewTopUrlRequest {
+	s.Inerval = &v
 	return s
 }
 
@@ -14890,6 +14988,151 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 	return s
 }
 
+type DescribeL7GlobalRuleRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+}
+
+func (s DescribeL7GlobalRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7GlobalRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7GlobalRuleRequest) SetDomain(v string) *DescribeL7GlobalRuleRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleRequest) SetLang(v string) *DescribeL7GlobalRuleRequest {
+	s.Lang = &v
+	return s
+}
+
+type DescribeL7GlobalRuleResponseBody struct {
+	GlobalRules []*DescribeL7GlobalRuleResponseBodyGlobalRules `json:"GlobalRules,omitempty" xml:"GlobalRules,omitempty" type:"Repeated"`
+	// example:
+	//
+	// CF33B4C3-196E-4015-AADD-5CAD00057B80
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeL7GlobalRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7GlobalRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7GlobalRuleResponseBody) SetGlobalRules(v []*DescribeL7GlobalRuleResponseBodyGlobalRules) *DescribeL7GlobalRuleResponseBody {
+	s.GlobalRules = v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBody) SetRequestId(v string) *DescribeL7GlobalRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeL7GlobalRuleResponseBodyGlobalRules struct {
+	// example:
+	//
+	// watch
+	Action *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	// example:
+	//
+	// watch
+	ActionDefault *string `json:"ActionDefault,omitempty" xml:"ActionDefault,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1
+	Enabled *int64 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// example:
+	//
+	// global_1
+	RuleId   *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+}
+
+func (s DescribeL7GlobalRuleResponseBodyGlobalRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7GlobalRuleResponseBodyGlobalRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetAction(v string) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.Action = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetActionDefault(v string) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.ActionDefault = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetDescription(v string) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetEnabled(v int64) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetRuleId(v string) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponseBodyGlobalRules) SetRuleName(v string) *DescribeL7GlobalRuleResponseBodyGlobalRules {
+	s.RuleName = &v
+	return s
+}
+
+type DescribeL7GlobalRuleResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeL7GlobalRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeL7GlobalRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeL7GlobalRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeL7GlobalRuleResponse) SetHeaders(v map[string]*string) *DescribeL7GlobalRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponse) SetStatusCode(v int32) *DescribeL7GlobalRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeL7GlobalRuleResponse) SetBody(v *DescribeL7GlobalRuleResponseBody) *DescribeL7GlobalRuleResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeL7RsPolicyRequest struct {
 	// The domain name of the website to query.
 	//
@@ -16437,7 +16680,7 @@ func (s *DescribeNetworkRulesRequest) SetPageSize(v int32) *DescribeNetworkRules
 }
 
 type DescribeNetworkRulesResponseBody struct {
-	// The details of the port forwarding rule.
+	// The details of the port forwarding rules.
 	NetworkRules []*DescribeNetworkRulesResponseBodyNetworkRules `json:"NetworkRules,omitempty" xml:"NetworkRules,omitempty" type:"Repeated"`
 	// The ID of the request, which is used to locate and troubleshoot issues.
 	//
@@ -16504,7 +16747,16 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	// example:
 	//
 	// true
-	IsAutoCreate      *bool  `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	IsAutoCreate *bool `json:"IsAutoCreate,omitempty" xml:"IsAutoCreate,omitempty"`
+	// Indicates whether the payload filtering rule is enabled. Valid values:
+	//
+	// 	- 1: enabled.
+	//
+	// 	- 0: disabled.
+	//
+	// example:
+	//
+	// 1
 	PayloadRuleEnable *int64 `json:"PayloadRuleEnable,omitempty" xml:"PayloadRuleEnable,omitempty"`
 	// The forwarding protocol. Valid values:
 	//
@@ -16515,8 +16767,26 @@ type DescribeNetworkRulesResponseBodyNetworkRules struct {
 	// example:
 	//
 	// tcp
-	Protocol    *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	ProxyEnable *int64  `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// Indicates whether the traffic diversion switch is on. Valid values:
+	//
+	// 	- 0: on.
+	//
+	// 	- 1: off.
+	//
+	// example:
+	//
+	// 0
+	ProxyEnable *int64 `json:"ProxyEnable,omitempty" xml:"ProxyEnable,omitempty"`
+	// The status of traffic diversion. Valid values:
+	//
+	// 	- on: Traffic diversion takes effect.
+	//
+	// 	- off: Traffic diversion does not take effect.
+	//
+	// example:
+	//
+	// on
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
 	// The IP addresses of origin servers.
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
@@ -17186,7 +17456,7 @@ type DescribePortAttackMaxFlowRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// An array that consists of the IDs of instances to query.
+	// The IDs of the Anti-DDoS Proxy instances to query.
 	//
 	// This parameter is required.
 	//
@@ -18362,9 +18632,9 @@ type DescribePortMaxConnsRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the instance.
+	// The IDs of the Anti-DDoS Proxy instances.
 	//
-	// > You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all instances.
+	// >  You can call the [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) operation to query the IDs of all Anti-DDoS Proxy instances.
 	//
 	// This parameter is required.
 	//
@@ -18419,7 +18689,7 @@ func (s *DescribePortMaxConnsRequest) SetStartTime(v int64) *DescribePortMaxConn
 }
 
 type DescribePortMaxConnsResponseBody struct {
-	// An array consisting of the details of the maximum number of connections that are established over a port of the instance.
+	// The details of the maximum number of connections that can be established over a port of the instance.
 	PortMaxConns []*DescribePortMaxConnsResponseBodyPortMaxConns `json:"PortMaxConns,omitempty" xml:"PortMaxConns,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -18531,7 +18801,7 @@ type DescribePortViewSourceCountriesRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// An array that consists of the IDs of instances to query.
+	// The IDs of the Anti-DDoS Proxy instances to query.
 	//
 	// This parameter is required.
 	//
@@ -18539,9 +18809,9 @@ type DescribePortViewSourceCountriesRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -18594,7 +18864,7 @@ type DescribePortViewSourceCountriesResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array consisting of countries or areas from which the requests are sent.
+	// The details about the country or area from which the requests are sent.
 	SourceCountrys []*DescribePortViewSourceCountriesResponseBodySourceCountrys `json:"SourceCountrys,omitempty" xml:"SourceCountrys,omitempty" type:"Repeated"`
 }
 
@@ -18691,7 +18961,7 @@ type DescribePortViewSourceIspsRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// An array that consists of the IDs of instances to query.
+	// The IDs of the Anti-DDoS Proxy instances to query.
 	//
 	// This parameter is required.
 	//
@@ -18699,9 +18969,9 @@ type DescribePortViewSourceIspsRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management.
+	// The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management.
 	//
-	// If you do not configure this parameter, the instance belongs to the default resource group.
+	// If you do not specify this parameter, the instance belongs to the default resource group.
 	//
 	// example:
 	//
@@ -18849,7 +19119,7 @@ type DescribePortViewSourceProvincesRequest struct {
 	//
 	// 1583683200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of instances to query.
+	// The IDs of the Anti-DDoS Proxy instances to query.
 	//
 	// This parameter is required.
 	//
@@ -18857,9 +19127,9 @@ type DescribePortViewSourceProvincesRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	// The ID of the resource group to which the Anti-DDoS Proxy instance belongs in Resource Management. This parameter is empty by default, which indicates that the Anti-DDoS Origin instance belongs to the default resource group.
 	//
-	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	// For information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
 	//
 	// example:
 	//
@@ -18912,7 +19182,7 @@ type DescribePortViewSourceProvincesResponseBody struct {
 	//
 	// C33EB3D5-AF96-43CA-9C7E-37A81BC06A1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Details about the administrative region in China from which the requests are sent.
+	// The details of the administrative region in China from which the requests are sent.
 	SourceProvinces []*DescribePortViewSourceProvincesResponseBodySourceProvinces `json:"SourceProvinces,omitempty" xml:"SourceProvinces,omitempty" type:"Repeated"`
 }
 
@@ -21175,7 +21445,7 @@ type DescribeTotalAttackMaxFlowRequest struct {
 	//
 	// 1659697200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The IDs of the instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
+	// The IDs of the Anti-DDoS Proxy instances. Separate multiple instance IDs with commas (,). Example: InstanceIds.1, InstanceIds.2, InstanceIds.3.
 	//
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -21232,7 +21502,7 @@ type DescribeTotalAttackMaxFlowResponseBody struct {
 	//
 	// 0
 	Bps *int64 `json:"Bps,omitempty" xml:"Bps,omitempty"`
-	// The peak packet rate of attack traffic . Unit: packets per second (pps).
+	// The peak packet rate of attack traffic. Unit: packets per second (pps).
 	//
 	// example:
 	//
@@ -23633,9 +23903,9 @@ func (s *DescribeWebCustomPortsResponse) SetBody(v *DescribeWebCustomPortsRespon
 }
 
 type DescribeWebInstanceRelationsRequest struct {
-	// The domain names of the website. list
+	// The domain names of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// >  A forwarding rule must be configured for the domain names. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -24092,7 +24362,7 @@ type DescribeWebReportTopIpRequest struct {
 	//
 	// 300
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The source of the statistics. Valid value:
+	// The source of the statistics. Valid values:
 	//
 	// 	- **visit**: indicates all IP addresses.
 	//
@@ -24161,7 +24431,7 @@ func (s *DescribeWebReportTopIpRequest) SetTop(v int32) *DescribeWebReportTopIpR
 }
 
 type DescribeWebReportTopIpResponseBody struct {
-	// The response parameters.
+	// The information about the IP addresses.
 	DataList []*DescribeWebReportTopIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -25728,7 +25998,7 @@ func (s *EnableSceneDefensePolicyResponse) SetBody(v *EnableSceneDefensePolicyRe
 type EnableWebAccessLogConfigRequest struct {
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/474212.html) operation to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -27353,68 +27623,134 @@ func (s *ModifyHttp2EnableResponse) SetBody(v *ModifyHttp2EnableResponseBody) *M
 }
 
 type ModifyInstanceRequest struct {
+	// Address type. Values:
+	//
+	// - **Ipv4**: IPv4.
+	//
+	// - **Ipv6**: IPv6.
+	//
 	// example:
 	//
 	// Ipv4
 	AddressType *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	// Elastic protection bandwidth (Mainland China). Unit: Gbps.
+	//
 	// example:
 	//
 	// 30
 	Bandwidth *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// Guaranteed protection bandwidth (Mainland China). Unit: Gbps.
+	//
 	// example:
 	//
 	// 30
 	BaseBandwidth *string `json:"BaseBandwidth,omitempty" xml:"BaseBandwidth,omitempty"`
+	// Number of protected domains.
+	//
 	// example:
 	//
 	// 50
 	DomainCount *string `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	// Protection package (Mainland China). Values:
+	//
+	// - **coop**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
+	//
+	// - **advance**: Indicates the DDoS High Defense (Mainland China) Professional Edition.
+	//
 	// example:
 	//
 	// coop
 	EditionSale *string `json:"EditionSale,omitempty" xml:"EditionSale,omitempty"`
+	// Function version, with values:
+	//
+	// - **0**: Standard function.
+	//
+	// - **1**: Enhanced function.
+	//
 	// example:
 	//
 	// 0
 	FunctionVersion *string `json:"FunctionVersion,omitempty" xml:"FunctionVersion,omitempty"`
+	// The ID of the DDoS High Defense instance.
+	//
+	// > You can call [DescribeInstanceIds](https://help.aliyun.com/document_detail/157459.html) to query the ID information of all DDoS High Defense instances.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo-cn-6ja1y6p5****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Adjustment type, with values
+	//
+	// - UPGRADE: Upgrade.
+	//
+	// - DOWNGRADE: Downgrade.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Upgrade
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// Business bandwidth (outside Mainland China). Unit: Mbps.
+	//
 	// example:
 	//
 	// 200
 	NormalBandwidth *string `json:"NormalBandwidth,omitempty" xml:"NormalBandwidth,omitempty"`
+	// Business QPS. Unit: Mbps.
+	//
 	// example:
 	//
 	// 100
 	NormalQps *string `json:"NormalQps,omitempty" xml:"NormalQps,omitempty"`
+	// Number of protected ports.
+	//
 	// example:
 	//
 	// 50
 	PortCount *string `json:"PortCount,omitempty" xml:"PortCount,omitempty"`
+	// Protection package (outside Mainland China). Values:
+	//
+	// - **0**: Indicates the DDoS High Defense (outside Mainland China) Insurance Edition.
+	//
+	// - **1**: Indicates the DDoS High Defense (outside Mainland China) Worry-Free Edition.
+	//
+	// - **2**: Indicates the DDoS High Defense (outside Mainland China) Acceleration Line.
+	//
+	// - **3**: Indicates the DDoS High Defense (outside Mainland China) Secure Acceleration Line.
+	//
 	// example:
 	//
 	// 0
 	ProductPlan *string `json:"ProductPlan,omitempty" xml:"ProductPlan,omitempty"`
+	// Product type.
+	//
+	// Values:
+	//
+	// - **ddoscoo**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for a China site account.
+	//
+	// - **ddoscoo_intl**: Indicates that the DDoS High Defense (Mainland China) instance is being adjusted for an international site account.
+	//
+	// - **ddosDip**: Indicates that the DDoS High Defense (outside Mainland China) instance is being adjusted for either a China or international site account.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ddoscoo
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// Business bandwidth (Mainland China). Unit: Mbps.
+	//
 	// example:
 	//
 	// 300
 	ServiceBandwidth *string `json:"ServiceBandwidth,omitempty" xml:"ServiceBandwidth,omitempty"`
+	// Line resources of the instance (Mainland China). Values:
+	//
+	// - **coop-line-001**: Indicates the DDoS High Defense (Mainland China) 8-line BGP line.
+	//
 	// example:
 	//
 	// coop-line-001
@@ -27505,10 +27841,14 @@ func (s *ModifyInstanceRequest) SetServicePartner(v string) *ModifyInstanceReque
 }
 
 type ModifyInstanceResponseBody struct {
+	// Order ID.
+	//
 	// example:
 	//
 	// 242461444340562
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The ID of this request, which is a unique identifier generated by Alibaba Cloud for this request and can be used for troubleshooting and problem localization.
+	//
 	// example:
 	//
 	// 0018DF77-7189-5D33-947B-E5B34BFCE07E
@@ -27827,11 +28167,15 @@ type ModifyOcspStatusRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// Specifies whether to enable the OCSP feature. Valid values:
 	//
-	// 	- **1**: yes
+	// 	- **1**: yes.
 	//
-	// 	- **0**: no
+	// 	- **0**: no.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	Enable *int32 `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -28283,9 +28627,9 @@ type ModifySceneDefensePolicyRequest struct {
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The template of the policy. Valid values:
 	//
-	// 	- **promotion**: important activity
+	// 	- **promotion**: important activity.
 	//
-	// 	- **bypass**: all traffic forwarded
+	// 	- **bypass**: all traffic forwarded.
 	//
 	// This parameter is required.
 	//
@@ -28733,7 +29077,7 @@ type ModifyWebAIProtectModeRequest struct {
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The domain name of the website.
 	//
-	// > A forwarding rule must be configured for a domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query all domain names.
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/474212.html) operation to query all domain names.
 	//
 	// This parameter is required.
 	//
@@ -30181,12 +30525,30 @@ func (s *ModifyWebPreciseAccessSwitchResponse) SetBody(v *ModifyWebPreciseAccess
 }
 
 type ModifyWebRuleRequest struct {
+	// The domain name of the website.
+	//
+	// >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// www.aliyun.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The advanced HTTPS settings. This parameter takes effect only when the value of **ProxyType*	- includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+	//
+	// 	- **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+	//
+	//     If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
+	//
+	// 	- **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+	//
+	//     If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
+	//
+	// 	- **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0*	- and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+	//
+	//     After you turn on the switch, the protocol type is HTTP/2.
+	//
 	// example:
 	//
 	// {"Http2":1,"Http2https":1,"Https2http":1}
@@ -30195,6 +30557,12 @@ type ModifyWebRuleRequest struct {
 	//
 	// ddoscoo-cn-mp91j1ao****
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The protocol of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+	//
+	// 	- **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+	//
+	// 	- **ProxyPort**: the port number. This field is required and must be an array.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30207,10 +30575,20 @@ type ModifyWebRuleRequest struct {
 	//
 	// 1.xxx.xxx.1
 	RealServers []*string `json:"RealServers,omitempty" xml:"RealServers,omitempty" type:"Repeated"`
+	// The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+	//
+	// For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+	//
 	// example:
 	//
 	// rg-acfm2pz25js****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The address type of the origin server. Valid values:
+	//
+	// 	- **0**: IP address.
+	//
+	// 	- **1**: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -30263,6 +30641,8 @@ func (s *ModifyWebRuleRequest) SetRsType(v int32) *ModifyWebRuleRequest {
 }
 
 type ModifyWebRuleResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// CB3261D2-7D1B-4ADA-9E98-A200B2CDA2DC
@@ -30970,6 +31350,81 @@ func (client *Client) ConfigDomainSecurityProfile(request *ConfigDomainSecurityP
 	runtime := &util.RuntimeOptions{}
 	_result = &ConfigDomainSecurityProfileResponse{}
 	_body, _err := client.ConfigDomainSecurityProfileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 配置全局模板规则
+//
+// @param request - ConfigL7GlobalRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ConfigL7GlobalRuleResponse
+func (client *Client) ConfigL7GlobalRuleWithOptions(request *ConfigL7GlobalRuleRequest, runtime *util.RuntimeOptions) (_result *ConfigL7GlobalRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleAttr)) {
+		query["RuleAttr"] = request.RuleAttr
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfigL7GlobalRule"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ConfigL7GlobalRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ConfigL7GlobalRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 配置全局模板规则
+//
+// @param request - ConfigL7GlobalRuleRequest
+//
+// @return ConfigL7GlobalRuleResponse
+func (client *Client) ConfigL7GlobalRule(request *ConfigL7GlobalRuleRequest) (_result *ConfigL7GlobalRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ConfigL7GlobalRuleResponse{}
+	_body, _err := client.ConfigL7GlobalRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32890,7 +33345,7 @@ func (client *Client) DeleteAutoCcBlacklist(request *DeleteAutoCcBlacklistReques
 
 // Summary:
 //
-// Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
 //
 // @param request - DeleteAutoCcWhitelistRequest
 //
@@ -32947,7 +33402,7 @@ func (client *Client) DeleteAutoCcWhitelistWithOptions(request *DeleteAutoCcWhit
 
 // Summary:
 //
-// Removes IP addresses from the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Removes IP addresses from the IP address whitelist of an Anti-DDoS Proxy instance.
 //
 // @param request - DeleteAutoCcWhitelistRequest
 //
@@ -34133,7 +34588,7 @@ func (client *Client) DescribeAutoCcBlacklist(request *DescribeAutoCcBlacklistRe
 
 // Summary:
 //
-// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeAutoCcListCountRequest
 //
@@ -34190,7 +34645,7 @@ func (client *Client) DescribeAutoCcListCountWithOptions(request *DescribeAutoCc
 
 // Summary:
 //
-// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries the numbers of IP addresses in the IP address whitelist and IP address blacklist of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeAutoCcListCountRequest
 //
@@ -34208,7 +34663,7 @@ func (client *Client) DescribeAutoCcListCount(request *DescribeAutoCcListCountRe
 
 // Summary:
 //
-// Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeAutoCcWhitelistRequest
 //
@@ -34273,7 +34728,7 @@ func (client *Client) DescribeAutoCcWhitelistWithOptions(request *DescribeAutoCc
 
 // Summary:
 //
-// Queries IP addresses in the IP address whitelist of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Queries IP addresses in the IP address whitelist of an Anti-DDoS Proxy instance.
 //
 // @param request - DescribeAutoCcWhitelistRequest
 //
@@ -34536,7 +34991,13 @@ func (client *Client) DescribeBlockStatus(request *DescribeBlockStatusRequest) (
 
 // Summary:
 //
-// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+//
+// Description:
+//
+// This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+//
+// >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
 //
 // @param request - DescribeCertsRequest
 //
@@ -34593,7 +35054,13 @@ func (client *Client) DescribeCertsWithOptions(request *DescribeCertsRequest, ru
 
 // Summary:
 //
-// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use. To query the information about the certificate that is currently in use, you can call the DescribeWebRules operation and view the values of the CertName and CertRegion response parameters.
+// Queries information about all certificates that can be associated with the current domain name instead of the certificate currently in use.
+//
+// Description:
+//
+// This operation is used to query all applicable certificates of a domain name that you want to add to Anti-DDoS Proxy. Multiple certificates may be queried for a domain name. You can use an exact domain name to query exact-domain certificates or wildcard-domain certificates.
+//
+// >  If you want to query the certificate that is in use for the current domain name, you can call the [DescribeWebRules](https://help.aliyun.com/document_detail/473610.html) operation to obtain the values of the CertName and CertRegion parameters. Then, you can call the [ListUserCertificateOrder](https://help.aliyun.com/document_detail/411733.html) operation of Certificate Management Service to query the ID and other details of the certificate by using the value of the CertName parameter.
 //
 // @param request - DescribeCertsRequest
 //
@@ -34769,7 +35236,7 @@ func (client *Client) DescribeDDoSEvents(request *DescribeDDoSEventsRequest) (_r
 
 // Summary:
 //
-// Query DDoS attacks by IP address.
+// Queries DDoS attack events.
 //
 // Description:
 //
@@ -34846,7 +35313,7 @@ func (client *Client) DescribeDDosAllEventListWithOptions(request *DescribeDDosA
 
 // Summary:
 //
-// Query DDoS attacks by IP address.
+// Queries DDoS attack events.
 //
 // Description:
 //
@@ -35398,7 +35865,7 @@ func (client *Client) DescribeDefenseCountStatistics(request *DescribeDefenseCou
 
 // Summary:
 //
-// Queries the advanced mitigation logs of Anti-DDoS Premium.
+// Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 //
 // Description:
 //
@@ -35475,7 +35942,7 @@ func (client *Client) DescribeDefenseRecordsWithOptions(request *DescribeDefense
 
 // Summary:
 //
-// Queries the advanced mitigation logs of Anti-DDoS Premium.
+// Queries the advanced mitigation logs of an Anti-DDoS Proxy (Outside Chinese Mainland) instance.
 //
 // Description:
 //
@@ -37072,6 +37539,10 @@ func (client *Client) DescribeDomainViewTopUrlWithOptions(request *DescribeDomai
 		query["EndTime"] = request.EndTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Inerval)) {
+		query["Inerval"] = request.Inerval
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -38151,6 +38622,10 @@ func (client *Client) DescribeInstanceStatus(request *DescribeInstanceStatusRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // Description:
 //
 // You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
@@ -38248,6 +38723,10 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 
 }
 
+// Summary:
+//
+// 查询实例列表
+//
 // Description:
 //
 // You can call the DescribeInstances operation to query the details of Anti-DDoS Pro or Anti-DDoS Premium instances within the Alibaba Cloud account by page. The details include the ID, mitigation plan, expiration time, and forwarding status.
@@ -38259,6 +38738,81 @@ func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstancesResponse{}
 	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 展示全局模板规则
+//
+// @param request - DescribeL7GlobalRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeL7GlobalRuleResponse
+func (client *Client) DescribeL7GlobalRuleWithOptions(request *DescribeL7GlobalRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeL7GlobalRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeL7GlobalRule"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeL7GlobalRuleResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeL7GlobalRuleResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 展示全局模板规则
+//
+// @param request - DescribeL7GlobalRuleRequest
+//
+// @return DescribeL7GlobalRuleResponse
+func (client *Client) DescribeL7GlobalRule(request *DescribeL7GlobalRuleRequest) (_result *DescribeL7GlobalRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeL7GlobalRuleResponse{}
+	_body, _err := client.DescribeL7GlobalRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38489,7 +39043,7 @@ func (client *Client) DescribeLayer4RulePolicy(request *DescribeLayer4RulePolicy
 
 // Summary:
 //
-// Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+// Checks whether a Logstore is created for Anti-DDoS Proxy.
 //
 // @param request - DescribeLogStoreExistStatusRequest
 //
@@ -38542,7 +39096,7 @@ func (client *Client) DescribeLogStoreExistStatusWithOptions(request *DescribeLo
 
 // Summary:
 //
-// Checks whether a Logstore is created for Anti-DDoS Pro or Anti-DDoS Premium.
+// Checks whether a Logstore is created for Anti-DDoS Proxy.
 //
 // @param request - DescribeLogStoreExistStatusRequest
 //
@@ -39509,7 +40063,7 @@ func (client *Client) DescribePortFlowList(request *DescribePortFlowListRequest)
 
 // Summary:
 //
-// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortMaxConnsRequest
 //
@@ -39574,7 +40128,7 @@ func (client *Client) DescribePortMaxConnsWithOptions(request *DescribePortMaxCo
 
 // Summary:
 //
-// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Pro or Anti-DDoS Premium instances.
+// Queries the maximum number of connections that can be established over the ports of one or more Anti-DDoS Proxy instances.
 //
 // @param request - DescribePortMaxConnsRequest
 //
@@ -40217,7 +40771,7 @@ func (client *Client) DescribeSlaEventList(request *DescribeSlaEventListRequest)
 
 // Summary:
 //
-// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+// Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
 //
 // @param request - DescribeSlsAuthStatusRequest
 //
@@ -40270,7 +40824,7 @@ func (client *Client) DescribeSlsAuthStatusWithOptions(request *DescribeSlsAuthS
 
 // Summary:
 //
-// Queries whether Anti-DDoS Pro or Anti-DDoS Premium is authorized to access Log Service.
+// Queries whether Anti-DDoS Proxy is authorized to access Simple Log Service.
 //
 // @param request - DescribeSlsAuthStatusRequest
 //
@@ -40288,7 +40842,7 @@ func (client *Client) DescribeSlsAuthStatus(request *DescribeSlsAuthStatusReques
 
 // Summary:
 //
-// Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+// Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
 //
 // @param request - DescribeSlsLogstoreInfoRequest
 //
@@ -40341,7 +40895,7 @@ func (client *Client) DescribeSlsLogstoreInfoWithOptions(request *DescribeSlsLog
 
 // Summary:
 //
-// Queries the information about the Logstore of the Anti-DDoS Pro or Anti-DDoS Premium instance, such as the log storage capacity and log storage duration.
+// Queries information about the Logstore of the Anti-DDoS Proxy instance, such as the log storage capacity and log storage duration.
 //
 // @param request - DescribeSlsLogstoreInfoRequest
 //
@@ -40359,7 +40913,7 @@ func (client *Client) DescribeSlsLogstoreInfo(request *DescribeSlsLogstoreInfoRe
 
 // Summary:
 //
-// Checks whether Log Service is activated.
+// Checks whether Simple Log Service is activated.
 //
 // @param request - DescribeSlsOpenStatusRequest
 //
@@ -40412,7 +40966,7 @@ func (client *Client) DescribeSlsOpenStatusWithOptions(request *DescribeSlsOpenS
 
 // Summary:
 //
-// Checks whether Log Service is activated.
+// Checks whether Simple Log Service is activated.
 //
 // @param request - DescribeSlsOpenStatusRequest
 //
@@ -41008,7 +41562,7 @@ func (client *Client) DescribeUdpReflect(request *DescribeUdpReflectRequest) (_r
 
 // Summary:
 //
-// Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+// Queries the total quota and remaining quota for blackhole filtering deactivation.
 //
 // @param request - DescribeUnBlackholeCountRequest
 //
@@ -41061,7 +41615,7 @@ func (client *Client) DescribeUnBlackholeCountWithOptions(request *DescribeUnBla
 
 // Summary:
 //
-// Queries the total quota and remaining quota that allow you to deactivate blackhole filtering.
+// Queries the total quota and remaining quota for blackhole filtering deactivation.
 //
 // @param request - DescribeUnBlackholeCountRequest
 //
@@ -41324,7 +41878,7 @@ func (client *Client) DescribeWebAccessLogEmptyCount(request *DescribeWebAccessL
 
 // Summary:
 //
-// Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+// Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
 //
 // @param request - DescribeWebAccessLogStatusRequest
 //
@@ -41381,7 +41935,7 @@ func (client *Client) DescribeWebAccessLogStatusWithOptions(request *DescribeWeb
 
 // Summary:
 //
-// Queries the information about the Log Analysis feature for a website, such as the feature status and the Log Service project and Logstore that are used.
+// Queries the information about the log analysis feature for a website, such as the feature status and the Simple Log Service project and Logstore that are used.
 //
 // @param request - DescribeWebAccessLogStatusRequest
 //
@@ -44206,7 +44760,7 @@ func (client *Client) ModifyHttp2Enable(request *ModifyHttp2EnableRequest) (_res
 
 // Summary:
 //
-// 实例变配  类似bss的变配
+// # Instance adjustment, similar to BSS adjustment
 //
 // @param request - ModifyInstanceRequest
 //
@@ -44315,7 +44869,7 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 
 // Summary:
 //
-// 实例变配  类似bss的变配
+// # Instance adjustment, similar to BSS adjustment
 //
 // @param request - ModifyInstanceRequest
 //
@@ -44333,7 +44887,7 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 
 // Summary:
 //
-// Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies the description of an Anti-DDoS Proxy instance.
 //
 // @param request - ModifyInstanceRemarkRequest
 //
@@ -44390,7 +44944,7 @@ func (client *Client) ModifyInstanceRemarkWithOptions(request *ModifyInstanceRem
 
 // Summary:
 //
-// Modifies the description of an Anti-DDoS Pro or Anti-DDoS Premium instance.
+// Modifies the description of an Anti-DDoS Proxy instance.
 //
 // @param request - ModifyInstanceRemarkRequest
 //
@@ -46163,6 +46717,16 @@ func (client *Client) ModifyWebPreciseAccessSwitch(request *ModifyWebPreciseAcce
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies the forwarding rule of a website.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+//
 // @param request - ModifyWebRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -46236,6 +46800,16 @@ func (client *Client) ModifyWebRuleWithOptions(request *ModifyWebRuleRequest, ru
 
 }
 
+// Summary:
+//
+// Modifies the forwarding rule of a website.
+//
+// Description:
+//
+// ## Debugging
+//
+// [OpenAPI Explorer automatically calculates the signature value. For your convenience, we recommend that you call this operation in OpenAPI Explorer. OpenAPI Explorer dynamically generates the sample code of the operation for different SDKs.](https://api.aliyun.com/#product=ddoscoo\\&api=ModifyWebRule\\&type=RPC\\&version=2020-01-01)
+//
 // @param request - ModifyWebRuleRequest
 //
 // @return ModifyWebRuleResponse

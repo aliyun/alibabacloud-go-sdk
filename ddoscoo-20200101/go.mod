@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/ddoscoo-20200101/v3
+module github.com/alibabacloud-go/ddoscoo-20200101/v4
 
 go 1.14
 
