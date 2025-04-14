@@ -1,3 +1,8 @@
+2025-04-14 Version: v1.7.1
+- Update API ListDisasterRecoveryItems: add request parameters topicName.
+- Update API ListDisasterRecoveryPlans: add request parameters instanceId.
+
+
 2025-02-28 Version: v1.7.0
 - Support API CreateDisasterRecoveryPlan.
 - Support API DeleteDisasterRecoveryItem.

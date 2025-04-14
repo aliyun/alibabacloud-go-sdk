@@ -27,7 +27,12 @@ type DataTopicLagMapValue struct {
 	// example:
 	//
 	// 12
-	DeliveryDuration     *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+	DeliveryDuration *int64 `json:"deliveryDuration,omitempty" xml:"deliveryDuration,omitempty"`
+	// lastConsumeTimestamp
+	//
+	// example:
+	//
+	// 1735629607846
 	LastConsumeTimestamp *int64 `json:"lastConsumeTimestamp,omitempty" xml:"lastConsumeTimestamp,omitempty"`
 }
 
@@ -60,6 +65,7 @@ func (s *DataTopicLagMapValue) SetLastConsumeTimestamp(v int64) *DataTopicLagMap
 }
 
 type AddDisasterRecoveryItemRequest struct {
+	// Topics included in the backup mapping. Required.
 	Topics []*AddDisasterRecoveryItemRequestTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
 }
 
@@ -77,19 +83,49 @@ func (s *AddDisasterRecoveryItemRequest) SetTopics(v []*AddDisasterRecoveryItemR
 }
 
 type AddDisasterRecoveryItemRequestTopics struct {
-	ConsumerGroupId   *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// Consumer group ID, required for ACTIVE_ACTIVE bidirectional backup
+	//
+	// example:
+	//
+	// GID_xxx
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+	//
+	//   - Concurrently: concurrent delivery
+	//
+	//   - Orderly: sequential delivery
+	//
+	// example:
+	//
+	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	InstanceId        *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance ID, an instance ID will be automatically generated when `instanceType` is `EXTERNAL_ROCKETMQ`, and it can be obtained by querying the backup plan.
+	//
+	// example:
+	//
+	// rmq-cn-em93y94xxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// regionId
+	// Region ID
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Disaster recovery topic name, required
+	//
+	// example:
+	//
+	// Topic_xxx
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
@@ -132,15 +168,60 @@ func (s *AddDisasterRecoveryItemRequestTopics) SetTopicName(v string) *AddDisast
 }
 
 type AddDisasterRecoveryItemResponseBody struct {
+	// Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *int64  `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result, mapping task ID
+	//
+	// example:
+	//
+	// 1300000016
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// AF9A8B10-C426-530F-A0DD-96320B39****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s AddDisasterRecoveryItemResponseBody) String() string {
@@ -421,17 +502,11 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateConsumerGroupRequest struct {
-	// The consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+	// consume retry policy
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *CreateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	// The message delivery order of the consumer group.
-	//
-	// Valid values:
-	//
-	// 	- Concurrently: concurrent delivery
-	//
-	// 	- Orderly: ordered delivery
+	// The dynamic error message.
 	//
 	// This parameter is required.
 	//
@@ -439,8 +514,13 @@ type CreateConsumerGroupRequest struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	MaxReceiveTps     *int64  `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
-	// The remarks on the consumer group.
+	// Maximum received message tps
+	//
+	// example:
+	//
+	// 300
+	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The HTTP status code.
 	//
 	// example:
 	//
@@ -567,13 +647,13 @@ type CreateConsumerGroupResponseBody struct {
 	//
 	// Parameter consumerGroupId is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -659,15 +739,46 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreateDisasterRecoveryPlanRequest struct {
-	AutoSyncCheckpoint *bool                                         `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	Instances          []*CreateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	PlanDesc           *string                                       `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	PlanName           *string                                       `json:"planName,omitempty" xml:"planName,omitempty"`
+	// Whether to enable automatic synchronization of consumption progress.
+	//
+	// > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+	//
+	// example:
+	//
+	// true
+	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	// Instances involved in the backup plan. Required
+	Instances []*CreateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// Plan description
+	//
+	// example:
+	//
+	// xxx
+	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	// Plan name, required
+	//
+	// example:
+	//
+	// xxx
+	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+	// Backup plan type, required. Please refer to the [documentation](https://help.aliyun.com/document_detail/2843187.html).
+	//
+	// Parameter values are as follows:
+	//
+	//   - ACTIVE_PASSIVE: One-way backup
+	//
+	//   - ACTIVE_ACTIVE: Two-way backup
+	//
 	// example:
 	//
 	// ACTIVE_ACTIVE
-	PlanType              *string `json:"planType,omitempty" xml:"planType,omitempty"`
-	SyncCheckpointEnabled *bool   `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	// Switch for synchronizing consumption progress
+	//
+	// example:
+	//
+	// true
+	SyncCheckpointEnabled *bool `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
 }
 
 func (s CreateDisasterRecoveryPlanRequest) String() string {
@@ -709,42 +820,94 @@ func (s *CreateDisasterRecoveryPlanRequest) SetSyncCheckpointEnabled(v bool) *Cr
 }
 
 type CreateDisasterRecoveryPlanRequestInstances struct {
+	// Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
+	//
+	//   - NO_AUTH: No authentication required
+	//
+	//   - ACL_AUTH: ACL authentication
+	//
 	// example:
 	//
 	// ACL_AUTH
-	AuthType    *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+	//
+	// example:
+	//
+	// xxx
 	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// Instance ID, not required for instanceType of EXTERNAL_ROCKETMQ, but required for ALIYUN_ROCKETMQ
+	//
 	// example:
 	//
 	// rmq-cn-******
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance role, either primary or secondary
+	//
+	//   - ACTIVE: Primary
+	//
+	//   - PASSIVE: Secondary
+	//
 	// example:
 	//
 	// PASSIVE
 	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
-	InstanceType    *string                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
 	MessageProperty *CreateDisasterRecoveryPlanRequestInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	// Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+	//
+	// Parameter values are as follows:
+	//
+	//   - TCP_INTERNET: TCP public network
+	//
+	//   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+	//
 	// example:
 	//
 	// TCP_INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Password    *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Region where the instance is located
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Security group ID, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+	//
 	// example:
 	//
 	// sg-bp17hpmgz9******
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
+	// Authentication username, required when authType is ACL_AUTH
+	//
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The ID of the switch associated with the instance, required only when the `instanceType` is EXTERNAL_ROCKETMQ and `networkType` is TCP_VPC.
+	//
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpv******
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+	//
 	// example:
 	//
 	// vpc-wz9qt50xhtj9krb******
@@ -825,10 +988,14 @@ func (s *CreateDisasterRecoveryPlanRequestInstances) SetVpcId(v string) *CreateD
 }
 
 type CreateDisasterRecoveryPlanRequestInstancesMessageProperty struct {
+	// Property key
+	//
 	// example:
 	//
 	// aaa
 	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// Property value
+	//
 	// example:
 	//
 	// bbb
@@ -854,18 +1021,60 @@ func (s *CreateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyV
 }
 
 type CreateDisasterRecoveryPlanResponseBody struct {
+	// Access denied details, provided only in scenarios where access is denied due to lack of RAM permissions
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The result, which is the backup plan ID
+	//
 	// example:
 	//
 	// 1234
-	Data           *int64  `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode    *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	Data *int64 `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success        *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// C7E8AE3A-219B-52EE-BE32-4036F5xxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the operation was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s CreateDisasterRecoveryPlanResponseBody) String() string {
@@ -977,6 +1186,10 @@ type CreateInstanceRequest struct {
 	//
 	// 	- ons_rmqsub_public_intl: subscription
 	//
+	// 	- ons_rmqsrvlesspost_public_intl: serverless instance
+	//
+	// serverless instance requires this parameter
+	//
 	// example:
 	//
 	// ons_ rmqpost_public_cn
@@ -1033,7 +1246,7 @@ type CreateInstanceRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"periodUnit,omitempty" xml:"periodUnit,omitempty"`
-	// The information about the instance specifications.
+	// The information about instance specifications.
 	ProductInfo *CreateInstanceRequestProductInfo `json:"productInfo,omitempty" xml:"productInfo,omitempty" type:"Struct"`
 	// The instance description.
 	//
@@ -1041,7 +1254,7 @@ type CreateInstanceRequest struct {
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The ID of the resource group.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -1100,8 +1313,9 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// cluster_ha
-	SubSeriesCode *string                      `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
-	Tags          []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	SubSeriesCode *string `json:"subSeriesCode,omitempty" xml:"subSeriesCode,omitempty"`
+	// The tags that you want to add to the instance.
+	Tags []*CreateInstanceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value of this parameter, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -1238,7 +1452,7 @@ type CreateInstanceRequestNetworkInfoInternetInfo struct {
 	//
 	// 100
 	FlowOutBandwidth *int32 `json:"flowOutBandwidth,omitempty" xml:"flowOutBandwidth,omitempty"`
-	// The billing method of Internet usage.
+	// The metering method of Internet usage.
 	//
 	// Valid values:
 	//
@@ -1246,7 +1460,7 @@ type CreateInstanceRequestNetworkInfoInternetInfo struct {
 	//
 	// 	- payByTraffic: pay-by-traffic. This value is valid only if you enable Internet access.
 	//
-	// 	- uninvolved: No billing method is involved. This value is valid only if you disable Internet access.
+	// 	- uninvolved: No metering method is involved. This value is valid only if you disable Internet access.
 	//
 	// This parameter is required.
 	//
@@ -1272,11 +1486,11 @@ type CreateInstanceRequestNetworkInfoInternetInfo struct {
 	InternetSpec *string `json:"internetSpec,omitempty" xml:"internetSpec,omitempty"`
 	// Deprecated
 	//
-	// The whitelist that includes the IP addresses that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
+	// The whitelist that includes the CIDR blocks that are allowed to access the ApsaraMQ for RocketMQ broker over the Internet. This parameter can be configured only if you use the public endpoint to access the instance.
 	//
 	// 	- If you do not configure an IP address whitelist, all CIDR blocks are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	//
-	// 	- If you configure an IP address whitelist, only the IP addresses in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
+	// 	- If you configure an IP address whitelist, only the CIDR blocks in the whitelist are allowed to access the ApsaraMQ for RocketMQ broker over the Internet.
 	IpWhitelist []*string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty" type:"Repeated"`
 }
 
@@ -1440,13 +1654,13 @@ type CreateInstanceRequestProductInfo struct {
 	//
 	// 0.5
 	SendReceiveRatio *float32 `json:"sendReceiveRatio,omitempty" xml:"sendReceiveRatio,omitempty"`
-	// Indicates whether storage encryption is enabled.
+	// Specifies whether to enable the encryption at rest feature.
 	//
 	// example:
 	//
 	// false
 	StorageEncryption *bool `json:"storageEncryption,omitempty" xml:"storageEncryption,omitempty"`
-	// The storage encryption key.
+	// The key for encryption at rest.
 	//
 	// example:
 	//
@@ -1493,7 +1707,17 @@ func (s *CreateInstanceRequestProductInfo) SetStorageSecretKey(v string) *Create
 }
 
 type CreateInstanceRequestTags struct {
-	Key   *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The `key` of the tag.
+	//
+	// example:
+	//
+	// aaa
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// The `value` of the tag.
+	//
+	// example:
+	//
+	// bbb
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 
@@ -2214,6 +2438,11 @@ func (s *CreateInstanceIpWhitelistResponse) SetBody(v *CreateInstanceIpWhitelist
 }
 
 type CreateTopicRequest struct {
+	// The maximum TPS for message sending.
+	//
+	// example:
+	//
+	// 1500
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
 	// The type of messages in the topic that you want to create.
 	//
@@ -2223,11 +2452,11 @@ type CreateTopicRequest struct {
 	//
 	// 	- FIFO: ordered messages
 	//
-	// 	- DELAY: scheduled messages or delayed Message
+	// 	- DELAY: scheduled or delayed messages
 	//
 	// 	- NORMAL: normal messages
 	//
-	// > The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, the topic can be used to send and receive only ordered messages.
+	// >  The type of messages in the topic must be the same as the type of messages that you want to send. For example, if you create a topic whose message type is ordered messages, you can use the topic to send and receive only ordered messages.
 	//
 	// example:
 	//
@@ -2265,49 +2494,49 @@ func (s *CreateTopicRequest) SetRemark(v string) *CreateTopicRequest {
 }
 
 type CreateTopicResponseBody struct {
-	// The error code returned if the call failed.
+	// Error code.
 	//
 	// example:
 	//
 	// Topic.Existed
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The returned result.
+	// Return result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The dynamic error code.
+	// Dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// Dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code returned.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// The topic already exists.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. Each request has a unique ID. You can use this ID to troubleshoot issues.
+	// Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
@@ -2714,15 +2943,60 @@ func (s *DeleteConsumerGroupSubscriptionResponse) SetBody(v *DeleteConsumerGroup
 }
 
 type DeleteDisasterRecoveryItemResponseBody struct {
+	// Access denied details, only in the scenario where the user is denied access due to RAM not having permission
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// DisasterRecoveryItemStatus.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The return data
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// The current status of the disaster recovery item does not support this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 0B962390-D84B-5D44-8C11-79DFxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteDisasterRecoveryItemResponseBody) String() string {
@@ -2808,15 +3082,60 @@ func (s *DeleteDisasterRecoveryItemResponse) SetBody(v *DeleteDisasterRecoveryIt
 }
 
 type DeleteDisasterRecoveryPlanResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// DisasterRecoveryPlanStatus.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// The current status of the disaster recovery plan does not support this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// AF9A8B10-C426-530F-A0DD-96320B39****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s DeleteDisasterRecoveryPlanResponseBody) String() string {
@@ -3358,7 +3677,8 @@ type DeleteInstanceIpWhitelistRequest struct {
 	// example:
 	//
 	// 0.0.0.0/0
-	IpWhitelist  *string   `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	IpWhitelist *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	// The IP address whitelist.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
 }
 
@@ -3388,7 +3708,8 @@ type DeleteInstanceIpWhitelistShrinkRequest struct {
 	// example:
 	//
 	// 0.0.0.0/0
-	IpWhitelist        *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	IpWhitelist *string `json:"ipWhitelist,omitempty" xml:"ipWhitelist,omitempty"`
+	// The IP address whitelist.
 	IpWhitelistsShrink *string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty"`
 }
 
@@ -3684,7 +4005,7 @@ type GetConsumerGroupResponseBody struct {
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned data.
 	Data *GetConsumerGroupResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -3824,8 +4145,13 @@ type GetConsumerGroupResponseBodyData struct {
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MaxReceiveTps *int64  `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Maximum received message tps
+	//
+	// example:
+	//
+	// 1000
+	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
 	// The ID of the region in which the instance resides.
 	//
 	// example:
@@ -4046,6 +4372,11 @@ func (s *GetConsumerGroupResponse) SetBody(v *GetConsumerGroupResponseBody) *Get
 }
 
 type GetConsumerGroupLagRequest struct {
+	// The topic name.
+	//
+	// example:
+	//
+	// normal-topic-1
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
@@ -4227,7 +4558,12 @@ type GetConsumerGroupLagResponseBodyDataTotalLag struct {
 	// example:
 	//
 	// 1
-	InflightCount        *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
+	InflightCount *int64 `json:"inflightCount,omitempty" xml:"inflightCount,omitempty"`
+	// Last consumption time
+	//
+	// example:
+	//
+	// 1735629607846
 	LastConsumeTimestamp *int64 `json:"lastConsumeTimestamp,omitempty" xml:"lastConsumeTimestamp,omitempty"`
 	// Ready message count
 	//
@@ -4842,15 +5178,56 @@ func (s *GetConsumerStackResponse) SetBody(v *GetConsumerStackResponseBody) *Get
 }
 
 type GetDisasterRecoveryItemResponseBody struct {
-	AccessDeniedDetail *string                                  `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *GetDisasterRecoveryItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode        *string                                  `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string                                  `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	Data *GetDisasterRecoveryItemResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// AF9A8B10-C426-530F-A0DD-96320B39****
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDisasterRecoveryItemResponseBody) String() string {
@@ -4907,13 +5284,40 @@ func (s *GetDisasterRecoveryItemResponseBody) SetSuccess(v bool) *GetDisasterRec
 }
 
 type GetDisasterRecoveryItemResponseBodyData struct {
-	CreateTime *string                                          `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExtInfo    map[string]*string                               `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	ItemId     *int64                                           `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	ItemStatus *string                                          `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
-	PlanId     *int64                                           `json:"planId,omitempty" xml:"planId,omitempty"`
-	Topics     []*GetDisasterRecoveryItemResponseBodyDataTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
-	UpdateTime *string                                          `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// The time when the topic mapping task was created.
+	//
+	// example:
+	//
+	// 2024-06-24 02:57:31
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Additional Information
+	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// The ID of the topic mapping
+	//
+	// example:
+	//
+	// 100070284
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// The topic mapping task status.
+	//
+	// example:
+	//
+	// RUNNING
+	ItemStatus *string `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
+	// The ID of the global message backup plan.
+	//
+	// example:
+	//
+	// 1300000016
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// Topics included in the backup mapping
+	Topics []*GetDisasterRecoveryItemResponseBodyDataTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
+	// The time when the topic mapping task was last updated.
+	//
+	// example:
+	//
+	// 2024-09-26 02:13:10
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetDisasterRecoveryItemResponseBodyData) String() string {
@@ -4960,16 +5364,49 @@ func (s *GetDisasterRecoveryItemResponseBodyData) SetUpdateTime(v string) *GetDi
 }
 
 type GetDisasterRecoveryItemResponseBodyDataTopics struct {
-	ConsumerGroupId   *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The consumer group ID.
+	//
+	// example:
+	//
+	// xxx_reserve_group
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The order in which messages are delivered to the target instance. The parameter values ​​are as follows:
+	//
+	//   - Concurrently: concurrent delivery
+	//
+	//   - Orderly: sequential delivery
+	//
+	// example:
+	//
+	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	InstanceId        *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceType      *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rmq-cn-wwo3xxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
 	// regionId
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId  *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The topic name.
+	//
+	// example:
+	//
+	// order_push_xxx
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
@@ -5041,15 +5478,56 @@ func (s *GetDisasterRecoveryItemResponse) SetBody(v *GetDisasterRecoveryItemResp
 }
 
 type GetDisasterRecoveryPlanResponseBody struct {
-	AccessDeniedDetail *string                                  `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string                                  `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *GetDisasterRecoveryPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode        *string                                  `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string                                  `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                   `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string                                  `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string                                  `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool                                    `json:"success,omitempty" xml:"success,omitempty"`
+	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	Data *GetDisasterRecoveryPlanResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7358418D-83BD-507A-8079-611C63E0xxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s GetDisasterRecoveryPlanResponseBody) String() string {
@@ -5106,17 +5584,70 @@ func (s *GetDisasterRecoveryPlanResponseBody) SetSuccess(v bool) *GetDisasterRec
 }
 
 type GetDisasterRecoveryPlanResponseBodyData struct {
-	AutoSyncCheckpoint    *bool                                               `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	CreateTime            *string                                             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExtInfo               map[string]*string                                  `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Instances             []*GetDisasterRecoveryPlanResponseBodyDataInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	PlanDesc              *string                                             `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	PlanId                *int64                                              `json:"planId,omitempty" xml:"planId,omitempty"`
-	PlanName              *string                                             `json:"planName,omitempty" xml:"planName,omitempty"`
-	PlanStatus            *string                                             `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
-	PlanType              *string                                             `json:"planType,omitempty" xml:"planType,omitempty"`
-	SyncCheckpointEnabled *bool                                               `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
-	UpdateTime            *string                                             `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Whether to enable automatic synchronization of consumption progress.
+	//
+	// example:
+	//
+	// true
+	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	// The time when the backup plan was created.
+	//
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Additional Information
+	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// Instances involved in the backup plan
+	Instances []*GetDisasterRecoveryPlanResponseBodyDataInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// The describe of the global message backup plan.
+	//
+	// example:
+	//
+	// xxxx
+	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	// The ID of the global message backup plan.
+	//
+	// example:
+	//
+	// 1300000016
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// The name of the global message backup plan.
+	//
+	// example:
+	//
+	// xxx
+	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+	// The status of the global message backup plan.
+	//
+	// example:
+	//
+	// RUNNING
+	PlanStatus *string `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
+	// The type of the global message backup plan.
+	//
+	// values are as follows:
+	//
+	//   - ACTIVE_PASSIVE: One-way backup
+	//
+	//   - ACTIVE_ACTIVE: Two-way backup
+	//
+	// example:
+	//
+	// ACTIVE_PASSIVE
+	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	// Switch for synchronizing consumption progress
+	//
+	// example:
+	//
+	// true
+	SyncCheckpointEnabled *bool `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	// The time when the backup plan was created.
+	//
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s GetDisasterRecoveryPlanResponseBodyData) String() string {
@@ -5183,19 +5714,95 @@ func (s *GetDisasterRecoveryPlanResponseBodyData) SetUpdateTime(v string) *GetDi
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstances struct {
-	AuthType        *string                                                          `json:"authType,omitempty" xml:"authType,omitempty"`
-	EndpointUrl     *string                                                          `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	InstanceId      *string                                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceRole    *string                                                          `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
-	InstanceType    *string                                                          `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Authentication method. Not required for instanceType of ALIYUN_ROCKETMQ and version 4.0
+	//
+	//   - NO_AUTH: No authentication required
+	//
+	//   - ACL_AUTH: ACL authentication
+	//
+	// example:
+	//
+	// ACL_AUTH
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// Endpoint URL, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ
+	//
+	// example:
+	//
+	// xxx
+	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rmq-cn-gpz3qtcdxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance role, either primary or secondary
+	//
+	//   - ACTIVE: Primary
+	//
+	//   - PASSIVE: Secondary
+	//
+	// example:
+	//
+	// ACTIVE
+	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Message filtering properties. When messages are synchronized to the target cluster, this property will be automatically added for SQL filtering during message consumption.
 	MessageProperty *GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
-	NetworkType     *string                                                          `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Password        *string                                                          `json:"password,omitempty" xml:"password,omitempty"`
-	RegionId        *string                                                          `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SecurityGroupId *string                                                          `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	Username        *string                                                          `json:"username,omitempty" xml:"username,omitempty"`
-	VSwitchId       *string                                                          `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
-	// VPC ID
+	// Network type, not required for instanceType of ALIYUN_ROCKETMQ, but required for EXTERNAL_ROCKETMQ Parameter values are as follows:
+	//
+	//   - TCP_INTERNET: TCP public network
+	//
+	//   - TCP_VPC: TCP VPC (Virtual Private Cloud)
+	//
+	// example:
+	//
+	// TCP_INTERNET
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	// Authentication password, required when authType is ACL_AUTH. Not required for instanceType of ALIYUN_ROCKETMQ
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// Region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Security group ID, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+	//
+	// example:
+	//
+	// sg-bp17hpmgz9******
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// Authentication username, required when authType is ACL_AUTH
+	//
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The ID of the switch associated with the instance, required only when the instanceType is EXTERNAL_ROCKETMQ and networkType is TCP_VPC.
+	//
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpv******
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the private network associated with the created instance. The instanceType instance type is only EXTERNAL_ROCKETMQ. It is required when the networkType is TCP_VPC.
+	//
+	// example:
+	//
+	// vpc-wz9qt50xhtj9krb******
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -5273,7 +5880,17 @@ func (s *GetDisasterRecoveryPlanResponseBodyDataInstances) SetVpcId(v string) *G
 }
 
 type GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty struct {
-	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// Property key
+	//
+	// example:
+	//
+	// xxx
+	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// Property value
+	//
+	// example:
+	//
+	// xxx
 	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
 }
 
@@ -6552,7 +7169,7 @@ type GetInstanceAccountResponseBody struct {
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetInstanceAccountResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -6641,6 +7258,17 @@ func (s *GetInstanceAccountResponseBody) SetSuccess(v bool) *GetInstanceAccountR
 }
 
 type GetInstanceAccountResponseBodyData struct {
+	// The status of the account.
+	//
+	// Valid values:
+	//
+	// 	- DISABLE
+	//
+	// 	- ENABLE
+	//
+	// example:
+	//
+	// ENABLE
 	AccountStatus *string `json:"accountStatus,omitempty" xml:"accountStatus,omitempty"`
 	// The password of the account.
 	//
@@ -6709,12 +7337,22 @@ func (s *GetInstanceAccountResponse) SetBody(v *GetInstanceAccountResponseBody) 
 }
 
 type GetInstanceAclRequest struct {
+	// The name of the resource on which you want to grant permissions.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The type of the resource on which you want to grant permissions.
+	//
+	// Valid values:
+	//
+	// 	- Group
+	//
+	// 	- Topic
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6742,33 +7380,46 @@ func (s *GetInstanceAclRequest) SetResourceType(v string) *GetInstanceAclRequest
 }
 
 type GetInstanceAclResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// MissingInstanceId
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
 	Data *GetInstanceAclResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
-	// InstanceId
+	// xxx
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
-	// instanceId
+	// xxx
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -6824,32 +7475,54 @@ func (s *GetInstanceAclResponseBody) SetSuccess(v bool) *GetInstanceAclResponseB
 }
 
 type GetInstanceAclResponseBodyData struct {
+	// The authentication type of the instance.
+	//
+	// Valid values:
+	//
+	// 	- apache_acl: open source access control list (ACL)
+	//
+	// 	- default: the default account of the instance
+	//
 	// example:
 	//
 	// apache_acl
-	AclType *string   `json:"aclType,omitempty" xml:"aclType,omitempty"`
+	AclType *string `json:"aclType,omitempty" xml:"aclType,omitempty"`
+	// The type of operations that can be performed on the resource.
 	Actions []*string `json:"actions,omitempty" xml:"actions,omitempty" type:"Repeated"`
+	// The decision result of the authorization.
+	//
 	// example:
 	//
 	// Allow
 	Decision *string `json:"decision,omitempty" xml:"decision,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId   *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IP address whitelists.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The name of the resource on which the permissions are granted.
+	//
 	// example:
 	//
 	// test
 	ResourceName *string `json:"resourceName,omitempty" xml:"resourceName,omitempty"`
+	// The type of the resource on which the permissions are granted.
+	//
 	// example:
 	//
 	// Topic
 	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// abc
@@ -6939,6 +7612,7 @@ func (s *GetInstanceAclResponse) SetBody(v *GetInstanceAclResponseBody) *GetInst
 }
 
 type GetInstanceIpWhitelistRequest struct {
+	// The  filter IP address whitelists.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
 }
 
@@ -6956,6 +7630,7 @@ func (s *GetInstanceIpWhitelistRequest) SetIpWhitelists(v []*string) *GetInstanc
 }
 
 type GetInstanceIpWhitelistShrinkRequest struct {
+	// The  filter IP address whitelists.
 	IpWhitelistsShrink *string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty"`
 }
 
@@ -6973,31 +7648,46 @@ func (s *GetInstanceIpWhitelistShrinkRequest) SetIpWhitelistsShrink(v string) *G
 }
 
 type GetInstanceIpWhitelistResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Instance.NotFound
-	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
 	Data *GetInstanceIpWhitelistResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// xxx
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0B962390-D84B-5D44-8C11-79DF40299D41
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the call was successful.
+	//
 	// example:
 	//
 	// true
@@ -7053,11 +7743,16 @@ func (s *GetInstanceIpWhitelistResponseBody) SetSuccess(v bool) *GetInstanceIpWh
 }
 
 type GetInstanceIpWhitelistResponseBodyData struct {
+	// The instance ID.
+	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId   *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The IP address whitelists.
 	IpWhitelists []*string `json:"ipWhitelists,omitempty" xml:"ipWhitelists,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -7416,45 +8111,45 @@ func (s *GetMessageDetailResponse) SetBody(v *GetMessageDetailResponseBody) *Get
 }
 
 type GetTopicResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned data.
 	Data *GetTopicResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The dynamic error code.
+	// Dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// Dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// Request ID, each request\\"s ID is unique and can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
@@ -7511,66 +8206,81 @@ func (s *GetTopicResponseBody) SetSuccess(v bool) *GetTopicResponseBody {
 }
 
 type GetTopicResponseBodyData struct {
-	// The time when the topic was created.
+	// Creation time of the topic.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance to which the topic belongs.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MaxSendTps *int64  `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The message type of the topic.
+	// The maximum TPS for message sending.
+	//
+	// example:
+	//
+	// 1000
+	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
+	// The type of messages in the topic.
 	//
 	// Valid values:
 	//
-	// 	- TRANSACTION: transactional message
+	// 	- TRANSACTION: transactional messages
 	//
-	// 	- FIFO: ordered message
+	// 	- FIFO: ordered messages
 	//
-	// 	- DELAY: scheduled or delayed message
+	// 	- DELAY: scheduled or delayed messages
 	//
-	// 	- NORMAL: normal message
+	// 	- NORMAL: normal messages
+	//
+	// Valid values:
+	//
+	// 	- TRANSACTION: transactional messages
+	//
+	// 	- FIFO: ordered messages
+	//
+	// 	- DELAY: scheduled or delayed messages
+	//
+	// 	- NORMAL: normal messages
 	//
 	// example:
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The remarks on the topic.
+	// Remark information of the topic.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The state of the topic.
+	// The topic status.
 	//
 	// Valid values:
 	//
-	// 	- RUNNING: The topic is running.
+	// 	- RUNNING
 	//
-	// 	- CREATING: The topic is being created.
+	// 	- CREATING
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The name of the topic.
+	// Topic name.
 	//
 	// example:
 	//
 	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The time when the topic was last updated.
+	// Last modification time of the topic.
 	//
 	// example:
 	//
@@ -7667,7 +8377,7 @@ type GetTraceResponseBody struct {
 	//
 	// InvalidConsumerGroupId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *GetTraceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The dynamic error code.
 	//
@@ -7756,7 +8466,7 @@ func (s *GetTraceResponseBody) SetSuccess(v bool) *GetTraceResponseBody {
 }
 
 type GetTraceResponseBodyData struct {
-	// Broker trace info.
+	// The broker trace.
 	BrokerInfo *GetTraceResponseBodyDataBrokerInfo `json:"brokerInfo,omitempty" xml:"brokerInfo,omitempty" type:"Struct"`
 	// Consumer trace info.
 	ConsumerInfos []*GetTraceResponseBodyDataConsumerInfos `json:"consumerInfos,omitempty" xml:"consumerInfos,omitempty" type:"Repeated"`
@@ -7768,7 +8478,7 @@ type GetTraceResponseBodyData struct {
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
 	// The message information.
 	MessageInfo *GetTraceResponseBodyDataMessageInfo `json:"messageInfo,omitempty" xml:"messageInfo,omitempty" type:"Struct"`
-	// Producer trace info.
+	// The producer trace.
 	ProducerInfo *GetTraceResponseBodyDataProducerInfo `json:"producerInfo,omitempty" xml:"producerInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -7842,7 +8552,12 @@ type GetTraceResponseBodyDataBrokerInfo struct {
 	//
 	// 2023-03-22 12:17:08
 	PresetDelayTime *string `json:"presetDelayTime,omitempty" xml:"presetDelayTime,omitempty"`
-	RecallResult    *string `json:"recallResult,omitempty" xml:"recallResult,omitempty"`
+	// Withdraw scheduled message request result
+	//
+	// example:
+	//
+	// RECALL_OK
+	RecallResult *string `json:"recallResult,omitempty" xml:"recallResult,omitempty"`
 }
 
 func (s GetTraceResponseBodyDataBrokerInfo) String() string {
@@ -8305,7 +9020,7 @@ func (s *GetTraceResponseBodyDataMessageInfo) SetUserProperties(v map[string]*st
 }
 
 type GetTraceResponseBodyDataProducerInfo struct {
-	// Producer record list.
+	// The production records.
 	Records []*GetTraceResponseBodyDataProducerInfoRecords `json:"records,omitempty" xml:"records,omitempty" type:"Repeated"`
 }
 
@@ -8371,7 +9086,12 @@ type GetTraceResponseBodyDataProducerInfoRecords struct {
 	//
 	// 2023-03-22 12:17:08
 	ProduceTime *string `json:"produceTime,omitempty" xml:"produceTime,omitempty"`
-	RecallTime  *string `json:"recallTime,omitempty" xml:"recallTime,omitempty"`
+	// The time when the scheduled message withdrawal request was initiated
+	//
+	// example:
+	//
+	// 2023-03-22 12:17:08
+	RecallTime *string `json:"recallTime,omitempty" xml:"recallTime,omitempty"`
 	// Producer name.
 	//
 	// example:
@@ -8903,6 +9623,11 @@ func (s *ListConsumerConnectionsResponse) SetBody(v *ListConsumerConnectionsResp
 }
 
 type ListConsumerGroupSubscriptionsRequest struct {
+	// The topic name. If you do not specify this parameter, all subscriptions of the consumer group are queried.
+	//
+	// example:
+	//
+	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
@@ -9159,19 +9884,21 @@ func (s *ListConsumerGroupSubscriptionsResponse) SetBody(v *ListConsumerGroupSub
 }
 
 type ListConsumerGroupsRequest struct {
-	// The condition that you want to use to filter consumer groups in the instance. If you leave this parameter empty, all consumer groups in the instance are queried.
+	// The filter condition for the query. If not provided, all consumer groups under the specified instance will be queried.
 	//
 	// example:
 	//
 	// CID-TEST
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The number of the page to return.
+	// Page number, indicating which page of results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size, the maximum number of results to display per page.
+	//
+	// Value range: [10, 100].
 	//
 	// example:
 	//
@@ -9203,45 +9930,45 @@ func (s *ListConsumerGroupsRequest) SetPageSize(v int32) *ListConsumerGroupsRequ
 }
 
 type ListConsumerGroupsResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// MissingInstanceId
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned data.
 	Data *ListConsumerGroupsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The dynamic error code.
+	// Dynamic error code.
 	//
 	// example:
 	//
-	// InstanceId
+	// xxx
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
 	// The dynamic error message.
 	//
 	// example:
 	//
-	// instanceId
+	// xxx
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// Parameter InstanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// 5503A460-98ED-5543-92CF-4853DE28****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
@@ -9298,21 +10025,21 @@ func (s *ListConsumerGroupsResponseBody) SetSuccess(v bool) *ListConsumerGroupsR
 }
 
 type ListConsumerGroupsResponseBodyData struct {
-	// The paginated data.
+	// The consumer groups.
 	List []*ListConsumerGroupsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// Total number of returned results.
 	//
 	// example:
 	//
@@ -9349,74 +10076,49 @@ func (s *ListConsumerGroupsResponseBodyData) SetTotalCount(v int64) *ListConsume
 }
 
 type ListConsumerGroupsResponseBodyDataList struct {
-	// The ID of the consumer group.
+	// Consumer group ID.
 	//
 	// example:
 	//
 	// GID-TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
-	// The time when the consumer group was created.
+	// Creation time of the consumer group.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MaxReceiveTps *int64  `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
-	// The ID of the region in which the instance resides.
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The maximum TPS for message sending.
+	//
+	// example:
+	//
+	// 1000
+	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The region ID to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The remarks on the consumer group.
+	// Remark information of the consumer group.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The state of the consumer group.
-	//
-	// Valid values:
-	//
-	// 	- RUNNING
-	//
-	//     <!-- -->
-	//
-	//     : The consumer group is
-	//
-	//     <!-- -->
-	//
-	//     running
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- CREATING
-	//
-	//     <!-- -->
-	//
-	//     : The consumer group is
-	//
-	//     <!-- -->
-	//
-	//     being created
-	//
-	//     <!-- -->
-	//
-	//     .
+	// Status of the consumer group.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The time when the consumer group was last updated.
+	// Last update time of the consumer group.
 	//
 	// example:
 	//
@@ -9502,20 +10204,28 @@ func (s *ListConsumerGroupsResponse) SetBody(v *ListConsumerGroupsResponseBody) 
 }
 
 type ListDisasterRecoveryCheckpointsRequest struct {
+	// Filter Condition
+	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Source Instance ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Current page number, starting from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, the maximum number of results returned per page.
+	//
 	// example:
 	//
 	// 10
@@ -9551,31 +10261,46 @@ func (s *ListDisasterRecoveryCheckpointsRequest) SetPageSize(v int32) *ListDisas
 }
 
 type ListDisasterRecoveryCheckpointsResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// 200
-	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Response Data
 	Data *ListDisasterRecoveryCheckpointsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Dynamic error code
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
 	// example:
 	//
 	// true
@@ -9631,15 +10356,22 @@ func (s *ListDisasterRecoveryCheckpointsResponseBody) SetSuccess(v bool) *ListDi
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyData struct {
+	// Paged data
 	List []*ListDisasterRecoveryCheckpointsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 1
@@ -9675,23 +10407,33 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyData) SetTotalCount(v int64)
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataList struct {
+	// Consumption Progress ID
+	//
 	// example:
 	//
 	// 10000000xx
 	CheckpointId *int64 `json:"checkpointId,omitempty" xml:"checkpointId,omitempty"`
+	// Backup Mapping ID
+	//
 	// example:
 	//
 	// 10000000xx
 	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// Last synchronization time
+	//
 	// example:
 	//
 	// 1740724080343
 	LastSyncTime *int64 `json:"lastSyncTime,omitempty" xml:"lastSyncTime,omitempty"`
+	// Backup Plan ID
+	//
 	// example:
 	//
 	// 13000000xx
-	PlanId         *int64                                                             `json:"planId,omitempty" xml:"planId,omitempty"`
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// Source consumption progress
 	SourceProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress `json:"sourceProgress,omitempty" xml:"sourceProgress,omitempty" type:"Struct"`
+	// Target consumption progress
 	TargetProgress *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress `json:"targetProgress,omitempty" xml:"targetProgress,omitempty" type:"Struct"`
 }
 
@@ -9734,27 +10476,44 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataList) SetTargetProgress(
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress struct {
+	// Consumer Group ID
+	//
 	// example:
 	//
 	// GID_TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// rmq-cn-3mp3vblzxxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Last fetch time
+	//
 	// example:
 	//
 	// 1740724080343
-	LastFetchTime *int64                                                                         `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
-	ProgressData  *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	LastFetchTime *int64 `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
+	// Consumption progress data
+	ProgressData *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// TOPIC_TEST
@@ -9805,6 +10564,8 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress) SetT
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData struct {
+	// Latest consumption time
+	//
 	// example:
 	//
 	// 1740724080343
@@ -9825,27 +10586,44 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgre
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress struct {
+	// Consumer group ID
+	//
 	// example:
 	//
 	// GID_TEST
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// rmq-cn-nwy3i065xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Latest fetch time
+	//
 	// example:
 	//
 	// 1740724080343
-	LastFetchTime *int64                                                                         `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
-	ProgressData  *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	LastFetchTime *int64 `json:"lastFetchTime,omitempty" xml:"lastFetchTime,omitempty"`
+	// Consumption progress data
+	ProgressData *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData `json:"progressData,omitempty" xml:"progressData,omitempty" type:"Struct"`
+	// Region ID
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Topic name
+	//
 	// example:
 	//
 	// TOPIC_TEST
@@ -9896,6 +10674,8 @@ func (s *ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress) SetT
 }
 
 type ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData struct {
+	// Latest consumption time
+	//
 	// example:
 	//
 	// 1740724080343
@@ -9945,18 +10725,25 @@ func (s *ListDisasterRecoveryCheckpointsResponse) SetBody(v *ListDisasterRecover
 }
 
 type ListDisasterRecoveryItemsRequest struct {
+	// Filter condition, filter by topicName
+	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Page number, indicating which page of the results to query.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, the maximum number of results displayed per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
 }
 
 func (s ListDisasterRecoveryItemsRequest) String() string {
@@ -9982,16 +10769,62 @@ func (s *ListDisasterRecoveryItemsRequest) SetPageSize(v int32) *ListDisasterRec
 	return s
 }
 
+func (s *ListDisasterRecoveryItemsRequest) SetTopicName(v string) *ListDisasterRecoveryItemsRequest {
+	s.TopicName = &v
+	return s
+}
+
 type ListDisasterRecoveryItemsResponseBody struct {
-	AccessDeniedDetail *string                                    `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string                                    `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *ListDisasterRecoveryItemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode        *string                                    `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string                                    `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                     `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	// Access denied details, provided only when access is denied due to lack of RAM permissions
+	//
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result
+	Data *ListDisasterRecoveryItemsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// C115601B-8736-5BBF-AC99-7FEAE12xxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the request was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListDisasterRecoveryItemsResponseBody) String() string {
@@ -10048,11 +10881,34 @@ func (s *ListDisasterRecoveryItemsResponseBody) SetSuccess(v bool) *ListDisaster
 }
 
 type ListDisasterRecoveryItemsResponseBodyData struct {
-	List       []*ListDisasterRecoveryItemsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ScrollId   *string                                          `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
-	TotalCount *int64                                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// Paged data
+	List []*ListDisasterRecoveryItemsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// Current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Request scroll ID.
+	//
+	// Automatically generated by the system, subsequent pagination requests need to include this return value to continue pagination.
+	//
+	// example:
+	//
+	// B13D0B07-F24B-4790-88D8-D47A38063D00
+	ScrollId *string `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	// Total number of records
+	//
+	// example:
+	//
+	// 49
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDisasterRecoveryItemsResponseBodyData) String() string {
@@ -10089,13 +10945,50 @@ func (s *ListDisasterRecoveryItemsResponseBodyData) SetTotalCount(v int64) *List
 }
 
 type ListDisasterRecoveryItemsResponseBodyDataList struct {
-	CreateTime *string                                                `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExtInfo    map[string]*string                                     `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	ItemId     *int64                                                 `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	ItemStatus *string                                                `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
-	PlanId     *int64                                                 `json:"planId,omitempty" xml:"planId,omitempty"`
-	Topics     []*ListDisasterRecoveryItemsResponseBodyDataListTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
-	UpdateTime *string                                                `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Creation time
+	//
+	// example:
+	//
+	// 2024-09-20 03:38:28
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Extended information
+	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// Backup plan ID
+	//
+	// example:
+	//
+	// 100070284
+	ItemId *int64 `json:"itemId,omitempty" xml:"itemId,omitempty"`
+	// Backup mapping status:
+	//
+	//   - CREATING (Creating)
+	//
+	//   - CHANGING (Changing)
+	//
+	//   - RUNNING (Running)
+	//
+	//   - MANUAL_STOPPED (Manually Stopped)
+	//
+	//   - OVERDUE_STOPPED (Stopped Due to Overdue)
+	//
+	// example:
+	//
+	// RUNNING
+	ItemStatus *string `json:"itemStatus,omitempty" xml:"itemStatus,omitempty"`
+	// Mapping ID
+	//
+	// example:
+	//
+	// 1300000016
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// Topics included in the backup mapping
+	Topics []*ListDisasterRecoveryItemsResponseBodyDataListTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
+	// Update time
+	//
+	// example:
+	//
+	// 2024-10-04 02:19:44
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListDisasterRecoveryItemsResponseBodyDataList) String() string {
@@ -10142,22 +11035,44 @@ func (s *ListDisasterRecoveryItemsResponseBodyDataList) SetUpdateTime(v string) 
 }
 
 type ListDisasterRecoveryItemsResponseBodyDataListTopics struct {
+	// Consumer group ID
+	//
 	// example:
 	//
 	// group-test
-	ConsumerGroupId   *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The order in which messages are delivered to the target instance.
+	//
+	// Parameter values are as follows:
+	//
+	// - Concurrently: concurrent delivery
+	//
+	// - Orderly: sequential delivery
+	//
+	// example:
+	//
+	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// Instance ID
+	//
 	// example:
 	//
 	// rmq-cn-kh43w0olz0c
-	InstanceId   *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance type
+	//
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
-	// regionId
+	// Region ID
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The topic name.
+	//
 	// example:
 	//
 	// topic-test
@@ -10232,11 +11147,21 @@ func (s *ListDisasterRecoveryItemsResponse) SetBody(v *ListDisasterRecoveryItems
 }
 
 type ListDisasterRecoveryPlansRequest struct {
-	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// Filter conditions, filter by backup name and description
+	//
+	// example:
+	//
+	// xxx
+	Filter     *string `json:"filter,omitempty" xml:"filter,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Page number, the page of results to be queried.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, the maximum number of results displayed per page.
+	//
 	// example:
 	//
 	// 10
@@ -10256,6 +11181,11 @@ func (s *ListDisasterRecoveryPlansRequest) SetFilter(v string) *ListDisasterReco
 	return s
 }
 
+func (s *ListDisasterRecoveryPlansRequest) SetInstanceId(v string) *ListDisasterRecoveryPlansRequest {
+	s.InstanceId = &v
+	return s
+}
+
 func (s *ListDisasterRecoveryPlansRequest) SetPageNumber(v int32) *ListDisasterRecoveryPlansRequest {
 	s.PageNumber = &v
 	return s
@@ -10267,15 +11197,56 @@ func (s *ListDisasterRecoveryPlansRequest) SetPageSize(v int32) *ListDisasterRec
 }
 
 type ListDisasterRecoveryPlansResponseBody struct {
-	AccessDeniedDetail *string                                    `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string                                    `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *ListDisasterRecoveryPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	DynamicCode        *string                                    `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string                                    `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32                                     `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string                                    `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	// The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
+	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result
+	Data *ListDisasterRecoveryPlansResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// xxx
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 855EF8E6-9C1D-5DE2-9E84-924E13Exxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s ListDisasterRecoveryPlansResponseBody) String() string {
@@ -10332,11 +11303,34 @@ func (s *ListDisasterRecoveryPlansResponseBody) SetSuccess(v bool) *ListDisaster
 }
 
 type ListDisasterRecoveryPlansResponseBodyData struct {
-	List       []*ListDisasterRecoveryPlansResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNumber *int64                                           `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	PageSize   *int64                                           `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	ScrollId   *string                                          `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
-	TotalCount *int64                                           `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// Paged data
+	List []*ListDisasterRecoveryPlansResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// Current page number
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Scroll request ID.
+	//
+	// Automatically generated by the system, subsequent paging requests need to include this result to continue paging.
+	//
+	// example:
+	//
+	// B13D0B07-F24B-4790-88D8-D47A38063D00
+	ScrollId *string `json:"scrollId,omitempty" xml:"scrollId,omitempty"`
+	// Total number of records
+	//
+	// example:
+	//
+	// 28
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
 }
 
 func (s ListDisasterRecoveryPlansResponseBodyData) String() string {
@@ -10373,17 +11367,74 @@ func (s *ListDisasterRecoveryPlansResponseBodyData) SetTotalCount(v int64) *List
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataList struct {
-	AutoSyncCheckpoint    *bool                                                     `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	CreateTime            *string                                                   `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	ExtInfo               map[string]*string                                        `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
-	Instances             []*ListDisasterRecoveryPlansResponseBodyDataListInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	PlanDesc              *string                                                   `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	PlanId                *int64                                                    `json:"planId,omitempty" xml:"planId,omitempty"`
-	PlanName              *string                                                   `json:"planName,omitempty" xml:"planName,omitempty"`
-	PlanStatus            *string                                                   `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
-	PlanType              *string                                                   `json:"planType,omitempty" xml:"planType,omitempty"`
-	SyncCheckpointEnabled *bool                                                     `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
-	UpdateTime            *string                                                   `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// Whether to enable automatic synchronization of consumption progress.
+	//
+	// example:
+	//
+	// true
+	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	// Creation time
+	//
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Extended information
+	ExtInfo map[string]*string `json:"extInfo,omitempty" xml:"extInfo,omitempty"`
+	// Instances involved in the backup plan
+	Instances []*ListDisasterRecoveryPlansResponseBodyDataListInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// Plan description
+	//
+	// example:
+	//
+	// xxx
+	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	// Plan ID
+	//
+	// example:
+	//
+	// 1300000016
+	PlanId *int64 `json:"planId,omitempty" xml:"planId,omitempty"`
+	// Plan name
+	//
+	// example:
+	//
+	// xxx
+	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+	// Plan status:
+	//
+	//   - CREATED (Created)
+	//
+	//   - RUNNING (Running)
+	//
+	//   - DELETED (Deleted)
+	//
+	// example:
+	//
+	// RUNNING
+	PlanStatus *string `json:"planStatus,omitempty" xml:"planStatus,omitempty"`
+	// Plan type:
+	//
+	//   - ACTIVE_PASSIVE (One-way backup)
+	//
+	//   - ACTIVE_ACTIVE (Two-way backup)
+	//
+	// example:
+	//
+	// ACTIVE_PASSIVE
+	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	// Sync checkpoint switch
+	//
+	// example:
+	//
+	// true
+	SyncCheckpointEnabled *bool `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	// Update time
+	//
+	// example:
+	//
+	// 2022-08-01 20:05:50
+	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
 }
 
 func (s ListDisasterRecoveryPlansResponseBodyDataList) String() string {
@@ -10450,19 +11501,83 @@ func (s *ListDisasterRecoveryPlansResponseBodyDataList) SetUpdateTime(v string) 
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataListInstances struct {
-	AuthType        *string                                                                `json:"authType,omitempty" xml:"authType,omitempty"`
-	EndpointUrl     *string                                                                `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	InstanceId      *string                                                                `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	InstanceRole    *string                                                                `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
-	InstanceType    *string                                                                `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Authentication method
+	//
+	// example:
+	//
+	// NO_AUTH
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// Endpoint URL
+	//
+	// example:
+	//
+	// xxx
+	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
+	// Instance ID
+	//
+	// example:
+	//
+	// rmq-cn-ot93rbxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// Instance role
+	//
+	// example:
+	//
+	// ACTIVE
+	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// Instance type
+	//
+	//   - ALIYUN_ROCKETMQ: Alibaba Cloud instance
+	//
+	//   - EXTERNAL_ROCKETMQ: External instance, open-source instance, open-source cluster
+	//
+	// example:
+	//
+	// ALIYUN_ROCKETMQ
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// Message property
 	MessageProperty *ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
-	NetworkType     *string                                                                `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Password        *string                                                                `json:"password,omitempty" xml:"password,omitempty"`
-	RegionId        *string                                                                `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SecurityGroupId *string                                                                `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	Username        *string                                                                `json:"username,omitempty" xml:"username,omitempty"`
-	VSwitchId       *string                                                                `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// Network type
+	//
+	// example:
+	//
+	// TCP_INTERNET
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	// Authentication password
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The region where the instance is located
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// Security group ID
+	//
+	// example:
+	//
+	// sg-bp17hpmgz9******
+	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
+	// Authentication username
+	//
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// VSwitch ID
+	//
+	// example:
+	//
+	// vsw-uf6gwtbn6etadpv******
+	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
 	// VPC ID
+	//
+	// example:
+	//
+	// vpc-bp13docqysrgxtbxxxx
 	VpcId *string `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
 }
 
@@ -10540,7 +11655,17 @@ func (s *ListDisasterRecoveryPlansResponseBodyDataListInstances) SetVpcId(v stri
 }
 
 type ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty struct {
-	PropertyKey   *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// Property key
+	//
+	// example:
+	//
+	// aaa
+	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// Property value
+	//
+	// example:
+	//
+	// bbb
 	PropertyValue *string `json:"propertyValue,omitempty" xml:"propertyValue,omitempty"`
 }
 
@@ -12656,12 +13781,16 @@ func (s *ListMessagesResponse) SetBody(v *ListMessagesResponseBody) *ListMessage
 }
 
 type ListMetricMetaRequest struct {
+	// Page number, indicating which page of the results to return.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size, indicating the maximum number of results per page.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -12689,31 +13818,46 @@ func (s *ListMetricMetaRequest) SetPageSize(v int32) *ListMetricMetaRequest {
 }
 
 type ListMetricMetaResponseBody struct {
+	// Error code
+	//
 	// example:
 	//
 	// Topic.NotFound
-	Code *string                         `json:"code,omitempty" xml:"code,omitempty"`
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result
 	Data *ListMetricMetaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Dynamic error code
+	//
 	// example:
 	//
-	// InstanceId
+	// xxx
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
-	// instanceId
+	// xxx
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
 	// example:
 	//
 	// The topic already exists.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 8B459455-4A35-5796-BA9D-98EF1AB9A931
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
 	// example:
 	//
 	// true
@@ -12769,15 +13913,22 @@ func (s *ListMetricMetaResponseBody) SetSuccess(v bool) *ListMetricMetaResponseB
 }
 
 type ListMetricMetaResponseBodyData struct {
+	// Paged data
 	List []*ListMetricMetaResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
+	// Current page number
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// Page size
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total record count
+	//
 	// example:
 	//
 	// 1
@@ -12813,14 +13964,20 @@ func (s *ListMetricMetaResponseBodyData) SetTotalCount(v int64) *ListMetricMetaR
 }
 
 type ListMetricMetaResponseBodyDataList struct {
+	// Monitoring item tag
+	//
 	// example:
 	//
 	// Bug
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// Monitoring item description
+	//
 	// example:
 	//
 	// Using Serverless Devs to deploy the infrastructure of project:get-userinfo-v1-infrastructure-as-template-project
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// Monitoring item name
+	//
 	// example:
 	//
 	// SendMessageCountPerInstance
@@ -13670,21 +14827,21 @@ func (s *ListTopicSubscriptionsResponse) SetBody(v *ListTopicSubscriptionsRespon
 }
 
 type ListTopicsRequest struct {
-	// The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+	// The filter condition for the query. If not provided, all topics under the instance will be queried.
 	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The message types of the topics.
+	// The message type of the topic.
 	MessageTypes []*string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty" type:"Repeated"`
-	// The number of the page to return.
+	// Page number, indicating which page of results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size, the maximum number of results to display per page.
 	//
 	// example:
 	//
@@ -13721,21 +14878,21 @@ func (s *ListTopicsRequest) SetPageSize(v int32) *ListTopicsRequest {
 }
 
 type ListTopicsShrinkRequest struct {
-	// The condition that you want to use to filter topics in the instance. If you leave this parameter empty, all topics in the instance are queried.
+	// The filter condition for the query. If not provided, all topics under the instance will be queried.
 	//
 	// example:
 	//
 	// topic_test
 	Filter *string `json:"filter,omitempty" xml:"filter,omitempty"`
-	// The message types of the topics.
+	// The message type of the topic.
 	MessageTypesShrink *string `json:"messageTypes,omitempty" xml:"messageTypes,omitempty"`
-	// The number of the page to return.
+	// Page number, indicating which page of results to return.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// Page size, the maximum number of results to display per page.
 	//
 	// example:
 	//
@@ -13772,45 +14929,43 @@ func (s *ListTopicsShrinkRequest) SetPageSize(v int32) *ListTopicsShrinkRequest 
 }
 
 type ListTopicsResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The returned data.
 	Data *ListTopicsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The dynamic error code.
+	// Dynamic error code.
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// Dynamic error message.
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code.
-	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
@@ -13867,21 +15022,21 @@ func (s *ListTopicsResponseBody) SetSuccess(v bool) *ListTopicsResponseBody {
 }
 
 type ListTopicsResponseBodyData struct {
-	// The paginated data.
+	// The topics.
 	List []*ListTopicsResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// Current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries returned per page.
+	// Page size.
 	//
 	// example:
 	//
 	// 3
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of returned entries.
+	// Total number of results returned.
 	//
 	// example:
 	//
@@ -13918,130 +15073,71 @@ func (s *ListTopicsResponseBodyData) SetTotalCount(v int64) *ListTopicsResponseB
 }
 
 type ListTopicsResponseBodyDataList struct {
-	// The time when the topic was created.
+	// Creation time.
 	//
 	// example:
 	//
 	// 2022-08-01 20:05:50
 	CreateTime *string `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// The ID of the instance.
+	// Instance ID.
 	//
 	// example:
 	//
 	// rmq-cn-7e22ody****
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	MaxSendTps *int64  `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The message type of the topic.
+	// The maximum TPS for message sending.
+	//
+	// example:
+	//
+	// 1000
+	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
+	// The type of messages in the topic.
 	//
 	// Valid values:
 	//
-	// 	- TRANSACTION
+	// 	- TRANSACTION: transactional messages
 	//
-	//     <!-- -->
+	// 	- FIFO: ordered messages
 	//
-	//     :
+	// 	- DELAY: scheduled or delayed messages
 	//
-	//     <!-- -->
-	//
-	//     transactional message
-	//
-	//     <!-- -->
-	//
-	// 	- FIFO
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     ordered message
-	//
-	//     <!-- -->
-	//
-	// 	- DELAY
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     scheduled or delayed message
-	//
-	//     <!-- -->
-	//
-	// 	- NORMAL
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     normal message
-	//
-	//     <!-- -->
+	// 	- NORMAL: normal messages
 	//
 	// example:
 	//
 	// NORMAL
 	MessageType *string `json:"messageType,omitempty" xml:"messageType,omitempty"`
-	// The ID of the region in which the instance resides.
+	// The region ID to which the instance belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// The remarks on the topic.
+	// Remark information of the topic.
 	//
 	// example:
 	//
 	// This is the remark for test.
 	Remark *string `json:"remark,omitempty" xml:"remark,omitempty"`
-	// The state of the topic.
+	// The topic status.
 	//
 	// Valid values:
 	//
 	// 	- RUNNING
 	//
-	//     <!-- -->
-	//
-	//     : The topic is
-	//
-	//     <!-- -->
-	//
-	//     running
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
 	// 	- CREATING
-	//
-	//     <!-- -->
-	//
-	//     : The topic is
-	//
-	//     <!-- -->
-	//
-	//     being created
-	//
-	//     <!-- -->
-	//
-	//     .
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The name of the topic.
+	// Topic name.
 	//
 	// example:
 	//
 	// topic_test
 	TopicName *string `json:"topicName,omitempty" xml:"topicName,omitempty"`
-	// The time when the topic was last updated.
+	// Last update time of the topic.
 	//
 	// example:
 	//
@@ -14651,15 +15747,60 @@ func (s *ResetConsumeOffsetResponse) SetBody(v *ResetConsumeOffsetResponseBody) 
 }
 
 type StartDisasterRecoveryItemResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the access is denied due to the reason that the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// DisasterRecoveryItemStatus.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// The current status of the disaster recovery item does not support this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// C7E8AE3A-219B-52EE-BE32-4036Fxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StartDisasterRecoveryItemResponseBody) String() string {
@@ -14745,15 +15886,60 @@ func (s *StartDisasterRecoveryItemResponse) SetBody(v *StartDisasterRecoveryItem
 }
 
 type StopDisasterRecoveryItemResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// Error code
+	//
+	// example:
+	//
+	// DisasterRecoveryItemStatus.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Return result
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic error code
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// Dynamic error message
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP status code
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// The current status of the disaster recovery item does not support this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// A07B41BD-6DD3-5349-9E76-00303xxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation was successful
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s StopDisasterRecoveryItemResponseBody) String() string {
@@ -14839,34 +16025,50 @@ func (s *StopDisasterRecoveryItemResponse) SetBody(v *StopDisasterRecoveryItemRe
 }
 
 type SyncDisasterRecoveryCheckpointResponseBody struct {
+	// Error Code
+	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// Result Data
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// Dynamic Error Code
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// HTTP Status Code
+	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// Error Message
+	//
 	// example:
 	//
 	// Parameter instanceId is mandatory for this action .
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 7358418D-83BD-507A-8079-611C63E05674
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Success or Not
+	//
 	// example:
 	//
 	// true
@@ -15346,11 +16548,11 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateConsumerGroupRequest struct {
-	// The new consumption retry policy that you want to configure for the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
+	// The new consumption retry policy of the consumer group. For more information, see [Consumption retry](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// This parameter is required.
 	ConsumeRetryPolicy *UpdateConsumerGroupRequestConsumeRetryPolicy `json:"consumeRetryPolicy,omitempty" xml:"consumeRetryPolicy,omitempty" type:"Struct"`
-	// The new message delivery order of the consumer group.
+	// The new message delivery method of the consumer group.
 	//
 	// Valid values:
 	//
@@ -15364,8 +16566,13 @@ type UpdateConsumerGroupRequest struct {
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
-	MaxReceiveTps     *int64  `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
-	// The new remarks on the consumer group.
+	// The maximum TPS for message sending.
+	//
+	// example:
+	//
+	// 100
+	MaxReceiveTps *int64 `json:"maxReceiveTps,omitempty" xml:"maxReceiveTps,omitempty"`
+	// The new description of the consumer group.
 	//
 	// example:
 	//
@@ -15404,7 +16611,7 @@ func (s *UpdateConsumerGroupRequest) SetRemark(v string) *UpdateConsumerGroupReq
 type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
 	// The dead-letter topic.
 	//
-	// If a consumer still fails to consume a message after the message is retried for a specified number of times, the message is delivered to a dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
+	// If a consumer still fails to consume a message after the maximum number of retries specified for the message is reached, the message is delivered to the dead-letter topic for subsequent business recovery or troubleshooting. For more information, see [Consumption retry and dead-letter messages](https://help.aliyun.com/document_detail/440356.html).
 	//
 	// example:
 	//
@@ -15420,9 +16627,9 @@ type UpdateConsumerGroupRequestConsumeRetryPolicy struct {
 	//
 	// Valid values:
 	//
-	// 	- FixedRetryPolicy: Failed messages are retried at a fixed interval.
+	// 	- FixedRetryPolicy: fixed-interval retry. This value is valid only if you set deliveryOrderType to Orderly.
 	//
-	// 	- DefaultRetryPolicy: Failed messages are retried at incremental intervals as the number of retries increases.
+	// 	- DefaultRetryPolicy: exponential backoff retry. This value is valid only if you set deliveryOrderType to Concurrently.
 	//
 	// This parameter is required.
 	//
@@ -15456,49 +16663,49 @@ func (s *UpdateConsumerGroupRequestConsumeRetryPolicy) SetRetryPolicy(v string) 
 }
 
 type UpdateConsumerGroupResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// InvalidDeliveryOrderType
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// The result returned.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The dynamic error code.
+	// Dynamic error code.
 	//
 	// example:
 	//
-	// DeliveryOrderType
+	// xxx
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// Dynamic error message.
 	//
 	// example:
 	//
-	// deliveryOrderType
+	// xxx
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// Parameter deliveryOrderType is invalid.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// The request ID, which is unique for each request and can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// C7F94090-3358-506A-97DC-34BC803C****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the execution was successful.
 	//
 	// example:
 	//
@@ -15584,6 +16791,7 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 }
 
 type UpdateDisasterRecoveryItemRequest struct {
+	// The topics involved in the topic mapping.
 	Topics []*UpdateDisasterRecoveryItemRequestTopics `json:"topics,omitempty" xml:"topics,omitempty" type:"Repeated"`
 }
 
@@ -15601,26 +16809,48 @@ func (s *UpdateDisasterRecoveryItemRequest) SetTopics(v []*UpdateDisasterRecover
 }
 
 type UpdateDisasterRecoveryItemRequestTopics struct {
+	// The ID of the consumer group. If you use the two-way backup mode, you must specify this parameter.
+	//
 	// example:
 	//
 	// GID_xxx
 	ConsumerGroupId *string `json:"consumerGroupId,omitempty" xml:"consumerGroupId,omitempty"`
+	// The method used to deliver messages to the destination instance.
+	//
+	// Valid values:
+	//
+	// 	- Concurrently: concurrent delivery
+	//
+	// 	- Orderly: ordered delivery
+	//
 	// example:
 	//
 	// Concurrently
 	DeliveryOrderType *string `json:"deliveryOrderType,omitempty" xml:"deliveryOrderType,omitempty"`
+	// The instance ID. If you set instanceType to EXTERNAL_ROCKETMQ, the system automatically generates an ID for the instance. You can obtain the ID by querying the global message backup plan.
+	//
 	// example:
 	//
 	// rmq-cn-em93y94xxx
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance type. Valid values:
+	//
+	// 	- ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+	//
+	// 	- EXTERNAL_ROCKETMQ: open source RocketMQ cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
 	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The topic name. You must specify this parameter.
+	//
 	// example:
 	//
 	// Topic_xxx
@@ -15666,36 +16896,50 @@ func (s *UpdateDisasterRecoveryItemRequestTopics) SetTopicName(v string) *Update
 }
 
 type UpdateDisasterRecoveryItemResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	//
 	// example:
 	//
 	// InstanceId
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
 	// example:
 	//
 	// instanceId
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// The instance cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// 0C32BED2-FA9F-50AD-9DA7-8B70E26C9D0D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -15780,15 +17024,44 @@ func (s *UpdateDisasterRecoveryItemResponse) SetBody(v *UpdateDisasterRecoveryIt
 }
 
 type UpdateDisasterRecoveryPlanRequest struct {
-	AutoSyncCheckpoint *bool                                         `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
-	Instances          []*UpdateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-	PlanDesc           *string                                       `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
-	PlanName           *string                                       `json:"planName,omitempty" xml:"planName,omitempty"`
+	// Whether to enable automatic synchronization of consumption progress.
+	//
+	// > This is effective only when consumption progress synchronization is enabled, i.e., the value of `syncCheckpointEnabled` is true.
+	//
+	// example:
+	//
+	// true
+	AutoSyncCheckpoint *bool `json:"autoSyncCheckpoint,omitempty" xml:"autoSyncCheckpoint,omitempty"`
+	// The instances that are involved in the global message backup plan.
+	Instances []*UpdateDisasterRecoveryPlanRequestInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+	// The description of the global message backup plan.
+	//
+	// example:
+	//
+	// xxx
+	PlanDesc *string `json:"planDesc,omitempty" xml:"planDesc,omitempty"`
+	// The name of the global message backup plan.
+	//
+	// example:
+	//
+	// xxx
+	PlanName *string `json:"planName,omitempty" xml:"planName,omitempty"`
+	// The type of the global message backup plan. Valid values:
+	//
+	// 	- ACTIVE_PASSIVE: geo-disaster recovery
+	//
+	// 	- ACTIVE_ACTIVE: active geo-redundancy
+	//
 	// example:
 	//
 	// ACTIVE_PASSIVE
-	PlanType              *string `json:"planType,omitempty" xml:"planType,omitempty"`
-	SyncCheckpointEnabled *bool   `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
+	PlanType *string `json:"planType,omitempty" xml:"planType,omitempty"`
+	// Switch for synchronizing consumption progress
+	//
+	// example:
+	//
+	// true
+	SyncCheckpointEnabled *bool `json:"syncCheckpointEnabled,omitempty" xml:"syncCheckpointEnabled,omitempty"`
 }
 
 func (s UpdateDisasterRecoveryPlanRequest) String() string {
@@ -15830,39 +17103,92 @@ func (s *UpdateDisasterRecoveryPlanRequest) SetSyncCheckpointEnabled(v bool) *Up
 }
 
 type UpdateDisasterRecoveryPlanRequestInstances struct {
+	// The authentication type.
+	//
+	// 	- NO_AUTH: no authentication
+	//
+	// 	- ACL_AUTH: access control list (ACL)-based authentication
+	//
 	// example:
 	//
 	// NO_AUTH
-	AuthType    *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// The instance endpoint. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+	//
+	// example:
+	//
+	// xxx
 	EndpointUrl *string `json:"endpointUrl,omitempty" xml:"endpointUrl,omitempty"`
-	InstanceId  *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rmq-cn-83l3r0xxxx
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The instance role. Valid values:
+	//
+	// 	- ACTIVE: primary instance
+	//
+	// 	- Passive: secondary instance
+	//
 	// example:
 	//
 	// ACTIVE
 	InstanceRole *string `json:"instanceRole,omitempty" xml:"instanceRole,omitempty"`
+	// The instance type. Valid values:
+	//
+	// 	- ALIYUN_ROCKETMQ: ApsaraMQ for RocketMQ instance
+	//
+	// 	- EXTERNAL_ROCKETMQ: open source RocketMQ cluster
+	//
 	// example:
 	//
 	// ALIYUN_ROCKETMQ
-	InstanceType    *string                                                    `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	InstanceType *string `json:"instanceType,omitempty" xml:"instanceType,omitempty"`
+	// The message attribute. When you synchronize a message to the destination cluster, the system automatically adds the attribute to the message for SQL-based filtering.
 	MessageProperty *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty `json:"messageProperty,omitempty" xml:"messageProperty,omitempty" type:"Struct"`
+	// The network type. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ. Valid values:
+	//
+	// 	- TCP_INTERNET: Internet over TCP
+	//
+	// 	- TCP_VPC: virtual private cloud (VPC) over TCP.
+	//
 	// example:
 	//
 	// TCP_INTERNET
 	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
-	Password    *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The password that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+	//
+	// example:
+	//
+	// xxx
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// The region in which the instance resides.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The ID of the security group to which the instance belongs. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+	//
 	// example:
 	//
 	// sg-bp17hpmgz9******
 	SecurityGroupId *string `json:"securityGroupId,omitempty" xml:"securityGroupId,omitempty"`
-	Username        *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The username that is used for authentication. This parameter is required only if you set authType to ACL_AUTH.
+	//
+	// example:
+	//
+	// xxx
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+	// The ID of the vSwitch with which the instance is associated. If you want to specify multiple vSwitches, separate the vSwitches with vertical bars (|).
+	//
 	// example:
 	//
 	// vsw-uf6gwtbn6etadpv******
 	VSwitchId *string `json:"vSwitchId,omitempty" xml:"vSwitchId,omitempty"`
+	// The ID of the VPC with which the instance is associated. This parameter is required only if you set instanceType to EXTERNAL_ROCKETMQ.
+	//
 	// example:
 	//
 	// vpc-wz9qt50xhtj9krb******
@@ -15943,10 +17269,14 @@ func (s *UpdateDisasterRecoveryPlanRequestInstances) SetVpcId(v string) *UpdateD
 }
 
 type UpdateDisasterRecoveryPlanRequestInstancesMessageProperty struct {
+	// The attribute key.
+	//
 	// example:
 	//
 	// aaa
 	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
+	// The attribute value.
+	//
 	// example:
 	//
 	// bbb
@@ -15972,15 +17302,60 @@ func (s *UpdateDisasterRecoveryPlanRequestInstancesMessageProperty) SetPropertyV
 }
 
 type UpdateDisasterRecoveryPlanResponseBody struct {
+	// The details about the access denial. This parameter is returned only if the access is denied because the Resource Access Management (RAM) user does not have the required permissions.
+	//
+	// example:
+	//
+	// xxx
 	AccessDeniedDetail *string `json:"accessDeniedDetail,omitempty" xml:"accessDeniedDetail,omitempty"`
-	Code               *string `json:"code,omitempty" xml:"code,omitempty"`
-	Data               *bool   `json:"data,omitempty" xml:"data,omitempty"`
-	DynamicCode        *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	DynamicMessage     *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	HttpStatusCode     *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	Message            *string `json:"message,omitempty" xml:"message,omitempty"`
-	RequestId          *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success            *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	// The error code.
+	//
+	// example:
+	//
+	// DisasterRecoveryPlanStatus.Error
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The data returned.
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// The dynamic error code.
+	//
+	// example:
+	//
+	// InstanceId
+	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
+	// The dynamic error message.
+	//
+	// example:
+	//
+	// instanceId
+	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
+	// The response code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// The current status of the disaster recovery plan does not support this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A07B41BD-6DD3-5349-9E76-00303Dxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
 }
 
 func (s UpdateDisasterRecoveryPlanResponseBody) String() string {
@@ -16809,8 +18184,13 @@ func (s *UpdateInstanceAclResponse) SetBody(v *UpdateInstanceAclResponseBody) *U
 }
 
 type UpdateTopicRequest struct {
+	// Maximum send message tps
+	//
+	// example:
+	//
+	// 500
 	MaxSendTps *int64 `json:"maxSendTps,omitempty" xml:"maxSendTps,omitempty"`
-	// The new remarks on the topic.
+	// Updated remarks for the topic.
 	//
 	// example:
 	//
@@ -16837,49 +18217,49 @@ func (s *UpdateTopicRequest) SetRemark(v string) *UpdateTopicRequest {
 }
 
 type UpdateTopicResponseBody struct {
-	// The error code.
+	// Error code.
 	//
 	// example:
 	//
 	// Topic.NotFound
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result data that is returned.
+	// Return result.
 	//
 	// example:
 	//
 	// true
 	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
-	// The dynamic error code.
+	// Dynamic error code
 	//
 	// example:
 	//
 	// TopicName
 	DynamicCode *string `json:"dynamicCode,omitempty" xml:"dynamicCode,omitempty"`
-	// The dynamic error message.
+	// 动态错误信息
 	//
 	// example:
 	//
 	// topicName
 	DynamicMessage *string `json:"dynamicMessage,omitempty" xml:"dynamicMessage,omitempty"`
-	// The HTTP status code.
+	// HTTP status code.
 	//
 	// example:
 	//
 	// 400
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
-	// The error message.
+	// Error message.
 	//
 	// example:
 	//
 	// The topic cannot be found.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request. The system generates a unique ID for each request. You can troubleshoot issues based on the request ID.
+	// Request ID, each request has a unique ID that can be used for troubleshooting and problem localization.
 	//
 	// example:
 	//
 	// AF9A8B10-C426-530F-A0DD-96320B39****
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Whether the execution result is successful.
 	//
 	// example:
 	//
@@ -17350,7 +18730,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 添加容灾计划条目
+// # Add Disaster Recovery Plan Entry
 //
 // @param request - AddDisasterRecoveryItemRequest
 //
@@ -17406,7 +18786,7 @@ func (client *Client) AddDisasterRecoveryItemWithOptions(planId *string, request
 
 // Summary:
 //
-// 添加容灾计划条目
+// # Add Disaster Recovery Plan Entry
 //
 // @param request - AddDisasterRecoveryItemRequest
 //
@@ -17516,7 +18896,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+// The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+//
+// The following limits are imposed on the ID:
+//
+//   - Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+//
+//   - Length limit: The ID must be 1 to 60 characters in length.
+//
+// For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -17588,7 +18976,15 @@ func (client *Client) CreateConsumerGroupWithOptions(instanceId *string, consume
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+// The ID of the consumer group. The ID is globally unique and is used to identify a consumer group.
+//
+// The following limits are imposed on the ID:
+//
+//   - Character limit: The ID can contain letters, digits, underscores (_), hyphens (-), and percent signs (%).
+//
+//   - Length limit: The ID must be 1 to 60 characters in length.
+//
+// For more information about strings that are reserved for the system, see [Limits on parameters](https://help.aliyun.com/document_detail/440347.html).
 //
 // @param request - CreateConsumerGroupRequest
 //
@@ -17607,7 +19003,7 @@ func (client *Client) CreateConsumerGroup(instanceId *string, consumerGroupId *s
 
 // Summary:
 //
-// 创建容灾计划
+// # Create Disaster Recovery Plan
 //
 // @param request - CreateDisasterRecoveryPlanRequest
 //
@@ -17683,7 +19079,7 @@ func (client *Client) CreateDisasterRecoveryPlanWithOptions(request *CreateDisas
 
 // Summary:
 //
-// 创建容灾计划
+// # Create Disaster Recovery Plan
 //
 // @param request - CreateDisasterRecoveryPlanRequest
 //
@@ -18092,7 +19488,7 @@ func (client *Client) CreateInstanceIpWhitelist(instanceId *string, request *Cre
 
 // Summary:
 //
-// Creates a topic.
+// # Create Topic
 //
 // @param request - CreateTopicRequest
 //
@@ -18156,7 +19552,7 @@ func (client *Client) CreateTopicWithOptions(instanceId *string, topicName *stri
 
 // Summary:
 //
-// Creates a topic.
+// # Create Topic
 //
 // @param request - CreateTopicRequest
 //
@@ -18392,7 +19788,7 @@ func (client *Client) DeleteDisasterRecoveryItem(planId *string, itemId *string)
 
 // Summary:
 //
-// 删除容灾计划
+// Deletes a global message backup plan.
 //
 // @param headers - map
 //
@@ -18436,7 +19832,7 @@ func (client *Client) DeleteDisasterRecoveryPlanWithOptions(planId *string, head
 
 // Summary:
 //
-// 删除容灾计划
+// Deletes a global message backup plan.
 //
 // @return DeleteDisasterRecoveryPlanResponse
 func (client *Client) DeleteDisasterRecoveryPlan(planId *string) (_result *DeleteDisasterRecoveryPlanResponse, _err error) {
@@ -18459,9 +19855,9 @@ func (client *Client) DeleteDisasterRecoveryPlan(planId *string) (_result *Delet
 //
 // > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
 //
-// 	- After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+//   - After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
 //
-// 	- This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+//   - This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
 //
 // @param headers - map
 //
@@ -18511,9 +19907,9 @@ func (client *Client) DeleteInstanceWithOptions(instanceId *string, headers map[
 //
 // > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
 //
-// 	- After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
+//   - After an instance is deleted, the instance cannot be restored. Exercise caution when you call this operation.
 //
-// 	- This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
+//   - This operation is used to delete a pay-as-you-go instance. A subscription instance is automatically released after it expires. You do not need to manually delete a subscription instance.
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanceResponse, _err error) {
@@ -18530,7 +19926,7 @@ func (client *Client) DeleteInstance(instanceId *string) (_result *DeleteInstanc
 
 // Summary:
 //
-// Delete access control ACL user
+// # Delete access control ACL user
 //
 // @param headers - map
 //
@@ -18574,7 +19970,7 @@ func (client *Client) DeleteInstanceAccountWithOptions(instanceId *string, usern
 
 // Summary:
 //
-// Delete access control ACL user
+// # Delete access control ACL user
 //
 // @return DeleteInstanceAccountResponse
 func (client *Client) DeleteInstanceAccount(instanceId *string, username *string) (_result *DeleteInstanceAccountResponse, _err error) {
@@ -18893,7 +20289,7 @@ func (client *Client) GetConsumerGroup(instanceId *string, consumerGroupId *stri
 
 // Summary:
 //
-// Query Consumer Group Backlog Information
+// # Query Consumer Group Backlog Information
 //
 // @param request - GetConsumerGroupLagRequest
 //
@@ -18949,7 +20345,7 @@ func (client *Client) GetConsumerGroupLagWithOptions(instanceId *string, consume
 
 // Summary:
 //
-// Query Consumer Group Backlog Information
+// # Query Consumer Group Backlog Information
 //
 // @param request - GetConsumerGroupLagRequest
 //
@@ -19370,7 +20766,7 @@ func (client *Client) GetInstanceAccount(instanceId *string, request *GetInstanc
 
 // Summary:
 //
-// 获取访问控制acl数据
+// Queries information about the access control list (ACL) of an instance.
 //
 // @param request - GetInstanceAclRequest
 //
@@ -19430,7 +20826,7 @@ func (client *Client) GetInstanceAclWithOptions(instanceId *string, username *st
 
 // Summary:
 //
-// 获取访问控制acl数据
+// Queries information about the access control list (ACL) of an instance.
 //
 // @param request - GetInstanceAclRequest
 //
@@ -19449,7 +20845,7 @@ func (client *Client) GetInstanceAcl(instanceId *string, username *string, reque
 
 // Summary:
 //
-// 获取实例ip白名单
+// Queries the information about the IP address whitelist of an instance.
 //
 // @param tmpReq - GetInstanceIpWhitelistRequest
 //
@@ -19511,7 +20907,7 @@ func (client *Client) GetInstanceIpWhitelistWithOptions(instanceId *string, tmpR
 
 // Summary:
 //
-// 获取实例ip白名单
+// Queries the information about the IP address whitelist of an instance.
 //
 // @param request - GetInstanceIpWhitelistRequest
 //
@@ -19591,7 +20987,7 @@ func (client *Client) GetMessageDetail(instanceId *string, topicName *string, me
 
 // Summary:
 //
-// Queries the details of a specified topic.
+// # Query Topic Details
 //
 // @param headers - map
 //
@@ -19635,7 +21031,7 @@ func (client *Client) GetTopicWithOptions(instanceId *string, topicName *string,
 
 // Summary:
 //
-// Queries the details of a specified topic.
+// # Query Topic Details
 //
 // @return GetTopicResponse
 func (client *Client) GetTopic(instanceId *string, topicName *string) (_result *GetTopicResponse, _err error) {
@@ -19910,11 +21306,11 @@ func (client *Client) ListConsumerGroupSubscriptions(instanceId *string, consume
 
 // Summary:
 //
-// Queries the consumer groups in a specified instance.
+// # List Consumer Groups
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -19978,11 +21374,11 @@ func (client *Client) ListConsumerGroupsWithOptions(instanceId *string, request 
 
 // Summary:
 //
-// Queries the consumer groups in a specified instance.
+// # List Consumer Groups
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. Do not rely on OpenAPI implementation in the core data chain for message sending and receiving, as this may lead to risks in the chain.
 //
 // @param request - ListConsumerGroupsRequest
 //
@@ -20001,7 +21397,7 @@ func (client *Client) ListConsumerGroups(instanceId *string, request *ListConsum
 
 // Summary:
 //
-// 查询容灾计划消费进度信息
+// # Query disaster recovery plan consumption progress information
 //
 // @param request - ListDisasterRecoveryCheckpointsRequest
 //
@@ -20069,7 +21465,7 @@ func (client *Client) ListDisasterRecoveryCheckpointsWithOptions(planId *string,
 
 // Summary:
 //
-// 查询容灾计划消费进度信息
+// # Query disaster recovery plan consumption progress information
 //
 // @param request - ListDisasterRecoveryCheckpointsRequest
 //
@@ -20088,7 +21484,7 @@ func (client *Client) ListDisasterRecoveryCheckpoints(planId *string, itemId *st
 
 // Summary:
 //
-// 查询容灾计划条目列表
+// # Query Disaster Recovery Plan Entry List
 //
 // @param request - ListDisasterRecoveryItemsRequest
 //
@@ -20113,6 +21509,10 @@ func (client *Client) ListDisasterRecoveryItemsWithOptions(planId *string, reque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicName)) {
+		query["topicName"] = request.TopicName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -20152,7 +21552,7 @@ func (client *Client) ListDisasterRecoveryItemsWithOptions(planId *string, reque
 
 // Summary:
 //
-// 查询容灾计划条目列表
+// # Query Disaster Recovery Plan Entry List
 //
 // @param request - ListDisasterRecoveryItemsRequest
 //
@@ -20171,7 +21571,7 @@ func (client *Client) ListDisasterRecoveryItems(planId *string, request *ListDis
 
 // Summary:
 //
-// 查询容灾计划列表
+// # Query Disaster Recovery Plan List
 //
 // @param request - ListDisasterRecoveryPlansRequest
 //
@@ -20188,6 +21588,10 @@ func (client *Client) ListDisasterRecoveryPlansWithOptions(request *ListDisaster
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Filter)) {
 		query["filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -20235,7 +21639,7 @@ func (client *Client) ListDisasterRecoveryPlansWithOptions(request *ListDisaster
 
 // Summary:
 //
-// 查询容灾计划列表
+// # Query Disaster Recovery Plan List
 //
 // @param request - ListDisasterRecoveryPlansRequest
 //
@@ -20723,7 +22127,7 @@ func (client *Client) ListMessages(instanceId *string, topicName *string, reques
 
 // Summary:
 //
-// 查询监控项列表
+// # Query Monitoring Items List
 //
 // @param request - ListMetricMetaRequest
 //
@@ -20783,7 +22187,7 @@ func (client *Client) ListMetricMetaWithOptions(request *ListMetricMetaRequest, 
 
 // Summary:
 //
-// 查询监控项列表
+// # Query Monitoring Items List
 //
 // @param request - ListMetricMetaRequest
 //
@@ -20863,7 +22267,7 @@ func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
 
 // Summary:
 //
-// Query visible resource tag relationships
+// # Query visible resource tag relationships
 //
 // @param request - ListTagResourcesRequest
 //
@@ -20939,7 +22343,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Query visible resource tag relationships
+// # Query visible resource tag relationships
 //
 // @param request - ListTagResourcesRequest
 //
@@ -21019,7 +22423,7 @@ func (client *Client) ListTopicSubscriptions(instanceId *string, topicName *stri
 
 // Summary:
 //
-// Queries the topics in a specified instance.
+// # Query Topic List
 //
 // @param tmpReq - ListTopicsRequest
 //
@@ -21093,7 +22497,7 @@ func (client *Client) ListTopicsWithOptions(instanceId *string, tmpReq *ListTopi
 
 // Summary:
 //
-// Queries the topics in a specified instance.
+// # Query Topic List
 //
 // @param request - ListTopicsRequest
 //
@@ -21290,7 +22694,7 @@ func (client *Client) ResetConsumeOffset(instanceId *string, consumerGroupId *st
 
 // Summary:
 //
-// 启用容灾计划条目
+// # Enable Disaster Recovery Plan Entry
 //
 // @param headers - map
 //
@@ -21334,7 +22738,7 @@ func (client *Client) StartDisasterRecoveryItemWithOptions(planId *string, itemI
 
 // Summary:
 //
-// 启用容灾计划条目
+// # Enable Disaster Recovery Plan Entry
 //
 // @return StartDisasterRecoveryItemResponse
 func (client *Client) StartDisasterRecoveryItem(planId *string, itemId *string) (_result *StartDisasterRecoveryItemResponse, _err error) {
@@ -21351,7 +22755,7 @@ func (client *Client) StartDisasterRecoveryItem(planId *string, itemId *string) 
 
 // Summary:
 //
-// 停用容灾计划条目
+// # Deactivate Disaster Recovery Plan Entry
 //
 // @param headers - map
 //
@@ -21395,7 +22799,7 @@ func (client *Client) StopDisasterRecoveryItemWithOptions(planId *string, itemId
 
 // Summary:
 //
-// 停用容灾计划条目
+// # Deactivate Disaster Recovery Plan Entry
 //
 // @return StopDisasterRecoveryItemResponse
 func (client *Client) StopDisasterRecoveryItem(planId *string, itemId *string) (_result *StopDisasterRecoveryItemResponse, _err error) {
@@ -21412,7 +22816,7 @@ func (client *Client) StopDisasterRecoveryItem(planId *string, itemId *string) (
 
 // Summary:
 //
-// 同步容灾计划消费进度
+// # Synchronize Disaster Recovery Plan Consumption Progress
 //
 // @param headers - map
 //
@@ -21456,7 +22860,7 @@ func (client *Client) SyncDisasterRecoveryCheckpointWithOptions(planId *string, 
 
 // Summary:
 //
-// 同步容灾计划消费进度
+// # Synchronize Disaster Recovery Plan Consumption Progress
 //
 // @return SyncDisasterRecoveryCheckpointResponse
 func (client *Client) SyncDisasterRecoveryCheckpoint(planId *string, itemId *string, checkpointId *string) (_result *SyncDisasterRecoveryCheckpointResponse, _err error) {
@@ -21651,11 +23055,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// Updates the basic information about and the consumption retry policy of a consumer group.
+// # Update ConsumerGroup
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
 //
 // @param request - UpdateConsumerGroupRequest
 //
@@ -21723,11 +23127,11 @@ func (client *Client) UpdateConsumerGroupWithOptions(instanceId *string, consume
 
 // Summary:
 //
-// Updates the basic information about and the consumption retry policy of a consumer group.
+// # Update ConsumerGroup
 //
 // Description:
 //
-// > API operations provided by Alibaba Cloud are used to manage and query resources of Alibaba Cloud services. We recommend that you integrate these API operations only in management systems. Do not use these API operations in the core system of messaging services. Otherwise, system risks may occur.
+//	Notice: The OpenAPI provided by Alibaba Cloud is a management API used for managing and querying related resources of Alibaba Cloud services. It is recommended to integrate it only in the management chain. It is strictly prohibited to rely on OpenAPI implementation in the core data chain of message sending and receiving, otherwise it may lead to risks in the chain.
 //
 // @param request - UpdateConsumerGroupRequest
 //
@@ -21746,7 +23150,7 @@ func (client *Client) UpdateConsumerGroup(instanceId *string, consumerGroupId *s
 
 // Summary:
 //
-// 修改容灾计划条目
+// Updates a topic mapping in a global message backup plan.
 //
 // @param request - UpdateDisasterRecoveryItemRequest
 //
@@ -21802,7 +23206,7 @@ func (client *Client) UpdateDisasterRecoveryItemWithOptions(planId *string, item
 
 // Summary:
 //
-// 修改容灾计划条目
+// Updates a topic mapping in a global message backup plan.
 //
 // @param request - UpdateDisasterRecoveryItemRequest
 //
@@ -21821,7 +23225,7 @@ func (client *Client) UpdateDisasterRecoveryItem(planId *string, itemId *string,
 
 // Summary:
 //
-// 更新容灾计划
+// Modifies a global message backup plan.
 //
 // @param request - UpdateDisasterRecoveryPlanRequest
 //
@@ -21897,7 +23301,7 @@ func (client *Client) UpdateDisasterRecoveryPlanWithOptions(planId *string, requ
 
 // Summary:
 //
-// 更新容灾计划
+// Modifies a global message backup plan.
 //
 // @param request - UpdateDisasterRecoveryPlanRequest
 //
@@ -22185,7 +23589,7 @@ func (client *Client) UpdateInstanceAcl(instanceId *string, username *string, re
 
 // Summary:
 //
-// Updates the basic information about a topic.
+// # Update Topic
 //
 // @param request - UpdateTopicRequest
 //
@@ -22245,7 +23649,7 @@ func (client *Client) UpdateTopicWithOptions(instanceId *string, topicName *stri
 
 // Summary:
 //
-// Updates the basic information about a topic.
+// # Update Topic
 //
 // @param request - UpdateTopicRequest
 //
