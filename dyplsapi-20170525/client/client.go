@@ -3734,6 +3734,279 @@ func (s *CreateAxgGroupResponse) SetBody(v *CreateAxgGroupResponseBody) *CreateA
 	return s
 }
 
+type CreatePhoneNoAReportRequest struct {
+	// 所属a号码组id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 19
+	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
+	// 姓名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 赵**
+	CustName *string `json:"CustName,omitempty" xml:"CustName,omitempty"`
+	// 证件号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 370*********
+	DocumentNumber *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	// 证件类型 填写1表示身份证
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DocumentType *int64 `json:"DocumentType,omitempty" xml:"DocumentType,omitempty"`
+	// 半身照oss路径地址
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456/test1719383196033.jpg示例值
+	IdCardAlivePhoto *string `json:"IdCardAlivePhoto,omitempty" xml:"IdCardAlivePhoto,omitempty"`
+	// 身份证反面照片oss路径地址
+	//
+	// example:
+	//
+	// 123456/test1719383196032.jpg
+	IdCardBackPhoto *string `json:"IdCardBackPhoto,omitempty" xml:"IdCardBackPhoto,omitempty"`
+	// 身份证正面照片oss路径地址
+	//
+	// example:
+	//
+	// 123456/test1719383196031.jpg
+	IdCardFrontPhoto *string `json:"IdCardFrontPhoto,omitempty" xml:"IdCardFrontPhoto,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 手机号
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130*****1234
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// 备注（客户自己的业务备注，可编辑）
+	//
+	// example:
+	//
+	// ***报备
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CreatePhoneNoAReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneNoAReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneNoAReportRequest) SetANoWhiteGroupId(v int64) *CreatePhoneNoAReportRequest {
+	s.ANoWhiteGroupId = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetCustName(v string) *CreatePhoneNoAReportRequest {
+	s.CustName = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetDocumentNumber(v string) *CreatePhoneNoAReportRequest {
+	s.DocumentNumber = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetDocumentType(v int64) *CreatePhoneNoAReportRequest {
+	s.DocumentType = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetIdCardAlivePhoto(v string) *CreatePhoneNoAReportRequest {
+	s.IdCardAlivePhoto = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetIdCardBackPhoto(v string) *CreatePhoneNoAReportRequest {
+	s.IdCardBackPhoto = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetIdCardFrontPhoto(v string) *CreatePhoneNoAReportRequest {
+	s.IdCardFrontPhoto = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetOwnerId(v int64) *CreatePhoneNoAReportRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetPhoneNoA(v string) *CreatePhoneNoAReportRequest {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetRemark(v string) *CreatePhoneNoAReportRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetResourceOwnerAccount(v string) *CreatePhoneNoAReportRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportRequest) SetResourceOwnerId(v int64) *CreatePhoneNoAReportRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CreatePhoneNoAReportResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 请求状态码
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A号码报备结果结构体
+	Data *CreatePhoneNoAReportResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 失败错误提示
+	//
+	// example:
+	//
+	// 手机号码***已存在
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回id
+	//
+	// example:
+	//
+	// 1D73E648-0978-18A5-B089-3BB2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求是否成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePhoneNoAReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneNoAReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetAccessDeniedDetail(v string) *CreatePhoneNoAReportResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetCode(v string) *CreatePhoneNoAReportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetData(v *CreatePhoneNoAReportResponseBodyData) *CreatePhoneNoAReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetMessage(v string) *CreatePhoneNoAReportResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetRequestId(v string) *CreatePhoneNoAReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBody) SetSuccess(v bool) *CreatePhoneNoAReportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePhoneNoAReportResponseBodyData struct {
+	// 创建结果
+	//
+	// example:
+	//
+	// true
+	CreateResult *bool `json:"CreateResult,omitempty" xml:"CreateResult,omitempty"`
+	// 创建类型枚举，1为成功，负数为创建失败
+	//
+	// example:
+	//
+	// 1
+	FailType *int64 `json:"FailType,omitempty" xml:"FailType,omitempty"`
+}
+
+func (s CreatePhoneNoAReportResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneNoAReportResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneNoAReportResponseBodyData) SetCreateResult(v bool) *CreatePhoneNoAReportResponseBodyData {
+	s.CreateResult = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponseBodyData) SetFailType(v int64) *CreatePhoneNoAReportResponseBodyData {
+	s.FailType = &v
+	return s
+}
+
+type CreatePhoneNoAReportResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePhoneNoAReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePhoneNoAReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePhoneNoAReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePhoneNoAReportResponse) SetHeaders(v map[string]*string) *CreatePhoneNoAReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponse) SetStatusCode(v int32) *CreatePhoneNoAReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePhoneNoAReportResponse) SetBody(v *CreatePhoneNoAReportResponseBody) *CreatePhoneNoAReportResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePickUpWaybillRequest struct {
 	// The end time of the door-to-door pickup in the appointment. The value of **AppointGotEndTime*	- is the value of **EndTime*	- of **AppointTimes*	- in **CpTimeSelectList*	- returned by the [CreatePickUpWaybillPreQuery](~~CreatePickUpWaybillPreQuery~~#resultMapping) operation.
 	//
@@ -5674,6 +5947,202 @@ func (s *DeleteSecretBlacklistResponse) SetStatusCode(v int32) *DeleteSecretBlac
 }
 
 func (s *DeleteSecretBlacklistResponse) SetBody(v *DeleteSecretBlacklistResponseBody) *DeleteSecretBlacklistResponse {
+	s.Body = v
+	return s
+}
+
+type GetDyplsOSSInfoForUploadFileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// phone_card
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetDyplsOSSInfoForUploadFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDyplsOSSInfoForUploadFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDyplsOSSInfoForUploadFileRequest) SetBizType(v string) *GetDyplsOSSInfoForUploadFileRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileRequest) SetOwnerId(v int64) *GetDyplsOSSInfoForUploadFileRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileRequest) SetResourceOwnerAccount(v string) *GetDyplsOSSInfoForUploadFileRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileRequest) SetResourceOwnerId(v int64) *GetDyplsOSSInfoForUploadFileRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetDyplsOSSInfoForUploadFileResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetDyplsOSSInfoForUploadFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E2FD3B2F-5028-16E3-9F83-2F76F99B3873
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetAccessDeniedDetail(v string) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetCode(v string) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetData(v *GetDyplsOSSInfoForUploadFileResponseBodyData) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetMessage(v string) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetRequestId(v string) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBody) SetSuccess(v bool) *GetDyplsOSSInfoForUploadFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDyplsOSSInfoForUploadFileResponseBodyData struct {
+	// example:
+	//
+	// LTAI***pSvPz
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// example:
+	//
+	// 1744613007
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// https://alicom-**********-cn-zhangjiakou.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// IjoiMjAyN*****9udGV
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// example:
+	//
+	// BXwW**********aoZH
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// example:
+	//
+	// 123456
+	StartPath *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetAccessKeyId(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetExpireTime(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetHost(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetPolicy(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetSignature(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponseBodyData) SetStartPath(v string) *GetDyplsOSSInfoForUploadFileResponseBodyData {
+	s.StartPath = &v
+	return s
+}
+
+type GetDyplsOSSInfoForUploadFileResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDyplsOSSInfoForUploadFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDyplsOSSInfoForUploadFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponse) SetHeaders(v map[string]*string) *GetDyplsOSSInfoForUploadFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponse) SetStatusCode(v int32) *GetDyplsOSSInfoForUploadFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDyplsOSSInfoForUploadFileResponse) SetBody(v *GetDyplsOSSInfoForUploadFileResponseBody) *GetDyplsOSSInfoForUploadFileResponse {
 	s.Body = v
 	return s
 }
@@ -11778,13 +12247,13 @@ func (client *Client) BindXB(request *BindXBRequest) (_result *BindXBResponse, _
 //
 // Description:
 //
-//   After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+//	  After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
 //
-// 	- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+//		- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
 //
-// 	- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+//		- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
 //
-// 	- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+//		- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
 //
 // @param request - BuySecretNoRequest
 //
@@ -11869,13 +12338,13 @@ func (client *Client) BuySecretNoWithOptions(request *BuySecretNoRequest, runtim
 //
 // Description:
 //
-//   After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
+//	  After you create a phone number pool in the Phone Number Protection console, the phone number pool is empty by default. You must purchase phone numbers and add them to the phone number pool.
 //
-// 	- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
+//		- Before you call this operation, make sure that you are familiar with the [pricing](https://help.aliyun.com/document_detail/59825.html) of Phone Number Protection.
 //
-// 	- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
+//		- When purchasing a phone number, specify the home location. If no sufficient phone numbers are available for purchase in the home location, the purchase of the phone number fails. Before you call this operation to purchase a phone number, check the quantity of phone numbers available for purchase by using the [QuerySecretNoRemain](https://help.aliyun.com/document_detail/111699.html) operation.
 //
-// 	- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
+//		- The account used to purchase a phone number must be an enterprise account that has passed real-name verification. For more information about how to perform real-name verification, see [Enterprise verification FAQs](https://help.aliyun.com/document_detail/37172.html).
 //
 // @param request - BuySecretNoRequest
 //
@@ -12215,6 +12684,121 @@ func (client *Client) CreateAxgGroup(request *CreateAxgGroupRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAxgGroupResponse{}
 	_body, _err := client.CreateAxgGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过API收集小号a号码手机号
+//
+// @param request - CreatePhoneNoAReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePhoneNoAReportResponse
+func (client *Client) CreatePhoneNoAReportWithOptions(request *CreatePhoneNoAReportRequest, runtime *util.RuntimeOptions) (_result *CreatePhoneNoAReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ANoWhiteGroupId)) {
+		query["ANoWhiteGroupId"] = request.ANoWhiteGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustName)) {
+		query["CustName"] = request.CustName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentNumber)) {
+		query["DocumentNumber"] = request.DocumentNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentType)) {
+		query["DocumentType"] = request.DocumentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardAlivePhoto)) {
+		query["IdCardAlivePhoto"] = request.IdCardAlivePhoto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardBackPhoto)) {
+		query["IdCardBackPhoto"] = request.IdCardBackPhoto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdCardFrontPhoto)) {
+		query["IdCardFrontPhoto"] = request.IdCardFrontPhoto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePhoneNoAReport"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePhoneNoAReportResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePhoneNoAReportResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 通过API收集小号a号码手机号
+//
+// @param request - CreatePhoneNoAReportRequest
+//
+// @return CreatePhoneNoAReportResponse
+func (client *Client) CreatePhoneNoAReport(request *CreatePhoneNoAReportRequest) (_result *CreatePhoneNoAReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePhoneNoAReportResponse{}
+	_body, _err := client.CreatePhoneNoAReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12762,6 +13346,89 @@ func (client *Client) DeleteSecretBlacklist(request *DeleteSecretBlacklistReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSecretBlacklistResponse{}
 	_body, _err := client.DeleteSecretBlacklistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 隐私号上传文件，获取 OSS 信息
+//
+// @param request - GetDyplsOSSInfoForUploadFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDyplsOSSInfoForUploadFileResponse
+func (client *Client) GetDyplsOSSInfoForUploadFileWithOptions(request *GetDyplsOSSInfoForUploadFileRequest, runtime *util.RuntimeOptions) (_result *GetDyplsOSSInfoForUploadFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDyplsOSSInfoForUploadFile"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDyplsOSSInfoForUploadFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDyplsOSSInfoForUploadFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 隐私号上传文件，获取 OSS 信息
+//
+// @param request - GetDyplsOSSInfoForUploadFileRequest
+//
+// @return GetDyplsOSSInfoForUploadFileResponse
+func (client *Client) GetDyplsOSSInfoForUploadFile(request *GetDyplsOSSInfoForUploadFileRequest) (_result *GetDyplsOSSInfoForUploadFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDyplsOSSInfoForUploadFileResponse{}
+	_body, _err := client.GetDyplsOSSInfoForUploadFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13708,9 +14375,9 @@ func (client *Client) QueryPhoneNoAByTrackNo(request *QueryPhoneNoAByTrackNoRequ
 //
 // >
 //
-// 	- A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+//   - A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
 //
-// 	- The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+//   - The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
 //
 // @param request - QueryRecordFileDownloadUrlRequest
 //
@@ -13805,9 +14472,9 @@ func (client *Client) QueryRecordFileDownloadUrlWithOptions(request *QueryRecord
 //
 // >
 //
-// 	- A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
+//   - A download URL is valid for 2 hours. Download the recording file as soon as possible after obtaining a download URL.
 //
-// 	- The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
+//   - The storage period of recording files is 30 days. You can download only the recording files of calls recorded in the last 30 days.
 //
 // @param request - QueryRecordFileDownloadUrlRequest
 //
@@ -14332,9 +14999,9 @@ func (client *Client) QuerySubscriptionDetail(request *QuerySubscriptionDetailRe
 //
 // Description:
 //
-//   After a phone number is released, it will no longer be charged from the following month.
+//	  After a phone number is released, it will no longer be charged from the following month.
 //
-// 	- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+//		- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
 //
 // @param request - ReleaseSecretNoRequest
 //
@@ -14407,9 +15074,9 @@ func (client *Client) ReleaseSecretNoWithOptions(request *ReleaseSecretNoRequest
 //
 // Description:
 //
-//   After a phone number is released, it will no longer be charged from the following month.
+//	  After a phone number is released, it will no longer be charged from the following month.
 //
-// 	- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
+//		- Before you release a phone number, log on to the [Phone Number Protection console](https://dypls.console.aliyun.com/dypls.htm#/account) to check whether the phone number is bound to other phone numbers. The phone number can be released only if it is not bound to other phone numbers.
 //
 // @param request - ReleaseSecretNoRequest
 //
