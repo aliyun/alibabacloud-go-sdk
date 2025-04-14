@@ -12882,7 +12882,8 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// MSE_NACOS
-	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceType  *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+	SourceTypes *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
 }
 
 func (s ListServicesRequest) String() string {
@@ -12920,6 +12921,11 @@ func (s *ListServicesRequest) SetResourceGroupId(v string) *ListServicesRequest 
 
 func (s *ListServicesRequest) SetSourceType(v string) *ListServicesRequest {
 	s.SourceType = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetSourceTypes(v string) *ListServicesRequest {
+	s.SourceTypes = &v
 	return s
 }
 
@@ -18303,6 +18309,10 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["sourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTypes)) {
+		query["sourceTypes"] = request.SourceTypes
 	}
 
 	req := &openapi.OpenApiRequest{
