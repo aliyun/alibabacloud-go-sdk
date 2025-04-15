@@ -2024,6 +2024,7 @@ type CreateEventStreamingRequest struct {
 	//
 	// This parameter is required.
 	Source     *CreateEventStreamingRequestSource       `json:"Source,omitempty" xml:"Source,omitempty" type:"Struct"`
+	Tags       []*CreateEventStreamingRequestTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	Transforms []*CreateEventStreamingRequestTransforms `json:"Transforms,omitempty" xml:"Transforms,omitempty" type:"Repeated"`
 }
 
@@ -2062,6 +2063,11 @@ func (s *CreateEventStreamingRequest) SetSink(v *CreateEventStreamingRequestSink
 
 func (s *CreateEventStreamingRequest) SetSource(v *CreateEventStreamingRequestSource) *CreateEventStreamingRequest {
 	s.Source = v
+	return s
+}
+
+func (s *CreateEventStreamingRequest) SetTags(v []*CreateEventStreamingRequestTags) *CreateEventStreamingRequest {
+	s.Tags = v
 	return s
 }
 
@@ -2167,7 +2173,11 @@ type CreateEventStreamingRequestRunOptionsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:ram::1317334647812936:role/rdstoecsassumekms
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateEventStreamingRequestRunOptionsDeadLetterQueue) String() string {
@@ -2180,6 +2190,26 @@ func (s CreateEventStreamingRequestRunOptionsDeadLetterQueue) GoString() string 
 
 func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetArn(v string) *CreateEventStreamingRequestRunOptionsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetNetwork(v string) *CreateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetSecurityGroupId(v string) *CreateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetVSwitchIds(v string) *CreateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptionsDeadLetterQueue) SetVpcId(v string) *CreateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -3613,7 +3643,8 @@ type CreateEventStreamingRequestSinkSinkKafkaParameters struct {
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks *CreateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Acks    *CreateEventStreamingRequestSinkSinkKafkaParametersAcks    `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Headers *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for Kafka instance.
 	InstanceId *CreateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -3634,6 +3665,11 @@ func (s CreateEventStreamingRequestSinkSinkKafkaParameters) GoString() string {
 
 func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetAcks(v *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) *CreateEventStreamingRequestSinkSinkKafkaParameters {
 	s.Acks = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParameters) SetHeaders(v *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) *CreateEventStreamingRequestSinkSinkKafkaParameters {
+	s.Headers = v
 	return s
 }
 
@@ -3703,6 +3739,35 @@ func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) SetTemplate(v s
 }
 
 func (s *CreateEventStreamingRequestSinkSinkKafkaParametersAcks) SetValue(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersAcks {
+	s.Value = &v
+	return s
+}
+
+type CreateEventStreamingRequestSinkSinkKafkaParametersHeaders struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetForm(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders {
+	s.Form = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders {
+	s.Template = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetValue(v string) *CreateEventStreamingRequestSinkSinkKafkaParametersHeaders {
 	s.Value = &v
 	return s
 }
@@ -4056,14 +4121,15 @@ func (s *CreateEventStreamingRequestSinkSinkMNSParametersQueueName) SetValue(v s
 }
 
 type CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
+	AuthType        *string                                                                    `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	Body            *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody       `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
 	Endpoint        *string                                                                    `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Exchange        *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange   `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
+	Exchange        *string                                                                    `json:"Exchange,omitempty" xml:"Exchange,omitempty"`
 	MessageId       *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId  `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
 	NetworkType     *string                                                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	Password        *string                                                                    `json:"Password,omitempty" xml:"Password,omitempty"`
 	Properties      *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	QueueName       *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName  `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
+	QueueName       *string                                                                    `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	RoutingKey      *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
 	SecurityGroupId *string                                                                    `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	TargetType      *string                                                                    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
@@ -4081,6 +4147,11 @@ func (s CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) GoStrin
 	return s.String()
 }
 
+func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetAuthType(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
+}
+
 func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetBody(v *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
 	s.Body = v
 	return s
@@ -4091,8 +4162,8 @@ func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetEnd
 	return s
 }
 
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetExchange(v *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
-	s.Exchange = v
+func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetExchange(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Exchange = &v
 	return s
 }
 
@@ -4116,8 +4187,8 @@ func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetPro
 	return s
 }
 
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetQueueName(v *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
-	s.QueueName = v
+func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetQueueName(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.QueueName = &v
 	return s
 }
 
@@ -4185,35 +4256,6 @@ func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) Se
 	return s
 }
 
-type CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) SetForm(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange {
-	s.Form = &v
-	return s
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange {
-	s.Template = &v
-	return s
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange) SetValue(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersExchange {
-	s.Value = &v
-	return s
-}
-
 type CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId struct {
 	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -4268,35 +4310,6 @@ func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperti
 }
 
 func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) SetValue(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties {
-	s.Value = &v
-	return s
-}
-
-type CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) SetForm(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName {
-	s.Form = &v
-	return s
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) SetTemplate(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName {
-	s.Template = &v
-	return s
-}
-
-func (s *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName) SetValue(v string) *CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersQueueName {
 	s.Value = &v
 	return s
 }
@@ -7128,6 +7141,7 @@ func (s *CreateEventStreamingRequestSourceSourceOSSParameters) SetRoleName(v str
 }
 
 type CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct {
+	AuthType        *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType    *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
@@ -7146,6 +7160,11 @@ func (s CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) Str
 
 func (s CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) GoString() string {
 	return s.String()
+}
+
+func (s *CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetAuthType(v string) *CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
 }
 
 func (s *CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetBodyDataType(v string) *CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
@@ -7676,6 +7695,29 @@ func (s *CreateEventStreamingRequestSourceSourceSLSParameters) SetRoleName(v str
 	return s
 }
 
+type CreateEventStreamingRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingRequestTags) SetKey(v string) *CreateEventStreamingRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEventStreamingRequestTags) SetValue(v string) *CreateEventStreamingRequestTags {
+	s.Value = &v
+	return s
+}
+
 type CreateEventStreamingRequestTransforms struct {
 	// example:
 	//
@@ -7724,8 +7766,9 @@ type CreateEventStreamingShrinkRequest struct {
 	// The event provider, which is also known as the event source. You must and can specify only one event source.
 	//
 	// This parameter is required.
-	SourceShrink     *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	TransformsShrink *string `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
+	SourceShrink     *string                                  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Tags             []*CreateEventStreamingShrinkRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TransformsShrink *string                                  `json:"Transforms,omitempty" xml:"Transforms,omitempty"`
 }
 
 func (s CreateEventStreamingShrinkRequest) String() string {
@@ -7766,8 +7809,36 @@ func (s *CreateEventStreamingShrinkRequest) SetSourceShrink(v string) *CreateEve
 	return s
 }
 
+func (s *CreateEventStreamingShrinkRequest) SetTags(v []*CreateEventStreamingShrinkRequestTags) *CreateEventStreamingShrinkRequest {
+	s.Tags = v
+	return s
+}
+
 func (s *CreateEventStreamingShrinkRequest) SetTransformsShrink(v string) *CreateEventStreamingShrinkRequest {
 	s.TransformsShrink = &v
+	return s
+}
+
+type CreateEventStreamingShrinkRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateEventStreamingShrinkRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEventStreamingShrinkRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEventStreamingShrinkRequestTags) SetKey(v string) *CreateEventStreamingShrinkRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateEventStreamingShrinkRequestTags) SetValue(v string) *CreateEventStreamingShrinkRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -11531,7 +11602,11 @@ type GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:ram::1550203943326350:role/edskmstoecs
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) String() string {
@@ -11544,6 +11619,26 @@ func (s GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) GoString() s
 
 func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetArn(v string) *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetNetwork(v string) *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetSecurityGroupId(v string) *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetVSwitchIds(v string) *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue) SetVpcId(v string) *GetEventStreamingResponseBodyDataRunOptionsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -12879,7 +12974,8 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkFnfParametersRoleName) SetValu
 
 type GetEventStreamingResponseBodyDataSinkSinkKafkaParameters struct {
 	// The acknowledgment information.
-	Acks *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Acks    *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks    `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Headers *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The target service type is Message Queue for Apache Kafka.
 	InstanceId *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -12900,6 +12996,11 @@ func (s GetEventStreamingResponseBodyDataSinkSinkKafkaParameters) GoString() str
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters) SetAcks(v *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks) *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters {
 	s.Acks = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters) SetHeaders(v *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) *GetEventStreamingResponseBodyDataSinkSinkKafkaParameters {
+	s.Headers = v
 	return s
 }
 
@@ -12959,6 +13060,35 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks) SetTempla
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersAcks {
+	s.Value = &v
+	return s
+}
+
+type GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders {
+	s.Form = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders {
+	s.Template = &v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkKafkaParametersHeaders {
 	s.Value = &v
 	return s
 }
@@ -13292,21 +13422,22 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkMNSParametersQueueName) SetVal
 }
 
 type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters struct {
-	Body            *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersBody            `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	Endpoint        *string                                                                               `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Exchange        *string                                                                               `json:"Exchange,omitempty" xml:"Exchange,omitempty"`
-	MessageId       *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersMessageId       `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	NetworkType     *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	Password        *string                                                                               `json:"Password,omitempty" xml:"Password,omitempty"`
-	Properties      *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersProperties      `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	QueueName       *string                                                                               `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	RoutingKey      *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersRoutingKey      `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
-	SecurityGroupId *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	TargetType      *string                                                                               `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Username        *string                                                                               `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	VirtualHostName *string                                                                               `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
+	AuthType        *string                                                                          `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Body            *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersBody       `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Endpoint        *string                                                                          `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Exchange        *string                                                                          `json:"Exchange,omitempty" xml:"Exchange,omitempty"`
+	MessageId       *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersMessageId  `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
+	NetworkType     *string                                                                          `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Password        *string                                                                          `json:"Password,omitempty" xml:"Password,omitempty"`
+	Properties      *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	QueueName       *string                                                                          `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RoutingKey      *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
+	SecurityGroupId *string                                                                          `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	TargetType      *string                                                                          `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Username        *string                                                                          `json:"Username,omitempty" xml:"Username,omitempty"`
+	VSwitchIds      *string                                                                          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VirtualHostName *string                                                                          `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	VpcId           *string                                                                          `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) String() string {
@@ -13315,6 +13446,11 @@ func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) S
 
 func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) GoString() string {
 	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetAuthType(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetBody(v *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersBody) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
@@ -13337,8 +13473,8 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) 
 	return s
 }
 
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetNetworkType(v *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
-	s.NetworkType = v
+func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetNetworkType(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
+	s.NetworkType = &v
 	return s
 }
 
@@ -13362,8 +13498,8 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) 
 	return s
 }
 
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetSecurityGroupId(v *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
-	s.SecurityGroupId = v
+func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetSecurityGroupId(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -13377,8 +13513,8 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) 
 	return s
 }
 
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetVSwitchIds(v *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
-	s.VSwitchIds = v
+func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetVSwitchIds(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
+	s.VSwitchIds = &v
 	return s
 }
 
@@ -13387,8 +13523,8 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) 
 	return s
 }
 
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetVpcId(v *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
-	s.VpcId = v
+func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters) SetVpcId(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -13450,35 +13586,6 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersMe
 	return s
 }
 
-type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Form = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Template = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Value = &v
-	return s
-}
-
 type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersProperties struct {
 	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -13533,93 +13640,6 @@ func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersRo
 }
 
 func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersRoutingKey) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersRoutingKey {
-	s.Value = &v
-	return s
-}
-
-type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Form = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Template = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Value = &v
-	return s
-}
-
-type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Form = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Template = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Value = &v
-	return s
-}
-
-type GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) SetForm(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId {
-	s.Form = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) SetTemplate(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId {
-	s.Template = &v
-	return s
-}
-
-func (s *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId) SetValue(v string) *GetEventStreamingResponseBodyDataSinkSinkOpenSourceRabbitMQParametersVpcId {
 	s.Value = &v
 	return s
 }
@@ -15827,6 +15847,7 @@ func (s *GetEventStreamingResponseBodyDataSourceSourceOSSParameters) SetRoleName
 }
 
 type GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters struct {
+	AuthType        *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType    *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
@@ -15845,6 +15866,11 @@ func (s GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameter
 
 func (s GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters) GoString() string {
 	return s.String()
+}
+
+func (s *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters) SetAuthType(v string) *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
 }
 
 func (s *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters) SetBodyDataType(v string) *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters {
@@ -18287,7 +18313,8 @@ type ListEventStreamingsRequest struct {
 	// acs:fc:cn-hangzhou:118609547428****:services/fw1.LATEST/functions/log1
 	SinkArn *string `json:"SinkArn,omitempty" xml:"SinkArn,omitempty"`
 	// The Alibaba Cloud Resource Name (ARN) of the event source.
-	SourceArn *string `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
+	SourceArn *string                           `json:"SourceArn,omitempty" xml:"SourceArn,omitempty"`
+	Tags      []*ListEventStreamingsRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListEventStreamingsRequest) String() string {
@@ -18320,6 +18347,34 @@ func (s *ListEventStreamingsRequest) SetSinkArn(v string) *ListEventStreamingsRe
 
 func (s *ListEventStreamingsRequest) SetSourceArn(v string) *ListEventStreamingsRequest {
 	s.SourceArn = &v
+	return s
+}
+
+func (s *ListEventStreamingsRequest) SetTags(v []*ListEventStreamingsRequestTags) *ListEventStreamingsRequest {
+	s.Tags = v
+	return s
+}
+
+type ListEventStreamingsRequestTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListEventStreamingsRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEventStreamingsRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListEventStreamingsRequestTags) SetKey(v string) *ListEventStreamingsRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListEventStreamingsRequestTags) SetValue(v string) *ListEventStreamingsRequestTags {
+	s.Value = &v
 	return s
 }
 
@@ -18601,7 +18656,11 @@ type ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue
 	// example:
 	//
 	// acs:ram::1597871211794192:role/aliyunsaedefaultrole
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) String() string {
@@ -18614,6 +18673,26 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQu
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) SetArn(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) SetNetwork(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -20378,21 +20457,22 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters struct {
-	Body            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody            `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
-	Endpoint        *string                                                                                                `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	Exchange        *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange        `json:"Exchange,omitempty" xml:"Exchange,omitempty" type:"Struct"`
-	MessageId       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersMessageId       `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
-	NetworkType     *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty" type:"Struct"`
-	Password        *string                                                                                                `json:"Password,omitempty" xml:"Password,omitempty"`
-	Properties      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersProperties      `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
-	QueueName       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName       `json:"QueueName,omitempty" xml:"QueueName,omitempty" type:"Struct"`
-	RoutingKey      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersRoutingKey      `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
-	SecurityGroupId *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty" type:"Struct"`
-	TargetType      *string                                                                                                `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	Username        *string                                                                                                `json:"Username,omitempty" xml:"Username,omitempty"`
-	VSwitchIds      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds      `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
-	VirtualHostName *string                                                                                                `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
-	VpcId           *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId           `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Struct"`
+	AuthType        *string                                                                                           `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Body            *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody       `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Endpoint        *string                                                                                           `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Exchange        *string                                                                                           `json:"Exchange,omitempty" xml:"Exchange,omitempty"`
+	MessageId       *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersMessageId  `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
+	NetworkType     *string                                                                                           `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Password        *string                                                                                           `json:"Password,omitempty" xml:"Password,omitempty"`
+	Properties      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	QueueName       *string                                                                                           `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RoutingKey      *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
+	SecurityGroupId *string                                                                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	TargetType      *string                                                                                           `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Username        *string                                                                                           `json:"Username,omitempty" xml:"Username,omitempty"`
+	VSwitchIds      *string                                                                                           `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VirtualHostName *string                                                                                           `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	VpcId           *string                                                                                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) String() string {
@@ -20401,6 +20481,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabb
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetAuthType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetBody(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
@@ -20413,8 +20498,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetExchange(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.Exchange = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetExchange(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.Exchange = &v
 	return s
 }
 
@@ -20423,8 +20508,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetNetworkType(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.NetworkType = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetNetworkType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.NetworkType = &v
 	return s
 }
 
@@ -20438,8 +20523,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetQueueName(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.QueueName = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetQueueName(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.QueueName = &v
 	return s
 }
 
@@ -20448,8 +20533,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetSecurityGroupId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.SecurityGroupId = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetSecurityGroupId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.SecurityGroupId = &v
 	return s
 }
 
@@ -20463,8 +20548,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetVSwitchIds(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.VSwitchIds = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetVSwitchIds(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.VSwitchIds = &v
 	return s
 }
 
@@ -20473,8 +20558,8 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetVpcId(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
-	s.VpcId = v
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters) SetVpcId(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -20503,35 +20588,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersBody {
-	s.Value = &v
-	return s
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersExchange {
 	s.Value = &v
 	return s
 }
@@ -20565,35 +20621,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersNetworkType {
-	s.Value = &v
-	return s
-}
-
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersProperties struct {
 	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -20623,35 +20650,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 	return s
 }
 
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersQueueName {
-	s.Value = &v
-	return s
-}
-
 type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersRoutingKey struct {
 	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -20677,93 +20675,6 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRab
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersRoutingKey) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersRoutingKey {
-	s.Value = &v
-	return s
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersSecurityGroupId {
-	s.Value = &v
-	return s
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVSwitchIds {
-	s.Value = &v
-	return s
-}
-
-type ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId struct {
-	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
-	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) GoString() string {
-	return s.String()
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) SetForm(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId {
-	s.Form = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) SetTemplate(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId {
-	s.Template = &v
-	return s
-}
-
-func (s *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId) SetValue(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParametersVpcId {
 	s.Value = &v
 	return s
 }
@@ -22960,6 +22871,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParame
 }
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters struct {
+	AuthType        *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
 	BodyDataType    *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
 	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
@@ -22978,6 +22890,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSource
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters) GoString() string {
 	return s.String()
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters) SetAuthType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
 }
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters) SetBodyDataType(v string) *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters {
@@ -29080,7 +28997,11 @@ type UpdateEventStreamingRequestRunOptionsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:ram::1317334647812936:role/rdstoecsassumekms
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s UpdateEventStreamingRequestRunOptionsDeadLetterQueue) String() string {
@@ -29093,6 +29014,26 @@ func (s UpdateEventStreamingRequestRunOptionsDeadLetterQueue) GoString() string 
 
 func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetArn(v string) *UpdateEventStreamingRequestRunOptionsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetNetwork(v string) *UpdateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetSecurityGroupId(v string) *UpdateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetVSwitchIds(v string) *UpdateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptionsDeadLetterQueue) SetVpcId(v string) *UpdateEventStreamingRequestRunOptionsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -29153,7 +29094,8 @@ type UpdateEventStreamingRequestSink struct {
 	// The parameters that are configured if you specify ApsaraMQ for Kafka as the event target.
 	SinkKafkaParameters *UpdateEventStreamingRequestSinkSinkKafkaParameters `json:"SinkKafkaParameters,omitempty" xml:"SinkKafkaParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify MNS as the event target.
-	SinkMNSParameters *UpdateEventStreamingRequestSinkSinkMNSParameters `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkMNSParameters                *UpdateEventStreamingRequestSinkSinkMNSParameters                `json:"SinkMNSParameters,omitempty" xml:"SinkMNSParameters,omitempty" type:"Struct"`
+	SinkOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters `json:"SinkOpenSourceRabbitMQParameters,omitempty" xml:"SinkOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event target.
 	SinkPrometheusParameters *UpdateEventStreamingRequestSinkSinkPrometheusParameters `json:"SinkPrometheusParameters,omitempty" xml:"SinkPrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event target.
@@ -29215,6 +29157,11 @@ func (s *UpdateEventStreamingRequestSink) SetSinkKafkaParameters(v *UpdateEventS
 
 func (s *UpdateEventStreamingRequestSink) SetSinkMNSParameters(v *UpdateEventStreamingRequestSinkSinkMNSParameters) *UpdateEventStreamingRequestSink {
 	s.SinkMNSParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkOpenSourceRabbitMQParameters(v *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) *UpdateEventStreamingRequestSink {
+	s.SinkOpenSourceRabbitMQParameters = v
 	return s
 }
 
@@ -30489,7 +30436,8 @@ type UpdateEventStreamingRequestSinkSinkKafkaParameters struct {
 	// 	- If you set this parameter to 1, a response is returned when data is written to the leader. In this mode, the performance and the risk of data loss are moderate. Data loss may occur if a failure occurs on the leader.
 	//
 	// 	- If you set this parameter to all, a response is returned when data is written to the leader and synchronized to the followers. In this mode, the performance is low, but the risk of data loss is also low. Data loss occurs if the leader and the followers fail at the same time.
-	Acks *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Acks    *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks    `json:"Acks,omitempty" xml:"Acks,omitempty" type:"Struct"`
+	Headers *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
 	// The ID of the ApsaraMQ for Kafka instance.
 	InstanceId *UpdateEventStreamingRequestSinkSinkKafkaParametersInstanceId `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Struct"`
 	// The message key.
@@ -30510,6 +30458,11 @@ func (s UpdateEventStreamingRequestSinkSinkKafkaParameters) GoString() string {
 
 func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) SetAcks(v *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) *UpdateEventStreamingRequestSinkSinkKafkaParameters {
 	s.Acks = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParameters) SetHeaders(v *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) *UpdateEventStreamingRequestSinkSinkKafkaParameters {
+	s.Headers = v
 	return s
 }
 
@@ -30575,6 +30528,35 @@ func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) SetTemplate(v s
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks) SetValue(v string) *UpdateEventStreamingRequestSinkSinkKafkaParametersAcks {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetForm(v string) *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders) SetValue(v string) *UpdateEventStreamingRequestSinkSinkKafkaParametersHeaders {
 	s.Value = &v
 	return s
 }
@@ -30903,6 +30885,229 @@ func (s *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName) SetTemplate(
 }
 
 func (s *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName) SetValue(v string) *UpdateEventStreamingRequestSinkSinkMNSParametersQueueName {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters struct {
+	AuthType        *string                                                                    `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	Body            *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody       `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	Endpoint        *string                                                                    `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	Exchange        *string                                                                    `json:"Exchange,omitempty" xml:"Exchange,omitempty"`
+	MessageId       *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId  `json:"MessageId,omitempty" xml:"MessageId,omitempty" type:"Struct"`
+	NetworkType     *string                                                                    `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Password        *string                                                                    `json:"Password,omitempty" xml:"Password,omitempty"`
+	Properties      *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	QueueName       *string                                                                    `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RoutingKey      *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey `json:"RoutingKey,omitempty" xml:"RoutingKey,omitempty" type:"Struct"`
+	SecurityGroupId *string                                                                    `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	TargetType      *string                                                                    `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Username        *string                                                                    `json:"Username,omitempty" xml:"Username,omitempty"`
+	VSwitchIds      *string                                                                    `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VirtualHostName *string                                                                    `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	VpcId           *string                                                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetAuthType(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetBody(v *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Body = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetEndpoint(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetExchange(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Exchange = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetMessageId(v *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.MessageId = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetNetworkType(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetPassword(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetProperties(v *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Properties = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetQueueName(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetRoutingKey(v *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.RoutingKey = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetSecurityGroupId(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetTargetType(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.TargetType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetUsername(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetVSwitchIds(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetVirtualHostName(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.VirtualHostName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters) SetVpcId(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) SetForm(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody) SetValue(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersBody {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) SetForm(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId) SetValue(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersMessageId {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) SetForm(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties) SetValue(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersProperties {
+	s.Value = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) SetForm(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey {
+	s.Form = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) SetTemplate(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey {
+	s.Template = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey) SetValue(v string) *UpdateEventStreamingRequestSinkSinkOpenSourceRabbitMQParametersRoutingKey {
 	s.Value = &v
 	return s
 }
@@ -32973,8 +33178,9 @@ type UpdateEventStreamingRequestSource struct {
 	// The parameters that are configured if you specify Message Service (MNS) as the event source.
 	SourceMNSParameters *UpdateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
-	SourceMQTTParameters *UpdateEventStreamingRequestSourceSourceMQTTParameters `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
-	SourceOSSParameters  *UpdateEventStreamingRequestSourceSourceOSSParameters  `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
+	SourceMQTTParameters               *UpdateEventStreamingRequestSourceSourceMQTTParameters               `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceOSSParameters                *UpdateEventStreamingRequestSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
+	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event source.
 	SourcePrometheusParameters *UpdateEventStreamingRequestSourceSourcePrometheusParameters `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for RabbitMQ as the event source.
@@ -33036,6 +33242,11 @@ func (s *UpdateEventStreamingRequestSource) SetSourceMQTTParameters(v *UpdateEve
 
 func (s *UpdateEventStreamingRequestSource) SetSourceOSSParameters(v *UpdateEventStreamingRequestSourceSourceOSSParameters) *UpdateEventStreamingRequestSource {
 	s.SourceOSSParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceOpenSourceRabbitMQParameters(v *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) *UpdateEventStreamingRequestSource {
+	s.SourceOpenSourceRabbitMQParameters = v
 	return s
 }
 
@@ -33564,6 +33775,83 @@ func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) SetPrefix(v strin
 
 func (s *UpdateEventStreamingRequestSourceSourceOSSParameters) SetRoleName(v string) *UpdateEventStreamingRequestSourceSourceOSSParameters {
 	s.RoleName = &v
+	return s
+}
+
+type UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters struct {
+	AuthType        *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BodyDataType    *string `json:"BodyDataType,omitempty" xml:"BodyDataType,omitempty"`
+	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	NetworkType     *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Password        *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	QueueName       *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Username        *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetAuthType(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.AuthType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetBodyDataType(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.BodyDataType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetEndpoint(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetNetworkType(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetPassword(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetQueueName(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetSecurityGroupId(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetUsername(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.Username = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetVSwitchIds(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetVirtualHostName(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.VirtualHostName = &v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters) SetVpcId(v string) *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters {
+	s.VpcId = &v
 	return s
 }
 
@@ -34878,6 +35166,10 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 		body["Source"] = request.SourceShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TransformsShrink)) {
 		body["Transforms"] = request.TransformsShrink
 	}
@@ -35865,7 +36157,7 @@ func (client *Client) EnableRule(request *EnableRuleRequest) (_result *EnableRul
 
 // Summary:
 //
-// EventCenterQueryEvents
+// # EventCenterQueryEvents
 //
 // @param tmpReq - EventCenterQueryEventsRequest
 //
@@ -35938,7 +36230,7 @@ func (client *Client) EventCenterQueryEventsWithOptions(tmpReq *EventCenterQuery
 
 // Summary:
 //
-// EventCenterQueryEvents
+// # EventCenterQueryEvents
 //
 // @param request - EventCenterQueryEventsRequest
 //
@@ -36721,6 +37013,10 @@ func (client *Client) ListEventStreamingsWithOptions(request *ListEventStreaming
 
 	if !tea.BoolValue(util.IsUnset(request.SourceArn)) {
 		body["SourceArn"] = request.SourceArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["Tags"] = request.Tags
 	}
 
 	req := &openapi.OpenApiRequest{
