@@ -434,6 +434,221 @@ func (s *CheckResultResponse) SetBody(v *CheckResultResponseBody) *CheckResultRe
 	return s
 }
 
+type CheckVerifyLogRequest struct {
+	// example:
+	//
+	// e0c34a***353888
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// example:
+	//
+	// hksb7ba1b*********015d694361bee4
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s CheckVerifyLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckVerifyLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckVerifyLogRequest) SetMerchantBizId(v string) *CheckVerifyLogRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *CheckVerifyLogRequest) SetTransactionId(v string) *CheckVerifyLogRequest {
+	s.TransactionId = &v
+	return s
+}
+
+type CheckVerifyLogResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4EB35****87EBA1
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *CheckVerifyLogResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s CheckVerifyLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckVerifyLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckVerifyLogResponseBody) SetCode(v string) *CheckVerifyLogResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBody) SetMessage(v string) *CheckVerifyLogResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBody) SetRequestId(v string) *CheckVerifyLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBody) SetResult(v *CheckVerifyLogResponseBodyResult) *CheckVerifyLogResponseBody {
+	s.Result = v
+	return s
+}
+
+type CheckVerifyLogResponseBodyResult struct {
+	// example:
+	//
+	// {}
+	ExtInfo       *string   `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	InterruptPage *string   `json:"InterruptPage,omitempty" xml:"InterruptPage,omitempty"`
+	LogInfo       []*string `json:"LogInfo,omitempty" xml:"LogInfo,omitempty" type:"Repeated"`
+	// example:
+	//
+	// {
+	//
+	//           "faceOverTimes": 0,
+	//
+	//           "hasFaceOverTimes": false,
+	//
+	//           "hasFacePermissionRefuse": false,
+	//
+	//           "hasOcrEdit": true,
+	//
+	//           "hasOcrEditOverTimes": false,
+	//
+	//           "hasOcrOverTimes": true,
+	//
+	//           "hasOcrPermissionRefuse": false,
+	//
+	//           "ocrEditOverTimes": 0,
+	//
+	//           "ocrEditTimes": 1,
+	//
+	//           "ocrOverTimes": 1,
+	//
+	//           "pageStayTimeInfo": {
+	//
+	//             "LOADING": "1615",
+	//
+	//             "OCR_SCAN": "37446",
+	//
+	//             "OCR_RESULT": "1338",
+	//
+	//             "FACE": "8707"
+	//
+	//           }
+	//
+	//         }
+	LogStatisticsInfo *string `json:"LogStatisticsInfo,omitempty" xml:"LogStatisticsInfo,omitempty"`
+	// example:
+	//
+	// Y
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// example:
+	//
+	// 1001
+	VerifyErrorCode *string `json:"VerifyErrorCode,omitempty" xml:"VerifyErrorCode,omitempty"`
+	// example:
+	//
+	// 1
+	VerifyStatus *string `json:"VerifyStatus,omitempty" xml:"VerifyStatus,omitempty"`
+}
+
+func (s CheckVerifyLogResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckVerifyLogResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetExtInfo(v string) *CheckVerifyLogResponseBodyResult {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetInterruptPage(v string) *CheckVerifyLogResponseBodyResult {
+	s.InterruptPage = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetLogInfo(v []*string) *CheckVerifyLogResponseBodyResult {
+	s.LogInfo = v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetLogStatisticsInfo(v string) *CheckVerifyLogResponseBodyResult {
+	s.LogStatisticsInfo = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetPassed(v string) *CheckVerifyLogResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetSubCode(v string) *CheckVerifyLogResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetVerifyErrorCode(v string) *CheckVerifyLogResponseBodyResult {
+	s.VerifyErrorCode = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponseBodyResult) SetVerifyStatus(v string) *CheckVerifyLogResponseBodyResult {
+	s.VerifyStatus = &v
+	return s
+}
+
+type CheckVerifyLogResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckVerifyLogResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckVerifyLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckVerifyLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckVerifyLogResponse) SetHeaders(v map[string]*string) *CheckVerifyLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckVerifyLogResponse) SetStatusCode(v int32) *CheckVerifyLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckVerifyLogResponse) SetBody(v *CheckVerifyLogResponseBody) *CheckVerifyLogResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVerifyResultRequest struct {
 	// example:
 	//
@@ -1302,7 +1517,8 @@ func (s *FaceGuardRiskResponseBody) SetResult(v *FaceGuardRiskResponseBodyResult
 }
 
 type FaceGuardRiskResponseBodyResult struct {
-	RiskExtends *string `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
+	GuardRiskScore *float64 `json:"GuardRiskScore,omitempty" xml:"GuardRiskScore,omitempty"`
+	RiskExtends    *string  `json:"RiskExtends,omitempty" xml:"RiskExtends,omitempty"`
 	// example:
 	//
 	// ROOT,VPN,HOOK
@@ -1319,6 +1535,11 @@ func (s FaceGuardRiskResponseBodyResult) String() string {
 
 func (s FaceGuardRiskResponseBodyResult) GoString() string {
 	return s.String()
+}
+
+func (s *FaceGuardRiskResponseBodyResult) SetGuardRiskScore(v float64) *FaceGuardRiskResponseBodyResult {
+	s.GuardRiskScore = &v
+	return s
 }
 
 func (s *FaceGuardRiskResponseBodyResult) SetRiskExtends(v string) *FaceGuardRiskResponseBodyResult {
@@ -2795,6 +3016,70 @@ func (client *Client) CheckResult(request *CheckResultRequest) (_result *CheckRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckResultResponse{}
 	_body, _err := client.CheckResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 认证日志查询接口
+//
+// @param request - CheckVerifyLogRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckVerifyLogResponse
+func (client *Client) CheckVerifyLogWithOptions(request *CheckVerifyLogRequest, runtime *util.RuntimeOptions) (_result *CheckVerifyLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionId)) {
+		body["TransactionId"] = request.TransactionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckVerifyLog"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckVerifyLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 认证日志查询接口
+//
+// @param request - CheckVerifyLogRequest
+//
+// @return CheckVerifyLogResponse
+func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *CheckVerifyLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckVerifyLogResponse{}
+	_body, _err := client.CheckVerifyLogWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
