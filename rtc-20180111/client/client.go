@@ -16490,6 +16490,7 @@ type StartCloudNoteRequest struct {
 	CustomPrompt      *StartCloudNoteRequestCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
 	LanguageHints     []*string                               `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
 	MeetingAssistance *StartCloudNoteRequestMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
+	RealtimeSubtitle  *StartCloudNoteRequestRealtimeSubtitle  `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty" type:"Struct"`
 	ServiceInspection *StartCloudNoteRequestServiceInspection `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty" type:"Struct"`
 	// example:
 	//
@@ -16503,8 +16504,9 @@ type StartCloudNoteRequest struct {
 	// example:
 	//
 	// rtc
-	TaskId     *string                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TextPolish *StartCloudNoteRequestTextPolish `json:"TextPolish,omitempty" xml:"TextPolish,omitempty" type:"Struct"`
+	TaskId        *string                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TextPolish    *StartCloudNoteRequestTextPolish    `json:"TextPolish,omitempty" xml:"TextPolish,omitempty" type:"Struct"`
+	Transcription *StartCloudNoteRequestTranscription `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
 }
 
 func (s StartCloudNoteRequest) String() string {
@@ -16545,6 +16547,11 @@ func (s *StartCloudNoteRequest) SetMeetingAssistance(v *StartCloudNoteRequestMee
 	return s
 }
 
+func (s *StartCloudNoteRequest) SetRealtimeSubtitle(v *StartCloudNoteRequestRealtimeSubtitle) *StartCloudNoteRequest {
+	s.RealtimeSubtitle = v
+	return s
+}
+
 func (s *StartCloudNoteRequest) SetServiceInspection(v *StartCloudNoteRequestServiceInspection) *StartCloudNoteRequest {
 	s.ServiceInspection = v
 	return s
@@ -16572,6 +16579,11 @@ func (s *StartCloudNoteRequest) SetTaskId(v string) *StartCloudNoteRequest {
 
 func (s *StartCloudNoteRequest) SetTextPolish(v *StartCloudNoteRequestTextPolish) *StartCloudNoteRequest {
 	s.TextPolish = v
+	return s
+}
+
+func (s *StartCloudNoteRequest) SetTranscription(v *StartCloudNoteRequestTranscription) *StartCloudNoteRequest {
+	s.Transcription = v
 	return s
 }
 
@@ -16688,6 +16700,49 @@ func (s *StartCloudNoteRequestMeetingAssistance) SetEnabled(v bool) *StartCloudN
 
 func (s *StartCloudNoteRequestMeetingAssistance) SetMeetingAssistanceType(v []*string) *StartCloudNoteRequestMeetingAssistance {
 	s.MeetingAssistanceType = v
+	return s
+}
+
+type StartCloudNoteRequestRealtimeSubtitle struct {
+	Enabled     *bool                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	Translation *StartCloudNoteRequestRealtimeSubtitleTranslation `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
+}
+
+func (s StartCloudNoteRequestRealtimeSubtitle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudNoteRequestRealtimeSubtitle) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudNoteRequestRealtimeSubtitle) SetEnabled(v bool) *StartCloudNoteRequestRealtimeSubtitle {
+	s.Enabled = &v
+	return s
+}
+
+func (s *StartCloudNoteRequestRealtimeSubtitle) SetTranslation(v *StartCloudNoteRequestRealtimeSubtitleTranslation) *StartCloudNoteRequestRealtimeSubtitle {
+	s.Translation = v
+	return s
+}
+
+type StartCloudNoteRequestRealtimeSubtitleTranslation struct {
+	// example:
+	//
+	// 1
+	TranslateLevel *int32 `json:"TranslateLevel,omitempty" xml:"TranslateLevel,omitempty"`
+}
+
+func (s StartCloudNoteRequestRealtimeSubtitleTranslation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudNoteRequestRealtimeSubtitleTranslation) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudNoteRequestRealtimeSubtitleTranslation) SetTranslateLevel(v int32) *StartCloudNoteRequestRealtimeSubtitleTranslation {
+	s.TranslateLevel = &v
 	return s
 }
 
@@ -16881,6 +16936,38 @@ func (s *StartCloudNoteRequestTextPolish) SetEnabled(v bool) *StartCloudNoteRequ
 	return s
 }
 
+type StartCloudNoteRequestTranscription struct {
+	DiarizationEnabled *bool  `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	SpeakerCount       *int32 `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
+	// example:
+	//
+	// 1
+	TranscriptionLevel *int32 `json:"TranscriptionLevel,omitempty" xml:"TranscriptionLevel,omitempty"`
+}
+
+func (s StartCloudNoteRequestTranscription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudNoteRequestTranscription) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudNoteRequestTranscription) SetDiarizationEnabled(v bool) *StartCloudNoteRequestTranscription {
+	s.DiarizationEnabled = &v
+	return s
+}
+
+func (s *StartCloudNoteRequestTranscription) SetSpeakerCount(v int32) *StartCloudNoteRequestTranscription {
+	s.SpeakerCount = &v
+	return s
+}
+
+func (s *StartCloudNoteRequestTranscription) SetTranscriptionLevel(v int32) *StartCloudNoteRequestTranscription {
+	s.TranscriptionLevel = &v
+	return s
+}
+
 type StartCloudNoteShrinkRequest struct {
 	// This parameter is required.
 	//
@@ -16898,6 +16985,7 @@ type StartCloudNoteShrinkRequest struct {
 	CustomPromptShrink      *string   `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
 	LanguageHints           []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
 	MeetingAssistanceShrink *string   `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
+	RealtimeSubtitleShrink  *string   `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty"`
 	ServiceInspectionShrink *string   `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
 	// example:
 	//
@@ -16911,8 +16999,9 @@ type StartCloudNoteShrinkRequest struct {
 	// example:
 	//
 	// rtc
-	TaskId           *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TextPolishShrink *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
+	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TextPolishShrink    *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
+	TranscriptionShrink *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
 }
 
 func (s StartCloudNoteShrinkRequest) String() string {
@@ -16953,6 +17042,11 @@ func (s *StartCloudNoteShrinkRequest) SetMeetingAssistanceShrink(v string) *Star
 	return s
 }
 
+func (s *StartCloudNoteShrinkRequest) SetRealtimeSubtitleShrink(v string) *StartCloudNoteShrinkRequest {
+	s.RealtimeSubtitleShrink = &v
+	return s
+}
+
 func (s *StartCloudNoteShrinkRequest) SetServiceInspectionShrink(v string) *StartCloudNoteShrinkRequest {
 	s.ServiceInspectionShrink = &v
 	return s
@@ -16980,6 +17074,11 @@ func (s *StartCloudNoteShrinkRequest) SetTaskId(v string) *StartCloudNoteShrinkR
 
 func (s *StartCloudNoteShrinkRequest) SetTextPolishShrink(v string) *StartCloudNoteShrinkRequest {
 	s.TextPolishShrink = &v
+	return s
+}
+
+func (s *StartCloudNoteShrinkRequest) SetTranscriptionShrink(v string) *StartCloudNoteShrinkRequest {
+	s.TranscriptionShrink = &v
 	return s
 }
 
@@ -17137,9 +17236,10 @@ type StartCloudRecordRequest struct {
 	Images               []*StartCloudRecordRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	LayoutSpecifiedUsers *StartCloudRecordRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
 	// panes
-	Panes                      []*StartCloudRecordRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor                *StartCloudRecordRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser *bool                               `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	Panes                       []*StartCloudRecordRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                 *StartCloudRecordRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser  *bool                               `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	ShowDefaultBackgroundOnMute *bool                               `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
 	// storageConfig
 	//
 	// This parameter is required.
@@ -17216,6 +17316,11 @@ func (s *StartCloudRecordRequest) SetRegionColor(v *StartCloudRecordRequestRegio
 
 func (s *StartCloudRecordRequest) SetReservePaneForNoCameraUser(v bool) *StartCloudRecordRequest {
 	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartCloudRecordRequest) SetShowDefaultBackgroundOnMute(v bool) *StartCloudRecordRequest {
+	s.ShowDefaultBackgroundOnMute = &v
 	return s
 }
 
@@ -17641,7 +17746,8 @@ func (s *StartCloudRecordRequestLayoutSpecifiedUsers) SetType(v string) *StartCl
 }
 
 type StartCloudRecordRequestPanes struct {
-	Images []*StartCloudRecordRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*StartCloudRecordRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*StartCloudRecordRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 3
@@ -17677,6 +17783,11 @@ func (s StartCloudRecordRequestPanes) String() string {
 
 func (s StartCloudRecordRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanes) SetBackgrounds(v []*StartCloudRecordRequestPanesBackgrounds) *StartCloudRecordRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *StartCloudRecordRequestPanes) SetImages(v []*StartCloudRecordRequestPanesImages) *StartCloudRecordRequestPanes {
@@ -17724,11 +17835,117 @@ func (s *StartCloudRecordRequestPanes) SetWhiteboard(v *StartCloudRecordRequestP
 	return s
 }
 
+type StartCloudRecordRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetAlpha(v float64) *StartCloudRecordRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetDisplay(v string) *StartCloudRecordRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetHeight(v float64) *StartCloudRecordRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetLayer(v int32) *StartCloudRecordRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *StartCloudRecordRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetUrl(v string) *StartCloudRecordRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetWidth(v float64) *StartCloudRecordRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetX(v float64) *StartCloudRecordRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesBackgrounds) SetY(v float64) *StartCloudRecordRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type StartCloudRecordRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -17782,6 +17999,11 @@ func (s *StartCloudRecordRequestPanesImages) SetAlpha(v float64) *StartCloudReco
 	return s
 }
 
+func (s *StartCloudRecordRequestPanesImages) SetDisplay(v string) *StartCloudRecordRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *StartCloudRecordRequestPanesImages) SetHeight(v float64) *StartCloudRecordRequestPanesImages {
 	s.Height = &v
 	return s
@@ -17831,6 +18053,10 @@ type StartCloudRecordRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                     `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *StartCloudRecordRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -17890,6 +18116,11 @@ func (s *StartCloudRecordRequestPanesTexts) SetBoxBorderw(v int32) *StartCloudRe
 
 func (s *StartCloudRecordRequestPanesTexts) SetBoxColor(v *StartCloudRecordRequestPanesTextsBoxColor) *StartCloudRecordRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *StartCloudRecordRequestPanesTexts) SetDisplay(v string) *StartCloudRecordRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -18370,9 +18601,10 @@ type StartCloudRecordShrinkRequest struct {
 	Images                     []*StartCloudRecordShrinkRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	LayoutSpecifiedUsersShrink *string                                `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
 	// panes
-	Panes                      []*StartCloudRecordShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor                *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser *bool                                     `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	Panes                       []*StartCloudRecordShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                 *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser  *bool                                     `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	ShowDefaultBackgroundOnMute *bool                                     `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
 	// storageConfig
 	//
 	// This parameter is required.
@@ -18449,6 +18681,11 @@ func (s *StartCloudRecordShrinkRequest) SetRegionColor(v *StartCloudRecordShrink
 
 func (s *StartCloudRecordShrinkRequest) SetReservePaneForNoCameraUser(v bool) *StartCloudRecordShrinkRequest {
 	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequest) SetShowDefaultBackgroundOnMute(v bool) *StartCloudRecordShrinkRequest {
+	s.ShowDefaultBackgroundOnMute = &v
 	return s
 }
 
@@ -18849,7 +19086,8 @@ func (s *StartCloudRecordShrinkRequestImages) SetY(v float64) *StartCloudRecordS
 }
 
 type StartCloudRecordShrinkRequestPanes struct {
-	Images []*StartCloudRecordShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*StartCloudRecordShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*StartCloudRecordShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 3
@@ -18885,6 +19123,11 @@ func (s StartCloudRecordShrinkRequestPanes) String() string {
 
 func (s StartCloudRecordShrinkRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *StartCloudRecordShrinkRequestPanes) SetBackgrounds(v []*StartCloudRecordShrinkRequestPanesBackgrounds) *StartCloudRecordShrinkRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *StartCloudRecordShrinkRequestPanes) SetImages(v []*StartCloudRecordShrinkRequestPanesImages) *StartCloudRecordShrinkRequestPanes {
@@ -18932,11 +19175,117 @@ func (s *StartCloudRecordShrinkRequestPanes) SetWhiteboard(v *StartCloudRecordSh
 	return s
 }
 
+type StartCloudRecordShrinkRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartCloudRecordShrinkRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartCloudRecordShrinkRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetAlpha(v float64) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetDisplay(v string) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetHeight(v float64) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetLayer(v int32) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetUrl(v string) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetWidth(v float64) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetX(v float64) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesBackgrounds) SetY(v float64) *StartCloudRecordShrinkRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type StartCloudRecordShrinkRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -18990,6 +19339,11 @@ func (s *StartCloudRecordShrinkRequestPanesImages) SetAlpha(v float64) *StartClo
 	return s
 }
 
+func (s *StartCloudRecordShrinkRequestPanesImages) SetDisplay(v string) *StartCloudRecordShrinkRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *StartCloudRecordShrinkRequestPanesImages) SetHeight(v float64) *StartCloudRecordShrinkRequestPanesImages {
 	s.Height = &v
 	return s
@@ -19039,6 +19393,10 @@ type StartCloudRecordShrinkRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                           `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *StartCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -19098,6 +19456,11 @@ func (s *StartCloudRecordShrinkRequestPanesTexts) SetBoxBorderw(v int32) *StartC
 
 func (s *StartCloudRecordShrinkRequestPanesTexts) SetBoxColor(v *StartCloudRecordShrinkRequestPanesTextsBoxColor) *StartCloudRecordShrinkRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *StartCloudRecordShrinkRequestPanesTexts) SetDisplay(v string) *StartCloudRecordShrinkRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -20932,13 +21295,14 @@ type StartStreamingOutRequest struct {
 	// example:
 	//
 	// 2
-	CropMode                   *int32                                        `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images                     []*StartStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsers       *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
-	Panes                      []*StartStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor                *StartStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser *bool                                         `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
-	StartWithoutChannel        *bool                                         `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	CropMode                    *int32                                        `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images                      []*StartStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	LayoutSpecifiedUsers        *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
+	Panes                       []*StartStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                 *StartStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser  *bool                                         `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	ShowDefaultBackgroundOnMute *bool                                         `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
+	StartWithoutChannel         *bool                                         `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
 	// example:
 	//
 	// 30
@@ -21017,6 +21381,11 @@ func (s *StartStreamingOutRequest) SetRegionColor(v *StartStreamingOutRequestReg
 
 func (s *StartStreamingOutRequest) SetReservePaneForNoCameraUser(v bool) *StartStreamingOutRequest {
 	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartStreamingOutRequest) SetShowDefaultBackgroundOnMute(v bool) *StartStreamingOutRequest {
+	s.ShowDefaultBackgroundOnMute = &v
 	return s
 }
 
@@ -21452,7 +21821,8 @@ func (s *StartStreamingOutRequestLayoutSpecifiedUsers) SetType(v string) *StartS
 }
 
 type StartStreamingOutRequestPanes struct {
-	Images []*StartStreamingOutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*StartStreamingOutRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*StartStreamingOutRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -21486,6 +21856,11 @@ func (s StartStreamingOutRequestPanes) String() string {
 
 func (s StartStreamingOutRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanes) SetBackgrounds(v []*StartStreamingOutRequestPanesBackgrounds) *StartStreamingOutRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *StartStreamingOutRequestPanes) SetImages(v []*StartStreamingOutRequestPanesImages) *StartStreamingOutRequestPanes {
@@ -21533,11 +21908,117 @@ func (s *StartStreamingOutRequestPanes) SetWhiteboard(v *StartStreamingOutReques
 	return s
 }
 
+type StartStreamingOutRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetAlpha(v float64) *StartStreamingOutRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetDisplay(v string) *StartStreamingOutRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetHeight(v float64) *StartStreamingOutRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetLayer(v int32) *StartStreamingOutRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *StartStreamingOutRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetUrl(v string) *StartStreamingOutRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetWidth(v float64) *StartStreamingOutRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetX(v float64) *StartStreamingOutRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesBackgrounds) SetY(v float64) *StartStreamingOutRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type StartStreamingOutRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -21591,6 +22072,11 @@ func (s *StartStreamingOutRequestPanesImages) SetAlpha(v float64) *StartStreamin
 	return s
 }
 
+func (s *StartStreamingOutRequestPanesImages) SetDisplay(v string) *StartStreamingOutRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *StartStreamingOutRequestPanesImages) SetHeight(v float64) *StartStreamingOutRequestPanesImages {
 	s.Height = &v
 	return s
@@ -21640,6 +22126,10 @@ type StartStreamingOutRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *StartStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -21699,6 +22189,11 @@ func (s *StartStreamingOutRequestPanesTexts) SetBoxBorderw(v int32) *StartStream
 
 func (s *StartStreamingOutRequestPanesTexts) SetBoxColor(v *StartStreamingOutRequestPanesTextsBoxColor) *StartStreamingOutRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *StartStreamingOutRequestPanesTexts) SetDisplay(v string) *StartStreamingOutRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -22086,13 +22581,14 @@ type StartStreamingOutShrinkRequest struct {
 	// example:
 	//
 	// 2
-	CropMode                   *int32                                     `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images                     []*StartStreamingOutShrinkRequestImages    `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsersShrink *string                                    `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
-	Panes                      []*StartStreamingOutShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor                *StartStreamingOutShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser *bool                                      `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
-	StartWithoutChannel        *bool                                      `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	CropMode                    *int32                                     `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	Images                      []*StartStreamingOutShrinkRequestImages    `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	LayoutSpecifiedUsersShrink  *string                                    `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
+	Panes                       []*StartStreamingOutShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	RegionColor                 *StartStreamingOutShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	ReservePaneForNoCameraUser  *bool                                      `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	ShowDefaultBackgroundOnMute *bool                                      `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
+	StartWithoutChannel         *bool                                      `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
 	// example:
 	//
 	// 30
@@ -22171,6 +22667,11 @@ func (s *StartStreamingOutShrinkRequest) SetRegionColor(v *StartStreamingOutShri
 
 func (s *StartStreamingOutShrinkRequest) SetReservePaneForNoCameraUser(v bool) *StartStreamingOutShrinkRequest {
 	s.ReservePaneForNoCameraUser = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequest) SetShowDefaultBackgroundOnMute(v bool) *StartStreamingOutShrinkRequest {
+	s.ShowDefaultBackgroundOnMute = &v
 	return s
 }
 
@@ -22581,7 +23082,8 @@ func (s *StartStreamingOutShrinkRequestImages) SetY(v float64) *StartStreamingOu
 }
 
 type StartStreamingOutShrinkRequestPanes struct {
-	Images []*StartStreamingOutShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*StartStreamingOutShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*StartStreamingOutShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -22615,6 +23117,11 @@ func (s StartStreamingOutShrinkRequestPanes) String() string {
 
 func (s StartStreamingOutShrinkRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *StartStreamingOutShrinkRequestPanes) SetBackgrounds(v []*StartStreamingOutShrinkRequestPanesBackgrounds) *StartStreamingOutShrinkRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *StartStreamingOutShrinkRequestPanes) SetImages(v []*StartStreamingOutShrinkRequestPanesImages) *StartStreamingOutShrinkRequestPanes {
@@ -22662,11 +23169,117 @@ func (s *StartStreamingOutShrinkRequestPanes) SetWhiteboard(v *StartStreamingOut
 	return s
 }
 
+type StartStreamingOutShrinkRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s StartStreamingOutShrinkRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStreamingOutShrinkRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetAlpha(v float64) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetDisplay(v string) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetHeight(v float64) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetLayer(v int32) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetUrl(v string) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetWidth(v float64) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetX(v float64) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesBackgrounds) SetY(v float64) *StartStreamingOutShrinkRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type StartStreamingOutShrinkRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -22720,6 +23333,11 @@ func (s *StartStreamingOutShrinkRequestPanesImages) SetAlpha(v float64) *StartSt
 	return s
 }
 
+func (s *StartStreamingOutShrinkRequestPanesImages) SetDisplay(v string) *StartStreamingOutShrinkRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *StartStreamingOutShrinkRequestPanesImages) SetHeight(v float64) *StartStreamingOutShrinkRequestPanesImages {
 	s.Height = &v
 	return s
@@ -22769,6 +23387,10 @@ type StartStreamingOutShrinkRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                            `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *StartStreamingOutShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -22828,6 +23450,11 @@ func (s *StartStreamingOutShrinkRequestPanesTexts) SetBoxBorderw(v int32) *Start
 
 func (s *StartStreamingOutShrinkRequestPanesTexts) SetBoxColor(v *StartStreamingOutShrinkRequestPanesTextsBoxColor) *StartStreamingOutShrinkRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *StartStreamingOutShrinkRequestPanesTexts) SetDisplay(v string) *StartStreamingOutShrinkRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -24587,7 +25214,8 @@ func (s *UpdateCloudRecordRequestLayoutSpecifiedUsers) SetType(v string) *Update
 }
 
 type UpdateCloudRecordRequestPanes struct {
-	Images []*UpdateCloudRecordRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*UpdateCloudRecordRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*UpdateCloudRecordRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -24621,6 +25249,11 @@ func (s UpdateCloudRecordRequestPanes) String() string {
 
 func (s UpdateCloudRecordRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanes) SetBackgrounds(v []*UpdateCloudRecordRequestPanesBackgrounds) *UpdateCloudRecordRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *UpdateCloudRecordRequestPanes) SetImages(v []*UpdateCloudRecordRequestPanesImages) *UpdateCloudRecordRequestPanes {
@@ -24668,11 +25301,117 @@ func (s *UpdateCloudRecordRequestPanes) SetWhiteboard(v *UpdateCloudRecordReques
 	return s
 }
 
+type UpdateCloudRecordRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetAlpha(v float64) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetDisplay(v string) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetHeight(v float64) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetLayer(v int32) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetUrl(v string) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetWidth(v float64) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetX(v float64) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesBackgrounds) SetY(v float64) *UpdateCloudRecordRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type UpdateCloudRecordRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -24726,6 +25465,11 @@ func (s *UpdateCloudRecordRequestPanesImages) SetAlpha(v float64) *UpdateCloudRe
 	return s
 }
 
+func (s *UpdateCloudRecordRequestPanesImages) SetDisplay(v string) *UpdateCloudRecordRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *UpdateCloudRecordRequestPanesImages) SetHeight(v float64) *UpdateCloudRecordRequestPanesImages {
 	s.Height = &v
 	return s
@@ -24775,6 +25519,10 @@ type UpdateCloudRecordRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *UpdateCloudRecordRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -24834,6 +25582,11 @@ func (s *UpdateCloudRecordRequestPanesTexts) SetBoxBorderw(v int32) *UpdateCloud
 
 func (s *UpdateCloudRecordRequestPanesTexts) SetBoxColor(v *UpdateCloudRecordRequestPanesTextsBoxColor) *UpdateCloudRecordRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordRequestPanesTexts) SetDisplay(v string) *UpdateCloudRecordRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -25633,7 +26386,8 @@ func (s *UpdateCloudRecordShrinkRequestImages) SetY(v float64) *UpdateCloudRecor
 }
 
 type UpdateCloudRecordShrinkRequestPanes struct {
-	Images []*UpdateCloudRecordShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*UpdateCloudRecordShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*UpdateCloudRecordShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -25667,6 +26421,11 @@ func (s UpdateCloudRecordShrinkRequestPanes) String() string {
 
 func (s UpdateCloudRecordShrinkRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanes) SetBackgrounds(v []*UpdateCloudRecordShrinkRequestPanesBackgrounds) *UpdateCloudRecordShrinkRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *UpdateCloudRecordShrinkRequestPanes) SetImages(v []*UpdateCloudRecordShrinkRequestPanesImages) *UpdateCloudRecordShrinkRequestPanes {
@@ -25714,11 +26473,117 @@ func (s *UpdateCloudRecordShrinkRequestPanes) SetWhiteboard(v *UpdateCloudRecord
 	return s
 }
 
+type UpdateCloudRecordShrinkRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateCloudRecordShrinkRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCloudRecordShrinkRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetAlpha(v float64) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetDisplay(v string) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetHeight(v float64) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetLayer(v int32) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetUrl(v string) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetWidth(v float64) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetX(v float64) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) SetY(v float64) *UpdateCloudRecordShrinkRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type UpdateCloudRecordShrinkRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -25772,6 +26637,11 @@ func (s *UpdateCloudRecordShrinkRequestPanesImages) SetAlpha(v float64) *UpdateC
 	return s
 }
 
+func (s *UpdateCloudRecordShrinkRequestPanesImages) SetDisplay(v string) *UpdateCloudRecordShrinkRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *UpdateCloudRecordShrinkRequestPanesImages) SetHeight(v float64) *UpdateCloudRecordShrinkRequestPanesImages {
 	s.Height = &v
 	return s
@@ -25821,6 +26691,10 @@ type UpdateCloudRecordShrinkRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                            `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *UpdateCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -25880,6 +26754,11 @@ func (s *UpdateCloudRecordShrinkRequestPanesTexts) SetBoxBorderw(v int32) *Updat
 
 func (s *UpdateCloudRecordShrinkRequestPanesTexts) SetBoxColor(v *UpdateCloudRecordShrinkRequestPanesTextsBoxColor) *UpdateCloudRecordShrinkRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateCloudRecordShrinkRequestPanesTexts) SetDisplay(v string) *UpdateCloudRecordShrinkRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -28368,7 +29247,8 @@ func (s *UpdateStreamingOutRequestLayoutSpecifiedUsers) SetType(v string) *Updat
 }
 
 type UpdateStreamingOutRequestPanes struct {
-	Images []*UpdateStreamingOutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*UpdateStreamingOutRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*UpdateStreamingOutRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -28400,6 +29280,11 @@ func (s UpdateStreamingOutRequestPanes) String() string {
 
 func (s UpdateStreamingOutRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanes) SetBackgrounds(v []*UpdateStreamingOutRequestPanesBackgrounds) *UpdateStreamingOutRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *UpdateStreamingOutRequestPanes) SetImages(v []*UpdateStreamingOutRequestPanesImages) *UpdateStreamingOutRequestPanes {
@@ -28447,11 +29332,117 @@ func (s *UpdateStreamingOutRequestPanes) SetWhiteboard(v *UpdateStreamingOutRequ
 	return s
 }
 
+type UpdateStreamingOutRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetAlpha(v float64) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetDisplay(v string) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetHeight(v float64) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetLayer(v int32) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetUrl(v string) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetWidth(v float64) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetX(v float64) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesBackgrounds) SetY(v float64) *UpdateStreamingOutRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type UpdateStreamingOutRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -28505,6 +29496,11 @@ func (s *UpdateStreamingOutRequestPanesImages) SetAlpha(v float64) *UpdateStream
 	return s
 }
 
+func (s *UpdateStreamingOutRequestPanesImages) SetDisplay(v string) *UpdateStreamingOutRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *UpdateStreamingOutRequestPanesImages) SetHeight(v float64) *UpdateStreamingOutRequestPanesImages {
 	s.Height = &v
 	return s
@@ -28554,6 +29550,10 @@ type UpdateStreamingOutRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                       `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *UpdateStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -28613,6 +29613,11 @@ func (s *UpdateStreamingOutRequestPanesTexts) SetBoxBorderw(v int32) *UpdateStre
 
 func (s *UpdateStreamingOutRequestPanesTexts) SetBoxColor(v *UpdateStreamingOutRequestPanesTextsBoxColor) *UpdateStreamingOutRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutRequestPanesTexts) SetDisplay(v string) *UpdateStreamingOutRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -29412,7 +30417,8 @@ func (s *UpdateStreamingOutShrinkRequestImages) SetY(v float64) *UpdateStreaming
 }
 
 type UpdateStreamingOutShrinkRequestPanes struct {
-	Images []*UpdateStreamingOutShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Backgrounds []*UpdateStreamingOutShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	Images      []*UpdateStreamingOutShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 2
@@ -29444,6 +30450,11 @@ func (s UpdateStreamingOutShrinkRequestPanes) String() string {
 
 func (s UpdateStreamingOutShrinkRequestPanes) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanes) SetBackgrounds(v []*UpdateStreamingOutShrinkRequestPanesBackgrounds) *UpdateStreamingOutShrinkRequestPanes {
+	s.Backgrounds = v
+	return s
 }
 
 func (s *UpdateStreamingOutShrinkRequestPanes) SetImages(v []*UpdateStreamingOutShrinkRequestPanesImages) *UpdateStreamingOutShrinkRequestPanes {
@@ -29491,11 +30502,117 @@ func (s *UpdateStreamingOutShrinkRequestPanes) SetWhiteboard(v *UpdateStreamingO
 	return s
 }
 
+type UpdateStreamingOutShrinkRequestPanesBackgrounds struct {
+	// example:
+	//
+	// 0.9
+	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 0
+	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// example:
+	//
+	// 2
+	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://aliyun.com/123xx.jpg
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0.2
+	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s UpdateStreamingOutShrinkRequestPanesBackgrounds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStreamingOutShrinkRequestPanesBackgrounds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetAlpha(v float64) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetDisplay(v string) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Display = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetHeight(v float64) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Height = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetLayer(v int32) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Layer = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetPaneBackgroundCropMode(v int32) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.PaneBackgroundCropMode = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetUrl(v string) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Url = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetWidth(v float64) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Width = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetX(v float64) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.X = &v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesBackgrounds) SetY(v float64) *UpdateStreamingOutShrinkRequestPanesBackgrounds {
+	s.Y = &v
+	return s
+}
+
 type UpdateStreamingOutShrinkRequestPanesImages struct {
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -29549,6 +30666,11 @@ func (s *UpdateStreamingOutShrinkRequestPanesImages) SetAlpha(v float64) *Update
 	return s
 }
 
+func (s *UpdateStreamingOutShrinkRequestPanesImages) SetDisplay(v string) *UpdateStreamingOutShrinkRequestPanesImages {
+	s.Display = &v
+	return s
+}
+
 func (s *UpdateStreamingOutShrinkRequestPanesImages) SetHeight(v float64) *UpdateStreamingOutShrinkRequestPanesImages {
 	s.Height = &v
 	return s
@@ -29598,6 +30720,10 @@ type UpdateStreamingOutShrinkRequestPanesTexts struct {
 	// 5
 	BoxBorderw *int32                                             `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
 	BoxColor   *UpdateStreamingOutShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// example:
+	//
+	// backup
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
 	// example:
 	//
 	// 0
@@ -29657,6 +30783,11 @@ func (s *UpdateStreamingOutShrinkRequestPanesTexts) SetBoxBorderw(v int32) *Upda
 
 func (s *UpdateStreamingOutShrinkRequestPanesTexts) SetBoxColor(v *UpdateStreamingOutShrinkRequestPanesTextsBoxColor) *UpdateStreamingOutShrinkRequestPanesTexts {
 	s.BoxColor = v
+	return s
+}
+
+func (s *UpdateStreamingOutShrinkRequestPanesTexts) SetDisplay(v string) *UpdateStreamingOutShrinkRequestPanesTexts {
+	s.Display = &v
 	return s
 }
 
@@ -30194,24 +31325,13 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - AddRecordTemplateRequest
@@ -30275,24 +31395,13 @@ func (client *Client) CreateAppLayoutWithOptions(tmpReq *CreateAppLayoutRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppLayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppLayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30360,24 +31469,13 @@ func (client *Client) CreateAppRecordTemplateWithOptions(tmpReq *CreateAppRecord
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30441,24 +31539,13 @@ func (client *Client) CreateAppStreamingOutTemplateWithOptions(tmpReq *CreateApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppStreamingOutTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppStreamingOutTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30536,24 +31623,13 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateAutoLiveStreamRuleRequest
@@ -30631,24 +31707,13 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEventSubscribeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEventSubscribeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEventSubscribeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateEventSubscribeRequest
@@ -30710,24 +31775,13 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMPULayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMPULayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMPULayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateMPULayoutRequest
@@ -30791,24 +31845,13 @@ func (client *Client) DeleteAppLayoutWithOptions(tmpReq *DeleteAppLayoutRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAppLayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAppLayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30876,24 +31919,13 @@ func (client *Client) DeleteAppRecordTemplateWithOptions(tmpReq *DeleteAppRecord
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAppRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAppRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30957,24 +31989,13 @@ func (client *Client) DeleteAppStreamingOutTemplateWithOptions(tmpReq *DeleteApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAppStreamingOutTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAppStreamingOutTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31032,24 +32053,13 @@ func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteAutoLiveStreamRuleRequest
@@ -31103,24 +32113,13 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteChannelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteChannelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteChannelRequest
@@ -31174,24 +32173,13 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEventSubscribeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEventSubscribeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEventSubscribeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteEventSubscribeRequest
@@ -31245,24 +32233,13 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteMPULayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteMPULayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteMPULayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteMPULayoutRequest
@@ -31316,24 +32293,13 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteRecordTemplateRequest
@@ -31372,24 +32338,13 @@ func (client *Client) DescribeAllCallbackWithOptions(runtime *util.RuntimeOption
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAllCallbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAllCallbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAllCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31441,24 +32396,13 @@ func (client *Client) DescribeAppCallStatusWithOptions(request *DescribeAppCallS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppCallStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppCallStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppCallStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31512,24 +32456,13 @@ func (client *Client) DescribeAppCallbackSecretKeyWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppCallbackSecretKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppCallbackSecretKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppCallbackSecretKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31587,24 +32520,13 @@ func (client *Client) DescribeAppKeyWithOptions(request *DescribeAppKeyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31660,24 +32582,13 @@ func (client *Client) DescribeAppLayoutsWithOptions(tmpReq *DescribeAppLayoutsRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppLayoutsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppLayoutsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppLayoutsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31727,24 +32638,13 @@ func (client *Client) DescribeAppLiveStreamStatusWithOptions(request *DescribeAp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppLiveStreamStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppLiveStreamStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppLiveStreamStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31794,24 +32694,13 @@ func (client *Client) DescribeAppRecordStatusWithOptions(request *DescribeAppRec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppRecordStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppRecordStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppRecordStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31867,24 +32756,13 @@ func (client *Client) DescribeAppRecordTemplatesWithOptions(tmpReq *DescribeAppR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppRecordTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppRecordTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppRecordTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31940,24 +32818,13 @@ func (client *Client) DescribeAppRecordingFilesWithOptions(tmpReq *DescribeAppRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppRecordingFilesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppRecordingFilesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppRecordingFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32029,24 +32896,13 @@ func (client *Client) DescribeAppStreamingOutTemplatesWithOptions(tmpReq *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppStreamingOutTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppStreamingOutTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppStreamingOutTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32069,7 +32925,7 @@ func (client *Client) DescribeAppStreamingOutTemplates(request *DescribeAppStrea
 
 // Summary:
 //
-// App列表
+// # App列表
 //
 // @param request - DescribeAppsRequest
 //
@@ -32124,29 +32980,18 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAppsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAppsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAppsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// App列表
+// # App列表
 //
 // @param request - DescribeAppsRequest
 //
@@ -32195,24 +33040,13 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeAutoLiveStreamRuleRequest
@@ -32282,24 +33116,13 @@ func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCallResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCallResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32389,24 +33212,13 @@ func (client *Client) DescribeCallListWithOptions(request *DescribeCallListReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCallListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCallListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCallListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32460,24 +33272,13 @@ func (client *Client) DescribeCallbacksWithOptions(request *DescribeCallbacksReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCallbacksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCallbacksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCallbacksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32500,7 +33301,7 @@ func (client *Client) DescribeCallbacks(request *DescribeCallbacksRequest) (_res
 
 // Summary:
 //
-// DescribeChannel
+// # DescribeChannel
 //
 // @param request - DescribeChannelRequest
 //
@@ -32535,29 +33336,18 @@ func (client *Client) DescribeChannelWithOptions(request *DescribeChannelRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// DescribeChannel
+// # DescribeChannel
 //
 // @param request - DescribeChannelRequest
 //
@@ -32610,24 +33400,13 @@ func (client *Client) DescribeChannelAllUsersWithOptions(request *DescribeChanne
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelAllUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelAllUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelAllUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32697,24 +33476,13 @@ func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelAreaDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelAreaDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelAreaDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32784,24 +33552,13 @@ func (client *Client) DescribeChannelDistributionStatDataWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32867,24 +33624,13 @@ func (client *Client) DescribeChannelOverallDataWithOptions(request *DescribeCha
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelOverallDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelOverallDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelOverallDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32954,24 +33700,13 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelParticipantsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelParticipantsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelParticipantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeChannelParticipantsRequest
@@ -33033,24 +33768,13 @@ func (client *Client) DescribeChannelTopPubUserListWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelTopPubUserListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelTopPubUserListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelTopPubUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33073,7 +33797,7 @@ func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopP
 
 // Summary:
 //
-// DescribeChannelUser
+// # DescribeChannelUser
 //
 // @param request - DescribeChannelUserRequest
 //
@@ -33112,29 +33836,18 @@ func (client *Client) DescribeChannelUserWithOptions(request *DescribeChannelUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// DescribeChannelUser
+// # DescribeChannelUser
 //
 // @param request - DescribeChannelUserRequest
 //
@@ -33195,24 +33908,13 @@ func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeCha
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelUserMetricsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelUserMetricsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelUserMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33270,24 +33972,13 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeChannelUsersRequest
@@ -33333,24 +34024,13 @@ func (client *Client) DescribeChannelsWithOptions(request *DescribeChannelsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeChannelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeChannelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeChannelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33406,24 +34086,13 @@ func (client *Client) DescribeCloudNotesWithOptions(tmpReq *DescribeCloudNotesRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCloudNotesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCloudNotesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCloudNotesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33493,24 +34162,13 @@ func (client *Client) DescribeEndPointEventListWithOptions(request *DescribeEndP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEndPointEventListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEndPointEventListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEndPointEventListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33592,24 +34250,13 @@ func (client *Client) DescribeEndPointMetricDataWithOptions(request *DescribeEnd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeEndPointMetricDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeEndPointMetricDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeEndPointMetricDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33671,24 +34318,13 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStatWithOptions(re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFaultDiagnosisFactorDistributionStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33754,24 +34390,13 @@ func (client *Client) DescribeFaultDiagnosisOverallDataWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFaultDiagnosisOverallDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFaultDiagnosisOverallDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFaultDiagnosisOverallDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33845,24 +34470,13 @@ func (client *Client) DescribeFaultDiagnosisUserDetailWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFaultDiagnosisUserDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFaultDiagnosisUserDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFaultDiagnosisUserDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33944,24 +34558,13 @@ func (client *Client) DescribeFaultDiagnosisUserListWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFaultDiagnosisUserListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFaultDiagnosisUserListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFaultDiagnosisUserListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34031,24 +34634,13 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeMPULayoutInfoListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeMPULayoutInfoListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeMPULayoutInfoListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeMPULayoutInfoListRequest
@@ -34114,24 +34706,13 @@ func (client *Client) DescribePubUserListBySubUserWithOptions(request *DescribeP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribePubUserListBySubUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribePubUserListBySubUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribePubUserListBySubUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34201,24 +34782,13 @@ func (client *Client) DescribeQoeMetricDataWithOptions(request *DescribeQoeMetri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeQoeMetricDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeQoeMetricDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeQoeMetricDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34284,24 +34854,13 @@ func (client *Client) DescribeQualityAreaDistributionStatDataWithOptions(request
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeQualityAreaDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeQualityAreaDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeQualityAreaDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34367,24 +34926,13 @@ func (client *Client) DescribeQualityDistributionStatDataWithOptions(request *De
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeQualityDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeQualityDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeQualityDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34446,24 +34994,13 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatDataWithOptions
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeQualityOsSdkVersionDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34529,24 +35066,13 @@ func (client *Client) DescribeQualityOverallDataWithOptions(request *DescribeQua
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeQualityOverallDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeQualityOverallDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeQualityOverallDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34624,24 +35150,13 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRecordFilesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRecordFilesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRecordFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRecordFilesRequest
@@ -34703,24 +35218,13 @@ func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecord
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRecordTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRecordTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRecordTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRecordTemplatesRequest
@@ -34798,24 +35302,13 @@ func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRtcChannelListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRtcChannelListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRtcChannelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRtcChannelListRequest
@@ -34873,24 +35366,13 @@ func (client *Client) DescribeRtcChannelMetricWithOptions(request *DescribeRtcCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRtcChannelMetricResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRtcChannelMetricResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRtcChannelMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRtcChannelMetricRequest
@@ -34956,24 +35438,13 @@ func (client *Client) DescribeRtcDurationDataWithOptions(request *DescribeRtcDur
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRtcDurationDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRtcDurationDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRtcDurationDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRtcDurationDataRequest
@@ -35039,24 +35510,13 @@ func (client *Client) DescribeRtcPeakChannelCntDataWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRtcPeakChannelCntDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRtcPeakChannelCntDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRtcPeakChannelCntDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRtcPeakChannelCntDataRequest
@@ -35122,24 +35582,13 @@ func (client *Client) DescribeRtcUserCntDataWithOptions(request *DescribeRtcUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRtcUserCntDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRtcUserCntDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRtcUserCntDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRtcUserCntDataRequest
@@ -35197,24 +35646,13 @@ func (client *Client) DescribeStreamingOutStatusWithOptions(request *DescribeStr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeStreamingOutStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeStreamingOutStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeStreamingOutStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35276,24 +35714,13 @@ func (client *Client) DescribeSystemLayoutListWithOptions(request *DescribeSyste
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSystemLayoutListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSystemLayoutListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSystemLayoutListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35359,24 +35786,13 @@ func (client *Client) DescribeUsageAreaDistributionStatDataWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUsageAreaDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUsageAreaDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUsageAreaDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35442,24 +35858,13 @@ func (client *Client) DescribeUsageDistributionStatDataWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUsageDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUsageDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUsageDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35521,24 +35926,13 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatDataWithOptions(r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUsageOsSdkVersionDistributionStatDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35604,24 +35998,13 @@ func (client *Client) DescribeUsageOverallDataWithOptions(request *DescribeUsage
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUsageOverallDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUsageOverallDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUsageOverallDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35683,24 +36066,13 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserInfoInChannelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserInfoInChannelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserInfoInChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeUserInfoInChannelRequest
@@ -35754,24 +36126,13 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DisableAutoLiveStreamRuleRequest
@@ -35825,24 +36186,13 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - EnableAutoLiveStreamRuleRequest
@@ -35896,24 +36246,13 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMPUTaskStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMPUTaskStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMPUTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetMPUTaskStatusRequest
@@ -35971,24 +36310,13 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36042,24 +36370,13 @@ func (client *Client) ModifyAppCallbackStatusWithOptions(request *ModifyAppCallb
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppCallbackStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppCallbackStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppCallbackStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36127,24 +36444,13 @@ func (client *Client) ModifyAppLayoutWithOptions(tmpReq *ModifyAppLayoutRequest,
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppLayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppLayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppLayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36202,24 +36508,13 @@ func (client *Client) ModifyAppLiveStreamStatusWithOptions(request *ModifyAppLiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppLiveStreamStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppLiveStreamStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppLiveStreamStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36277,24 +36572,13 @@ func (client *Client) ModifyAppRecordStatusWithOptions(request *ModifyAppRecordS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppRecordStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppRecordStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppRecordStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36362,24 +36646,13 @@ func (client *Client) ModifyAppRecordTemplateWithOptions(tmpReq *ModifyAppRecord
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36443,24 +36716,13 @@ func (client *Client) ModifyAppStreamingOutTemplateWithOptions(tmpReq *ModifyApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAppStreamingOutTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAppStreamingOutTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAppStreamingOutTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36528,24 +36790,13 @@ func (client *Client) ModifyCallbackMetaWithOptions(tmpReq *ModifyCallbackMetaRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyCallbackMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyCallbackMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyCallbackMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36615,24 +36866,13 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyMPULayoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyMPULayoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyMPULayoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyMPULayoutRequest
@@ -36690,24 +36930,13 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveTerminalsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveTerminalsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveTerminalsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RemoveTerminalsRequest
@@ -36726,7 +36955,7 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 
 // Summary:
 //
-// RemoveUsers
+// # RemoveUsers
 //
 // @param request - RemoveUsersRequest
 //
@@ -36765,29 +36994,18 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// RemoveUsers
+// # RemoveUsers
 //
 // @param request - RemoveUsersRequest
 //
@@ -36846,24 +37064,13 @@ func (client *Client) StartCategoryCallbackWithOptions(tmpReq *StartCategoryCall
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartCategoryCallbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartCategoryCallbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartCategoryCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36912,6 +37119,10 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 		request.MeetingAssistanceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MeetingAssistance, tea.String("MeetingAssistance"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.RealtimeSubtitle)) {
+		request.RealtimeSubtitleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RealtimeSubtitle, tea.String("RealtimeSubtitle"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ServiceInspection)) {
 		request.ServiceInspectionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceInspection, tea.String("ServiceInspection"), tea.String("json"))
 	}
@@ -36922,6 +37133,10 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.TextPolish)) {
 		request.TextPolishShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TextPolish, tea.String("TextPolish"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Transcription)) {
+		request.TranscriptionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Transcription, tea.String("Transcription"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -36949,6 +37164,10 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 		query["MeetingAssistance"] = request.MeetingAssistanceShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RealtimeSubtitleShrink)) {
+		query["RealtimeSubtitle"] = request.RealtimeSubtitleShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceInspectionShrink)) {
 		query["ServiceInspection"] = request.ServiceInspectionShrink
 	}
@@ -36973,6 +37192,10 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 		query["TextPolish"] = request.TextPolishShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TranscriptionShrink)) {
+		query["Transcription"] = request.TranscriptionShrink
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -36987,24 +37210,13 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartCloudNoteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartCloudNoteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartCloudNoteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37027,7 +37239,7 @@ func (client *Client) StartCloudNote(request *StartCloudNoteRequest) (_result *S
 
 // Summary:
 //
-// StartCloudRecord
+// # StartCloudRecord
 //
 // @param tmpReq - StartCloudRecordRequest
 //
@@ -37086,6 +37298,10 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 		query["ReservePaneForNoCameraUser"] = request.ReservePaneForNoCameraUser
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowDefaultBackgroundOnMute)) {
+		query["ShowDefaultBackgroundOnMute"] = request.ShowDefaultBackgroundOnMute
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StorageConfig)) {
 		query["StorageConfig"] = request.StorageConfig
 	}
@@ -37116,29 +37332,18 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartCloudRecordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartCloudRecordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// StartCloudRecord
+// # StartCloudRecord
 //
 // @param request - StartCloudRecordRequest
 //
@@ -37304,24 +37509,13 @@ func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartMPUTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartMPUTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartMPUTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StartMPUTaskRequest
@@ -37443,24 +37637,13 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartRecordTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartRecordTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartRecordTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StartRecordTaskRequest
@@ -37479,7 +37662,7 @@ func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result 
 
 // Summary:
 //
-// StartStreamingOut
+// # StartStreamingOut
 //
 // @param tmpReq - StartStreamingOutRequest
 //
@@ -37538,6 +37721,10 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 		query["ReservePaneForNoCameraUser"] = request.ReservePaneForNoCameraUser
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowDefaultBackgroundOnMute)) {
+		query["ShowDefaultBackgroundOnMute"] = request.ShowDefaultBackgroundOnMute
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.StartWithoutChannel)) {
 		query["StartWithoutChannel"] = request.StartWithoutChannel
 	}
@@ -37576,29 +37763,18 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartStreamingOutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartStreamingOutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// StartStreamingOut
+// # StartStreamingOut
 //
 // @param request - StartStreamingOutRequest
 //
@@ -37657,24 +37833,13 @@ func (client *Client) StopCategoryCallbackWithOptions(tmpReq *StopCategoryCallba
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopCategoryCallbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopCategoryCallbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopCategoryCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37732,24 +37897,13 @@ func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopChannelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopChannelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopChannelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37815,24 +37969,13 @@ func (client *Client) StopCloudNoteWithOptions(request *StopCloudNoteRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopCloudNoteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopCloudNoteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopCloudNoteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37855,7 +37998,7 @@ func (client *Client) StopCloudNote(request *StopCloudNoteRequest) (_result *Sto
 
 // Summary:
 //
-// StopCloudRecord
+// # StopCloudRecord
 //
 // @param request - StopCloudRecordRequest
 //
@@ -37894,29 +38037,18 @@ func (client *Client) StopCloudRecordWithOptions(request *StopCloudRecordRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopCloudRecordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopCloudRecordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// StopCloudRecord
+// # StopCloudRecord
 //
 // @param request - StopCloudRecordRequest
 //
@@ -37969,24 +38101,13 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopMPUTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopMPUTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopMPUTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StopMPUTaskRequest
@@ -38040,24 +38161,13 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopRecordTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopRecordTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopRecordTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StopRecordTaskRequest
@@ -38076,7 +38186,7 @@ func (client *Client) StopRecordTask(request *StopRecordTaskRequest) (_result *S
 
 // Summary:
 //
-// StopStreamingOut
+// # StopStreamingOut
 //
 // @param request - StopStreamingOutRequest
 //
@@ -38115,29 +38225,18 @@ func (client *Client) StopStreamingOutWithOptions(request *StopStreamingOutReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopStreamingOutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopStreamingOutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// StopStreamingOut
+// # StopStreamingOut
 //
 // @param request - StopStreamingOutRequest
 //
@@ -38214,24 +38313,13 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAutoLiveStreamRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAutoLiveStreamRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAutoLiveStreamRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateAutoLiveStreamRuleRequest
@@ -38323,24 +38411,13 @@ func (client *Client) UpdateCloudRecordWithOptions(tmpReq *UpdateCloudRecordRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCloudRecordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateCloudRecordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateCloudRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38470,24 +38547,13 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateMPUTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateMPUTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateMPUTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateMPUTaskRequest
@@ -38597,24 +38663,13 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRecordTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRecordTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRecordTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateRecordTaskRequest
@@ -38736,24 +38791,13 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRecordTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRecordTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRecordTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateRecordTemplateRequest
@@ -38845,24 +38889,13 @@ func (client *Client) UpdateStreamingOutWithOptions(tmpReq *UpdateStreamingOutRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateStreamingOutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateStreamingOutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateStreamingOutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
