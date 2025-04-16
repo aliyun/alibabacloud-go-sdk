@@ -3034,7 +3034,7 @@ type DescribeClusterResponseBody struct {
 	// A2
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
 	// Network Information
-	Networks []*DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+	Networks *DescribeClusterResponseBodyNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Struct"`
 	// Number of Nodes
 	//
 	// example:
@@ -3139,7 +3139,7 @@ func (s *DescribeClusterResponseBody) SetHpnZone(v string) *DescribeClusterRespo
 	return s
 }
 
-func (s *DescribeClusterResponseBody) SetNetworks(v []*DescribeClusterResponseBodyNetworks) *DescribeClusterResponseBody {
+func (s *DescribeClusterResponseBody) SetNetworks(v *DescribeClusterResponseBodyNetworks) *DescribeClusterResponseBody {
 	s.Networks = v
 	return s
 }
@@ -3223,11 +3223,6 @@ func (s *DescribeClusterResponseBodyComponents) SetComponentType(v string) *Desc
 }
 
 type DescribeClusterResponseBodyNetworks struct {
-	// VPC Segment ID
-	//
-	// example:
-	//
-	// vpd-iqd7xunc
 	VpdId *string `json:"VpdId,omitempty" xml:"VpdId,omitempty"`
 }
 
@@ -8427,7 +8422,7 @@ type ListImagesResponseBodyImages struct {
 	// example:
 	//
 	// 5.8G
-	ReleaseFileSize *int64 `json:"ReleaseFileSize,omitempty" xml:"ReleaseFileSize,omitempty"`
+	ReleaseFileSize *string `json:"ReleaseFileSize,omitempty" xml:"ReleaseFileSize,omitempty"`
 	// image type
 	//
 	// example:
@@ -8484,7 +8479,7 @@ func (s *ListImagesResponseBodyImages) SetReleaseFileMd5(v string) *ListImagesRe
 	return s
 }
 
-func (s *ListImagesResponseBodyImages) SetReleaseFileSize(v int64) *ListImagesResponseBodyImages {
+func (s *ListImagesResponseBodyImages) SetReleaseFileSize(v string) *ListImagesResponseBodyImages {
 	s.ReleaseFileSize = &v
 	return s
 }
