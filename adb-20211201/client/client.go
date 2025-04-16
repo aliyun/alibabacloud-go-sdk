@@ -1164,6 +1164,10 @@ func (s *SparkBatchSQL) SetUid(v int64) *SparkBatchSQL {
 type SparkBatchSQLStatement struct {
 	// example:
 	//
+	// s20240122jsdx****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
 	// SELECT 100
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
@@ -1202,6 +1206,11 @@ func (s SparkBatchSQLStatement) String() string {
 
 func (s SparkBatchSQLStatement) GoString() string {
 	return s.String()
+}
+
+func (s *SparkBatchSQLStatement) SetAppId(v string) *SparkBatchSQLStatement {
+	s.AppId = &v
+	return s
 }
 
 func (s *SparkBatchSQLStatement) SetCode(v string) *SparkBatchSQLStatement {
@@ -1925,15 +1934,16 @@ func (s *TableModel) SetViewSecurityMode(v string) *TableModel {
 }
 
 type TableSummaryModel struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Owner       *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	SQL         *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
-	SchemaName  *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName   *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	TableSize   *int64  `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
-	TableType   *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	UpdateTime  *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime    *string                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description   *string                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	MvDetailModel *OpenStructMvDetailModel `json:"MvDetailModel,omitempty" xml:"MvDetailModel,omitempty"`
+	Owner         *string                  `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SQL           *string                  `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	SchemaName    *string                  `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName     *string                  `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSize     *int64                   `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
+	TableType     *string                  `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	UpdateTime    *string                  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s TableSummaryModel) String() string {
@@ -1951,6 +1961,11 @@ func (s *TableSummaryModel) SetCreateTime(v string) *TableSummaryModel {
 
 func (s *TableSummaryModel) SetDescription(v string) *TableSummaryModel {
 	s.Description = &v
+	return s
+}
+
+func (s *TableSummaryModel) SetMvDetailModel(v *OpenStructMvDetailModel) *TableSummaryModel {
+	s.MvDetailModel = v
 	return s
 }
 
@@ -1989,6 +2004,330 @@ func (s *TableSummaryModel) SetUpdateTime(v string) *TableSummaryModel {
 	return s
 }
 
+type OpenStructMVRecommendResultModel struct {
+	AcceleratedQueriesCount   *int64                              `json:"AcceleratedQueriesCount,omitempty" xml:"AcceleratedQueriesCount,omitempty"`
+	BaseTables                []*OpenStructMvBaseTableDetailModel `json:"BaseTables,omitempty" xml:"BaseTables,omitempty" type:"Repeated"`
+	SavedScanbytes            *int64                              `json:"SavedScanbytes,omitempty" xml:"SavedScanbytes,omitempty"`
+	Subquery                  *string                             `json:"Subquery,omitempty" xml:"Subquery,omitempty"`
+	SubqueryId                *int64                              `json:"SubqueryId,omitempty" xml:"SubqueryId,omitempty"`
+	SupportIncrementalRefresh *bool                               `json:"SupportIncrementalRefresh,omitempty" xml:"SupportIncrementalRefresh,omitempty"`
+}
+
+func (s OpenStructMVRecommendResultModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMVRecommendResultModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMVRecommendResultModel) SetAcceleratedQueriesCount(v int64) *OpenStructMVRecommendResultModel {
+	s.AcceleratedQueriesCount = &v
+	return s
+}
+
+func (s *OpenStructMVRecommendResultModel) SetBaseTables(v []*OpenStructMvBaseTableDetailModel) *OpenStructMVRecommendResultModel {
+	s.BaseTables = v
+	return s
+}
+
+func (s *OpenStructMVRecommendResultModel) SetSavedScanbytes(v int64) *OpenStructMVRecommendResultModel {
+	s.SavedScanbytes = &v
+	return s
+}
+
+func (s *OpenStructMVRecommendResultModel) SetSubquery(v string) *OpenStructMVRecommendResultModel {
+	s.Subquery = &v
+	return s
+}
+
+func (s *OpenStructMVRecommendResultModel) SetSubqueryId(v int64) *OpenStructMVRecommendResultModel {
+	s.SubqueryId = &v
+	return s
+}
+
+func (s *OpenStructMVRecommendResultModel) SetSupportIncrementalRefresh(v bool) *OpenStructMVRecommendResultModel {
+	s.SupportIncrementalRefresh = &v
+	return s
+}
+
+type OpenStructMvBaseTableDetailModel struct {
+	DataVolumn   *string `json:"DataVolumn,omitempty" xml:"DataVolumn,omitempty"`
+	EnableBinlog *bool   `json:"EnableBinlog,omitempty" xml:"EnableBinlog,omitempty"`
+	SchemaName   *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s OpenStructMvBaseTableDetailModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMvBaseTableDetailModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMvBaseTableDetailModel) SetDataVolumn(v string) *OpenStructMvBaseTableDetailModel {
+	s.DataVolumn = &v
+	return s
+}
+
+func (s *OpenStructMvBaseTableDetailModel) SetEnableBinlog(v bool) *OpenStructMvBaseTableDetailModel {
+	s.EnableBinlog = &v
+	return s
+}
+
+func (s *OpenStructMvBaseTableDetailModel) SetSchemaName(v string) *OpenStructMvBaseTableDetailModel {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *OpenStructMvBaseTableDetailModel) SetTableName(v string) *OpenStructMvBaseTableDetailModel {
+	s.TableName = &v
+	return s
+}
+
+type OpenStructMvDetailModel struct {
+	BaseTableNames      [][]*string `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
+	ExplicitHit         *int64      `json:"ExplicitHit,omitempty" xml:"ExplicitHit,omitempty"`
+	FirstRefreshTime    *string     `json:"FirstRefreshTime,omitempty" xml:"FirstRefreshTime,omitempty"`
+	ImplicitHit         *int64      `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
+	IsInactive          *bool       `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
+	LocalSize           *int64      `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
+	QueryRewriteEnabled *bool       `json:"QueryRewriteEnabled,omitempty" xml:"QueryRewriteEnabled,omitempty"`
+	RefreshInterval     *string     `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	RefreshState        *string     `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
+	RemoteSize          *int64      `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
+	ResourceGroup       *string     `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	UpdatedAt           *string     `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+}
+
+func (s OpenStructMvDetailModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMvDetailModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMvDetailModel) SetBaseTableNames(v [][]*string) *OpenStructMvDetailModel {
+	s.BaseTableNames = v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetExplicitHit(v int64) *OpenStructMvDetailModel {
+	s.ExplicitHit = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetFirstRefreshTime(v string) *OpenStructMvDetailModel {
+	s.FirstRefreshTime = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetImplicitHit(v int64) *OpenStructMvDetailModel {
+	s.ImplicitHit = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetIsInactive(v bool) *OpenStructMvDetailModel {
+	s.IsInactive = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetLocalSize(v int64) *OpenStructMvDetailModel {
+	s.LocalSize = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetQueryRewriteEnabled(v bool) *OpenStructMvDetailModel {
+	s.QueryRewriteEnabled = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetRefreshInterval(v string) *OpenStructMvDetailModel {
+	s.RefreshInterval = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetRefreshState(v string) *OpenStructMvDetailModel {
+	s.RefreshState = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetRemoteSize(v int64) *OpenStructMvDetailModel {
+	s.RemoteSize = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetResourceGroup(v string) *OpenStructMvDetailModel {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *OpenStructMvDetailModel) SetUpdatedAt(v string) *OpenStructMvDetailModel {
+	s.UpdatedAt = &v
+	return s
+}
+
+type OpenStructMvRecommendSubTaskModel struct {
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ScanQueriesCount *int64  `json:"ScanQueriesCount,omitempty" xml:"ScanQueriesCount,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubQueriesCount  *int64  `json:"SubQueriesCount,omitempty" xml:"SubQueriesCount,omitempty"`
+	SubtaskId        *int64  `json:"SubtaskId,omitempty" xml:"SubtaskId,omitempty"`
+}
+
+func (s OpenStructMvRecommendSubTaskModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMvRecommendSubTaskModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetEndTime(v string) *OpenStructMvRecommendSubTaskModel {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetScanQueriesCount(v int64) *OpenStructMvRecommendSubTaskModel {
+	s.ScanQueriesCount = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetStartTime(v string) *OpenStructMvRecommendSubTaskModel {
+	s.StartTime = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetStatus(v string) *OpenStructMvRecommendSubTaskModel {
+	s.Status = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetSubQueriesCount(v int64) *OpenStructMvRecommendSubTaskModel {
+	s.SubQueriesCount = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendSubTaskModel) SetSubtaskId(v int64) *OpenStructMvRecommendSubTaskModel {
+	s.SubtaskId = &v
+	return s
+}
+
+type OpenStructMvRecommendTaskModel struct {
+	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastRunAt          *string `json:"LastRunAt,omitempty" xml:"LastRunAt,omitempty"`
+	ScanQueriesRange   *int32  `json:"ScanQueriesRange,omitempty" xml:"ScanQueriesRange,omitempty"`
+	SchedulingSettings *string `json:"SchedulingSettings,omitempty" xml:"SchedulingSettings,omitempty"`
+	TaskName           *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s OpenStructMvRecommendTaskModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructMvRecommendTaskModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetCreatedTime(v string) *OpenStructMvRecommendTaskModel {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetDescription(v string) *OpenStructMvRecommendTaskModel {
+	s.Description = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetLastRunAt(v string) *OpenStructMvRecommendTaskModel {
+	s.LastRunAt = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetScanQueriesRange(v int32) *OpenStructMvRecommendTaskModel {
+	s.ScanQueriesRange = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetSchedulingSettings(v string) *OpenStructMvRecommendTaskModel {
+	s.SchedulingSettings = &v
+	return s
+}
+
+func (s *OpenStructMvRecommendTaskModel) SetTaskName(v string) *OpenStructMvRecommendTaskModel {
+	s.TaskName = &v
+	return s
+}
+
+type OpenStructRefreshJobModel struct {
+	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Processid       *string `json:"Processid,omitempty" xml:"Processid,omitempty"`
+	RefreshInterval *string `json:"RefreshInterval,omitempty" xml:"RefreshInterval,omitempty"`
+	RefreshModel    *string `json:"RefreshModel,omitempty" xml:"RefreshModel,omitempty"`
+	ResourceGroup   *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	StartTime       *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s OpenStructRefreshJobModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenStructRefreshJobModel) GoString() string {
+	return s.String()
+}
+
+func (s *OpenStructRefreshJobModel) SetEndTime(v string) *OpenStructRefreshJobModel {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetName(v string) *OpenStructRefreshJobModel {
+	s.Name = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetProcessid(v string) *OpenStructRefreshJobModel {
+	s.Processid = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetRefreshInterval(v string) *OpenStructRefreshJobModel {
+	s.RefreshInterval = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetRefreshModel(v string) *OpenStructRefreshJobModel {
+	s.RefreshModel = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetResourceGroup(v string) *OpenStructRefreshJobModel {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetSchemaName(v string) *OpenStructRefreshJobModel {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetStartTime(v string) *OpenStructRefreshJobModel {
+	s.StartTime = &v
+	return s
+}
+
+func (s *OpenStructRefreshJobModel) SetStatus(v string) *OpenStructRefreshJobModel {
+	s.Status = &v
+	return s
+}
+
 type AllocateClusterPublicConnectionRequest struct {
 	// The prefix of the public endpoint.
 	//
@@ -2000,7 +2339,7 @@ type AllocateClusterPublicConnectionRequest struct {
 	//
 	// test12
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -2095,20 +2434,28 @@ func (s *AllocateClusterPublicConnectionResponse) SetBody(v *AllocateClusterPubl
 }
 
 type ApplyAdviceByIdRequest struct {
+	// The date on which you want to apply the suggestion. Format: yyyyMMdd.
+	//
 	// example:
 	//
 	// 20221101
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// The suggestion ID.
+	//
 	// example:
 	//
 	// 0baf1f52-53df-487f-8292-99a03716****
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-uf6g8w25jacm7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2146,6 +2493,8 @@ func (s *ApplyAdviceByIdRequest) SetRegionId(v string) *ApplyAdviceByIdRequest {
 }
 
 type ApplyAdviceByIdResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5DC10091-348D-12B1-906D-AB49D658012E
@@ -2272,20 +2621,30 @@ func (s *AttachUserENIResponse) SetBody(v *AttachUserENIResponseBody) *AttachUse
 }
 
 type BatchApplyAdviceByIdListRequest struct {
+	// The date on which you want to apply the suggestion. Format: yyyyMMdd.
+	//
 	// example:
 	//
 	// 20221115
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// The IDs of the suggestions that you want to apply. Separate multiple IDs with commas (,).
+	//
 	// example:
 	//
 	// c2589ff3-e86c-4f19-80c8-2aeb7dd9****,53414470-ebf4-4a53-a312-8a1ad8fd****,6e8dce84-fec8-4b0b-9c04-b0cea12c****,b3b9703d-55ca-47e0-96dd-6a4a9dbf****
 	AdviceIdList *string `json:"AdviceIdList,omitempty" xml:"AdviceIdList,omitempty"`
+	// The cluster ID.
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-uf6g8w25jacm7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2323,6 +2682,8 @@ func (s *BatchApplyAdviceByIdListRequest) SetRegionId(v string) *BatchApplyAdvic
 }
 
 type BatchApplyAdviceByIdListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 86F92D26-B774-5FA1-8E53-82CBEEEBB012
@@ -2380,7 +2741,7 @@ type BindAccountRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -2574,14 +2935,22 @@ func (s *BindDBResourceGroupWithUserResponse) SetBody(v *BindDBResourceGroupWith
 }
 
 type CancelSparkReplStatementRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d2001****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 456
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
 	// example:
 	//
 	// 123
@@ -2612,7 +2981,10 @@ func (s *CancelSparkReplStatementRequest) SetStatementId(v int64) *CancelSparkRe
 }
 
 type CancelSparkReplStatementResponseBody struct {
+	// The returned data.
 	Data *CancelSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -2638,43 +3010,80 @@ func (s *CancelSparkReplStatementResponseBody) SetRequestId(v string) *CancelSpa
 }
 
 type CancelSparkReplStatementResponseBodyData struct {
+	// The ID of the Alibaba Cloud account that owns the cluster.
+	//
 	// example:
 	//
 	// 190063530332****
 	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The code that is executed.
+	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code execution status. Valid values:
+	//
+	// 	- CANCELLED
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCEEDED
+	//
+	// 	- ERROR
+	//
 	// example:
 	//
 	// RUNNING
 	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// The code type. Valid values:
+	//
+	// 	- SCALA
+	//
+	// 	- PYTHON
+	//
 	// example:
 	//
 	// PYTHON
-	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The column names.
+	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968056000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
-	// StackOverflow Exception：
+	// StackOverflow Exception:
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The code execution result, which is a JSON string that conforms to Apache Livy.
+	//
 	// example:
 	//
 	// {"text/plain": "2"}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The execution result type, which is in the JSON format. Valid values:
+	//
+	// 	- TEXT: the text content that conforms to Apache Livy.
+	//
+	// 	- TABLE: the table content that conforms to Apache Livy.
+	//
 	// example:
 	//
 	// TEXT
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968056000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
 	// example:
 	//
 	// 123
@@ -2773,10 +3182,118 @@ func (s *CancelSparkReplStatementResponse) SetBody(v *CancelSparkReplStatementRe
 	return s
 }
 
-type CheckBindRamUserRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+type CancelSparkWarehouseBatchSQLRequest struct {
+	// The name of the client, which can be up to 16 characters in length. Specify a descriptive name that makes it easy to identify.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition (V3.0) clusters within a region.
+	// example:
+	//
+	// DMS
+	Agency *string `json:"Agency,omitempty" xml:"Agency,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-uf6485635f***
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The query ID of the Spark SQL statement.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq202501011001s****
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s CancelSparkWarehouseBatchSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkWarehouseBatchSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkWarehouseBatchSQLRequest) SetAgency(v string) *CancelSparkWarehouseBatchSQLRequest {
+	s.Agency = &v
+	return s
+}
+
+func (s *CancelSparkWarehouseBatchSQLRequest) SetDBClusterId(v string) *CancelSparkWarehouseBatchSQLRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CancelSparkWarehouseBatchSQLRequest) SetQueryId(v string) *CancelSparkWarehouseBatchSQLRequest {
+	s.QueryId = &v
+	return s
+}
+
+type CancelSparkWarehouseBatchSQLResponseBody struct {
+	// The returned data.
+	//
+	// example:
+	//
+	// 123
+	Data *SparkBatchSQL `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 771C5FAA-530F-52F7-B84D-EBAD45***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelSparkWarehouseBatchSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkWarehouseBatchSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkWarehouseBatchSQLResponseBody) SetData(v *SparkBatchSQL) *CancelSparkWarehouseBatchSQLResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CancelSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *CancelSparkWarehouseBatchSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelSparkWarehouseBatchSQLResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelSparkWarehouseBatchSQLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelSparkWarehouseBatchSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelSparkWarehouseBatchSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelSparkWarehouseBatchSQLResponse) SetHeaders(v map[string]*string) *CancelSparkWarehouseBatchSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelSparkWarehouseBatchSQLResponse) SetStatusCode(v int32) *CancelSparkWarehouseBatchSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelSparkWarehouseBatchSQLResponse) SetBody(v *CancelSparkWarehouseBatchSQLResponseBody) *CancelSparkWarehouseBatchSQLResponse {
+	s.Body = v
+	return s
+}
+
+type CheckBindRamUserRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// example:
 	//
@@ -2969,60 +3486,86 @@ func (s *CheckSampleDataSetResponse) SetBody(v *CheckSampleDataSetResponseBody) 
 }
 
 type CreateAPSJobRequest struct {
+	// The name of the synchronization job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps-xxxxx
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// The objects to be synchronized.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"EntireInstance":true}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// The name of the database account of the destination cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-xxxxx
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
+	// The password of the database account of the destination cluster.
+	//
 	// example:
 	//
 	// ******
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
+	// The name of the database account of the destination cluster.
+	//
 	// example:
 	//
 	// ******
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
+	// The partitions.
+	//
 	// example:
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the source instance or cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// pc-xxxxx
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	// The password of the database account of the source instance.
+	//
 	// example:
 	//
 	// ******
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
+	// The region ID of the source instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	// The name of the database account of the source instance.
+	//
 	// example:
 	//
 	// xxxx
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
+	// The mode of the destination table.
+	//
 	// example:
 	//
 	// 1
@@ -3098,26 +3641,46 @@ func (s *CreateAPSJobRequest) SetTargetTableMode(v string) *CreateAPSJobRequest 
 }
 
 type CreateAPSJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D1B8ED33-5E9B-512D-B188-1579ED6xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -3244,7 +3807,7 @@ type CreateAccountRequest struct {
 	//
 	// Normal
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -3353,58 +3916,1168 @@ func (s *CreateAccountResponse) SetBody(v *CreateAccountResponseBody) *CreateAcc
 	return s
 }
 
-type CreateApsHiveJobRequest struct {
+type CreateApsCopyWorkloadRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1xxxxxxxx47
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
+	// example:
+	//
+	// 123
+	DatasourceId *int32 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// dbName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The job ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The type of the job.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SLS_INGESTION_ADB
+	WorkloadType *string `json:"WorkloadType,omitempty" xml:"WorkloadType,omitempty"`
+}
+
+func (s CreateApsCopyWorkloadRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsCopyWorkloadRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetDBClusterId(v string) *CreateApsCopyWorkloadRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetDatasourceId(v int32) *CreateApsCopyWorkloadRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetDbName(v string) *CreateApsCopyWorkloadRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetRegionId(v string) *CreateApsCopyWorkloadRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetTableName(v string) *CreateApsCopyWorkloadRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetWorkloadId(v string) *CreateApsCopyWorkloadRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadRequest) SetWorkloadType(v string) *CreateApsCopyWorkloadRequest {
+	s.WorkloadType = &v
+	return s
+}
+
+type CreateApsCopyWorkloadResponseBody struct {
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// -
-	AdvancedConfig   *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateApsCopyWorkloadResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsCopyWorkloadResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetCode(v string) *CreateApsCopyWorkloadResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetData(v map[string]interface{}) *CreateApsCopyWorkloadResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetHttpStatusCode(v int32) *CreateApsCopyWorkloadResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetMessage(v string) *CreateApsCopyWorkloadResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetRequestId(v string) *CreateApsCopyWorkloadResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponseBody) SetSuccess(v bool) *CreateApsCopyWorkloadResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateApsCopyWorkloadResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApsCopyWorkloadResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApsCopyWorkloadResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsCopyWorkloadResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsCopyWorkloadResponse) SetHeaders(v map[string]*string) *CreateApsCopyWorkloadResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponse) SetStatusCode(v int32) *CreateApsCopyWorkloadResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApsCopyWorkloadResponse) SetBody(v *CreateApsCopyWorkloadResponseBody) *CreateApsCopyWorkloadResponse {
+	s.Body = v
+	return s
+}
+
+type CreateApsDatasoureRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-xxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information about the Databricks data source.
+	//
+	// example:
+	//
+	// -
+	DatabricksInfo *CreateApsDatasoureRequestDatabricksInfo `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty" type:"Struct"`
+	// The description of the data source.
+	//
+	// example:
+	//
+	// description
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The name of the data source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-******
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The type of the data source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// KAFKA
+	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The information about the Hive data source.
+	//
+	// example:
+	//
+	// -
+	HiveInfo *CreateApsDatasoureRequestHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
+	// The information about the source Apache Kafka instance.
+	//
+	// example:
+	//
+	// -
+	KafkaInfo *CreateApsDatasoureRequestKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
+	// The mode.
+	//
+	// example:
+	//
+	// ALI_CLOUD_INSTANCE
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The information about the source PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// -
+	PolarDBMysqlInfo *CreateApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
+	// The information about the source PolarDB-X instance.
+	//
+	// example:
+	//
+	// -
+	PolarDBXInfo *CreateApsDatasoureRequestPolarDBXInfo `json:"PolarDBXInfo,omitempty" xml:"PolarDBXInfo,omitempty" type:"Struct"`
+	// The information about the source ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// -
+	RdsMysqlInfo *CreateApsDatasoureRequestRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about the source Simple Log Service (SLS) instance or cluster.
+	//
+	// example:
+	//
+	// -
+	SlsInfo *CreateApsDatasoureRequestSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
+}
+
+func (s CreateApsDatasoureRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequest) SetDBClusterId(v string) *CreateApsDatasoureRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetDatabricksInfo(v *CreateApsDatasoureRequestDatabricksInfo) *CreateApsDatasoureRequest {
+	s.DatabricksInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetDatasourceDescription(v string) *CreateApsDatasoureRequest {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetDatasourceName(v string) *CreateApsDatasoureRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetDatasourceType(v string) *CreateApsDatasoureRequest {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetHiveInfo(v *CreateApsDatasoureRequestHiveInfo) *CreateApsDatasoureRequest {
+	s.HiveInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetKafkaInfo(v *CreateApsDatasoureRequestKafkaInfo) *CreateApsDatasoureRequest {
+	s.KafkaInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetMode(v string) *CreateApsDatasoureRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetPolarDBMysqlInfo(v *CreateApsDatasoureRequestPolarDBMysqlInfo) *CreateApsDatasoureRequest {
+	s.PolarDBMysqlInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetPolarDBXInfo(v *CreateApsDatasoureRequestPolarDBXInfo) *CreateApsDatasoureRequest {
+	s.PolarDBXInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetRdsMysqlInfo(v *CreateApsDatasoureRequestRdsMysqlInfo) *CreateApsDatasoureRequest {
+	s.RdsMysqlInfo = v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetRegionId(v string) *CreateApsDatasoureRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequest) SetSlsInfo(v *CreateApsDatasoureRequestSlsInfo) *CreateApsDatasoureRequest {
+	s.SlsInfo = v
+	return s
+}
+
+type CreateApsDatasoureRequestDatabricksInfo struct {
+	// The token that is used to access Databricks.
+	//
+	// example:
+	//
+	// ******
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// The URL of the workspace.
+	//
+	// example:
+	//
+	// xxxxx
+	WorkspaceURL *string `json:"WorkspaceURL,omitempty" xml:"WorkspaceURL,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestDatabricksInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestDatabricksInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestDatabricksInfo) SetAccessToken(v string) *CreateApsDatasoureRequestDatabricksInfo {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestDatabricksInfo) SetWorkspaceURL(v string) *CreateApsDatasoureRequestDatabricksInfo {
+	s.WorkspaceURL = &v
+	return s
+}
+
+type CreateApsDatasoureRequestHiveInfo struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// ******
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The configuration of the host.
+	//
+	// example:
+	//
+	// ******
+	HostConfig *string `json:"HostConfig,omitempty" xml:"HostConfig,omitempty"`
+	// The URL of the Hive Metastore.
+	//
+	// example:
+	//
+	// ******
+	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-uf*******h
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// The vSwitch ID.
+	//
+	// example:
+	//
+	// vsw-bp1*****k
+	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestHiveInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestHiveInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestHiveInfo) SetClusterId(v string) *CreateApsDatasoureRequestHiveInfo {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestHiveInfo) SetHostConfig(v string) *CreateApsDatasoureRequestHiveInfo {
+	s.HostConfig = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestHiveInfo) SetMetaStoreUri(v string) *CreateApsDatasoureRequestHiveInfo {
+	s.MetaStoreUri = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestHiveInfo) SetSecurityGroup(v string) *CreateApsDatasoureRequestHiveInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestHiveInfo) SetVswitch(v string) *CreateApsDatasoureRequestHiveInfo {
+	s.Vswitch = &v
+	return s
+}
+
+type CreateApsDatasoureRequestKafkaInfo struct {
+	// The ID of the Apache Kafka instance.
+	//
+	// example:
+	//
+	// ******
+	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
+	// The topic of the Apache Kafka instance.
+	//
+	// example:
+	//
+	// test
+	KafkaTopic *string `json:"KafkaTopic,omitempty" xml:"KafkaTopic,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestKafkaInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestKafkaInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestKafkaInfo) SetKafkaClusterId(v string) *CreateApsDatasoureRequestKafkaInfo {
+	s.KafkaClusterId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestKafkaInfo) SetKafkaTopic(v string) *CreateApsDatasoureRequestKafkaInfo {
+	s.KafkaTopic = &v
+	return s
+}
+
+type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
+	// Specifies whether the data source is a cross-account resource. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// The name of the cross-account role.
+	//
+	// example:
+	//
+	// test-role
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
+	// example:
+	//
+	// 123456789*
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The URL used to connect to the custom ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// ****
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// pc-bp*********
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The password.
+	//
+	// example:
+	//
+	// ***
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-******
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// The username used to access the instance.
+	//
+	// example:
+	//
+	// test-user-name
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestPolarDBMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestPolarDBMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetAcross(v bool) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.Across = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetAcrossRole(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetAcrossUid(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetConnectUrl(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetInstanceId(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetPassword(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetRegionId(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetSecurityGroup(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestPolarDBMysqlInfo) SetUserName(v string) *CreateApsDatasoureRequestPolarDBMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type CreateApsDatasoureRequestPolarDBXInfo struct {
+	// The instance ID.
+	//
+	// example:
+	//
+	// -
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestPolarDBXInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestPolarDBXInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestPolarDBXInfo) SetInstanceId(v string) *CreateApsDatasoureRequestPolarDBXInfo {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateApsDatasoureRequestRdsMysqlInfo struct {
+	// The URL used to connect to the read-only instance.
+	//
+	// example:
+	//
+	// ******
+	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// rm-xxxxxxx
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The password of the database account of the instance.
+	//
+	// example:
+	//
+	// ******
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The security group ID.
+	//
+	// example:
+	//
+	// sg-******
+	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// The name of the database account of the instance.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestRdsMysqlInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestRdsMysqlInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetConnectUrl(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.ConnectUrl = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetInstanceId(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetPassword(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetRegionId(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetSecurityGroup(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.SecurityGroup = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestRdsMysqlInfo) SetUserName(v string) *CreateApsDatasoureRequestRdsMysqlInfo {
+	s.UserName = &v
+	return s
+}
+
+type CreateApsDatasoureRequestSlsInfo struct {
+	// Specifies whether the data source is a cross-account resource.
+	//
+	// example:
+	//
+	// false
+	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// The name of the cross-account role.
+	//
+	// example:
+	//
+	// yyy
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
+	// example:
+	//
+	// xxxx
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The SLS project.
+	//
+	// example:
+	//
+	// test-project
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The name of the SLS Logstore.
+	//
+	// example:
+	//
+	// test-store
+	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
+}
+
+func (s CreateApsDatasoureRequestSlsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureRequestSlsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetAcross(v bool) *CreateApsDatasoureRequestSlsInfo {
+	s.Across = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetAcrossRole(v string) *CreateApsDatasoureRequestSlsInfo {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetAcrossUid(v string) *CreateApsDatasoureRequestSlsInfo {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetProject(v string) *CreateApsDatasoureRequestSlsInfo {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetSourceRegionId(v string) *CreateApsDatasoureRequestSlsInfo {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureRequestSlsInfo) SetStore(v string) *CreateApsDatasoureRequestSlsInfo {
+	s.Store = &v
+	return s
+}
+
+type CreateApsDatasoureShrinkRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-xxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information about the Databricks data source.
+	//
+	// example:
+	//
+	// -
+	DatabricksInfoShrink *string `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty"`
+	// The description of the data source.
+	//
+	// example:
+	//
+	// description
+	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The name of the data source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-******
+	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The type of the data source.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// KAFKA
+	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The information about the Hive data source.
+	//
+	// example:
+	//
+	// -
+	HiveInfoShrink *string `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty"`
+	// The information about the source Apache Kafka instance.
+	//
+	// example:
+	//
+	// -
+	KafkaInfoShrink *string `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty"`
+	// The mode.
+	//
+	// example:
+	//
+	// ALI_CLOUD_INSTANCE
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The information about the source PolarDB for MySQL cluster.
+	//
+	// example:
+	//
+	// -
+	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
+	// The information about the source PolarDB-X instance.
+	//
+	// example:
+	//
+	// -
+	PolarDBXInfoShrink *string `json:"PolarDBXInfo,omitempty" xml:"PolarDBXInfo,omitempty"`
+	// The information about the source ApsaraDB RDS for MySQL instance.
+	//
+	// example:
+	//
+	// -
+	RdsMysqlInfoShrink *string `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about the source Simple Log Service (SLS) instance or cluster.
+	//
+	// example:
+	//
+	// -
+	SlsInfoShrink *string `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty"`
+}
+
+func (s CreateApsDatasoureShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetDBClusterId(v string) *CreateApsDatasoureShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetDatabricksInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.DatabricksInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetDatasourceDescription(v string) *CreateApsDatasoureShrinkRequest {
+	s.DatasourceDescription = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetDatasourceName(v string) *CreateApsDatasoureShrinkRequest {
+	s.DatasourceName = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetDatasourceType(v string) *CreateApsDatasoureShrinkRequest {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetHiveInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.HiveInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetKafkaInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.KafkaInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetMode(v string) *CreateApsDatasoureShrinkRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetPolarDBMysqlInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.PolarDBMysqlInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetPolarDBXInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.PolarDBXInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetRdsMysqlInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.RdsMysqlInfoShrink = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetRegionId(v string) *CreateApsDatasoureShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureShrinkRequest) SetSlsInfoShrink(v string) *CreateApsDatasoureShrinkRequest {
+	s.SlsInfoShrink = &v
+	return s
+}
+
+type CreateApsDatasoureResponseBody struct {
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-7xxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information about the cluster resource usage.
+	//
+	// example:
+	//
+	// 69
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 65D2***-45C1-5C18-**********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the dry run succeeds. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateApsDatasoureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureResponseBody) SetCode(v string) *CreateApsDatasoureResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetDBClusterId(v string) *CreateApsDatasoureResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetData(v string) *CreateApsDatasoureResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetHttpStatusCode(v int32) *CreateApsDatasoureResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetMessage(v string) *CreateApsDatasoureResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetRequestId(v string) *CreateApsDatasoureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponseBody) SetSuccess(v bool) *CreateApsDatasoureResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateApsDatasoureResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApsDatasoureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApsDatasoureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsDatasoureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsDatasoureResponse) SetHeaders(v map[string]*string) *CreateApsDatasoureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApsDatasoureResponse) SetStatusCode(v int32) *CreateApsDatasoureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApsDatasoureResponse) SetBody(v *CreateApsDatasoureResponseBody) *CreateApsDatasoureResponse {
+	s.Body = v
+	return s
+}
+
+type CreateApsHiveJobRequest struct {
+	// The advanced configurations.
+	//
+	// example:
+	//
+	// -
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// The policy to handle tables with the same name in the destination cluster.
+	//
+	// example:
+	//
+	// Intercept: reports error and aborts.
+	//
+	// Ignore: ignores and continues migrating the relevant tables.
+	//
+	// Skip: skips related tables and only migrates other tables.
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 40
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The number of AnalyticDB compute units (ACUs) required for data migration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 16
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// The path of the destination data lakehouse in an Object Storage Service (OSS) bucket.
+	//
 	// This parameter is required.
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The number of tasks that are allowed in parallel.
+	//
 	// example:
 	//
 	// 8
 	Parallelism *int32 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// user_default
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The expression that allows objects to be synchronized.
+	//
 	// example:
 	//
 	// *
 	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
+	// The expression that denies objects to be synchronized.
+	//
 	// example:
 	//
 	// abc
 	SyncDenyExpression *string `json:"SyncDenyExpression,omitempty" xml:"SyncDenyExpression,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the workload.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3487,26 +5160,46 @@ func (s *CreateApsHiveJobRequest) SetWorkloadName(v string) *CreateApsHiveJobReq
 }
 
 type CreateApsHiveJobResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// -
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2895BB82-B2C1-408E-AA73-DB8D59******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -3580,6 +5273,985 @@ func (s *CreateApsHiveJobResponse) SetBody(v *CreateApsHiveJobResponseBody) *Cre
 	return s
 }
 
+type CreateApsSlsADBJobRequest struct {
+	// The name of the cross-account role.
+	//
+	// example:
+	//
+	// test-role
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
+	// example:
+	//
+	// 123456
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The advanced configurations.
+	//
+	// example:
+	//
+	// -
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// The information about columns.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	Columns []*CreateApsSlsADBJobRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*********
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
+	// example:
+	//
+	// 327
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The dirty data processing mode.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	DirtyDataHandleMode *string `json:"DirtyDataHandleMode,omitempty" xml:"DirtyDataHandleMode,omitempty"`
+	// The dirty data processing mode.
+	//
+	// example:
+	//
+	// STOP
+	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
+	// Specifies whether to enable the consistency check.
+	//
+	// example:
+	//
+	// false
+	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
+	// The number of full AnalyticDB compute units (ACUs).
+	//
+	// example:
+	//
+	// 16
+	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// The advanced configurations of Hudi.
+	//
+	// example:
+	//
+	// -
+	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
+	// The number of increment ACUs.
+	//
+	// example:
+	//
+	// 168
+	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
+	// The lakehouse ID.
+	//
+	// example:
+	//
+	// 123
+	LakehouseId *int64 `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
+	// The latest offset.
+	//
+	// example:
+	//
+	// -
+	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
+	// The Object Storage Service (OSS) URL.
+	//
+	// example:
+	//
+	// oss://test*
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The format of the output file.
+	//
+	// example:
+	//
+	// -
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The information about partition.
+	//
+	// example:
+	//
+	// -
+	PartitionSpecs []map[string]interface{} `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty" type:"Repeated"`
+	// The password of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_user
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The definition of the primary key.
+	//
+	// example:
+	//
+	// -
+	PrimaryKeyDefinition *string `json:"PrimaryKeyDefinition,omitempty" xml:"PrimaryKeyDefinition,omitempty"`
+	// The name of the SLS project.
+	//
+	// example:
+	//
+	// test
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The region ID of the source cluster.
+	//
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The start offset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
+	// The SLS Logstore.
+	//
+	// example:
+	//
+	// test
+	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
+	// The name of the table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The rules for generating the destination database.
+	//
+	// example:
+	//
+	// -
+	TargetGenerateRule *string `json:"TargetGenerateRule,omitempty" xml:"TargetGenerateRule,omitempty"`
+	// The destination type.
+	//
+	// example:
+	//
+	// ADB
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The timestamp conversion.
+	//
+	// example:
+	//
+	// -
+	UnixTimestampConvert *CreateApsSlsADBJobRequestUnixTimestampConvert `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty" type:"Struct"`
+	// The name of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the workload.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-******
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s CreateApsSlsADBJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobRequest) SetAcrossRole(v string) *CreateApsSlsADBJobRequest {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetAcrossUid(v string) *CreateApsSlsADBJobRequest {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetAdvancedConfig(v string) *CreateApsSlsADBJobRequest {
+	s.AdvancedConfig = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetColumns(v []*CreateApsSlsADBJobRequestColumns) *CreateApsSlsADBJobRequest {
+	s.Columns = v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetDBClusterId(v string) *CreateApsSlsADBJobRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetDatasourceId(v int64) *CreateApsSlsADBJobRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetDbName(v string) *CreateApsSlsADBJobRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetDirtyDataHandleMode(v string) *CreateApsSlsADBJobRequest {
+	s.DirtyDataHandleMode = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetDirtyDataProcessPattern(v string) *CreateApsSlsADBJobRequest {
+	s.DirtyDataProcessPattern = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetExactlyOnce(v string) *CreateApsSlsADBJobRequest {
+	s.ExactlyOnce = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetFullComputeUnit(v string) *CreateApsSlsADBJobRequest {
+	s.FullComputeUnit = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetHudiAdvancedConfig(v string) *CreateApsSlsADBJobRequest {
+	s.HudiAdvancedConfig = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetIncrementalComputeUnit(v string) *CreateApsSlsADBJobRequest {
+	s.IncrementalComputeUnit = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetLakehouseId(v int64) *CreateApsSlsADBJobRequest {
+	s.LakehouseId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetMaxOffsetsPerTrigger(v int64) *CreateApsSlsADBJobRequest {
+	s.MaxOffsetsPerTrigger = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetOssLocation(v string) *CreateApsSlsADBJobRequest {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetOutputFormat(v string) *CreateApsSlsADBJobRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetPartitionSpecs(v []map[string]interface{}) *CreateApsSlsADBJobRequest {
+	s.PartitionSpecs = v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetPassword(v string) *CreateApsSlsADBJobRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetPrimaryKeyDefinition(v string) *CreateApsSlsADBJobRequest {
+	s.PrimaryKeyDefinition = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetProject(v string) *CreateApsSlsADBJobRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetRegionId(v string) *CreateApsSlsADBJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetResourceGroup(v string) *CreateApsSlsADBJobRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetSourceRegionId(v string) *CreateApsSlsADBJobRequest {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetStartingOffsets(v string) *CreateApsSlsADBJobRequest {
+	s.StartingOffsets = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetStore(v string) *CreateApsSlsADBJobRequest {
+	s.Store = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetTableName(v string) *CreateApsSlsADBJobRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetTargetGenerateRule(v string) *CreateApsSlsADBJobRequest {
+	s.TargetGenerateRule = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetTargetType(v string) *CreateApsSlsADBJobRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetUnixTimestampConvert(v *CreateApsSlsADBJobRequestUnixTimestampConvert) *CreateApsSlsADBJobRequest {
+	s.UnixTimestampConvert = v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetUserName(v string) *CreateApsSlsADBJobRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequest) SetWorkloadName(v string) *CreateApsSlsADBJobRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type CreateApsSlsADBJobRequestColumns struct {
+	// The name of the mapping.
+	//
+	// example:
+	//
+	// test
+	MapName *string `json:"MapName,omitempty" xml:"MapName,omitempty"`
+	// The type of the mapping.
+	//
+	// example:
+	//
+	// int
+	MapType *string `json:"MapType,omitempty" xml:"MapType,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// id
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the column.
+	//
+	// example:
+	//
+	// bigint
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateApsSlsADBJobRequestColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobRequestColumns) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobRequestColumns) SetMapName(v string) *CreateApsSlsADBJobRequestColumns {
+	s.MapName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequestColumns) SetMapType(v string) *CreateApsSlsADBJobRequestColumns {
+	s.MapType = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequestColumns) SetName(v string) *CreateApsSlsADBJobRequestColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequestColumns) SetType(v string) *CreateApsSlsADBJobRequestColumns {
+	s.Type = &v
+	return s
+}
+
+type CreateApsSlsADBJobRequestUnixTimestampConvert struct {
+	// Specifies whether to enable the conversion of timestamps.
+	//
+	// example:
+	//
+	// false
+	Convert *string `json:"Convert,omitempty" xml:"Convert,omitempty"`
+	// The format of the timestamp.
+	//
+	// example:
+	//
+	// yyyyMMdd
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	// Specifies whether to enable the timestamp conversion.
+	//
+	// example:
+	//
+	// false
+	Transform *bool `json:"Transform,omitempty" xml:"Transform,omitempty"`
+}
+
+func (s CreateApsSlsADBJobRequestUnixTimestampConvert) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobRequestUnixTimestampConvert) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobRequestUnixTimestampConvert) SetConvert(v string) *CreateApsSlsADBJobRequestUnixTimestampConvert {
+	s.Convert = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequestUnixTimestampConvert) SetFormat(v string) *CreateApsSlsADBJobRequestUnixTimestampConvert {
+	s.Format = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobRequestUnixTimestampConvert) SetTransform(v bool) *CreateApsSlsADBJobRequestUnixTimestampConvert {
+	s.Transform = &v
+	return s
+}
+
+type CreateApsSlsADBJobShrinkRequest struct {
+	// The name of the cross-account role.
+	//
+	// example:
+	//
+	// test-role
+	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
+	// example:
+	//
+	// 123456
+	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The advanced configurations.
+	//
+	// example:
+	//
+	// -
+	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// The information about columns.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*********
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
+	// example:
+	//
+	// 327
+	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the database.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dbName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The dirty data processing mode.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	DirtyDataHandleMode *string `json:"DirtyDataHandleMode,omitempty" xml:"DirtyDataHandleMode,omitempty"`
+	// The dirty data processing mode.
+	//
+	// example:
+	//
+	// STOP
+	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
+	// Specifies whether to enable the consistency check.
+	//
+	// example:
+	//
+	// false
+	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
+	// The number of full AnalyticDB compute units (ACUs).
+	//
+	// example:
+	//
+	// 16
+	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
+	// The advanced configurations of Hudi.
+	//
+	// example:
+	//
+	// -
+	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
+	// The number of increment ACUs.
+	//
+	// example:
+	//
+	// 168
+	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
+	// The lakehouse ID.
+	//
+	// example:
+	//
+	// 123
+	LakehouseId *int64 `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
+	// The latest offset.
+	//
+	// example:
+	//
+	// -
+	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
+	// The Object Storage Service (OSS) URL.
+	//
+	// example:
+	//
+	// oss://test*
+	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The format of the output file.
+	//
+	// example:
+	//
+	// -
+	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
+	// The information about partition.
+	//
+	// example:
+	//
+	// -
+	PartitionSpecsShrink *string `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty"`
+	// The password of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test_user
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The definition of the primary key.
+	//
+	// example:
+	//
+	// -
+	PrimaryKeyDefinition *string `json:"PrimaryKeyDefinition,omitempty" xml:"PrimaryKeyDefinition,omitempty"`
+	// The name of the SLS project.
+	//
+	// example:
+	//
+	// test
+	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the resource group.
+	//
+	// example:
+	//
+	// test
+	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The region ID of the source cluster.
+	//
+	// example:
+	//
+	// cn-beijing
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The start offset.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
+	// The SLS Logstore.
+	//
+	// example:
+	//
+	// test
+	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
+	// The name of the table.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The rules for generating the destination database.
+	//
+	// example:
+	//
+	// -
+	TargetGenerateRule *string `json:"TargetGenerateRule,omitempty" xml:"TargetGenerateRule,omitempty"`
+	// The destination type.
+	//
+	// example:
+	//
+	// ADB
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The timestamp conversion.
+	//
+	// example:
+	//
+	// -
+	UnixTimestampConvertShrink *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
+	// The name of the database account.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user_test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The name of the workload.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-******
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s CreateApsSlsADBJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetAcrossRole(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.AcrossRole = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetAcrossUid(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.AcrossUid = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetAdvancedConfig(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.AdvancedConfig = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetColumnsShrink(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.ColumnsShrink = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetDBClusterId(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetDatasourceId(v int64) *CreateApsSlsADBJobShrinkRequest {
+	s.DatasourceId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetDbName(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetDirtyDataHandleMode(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.DirtyDataHandleMode = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetDirtyDataProcessPattern(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.DirtyDataProcessPattern = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetExactlyOnce(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.ExactlyOnce = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetFullComputeUnit(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.FullComputeUnit = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetHudiAdvancedConfig(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.HudiAdvancedConfig = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetIncrementalComputeUnit(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.IncrementalComputeUnit = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetLakehouseId(v int64) *CreateApsSlsADBJobShrinkRequest {
+	s.LakehouseId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetMaxOffsetsPerTrigger(v int64) *CreateApsSlsADBJobShrinkRequest {
+	s.MaxOffsetsPerTrigger = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetOssLocation(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.OssLocation = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetOutputFormat(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetPartitionSpecsShrink(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.PartitionSpecsShrink = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetPassword(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetPrimaryKeyDefinition(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.PrimaryKeyDefinition = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetProject(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetRegionId(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetResourceGroup(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.ResourceGroup = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetSourceRegionId(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetStartingOffsets(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.StartingOffsets = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetStore(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.Store = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetTableName(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetTargetGenerateRule(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.TargetGenerateRule = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetTargetType(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetUnixTimestampConvertShrink(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.UnixTimestampConvertShrink = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetUserName(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobShrinkRequest) SetWorkloadName(v string) *CreateApsSlsADBJobShrinkRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type CreateApsSlsADBJobResponseBody struct {
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// -
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the dry run succeeds. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateApsSlsADBJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetCode(v string) *CreateApsSlsADBJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetData(v string) *CreateApsSlsADBJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetHttpStatusCode(v int32) *CreateApsSlsADBJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetMessage(v string) *CreateApsSlsADBJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetRequestId(v string) *CreateApsSlsADBJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponseBody) SetSuccess(v bool) *CreateApsSlsADBJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateApsSlsADBJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateApsSlsADBJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateApsSlsADBJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApsSlsADBJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApsSlsADBJobResponse) SetHeaders(v map[string]*string) *CreateApsSlsADBJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponse) SetStatusCode(v int32) *CreateApsSlsADBJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateApsSlsADBJobResponse) SetBody(v *CreateApsSlsADBJobResponseBody) *CreateApsSlsADBJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBClusterRequest struct {
 	// The ID of the backup set that you want to use to restore data.
 	//
@@ -3615,7 +6287,7 @@ type CreateDBClusterRequest struct {
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The network type of the cluster. Only **VPC*	- is supported.
+	// The network type of the cluster. Set the value to **VPC**.
 	//
 	// example:
 	//
@@ -3629,7 +6301,12 @@ type CreateDBClusterRequest struct {
 	//
 	// 5.0
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
-	DiskEncryption   *bool   `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
+	// Specifies whether to enable disk encryption.
+	//
+	// example:
+	//
+	// false
+	DiskEncryption *bool `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
 	// Specifies whether to allocate all reserved computing resources to the user_default resource group. Valid values:
 	//
 	// 	- **true*	- (default)
@@ -3639,8 +6316,15 @@ type CreateDBClusterRequest struct {
 	// example:
 	//
 	// true
-	EnableDefaultResourcePool *bool   `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
-	KmsId                     *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
+	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
+	// The ID of the key that is used to encrypt disk data.
+	//
+	// >  This parameter must be specified only when disk encryption is enabled.
+	//
+	// example:
+	//
+	// e1935511-cf88-1123-a0f8-1be8d251****
+	KmsId *string `json:"KmsId,omitempty" xml:"KmsId,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
 	// 	- **Postpaid**: pay-as-you-go.
@@ -3665,22 +6349,56 @@ type CreateDBClusterRequest struct {
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	// The product form of the cluster. Valid values:
+	//
+	// 	- **IntegrationForm**: integrated.
+	//
+	// 	- **LegacyForm**: Data Lakehouse Edition.
+	//
 	// example:
 	//
 	// LegacyForm
 	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
-	// The region ID.
+	// The edition of the cluster. Valid values:
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// 	- **BasicVersion**: Basic Edition.
+	//
+	// 	- **EnterpriseVersion**: Enterprise Edition.
+	//
+	// >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+	//
+	// example:
+	//
+	// BasicVersion
+	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReservedNodeCount *int32  `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	ReservedNodeSize  *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of reserved resource nodes.
+	//
+	// 	- For Enterprise Edition, the default value is 3 and the step size is 3.
+	//
+	// 	- For Basic Edition, the default value is 1.
+	//
+	// >  This parameter must be specified only when ProductForm is set to IntegrationForm.
+	//
+	// example:
+	//
+	// 3
+	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
+	// The specifications of reserved resource nodes. Unit: ACUs.
+	//
+	// example:
+	//
+	// 8ACU
+	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	// The resource group ID.
 	//
 	// example:
@@ -3703,7 +6421,23 @@ type CreateDBClusterRequest struct {
 	//
 	// backup
 	RestoreType *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster. If you want to restore a Data Lakehouse Edition cluster from a Data Warehouse Edition cluster, you must specify this parameter.
+	// The ID of the secondary vSwitch.
+	//
+	// >  You cannot set this parameter to a value that is the same as that of the VSwitchId parameter.
+	//
+	// example:
+	//
+	// vsw-bp1aadw9k19x451gx****
+	SecondaryVSwitchId *string `json:"SecondaryVSwitchId,omitempty" xml:"SecondaryVSwitchId,omitempty"`
+	// The ID of the secondary zone.
+	//
+	// >  You cannot set this parameter to a value that is the same as that of the ZoneId parameter.
+	//
+	// example:
+	//
+	// cn-beijing-h
+	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
+	// The ID of the source AnalyticDB for MySQL Data Warehouse Edition cluster.
 	//
 	// example:
 	//
@@ -3719,17 +6453,19 @@ type CreateDBClusterRequest struct {
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// The tags to add to the cluster.
 	Tag []*CreateDBClusterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The subscription duration of the subscription cluster.
+	// The subscription period of the subscription cluster.
 	//
-	// 	- Valid values when **Period*	- is set to Year: 1 to 3 (integer).
+	// 	- Valid values when Period is set to Year: 1, 2, and 3 (integer)
 	//
-	// 	- Valid values when **Period*	- is set to Month: 1 to 9 (integer).
+	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
 	//
-	// >  This parameter must be specified when PayType is set to **Prepaid**.
+	// > 	- This parameter is required if the PayType parameter is set to Prepaid.
+	//
+	// > 	- Longer subscription periods offer more savings. Purchasing a cluster for one year is more cost-effective than purchasing the cluster for 10 or 11 months.
 	//
 	// example:
 	//
-	// 3
+	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
 	//
@@ -3747,9 +6483,9 @@ type CreateDBClusterRequest struct {
 	//
 	// vsw-bp1aadw9k19x6cis9****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID.
+	// The zone ID of the cluster.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent zone list.
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent zone list.
 	//
 	// This parameter is required.
 	//
@@ -3827,6 +6563,11 @@ func (s *CreateDBClusterRequest) SetProductForm(v string) *CreateDBClusterReques
 	return s
 }
 
+func (s *CreateDBClusterRequest) SetProductVersion(v string) *CreateDBClusterRequest {
+	s.ProductVersion = &v
+	return s
+}
+
 func (s *CreateDBClusterRequest) SetRegionId(v string) *CreateDBClusterRequest {
 	s.RegionId = &v
 	return s
@@ -3854,6 +6595,16 @@ func (s *CreateDBClusterRequest) SetRestoreToTime(v string) *CreateDBClusterRequ
 
 func (s *CreateDBClusterRequest) SetRestoreType(v string) *CreateDBClusterRequest {
 	s.RestoreType = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetSecondaryVSwitchId(v string) *CreateDBClusterRequest {
+	s.SecondaryVSwitchId = &v
+	return s
+}
+
+func (s *CreateDBClusterRequest) SetSecondaryZoneId(v string) *CreateDBClusterRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -3930,7 +6681,7 @@ func (s *CreateDBClusterRequestTag) SetValue(v string) *CreateDBClusterRequestTa
 }
 
 type CreateDBClusterResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -4014,6 +6765,9 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 }
 
 type CreateDBResourceGroupRequest struct {
+	// example:
+	//
+	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
@@ -4044,8 +6798,14 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// True
-	EnableSpot   *bool                  `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
-	Engine       *string                `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// example:
+	//
+	// SparkWarehouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -4107,8 +6867,9 @@ type CreateDBResourceGroupRequest struct {
 	// example:
 	//
 	// 0ACU
-	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	MinComputeResource *string                                `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	MinGpuQuantity     *int32                                 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfig          *CreateDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -4206,6 +6967,11 @@ func (s *CreateDBResourceGroupRequest) SetMinGpuQuantity(v int32) *CreateDBResou
 	return s
 }
 
+func (s *CreateDBResourceGroupRequest) SetRayConfig(v *CreateDBResourceGroupRequestRayConfig) *CreateDBResourceGroupRequest {
+	s.RayConfig = v
+	return s
+}
+
 func (s *CreateDBResourceGroupRequest) SetRegionId(v string) *CreateDBResourceGroupRequest {
 	s.RegionId = &v
 	return s
@@ -4223,6 +6989,88 @@ func (s *CreateDBResourceGroupRequest) SetSpecName(v string) *CreateDBResourceGr
 
 func (s *CreateDBResourceGroupRequest) SetTargetResourceGroupName(v string) *CreateDBResourceGroupRequest {
 	s.TargetResourceGroupName = &v
+	return s
+}
+
+type CreateDBResourceGroupRequestRayConfig struct {
+	Category     *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	HeadSpec     *string                                              `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	WorkerGroups []*CreateDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
+}
+
+func (s CreateDBResourceGroupRequestRayConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequestRayConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequestRayConfig) SetCategory(v string) *CreateDBResourceGroupRequestRayConfig {
+	s.Category = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfig) SetHeadSpec(v string) *CreateDBResourceGroupRequestRayConfig {
+	s.HeadSpec = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*CreateDBResourceGroupRequestRayConfigWorkerGroups) *CreateDBResourceGroupRequestRayConfig {
+	s.WorkerGroups = v
+	return s
+}
+
+type CreateDBResourceGroupRequestRayConfigWorkerGroups struct {
+	AllocateUnit       *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	MaxWorkerQuantity  *int32  `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	MinWorkerQuantity  *int32  `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	WorkerSpecName     *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	WorkerSpecType     *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
+}
+
+func (s CreateDBResourceGroupRequestRayConfigWorkerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBResourceGroupRequestRayConfigWorkerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetAllocateUnit(v string) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.AllocateUnit = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetGroupName(v string) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetMaxWorkerQuantity(v int32) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.MaxWorkerQuantity = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetMinWorkerQuantity(v int32) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.MinWorkerQuantity = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerDiskCapacity(v string) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerDiskCapacity = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerSpecName(v string) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerSpecName = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerSpecType(v string) *CreateDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerSpecType = &v
 	return s
 }
 
@@ -4277,6 +7125,9 @@ func (s *CreateDBResourceGroupRequestRules) SetTargetGroupName(v string) *Create
 }
 
 type CreateDBResourceGroupShrinkRequest struct {
+	// example:
+	//
+	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
@@ -4307,8 +7158,14 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// True
-	EnableSpot         *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// example:
+	//
+	// SparkWarehouse
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -4372,6 +7229,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfigShrink    *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
@@ -4466,6 +7324,11 @@ func (s *CreateDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *Cr
 
 func (s *CreateDBResourceGroupShrinkRequest) SetMinGpuQuantity(v int32) *CreateDBResourceGroupShrinkRequest {
 	s.MinGpuQuantity = &v
+	return s
+}
+
+func (s *CreateDBResourceGroupShrinkRequest) SetRayConfigShrink(v string) *CreateDBResourceGroupShrinkRequest {
+	s.RayConfigShrink = &v
 	return s
 }
 
@@ -4565,7 +7428,7 @@ type CreateElasticPlanRequest struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -4759,31 +7622,33 @@ func (s *CreateElasticPlanResponse) SetBody(v *CreateElasticPlanResponseBody) *C
 }
 
 type CreateLakeStorageRequest struct {
-	// -
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster with which you want to associate the lake storage.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions that you want to grant on the lake storage to the Alibaba Cloud account besides the permissions that are automatically granted to the Resource Access Management (RAM) user or the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// -
 	Permissions []*CreateLakeStorageRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// RegionId
+	// The region ID.
 	//
 	// example:
 	//
@@ -4825,25 +7690,25 @@ func (s *CreateLakeStorageRequest) SetRegionId(v string) *CreateLakeStorageReque
 }
 
 type CreateLakeStorageRequestPermissions struct {
-	// 具有该权限的账户或RAM用户ID
+	// The account ID.
 	//
 	// example:
 	//
 	// -
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 表示是否允许读取湖存储的权限
+	// The read permissions.
 	//
 	// example:
 	//
 	// -
 	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
-	// 指定权限的账户类型
+	// The account type.
 	//
 	// example:
 	//
 	// -
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 表示是否允许向湖存储写入数据的权限
+	// The write permissions.
 	//
 	// example:
 	//
@@ -4880,31 +7745,33 @@ func (s *CreateLakeStorageRequestPermissions) SetWrite(v bool) *CreateLakeStorag
 }
 
 type CreateLakeStorageShrinkRequest struct {
-	// -
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
 	// ******
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster with which you want to associate the lake storage.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions that you want to grant on the lake storage to the Alibaba Cloud account besides the permissions that are automatically granted to the Resource Access Management (RAM) user or the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// -
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
-	// RegionId
+	// The region ID.
 	//
 	// example:
 	//
@@ -4946,28 +7813,42 @@ func (s *CreateLakeStorageShrinkRequest) SetRegionId(v string) *CreateLakeStorag
 }
 
 type CreateLakeStorageResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The usage details of cluster resources.
+	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. If the operation is asynchronously implemented, the job ID is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID
 	//
 	// example:
 	//
 	// ******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -5856,7 +8737,7 @@ type DeleteAccountRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -5951,18 +8832,24 @@ func (s *DeleteAccountResponse) SetBody(v *DeleteAccountResponseBody) *DeleteAcc
 }
 
 type DeleteApsDatasoureRequest struct {
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5995,26 +8882,46 @@ func (s *DeleteApsDatasoureRequest) SetRegionId(v string) *DeleteApsDatasoureReq
 }
 
 type DeleteApsDatasoureResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 7
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FAE98A4F-****-****-BF6D-67EEAC9C39DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **True**
+	//
+	// 	- **False**
+	//
 	// example:
 	//
 	// True
@@ -6089,12 +8996,18 @@ func (s *DeleteApsDatasoureResponse) SetBody(v *DeleteApsDatasoureResponseBody) 
 }
 
 type DeleteApsJobRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps-*****
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6122,34 +9035,54 @@ func (s *DeleteApsJobRequest) SetRegionId(v string) *DeleteApsJobRequest {
 }
 
 type DeleteApsJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-*****
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ****-****-5D14-AC9F-*********
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// True
@@ -6445,7 +9378,7 @@ func (s *DeleteDBClusterResponse) SetBody(v *DeleteDBClusterResponseBody) *Delet
 }
 
 type DeleteDBResourceGroupRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -6537,7 +9470,7 @@ func (s *DeleteDBResourceGroupResponse) SetBody(v *DeleteDBResourceGroupResponse
 type DeleteElasticPlanRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -6622,6 +9555,162 @@ func (s *DeleteElasticPlanResponse) SetStatusCode(v int32) *DeleteElasticPlanRes
 }
 
 func (s *DeleteElasticPlanResponse) SetBody(v *DeleteElasticPlanResponseBody) *DeleteElasticPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLakeStorageRequest struct {
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
+	// example:
+	//
+	// amv-bp*********
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the lake storage.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteLakeStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeStorageRequest) SetDBClusterId(v string) *DeleteLakeStorageRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteLakeStorageRequest) SetLakeStorageId(v string) *DeleteLakeStorageRequest {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *DeleteLakeStorageRequest) SetRegionId(v string) *DeleteLakeStorageRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteLakeStorageResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Indicates whether the delete operation was successful.
+	//
+	// example:
+	//
+	// True
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. If the operation is asynchronously implemented, the job ID is returned.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 2******-B2C1-408E-AA73-DB8D59******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteLakeStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeStorageResponseBody) SetCode(v string) *DeleteLakeStorageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponseBody) SetData(v string) *DeleteLakeStorageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponseBody) SetHttpStatusCode(v int32) *DeleteLakeStorageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponseBody) SetMessage(v string) *DeleteLakeStorageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponseBody) SetRequestId(v string) *DeleteLakeStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponseBody) SetSuccess(v bool) *DeleteLakeStorageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteLakeStorageResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLakeStorageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLakeStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeStorageResponse) SetHeaders(v map[string]*string) *DeleteLakeStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLakeStorageResponse) SetStatusCode(v int32) *DeleteLakeStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLakeStorageResponse) SetBody(v *DeleteLakeStorageResponseBody) *DeleteLakeStorageResponse {
 	s.Body = v
 	return s
 }
@@ -6791,167 +9880,6 @@ func (s *DeletePerformanceViewResponse) SetStatusCode(v int32) *DeletePerformanc
 }
 
 func (s *DeletePerformanceViewResponse) SetBody(v *DeletePerformanceViewResponseBody) *DeletePerformanceViewResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteProcessInstanceRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// am-wz9rq819u71ig****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the workflow instance.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 4017
-	ProcessInstanceId *int64 `json:"ProcessInstanceId,omitempty" xml:"ProcessInstanceId,omitempty"`
-	// The project ID, which is the unique identifier of the project.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 9839028042592
-	ProjectCode *int64 `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	// The region ID of the cluster.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s DeleteProcessInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProcessInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProcessInstanceRequest) SetDBClusterId(v string) *DeleteProcessInstanceRequest {
-	s.DBClusterId = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceRequest) SetProcessInstanceId(v int64) *DeleteProcessInstanceRequest {
-	s.ProcessInstanceId = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceRequest) SetProjectCode(v int64) *DeleteProcessInstanceRequest {
-	s.ProjectCode = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceRequest) SetRegionId(v string) *DeleteProcessInstanceRequest {
-	s.RegionId = &v
-	return s
-}
-
-type DeleteProcessInstanceResponseBody struct {
-	// Indicates whether the workflow instance is deleted. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The returned message. Valid values:
-	//
-	// 	- If the request was successful, **Success*	- is returned.
-	//
-	// 	- If the request failed, an error message is returned.
-	//
-	// example:
-	//
-	// Success
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// 115F9CCA-EF2E-5F91-AB60-4961D52FEAB4
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteProcessInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProcessInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProcessInstanceResponseBody) SetData(v bool) *DeleteProcessInstanceResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceResponseBody) SetMessage(v string) *DeleteProcessInstanceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceResponseBody) SetRequestId(v string) *DeleteProcessInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceResponseBody) SetSuccess(v bool) *DeleteProcessInstanceResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteProcessInstanceResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteProcessInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteProcessInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProcessInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProcessInstanceResponse) SetHeaders(v map[string]*string) *DeleteProcessInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProcessInstanceResponse) SetStatusCode(v int32) *DeleteProcessInstanceResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteProcessInstanceResponse) SetBody(v *DeleteProcessInstanceResponseBody) *DeleteProcessInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -7207,18 +10135,24 @@ func (s *DeleteSparkTemplateFileResponse) SetBody(v *DeleteSparkTemplateFileResp
 }
 
 type DescribeAPSADBInstancesRequest struct {
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7251,38 +10185,64 @@ func (s *DescribeAPSADBInstancesRequest) SetRegionId(v string) *DescribeAPSADBIn
 }
 
 type DescribeAPSADBInstancesResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 0
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The queried clusters.
+	//
 	// example:
 	//
 	// -
 	Items []*DescribeAPSADBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -7343,30 +10303,44 @@ func (s *DescribeAPSADBInstancesResponseBody) SetTotalCount(v string) *DescribeA
 }
 
 type DescribeAPSADBInstancesResponseBodyItems struct {
+	// The specifications of the reserved computing resources.
+	//
 	// example:
 	//
 	// 16ACU
 	ComputeResource *string `json:"ComputeResource,omitempty" xml:"ComputeResource,omitempty"`
+	// The description of the cluster.
+	//
 	// example:
 	//
 	// adb_test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	//
 	// example:
 	//
 	// am-bp1********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The status of the cluster.
+	//
 	// example:
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// The amount of remaining reserved computing resources that are available in the cluster.
+	//
 	// example:
 	//
 	// 24ACU
 	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
+	// The specifications of the reserved storage resources.
+	//
 	// example:
 	//
 	// 24ACU
 	StorageResource *int64 `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
+	// The zone ID of the cluster.
+	//
 	// example:
 	//
 	// cn-hangzhou-h
@@ -7441,6 +10415,327 @@ func (s *DescribeAPSADBInstancesResponse) SetStatusCode(v int32) *DescribeAPSADB
 }
 
 func (s *DescribeAPSADBInstancesResponse) SetBody(v *DescribeAPSADBInstancesResponseBody) *DescribeAPSADBInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAbnormalPatternDetectionRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-11-17T02:16Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh*	- (default): simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-09-30T00:10Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeAbnormalPatternDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalPatternDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetDBClusterId(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetEndTime(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetLang(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetOwnerAccount(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetOwnerId(v int64) *DescribeAbnormalPatternDetectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetRegionId(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetResourceOwnerAccount(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetResourceOwnerId(v int64) *DescribeAbnormalPatternDetectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionRequest) SetStartTime(v string) *DescribeAbnormalPatternDetectionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeAbnormalPatternDetectionResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeAbnormalPatternDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 19B824E0-690D-5A78-9992-5398C2F43694
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBody) SetDBClusterId(v string) *DescribeAbnormalPatternDetectionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBody) SetDetectionItems(v []*DescribeAbnormalPatternDetectionResponseBodyDetectionItems) *DescribeAbnormalPatternDetectionResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBody) SetRequestId(v string) *DescribeAbnormalPatternDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBody) SetTotalCount(v string) *DescribeAbnormalPatternDetectionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAbnormalPatternDetectionResponseBodyDetectionItems struct {
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Cost
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The detection result items.
+	Results []*DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItems) SetName(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItems) SetResults(v []*DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) *DescribeAbnormalPatternDetectionResponseBodyDetectionItems {
+	s.Results = v
+	return s
+}
+
+type DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults struct {
+	// The IP address of the SQL client that submits the SQL pattern.
+	//
+	// example:
+	//
+	// 172.16.133.168
+	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
+	// The description of the detection result.
+	//
+	// example:
+	//
+	// Two SQL patterns that have abnormal totalTime metric values are detected. This may result in increased CPU utilization, query slowdown, and degraded system stability. Go to the monitoring page to diagnose the issue and then perform optimization.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The number of failed SQL patterns within the time range.
+	//
+	// example:
+	//
+	// 7
+	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
+	// The SQL pattern ID.
+	//
+	// example:
+	//
+	// 2803084667741875187
+	PatternId *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
+	// The number of queries.
+	//
+	// example:
+	//
+	// 72
+	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
+	// The metrics related to the SQL pattern.
+	//
+	// example:
+	//
+	// Maximum query duration: 1.43s
+	//
+	// Maximum peak memory: 20.73 MB
+	//
+	// Maximum read table data: 10.12 MB
+	RelatedMetrics *string `json:"RelatedMetrics,omitempty" xml:"RelatedMetrics,omitempty"`
+	// The SQL statement that represents the SQL pattern.
+	//
+	// example:
+	//
+	// SELECT `tsid`nFROM `prod_ods_marketing_engine_material`nWHERE `tsid` = ?nLIMIT ?
+	SQLPattern *string `json:"SQLPattern,omitempty" xml:"SQLPattern,omitempty"`
+	// The names of tables.
+	//
+	// example:
+	//
+	// dw_student_exam.ods_school_queanal
+	Tables *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	// The name of the database account that is used to submit the query.
+	//
+	// example:
+	//
+	// test
+	User *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetAccessIp(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.AccessIp = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetDetail(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetFailedCount(v int64) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.FailedCount = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetPatternId(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.PatternId = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetQueryCount(v int64) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.QueryCount = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetRelatedMetrics(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.RelatedMetrics = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetSQLPattern(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.SQLPattern = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetTables(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.Tables = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults) SetUser(v string) *DescribeAbnormalPatternDetectionResponseBodyDetectionItemsResults {
+	s.User = &v
+	return s
+}
+
+type DescribeAbnormalPatternDetectionResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAbnormalPatternDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAbnormalPatternDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAbnormalPatternDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAbnormalPatternDetectionResponse) SetHeaders(v map[string]*string) *DescribeAbnormalPatternDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponse) SetStatusCode(v int32) *DescribeAbnormalPatternDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAbnormalPatternDetectionResponse) SetBody(v *DescribeAbnormalPatternDetectionResponseBody) *DescribeAbnormalPatternDetectionResponse {
 	s.Body = v
 	return s
 }
@@ -8987,12 +12282,16 @@ func (s *DescribeAdbMySqlTablesResponse) SetBody(v *DescribeAdbMySqlTablesRespon
 }
 
 type DescribeAdviceServiceEnabledRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-2ze0vp0j6t3to****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9020,14 +12319,28 @@ func (s *DescribeAdviceServiceEnabledRequest) SetRegionId(v string) *DescribeAdv
 }
 
 type DescribeAdviceServiceEnabledResponseBody struct {
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a **Success*	- message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E031AABF-BD56-5966-A063-4283EF18DB45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the suggestion feature is enabled. Valid values:
+	//
+	// 	- **True**
+	//
+	// 	- **False**
+	//
 	// example:
 	//
 	// False
@@ -9441,6 +12754,452 @@ func (s *DescribeAllDataSourceResponse) SetBody(v *DescribeAllDataSourceResponse
 	return s
 }
 
+type DescribeAppliedAdvicesRequest struct {
+	// The type of the suggestion. Valid values:
+	//
+	// 	- **INDEX**: index optimization.
+	//
+	// 	- **TIERING**: hot and cold data optimization.
+	//
+	// example:
+	//
+	// INDEX
+	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end date of the time range to query. Specify the date in the yyyyMMdd format.
+	//
+	// example:
+	//
+	// 20220824
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The keyword that is used to query information by table name.
+	//
+	// example:
+	//
+	// you_table_name
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The display language of the suggestion. Valid values:
+	//
+	// 	- **zh*	- (default): simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+	//
+	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     	- `SchemaName`: the name of the database.
+	//
+	//     	- `TableName`: the name of the table.
+	//
+	//     	- `JobStatus`: the status of the BUILD job that is triggered on the table.
+	//
+	//     	- `SubmitTime`: the time when the suggestion was submitted.
+	//
+	//     	- `Benefit`: the expected benefits of the applied optimization suggestion.
+	//
+	// 	- `Type` specifies the sorting order. Valid values:
+	//
+	//     	- `Asc`: ascending order.
+	//
+	//     	- `Desc`: descending order.
+	//
+	// >  If you do not specify this parameter, optimization suggestions are sorted in descending order based on the submission time.
+	//
+	// example:
+	//
+	// [{\\"Field\\":\\"AdviceType\\",\\"Type\\":\\"Desc\\"}]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30**(Default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table in the **DatabaseName.TableName*	- format.
+	//
+	// example:
+	//
+	// tpch.lineitem
+	SchemaTableName *string `json:"SchemaTableName,omitempty" xml:"SchemaTableName,omitempty"`
+	// The start date of the time range to query. Specify the date in the yyyyMMdd format.
+	//
+	// example:
+	//
+	// 20220811
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeAppliedAdvicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppliedAdvicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetAdviceType(v string) *DescribeAppliedAdvicesRequest {
+	s.AdviceType = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetDBClusterId(v string) *DescribeAppliedAdvicesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetEndTime(v int64) *DescribeAppliedAdvicesRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetKeyword(v string) *DescribeAppliedAdvicesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetLang(v string) *DescribeAppliedAdvicesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetOrder(v string) *DescribeAppliedAdvicesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetPageNumber(v int64) *DescribeAppliedAdvicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetPageSize(v int64) *DescribeAppliedAdvicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetRegionId(v string) *DescribeAppliedAdvicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetSchemaTableName(v string) *DescribeAppliedAdvicesRequest {
+	s.SchemaTableName = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesRequest) SetStartTime(v int64) *DescribeAppliedAdvicesRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeAppliedAdvicesResponseBody struct {
+	// The queried applied optimization suggestions.
+	Items []*DescribeAppliedAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30**(Default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 84489769-3065-5A28-A4CB-977CD426F1C3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the table in the DatabaseName.TableName format.
+	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAppliedAdvicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppliedAdvicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetItems(v []*DescribeAppliedAdvicesResponseBodyItems) *DescribeAppliedAdvicesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetPageNumber(v int64) *DescribeAppliedAdvicesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetPageSize(v int64) *DescribeAppliedAdvicesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetRequestId(v string) *DescribeAppliedAdvicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetSchemaTableNames(v []*string) *DescribeAppliedAdvicesResponseBody {
+	s.SchemaTableNames = v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBody) SetTotalCount(v int64) *DescribeAppliedAdvicesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAppliedAdvicesResponseBodyItems struct {
+	// The suggestion ID.
+	//
+	// example:
+	//
+	// 7417db9c-914d-43f3-a123-4d0e448f****
+	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// The benefit of the suggestion.
+	//
+	// example:
+	//
+	// 0.4 GB of storage saved
+	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	// The SQL statement that is used to execute the BUILD job.
+	//
+	// example:
+	//
+	// build table `schema1`.`table1`
+	BuildSQL *string `json:"BuildSQL,omitempty" xml:"BuildSQL,omitempty"`
+	// The status of the suggestion execution job. Valid values:
+	//
+	// 	- **SUCCEED**
+	//
+	// 	- **FAILED**
+	//
+	// example:
+	//
+	// SUCCEED
+	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30**(Default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The SQL statement that is used to roll back the suggestion.
+	//
+	// example:
+	//
+	// alter table `schema1`.`table1` add key col1_1_idx(col1)
+	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
+	// The SQL statement that is used to apply the suggestion.
+	//
+	// example:
+	//
+	// alter table `schema1`.`table1` drop key col1_1_idx
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The submission status of the suggestion. Valid values:
+	//
+	// 	- **SUCCEED**
+	//
+	// 	- **FAILED**
+	//
+	// example:
+	//
+	// SUCCEED
+	SubmitStatus *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
+	// The time when the suggestion was submitted. The time follows the ISO 8601 standard in the yyMMddHHmm format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2208131600
+	SubmitTime *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAppliedAdvicesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppliedAdvicesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetAdviceId(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.AdviceId = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetBenefit(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.Benefit = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetBuildSQL(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.BuildSQL = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetJobStatus(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetPageNumber(v int64) *DescribeAppliedAdvicesResponseBodyItems {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetPageSize(v int64) *DescribeAppliedAdvicesResponseBodyItems {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetRollbackSQL(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.RollbackSQL = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetSQL(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.SQL = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetSchemaName(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetSubmitStatus(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.SubmitStatus = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetSubmitTime(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.SubmitTime = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetTableName(v string) *DescribeAppliedAdvicesResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponseBodyItems) SetTotalCount(v int64) *DescribeAppliedAdvicesResponseBodyItems {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAppliedAdvicesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAppliedAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAppliedAdvicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppliedAdvicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppliedAdvicesResponse) SetHeaders(v map[string]*string) *DescribeAppliedAdvicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponse) SetStatusCode(v int32) *DescribeAppliedAdvicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAppliedAdvicesResponse) SetBody(v *DescribeAppliedAdvicesResponseBody) *DescribeAppliedAdvicesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeApsActionLogsRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -9832,18 +13591,24 @@ func (s *DescribeApsActionLogsResponse) SetBody(v *DescribeApsActionLogsResponse
 }
 
 type DescribeApsDatasourceRequest struct {
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9876,8 +13641,10 @@ func (s *DescribeApsDatasourceRequest) SetRegionId(v string) *DescribeApsDatasou
 }
 
 type DescribeApsDatasourceResponseBody struct {
-	// -
+	// The queried APS data source.
 	ApsDatasource *DescribeApsDatasourceResponseBodyApsDatasource `json:"ApsDatasource,omitempty" xml:"ApsDatasource,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-**D8-5***-A***-****587
@@ -9903,46 +13670,68 @@ func (s *DescribeApsDatasourceResponseBody) SetRequestId(v string) *DescribeApsD
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasource struct {
+	// The time when the data source was created.
+	//
 	// example:
 	//
 	// 2024-04-12T15:03:38Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The information about Databricks.
+	//
 	// example:
 	//
 	// -
 	DatabricksInfo *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty" type:"Struct"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// kafka-2024***
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// KAFKA
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The information about the Hive data source.
+	//
 	// example:
 	//
 	// -
 	HiveInfo *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
+	// The information about the Kafka instance.
+	//
 	// example:
 	//
 	// -
 	KafkaInfo *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfo *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	RdsMysqlInfo *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
+	// The Simple Log Service (SLS) project.
+	//
 	// example:
 	//
 	// -
@@ -10013,10 +13802,14 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasource) SetSlsInfo(v *DescribeA
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo struct {
+	// The token that is used to access Databricks.
+	//
 	// example:
 	//
 	// ******
 	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// The URL of the workspace.
+	//
 	// example:
 	//
 	// -
@@ -10042,20 +13835,26 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) SetWorksp
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo struct {
+	// The ID of the E-MapReduce (EMR) cluster.
+	//
 	// example:
 	//
 	// -
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
-	// hive meta store url。
+	// The URL of the Hive Metastore.
 	//
 	// example:
 	//
 	// -
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-******
@@ -10091,11 +13890,13 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo) SetVswitch(v st
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo struct {
+	// The ID of the Kafka instance.
+	//
 	// example:
 	//
 	// -
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// kafka topic
+	// The topic of the Kafka instance.
 	//
 	// example:
 	//
@@ -10122,49 +13923,49 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo) SetKafkaTopic(
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo struct {
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
@@ -10221,31 +14022,31 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourcePolarDBMysqlInfo) SetUser
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo struct {
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
@@ -10287,26 +14088,42 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) SetUserName
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
+	// Indicates whether the data source is a cross-account resource. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// The name of the cross-account role.
+	//
 	// example:
 	//
 	// test
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
 	// example:
 	//
 	// 123456
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The name of the SLS project.
+	//
 	// example:
 	//
 	// ***
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	// The name of the SLS Logstore.
+	//
 	// example:
 	//
 	// ***
@@ -10381,38 +14198,54 @@ func (s *DescribeApsDatasourceResponse) SetBody(v *DescribeApsDatasourceResponse
 }
 
 type DescribeApsDatasourcesRequest struct {
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// SLS
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2024-01-30
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2024-01-01
@@ -10468,24 +14301,32 @@ func (s *DescribeApsDatasourcesRequest) SetStartTime(v string) *DescribeApsDatas
 }
 
 type DescribeApsDatasourcesResponseBody struct {
-	// -
+	// The queried APS data sources.
 	//
 	// example:
 	//
 	// -
 	ApsDatasources []*DescribeApsDatasourcesResponseBodyApsDatasources `json:"ApsDatasources,omitempty" xml:"ApsDatasources,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-5213-******-B608-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -10526,26 +14367,38 @@ func (s *DescribeApsDatasourcesResponseBody) SetTotalCount(v string) *DescribeAp
 }
 
 type DescribeApsDatasourcesResponseBodyApsDatasources struct {
+	// The time when the data source was created.
+	//
 	// example:
 	//
 	// 2024-01-10 14:44:33
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The type of the data source.
+	//
 	// example:
 	//
 	// SLS
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// Indicates whether a job is using the data source.
+	//
 	// example:
 	//
 	// false
@@ -10620,16 +14473,22 @@ func (s *DescribeApsDatasourcesResponse) SetBody(v *DescribeApsDatasourcesRespon
 }
 
 type DescribeApsHiveWorkloadRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10662,10 +14521,14 @@ func (s *DescribeApsHiveWorkloadRequest) SetWorkloadId(v string) *DescribeApsHiv
 }
 
 type DescribeApsHiveWorkloadResponseBody struct {
+	// The queried job.
+	//
 	// example:
 	//
 	// -
 	ApsWorkload *DescribeApsHiveWorkloadResponseBodyApsWorkload `json:"ApsWorkload,omitempty" xml:"ApsWorkload,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 86F92D26-B774-5FA1-8E53-******
@@ -10691,88 +14554,128 @@ func (s *DescribeApsHiveWorkloadResponseBody) SetRequestId(v string) *DescribeAp
 }
 
 type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
+	// The advanced configurations.
+	//
 	// example:
 	//
 	// test.adv.config=value
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
+	// The policy to handle tables with the same name in the destination cluster.
+	//
 	// example:
 	//
 	// Intercept
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
+	// The time when the workload was created.
+	//
 	// example:
 	//
 	// -
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The data source ID.
+	//
 	// example:
 	//
 	// 8
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
+	// The ID of the E-MapReduce (EMR) cluster.
+	//
 	// example:
 	//
 	// -
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
+	// The number of AnalyticDB compute units (ACUs) required for migration.
+	//
 	// example:
 	//
 	// 16
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
-	// hive meta store url。
+	// The URL of the Hive Metastore.
 	//
 	// example:
 	//
 	// -
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
+	// The Object Storage Service (OSS) URL of the AnalyticDB for MySQL cluster data.
+	//
 	// example:
 	//
 	// oss://******
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The number of tasks that are allowed in parallel.
+	//
 	// example:
 	//
 	// 2
 	Parallelism *int64 `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group to which the SQL statement belongs.
+	//
 	// example:
 	//
 	// test
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
+	// The status of the workload.
+	//
 	// example:
 	//
 	// COMPLETED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The expression that manually matches the source database table whitelist.
+	//
 	// example:
 	//
 	// abc
 	SyncAllowExpression *string `json:"SyncAllowExpression,omitempty" xml:"SyncAllowExpression,omitempty"`
+	// Manually match the blacklist expressions for source database tables.
+	//
 	// example:
 	//
 	// def
 	SyncDenyExpression *string `json:"SyncDenyExpression,omitempty" xml:"SyncDenyExpression,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-******
 	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-******
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The name of the workload.
+	//
 	// example:
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// The name of the workload.
+	//
 	// example:
 	//
 	// test
@@ -10922,12 +14825,16 @@ func (s *DescribeApsHiveWorkloadResponse) SetBody(v *DescribeApsHiveWorkloadResp
 }
 
 type DescribeApsJobDetailRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -10953,10 +14860,14 @@ func (s *DescribeApsJobDetailRequest) SetRegionId(v string) *DescribeApsJobDetai
 }
 
 type DescribeApsJobDetailResponseBody struct {
+	// The queried job.
+	//
 	// example:
 	//
 	// -
 	APSJobDetail *DescribeApsJobDetailResponseBodyAPSJobDetail `json:"APSJobDetail,omitempty" xml:"APSJobDetail,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-E606-4A42-BF6D-******
@@ -10982,34 +14893,50 @@ func (s *DescribeApsJobDetailResponseBody) SetRequestId(v string) *DescribeApsJo
 }
 
 type DescribeApsJobDetailResponseBodyAPSJobDetail struct {
+	// The objects that are synchronized.
+	//
 	// example:
 	//
 	// {}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// The ID of the destination cluster.
+	//
 	// example:
 	//
 	// amv-******
 	DestinationEndpointInstanceID *string `json:"DestinationEndpointInstanceID,omitempty" xml:"DestinationEndpointInstanceID,omitempty"`
+	// The region of the destination cluster.
+	//
 	// example:
 	//
 	// cn-beijing
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
+	// The partitions.
+	//
 	// example:
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// The ID of the source instance.
+	//
 	// example:
 	//
 	// pc-*******
 	SourceEndpointInstanceID *string `json:"SourceEndpointInstanceID,omitempty" xml:"SourceEndpointInstanceID,omitempty"`
+	// The region of the source instance.
+	//
 	// example:
 	//
 	// cn-beijing
 	SourceEndpointRegion *string `json:"SourceEndpointRegion,omitempty" xml:"SourceEndpointRegion,omitempty"`
+	// The status of the job.
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The mode of the destination table.
+	//
 	// example:
 	//
 	// 0
@@ -11094,30 +15021,42 @@ func (s *DescribeApsJobDetailResponse) SetBody(v *DescribeApsJobDetailResponseBo
 }
 
 type DescribeApsJobsRequest struct {
+	// The name of the APS job.
+	//
 	// example:
 	//
 	// aps-xxxxx
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2022-04-23T01:10Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2022-03-23T01:10Z
 	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -11163,38 +15102,64 @@ func (s *DescribeApsJobsRequest) SetRegionId(v string) *DescribeApsJobsRequest {
 }
 
 type DescribeApsJobsResponseBody struct {
+	// The queried APS jobs.
+	//
 	// example:
 	//
 	// -
 	APSJobs []*DescribeApsJobsResponseBodyAPSJobs `json:"APSJobs,omitempty" xml:"APSJobs,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// ok
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// ok
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-7F9D-5DBD-993E-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 0
@@ -11255,39 +15220,62 @@ func (s *DescribeApsJobsResponseBody) SetTotalCount(v string) *DescribeApsJobsRe
 }
 
 type DescribeApsJobsResponseBodyAPSJobs struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The name of the APS job.
+	//
 	// example:
 	//
 	// data-sync-******
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
+	// The time when the APS job was created.
+	//
 	// example:
 	//
 	// 2022-06-28 15:00:04
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The synchronization latency.
+	//
 	// example:
 	//
 	// 0
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
+	// The destination cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DestinationInstanceID *string `json:"DestinationInstanceID,omitempty" xml:"DestinationInstanceID,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Projress   *string `json:"Projress,omitempty" xml:"Projress,omitempty"`
+	// The progress.
+	//
+	// example:
+	//
+	// 30: The progress is 30%.
+	Projress *string `json:"Projress,omitempty" xml:"Projress,omitempty"`
+	// The ID of the source instance or cluster.
+	//
 	// example:
 	//
 	// pc-******
 	SourceInstanceID *string `json:"SourceInstanceID,omitempty" xml:"SourceInstanceID,omitempty"`
+	// The status of the APS job.
+	//
 	// example:
 	//
 	// -
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the task.
+	//
 	// example:
 	//
 	// -
@@ -11382,34 +15370,48 @@ func (s *DescribeApsJobsResponse) SetBody(v *DescribeApsJobsResponseBody) *Descr
 }
 
 type DescribeApsMigrationWorkloadsRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2021-07-20T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The Object Storage Service (OSS) URL.
+	//
 	// example:
 	//
 	// oss://******
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start of the time range to query.
+	//
 	// example:
 	//
 	// 2021-06-20T16:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The name of the workload.
+	//
 	// example:
 	//
 	// test
@@ -11460,20 +15462,28 @@ func (s *DescribeApsMigrationWorkloadsRequest) SetWorkloadName(v string) *Descri
 }
 
 type DescribeApsMigrationWorkloadsResponseBody struct {
-	// -
+	// The queried migration workloads.
 	MigrationWorkloads []*DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads `json:"MigrationWorkloads,omitempty" xml:"MigrationWorkloads,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-57F0-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 0
@@ -11514,46 +15524,68 @@ func (s *DescribeApsMigrationWorkloadsResponseBody) SetTotalCount(v int32) *Desc
 }
 
 type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
+	// The number of AnalyticDB compute units (ACUs).
+	//
 	// example:
 	//
 	// -
 	AcuCount *int32 `json:"AcuCount,omitempty" xml:"AcuCount,omitempty"`
+	// The time when the job was created.
+	//
 	// example:
 	//
 	// 2021-06-21T02:15:16Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// -
 	FailedMsg *string `json:"FailedMsg,omitempty" xml:"FailedMsg,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The maximum response time.
+	//
 	// example:
 	//
 	// 1000
 	MaxRT *string `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
+	// The time when the migration job was modified.
+	//
 	// example:
 	//
 	// 2021-06-21T02:15:16Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// The name of the workload.
+	//
 	// example:
 	//
 	// TEST-001
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS URL.
+	//
 	// example:
 	//
 	// oss://******
 	OssLocation *string `json:"OssLocation,omitempty" xml:"OssLocation,omitempty"`
+	// The status.
+	//
 	// example:
 	//
 	// COMPLETED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The destination type.
+	//
 	// example:
 	//
 	// OSS
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// The sub-type of the workload.
+	//
 	// example:
 	//
 	// test
@@ -11653,16 +15685,22 @@ func (s *DescribeApsMigrationWorkloadsResponse) SetBody(v *DescribeApsMigrationW
 }
 
 type DescribeApsProgressRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -11695,22 +15733,32 @@ func (s *DescribeApsProgressRequest) SetWorkloadId(v string) *DescribeApsProgres
 }
 
 type DescribeApsProgressResponseBody struct {
+	// The migration progress.
+	//
 	// example:
 	//
 	// -
 	ApsHiveProgress []*DescribeApsProgressResponseBodyApsHiveProgress `json:"ApsHiveProgress,omitempty" xml:"ApsHiveProgress,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The success rate.
+	//
 	// example:
 	//
 	// 100
 	SuccessPercentage *int32 `json:"SuccessPercentage,omitempty" xml:"SuccessPercentage,omitempty"`
+	// The total number of migrated tables returned.
+	//
 	// example:
 	//
 	// 10
 	SuccessTableCount *int32 `json:"SuccessTableCount,omitempty" xml:"SuccessTableCount,omitempty"`
+	// The total number of tables to be migrated.
+	//
 	// example:
 	//
 	// 10
@@ -11751,18 +15799,26 @@ func (s *DescribeApsProgressResponseBody) SetTotalTableCount(v int32) *DescribeA
 }
 
 type DescribeApsProgressResponseBodyApsHiveProgress struct {
+	// The name of the database.
+	//
 	// example:
 	//
 	// test
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The migration progress.
+	//
 	// example:
 	//
 	// 95
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The migration speed.
+	//
 	// example:
 	//
 	// 2
 	Speed *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// test
@@ -12252,7 +16308,7 @@ type DescribeAuditLogRecordsRequest struct {
 	//
 	// 	- **CREATE**
 	//
-	// >  You can query only a single type of SQL statements at a time. If you leave this parameter empty, the **SELECT*	- statements are queried.
+	// >  You can query only a single type of SQL statements at a time. If you leave this parameter empty, all types of SQL statements are queried.
 	//
 	// example:
 	//
@@ -12610,6 +16666,413 @@ func (s *DescribeAuditLogRecordsResponse) SetStatusCode(v int32) *DescribeAuditL
 }
 
 func (s *DescribeAuditLogRecordsResponse) SetBody(v *DescribeAuditLogRecordsResponseBody) *DescribeAuditLogRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAvailableAdvicesRequest struct {
+	// The date when the suggestion is generated. Specify the date in the yyyyMMdd format.
+	//
+	// >  Suggestions are generated after analysis after midnight every day. You must specify a date that is at least one day earlier than the current date. For example, if the current date is 20240627, you must specify 20240626 or an earlier date.
+	//
+	// example:
+	//
+	// 20221124
+	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// The type of the suggestion. Valid values:
+	//
+	// 	- **INDEX**: index optimization.
+	//
+	// 	- **TIERING**: hot and cold data optimization.
+	//
+	// example:
+	//
+	// INDEX
+	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp198m028ih55****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The keyword that is used to query information by table name.
+	//
+	// example:
+	//
+	// you_table_name
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// The display language of suggestions. Valid values:
+	//
+	// 	- **zh*	- (default): simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"SchemaName","Type":"Asc"}]`.
+	//
+	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     	- `SchemaName`: the name of the database.
+	//
+	//     	- `TableName`: the name of the table.
+	//
+	//     	- `Benefit`: the expected benefits of the applied optimization suggestion.
+	//
+	// 	- `Type` specifies the sorting order. Valid values:
+	//
+	//     	- `Asc`: ascending order.
+	//
+	//     	- `Desc`: descending order.
+	//
+	// >  If you do not specify this parameter, the query results are sorted in descending order based on the Benefit field.
+	//
+	// example:
+	//
+	// [{\\"Field\\":\\"AdviceType\\",\\"Type\\":\\"Desc\\"}]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the table in the DatabaseName.TableName format.
+	//
+	// example:
+	//
+	// tpch.lineitem
+	SchemaTableName *string `json:"SchemaTableName,omitempty" xml:"SchemaTableName,omitempty"`
+}
+
+func (s DescribeAvailableAdvicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableAdvicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetAdviceDate(v int64) *DescribeAvailableAdvicesRequest {
+	s.AdviceDate = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetAdviceType(v string) *DescribeAvailableAdvicesRequest {
+	s.AdviceType = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetDBClusterId(v string) *DescribeAvailableAdvicesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetKeyword(v string) *DescribeAvailableAdvicesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetLang(v string) *DescribeAvailableAdvicesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetOrder(v string) *DescribeAvailableAdvicesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetPageNumber(v int64) *DescribeAvailableAdvicesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetPageSize(v int64) *DescribeAvailableAdvicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetRegionId(v string) *DescribeAvailableAdvicesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesRequest) SetSchemaTableName(v string) *DescribeAvailableAdvicesRequest {
+	s.SchemaTableName = &v
+	return s
+}
+
+type DescribeAvailableAdvicesResponseBody struct {
+	// The queried suggestions.
+	Items []*DescribeAvailableAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 96A55627-28E9-5E47-B8F6-D786BE551349
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The name of the table in the DatabaseName.TableName format.
+	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10192
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAvailableAdvicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableAdvicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetItems(v []*DescribeAvailableAdvicesResponseBodyItems) *DescribeAvailableAdvicesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetPageNumber(v int64) *DescribeAvailableAdvicesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetPageSize(v int64) *DescribeAvailableAdvicesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetRequestId(v string) *DescribeAvailableAdvicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetSchemaTableNames(v []*string) *DescribeAvailableAdvicesResponseBody {
+	s.SchemaTableNames = v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBody) SetTotalCount(v int64) *DescribeAvailableAdvicesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAvailableAdvicesResponseBodyItems struct {
+	// The date when the suggestion is generated. The date is in the yyyyMMdd format.
+	//
+	// example:
+	//
+	// 20221124
+	AdviceDate *string `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
+	// The suggestion ID.
+	//
+	// example:
+	//
+	// dcd04135-0925-4aed-a5a7-e7d92cb1****
+	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
+	// The type of the suggestion. Valid values:
+	//
+	// 	- **INDEX**: index optimization.
+	//
+	// 	- **TIERING**: hot and cold data optimization.
+	//
+	// example:
+	//
+	// INDEX
+	AdviceType *string `json:"AdviceType,omitempty" xml:"AdviceType,omitempty"`
+	// The benefit of the suggestion.
+	//
+	// example:
+	//
+	// 0.4 GB of storage saved
+	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The reason why the suggestion was generated.
+	//
+	// example:
+	//
+	// Unused for 15 days, historical usage less than 1%
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// The SQL statement that is used to apply the suggestion.
+	//
+	// example:
+	//
+	// alter table `schema1`.`table1` drop key col1_1_idx
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test_table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10192
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAvailableAdvicesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableAdvicesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetAdviceDate(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.AdviceDate = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetAdviceId(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.AdviceId = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetAdviceType(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.AdviceType = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetBenefit(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.Benefit = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetPageNumber(v int64) *DescribeAvailableAdvicesResponseBodyItems {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetPageSize(v int64) *DescribeAvailableAdvicesResponseBodyItems {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetReason(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetSQL(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.SQL = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetSchemaName(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetTableName(v string) *DescribeAvailableAdvicesResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponseBodyItems) SetTotalCount(v int64) *DescribeAvailableAdvicesResponseBodyItems {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAvailableAdvicesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAvailableAdvicesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAvailableAdvicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableAdvicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableAdvicesResponse) SetHeaders(v map[string]*string) *DescribeAvailableAdvicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponse) SetStatusCode(v int32) *DescribeAvailableAdvicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAvailableAdvicesResponse) SetBody(v *DescribeAvailableAdvicesResponseBody) *DescribeAvailableAdvicesResponse {
 	s.Body = v
 	return s
 }
@@ -13123,6 +17586,459 @@ func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *Descr
 	return s
 }
 
+type DescribeBadSqlDetectionRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. The end time must be later than the start time. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-11-17T02:16Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-01-23T02:18Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetDBClusterId(v string) *DescribeBadSqlDetectionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetEndTime(v string) *DescribeBadSqlDetectionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetLang(v string) *DescribeBadSqlDetectionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetOwnerAccount(v string) *DescribeBadSqlDetectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetOwnerId(v int64) *DescribeBadSqlDetectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetRegionId(v string) *DescribeBadSqlDetectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetResourceOwnerAccount(v string) *DescribeBadSqlDetectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetResourceOwnerId(v int64) *DescribeBadSqlDetectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionRequest) SetStartTime(v string) *DescribeBadSqlDetectionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeBadSqlDetectionResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeBadSqlDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 584CFCAE-E3C8-5BBB-B46C-724E77A830A7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 50
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionResponseBody) SetAccessDeniedDetail(v string) *DescribeBadSqlDetectionResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBody) SetDBClusterId(v string) *DescribeBadSqlDetectionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBody) SetDetectionItems(v []*DescribeBadSqlDetectionResponseBodyDetectionItems) *DescribeBadSqlDetectionResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBody) SetRequestId(v string) *DescribeBadSqlDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBody) SetTotalCount(v string) *DescribeBadSqlDetectionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeBadSqlDetectionResponseBodyDetectionItems struct {
+	// The information about the detection result.
+	//
+	// example:
+	//
+	// SQL statements that result in high peak memory are detected.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Cost
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The detection result items.
+	Results []*DescribeBadSqlDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
+	// The severity level of the detection result. Valid values:
+	//
+	// 	- NORMAL
+	//
+	// 	- WARNING
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// WARNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) SetMessage(v string) *DescribeBadSqlDetectionResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) SetName(v string) *DescribeBadSqlDetectionResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) SetResults(v []*DescribeBadSqlDetectionResponseBodyDetectionItemsResults) *DescribeBadSqlDetectionResponseBodyDetectionItems {
+	s.Results = v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItems) SetStatus(v string) *DescribeBadSqlDetectionResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeBadSqlDetectionResponseBodyDetectionItemsResults struct {
+	// The total execution duration. Unit: milliseconds.
+	//
+	// >  This value is the cumulative value of the `QueuedTime`, `TotalPlanningTime`, and `ExecutionTime` parameters.
+	//
+	// example:
+	//
+	// 709
+	Cost *int64 `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	// The diagnostic result items.
+	DiagnosisResults []*DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults `json:"DiagnosisResults,omitempty" xml:"DiagnosisResults,omitempty" type:"Repeated"`
+	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 2345
+	OperatorCost *int64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
+	// The amount of returned data. Unit: bytes.
+	//
+	// example:
+	//
+	// 235433
+	OutputDataSize *int64 `json:"OutputDataSize,omitempty" xml:"OutputDataSize,omitempty"`
+	// The SQL pattern ID.
+	//
+	// example:
+	//
+	// 3467484070025860498
+	PatternId *string `json:"PatternId,omitempty" xml:"PatternId,omitempty"`
+	// The peak memory. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	// The query ID.
+	//
+	// example:
+	//
+	// 202410161002191720161451770345363xxxx
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The SQL statement.
+	//
+	// >  For performance considerations, an SQL statement cannot exceed 5,120 characters in length. Otherwise, the SQL statement is truncated. You can call the [DownloadDiagnosisRecords](https://help.aliyun.com/document_detail/308212.html) operation to download the information about SQL statements that meet a query condition for an AnalyticDB for MySQL cluster, including the complete SQL statements.
+	//
+	// example:
+	//
+	// SELECT 	- FROM device WHERE product_key = \\"h66zXfxet2X\\" AND name = \\"device@zntbtfptv5_9237117\\"
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// The amount of scanned data. Unit: bytes.
+	//
+	// example:
+	//
+	// 2342
+	ScanSize *int64 `json:"ScanSize,omitempty" xml:"ScanSize,omitempty"`
+	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-09-06T02:11:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The total number of stages generated.
+	//
+	// example:
+	//
+	// 5
+	TotalStages *int32 `json:"TotalStages,omitempty" xml:"TotalStages,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItemsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItemsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetCost(v int64) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetDiagnosisResults(v []*DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.DiagnosisResults = v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetOperatorCost(v int64) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.OperatorCost = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetOutputDataSize(v int64) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.OutputDataSize = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetPatternId(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.PatternId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetPeakMemory(v int64) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetProcessId(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetSQL(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.SQL = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetScanSize(v int64) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.ScanSize = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetStartTime(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResults) SetTotalStages(v int32) *DescribeBadSqlDetectionResponseBodyDetectionItemsResults {
+	s.TotalStages = &v
+	return s
+}
+
+type DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults struct {
+	// The diagnostic code.
+	//
+	// example:
+	//
+	// Large amounts of data are returned to the client.
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the diagnostic result.
+	//
+	// example:
+	//
+	// Large amounts of data are returned to the client. Import the data to OSS.
+	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	// The operator ID.
+	//
+	// example:
+	//
+	// TableScan[234]
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// The stage ID.
+	//
+	// example:
+	//
+	// Stage[67]
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) SetCode(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) SetDetail(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) SetOperatorId(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults) SetStageId(v string) *DescribeBadSqlDetectionResponseBodyDetectionItemsResultsDiagnosisResults {
+	s.StageId = &v
+	return s
+}
+
+type DescribeBadSqlDetectionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBadSqlDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBadSqlDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBadSqlDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBadSqlDetectionResponse) SetHeaders(v map[string]*string) *DescribeBadSqlDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponse) SetStatusCode(v int32) *DescribeBadSqlDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBadSqlDetectionResponse) SetBody(v *DescribeBadSqlDetectionResponseBody) *DescribeBadSqlDetectionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterAccessWhiteListRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -13283,9 +18199,9 @@ func (s *DescribeClusterAccessWhiteListResponse) SetBody(v *DescribeClusterAcces
 }
 
 type DescribeClusterNetInfoRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region, including cluster IDs.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -13908,9 +18824,9 @@ func (s *DescribeClusterResourceDetailResponse) SetBody(v *DescribeClusterResour
 }
 
 type DescribeClusterResourceUsageRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -14002,7 +18918,7 @@ func (s *DescribeClusterResourceUsageResponseBody) SetRequestId(v string) *Descr
 type DescribeClusterResourceUsageResponseBodyData struct {
 	// The AnalyticDB compute unit (ACU) usage of the cluster.
 	AcuInfo []*DescribeClusterResourceUsageResponseBodyDataAcuInfo `json:"AcuInfo,omitempty" xml:"AcuInfo,omitempty" type:"Repeated"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -14696,6 +19612,246 @@ func (s *DescribeComputeResourceUsageResponse) SetBody(v *DescribeComputeResourc
 	return s
 }
 
+type DescribeControllerDetectionRequest struct {
+	// The cluster ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the **yyyy-MM-ddTHH:mmZ*	- format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time. The maximum time range that can be specified is 30 days.
+	//
+	// example:
+	//
+	// 2024-06-23T02:21Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2022-03-10T23:56Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeControllerDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeControllerDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeControllerDetectionRequest) SetDBClusterId(v string) *DescribeControllerDetectionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetEndTime(v string) *DescribeControllerDetectionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetLang(v string) *DescribeControllerDetectionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetOwnerAccount(v string) *DescribeControllerDetectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetOwnerId(v int64) *DescribeControllerDetectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetRegionId(v string) *DescribeControllerDetectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetResourceOwnerAccount(v string) *DescribeControllerDetectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetResourceOwnerId(v int64) *DescribeControllerDetectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionRequest) SetStartTime(v string) *DescribeControllerDetectionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeControllerDetectionResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeControllerDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 257FAE29-ED5F-586C-94E4-43BD1392F238
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 10
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeControllerDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeControllerDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeControllerDetectionResponseBody) SetDBClusterId(v string) *DescribeControllerDetectionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponseBody) SetDetectionItems(v []*DescribeControllerDetectionResponseBodyDetectionItems) *DescribeControllerDetectionResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponseBody) SetRequestId(v string) *DescribeControllerDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponseBody) SetTotalCount(v string) *DescribeControllerDetectionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeControllerDetectionResponseBodyDetectionItems struct {
+	// The information about the detection result.
+	//
+	// example:
+	//
+	// A CPU increase is detected on the access node.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// CPU increase detection
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result. Valid values:
+	//
+	// 	- NORMAL
+	//
+	// 	- WARNING
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// NORMAL
+	//
+	// WARNING
+	//
+	// CRITICAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeControllerDetectionResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeControllerDetectionResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeControllerDetectionResponseBodyDetectionItems) SetMessage(v string) *DescribeControllerDetectionResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponseBodyDetectionItems) SetName(v string) *DescribeControllerDetectionResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponseBodyDetectionItems) SetStatus(v string) *DescribeControllerDetectionResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeControllerDetectionResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeControllerDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeControllerDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeControllerDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeControllerDetectionResponse) SetHeaders(v map[string]*string) *DescribeControllerDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponse) SetStatusCode(v int32) *DescribeControllerDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeControllerDetectionResponse) SetBody(v *DescribeControllerDetectionResponseBody) *DescribeControllerDetectionResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBClusterAttributeRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -14723,7 +19879,7 @@ func (s *DescribeDBClusterAttributeRequest) SetDBClusterId(v string) *DescribeDB
 }
 
 type DescribeDBClusterAttributeResponseBody struct {
-	// The queried information about the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The queried cluster.
 	Items *DescribeDBClusterAttributeResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -14872,7 +20028,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 5.0
-	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DBVersion      *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	DiskEncryption *bool   `json:"DiskEncryption,omitempty" xml:"DiskEncryption,omitempty"`
 	// The engine of the cluster. **AnalyticDB*	- is returned.
 	//
 	// example:
@@ -15014,7 +20171,9 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// rg-acfmyiu4ekp****
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryVSwitchId *string `json:"SecondaryVSwitchId,omitempty" xml:"SecondaryVSwitchId,omitempty"`
+	SecondaryZoneId    *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	// The specifications of reserved storage resources. Each AnalyticDB compute unit (ACU) is approximately equal to 1 core and 4 GB memory. Storage resources are used to read and write data. The increase in the storage resources can improve the read and write performance of the cluster.
 	//
 	// example:
@@ -15030,7 +20189,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// Reserved parameters.
 	SupportedFeatures map[string]*string `json:"SupportedFeatures,omitempty" xml:"SupportedFeatures,omitempty"`
 	// The tags that are added to the cluster.
-	Tags     *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	Tags *DescribeDBClusterAttributeResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The job information.
 	TaskInfo *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
 	// Indicates whether Elastic Network Interface (ENI) is enabled. Valid values:
 	//
@@ -15041,10 +20201,25 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// false
-	UserENIStatus         *bool   `json:"UserENIStatus,omitempty" xml:"UserENIStatus,omitempty"`
+	UserENIStatus *bool `json:"UserENIStatus,omitempty" xml:"UserENIStatus,omitempty"`
+	// The vSwitch connected to the ENI. Separate multiple vSwitches with commas (,).
+	//
+	// example:
+	//
+	// vsw-rj9ixufmywqq98z******,vsw-rj95ij6wcz656v7******
 	UserENIVSwitchOptions *string `json:"UserENIVSwitchOptions,omitempty" xml:"UserENIVSwitchOptions,omitempty"`
-	UserENIVpcId          *string `json:"UserENIVpcId,omitempty" xml:"UserENIVpcId,omitempty"`
-	UserENIZoneOptions    *string `json:"UserENIZoneOptions,omitempty" xml:"UserENIZoneOptions,omitempty"`
+	// The VPC information of the ENI.
+	//
+	// example:
+	//
+	// vpc-rj9hnedlfm645uj******
+	UserENIVpcId *string `json:"UserENIVpcId,omitempty" xml:"UserENIVpcId,omitempty"`
+	// The zone associated with the ENI. Separate multiple zones with commas (,).
+	//
+	// example:
+	//
+	// cn-hangzhou-k,cn-hangzhou-h
+	UserENIZoneOptions *string `json:"UserENIZoneOptions,omitempty" xml:"UserENIZoneOptions,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
 	//
 	// example:
@@ -15138,6 +20313,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetDBVersion(v st
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetDiskEncryption(v bool) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.DiskEncryption = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetEngine(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.Engine = &v
 	return s
@@ -15225,6 +20405,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetReservedNodeSi
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetResourceGroupId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetSecondaryVSwitchId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.SecondaryVSwitchId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetSecondaryZoneId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -15341,9 +20531,31 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTagsTag) SetValue(v
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfo struct {
-	Name     *string                                                               `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress *string                                                               `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status   *string                                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the job.
+	//
+	// example:
+	//
+	// ScaleUpDBCluster
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The progress of the job. Unit: %.
+	//
+	// example:
+	//
+	// 10
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// 	- NOT_RUN
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCEED
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job steps.
 	StepList *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Struct"`
 }
 
@@ -15393,12 +20605,48 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepList) S
 }
 
 type DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepDesc     *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
-	StepName     *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-03-10T10:28:34Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-03-10T09:28:34Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The description of the job step.
+	//
+	// example:
+	//
+	// Prepare resources
+	StepDesc *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
+	// The name of the job step.
+	//
+	// example:
+	//
+	// PrepareResources
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The progress of the job step. Unit: %.
+	//
+	// example:
+	//
+	// 50
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	StepStatus   *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+	// The status of the job step. Valid values:
+	//
+	// 	- NOT_RUN
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCEED
+	//
+	// example:
+	//
+	// RUNNING
+	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
 }
 
 func (s DescribeDBClusterAttributeResponseBodyItemsDBClusterTaskInfoStepListStepList) String() string {
@@ -15841,51 +21089,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2022-03-11T15:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metrics to be queried. Separate multiple values with commas (,). Valid values:
-	//
-	// 	- CPU
-	//
-	//     	- **AnalyticDB_CPU_Usage_Percentage**: the average CPU utilization.
-	//
-	// 	- Connections
-	//
-	//     	- **AnalyticDB_Instance_Connection_Count**: the number of database connections.
-	//
-	// 	- Writes
-	//
-	//     	- **AnalyticDB_TPS**: the write transactions per second (TPS).
-	//
-	//     	- **AnalyticDB_InsertRT**: the write response time.
-	//
-	//     	- **AnalyticDB_InsertBytes**: the write throughput.
-	//
-	// 	- Queries
-	//
-	//     	- **AnalyticDB_QPS**: the queries per second (QPS).
-	//
-	//     	- **AnalyticDB_QueryRT**: the query response time.
-	//
-	//     	- **AnalyticDB_QueryWaitTime**: the query wait time.
-	//
-	// 	- Disks
-	//
-	//     	- **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O utilization.
-	//
-	//     	- **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
-	//
-	//     	- **AnalyticDB_IO_Throughput**: the disk throughput.
-	//
-	//     	- **AnalyticDB_IOPS**: the disk IOPS.
-	//
-	//     	- **AnalyticDB_Disk_Usage**: the disk space that is used.
-	//
-	//     	- **AnalyticDB_Disk_Usage_Percentage**: the disk usage.
-	//
-	//     	- **AnalyticDB_Hot_Data_Usage**: the disk space that is used by hot data.
-	//
-	//     	- **AnalyticDB_Cold_Data_Usage**: the disk space that is used by code data.
-	//
-	// >  This parameter must be specified.
+	// The key of the performance metric that you want to query. Separate multiple keys with commas (,). For more information about the performance metrics, see [Metric overview](https://help.aliyun.com/document_detail/2863211.html).
 	//
 	// example:
 	//
@@ -16058,225 +21262,7 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) SetUnit(v string)
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	// 	- CPU
-	//
-	//     	- **AnalyticDB_CPU_Usage_Percentage**: the CPU utilization.
-	//
-	//         	- AnalyticDB_Storage_CPU_Avg_Usage_Percentage: the average CPU utilization across storage nodes.
-	//
-	//         	- AnalyticDB_Storage_CPU_Max_Usage_Percentage: the maximum CPU utilization across storage nodes.
-	//
-	//         	- AnalyticDB_Compute_CPU_Max_Usage_Percentage: the average CPU utilization across compute nodes.
-	//
-	//         	- AnalyticDB_Compute_CPU_Max_Usage_Percentage: the maximum CPU utilization across compute nodes.
-	//
-	//         	- AnalyticDB_CS_CPU_Avg_Usage_Percentage: the average CPU utilization across access nodes.
-	//
-	//         	- AnalyticDB_CS_CPU_Max_Usage_Percentage: the maximum CPU utilization across access nodes.
-	//
-	// 	- Connections
-	//
-	//     	- **AnalyticDB_Instance_Connection_Count**: the number of connections to the cluster.
-	//
-	//         	- AnalyticDB_Instance_Connection_Count: the number of connections to the cluster.
-	//
-	// 	- Writes
-	//
-	//     	- **AnalyticDB_TPS**: the write TPS.
-	//
-	//         	- tps: the sum of the insert_tps, update_tps, delete_tps, and load_tps values.
-	//
-	//         	- insert_tps: the number of successful INSERT INTO VALUES operations per second.
-	//
-	//         	- update_tps: the number of successful UPDATE operations per second.
-	//
-	//         	- delete_tps: the number of successful DELETE operations per second.
-	//
-	//         	- load_tps: the number of successful INSERT OVERWRITE operations per second.
-	//
-	//     	- **AnalyticDB_InsertRT**: the write response time.
-	//
-	//         	- AnalyticDB_Avg_InsertRT: the average amount of time consumed by writes.
-	//
-	//         	- AnalyticDB_Max_InsertRT: the maximum amount of time consumed by a single write.
-	//
-	//     	- **AnalyticDB_InsertBytes**: the write throughput.
-	//
-	//         	- AnalyticDB_InsertBytes: the amount of written data.
-	//
-	// 	- Updates
-	//
-	//     	- **AnalyticDB_UpdateRT**: the update response time.
-	//
-	//         	- updateinto_avg_rt: the average amount of time consumed by updates.
-	//
-	//         	- updateinto_max_rt: the maximum amount of time consumed by a single update.
-	//
-	// 	- Deletes
-	//
-	//     	- **AnalyticDB_DeleteRT**: the delete response time.
-	//
-	//         	- delete_avg_rt: the average amount of time consumed by deletes.
-	//
-	//         	- delete_max_rt: the maximum amount of time consumed by a single delete.
-	//
-	// 	- Queries
-	//
-	//     	- **AnalyticDB_QPS**: the QPS.
-	//
-	//         	- AnalyticDB_QPS: the number of SELECT operations completed per second.
-	//
-	//         	- AnalyticDB_ETL_QPS: the number of INSERT OVERWRITE operations completed per second.
-	//
-	//     	- **AnalyticDB_QueryRT**: the query response time.
-	//
-	//         	- AnalyticDB_Avg_QueryRT: the average amount of time consumed by queries.
-	//
-	//         	- AnalyticDB_Max_QueryRT: the maximum amount of time consumed by a single query.
-	//
-	//         	- etl_avg_rt: the average amount of time consumed by extract, transform, load (ETL) operations.
-	//
-	//         	- etl_max_rt: the maximum amount of time consumed by a single ETL operation.
-	//
-	//     	- **AnalyticDB_QueryWaitTime**: the query wait time.
-	//
-	//         	- AnalyticDB_Avg_QueryWaitTime: the average wait time for SELECT and ETL operations.
-	//
-	//         	- AnalyticDB_Max_QueryWaitTime: the maximum wait time for SELECT and ETL operations.
-	//
-	//     	- AnalyticDB_QueryFailedRatio: the query failure rate.
-	//
-	//         	- query_failed_ratio: the failure rate of SELECT and ETL operations.
-	//
-	// 	- Disks
-	//
-	//     	- **AnalyticDB_IO_Throughput**: the disk I/O throughput.
-	//
-	//         	- AnalyticDB_Storage_Read_IO_Throughput: the average read throughput across storage nodes.
-	//
-	//         	- AnalyticDB_Storage_Write_IO_Throughput: the average write throughput across storage nodes.
-	//
-	//         	- AnalyticDB_Compute_Read_IO_Throughput: the average read throughput across compute nodes.
-	//
-	//         	- AnalyticDB_Compute_Write_IO_Throughput: the average write throughput across compute nodes.
-	//
-	//     	- **AnalyticDB_Disk_IO_Avg_Usage_Percentage**: the average I/O usage.
-	//
-	//         	- AnalyticDB_Disk_IO_Avg_Usage_Percentage: the average I/O usage across storage nodes.
-	//
-	//     	- **AnalyticDB_Disk_IO_Avg_Waiting_Time**: the average I/O wait time.
-	//
-	//         	- AnalyticDB_Disk_IO_Avg_Waiting_Time: the average I/O wait time of storage nodes.
-	//
-	//     	- **AnalyticDB_IOPS**: the disk IOPS.
-	//
-	//         	- AnalyticDB_Storage_Read_IOPS: the average read IOPS of storage nodes.
-	//
-	//         	- AnalyticDB_Storage_Write_IOPS: the average write IOPS of storage nodes.
-	//
-	//         	- AnalyticDB_Compute_Read_IOPS: the average read IOPS of compute nodes.
-	//
-	//         	- AnalyticDB_Compute_Write_IOPS: the average write IOPS of compute nodes.
-	//
-	//     	- **AnalyticDB_DiskUsage**: the disk storage that is used.
-	//
-	//         	- disk_used_ratio: the average disk usage across nodes.
-	//
-	//         	- worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
-	//
-	//     	- **AnalyticDB_Hot_Data_Usage**: the disk storage that is used by hot data.
-	//
-	//         	- AnalyticDB_Hot_Data_Usage: the disk storage that is used by hot data.
-	//
-	//     	- **AnalyticDB_Cold_Data_Usage**: the disk storage that is used by cold data.
-	//
-	//         	- AnalyticDB_Cold_Data_Usage: the disk storage that is used by cold data.
-	//
-	//     	- AnalyticDB_DiskUsedRatio: the node disk usage.
-	//
-	//         	- disk_used_ratio: the average disk usage across nodes.
-	//
-	//         	- worker_max_node_disk_used_ratio: the maximum disk usage across nodes.
-	//
-	//     	- AnalyticDB_DiskUsedSize: the total data size of the cluster.
-	//
-	//         	- user_used_disk_max: the maximum hot data size across nodes.
-	//
-	//         	- user_used_disk_avg: the average hot data size across nodes.
-	//
-	//         	- hot_disk_used: the hot data size.
-	//
-	//         	- cold_disk_used: the cold data size.
-	//
-	// 	- Other
-	//
-	//     	- **AnalyticDB_BuildTaskCount**: the number of BUILD jobs.
-	//
-	//         	- max_build_task_count: the maximum number of running BUILD jobs across nodes.
-	//
-	//         	- avg_build_task_count: the average number of running BUILD jobs across nodes.
-	//
-	//     	- **AnalyticDB_ComputeMemoryUsedRatio**: the compute memory usage.
-	//
-	//         	- max_worker_compute_memory_used_ratio: the maximum compute memory usage across storage nodes.
-	//
-	//         	- avg_worker_compute_memory_used_ratio: the average compute memory usage across storage nodes.
-	//
-	//         	- max_executor_compute_memory_used_ratio: the maximum compute memory usage across compute nodes.
-	//
-	//         	- avg_executor_compute_memory_used_ratio: the average compute memory usage across compute nodes.
-	//
-	//     	- AnalyticDB_UnavailableNodeCount: the number of unavailable nodes.
-	//
-	//         	- worker_unavailable_node_count: the number of unavailable storage nodes.
-	//
-	//         	- executor_unavailable_node_count: the number of unavailable compute nodes.
-	//
-	// 	- WLM
-	//
-	//     	- AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
-	//
-	//         	- AnalyticDB_WLM_ResubmitQueries_Count: the number of resubmitted WLM queries.
-	//
-	//     	- AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
-	//
-	//         	- AnalyticDB_WLM_SQA_AvgRt_MS: the average amount of time consumed by accelerated short WLM queries.
-	//
-	//     	- AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
-	//
-	//         	- AnalyticDB_WLM_SQA_Queries_Count: the number of accelerated short WLM queries.
-	//
-	//     	- AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
-	//
-	//         	- AnalyticDB_WLM_TotalQueries_Count: the total number of WLM queries.
-	//
-	// 	- AnalyticDB Pipeline Service (APS)
-	//
-	//     	- AnalyticDB_APS_BPS: the bytes per second (BPS) of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	//         	- APS_Read_BPS: the read BPS of APS.
-	//
-	//     	- AnalyticDB_APS_CPU: the CPU utilization of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	//         	- APS_CPU_Avg_Usage_Percentage: the average CPU utilization of APS.
-	//
-	//         	- APS_CPU_Max_Usage_Percentage: the maximum CPU utilization of APS.
-	//
-	//     	- AnalyticDB_APS_Memory: the memory usage of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	//         	- APS_Memory_Avg_Usage_Percentage: the average memory usage of APS.
-	//
-	//         	- APS_Memory_Max_Usage_Percentage: the maximum memory usage of APS.
-	//
-	//     	- AnalyticDB_APS_RPS: the number of records per second of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	//         	- APS_Read_RPS: the number of read records per second of APS.
-	//
-	//     	- AnalyticDB_APS_RT: the response time of APS provided by the AnalyticDB for MySQL Data Lakehouse Edition cluster.
-	//
-	//         	- APS_Read_Avg_RT: the average response time of APS.
-	//
-	//         	- APS_Read_Max_RT: the maximum response time of APS.
+	// The name of the performance metric value. For more information about the performance metrics, see [Metric overview](https://help.aliyun.com/document_detail/2863211.html).
 	//
 	// example:
 	//
@@ -16784,7 +21770,7 @@ type DescribeDBClustersRequest struct {
 	//
 	// test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// If you do not specify this parameter, the information about all clusters that reside in the region is returned.
 	//
@@ -16821,7 +21807,18 @@ type DescribeDBClustersRequest struct {
 	// example:
 	//
 	// Running
-	DBClusterStatus  *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
+	// The database engine version of the cluster. Valid values:
+	//
+	// 	- 3.0: Data Warehouse Edition.
+	//
+	// 	- 5.0 (default): Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+	//
+	// 	- All: Data Warehouse Edition, Data Lakehouse Edition, Enterprise Edition, and Basic Edition.
+	//
+	// example:
+	//
+	// 5.0
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
 	// The page number. Pages start from page 1. Default value: **1**.
 	//
@@ -16840,7 +21837,18 @@ type DescribeDBClustersRequest struct {
 	// example:
 	//
 	// 30
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The edition of the cluster. Valid values:
+	//
+	// 	- EnterpriseVersion: Enterprise Edition.
+	//
+	// 	- BasicVersion: Basic Edition.
+	//
+	// If you leave this parameter empty, the information about clusters of all editions is returned.
+	//
+	// example:
+	//
+	// BasicVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
 	// The region ID of the cluster.
 	//
@@ -17033,6 +22041,19 @@ func (s *DescribeDBClustersResponseBodyItems) SetDBCluster(v []*DescribeDBCluste
 }
 
 type DescribeDBClustersResponseBodyItemsDBCluster struct {
+	// The mode of the cluster. This parameter is returned only for Data Warehouse Edition clusters. Valid values:
+	//
+	// 	- **BASIC**: reserved mode for Basic Edition.
+	//
+	// 	- **CLUSTER**: reserved mode for Cluster Edition.
+	//
+	// 	- **MIXED_STORAGE**: elastic mode for Cluster Edition.
+	//
+	// >  For more information about cluster editions, see [Editions](https://help.aliyun.com/document_detail/205001.html).
+	//
+	// example:
+	//
+	// MIXED_STORAGE
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The billing method of the cluster. Valid values:
 	//
@@ -17068,7 +22089,7 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// adb_test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -17116,24 +22137,77 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	//
 	// Common
 	DBClusterType *string `json:"DBClusterType,omitempty" xml:"DBClusterType,omitempty"`
-	DBNodeClass   *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	DBNodeCount   *int64  `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
-	DBNodeStorage *int64  `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
+	// The node specifications of the cluster. This parameter is returned only for Data Warehouse Edition clusters.
+	//
+	// example:
+	//
+	// E8
+	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
+	// The number of node groups.
+	//
+	// example:
+	//
+	// 2
+	DBNodeCount *int64 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
+	// The storage capacity of the cluster. Unit: GB.
+	//
+	// example:
+	//
+	// 300
+	DBNodeStorage *int64 `json:"DBNodeStorage,omitempty" xml:"DBNodeStorage,omitempty"`
 	// The engine version of the AnalyticDB for MySQL Data Lakehouse Edition cluster. **5.0*	- is returned.
 	//
 	// example:
 	//
 	// 5.0
-	DBVersion         *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	DiskType          *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	DtsJobId          *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
-	ElasticIOResource *int32  `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
+	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	// The disk type of the cluster. Valid values:
+	//
+	// 	- **local_ssd**: local disk.
+	//
+	// 	- **cloud**: basic disk.
+	//
+	// 	- **cloud_ssd**: standard SSD.
+	//
+	// 	- **cloud_efficiency**: ultra disk.
+	//
+	// 	- **cloud_essd**: PL1 Enterprise SSD (ESSD).
+	//
+	// 	- **cloud_essd2**: PL2 ESSD.
+	//
+	// 	- **cloud_essd3**: PL3 ESSD.
+	//
+	// >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	//
+	// example:
+	//
+	// cloud_essd
+	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The ID of the Data Transmission Service (DTS) synchronization job This parameter is returned only for MySQL analytic instances.
+	//
+	// example:
+	//
+	// dtsb1578j90XXXX
+	DtsJobId *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	// The number of elastic I/O units (EIUs). For more information, see the "[EIUs](https://help.aliyun.com/document_detail/189505.html)" section of the Scale out elastic I/O resources topic.
+	//
+	// >  This parameter is returned only for clusters in elastic mode.
+	//
+	// example:
+	//
+	// 2
+	ElasticIOResource *int32 `json:"ElasticIOResource,omitempty" xml:"ElasticIOResource,omitempty"`
 	// The engine of the cluster. **AnalyticDB*	- is returned.
 	//
 	// example:
 	//
 	// AnalyticDB
-	Engine        *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The number of compute nodes that are used by the cluster in elastic mode.
+	//
+	// example:
+	//
+	// 1
 	ExecutorCount *string `json:"ExecutorCount,omitempty" xml:"ExecutorCount,omitempty"`
 	// The time when the cluster expires. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time is displayed in UTC.
 	//
@@ -17162,8 +22236,18 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// false
-	Expired   *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	InnerIp   *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	Expired *string `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The internal IP address of the cluster.
+	//
+	// example:
+	//
+	// 10.1.xx.xx
+	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
+	// The internal port of the cluster.
+	//
+	// example:
+	//
+	// 3306
 	InnerPort *string `json:"InnerPort,omitempty" xml:"InnerPort,omitempty"`
 	// The lock status of the cluster. Valid values:
 	//
@@ -17206,10 +22290,33 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 3306
-	Port           *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	ProductForm    *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The service type of the cluster. Valid values:
+	//
+	// 	- LegacyForm
+	//
+	// 	- IntegrationForm
+	//
+	// example:
+	//
+	// IntegrationForm
+	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
+	// The edition of the cluster. Valid values:
+	//
+	// 	- **BasicVersion**: Basic Edition.
+	//
+	// 	- **EnterpriseVersion**: Enterprise Edition.
+	//
+	// example:
+	//
+	// EnterpriseVersion
 	ProductVersion *string `json:"ProductVersion,omitempty" xml:"ProductVersion,omitempty"`
-	RdsInstanceId  *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
+	// The ID of the ApsaraDB RDS instance from which data is synchronized to the cluster. This parameter is returned only for MySQL analytic instances.
+	//
+	// example:
+	//
+	// rm-bp11q28kvl688****
+	RdsInstanceId *string `json:"RdsInstanceId,omitempty" xml:"RdsInstanceId,omitempty"`
 	// The region ID of the cluster.
 	//
 	// example:
@@ -17221,9 +22328,19 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 32ACU
-	ReservedACU       *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
-	ReservedNodeCount *int32  `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
-	ReservedNodeSize  *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
+	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
+	// The number of reserved resource nodes.
+	//
+	// example:
+	//
+	// 1
+	ReservedNodeCount *int32 `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
+	// The single-node specifications of reserved resources.
+	//
+	// example:
+	//
+	// 8ACU
+	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	// The resource group ID.
 	//
 	// example:
@@ -17237,9 +22354,15 @@ type DescribeDBClustersResponseBodyItemsDBCluster struct {
 	// 24ACU
 	StorageResource *string `json:"StorageResource,omitempty" xml:"StorageResource,omitempty"`
 	// The tags that are added to the cluster.
-	Tags               *DescribeDBClustersResponseBodyItemsDBClusterTags     `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	TaskInfo           *DescribeDBClustersResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-	VPCCloudInstanceId *string                                               `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
+	Tags *DescribeDBClustersResponseBodyItemsDBClusterTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	// The job progress.
+	TaskInfo *DescribeDBClustersResponseBodyItemsDBClusterTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
+	// The ID of the cluster that resides in the VPC.
+	//
+	// example:
+	//
+	// am-bp163885f8q21****-controller
+	VPCCloudInstanceId *string `json:"VPCCloudInstanceId,omitempty" xml:"VPCCloudInstanceId,omitempty"`
 	// The virtual private cloud (VPC) ID of the cluster.
 	//
 	// example:
@@ -17536,9 +22659,31 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTagsTag) SetValue(v string)
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTaskInfo struct {
-	Name     *string                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	Progress *string                                                       `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status   *string                                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the job.
+	//
+	// example:
+	//
+	// analyticDBFlexibleScaleOut
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The progress of the job. Unit: %.
+	//
+	// example:
+	//
+	// 10
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// The status of the job. Valid values:
+	//
+	// 	- **NOT_RUN**
+	//
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCEED**
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The job steps.
 	StepList *DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList `json:"StepList,omitempty" xml:"StepList,omitempty" type:"Struct"`
 }
 
@@ -17588,12 +22733,48 @@ func (s *DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepList) SetStepLi
 }
 
 type DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList struct {
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StepDesc     *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
-	StepName     *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The end time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-03-10T10:28:34Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The start time of the job step. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-03-10T09:28:34Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The description of the job step.
+	//
+	// example:
+	//
+	// Apply resource
+	StepDesc *string `json:"StepDesc,omitempty" xml:"StepDesc,omitempty"`
+	// The name of the job step.
+	//
+	// example:
+	//
+	// ApplyResource
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The progress of the job step. Unit: %.
+	//
+	// example:
+	//
+	// 50
 	StepProgress *string `json:"StepProgress,omitempty" xml:"StepProgress,omitempty"`
-	StepStatus   *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
+	// The status of the job step. Valid values:
+	//
+	// 	- **NOT_RUN**
+	//
+	// 	- **RUNNING**
+	//
+	// 	- **SUCCEED**
+	//
+	// example:
+	//
+	// SUCCEED
+	StepStatus *string `json:"StepStatus,omitempty" xml:"StepStatus,omitempty"`
 }
 
 func (s DescribeDBClustersResponseBodyItemsDBClusterTaskInfoStepListStepList) String() string {
@@ -17855,8 +23036,9 @@ type DescribeDBResourceGroupResponseBodyGroupsInfo struct {
 	// example:
 	//
 	// 0ACU
-	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	MinComputeResource *string                                                 `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	MinGpuQuantity     *int32                                                  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfig          *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// The job resubmission rules.
 	Rules []*DescribeDBResourceGroupResponseBodyGroupsInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 	// A reserved parameter.
@@ -17985,6 +23167,11 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetMinGpuQuantity(v int3
 	return s
 }
 
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRayConfig(v *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) *DescribeDBResourceGroupResponseBodyGroupsInfo {
+	s.RayConfig = v
+	return s
+}
+
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetRules(v []*DescribeDBResourceGroupResponseBodyGroupsInfoRules) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.Rules = v
 	return s
@@ -18012,6 +23199,106 @@ func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetTargetResourceGroupNa
 
 func (s *DescribeDBResourceGroupResponseBodyGroupsInfo) SetUpdateTime(v string) *DescribeDBResourceGroupResponseBodyGroupsInfo {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig struct {
+	Category            *string                                                               `json:"Category,omitempty" xml:"Category,omitempty"`
+	HeadSpec            *string                                                               `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	RayClusterAddress   *string                                                               `json:"RayClusterAddress,omitempty" xml:"RayClusterAddress,omitempty"`
+	RayDashboardAddress *string                                                               `json:"RayDashboardAddress,omitempty" xml:"RayDashboardAddress,omitempty"`
+	RayGrafanaAddress   *string                                                               `json:"RayGrafanaAddress,omitempty" xml:"RayGrafanaAddress,omitempty"`
+	WorkerGroups        []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetCategory(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetHeadSpec(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.HeadSpec = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetRayClusterAddress(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.RayClusterAddress = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetRayDashboardAddress(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.RayDashboardAddress = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetRayGrafanaAddress(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.RayGrafanaAddress = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig) SetWorkerGroups(v []*DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfig {
+	s.WorkerGroups = v
+	return s
+}
+
+type DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups struct {
+	AllocateUnit       *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	MaxWorkerQuantity  *int32  `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	MinWorkerQuantity  *int32  `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	WorkerSpecName     *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	WorkerSpecType     *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetAllocateUnit(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.AllocateUnit = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetGroupName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetMaxWorkerQuantity(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.MaxWorkerQuantity = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetMinWorkerQuantity(v int32) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.MinWorkerQuantity = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetWorkerDiskCapacity(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.WorkerDiskCapacity = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetWorkerSpecName(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.WorkerSpecName = &v
+	return s
+}
+
+func (s *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups) SetWorkerSpecType(v string) *DescribeDBResourceGroupResponseBodyGroupsInfoRayConfigWorkerGroups {
+	s.WorkerSpecType = &v
 	return s
 }
 
@@ -19007,7 +24294,7 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	// The query ID.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the query ID.
+	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the query ID.
 	//
 	// example:
 	//
@@ -19023,7 +24310,7 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	ProcessRcHost *string `json:"ProcessRcHost,omitempty" xml:"ProcessRcHost,omitempty"`
 	// The execution start time of the SQL statement. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the execution start time of the SQL statement.
+	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the execution start time of the SQL statement.
 	//
 	// example:
 	//
@@ -19037,7 +24324,7 @@ type DescribeDiagnosisSQLInfoRequest struct {
 	//
 	// 	- **failed**
 	//
-	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster, including the status of the SQL statement.
+	// >  You can call the [DescribeDiagnosisRecords](https://help.aliyun.com/document_detail/308207.html) operation to query the diagnostic information about SQL statements for an AnalyticDB for MySQL cluster, including the status of the SQL statement.
 	//
 	// example:
 	//
@@ -19466,7 +24753,7 @@ func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResp
 type DescribeElasticPlanAttributeRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -19681,7 +24968,7 @@ func (s *DescribeElasticPlanAttributeResponse) SetBody(v *DescribeElasticPlanAtt
 type DescribeElasticPlanJobsRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -20058,7 +25345,7 @@ func (s *DescribeElasticPlanJobsResponse) SetBody(v *DescribeElasticPlanJobsResp
 type DescribeElasticPlanSpecificationsRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -20691,6 +25978,8 @@ func (s *DescribeEnabledPrivilegesResponse) SetBody(v *DescribeEnabledPrivileges
 }
 
 type DescribeEssdCacheConfigRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -20713,7 +26002,10 @@ func (s *DescribeEssdCacheConfigRequest) SetDBClusterId(v string) *DescribeEssdC
 }
 
 type DescribeEssdCacheConfigResponseBody struct {
+	// The returned data.
 	Data *DescribeEssdCacheConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C7EDB8E4-9769-4233-88C7-DCA4C9******
@@ -20739,10 +26031,20 @@ func (s *DescribeEssdCacheConfigResponseBody) SetRequestId(v string) *DescribeEs
 }
 
 type DescribeEssdCacheConfigResponseBodyData struct {
+	// Specifies whether to enable the disk cache feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	EnableEssdCache *bool `json:"EnableEssdCache,omitempty" xml:"EnableEssdCache,omitempty"`
+	// The disk cache size. Unit: GB.
+	//
 	// example:
 	//
 	// 500
@@ -21252,19 +26554,548 @@ func (s *DescribeExcessivePrimaryKeysResponse) SetBody(v *DescribeExcessivePrima
 	return s
 }
 
-type DescribeInclinedNodesRequest struct {
+type DescribeExecutorDetectionRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// amv-wz9jd******d1765
+	// am-xxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2021-05-27T16:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
 	// example:
 	//
 	// zh
 	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shenzhen
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2024-10-31T02:06Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeExecutorDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionRequest) SetDBClusterId(v string) *DescribeExecutorDetectionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetEndTime(v string) *DescribeExecutorDetectionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetLang(v string) *DescribeExecutorDetectionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetOwnerAccount(v string) *DescribeExecutorDetectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetOwnerId(v int64) *DescribeExecutorDetectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetRegionId(v string) *DescribeExecutorDetectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetResourceOwnerAccount(v string) *DescribeExecutorDetectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetResourceOwnerId(v int64) *DescribeExecutorDetectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionRequest) SetStartTime(v string) *DescribeExecutorDetectionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBody struct {
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+	//
+	// example:
+	//
+	// am-xxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeExecutorDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9DFF5F54-162B-5860-80A5-411FF550B347
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 566
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeExecutorDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBody) SetDBClusterId(v string) *DescribeExecutorDetectionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBody) SetDetectionItems(v []*DescribeExecutorDetectionResponseBodyDetectionItems) *DescribeExecutorDetectionResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBody) SetRequestId(v string) *DescribeExecutorDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBody) SetTotalCount(v string) *DescribeExecutorDetectionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItems struct {
+	// The information about the detection result.
+	//
+	// example:
+	//
+	// Large amounts of memory resources are used by the Aggregation operator.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Metric detection
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The detection result items.
+	Results *DescribeExecutorDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// The severity level of the detection result. Valid values:
+	//
+	// 	- NORMAL
+	//
+	// 	- WARNING
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// WARNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItems) SetMessage(v string) *DescribeExecutorDetectionResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItems) SetName(v string) *DescribeExecutorDetectionResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItems) SetResults(v *DescribeExecutorDetectionResponseBodyDetectionItemsResults) *DescribeExecutorDetectionResponseBodyDetectionItems {
+	s.Results = v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItems) SetStatus(v string) *DescribeExecutorDetectionResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItemsResults struct {
+	// The detection result items of operator metric aggregation.
+	OperatorAgg []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg `json:"OperatorAgg,omitempty" xml:"OperatorAgg,omitempty" type:"Repeated"`
+	// The detection result items of abnormal operators.
+	OperatorDetails []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails `json:"OperatorDetails,omitempty" xml:"OperatorDetails,omitempty" type:"Repeated"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResults) SetOperatorAgg(v []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) *DescribeExecutorDetectionResponseBodyDetectionItemsResults {
+	s.OperatorAgg = v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResults) SetOperatorDetails(v []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) *DescribeExecutorDetectionResponseBodyDetectionItemsResults {
+	s.OperatorDetails = v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg struct {
+	// The name of the detection metric.
+	//
+	// example:
+	//
+	// OperatorCost
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The detection result items of operator metric aggregation.
+	SearchResults []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) SetMetricName(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg) SetSearchResults(v []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAgg {
+	s.SearchResults = v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults struct {
+	// The average value of the operator metric.
+	//
+	// example:
+	//
+	// 234
+	AvgValue *float64 `json:"AvgValue,omitempty" xml:"AvgValue,omitempty"`
+	// The maximum value of the operator metric.
+	//
+	// example:
+	//
+	// 2345
+	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The number of occurrences of the operator.
+	//
+	// example:
+	//
+	// 3
+	OperatorCount *int64 `json:"OperatorCount,omitempty" xml:"OperatorCount,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// Window
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The cumulative value of the operator metric.
+	//
+	// example:
+	//
+	// 345
+	TotalValue *int64 `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetAvgValue(v float64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.AvgValue = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetMaxValue(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetOperatorCount(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.OperatorCount = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetOperatorName(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetTotalValue(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.TotalValue = &v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails struct {
+	// The name of the detection metric.
+	//
+	// example:
+	//
+	// PeakMemory
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The detection result items of abnormal operators.
+	SearchResults []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) SetMetricName(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails) SetSearchResults(v []*DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetails {
+	s.SearchResults = v
+	return s
+}
+
+type DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults struct {
+	// The number of rows input by the operator.
+	//
+	// example:
+	//
+	// 123
+	InputRows *int64 `json:"InputRows,omitempty" xml:"InputRows,omitempty"`
+	// The amount of data input by the operator. Unit: bytes.
+	//
+	// example:
+	//
+	// 345
+	InputSize *int64 `json:"InputSize,omitempty" xml:"InputSize,omitempty"`
+	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 123
+	OperatorCost *float64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
+	// The property information about the operator.
+	//
+	// example:
+	//
+	// GROUP BY field: uid
+	OperatorInfo *string `json:"OperatorInfo,omitempty" xml:"OperatorInfo,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// Join
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The number of rows output by the operator.
+	//
+	// example:
+	//
+	// 2345
+	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
+	// The amount of data output by the operator. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	OutputSize *int64 `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
+	// The peak memory. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	// The query ID.
+	//
+	// example:
+	//
+	// 2024080110010002102500023803151627972
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The stage ID.
+	//
+	// example:
+	//
+	// Stage[3]
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetInputRows(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.InputRows = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetInputSize(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.InputSize = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorCost(v float64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorCost = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorInfo(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorInfo = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorName(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOutputRows(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OutputRows = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOutputSize(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OutputSize = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetPeakMemory(v int64) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetProcessId(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetStageId(v string) *DescribeExecutorDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.StageId = &v
+	return s
+}
+
+type DescribeExecutorDetectionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeExecutorDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeExecutorDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeExecutorDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeExecutorDetectionResponse) SetHeaders(v map[string]*string) *DescribeExecutorDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponse) SetStatusCode(v int32) *DescribeExecutorDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeExecutorDetectionResponse) SetBody(v *DescribeExecutorDetectionResponseBody) *DescribeExecutorDetectionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInclinedNodesRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-wz9jd******d1765
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The language of file titles and error messages. Valid values:
+	//
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21319,7 +27150,10 @@ func (s *DescribeInclinedNodesRequest) SetResourceOwnerId(v int64) *DescribeIncl
 }
 
 type DescribeInclinedNodesResponseBody struct {
+	// The queried storage nodes.
 	Items []*DescribeInclinedNodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C0BF6685-0519-543E-90F8-DB8949E4D5F2
@@ -21345,10 +27179,14 @@ func (s *DescribeInclinedNodesResponseBody) SetRequestId(v string) *DescribeIncl
 }
 
 type DescribeInclinedNodesResponseBodyItems struct {
+	// The disk usage of the storage node.
+	//
 	// example:
 	//
 	// 90.5
 	DiskUsageRatio *string `json:"DiskUsageRatio,omitempty" xml:"DiskUsageRatio,omitempty"`
+	// The number of the storage node.
+	//
 	// example:
 	//
 	// Node1
@@ -21398,6 +27236,331 @@ func (s *DescribeInclinedNodesResponse) SetStatusCode(v int32) *DescribeInclined
 }
 
 func (s *DescribeInclinedNodesResponse) SetBody(v *DescribeInclinedNodesResponseBody) *DescribeInclinedNodesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInclinedTablesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-k2jofo4pi5zhd****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// example:
+	//
+	// [      {          "Field":"Name",          "Type":"Asc"      }  ]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hongkong
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// FactTable
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+}
+
+func (s DescribeInclinedTablesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesRequest) SetDBClusterId(v string) *DescribeInclinedTablesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetLang(v string) *DescribeInclinedTablesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetOrder(v string) *DescribeInclinedTablesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetPageNumber(v int32) *DescribeInclinedTablesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetPageSize(v int32) *DescribeInclinedTablesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetRegionId(v string) *DescribeInclinedTablesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesRequest) SetTableType(v string) *DescribeInclinedTablesRequest {
+	s.TableType = &v
+	return s
+}
+
+type DescribeInclinedTablesResponseBody struct {
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string                                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	DetectionItems     []*DescribeInclinedTablesResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	Items              *DescribeInclinedTablesResponseBodyItems            `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInclinedTablesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetAccessDeniedDetail(v string) *DescribeInclinedTablesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetDetectionItems(v []*DescribeInclinedTablesResponseBodyDetectionItems) *DescribeInclinedTablesResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetItems(v *DescribeInclinedTablesResponseBodyItems) *DescribeInclinedTablesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetPageNumber(v string) *DescribeInclinedTablesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetPageSize(v string) *DescribeInclinedTablesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetRequestId(v string) *DescribeInclinedTablesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBody) SetTotalCount(v string) *DescribeInclinedTablesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInclinedTablesResponseBodyDetectionItems struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// NORMAL
+	//
+	// WARNNING
+	//
+	// CRITICAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeInclinedTablesResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesResponseBodyDetectionItems) SetMessage(v string) *DescribeInclinedTablesResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyDetectionItems) SetName(v string) *DescribeInclinedTablesResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyDetectionItems) SetStatus(v string) *DescribeInclinedTablesResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeInclinedTablesResponseBodyItems struct {
+	Table []*DescribeInclinedTablesResponseBodyItemsTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInclinedTablesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesResponseBodyItems) SetTable(v []*DescribeInclinedTablesResponseBodyItemsTable) *DescribeInclinedTablesResponseBodyItems {
+	s.Table = v
+	return s
+}
+
+type DescribeInclinedTablesResponseBodyItemsTable struct {
+	// example:
+	//
+	// True
+	IsIncline *bool `json:"IsIncline,omitempty" xml:"IsIncline,omitempty"`
+	// example:
+	//
+	// admin_daily_own_statistic_record
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1000
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// example:
+	//
+	// spark_test
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// 200
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 0.4
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// example:
+	//
+	// 53687091200
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// example:
+	//
+	// Fact
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeInclinedTablesResponseBodyItemsTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesResponseBodyItemsTable) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetIsIncline(v bool) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.IsIncline = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetName(v string) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetRowCount(v int64) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.RowCount = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetSchema(v string) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.Schema = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetSize(v int64) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetSpaceRatio(v float64) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.SpaceRatio = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetTotalSize(v int64) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.TotalSize = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponseBodyItemsTable) SetType(v string) *DescribeInclinedTablesResponseBodyItemsTable {
+	s.Type = &v
+	return s
+}
+
+type DescribeInclinedTablesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeInclinedTablesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeInclinedTablesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInclinedTablesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInclinedTablesResponse) SetHeaders(v map[string]*string) *DescribeInclinedTablesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponse) SetStatusCode(v int32) *DescribeInclinedTablesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInclinedTablesResponse) SetBody(v *DescribeInclinedTablesResponseBody) *DescribeInclinedTablesResponse {
 	s.Body = v
 	return s
 }
@@ -21701,6 +27864,12 @@ func (s *DescribeJobResourceUsageResponse) SetBody(v *DescribeJobResourceUsageRe
 }
 
 type DescribeKernelVersionRequest struct {
+	// The cluster ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21709,6 +27878,10 @@ type DescribeKernelVersionRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -21756,15 +27929,22 @@ func (s *DescribeKernelVersionRequest) SetResourceOwnerId(v int64) *DescribeKern
 }
 
 type DescribeKernelVersionResponseBody struct {
+	// The minor versions to which you can update the current minor version of the cluster.
 	AvailableKernelVersions []*DescribeKernelVersionResponseBodyAvailableKernelVersions `json:"AvailableKernelVersions,omitempty" xml:"AvailableKernelVersions,omitempty" type:"Repeated"`
+	// The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+	//
 	// example:
 	//
 	// 2025-01-12T16:00:00Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The minor version of the cluster. Example: **3.1.8**.
+	//
 	// example:
 	//
 	// 3.1.8
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -21800,14 +27980,20 @@ func (s *DescribeKernelVersionResponseBody) SetRequestId(v string) *DescribeKern
 }
 
 type DescribeKernelVersionResponseBodyAvailableKernelVersions struct {
+	// The maintenance expiration time of the version. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC. After the time arrives, the system no longer maintains the version. If any issues occur, update the minor version of the cluster to a later version.
+	//
 	// example:
 	//
 	// 2025-07-17T16:00:00Z
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	// The minor version. Example: **3.1.9**.
+	//
 	// example:
 	//
 	// 3.1.9
 	KernelVersion *string `json:"KernelVersion,omitempty" xml:"KernelVersion,omitempty"`
+	// The time when the minor version was released. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-07-17T16:00:00Z
@@ -21867,6 +28053,10 @@ func (s *DescribeKernelVersionResponse) SetBody(v *DescribeKernelVersionResponse
 }
 
 type DescribeLakeCacheSizeRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Warehouse Edition clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -21889,11 +28079,16 @@ func (s *DescribeLakeCacheSizeRequest) SetDBClusterId(v string) *DescribeLakeCac
 }
 
 type DescribeLakeCacheSizeResponseBody struct {
+	// The status code. The value 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *DescribeLakeCacheSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -21924,23 +28119,32 @@ func (s *DescribeLakeCacheSizeResponseBody) SetRequestId(v string) *DescribeLake
 }
 
 type DescribeLakeCacheSizeResponseBodyData struct {
+	// The size of the lake cache space. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-bp10b6646l07akdt
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The size of the data that occupies the lake cache space. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// Indicates whether the lake cache feature is enabled.
+	//
 	// example:
 	//
 	// true
-	EnableLakeCache *bool     `json:"EnableLakeCache,omitempty" xml:"EnableLakeCache,omitempty"`
-	Instances       []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	EnableLakeCache *bool `json:"EnableLakeCache,omitempty" xml:"EnableLakeCache,omitempty"`
+	// The clusters that share the lake cache space.
+	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
 func (s DescribeLakeCacheSizeResponseBodyData) String() string {
@@ -22006,6 +28210,10 @@ func (s *DescribeLakeCacheSizeResponse) SetBody(v *DescribeLakeCacheSizeResponse
 }
 
 type DescribeOperatorPermissionRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -22052,22 +28260,32 @@ func (s *DescribeOperatorPermissionRequest) SetResourceOwnerId(v int64) *Describ
 }
 
 type DescribeOperatorPermissionResponseBody struct {
+	// The time when the permissions take effect.
+	//
 	// example:
 	//
 	// 2024-02-25T03:35:02Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-uf6wjk5xxxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The time when the permissions expire.
+	//
 	// example:
 	//
 	// 2024-01-10T02:19:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// The queried permissions.
+	//
 	// example:
 	//
 	// Control,Data
 	Privileges *string `json:"Privileges,omitempty" xml:"Privileges,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -22132,6 +28350,448 @@ func (s *DescribeOperatorPermissionResponse) SetStatusCode(v int32) *DescribeOpe
 }
 
 func (s *DescribeOperatorPermissionResponse) SetBody(v *DescribeOperatorPermissionResponseBody) *DescribeOperatorPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOversizeNonPartitionTableInfosRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp11q28kvl688****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// >  The end time must be later than the start time. The specified time range must be less than seven days.
+	//
+	// example:
+	//
+	// 2024-05-11T05:44Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language of file titles and error messages. Valid values:
+	//
+	// 	- **zh (default)**: simplified Chinese.
+	//
+	// 	- **en**: English
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format.
+	//
+	// Example:
+	//
+	//     [
+	//
+	//         {
+	//
+	//             "Field":"Name",
+	//
+	//             "Type":"Asc"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	//
+	// Field and Type are case-insensitive.
+	//
+	// example:
+	//
+	// [{"Field":"SchemaName","Type":"Asc"}]
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Pages start from page 1. Default value: **1**.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- 30
+	//
+	// 	- 50
+	//
+	// 	- 100
+	//
+	// Default value: 30.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
+	// >
+	//
+	// example:
+	//
+	// 2024-05-11T05:44Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeOversizeNonPartitionTableInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOversizeNonPartitionTableInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetDBClusterId(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetEndTime(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetLang(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetOrder(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetOwnerAccount(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetOwnerId(v int64) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetPageNumber(v int32) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetPageSize(v int32) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetRegionId(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetResourceOwnerAccount(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetResourceOwnerId(v int64) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosRequest) SetStartTime(v string) *DescribeOversizeNonPartitionTableInfosRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeOversizeNonPartitionTableInfosResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// am-bp16t5ci7r74s****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried oversized non-partitioned tables.
+	Tables []*DescribeOversizeNonPartitionTableInfosResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetDBClusterId(v string) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetDetectionItems(v []*DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetPageNumber(v int32) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetPageSize(v int32) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetRequestId(v string) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetTables(v []*DescribeOversizeNonPartitionTableInfosResponseBodyTables) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.Tables = v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBody) SetTotalCount(v string) *DescribeOversizeNonPartitionTableInfosResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems struct {
+	// The information about the detection result.
+	//
+	// example:
+	//
+	// Multiple oversized non-partitioned tables are detected.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Oversized non-partitioned tables
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result.
+	//
+	// example:
+	//
+	// NORMAL
+	//
+	// WARNING
+	//
+	// CRITICAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) SetMessage(v string) *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) SetName(v string) *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems) SetStatus(v string) *DescribeOversizeNonPartitionTableInfosResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeOversizeNonPartitionTableInfosResponseBodyTables struct {
+	// The data size of the table. Unit: bytes.
+	//
+	// example:
+	//
+	// 2921132457984
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The data size of regular indexes. Unit: bytes.
+	//
+	// example:
+	//
+	// 111
+	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	// The size of hot data. Unit: bytes.
+	//
+	// example:
+	//
+	// 1223
+	LocalDataSize *int64 `json:"LocalDataSize,omitempty" xml:"LocalDataSize,omitempty"`
+	// The data size of the primary key index. Unit: bytes.
+	//
+	// example:
+	//
+	// 123
+	PrimaryKeySize *int64 `json:"PrimaryKeySize,omitempty" xml:"PrimaryKeySize,omitempty"`
+	// The size of cold data. Unit: bytes.
+	//
+	// example:
+	//
+	// 122
+	RemoteDataSize *int64 `json:"RemoteDataSize,omitempty" xml:"RemoteDataSize,omitempty"`
+	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 1222
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The percentage of the table size. Unit: %.
+	//
+	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	//
+	// example:
+	//
+	// 0.3
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBodyTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponseBodyTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetDataSize(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetIndexSize(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetLocalDataSize(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.LocalDataSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetPrimaryKeySize(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.PrimaryKeySize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetRemoteDataSize(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.RemoteDataSize = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetRowCount(v int64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.RowCount = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetSchemaName(v string) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetSpaceRatio(v float64) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.SpaceRatio = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponseBodyTables) SetTableName(v string) *DescribeOversizeNonPartitionTableInfosResponseBodyTables {
+	s.TableName = &v
+	return s
+}
+
+type DescribeOversizeNonPartitionTableInfosResponse struct {
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOversizeNonPartitionTableInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOversizeNonPartitionTableInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponse) SetHeaders(v map[string]*string) *DescribeOversizeNonPartitionTableInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponse) SetStatusCode(v int32) *DescribeOversizeNonPartitionTableInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOversizeNonPartitionTableInfosResponse) SetBody(v *DescribeOversizeNonPartitionTableInfosResponseBody) *DescribeOversizeNonPartitionTableInfosResponse {
 	s.Body = v
 	return s
 }
@@ -22715,9 +29375,28 @@ func (s *DescribePerformanceViewAttributeResponseBodyViewDetailCategories) SetKe
 }
 
 type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct {
-	EnableAutoMc *bool     `json:"EnableAutoMc,omitempty" xml:"EnableAutoMc,omitempty"`
-	Engine       []*string `json:"Engine,omitempty" xml:"Engine,omitempty" type:"Repeated"`
-	GroupType    []*string `json:"GroupType,omitempty" xml:"GroupType,omitempty" type:"Repeated"`
+	// Indicates whether the multi-cluster feature is enabled. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	EnableAutoMc *bool `json:"EnableAutoMc,omitempty" xml:"EnableAutoMc,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- AnalyticDB
+	Engine []*string `json:"Engine,omitempty" xml:"Engine,omitempty" type:"Repeated"`
+	// The type of the resource group. Valid values:
+	//
+	// 	- **Interactive**
+	//
+	// 	- **Job**
+	//
+	// >  For more information about resource groups, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	GroupType []*string `json:"GroupType,omitempty" xml:"GroupType,omitempty" type:"Repeated"`
 	// The name of the metric.
 	//
 	// example:
@@ -23243,6 +29922,149 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 	return s
 }
 
+type DescribeResourceGroupSpecRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-8vbo40tl1dxxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ai
+	ResourceGroupType *string `json:"ResourceGroupType,omitempty" xml:"ResourceGroupType,omitempty"`
+}
+
+func (s DescribeResourceGroupSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupSpecRequest) SetDBClusterId(v string) *DescribeResourceGroupSpecRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecRequest) SetRegionId(v string) *DescribeResourceGroupSpecRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecRequest) SetResourceGroupType(v string) *DescribeResourceGroupSpecRequest {
+	s.ResourceGroupType = &v
+	return s
+}
+
+type DescribeResourceGroupSpecResponseBody struct {
+	// requestId
+	//
+	// example:
+	//
+	// 10226189-4391-5B10-97AF-5CA5XXXXXXX
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Specs     []*DescribeResourceGroupSpecResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResourceGroupSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupSpecResponseBody) SetRequestId(v string) *DescribeResourceGroupSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponseBody) SetSpecs(v []*DescribeResourceGroupSpecResponseBodySpecs) *DescribeResourceGroupSpecResponseBody {
+	s.Specs = v
+	return s
+}
+
+type DescribeResourceGroupSpecResponseBodySpecs struct {
+	AllocateUnits []*string `json:"AllocateUnits,omitempty" xml:"AllocateUnits,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 8
+	MaxQuantity *int32 `json:"MaxQuantity,omitempty" xml:"MaxQuantity,omitempty"`
+	// example:
+	//
+	// xlarge
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// GPU
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceGroupSpecResponseBodySpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupSpecResponseBodySpecs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupSpecResponseBodySpecs) SetAllocateUnits(v []*string) *DescribeResourceGroupSpecResponseBodySpecs {
+	s.AllocateUnits = v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponseBodySpecs) SetMaxQuantity(v int32) *DescribeResourceGroupSpecResponseBodySpecs {
+	s.MaxQuantity = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponseBodySpecs) SetName(v string) *DescribeResourceGroupSpecResponseBodySpecs {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponseBodySpecs) SetType(v string) *DescribeResourceGroupSpecResponseBodySpecs {
+	s.Type = &v
+	return s
+}
+
+type DescribeResourceGroupSpecResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeResourceGroupSpecResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeResourceGroupSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupSpecResponse) SetHeaders(v map[string]*string) *DescribeResourceGroupSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponse) SetStatusCode(v int32) *DescribeResourceGroupSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResourceGroupSpecResponse) SetBody(v *DescribeResourceGroupSpecResponseBody) *DescribeResourceGroupSpecResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSQLPatternsRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -23412,6 +30234,27 @@ func (s *DescribeSQLPatternsRequest) SetStartTime(v string) *DescribeSQLPatterns
 }
 
 type DescribeSQLPatternsResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The page number.
 	//
@@ -23942,24 +30785,38 @@ func (s *DescribeSchemasResponse) SetBody(v *DescribeSchemasResponseBody) *Descr
 }
 
 type DescribeSparkAppDiagnosisInfoRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s202411061017sh0ad564b000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-uf663j39b0jd2***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The execution language of the Spark application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PYTHON
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -23997,6 +30854,8 @@ func (s *DescribeSparkAppDiagnosisInfoRequest) SetRegionId(v string) *DescribeSp
 }
 
 type DescribeSparkAppDiagnosisInfoResponseBody struct {
+	// The information about the request denial.
+	//
 	// example:
 	//
 	// {
@@ -24017,47 +30876,78 @@ type DescribeSparkAppDiagnosisInfoResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+	//
 	// example:
 	//
 	// s202404141952sz6a1391200****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The CPU utilization. Unit: %.
+	//
 	// example:
 	//
 	// 100
-	CpuUtilization    *float64                       `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
+	CpuUtilization *float64 `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
+	// The queried diagnostic information.
 	DiagnosisInfoList []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfoList,omitempty" xml:"DiagnosisInfoList,omitempty" type:"Repeated"`
+	// The execution duration of the application. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 281063
 	DurationInMillis *int64 `json:"DurationInMillis,omitempty" xml:"DurationInMillis,omitempty"`
+	// The amount of time consumed by the Java virtual machine to perform garbage collection operations. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 81055
 	JVMGcCostInMillis *int64 `json:"JVMGcCostInMillis,omitempty" xml:"JVMGcCostInMillis,omitempty"`
+	// The peak memory usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096000
 	PeakMemoryInByte *int64 `json:"PeakMemoryInByte,omitempty" xml:"PeakMemoryInByte,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// FB5AC339-91F6-5000-8E5A-F47065B01B87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The amount of data used for shuffle reads. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096000
 	ShuffleReadInByte *int64 `json:"ShuffleReadInByte,omitempty" xml:"ShuffleReadInByte,omitempty"`
+	// The amount of data used for shuffle writes. Unit: bytes.
+	//
 	// example:
 	//
 	// 4096000
 	ShuffleWriteInByte *int64 `json:"ShuffleWriteInByte,omitempty" xml:"ShuffleWriteInByte,omitempty"`
+	// The amount of data spilled to disks when the memory is insufficient. Unit: bytes.
+	//
 	// example:
 	//
 	// 0
 	SpillInByte *int64 `json:"SpillInByte,omitempty" xml:"SpillInByte,omitempty"`
+	// The time when the application started to be executed.
+	//
 	// example:
 	//
 	// 1718329831000
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
+	// The status of the asynchronous import or export job. Valid values:
+	//
+	// 	- **RUNNING**
+	//
+	// 	- **FINISHED**
+	//
+	// 	- **FAILED**
+	//
 	// example:
 	//
 	// FINISHED
@@ -24167,18 +31057,30 @@ func (s *DescribeSparkAppDiagnosisInfoResponse) SetBody(v *DescribeSparkAppDiagn
 }
 
 type DescribeSparkAppTypeRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query the Spark application IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s202407161205sza4c07c1000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// am-wz9w49b12933****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24211,6 +31113,8 @@ func (s *DescribeSparkAppTypeRequest) SetRegionId(v string) *DescribeSparkAppTyp
 }
 
 type DescribeSparkAppTypeResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
 	// example:
 	//
 	// {
@@ -24231,10 +31135,18 @@ type DescribeSparkAppTypeResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 596AF63B-8798-501E-BA06-CD2184D48A35
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type of the Spark application. Valid values:
+	//
+	// 	- BATCH
+	//
+	// 	- SQLENGINE
+	//
 	// example:
 	//
 	// Batch
@@ -24725,6 +31637,597 @@ func (s *DescribeSparkCodeWebUiResponse) SetBody(v *DescribeSparkCodeWebUiRespon
 	return s
 }
 
+type DescribeSparkSQLDiagnosisAttributeRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// s202411071444hzdvk486d9d2001****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The cluster ID.
+	//
+	// >
+	//
+	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-2zeq4788qyy7k662
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the query executed within the Spark application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
+	// The language in which to return the query results. Valid values:
+	//
+	// 	- en: English.
+	//
+	// 	- zh: Chinese.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// zh
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeRequest) SetAppId(v string) *DescribeSparkSQLDiagnosisAttributeRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeRequest) SetDBClusterId(v string) *DescribeSparkSQLDiagnosisAttributeRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeRequest) SetInnerQueryId(v int64) *DescribeSparkSQLDiagnosisAttributeRequest {
+	s.InnerQueryId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeRequest) SetLanguage(v string) *DescribeSparkSQLDiagnosisAttributeRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeRequest) SetRegionId(v string) *DescribeSparkSQLDiagnosisAttributeRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisAttributeResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	//
+	// example:
+	//
+	// s202411071444hzdvk486d9d2001****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The queried diagnostic information.
+	DiagnosisInfos []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfos,omitempty" xml:"DiagnosisInfos,omitempty" type:"Repeated"`
+	// The execution duration of the query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 100
+	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The ID of the query executed within the Spark application.
+	//
+	// example:
+	//
+	// 1
+	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
+	// The operators sorted by metrics.
+	OperatorListSortedByMetrics *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics `json:"OperatorListSortedByMetrics,omitempty" xml:"OperatorListSortedByMetrics,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The Spark execution plan tree.
+	Root *OperatorNode `json:"Root,omitempty" xml:"Root,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetAccessDeniedDetail(v string) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetAppId(v string) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetDiagnosisInfos(v []*Adb4MysqlSparkDiagnosisInfo) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.DiagnosisInfos = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetElapsedTime(v int64) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetInnerQueryId(v int64) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.InnerQueryId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetOperatorListSortedByMetrics(v *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.OperatorListSortedByMetrics = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetRequestId(v string) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) SetRoot(v *OperatorNode) *DescribeSparkSQLDiagnosisAttributeResponseBody {
+	s.Root = v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics struct {
+	// The operators sorted by the execution duration.
+	OperatorListSortedByExclusiveTime []*SparkOperatorInfo `json:"OperatorListSortedByExclusiveTime,omitempty" xml:"OperatorListSortedByExclusiveTime,omitempty" type:"Repeated"`
+	// The operators sorted by the maximum memory used.
+	OperatorListSortedByMaxMemory []*SparkOperatorInfo `json:"OperatorListSortedByMaxMemory,omitempty" xml:"OperatorListSortedByMaxMemory,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) SetOperatorListSortedByExclusiveTime(v []*SparkOperatorInfo) *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics {
+	s.OperatorListSortedByExclusiveTime = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics) SetOperatorListSortedByMaxMemory(v []*SparkOperatorInfo) *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics {
+	s.OperatorListSortedByMaxMemory = v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisAttributeResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSparkSQLDiagnosisAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponse) SetHeaders(v map[string]*string) *DescribeSparkSQLDiagnosisAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponse) SetStatusCode(v int32) *DescribeSparkSQLDiagnosisAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisAttributeResponse) SetBody(v *DescribeSparkSQLDiagnosisAttributeResponseBody) *DescribeSparkSQLDiagnosisAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisListRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-2zez35ww415xjwk5
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The latest start time.
+	//
+	// example:
+	//
+	// 2024-11-28 23:00:00
+	MaxStartTime *string `json:"MaxStartTime,omitempty" xml:"MaxStartTime,omitempty"`
+	// The earliest start time.
+	//
+	// example:
+	//
+	// 2024-11-28 22:00:00
+	MinStartTime *string `json:"MinStartTime,omitempty" xml:"MinStartTime,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format. Example: `[{"Field":"MaxExclusiveTime","Type":"Asc"}]`.
+	//
+	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     	- `MaxExclusiveTime`: the maximum execution duration.
+	//
+	//     	- `PeakMemory`: the peak memory.
+	//
+	//     	- `QueryStartTime`: the start time of the query.
+	//
+	//     	- `QueryWallclockTime`: the execution duration of the query.
+	//
+	// 	- `Type` specifies the sorting order. Valid values:
+	//
+	//     	- `Asc`: ascending order.
+	//
+	//     	- `Desc`: descending order.
+	//
+	// >
+	//
+	// 	- If you do not specify this parameter, query results are sorted by `MaxExclusiveTime` in ascending order.
+	//
+	// example:
+	//
+	// [{\\"Field\\":\\"QueryStartTime\\",\\"Type\\":\\"Desc\\"}]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
+	// example:
+	//
+	// 123
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetDBClusterId(v string) *DescribeSparkSQLDiagnosisListRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetMaxStartTime(v string) *DescribeSparkSQLDiagnosisListRequest {
+	s.MaxStartTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetMinStartTime(v string) *DescribeSparkSQLDiagnosisListRequest {
+	s.MinStartTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetOrder(v string) *DescribeSparkSQLDiagnosisListRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetPageNumber(v int32) *DescribeSparkSQLDiagnosisListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetPageSize(v int32) *DescribeSparkSQLDiagnosisListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetRegionId(v string) *DescribeSparkSQLDiagnosisListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListRequest) SetStatementId(v int64) *DescribeSparkSQLDiagnosisListRequest {
+	s.StatementId = &v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisListResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// A91C9D07-7462-5F35-BB47-83629CE6CCAC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried diagnostic information.
+	SQLDiagnosisList []*DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList `json:"SQLDiagnosisList,omitempty" xml:"SQLDiagnosisList,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 1343
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetAccessDeniedDetail(v string) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetPageNumber(v int32) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetPageSize(v int32) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetRequestId(v string) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetSQLDiagnosisList(v []*DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.SQLDiagnosisList = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBody) SetTotalCount(v int32) *DescribeSparkSQLDiagnosisListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/612475.html) operation to query a list of Spark application IDs.
+	//
+	// example:
+	//
+	// s202404291020bjd448ad40002122
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The execution duration of the query. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 100
+	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
+	// The ID of the query executed within the Spark application.
+	//
+	// example:
+	//
+	// 1
+	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
+	// The maximum operator execution duration. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 90
+	MaxExclusiveTime *int64 `json:"MaxExclusiveTime,omitempty" xml:"MaxExclusiveTime,omitempty"`
+	// The maximum operator memory used. Unit: bytes.
+	//
+	// example:
+	//
+	// 1024
+	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	// The SQL statement.
+	//
+	// example:
+	//
+	// select 	- from device where name = \\"105506012112790031\\"
+	SQL *string `json:"SQL,omitempty" xml:"SQL,omitempty"`
+	// The number of entries scanned.
+	//
+	// example:
+	//
+	// 100
+	ScanRowCount *int64 `json:"ScanRowCount,omitempty" xml:"ScanRowCount,omitempty"`
+	// The start time of the query. The time follows the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time is displayed in UTC.
+	//
+	// example:
+	//
+	// 2024-11-20 09:09:00
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The execution status of the query. Valid values:
+	//
+	// 	- COMPLETED
+	//
+	// 	- CANCELED
+	//
+	// 	- ABORTED
+	//
+	// 	- FAILED
+	//
+	// example:
+	//
+	// COMPLETED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
+	// example:
+	//
+	// 1
+	StatementId *int64 `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetAppId(v string) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetElapsedTime(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.ElapsedTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetInnerQueryId(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.InnerQueryId = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetMaxExclusiveTime(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.MaxExclusiveTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetPeakMemory(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetSQL(v string) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.SQL = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetScanRowCount(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.ScanRowCount = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetStartTime(v string) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetState(v string) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList) SetStatementId(v int64) *DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList {
+	s.StatementId = &v
+	return s
+}
+
+type DescribeSparkSQLDiagnosisListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSparkSQLDiagnosisListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSparkSQLDiagnosisListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSparkSQLDiagnosisListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponse) SetHeaders(v map[string]*string) *DescribeSparkSQLDiagnosisListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponse) SetStatusCode(v int32) *DescribeSparkSQLDiagnosisListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSparkSQLDiagnosisListResponse) SetBody(v *DescribeSparkSQLDiagnosisListResponseBody) *DescribeSparkSQLDiagnosisListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSqlPatternRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
@@ -25173,7 +32676,7 @@ func (s *DescribeSqlPatternResponse) SetBody(v *DescribeSqlPatternResponseBody) 
 }
 
 type DescribeStorageResourceUsageRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -25265,7 +32768,7 @@ func (s *DescribeStorageResourceUsageResponseBody) SetRequestId(v string) *Descr
 type DescribeStorageResourceUsageResponseBodyData struct {
 	// The AnalyticDB compute unit (ACU) usage of the cluster.
 	AcuInfo []*DescribeStorageResourceUsageResponseBodyDataAcuInfo `json:"AcuInfo,omitempty" xml:"AcuInfo,omitempty" type:"Repeated"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -25654,6 +33157,635 @@ func (s *DescribeTableAccessCountResponse) SetBody(v *DescribeTableAccessCountRe
 	return s
 }
 
+type DescribeTableDetailRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1xxxxxxxx47
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeTableDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailRequest) SetDBClusterId(v string) *DescribeTableDetailRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetRegionId(v string) *DescribeTableDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetSchemaName(v string) *DescribeTableDetailRequest {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeTableDetailRequest) SetTableName(v string) *DescribeTableDetailRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeTableDetailResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The average number of rows in a shard.
+	//
+	// example:
+	//
+	// 160
+	AvgSize *string `json:"AvgSize,omitempty" xml:"AvgSize,omitempty"`
+	// The queried data distribution.
+	Items *DescribeTableDetailResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 9
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTableDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBody) SetAccessDeniedDetail(v string) *DescribeTableDetailResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetAvgSize(v string) *DescribeTableDetailResponseBody {
+	s.AvgSize = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetItems(v *DescribeTableDetailResponseBodyItems) *DescribeTableDetailResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetPageNumber(v string) *DescribeTableDetailResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetPageSize(v string) *DescribeTableDetailResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetRequestId(v string) *DescribeTableDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBody) SetTotalCount(v string) *DescribeTableDetailResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTableDetailResponseBodyItems struct {
+	// The queried shards.
+	Shard []*DescribeTableDetailResponseBodyItemsShard `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTableDetailResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBodyItems) SetShard(v []*DescribeTableDetailResponseBodyItemsShard) *DescribeTableDetailResponseBodyItems {
+	s.Shard = v
+	return s
+}
+
+type DescribeTableDetailResponseBodyItemsShard struct {
+	// The shard ID. Only the numeric part of the shard name is returned.
+	//
+	// example:
+	//
+	// 1
+	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 9484858
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeTableDetailResponseBodyItemsShard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponseBodyItemsShard) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponseBodyItemsShard) SetId(v int32) *DescribeTableDetailResponseBodyItemsShard {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponseBodyItemsShard) SetSize(v int64) *DescribeTableDetailResponseBodyItemsShard {
+	s.Size = &v
+	return s
+}
+
+type DescribeTableDetailResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTableDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTableDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableDetailResponse) SetHeaders(v map[string]*string) *DescribeTableDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTableDetailResponse) SetStatusCode(v int32) *DescribeTableDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTableDetailResponse) SetBody(v *DescribeTableDetailResponseBody) *DescribeTableDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTablePartitionDiagnoseRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp171g24yvbxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	//
+	// 	- **zh**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"TotalSize","Type":"Desc"}]`.
+	//
+	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	//
+	//     	- `SchemaName`: the name of the database to which the table belongs.
+	//
+	//     	- `TableName`: the name of the table.
+	//
+	//     	- `TotalSize`: the total data size of the table.
+	//
+	//     	- `SpaceRatio`: the storage percentage of the table.
+	//
+	// 	- `Type` specifies the sorting order. Valid values:
+	//
+	//     	- `Asc`: ascending order.
+	//
+	//     	- `Desc`: descending order.
+	//
+	// >  If you do not specify this parameter, the query results are sorted by the TotalSize field in descending order.
+	//
+	// example:
+	//
+	// [{\\"Field\\":\\"TotalSize\\",\\"Type\\":\\"Desc\\"}]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeTablePartitionDiagnoseRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablePartitionDiagnoseRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetDBClusterId(v string) *DescribeTablePartitionDiagnoseRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetLang(v string) *DescribeTablePartitionDiagnoseRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetOrder(v string) *DescribeTablePartitionDiagnoseRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetPageNumber(v int32) *DescribeTablePartitionDiagnoseRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetPageSize(v int32) *DescribeTablePartitionDiagnoseRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseRequest) SetRegionId(v string) *DescribeTablePartitionDiagnoseRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeTablePartitionDiagnoseResponseBody struct {
+	// The information about the request denial.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-bp171g24yvbxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeTablePartitionDiagnoseResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The queried partition diagnostic information.
+	Items []*DescribeTablePartitionDiagnoseResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The recommended maximum number of rows in each partition.
+	//
+	// example:
+	//
+	// 640000000
+	SuggestMaxRecordsPerPartition *int64 `json:"SuggestMaxRecordsPerPartition,omitempty" xml:"SuggestMaxRecordsPerPartition,omitempty"`
+	// The recommended minimum number of rows in each partition.
+	//
+	// example:
+	//
+	// 64000000
+	SuggestMinRecordsPerPartition *int64 `json:"SuggestMinRecordsPerPartition,omitempty" xml:"SuggestMinRecordsPerPartition,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 185
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetAccessDeniedDetail(v string) *DescribeTablePartitionDiagnoseResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetDBClusterId(v string) *DescribeTablePartitionDiagnoseResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetDetectionItems(v []*DescribeTablePartitionDiagnoseResponseBodyDetectionItems) *DescribeTablePartitionDiagnoseResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetItems(v []*DescribeTablePartitionDiagnoseResponseBodyItems) *DescribeTablePartitionDiagnoseResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetPageNumber(v int32) *DescribeTablePartitionDiagnoseResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetPageSize(v int32) *DescribeTablePartitionDiagnoseResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetRequestId(v string) *DescribeTablePartitionDiagnoseResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetSuggestMaxRecordsPerPartition(v int64) *DescribeTablePartitionDiagnoseResponseBody {
+	s.SuggestMaxRecordsPerPartition = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetSuggestMinRecordsPerPartition(v int64) *DescribeTablePartitionDiagnoseResponseBody {
+	s.SuggestMinRecordsPerPartition = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBody) SetTotalCount(v int32) *DescribeTablePartitionDiagnoseResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTablePartitionDiagnoseResponseBodyDetectionItems struct {
+	// The detection result.
+	//
+	// example:
+	//
+	// Multiple oversized non-partitioned tables are detected.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Improper partition field diagnostics
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result. Valid values:
+	//
+	// 	- NORMAL
+	//
+	// 	- WARNING
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// WARNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyDetectionItems) SetMessage(v string) *DescribeTablePartitionDiagnoseResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyDetectionItems) SetName(v string) *DescribeTablePartitionDiagnoseResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyDetectionItems) SetStatus(v string) *DescribeTablePartitionDiagnoseResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeTablePartitionDiagnoseResponseBodyItems struct {
+	// The improper partitions.
+	//
+	// example:
+	//
+	// [20210110, 20210113,20210123]
+	PartitionDetail *string `json:"PartitionDetail,omitempty" xml:"PartitionDetail,omitempty"`
+	// The number of partitions.
+	//
+	// example:
+	//
+	// 2
+	PartitionNumber *int32 `json:"PartitionNumber,omitempty" xml:"PartitionNumber,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// test_db
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The storage percentage of the table. Unit: %.
+	//
+	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	//
+	// example:
+	//
+	// 66.23
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// user
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total data size of the table. Unit: bytes.
+	//
+	// example:
+	//
+	// 42949672960
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablePartitionDiagnoseResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetPartitionDetail(v string) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.PartitionDetail = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetPartitionNumber(v int32) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.PartitionNumber = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetSchemaName(v string) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetSpaceRatio(v float64) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.SpaceRatio = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetTableName(v string) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponseBodyItems) SetTotalSize(v int64) *DescribeTablePartitionDiagnoseResponseBodyItems {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeTablePartitionDiagnoseResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTablePartitionDiagnoseResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTablePartitionDiagnoseResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTablePartitionDiagnoseResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTablePartitionDiagnoseResponse) SetHeaders(v map[string]*string) *DescribeTablePartitionDiagnoseResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponse) SetStatusCode(v int32) *DescribeTablePartitionDiagnoseResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTablePartitionDiagnoseResponse) SetBody(v *DescribeTablePartitionDiagnoseResponseBody) *DescribeTablePartitionDiagnoseResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTablesRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -25953,6 +34085,840 @@ func (s *DescribeUserQuotaResponse) SetBody(v *DescribeUserQuotaResponseBody) *D
 	return s
 }
 
+type DescribeWorkerDetectionRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-xxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2024-04-25T02:04Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh*	- (default): simplified Chinese.
+	//
+	// 	- **en**: English
+	//
+	// example:
+	//
+	// zh
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the most recent region list.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mmZ	- format. The time must be in UTC.
+	//
+	// example:
+	//
+	// 2021-11-18T00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeWorkerDetectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionRequest) SetDBClusterId(v string) *DescribeWorkerDetectionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetEndTime(v string) *DescribeWorkerDetectionRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetLang(v string) *DescribeWorkerDetectionRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetOwnerAccount(v string) *DescribeWorkerDetectionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetOwnerId(v int64) *DescribeWorkerDetectionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetRegionId(v string) *DescribeWorkerDetectionRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetResourceOwnerAccount(v string) *DescribeWorkerDetectionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetResourceOwnerId(v int64) *DescribeWorkerDetectionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionRequest) SetStartTime(v string) *DescribeWorkerDetectionRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBody struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// am-xxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeWorkerDetectionResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E5B37B61-E6C9-5FE0-9374-45BAA548AEF6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 20
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBody) SetDBClusterId(v string) *DescribeWorkerDetectionResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBody) SetDetectionItems(v []*DescribeWorkerDetectionResponseBodyDetectionItems) *DescribeWorkerDetectionResponseBody {
+	s.DetectionItems = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBody) SetRequestId(v string) *DescribeWorkerDetectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBody) SetTotalCount(v string) *DescribeWorkerDetectionResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItems struct {
+	// The information about the detection result.
+	//
+	// example:
+	//
+	// There are a total of 10 tables with an excessive number of primary keys.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Metric detection
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The detection result items.
+	Results *DescribeWorkerDetectionResponseBodyDetectionItemsResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// The severity level of the detection result. Valid values:
+	//
+	// 	- NORMAL
+	//
+	// 	- WARNING
+	//
+	// 	- CRITICAL
+	//
+	// example:
+	//
+	// WARNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItems) SetMessage(v string) *DescribeWorkerDetectionResponseBodyDetectionItems {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItems) SetName(v string) *DescribeWorkerDetectionResponseBodyDetectionItems {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItems) SetResults(v *DescribeWorkerDetectionResponseBodyDetectionItemsResults) *DescribeWorkerDetectionResponseBodyDetectionItems {
+	s.Results = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItems) SetStatus(v string) *DescribeWorkerDetectionResponseBodyDetectionItems {
+	s.Status = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResults struct {
+	// The detection result items of operator metric aggregation.
+	OperatorAgg []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg `json:"OperatorAgg,omitempty" xml:"OperatorAgg,omitempty" type:"Repeated"`
+	// The detection result items of abnormal operators.
+	OperatorDetails []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails `json:"OperatorDetails,omitempty" xml:"OperatorDetails,omitempty" type:"Repeated"`
+	// The detection result items of improper partitioned tables.
+	PartitionedTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables `json:"PartitionedTables,omitempty" xml:"PartitionedTables,omitempty" type:"Repeated"`
+	// The detection result items of skewed tables.
+	SkewedTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables `json:"SkewedTables,omitempty" xml:"SkewedTables,omitempty" type:"Repeated"`
+	// The detection result items of table access.
+	TopAccessTables []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables `json:"TopAccessTables,omitempty" xml:"TopAccessTables,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetOperatorAgg(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) *DescribeWorkerDetectionResponseBodyDetectionItemsResults {
+	s.OperatorAgg = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetOperatorDetails(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) *DescribeWorkerDetectionResponseBodyDetectionItemsResults {
+	s.OperatorDetails = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetPartitionedTables(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) *DescribeWorkerDetectionResponseBodyDetectionItemsResults {
+	s.PartitionedTables = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetSkewedTables(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) *DescribeWorkerDetectionResponseBodyDetectionItemsResults {
+	s.SkewedTables = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResults) SetTopAccessTables(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) *DescribeWorkerDetectionResponseBodyDetectionItemsResults {
+	s.TopAccessTables = v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg struct {
+	// The detection result items of operator metric aggregation.
+	//
+	// example:
+	//
+	// Peak memory
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The detection result items of operator metric aggregation.
+	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) SetMetricName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg) SetSearchResults(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAgg {
+	s.SearchResults = v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults struct {
+	// The average value of the operator metric.
+	//
+	// example:
+	//
+	// 2234
+	AvgValue *float64 `json:"AvgValue,omitempty" xml:"AvgValue,omitempty"`
+	// The maximum value of the operator metric.
+	//
+	// example:
+	//
+	// 444
+	MaxValue *int64 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	// The number of occurrences of the operator.
+	//
+	// example:
+	//
+	// 1234
+	OperatorCount *int64 `json:"OperatorCount,omitempty" xml:"OperatorCount,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// Aggregation
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The cumulative value of the operator metric.
+	//
+	// example:
+	//
+	// 123
+	TotalValue *int64 `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetAvgValue(v float64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.AvgValue = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetMaxValue(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetOperatorCount(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.OperatorCount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetOperatorName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults) SetTotalValue(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorAggSearchResults {
+	s.TotalValue = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails struct {
+	// The name of the detection metric.
+	//
+	// example:
+	//
+	// PeakMemory
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The detection result items of abnormal operators.
+	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) SetMetricName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails) SetSearchResults(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetails {
+	s.SearchResults = v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults struct {
+	// The number of rows input by the operator.
+	//
+	// example:
+	//
+	// 123
+	InputRows *int64 `json:"InputRows,omitempty" xml:"InputRows,omitempty"`
+	// The amount of data input by the operator. Unit: bytes.
+	//
+	// example:
+	//
+	// 123
+	InputSize *int64 `json:"InputSize,omitempty" xml:"InputSize,omitempty"`
+	// The total CPU time consumed by all operators in the stage, which is equivalent to the total CPU time of the stage. You can use this parameter to determine which parts of the stage consume a large amount of computing resources. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 23
+	OperatorCost *int64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
+	// The property information about the operator.
+	//
+	// example:
+	//
+	// GROUP BY field: id
+	OperatorInfo *string `json:"OperatorInfo,omitempty" xml:"OperatorInfo,omitempty"`
+	// The name of the operator.
+	//
+	// example:
+	//
+	// TableScan
+	OperatorName *string `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	// The number of rows output by the operator.
+	//
+	// example:
+	//
+	// 123
+	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
+	// The amount of data output by the operator. Unit: bytes.
+	//
+	// example:
+	//
+	// 123
+	OutputSize *int64 `json:"OutputSize,omitempty" xml:"OutputSize,omitempty"`
+	// The peak memory. Unit: bytes.
+	//
+	// example:
+	//
+	// 23
+	PeakMemory *int64 `json:"PeakMemory,omitempty" xml:"PeakMemory,omitempty"`
+	// The query ID that can be used for diagnostics.
+	//
+	// example:
+	//
+	// 2024041909301402103302422803151411141
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The stage ID.
+	//
+	// example:
+	//
+	// Stage[2]
+	StageId *string `json:"StageId,omitempty" xml:"StageId,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetInputRows(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.InputRows = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetInputSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.InputSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorCost(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorCost = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorInfo(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorInfo = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOperatorName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OperatorName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOutputRows(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OutputRows = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetOutputSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.OutputSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetPeakMemory(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.PeakMemory = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetProcessId(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults) SetStageId(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsOperatorDetailsSearchResults {
+	s.StageId = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables struct {
+	// The SQL statement that is used to create the table.
+	//
+	// example:
+	//
+	// create table test(id varchar)
+	DDL *string `json:"DDL,omitempty" xml:"DDL,omitempty"`
+	// The number of partitions.
+	//
+	// example:
+	//
+	// 234
+	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// The ID of the improper partition.
+	//
+	// example:
+	//
+	// [2024,2025]
+	PartitionIds *string `json:"PartitionIds,omitempty" xml:"PartitionIds,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// nxg
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// zhw_place_order
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total data size of the table.
+	//
+	// example:
+	//
+	// 1234
+	TotalDataSize *int64 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetDDL(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.DDL = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetPartitionCount(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetPartitionIds(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.PartitionIds = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetSchemaName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetTableName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables) SetTotalDataSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsPartitionedTables {
+	s.TotalDataSize = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables struct {
+	// The SQL statement that is used to create the table.
+	//
+	// example:
+	//
+	// create table test(id varchar)
+	DDL *string `json:"DDL,omitempty" xml:"DDL,omitempty"`
+	// The number of partitions.
+	//
+	// example:
+	//
+	// 2
+	PartitionCount *int32 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// platfunc
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// The number of skewed rows in the table.
+	//
+	// example:
+	//
+	// 1234
+	ShardSkewedRows *string `json:"ShardSkewedRows,omitempty" xml:"ShardSkewedRows,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// sls_log_cheat_action
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The total data size of the table. Unit: bytes.
+	//
+	// example:
+	//
+	// 2345
+	TotalDataSize *int64 `json:"TotalDataSize,omitempty" xml:"TotalDataSize,omitempty"`
+	// The size of hot data. Unit: bytes.
+	//
+	// example:
+	//
+	// 2345
+	TotalLocalDataSize *string `json:"TotalLocalDataSize,omitempty" xml:"TotalLocalDataSize,omitempty"`
+	// The data size of the primary key. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	TotalPkSize *int64 `json:"TotalPkSize,omitempty" xml:"TotalPkSize,omitempty"`
+	// The size of cold data. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	TotalRemoteDataSize *int64 `json:"TotalRemoteDataSize,omitempty" xml:"TotalRemoteDataSize,omitempty"`
+	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 34
+	TotalRowCount *int64 `json:"TotalRowCount,omitempty" xml:"TotalRowCount,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetDDL(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.DDL = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetPartitionCount(v int32) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetSchemaName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetShardSkewedRows(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.ShardSkewedRows = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTableName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTotalDataSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TotalDataSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTotalLocalDataSize(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TotalLocalDataSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTotalPkSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TotalPkSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTotalRemoteDataSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TotalRemoteDataSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables) SetTotalRowCount(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsSkewedTables {
+	s.TotalRowCount = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables struct {
+	// The name of the detection metric.
+	//
+	// example:
+	//
+	// Peak memory detection
+	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	// The detection result items of table access.
+	SearchResults []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults `json:"SearchResults,omitempty" xml:"SearchResults,omitempty" type:"Repeated"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) SetMetricName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables) SetSearchResults(v []*DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTables {
+	s.SearchResults = v
+	return s
+}
+
+type DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults struct {
+	// The number of accesses to the table.
+	//
+	// example:
+	//
+	// 1111
+	AccessCount *int64 `json:"AccessCount,omitempty" xml:"AccessCount,omitempty"`
+	// The average amount of time for scanning. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 234
+	AvgScanCost *float64 `json:"AvgScanCost,omitempty" xml:"AvgScanCost,omitempty"`
+	// The average data size for scanning. Unit: bytes.
+	//
+	// example:
+	//
+	// 234
+	AvgScanSize *float64 `json:"AvgScanSize,omitempty" xml:"AvgScanSize,omitempty"`
+	// The maximum amount of time for scanning. Unit: milliseconds.
+	//
+	// example:
+	//
+	// 345
+	MaxScanCost *int64 `json:"MaxScanCost,omitempty" xml:"MaxScanCost,omitempty"`
+	// The maximum data size for scanning. Unit: bytes.
+	//
+	// example:
+	//
+	// 2345
+	MaxScanSize *int64 `json:"MaxScanSize,omitempty" xml:"MaxScanSize,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// tiberias_2copt_origin_order_goods_info
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetAccessCount(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.AccessCount = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetAvgScanCost(v float64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.AvgScanCost = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetAvgScanSize(v float64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.AvgScanSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetMaxScanCost(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.MaxScanCost = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetMaxScanSize(v int64) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.MaxScanSize = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults) SetTableName(v string) *DescribeWorkerDetectionResponseBodyDetectionItemsResultsTopAccessTablesSearchResults {
+	s.TableName = &v
+	return s
+}
+
+type DescribeWorkerDetectionResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeWorkerDetectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeWorkerDetectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWorkerDetectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWorkerDetectionResponse) SetHeaders(v map[string]*string) *DescribeWorkerDetectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponse) SetStatusCode(v int32) *DescribeWorkerDetectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWorkerDetectionResponse) SetBody(v *DescribeWorkerDetectionResponseBody) *DescribeWorkerDetectionResponse {
+	s.Body = v
+	return s
+}
+
 type DetachUserENIRequest struct {
 	// The instance ID.
 	//
@@ -26028,10 +34994,98 @@ func (s *DetachUserENIResponse) SetBody(v *DetachUserENIResponseBody) *DetachUse
 	return s
 }
 
+type DisableAdviceServiceRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-uf67culrr26q2****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DisableAdviceServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAdviceServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAdviceServiceRequest) SetDBClusterId(v string) *DisableAdviceServiceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DisableAdviceServiceRequest) SetRegionId(v string) *DisableAdviceServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DisableAdviceServiceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 57EC6CCA-A582-572C-A33D-F61845CBC03C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableAdviceServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAdviceServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAdviceServiceResponseBody) SetRequestId(v string) *DisableAdviceServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableAdviceServiceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DisableAdviceServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DisableAdviceServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableAdviceServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableAdviceServiceResponse) SetHeaders(v map[string]*string) *DisableAdviceServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableAdviceServiceResponse) SetStatusCode(v int32) *DisableAdviceServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableAdviceServiceResponse) SetBody(v *DisableAdviceServiceResponseBody) *DisableAdviceServiceResponse {
+	s.Body = v
+	return s
+}
+
 type DisableElasticPlanRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -26394,10 +35448,214 @@ func (s *DownloadDiagnosisRecordsResponse) SetBody(v *DownloadDiagnosisRecordsRe
 	return s
 }
 
+type DownloadInstanceCACertificateRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-wz9842849v6****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The database engine of the cluster. Valid values:
+	//
+	// 	- **AnalyticDB*	- (default): the AnalyticDB for MySQL engine.
+	//
+	// 	- **Clickhouse**: the wide table engine.
+	//
+	// example:
+	//
+	// Clickhouse
+	Engine  *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DownloadInstanceCACertificateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadInstanceCACertificateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadInstanceCACertificateRequest) SetDBClusterId(v string) *DownloadInstanceCACertificateRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateRequest) SetEngine(v string) *DownloadInstanceCACertificateRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateRequest) SetOwnerId(v string) *DownloadInstanceCACertificateRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateRequest) SetRegionId(v string) *DownloadInstanceCACertificateRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DownloadInstanceCACertificateResponseBody struct {
+	// The OSS URL of the downloaded certificate.
+	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 9CCFAAB4-97B7-5800-B9F2-685EB596E3EF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DownloadInstanceCACertificateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadInstanceCACertificateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadInstanceCACertificateResponseBody) SetDownloadUrl(v string) *DownloadInstanceCACertificateResponseBody {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateResponseBody) SetRequestId(v string) *DownloadInstanceCACertificateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DownloadInstanceCACertificateResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DownloadInstanceCACertificateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DownloadInstanceCACertificateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadInstanceCACertificateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadInstanceCACertificateResponse) SetHeaders(v map[string]*string) *DownloadInstanceCACertificateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateResponse) SetStatusCode(v int32) *DownloadInstanceCACertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadInstanceCACertificateResponse) SetBody(v *DownloadInstanceCACertificateResponseBody) *DownloadInstanceCACertificateResponse {
+	s.Body = v
+	return s
+}
+
+type EnableAdviceServiceRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1q10xxzq2z4****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s EnableAdviceServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdviceServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdviceServiceRequest) SetDBClusterId(v string) *EnableAdviceServiceRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *EnableAdviceServiceRequest) SetRegionId(v string) *EnableAdviceServiceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type EnableAdviceServiceResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// E1745C03-7CCE-55CF-932E-08121AAFA6AF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableAdviceServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdviceServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdviceServiceResponseBody) SetRequestId(v string) *EnableAdviceServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableAdviceServiceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EnableAdviceServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EnableAdviceServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableAdviceServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableAdviceServiceResponse) SetHeaders(v map[string]*string) *EnableAdviceServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableAdviceServiceResponse) SetStatusCode(v int32) *EnableAdviceServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableAdviceServiceResponse) SetBody(v *EnableAdviceServiceResponseBody) *EnableAdviceServiceResponse {
+	s.Body = v
+	return s
+}
+
 type EnableElasticPlanRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -26487,22 +35745,36 @@ func (s *EnableElasticPlanResponse) SetBody(v *EnableElasticPlanResponseBody) *E
 }
 
 type ExecuteSparkReplStatementRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d2001****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The code that you want to execute.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The language type of the code. Valid values:
+	//
+	// 	- SCALA
+	//
+	// 	- PYTHON
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// PYTHON
 	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The ID of the session that you want to use to execute the code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26540,7 +35812,10 @@ func (s *ExecuteSparkReplStatementRequest) SetSessionId(v int64) *ExecuteSparkRe
 }
 
 type ExecuteSparkReplStatementResponseBody struct {
+	// The returned data.
 	Data *ExecuteSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -26566,43 +35841,80 @@ func (s *ExecuteSparkReplStatementResponseBody) SetRequestId(v string) *ExecuteS
 }
 
 type ExecuteSparkReplStatementResponseBodyData struct {
+	// The ID of the Alibaba Cloud account that owns the cluster.
+	//
 	// example:
 	//
 	// 17108278707****
 	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The code that is executed.
+	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code execution status. Valid values:
+	//
+	// 	- CANCELLED
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCEEDED
+	//
+	// 	- ERROR
+	//
 	// example:
 	//
 	// RUNNING
 	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// The code type. Valid values:
+	//
+	// 	- SCALA
+	//
+	// 	- PYTHON
+	//
 	// example:
 	//
 	// PYTHON
-	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The column names.
+	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The end time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968125000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// StackOverflow Exception
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The code execution result, which is a JSON string that conforms to Apache Livy.
+	//
 	// example:
 	//
 	// {"text/plain": 2}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The execution result type, which is in the JSON format. Valid values:
+	//
+	// 	- TEXT: the text content that conforms to Apache Livy.
+	//
+	// 	- TABLE: the table content that conforms to Apache Livy.
+	//
 	// example:
 	//
 	// TEXT
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// The start time of the execution. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968125000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
 	// example:
 	//
 	// 123
@@ -26697,6 +36009,181 @@ func (s *ExecuteSparkReplStatementResponse) SetStatusCode(v int32) *ExecuteSpark
 }
 
 func (s *ExecuteSparkReplStatementResponse) SetBody(v *ExecuteSparkReplStatementResponseBody) *ExecuteSparkReplStatementResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteSparkWarehouseBatchSQLRequest struct {
+	// The name of the client.
+	//
+	// example:
+	//
+	// DataWorks
+	Agency *string `json:"Agency,omitempty" xml:"Agency,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp11q28kvl688****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The maximum amount of execution result data that can be written to Object Storage Service (OSS). Unit: MB. Default value: 4096. The size of compressed objects is difficult to estimate. The data that is actually written to OSS is smaller than the specified value.
+	//
+	// example:
+	//
+	// 4096
+	ExecuteResultLimit *int64 `json:"ExecuteResultLimit,omitempty" xml:"ExecuteResultLimit,omitempty"`
+	// The maximum execution duration. Unit: seconds. If a set of SQL statements fail to be executed for the specified period of time after submission, they are marked as a timeout error. The default value is 360000 seconds, which is equivalent to 100 hours.
+	//
+	// example:
+	//
+	// 3600000
+	ExecuteTimeLimitInSeconds *int64 `json:"ExecuteTimeLimitInSeconds,omitempty" xml:"ExecuteTimeLimitInSeconds,omitempty"`
+	// The SQL statements that you want to execute in batches. Separate multiple SQL statements with semicolons (;). The execution engine executes the SQL statements in sequence in the same session.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// CREATE TABLE user(id INT, name STRING);
+	//
+	// INSERT INTO t VALUE(1, \\"Bob\\");
+	//
+	// SELECT 	- FROM t;
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The name of the resource group.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	// The additional runtime parameter. Specify the parameter in the JSON format.
+	//
+	// example:
+	//
+	// {
+	//
+	//  "OSSURL": "oss://testBucketname/"
+	//
+	// }
+	RuntimeConfig *string `json:"RuntimeConfig,omitempty" xml:"RuntimeConfig,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adb_demo
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+}
+
+func (s ExecuteSparkWarehouseBatchSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkWarehouseBatchSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetAgency(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.Agency = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetDBClusterId(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetExecuteResultLimit(v int64) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.ExecuteResultLimit = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetExecuteTimeLimitInSeconds(v int64) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.ExecuteTimeLimitInSeconds = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetQuery(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetResourceGroupName(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetRuntimeConfig(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.RuntimeConfig = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLRequest) SetSchema(v string) *ExecuteSparkWarehouseBatchSQLRequest {
+	s.Schema = &v
+	return s
+}
+
+type ExecuteSparkWarehouseBatchSQLResponseBody struct {
+	// The returned data.
+	//
+	// example:
+	//
+	// true
+	Data *SparkBatchSQL `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// CBE843D8-964D-5EA3-9D31-822125611B6E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExecuteSparkWarehouseBatchSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkWarehouseBatchSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLResponseBody) SetData(v *SparkBatchSQL) *ExecuteSparkWarehouseBatchSQLResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *ExecuteSparkWarehouseBatchSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteSparkWarehouseBatchSQLResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteSparkWarehouseBatchSQLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteSparkWarehouseBatchSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteSparkWarehouseBatchSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLResponse) SetHeaders(v map[string]*string) *ExecuteSparkWarehouseBatchSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLResponse) SetStatusCode(v int32) *ExecuteSparkWarehouseBatchSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteSparkWarehouseBatchSQLResponse) SetBody(v *ExecuteSparkWarehouseBatchSQLResponseBody) *ExecuteSparkWarehouseBatchSQLResponse {
 	s.Body = v
 	return s
 }
@@ -26811,12 +36298,16 @@ func (s *ExistRunningSQLEngineResponse) SetBody(v *ExistRunningSQLEngineResponse
 }
 
 type GetApsManagedDatabasesRequest struct {
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -26844,22 +36335,40 @@ func (s *GetApsManagedDatabasesRequest) SetRegionId(v string) *GetApsManagedData
 }
 
 type GetApsManagedDatabasesResponseBody struct {
+	// The returned data.
+	//
 	// example:
 	//
 	// -
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -27342,14 +36851,20 @@ func (s *GetDatabaseObjectsResponse) SetBody(v *GetDatabaseObjectsResponseBody) 
 }
 
 type GetLakeStorageRequest struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The lake storage ID.
+	//
 	// example:
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -27380,26 +36895,46 @@ func (s *GetLakeStorageRequest) SetRegionId(v string) *GetLakeStorageRequest {
 }
 
 type GetLakeStorageResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The queried lake storage.
+	//
 	// example:
 	//
 	// -
 	Data *GetLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -27445,83 +36980,85 @@ func (s *GetLakeStorageResponseBody) SetSuccess(v bool) *GetLakeStorageResponseB
 }
 
 type GetLakeStorageResponseBodyData struct {
-	// 湖存储被创建的时间
+	// The time when the lake storage was created.
 	//
 	// example:
 	//
 	// 2023-05-15T07:24:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建湖存储的用户账号的唯一标识符
+	// The creator UID.
 	//
 	// example:
 	//
 	// 123456
 	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// a test db
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 湖存储中数据的总存储量
+	// The total storage size.
 	//
 	// example:
 	//
 	// 1
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 用于识别特定湖存储的唯一标识符
+	// The unique identifier of the lake storage.
 	//
 	// example:
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// 最后操作湖存储的用户账号的唯一标识符
+	// The operator UID.
 	//
 	// example:
 	//
 	// 123456
 	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	// 拥有湖存储资源的用户账号的唯一标识符
+	// The owner UID.
 	//
 	// example:
 	//
 	// 123456
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The number of partitions.
+	//
 	// example:
 	//
 	// -
 	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions on the lake storage.
 	//
 	// example:
 	//
 	// -
 	Permissions []*GetLakeStorageResponseBodyDataPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// 指定要操作的湖存储所在区域的ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 湖存储中所有库表的总数据行数
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// -
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// 湖存储中库表的总数量
+	// The number of the tables.
 	//
 	// example:
 	//
 	// -
 	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	// 湖存储最后一次更新的时间
+	// The time when the lake storage was last updated.
 	//
 	// example:
 	//
@@ -27608,25 +37145,25 @@ func (s *GetLakeStorageResponseBodyData) SetUpdateTime(v string) *GetLakeStorage
 }
 
 type GetLakeStorageResponseBodyDataPermissions struct {
-	// 具有该权限的账户或RAM用户ID
+	// The account ID.
 	//
 	// example:
 	//
 	// test
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 表示是否允许读取湖存储的权限
+	// The read permissions.
 	//
 	// example:
 	//
 	// true
 	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
-	// 指定权限的账户类型
+	// The account type.
 	//
 	// example:
 	//
 	// -
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 表示是否允许向湖存储写入数据的权限
+	// The write permissions.
 	//
 	// example:
 	//
@@ -28483,7 +38020,7 @@ type GetSparkAppStateResponseBodyData struct {
 	//
 	// test
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -28600,7 +38137,7 @@ type GetSparkAppWebUiAddressRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
 	//
 	// example:
 	//
@@ -28970,10 +38507,16 @@ func (s *GetSparkLogAnalyzeTaskResponse) SetBody(v *GetSparkLogAnalyzeTaskRespon
 }
 
 type GetSparkReplSessionRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d200****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the session that executes the code.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29001,7 +38544,10 @@ func (s *GetSparkReplSessionRequest) SetSessionId(v int64) *GetSparkReplSessionR
 }
 
 type GetSparkReplSessionResponseBody struct {
+	// The returned data.
 	Data *GetSparkReplSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 4CE6DF97-AEA4-484F-906F-C407EE3770EB
@@ -29027,30 +38573,54 @@ func (s *GetSparkReplSessionResponseBody) SetRequestId(v string) *GetSparkReplSe
 }
 
 type GetSparkReplSessionResponseBodyData struct {
+	// Indicates whether the session is active. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Active *string `json:"Active,omitempty" xml:"Active,omitempty"`
+	// The ID of the Alibaba Cloud account that owns the cluster.
+	//
 	// example:
 	//
 	// 178157466101****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The attempt ID of the Spark application.
+	//
 	// example:
 	//
 	// s202301061000hz57d797b00002****
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// Session timed out
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the session that executes the code.
+	//
 	// example:
 	//
 	// 1
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the session. Valid values:
+	//
+	// 	- IDLE
+	//
+	// 	- BUSY
+	//
+	// 	- DEAD
+	//
 	// example:
 	//
 	// IDEL
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The URL of the web UI for the Spark application.
+	//
 	// example:
 	//
 	// https://adbsparkui-cn-hangzhou.aliyuncs.com/?token=****
@@ -29130,14 +38700,22 @@ func (s *GetSparkReplSessionResponse) SetBody(v *GetSparkReplSessionResponseBody
 }
 
 type GetSparkReplStatementRequest struct {
+	// The application ID.
+	//
+	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query Spark application IDs.
+	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d200****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the session that executes the code.
+	//
 	// example:
 	//
 	// 1
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
 	// example:
 	//
 	// 123
@@ -29168,7 +38746,10 @@ func (s *GetSparkReplStatementRequest) SetStatementId(v int64) *GetSparkReplStat
 }
 
 type GetSparkReplStatementResponseBody struct {
+	// The returned data.
 	Data *GetSparkReplStatementResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -29194,43 +38775,82 @@ func (s *GetSparkReplStatementResponseBody) SetRequestId(v string) *GetSparkRepl
 }
 
 type GetSparkReplStatementResponseBodyData struct {
+	// The ID of the Alibaba Cloud account that owns the cluster.
+	//
 	// example:
 	//
 	// 144740799645****
 	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The code that is executed.
+	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The code execution status. Valid values:
+	//
+	// 	- CANCELLED
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCEEDED
+	//
+	// 	- ERROR
+	//
 	// example:
 	//
 	// RUNNING
 	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
+	// The code type. Valid values:
+	//
+	// 	- PYTHON
+	//
+	// 	- SCALA
+	//
 	// example:
 	//
 	// PYTHON
-	CodeType *string   `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	Columns  []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
+	// The column names.
+	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The end time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968194000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// stackoverflow error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The code execution result, which is a JSON string.
+	//
 	// example:
 	//
 	// {"text/plain": 2}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// The execution result type.
+	//
+	// Valid values:
+	//
+	// 	- TABLE
+	//
+	// 	- TEXT
+	//
 	// example:
 	//
 	// TEXT
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
+	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	//
 	// example:
 	//
 	// 1730968194000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The unique ID of the code block in the Spark job.
+	//
 	// example:
 	//
 	// 123
@@ -29934,6 +39554,114 @@ func (s *GetSparkTemplateFullTreeResponse) SetStatusCode(v int32) *GetSparkTempl
 }
 
 func (s *GetSparkTemplateFullTreeResponse) SetBody(v *GetSparkTemplateFullTreeResponseBody) *GetSparkTemplateFullTreeResponse {
+	s.Body = v
+	return s
+}
+
+type GetSparkWarehouseBatchSQLRequest struct {
+	// The name of the client, which can be up to 16 characters in length. Specify a descriptive name that makes it easy to identify.
+	//
+	// example:
+	//
+	// DMS
+	Agency *string `json:"Agency,omitempty" xml:"Agency,omitempty"`
+	// The cluster ID.
+	//
+	// example:
+	//
+	// amv-uf6485635f***
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The query ID of the Spark SQL statement.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sq2024123*****
+	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
+}
+
+func (s GetSparkWarehouseBatchSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkWarehouseBatchSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkWarehouseBatchSQLRequest) SetAgency(v string) *GetSparkWarehouseBatchSQLRequest {
+	s.Agency = &v
+	return s
+}
+
+func (s *GetSparkWarehouseBatchSQLRequest) SetDBClusterId(v string) *GetSparkWarehouseBatchSQLRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *GetSparkWarehouseBatchSQLRequest) SetQueryId(v string) *GetSparkWarehouseBatchSQLRequest {
+	s.QueryId = &v
+	return s
+}
+
+type GetSparkWarehouseBatchSQLResponseBody struct {
+	// The returned data.
+	//
+	// example:
+	//
+	// {\\"DBClusterId\\": \\"amv-uf6485635fz852mn\\", \\"Statements\\": [{\\"Code\\": \\"show databases\\", \\"State\\": \\"FINISHED\\", \\"StatementId\\": \\"sq202501141001sh8e12e080006846-0000\\", \\"Result\\": \\"+--------------------+n
+	Data *SparkBatchSQL `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3D44EDA0-A9DC-580D-9B5A-019370C075F4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSparkWarehouseBatchSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkWarehouseBatchSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkWarehouseBatchSQLResponseBody) SetData(v *SparkBatchSQL) *GetSparkWarehouseBatchSQLResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *GetSparkWarehouseBatchSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSparkWarehouseBatchSQLResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSparkWarehouseBatchSQLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSparkWarehouseBatchSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSparkWarehouseBatchSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSparkWarehouseBatchSQLResponse) SetHeaders(v map[string]*string) *GetSparkWarehouseBatchSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSparkWarehouseBatchSQLResponse) SetStatusCode(v int32) *GetSparkWarehouseBatchSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSparkWarehouseBatchSQLResponse) SetBody(v *GetSparkWarehouseBatchSQLResponseBody) *GetSparkWarehouseBatchSQLResponse {
 	s.Body = v
 	return s
 }
@@ -30993,7 +40721,8 @@ type GetViewObjectsRequest struct {
 	// example:
 	//
 	// adb_demo
-	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	ShowMvBaseTable *bool   `json:"ShowMvBaseTable,omitempty" xml:"ShowMvBaseTable,omitempty"`
 }
 
 func (s GetViewObjectsRequest) String() string {
@@ -31046,6 +40775,11 @@ func (s *GetViewObjectsRequest) SetRegionId(v string) *GetViewObjectsRequest {
 
 func (s *GetViewObjectsRequest) SetSchemaName(v string) *GetViewObjectsRequest {
 	s.SchemaName = &v
+	return s
+}
+
+func (s *GetViewObjectsRequest) SetShowMvBaseTable(v bool) *GetViewObjectsRequest {
+	s.ShowMvBaseTable = &v
 	return s
 }
 
@@ -31204,12 +40938,16 @@ func (s *GetViewObjectsResponse) SetBody(v *GetViewObjectsResponseBody) *GetView
 }
 
 type GrantOperatorPermissionRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1565u55p32****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The expiration time of the service account permissions. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31218,6 +40956,12 @@ type GrantOperatorPermissionRequest struct {
 	ExpiredTime  *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The name of the permissions. Valid values:
+	//
+	// 	- **Control**: the configuration permissions. The service account is granted the permissions to query and modify cluster configurations.
+	//
+	// 	- **Data**: the data permissions. The service account is granted the permissions to query schemas, indexes, and SQL statements.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -31272,6 +41016,8 @@ func (s *GrantOperatorPermissionRequest) SetResourceOwnerId(v int64) *GrantOpera
 }
 
 type GrantOperatorPermissionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A438072A-E2E7-5509-9A3F-66293512A820
@@ -31316,6 +41062,136 @@ func (s *GrantOperatorPermissionResponse) SetStatusCode(v int32) *GrantOperatorP
 }
 
 func (s *GrantOperatorPermissionResponse) SetBody(v *GrantOperatorPermissionResponseBody) *GrantOperatorPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type KillProcessRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-xxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The query ID.
+	//
+	// >  You can call the [DescribeProcessList](https://help.aliyun.com/document_detail/143382.html) operation to query the IDs of queries that are being executed.
+	//
+	// example:
+	//
+	// 202011191048151921681492420315100****
+	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s KillProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *KillProcessRequest) SetDBClusterId(v string) *KillProcessRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *KillProcessRequest) SetProcessId(v string) *KillProcessRequest {
+	s.ProcessId = &v
+	return s
+}
+
+func (s *KillProcessRequest) SetRegionId(v string) *KillProcessRequest {
+	s.RegionId = &v
+	return s
+}
+
+type KillProcessResponseBody struct {
+	// The details about the access denial.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "PolicyType": "AccountLevelIdentityBasedPolicy",
+	//
+	//     "AuthPrincipalOwnerId": "1*****************7",
+	//
+	//     "EncodedDiagnosticMessage": "AQIBIAAAAOPdwKY2QLOvgMEc7SkkoJfj1kvZwsaRqNYMh10Tv0wTe0fCzaCdrvgazfNb0EnJKETgXyhR+3BIQjx9WAqZryejBsp1Bl4qI5En/D9dEhcXAtKCxCmE2kZCiEzpy8BoEUt+bs0DmlaGWO5xkEpttypLIB4rUhDvZd+zwPg4EXk4KSSWSWsurxtqDkKEMshKlQFBTKvJcKwyhk62IeYly4hQ+5IpXjkh1GQXuDRCQ==",
+	//
+	//     "AuthPrincipalType": "SubUser",
+	//
+	//     "AuthPrincipalDisplayName": "2***************9",
+	//
+	//     "NoPermissionType": "ImplicitDeny",
+	//
+	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
+	//
+	// }
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s KillProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *KillProcessResponseBody) SetAccessDeniedDetail(v string) *KillProcessResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *KillProcessResponseBody) SetRequestId(v string) *KillProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type KillProcessResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *KillProcessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s KillProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *KillProcessResponse) SetHeaders(v map[string]*string) *KillProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *KillProcessResponse) SetStatusCode(v int32) *KillProcessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *KillProcessResponse) SetBody(v *KillProcessResponseBody) *KillProcessResponse {
 	s.Body = v
 	return s
 }
@@ -31685,30 +41561,42 @@ func (s *KillSparkSQLEngineResponse) SetBody(v *KillSparkSQLEngineResponseBody) 
 }
 
 type ListApsLifecycleStrategyRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2024-01-02T11:22Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2024-01-01T11:22Z
@@ -31754,35 +41642,60 @@ func (s *ListApsLifecycleStrategyRequest) SetStartTime(v string) *ListApsLifecyc
 }
 
 type ListApsLifecycleStrategyResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
-	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Items          []*ListApsLifecycleStrategyResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The queried lifecycle management policies.
+	Items []*ListApsLifecycleStrategyResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 10
@@ -31843,48 +41756,74 @@ func (s *ListApsLifecycleStrategyResponseBody) SetTotalCount(v int64) *ListApsLi
 }
 
 type ListApsLifecycleStrategyResponseBodyItems struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The time when the policy was created.
+	//
 	// example:
 	//
 	// 2021-06-30T02:44:27Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The time when the policy was modified.
+	//
 	// example:
 	//
 	// 2021-07-03T06:33:00Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// -
+	// The operation tables.
 	OperationTables []*ListApsLifecycleStrategyResponseBodyItemsOperationTables `json:"OperationTables,omitempty" xml:"OperationTables,omitempty" type:"Repeated"`
+	// The status of the lifecycle management policy. Valid values:
+	//
+	// 1.  on: enables the current policy.
+	//
+	// 2.  off: disables the current policy.
+	//
 	// example:
 	//
 	// on
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The number of databases that are managed during the lifecycle management.
+	//
 	// example:
 	//
 	// 5
 	StrategyDatabases *int64 `json:"StrategyDatabases,omitempty" xml:"StrategyDatabases,omitempty"`
+	// The description of the lifecycle management policy.
+	//
 	// example:
 	//
 	// test
 	StrategyDesc *string `json:"StrategyDesc,omitempty" xml:"StrategyDesc,omitempty"`
+	// The name of the lifecycle management policy.
+	//
 	// example:
 	//
 	// test
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The number of tables that are managed during the lifecycle management.
+	//
 	// example:
 	//
 	// 5
 	StrategyTables *int64 `json:"StrategyTables,omitempty" xml:"StrategyTables,omitempty"`
+	// The type of the lifecycle management policy.
+	//
 	// example:
 	//
 	// KEEP_BY_TIME
 	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// The value of the lifecycle management policy.
+	//
 	// example:
 	//
 	// 10
@@ -31960,14 +41899,19 @@ func (s *ListApsLifecycleStrategyResponseBodyItems) SetStrategyValue(v string) *
 }
 
 type ListApsLifecycleStrategyResponseBodyItemsOperationTables struct {
+	// The name of the database.
+	//
 	// example:
 	//
 	// test
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	// Indicates whether all tables in the database are selected.
+	//
 	// example:
 	//
 	// true
-	ProcessAll *string   `json:"ProcessAll,omitempty" xml:"ProcessAll,omitempty"`
+	ProcessAll *string `json:"ProcessAll,omitempty" xml:"ProcessAll,omitempty"`
+	// The names of the tables.
 	TableNames []*string `json:"TableNames,omitempty" xml:"TableNames,omitempty" type:"Repeated"`
 }
 
@@ -32024,12 +41968,16 @@ func (s *ListApsLifecycleStrategyResponse) SetBody(v *ListApsLifecycleStrategyRe
 }
 
 type ListApsOptimizationStrategyRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32057,26 +42005,46 @@ func (s *ListApsOptimizationStrategyRequest) SetRegionId(v string) *ListApsOptim
 }
 
 type ListApsOptimizationStrategyResponseBody struct {
+	// The response code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// -
 	Data []*ListApsOptimizationStrategyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -32122,22 +42090,36 @@ func (s *ListApsOptimizationStrategyResponseBody) SetSuccess(v bool) *ListApsOpt
 }
 
 type ListApsOptimizationStrategyResponseBodyData struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-23xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The status of the lifecycle management policy. Valid values:
+	//
+	// 1.  on: enabled.
+	//
+	// 2.  off: disabled.
+	//
 	// example:
 	//
 	// off
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The description of the lifecycle management policy.
+	//
 	// example:
 	//
 	// test
 	StrategyDesc *string `json:"StrategyDesc,omitempty" xml:"StrategyDesc,omitempty"`
+	// The name of the lifecycle management policy.
+	//
 	// example:
 	//
 	// test
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
+	// The type of the lifecycle management policy. Only StrategyValue is returned.
+	//
 	// example:
 	//
 	// StrategyValue
@@ -32207,34 +42189,48 @@ func (s *ListApsOptimizationStrategyResponse) SetBody(v *ListApsOptimizationStra
 }
 
 type ListApsOptimizationTasksRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-09-30T00:15Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2022-01-23T02:18Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The type of the lifecycle management policy.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -32287,38 +42283,64 @@ func (s *ListApsOptimizationTasksRequest) SetStrategyType(v string) *ListApsOpti
 }
 
 type ListApsOptimizationTasksResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The queried optimization jobs.
+	//
 	// example:
 	//
 	// -
 	Items []*ListApsOptimizationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -32379,42 +42401,72 @@ func (s *ListApsOptimizationTasksResponseBody) SetTotalCount(v int64) *ListApsOp
 }
 
 type ListApsOptimizationTasksResponseBodyItems struct {
+	// The computing resources used by the optimization job.
+	//
 	// example:
 	//
 	// 2
 	ComputeUnit *string `json:"ComputeUnit,omitempty" xml:"ComputeUnit,omitempty"`
+	// The time when the optimization job was created.
+	//
 	// example:
 	//
 	// 2022-01-23T02:18Z
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The time when the optimization job was modified.
+	//
 	// example:
 	//
 	// 2022-09-30T00:15Z
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// The type of the lifecycle management policy.
+	//
 	// example:
 	//
 	// StrategyValue
 	StrategyType *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	// The description of the optimization job.
+	//
 	// example:
 	//
 	// test
 	TaskDesc *string `json:"TaskDesc,omitempty" xml:"TaskDesc,omitempty"`
+	// The execution duration of the optimization job.
+	//
 	// example:
 	//
 	// 1000
 	TaskDuration *int64 `json:"TaskDuration,omitempty" xml:"TaskDuration,omitempty"`
+	// The job ID.
+	//
 	// example:
 	//
 	// sj-hz******
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// -
 	TaskMessage *string `json:"TaskMessage,omitempty" xml:"TaskMessage,omitempty"`
+	// The execution status. Valid values:
+	//
+	// 1.  NEW
+	//
+	// 2.  RUNNING
+	//
+	// 3.  SUCCESS
+	//
+	// 4.  STOPPED
+	//
+	// 5.  FAILED
+	//
 	// example:
 	//
 	// RUNNING
@@ -32508,10 +42560,447 @@ func (s *ListApsOptimizationTasksResponse) SetBody(v *ListApsOptimizationTasksRe
 	return s
 }
 
-type ListResultExportJobHistoryRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+type ListLakeStoragesRequest struct {
+	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The filter parameters that you want to use to query lake storages. Specify multiple parameters in an AND relationship. For example, if you want to query lake storage whose names are in the range of i-a123, or i-b123, and in the Stopped state, set this parameter to \\&Filter. 1.Name=InstanceName\\&Filter. 1.Value.1=i-a123\\&Filter.1.Value.2=i-b123\\&Filter.2.Name=Status\\&Filter. 2.Value=Stopped.
+	//
+	// example:
+	//
+	// -
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListLakeStoragesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLakeStoragesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLakeStoragesRequest) SetDBClusterId(v string) *ListLakeStoragesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListLakeStoragesRequest) SetFilter(v string) *ListLakeStoragesRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListLakeStoragesRequest) SetPageNumber(v int32) *ListLakeStoragesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLakeStoragesRequest) SetPageSize(v int32) *ListLakeStoragesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLakeStoragesRequest) SetRegionId(v string) *ListLakeStoragesRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListLakeStoragesResponseBody struct {
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The queried lake storages.
+	//
+	// example:
+	//
+	// -
+	Items []*ListLakeStoragesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The token that is used for paging when the number of results is greater than the value of MaxResults.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ****-964D-****-9D31-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the dry run succeeds. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLakeStoragesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLakeStoragesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLakeStoragesResponseBody) SetCode(v string) *ListLakeStoragesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetHttpStatusCode(v int32) *ListLakeStoragesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetItems(v []*ListLakeStoragesResponseBodyItems) *ListLakeStoragesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetMessage(v string) *ListLakeStoragesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetPageNumber(v int32) *ListLakeStoragesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetPageSize(v int32) *ListLakeStoragesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetRequestId(v string) *ListLakeStoragesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetSuccess(v bool) *ListLakeStoragesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBody) SetTotalCount(v int32) *ListLakeStoragesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLakeStoragesResponseBodyItems struct {
+	// The time when the lake storage was created.
+	//
+	// example:
+	//
+	// 2021-04-01T09:50:18Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The creator UID.
+	//
+	// example:
+	//
+	// 123456
+	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// The ID of the AnalyticDB for MySQL cluster.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the lake storage.
+	//
+	// example:
+	//
+	// Create a role to run ROS StackGroups.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The size of data files.
+	//
+	// example:
+	//
+	// 651
+	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// The unique identifier of the lake storage.
+	//
+	// example:
+	//
+	// -
+	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
+	// The operator UID.
+	//
+	// example:
+	//
+	// 123456
+	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
+	// The queried lake storage.
+	//
+	// example:
+	//
+	// 123456
+	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The permissions on the lake storage.
+	//
+	// example:
+	//
+	// -
+	Permissions []*ListLakeStoragesResponseBodyItemsPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The number of tables.
+	//
+	// example:
+	//
+	// 30
+	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 30
+	TotalRows *int64 `json:"TotalRows,omitempty" xml:"TotalRows,omitempty"`
+	// The total storage size.
+	//
+	// example:
+	//
+	// 111333
+	TotalStorage *string `json:"TotalStorage,omitempty" xml:"TotalStorage,omitempty"`
+	// The time when the lake storage was last updated.
+	//
+	// example:
+	//
+	// 2024-03-15T02:24:32
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListLakeStoragesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLakeStoragesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetCreateTime(v string) *ListLakeStoragesResponseBodyItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetCreatorUid(v string) *ListLakeStoragesResponseBodyItems {
+	s.CreatorUid = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetDBClusterId(v string) *ListLakeStoragesResponseBodyItems {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetDescription(v string) *ListLakeStoragesResponseBodyItems {
+	s.Description = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetFileSize(v string) *ListLakeStoragesResponseBodyItems {
+	s.FileSize = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetLakeStorageId(v string) *ListLakeStoragesResponseBodyItems {
+	s.LakeStorageId = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetOperatorUid(v string) *ListLakeStoragesResponseBodyItems {
+	s.OperatorUid = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetOwnerUid(v string) *ListLakeStoragesResponseBodyItems {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetPermissions(v []*ListLakeStoragesResponseBodyItemsPermissions) *ListLakeStoragesResponseBodyItems {
+	s.Permissions = v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetRegionId(v string) *ListLakeStoragesResponseBodyItems {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetTableCount(v int32) *ListLakeStoragesResponseBodyItems {
+	s.TableCount = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetTotalRows(v int64) *ListLakeStoragesResponseBodyItems {
+	s.TotalRows = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetTotalStorage(v string) *ListLakeStoragesResponseBodyItems {
+	s.TotalStorage = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItems) SetUpdateTime(v string) *ListLakeStoragesResponseBodyItems {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListLakeStoragesResponseBodyItemsPermissions struct {
+	// The database account ID.
+	//
+	// example:
+	//
+	// -
+	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	// The read permissions.
+	//
+	// example:
+	//
+	// true
+	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
+	// The type of the database account.
+	//
+	// example:
+	//
+	// -
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The write permissions.
+	//
+	// example:
+	//
+	// false
+	Write *bool `json:"Write,omitempty" xml:"Write,omitempty"`
+}
+
+func (s ListLakeStoragesResponseBodyItemsPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLakeStoragesResponseBodyItemsPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *ListLakeStoragesResponseBodyItemsPermissions) SetAccount(v string) *ListLakeStoragesResponseBodyItemsPermissions {
+	s.Account = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItemsPermissions) SetRead(v bool) *ListLakeStoragesResponseBodyItemsPermissions {
+	s.Read = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItemsPermissions) SetType(v string) *ListLakeStoragesResponseBodyItemsPermissions {
+	s.Type = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponseBodyItemsPermissions) SetWrite(v bool) *ListLakeStoragesResponseBodyItemsPermissions {
+	s.Write = &v
+	return s
+}
+
+type ListLakeStoragesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLakeStoragesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLakeStoragesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLakeStoragesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLakeStoragesResponse) SetHeaders(v map[string]*string) *ListLakeStoragesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLakeStoragesResponse) SetStatusCode(v int32) *ListLakeStoragesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLakeStoragesResponse) SetBody(v *ListLakeStoragesResponseBody) *ListLakeStoragesResponse {
+	s.Body = v
+	return s
+}
+
+type ListResultExportJobHistoryRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -32711,9 +43200,9 @@ func (s *ListResultExportJobHistoryRequestOrder) SetType(v string) *ListResultEx
 }
 
 type ListResultExportJobHistoryShrinkRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -32874,7 +43363,7 @@ type ListResultExportJobHistoryResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The queried execution records.
+	// The queried result set export jobs.
 	Items []*ListResultExportJobHistoryResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The returned message. Valid values:
 	//
@@ -33028,8 +43517,18 @@ type ListResultExportJobHistoryResponseBodyItems struct {
 	//
 	// 10000
 	ExportRows *string `json:"ExportRows,omitempty" xml:"ExportRows,omitempty"`
+	// The type of the result set export job.
+	//
+	// example:
+	//
+	// -
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	IsExpired  *bool   `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
+	// Indicates whether the result set export job has expired. Valid values:
+	//
+	// 	- **false**
+	//
+	// 	- **true**
+	IsExpired *bool `json:"IsExpired,omitempty" xml:"IsExpired,omitempty"`
 	// The returned message. This parameter is returned only when the request failed.
 	//
 	// example:
@@ -33038,7 +43537,7 @@ type ListResultExportJobHistoryResponseBodyItems struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The query ID that can be used for diagnostics.
 	//
-	// >  You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612495.html) operation to query the execution information about a query.
+	// >  You can call the [DescribeDiagnosisSQLInfo](https://help.aliyun.com/document_detail/612337.html) operation to query the execution information about a query.
 	//
 	// example:
 	//
@@ -33332,7 +43831,7 @@ func (s *ListSparkAppAttemptsResponseBody) SetRequestId(v string) *ListSparkAppA
 }
 
 type ListSparkAppAttemptsResponseBodyData struct {
-	// The information about the attempts. Fields in the response parameter:
+	// The queried attempts. Fields in the response parameter:
 	//
 	// 	- **AttemptId**: the attempt ID.
 	//
@@ -33362,15 +43861,15 @@ type ListSparkAppAttemptsResponseBodyData struct {
 	//
 	// 	- **Message**: the alert message that is returned. If no alert is generated, null is returned.
 	//
-	// 	- **Data**: the data of the Spark application template.
+	// 	- **Data*	- the data of the Spark application template.
 	//
-	// 	- **EstimateExecutionCpuTimeInSeconds**: the amount of time it takes to consume CPU resources for running the Spark application. Unit: milliseconds.
+	// 	- **EstimateExecutionCpuTimeInSeconds**: the amount of time that is required to consume CPU resources for running the Spark application. Unit: milliseconds.
 	//
 	// 	- **LogRootPath**: the storage path of log files.
 	//
 	// 	- **LastAttemptId**: the ID of the last attempt.
 	//
-	// 	- **WebUiAddress**: the web UI address.
+	// 	- **WebUiAddress**: the web UI URL.
 	//
 	// 	- **SubmittedTimeInMillis**: the time when the Spark application was submitted. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
@@ -33384,7 +43883,7 @@ type ListSparkAppAttemptsResponseBodyData struct {
 	//
 	// 	- **ResourceGroupName**: the name of the job resource group.
 	//
-	// 	- **DurationInMillis**: the amount of time it takes to run the Spark application. Unit: milliseconds.
+	// 	- **DurationInMillis**: the amount of time that is required to run the Spark application. Unit: milliseconds.
 	AttemptInfoList []*SparkAttemptInfo `json:"AttemptInfoList,omitempty" xml:"AttemptInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -33472,6 +43971,7 @@ type ListSparkAppsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Filters     *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	// The number of the page to return. The value must be an integer that is greater than 0. Default value: **1**.
 	//
 	// This parameter is required.
@@ -33510,6 +44010,11 @@ func (s ListSparkAppsRequest) GoString() string {
 
 func (s *ListSparkAppsRequest) SetDBClusterId(v string) *ListSparkAppsRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListSparkAppsRequest) SetFilters(v string) *ListSparkAppsRequest {
+	s.Filters = &v
 	return s
 }
 
@@ -33931,29 +44436,207 @@ func (s *ListSparkTemplateFileIdsResponse) SetBody(v *ListSparkTemplateFileIdsRe
 	return s
 }
 
+type ListSparkWarehouseBatchSQLRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp1ub9grke1****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The name of the interactive resource group for which the Spark engine is enabled.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s ListSparkWarehouseBatchSQLRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkWarehouseBatchSQLRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkWarehouseBatchSQLRequest) SetDBClusterId(v string) *ListSparkWarehouseBatchSQLRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLRequest) SetPageNumber(v int64) *ListSparkWarehouseBatchSQLRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLRequest) SetPageSize(v string) *ListSparkWarehouseBatchSQLRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLRequest) SetResourceGroupName(v string) *ListSparkWarehouseBatchSQLRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type ListSparkWarehouseBatchSQLResponseBody struct {
+	// The returned data.
+	Data *ListSparkWarehouseBatchSQLResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListSparkWarehouseBatchSQLResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkWarehouseBatchSQLResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBody) SetData(v *ListSparkWarehouseBatchSQLResponseBodyData) *ListSparkWarehouseBatchSQLResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBody) SetRequestId(v string) *ListSparkWarehouseBatchSQLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListSparkWarehouseBatchSQLResponseBodyData struct {
+	// The page number.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The queried Spark SQL statements.
+	Queries []*SparkBatchSQL `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
+	// The total number of entries.
+	//
+	// example:
+	//
+	// 0
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListSparkWarehouseBatchSQLResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkWarehouseBatchSQLResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBodyData) SetPageNumber(v int64) *ListSparkWarehouseBatchSQLResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBodyData) SetPageSize(v int64) *ListSparkWarehouseBatchSQLResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBodyData) SetQueries(v []*SparkBatchSQL) *ListSparkWarehouseBatchSQLResponseBodyData {
+	s.Queries = v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponseBodyData) SetTotal(v int64) *ListSparkWarehouseBatchSQLResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type ListSparkWarehouseBatchSQLResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSparkWarehouseBatchSQLResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSparkWarehouseBatchSQLResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSparkWarehouseBatchSQLResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSparkWarehouseBatchSQLResponse) SetHeaders(v map[string]*string) *ListSparkWarehouseBatchSQLResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponse) SetStatusCode(v int32) *ListSparkWarehouseBatchSQLResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSparkWarehouseBatchSQLResponse) SetBody(v *ListSparkWarehouseBatchSQLResponseBody) *ListSparkWarehouseBatchSQLResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707ec21345
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
-	RegionId             *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The cluster ID. You can specify N cluster IDs. Valid values of N: 1 to 50.
+	//
+	// >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The resource type. Set the value to **dbclusterlakeversion**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// dbclusterlakeversion
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -34010,10 +44693,16 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// The tag key. You can specify N tag keys. The tag key cannot be an empty string. Valid values of N: 1 to 20.
+	//
+	// >  You must specify at least one of the ResourceId.N and Tag.N.Key parameters.
+	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify N tag values. The tag value can be an empty string. Valid values of N: 1 to 20.
+	//
 	// example:
 	//
 	// testvalue1
@@ -34039,14 +44728,19 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 212db86sca4384811e0b5e8707ec21345
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 184DE106-CB2C-4DD2-B57F-396652E6C8F8
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried clusters and tags.
 	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
 }
 
@@ -34091,18 +44785,26 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
+	// The cluster ID.
+	//
 	// example:
 	//
 	// amv-bp1l20nxxxxxxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// dbclusterlakeversion
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// testkey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testvalue1
@@ -34626,52 +45328,68 @@ func (s *ModifyAccountPrivilegesResponse) SetBody(v *ModifyAccountPrivilegesResp
 }
 
 type ModifyApsDatasoureRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// -
+	// The information about the Kafka instance.
 	//
 	// example:
 	//
 	// -
 	KafkaInfo *ModifyApsDatasoureRequestKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
-	// Lakehouse ID。
+	// The lakehouse ID.
 	//
 	// example:
 	//
 	// 123
 	LakehouseId *ModifyApsDatasoureRequestLakehouseId `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty" type:"Struct"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfo *ModifyApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	RdsMysqlInfo *ModifyApsDatasoureRequestRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about Simple Log Service (SLS).
+	//
 	// example:
 	//
 	// -
@@ -34737,10 +45455,14 @@ func (s *ModifyApsDatasoureRequest) SetSlsInfo(v *ModifyApsDatasoureRequestSlsIn
 }
 
 type ModifyApsDatasoureRequestKafkaInfo struct {
+	// The ID of the Kafka instance.
+	//
 	// example:
 	//
 	// -
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
+	// The topic of the Kafka instance.
+	//
 	// example:
 	//
 	// test-topic
@@ -34766,16 +45488,20 @@ func (s *ModifyApsDatasoureRequestKafkaInfo) SetKafkaTopic(v string) *ModifyApsD
 }
 
 type ModifyApsDatasoureRequestLakehouseId struct {
+	// The name of the security group.
+	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// vpc id。
+	// The virtual private cloud (VPC) ID.
 	//
 	// example:
 	//
 	// vpc-******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the vSwitch.
+	//
 	// example:
 	//
 	// vsw-******
@@ -34806,25 +45532,25 @@ func (s *ModifyApsDatasoureRequestLakehouseId) SetVswitch(v string) *ModifyApsDa
 }
 
 type ModifyApsDatasoureRequestPolarDBMysqlInfo struct {
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
@@ -34861,25 +45587,25 @@ func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) SetUserName(v string) *Modif
 }
 
 type ModifyApsDatasoureRequestRdsMysqlInfo struct {
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// -
+	// The parameter is no longer supported.
 	//
 	// example:
 	//
@@ -34916,18 +45642,30 @@ func (s *ModifyApsDatasoureRequestRdsMysqlInfo) SetUserName(v string) *ModifyAps
 }
 
 type ModifyApsDatasoureRequestSlsInfo struct {
+	// Specifies whether to use a cross-account resource as the data source. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
+	// The name of the cross-account role.
+	//
 	// example:
 	//
 	// test-role
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
+	// The cross-account UID.
+	//
 	// example:
 	//
 	// 123456
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
@@ -34963,52 +45701,68 @@ func (s *ModifyApsDatasoureRequestSlsInfo) SetSourceRegionId(v string) *ModifyAp
 }
 
 type ModifyApsDatasoureShrinkRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The description of the data source.
+	//
 	// example:
 	//
 	// test
 	DatasourceDescription *string `json:"DatasourceDescription,omitempty" xml:"DatasourceDescription,omitempty"`
+	// The data source ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
+	// The name of the data source.
+	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// -
+	// The information about the Kafka instance.
 	//
 	// example:
 	//
 	// -
 	KafkaInfoShrink *string `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty"`
-	// Lakehouse ID。
+	// The lakehouse ID.
 	//
 	// example:
 	//
 	// 123
 	LakehouseIdShrink *string `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
+	// The parameter is no longer supported.
+	//
 	// example:
 	//
 	// -
 	RdsMysqlInfoShrink *string `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The information about Simple Log Service (SLS).
+	//
 	// example:
 	//
 	// -
@@ -35074,28 +45828,46 @@ func (s *ModifyApsDatasoureShrinkRequest) SetSlsInfoShrink(v string) *ModifyApsD
 }
 
 type ModifyApsDatasoureResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// 150
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *string `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// A3EB3BCD-D974-52D4-B75C-BB06505916CB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -35170,22 +45942,30 @@ func (s *ModifyApsDatasoureResponse) SetBody(v *ModifyApsDatasoureResponseBody) 
 }
 
 type ModifyApsJobRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The objects to be synchronized.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {"EntireInstance":true}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	// The partitions.
+	//
 	// example:
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -35223,34 +46003,58 @@ func (s *ModifyApsJobRequest) SetRegionId(v string) *ModifyApsJobRequest {
 }
 
 type ModifyApsJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The status code. A value of 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code.
+	//
 	// example:
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -35334,14 +46138,527 @@ func (s *ModifyApsJobResponse) SetBody(v *ModifyApsJobResponseBody) *ModifyApsJo
 	return s
 }
 
-type ModifyApsWorkloadNameRequest struct {
+type ModifyApsSlsADBJobRequest struct {
+	// The information about columns.
+	//
+	// example:
+	//
+	// -
+	Columns []*ModifyApsSlsADBJobRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// The cluster ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// dbName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The dirty data processing mode.
+	//
+	// example:
+	//
+	// STOP
+	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
+	// Specifies whether to enable the consistency check.
+	//
+	// example:
+	//
+	// true
+	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
+	// The password of the database account.
+	//
+	// example:
+	//
+	// test_123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start offset.
+	//
+	// example:
+	//
+	// end_cursor
+	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The timestamp conversion.
+	//
+	// example:
+	//
+	// -
+	UnixTimestampConvert *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
+	// The name of the database account.
+	//
+	// example:
+	//
+	// user-name
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The job ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
 	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The name of the workload.
+	//
+	// example:
+	//
+	// test-name
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s ModifyApsSlsADBJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsSlsADBJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetColumns(v []*ModifyApsSlsADBJobRequestColumns) *ModifyApsSlsADBJobRequest {
+	s.Columns = v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetDBClusterId(v string) *ModifyApsSlsADBJobRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetDbName(v string) *ModifyApsSlsADBJobRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetDirtyDataProcessPattern(v string) *ModifyApsSlsADBJobRequest {
+	s.DirtyDataProcessPattern = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetExactlyOnce(v string) *ModifyApsSlsADBJobRequest {
+	s.ExactlyOnce = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetPassword(v string) *ModifyApsSlsADBJobRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetRegionId(v string) *ModifyApsSlsADBJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetStartingOffsets(v string) *ModifyApsSlsADBJobRequest {
+	s.StartingOffsets = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetTableName(v string) *ModifyApsSlsADBJobRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetUnixTimestampConvert(v string) *ModifyApsSlsADBJobRequest {
+	s.UnixTimestampConvert = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetUserName(v string) *ModifyApsSlsADBJobRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetWorkloadId(v string) *ModifyApsSlsADBJobRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequest) SetWorkloadName(v string) *ModifyApsSlsADBJobRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type ModifyApsSlsADBJobRequestColumns struct {
+	// The name of the mapping.
+	//
+	// example:
+	//
+	// map_name
+	MapName *string `json:"MapName,omitempty" xml:"MapName,omitempty"`
+	// The type of the mapping.
+	//
+	// example:
+	//
+	// bigint
+	MapType *string `json:"MapType,omitempty" xml:"MapType,omitempty"`
+	// The name of the column.
+	//
+	// example:
+	//
+	// test_name
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The data type of the column.
+	//
+	// example:
+	//
+	// bigint
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyApsSlsADBJobRequestColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsSlsADBJobRequestColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsSlsADBJobRequestColumns) SetMapName(v string) *ModifyApsSlsADBJobRequestColumns {
+	s.MapName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequestColumns) SetMapType(v string) *ModifyApsSlsADBJobRequestColumns {
+	s.MapType = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequestColumns) SetName(v string) *ModifyApsSlsADBJobRequestColumns {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobRequestColumns) SetType(v string) *ModifyApsSlsADBJobRequestColumns {
+	s.Type = &v
+	return s
+}
+
+type ModifyApsSlsADBJobShrinkRequest struct {
+	// The information about columns.
+	//
+	// example:
+	//
+	// -
+	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// dbName
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// The dirty data processing mode.
+	//
+	// example:
+	//
+	// STOP
+	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
+	// Specifies whether to enable the consistency check.
+	//
+	// example:
+	//
+	// true
+	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
+	// The password of the database account.
+	//
+	// example:
+	//
+	// test_123
+	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The start offset.
+	//
+	// example:
+	//
+	// end_cursor
+	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// The timestamp conversion.
+	//
+	// example:
+	//
+	// -
+	UnixTimestampConvert *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
+	// The name of the database account.
+	//
+	// example:
+	//
+	// user-name
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The job ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The name of the workload.
+	//
+	// example:
+	//
+	// test-name
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s ModifyApsSlsADBJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsSlsADBJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetColumnsShrink(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.ColumnsShrink = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetDBClusterId(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetDbName(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetDirtyDataProcessPattern(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.DirtyDataProcessPattern = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetExactlyOnce(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.ExactlyOnce = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetPassword(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetRegionId(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetStartingOffsets(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.StartingOffsets = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetTableName(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.TableName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetUnixTimestampConvert(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.UnixTimestampConvert = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetUserName(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetWorkloadId(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobShrinkRequest) SetWorkloadName(v string) *ModifyApsSlsADBJobShrinkRequest {
+	s.WorkloadName = &v
+	return s
+}
+
+type ModifyApsSlsADBJobResponseBody struct {
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// -
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyApsSlsADBJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsSlsADBJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetCode(v string) *ModifyApsSlsADBJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetData(v map[string]interface{}) *ModifyApsSlsADBJobResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetHttpStatusCode(v int32) *ModifyApsSlsADBJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetMessage(v string) *ModifyApsSlsADBJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetRequestId(v string) *ModifyApsSlsADBJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponseBody) SetSuccess(v bool) *ModifyApsSlsADBJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyApsSlsADBJobResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyApsSlsADBJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyApsSlsADBJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApsSlsADBJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApsSlsADBJobResponse) SetHeaders(v map[string]*string) *ModifyApsSlsADBJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponse) SetStatusCode(v int32) *ModifyApsSlsADBJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyApsSlsADBJobResponse) SetBody(v *ModifyApsSlsADBJobResponseBody) *ModifyApsSlsADBJobResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyApsWorkloadNameRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-*******
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The job ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-******
+	WorkloadId *string `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// The name of the workload.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sls-2024***93014
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
 }
 
@@ -35374,12 +46691,50 @@ func (s *ModifyApsWorkloadNameRequest) SetWorkloadName(v string) *ModifyApsWorkl
 }
 
 type ModifyApsWorkloadNameResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// InvalidInput
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
+	// example:
+	//
+	// 123
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The status code. A value of 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// SUCCESS
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ModifyApsWorkloadNameResponseBody) String() string {
@@ -35473,7 +46828,16 @@ type ModifyAuditLogConfigRequest struct {
 	// example:
 	//
 	// amv-t4nj8619bz2w3****
-	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The type of the compute engine. Valid values:
+	//
+	// 	- XIHE (**default**)
+	//
+	// 	- SPARK
+	//
+	// example:
+	//
+	// XIHE
 	EngineType   *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -35789,6 +47153,113 @@ func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) 
 	return s
 }
 
+type ModifyClickhouseEngineRequest struct {
+	// The disk cache size of the wide table engine. Unit: GB. Default value: 100. Valid values: 100 to 1000.
+	//
+	// example:
+	//
+	// 200
+	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp11q28kvl688****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the wide table engine feature. Valid values:
+	//
+	// - true
+	//
+	// - false
+	//
+	// example:
+	//
+	// true
+	Enabled *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s ModifyClickhouseEngineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickhouseEngineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickhouseEngineRequest) SetCacheSize(v int32) *ModifyClickhouseEngineRequest {
+	s.CacheSize = &v
+	return s
+}
+
+func (s *ModifyClickhouseEngineRequest) SetDBClusterId(v string) *ModifyClickhouseEngineRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *ModifyClickhouseEngineRequest) SetEnabled(v bool) *ModifyClickhouseEngineRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *ModifyClickhouseEngineRequest) SetOwnerId(v string) *ModifyClickhouseEngineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type ModifyClickhouseEngineResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// D761DA51-12F8-5457-AAA9-F52B9F436D2D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyClickhouseEngineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickhouseEngineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickhouseEngineResponseBody) SetRequestId(v string) *ModifyClickhouseEngineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyClickhouseEngineResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyClickhouseEngineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyClickhouseEngineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickhouseEngineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickhouseEngineResponse) SetHeaders(v map[string]*string) *ModifyClickhouseEngineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyClickhouseEngineResponse) SetStatusCode(v int32) *ModifyClickhouseEngineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyClickhouseEngineResponse) SetBody(v *ModifyClickhouseEngineResponseBody) *ModifyClickhouseEngineResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyClusterAccessWhiteListRequest struct {
 	// The attribute of the IP address whitelist. By default, this parameter is empty.
 	//
@@ -35808,7 +47279,7 @@ type ModifyClusterAccessWhiteListRequest struct {
 	//
 	// test
 	DBClusterIPArrayName *string `json:"DBClusterIPArrayName,omitempty" xml:"DBClusterIPArrayName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -35876,7 +47347,7 @@ func (s *ModifyClusterAccessWhiteListRequest) SetSecurityIps(v string) *ModifyCl
 }
 
 type ModifyClusterAccessWhiteListResponseBody struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// example:
 	//
@@ -35961,7 +47432,7 @@ type ModifyClusterConnectionStringRequest struct {
 	//
 	// test-123
 	ConnectionStringPrefix *string `json:"ConnectionStringPrefix,omitempty" xml:"ConnectionStringPrefix,omitempty"`
-	// The public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The public endpoint of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -35969,7 +47440,7 @@ type ModifyClusterConnectionStringRequest struct {
 	//
 	// amv-bp11q28kvl688****.ads.aliyuncs.com
 	CurrentConnectionString *string `json:"CurrentConnectionString,omitempty" xml:"CurrentConnectionString,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -36186,9 +47657,7 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// true
-	EnableDefaultResourcePool *bool   `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
-	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	EnableDefaultResourcePool *bool `json:"EnableDefaultResourcePool,omitempty" xml:"EnableDefaultResourcePool,omitempty"`
 	// example:
 	//
 	// LegacyForm
@@ -36205,8 +47674,7 @@ type ModifyDBClusterRequest struct {
 	// example:
 	//
 	// LegacyForm
-	ReservedNodeSize     *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ReservedNodeSize *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	// The reserved storage resources. Valid values: 0ACU to 2064ACU. The value must be in increments of 24ACU. Each ACU is approximately equal to 1 core and 4 GB memory.
 	//
 	// >  This parameter must be specified with a unit.
@@ -36240,16 +47708,6 @@ func (s *ModifyDBClusterRequest) SetEnableDefaultResourcePool(v bool) *ModifyDBC
 	return s
 }
 
-func (s *ModifyDBClusterRequest) SetOwnerAccount(v string) *ModifyDBClusterRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ModifyDBClusterRequest) SetOwnerId(v int64) *ModifyDBClusterRequest {
-	s.OwnerId = &v
-	return s
-}
-
 func (s *ModifyDBClusterRequest) SetProductForm(v string) *ModifyDBClusterRequest {
 	s.ProductForm = &v
 	return s
@@ -36267,11 +47725,6 @@ func (s *ModifyDBClusterRequest) SetReservedNodeCount(v int32) *ModifyDBClusterR
 
 func (s *ModifyDBClusterRequest) SetReservedNodeSize(v string) *ModifyDBClusterRequest {
 	s.ReservedNodeSize = &v
-	return s
-}
-
-func (s *ModifyDBClusterRequest) SetResourceOwnerAccount(v string) *ModifyDBClusterRequest {
-	s.ResourceOwnerAccount = &v
 	return s
 }
 
@@ -36536,12 +47989,20 @@ func (s *ModifyDBClusterMaintainTimeResponse) SetBody(v *ModifyDBClusterMaintain
 }
 
 type ModifyDBClusterResourceGroupRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bpxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of the resource group to which you want to move the AnalyticDB for MySQL cluster.
+	//
+	// >  You can use resource groups to manage resources within your Alibaba Cloud account by group. This helps you resolve issues such as resource grouping and permission management within a single Alibaba Cloud account. For more information, see [What is Resource Management?](https://help.aliyun.com/document_detail/94475.html)
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -36593,6 +48054,8 @@ func (s *ModifyDBClusterResourceGroupRequest) SetResourceOwnerId(v int64) *Modif
 }
 
 type ModifyDBClusterResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 65BDA532-28AF-4122-AA39-B382721EEE64
@@ -36643,10 +48106,14 @@ func (s *ModifyDBClusterResourceGroupResponse) SetBody(v *ModifyDBClusterResourc
 
 type ModifyDBClusterVipRequest struct {
 	// The endpoint of the cluster.
-	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// example:
+	//
+	// amv-2ze8mbuai974s4y2500000169.ads.aliyuncs.com
+	ConnectString *string `json:"ConnectString,omitempty" xml:"ConnectString,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -36760,6 +48227,9 @@ func (s *ModifyDBClusterVipResponse) SetBody(v *ModifyDBClusterVipResponseBody) 
 }
 
 type ModifyDBResourceGroupRequest struct {
+	// example:
+	//
+	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
@@ -36790,7 +48260,10 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// true
-	EnableSpot   *bool                  `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParams map[string]interface{} `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -36848,8 +48321,9 @@ type ModifyDBResourceGroupRequest struct {
 	// example:
 	//
 	// 0ACU
-	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
-	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	MinComputeResource *string                                `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
+	MinGpuQuantity     *int32                                 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfig          *ModifyDBResourceGroupRequestRayConfig `json:"RayConfig,omitempty" xml:"RayConfig,omitempty" type:"Struct"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
@@ -36859,10 +48333,13 @@ type ModifyDBResourceGroupRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job resubmission rules.
-	Rules                   []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	SpecName                *string                              `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
-	Status                  *string                              `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetResourceGroupName *string                              `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
+	Rules    []*ModifyDBResourceGroupRequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	SpecName *string                              `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// starting
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
 
 func (s ModifyDBResourceGroupRequest) String() string {
@@ -36943,6 +48420,11 @@ func (s *ModifyDBResourceGroupRequest) SetMinGpuQuantity(v int32) *ModifyDBResou
 	return s
 }
 
+func (s *ModifyDBResourceGroupRequest) SetRayConfig(v *ModifyDBResourceGroupRequestRayConfig) *ModifyDBResourceGroupRequest {
+	s.RayConfig = v
+	return s
+}
+
 func (s *ModifyDBResourceGroupRequest) SetRegionId(v string) *ModifyDBResourceGroupRequest {
 	s.RegionId = &v
 	return s
@@ -36965,6 +48447,88 @@ func (s *ModifyDBResourceGroupRequest) SetStatus(v string) *ModifyDBResourceGrou
 
 func (s *ModifyDBResourceGroupRequest) SetTargetResourceGroupName(v string) *ModifyDBResourceGroupRequest {
 	s.TargetResourceGroupName = &v
+	return s
+}
+
+type ModifyDBResourceGroupRequestRayConfig struct {
+	Category     *string                                              `json:"Category,omitempty" xml:"Category,omitempty"`
+	HeadSpec     *string                                              `json:"HeadSpec,omitempty" xml:"HeadSpec,omitempty"`
+	WorkerGroups []*ModifyDBResourceGroupRequestRayConfigWorkerGroups `json:"WorkerGroups,omitempty" xml:"WorkerGroups,omitempty" type:"Repeated"`
+}
+
+func (s ModifyDBResourceGroupRequestRayConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestRayConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfig) SetCategory(v string) *ModifyDBResourceGroupRequestRayConfig {
+	s.Category = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfig) SetHeadSpec(v string) *ModifyDBResourceGroupRequestRayConfig {
+	s.HeadSpec = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfig) SetWorkerGroups(v []*ModifyDBResourceGroupRequestRayConfigWorkerGroups) *ModifyDBResourceGroupRequestRayConfig {
+	s.WorkerGroups = v
+	return s
+}
+
+type ModifyDBResourceGroupRequestRayConfigWorkerGroups struct {
+	AllocateUnit       *string `json:"AllocateUnit,omitempty" xml:"AllocateUnit,omitempty"`
+	GroupName          *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	MaxWorkerQuantity  *int32  `json:"MaxWorkerQuantity,omitempty" xml:"MaxWorkerQuantity,omitempty"`
+	MinWorkerQuantity  *int32  `json:"MinWorkerQuantity,omitempty" xml:"MinWorkerQuantity,omitempty"`
+	WorkerDiskCapacity *string `json:"WorkerDiskCapacity,omitempty" xml:"WorkerDiskCapacity,omitempty"`
+	WorkerSpecName     *string `json:"WorkerSpecName,omitempty" xml:"WorkerSpecName,omitempty"`
+	WorkerSpecType     *string `json:"WorkerSpecType,omitempty" xml:"WorkerSpecType,omitempty"`
+}
+
+func (s ModifyDBResourceGroupRequestRayConfigWorkerGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDBResourceGroupRequestRayConfigWorkerGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetAllocateUnit(v string) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.AllocateUnit = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetGroupName(v string) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetMaxWorkerQuantity(v int32) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.MaxWorkerQuantity = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetMinWorkerQuantity(v int32) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.MinWorkerQuantity = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerDiskCapacity(v string) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerDiskCapacity = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerSpecName(v string) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerSpecName = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupRequestRayConfigWorkerGroups) SetWorkerSpecType(v string) *ModifyDBResourceGroupRequestRayConfigWorkerGroups {
+	s.WorkerSpecType = &v
 	return s
 }
 
@@ -37013,6 +48577,9 @@ func (s *ModifyDBResourceGroupRequestRules) SetTargetGroupName(v string) *Modify
 }
 
 type ModifyDBResourceGroupShrinkRequest struct {
+	// example:
+	//
+	// 5m
 	AutoStopInterval *string `json:"AutoStopInterval,omitempty" xml:"AutoStopInterval,omitempty"`
 	// A reserved parameter.
 	//
@@ -37043,7 +48610,10 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// example:
 	//
 	// true
-	EnableSpot         *bool   `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
+	// example:
+	//
+	// {\\"spark.adb.version\\":\\"3.5\\"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The name of the resource group.
 	//
@@ -37103,6 +48673,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// 0ACU
 	MinComputeResource *string `json:"MinComputeResource,omitempty" xml:"MinComputeResource,omitempty"`
 	MinGpuQuantity     *int32  `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
+	RayConfigShrink    *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// The region ID of the cluster.
 	//
 	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
@@ -37112,8 +48683,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job resubmission rules.
-	RulesShrink             *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	SpecName                *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+	SpecName    *string `json:"SpecName,omitempty" xml:"SpecName,omitempty"`
+	// example:
+	//
+	// starting
 	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TargetResourceGroupName *string `json:"TargetResourceGroupName,omitempty" xml:"TargetResourceGroupName,omitempty"`
 }
@@ -37193,6 +48767,11 @@ func (s *ModifyDBResourceGroupShrinkRequest) SetMinComputeResource(v string) *Mo
 
 func (s *ModifyDBResourceGroupShrinkRequest) SetMinGpuQuantity(v int32) *ModifyDBResourceGroupShrinkRequest {
 	s.MinGpuQuantity = &v
+	return s
+}
+
+func (s *ModifyDBResourceGroupShrinkRequest) SetRayConfigShrink(v string) *ModifyDBResourceGroupShrinkRequest {
+	s.RayConfigShrink = &v
 	return s
 }
 
@@ -37281,7 +48860,7 @@ type ModifyElasticPlanRequest struct {
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -37419,18 +48998,32 @@ func (s *ModifyElasticPlanResponse) SetBody(v *ModifyElasticPlanResponseBody) *M
 }
 
 type ModifyEssdCacheConfigRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp10yt0gva71ei7d
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the disk cache feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// true
 	EnableEssdCache *bool `json:"EnableEssdCache,omitempty" xml:"EnableEssdCache,omitempty"`
+	// The disk cache size. Unit: GB.
+	//
 	// example:
 	//
 	// 500
@@ -37461,6 +49054,8 @@ func (s *ModifyEssdCacheConfigRequest) SetEssdCacheSize(v int32) *ModifyEssdCach
 }
 
 type ModifyEssdCacheConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 115F9CCA-EF2E-5F91-AB60-4961D52FEAB4
@@ -37510,16 +49105,30 @@ func (s *ModifyEssdCacheConfigResponse) SetBody(v *ModifyEssdCacheConfigResponse
 }
 
 type ModifyLakeCacheSizeRequest struct {
+	// The lake cache size that you want to set. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp10yt0gva71ei7d
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to enable the lake cache feature.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -37552,11 +49161,16 @@ func (s *ModifyLakeCacheSizeRequest) SetEnableLakeCache(v bool) *ModifyLakeCache
 }
 
 type ModifyLakeCacheSizeResponseBody struct {
+	// The status code. The value 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *ModifyLakeCacheSizeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 494486CE-6F49-574E-B304-29127EA12E36
@@ -37587,14 +49201,19 @@ func (s *ModifyLakeCacheSizeResponseBody) SetRequestId(v string) *ModifyLakeCach
 }
 
 type ModifyLakeCacheSizeResponseBodyData struct {
+	// The size of the lake cache space. Unit: GB.
+	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The size of the data that occupies the lake cache space. Unit: GB.
+	//
 	// example:
 	//
 	// 100
-	DataSize  *int64    `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The clusters that share the lake cache space.
 	Instances []*string `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 }
 
@@ -38036,6 +49655,8 @@ func (s *ModifyPerformanceViewResponse) SetBody(v *ModifyPerformanceViewResponse
 }
 
 type ModifyUserEniVswitchOptionsRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38044,12 +49665,24 @@ type ModifyUserEniVswitchOptionsRequest struct {
 	DbClusterId  *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The vSwitches that you want to use. The vSwitches must reside in the same virtual private cloud (VPC) and zone as ENIs. You can specify up to three vSwitches. Separate multiple vSwitches with commas (,).
+	//
+	// >
+	//
+	// 	- The vSwitches that you specify overwrite the existing vSwitches that are connected to ENIs.
+	//
+	// 	- You can call the [DescribeDBClusterAttribute](https://help.aliyun.com/document_detail/612399.html) operation to query the network information about ENIs in a cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38102,22 +49735,40 @@ func (s *ModifyUserEniVswitchOptionsRequest) SetVSwitchOptions(v string) *Modify
 }
 
 type ModifyUserEniVswitchOptionsResponseBody struct {
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -38505,7 +50156,7 @@ type ResetAccountPasswordRequest struct {
 	//
 	// Test_accout1
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -38610,6 +50261,8 @@ func (s *ResetAccountPasswordResponse) SetBody(v *ResetAccountPasswordResponseBo
 }
 
 type RevokeOperatorPermissionRequest struct {
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38656,6 +50309,8 @@ func (s *RevokeOperatorPermissionRequest) SetResourceOwnerId(v int64) *RevokeOpe
 }
 
 type RevokeOperatorPermissionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
@@ -38705,7 +50360,7 @@ func (s *RevokeOperatorPermissionResponse) SetBody(v *RevokeOperatorPermissionRe
 }
 
 type SetSparkAppLogRootPathRequest struct {
-	// The database ID.
+	// The ID of the AnalyticDB for MySQL cluster.
 	//
 	// This parameter is required.
 	//
@@ -38713,7 +50368,7 @@ type SetSparkAppLogRootPathRequest struct {
 	//
 	// am-dbclusterid
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The Object Storage Service (OSS) log path.
+	// The path of Object Storage Service (OSS) logs.
 	//
 	// example:
 	//
@@ -38780,19 +50435,19 @@ func (s *SetSparkAppLogRootPathResponseBody) SetRequestId(v string) *SetSparkApp
 }
 
 type SetSparkAppLogRootPathResponseBodyData struct {
-	// The recommended default OSS log path.
+	// The default log path.
 	//
 	// example:
 	//
 	// oss://path/to/log
 	DefaultLogPath *string `json:"DefaultLogPath,omitempty" xml:"DefaultLogPath,omitempty"`
-	// Indicates whether an OSS log path exists.
+	// Indicates whether a log path exists.
 	//
 	// example:
 	//
 	// true
 	IsLogPathExists *bool `json:"IsLogPathExists,omitempty" xml:"IsLogPathExists,omitempty"`
-	// The time when the modification was last modified.
+	// The last modification time.
 	//
 	// example:
 	//
@@ -38804,7 +50459,7 @@ type SetSparkAppLogRootPathResponseBodyData struct {
 	//
 	// 1111111
 	ModifiedUid *string `json:"ModifiedUid,omitempty" xml:"ModifiedUid,omitempty"`
-	// The OSS log path.
+	// The recorded log path.
 	//
 	// example:
 	//
@@ -38875,12 +50530,16 @@ func (s *SetSparkAppLogRootPathResponse) SetBody(v *SetSparkAppLogRootPathRespon
 }
 
 type StartApsJobRequest struct {
+	// The job ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -38908,34 +50567,58 @@ func (s *StartApsJobRequest) SetRegionId(v string) *StartApsJobRequest {
 }
 
 type StartApsJobResponseBody struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// aps-******
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The HTTP status code or the error code.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned when the request fails.
+	//
 	// example:
 	//
 	// 0
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error message returned if the request failed.
+	//
 	// example:
 	//
 	// OK
 	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, a success message is returned.****
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// True
@@ -39020,18 +50703,24 @@ func (s *StartApsJobResponse) SetBody(v *StartApsJobResponseBody) *StartApsJobRe
 }
 
 type StartSparkReplSessionRequest struct {
+	// The configuration parameters that are used to start the Spark session, which are in the JSON format. For more information, see [Spark application configuration parameters](https://help.aliyun.com/document_detail/471203.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// { "spark.shuffle.timeout": ":0s" }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The cluster ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1mfe9qm****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The name of the job resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -39064,7 +50753,10 @@ func (s *StartSparkReplSessionRequest) SetResourceGroupName(v string) *StartSpar
 }
 
 type StartSparkReplSessionResponseBody struct {
+	// The returned data.
 	Data *StartSparkReplSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// C1797FEA-B7D6-5ED6-A24B-2C8C5F4D7361
@@ -39090,26 +50782,44 @@ func (s *StartSparkReplSessionResponseBody) SetRequestId(v string) *StartSparkRe
 }
 
 type StartSparkReplSessionResponseBodyData struct {
+	// The ID of the Alibaba Cloud account that owns the cluster.
+	//
 	// example:
 	//
 	// 178157466******
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
+	// The attempt ID of the Spark application.
+	//
 	// example:
 	//
 	// s202301061000h****
 	AttemptId *string `json:"AttemptId,omitempty" xml:"AttemptId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// session time out
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// The ID of the session that executes the code.
+	//
 	// example:
 	//
 	// 1
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The status of the session. Valid values:
+	//
+	// 	- IDLE
+	//
+	// 	- BUSY
+	//
+	// 	- DEAD
+	//
 	// example:
 	//
 	// IDLE
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// The URL of the web UI for the Spark application.
+	//
 	// example:
 	//
 	// https://adbsparkui-cn-hangzhou.aliyuncs.com/?token=****
@@ -39386,9 +51096,9 @@ func (s *StartSparkSQLEngineResponse) SetBody(v *StartSparkSQLEngineResponseBody
 }
 
 type SubmitResultExportJobRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
 	//
 	// This parameter is required.
 	//
@@ -39396,12 +51106,13 @@ type SubmitResultExportJobRequest struct {
 	//
 	// amv-bp10a0ng21t5****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The engine that is used to execute the result set export job. Set the value to XIHE.
+	// The engine that is used to run the result set export job. Set the value to XIHE.
 	//
 	// example:
 	//
 	// XIHE
-	Engine     *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	// The export type.
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
 	// The region ID.
 	//
@@ -39930,6 +51641,151 @@ func (s *SubmitSparkLogAnalyzeTaskResponse) SetBody(v *SubmitSparkLogAnalyzeTask
 	return s
 }
 
+type SuspendApsJobRequest struct {
+	// The job ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// aps-bj1xxxxxx
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SuspendApsJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendApsJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendApsJobRequest) SetApsJobId(v string) *SuspendApsJobRequest {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *SuspendApsJobRequest) SetRegionId(v string) *SuspendApsJobRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SuspendApsJobResponseBody struct {
+	// The job ID.
+	//
+	// example:
+	//
+	// aps-bj1xxxxxx
+	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
+	// The HTTP status code or the error code.
+	//
+	// example:
+	//
+	// Success
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// The error code returned when the request fails.
+	//
+	// example:
+	//
+	// OK
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// The response code. The status code 200 indicates that the request was successful.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// ******-3EEC-******-9F06-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SuspendApsJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendApsJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendApsJobResponseBody) SetApsJobId(v string) *SuspendApsJobResponseBody {
+	s.ApsJobId = &v
+	return s
+}
+
+func (s *SuspendApsJobResponseBody) SetErrCode(v string) *SuspendApsJobResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *SuspendApsJobResponseBody) SetErrMessage(v string) *SuspendApsJobResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *SuspendApsJobResponseBody) SetHttpStatusCode(v int32) *SuspendApsJobResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SuspendApsJobResponseBody) SetRequestId(v string) *SuspendApsJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SuspendApsJobResponseBody) SetSuccess(v bool) *SuspendApsJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SuspendApsJobResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SuspendApsJobResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SuspendApsJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SuspendApsJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SuspendApsJobResponse) SetHeaders(v map[string]*string) *SuspendApsJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SuspendApsJobResponse) SetStatusCode(v int32) *SuspendApsJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SuspendApsJobResponse) SetBody(v *SuspendApsJobResponseBody) *SuspendApsJobResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindAccountRequest struct {
 	// The name of the database account.
 	//
@@ -39941,7 +51797,7 @@ type UnbindAccountRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -40118,30 +51974,32 @@ func (s *UnbindDBResourceGroupWithUserResponse) SetBody(v *UnbindDBResourceGroup
 }
 
 type UpdateLakeStorageRequest struct {
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 用于识别特定湖存储的唯一标识符
+	// The unique identifier of the lake storage.
 	//
 	// example:
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions on the lake storage.
 	//
 	// example:
 	//
 	// -
 	Permissions []*UpdateLakeStorageRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -40182,7 +52040,7 @@ func (s *UpdateLakeStorageRequest) SetRegionId(v string) *UpdateLakeStorageReque
 }
 
 type UpdateLakeStorageRequestPermissions struct {
-	// 具有该权限的账户或RAM用户ID
+	// The account ID.
 	//
 	// This parameter is required.
 	//
@@ -40190,7 +52048,7 @@ type UpdateLakeStorageRequestPermissions struct {
 	//
 	// test
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 表示是否允许读取湖存储的权限
+	// The read permissions.
 	//
 	// This parameter is required.
 	//
@@ -40198,7 +52056,7 @@ type UpdateLakeStorageRequestPermissions struct {
 	//
 	// true
 	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
-	// 指定权限的账户类型
+	// The account type.
 	//
 	// This parameter is required.
 	//
@@ -40206,7 +52064,7 @@ type UpdateLakeStorageRequestPermissions struct {
 	//
 	// SUB
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 表示是否允许向湖存储写入数据的权限
+	// The write permissions.
 	//
 	// This parameter is required.
 	//
@@ -40245,30 +52103,32 @@ func (s *UpdateLakeStorageRequestPermissions) SetWrite(v bool) *UpdateLakeStorag
 }
 
 type UpdateLakeStorageShrinkRequest struct {
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
 	//
 	// example:
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 用于识别特定湖存储的唯一标识符
+	// The unique identifier of the lake storage.
 	//
 	// example:
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions on the lake storage.
 	//
 	// example:
 	//
 	// -
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-shenzhen
@@ -40309,26 +52169,46 @@ func (s *UpdateLakeStorageShrinkRequest) SetRegionId(v string) *UpdateLakeStorag
 }
 
 type UpdateLakeStorageResponseBody struct {
+	// The status code. A value of 200 indicates that the request is successful.
+	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// -
 	Data *UpdateLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The HTTP status code. A value of 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The returned message. Valid values:
+	//
+	// 	- If the request was successful, an OK message is returned.
+	//
+	// 	- If the request failed, an error message is returned.
+	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
@@ -40374,83 +52254,85 @@ func (s *UpdateLakeStorageResponseBody) SetSuccess(v bool) *UpdateLakeStorageRes
 }
 
 type UpdateLakeStorageResponseBodyData struct {
-	// 湖存储被创建的时间
+	// The time when the lake storage was created.
 	//
 	// example:
 	//
 	// 2023-05-15T07:24:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// 创建湖存储的用户账号的唯一标识符
+	// The creator UID.
 	//
 	// example:
 	//
 	// 123456
 	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
-	// 用于指定和挂载到特定ADB主实例的湖存储
+	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
 	//
 	// example:
 	//
 	// amv-23xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// 对湖存储的描述信息
+	// The description of the lake storage.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 湖存储中数据的总存储量
+	// The total storage size.
 	//
 	// example:
 	//
 	// 142
 	FileSize *string `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// 用于识别特定湖存储的唯一标识符
+	// The unique identifier of the lake storage.
 	//
 	// example:
 	//
 	// -
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// 最后操作湖存储的用户账号的唯一标识符
+	// The operator UID.
 	//
 	// example:
 	//
 	// 123456
 	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	// 拥有湖存储资源的用户账号的唯一标识符
+	// The owner UID.
 	//
 	// example:
 	//
 	// 123456
 	OwnerUid *string `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	// The number of partitions.
+	//
 	// example:
 	//
 	// 0
 	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// 设置湖存储的读/写权限和账户级别权限的数组
+	// The permissions on the lake storage.
 	//
 	// example:
 	//
 	// -
 	Permissions []*UpdateLakeStorageResponseBodyDataPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
-	// 指定要操作的湖存储所在区域的ID
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 湖存储中所有库表的总数据行数
+	// The total number of entries returned.
 	//
 	// example:
 	//
 	// >=
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// 湖存储中库表的总数量
+	// The number of tables.
 	//
 	// example:
 	//
 	// 1234
 	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	// 湖存储最后一次更新的时间
+	// The time when the lake storage was last updated.
 	//
 	// example:
 	//
@@ -40537,25 +52419,25 @@ func (s *UpdateLakeStorageResponseBodyData) SetUpdateTime(v string) *UpdateLakeS
 }
 
 type UpdateLakeStorageResponseBodyDataPermissions struct {
-	// 具有该权限的账户或RAM用户ID
+	// The account ID.
 	//
 	// example:
 	//
 	// test
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// 表示是否允许读取湖存储的权限
+	// The read permissions.
 	//
 	// example:
 	//
 	// true
 	Read *bool `json:"Read,omitempty" xml:"Read,omitempty"`
-	// 指定权限的账户类型
+	// The account type.
 	//
 	// example:
 	//
 	// SUB
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// 表示是否允许向湖存储写入数据的权限
+	// The write permissions.
 	//
 	// example:
 	//
@@ -40767,6 +52649,137 @@ func (s *UpdateSparkTemplateFileResponse) SetBody(v *UpdateSparkTemplateFileResp
 	return s
 }
 
+type UpgradeKernelVersionRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Warehouse Edition clusters within a region, including cluster IDs.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The minor version to which you want to update.
+	//
+	// >  You can call the **DescribeKernelVersion*	- operation to query the supported minor versions.
+	//
+	// example:
+	//
+	// 3.1.9
+	DBVersion            *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The time when to perform the update. Valid values:
+	//
+	// 	- **0*	- (default): immediately performs the update.
+	//
+	// 	- **1**: performs the update during the maintenance window.
+	//
+	// >  You can call the [ModifyDBClusterMaintainTime](https://help.aliyun.com/document_detail/612236.html) operation to modify the maintenance window of an AnalyticDB for MySQL cluster.
+	//
+	// example:
+	//
+	// 0
+	SwitchMode *int32 `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
+}
+
+func (s UpgradeKernelVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeKernelVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeKernelVersionRequest) SetDBClusterId(v string) *UpgradeKernelVersionRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetDBVersion(v string) *UpgradeKernelVersionRequest {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetOwnerAccount(v string) *UpgradeKernelVersionRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetOwnerId(v int64) *UpgradeKernelVersionRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetResourceOwnerAccount(v string) *UpgradeKernelVersionRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetResourceOwnerId(v int64) *UpgradeKernelVersionRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionRequest) SetSwitchMode(v int32) *UpgradeKernelVersionRequest {
+	s.SwitchMode = &v
+	return s
+}
+
+type UpgradeKernelVersionResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A444FFFFFF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpgradeKernelVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeKernelVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeKernelVersionResponseBody) SetRequestId(v string) *UpgradeKernelVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpgradeKernelVersionResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpgradeKernelVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpgradeKernelVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeKernelVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeKernelVersionResponse) SetHeaders(v map[string]*string) *UpgradeKernelVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeKernelVersionResponse) SetStatusCode(v int32) *UpgradeKernelVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeKernelVersionResponse) SetBody(v *UpgradeKernelVersionResponseBody) *UpgradeKernelVersionResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -40905,13 +52918,24 @@ func (client *Client) AllocateClusterPublicConnectionWithOptions(request *Alloca
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AllocateClusterPublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AllocateClusterPublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AllocateClusterPublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -40938,7 +52962,11 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 
 // Summary:
 //
-// 应用单条优化建议
+// Applies an optimization suggestion.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -40981,18 +53009,33 @@ func (client *Client) ApplyAdviceByIdWithOptions(request *ApplyAdviceByIdRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ApplyAdviceByIdResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ApplyAdviceByIdResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ApplyAdviceByIdResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 应用单条优化建议
+// Applies an optimization suggestion.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ApplyAdviceByIdRequest
 //
@@ -41010,7 +53053,7 @@ func (client *Client) ApplyAdviceById(request *ApplyAdviceByIdRequest) (_result 
 
 // Summary:
 //
-// Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+// Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -41045,18 +53088,29 @@ func (client *Client) AttachUserENIWithOptions(request *AttachUserENIRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &AttachUserENIResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &AttachUserENIResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &AttachUserENIResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL Data Lakehouse Edition cluster.
+// Attaches an elastic network interface (ENI) to an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
@@ -41078,7 +53132,7 @@ func (client *Client) AttachUserENI(request *AttachUserENIRequest) (_result *Att
 
 // Summary:
 //
-// 批量应用优化建议
+// Applies optimization suggestions.
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -41121,18 +53175,29 @@ func (client *Client) BatchApplyAdviceByIdListWithOptions(request *BatchApplyAdv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BatchApplyAdviceByIdListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BatchApplyAdviceByIdListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BatchApplyAdviceByIdListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 批量应用优化建议
+// Applies optimization suggestions.
 //
 // @param request - BatchApplyAdviceByIdListRequest
 //
@@ -41193,13 +53258,24 @@ func (client *Client) BindAccountWithOptions(request *BindAccountRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BindAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BindAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BindAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41269,13 +53345,24 @@ func (client *Client) BindDBResourceGroupWithUserWithOptions(request *BindDBReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &BindDBResourceGroupWithUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &BindDBResourceGroupWithUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &BindDBResourceGroupWithUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41302,7 +53389,7 @@ func (client *Client) BindDBResourceGroupWithUser(request *BindDBResourceGroupWi
 
 // Summary:
 //
-// 终止一段代码
+// Terminates part of the code in a Spark job.
 //
 // @param request - CancelSparkReplStatementRequest
 //
@@ -41341,18 +53428,29 @@ func (client *Client) CancelSparkReplStatementWithOptions(request *CancelSparkRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CancelSparkReplStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelSparkReplStatementResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelSparkReplStatementResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 终止一段代码
+// Terminates part of the code in a Spark job.
 //
 // @param request - CancelSparkReplStatementRequest
 //
@@ -41361,6 +53459,85 @@ func (client *Client) CancelSparkReplStatement(request *CancelSparkReplStatement
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelSparkReplStatementResponse{}
 	_body, _err := client.CancelSparkReplStatementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Cancels the execution of a Spark SQL statement.
+//
+// @param request - CancelSparkWarehouseBatchSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelSparkWarehouseBatchSQLResponse
+func (client *Client) CancelSparkWarehouseBatchSQLWithOptions(request *CancelSparkWarehouseBatchSQLRequest, runtime *util.RuntimeOptions) (_result *CancelSparkWarehouseBatchSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Agency)) {
+		body["Agency"] = request.Agency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		body["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelSparkWarehouseBatchSQL"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CancelSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CancelSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Cancels the execution of a Spark SQL statement.
+//
+// @param request - CancelSparkWarehouseBatchSQLRequest
+//
+// @return CancelSparkWarehouseBatchSQLResponse
+func (client *Client) CancelSparkWarehouseBatchSQL(request *CancelSparkWarehouseBatchSQLRequest) (_result *CancelSparkWarehouseBatchSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelSparkWarehouseBatchSQLResponse{}
+	_body, _err := client.CancelSparkWarehouseBatchSQLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -41409,13 +53586,24 @@ func (client *Client) CheckBindRamUserWithOptions(request *CheckBindRamUserReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckBindRamUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckBindRamUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckBindRamUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41473,13 +53661,24 @@ func (client *Client) CheckSampleDataSetWithOptions(request *CheckSampleDataSetR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckSampleDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CheckSampleDataSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CheckSampleDataSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -41502,7 +53701,11 @@ func (client *Client) CheckSampleDataSet(request *CheckSampleDataSetRequest) (_r
 
 // Summary:
 //
-// 创建一站式链路
+// Creates an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateAPSJobRequest
 //
@@ -41577,18 +53780,33 @@ func (client *Client) CreateAPSJobWithOptions(request *CreateAPSJobRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAPSJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAPSJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAPSJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建一站式链路
+// Creates an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateAPSJobRequest
 //
@@ -41661,13 +53879,24 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41694,7 +53923,263 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// 创建Hive数据迁移链路。
+// Creates an AnalyticDB Pipeline Service (APS) replication job.
+//
+// @param request - CreateApsCopyWorkloadRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApsCopyWorkloadResponse
+func (client *Client) CreateApsCopyWorkloadWithOptions(request *CreateApsCopyWorkloadRequest, runtime *util.RuntimeOptions) (_result *CreateApsCopyWorkloadResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadType)) {
+		body["WorkloadType"] = request.WorkloadType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApsCopyWorkload"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApsCopyWorkloadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApsCopyWorkloadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates an AnalyticDB Pipeline Service (APS) replication job.
+//
+// @param request - CreateApsCopyWorkloadRequest
+//
+// @return CreateApsCopyWorkloadResponse
+func (client *Client) CreateApsCopyWorkload(request *CreateApsCopyWorkloadRequest) (_result *CreateApsCopyWorkloadResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApsCopyWorkloadResponse{}
+	_body, _err := client.CreateApsCopyWorkloadWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
+// @param tmpReq - CreateApsDatasoureRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApsDatasoureResponse
+func (client *Client) CreateApsDatasoureWithOptions(tmpReq *CreateApsDatasoureRequest, runtime *util.RuntimeOptions) (_result *CreateApsDatasoureResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateApsDatasoureShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DatabricksInfo)) {
+		request.DatabricksInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DatabricksInfo, tea.String("DatabricksInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.HiveInfo)) {
+		request.HiveInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HiveInfo, tea.String("HiveInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.KafkaInfo)) {
+		request.KafkaInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.KafkaInfo, tea.String("KafkaInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PolarDBMysqlInfo)) {
+		request.PolarDBMysqlInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolarDBMysqlInfo, tea.String("PolarDBMysqlInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PolarDBXInfo)) {
+		request.PolarDBXInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolarDBXInfo, tea.String("PolarDBXInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RdsMysqlInfo)) {
+		request.RdsMysqlInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RdsMysqlInfo, tea.String("RdsMysqlInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SlsInfo)) {
+		request.SlsInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SlsInfo, tea.String("SlsInfo"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabricksInfoShrink)) {
+		body["DatabricksInfo"] = request.DatabricksInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceDescription)) {
+		body["DatasourceDescription"] = request.DatasourceDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		body["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceType)) {
+		body["DatasourceType"] = request.DatasourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HiveInfoShrink)) {
+		body["HiveInfo"] = request.HiveInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaInfoShrink)) {
+		body["KafkaInfo"] = request.KafkaInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		body["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarDBMysqlInfoShrink)) {
+		body["PolarDBMysqlInfo"] = request.PolarDBMysqlInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolarDBXInfoShrink)) {
+		body["PolarDBXInfo"] = request.PolarDBXInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsMysqlInfoShrink)) {
+		body["RdsMysqlInfo"] = request.RdsMysqlInfoShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlsInfoShrink)) {
+		body["SlsInfo"] = request.SlsInfoShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApsDatasoure"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApsDatasoureResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApsDatasoureResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
+// @param request - CreateApsDatasoureRequest
+//
+// @return CreateApsDatasoureResponse
+func (client *Client) CreateApsDatasoure(request *CreateApsDatasoureRequest) (_result *CreateApsDatasoureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApsDatasoureResponse{}
+	_body, _err := client.CreateApsDatasoureWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateApsHiveJobRequest
 //
@@ -41773,18 +54258,33 @@ func (client *Client) CreateApsHiveJobWithOptions(request *CreateApsHiveJobReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateApsHiveJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApsHiveJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApsHiveJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建Hive数据迁移链路。
+// Creates an AnalyticDB Pipeline Service (APS) job from a Hive data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - CreateApsHiveJobRequest
 //
@@ -41802,11 +54302,220 @@ func (client *Client) CreateApsHiveJob(request *CreateApsHiveJobRequest) (_resul
 
 // Summary:
 //
+// Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
+//
+// @param tmpReq - CreateApsSlsADBJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateApsSlsADBJobResponse
+func (client *Client) CreateApsSlsADBJobWithOptions(tmpReq *CreateApsSlsADBJobRequest, runtime *util.RuntimeOptions) (_result *CreateApsSlsADBJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateApsSlsADBJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Columns)) {
+		request.ColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Columns, tea.String("Columns"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.PartitionSpecs)) {
+		request.PartitionSpecsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PartitionSpecs, tea.String("PartitionSpecs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.UnixTimestampConvert)) {
+		request.UnixTimestampConvertShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UnixTimestampConvert, tea.String("UnixTimestampConvert"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcrossRole)) {
+		body["AcrossRole"] = request.AcrossRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AcrossUid)) {
+		body["AcrossUid"] = request.AcrossUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdvancedConfig)) {
+		body["AdvancedConfig"] = request.AdvancedConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColumnsShrink)) {
+		body["Columns"] = request.ColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasourceId)) {
+		body["DatasourceId"] = request.DatasourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirtyDataHandleMode)) {
+		body["DirtyDataHandleMode"] = request.DirtyDataHandleMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirtyDataProcessPattern)) {
+		body["DirtyDataProcessPattern"] = request.DirtyDataProcessPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExactlyOnce)) {
+		body["ExactlyOnce"] = request.ExactlyOnce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullComputeUnit)) {
+		body["FullComputeUnit"] = request.FullComputeUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HudiAdvancedConfig)) {
+		body["HudiAdvancedConfig"] = request.HudiAdvancedConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncrementalComputeUnit)) {
+		body["IncrementalComputeUnit"] = request.IncrementalComputeUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LakehouseId)) {
+		body["LakehouseId"] = request.LakehouseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxOffsetsPerTrigger)) {
+		body["MaxOffsetsPerTrigger"] = request.MaxOffsetsPerTrigger
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssLocation)) {
+		body["OssLocation"] = request.OssLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["OutputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PartitionSpecsShrink)) {
+		body["PartitionSpecs"] = request.PartitionSpecsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryKeyDefinition)) {
+		body["PrimaryKeyDefinition"] = request.PrimaryKeyDefinition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["Project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		body["ResourceGroup"] = request.ResourceGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegionId)) {
+		body["SourceRegionId"] = request.SourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartingOffsets)) {
+		body["StartingOffsets"] = request.StartingOffsets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Store)) {
+		body["Store"] = request.Store
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetGenerateRule)) {
+		body["TargetGenerateRule"] = request.TargetGenerateRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		body["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnixTimestampConvertShrink)) {
+		body["UnixTimestampConvert"] = request.UnixTimestampConvertShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadName)) {
+		body["WorkloadName"] = request.WorkloadName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApsSlsADBJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateApsSlsADBJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateApsSlsADBJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Creates an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
+//
+// @param request - CreateApsSlsADBJobRequest
+//
+// @return CreateApsSlsADBJobResponse
+func (client *Client) CreateApsSlsADBJob(request *CreateApsSlsADBJobRequest) (_result *CreateApsSlsADBJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateApsSlsADBJobResponse{}
+	_body, _err := client.CreateApsSlsADBJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an AnalyticDB for MySQL Data Lakehouse Edition cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// # CreateDBCluster
 //
 // @param request - CreateDBClusterRequest
 //
@@ -41867,6 +54576,10 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		query["ProductForm"] = request.ProductForm
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProductVersion)) {
+		query["ProductVersion"] = request.ProductVersion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -41889,6 +54602,14 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
 		query["RestoreType"] = request.RestoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryVSwitchId)) {
+		query["SecondaryVSwitchId"] = request.SecondaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryZoneId)) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceDbClusterId)) {
@@ -41933,13 +54654,24 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -41948,7 +54680,7 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+// # CreateDBCluster
 //
 // @param request - CreateDBClusterRequest
 //
@@ -41986,6 +54718,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RayConfig)) {
+		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, tea.String("RayConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
@@ -42053,6 +54789,10 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 		query["MinGpuQuantity"] = request.MinGpuQuantity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RayConfigShrink)) {
+		query["RayConfig"] = request.RayConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -42083,13 +54823,24 @@ func (client *Client) CreateDBResourceGroupWithOptions(tmpReq *CreateDBResourceG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateDBResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateDBResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateDBResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42187,13 +54938,24 @@ func (client *Client) CreateElasticPlanWithOptions(request *CreateElasticPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateElasticPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateElasticPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateElasticPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42220,7 +54982,7 @@ func (client *Client) CreateElasticPlan(request *CreateElasticPlanRequest) (_res
 
 // Summary:
 //
-// 创建湖存储
+// Creates a lake storage.
 //
 // @param tmpReq - CreateLakeStorageRequest
 //
@@ -42275,18 +55037,29 @@ func (client *Client) CreateLakeStorageWithOptions(tmpReq *CreateLakeStorageRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateLakeStorageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateLakeStorageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateLakeStorageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 创建湖存储
+// Creates a lake storage.
 //
 // @param request - CreateLakeStorageRequest
 //
@@ -42308,11 +55081,11 @@ func (client *Client) CreateLakeStorage(request *CreateLakeStorageRequest) (_res
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - CreateOssSubDirectoryRequest
 //
@@ -42347,13 +55120,24 @@ func (client *Client) CreateOssSubDirectoryWithOptions(request *CreateOssSubDire
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateOssSubDirectoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateOssSubDirectoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateOssSubDirectoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42362,11 +55146,11 @@ func (client *Client) CreateOssSubDirectoryWithOptions(request *CreateOssSubDire
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - CreateOssSubDirectoryRequest
 //
@@ -42457,13 +55241,24 @@ func (client *Client) CreatePerformanceViewWithOptions(tmpReq *CreatePerformance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreatePerformanceViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreatePerformanceViewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreatePerformanceViewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42490,9 +55285,9 @@ func (client *Client) CreatePerformanceView(request *CreatePerformanceViewReques
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -42541,13 +55336,24 @@ func (client *Client) CreateSparkTemplateWithOptions(request *CreateSparkTemplat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CreateSparkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &CreateSparkTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &CreateSparkTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42556,9 +55362,9 @@ func (client *Client) CreateSparkTemplateWithOptions(request *CreateSparkTemplat
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -42621,13 +55427,24 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42654,7 +55471,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// 删除APS数据源
+// Deletes an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteApsDatasoureRequest
 //
@@ -42693,18 +55514,33 @@ func (client *Client) DeleteApsDatasoureWithOptions(request *DeleteApsDatasoureR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApsDatasoureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteApsDatasoureResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteApsDatasoureResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除APS数据源
+// Deletes an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteApsDatasoureRequest
 //
@@ -42722,7 +55558,15 @@ func (client *Client) DeleteApsDatasoure(request *DeleteApsDatasoureRequest) (_r
 
 // Summary:
 //
-// 删除aps任务
+// Deletes an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+//	  Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+//
+//		- You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+//		- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteApsJobRequest
 //
@@ -42757,18 +55601,37 @@ func (client *Client) DeleteApsJobWithOptions(request *DeleteApsJobRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteApsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteApsJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteApsJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 删除aps任务
+// Deletes an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+//	  Deleting backup sets is an asynchronous operation and may require 10 to 20 minutes to complete.
+//
+//		- You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//
+//		- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteApsJobRequest
 //
@@ -42790,9 +55653,9 @@ func (client *Client) DeleteApsJob(request *DeleteApsJobRequest) (_result *Delet
 //
 // Description:
 //
-//   You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//	  You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
 //
-// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+//		- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteBackupsRequest
 //
@@ -42847,13 +55710,24 @@ func (client *Client) DeleteBackupsWithOptions(request *DeleteBackupsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteBackupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteBackupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteBackupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42862,9 +55736,9 @@ func (client *Client) DeleteBackupsWithOptions(request *DeleteBackupsRequest, ru
 //
 // Description:
 //
-//   You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
+//	  You can delete up to 100 backup sets at a time. If you want to delete more than 100 backup sets, call this operation twice.
 //
-// 	- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
+//		- To ensure data security, the system forcibly retains one valid backup set. If you want to delete the last backup set, the system prohibits your operation.
 //
 // @param request - DeleteBackupsRequest
 //
@@ -42888,9 +55762,11 @@ func (client *Client) DeleteBackups(request *DeleteBackupsRequest) (_result *Del
 //
 // ### [](#)
 //
-// 	- You can call this operation to delete only subscription clusters.
+//   - You can delete only pay-as-you-go clusters.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   - The cluster that you want to delete must be in the Running state.
+//
+//   - For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -42921,13 +55797,24 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -42938,9 +55825,11 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 //
 // ### [](#)
 //
-// 	- You can call this operation to delete only subscription clusters.
+//   - You can delete only pay-as-you-go clusters.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   - The cluster that you want to delete must be in the Running state.
+//
+//   - For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -42997,13 +55886,24 @@ func (client *Client) DeleteDBResourceGroupWithOptions(request *DeleteDBResource
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteDBResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteDBResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteDBResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43069,13 +55969,24 @@ func (client *Client) DeleteElasticPlanWithOptions(request *DeleteElasticPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteElasticPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteElasticPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteElasticPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43093,6 +56004,95 @@ func (client *Client) DeleteElasticPlan(request *DeleteElasticPlanRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteElasticPlanResponse{}
 	_body, _err := client.DeleteElasticPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a lake storage.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
+// @param request - DeleteLakeStorageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLakeStorageResponse
+func (client *Client) DeleteLakeStorageWithOptions(request *DeleteLakeStorageRequest, runtime *util.RuntimeOptions) (_result *DeleteLakeStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LakeStorageId)) {
+		body["LakeStorageId"] = request.LakeStorageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLakeStorage"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteLakeStorageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteLakeStorageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Deletes a lake storage.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//
+// @param request - DeleteLakeStorageRequest
+//
+// @return DeleteLakeStorageResponse
+func (client *Client) DeleteLakeStorage(request *DeleteLakeStorageRequest) (_result *DeleteLakeStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLakeStorageResponse{}
+	_body, _err := client.DeleteLakeStorageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43157,13 +56157,24 @@ func (client *Client) DeletePerformanceViewWithOptions(request *DeletePerformanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeletePerformanceViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeletePerformanceViewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeletePerformanceViewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43186,97 +56197,13 @@ func (client *Client) DeletePerformanceView(request *DeletePerformanceViewReques
 
 // Summary:
 //
-// Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// @param request - DeleteProcessInstanceRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteProcessInstanceResponse
-func (client *Client) DeleteProcessInstanceWithOptions(request *DeleteProcessInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteProcessInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
-		query["DBClusterId"] = request.DBClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProcessInstanceId)) {
-		query["ProcessInstanceId"] = request.ProcessInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
-		query["ProjectCode"] = request.ProjectCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProcessInstance"),
-		Version:     tea.String("2021-12-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteProcessInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a worflow instance from an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
-//
-// Description:
-//
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
-//
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
-//
-// @param request - DeleteProcessInstanceRequest
-//
-// @return DeleteProcessInstanceResponse
-func (client *Client) DeleteProcessInstance(request *DeleteProcessInstanceRequest) (_result *DeleteProcessInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteProcessInstanceResponse{}
-	_body, _err := client.DeleteProcessInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Deletes Spark template files.
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -43313,13 +56240,24 @@ func (client *Client) DeleteSparkTemplateWithOptions(request *DeleteSparkTemplat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSparkTemplateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSparkTemplateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSparkTemplateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43328,9 +56266,9 @@ func (client *Client) DeleteSparkTemplateWithOptions(request *DeleteSparkTemplat
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -43354,9 +56292,9 @@ func (client *Client) DeleteSparkTemplate(request *DeleteSparkTemplateRequest) (
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -43393,13 +56331,24 @@ func (client *Client) DeleteSparkTemplateFileWithOptions(request *DeleteSparkTem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DeleteSparkTemplateFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DeleteSparkTemplateFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DeleteSparkTemplateFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43408,9 +56357,9 @@ func (client *Client) DeleteSparkTemplateFileWithOptions(request *DeleteSparkTem
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -43430,7 +56379,11 @@ func (client *Client) DeleteSparkTemplateFile(request *DeleteSparkTemplateFileRe
 
 // Summary:
 //
-// 获取APS联邦分析ADB实例列表
+// Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+//
+// Description:
+//
+// You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
 //
 // @param request - DescribeAPSADBInstancesRequest
 //
@@ -43457,18 +56410,33 @@ func (client *Client) DescribeAPSADBInstancesWithOptions(request *DescribeAPSADB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAPSADBInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAPSADBInstancesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAPSADBInstancesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取APS联邦分析ADB实例列表
+// Queries a list of AnalyticDB for MySQL clusters for AnalyticDB Pipeline Service (APS) federated analytics.
+//
+// Description:
+//
+// You can call this operation to query the performance data of a cluster over a time range based on performance metrics. The collection granularity is 30 seconds. This operation allows you to query information about slow queries, such as the SQL query duration, number of scanned rows, and amount of scanned data.
 //
 // @param request - DescribeAPSADBInstancesRequest
 //
@@ -43477,6 +56445,109 @@ func (client *Client) DescribeAPSADBInstances(request *DescribeAPSADBInstancesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAPSADBInstancesResponse{}
 	_body, _err := client.DescribeAPSADBInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries abnormal SQL patterns within a time range.
+//
+// @param request - DescribeAbnormalPatternDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAbnormalPatternDetectionResponse
+func (client *Client) DescribeAbnormalPatternDetectionWithOptions(request *DescribeAbnormalPatternDetectionRequest, runtime *util.RuntimeOptions) (_result *DescribeAbnormalPatternDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAbnormalPatternDetection"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAbnormalPatternDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAbnormalPatternDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries abnormal SQL patterns within a time range.
+//
+// @param request - DescribeAbnormalPatternDetectionRequest
+//
+// @return DescribeAbnormalPatternDetectionResponse
+func (client *Client) DescribeAbnormalPatternDetection(request *DescribeAbnormalPatternDetectionRequest) (_result *DescribeAbnormalPatternDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAbnormalPatternDetectionResponse{}
+	_body, _err := client.DescribeAbnormalPatternDetectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43533,13 +56604,24 @@ func (client *Client) DescribeAccountAllPrivilegesWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountAllPrivilegesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountAllPrivilegesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountAllPrivilegesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43633,13 +56715,24 @@ func (client *Client) DescribeAccountPrivilegeObjectsWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountPrivilegeObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountPrivilegeObjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountPrivilegeObjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43729,13 +56822,24 @@ func (client *Client) DescribeAccountPrivilegesWithOptions(request *DescribeAcco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountPrivilegesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountPrivilegesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountPrivilegesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43805,13 +56909,24 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAccountsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAccountsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAccountsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43842,9 +56957,9 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlColumnsRequest
 //
@@ -43887,13 +57002,24 @@ func (client *Client) DescribeAdbMySqlColumnsWithOptions(request *DescribeAdbMyS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAdbMySqlColumnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAdbMySqlColumnsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAdbMySqlColumnsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43902,9 +57028,9 @@ func (client *Client) DescribeAdbMySqlColumnsWithOptions(request *DescribeAdbMyS
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlColumnsRequest
 //
@@ -43926,9 +57052,9 @@ func (client *Client) DescribeAdbMySqlColumns(request *DescribeAdbMySqlColumnsRe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlSchemasRequest
 //
@@ -43963,13 +57089,24 @@ func (client *Client) DescribeAdbMySqlSchemasWithOptions(request *DescribeAdbMyS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAdbMySqlSchemasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAdbMySqlSchemasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAdbMySqlSchemasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -43978,9 +57115,9 @@ func (client *Client) DescribeAdbMySqlSchemasWithOptions(request *DescribeAdbMyS
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlSchemasRequest
 //
@@ -44002,9 +57139,9 @@ func (client *Client) DescribeAdbMySqlSchemas(request *DescribeAdbMySqlSchemasRe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlTablesRequest
 //
@@ -44043,13 +57180,24 @@ func (client *Client) DescribeAdbMySqlTablesWithOptions(request *DescribeAdbMySq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAdbMySqlTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAdbMySqlTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAdbMySqlTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44058,9 +57206,9 @@ func (client *Client) DescribeAdbMySqlTablesWithOptions(request *DescribeAdbMySq
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAdbMySqlTablesRequest
 //
@@ -44078,7 +57226,11 @@ func (client *Client) DescribeAdbMySqlTables(request *DescribeAdbMySqlTablesRequ
 
 // Summary:
 //
-// 查询建议服务是否开启
+// Queries whether the suggestion feature is enabled.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAdviceServiceEnabledRequest
 //
@@ -44113,18 +57265,33 @@ func (client *Client) DescribeAdviceServiceEnabledWithOptions(request *DescribeA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAdviceServiceEnabledResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAdviceServiceEnabledResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAdviceServiceEnabledResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询建议服务是否开启
+// Queries whether the suggestion feature is enabled.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAdviceServiceEnabledRequest
 //
@@ -44146,9 +57313,9 @@ func (client *Client) DescribeAdviceServiceEnabled(request *DescribeAdviceServic
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -44191,13 +57358,24 @@ func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAllDataSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAllDataSourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAllDataSourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44206,9 +57384,9 @@ func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataS
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -44226,15 +57404,126 @@ func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceReques
 
 // Summary:
 //
+// Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeAppliedAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAppliedAdvicesResponse
+func (client *Client) DescribeAppliedAdvicesWithOptions(request *DescribeAppliedAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeAppliedAdvicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdviceType)) {
+		query["AdviceType"] = request.AdviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaTableName)) {
+		query["SchemaTableName"] = request.SchemaTableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppliedAdvices"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAppliedAdvicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAppliedAdvicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the applied optimization suggestions for an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeAppliedAdvicesRequest
+//
+// @return DescribeAppliedAdvicesResponse
+func (client *Client) DescribeAppliedAdvices(request *DescribeAppliedAdvicesRequest) (_result *DescribeAppliedAdvicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppliedAdvicesResponse{}
+	_body, _err := client.DescribeAppliedAdvicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the logs of a real-time data ingestion job for an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeApsActionLogsRequest
 //
@@ -44317,13 +57606,24 @@ func (client *Client) DescribeApsActionLogsWithOptions(request *DescribeApsActio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsActionLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsActionLogsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsActionLogsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44332,11 +57632,11 @@ func (client *Client) DescribeApsActionLogsWithOptions(request *DescribeApsActio
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeApsActionLogsRequest
 //
@@ -44354,7 +57654,7 @@ func (client *Client) DescribeApsActionLogs(request *DescribeApsActionLogsReques
 
 // Summary:
 //
-// 查询APS数据源详情
+// Queries the information about an AnalyticDB Pipeline Service (APS) data source.
 //
 // @param request - DescribeApsDatasourceRequest
 //
@@ -44393,18 +57693,29 @@ func (client *Client) DescribeApsDatasourceWithOptions(request *DescribeApsDatas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsDatasourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsDatasourceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsDatasourceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询APS数据源详情
+// Queries the information about an AnalyticDB Pipeline Service (APS) data source.
 //
 // @param request - DescribeApsDatasourceRequest
 //
@@ -44422,7 +57733,7 @@ func (client *Client) DescribeApsDatasource(request *DescribeApsDatasourceReques
 
 // Summary:
 //
-// 查询APS数据源列表
+// Queries a list of AnalyticDB Pipeline Service (APS) data sources.
 //
 // @param request - DescribeApsDatasourcesRequest
 //
@@ -44481,18 +57792,29 @@ func (client *Client) DescribeApsDatasourcesWithOptions(request *DescribeApsData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsDatasourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsDatasourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsDatasourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询APS数据源列表
+// Queries a list of AnalyticDB Pipeline Service (APS) data sources.
 //
 // @param request - DescribeApsDatasourcesRequest
 //
@@ -44510,7 +57832,7 @@ func (client *Client) DescribeApsDatasources(request *DescribeApsDatasourcesRequ
 
 // Summary:
 //
-// 查询APS Hive工作负载
+// Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
 //
 // @param request - DescribeApsHiveWorkloadRequest
 //
@@ -44549,18 +57871,29 @@ func (client *Client) DescribeApsHiveWorkloadWithOptions(request *DescribeApsHiv
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsHiveWorkloadResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsHiveWorkloadResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsHiveWorkloadResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询APS Hive工作负载
+// Queries the information about an AnalyticDB Pipeline Service (APS) job from a Hive data source.
 //
 // @param request - DescribeApsHiveWorkloadRequest
 //
@@ -44578,7 +57911,7 @@ func (client *Client) DescribeApsHiveWorkload(request *DescribeApsHiveWorkloadRe
 
 // Summary:
 //
-// DescribeApsJobDetail。
+// Queries the information about an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - DescribeApsJobDetailRequest
 //
@@ -44613,18 +57946,29 @@ func (client *Client) DescribeApsJobDetailWithOptions(request *DescribeApsJobDet
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsJobDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsJobDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsJobDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// DescribeApsJobDetail。
+// Queries the information about an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - DescribeApsJobDetailRequest
 //
@@ -44642,7 +57986,7 @@ func (client *Client) DescribeApsJobDetail(request *DescribeApsJobDetailRequest)
 
 // Summary:
 //
-// 查询一站式链路列表
+// Queries a list of AnalyticDB Pipeline Service (APS) jobs.
 //
 // @param request - DescribeApsJobsRequest
 //
@@ -44693,18 +58037,29 @@ func (client *Client) DescribeApsJobsWithOptions(request *DescribeApsJobsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询一站式链路列表
+// Queries a list of AnalyticDB Pipeline Service (APS) jobs.
 //
 // @param request - DescribeApsJobsRequest
 //
@@ -44722,7 +58077,7 @@ func (client *Client) DescribeApsJobs(request *DescribeApsJobsRequest) (_result 
 
 // Summary:
 //
-// 查询APS迁移任务列表。
+// Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
 //
 // @param request - DescribeApsMigrationWorkloadsRequest
 //
@@ -44777,18 +58132,29 @@ func (client *Client) DescribeApsMigrationWorkloadsWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsMigrationWorkloadsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsMigrationWorkloadsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsMigrationWorkloadsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询APS迁移任务列表。
+// Queries the workloads of AnalyticDB Pipeline Service (APS) migration jobs.
 //
 // @param request - DescribeApsMigrationWorkloadsRequest
 //
@@ -44806,7 +58172,7 @@ func (client *Client) DescribeApsMigrationWorkloads(request *DescribeApsMigratio
 
 // Summary:
 //
-// 查询aps任务进展。
+// Queries the progress of an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - DescribeApsProgressRequest
 //
@@ -44845,18 +58211,29 @@ func (client *Client) DescribeApsProgressWithOptions(request *DescribeApsProgres
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsProgressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsProgressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询aps任务进展。
+// Queries the progress of an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - DescribeApsProgressRequest
 //
@@ -44878,9 +58255,9 @@ func (client *Client) DescribeApsProgress(request *DescribeApsProgressRequest) (
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeApsResourceGroupsRequest
 //
@@ -44919,13 +58296,24 @@ func (client *Client) DescribeApsResourceGroupsWithOptions(request *DescribeApsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeApsResourceGroupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeApsResourceGroupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeApsResourceGroupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -44934,9 +58322,9 @@ func (client *Client) DescribeApsResourceGroupsWithOptions(request *DescribeApsR
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeApsResourceGroupsRequest
 //
@@ -44958,9 +58346,9 @@ func (client *Client) DescribeApsResourceGroups(request *DescribeApsResourceGrou
 //
 // Description:
 //
-//   SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+//	  SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//		- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -45063,13 +58451,24 @@ func (client *Client) DescribeAuditLogRecordsWithOptions(request *DescribeAuditL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeAuditLogRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAuditLogRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAuditLogRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45078,9 +58477,9 @@ func (client *Client) DescribeAuditLogRecordsWithOptions(request *DescribeAuditL
 //
 // Description:
 //
-//   SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
+//	  SQL audit logs can be queried only when SQL audit is enabled. Only SQL audit logs within the last 30 days can be queried. If SQL audit was disabled and re-enabled, only SQL audit logs from the time when SQL audit was re-enabled can be queried. The following operations are not recorded in SQL audit logs: **INSERT INTO VALUES**, **REPLACE INTO VALUES**, and **UPSERT INTO VALUES**.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//		- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeAuditLogRecordsRequest
 //
@@ -45089,6 +58488,113 @@ func (client *Client) DescribeAuditLogRecords(request *DescribeAuditLogRecordsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAuditLogRecordsResponse{}
 	_body, _err := client.DescribeAuditLogRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeAvailableAdvicesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAvailableAdvicesResponse
+func (client *Client) DescribeAvailableAdvicesWithOptions(request *DescribeAvailableAdvicesRequest, runtime *util.RuntimeOptions) (_result *DescribeAvailableAdvicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdviceDate)) {
+		query["AdviceDate"] = request.AdviceDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdviceType)) {
+		query["AdviceType"] = request.AdviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaTableName)) {
+		query["SchemaTableName"] = request.SchemaTableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableAdvices"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeAvailableAdvicesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeAvailableAdvicesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the available optimization suggestions for an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeAvailableAdvicesRequest
+//
+// @return DescribeAvailableAdvicesResponse
+func (client *Client) DescribeAvailableAdvices(request *DescribeAvailableAdvicesRequest) (_result *DescribeAvailableAdvicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAvailableAdvicesResponse{}
+	_body, _err := client.DescribeAvailableAdvicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45149,13 +58655,24 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45249,13 +58766,24 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeBackupsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBackupsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBackupsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Description:
@@ -45269,6 +58797,109 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeBackupsResponse{}
 	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the bad SQL statements that affect cluster stability within a time range.
+//
+// @param request - DescribeBadSqlDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBadSqlDetectionResponse
+func (client *Client) DescribeBadSqlDetectionWithOptions(request *DescribeBadSqlDetectionRequest, runtime *util.RuntimeOptions) (_result *DescribeBadSqlDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBadSqlDetection"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeBadSqlDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeBadSqlDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the bad SQL statements that affect cluster stability within a time range.
+//
+// @param request - DescribeBadSqlDetectionRequest
+//
+// @return DescribeBadSqlDetectionResponse
+func (client *Client) DescribeBadSqlDetection(request *DescribeBadSqlDetectionRequest) (_result *DescribeBadSqlDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBadSqlDetectionResponse{}
+	_body, _err := client.DescribeBadSqlDetectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45321,13 +58952,24 @@ func (client *Client) DescribeClusterAccessWhiteListWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterAccessWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterAccessWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterAccessWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45393,13 +59035,24 @@ func (client *Client) DescribeClusterNetInfoWithOptions(request *DescribeCluster
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterNetInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterNetInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterNetInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45461,13 +59114,24 @@ func (client *Client) DescribeClusterResourceDetailWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterResourceDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterResourceDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterResourceDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45494,7 +59158,11 @@ func (client *Client) DescribeClusterResourceDetail(request *DescribeClusterReso
 
 // Summary:
 //
-// 获取实例资源统计
+// Queries the resource usage of an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterResourceUsageRequest
 //
@@ -45521,18 +59189,33 @@ func (client *Client) DescribeClusterResourceUsageWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeClusterResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeClusterResourceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeClusterResourceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取实例资源统计
+// Queries the resource usage of an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeClusterResourceUsageRequest
 //
@@ -45554,9 +59237,9 @@ func (client *Client) DescribeClusterResourceUsage(request *DescribeClusterResou
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeColumnsRequest
 //
@@ -45599,13 +59282,24 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeColumnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeColumnsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeColumnsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45614,9 +59308,9 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeColumnsRequest
 //
@@ -45665,13 +59359,24 @@ func (client *Client) DescribeCompactionServiceSwitchWithOptions(request *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeCompactionServiceSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeCompactionServiceSwitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeCompactionServiceSwitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45694,11 +59399,11 @@ func (client *Client) DescribeCompactionServiceSwitch(request *DescribeCompactio
 
 // Summary:
 //
-// 获取实例计算资源使用统计
+// Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeComputeResourceUsageRequest
 //
@@ -45741,22 +59446,33 @@ func (client *Client) DescribeComputeResourceUsageWithOptions(request *DescribeC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeComputeResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeComputeResourceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeComputeResourceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取实例计算资源使用统计
+// Queries the computing resource usage of a resource group in an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeComputeResourceUsageRequest
 //
@@ -45765,6 +59481,109 @@ func (client *Client) DescribeComputeResourceUsage(request *DescribeComputeResou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeComputeResourceUsageResponse{}
 	_body, _err := client.DescribeComputeResourceUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the diagnostic results of the access layer.
+//
+// @param request - DescribeControllerDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeControllerDetectionResponse
+func (client *Client) DescribeControllerDetectionWithOptions(request *DescribeControllerDetectionRequest, runtime *util.RuntimeOptions) (_result *DescribeControllerDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeControllerDetection"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeControllerDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeControllerDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the diagnostic results of the access layer.
+//
+// @param request - DescribeControllerDetectionRequest
+//
+// @return DescribeControllerDetectionResponse
+func (client *Client) DescribeControllerDetection(request *DescribeControllerDetectionRequest) (_result *DescribeControllerDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeControllerDetectionResponse{}
+	_body, _err := client.DescribeControllerDetectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -45809,13 +59628,24 @@ func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45881,13 +59711,24 @@ func (client *Client) DescribeDBClusterHealthStatusWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterHealthStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterHealthStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterHealthStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -45969,13 +59810,24 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterPerformanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterPerformanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterPerformanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46057,13 +59909,24 @@ func (client *Client) DescribeDBClusterSpaceSummaryWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterSpaceSummaryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterSpaceSummaryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterSpaceSummaryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46090,7 +59953,7 @@ func (client *Client) DescribeDBClusterSpaceSummary(request *DescribeDBClusterSp
 
 // Summary:
 //
-// Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+// Queries the statuses of AnalyticDB for MySQL clusters within a region.
 //
 // Description:
 //
@@ -46125,18 +59988,29 @@ func (client *Client) DescribeDBClusterStatusWithOptions(request *DescribeDBClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClusterStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClusterStatusResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClusterStatusResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the status of AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+// Queries the statuses of AnalyticDB for MySQL clusters within a region.
 //
 // Description:
 //
@@ -46229,13 +60103,24 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBClustersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBClustersResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBClustersResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46313,13 +60198,24 @@ func (client *Client) DescribeDBResourceGroupWithOptions(request *DescribeDBReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDBResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDBResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDBResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46401,13 +60297,24 @@ func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiagnosisDimensionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnosisDimensionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnosisDimensionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46541,13 +60448,24 @@ func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiagnosisRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnosisRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnosisRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46605,13 +60523,24 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDiagnosisSQLInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDiagnosisSQLInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDiagnosisSQLInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46681,13 +60610,24 @@ func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownlo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeDownloadRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeDownloadRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeDownloadRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46753,13 +60693,24 @@ func (client *Client) DescribeElasticPlanAttributeWithOptions(request *DescribeE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticPlanAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticPlanAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticPlanAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46845,13 +60796,24 @@ func (client *Client) DescribeElasticPlanJobsWithOptions(request *DescribeElasti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticPlanJobsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticPlanJobsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticPlanJobsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -46921,13 +60883,24 @@ func (client *Client) DescribeElasticPlanSpecificationsWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticPlanSpecificationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticPlanSpecificationsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticPlanSpecificationsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47013,13 +60986,24 @@ func (client *Client) DescribeElasticPlansWithOptions(request *DescribeElasticPl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeElasticPlansResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeElasticPlansResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeElasticPlansResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47073,13 +61057,24 @@ func (client *Client) DescribeEnabledPrivilegesWithOptions(request *DescribeEnab
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEnabledPrivilegesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEnabledPrivilegesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEnabledPrivilegesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47102,7 +61097,7 @@ func (client *Client) DescribeEnabledPrivileges(request *DescribeEnabledPrivileg
 
 // Summary:
 //
-// 查询EssdCache配置
+// Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeEssdCacheConfigRequest
 //
@@ -47133,18 +61128,29 @@ func (client *Client) DescribeEssdCacheConfigWithOptions(request *DescribeEssdCa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeEssdCacheConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeEssdCacheConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeEssdCacheConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询EssdCache配置
+// Queries the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeEssdCacheConfigRequest
 //
@@ -47237,13 +61243,24 @@ func (client *Client) DescribeExcessivePrimaryKeysWithOptions(request *DescribeE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeExcessivePrimaryKeysResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExcessivePrimaryKeysResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExcessivePrimaryKeysResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47266,7 +61283,114 @@ func (client *Client) DescribeExcessivePrimaryKeys(request *DescribeExcessivePri
 
 // Summary:
 //
-// 查询存储节点磁盘水位
+// Queries the diagnostic results of the compute layer.
+//
+// @param request - DescribeExecutorDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeExecutorDetectionResponse
+func (client *Client) DescribeExecutorDetectionWithOptions(request *DescribeExecutorDetectionRequest, runtime *util.RuntimeOptions) (_result *DescribeExecutorDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeExecutorDetection"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeExecutorDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeExecutorDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the diagnostic results of the compute layer.
+//
+// @param request - DescribeExecutorDetectionRequest
+//
+// @return DescribeExecutorDetectionResponse
+func (client *Client) DescribeExecutorDetection(request *DescribeExecutorDetectionRequest) (_result *DescribeExecutorDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeExecutorDetectionResponse{}
+	_body, _err := client.DescribeExecutorDetectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the disk usage of all storage nodes.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeInclinedNodesRequest
 //
@@ -47321,18 +61445,33 @@ func (client *Client) DescribeInclinedNodesWithOptions(request *DescribeInclined
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeInclinedNodesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInclinedNodesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInclinedNodesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询存储节点磁盘水位
+// Queries the disk usage of all storage nodes.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeInclinedNodesRequest
 //
@@ -47341,6 +61480,101 @@ func (client *Client) DescribeInclinedNodes(request *DescribeInclinedNodesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInclinedNodesResponse{}
 	_body, _err := client.DescribeInclinedNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看表倾斜诊断结果
+//
+// @param request - DescribeInclinedTablesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeInclinedTablesResponse
+func (client *Client) DescribeInclinedTablesWithOptions(request *DescribeInclinedTablesRequest, runtime *util.RuntimeOptions) (_result *DescribeInclinedTablesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableType)) {
+		query["TableType"] = request.TableType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInclinedTables"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeInclinedTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeInclinedTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查看表倾斜诊断结果
+//
+// @param request - DescribeInclinedTablesRequest
+//
+// @return DescribeInclinedTablesResponse
+func (client *Client) DescribeInclinedTables(request *DescribeInclinedTablesRequest) (_result *DescribeInclinedTablesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInclinedTablesResponse{}
+	_body, _err := client.DescribeInclinedTablesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47393,13 +61627,24 @@ func (client *Client) DescribeJobResourceUsageWithOptions(request *DescribeJobRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeJobResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeJobResourceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeJobResourceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47426,7 +61671,7 @@ func (client *Client) DescribeJobResourceUsage(request *DescribeJobResourceUsage
 
 // Summary:
 //
-// 枚举实例版本信息
+// Queries the information about the minor version of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeKernelVersionRequest
 //
@@ -47477,18 +61722,29 @@ func (client *Client) DescribeKernelVersionWithOptions(request *DescribeKernelVe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeKernelVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeKernelVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeKernelVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 枚举实例版本信息
+// Queries the information about the minor version of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeKernelVersionRequest
 //
@@ -47506,7 +61762,7 @@ func (client *Client) DescribeKernelVersion(request *DescribeKernelVersionReques
 
 // Summary:
 //
-// 获取实例LakeCache容量
+// Queries the lake cache size of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeLakeCacheSizeRequest
 //
@@ -47537,18 +61793,29 @@ func (client *Client) DescribeLakeCacheSizeWithOptions(request *DescribeLakeCach
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeLakeCacheSizeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeLakeCacheSizeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeLakeCacheSizeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取实例LakeCache容量
+// Queries the lake cache size of an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeLakeCacheSizeRequest
 //
@@ -47564,6 +61831,10 @@ func (client *Client) DescribeLakeCacheSize(request *DescribeLakeCacheSizeReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the service account permissions of an AnalyticDB for MySQL cluster.
+//
 // @param request - DescribeOperatorPermissionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -47609,15 +61880,30 @@ func (client *Client) DescribeOperatorPermissionWithOptions(request *DescribeOpe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeOperatorPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOperatorPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOperatorPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the service account permissions of an AnalyticDB for MySQL cluster.
+//
 // @param request - DescribeOperatorPermissionRequest
 //
 // @return DescribeOperatorPermissionResponse
@@ -47634,15 +61920,130 @@ func (client *Client) DescribeOperatorPermission(request *DescribeOperatorPermis
 
 // Summary:
 //
+// Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeOversizeNonPartitionTableInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOversizeNonPartitionTableInfosResponse
+func (client *Client) DescribeOversizeNonPartitionTableInfosWithOptions(request *DescribeOversizeNonPartitionTableInfosRequest, runtime *util.RuntimeOptions) (_result *DescribeOversizeNonPartitionTableInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOversizeNonPartitionTableInfos"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeOversizeNonPartitionTableInfosResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeOversizeNonPartitionTableInfosResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the information about oversized non-partitioned tables in an AnalyticDB for MySQL cluster.
+//
+// @param request - DescribeOversizeNonPartitionTableInfosRequest
+//
+// @return DescribeOversizeNonPartitionTableInfosResponse
+func (client *Client) DescribeOversizeNonPartitionTableInfos(request *DescribeOversizeNonPartitionTableInfosRequest) (_result *DescribeOversizeNonPartitionTableInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOversizeNonPartitionTableInfosResponse{}
+	_body, _err := client.DescribeOversizeNonPartitionTableInfosWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the information about performance metrics of an SQL pattern such as the query duration and average memory usage for an AnalyticDB for MySQL cluster within a time range.
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribePatternPerformanceRequest
 //
@@ -47689,13 +62090,24 @@ func (client *Client) DescribePatternPerformanceWithOptions(request *DescribePat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePatternPerformanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePatternPerformanceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePatternPerformanceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47704,11 +62116,11 @@ func (client *Client) DescribePatternPerformanceWithOptions(request *DescribePat
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribePatternPerformanceRequest
 //
@@ -47781,13 +62193,24 @@ func (client *Client) DescribePerformanceViewAttributeWithOptions(request *Descr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePerformanceViewAttributeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePerformanceViewAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePerformanceViewAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47861,13 +62284,24 @@ func (client *Client) DescribePerformanceViewsWithOptions(request *DescribePerfo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribePerformanceViewsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribePerformanceViewsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribePerformanceViewsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47945,13 +62379,24 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeRegionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -47978,15 +62423,94 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
+// 查询资源组规格相关信息
+//
+// @param request - DescribeResourceGroupSpecRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceGroupSpecResponse
+func (client *Client) DescribeResourceGroupSpecWithOptions(request *DescribeResourceGroupSpecRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceGroupSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupType)) {
+		query["ResourceGroupType"] = request.ResourceGroupType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceGroupSpec"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeResourceGroupSpecResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeResourceGroupSpecResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// 查询资源组规格相关信息
+//
+// @param request - DescribeResourceGroupSpecRequest
+//
+// @return DescribeResourceGroupSpecResponse
+func (client *Client) DescribeResourceGroupSpec(request *DescribeResourceGroupSpecRequest) (_result *DescribeResourceGroupSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeResourceGroupSpecResponse{}
+	_body, _err := client.DescribeResourceGroupSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of SQL patterns for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster within a time range.
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSQLPatternsRequest
 //
@@ -48049,13 +62573,24 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSQLPatternsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSQLPatternsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSQLPatternsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48064,11 +62599,11 @@ func (client *Client) DescribeSQLPatternsWithOptions(request *DescribeSQLPattern
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSQLPatternsRequest
 //
@@ -48090,9 +62625,9 @@ func (client *Client) DescribeSQLPatterns(request *DescribeSQLPatternsRequest) (
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSchemasRequest
 //
@@ -48127,13 +62662,24 @@ func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSchemasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSchemasResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSchemasResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48142,9 +62688,9 @@ func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSchemasRequest
 //
@@ -48160,6 +62706,10 @@ func (client *Client) DescribeSchemas(request *DescribeSchemasRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the diagnostic information about a Spark application.
+//
 // @param request - DescribeSparkAppDiagnosisInfoRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48201,15 +62751,30 @@ func (client *Client) DescribeSparkAppDiagnosisInfoWithOptions(request *Describe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSparkAppDiagnosisInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkAppDiagnosisInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkAppDiagnosisInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the diagnostic information about a Spark application.
+//
 // @param request - DescribeSparkAppDiagnosisInfoRequest
 //
 // @return DescribeSparkAppDiagnosisInfoResponse
@@ -48224,6 +62789,10 @@ func (client *Client) DescribeSparkAppDiagnosisInfo(request *DescribeSparkAppDia
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the type of a Spark application.
+//
 // @param request - DescribeSparkAppTypeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -48261,15 +62830,30 @@ func (client *Client) DescribeSparkAppTypeWithOptions(request *DescribeSparkAppT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSparkAppTypeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkAppTypeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkAppTypeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the type of a Spark application.
+//
 // @param request - DescribeSparkAppTypeRequest
 //
 // @return DescribeSparkAppTypeResponse
@@ -48290,9 +62874,9 @@ func (client *Client) DescribeSparkAppType(request *DescribeSparkAppTypeRequest)
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeLogRequest
 //
@@ -48331,13 +62915,24 @@ func (client *Client) DescribeSparkCodeLogWithOptions(request *DescribeSparkCode
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSparkCodeLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkCodeLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkCodeLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48346,9 +62941,9 @@ func (client *Client) DescribeSparkCodeLogWithOptions(request *DescribeSparkCode
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeLogRequest
 //
@@ -48370,9 +62965,9 @@ func (client *Client) DescribeSparkCodeLog(request *DescribeSparkCodeLogRequest)
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeOutputRequest
 //
@@ -48411,13 +63006,24 @@ func (client *Client) DescribeSparkCodeOutputWithOptions(request *DescribeSparkC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSparkCodeOutputResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkCodeOutputResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkCodeOutputResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48426,9 +63032,9 @@ func (client *Client) DescribeSparkCodeOutputWithOptions(request *DescribeSparkC
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeOutputRequest
 //
@@ -48450,9 +63056,9 @@ func (client *Client) DescribeSparkCodeOutput(request *DescribeSparkCodeOutputRe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeWebUiRequest
 //
@@ -48491,13 +63097,24 @@ func (client *Client) DescribeSparkCodeWebUiWithOptions(request *DescribeSparkCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSparkCodeWebUiResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkCodeWebUiResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkCodeWebUiResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48506,9 +63123,9 @@ func (client *Client) DescribeSparkCodeWebUiWithOptions(request *DescribeSparkCo
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeSparkCodeWebUiRequest
 //
@@ -48517,6 +63134,192 @@ func (client *Client) DescribeSparkCodeWebUi(request *DescribeSparkCodeWebUiRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSparkCodeWebUiResponse{}
 	_body, _err := client.DescribeSparkCodeWebUiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the diagnostic information about a Spark SQL query.
+//
+// @param request - DescribeSparkSQLDiagnosisAttributeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSparkSQLDiagnosisAttributeResponse
+func (client *Client) DescribeSparkSQLDiagnosisAttributeWithOptions(request *DescribeSparkSQLDiagnosisAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeSparkSQLDiagnosisAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InnerQueryId)) {
+		query["InnerQueryId"] = request.InnerQueryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSparkSQLDiagnosisAttribute"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkSQLDiagnosisAttributeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkSQLDiagnosisAttributeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the diagnostic information about a Spark SQL query.
+//
+// @param request - DescribeSparkSQLDiagnosisAttributeRequest
+//
+// @return DescribeSparkSQLDiagnosisAttributeResponse
+func (client *Client) DescribeSparkSQLDiagnosisAttribute(request *DescribeSparkSQLDiagnosisAttributeRequest) (_result *DescribeSparkSQLDiagnosisAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSparkSQLDiagnosisAttributeResponse{}
+	_body, _err := client.DescribeSparkSQLDiagnosisAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the diagnostic information about Spark SQL queries.
+//
+// @param request - DescribeSparkSQLDiagnosisListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSparkSQLDiagnosisListResponse
+func (client *Client) DescribeSparkSQLDiagnosisListWithOptions(request *DescribeSparkSQLDiagnosisListRequest, runtime *util.RuntimeOptions) (_result *DescribeSparkSQLDiagnosisListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxStartTime)) {
+		query["MaxStartTime"] = request.MaxStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinStartTime)) {
+		query["MinStartTime"] = request.MinStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatementId)) {
+		query["StatementId"] = request.StatementId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSparkSQLDiagnosisList"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSparkSQLDiagnosisListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSparkSQLDiagnosisListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the diagnostic information about Spark SQL queries.
+//
+// @param request - DescribeSparkSQLDiagnosisListRequest
+//
+// @return DescribeSparkSQLDiagnosisListResponse
+func (client *Client) DescribeSparkSQLDiagnosisList(request *DescribeSparkSQLDiagnosisListRequest) (_result *DescribeSparkSQLDiagnosisListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSparkSQLDiagnosisListResponse{}
+	_body, _err := client.DescribeSparkSQLDiagnosisListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48589,13 +63392,24 @@ func (client *Client) DescribeSqlPatternWithOptions(request *DescribeSqlPatternR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeSqlPatternResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeSqlPatternResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeSqlPatternResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48622,11 +63436,11 @@ func (client *Client) DescribeSqlPattern(request *DescribeSqlPatternRequest) (_r
 
 // Summary:
 //
-// Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the storage resource usage of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeStorageResourceUsageRequest
 //
@@ -48665,22 +63479,33 @@ func (client *Client) DescribeStorageResourceUsageWithOptions(request *DescribeS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeStorageResourceUsageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeStorageResourceUsageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeStorageResourceUsageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries the storage resource usage of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries the storage resource usage of an AnalyticDB for MySQL cluster.
 //
 // Description:
 //
-// For information about the endpoints of AnalyticDB for MySQL, see Endpoints.
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - DescribeStorageResourceUsageRequest
 //
@@ -48757,13 +63582,24 @@ func (client *Client) DescribeTableAccessCountWithOptions(request *DescribeTable
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTableAccessCountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTableAccessCountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTableAccessCountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48790,13 +63626,187 @@ func (client *Client) DescribeTableAccessCount(request *DescribeTableAccessCount
 
 // Summary:
 //
+// Queries the information about data distribution among shards of a table.
+//
+// @param request - DescribeTableDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableDetailResponse
+func (client *Client) DescribeTableDetailWithOptions(request *DescribeTableDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeTableDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTableDetail"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTableDetailResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTableDetailResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the information about data distribution among shards of a table.
+//
+// @param request - DescribeTableDetailRequest
+//
+// @return DescribeTableDetailResponse
+func (client *Client) DescribeTableDetail(request *DescribeTableDetailRequest) (_result *DescribeTableDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTableDetailResponse{}
+	_body, _err := client.DescribeTableDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the information about partition diagnostics.
+//
+// @param request - DescribeTablePartitionDiagnoseRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTablePartitionDiagnoseResponse
+func (client *Client) DescribeTablePartitionDiagnoseWithOptions(request *DescribeTablePartitionDiagnoseRequest, runtime *util.RuntimeOptions) (_result *DescribeTablePartitionDiagnoseResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTablePartitionDiagnose"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTablePartitionDiagnoseResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTablePartitionDiagnoseResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the information about partition diagnostics.
+//
+// @param request - DescribeTablePartitionDiagnoseRequest
+//
+// @return DescribeTablePartitionDiagnoseResponse
+func (client *Client) DescribeTablePartitionDiagnose(request *DescribeTablePartitionDiagnoseRequest) (_result *DescribeTablePartitionDiagnoseResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTablePartitionDiagnoseResponse{}
+	_body, _err := client.DescribeTablePartitionDiagnoseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of tables in a database.
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeTablesRequest
 //
@@ -48835,13 +63845,24 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeTablesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeTablesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeTablesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48850,9 +63871,9 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - DescribeTablesRequest
 //
@@ -48870,7 +63891,7 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 
 // Summary:
 //
-// 查询配额
+// Queries available quotas.
 //
 // Description:
 //
@@ -48901,18 +63922,29 @@ func (client *Client) DescribeUserQuotaWithOptions(request *DescribeUserQuotaReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeUserQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeUserQuotaResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeUserQuotaResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 查询配额
+// Queries available quotas.
 //
 // Description:
 //
@@ -48925,6 +63957,109 @@ func (client *Client) DescribeUserQuota(request *DescribeUserQuotaRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserQuotaResponse{}
 	_body, _err := client.DescribeUserQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the diagnostic results of the storage layer.
+//
+// @param request - DescribeWorkerDetectionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeWorkerDetectionResponse
+func (client *Client) DescribeWorkerDetectionWithOptions(request *DescribeWorkerDetectionRequest, runtime *util.RuntimeOptions) (_result *DescribeWorkerDetectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWorkerDetection"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DescribeWorkerDetectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DescribeWorkerDetectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the diagnostic results of the storage layer.
+//
+// @param request - DescribeWorkerDetectionRequest
+//
+// @return DescribeWorkerDetectionResponse
+func (client *Client) DescribeWorkerDetection(request *DescribeWorkerDetectionRequest) (_result *DescribeWorkerDetectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWorkerDetectionResponse{}
+	_body, _err := client.DescribeWorkerDetectionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -48969,13 +64104,24 @@ func (client *Client) DetachUserENIWithOptions(request *DetachUserENIRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DetachUserENIResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DetachUserENIResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DetachUserENIResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -48993,6 +64139,81 @@ func (client *Client) DetachUserENI(request *DetachUserENIRequest) (_result *Det
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachUserENIResponse{}
 	_body, _err := client.DetachUserENIWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Disables the suggestion feature.
+//
+// @param request - DisableAdviceServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DisableAdviceServiceResponse
+func (client *Client) DisableAdviceServiceWithOptions(request *DisableAdviceServiceRequest, runtime *util.RuntimeOptions) (_result *DisableAdviceServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableAdviceService"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableAdviceServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableAdviceServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Disables the suggestion feature.
+//
+// @param request - DisableAdviceServiceRequest
+//
+// @return DisableAdviceServiceResponse
+func (client *Client) DisableAdviceService(request *DisableAdviceServiceRequest) (_result *DisableAdviceServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableAdviceServiceResponse{}
+	_body, _err := client.DisableAdviceServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49041,13 +64262,24 @@ func (client *Client) DisableElasticPlanWithOptions(request *DisableElasticPlanR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DisableElasticPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DisableElasticPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DisableElasticPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49165,13 +64397,24 @@ func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DownloadDiagnosisRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DownloadDiagnosisRecordsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DownloadDiagnosisRecordsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49189,6 +64432,164 @@ func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecords
 	runtime := &util.RuntimeOptions{}
 	_result = &DownloadDiagnosisRecordsResponse{}
 	_body, _err := client.DownloadDiagnosisRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+//
+// @param request - DownloadInstanceCACertificateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DownloadInstanceCACertificateResponse
+func (client *Client) DownloadInstanceCACertificateWithOptions(request *DownloadInstanceCACertificateRequest, runtime *util.RuntimeOptions) (_result *DownloadInstanceCACertificateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadInstanceCACertificate"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &DownloadInstanceCACertificateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &DownloadInstanceCACertificateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the Object Storage Service (OSS) URL of the downloaded certificate authority (CA) certificate that is used to connect to the wide table engine.
+//
+// @param request - DownloadInstanceCACertificateRequest
+//
+// @return DownloadInstanceCACertificateResponse
+func (client *Client) DownloadInstanceCACertificate(request *DownloadInstanceCACertificateRequest) (_result *DownloadInstanceCACertificateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadInstanceCACertificateResponse{}
+	_body, _err := client.DownloadInstanceCACertificateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the suggestion feature.
+//
+// @param request - EnableAdviceServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EnableAdviceServiceResponse
+func (client *Client) EnableAdviceServiceWithOptions(request *EnableAdviceServiceRequest, runtime *util.RuntimeOptions) (_result *EnableAdviceServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableAdviceService"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableAdviceServiceResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableAdviceServiceResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Enables the suggestion feature.
+//
+// @param request - EnableAdviceServiceRequest
+//
+// @return EnableAdviceServiceResponse
+func (client *Client) EnableAdviceService(request *EnableAdviceServiceRequest) (_result *EnableAdviceServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableAdviceServiceResponse{}
+	_body, _err := client.EnableAdviceServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49237,13 +64638,24 @@ func (client *Client) EnableElasticPlanWithOptions(request *EnableElasticPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &EnableElasticPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &EnableElasticPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &EnableElasticPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49270,7 +64682,7 @@ func (client *Client) EnableElasticPlan(request *EnableElasticPlanRequest) (_res
 
 // Summary:
 //
-// 执行一段代码
+// Executes part of the code in a Spark job.
 //
 // @param request - ExecuteSparkReplStatementRequest
 //
@@ -49313,18 +64725,29 @@ func (client *Client) ExecuteSparkReplStatementWithOptions(request *ExecuteSpark
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExecuteSparkReplStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteSparkReplStatementResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteSparkReplStatementResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 执行一段代码
+// Executes part of the code in a Spark job.
 //
 // @param request - ExecuteSparkReplStatementRequest
 //
@@ -49342,15 +64765,114 @@ func (client *Client) ExecuteSparkReplStatement(request *ExecuteSparkReplStateme
 
 // Summary:
 //
+// Executes Spark SQL statements in batches.
+//
+// @param request - ExecuteSparkWarehouseBatchSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteSparkWarehouseBatchSQLResponse
+func (client *Client) ExecuteSparkWarehouseBatchSQLWithOptions(request *ExecuteSparkWarehouseBatchSQLRequest, runtime *util.RuntimeOptions) (_result *ExecuteSparkWarehouseBatchSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Agency)) {
+		body["Agency"] = request.Agency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteResultLimit)) {
+		body["ExecuteResultLimit"] = request.ExecuteResultLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteTimeLimitInSeconds)) {
+		body["ExecuteTimeLimitInSeconds"] = request.ExecuteTimeLimitInSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		body["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		body["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuntimeConfig)) {
+		body["RuntimeConfig"] = request.RuntimeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		body["Schema"] = request.Schema
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteSparkWarehouseBatchSQL"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExecuteSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExecuteSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Executes Spark SQL statements in batches.
+//
+// @param request - ExecuteSparkWarehouseBatchSQLRequest
+//
+// @return ExecuteSparkWarehouseBatchSQLResponse
+func (client *Client) ExecuteSparkWarehouseBatchSQL(request *ExecuteSparkWarehouseBatchSQLRequest) (_result *ExecuteSparkWarehouseBatchSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecuteSparkWarehouseBatchSQLResponse{}
+	_body, _err := client.ExecuteSparkWarehouseBatchSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries whether a running SQL engine exists.
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ExistRunningSQLEngineRequest
 //
@@ -49385,13 +64907,24 @@ func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ExistRunningSQLEngineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ExistRunningSQLEngineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ExistRunningSQLEngineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49400,11 +64933,11 @@ func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLE
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ExistRunningSQLEngineRequest
 //
@@ -49422,7 +64955,7 @@ func (client *Client) ExistRunningSQLEngine(request *ExistRunningSQLEngineReques
 
 // Summary:
 //
-// 获取当前ADB实例管理的所有Aps任务生成的湖存储数据库列表，主要用于在创建生命周期管理策略时，获取库列表信息。
+// Queries a list of databases.
 //
 // @param request - GetApsManagedDatabasesRequest
 //
@@ -49457,18 +64990,29 @@ func (client *Client) GetApsManagedDatabasesWithOptions(request *GetApsManagedDa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetApsManagedDatabasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetApsManagedDatabasesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetApsManagedDatabasesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取当前ADB实例管理的所有Aps任务生成的湖存储数据库列表，主要用于在创建生命周期管理策略时，获取库列表信息。
+// Queries a list of databases.
 //
 // @param request - GetApsManagedDatabasesRequest
 //
@@ -49545,13 +65089,24 @@ func (client *Client) GetCreateTableSQLWithOptions(request *GetCreateTableSQLReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetCreateTableSQLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetCreateTableSQLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetCreateTableSQLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49578,9 +65133,9 @@ func (client *Client) GetCreateTableSQL(request *GetCreateTableSQLRequest) (_res
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetDatabaseObjectsRequest
 //
@@ -49635,13 +65190,24 @@ func (client *Client) GetDatabaseObjectsWithOptions(request *GetDatabaseObjectsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetDatabaseObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetDatabaseObjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetDatabaseObjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49650,9 +65216,9 @@ func (client *Client) GetDatabaseObjectsWithOptions(request *GetDatabaseObjectsR
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetDatabaseObjectsRequest
 //
@@ -49670,7 +65236,7 @@ func (client *Client) GetDatabaseObjects(request *GetDatabaseObjectsRequest) (_r
 
 // Summary:
 //
-// 获取湖存储
+// Queries a lake storage.
 //
 // @param request - GetLakeStorageRequest
 //
@@ -49711,18 +65277,29 @@ func (client *Client) GetLakeStorageWithOptions(request *GetLakeStorageRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetLakeStorageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetLakeStorageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetLakeStorageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取湖存储
+// Queries a lake storage.
 //
 // @param request - GetLakeStorageRequest
 //
@@ -49744,9 +65321,9 @@ func (client *Client) GetLakeStorage(request *GetLakeStorageRequest) (_result *G
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -49793,13 +65370,24 @@ func (client *Client) GetSparkAppAttemptLogWithOptions(request *GetSparkAppAttem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppAttemptLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppAttemptLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppAttemptLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49808,9 +65396,9 @@ func (client *Client) GetSparkAppAttemptLogWithOptions(request *GetSparkAppAttem
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -49834,9 +65422,9 @@ func (client *Client) GetSparkAppAttemptLog(request *GetSparkAppAttemptLogReques
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -49875,13 +65463,24 @@ func (client *Client) GetSparkAppInfoWithOptions(request *GetSparkAppInfoRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppInfoResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppInfoResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49890,9 +65489,9 @@ func (client *Client) GetSparkAppInfoWithOptions(request *GetSparkAppInfoRequest
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -49916,9 +65515,9 @@ func (client *Client) GetSparkAppInfo(request *GetSparkAppInfoRequest) (_result 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -49969,13 +65568,24 @@ func (client *Client) GetSparkAppLogWithOptions(request *GetSparkAppLogRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppLogResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppLogResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -49984,9 +65594,9 @@ func (client *Client) GetSparkAppLogWithOptions(request *GetSparkAppLogRequest, 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50010,9 +65620,9 @@ func (client *Client) GetSparkAppLog(request *GetSparkAppLogRequest) (_result *G
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50051,13 +65661,24 @@ func (client *Client) GetSparkAppMetricsWithOptions(request *GetSparkAppMetricsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50066,9 +65687,9 @@ func (client *Client) GetSparkAppMetricsWithOptions(request *GetSparkAppMetricsR
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50092,9 +65713,9 @@ func (client *Client) GetSparkAppMetrics(request *GetSparkAppMetricsRequest) (_r
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50133,13 +65754,24 @@ func (client *Client) GetSparkAppStateWithOptions(request *GetSparkAppStateReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppStateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppStateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50148,9 +65780,9 @@ func (client *Client) GetSparkAppStateWithOptions(request *GetSparkAppStateReque
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50174,11 +65806,11 @@ func (client *Client) GetSparkAppState(request *GetSparkAppStateRequest) (_resul
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetSparkAppWebUiAddressRequest
 //
@@ -50215,13 +65847,24 @@ func (client *Client) GetSparkAppWebUiAddressWithOptions(request *GetSparkAppWeb
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkAppWebUiAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkAppWebUiAddressResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkAppWebUiAddressResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50230,11 +65873,11 @@ func (client *Client) GetSparkAppWebUiAddressWithOptions(request *GetSparkAppWeb
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  General endpoint: `adb.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetSparkAppWebUiAddressRequest
 //
@@ -50256,9 +65899,9 @@ func (client *Client) GetSparkAppWebUiAddress(request *GetSparkAppWebUiAddressRe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50291,13 +65934,24 @@ func (client *Client) GetSparkConfigLogPathWithOptions(request *GetSparkConfigLo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkConfigLogPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkConfigLogPathResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkConfigLogPathResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50306,9 +65960,9 @@ func (client *Client) GetSparkConfigLogPathWithOptions(request *GetSparkConfigLo
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50332,11 +65986,11 @@ func (client *Client) GetSparkConfigLogPath(request *GetSparkConfigLogPathReques
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkLogAnalyzeTaskRequest
 //
@@ -50367,13 +66021,24 @@ func (client *Client) GetSparkLogAnalyzeTaskWithOptions(request *GetSparkLogAnal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkLogAnalyzeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50382,11 +66047,11 @@ func (client *Client) GetSparkLogAnalyzeTaskWithOptions(request *GetSparkLogAnal
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - GetSparkLogAnalyzeTaskRequest
 //
@@ -50404,7 +66069,7 @@ func (client *Client) GetSparkLogAnalyzeTask(request *GetSparkLogAnalyzeTaskRequ
 
 // Summary:
 //
-// 获取一个可交互Session
+// Queries the status of a Spark session.
 //
 // @param request - GetSparkReplSessionRequest
 //
@@ -50439,18 +66104,29 @@ func (client *Client) GetSparkReplSessionWithOptions(request *GetSparkReplSessio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkReplSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkReplSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkReplSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取一个可交互Session
+// Queries the status of a Spark session.
 //
 // @param request - GetSparkReplSessionRequest
 //
@@ -50468,7 +66144,7 @@ func (client *Client) GetSparkReplSession(request *GetSparkReplSessionRequest) (
 
 // Summary:
 //
-// 获取一段代码的执行结果
+// Queries the execution result of a code block.
 //
 // @param request - GetSparkReplStatementRequest
 //
@@ -50507,18 +66183,29 @@ func (client *Client) GetSparkReplStatementWithOptions(request *GetSparkReplStat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkReplStatementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkReplStatementResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkReplStatementResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取一段代码的执行结果
+// Queries the execution result of a code block.
 //
 // @param request - GetSparkReplStatementRequest
 //
@@ -50540,9 +66227,9 @@ func (client *Client) GetSparkReplStatement(request *GetSparkReplStatementReques
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50579,13 +66266,24 @@ func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkSQLEngineStateResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkSQLEngineStateResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkSQLEngineStateResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50594,9 +66292,9 @@ func (client *Client) GetSparkSQLEngineStateWithOptions(request *GetSparkSQLEngi
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50620,9 +66318,9 @@ func (client *Client) GetSparkSQLEngineState(request *GetSparkSQLEngineStateRequ
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50659,13 +66357,24 @@ func (client *Client) GetSparkTemplateFileContentWithOptions(request *GetSparkTe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkTemplateFileContentResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkTemplateFileContentResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkTemplateFileContentResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50674,9 +66383,9 @@ func (client *Client) GetSparkTemplateFileContentWithOptions(request *GetSparkTe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50700,9 +66409,9 @@ func (client *Client) GetSparkTemplateFileContent(request *GetSparkTemplateFileC
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50735,13 +66444,24 @@ func (client *Client) GetSparkTemplateFolderTreeWithOptions(request *GetSparkTem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkTemplateFolderTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkTemplateFolderTreeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkTemplateFolderTreeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50750,9 +66470,9 @@ func (client *Client) GetSparkTemplateFolderTreeWithOptions(request *GetSparkTem
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50776,9 +66496,9 @@ func (client *Client) GetSparkTemplateFolderTree(request *GetSparkTemplateFolder
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50811,13 +66531,24 @@ func (client *Client) GetSparkTemplateFullTreeWithOptions(request *GetSparkTempl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetSparkTemplateFullTreeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkTemplateFullTreeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkTemplateFullTreeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50826,9 +66557,9 @@ func (client *Client) GetSparkTemplateFullTreeWithOptions(request *GetSparkTempl
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -50839,6 +66570,85 @@ func (client *Client) GetSparkTemplateFullTree(request *GetSparkTemplateFullTree
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSparkTemplateFullTreeResponse{}
 	_body, _err := client.GetSparkTemplateFullTreeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the execution result of a Spark SQL statement.
+//
+// @param request - GetSparkWarehouseBatchSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSparkWarehouseBatchSQLResponse
+func (client *Client) GetSparkWarehouseBatchSQLWithOptions(request *GetSparkWarehouseBatchSQLRequest, runtime *util.RuntimeOptions) (_result *GetSparkWarehouseBatchSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Agency)) {
+		body["Agency"] = request.Agency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryId)) {
+		body["QueryId"] = request.QueryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSparkWarehouseBatchSQL"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries the execution result of a Spark SQL statement.
+//
+// @param request - GetSparkWarehouseBatchSQLRequest
+//
+// @return GetSparkWarehouseBatchSQLResponse
+func (client *Client) GetSparkWarehouseBatchSQL(request *GetSparkWarehouseBatchSQLRequest) (_result *GetSparkWarehouseBatchSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSparkWarehouseBatchSQLResponse{}
+	_body, _err := client.GetSparkWarehouseBatchSQLWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50891,13 +66701,24 @@ func (client *Client) GetTableWithOptions(request *GetTableRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50924,9 +66745,9 @@ func (client *Client) GetTable(request *GetTableRequest) (_result *GetTableRespo
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -50981,13 +66802,24 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableColumnsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableColumnsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableColumnsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -50996,9 +66828,9 @@ func (client *Client) GetTableColumnsWithOptions(request *GetTableColumnsRequest
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableColumnsRequest
 //
@@ -51020,9 +66852,9 @@ func (client *Client) GetTableColumns(request *GetTableColumnsRequest) (_result 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableDDLRequest
 //
@@ -51065,13 +66897,24 @@ func (client *Client) GetTableDDLWithOptions(request *GetTableDDLRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableDDLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableDDLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableDDLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51080,9 +66923,9 @@ func (client *Client) GetTableDDLWithOptions(request *GetTableDDLRequest, runtim
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetTableDDLRequest
 //
@@ -51167,13 +67010,24 @@ func (client *Client) GetTableObjectsWithOptions(request *GetTableObjectsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetTableObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetTableObjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetTableObjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51200,9 +67054,9 @@ func (client *Client) GetTableObjects(request *GetTableObjectsRequest) (_result 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetViewDDLRequest
 //
@@ -51245,13 +67099,24 @@ func (client *Client) GetViewDDLWithOptions(request *GetViewDDLRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetViewDDLResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetViewDDLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetViewDDLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51260,9 +67125,9 @@ func (client *Client) GetViewDDLWithOptions(request *GetViewDDLRequest, runtime 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetViewDDLRequest
 //
@@ -51284,9 +67149,9 @@ func (client *Client) GetViewDDL(request *GetViewDDLRequest) (_result *GetViewDD
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetViewObjectsRequest
 //
@@ -51335,6 +67200,10 @@ func (client *Client) GetViewObjectsWithOptions(request *GetViewObjectsRequest, 
 		query["SchemaName"] = request.SchemaName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShowMvBaseTable)) {
+		query["ShowMvBaseTable"] = request.ShowMvBaseTable
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -51349,13 +67218,24 @@ func (client *Client) GetViewObjectsWithOptions(request *GetViewObjectsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GetViewObjectsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GetViewObjectsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GetViewObjectsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51364,9 +67244,9 @@ func (client *Client) GetViewObjectsWithOptions(request *GetViewObjectsRequest, 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // @param request - GetViewObjectsRequest
 //
@@ -51382,6 +67262,10 @@ func (client *Client) GetViewObjects(request *GetViewObjectsRequest) (_result *G
 	return _result, _err
 }
 
+// Summary:
+//
+// Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+//
 // @param request - GrantOperatorPermissionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -51435,15 +67319,30 @@ func (client *Client) GrantOperatorPermissionWithOptions(request *GrantOperatorP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &GrantOperatorPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &GrantOperatorPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &GrantOperatorPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Grants permissions to the service account of an AnalyticDB for MySQL cluster.
+//
 // @param request - GrantOperatorPermissionRequest
 //
 // @return GrantOperatorPermissionResponse
@@ -51460,13 +67359,80 @@ func (client *Client) GrantOperatorPermission(request *GrantOperatorPermissionRe
 
 // Summary:
 //
+// Terminates an ongoing query.
+//
+// @param request - KillProcessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return KillProcessResponse
+func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtime *util.RuntimeOptions) (_result *KillProcessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KillProcess"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillProcessResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillProcessResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Terminates an ongoing query.
+//
+// @param request - KillProcessRequest
+//
+// @return KillProcessResponse
+func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &KillProcessResponse{}
+	_body, _err := client.KillProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Terminates a Spark application.
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -51505,13 +67471,24 @@ func (client *Client) KillSparkAppWithOptions(request *KillSparkAppRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillSparkAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillSparkAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillSparkAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51520,9 +67497,9 @@ func (client *Client) KillSparkAppWithOptions(request *KillSparkAppRequest, runt
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -51546,11 +67523,11 @@ func (client *Client) KillSparkApp(request *KillSparkAppRequest) (_result *KillS
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - KillSparkLogAnalyzeTaskRequest
 //
@@ -51581,13 +67558,24 @@ func (client *Client) KillSparkLogAnalyzeTaskWithOptions(request *KillSparkLogAn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillSparkLogAnalyzeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51596,11 +67584,11 @@ func (client *Client) KillSparkLogAnalyzeTaskWithOptions(request *KillSparkLogAn
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - KillSparkLogAnalyzeTaskRequest
 //
@@ -51622,9 +67610,9 @@ func (client *Client) KillSparkLogAnalyzeTask(request *KillSparkLogAnalyzeTaskRe
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -51661,13 +67649,24 @@ func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &KillSparkSQLEngineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &KillSparkSQLEngineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &KillSparkSQLEngineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -51676,9 +67675,9 @@ func (client *Client) KillSparkSQLEngineWithOptions(request *KillSparkSQLEngineR
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -51698,7 +67697,7 @@ func (client *Client) KillSparkSQLEngine(request *KillSparkSQLEngineRequest) (_r
 
 // Summary:
 //
-// 获取当前ADB实例生命周期管理策略列表
+// Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
 //
 // @param request - ListApsLifecycleStrategyRequest
 //
@@ -51749,18 +67748,29 @@ func (client *Client) ListApsLifecycleStrategyWithOptions(request *ListApsLifecy
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApsLifecycleStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApsLifecycleStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApsLifecycleStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取当前ADB实例生命周期管理策略列表
+// Queries a list of lifecycle management policies of an AnalyticDB for MySQL cluster.
 //
 // @param request - ListApsLifecycleStrategyRequest
 //
@@ -51778,7 +67788,11 @@ func (client *Client) ListApsLifecycleStrategy(request *ListApsLifecycleStrategy
 
 // Summary:
 //
-// 获取当前ADB实例湖存储优化策略列表。
+// Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ListApsOptimizationStrategyRequest
 //
@@ -51813,18 +67827,33 @@ func (client *Client) ListApsOptimizationStrategyWithOptions(request *ListApsOpt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApsOptimizationStrategyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApsOptimizationStrategyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApsOptimizationStrategyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取当前ADB实例湖存储优化策略列表。
+// Queries a list of lake storage optimization policies for an AnalyticDB for MySQL cluster.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ListApsOptimizationStrategyRequest
 //
@@ -51842,7 +67871,7 @@ func (client *Client) ListApsOptimizationStrategy(request *ListApsOptimizationSt
 
 // Summary:
 //
-// 获取指定类型湖存储优化策略执行过的任务列表。湖存储优化策略会周期性调度执行优化任务。
+// Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
 //
 // @param request - ListApsOptimizationTasksRequest
 //
@@ -51897,18 +67926,29 @@ func (client *Client) ListApsOptimizationTasksWithOptions(request *ListApsOptimi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListApsOptimizationTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListApsOptimizationTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListApsOptimizationTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 获取指定类型湖存储优化策略执行过的任务列表。湖存储优化策略会周期性调度执行优化任务。
+// Queries a list of optimization jobs executed based on a lifecycle management policy. The system runs optimization jobs on a regular basis based on lifecycle management policies.
 //
 // @param request - ListApsOptimizationTasksRequest
 //
@@ -51917,6 +67957,73 @@ func (client *Client) ListApsOptimizationTasks(request *ListApsOptimizationTasks
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApsOptimizationTasksResponse{}
 	_body, _err := client.ListApsOptimizationTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of lake storages.
+//
+// @param request - ListLakeStoragesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLakeStoragesResponse
+func (client *Client) ListLakeStoragesWithOptions(request *ListLakeStoragesRequest, runtime *util.RuntimeOptions) (_result *ListLakeStoragesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLakeStorages"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListLakeStoragesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListLakeStoragesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries a list of lake storages.
+//
+// @param request - ListLakeStoragesRequest
+//
+// @return ListLakeStoragesResponse
+func (client *Client) ListLakeStorages(request *ListLakeStoragesRequest) (_result *ListLakeStoragesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLakeStoragesResponse{}
+	_body, _err := client.ListLakeStoragesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52003,13 +68110,24 @@ func (client *Client) ListResultExportJobHistoryWithOptions(tmpReq *ListResultEx
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListResultExportJobHistoryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListResultExportJobHistoryResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListResultExportJobHistoryResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52036,9 +68154,9 @@ func (client *Client) ListResultExportJobHistory(request *ListResultExportJobHis
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -52083,13 +68201,24 @@ func (client *Client) ListSparkAppAttemptsWithOptions(request *ListSparkAppAttem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSparkAppAttemptsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSparkAppAttemptsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSparkAppAttemptsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52098,9 +68227,9 @@ func (client *Client) ListSparkAppAttemptsWithOptions(request *ListSparkAppAttem
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -52137,6 +68266,10 @@ func (client *Client) ListSparkAppsWithOptions(request *ListSparkAppsRequest, ru
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -52163,13 +68296,24 @@ func (client *Client) ListSparkAppsWithOptions(request *ListSparkAppsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSparkAppsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSparkAppsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSparkAppsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52196,11 +68340,11 @@ func (client *Client) ListSparkApps(request *ListSparkAppsRequest) (_result *Lis
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ListSparkLogAnalyzeTasksRequest
 //
@@ -52239,13 +68383,24 @@ func (client *Client) ListSparkLogAnalyzeTasksWithOptions(request *ListSparkLogA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSparkLogAnalyzeTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSparkLogAnalyzeTasksResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSparkLogAnalyzeTasksResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52254,11 +68409,11 @@ func (client *Client) ListSparkLogAnalyzeTasksWithOptions(request *ListSparkLogA
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - ListSparkLogAnalyzeTasksRequest
 //
@@ -52276,13 +68431,13 @@ func (client *Client) ListSparkLogAnalyzeTasks(request *ListSparkLogAnalyzeTasks
 
 // Summary:
 //
-// Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -52315,24 +68470,35 @@ func (client *Client) ListSparkTemplateFileIdsWithOptions(request *ListSparkTemp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListSparkTemplateFileIdsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSparkTemplateFileIdsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSparkTemplateFileIdsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Queries all Spark template file IDs of an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Queries a list of Spark template file IDs for AnalyticDB for MySQL clusters.
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -52350,6 +68516,93 @@ func (client *Client) ListSparkTemplateFileIds(request *ListSparkTemplateFileIds
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Spark SQL statements.
+//
+// @param request - ListSparkWarehouseBatchSQLRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSparkWarehouseBatchSQLResponse
+func (client *Client) ListSparkWarehouseBatchSQLWithOptions(request *ListSparkWarehouseBatchSQLRequest, runtime *util.RuntimeOptions) (_result *ListSparkWarehouseBatchSQLResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		body["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSparkWarehouseBatchSQL"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListSparkWarehouseBatchSQLResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Queries a list of Spark SQL statements.
+//
+// @param request - ListSparkWarehouseBatchSQLRequest
+//
+// @return ListSparkWarehouseBatchSQLResponse
+func (client *Client) ListSparkWarehouseBatchSQL(request *ListSparkWarehouseBatchSQLRequest) (_result *ListSparkWarehouseBatchSQLResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSparkWarehouseBatchSQLResponse{}
+	_body, _err := client.ListSparkWarehouseBatchSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+//
 // @param request - ListTagResourcesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -52411,15 +68664,30 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ListTagResourcesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Queries the tags that are added to AnalyticDB for MySQL clusters, or the AnalyticDB for MySQL clusters that have tags added.
+//
 // @param request - ListTagResourcesRequest
 //
 // @return ListTagResourcesResponse
@@ -52471,13 +68739,24 @@ func (client *Client) LoadSampleDataSetWithOptions(request *LoadSampleDataSetReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &LoadSampleDataSetResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &LoadSampleDataSetResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &LoadSampleDataSetResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52551,13 +68830,24 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52637,13 +68927,24 @@ func (client *Client) ModifyAccountPrivilegesWithOptions(tmpReq *ModifyAccountPr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAccountPrivilegesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAccountPrivilegesResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAccountPrivilegesResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -52670,7 +68971,15 @@ func (client *Client) ModifyAccountPrivileges(request *ModifyAccountPrivilegesRe
 
 // Summary:
 //
-// 编辑APS数据源
+// Modifies an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// ### [](#)
+//
+//   - You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+//
+//   - You cannot modify the number of nodes for the USER_DEFAULT resource group.
 //
 // @param tmpReq - ModifyApsDatasoureRequest
 //
@@ -52759,18 +69068,37 @@ func (client *Client) ModifyApsDatasoureWithOptions(tmpReq *ModifyApsDatasoureRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyApsDatasoureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyApsDatasoureResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyApsDatasoureResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 编辑APS数据源
+// Modifies an AnalyticDB Pipeline Service (APS) data source.
+//
+// Description:
+//
+// ### [](#)
+//
+//   - You can call this operation only for AnalyticDB for MySQL clusters in elastic mode for Cluster Edition that have 32 cores or more.
+//
+//   - You cannot modify the number of nodes for the USER_DEFAULT resource group.
 //
 // @param request - ModifyApsDatasoureRequest
 //
@@ -52788,7 +69116,11 @@ func (client *Client) ModifyApsDatasoure(request *ModifyApsDatasoureRequest) (_r
 
 // Summary:
 //
-// 修改aps任务
+// Modifies an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyApsJobRequest
 //
@@ -52831,18 +69163,33 @@ func (client *Client) ModifyApsJobWithOptions(request *ModifyApsJobRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyApsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyApsJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyApsJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改aps任务
+// Modifies an AnalyticDB Pipeline Service (APS) job.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyApsJobRequest
 //
@@ -52860,7 +69207,136 @@ func (client *Client) ModifyApsJob(request *ModifyApsJobRequest) (_result *Modif
 
 // Summary:
 //
+// Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
+//
+// @param tmpReq - ModifyApsSlsADBJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyApsSlsADBJobResponse
+func (client *Client) ModifyApsSlsADBJobWithOptions(tmpReq *ModifyApsSlsADBJobRequest, runtime *util.RuntimeOptions) (_result *ModifyApsSlsADBJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyApsSlsADBJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Columns)) {
+		request.ColumnsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Columns, tea.String("Columns"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ColumnsShrink)) {
+		body["Columns"] = request.ColumnsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		body["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DirtyDataProcessPattern)) {
+		body["DirtyDataProcessPattern"] = request.DirtyDataProcessPattern
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExactlyOnce)) {
+		body["ExactlyOnce"] = request.ExactlyOnce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		body["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartingOffsets)) {
+		body["StartingOffsets"] = request.StartingOffsets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnixTimestampConvert)) {
+		body["UnixTimestampConvert"] = request.UnixTimestampConvert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadId)) {
+		body["WorkloadId"] = request.WorkloadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkloadName)) {
+		body["WorkloadName"] = request.WorkloadName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApsSlsADBJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyApsSlsADBJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyApsSlsADBJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Modifies an AnalyticDB Pipeline Service (APS) job from Simple Log Service (SLS) to an AnalyticDB for MySQL Data Warehouse Edition cluster.
+//
+// @param request - ModifyApsSlsADBJobRequest
+//
+// @return ModifyApsSlsADBJobResponse
+func (client *Client) ModifyApsSlsADBJob(request *ModifyApsSlsADBJobRequest) (_result *ModifyApsSlsADBJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApsSlsADBJobResponse{}
+	_body, _err := client.ModifyApsSlsADBJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the AnalyticDB Pipeline Service (APS) workload name.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyApsWorkloadNameRequest
 //
@@ -52903,18 +69379,33 @@ func (client *Client) ModifyApsWorkloadNameWithOptions(request *ModifyApsWorkloa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyApsWorkloadNameResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyApsWorkloadNameResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyApsWorkloadNameResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
 // Modifies the AnalyticDB Pipeline Service (APS) workload name.
+//
+// Description:
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyApsWorkloadNameRequest
 //
@@ -52995,13 +69486,24 @@ func (client *Client) ModifyAuditLogConfigWithOptions(request *ModifyAuditLogCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyAuditLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyAuditLogConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyAuditLogConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53099,13 +69601,24 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyBackupPolicyResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyBackupPolicyResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53123,6 +69636,89 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
 	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
+//
+// @param request - ModifyClickhouseEngineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyClickhouseEngineResponse
+func (client *Client) ModifyClickhouseEngineWithOptions(request *ModifyClickhouseEngineRequest, runtime *util.RuntimeOptions) (_result *ModifyClickhouseEngineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CacheSize)) {
+		query["CacheSize"] = request.CacheSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		query["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClickhouseEngine"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyClickhouseEngineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyClickhouseEngineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Enables the wide table engine feature for an AnalyticDB for MySQL cluster or modifies the disk cache size of the wide table engine of an AnalyticDB for MySQL cluster for which you enabled the wide table engine feature.
+//
+// @param request - ModifyClickhouseEngineRequest
+//
+// @return ModifyClickhouseEngineResponse
+func (client *Client) ModifyClickhouseEngine(request *ModifyClickhouseEngineRequest) (_result *ModifyClickhouseEngineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyClickhouseEngineResponse{}
+	_body, _err := client.ModifyClickhouseEngineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -53183,13 +69779,24 @@ func (client *Client) ModifyClusterAccessWhiteListWithOptions(request *ModifyClu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyClusterAccessWhiteListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyClusterAccessWhiteListResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyClusterAccessWhiteListResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53263,13 +69870,24 @@ func (client *Client) ModifyClusterConnectionStringWithOptions(request *ModifyCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyClusterConnectionStringResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyClusterConnectionStringResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyClusterConnectionStringResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53331,13 +69949,24 @@ func (client *Client) ModifyCompactionServiceSwitchWithOptions(request *ModifyCo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyCompactionServiceSwitchResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyCompactionServiceSwitchResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyCompactionServiceSwitchResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53366,17 +69995,17 @@ func (client *Client) ModifyCompactionServiceSwitch(request *ModifyCompactionSer
 //
 // ### [](#)
 //
-// 	- During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+//   - During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
 //
-// 	- When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
+//   - When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
 //
-// 	- If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+//   - If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
 //
-// 	- When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+//   - When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
 //
-// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+//   - You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   - For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -53401,14 +70030,6 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		query["EnableDefaultResourcePool"] = request.EnableDefaultResourcePool
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProductForm)) {
 		query["ProductForm"] = request.ProductForm
 	}
@@ -53423,10 +70044,6 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 
 	if !tea.BoolValue(util.IsUnset(request.ReservedNodeSize)) {
 		query["ReservedNodeSize"] = request.ReservedNodeSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StorageResource)) {
@@ -53447,13 +70064,24 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53464,17 +70092,17 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 //
 // ### [](#)
 //
-// 	- During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
+//   - During a scaling event, you are not allowed to execute the `SUBMIT JOB` statement to submit asynchronous jobs. If your business requires asynchronous jobs, perform scaling during appropriate periods.
 //
-// 	- When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
+//   - When you scale a cluster, data in the cluster is migrated for redistribution. The amount of time that is required to migrate data is proportional to the data volume. During a scaling event, the services provided by the cluster are not interrupted. When you downgrade cluster specifications, data migration may require up to dozens of hours to complete. Proceed with caution especially if your cluster contains a large amount of data.
 //
-// 	- If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
+//   - If the cluster has a built-in dataset loaded, make sure that the cluster has reserved storage resources of at least 24 AnalyticDB compute units (ACUs). Otherwise, the built-in dataset cannot be used.
 //
-// 	- When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
+//   - When the scaling process is about to end, transient connections may occur. We recommend that you scale your cluster during off-peak hours or make sure that your application is configured to automatically reconnect to your cluster.
 //
-// 	- You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
+//   - You can change an AnalyticDB for MySQL cluster from Data Warehouse Edition to Data Lakehouse Edition, but not the other way around. For more information, see Change a cluster from Data Warehouse Edition to Data Lakehouse Edition.
 //
-// 	- For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
+//   - For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
 //
 // @param request - ModifyDBClusterRequest
 //
@@ -53531,13 +70159,24 @@ func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterDescriptionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterDescriptionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterDescriptionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53603,13 +70242,24 @@ func (client *Client) ModifyDBClusterMaintainTimeWithOptions(request *ModifyDBCl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterMaintainTimeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterMaintainTimeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterMaintainTimeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53636,7 +70286,7 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 
 // Summary:
 //
-// 修改资源组
+// Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
 //
 // @param request - ModifyDBClusterResourceGroupRequest
 //
@@ -53687,18 +70337,29 @@ func (client *Client) ModifyDBClusterResourceGroupWithOptions(request *ModifyDBC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改资源组
+// Changes the resource group to which an AnalyticDB for MySQL cluster belongs.
 //
 // @param request - ModifyDBClusterResourceGroupRequest
 //
@@ -53716,7 +70377,7 @@ func (client *Client) ModifyDBClusterResourceGroup(request *ModifyDBClusterResou
 
 // Summary:
 //
-// Changes the virtual private cloud (VPC) and vSwitch for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterVipRequest
 //
@@ -53759,18 +70420,29 @@ func (client *Client) ModifyDBClusterVipWithOptions(request *ModifyDBClusterVipR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBClusterVipResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBClusterVipResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBClusterVipResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// Changes the virtual private cloud (VPC) and vSwitch for an AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+// Changes the virtual IP address (VIP) that is used to connect to an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterVipRequest
 //
@@ -53808,6 +70480,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 	openapiutil.Convert(tmpReq, request)
 	if !tea.BoolValue(util.IsUnset(tmpReq.EngineParams)) {
 		request.EngineParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EngineParams, tea.String("EngineParams"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RayConfig)) {
+		request.RayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RayConfig, tea.String("RayConfig"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
@@ -53871,6 +70547,10 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 		query["MinGpuQuantity"] = request.MinGpuQuantity
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RayConfigShrink)) {
+		query["RayConfig"] = request.RayConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -53905,13 +70585,24 @@ func (client *Client) ModifyDBResourceGroupWithOptions(tmpReq *ModifyDBResourceG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyDBResourceGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyDBResourceGroupResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyDBResourceGroupResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -53993,13 +70684,24 @@ func (client *Client) ModifyElasticPlanWithOptions(request *ModifyElasticPlanReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyElasticPlanResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyElasticPlanResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyElasticPlanResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54026,7 +70728,7 @@ func (client *Client) ModifyElasticPlan(request *ModifyElasticPlanRequest) (_res
 
 // Summary:
 //
-// 修改Essd Cache开关
+// Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyEssdCacheConfigRequest
 //
@@ -54065,18 +70767,29 @@ func (client *Client) ModifyEssdCacheConfigWithOptions(request *ModifyEssdCacheC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyEssdCacheConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyEssdCacheConfigResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyEssdCacheConfigResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改Essd Cache开关
+// Modifies the disk cache size in the query acceleration configuration of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyEssdCacheConfigRequest
 //
@@ -54094,7 +70807,7 @@ func (client *Client) ModifyEssdCacheConfig(request *ModifyEssdCacheConfigReques
 
 // Summary:
 //
-// 修改实例LakeCache容量
+// Modifies the lake cache size of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyLakeCacheSizeRequest
 //
@@ -54133,18 +70846,29 @@ func (client *Client) ModifyLakeCacheSizeWithOptions(request *ModifyLakeCacheSiz
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyLakeCacheSizeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyLakeCacheSizeResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyLakeCacheSizeResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改实例LakeCache容量
+// Modifies the lake cache size of an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyLakeCacheSizeRequest
 //
@@ -54227,13 +70951,24 @@ func (client *Client) ModifyPerformanceViewWithOptions(tmpReq *ModifyPerformance
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyPerformanceViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyPerformanceViewResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyPerformanceViewResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54256,7 +70991,7 @@ func (client *Client) ModifyPerformanceView(request *ModifyPerformanceViewReques
 
 // Summary:
 //
-// 修改用户eni交换机
+// Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
 //
 // @param request - ModifyUserEniVswitchOptionsRequest
 //
@@ -54313,18 +71048,29 @@ func (client *Client) ModifyUserEniVswitchOptionsWithOptions(request *ModifyUser
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ModifyUserEniVswitchOptionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ModifyUserEniVswitchOptionsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ModifyUserEniVswitchOptionsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 修改用户eni交换机
+// Modifies the vSwitches that are connected to elastic network interfaces (ENIs).
 //
 // @param request - ModifyUserEniVswitchOptionsRequest
 //
@@ -54346,9 +71092,9 @@ func (client *Client) ModifyUserEniVswitchOptions(request *ModifyUserEniVswitchO
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -54387,13 +71133,24 @@ func (client *Client) PreloadSparkAppMetricsWithOptions(request *PreloadSparkApp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &PreloadSparkAppMetricsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &PreloadSparkAppMetricsResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &PreloadSparkAppMetricsResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54402,9 +71159,9 @@ func (client *Client) PreloadSparkAppMetricsWithOptions(request *PreloadSparkApp
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -54463,13 +71220,24 @@ func (client *Client) ReleaseClusterPublicConnectionWithOptions(request *Release
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ReleaseClusterPublicConnectionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ReleaseClusterPublicConnectionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ReleaseClusterPublicConnectionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54547,13 +71315,24 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &ResetAccountPasswordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &ResetAccountPasswordResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54578,6 +71357,10 @@ func (client *Client) ResetAccountPassword(request *ResetAccountPasswordRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+//
 // @param request - RevokeOperatorPermissionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -54623,15 +71406,30 @@ func (client *Client) RevokeOperatorPermissionWithOptions(request *RevokeOperato
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &RevokeOperatorPermissionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &RevokeOperatorPermissionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &RevokeOperatorPermissionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
+// Summary:
+//
+// Revokes permissions from the service account of an AnalyticDB for MySQL cluster.
+//
 // @param request - RevokeOperatorPermissionRequest
 //
 // @return RevokeOperatorPermissionResponse
@@ -54652,9 +71450,9 @@ func (client *Client) RevokeOperatorPermission(request *RevokeOperatorPermission
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -54695,13 +71493,24 @@ func (client *Client) SetSparkAppLogRootPathWithOptions(request *SetSparkAppLogR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SetSparkAppLogRootPathResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SetSparkAppLogRootPathResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SetSparkAppLogRootPathResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54710,9 +71519,9 @@ func (client *Client) SetSparkAppLogRootPathWithOptions(request *SetSparkAppLogR
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -54732,7 +71541,7 @@ func (client *Client) SetSparkAppLogRootPath(request *SetSparkAppLogRootPathRequ
 
 // Summary:
 //
-// 启动aps任务
+// Starts an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - StartApsJobRequest
 //
@@ -54767,18 +71576,29 @@ func (client *Client) StartApsJobWithOptions(request *StartApsJobRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartApsJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartApsJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartApsJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 启动aps任务
+// Starts an AnalyticDB Pipeline Service (APS) job.
 //
 // @param request - StartApsJobRequest
 //
@@ -54796,7 +71616,7 @@ func (client *Client) StartApsJob(request *StartApsJobRequest) (_result *StartAp
 
 // Summary:
 //
-// 启动一个可交互Session
+// Starts a Spark session.
 //
 // @param request - StartSparkReplSessionRequest
 //
@@ -54835,18 +71655,29 @@ func (client *Client) StartSparkReplSessionWithOptions(request *StartSparkReplSe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartSparkReplSessionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartSparkReplSessionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartSparkReplSessionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 启动一个可交互Session
+// Starts a Spark session.
 //
 // @param request - StartSparkReplSessionRequest
 //
@@ -54868,9 +71699,9 @@ func (client *Client) StartSparkReplSession(request *StartSparkReplSessionReques
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -54927,13 +71758,24 @@ func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &StartSparkSQLEngineResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &StartSparkSQLEngineResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &StartSparkSQLEngineResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -54942,9 +71784,9 @@ func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngin
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -55019,13 +71861,24 @@ func (client *Client) SubmitResultExportJobWithOptions(request *SubmitResultExpo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitResultExportJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitResultExportJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitResultExportJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55052,9 +71905,9 @@ func (client *Client) SubmitResultExportJob(request *SubmitResultExportJobReques
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -55115,13 +71968,24 @@ func (client *Client) SubmitSparkAppWithOptions(request *SubmitSparkAppRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSparkAppResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSparkAppResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSparkAppResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55130,9 +71994,9 @@ func (client *Client) SubmitSparkAppWithOptions(request *SubmitSparkAppRequest, 
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -55156,11 +72020,11 @@ func (client *Client) SubmitSparkApp(request *SubmitSparkAppRequest) (_result *S
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - SubmitSparkLogAnalyzeTaskRequest
 //
@@ -55191,13 +72055,24 @@ func (client *Client) SubmitSparkLogAnalyzeTaskWithOptions(request *SubmitSparkL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &SubmitSparkLogAnalyzeTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SubmitSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SubmitSparkLogAnalyzeTaskResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55206,11 +72081,11 @@ func (client *Client) SubmitSparkLogAnalyzeTaskWithOptions(request *SubmitSparkL
 //
 // Description:
 //
-//   General endpoint: `adb.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+// >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
 // @param request - SubmitSparkLogAnalyzeTaskRequest
 //
@@ -55219,6 +72094,81 @@ func (client *Client) SubmitSparkLogAnalyzeTask(request *SubmitSparkLogAnalyzeTa
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSparkLogAnalyzeTaskResponse{}
 	_body, _err := client.SubmitSparkLogAnalyzeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Suspends an AnalyticDB Pipeline Service (APS) job.
+//
+// @param request - SuspendApsJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SuspendApsJobResponse
+func (client *Client) SuspendApsJobWithOptions(request *SuspendApsJobRequest, runtime *util.RuntimeOptions) (_result *SuspendApsJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApsJobId)) {
+		body["ApsJobId"] = request.ApsJobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SuspendApsJob"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &SuspendApsJobResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &SuspendApsJobResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Suspends an AnalyticDB Pipeline Service (APS) job.
+//
+// @param request - SuspendApsJobRequest
+//
+// @return SuspendApsJobResponse
+func (client *Client) SuspendApsJob(request *SuspendApsJobRequest) (_result *SuspendApsJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SuspendApsJobResponse{}
+	_body, _err := client.SuspendApsJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55267,13 +72217,24 @@ func (client *Client) UnbindAccountWithOptions(request *UnbindAccountRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindAccountResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindAccountResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindAccountResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55343,13 +72304,24 @@ func (client *Client) UnbindDBResourceGroupWithUserWithOptions(request *UnbindDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UnbindDBResourceGroupWithUserResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UnbindDBResourceGroupWithUserResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UnbindDBResourceGroupWithUserResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55376,7 +72348,7 @@ func (client *Client) UnbindDBResourceGroupWithUser(request *UnbindDBResourceGro
 
 // Summary:
 //
-// 更新湖存储
+// Updates a lake storage.
 //
 // @param tmpReq - UpdateLakeStorageRequest
 //
@@ -55429,18 +72401,29 @@ func (client *Client) UpdateLakeStorageWithOptions(tmpReq *UpdateLakeStorageRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateLakeStorageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateLakeStorageResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateLakeStorageResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
 //
-// 更新湖存储
+// Updates a lake storage.
 //
 // @param request - UpdateLakeStorageRequest
 //
@@ -55462,9 +72445,9 @@ func (client *Client) UpdateLakeStorage(request *UpdateLakeStorageRequest) (_res
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -55509,13 +72492,24 @@ func (client *Client) UpdateSparkTemplateFileWithOptions(request *UpdateSparkTem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &UpdateSparkTemplateFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpdateSparkTemplateFileResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpdateSparkTemplateFileResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
 		return _result, _err
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
+
 }
 
 // Summary:
@@ -55524,9 +72518,9 @@ func (client *Client) UpdateSparkTemplateFileWithOptions(request *UpdateSparkTem
 //
 // Description:
 //
-//   Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
+//	  Regional public endpoint: `adb.<region-id>.aliyuncs.com`. Example: `adb.cn-hangzhou.aliyuncs.com`.
 //
-// 	- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
+//		- Regional Virtual Private Cloud (VPC) endpoint: `adb-vpc.<region-id>.aliyuncs.com`. Example: `adb-vpc.cn-hangzhou.aliyuncs.com`.
 //
 // >  If HTTP status code 409 is returned when you call this operation in the China (Qingdao), China (Shenzhen), China (Guangzhou), or China (Hong Kong) region, contact technical support.
 //
@@ -55537,6 +72531,101 @@ func (client *Client) UpdateSparkTemplateFile(request *UpdateSparkTemplateFileRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSparkTemplateFileResponse{}
 	_body, _err := client.UpdateSparkTemplateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the minor version of an AnalyticDB for MySQL cluster.
+//
+// @param request - UpgradeKernelVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeKernelVersionResponse
+func (client *Client) UpgradeKernelVersionWithOptions(request *UpgradeKernelVersionRequest, runtime *util.RuntimeOptions) (_result *UpgradeKernelVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBVersion)) {
+		query["DBVersion"] = request.DBVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchMode)) {
+		query["SwitchMode"] = request.SwitchMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeKernelVersion"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
+		_result = &UpgradeKernelVersionResponse{}
+		_body, _err := client.CallApi(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	} else {
+		_result = &UpgradeKernelVersionResponse{}
+		_body, _err := client.Execute(params, req, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+		_err = tea.Convert(_body, &_result)
+		return _result, _err
+	}
+
+}
+
+// Summary:
+//
+// Updates the minor version of an AnalyticDB for MySQL cluster.
+//
+// @param request - UpgradeKernelVersionRequest
+//
+// @return UpgradeKernelVersionResponse
+func (client *Client) UpgradeKernelVersion(request *UpgradeKernelVersionRequest) (_result *UpgradeKernelVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeKernelVersionResponse{}
+	_body, _err := client.UpgradeKernelVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -1,3 +1,52 @@
+2025-04-16 Version: v4.0.0
+- Support API CancelSparkWarehouseBatchSQL.
+- Support API CreateApsCopyWorkload.
+- Support API CreateApsDatasoure.
+- Support API CreateApsSlsADBJob.
+- Support API DeleteLakeStorage.
+- Support API DescribeAbnormalPatternDetection.
+- Support API DescribeAppliedAdvices.
+- Support API DescribeAvailableAdvices.
+- Support API DescribeBadSqlDetection.
+- Support API DescribeControllerDetection.
+- Support API DescribeExecutorDetection.
+- Support API DescribeInclinedTables.
+- Support API DescribeOversizeNonPartitionTableInfos.
+- Support API DescribeResourceGroupSpec.
+- Support API DescribeSparkSQLDiagnosisAttribute.
+- Support API DescribeSparkSQLDiagnosisList.
+- Support API DescribeTableDetail.
+- Support API DescribeTablePartitionDiagnose.
+- Support API DescribeWorkerDetection.
+- Support API DisableAdviceService.
+- Support API DownloadInstanceCACertificate.
+- Support API EnableAdviceService.
+- Support API ExecuteSparkWarehouseBatchSQL.
+- Support API GetSparkWarehouseBatchSQL.
+- Support API KillProcess.
+- Support API ListLakeStorages.
+- Support API ListSparkWarehouseBatchSQL.
+- Support API ModifyApsSlsADBJob.
+- Support API ModifyClickhouseEngine.
+- Support API SuspendApsJob.
+- Support API UpgradeKernelVersion.
+- Delete API DeleteProcessInstance.
+- Update API CreateDBCluster: add request parameters ProductVersion.
+- Update API CreateDBCluster: add request parameters SecondaryVSwitchId.
+- Update API CreateDBCluster: add request parameters SecondaryZoneId.
+- Update API CreateDBResourceGroup: add request parameters RayConfig.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.DiskEncryption.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.SecondaryVSwitchId.
+- Update API DescribeDBClusterAttribute: add response parameters Body.Items.$.SecondaryZoneId.
+- Update API DescribeDBResourceGroup: add response parameters Body.GroupsInfo.$.RayConfig.
+- Update API GetViewObjects: add request parameters ShowMvBaseTable.
+- Update API ListSparkApps: add request parameters Filters.
+- Update API ModifyDBCluster: delete request parameters OwnerAccount.
+- Update API ModifyDBCluster: delete request parameters OwnerId.
+- Update API ModifyDBCluster: delete request parameters ResourceOwnerAccount.
+- Update API ModifyDBResourceGroup: add request parameters RayConfig.
+
+
 2024-12-29 Version: v3.7.0
 - Support API CreateApsHiveJob.
 - Support API CreateLakeStorage.
