@@ -9,6 +9,449 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AnalyzeAudioSyncRequest struct {
+	CategoryTags []*AnalyzeAudioSyncRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
+	CustomPrompt *string                                `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
+	Fields       []*AnalyzeAudioSyncRequestFields       `json:"fields,omitempty" xml:"fields,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tyxmTurbo
+	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	// example:
+	//
+	// jsonObject
+	ResponseFormatType *string                                   `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
+	ResultTypes        []*string                                 `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
+	ServiceInspection  *AnalyzeAudioSyncRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	Stream        *bool                                 `json:"stream,omitempty" xml:"stream,omitempty"`
+	TemplateIds   []*string                             `json:"templateIds,omitempty" xml:"templateIds,omitempty" type:"Repeated"`
+	Transcription *AnalyzeAudioSyncRequestTranscription `json:"transcription,omitempty" xml:"transcription,omitempty" type:"Struct"`
+	Variables     []*AnalyzeAudioSyncRequestVariables   `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+}
+
+func (s AnalyzeAudioSyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequest) SetCategoryTags(v []*AnalyzeAudioSyncRequestCategoryTags) *AnalyzeAudioSyncRequest {
+	s.CategoryTags = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetCustomPrompt(v string) *AnalyzeAudioSyncRequest {
+	s.CustomPrompt = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetFields(v []*AnalyzeAudioSyncRequestFields) *AnalyzeAudioSyncRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetModelCode(v string) *AnalyzeAudioSyncRequest {
+	s.ModelCode = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetResponseFormatType(v string) *AnalyzeAudioSyncRequest {
+	s.ResponseFormatType = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetResultTypes(v []*string) *AnalyzeAudioSyncRequest {
+	s.ResultTypes = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetServiceInspection(v *AnalyzeAudioSyncRequestServiceInspection) *AnalyzeAudioSyncRequest {
+	s.ServiceInspection = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetStream(v bool) *AnalyzeAudioSyncRequest {
+	s.Stream = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetTemplateIds(v []*string) *AnalyzeAudioSyncRequest {
+	s.TemplateIds = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetTranscription(v *AnalyzeAudioSyncRequestTranscription) *AnalyzeAudioSyncRequest {
+	s.Transcription = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequest) SetVariables(v []*AnalyzeAudioSyncRequestVariables) *AnalyzeAudioSyncRequest {
+	s.Variables = v
+	return s
+}
+
+type AnalyzeAudioSyncRequestCategoryTags struct {
+	TagDesc *string `json:"tagDesc,omitempty" xml:"tagDesc,omitempty"`
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestCategoryTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestCategoryTags) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestCategoryTags) SetTagDesc(v string) *AnalyzeAudioSyncRequestCategoryTags {
+	s.TagDesc = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestCategoryTags) SetTagName(v string) *AnalyzeAudioSyncRequestCategoryTags {
+	s.TagName = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestFields struct {
+	// example:
+	//
+	// phoneNumber
+	Code       *string                                    `json:"code,omitempty" xml:"code,omitempty"`
+	Desc       *string                                    `json:"desc,omitempty" xml:"desc,omitempty"`
+	EnumValues []*AnalyzeAudioSyncRequestFieldsEnumValues `json:"enumValues,omitempty" xml:"enumValues,omitempty" type:"Repeated"`
+	Name       *string                                    `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestFields) SetCode(v string) *AnalyzeAudioSyncRequestFields {
+	s.Code = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestFields) SetDesc(v string) *AnalyzeAudioSyncRequestFields {
+	s.Desc = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestFields) SetEnumValues(v []*AnalyzeAudioSyncRequestFieldsEnumValues) *AnalyzeAudioSyncRequestFields {
+	s.EnumValues = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestFields) SetName(v string) *AnalyzeAudioSyncRequestFields {
+	s.Name = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestFieldsEnumValues struct {
+	Desc      *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	EnumValue *string `json:"enumValue,omitempty" xml:"enumValue,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestFieldsEnumValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestFieldsEnumValues) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestFieldsEnumValues) SetDesc(v string) *AnalyzeAudioSyncRequestFieldsEnumValues {
+	s.Desc = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestFieldsEnumValues) SetEnumValue(v string) *AnalyzeAudioSyncRequestFieldsEnumValues {
+	s.EnumValue = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestServiceInspection struct {
+	InspectionContents     []*AnalyzeAudioSyncRequestServiceInspectionInspectionContents `json:"inspectionContents,omitempty" xml:"inspectionContents,omitempty" type:"Repeated"`
+	InspectionIntroduction *string                                                       `json:"inspectionIntroduction,omitempty" xml:"inspectionIntroduction,omitempty"`
+	SceneIntroduction      *string                                                       `json:"sceneIntroduction,omitempty" xml:"sceneIntroduction,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestServiceInspection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestServiceInspection) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestServiceInspection) SetInspectionContents(v []*AnalyzeAudioSyncRequestServiceInspectionInspectionContents) *AnalyzeAudioSyncRequestServiceInspection {
+	s.InspectionContents = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestServiceInspection) SetInspectionIntroduction(v string) *AnalyzeAudioSyncRequestServiceInspection {
+	s.InspectionIntroduction = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestServiceInspection) SetSceneIntroduction(v string) *AnalyzeAudioSyncRequestServiceInspection {
+	s.SceneIntroduction = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestServiceInspectionInspectionContents struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestServiceInspectionInspectionContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestServiceInspectionInspectionContents) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestServiceInspectionInspectionContents) SetContent(v string) *AnalyzeAudioSyncRequestServiceInspectionInspectionContents {
+	s.Content = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestServiceInspectionInspectionContents) SetTitle(v string) *AnalyzeAudioSyncRequestServiceInspectionInspectionContents {
+	s.Title = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestTranscription struct {
+	// example:
+	//
+	// nls
+	AsrModelCode *string `json:"asrModelCode,omitempty" xml:"asrModelCode,omitempty"`
+	// example:
+	//
+	// 1
+	AutoSplit *int32 `json:"autoSplit,omitempty" xml:"autoSplit,omitempty"`
+	// example:
+	//
+	// 1
+	ClientChannel *int32 `json:"clientChannel,omitempty" xml:"clientChannel,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// sss.mp3
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// example:
+	//
+	// low
+	Level *string `json:"level,omitempty" xml:"level,omitempty"`
+	// example:
+	//
+	// 1
+	ServiceChannel         *int32    `json:"serviceChannel,omitempty" xml:"serviceChannel,omitempty"`
+	ServiceChannelKeywords []*string `json:"serviceChannelKeywords,omitempty" xml:"serviceChannelKeywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// esnvknv*****skdnvjksd
+	VocabularyId *string `json:"vocabularyId,omitempty" xml:"vocabularyId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://1111.com/sss.mp3
+	VoiceFileUrl *string `json:"voiceFileUrl,omitempty" xml:"voiceFileUrl,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestTranscription) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestTranscription) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetAsrModelCode(v string) *AnalyzeAudioSyncRequestTranscription {
+	s.AsrModelCode = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetAutoSplit(v int32) *AnalyzeAudioSyncRequestTranscription {
+	s.AutoSplit = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetClientChannel(v int32) *AnalyzeAudioSyncRequestTranscription {
+	s.ClientChannel = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetFileName(v string) *AnalyzeAudioSyncRequestTranscription {
+	s.FileName = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetLevel(v string) *AnalyzeAudioSyncRequestTranscription {
+	s.Level = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetServiceChannel(v int32) *AnalyzeAudioSyncRequestTranscription {
+	s.ServiceChannel = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetServiceChannelKeywords(v []*string) *AnalyzeAudioSyncRequestTranscription {
+	s.ServiceChannelKeywords = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetVocabularyId(v string) *AnalyzeAudioSyncRequestTranscription {
+	s.VocabularyId = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestTranscription) SetVoiceFileUrl(v string) *AnalyzeAudioSyncRequestTranscription {
+	s.VoiceFileUrl = &v
+	return s
+}
+
+type AnalyzeAudioSyncRequestVariables struct {
+	// example:
+	//
+	// name
+	VariableCode  *string `json:"variableCode,omitempty" xml:"variableCode,omitempty"`
+	VariableValue *string `json:"variableValue,omitempty" xml:"variableValue,omitempty"`
+}
+
+func (s AnalyzeAudioSyncRequestVariables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncRequestVariables) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncRequestVariables) SetVariableCode(v string) *AnalyzeAudioSyncRequestVariables {
+	s.VariableCode = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncRequestVariables) SetVariableValue(v string) *AnalyzeAudioSyncRequestVariables {
+	s.VariableValue = &v
+	return s
+}
+
+type AnalyzeAudioSyncResponseBody struct {
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"finishReason,omitempty" xml:"finishReason,omitempty"`
+	// example:
+	//
+	// 1000
+	InputTokens *string `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 2000
+	OutputTokens *string `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 968A8634-FA2C-5381-9B3E-*******F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool   `json:"success,omitempty" xml:"success,omitempty"`
+	Text    *string `json:"text,omitempty" xml:"text,omitempty"`
+	// example:
+	//
+	// 3000
+	TotalTokens *string `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s AnalyzeAudioSyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetFinishReason(v string) *AnalyzeAudioSyncResponseBody {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetInputTokens(v string) *AnalyzeAudioSyncResponseBody {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetOutputTokens(v string) *AnalyzeAudioSyncResponseBody {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetRequestId(v string) *AnalyzeAudioSyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetSuccess(v bool) *AnalyzeAudioSyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetText(v string) *AnalyzeAudioSyncResponseBody {
+	s.Text = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponseBody) SetTotalTokens(v string) *AnalyzeAudioSyncResponseBody {
+	s.TotalTokens = &v
+	return s
+}
+
+type AnalyzeAudioSyncResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AnalyzeAudioSyncResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AnalyzeAudioSyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AnalyzeAudioSyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AnalyzeAudioSyncResponse) SetHeaders(v map[string]*string) *AnalyzeAudioSyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponse) SetStatusCode(v int32) *AnalyzeAudioSyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AnalyzeAudioSyncResponse) SetBody(v *AnalyzeAudioSyncResponseBody) *AnalyzeAudioSyncResponse {
+	s.Body = v
+	return s
+}
+
 type AnalyzeConversationRequest struct {
 	CategoryTags []*AnalyzeConversationRequestCategoryTags `json:"categoryTags,omitempty" xml:"categoryTags,omitempty" type:"Repeated"`
 	CustomPrompt *string                                   `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
@@ -18,7 +461,8 @@ type AnalyzeConversationRequest struct {
 	// example:
 	//
 	// tyxmTurbo
-	ModelCode *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	ModelCode          *string `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	ResponseFormatType *string `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
 	// This parameter is required.
 	ResultTypes       []*string                                    `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
 	SceneName         *string                                      `json:"sceneName,omitempty" xml:"sceneName,omitempty"`
@@ -69,6 +513,11 @@ func (s *AnalyzeConversationRequest) SetFields(v []*AnalyzeConversationRequestFi
 
 func (s *AnalyzeConversationRequest) SetModelCode(v string) *AnalyzeConversationRequest {
 	s.ModelCode = &v
+	return s
+}
+
+func (s *AnalyzeConversationRequest) SetResponseFormatType(v string) *AnalyzeConversationRequest {
+	s.ResponseFormatType = &v
 	return s
 }
 
@@ -494,8 +943,9 @@ func (s *AnalyzeConversationResponse) SetBody(v *AnalyzeConversationResponseBody
 }
 
 type AnalyzeImageRequest struct {
-	ImageUrls   []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
-	ResultTypes []*string `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
+	ImageUrls          []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
+	ResponseFormatType *string   `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
+	ResultTypes        []*string `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
 	// This parameter is required.
 	//
 	// example:
@@ -514,6 +964,11 @@ func (s AnalyzeImageRequest) GoString() string {
 
 func (s *AnalyzeImageRequest) SetImageUrls(v []*string) *AnalyzeImageRequest {
 	s.ImageUrls = v
+	return s
+}
+
+func (s *AnalyzeImageRequest) SetResponseFormatType(v string) *AnalyzeImageRequest {
+	s.ResponseFormatType = &v
 	return s
 }
 
@@ -638,9 +1093,10 @@ type CreateTaskRequest struct {
 	// example:
 	//
 	// tyxmTurbo
-	ModelCode         *string                             `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
-	ResultTypes       []*string                           `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
-	ServiceInspection *CreateTaskRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
+	ModelCode          *string                             `json:"modelCode,omitempty" xml:"modelCode,omitempty"`
+	ResponseFormatType *string                             `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
+	ResultTypes        []*string                           `json:"resultTypes,omitempty" xml:"resultTypes,omitempty" type:"Repeated"`
+	ServiceInspection  *CreateTaskRequestServiceInspection `json:"serviceInspection,omitempty" xml:"serviceInspection,omitempty" type:"Struct"`
 	// This parameter is required.
 	//
 	// example:
@@ -687,6 +1143,11 @@ func (s *CreateTaskRequest) SetFields(v []*CreateTaskRequestFields) *CreateTaskR
 
 func (s *CreateTaskRequest) SetModelCode(v string) *CreateTaskRequest {
 	s.ModelCode = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetResponseFormatType(v string) *CreateTaskRequest {
+	s.ResponseFormatType = &v
 	return s
 }
 
@@ -1988,8 +2449,9 @@ type RunCompletionRequest struct {
 	// false
 	Stream *bool `json:"Stream,omitempty" xml:"Stream,omitempty"`
 	// This parameter is required.
-	TemplateIds []*int64                         `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
-	Variables   []*RunCompletionRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
+	TemplateIds        []*int64                         `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	ResponseFormatType *string                          `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
+	Variables          []*RunCompletionRequestVariables `json:"variables,omitempty" xml:"variables,omitempty" type:"Repeated"`
 }
 
 func (s RunCompletionRequest) String() string {
@@ -2027,6 +2489,11 @@ func (s *RunCompletionRequest) SetStream(v bool) *RunCompletionRequest {
 
 func (s *RunCompletionRequest) SetTemplateIds(v []*int64) *RunCompletionRequest {
 	s.TemplateIds = v
+	return s
+}
+
+func (s *RunCompletionRequest) SetResponseFormatType(v string) *RunCompletionRequest {
+	s.ResponseFormatType = &v
 	return s
 }
 
@@ -2324,7 +2791,8 @@ type RunCompletionMessageRequest struct {
 	// example:
 	//
 	// false
-	Stream *bool `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	Stream             *bool   `json:"Stream,omitempty" xml:"Stream,omitempty"`
+	ResponseFormatType *string `json:"responseFormatType,omitempty" xml:"responseFormatType,omitempty"`
 }
 
 func (s RunCompletionMessageRequest) String() string {
@@ -2347,6 +2815,11 @@ func (s *RunCompletionMessageRequest) SetModelCode(v string) *RunCompletionMessa
 
 func (s *RunCompletionMessageRequest) SetStream(v bool) *RunCompletionMessageRequest {
 	s.Stream = &v
+	return s
+}
+
+func (s *RunCompletionMessageRequest) SetResponseFormatType(v string) *RunCompletionMessageRequest {
+	s.ResponseFormatType = &v
 	return s
 }
 
@@ -2654,6 +3127,110 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 语音文件分析任务极速版
+//
+// @param request - AnalyzeAudioSyncRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AnalyzeAudioSyncResponse
+func (client *Client) AnalyzeAudioSyncWithOptions(workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AnalyzeAudioSyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryTags)) {
+		body["categoryTags"] = request.CategoryTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomPrompt)) {
+		body["customPrompt"] = request.CustomPrompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fields)) {
+		body["fields"] = request.Fields
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
+		body["modelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
+		body["resultTypes"] = request.ResultTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInspection)) {
+		body["serviceInspection"] = request.ServiceInspection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stream)) {
+		body["stream"] = request.Stream
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		body["templateIds"] = request.TemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Transcription)) {
+		body["transcription"] = request.Transcription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Variables)) {
+		body["variables"] = request.Variables
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AnalyzeAudioSync"),
+		Version:     tea.String("2024-06-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/ccai/app/" + tea.StringValue(openapiutil.GetEncodeParam(appId)) + "/analyzeAudioSync"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AnalyzeAudioSyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 语音文件分析任务极速版
+//
+// @param request - AnalyzeAudioSyncRequest
+//
+// @return AnalyzeAudioSyncResponse
+func (client *Client) AnalyzeAudioSync(workspaceId *string, appId *string, request *AnalyzeAudioSyncRequest) (_result *AnalyzeAudioSyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AnalyzeAudioSyncResponse{}
+	_body, _err := client.AnalyzeAudioSyncWithOptions(workspaceId, appId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据类型调用大模型
 //
 // @param request - AnalyzeConversationRequest
@@ -2691,6 +3268,10 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 
 	if !tea.BoolValue(util.IsUnset(request.ModelCode)) {
 		body["modelCode"] = request.ModelCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
@@ -2736,24 +3317,13 @@ func (client *Client) AnalyzeConversationWithOptions(workspaceId *string, appId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AnalyzeConversationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AnalyzeConversationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AnalyzeConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2796,6 +3366,10 @@ func (client *Client) AnalyzeImageWithOptions(workspaceId *string, appId *string
 		body["imageUrls"] = request.ImageUrls
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
 		body["resultTypes"] = request.ResultTypes
 	}
@@ -2819,24 +3393,13 @@ func (client *Client) AnalyzeImageWithOptions(workspaceId *string, appId *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AnalyzeImageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AnalyzeImageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AnalyzeImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2899,6 +3462,10 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 		body["modelCode"] = request.ModelCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResultTypes)) {
 		body["resultTypes"] = request.ResultTypes
 	}
@@ -2938,24 +3505,13 @@ func (client *Client) CreateTaskWithOptions(workspaceId *string, appId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3029,24 +3585,13 @@ func (client *Client) CreateVocabWithOptions(request *CreateVocabRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateVocabResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateVocabResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateVocabResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3108,24 +3653,13 @@ func (client *Client) DeleteVocabWithOptions(request *DeleteVocabRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteVocabResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteVocabResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteVocabResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3193,24 +3727,13 @@ func (client *Client) GetTaskResultWithOptions(tmpReq *GetTaskResultRequest, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTaskResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTaskResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTaskResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3272,24 +3795,13 @@ func (client *Client) GetVocabWithOptions(request *GetVocabRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVocabResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVocabResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVocabResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3347,24 +3859,13 @@ func (client *Client) ListVocabWithOptions(request *ListVocabRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListVocabResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListVocabResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListVocabResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3427,6 +3928,10 @@ func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *strin
 		body["TemplateIds"] = request.TemplateIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Variables)) {
 		body["variables"] = request.Variables
 	}
@@ -3446,24 +3951,13 @@ func (client *Client) RunCompletionWithOptions(workspaceId *string, appId *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunCompletionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunCompletionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunCompletionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3514,6 +4008,10 @@ func (client *Client) RunCompletionMessageWithOptions(workspaceId *string, appId
 		body["Stream"] = request.Stream
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResponseFormatType)) {
+		body["responseFormatType"] = request.ResponseFormatType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -3529,24 +4027,13 @@ func (client *Client) RunCompletionMessageWithOptions(workspaceId *string, appId
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunCompletionMessageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunCompletionMessageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunCompletionMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -3620,24 +4107,13 @@ func (client *Client) UpdateVocabWithOptions(request *UpdateVocabRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateVocabResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateVocabResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateVocabResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
