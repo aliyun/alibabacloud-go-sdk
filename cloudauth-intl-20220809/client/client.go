@@ -649,6 +649,183 @@ func (s *CheckVerifyLogResponse) SetBody(v *CheckVerifyLogResponseBody) *CheckVe
 	return s
 }
 
+type DeepfakeDetectIntlRequest struct {
+	// example:
+	//
+	// /9j/4AAQSkZJRgABAQAASxxxxxxx
+	FaceBase64 *string `json:"FaceBase64,omitempty" xml:"FaceBase64,omitempty"`
+	// example:
+	//
+	// IMAGE
+	FaceInputType *string `json:"FaceInputType,omitempty" xml:"FaceInputType,omitempty"`
+	// example:
+	//
+	// https://cn-shanghai-aliyun-cloudauth-xxxxxx.oss-cn-shanghai.aliyuncs.com/verify/xxxxx/xxxxx.jpeg
+	FaceUrl *string `json:"FaceUrl,omitempty" xml:"FaceUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c******
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// FACE_DEEPFAKE
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// example:
+	//
+	// 1234567890
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+}
+
+func (s DeepfakeDetectIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeDetectIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeDetectIntlRequest) SetFaceBase64(v string) *DeepfakeDetectIntlRequest {
+	s.FaceBase64 = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlRequest) SetFaceInputType(v string) *DeepfakeDetectIntlRequest {
+	s.FaceInputType = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlRequest) SetFaceUrl(v string) *DeepfakeDetectIntlRequest {
+	s.FaceUrl = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlRequest) SetMerchantBizId(v string) *DeepfakeDetectIntlRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlRequest) SetProductCode(v string) *DeepfakeDetectIntlRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlRequest) SetSceneCode(v string) *DeepfakeDetectIntlRequest {
+	s.SceneCode = &v
+	return s
+}
+
+type DeepfakeDetectIntlResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 8FC3D6AC-9FED-4311-8DA7-C4BF47D9F260
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *DeepfakeDetectIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s DeepfakeDetectIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeDetectIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeDetectIntlResponseBody) SetCode(v string) *DeepfakeDetectIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBody) SetMessage(v string) *DeepfakeDetectIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBody) SetRequestId(v string) *DeepfakeDetectIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBody) SetResultObject(v *DeepfakeDetectIntlResponseBodyResultObject) *DeepfakeDetectIntlResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type DeepfakeDetectIntlResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// example:
+	//
+	// SuspectDeepForgery,SuspectWarterMark
+	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+}
+
+func (s DeepfakeDetectIntlResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeDetectIntlResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeDetectIntlResponseBodyResultObject) SetResult(v string) *DeepfakeDetectIntlResponseBodyResultObject {
+	s.Result = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBodyResultObject) SetRiskScore(v map[string]*string) *DeepfakeDetectIntlResponseBodyResultObject {
+	s.RiskScore = v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponseBodyResultObject) SetRiskTag(v string) *DeepfakeDetectIntlResponseBodyResultObject {
+	s.RiskTag = &v
+	return s
+}
+
+type DeepfakeDetectIntlResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeepfakeDetectIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeepfakeDetectIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeepfakeDetectIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeepfakeDetectIntlResponse) SetHeaders(v map[string]*string) *DeepfakeDetectIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponse) SetStatusCode(v int32) *DeepfakeDetectIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeepfakeDetectIntlResponse) SetBody(v *DeepfakeDetectIntlResponseBody) *DeepfakeDetectIntlResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVerifyResultRequest struct {
 	// example:
 	//
@@ -3080,6 +3257,88 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckVerifyLogResponse{}
 	_body, _err := client.CheckVerifyLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸凭证核验
+//
+// @param request - DeepfakeDetectIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeepfakeDetectIntlResponse
+func (client *Client) DeepfakeDetectIntlWithOptions(request *DeepfakeDetectIntlRequest, runtime *util.RuntimeOptions) (_result *DeepfakeDetectIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FaceInputType)) {
+		query["FaceInputType"] = request.FaceInputType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FaceUrl)) {
+		query["FaceUrl"] = request.FaceUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		query["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		query["SceneCode"] = request.SceneCode
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FaceBase64)) {
+		body["FaceBase64"] = request.FaceBase64
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeepfakeDetectIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeepfakeDetectIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 人脸凭证核验
+//
+// @param request - DeepfakeDetectIntlRequest
+//
+// @return DeepfakeDetectIntlResponse
+func (client *Client) DeepfakeDetectIntl(request *DeepfakeDetectIntlRequest) (_result *DeepfakeDetectIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeepfakeDetectIntlResponse{}
+	_body, _err := client.DeepfakeDetectIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
