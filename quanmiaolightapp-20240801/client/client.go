@@ -9,6 +9,274 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CancelAsyncTaskRequest struct {
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CancelAsyncTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAsyncTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAsyncTaskRequest) SetTaskId(v string) *CancelAsyncTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type CancelAsyncTaskResponseBody struct {
+	// example:
+	//
+	// NoPermission
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 403
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CancelAsyncTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAsyncTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAsyncTaskResponseBody) SetCode(v string) *CancelAsyncTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponseBody) SetData(v bool) *CancelAsyncTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponseBody) SetHttpStatusCode(v int32) *CancelAsyncTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponseBody) SetMessage(v string) *CancelAsyncTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponseBody) SetRequestId(v string) *CancelAsyncTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponseBody) SetSuccess(v bool) *CancelAsyncTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelAsyncTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelAsyncTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelAsyncTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAsyncTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAsyncTaskResponse) SetHeaders(v map[string]*string) *CancelAsyncTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelAsyncTaskResponse) SetStatusCode(v int32) *CancelAsyncTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelAsyncTaskResponse) SetBody(v *CancelAsyncTaskResponseBody) *CancelAsyncTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdRequest struct {
+	Categories []*string `json:"categories,omitempty" xml:"categories,omitempty" type:"Repeated"`
+	Category   *string   `json:"category,omitempty" xml:"category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetCategories(v []*string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.Categories = v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetCategory(v string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdRequest) SetTaskId(v string) *ExportAnalysisTagDetailByTaskIdRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdShrinkRequest struct {
+	CategoriesShrink *string `json:"categories,omitempty" xml:"categories,omitempty"`
+	Category         *string `json:"category,omitempty" xml:"category,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetCategoriesShrink(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.CategoriesShrink = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetCategory(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdShrinkRequest) SetTaskId(v string) *ExportAnalysisTagDetailByTaskIdShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdResponseBody struct {
+	// example:
+	//
+	// xx
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxxx.xlsx
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 085BE2D2-BB7E-59A6-B688-F2CB32124E7F
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetCode(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetData(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetHttpStatusCode(v int32) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetMessage(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponseBody) SetRequestId(v string) *ExportAnalysisTagDetailByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportAnalysisTagDetailByTaskIdResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExportAnalysisTagDetailByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportAnalysisTagDetailByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetHeaders(v map[string]*string) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetStatusCode(v int32) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExportAnalysisTagDetailByTaskIdResponse) SetBody(v *ExportAnalysisTagDetailByTaskIdResponseBody) *ExportAnalysisTagDetailByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
 type GenerateBroadcastNewsRequest struct {
 	// This parameter is required.
 	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
@@ -531,6 +799,316 @@ func (s *GenerateOutputFormatResponse) SetStatusCode(v int32) *GenerateOutputFor
 }
 
 func (s *GenerateOutputFormatResponse) SetBody(v *GenerateOutputFormatResponseBody) *GenerateOutputFormatResponse {
+	s.Body = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskRequest struct {
+	// example:
+	//
+	// a3d1c2ac-f086-4a21-9069-f5631542f5a2
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskRequest) SetTaskId(v string) *GetEnterpriseVocAnalysisTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoPermission
+	Code *string                                       `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetEnterpriseVocAnalysisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 403
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetCode(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetData(v *GetEnterpriseVocAnalysisTaskResponseBodyData) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetMessage(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetRequestId(v string) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBody) SetSuccess(v bool) *GetEnterpriseVocAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyData struct {
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId            *string                                                         `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	ModelName          *string                                                         `json:"modelName,omitempty" xml:"modelName,omitempty"`
+	StatisticsOverview *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview `json:"statisticsOverview,omitempty" xml:"statisticsOverview,omitempty" type:"Struct"`
+	// example:
+	//
+	// PENDING
+	Status *string                                            `json:"status,omitempty" xml:"status,omitempty"`
+	Usage  *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetErrorMessage(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetModelId(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.ModelId = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetModelName(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.ModelName = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetStatisticsOverview(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.StatisticsOverview = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetStatus(v string) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyData) SetUsage(v *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) *GetEnterpriseVocAnalysisTaskResponseBodyData {
+	s.Usage = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview struct {
+	// example:
+	//
+	// 17
+	Count                     *int32                                                                                   `json:"count,omitempty" xml:"count,omitempty"`
+	FilterDimensionStatistics *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics `json:"filterDimensionStatistics,omitempty" xml:"filterDimensionStatistics,omitempty" type:"Struct"`
+	TagDimensionStatistics    *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics    `json:"tagDimensionStatistics,omitempty" xml:"tagDimensionStatistics,omitempty" type:"Struct"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.Count = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetFilterDimensionStatistics(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.FilterDimensionStatistics = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview) SetTagDimensionStatistics(v *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverview {
+	s.TagDimensionStatistics = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics struct {
+	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic `json:"tagValueCountStatistic,omitempty" xml:"tagValueCountStatistic,omitempty" type:"Repeated"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics) SetTagValueCountStatistic(v []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatistics {
+	s.TagValueCountStatistic = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic struct {
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	// example:
+	//
+	// 10
+	ValueCount *int32 `json:"valueCount,omitempty" xml:"valueCount,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) SetTagName(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic) SetValueCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewFilterDimensionStatisticsTagValueCountStatistic {
+	s.ValueCount = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics struct {
+	TagValueCountStatistic []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic `json:"tagValueCountStatistic,omitempty" xml:"tagValueCountStatistic,omitempty" type:"Repeated"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics) SetTagValueCountStatistic(v []*GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatistics {
+	s.TagValueCountStatistic = v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic struct {
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	// example:
+	//
+	// 10
+	ValueCount *int32 `json:"valueCount,omitempty" xml:"valueCount,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) SetTagName(v string) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic {
+	s.TagName = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic) SetValueCount(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataStatisticsOverviewTagDimensionStatisticsTagValueCountStatistic {
+	s.ValueCount = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponseBodyDataUsage struct {
+	// example:
+	//
+	// 1
+	InputTokens *int32 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 2
+	OutputTokens *int32 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) SetInputTokens(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage) SetOutputTokens(v int32) *GetEnterpriseVocAnalysisTaskResponseBodyDataUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+type GetEnterpriseVocAnalysisTaskResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetEnterpriseVocAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEnterpriseVocAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetHeaders(v map[string]*string) *GetEnterpriseVocAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetStatusCode(v int32) *GetEnterpriseVocAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEnterpriseVocAnalysisTaskResponse) SetBody(v *GetEnterpriseVocAnalysisTaskResponseBody) *GetEnterpriseVocAnalysisTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2290,6 +2868,499 @@ func (s *ListHotTopicSummariesResponse) SetStatusCode(v int32) *ListHotTopicSumm
 }
 
 func (s *ListHotTopicSummariesResponse) SetBody(v *ListHotTopicSummariesResponseBody) *ListHotTopicSummariesResponse {
+	s.Body = v
+	return s
+}
+
+type RunEnterpriseVocAnalysisRequest struct {
+	// 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
+	//
+	// example:
+	//
+	// 这是一段需要分析的文本内容
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// 过滤标签，用于筛选符合条件的内容。
+	FilterTags []*RunEnterpriseVocAnalysisRequestFilterTags `json:"filterTags,omitempty" xml:"filterTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// 指定返回结果的格式，支持json或text
+	//
+	// example:
+	//
+	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
+	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	// 业务标签体系，用于对文本内容进行分类和分析。
+	Tags []*RunEnterpriseVocAnalysisRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 你是一名经验丰富的数据分析师，擅长从文本评论中提取结构化信息。你需要从用户评论列表中识别和提取出与以下四个维度相关的关键词和短语：
+	//
+	//
+	//
+	//             索引：输入评论JSON数组中的索引（从零开始）表示针对该条索引抽取的维度。
+	//
+	//             购买动机：描述用户购买产品的原因、需求或驱动力的关键词或短语。
+	//
+	//             未满足需求点：用户在使用产品过程中提到的未满足需求或问题的关键词或短语。
+	//
+	//             使用场景：用户提到的具体使用场景、使用方式或环境的关键词或短语。
+	//
+	//             正负面观点：明确表示用户对产品或服务的正面或负面看法的关键词或短语。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetContent(v string) *RunEnterpriseVocAnalysisRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetExtraInfo(v string) *RunEnterpriseVocAnalysisRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetFilterTags(v []*RunEnterpriseVocAnalysisRequestFilterTags) *RunEnterpriseVocAnalysisRequest {
+	s.FilterTags = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetModelId(v string) *RunEnterpriseVocAnalysisRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetTags(v []*RunEnterpriseVocAnalysisRequestTags) *RunEnterpriseVocAnalysisRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetTaskDescription(v string) *RunEnterpriseVocAnalysisRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisRequestFilterTags struct {
+	// 标签定义提示词
+	//
+	// example:
+	//
+	// 标签定义提示词
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// 标签名称
+	//
+	// example:
+	//
+	// 标签名称
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisRequestFilterTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisRequestFilterTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisRequestFilterTags) SetTagDefinePrompt(v string) *RunEnterpriseVocAnalysisRequestFilterTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequestFilterTags) SetTagName(v string) *RunEnterpriseVocAnalysisRequestFilterTags {
+	s.TagName = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisRequestTags struct {
+	// 标签定义提示词
+	//
+	// example:
+	//
+	// 标签定义提示词
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// 标签名称
+	//
+	// example:
+	//
+	// 标签名称
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisRequestTags) SetTagDefinePrompt(v string) *RunEnterpriseVocAnalysisRequestTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequestTags) SetTagName(v string) *RunEnterpriseVocAnalysisRequestTags {
+	s.TagName = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisShrinkRequest struct {
+	// 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
+	//
+	// example:
+	//
+	// 这是一段需要分析的文本内容
+	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	ExtraInfo *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// 过滤标签，用于筛选符合条件的内容。
+	FilterTagsShrink *string `json:"filterTags,omitempty" xml:"filterTags,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	// 指定返回结果的格式，支持json或text
+	//
+	// example:
+	//
+	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
+	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	// 业务标签体系，用于对文本内容进行分类和分析。
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	// example:
+	//
+	// 你是一名经验丰富的数据分析师，擅长从文本评论中提取结构化信息。你需要从用户评论列表中识别和提取出与以下四个维度相关的关键词和短语：
+	//
+	//
+	//
+	//             索引：输入评论JSON数组中的索引（从零开始）表示针对该条索引抽取的维度。
+	//
+	//             购买动机：描述用户购买产品的原因、需求或驱动力的关键词或短语。
+	//
+	//             未满足需求点：用户在使用产品过程中提到的未满足需求或问题的关键词或短语。
+	//
+	//             使用场景：用户提到的具体使用场景、使用方式或环境的关键词或短语。
+	//
+	//             正负面观点：明确表示用户对产品或服务的正面或负面看法的关键词或短语。
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetContent(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetExtraInfo(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetFilterTagsShrink(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.FilterTagsShrink = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetModelId(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetTagsShrink(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetTaskDescription(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBody struct {
+	Header  *RunEnterpriseVocAnalysisResponseBodyHeader  `json:"header,omitempty" xml:"header,omitempty" type:"Struct"`
+	Payload *RunEnterpriseVocAnalysisResponseBodyPayload `json:"payload,omitempty" xml:"payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 49483FFC-0CB9-5163-8D3E-234E276E6DA8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBody) SetHeader(v *RunEnterpriseVocAnalysisResponseBodyHeader) *RunEnterpriseVocAnalysisResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBody) SetPayload(v *RunEnterpriseVocAnalysisResponseBodyPayload) *RunEnterpriseVocAnalysisResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBody) SetRequestId(v string) *RunEnterpriseVocAnalysisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyHeader struct {
+	// example:
+	//
+	// AccessForbidden
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// example:
+	//
+	// task-finished
+	Event *string `json:"event,omitempty" xml:"event,omitempty"`
+	// example:
+	//
+	// xxxx
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// example:
+	//
+	// xxxx
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+	// example:
+	//
+	// xxxxx
+	TraceId *string `json:"traceId,omitempty" xml:"traceId,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetErrorCode(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetErrorMessage(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetEvent(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetSessionId(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetTaskId(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyHeader) SetTraceId(v string) *RunEnterpriseVocAnalysisResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyPayload struct {
+	Output *RunEnterpriseVocAnalysisResponseBodyPayloadOutput `json:"output,omitempty" xml:"output,omitempty" type:"Struct"`
+	Usage  *RunEnterpriseVocAnalysisResponseBodyPayloadUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayload) SetOutput(v *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) *RunEnterpriseVocAnalysisResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayload) SetUsage(v *RunEnterpriseVocAnalysisResponseBodyPayloadUsage) *RunEnterpriseVocAnalysisResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyPayloadOutput struct {
+	FilterResult *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult `json:"filterResult,omitempty" xml:"filterResult,omitempty" type:"Struct"`
+	Text         *string                                                        `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) SetFilterResult(v *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) *RunEnterpriseVocAnalysisResponseBodyPayloadOutput {
+	s.FilterResult = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) SetText(v string) *RunEnterpriseVocAnalysisResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult struct {
+	FilterResults []*RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults `json:"filterResults,omitempty" xml:"filterResults,omitempty" type:"Repeated"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) SetFilterResults(v []*RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult {
+	s.FilterResults = v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults struct {
+	// example:
+	//
+	// true
+	Hit      *bool   `json:"hit,omitempty" xml:"hit,omitempty"`
+	TagName  *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) SetHit(v bool) *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults {
+	s.Hit = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) SetTagName(v string) *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults {
+	s.TagName = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults) SetTagValue(v string) *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResultFilterResults {
+	s.TagValue = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"inputTokens,omitempty" xml:"inputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"outputTokens,omitempty" xml:"outputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"totalTokens,omitempty" xml:"totalTokens,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadUsage) SetInputTokens(v int64) *RunEnterpriseVocAnalysisResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunEnterpriseVocAnalysisResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunEnterpriseVocAnalysisResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunEnterpriseVocAnalysisResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunEnterpriseVocAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunEnterpriseVocAnalysisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunEnterpriseVocAnalysisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisResponse) SetHeaders(v map[string]*string) *RunEnterpriseVocAnalysisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponse) SetStatusCode(v int32) *RunEnterpriseVocAnalysisResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponse) SetBody(v *RunEnterpriseVocAnalysisResponseBody) *RunEnterpriseVocAnalysisResponse {
 	s.Body = v
 	return s
 }
@@ -7439,6 +8510,345 @@ func (s *RunVideoAnalysisResponse) SetBody(v *RunVideoAnalysisResponseBody) *Run
 	return s
 }
 
+type SubmitEnterpriseVocAnalysisTaskRequest struct {
+	Contents  []*SubmitEnterpriseVocAnalysisTaskRequestContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
+	ExtraInfo *string                                           `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// oss://default/aimiaobi-service-prod/aimiaobi/temp/public/government_service_experience_feedback_summary.txt
+	FileKey    *string                                             `json:"fileKey,omitempty" xml:"fileKey,omitempty"`
+	FilterTags []*SubmitEnterpriseVocAnalysisTaskRequestFilterTags `json:"filterTags,omitempty" xml:"filterTags,omitempty" type:"Repeated"`
+	// example:
+	//
+	// qwen-max
+	ModelId         *string                                       `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	OutputFormat    *string                                       `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	Tags            []*SubmitEnterpriseVocAnalysisTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	TaskDescription *string                                       `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxxx.txt
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetContents(v []*SubmitEnterpriseVocAnalysisTaskRequestContents) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.Contents = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetExtraInfo(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetFileKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetFilterTags(v []*SubmitEnterpriseVocAnalysisTaskRequestFilterTags) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.FilterTags = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetModelId(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetTags(v []*SubmitEnterpriseVocAnalysisTaskRequestTags) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetTaskDescription(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetUrl(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.Url = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestContents struct {
+	// example:
+	//
+	// id-xxxxx
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// xxxx
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestContents) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContents) SetId(v string) *SubmitEnterpriseVocAnalysisTaskRequestContents {
+	s.Id = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestContents) SetText(v string) *SubmitEnterpriseVocAnalysisTaskRequestContents {
+	s.Text = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestFilterTags struct {
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	TagName         *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestFilterTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestFilterTags) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagName(v string) *SubmitEnterpriseVocAnalysisTaskRequestFilterTags {
+	s.TagName = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskRequestTags struct {
+	// example:
+	//
+	// xxxx
+	TagDefinePrompt *string `json:"tagDefinePrompt,omitempty" xml:"tagDefinePrompt,omitempty"`
+	// example:
+	//
+	// xxxx
+	TagName *string `json:"tagName,omitempty" xml:"tagName,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestTags) SetTagDefinePrompt(v string) *SubmitEnterpriseVocAnalysisTaskRequestTags {
+	s.TagDefinePrompt = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequestTags) SetTagName(v string) *SubmitEnterpriseVocAnalysisTaskRequestTags {
+	s.TagName = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
+	ContentsShrink *string `json:"contents,omitempty" xml:"contents,omitempty"`
+	ExtraInfo      *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
+	// example:
+	//
+	// oss://default/aimiaobi-service-prod/aimiaobi/temp/public/government_service_experience_feedback_summary.txt
+	FileKey          *string `json:"fileKey,omitempty" xml:"fileKey,omitempty"`
+	FilterTagsShrink *string `json:"filterTags,omitempty" xml:"filterTags,omitempty"`
+	// example:
+	//
+	// qwen-max
+	ModelId         *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
+	OutputFormat    *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
+	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
+	// example:
+	//
+	// http://www.example.com/xxxx.txt
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetContentsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ContentsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetExtraInfo(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetFileKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.FileKey = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetFilterTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.FilterTagsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetModelId(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ModelId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetTaskDescription(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.TaskDescription = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetUrl(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.Url = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponseBody struct {
+	// example:
+	//
+	// NoPermission
+	Code *string                                          `json:"code,omitempty" xml:"code,omitempty"`
+	Data *SubmitEnterpriseVocAnalysisTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 403
+	HttpStatusCode *int32  `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	Message        *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 117F5ABE-CF02-5502-9A3F-E56BC9081A64
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetCode(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetData(v *SubmitEnterpriseVocAnalysisTaskResponseBodyData) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetHttpStatusCode(v int32) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetMessage(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetRequestId(v string) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBody) SetSuccess(v bool) *SubmitEnterpriseVocAnalysisTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponseBodyData struct {
+	// example:
+	//
+	// a0cc71ec-fe07-47e5-bf12-6e1c46081c98
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponseBodyData) SetTaskId(v string) *SubmitEnterpriseVocAnalysisTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitEnterpriseVocAnalysisTaskResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitEnterpriseVocAnalysisTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitEnterpriseVocAnalysisTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetHeaders(v map[string]*string) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetStatusCode(v int32) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskResponse) SetBody(v *SubmitEnterpriseVocAnalysisTaskResponseBody) *SubmitEnterpriseVocAnalysisTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitTagMiningAnalysisTaskRequest struct {
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
@@ -8402,6 +9812,148 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 取消异步任务
+//
+// @param request - CancelAsyncTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAsyncTaskResponse
+func (client *Client) CancelAsyncTaskWithOptions(workspaceId *string, request *CancelAsyncTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CancelAsyncTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelAsyncTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/cancelAsyncTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelAsyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消异步任务
+//
+// @param request - CancelAsyncTaskRequest
+//
+// @return CancelAsyncTaskResponse
+func (client *Client) CancelAsyncTask(workspaceId *string, request *CancelAsyncTaskRequest) (_result *CancelAsyncTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CancelAsyncTaskResponse{}
+	_body, _err := client.CancelAsyncTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出挖掘任务明细
+//
+// @param tmpReq - ExportAnalysisTagDetailByTaskIdRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExportAnalysisTagDetailByTaskIdResponse
+func (client *Client) ExportAnalysisTagDetailByTaskIdWithOptions(workspaceId *string, tmpReq *ExportAnalysisTagDetailByTaskIdRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExportAnalysisTagDetailByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ExportAnalysisTagDetailByTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Categories)) {
+		request.CategoriesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Categories, tea.String("categories"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoriesShrink)) {
+		body["categories"] = request.CategoriesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		body["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportAnalysisTagDetailByTaskId"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/exportAnalysisTagDetailByTaskId"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导出挖掘任务明细
+//
+// @param request - ExportAnalysisTagDetailByTaskIdRequest
+//
+// @return ExportAnalysisTagDetailByTaskIdResponse
+func (client *Client) ExportAnalysisTagDetailByTaskId(workspaceId *string, request *ExportAnalysisTagDetailByTaskIdRequest) (_result *ExportAnalysisTagDetailByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExportAnalysisTagDetailByTaskIdResponse{}
+	_body, _err := client.ExportAnalysisTagDetailByTaskIdWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新闻播报-抽取分类获取播报热点
 //
 // @param request - GenerateBroadcastNewsRequest
@@ -8436,24 +9988,13 @@ func (client *Client) GenerateBroadcastNewsWithOptions(workspaceId *string, requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenerateBroadcastNewsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenerateBroadcastNewsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenerateBroadcastNewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8533,24 +10074,13 @@ func (client *Client) GenerateOutputFormatWithOptions(workspaceId *string, tmpRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenerateOutputFormatResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenerateOutputFormatResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenerateOutputFormatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8565,6 +10095,70 @@ func (client *Client) GenerateOutputFormat(workspaceId *string, request *Generat
 	headers := make(map[string]*string)
 	_result = &GenerateOutputFormatResponse{}
 	_body, _err := client.GenerateOutputFormatWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取企业VOC分析任务结果
+//
+// @param request - GetEnterpriseVocAnalysisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetEnterpriseVocAnalysisTaskResponse
+func (client *Client) GetEnterpriseVocAnalysisTaskWithOptions(workspaceId *string, request *GetEnterpriseVocAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEnterpriseVocAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEnterpriseVocAnalysisTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/getEnterpriseVocAnalysisTask"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取企业VOC分析任务结果
+//
+// @param request - GetEnterpriseVocAnalysisTaskRequest
+//
+// @return GetEnterpriseVocAnalysisTaskResponse
+func (client *Client) GetEnterpriseVocAnalysisTask(workspaceId *string, request *GetEnterpriseVocAnalysisTaskRequest) (_result *GetEnterpriseVocAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.GetEnterpriseVocAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8608,24 +10202,13 @@ func (client *Client) GetTagMiningAnalysisTaskWithOptions(workspaceId *string, r
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTagMiningAnalysisTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTagMiningAnalysisTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTagMiningAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8671,24 +10254,13 @@ func (client *Client) GetVideoAnalysisConfigWithOptions(workspaceId *string, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVideoAnalysisConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVideoAnalysisConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVideoAnalysisConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8744,24 +10316,13 @@ func (client *Client) GetVideoAnalysisTaskWithOptions(workspaceId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVideoAnalysisTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVideoAnalysisTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVideoAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8835,24 +10396,13 @@ func (client *Client) ListHotTopicSummariesWithOptions(workspaceId *string, requ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListHotTopicSummariesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListHotTopicSummariesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListHotTopicSummariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8867,6 +10417,104 @@ func (client *Client) ListHotTopicSummaries(workspaceId *string, request *ListHo
 	headers := make(map[string]*string)
 	_result = &ListHotTopicSummariesResponse{}
 	_body, _err := client.ListHotTopicSummariesWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 企业VOC分析
+//
+// @param tmpReq - RunEnterpriseVocAnalysisRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunEnterpriseVocAnalysisResponse
+func (client *Client) RunEnterpriseVocAnalysisWithOptions(workspaceId *string, tmpReq *RunEnterpriseVocAnalysisRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RunEnterpriseVocAnalysisResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunEnterpriseVocAnalysisShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTags)) {
+		request.FilterTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTags, tea.String("filterTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["extraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTagsShrink)) {
+		body["filterTags"] = request.FilterTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDescription)) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunEnterpriseVocAnalysis"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/runEnterpriseVocAnalysis"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunEnterpriseVocAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 企业VOC分析
+//
+// @param request - RunEnterpriseVocAnalysisRequest
+//
+// @return RunEnterpriseVocAnalysisResponse
+func (client *Client) RunEnterpriseVocAnalysis(workspaceId *string, request *RunEnterpriseVocAnalysisRequest) (_result *RunEnterpriseVocAnalysisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RunEnterpriseVocAnalysisResponse{}
+	_body, _err := client.RunEnterpriseVocAnalysisWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8972,24 +10620,13 @@ func (client *Client) RunHotTopicChatWithOptions(workspaceId *string, tmpReq *Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunHotTopicChatResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunHotTopicChatResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunHotTopicChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9065,24 +10702,13 @@ func (client *Client) RunHotTopicSummaryWithOptions(workspaceId *string, tmpReq 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunHotTopicSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunHotTopicSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunHotTopicSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9158,24 +10784,13 @@ func (client *Client) RunMarketingInformationExtractWithOptions(workspaceId *str
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunMarketingInformationExtractResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunMarketingInformationExtractResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunMarketingInformationExtractResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9257,24 +10872,13 @@ func (client *Client) RunMarketingInformationWritingWithOptions(workspaceId *str
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunMarketingInformationWritingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunMarketingInformationWritingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunMarketingInformationWritingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9362,24 +10966,13 @@ func (client *Client) RunNetworkContentAuditWithOptions(workspaceId *string, tmp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunNetworkContentAuditResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunNetworkContentAuditResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunNetworkContentAuditResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9441,24 +11034,13 @@ func (client *Client) RunScriptChatWithOptions(workspaceId *string, request *Run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunScriptChatResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunScriptChatResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunScriptChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9524,24 +11106,13 @@ func (client *Client) RunScriptContinueWithOptions(workspaceId *string, request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunScriptContinueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunScriptContinueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunScriptContinueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9623,24 +11194,13 @@ func (client *Client) RunScriptPlanningWithOptions(workspaceId *string, request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunScriptPlanningResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunScriptPlanningResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunScriptPlanningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9698,24 +11258,13 @@ func (client *Client) RunScriptRefineWithOptions(workspaceId *string, request *R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunScriptRefineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunScriptRefineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunScriptRefineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9803,24 +11352,13 @@ func (client *Client) RunStyleWritingWithOptions(workspaceId *string, tmpReq *Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunStyleWritingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunStyleWritingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunStyleWritingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9912,24 +11450,13 @@ func (client *Client) RunTagMiningAnalysisWithOptions(workspaceId *string, tmpRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunTagMiningAnalysisResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunTagMiningAnalysisResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunTagMiningAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10081,24 +11608,13 @@ func (client *Client) RunVideoAnalysisWithOptions(workspaceId *string, tmpReq *R
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RunVideoAnalysisResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RunVideoAnalysisResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RunVideoAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10113,6 +11629,116 @@ func (client *Client) RunVideoAnalysis(workspaceId *string, request *RunVideoAna
 	headers := make(map[string]*string)
 	_result = &RunVideoAnalysisResponse{}
 	_body, _err := client.RunVideoAnalysisWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交企业VOC异步任务
+//
+// @param tmpReq - SubmitEnterpriseVocAnalysisTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitEnterpriseVocAnalysisTaskResponse
+func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId *string, tmpReq *SubmitEnterpriseVocAnalysisTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitEnterpriseVocAnalysisTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitEnterpriseVocAnalysisTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Contents)) {
+		request.ContentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Contents, tea.String("contents"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.FilterTags)) {
+		request.FilterTagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FilterTags, tea.String("filterTags"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentsShrink)) {
+		body["contents"] = request.ContentsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		body["extraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileKey)) {
+		body["fileKey"] = request.FileKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilterTagsShrink)) {
+		body["filterTags"] = request.FilterTagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["modelId"] = request.ModelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
+		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		body["tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskDescription)) {
+		body["taskDescription"] = request.TaskDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitEnterpriseVocAnalysisTask"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/submitEnterpriseVocAnalysisTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交企业VOC异步任务
+//
+// @param request - SubmitEnterpriseVocAnalysisTaskRequest
+//
+// @return SubmitEnterpriseVocAnalysisTaskResponse
+func (client *Client) SubmitEnterpriseVocAnalysisTask(workspaceId *string, request *SubmitEnterpriseVocAnalysisTaskRequest) (_result *SubmitEnterpriseVocAnalysisTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitEnterpriseVocAnalysisTaskResponse{}
+	_body, _err := client.SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10198,24 +11824,13 @@ func (client *Client) SubmitTagMiningAnalysisTaskWithOptions(workspaceId *string
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitTagMiningAnalysisTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitTagMiningAnalysisTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitTagMiningAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10363,24 +11978,13 @@ func (client *Client) SubmitVideoAnalysisTaskWithOptions(workspaceId *string, tm
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitVideoAnalysisTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitVideoAnalysisTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitVideoAnalysisTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10438,24 +12042,13 @@ func (client *Client) UpdateVideoAnalysisConfigWithOptions(workspaceId *string, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateVideoAnalysisConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateVideoAnalysisConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateVideoAnalysisConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
