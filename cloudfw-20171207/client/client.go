@@ -2676,6 +2676,16 @@ type CreateVpcFirewallCenConfigureRequest struct {
 	//
 	// 10.0.0.0/8
 	FirewallVpcCidrBlock *string `json:"FirewallVpcCidrBlock,omitempty" xml:"FirewallVpcCidrBlock,omitempty"`
+	// The ID of the backup availability zone to which the firewall belongs. The firewall will automatically switch to the backup availability zone to continue running only if the primary availability zone service is unavailable.
+	//
+	// If this parameter is not filled, the backup availability zone for the firewall will be automatically assigned.
+	//
+	// > This parameter is only effective when creating a VPC firewall for the first time in this CEN region.
+	//
+	// example:
+	//
+	// cn-hangzhou-b
+	FirewallVpcStandbyZoneId *string `json:"FirewallVpcStandbyZoneId,omitempty" xml:"FirewallVpcStandbyZoneId,omitempty"`
 	// The ID of the zone to which the vSwitch belongs. If your service is latency-sensitive, you can specify the same zone for the vSwitch of the firewall and the vSwitch of your business VPC to minimize latency.
 	//
 	// If you do not specify a value, a zone is automatically assigned for the vSwitch.
@@ -2761,6 +2771,11 @@ func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVSwitchCidrBlock(v str
 
 func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVpcCidrBlock(v string) *CreateVpcFirewallCenConfigureRequest {
 	s.FirewallVpcCidrBlock = &v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureRequest) SetFirewallVpcStandbyZoneId(v string) *CreateVpcFirewallCenConfigureRequest {
+	s.FirewallVpcStandbyZoneId = &v
 	return s
 }
 
@@ -5240,8 +5255,9 @@ type DescribeAddressBookResponseBodyAcls struct {
 	// example:
 	//
 	// 2
-	AddressListCount *int32                                          `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
-	Addresses        []*DescribeAddressBookResponseBodyAclsAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	AddressListCount *int32 `json:"AddressListCount,omitempty" xml:"AddressListCount,omitempty"`
+	// A list of addresses in the address book, each with a single address description.
+	Addresses []*DescribeAddressBookResponseBodyAclsAddresses `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// Indicates whether the public IP addresses of ECS instances are automatically added to the address book if the instances match the specified tags. The setting takes effect on both newly purchased ECS instances whose tag settings are complete and ECS instances whose tag settings are modified. Valid values:
 	//
 	// 	- **1**: yes
@@ -5372,8 +5388,18 @@ func (s *DescribeAddressBookResponseBodyAcls) SetTagRelation(v string) *Describe
 }
 
 type DescribeAddressBookResponseBodyAclsAddresses struct {
+	// Address information in the address book.
+	//
+	// example:
+	//
+	// 192.168.0.1/32
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Note    *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// Single address description.
+	//
+	// example:
+	//
+	// description
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
 func (s DescribeAddressBookResponseBodyAclsAddresses) String() string {
@@ -7515,9 +7541,13 @@ type DescribeDefaultIPSConfigResponseBody struct {
 	// example:
 	//
 	// 0
-	CtiRules        *int32  `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
-	FreeTrailStatus *string `json:"FreeTrailStatus,omitempty" xml:"FreeTrailStatus,omitempty"`
-	MaxSdl          *int64  `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
+	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	// The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
+	//
+	// example:
+	//
+	// 10
+	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
 	// Indicates whether virtual patching is enabled. Valid values:
 	//
 	// 	- **1**: yes
@@ -7573,11 +7603,6 @@ func (s *DescribeDefaultIPSConfigResponseBody) SetBasicRules(v int32) *DescribeD
 
 func (s *DescribeDefaultIPSConfigResponseBody) SetCtiRules(v int32) *DescribeDefaultIPSConfigResponseBody {
 	s.CtiRules = &v
-	return s
-}
-
-func (s *DescribeDefaultIPSConfigResponseBody) SetFreeTrailStatus(v string) *DescribeDefaultIPSConfigResponseBody {
-	s.FreeTrailStatus = &v
 	return s
 }
 
@@ -13882,8 +13907,18 @@ type DescribePostpayTrafficTotalResponseBody struct {
 	// example:
 	//
 	// 560646279
-	TotalNatTraffic     *int64 `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
+	TotalNatTraffic *int64 `json:"TotalNatTraffic,omitempty" xml:"TotalNatTraffic,omitempty"`
+	// Data Leak Detection Total Fee Flow.
+	//
+	// example:
+	//
+	// 22879916142
 	TotalSdlBillTraffic *int64 `json:"TotalSdlBillTraffic,omitempty" xml:"TotalSdlBillTraffic,omitempty"`
+	// Data Leak Detection Total free usage traffic.
+	//
+	// example:
+	//
+	// 0
 	TotalSdlFreeTraffic *int64 `json:"TotalSdlFreeTraffic,omitempty" xml:"TotalSdlFreeTraffic,omitempty"`
 	// The total volume of traffic. If you use Cloud Firewall that uses the subscription billing method, this parameter indicates the total volume of burstable protected traffic. Unit: bytes.
 	//
@@ -15571,7 +15606,8 @@ type DescribeSignatureLibVersionResponseBodyVersion struct {
 	// example:
 	//
 	// ips
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// The version number.
 	//
 	// example:
@@ -15590,6 +15626,11 @@ func (s DescribeSignatureLibVersionResponseBodyVersion) GoString() string {
 
 func (s *DescribeSignatureLibVersionResponseBodyVersion) SetType(v string) *DescribeSignatureLibVersionResponseBodyVersion {
 	s.Type = &v
+	return s
+}
+
+func (s *DescribeSignatureLibVersionResponseBodyVersion) SetUpdateTime(v int64) *DescribeSignatureLibVersionResponseBodyVersion {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -16351,12 +16392,14 @@ type DescribeTrFirewallsV2DetailResponseBody struct {
 	//
 	// 10.0.2.0/24
 	TrAttachmentMasterCidr *string `json:"TrAttachmentMasterCidr,omitempty" xml:"TrAttachmentMasterCidr,omitempty"`
+	TrAttachmentMasterZone *string `json:"TrAttachmentMasterZone,omitempty" xml:"TrAttachmentMasterZone,omitempty"`
 	// The secondary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
 	//
 	// example:
 	//
 	// 10.0.3.0/24
 	TrAttachmentSlaveCidr *string `json:"TrAttachmentSlaveCidr,omitempty" xml:"TrAttachmentSlaveCidr,omitempty"`
+	TrAttachmentSlaveZone *string `json:"TrAttachmentSlaveZone,omitempty" xml:"TrAttachmentSlaveZone,omitempty"`
 	// The ID of the transit router.
 	//
 	// example:
@@ -16448,8 +16491,18 @@ func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentMasterCidr(v st
 	return s
 }
 
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentMasterZone(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentMasterZone = &v
+	return s
+}
+
 func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentSlaveCidr(v string) *DescribeTrFirewallsV2DetailResponseBody {
 	s.TrAttachmentSlaveCidr = &v
+	return s
+}
+
+func (s *DescribeTrFirewallsV2DetailResponseBody) SetTrAttachmentSlaveZone(v string) *DescribeTrFirewallsV2DetailResponseBody {
+	s.TrAttachmentSlaveZone = &v
 	return s
 }
 
@@ -16681,6 +16734,7 @@ func (s *DescribeTrFirewallsV2ListResponseBody) SetVpcTrFirewalls(v []*DescribeT
 }
 
 type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls struct {
+	AclConfig *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
 	// The ID of the CEN instance.
 	//
 	// example:
@@ -16813,6 +16867,11 @@ func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetAclConfig(v *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
+	s.AclConfig = v
+	return s
+}
+
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetCenId(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
 	s.CenId = &v
 	return s
@@ -16890,6 +16949,23 @@ func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetUnprotectedReso
 
 func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls) SetVpcFirewallName(v string) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewalls {
 	s.VpcFirewallName = &v
+	return s
+}
+
+type DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig struct {
+	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig) SetStrictMode(v int32) *DescribeTrFirewallsV2ListResponseBodyVpcTrFirewallsAclConfig {
+	s.StrictMode = &v
 	return s
 }
 
@@ -17545,8 +17621,13 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// normal
-	InstanceStatus    *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InternetBandwidth *int64  `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
+	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	// The peak Internet traffic that can be protected.
+	//
+	// example:
+	//
+	// 3000
+	InternetBandwidth *int64 `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
 	// The number of public IP addresses that can be protected.
 	//
 	// >  This parameter takes effect only for Cloud Firewall that uses the subscription billing method.
@@ -17584,7 +17665,12 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// 0
-	MaxOverflow  *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
+	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
+	// The peak traffic of NAT private network that can be protected.
+	//
+	// example:
+	//
+	// 3000
 	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
 	// The request ID.
 	//
@@ -17623,7 +17709,12 @@ type DescribeUserBuyVersionResponseBody struct {
 	// example:
 	//
 	// 2
-	Version      *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// The peak cross-VPC traffic that can be protected.
+	//
+	// example:
+	//
+	// 3000
 	VpcBandwidth *int64 `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
 	// The number of virtual private clouds (VPCs) that can be protected.
 	//
@@ -17934,6 +18025,7 @@ type DescribeVpcFirewallAclGroupListRequest struct {
 	//
 	// configured
 	FirewallConfigureStatus *string `json:"FirewallConfigureStatus,omitempty" xml:"FirewallConfigureStatus,omitempty"`
+	FirewallId              *string `json:"FirewallId,omitempty" xml:"FirewallId,omitempty"`
 	// The language of the content within the response. Valid values:
 	//
 	// 	- **zh**: Chinese (default)
@@ -17967,6 +18059,11 @@ func (s *DescribeVpcFirewallAclGroupListRequest) SetCurrentPage(v string) *Descr
 
 func (s *DescribeVpcFirewallAclGroupListRequest) SetFirewallConfigureStatus(v string) *DescribeVpcFirewallAclGroupListRequest {
 	s.FirewallConfigureStatus = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallAclGroupListRequest) SetFirewallId(v string) *DescribeVpcFirewallAclGroupListRequest {
+	s.FirewallId = &v
 	return s
 }
 
@@ -18021,6 +18118,7 @@ func (s *DescribeVpcFirewallAclGroupListResponseBody) SetTotalCount(v int32) *De
 }
 
 type DescribeVpcFirewallAclGroupListResponseBodyAclGroupList struct {
+	AclConfig *DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
 	// The ID of the policy group.
 	//
 	// Valid values:
@@ -18079,6 +18177,11 @@ func (s DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) GoString() stri
 	return s.String()
 }
 
+func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclConfig(v *DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
+	s.AclConfig = v
+	return s
+}
+
 func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetAclGroupId(v string) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
 	s.AclGroupId = &v
 	return s
@@ -18101,6 +18204,23 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetIsDefault(v
 
 func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetMemberUid(v string) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList {
 	s.MemberUid = &v
+	return s
+}
+
+type DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig struct {
+	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+}
+
+func (s DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig) SetStrictMode(v int32) *DescribeVpcFirewallAclGroupListResponseBodyAclGroupListAclConfig {
+	s.StrictMode = &v
 	return s
 }
 
@@ -18204,7 +18324,7 @@ type DescribeVpcFirewallCenDetailResponseBody struct {
 	//
 	// opened
 	FirewallSwitchStatus *string `json:"FirewallSwitchStatus,omitempty" xml:"FirewallSwitchStatus,omitempty"`
-	// The VPC that is automatically created for the firewall.
+	// The firewall VPC.
 	FirewallVpc *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc `json:"FirewallVpc,omitempty" xml:"FirewallVpc,omitempty" type:"Struct"`
 	// The details about the VPC.
 	LocalVpc *DescribeVpcFirewallCenDetailResponseBodyLocalVpc `json:"LocalVpc,omitempty" xml:"LocalVpc,omitempty" type:"Struct"`
@@ -18282,6 +18402,12 @@ type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
 	//
 	// 0
 	AllowConfiguration *int32 `json:"AllowConfiguration,omitempty" xml:"AllowConfiguration,omitempty"`
+	// Firewall backup availability zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
+	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
 	// The CIDR block of the VPC.
 	//
 	// example:
@@ -18306,6 +18432,12 @@ type DescribeVpcFirewallCenDetailResponseBodyFirewallVpc struct {
 	//
 	// vsw-bp1sqg9wms9wxcs1****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	// The availability zone ID of the virtual switch.
+	//
+	// example:
+	//
+	// cn-hangzhou-i
+	VswitchZoneId *string `json:"VswitchZoneId,omitempty" xml:"VswitchZoneId,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -18327,6 +18459,11 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetAllowConfigurat
 	return s
 }
 
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetStandbyZoneId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.StandbyZoneId = &v
+	return s
+}
+
 func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVpcCidr(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
 	s.VpcCidr = &v
 	return s
@@ -18344,6 +18481,11 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVswitchCidr(v s
 
 func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVswitchId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
 	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc) SetVswitchZoneId(v string) *DescribeVpcFirewallCenDetailResponseBodyFirewallVpc {
+	s.VswitchZoneId = &v
 	return s
 }
 
@@ -18905,6 +19047,7 @@ func (s *DescribeVpcFirewallCenListResponseBody) SetVpcFirewalls(v []*DescribeVp
 }
 
 type DescribeVpcFirewallCenListResponseBodyVpcFirewalls struct {
+	AclConfig *DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
 	// The ID of the CEN instance.
 	//
 	// example:
@@ -19005,6 +19148,11 @@ func (s DescribeVpcFirewallCenListResponseBodyVpcFirewalls) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetAclConfig(v *DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig) *DescribeVpcFirewallCenListResponseBodyVpcFirewalls {
+	s.AclConfig = v
+	return s
+}
+
 func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetCenId(v string) *DescribeVpcFirewallCenListResponseBodyVpcFirewalls {
 	s.CenId = &v
 	return s
@@ -19062,6 +19210,23 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetVpcFirewallId(v 
 
 func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewalls) SetVpcFirewallName(v string) *DescribeVpcFirewallCenListResponseBodyVpcFirewalls {
 	s.VpcFirewallName = &v
+	return s
+}
+
+type DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig struct {
+	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+}
+
+func (s DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig) SetStrictMode(v int32) *DescribeVpcFirewallCenListResponseBodyVpcFirewallsAclConfig {
+	s.StrictMode = &v
 	return s
 }
 
@@ -21177,6 +21342,7 @@ func (s *DescribeVpcFirewallListResponseBody) SetVpcFirewalls(v []*DescribeVpcFi
 }
 
 type DescribeVpcFirewallListResponseBodyVpcFirewalls struct {
+	AclConfig *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig `json:"AclConfig,omitempty" xml:"AclConfig,omitempty" type:"Struct"`
 	// The bandwidth of the Express Connect circuit. Unit: Mbit/s.
 	//
 	// example:
@@ -21267,6 +21433,11 @@ func (s DescribeVpcFirewallListResponseBodyVpcFirewalls) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetAclConfig(v *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
+	s.AclConfig = v
+	return s
+}
+
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetBandwidth(v int32) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
 	s.Bandwidth = &v
 	return s
@@ -21324,6 +21495,24 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetVpcFirewallId(v str
 
 func (s *DescribeVpcFirewallListResponseBodyVpcFirewalls) SetVpcFirewallName(v string) *DescribeVpcFirewallListResponseBodyVpcFirewalls {
 	s.VpcFirewallName = &v
+	return s
+}
+
+type DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig struct {
+	// This parameter is required.
+	StrictMode *int32 `json:"StrictMode,omitempty" xml:"StrictMode,omitempty"`
+}
+
+func (s DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig) SetStrictMode(v int32) *DescribeVpcFirewallListResponseBodyVpcFirewallsAclConfig {
+	s.StrictMode = &v
 	return s
 }
 
@@ -23756,24 +23945,20 @@ type ModifyDefaultIPSConfigRequest struct {
 	//
 	// 	- **0**: no
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
-	BasicRules *string `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
+	BasicRules *int32 `json:"BasicRules,omitempty" xml:"BasicRules,omitempty"`
 	// Specifies whether to enable threat intelligence. Valid values:
 	//
 	// 	- **1**: yes
 	//
 	// 	- **0**: no
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 0
-	CtiRules *string `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
+	CtiRules *int32 `json:"CtiRules,omitempty" xml:"CtiRules,omitempty"`
 	// The language of the content within the request and response. Valid values:
 	//
 	// 	- **zh*	- (default)
@@ -23783,8 +23968,13 @@ type ModifyDefaultIPSConfigRequest struct {
 	// example:
 	//
 	// zh
-	Lang   *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	MaxSdl *int64  `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The maximum amount of traffic that can be processed by the sensitive data leak detection feature each day.
+	//
+	// example:
+	//
+	// 100
+	MaxSdl *int64 `json:"MaxSdl,omitempty" xml:"MaxSdl,omitempty"`
 	// Specifies whether to enable virtual patching. Valid values:
 	//
 	// 	- **1**: yes
@@ -23794,7 +23984,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	// example:
 	//
 	// 1
-	PatchRules *string `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
+	PatchRules *int32 `json:"PatchRules,omitempty" xml:"PatchRules,omitempty"`
 	// The level of the rule group for the IPS. Valid values:
 	//
 	// 	- **1**: loose
@@ -23806,7 +23996,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	// example:
 	//
 	// 1
-	RuleClass *string `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
+	RuleClass *int32 `json:"RuleClass,omitempty" xml:"RuleClass,omitempty"`
 	// The mode of the IPS. Valid values:
 	//
 	// 	- **1**: block mode
@@ -23818,7 +24008,7 @@ type ModifyDefaultIPSConfigRequest struct {
 	// example:
 	//
 	// 0
-	RunMode *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
+	RunMode *int32 `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
 }
 
 func (s ModifyDefaultIPSConfigRequest) String() string {
@@ -23829,12 +24019,12 @@ func (s ModifyDefaultIPSConfigRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyDefaultIPSConfigRequest) SetBasicRules(v string) *ModifyDefaultIPSConfigRequest {
+func (s *ModifyDefaultIPSConfigRequest) SetBasicRules(v int32) *ModifyDefaultIPSConfigRequest {
 	s.BasicRules = &v
 	return s
 }
 
-func (s *ModifyDefaultIPSConfigRequest) SetCtiRules(v string) *ModifyDefaultIPSConfigRequest {
+func (s *ModifyDefaultIPSConfigRequest) SetCtiRules(v int32) *ModifyDefaultIPSConfigRequest {
 	s.CtiRules = &v
 	return s
 }
@@ -23849,17 +24039,17 @@ func (s *ModifyDefaultIPSConfigRequest) SetMaxSdl(v int64) *ModifyDefaultIPSConf
 	return s
 }
 
-func (s *ModifyDefaultIPSConfigRequest) SetPatchRules(v string) *ModifyDefaultIPSConfigRequest {
+func (s *ModifyDefaultIPSConfigRequest) SetPatchRules(v int32) *ModifyDefaultIPSConfigRequest {
 	s.PatchRules = &v
 	return s
 }
 
-func (s *ModifyDefaultIPSConfigRequest) SetRuleClass(v string) *ModifyDefaultIPSConfigRequest {
+func (s *ModifyDefaultIPSConfigRequest) SetRuleClass(v int32) *ModifyDefaultIPSConfigRequest {
 	s.RuleClass = &v
 	return s
 }
 
-func (s *ModifyDefaultIPSConfigRequest) SetRunMode(v string) *ModifyDefaultIPSConfigRequest {
+func (s *ModifyDefaultIPSConfigRequest) SetRunMode(v int32) *ModifyDefaultIPSConfigRequest {
 	s.RunMode = &v
 	return s
 }
@@ -24864,6 +25054,7 @@ func (s *ModifyObjectGroupOperationResponse) SetBody(v *ModifyObjectGroupOperati
 }
 
 type ModifyPolicyAdvancedConfigRequest struct {
+	Eips []*string `json:"Eips,omitempty" xml:"Eips,omitempty" type:"Repeated"`
 	// Specifies whether to enable the strict mode for the access control policy. Valid values:
 	//
 	// 	- **on**: enables the strict mode.
@@ -24902,6 +25093,11 @@ func (s ModifyPolicyAdvancedConfigRequest) String() string {
 
 func (s ModifyPolicyAdvancedConfigRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyPolicyAdvancedConfigRequest) SetEips(v []*string) *ModifyPolicyAdvancedConfigRequest {
+	s.Eips = v
+	return s
 }
 
 func (s *ModifyPolicyAdvancedConfigRequest) SetInternetSwitch(v string) *ModifyPolicyAdvancedConfigRequest {
@@ -29065,6 +29261,10 @@ func (client *Client) CreateVpcFirewallCenConfigureWithOptions(request *CreateVp
 		query["FirewallVpcCidrBlock"] = request.FirewallVpcCidrBlock
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FirewallVpcStandbyZoneId)) {
+		query["FirewallVpcStandbyZoneId"] = request.FirewallVpcStandbyZoneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FirewallVpcZoneId)) {
 		query["FirewallVpcZoneId"] = request.FirewallVpcZoneId
 	}
@@ -31064,7 +31264,7 @@ func (client *Client) DescribeControlPolicy(request *DescribeControlPolicyReques
 
 // Summary:
 //
-// Queries the default configurations of the intrusion prevention system (IPS).
+// Queries the default intrusion prevention system (IPS) configurations.
 //
 // @param request - DescribeDefaultIPSConfigRequest
 //
@@ -31106,7 +31306,7 @@ func (client *Client) DescribeDefaultIPSConfigWithOptions(request *DescribeDefau
 
 // Summary:
 //
-// Queries the default configurations of the intrusion prevention system (IPS).
+// Queries the default intrusion prevention system (IPS) configurations.
 //
 // @param request - DescribeDefaultIPSConfigRequest
 //
@@ -33740,6 +33940,10 @@ func (client *Client) DescribeVpcFirewallAclGroupListWithOptions(request *Descri
 		query["FirewallConfigureStatus"] = request.FirewallConfigureStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FirewallId)) {
+		query["FirewallId"] = request.FirewallId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
 		query["Lang"] = request.Lang
 	}
@@ -35800,6 +36004,10 @@ func (client *Client) ModifyPolicyAdvancedConfigWithOptions(request *ModifyPolic
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Eips)) {
+		query["Eips"] = request.Eips
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InternetSwitch)) {
 		query["InternetSwitch"] = request.InternetSwitch
 	}
