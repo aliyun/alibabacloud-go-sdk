@@ -2873,6 +2873,8 @@ func (s *ListHotTopicSummariesResponse) SetBody(v *ListHotTopicSummariesResponse
 }
 
 type RunEnterpriseVocAnalysisRequest struct {
+	AkProxy *string `json:"akProxy,omitempty" xml:"akProxy,omitempty"`
+	ApiKey  *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
 	//
 	// example:
@@ -2918,6 +2920,16 @@ func (s RunEnterpriseVocAnalysisRequest) String() string {
 
 func (s RunEnterpriseVocAnalysisRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetAkProxy(v string) *RunEnterpriseVocAnalysisRequest {
+	s.AkProxy = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetApiKey(v string) *RunEnterpriseVocAnalysisRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunEnterpriseVocAnalysisRequest) SetContent(v string) *RunEnterpriseVocAnalysisRequest {
@@ -3022,6 +3034,8 @@ func (s *RunEnterpriseVocAnalysisRequestTags) SetTagName(v string) *RunEnterpris
 }
 
 type RunEnterpriseVocAnalysisShrinkRequest struct {
+	AkProxy *string `json:"akProxy,omitempty" xml:"akProxy,omitempty"`
+	ApiKey  *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// 需要进行VOC分析的文本内容（content、contents、url、fileKey 四选一。优先级从小到大）
 	//
 	// example:
@@ -3067,6 +3081,16 @@ func (s RunEnterpriseVocAnalysisShrinkRequest) String() string {
 
 func (s RunEnterpriseVocAnalysisShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetAkProxy(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.AkProxy = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetApiKey(v string) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunEnterpriseVocAnalysisShrinkRequest) SetContent(v string) *RunEnterpriseVocAnalysisShrinkRequest {
@@ -4759,6 +4783,7 @@ func (s *RunMarketingInformationExtractResponse) SetBody(v *RunMarketingInformat
 }
 
 type RunMarketingInformationWritingRequest struct {
+	ApiKey           *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	CustomLimitation *string `json:"customLimitation,omitempty" xml:"customLimitation,omitempty"`
 	CustomPrompt     *string `json:"customPrompt,omitempty" xml:"customPrompt,omitempty"`
 	InputExample     *string `json:"inputExample,omitempty" xml:"inputExample,omitempty"`
@@ -4779,6 +4804,11 @@ func (s RunMarketingInformationWritingRequest) String() string {
 
 func (s RunMarketingInformationWritingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunMarketingInformationWritingRequest) SetApiKey(v string) *RunMarketingInformationWritingRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunMarketingInformationWritingRequest) SetCustomLimitation(v string) *RunMarketingInformationWritingRequest {
@@ -4849,6 +4879,7 @@ func (s *RunMarketingInformationWritingResponseBody) SetPayload(v *RunMarketingI
 }
 
 type RunMarketingInformationWritingResponseBodyHeader struct {
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
 	// example:
 	//
 	// result-generated
@@ -4878,6 +4909,11 @@ func (s RunMarketingInformationWritingResponseBodyHeader) String() string {
 
 func (s RunMarketingInformationWritingResponseBodyHeader) GoString() string {
 	return s.String()
+}
+
+func (s *RunMarketingInformationWritingResponseBodyHeader) SetErrorMessage(v string) *RunMarketingInformationWritingResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
 }
 
 func (s *RunMarketingInformationWritingResponseBodyHeader) SetEvent(v string) *RunMarketingInformationWritingResponseBodyHeader {
@@ -5018,6 +5054,7 @@ func (s *RunMarketingInformationWritingResponse) SetBody(v *RunMarketingInformat
 }
 
 type RunNetworkContentAuditRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -5053,6 +5090,11 @@ func (s RunNetworkContentAuditRequest) String() string {
 
 func (s RunNetworkContentAuditRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunNetworkContentAuditRequest) SetApiKey(v string) *RunNetworkContentAuditRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunNetworkContentAuditRequest) SetBusinessType(v string) *RunNetworkContentAuditRequest {
@@ -5120,6 +5162,7 @@ func (s *RunNetworkContentAuditRequestTags) SetTagName(v string) *RunNetworkCont
 }
 
 type RunNetworkContentAuditShrinkRequest struct {
+	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	// example:
 	//
 	// clueMining
@@ -5155,6 +5198,11 @@ func (s RunNetworkContentAuditShrinkRequest) String() string {
 
 func (s RunNetworkContentAuditShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RunNetworkContentAuditShrinkRequest) SetApiKey(v string) *RunNetworkContentAuditShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *RunNetworkContentAuditShrinkRequest) SetBusinessType(v string) *RunNetworkContentAuditShrinkRequest {
@@ -8511,6 +8559,7 @@ func (s *RunVideoAnalysisResponse) SetBody(v *RunVideoAnalysisResponseBody) *Run
 }
 
 type SubmitEnterpriseVocAnalysisTaskRequest struct {
+	ApiKey    *string                                           `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	Contents  []*SubmitEnterpriseVocAnalysisTaskRequestContents `json:"contents,omitempty" xml:"contents,omitempty" type:"Repeated"`
 	ExtraInfo *string                                           `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
 	// example:
@@ -8537,6 +8586,11 @@ func (s SubmitEnterpriseVocAnalysisTaskRequest) String() string {
 
 func (s SubmitEnterpriseVocAnalysisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetContents(v []*SubmitEnterpriseVocAnalysisTaskRequestContents) *SubmitEnterpriseVocAnalysisTaskRequest {
@@ -8666,6 +8720,7 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequestTags) SetTagName(v string) *Submi
 }
 
 type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
+	ApiKey         *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
 	ContentsShrink *string `json:"contents,omitempty" xml:"contents,omitempty"`
 	ExtraInfo      *string `json:"extraInfo,omitempty" xml:"extraInfo,omitempty"`
 	// example:
@@ -8692,6 +8747,11 @@ func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetContentsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
@@ -10451,6 +10511,14 @@ func (client *Client) RunEnterpriseVocAnalysisWithOptions(workspaceId *string, t
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AkProxy)) {
+		body["akProxy"] = request.AkProxy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Content)) {
 		body["content"] = request.Content
 	}
@@ -10829,6 +10897,10 @@ func (client *Client) RunMarketingInformationWritingWithOptions(workspaceId *str
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomLimitation)) {
 		body["customLimitation"] = request.CustomLimitation
 	}
@@ -10923,6 +10995,10 @@ func (client *Client) RunNetworkContentAuditWithOptions(workspaceId *string, tmp
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
 		body["businessType"] = request.BusinessType
 	}
@@ -11667,6 +11743,10 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId *st
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["apiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContentsShrink)) {
 		body["contents"] = request.ContentsShrink
 	}
