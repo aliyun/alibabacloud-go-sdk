@@ -430,7 +430,13 @@ type DatasetFileMeta struct {
 	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
 	DownloadUrl       *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	FileFingerPrint   *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01.000Z
+	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
 	// example:
 	//
 	// car.png
@@ -439,13 +445,25 @@ type DatasetFileMeta struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
+	// 2021-01-12T14:36:01.000Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
 	// example:
 	//
+	// {     "ImageHeight": 400,     "ImageWidth": 800 }
+	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// example:
+	//
 	// 0.6
-	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Tags  *string  `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Score              *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	SemanticIndexJobId *string  `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01.000Z
+	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	Tags                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	ThumbnailUrl            *string `json:"ThumbnailUrl,omitempty" xml:"ThumbnailUrl,omitempty"`
 	// example:
 	//
 	// oss://test-bucket/dataset/car.png
@@ -475,6 +493,11 @@ func (s *DatasetFileMeta) SetDownloadUrl(v string) *DatasetFileMeta {
 	return s
 }
 
+func (s *DatasetFileMeta) SetFileCreateTime(v string) *DatasetFileMeta {
+	s.FileCreateTime = &v
+	return s
+}
+
 func (s *DatasetFileMeta) SetFileFingerPrint(v string) *DatasetFileMeta {
 	s.FileFingerPrint = &v
 	return s
@@ -490,13 +513,33 @@ func (s *DatasetFileMeta) SetFileUpdateTime(v string) *DatasetFileMeta {
 	return s
 }
 
+func (s *DatasetFileMeta) SetMetaAttributes(v string) *DatasetFileMeta {
+	s.MetaAttributes = &v
+	return s
+}
+
 func (s *DatasetFileMeta) SetScore(v float32) *DatasetFileMeta {
 	s.Score = &v
 	return s
 }
 
+func (s *DatasetFileMeta) SetSemanticIndexJobId(v string) *DatasetFileMeta {
+	s.SemanticIndexJobId = &v
+	return s
+}
+
+func (s *DatasetFileMeta) SetSemanticIndexUpdateTime(v string) *DatasetFileMeta {
+	s.SemanticIndexUpdateTime = &v
+	return s
+}
+
 func (s *DatasetFileMeta) SetTags(v string) *DatasetFileMeta {
 	s.Tags = &v
+	return s
+}
+
+func (s *DatasetFileMeta) SetThumbnailUrl(v string) *DatasetFileMeta {
+	s.ThumbnailUrl = &v
 	return s
 }
 
@@ -515,7 +558,7 @@ type DatasetFileMetaConentUpdate struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
+	// 2021-01-12T14:36:01.000Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
 	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileType       *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
@@ -523,12 +566,19 @@ type DatasetFileMetaConentUpdate struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
-	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	// 2021-01-12T14:36:01.000Z
+	FileUpdateTime     *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
+	MetaAttributes     *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
 	// example:
 	//
-	// {"ai":["cat"], "user":["dog"]}
+	// 2021-01-12T14:36:01.000Z
+	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	// example:
+	//
+	// ● 执行算法打标更新（必须设置有效的TagJobId）： {    "ai":["车道线", "水马", "晴天"] } ● 用户手动打标：(add/remove表示对标签组内的标签进行增加/删除操作) 用户可操作的标签组为：   ○ user: 对单个元数据，用户自行添加的标签名列表。   ○ user-delete-ai-tags: 对单个元数据，算法标签组中用户需要删除的标签名列表。 {     "user":{         "add":["车道线","晴天"],         "remove":["水马"]     },     "user-delete-ai-tags":{         "add": ["地面阴影"],         "remove": []     } }
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
@@ -585,6 +635,16 @@ func (s *DatasetFileMetaConentUpdate) SetMetaAttributes(v string) *DatasetFileMe
 	return s
 }
 
+func (s *DatasetFileMetaConentUpdate) SetSemanticIndexJobId(v string) *DatasetFileMetaConentUpdate {
+	s.SemanticIndexJobId = &v
+	return s
+}
+
+func (s *DatasetFileMetaConentUpdate) SetSemanticIndexUpdateTime(v string) *DatasetFileMetaConentUpdate {
+	s.SemanticIndexUpdateTime = &v
+	return s
+}
+
 func (s *DatasetFileMetaConentUpdate) SetTags(v string) *DatasetFileMetaConentUpdate {
 	s.Tags = &v
 	return s
@@ -599,7 +659,7 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
+	// 2021-01-12T14:36:01.000Z
 	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
 	// This parameter is required.
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
@@ -612,12 +672,12 @@ type DatasetFileMetaContentCreate struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
+	// 2021-01-12T14:36:01.000Z
 	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
 	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
 	// example:
 	//
-	// {"user":["cat"]}
+	// {"user":{"add":["cat"]}}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// This parameter is required.
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
@@ -695,8 +755,9 @@ type DatasetFileMetaContentGet struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
+	// 2021-01-12T14:36:01.000Z
 	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	FileDir         *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
 	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
 	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileType        *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
@@ -704,11 +765,24 @@ type DatasetFileMetaContentGet struct {
 	//
 	// example:
 	//
-	// 2021-01-12T14:36:01Z
-	FileUpdateTime *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
-	MetaAttributes *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Uri            *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// 2021-01-12T14:36:01.000Z
+	FileUpdateTime     *string `json:"FileUpdateTime,omitempty" xml:"FileUpdateTime,omitempty"`
+	MetaAttributes     *string `json:"MetaAttributes,omitempty" xml:"MetaAttributes,omitempty"`
+	SemanticIndexJobId *string `json:"SemanticIndexJobId,omitempty" xml:"SemanticIndexJobId,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01.000Z
+	SemanticIndexUpdateTime *string `json:"SemanticIndexUpdateTime,omitempty" xml:"SemanticIndexUpdateTime,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
+	//
+	// example:
+	//
+	// 2021-01-12T14:36:01.000Z
+	TagUpdateTime *string `json:"TagUpdateTime,omitempty" xml:"TagUpdateTime,omitempty"`
+	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Uri           *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s DatasetFileMetaContentGet) String() string {
@@ -744,6 +818,11 @@ func (s *DatasetFileMetaContentGet) SetFileCreateTime(v string) *DatasetFileMeta
 	return s
 }
 
+func (s *DatasetFileMetaContentGet) SetFileDir(v string) *DatasetFileMetaContentGet {
+	s.FileDir = &v
+	return s
+}
+
 func (s *DatasetFileMetaContentGet) SetFileFingerPrint(v string) *DatasetFileMetaContentGet {
 	s.FileFingerPrint = &v
 	return s
@@ -766,6 +845,21 @@ func (s *DatasetFileMetaContentGet) SetFileUpdateTime(v string) *DatasetFileMeta
 
 func (s *DatasetFileMetaContentGet) SetMetaAttributes(v string) *DatasetFileMetaContentGet {
 	s.MetaAttributes = &v
+	return s
+}
+
+func (s *DatasetFileMetaContentGet) SetSemanticIndexJobId(v string) *DatasetFileMetaContentGet {
+	s.SemanticIndexJobId = &v
+	return s
+}
+
+func (s *DatasetFileMetaContentGet) SetSemanticIndexUpdateTime(v string) *DatasetFileMetaContentGet {
+	s.SemanticIndexUpdateTime = &v
+	return s
+}
+
+func (s *DatasetFileMetaContentGet) SetTagUpdateTime(v string) *DatasetFileMetaContentGet {
+	s.TagUpdateTime = &v
 	return s
 }
 
@@ -807,6 +901,35 @@ func (s *DatasetFileMetaResponse) SetResult(v string) *DatasetFileMetaResponse {
 
 func (s *DatasetFileMetaResponse) SetUri(v string) *DatasetFileMetaResponse {
 	s.Uri = &v
+	return s
+}
+
+type DatasetFileMetasStat struct {
+	// example:
+	//
+	// 10
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// example:
+	//
+	// cat
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s DatasetFileMetasStat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DatasetFileMetasStat) GoString() string {
+	return s.String()
+}
+
+func (s *DatasetFileMetasStat) SetCount(v int32) *DatasetFileMetasStat {
+	s.Count = &v
+	return s
+}
+
+func (s *DatasetFileMetasStat) SetKey(v string) *DatasetFileMetasStat {
+	s.Key = &v
 	return s
 }
 
@@ -3384,23 +3507,119 @@ func (s *CreateDatasetLabelsResponse) SetBody(v *CreateDatasetLabelsResponseBody
 }
 
 type CreateDatasetVersionRequest struct {
+	// The number of dataset files.
+	//
 	// example:
 	//
 	// 300
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The size of the dataset file. Unit: bytes.
+	//
 	// example:
 	//
 	// 19000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The type of the data source. Separate multiple types with commas (,). Valid values:
+	//
+	// 	- NAS: File Storage NAS (NAS).
+	//
+	// 	- OSS: Object Storage Service (OSS).
+	//
+	// 	- CPFS
+	//
+	// Note: The DataSourceType value of a dataset version must be the same as that of the dataset. When you create a dataset version, the system checks whether the values are the same.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// OSS
-	DataSourceType *string  `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	Description    *string  `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImportInfo     *string  `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	Labels         []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The description of the dataset. Descriptions are used to differentiate datasets.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dataset storage import configurations, such as OSS, NAS, and CPFS.
+	//
+	// **OSS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "bucket": "${bucket}",//The bucket name\\
+	//
+	// "path": "${path}" // The file path\\
+	//
+	// }\\
+	//
+	//
+	// **NAS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+	//
+	// "exportId": "${export_id}", // The file system export directory\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS for Lingjun**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The ile system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+	//
+	// "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
+	//
+	// }\\
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The tags of the dataset version.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The extended field, which is of the JsonString type. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
+	//
 	// example:
 	//
 	// {
@@ -3409,20 +3628,56 @@ type CreateDatasetVersionRequest struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The property of the dataset. Valid values:
+	//
+	// 	- FILE
+	//
+	// 	- DIRECTORY
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The ID of the data source.
+	//
+	// 	- If SourceType is set to USER, the value of SourceId can be a custom string.
+	//
+	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	//
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	//
 	// example:
 	//
 	// d-a0xbe5n03bhqof46ce
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the data source. Default value: USER. Valid values:
+	//
+	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	//
+	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	//
+	// 	- USER: a dataset registered by a user.
+	//
+	// For each job type:
+	//
+	// 	- PAI_PUBLIC_DATASET: PAI_PUBLIC_DATASET.
+	//
+	// 	- ITAG: ITAG.
+	//
+	// 	- USER: USER.
+	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Example format:
+	//
+	// 	- Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+	//
+	// 	- Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3495,7 +3750,10 @@ func (s *CreateDatasetVersionRequest) SetUri(v string) *CreateDatasetVersionRequ
 }
 
 type CreateDatasetVersionResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The dataset version name.
+	//
 	// example:
 	//
 	// v1
@@ -3550,6 +3808,8 @@ func (s *CreateDatasetVersionResponse) SetBody(v *CreateDatasetVersionResponseBo
 }
 
 type CreateDatasetVersionLabelsRequest struct {
+	// The tags.
+	//
 	// This parameter is required.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
@@ -3568,6 +3828,11 @@ func (s *CreateDatasetVersionLabelsRequest) SetLabels(v []*Label) *CreateDataset
 }
 
 type CreateDatasetVersionLabelsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3877,41 +4142,87 @@ func (s *CreateMemberResponse) SetBody(v *CreateMemberResponseBody) *CreateMembe
 }
 
 type CreateModelRequest struct {
+	// The visibility of the model in the workspace. Valid values:
+	//
+	// 	- PRIVATE (default): Visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: Visible to all users in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The domain of the model. Describes the domain in which the model is for. Example: nlp (Natural Language Processing), cv (computer vision), and others.
+	//
 	// example:
 	//
 	// nlp
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Other information about the model.
+	//
 	// if can be null:
 	// true
-	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	Labels           []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"RatingCount": 2866,
+	//
+	// 	"Rating": 4.94,
+	//
+	// 	"FavoriteCount": 34992,
+	//
+	// 	"CommentCount": 754,
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/drea***w.png"],
+	//
+	// 	"TippedAmountCount": 32,
+	//
+	// 	"DownloadCount": 606056
+	//
+	// }
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The model description, which is used to distinguish different models.
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// The documentation of the model.
+	//
 	// example:
 	//
 	// https://*.md
 	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// The name of the model. The name must be 1 to 127 characters in length.
+	//
 	// This parameter is required.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type. Example: Checkpoint or LoRA.
+	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The sequence number of the model. Can be used for custom sorting.
+	//
 	// example:
 	//
-	// 101
+	// 0
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// The source of the model. The community or organization to which the source model belongs, such as ModelScope or HuggingFace.
+	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The task of the model. Describes the specific problem that the model solves. Example: text-classification.
+	//
 	// example:
 	//
 	// text-classification
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The workspace ID. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	//
 	// example:
 	//
 	// 796**
@@ -3987,10 +4298,14 @@ func (s *CreateModelRequest) SetWorkspaceId(v string) *CreateModelRequest {
 }
 
 type CreateModelResponseBody struct {
+	// The model ID.
+	//
 	// example:
 	//
 	// model-rbvg5wzljz****ks92
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9DAD3112-AE22-5563-9A02-5C7E8****E35
@@ -4045,6 +4360,7 @@ func (s *CreateModelResponse) SetBody(v *CreateModelResponseBody) *CreateModelRe
 }
 
 type CreateModelLabelsRequest struct {
+	// The tags.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -4062,6 +4378,8 @@ func (s *CreateModelLabelsRequest) SetLabels(v []*Label) *CreateModelLabelsReque
 }
 
 type CreateModelLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F81D9EC0-1872-50F5-A96C-A0647D****1D
@@ -4111,30 +4429,88 @@ func (s *CreateModelLabelsResponse) SetBody(v *CreateModelLabelsResponseBody) *C
 }
 
 type CreateModelVersionRequest struct {
+	// The approval status. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Approved
+	//
+	// 	- Rejected
+	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// Compression Configuration
+	//
 	// example:
 	//
 	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// Evaluation Configuration
+	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// Other information.
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/st****017.preview.png"],
+	//
+	// 	"TrainedWords": ["albedo_overlord"]
+	//
+	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The format of the model. Valid values:
+	//
+	// 	- OfflineModel
+	//
+	// 	- SavedModel
+	//
+	// 	- Keras H5
+	//
+	// 	- Frozen Pb
+	//
+	// 	- Caffe Prototxt
+	//
+	// 	- TorchScript
+	//
+	// 	- XGBoost
+	//
+	// 	- PMML
+	//
+	// 	- AlinkModel
+	//
+	// 	- ONNX
+	//
 	// example:
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// The framework of the model. Valid values:
+	//
+	// 	- Pytorch -XGBoost
+	//
+	// 	- Keras
+	//
+	// 	- Caffe
+	//
+	// 	- Alink
+	//
+	// 	- Xflow
+	//
+	// 	- TensorFlow
+	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// Describes how to apply to downstream inference services. For example, describes the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
+	//
 	// example:
 	//
 	// {
@@ -4143,34 +4519,110 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metrics for the model. The length after serialization is limited to 8,192.
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	//   "Results": [{
+	//
+	//     "Dataset": {
+	//
+	//       "DatasetId": "d-sdkjanksaklerhfd"
+	//
+	//     },
+	//
+	//     "Metrics": {
+	//
+	//       "cer": 0.175
+	//
+	//     }
+	//
+	//   }, {
+	//
+	//     "Dataset": {
+	//
+	//       "Uri": "oss://xxxx/"
+	//
+	//     },
+	//
+	//     "Metrics": {
+	//
+	//       "cer": 0.172
+	//
+	//     }
+	//
+	//   }]
+	//
+	// }
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// The extended field. This is a JSON string.
+	//
 	// example:
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The source ID.
+	//
+	// 	- If the source type is Custom, this field is not limited.
+	//
+	// 	- If the source is PAIFlow or TrainingService, the format is:
+	//
+	// <!---->
+	//
+	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	//
+	// Where,
+	//
+	// 	- region is the region ID.
+	//
+	// 	- workspaceId is the ID of the workspace.
+	//
+	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	//
+	// 	- id: a unique identifier.
+	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the model source. Valid values:
+	//
+	// 	- Custom (default)
+	//
+	// 	- PAIFlow
+	//
+	// 	- TrainingService: PAI training service.
+	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The training configurations. Used for fine-tuning and incremental training.
+	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	// The URI of the model version, which is the location where the model is stored. Valid values:
+	//
+	// 	- The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+	//
+	// 	- The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
-	Uri                *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The version descriptions.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// The model version, which is unique for each model. If left empty, the first version is **0.1.0*	- by default. After that, the version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). Among them: the major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
+	//
 	// example:
 	//
 	// 0.1.0
@@ -4266,10 +4718,14 @@ func (s *CreateModelVersionRequest) SetVersionName(v string) *CreateModelVersion
 }
 
 type CreateModelVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 21645FCD-BAB9-5742-89AE-AEB27****B2E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The version of the model.
+	//
 	// example:
 	//
 	// 0.1.0
@@ -4390,10 +4846,17 @@ func (s *CreateModelVersionLabelsResponse) SetBody(v *CreateModelVersionLabelsRe
 }
 
 type CreateProductOrdersRequest struct {
+	// Specifies whether to automatically pay for the provided products.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	AutoPay  *bool                                 `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	// The list of products to be purchased. Separate them with commas (,).
 	Products []*CreateProductOrdersRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 }
 
@@ -4416,27 +4879,66 @@ func (s *CreateProductOrdersRequest) SetProducts(v []*CreateProductOrdersRequest
 }
 
 type CreateProductOrdersRequestProducts struct {
+	// Specifies whether to automatically renew the product.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// The billing method. Only POSTPAY is supported.
+	//
 	// example:
 	//
 	// POSTPAY
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The purchase duration. You can use this parameter together with pricingCycle. Only 1 is supported.
+	//
 	// example:
 	//
 	// 1
-	Duration           *int64                                                  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The properties of the instance.
+	//
+	// 	- DataWorks_share: [ { "Code": "region", "Value": "cn-shanghai" } ]
+	//
+	// 	- OSS_share: [ { "Code": "commodity_type", "Value": "oss", "Name": "Object Storage Service" }, { "Code": "ord_time", "Value": "1:Hour", "Name": "1 Hour" } ]
+	//
+	// 	- PAI_share: None
+	//
+	// 	- China bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "odps_specification_type", "Value": "OdpsStandard" }, { "Code": "ord_time", "Value": "1:Hour" } ]
+	//
+	// 	- International bid MaxCompute_share: [ { "Code": "region", "Value": "cn-hangzhou" }, { "Code": "ord_time", "Value": "1:Hour" } ]
 	InstanceProperties []*CreateProductOrdersRequestProductsInstanceProperties `json:"InstanceProperties,omitempty" xml:"InstanceProperties,omitempty" type:"Repeated"`
+	// The type of the order. Only BUY is supported.
+	//
 	// example:
 	//
 	// BUY
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// The billing cycle. Valid values:
+	//
+	// 	- Month: The price is calculated every month. DataWorks_share only supports Month.
+	//
+	// 	- Hour: The price is calculated every hour. OSS_share and MaxCompute_share only support Hour.
+	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The product code. Valid values:
+	//
+	// 	- DataWorks_share: pay-as-you-go DataWorks
+	//
+	// 	- MaxCompute_share: pay-as-you-go MaxCompute
+	//
+	// 	- PAI_share: pay-as-you-go PAI.
+	//
+	// 	- OSS_share: pay-as-you-go OSS
+	//
 	// example:
 	//
 	// DataWorks_share
@@ -4487,11 +4989,16 @@ func (s *CreateProductOrdersRequestProducts) SetProductCode(v string) *CreatePro
 }
 
 type CreateProductOrdersRequestProductsInstanceProperties struct {
+	// The property code.
+	//
 	// example:
 	//
 	// commodity_type。
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The property name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The property value.
+	//
 	// example:
 	//
 	// oss。
@@ -4522,15 +5029,22 @@ func (s *CreateProductOrdersRequestProductsInstanceProperties) SetValue(v string
 }
 
 type CreateProductOrdersResponseBody struct {
+	// The ID of the product purchase request.
+	//
 	// example:
 	//
 	// 3ed6a882-0d85-4dd8-ad36-cd8d74ab9fdb
 	BuyProductRequestId *string `json:"BuyProductRequestId,omitempty" xml:"BuyProductRequestId,omitempty"`
-	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The returned message.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The purchase order ID.
+	//
 	// example:
 	//
 	// 210292536260646
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ksdjf-jksd-*****slkdjf
@@ -4595,22 +5109,40 @@ func (s *CreateProductOrdersResponse) SetBody(v *CreateProductOrdersResponseBody
 }
 
 type CreateRunRequest struct {
+	// The ID of the experiment that corresponds to the run.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// exp-6thbb5xrbmp*****
-	ExperimentId *string  `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	Labels       []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The list of tags added to the run.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The name of the run. The name must meet the following requirements:
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be 1 to 63 characters in length.
+	//
+	// If the name is left empty when you create a run, a random run ID generated by the server is used as the name.
+	//
 	// example:
 	//
 	// myName
-	Name   *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters of the run.
 	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// The ID of the workload associated with the run.
+	//
 	// example:
 	//
 	// job-jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the workload source that is associated with the run. Valid values: TrainingService and DLC. You can also leave this parameter empty. This parameter is optional and left empty by default.
+	//
 	// example:
 	//
 	// DLC
@@ -4656,6 +5188,8 @@ func (s *CreateRunRequest) SetSourceType(v string) *CreateRunRequest {
 }
 
 type CreateRunResponseBody struct {
+	// The run ID.
+	//
 	// example:
 	//
 	// run-1meoz7VJd2C6f****
@@ -4716,19 +5250,37 @@ func (s *CreateRunResponse) SetBody(v *CreateRunResponseBody) *CreateRunResponse
 }
 
 type CreateWorkspaceRequest struct {
+	// The description of the workspace. The description can be up to 80 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the workspace. You can set it based on the purpose of the workspace. If left empty, the name of the workspace is used.
+	//
 	// example:
 	//
 	// display name
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment of the workspace.
+	//
+	// 	- Workspaces in basic mode can run only in the production environment (prod).
+	//
+	// 	- Workspaces in standard mode can run in both the development and production environments (dev and prod).
+	//
 	// This parameter is required.
 	EnvTypes        []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
 	ResourceGroupId *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The name of the workspace. Format:
+	//
+	// 	- The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- It must be unique in the current region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4771,10 +5323,14 @@ func (s *CreateWorkspaceRequest) SetWorkspaceName(v string) *CreateWorkspaceRequ
 }
 
 type CreateWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -5080,10 +5636,14 @@ func (s *CreateWorkspaceResourceResponse) SetBody(v *CreateWorkspaceResourceResp
 }
 
 type DeleteCodeSourceResponseBody struct {
+	// The ID of the deleted code source.
+	//
 	// example:
 	//
 	// code-20210111103721-85qz78ia96lu
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -5478,6 +6038,7 @@ func (s *DeleteDatasetLabelsResponse) SetBody(v *DeleteDatasetLabelsResponseBody
 }
 
 type DeleteDatasetVersionResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -5690,6 +6251,8 @@ func (s *DeleteExperimentLabelResponse) SetBody(v *DeleteExperimentLabelResponse
 }
 
 type DeleteMembersRequest struct {
+	// The list of member IDs. Separate multiple member IDs with commas (,). You can call [ListMembers](https://help.aliyun.com/document_detail/449135.html) to obtain the member ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5712,8 +6275,20 @@ func (s *DeleteMembersRequest) SetMemberIds(v string) *DeleteMembersRequest {
 }
 
 type DeleteMembersResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error code returned if the call failed.
+	//
+	// example:
+	//
+	// 100600017
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message returned if the call failed.
+	//
+	// example:
+	//
+	// Owner not allowed to delete
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// D5BFFEE3-6025-443F-8A03-02D619B5C4B9
@@ -5773,6 +6348,8 @@ func (s *DeleteMembersResponse) SetBody(v *DeleteMembersResponseBody) *DeleteMem
 }
 
 type DeleteModelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -5940,6 +6517,8 @@ func (s *DeleteModelVersionResponse) SetBody(v *DeleteModelVersionResponseBody) 
 }
 
 type DeleteModelVersionLabelsRequest struct {
+	// The key of the tag to be deleted. Separate multiple tag keys with commas (,).
+	//
 	// example:
 	//
 	// key1,key2
@@ -5960,6 +6539,8 @@ func (s *DeleteModelVersionLabelsRequest) SetLabelKeys(v string) *DeleteModelVer
 }
 
 type DeleteModelVersionLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -6106,6 +6687,79 @@ func (s *DeleteRunLabelResponse) SetStatusCode(v int32) *DeleteRunLabelResponse 
 }
 
 func (s *DeleteRunLabelResponse) SetBody(v *DeleteRunLabelResponseBody) *DeleteRunLabelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUserConfigRequest struct {
+	// The configuration item keys. Currently, only customizePAIAssumedRole.
+	//
+	// example:
+	//
+	// tempStoragePath
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+}
+
+func (s DeleteUserConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserConfigRequest) SetConfigKey(v string) *DeleteUserConfigRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+type DeleteUserConfigResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// dsjk****dfjksdf
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserConfigResponseBody) SetRequestId(v string) *DeleteUserConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserConfigResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUserConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserConfigResponse) SetHeaders(v map[string]*string) *DeleteUserConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserConfigResponse) SetStatusCode(v int32) *DeleteUserConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserConfigResponse) SetBody(v *DeleteUserConfigResponseBody) *DeleteUserConfigResponse {
 	s.Body = v
 	return s
 }
@@ -6271,62 +6925,96 @@ func (s *DeleteWorkspaceResourceResponse) SetBody(v *DeleteWorkspaceResourceResp
 }
 
 type GetCodeSourceResponseBody struct {
+	// The visibility of the code source. Valid values:
+	//
+	// 	- PRIVATE: Visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: Visible to all members in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The code repository branch.
+	//
 	// example:
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// The code commit ID.
+	//
 	// example:
 	//
 	// 44da10***********
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// The address of the code repository.
+	//
 	// example:
 	//
 	// https://code.aliyun.com/pai-dlc/examples.git
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// The token used to access the code repository.
+	//
 	// example:
 	//
 	// xxxx
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	// The username of the code repository.
+	//
 	// example:
 	//
 	// user1
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// The ID of the code source.
+	//
 	// example:
 	//
 	// code-202**********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The description of the code source.
+	//
 	// example:
 	//
 	// This is my data source 1.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the code source.
+	//
 	// example:
 	//
 	// MyCodeSource1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the code source was created, in the ISO8601 format.
+	//
 	// example:
 	//
 	// 2021-01-12T23:36:01.123Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the code source was modified, in the ISO8601 format.
+	//
 	// example:
 	//
 	// 2021-01-12T23:36:01.123Z
 	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
+	// The local mount path of the code.
+	//
 	// example:
 	//
 	// /root/code
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the creator.
+	//
 	// example:
 	//
 	// 1722********
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -7519,6 +8207,14 @@ func (s *GetDefaultWorkspaceResponse) SetBody(v *GetDefaultWorkspaceResponseBody
 }
 
 type GetExperimentRequest struct {
+	// Specifies whether to obtain the latest run information associated with the experiment
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
@@ -8930,6 +9626,9 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// 2025-01-12T14:36:01Z
 	EndFileUpdateTime *string `json:"EndFileUpdateTime,omitempty" xml:"EndFileUpdateTime,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
+	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
 	// 90a6ee35-****-4cd4-927e-1f45e1cb8b62_1729644433000
@@ -8938,11 +9637,20 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	PageSize                *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryFileDir            *string   `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	QueryFileName           *string   `json:"QueryFileName,omitempty" xml:"QueryFileName,omitempty"`
+	QueryFileTypeIncludeAny []*string `json:"QueryFileTypeIncludeAny,omitempty" xml:"QueryFileTypeIncludeAny,omitempty" type:"Repeated"`
+	QueryImage              *string   `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
+	QueryTagsExclude        []*string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty" type:"Repeated"`
+	QueryTagsIncludeAll     []*string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty" type:"Repeated"`
+	QueryTagsIncludeAny     []*string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty" type:"Repeated"`
+	QueryText               *string   `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
 	// example:
 	//
 	// TAG
@@ -8961,6 +9669,9 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// 2025-01-12T14:36:01Z
 	StartFileUpdateTime *string `json:"StartFileUpdateTime,omitempty" xml:"StartFileUpdateTime,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
+	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
 	// example:
 	//
 	// 100
@@ -8991,6 +9702,16 @@ func (s *ListDatasetFileMetasRequest) SetEndFileUpdateTime(v string) *ListDatase
 	return s
 }
 
+func (s *ListDatasetFileMetasRequest) SetEndTagUpdateTime(v string) *ListDatasetFileMetasRequest {
+	s.EndTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetMaxResults(v int32) *ListDatasetFileMetasRequest {
+	s.MaxResults = &v
+	return s
+}
+
 func (s *ListDatasetFileMetasRequest) SetNextToken(v string) *ListDatasetFileMetasRequest {
 	s.NextToken = &v
 	return s
@@ -9003,6 +9724,41 @@ func (s *ListDatasetFileMetasRequest) SetOrder(v string) *ListDatasetFileMetasRe
 
 func (s *ListDatasetFileMetasRequest) SetPageSize(v int32) *ListDatasetFileMetasRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryFileDir(v string) *ListDatasetFileMetasRequest {
+	s.QueryFileDir = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryFileName(v string) *ListDatasetFileMetasRequest {
+	s.QueryFileName = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryFileTypeIncludeAny(v []*string) *ListDatasetFileMetasRequest {
+	s.QueryFileTypeIncludeAny = v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryImage(v string) *ListDatasetFileMetasRequest {
+	s.QueryImage = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryTagsExclude(v []*string) *ListDatasetFileMetasRequest {
+	s.QueryTagsExclude = v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryTagsIncludeAll(v []*string) *ListDatasetFileMetasRequest {
+	s.QueryTagsIncludeAll = v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetQueryTagsIncludeAny(v []*string) *ListDatasetFileMetasRequest {
+	s.QueryTagsIncludeAny = v
 	return s
 }
 
@@ -9031,6 +9787,16 @@ func (s *ListDatasetFileMetasRequest) SetStartFileUpdateTime(v string) *ListData
 	return s
 }
 
+func (s *ListDatasetFileMetasRequest) SetStartTagUpdateTime(v string) *ListDatasetFileMetasRequest {
+	s.StartTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasRequest) SetThumbnailMode(v string) *ListDatasetFileMetasRequest {
+	s.ThumbnailMode = &v
+	return s
+}
+
 func (s *ListDatasetFileMetasRequest) SetTopK(v int32) *ListDatasetFileMetasRequest {
 	s.TopK = &v
 	return s
@@ -9041,14 +9807,211 @@ func (s *ListDatasetFileMetasRequest) SetWorkspaceId(v string) *ListDatasetFileM
 	return s
 }
 
+type ListDatasetFileMetasShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01Z
+	EndFileUpdateTime *string `json:"EndFileUpdateTime,omitempty" xml:"EndFileUpdateTime,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
+	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 90a6ee35-****-4cd4-927e-1f45e1cb8b62_1729644433000
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// Deprecated
+	//
+	// example:
+	//
+	// 10
+	PageSize                      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryFileDir                  *string `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	QueryFileName                 *string `json:"QueryFileName,omitempty" xml:"QueryFileName,omitempty"`
+	QueryFileTypeIncludeAnyShrink *string `json:"QueryFileTypeIncludeAny,omitempty" xml:"QueryFileTypeIncludeAny,omitempty"`
+	QueryImage                    *string `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
+	QueryTagsExcludeShrink        *string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty"`
+	QueryTagsIncludeAllShrink     *string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty"`
+	QueryTagsIncludeAnyShrink     *string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty"`
+	QueryText                     *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// example:
+	//
+	// TAG
+	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// example:
+	//
+	// 0.6
+	ScoreThreshold *float32 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
+	// example:
+	//
+	// FileCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01Z
+	StartFileUpdateTime *string `json:"StartFileUpdateTime,omitempty" xml:"StartFileUpdateTime,omitempty"`
+	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
+	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
+	// example:
+	//
+	// 100
+	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 105173
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListDatasetFileMetasShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetFileMetasShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetDatasetVersion(v string) *ListDatasetFileMetasShrinkRequest {
+	s.DatasetVersion = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetEndFileUpdateTime(v string) *ListDatasetFileMetasShrinkRequest {
+	s.EndFileUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetEndTagUpdateTime(v string) *ListDatasetFileMetasShrinkRequest {
+	s.EndTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetMaxResults(v int32) *ListDatasetFileMetasShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetNextToken(v string) *ListDatasetFileMetasShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetOrder(v string) *ListDatasetFileMetasShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetPageSize(v int32) *ListDatasetFileMetasShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryFileDir(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryFileDir = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryFileName(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryFileName = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryFileTypeIncludeAnyShrink(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryFileTypeIncludeAnyShrink = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryImage(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryImage = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryTagsExcludeShrink(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryTagsExcludeShrink = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryTagsIncludeAllShrink(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryTagsIncludeAllShrink = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryTagsIncludeAnyShrink(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryTagsIncludeAnyShrink = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryText(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryText = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetQueryType(v string) *ListDatasetFileMetasShrinkRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetScoreThreshold(v float32) *ListDatasetFileMetasShrinkRequest {
+	s.ScoreThreshold = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetSortBy(v string) *ListDatasetFileMetasShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetStartFileUpdateTime(v string) *ListDatasetFileMetasShrinkRequest {
+	s.StartFileUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetStartTagUpdateTime(v string) *ListDatasetFileMetasShrinkRequest {
+	s.StartTagUpdateTime = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetThumbnailMode(v string) *ListDatasetFileMetasShrinkRequest {
+	s.ThumbnailMode = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetTopK(v int32) *ListDatasetFileMetasShrinkRequest {
+	s.TopK = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasShrinkRequest) SetWorkspaceId(v string) *ListDatasetFileMetasShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type ListDatasetFileMetasResponseBody struct {
 	DatasetFileMetas []*DatasetFileMeta `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
 	DatasetId        *string            `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DatasetVersion   *string            `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	MaxResults       *int32             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// example:
 	//
 	// 90******-f5c5-4cd4-927e-1f45e1cb8b62_1729644433000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Deprecated
+	//
 	// example:
 	//
 	// 30
@@ -9080,6 +10043,11 @@ func (s *ListDatasetFileMetasResponseBody) SetDatasetId(v string) *ListDatasetFi
 
 func (s *ListDatasetFileMetasResponseBody) SetDatasetVersion(v string) *ListDatasetFileMetasResponseBody {
 	s.DatasetVersion = &v
+	return s
+}
+
+func (s *ListDatasetFileMetasResponseBody) SetMaxResults(v int32) *ListDatasetFileMetasResponseBody {
+	s.MaxResults = &v
 	return s
 }
 
@@ -10050,22 +11018,32 @@ func (s *ListExperimentResponse) SetBody(v *ListExperimentResponseBody) *ListExp
 }
 
 type ListImageLabelsRequest struct {
+	// The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
+	//
 	// example:
 	//
 	// image-4c62******53uor
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The tag filter conditions, separated with commas (,). The format of a single condition filter is `key=value`. Takes effect independently from LabelKeys.
+	//
 	// example:
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
 	LabelFilter *string `json:"LabelFilter,omitempty" xml:"LabelFilter,omitempty"`
+	// The tag keys, separated with commas (,). System tags start with system and take effect independently from LabelFilter.
+	//
 	// example:
 	//
 	// system.framework,system.official
 	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+	// The region where the image resides.
+	//
 	// example:
 	//
 	// cn-shanghai
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 12345
@@ -10106,11 +11084,16 @@ func (s *ListImageLabelsRequest) SetWorkspaceId(v string) *ListImageLabelsReques
 }
 
 type ListImageLabelsResponseBody struct {
+	// The image tags.
 	Labels []*ListImageLabelsResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the images that meet the filter conditions.
+	//
 	// example:
 	//
 	// 2
@@ -10141,10 +11124,14 @@ func (s *ListImageLabelsResponseBody) SetTotalCount(v int64) *ListImageLabelsRes
 }
 
 type ListImageLabelsResponseBodyLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// GPU
@@ -12356,6 +13343,163 @@ func (s *ListRunsResponse) SetBody(v *ListRunsResponseBody) *ListRunsResponse {
 	return s
 }
 
+type ListUserConfigsRequest struct {
+	// The category. Currently, only DataPrivacyConfig is supported.
+	//
+	// example:
+	//
+	// DataPrivacyConfig
+	CategoryNames *string `json:"CategoryNames,omitempty" xml:"CategoryNames,omitempty"`
+	// The configuration item keys. Currently, only customizePAIAssumedRole is supported.
+	//
+	// example:
+	//
+	// customizePAIAssumedRole
+	ConfigKeys *string `json:"ConfigKeys,omitempty" xml:"ConfigKeys,omitempty"`
+}
+
+func (s ListUserConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserConfigsRequest) SetCategoryNames(v string) *ListUserConfigsRequest {
+	s.CategoryNames = &v
+	return s
+}
+
+func (s *ListUserConfigsRequest) SetConfigKeys(v string) *ListUserConfigsRequest {
+	s.ConfigKeys = &v
+	return s
+}
+
+type ListUserConfigsResponseBody struct {
+	// The configurations list.
+	Configs []*ListUserConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
+	// example:
+	//
+	// sdjksdk-******-dsfds
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of items returned.
+	//
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUserConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserConfigsResponseBody) SetConfigs(v []*ListUserConfigsResponseBodyConfigs) *ListUserConfigsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListUserConfigsResponseBody) SetRequestId(v string) *ListUserConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserConfigsResponseBody) SetTotalCount(v int64) *ListUserConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUserConfigsResponseBodyConfigs struct {
+	// The category. Currently, only DataPrivacyConfig is supported.
+	//
+	// example:
+	//
+	// DataPrivacyConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item.
+	//
+	// example:
+	//
+	// customizePAIAssumedRole
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
+	// example:
+	//
+	// role
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The scope. Currently, subUser and owner are supported.
+	//
+	// example:
+	//
+	// subUser
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s ListUserConfigsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserConfigsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserConfigsResponseBodyConfigs) SetCategoryName(v string) *ListUserConfigsResponseBodyConfigs {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *ListUserConfigsResponseBodyConfigs) SetConfigKey(v string) *ListUserConfigsResponseBodyConfigs {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *ListUserConfigsResponseBodyConfigs) SetConfigValue(v string) *ListUserConfigsResponseBodyConfigs {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *ListUserConfigsResponseBodyConfigs) SetScope(v string) *ListUserConfigsResponseBodyConfigs {
+	s.Scope = &v
+	return s
+}
+
+type ListUserConfigsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUserConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUserConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserConfigsResponse) SetHeaders(v map[string]*string) *ListUserConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserConfigsResponse) SetStatusCode(v int32) *ListUserConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUserConfigsResponse) SetBody(v *ListUserConfigsResponseBody) *ListUserConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkspaceUsersRequest struct {
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
@@ -12467,47 +13611,102 @@ func (s *ListWorkspaceUsersResponse) SetBody(v *ListWorkspaceUsersResponseBody) 
 }
 
 type ListWorkspacesRequest struct {
+	// The list of returned fields of workspace details. Used to limit the fields in the returned results. Separate multiple fields with commas (,). Currently, only Id is supported, which is the workspace ID.
+	//
 	// example:
 	//
 	// Id
 	Fields *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// The modules, separated by commas (,). Default value: PAI.
+	//
 	// example:
 	//
 	// PAI
 	ModuleList *string `json:"ModuleList,omitempty" xml:"ModuleList,omitempty"`
+	// The query options. Valid values:
+	//
+	// 	- GetWorkspaces (default): Obtains a list of Workspaces.
+	//
+	// 	- GetResourceLimits: Obtains a list of ResourceLimits.
+	//
 	// example:
 	//
 	// GetWorkspaces
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// The order of results (ascending or descending). Valid values:
+	//
+	// 	- ASC: ascending order. This is the default value.
+	//
+	// 	- DESC: descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number of the workspace list. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries to return on each page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/zh/resource-management/resource-group/user-guide/view-basic-information-of-a-resource-group?spm=a2c4g.11186623.help-menu-94362.d_2_0_1.86386c21FKqhTk\\&scm=20140722.H_151181._.OR_help-T_cn~zh-V_1).
+	//
+	// example:
+	//
+	// rg-acfmwp7rky****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Specifies how to sort the results. Default value: GmtCreateTime. Valid values:
+	//
+	// 	- GmtCreateTime: Sort by the time when created.
+	//
+	// 	- GmtModifiedTime: Sort by the time when modified.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The workspace status. Valid values:
+	//
+	// 	- ENABLED
+	//
+	// 	- INITIALIZING
+	//
+	// 	- FAILURE
+	//
+	// 	- DISABLED
+	//
+	// 	- FROZEN
+	//
+	// 	- UPDATING
+	//
 	// example:
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Specifies whether to display workspace details. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The workspace IDs. Separate multiple IDs by commas (,).
+	//
 	// example:
 	//
 	// 123,234
 	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// abc
@@ -12583,10 +13782,28 @@ func (s *ListWorkspacesRequest) SetWorkspaceName(v string) *ListWorkspacesReques
 }
 
 type ListWorkspacesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The type and quantity of resources that can be activated in a workspace. This list is returned when the Option is set to GetResourceLimits. Valid values:
+	//
+	// 	- MaxCompute_share: pay-as-you-go MaxCompute
+	//
+	// 	- MaxCompute_isolate: subscription MaxCompute
+	//
+	// 	- DLC_share: pay-as-you-go DLC
+	//
+	// 	- PAI_Isolate: subscription PAI
+	//
+	// 	- PAI_share: pay-as-you-go PAI
+	//
+	// 	- DataWorks_isolate: subscription DataWorks
+	//
+	// 	- DataWorks_share: pay-as-you-go DataWorks
+	//
 	// example:
 	//
 	// {
@@ -12599,10 +13816,13 @@ type ListWorkspacesResponseBody struct {
 	//
 	// }
 	ResourceLimits map[string]interface{} `json:"ResourceLimits,omitempty" xml:"ResourceLimits,omitempty"`
+	// The number of workspaces that meet the query conditions.
+	//
 	// example:
 	//
 	// 1
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The list of workspace details. This list is returned when Option is set to GetWorkspaces.
 	Workspaces []*ListWorkspacesResponseBodyWorkspaces `json:"Workspaces,omitempty" xml:"Workspaces,omitempty" type:"Repeated"`
 }
 
@@ -12635,44 +13855,69 @@ func (s *ListWorkspacesResponseBody) SetWorkspaces(v []*ListWorkspacesResponseBo
 }
 
 type ListWorkspacesResponseBodyWorkspaces struct {
+	// The names of the administrator accounts.
 	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
+	// The user ID of the creator.
+	//
 	// example:
 	//
 	// 122424353535
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// workspace description example
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The environment types of the workspace.
+	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// the additional information. Only contains TenantId.
+	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
+	// The time when the workspace was created. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the workspace was modified. The time (UTC+0) follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ss.SSSZ format.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Indicates whether the workspace is the default workspace.
+	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The status of the workspace.
+	//
 	// example:
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 123
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-example
-	WorkspaceName   *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmwp7rky****
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
 }
 
@@ -13215,6 +14460,130 @@ func (s *SetExperimentLabelsResponse) SetStatusCode(v int32) *SetExperimentLabel
 }
 
 func (s *SetExperimentLabelsResponse) SetBody(v *SetExperimentLabelsResponseBody) *SetExperimentLabelsResponse {
+	s.Body = v
+	return s
+}
+
+type SetUserConfigsRequest struct {
+	// The configurations list.
+	Configs []*SetUserConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+}
+
+func (s SetUserConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserConfigsRequest) SetConfigs(v []*SetUserConfigsRequestConfigs) *SetUserConfigsRequest {
+	s.Configs = v
+	return s
+}
+
+type SetUserConfigsRequestConfigs struct {
+	// The category. Currently, only DataPrivacyConfig is supported.
+	//
+	// example:
+	//
+	// DataPrivacyConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item.
+	//
+	// example:
+	//
+	// customizePAIAssumedRole
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
+	// example:
+	//
+	// role
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The scope. Currently, subUser and owner are supported.
+	//
+	// example:
+	//
+	// owner
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+}
+
+func (s SetUserConfigsRequestConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserConfigsRequestConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserConfigsRequestConfigs) SetCategoryName(v string) *SetUserConfigsRequestConfigs {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *SetUserConfigsRequestConfigs) SetConfigKey(v string) *SetUserConfigsRequestConfigs {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *SetUserConfigsRequestConfigs) SetConfigValue(v string) *SetUserConfigsRequestConfigs {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *SetUserConfigsRequestConfigs) SetScope(v string) *SetUserConfigsRequestConfigs {
+	s.Scope = &v
+	return s
+}
+
+type SetUserConfigsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// dsjk****dfjksdf
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetUserConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserConfigsResponseBody) SetRequestId(v string) *SetUserConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetUserConfigsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetUserConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetUserConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetUserConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetUserConfigsResponse) SetHeaders(v map[string]*string) *SetUserConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetUserConfigsResponse) SetStatusCode(v int32) *SetUserConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetUserConfigsResponse) SetBody(v *SetUserConfigsResponseBody) *SetUserConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -13843,6 +15212,7 @@ func (s *UpdateDatasetVersionRequest) SetOptions(v string) *UpdateDatasetVersion
 }
 
 type UpdateDatasetVersionResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -14335,11 +15705,21 @@ func (s *UpdateModelVersionResponse) SetBody(v *UpdateModelVersionResponseBody) 
 }
 
 type UpdateRunRequest struct {
+	// The labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The run name. The name must meet the following requirements:
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be 1 to 63 characters in length.
+	//
 	// example:
 	//
 	// myName
-	Name   *string     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The parameters.
 	Params []*RunParam `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
 }
 
@@ -14367,7 +15747,7 @@ func (s *UpdateRunRequest) SetParams(v []*RunParam) *UpdateRunRequest {
 }
 
 type UpdateRunResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -14722,24 +16102,13 @@ func (client *Client) AcceptDataworksEventWithOptions(request *AcceptDataworksEv
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AcceptDataworksEventResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AcceptDataworksEventResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AcceptDataworksEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14833,24 +16202,13 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddImageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddImageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14908,24 +16266,13 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddImageLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddImageLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddImageLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14971,24 +16318,13 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddMemberRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddMemberRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddMemberRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15052,24 +16388,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15163,24 +16488,13 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateCodeSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateCodeSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15326,24 +16640,13 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15409,24 +16712,13 @@ func (client *Client) CreateDatasetFileMetasWithOptions(DatasetId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetFileMetasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetFileMetasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetFileMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15504,24 +16796,13 @@ func (client *Client) CreateDatasetJobWithOptions(DatasetId *string, request *Cr
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15587,24 +16868,13 @@ func (client *Client) CreateDatasetJobConfigWithOptions(DatasetId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetJobConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetJobConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15662,24 +16932,13 @@ func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15703,7 +16962,7 @@ func (client *Client) CreateDatasetLabels(DatasetId *string, request *CreateData
 
 // Summary:
 //
-// 创建数据集版本
+// Creates a dataset version.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -15777,29 +17036,18 @@ func (client *Client) CreateDatasetVersionWithOptions(DatasetId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建数据集版本
+// Creates a dataset version.
 //
 // @param request - CreateDatasetVersionRequest
 //
@@ -15818,7 +17066,7 @@ func (client *Client) CreateDatasetVersion(DatasetId *string, request *CreateDat
 
 // Summary:
 //
-// 创建数据集版本的标签
+// Creates tags for a dataset version.
 //
 // @param request - CreateDatasetVersionLabelsRequest
 //
@@ -15852,29 +17100,18 @@ func (client *Client) CreateDatasetVersionLabelsWithOptions(DatasetId *string, V
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDatasetVersionLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDatasetVersionLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDatasetVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建数据集版本的标签
+// Creates tags for a dataset version.
 //
 // @param request - CreateDatasetVersionLabelsRequest
 //
@@ -15943,24 +17180,13 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateExperimentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateExperimentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16018,24 +17244,13 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMemberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMemberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16059,7 +17274,7 @@ func (client *Client) CreateMember(WorkspaceId *string, request *CreateMemberReq
 
 // Summary:
 //
-// 创建模型
+// Creates a model. A model is a collection of model versions. When you create a model, you must specify the model name and description.
 //
 // @param request - CreateModelRequest
 //
@@ -16137,29 +17352,18 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateModelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateModelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建模型
+// Creates a model. A model is a collection of model versions. When you create a model, you must specify the model name and description.
 //
 // @param request - CreateModelRequest
 //
@@ -16178,7 +17382,7 @@ func (client *Client) CreateModel(request *CreateModelRequest) (_result *CreateM
 
 // Summary:
 //
-// 创建或更新模型的标签
+// Creates a tag for a model.
 //
 // @param request - CreateModelLabelsRequest
 //
@@ -16212,29 +17416,18 @@ func (client *Client) CreateModelLabelsWithOptions(ModelId *string, request *Cre
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateModelLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateModelLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateModelLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建或更新模型的标签
+// Creates a tag for a model.
 //
 // @param request - CreateModelLabelsRequest
 //
@@ -16253,7 +17446,7 @@ func (client *Client) CreateModelLabels(ModelId *string, request *CreateModelLab
 
 // Summary:
 //
-// 创建模型版本
+// Creates a new version for the specified model.
 //
 // @param request - CreateModelVersionRequest
 //
@@ -16347,29 +17540,18 @@ func (client *Client) CreateModelVersionWithOptions(ModelId *string, request *Cr
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateModelVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateModelVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建模型版本
+// Creates a new version for the specified model.
 //
 // @param request - CreateModelVersionRequest
 //
@@ -16422,24 +17604,13 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateModelVersionLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateModelVersionLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateModelVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16463,7 +17634,7 @@ func (client *Client) CreateModelVersionLabels(ModelId *string, VersionName *str
 
 // Summary:
 //
-// 创建产品订单
+// Creates a pay-as-you-go order for DataWorks, OSS, PAI, or MaxCompute.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -16501,29 +17672,18 @@ func (client *Client) CreateProductOrdersWithOptions(request *CreateProductOrder
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateProductOrdersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateProductOrdersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateProductOrdersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建产品订单
+// Creates a pay-as-you-go order for DataWorks, OSS, PAI, or MaxCompute.
 //
 // @param request - CreateProductOrdersRequest
 //
@@ -16542,7 +17702,7 @@ func (client *Client) CreateProductOrders(request *CreateProductOrdersRequest) (
 
 // Summary:
 //
-// 创建一次运行
+// Creates a run. A run is an experiment that can be associated with a specific workload or simply a code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -16596,29 +17756,18 @@ func (client *Client) CreateRunWithOptions(request *CreateRunRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建一次运行
+// Creates a run. A run is an experiment that can be associated with a specific workload or simply a code execution.
 //
 // @param request - CreateRunRequest
 //
@@ -16637,7 +17786,7 @@ func (client *Client) CreateRun(request *CreateRunRequest) (_result *CreateRunRe
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -16687,29 +17836,18 @@ func (client *Client) CreateWorkspaceWithOptions(request *CreateWorkspaceRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建工作空间
+// Creates a workspace.
 //
 // @param request - CreateWorkspaceRequest
 //
@@ -16766,24 +17904,13 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateWorkspaceResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateWorkspaceResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16807,7 +17934,7 @@ func (client *Client) CreateWorkspaceResource(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// 删除一个代码源配置
+// Deletes a code source based on the provided ID.
 //
 // @param headers - map
 //
@@ -16829,29 +17956,18 @@ func (client *Client) DeleteCodeSourceWithOptions(CodeSourceId *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCodeSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCodeSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除一个代码源配置
+// Deletes a code source based on the provided ID.
 //
 // @return DeleteCodeSourceResponse
 func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCodeSourceResponse, _err error) {
@@ -16890,24 +18006,13 @@ func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16971,24 +18076,13 @@ func (client *Client) DeleteDatasetFileMetasWithOptions(DatasetId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetFileMetasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetFileMetasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetFileMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17034,24 +18128,13 @@ func (client *Client) DeleteDatasetJobWithOptions(DatasetId *string, DatasetJobI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17107,24 +18190,13 @@ func (client *Client) DeleteDatasetJobConfigWithOptions(DatasetId *string, Datas
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetJobConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetJobConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17182,24 +18254,13 @@ func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17223,7 +18284,7 @@ func (client *Client) DeleteDatasetLabels(DatasetId *string, request *DeleteData
 
 // Summary:
 //
-// 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+// Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
 //
 // @param headers - map
 //
@@ -17245,29 +18306,18 @@ func (client *Client) DeleteDatasetVersionWithOptions(DatasetId *string, Version
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除指定版本的数据集信息，如果删除的版本是该数据集的仅存版本，版本删除后会联动删除dataset 表中的数据集信息
+// Deletes the information about a specified version of a dataset. Version v1 cannot be deleted by using this operation. When you call the DeleteDataset operation to delete a dataset, it can be deleted at the same time.
 //
 // @return DeleteDatasetVersionResponse
 func (client *Client) DeleteDatasetVersion(DatasetId *string, VersionName *string) (_result *DeleteDatasetVersionResponse, _err error) {
@@ -17318,24 +18368,13 @@ func (client *Client) DeleteDatasetVersionLabelsWithOptions(DatasetId *string, V
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDatasetVersionLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDatasetVersionLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDatasetVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17381,24 +18420,13 @@ func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteExperimentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteExperimentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17442,24 +18470,13 @@ func (client *Client) DeleteExperimentLabelWithOptions(ExperimentId *string, Key
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteExperimentLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteExperimentLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteExperimentLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17481,7 +18498,7 @@ func (client *Client) DeleteExperimentLabel(ExperimentId *string, Key *string) (
 
 // Summary:
 //
-// 删除工作空间成员
+// Deletes a member from a workspace.
 //
 // @param request - DeleteMembersRequest
 //
@@ -17515,29 +18532,18 @@ func (client *Client) DeleteMembersWithOptions(WorkspaceId *string, request *Del
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteMembersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteMembersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除工作空间成员
+// Deletes a member from a workspace.
 //
 // @param request - DeleteMembersRequest
 //
@@ -17556,7 +18562,7 @@ func (client *Client) DeleteMembers(WorkspaceId *string, request *DeleteMembersR
 
 // Summary:
 //
-// 删除模型
+// Deletes a model.
 //
 // @param headers - map
 //
@@ -17578,29 +18584,18 @@ func (client *Client) DeleteModelWithOptions(ModelId *string, headers map[string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteModelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteModelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除模型
+// Deletes a model.
 //
 // @return DeleteModelResponse
 func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse, _err error) {
@@ -17651,24 +18646,13 @@ func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *Del
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteModelLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteModelLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteModelLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17714,24 +18698,13 @@ func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteModelVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteModelVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17753,7 +18726,7 @@ func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (
 
 // Summary:
 //
-// 删除模型版本的标签
+// Delete a model version tag.
 //
 // @param request - DeleteModelVersionLabelsRequest
 //
@@ -17787,29 +18760,18 @@ func (client *Client) DeleteModelVersionLabelsWithOptions(ModelId *string, Versi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteModelVersionLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteModelVersionLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteModelVersionLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除模型版本的标签
+// Delete a model version tag.
 //
 // @param request - DeleteModelVersionLabelsRequest
 //
@@ -17828,7 +18790,7 @@ func (client *Client) DeleteModelVersionLabels(ModelId *string, VersionName *str
 
 // Summary:
 //
-// 删除Run
+// Deletes a run.
 //
 // @param headers - map
 //
@@ -17850,29 +18812,18 @@ func (client *Client) DeleteRunWithOptions(RunId *string, headers map[string]*st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除Run
+// Deletes a run.
 //
 // @return DeleteRunResponse
 func (client *Client) DeleteRun(RunId *string) (_result *DeleteRunResponse, _err error) {
@@ -17911,24 +18862,13 @@ func (client *Client) DeleteRunLabelWithOptions(RunId *string, Key *string, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRunLabelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRunLabelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRunLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17941,6 +18881,70 @@ func (client *Client) DeleteRunLabel(RunId *string, Key *string) (_result *Delet
 	headers := make(map[string]*string)
 	_result = &DeleteRunLabelResponse{}
 	_body, _err := client.DeleteRunLabelWithOptions(RunId, Key, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes user configurations.
+//
+// @param request - DeleteUserConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserConfigResponse
+func (client *Client) DeleteUserConfigWithOptions(CategoryName *string, request *DeleteUserConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteUserConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserConfig"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/userconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(CategoryName))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes user configurations.
+//
+// @param request - DeleteUserConfigRequest
+//
+// @return DeleteUserConfigResponse
+func (client *Client) DeleteUserConfig(CategoryName *string, request *DeleteUserConfigRequest) (_result *DeleteUserConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteUserConfigResponse{}
+	_body, _err := client.DeleteUserConfigWithOptions(CategoryName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17972,24 +18976,13 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18065,24 +19058,13 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteWorkspaceResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteWorkspaceResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18106,7 +19088,7 @@ func (client *Client) DeleteWorkspaceResource(WorkspaceId *string, request *Dele
 
 // Summary:
 //
-// 获取一个代码源配置
+// Obtains the details of a code source.
 //
 // @param headers - map
 //
@@ -18128,29 +19110,18 @@ func (client *Client) GetCodeSourceWithOptions(CodeSourceId *string, headers map
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCodeSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCodeSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取一个代码源配置
+// Obtains the details of a code source.
 //
 // @return GetCodeSourceResponse
 func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
@@ -18189,24 +19160,13 @@ func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDatasetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDatasetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18266,24 +19226,13 @@ func (client *Client) GetDatasetFileMetaWithOptions(DatasetId *string, DatasetFi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDatasetFileMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDatasetFileMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDatasetFileMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18345,24 +19294,13 @@ func (client *Client) GetDatasetJobWithOptions(DatasetId *string, DatasetJobId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDatasetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDatasetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDatasetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18420,24 +19358,13 @@ func (client *Client) GetDatasetJobConfigWithOptions(DatasetId *string, DatasetJ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDatasetJobConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDatasetJobConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDatasetJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18483,24 +19410,13 @@ func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionNam
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDatasetVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDatasetVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18556,24 +19472,13 @@ func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspac
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDefaultWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDefaultWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDefaultWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18597,7 +19502,7 @@ func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (
 
 // Summary:
 //
-// 获取实验
+// Obtains an experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -18631,29 +19536,18 @@ func (client *Client) GetExperimentWithOptions(ExperimentId *string, request *Ge
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetExperimentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetExperimentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取实验
+// Obtains an experiment.
 //
 // @param request - GetExperimentRequest
 //
@@ -18706,24 +19600,13 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetImageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetImageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18785,24 +19668,13 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMemberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMemberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18848,24 +19720,13 @@ func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetModelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetModelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18909,24 +19770,13 @@ func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetModelVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetModelVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19004,24 +19854,13 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPermissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPermissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19079,24 +19918,13 @@ func (client *Client) GetRunWithOptions(RunId *string, request *GetRunRequest, h
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19154,24 +19982,13 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19249,24 +20066,13 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCodeSourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListCodeSourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListCodeSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19292,18 +20098,36 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 //
 // 查询数据集文件列表
 //
-// @param request - ListDatasetFileMetasRequest
+// @param tmpReq - ListDatasetFileMetasRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListDatasetFileMetasResponse
-func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, request *ListDatasetFileMetasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetFileMetasResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq *ListDatasetFileMetasRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetFileMetasResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListDatasetFileMetasShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryFileTypeIncludeAny)) {
+		request.QueryFileTypeIncludeAnyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryFileTypeIncludeAny, tea.String("QueryFileTypeIncludeAny"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryTagsExclude)) {
+		request.QueryTagsExcludeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryTagsExclude, tea.String("QueryTagsExclude"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryTagsIncludeAll)) {
+		request.QueryTagsIncludeAllShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryTagsIncludeAll, tea.String("QueryTagsIncludeAll"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.QueryTagsIncludeAny)) {
+		request.QueryTagsIncludeAnyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.QueryTagsIncludeAny, tea.String("QueryTagsIncludeAny"), tea.String("simple"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DatasetVersion)) {
 		query["DatasetVersion"] = request.DatasetVersion
@@ -19311,6 +20135,14 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.EndFileUpdateTime)) {
 		query["EndFileUpdateTime"] = request.EndFileUpdateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTagUpdateTime)) {
+		query["EndTagUpdateTime"] = request.EndTagUpdateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -19323,6 +20155,34 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryFileDir)) {
+		query["QueryFileDir"] = request.QueryFileDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryFileName)) {
+		query["QueryFileName"] = request.QueryFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryFileTypeIncludeAnyShrink)) {
+		query["QueryFileTypeIncludeAny"] = request.QueryFileTypeIncludeAnyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryImage)) {
+		query["QueryImage"] = request.QueryImage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTagsExcludeShrink)) {
+		query["QueryTagsExclude"] = request.QueryTagsExcludeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTagsIncludeAllShrink)) {
+		query["QueryTagsIncludeAll"] = request.QueryTagsIncludeAllShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTagsIncludeAnyShrink)) {
+		query["QueryTagsIncludeAny"] = request.QueryTagsIncludeAnyShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.QueryText)) {
@@ -19343,6 +20203,14 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, request
 
 	if !tea.BoolValue(util.IsUnset(request.StartFileUpdateTime)) {
 		query["StartFileUpdateTime"] = request.StartFileUpdateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTagUpdateTime)) {
+		query["StartTagUpdateTime"] = request.StartTagUpdateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThumbnailMode)) {
+		query["ThumbnailMode"] = request.ThumbnailMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TopK)) {
@@ -19368,24 +20236,13 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDatasetFileMetasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDatasetFileMetasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDatasetFileMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19455,24 +20312,13 @@ func (client *Client) ListDatasetJobConfigsWithOptions(DatasetId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDatasetJobConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDatasetJobConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDatasetJobConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19546,24 +20392,13 @@ func (client *Client) ListDatasetJobsWithOptions(DatasetId *string, request *Lis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDatasetJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDatasetJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDatasetJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19653,24 +20488,13 @@ func (client *Client) ListDatasetVersionsWithOptions(DatasetId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDatasetVersionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDatasetVersionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDatasetVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19780,24 +20604,13 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDatasetsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDatasetsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDatasetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19905,24 +20718,13 @@ func (client *Client) ListExperimentWithOptions(tmpReq *ListExperimentRequest, h
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListExperimentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListExperimentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19946,7 +20748,7 @@ func (client *Client) ListExperiment(request *ListExperimentRequest) (_result *L
 
 // Summary:
 //
-// 列举标签
+// Lists all tags of an image.
 //
 // @param request - ListImageLabelsRequest
 //
@@ -19996,29 +20798,18 @@ func (client *Client) ListImageLabelsWithOptions(request *ListImageLabelsRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListImageLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListImageLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListImageLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 列举标签
+// Lists all tags of an image.
 //
 // @param request - ListImageLabelsRequest
 //
@@ -20111,24 +20902,13 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListImagesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListImagesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListImagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20198,24 +20978,13 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMembersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMembersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20313,24 +21082,13 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListModelVersionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListModelVersionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListModelVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20440,24 +21198,13 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListModelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListModelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20503,24 +21250,13 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPermissionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPermissionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPermissionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20584,24 +21320,13 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListProductsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListProductsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListProductsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20659,24 +21384,13 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListQuotasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListQuotasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListQuotasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20778,24 +21492,13 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20861,24 +21564,13 @@ func (client *Client) ListRunMetricsWithOptions(RunId *string, request *ListRunM
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRunMetricsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRunMetricsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRunMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20992,24 +21684,13 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRunsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRunsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRunsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21024,6 +21705,74 @@ func (client *Client) ListRuns(request *ListRunsRequest) (_result *ListRunsRespo
 	headers := make(map[string]*string)
 	_result = &ListRunsResponse{}
 	_body, _err := client.ListRunsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the user configurations.
+//
+// @param request - ListUserConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserConfigsResponse
+func (client *Client) ListUserConfigsWithOptions(request *ListUserConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryNames)) {
+		query["CategoryNames"] = request.CategoryNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigKeys)) {
+		query["ConfigKeys"] = request.ConfigKeys
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserConfigs"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/userconfigs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains the user configurations.
+//
+// @param request - ListUserConfigsRequest
+//
+// @return ListUserConfigsResponse
+func (client *Client) ListUserConfigs(request *ListUserConfigsRequest) (_result *ListUserConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListUserConfigsResponse{}
+	_body, _err := client.ListUserConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21067,24 +21816,13 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListWorkspaceUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListWorkspaceUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListWorkspaceUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21108,7 +21846,11 @@ func (client *Client) ListWorkspaceUsers(WorkspaceId *string, request *ListWorks
 
 // Summary:
 //
-// 获得工作空间列表
+// Lists all workspaces in a region.
+//
+// Description:
+//
+// You can use the option parameter to specify query options, so as to obtain different information about the workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -21186,29 +21928,22 @@ func (client *Client) ListWorkspacesWithOptions(request *ListWorkspacesRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListWorkspacesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListWorkspacesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListWorkspacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获得工作空间列表
+// Lists all workspaces in a region.
+//
+// Description:
+//
+// You can use the option parameter to specify query options, so as to obtain different information about the workspaces.
 //
 // @param request - ListWorkspacesRequest
 //
@@ -21261,24 +21996,13 @@ func (client *Client) LogRunMetricsWithOptions(RunId *string, request *LogRunMet
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LogRunMetricsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LogRunMetricsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LogRunMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21324,24 +22048,13 @@ func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishCodeSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishCodeSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21385,24 +22098,13 @@ func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishDatasetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishDatasetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21446,24 +22148,13 @@ func (client *Client) PublishImageWithOptions(ImageId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishImageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishImageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21507,24 +22198,13 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveImageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveImageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21568,24 +22248,13 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveImageLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveImageLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveImageLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21629,24 +22298,13 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveMemberRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveMemberRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveMemberRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21702,24 +22360,13 @@ func (client *Client) SetExperimentLabelsWithOptions(ExperimentId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetExperimentLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetExperimentLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetExperimentLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21734,6 +22381,70 @@ func (client *Client) SetExperimentLabels(ExperimentId *string, request *SetExpe
 	headers := make(map[string]*string)
 	_result = &SetExperimentLabelsResponse{}
 	_body, _err := client.SetExperimentLabelsWithOptions(ExperimentId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the user configurations.
+//
+// @param request - SetUserConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetUserConfigsResponse
+func (client *Client) SetUserConfigsWithOptions(request *SetUserConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SetUserConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		body["Configs"] = request.Configs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetUserConfigs"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/userconfigs"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetUserConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the user configurations.
+//
+// @param request - SetUserConfigsRequest
+//
+// @return SetUserConfigsResponse
+func (client *Client) SetUserConfigs(request *SetUserConfigsRequest) (_result *SetUserConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SetUserConfigsResponse{}
+	_body, _err := client.SetUserConfigsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21781,24 +22492,13 @@ func (client *Client) StopDatasetJobWithOptions(DatasetId *string, DatasetJobId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopDatasetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopDatasetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopDatasetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21884,24 +22584,13 @@ func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateCodeSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateCodeSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateCodeSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -21971,24 +22660,13 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDatasetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDatasetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDatasetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22058,24 +22736,13 @@ func (client *Client) UpdateDatasetFileMetasWithOptions(DatasetId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDatasetFileMetasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDatasetFileMetasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDatasetFileMetasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22141,24 +22808,13 @@ func (client *Client) UpdateDatasetJobWithOptions(DatasetId *string, DatasetJobI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDatasetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDatasetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDatasetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22224,24 +22880,13 @@ func (client *Client) UpdateDatasetJobConfigWithOptions(DatasetId *string, Datas
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDatasetJobConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDatasetJobConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDatasetJobConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22265,7 +22910,7 @@ func (client *Client) UpdateDatasetJobConfig(DatasetId *string, DatasetJobConfig
 
 // Summary:
 //
-// 更新指定版本的数据集信息
+// Updates the information about a specified version of a dataset.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -22311,29 +22956,18 @@ func (client *Client) UpdateDatasetVersionWithOptions(DatasetId *string, Version
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDatasetVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDatasetVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDatasetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新指定版本的数据集信息
+// Updates the information about a specified version of a dataset.
 //
 // @param request - UpdateDatasetVersionRequest
 //
@@ -22386,24 +23020,13 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDefaultWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDefaultWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDefaultWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22465,24 +23088,13 @@ func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateExperimentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateExperimentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateExperimentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22576,24 +23188,13 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateModelResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateModelResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateModelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22691,24 +23292,13 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateModelVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateModelVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateModelVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22732,7 +23322,7 @@ func (client *Client) UpdateModelVersion(ModelId *string, VersionName *string, r
 
 // Summary:
 //
-// 更新Run
+// Updates the run information.
 //
 // @param request - UpdateRunRequest
 //
@@ -22774,29 +23364,18 @@ func (client *Client) UpdateRunWithOptions(RunId *string, request *UpdateRunRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新Run
+// Updates the run information.
 //
 // @param request - UpdateRunRequest
 //
@@ -22853,24 +23432,13 @@ func (client *Client) UpdateWorkspaceWithOptions(WorkspaceId *string, request *U
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateWorkspaceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateWorkspaceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateWorkspaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -22952,24 +23520,13 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateWorkspaceResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateWorkspaceResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
