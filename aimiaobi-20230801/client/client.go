@@ -39048,6 +39048,7 @@ func (s *SubmitDocClusterTaskResponse) SetBody(v *SubmitDocClusterTaskResponseBo
 }
 
 type SubmitEnterpriseVocAnalysisTaskRequest struct {
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// This parameter is required.
 	ContentTags []*SubmitEnterpriseVocAnalysisTaskRequestContentTags `json:"ContentTags,omitempty" xml:"ContentTags,omitempty" type:"Repeated"`
 	Contents    []*SubmitEnterpriseVocAnalysisTaskRequestContents    `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
@@ -39089,6 +39090,11 @@ func (s SubmitEnterpriseVocAnalysisTaskRequest) String() string {
 
 func (s SubmitEnterpriseVocAnalysisTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetContentTags(v []*SubmitEnterpriseVocAnalysisTaskRequestContentTags) *SubmitEnterpriseVocAnalysisTaskRequest {
@@ -39253,6 +39259,7 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequestFilterTags) SetTagValueDefineProm
 }
 
 type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
 	// This parameter is required.
 	ContentTagsShrink *string `json:"ContentTags,omitempty" xml:"ContentTags,omitempty"`
 	ContentsShrink    *string `json:"Contents,omitempty" xml:"Contents,omitempty"`
@@ -39294,6 +39301,11 @@ func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) String() string {
 
 func (s SubmitEnterpriseVocAnalysisTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetApiKey(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.ApiKey = &v
+	return s
 }
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetContentTagsShrink(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
@@ -52318,6 +52330,10 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(tmpReq *SubmitE
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["ApiKey"] = request.ApiKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContentTagsShrink)) {
 		body["ContentTags"] = request.ContentTagsShrink
 	}
