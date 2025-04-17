@@ -1,3 +1,7 @@
+2025-04-17 Version: v1.6.0
+- Support API GetRayDashboard.
+
+
 2025-04-02 Version: v1.5.23
 - Update API CreateJob: add request parameters body.DataSources.$.MountAccess.
 
