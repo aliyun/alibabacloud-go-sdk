@@ -15,7 +15,13 @@ type GetBillDetailFileListRequest struct {
 	// example:
 	//
 	// 202502
-	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
+	BillMonth          *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
+	OssAccessKeyId     *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
+	OssAccessKeySecret *string `json:"OssAccessKeySecret,omitempty" xml:"OssAccessKeySecret,omitempty"`
+	OssBucketName      *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssRegion          *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
+	OssSecurityToken   *string `json:"OssSecurityToken,omitempty" xml:"OssSecurityToken,omitempty"`
 }
 
 func (s GetBillDetailFileListRequest) String() string {
@@ -28,6 +34,36 @@ func (s GetBillDetailFileListRequest) GoString() string {
 
 func (s *GetBillDetailFileListRequest) SetBillMonth(v string) *GetBillDetailFileListRequest {
 	s.BillMonth = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssAccessKeyId(v string) *GetBillDetailFileListRequest {
+	s.OssAccessKeyId = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssAccessKeySecret(v string) *GetBillDetailFileListRequest {
+	s.OssAccessKeySecret = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssBucketName(v string) *GetBillDetailFileListRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssEndpoint(v string) *GetBillDetailFileListRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssRegion(v string) *GetBillDetailFileListRequest {
+	s.OssRegion = &v
+	return s
+}
+
+func (s *GetBillDetailFileListRequest) SetOssSecurityToken(v string) *GetBillDetailFileListRequest {
+	s.OssSecurityToken = &v
 	return s
 }
 
@@ -99,6 +135,7 @@ type GetBillDetailFileListResponseBodyData struct {
 	//
 	// aps.ailyun.com/file/download?resourceId=1234&type=1
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -122,6 +159,11 @@ func (s *GetBillDetailFileListResponseBodyData) SetFileName(v string) *GetBillDe
 
 func (s *GetBillDetailFileListResponseBodyData) SetFileUrl(v string) *GetBillDetailFileListResponseBodyData {
 	s.FileUrl = &v
+	return s
+}
+
+func (s *GetBillDetailFileListResponseBodyData) SetStatus(v string) *GetBillDetailFileListResponseBodyData {
+	s.Status = &v
 	return s
 }
 
@@ -2239,6 +2281,30 @@ func (client *Client) GetBillDetailFileListWithOptions(request *GetBillDetailFil
 		query["BillMonth"] = request.BillMonth
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OssAccessKeyId)) {
+		query["OssAccessKeyId"] = request.OssAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAccessKeySecret)) {
+		query["OssAccessKeySecret"] = request.OssAccessKeySecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssRegion)) {
+		query["OssRegion"] = request.OssRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssSecurityToken)) {
+		query["OssSecurityToken"] = request.OssSecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2253,24 +2319,13 @@ func (client *Client) GetBillDetailFileListWithOptions(request *GetBillDetailFil
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetBillDetailFileListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetBillDetailFileListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetBillDetailFileListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2324,24 +2379,13 @@ func (client *Client) GetCommissionDetailFileListWithOptions(request *GetCommiss
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCommissionDetailFileListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCommissionDetailFileListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCommissionDetailFileListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2469,24 +2513,13 @@ func (client *Client) GetCustomerOrderListWithOptions(tmpReq *GetCustomerOrderLi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCustomerOrderListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCustomerOrderListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCustomerOrderListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2540,24 +2573,13 @@ func (client *Client) GetRenewalRateListWithOptions(request *GetRenewalRateListR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRenewalRateListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRenewalRateListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRenewalRateListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2623,24 +2645,13 @@ func (client *Client) GetSubPartnerListWithOptions(request *GetSubPartnerListReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSubPartnerListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSubPartnerListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSubPartnerListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -2764,24 +2775,13 @@ func (client *Client) GetSubPartnerOrderListWithOptions(tmpReq *GetSubPartnerOrd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSubPartnerOrderListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSubPartnerOrderListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSubPartnerOrderListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
