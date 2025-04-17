@@ -10,20 +10,38 @@ import (
 )
 
 type AddServersToServerGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The server group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The backend servers that you want to add.
+	//
+	// > You can add at most 200 backend servers in each call.
+	//
 	// This parameter is required.
 	Servers []*AddServersToServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
@@ -57,20 +75,42 @@ func (s *AddServersToServerGroupRequest) SetServers(v []*AddServersToServerGroup
 }
 
 type AddServersToServerGroupRequestServers struct {
+	// The backend server port. Valid values:
+	//
+	// 	- **6081**
+	//
 	// example:
 	//
 	// 6081
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The backend server ID.
+	//
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	//
+	// 	- If the server group is of the **Ip*	- type, set ServerId to IP addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the backend server.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
+	//
+	// 	- **Eni**: elastic network interface (ENI)
+	//
+	// 	- **Eci**: elastic container instance
+	//
+	// 	- **Ip**: IP address
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -108,6 +148,8 @@ func (s *AddServersToServerGroupRequestServers) SetServerType(v string) *AddServ
 }
 
 type AddServersToServerGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
@@ -157,31 +199,52 @@ func (s *AddServersToServerGroupResponse) SetBody(v *AddServersToServerGroupResp
 }
 
 type CreateListenerRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The description of the listener.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// listener-description
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	// The GWLB instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gwlb-te609d6696632f7*****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The server group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sgp-ckh01px70dszof****
-	ServerGroupId *string                     `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Tag           []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The tags. You can specify at most 20 tags in each call.
+	Tag []*CreateListenerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateListenerRequest) String() string {
@@ -223,10 +286,14 @@ func (s *CreateListenerRequest) SetTag(v []*CreateListenerRequestTag) *CreateLis
 }
 
 type CreateListenerRequestTag struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testValue
@@ -252,10 +319,14 @@ func (s *CreateListenerRequestTag) SetValue(v string) *CreateListenerRequestTag 
 }
 
 type CreateListenerResponseBody struct {
+	// The listener ID.
+	//
 	// example:
 	//
 	// lsn-wi3c0v30ivysrg****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A045E652-D298-5E70-A978-7247135336FB
@@ -310,33 +381,60 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
+	// The IP version. Valid values:
+	//
+	// 	- **Ipv4*	- (default): IPv4
+	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
 	// example:
 	//
 	// testGwlbName
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmwbufq6q3****
-	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tag keys. You can specify at most 20 tags in each call.
+	Tag []*CreateLoadBalancerRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The virtual private cloud (VPC) ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vpc-uf6qcgpv22ttrnnjh****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
+	//
 	// This parameter is required.
 	ZoneMappings []*CreateLoadBalancerRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
@@ -390,10 +488,16 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 }
 
 type CreateLoadBalancerRequestTag struct {
+	// The tag key. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -419,12 +523,16 @@ func (s *CreateLoadBalancerRequestTag) SetValue(v string) *CreateLoadBalancerReq
 }
 
 type CreateLoadBalancerRequestZoneMappings struct {
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-2f0eb020****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -452,10 +560,14 @@ func (s *CreateLoadBalancerRequestZoneMappings) SetZoneId(v string) *CreateLoadB
 }
 
 type CreateLoadBalancerResponseBody struct {
+	// The GWLB instance ID.
+	//
 	// example:
 	//
 	// gwlb-9njtjmqt7zfcqm****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 00B19438-66BB-58C3-8C2F-DA5B6F95CBDA
@@ -510,37 +622,83 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateServerGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken           *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configurations of connection draining.
 	ConnectionDrainConfig *CreateServerGroupRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
+	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// False
-	DryRun            *bool                                      `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The configurations of the health check feature.
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// The backend protocol. Valid values:
+	//
+	// 	- **GENEVE**(default)
+	//
 	// example:
 	//
 	// GENEVE
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// 	- **5TCH*	- (default): specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
 	// example:
 	//
 	// 5TCH
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
+	// The server group name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
 	// example:
 	//
 	// testServerGroupName
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	// The type of server group. Valid values:
+	//
+	// 	- **Instance*	- (default): allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	//
+	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	//
 	// example:
 	//
 	// Instance
-	ServerGroupType *string                        `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	Tag             []*CreateServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// The tag keys.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*CreateServerGroupRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
+	// > If **ServerGroupType*	- is set to **Instance**, only servers in the specified VPC can be added to the server group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -592,6 +750,11 @@ func (s *CreateServerGroupRequest) SetScheduler(v string) *CreateServerGroupRequ
 	return s
 }
 
+func (s *CreateServerGroupRequest) SetServerFailoverMode(v string) *CreateServerGroupRequest {
+	s.ServerFailoverMode = &v
+	return s
+}
+
 func (s *CreateServerGroupRequest) SetServerGroupName(v string) *CreateServerGroupRequest {
 	s.ServerGroupName = &v
 	return s
@@ -613,10 +776,24 @@ func (s *CreateServerGroupRequest) SetVpcId(v string) *CreateServerGroupRequest 
 }
 
 type CreateServerGroupRequestConnectionDrainConfig struct {
+	// Specifies whether to enable connection draining. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	// The timeout period of connection draining.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **3600**.
+	//
+	// Default value: **300**.
+	//
 	// example:
 	//
 	// 300
@@ -642,39 +819,102 @@ func (s *CreateServerGroupRequestConnectionDrainConfig) SetConnectionDrainTimeou
 }
 
 type CreateServerGroupRequestHealthCheckConfig struct {
+	// The backend server port that is used for health checks.
+	//
+	// Valid values: **1*	- to **65535**.
+	//
+	// Default value: **80**.
+	//
 	// example:
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The maximum timeout period of a health check response.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **300**.
+	//
+	// Default value: **5**.
+	//
 	// example:
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that you want to use for health checks. Valid values:
+	//
+	// 	- **$SERVER_IP*	- (default): the private IP address of a backend server.
+	//
+	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// 	- **true*	- (default)
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
-	HealthCheckEnabled  *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The HTTP status codes that the system returns for health checks.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	// The interval at which health checks are performed.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **50**.
+	//
+	// Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URL can also contain the following extended characters: _ ; ~ ! ( ) \\	- [ ] @ $ ^ : \\" , + =
+	//
+	// The URL must start with a forward slash (/).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP*	- (default): GWLB performs TCP health checks by sending SYN packets to a backend server to check whether the port of the backend server is available to receive requests.
+	//
+	// 	- **HTTP**: GWLB performs HTTP health checks to check whether backend servers are healthy by sending HEAD or GET requests which simulate access from browsers.
+	//
 	// example:
 	//
 	// TCP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
+	// Default value: **2**.
+	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
+	// Default value: **2**.
+	//
 	// example:
 	//
 	// 2
@@ -740,10 +980,14 @@ func (s *CreateServerGroupRequestHealthCheckConfig) SetUnhealthyThreshold(v int3
 }
 
 type CreateServerGroupRequestTag struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -769,10 +1013,14 @@ func (s *CreateServerGroupRequestTag) SetValue(v string) *CreateServerGroupReque
 }
 
 type CreateServerGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
@@ -827,14 +1075,28 @@ func (s *CreateServerGroupResponse) SetBody(v *CreateServerGroupResponseBody) *C
 }
 
 type DeleteListenerRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The listener ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -867,6 +1129,8 @@ func (s *DeleteListenerRequest) SetListenerId(v string) *DeleteListenerRequest {
 }
 
 type DeleteListenerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5C6E3548-086F-5FF6-A2B3-B1871B3AB488
@@ -916,14 +1180,28 @@ func (s *DeleteListenerResponse) SetBody(v *DeleteListenerResponseBody) *DeleteL
 }
 
 type DeleteLoadBalancerRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without sending the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The GWLB instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -956,6 +1234,8 @@ func (s *DeleteLoadBalancerRequest) SetLoadBalancerId(v string) *DeleteLoadBalan
 }
 
 type DeleteLoadBalancerResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 37907828-01AB-5AC3-9DDE-25D419091D54
@@ -1005,14 +1285,28 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 }
 
 type DeleteServerGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The server group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1045,6 +1339,8 @@ func (s *DeleteServerGroupRequest) SetServerGroupId(v string) *DeleteServerGroup
 }
 
 type DeleteServerGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
@@ -1094,6 +1390,14 @@ func (s *DeleteServerGroupResponse) SetBody(v *DeleteServerGroupResponseBody) *D
 }
 
 type DescribeRegionsRequest struct {
+	// The supported language. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
+	// 	- **ja**: Japanese
+	//
 	// example:
 	//
 	// zh-CN
@@ -1114,7 +1418,10 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 }
 
 type DescribeRegionsResponseBody struct {
+	// A list of regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 162FCE8D-CEEC-5083-90BF-B45D8C4F81FB
@@ -1140,14 +1447,20 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The region name.
+	//
 	// example:
 	//
 	// China (Hangzhou)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The region endpoint.
+	//
 	// example:
 	//
 	// gwlb.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1207,6 +1520,14 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeZonesRequest struct {
+	// The supported language. Valid values:
+	//
+	// 	- **zh-CN**: Chinese
+	//
+	// 	- **en-US*	- (default): English
+	//
+	// 	- **ja**: Japanese
+	//
 	// example:
 	//
 	// zh-CN
@@ -1227,11 +1548,14 @@ func (s *DescribeZonesRequest) SetAcceptLanguage(v string) *DescribeZonesRequest
 }
 
 type DescribeZonesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 4C605F7E-D0F6-54E2-B004-F9B132F0D8B2
-	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Zones     []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// A list of zones.
+	Zones []*DescribeZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s DescribeZonesResponseBody) String() string {
@@ -1253,7 +1577,14 @@ func (s *DescribeZonesResponseBody) SetZones(v []*DescribeZonesResponseBodyZones
 }
 
 type DescribeZonesResponseBodyZones struct {
+	// The zone name.
+	//
+	// example:
+	//
+	// Hangzhou Zone G
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -1308,6 +1639,8 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 }
 
 type GetListenerAttributeRequest struct {
+	// The listener ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1330,35 +1663,60 @@ func (s *GetListenerAttributeRequest) SetListenerId(v string) *GetListenerAttrib
 }
 
 type GetListenerAttributeResponseBody struct {
+	// The listener description.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// listener_description
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	// The listener ID.
+	//
 	// example:
 	//
 	// lsn-3kbj3587mqhm3p****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The listener status. Valid values:
+	//
+	// 	- **Provisioning**: The listener is being created.
+	//
+	// 	- **Running**: The listener is running.
+	//
+	// 	- **Configuring**: The listener is being configured.
+	//
+	// 	- **Deleting**: The listener is being deleted.
+	//
 	// example:
 	//
 	// Provisioning
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	// The GWLB instance ID.
+	//
 	// example:
 	//
 	// gwlb-te609d6696632f76****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The region ID of the GWLB instance.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 75CC3312-7757-5EE1-90D8-49CEA66608AE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-sp8d2r6y7t0xtl****
-	ServerGroupId *string                                 `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Tags          []*GetListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The tags.
+	Tags []*GetListenerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetListenerAttributeResponseBody) String() string {
@@ -1410,10 +1768,14 @@ func (s *GetListenerAttributeResponseBody) SetTags(v []*GetListenerAttributeResp
 }
 
 type GetListenerAttributeResponseBodyTags struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs: `or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testValue
@@ -1468,21 +1830,34 @@ func (s *GetListenerAttributeResponse) SetBody(v *GetListenerAttributeResponseBo
 }
 
 type GetListenerHealthStatusRequest struct {
+	// The filter conditions. You can specify at most 20 filter conditions.
 	Filter []*GetListenerHealthStatusRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	// The listener ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lsn-7sixpvm5fc3v0b****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The number of entries per page. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// 4f1d7cc9f51e18904e8a063603a6b0c3d03bc69f78734254e0b5e8707e68****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to be skipped in the call.
+	//
 	// example:
 	//
 	// 10
@@ -1523,10 +1898,21 @@ func (s *GetListenerHealthStatusRequest) SetSkip(v int32) *GetListenerHealthStat
 }
 
 type GetListenerHealthStatusRequestFilter struct {
+	// The filter condition name. You can filter by one or more filter condition names. The URL must meet the following requirements:
+	//
+	// 	- **Status**: the health status.
+	//
+	// 	- **ReasonCode**: the cause of an unhealthy server.
+	//
+	// 	- **ServerId**: the ID of the backend server.
+	//
+	// 	- **ServerIp**: the IP address of the backend server.
+	//
 	// example:
 	//
 	// Status
-	Name   *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The filter condition values. You can specify at most 20 condition values.
 	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -1549,19 +1935,32 @@ func (s *GetListenerHealthStatusRequestFilter) SetValues(v []*string) *GetListen
 }
 
 type GetListenerHealthStatusResponseBody struct {
+	// The health check status of the server groups that are associated with the listener.
 	ListenerHealthStatus []*GetListenerHealthStatusResponseBodyListenerHealthStatus `json:"ListenerHealthStatus,omitempty" xml:"ListenerHealthStatus,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// U12WEI6Ro2ol3wA54rBNSwdC5+lYy6q5SjIQEvc1wz5mjZxV+YjsHRdXV8XauY1BpOQIvwX63E0en54H3D****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0ED4F222-36A0-5470-8A9A-AAB4E96BAC1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 31
@@ -1602,10 +2001,13 @@ func (s *GetListenerHealthStatusResponseBody) SetTotalCount(v int32) *GetListene
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatus struct {
+	// The listener ID.
+	//
 	// example:
 	//
 	// lsn-sg8aha6pzjavvo****
-	ListenerId       *string                                                                    `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The information about the server groups.
 	ServerGroupInfos []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos `json:"ServerGroupInfos,omitempty" xml:"ServerGroupInfos,omitempty" type:"Repeated"`
 }
 
@@ -1628,15 +2030,24 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatus) SetServerGroup
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos struct {
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
 	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-0vdsbyszro3nr6****
-	ServerGroupId *string                                                                           `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Servers       []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The backend servers.
+	Servers []*GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
 
 func (s GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos) String() string {
@@ -1663,19 +2074,38 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServers struct {
+	// The backend port.
+	//
 	// example:
 	//
 	// 6081
-	Port   *int32                                                                                `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The reason why **Status*	- indicates an unhealthy status.
 	Reason *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServersReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	// The backend server ID.
+	//
 	// example:
 	//
 	// i-2ze4rnh8yj9kif3z****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the server.
+	//
 	// example:
 	//
 	// 192.168.0.XXX
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The health status of the backend server. Valid values:
+	//
+	// 	- **Initial**: Health checks are configured for the GWLB instance, but no data is found.
+	//
+	// 	- **Unhealthy**: The backend server consecutively fails health checks.
+	//
+	// 	- **Unused**: The backend server is not in use.
+	//
+	// 	- **Unavailable**: Health checks are disabled.
+	//
+	// 	- **Healthy**: The backend server is healthy.
+	//
 	// example:
 	//
 	// Healthy
@@ -1716,6 +2146,20 @@ func (s *GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfos
 }
 
 type GetListenerHealthStatusResponseBodyListenerHealthStatusServerGroupInfosServersReason struct {
+	// The reason why **Status*	- indicates an unhealthy status. Valid values:
+	//
+	// 	- **CONNECT_TIMEOUT**: The GWLB instance failed to connect to the backend server within the specified period of time.
+	//
+	// 	- **CONNECT_FAILED**: The GWLB instance failed to connect to the backend server.
+	//
+	// 	- **RECV_RESPONSE_TIMEOUT**: The GWLB instance failed to receive a response from the backend server within the specified period of time.
+	//
+	// 	- **CONNECT_INTERRUPT**: The connection between the health check and the backend server was interrupted.
+	//
+	// 	- **HTTP_CODE_NOT_MATCH**: The HTTP status code from the backend server is not the expected one.
+	//
+	// 	- **HTTP_INVALID_HEADER**: The format of the response from the backend servers is invalid.
+	//
 	// example:
 	//
 	// CONNECT_TIMEOUT
@@ -1765,6 +2209,8 @@ func (s *GetListenerHealthStatusResponse) SetBody(v *GetListenerHealthStatusResp
 }
 
 type GetLoadBalancerAttributeRequest struct {
+	// The GWLB instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1787,43 +2233,80 @@ func (s *GetLoadBalancerAttributeRequest) SetLoadBalancerId(v string) *GetLoadBa
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
+	// The protocol version. Valid values:
+	//
+	// 	- **Ipv4**: IPv4.
+	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-07-08T10:12:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The business status of the GWLB instance. Valid values:
+	//
+	// 	- **Normal**: running as expected
+	//
+	// 	- **FinancialLocked**: locked due to overdue payments
+	//
 	// example:
 	//
 	// Normal
 	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	// The GWLB instance ID.
+	//
 	// example:
 	//
 	// gwlb-9njtjmqt7zfcqm****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
 	// example:
 	//
 	// gwlb
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The GWLB instance status. Valid values:
+	//
+	// 	- **Active**: The GWLB instance is running.
+	//
+	// 	- **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+	//
+	// 	- **Provisioning**: The GWLB instance is being created.
+	//
+	// 	- **Configuring**: The GWLB instance is being modified.
+	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B6DC5DDC-9560-59BF-80FA-ED1E5CB417DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfmx7pmxcy****
-	ResourceGroupId *string                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags        []*GetLoadBalancerAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TrafficMode *string                                     `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-k1aajsbwbaq4todet****
-	VpcId        *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
 	ZoneMappings []*GetLoadBalancerAttributeResponseBodyZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -1880,6 +2363,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetTags(v []*GetLoadBalancerAttri
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBody) SetTrafficMode(v string) *GetLoadBalancerAttributeResponseBody {
+	s.TrafficMode = &v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBody) SetVpcId(v string) *GetLoadBalancerAttributeResponseBody {
 	s.VpcId = &v
 	return s
@@ -1891,10 +2379,16 @@ func (s *GetLoadBalancerAttributeResponseBody) SetZoneMappings(v []*GetLoadBalan
 }
 
 type GetLoadBalancerAttributeResponseBodyTags struct {
+	// The tag key. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -1920,11 +2414,16 @@ func (s *GetLoadBalancerAttributeResponseBodyTags) SetValue(v string) *GetLoadBa
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
+	// The GWLB instance addresses.
 	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
+	// The vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+	//
 	// example:
 	//
 	// vsw-uf6v8l7d2f1k53xrl****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID.
+	//
 	// example:
 	//
 	// cn-hangzhou-j
@@ -1955,10 +2454,14 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
+	// The ID of the elastic network interface (ENI) used by the GWLB instance.
+	//
 	// example:
 	//
 	// eni-bp1iahwz3rzgvltz****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	// The private IPv4 address.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
@@ -2013,21 +2516,34 @@ func (s *GetLoadBalancerAttributeResponse) SetBody(v *GetLoadBalancerAttributeRe
 }
 
 type ListListenersRequest struct {
-	ListenerIds     []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
+	// The listener IDs. You can specify at most 20 listener IDs.
+	ListenerIds []*string `json:"ListenerIds,omitempty" xml:"ListenerIds,omitempty" type:"Repeated"`
+	// The GWLB instance IDs. You can specify at most 20 instance IDs.
 	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	// The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// d209f4e63ec942c967c50c888a13****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The number of entries to be skipped in the call.
+	//
 	// example:
 	//
 	// 10
-	Skip *int32                     `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	Tag  []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The tags. You can specify at most 20 tags in each call.
+	Tag []*ListListenersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListListenersRequest) String() string {
@@ -2069,10 +2585,16 @@ func (s *ListListenersRequest) SetTag(v []*ListListenersRequestTag) *ListListene
 }
 
 type ListListenersRequestTag struct {
+	// The tag key. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// tagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// tagValue
@@ -2098,20 +2620,36 @@ func (s *ListListenersRequestTag) SetValue(v string) *ListListenersRequestTag {
 }
 
 type ListListenersResponseBody struct {
+	// The GWLB listeners.
 	Listeners []*ListListenersResponseBodyListeners `json:"Listeners,omitempty" xml:"Listeners,omitempty" type:"Repeated"`
+	// The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// 5c281c0a0d6bfb6355ed088c2108aca8e0b5e8707e68****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 7DBFC67C-A272-5952-8287-6C3EBE4E04D9
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 8
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListListenersResponseBody) String() string {
@@ -2148,27 +2686,46 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 type ListListenersResponseBodyListeners struct {
+	// The description of the listener.
+	//
 	// example:
 	//
 	// listener-description
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	// The listener ID.
+	//
 	// example:
 	//
 	// lsn-vu7folhh5ntm8u****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The status of the listener. Valid values:
+	//
+	// 	- **Provisioning**: The listener is being created.
+	//
+	// 	- **Running**: The listener is running.
+	//
+	// 	- **Configuring**: The listener is being configured.
+	//
+	// 	- **Deleting**: The listener is being deleted.
+	//
 	// example:
 	//
 	// Running
 	ListenerStatus *string `json:"ListenerStatus,omitempty" xml:"ListenerStatus,omitempty"`
+	// The GWLB instance ID.
+	//
 	// example:
 	//
 	// gwlb-uf6hbeh795xlqln7g****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-5yapcb422i51ru****
-	ServerGroupId *string                                   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Tags          []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The tags.
+	Tags []*ListListenersResponseBodyListenersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -2210,10 +2767,14 @@ func (s *ListListenersResponseBodyListeners) SetTags(v []*ListListenersResponseB
 }
 
 type ListListenersResponseBodyListenersTags struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue
@@ -2268,39 +2829,83 @@ func (s *ListListenersResponse) SetBody(v *ListListenersResponseBody) *ListListe
 }
 
 type ListLoadBalancersRequest struct {
+	// The IP version. Valid values:
+	//
+	// 	- **Ipv4**: IPv4
+	//
+	// Enumeration values:
+	//
+	// 	- IPv4: IPv4
+	//
+	// 	- DualStack: DualStack
+	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	// The business status of the GWLB instance. Valid values:
+	//
+	// 	- **Normal**: running as expected
+	//
+	// 	- **FinancialLocked**: locked due to overdue payments
+	//
 	// example:
 	//
 	// Normal
-	LoadBalancerBusinessStatus *string   `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
-	LoadBalancerIds            []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	LoadBalancerNames          []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
+	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	// The GWLB instance IDs. You can query at most 20 GWLB instances in each call.
+	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
+	// The GWLB instance names. You can specify at most 20 GWLB instance names in each call.
+	LoadBalancerNames []*string `json:"LoadBalancerNames,omitempty" xml:"LoadBalancerNames,omitempty" type:"Repeated"`
+	// The GWLB instance status. Valid values:
+	//
+	// 	- **Active**: The GWLB instance is running.
+	//
+	// 	- **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+	//
+	// 	- **Provisioning**: The GWLB instance is being created.
+	//
+	// 	- **Configuring**: The GWLB instance is being modified.
+	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The number of entries per page. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// WyJyb290IiwibiIsIm4iLDEsMCwxNjg1MDY1NTgyNzYwLCI2NDcwMGY2ZTc2Zjc0MWFiZGEyZjQyNzc4ZDk2MmJkOTk3ZGZmM2Nm****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek2htf5qsyrn****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The number of entries to be skipped in the call.
+	//
 	// example:
 	//
 	// 1
-	Skip    *int32                         `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	Tag     []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	VpcIds  []*string                      `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
-	ZoneIds []*string                      `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The tags. You can specify at most 20 tags in each call.
+	Tag         []*ListLoadBalancersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TrafficMode *string                        `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+	// The virtual private cloud (VPC) IDs. You can query at most 20 IDs in each call.
+	VpcIds []*string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty" type:"Repeated"`
+	// The zone IDs. You can query at most 20 zone IDs in each call.
+	ZoneIds []*string `json:"ZoneIds,omitempty" xml:"ZoneIds,omitempty" type:"Repeated"`
 }
 
 func (s ListLoadBalancersRequest) String() string {
@@ -2361,6 +2966,11 @@ func (s *ListLoadBalancersRequest) SetTag(v []*ListLoadBalancersRequestTag) *Lis
 	return s
 }
 
+func (s *ListLoadBalancersRequest) SetTrafficMode(v string) *ListLoadBalancersRequest {
+	s.TrafficMode = &v
+	return s
+}
+
 func (s *ListLoadBalancersRequest) SetVpcIds(v []*string) *ListLoadBalancersRequest {
 	s.VpcIds = v
 	return s
@@ -2372,10 +2982,16 @@ func (s *ListLoadBalancersRequest) SetZoneIds(v []*string) *ListLoadBalancersReq
 }
 
 type ListLoadBalancersRequestTag struct {
+	// The tag key The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -2401,19 +3017,32 @@ func (s *ListLoadBalancersRequestTag) SetValue(v string) *ListLoadBalancersReque
 }
 
 type ListLoadBalancersResponseBody struct {
+	// The GWLB instances.
 	LoadBalancers []*ListLoadBalancersResponseBodyLoadBalancers `json:"LoadBalancers,omitempty" xml:"LoadBalancers,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// CAESGgoSChAKDGNvbXBsZXRlVGltZRABCgQiAggAGAAiQAoJAIldD2UAAAAACjMDLgAAADFTNzMyZDMwMzAzMDY5NzQzNDM0NmI3NzM2NjUzNzc4NzM2YTc0NjYzOTYz****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 378A80E9-4262-5D8E-8D62-0969E52D7358
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 100
@@ -2454,39 +3083,73 @@ func (s *ListLoadBalancersResponseBody) SetTotalCount(v int32) *ListLoadBalancer
 }
 
 type ListLoadBalancersResponseBodyLoadBalancers struct {
+	// The IP version. Valid values:
+	//
+	// 	- **IPv4**
+	//
 	// example:
 	//
 	// IPv4
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-08-05 18:24:07
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The business status of the GWLB instance. Valid values:
+	//
+	// 	- **Normal**: running as expected
+	//
+	// 	- **FinancialLocked**: locked due to overdue payments
+	//
 	// example:
 	//
 	// Normal
 	LoadBalancerBusinessStatus *string `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
+	// The GWLB instance ID.
+	//
 	// example:
 	//
 	// gwlb-9njtjmqt7zfcqm****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
 	// example:
 	//
 	// testGwlbName
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	// The GWLB instance status. Valid values:
+	//
+	// 	- **Active**: The GWLB instance is running.
+	//
+	// 	- **Inactive**: The GWLB instance is disabled. Listeners of GWLB instances in the Inactive state do not forward traffic.
+	//
+	// 	- **Provisioning**: The GWLB instance is being created.
+	//
+	// 	- **Configuring**: The GWLB instance is being modified.
+	//
 	// example:
 	//
 	// Active
 	LoadBalancerStatus *string `json:"LoadBalancerStatus,omitempty" xml:"LoadBalancerStatus,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek26jasguy****
-	ResourceGroupId *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tags            []*ListLoadBalancersResponseBodyLoadBalancersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The tags.
+	Tags []*ListLoadBalancersResponseBodyLoadBalancersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-uf6eg0vndlsa84n7r****
-	VpcId        *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, specify at least two zones.
 	ZoneMappings []*ListLoadBalancersResponseBodyLoadBalancersZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
@@ -2549,10 +3212,18 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetZoneMappings(v []*ListLo
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersTags struct {
+	// The tag key. The tag key cannot be an empty string.
+	//
+	// The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. You can specify at most 20 tag values. The tag value cannot be an empty string.
+	//
+	// The tag value can be up to 128 characters in length. It must start with a letter and can contain digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -2578,11 +3249,16 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersTags) SetValue(v string) *Lis
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappings struct {
+	// The GWLB instance addresses.
 	LoadBalancerAddresses []*ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
+	// The ID of the vSwitch in the zone. By default, each zone contains one vSwitch and one subnet.
+	//
 	// example:
 	//
 	// vsw-2zemule5dz7okwqfv****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+	//
 	// example:
 	//
 	// cn-hangzhou-g
@@ -2613,10 +3289,14 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetZoneId(v str
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses struct {
+	// The ID of the elastic network interface (ENI) used by the GWLB instance.
+	//
 	// example:
 	//
 	// eni-bp17qv9zbzyqy629****
 	EniId *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	// The private IPv4 address.
+	//
 	// example:
 	//
 	// 192.168.XX.XX
@@ -2671,20 +3351,42 @@ func (s *ListLoadBalancersResponse) SetBody(v *ListLoadBalancersResponseBody) *L
 }
 
 type ListServerGroupServersRequest struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 1000.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
-	ServerGroupId *string   `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	ServerIds     []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
-	ServerIps     []*string `json:"ServerIps,omitempty" xml:"ServerIps,omitempty" type:"Repeated"`
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The server IDs.
+	//
+	// You can specify at most 200 servers in each call.
+	ServerIds []*string `json:"ServerIds,omitempty" xml:"ServerIds,omitempty" type:"Repeated"`
+	// The server IP addresses.
+	//
+	// You can specify at most 200 servers in each call.
+	ServerIps []*string `json:"ServerIps,omitempty" xml:"ServerIps,omitempty" type:"Repeated"`
+	// The number of entries to be skipped in the call.
+	//
 	// example:
 	//
 	// 1
@@ -2730,19 +3432,34 @@ func (s *ListServerGroupServersRequest) SetSkip(v int32) *ListServerGroupServers
 }
 
 type ListServerGroupServersResponseBody struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If NextToken is empty, no next page exists.
+	//
+	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
-	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Servers   []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The backend servers.
+	Servers []*ListServerGroupServersResponseBodyServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -2783,26 +3500,58 @@ func (s *ListServerGroupServersResponseBody) SetTotalCount(v int32) *ListServerG
 }
 
 type ListServerGroupServersResponseBodyServers struct {
+	// The backend server port. Valid values:
+	//
+	// 	- **6081**
+	//
 	// example:
 	//
 	// 6081
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The backend server ID.
+	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the backend server.
+	//
 	// example:
 	//
 	// 192.168.xxx.xxx
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
+	//
+	// 	- **Eni**: elastic network interface (ENI)
+	//
+	// 	- **Eci**: elastic container instance
+	//
+	// 	- **Ip**: IP address
+	//
 	// example:
 	//
 	// Ecs
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	// Indicates the status of the backend server. Valid values:
+	//
+	// 	- **Adding**: The backend server is being added.
+	//
+	// 	- **Available**: The backend server is available.
+	//
+	// 	- **Draining**: The backend server is in connection draining.
+	//
+	// 	- **Removing**: The backend server is being removed.
+	//
+	// 	- **Replacing**: The backend server is being replaced.
+	//
 	// example:
 	//
 	// Available
@@ -2877,29 +3626,62 @@ func (s *ListServerGroupServersResponse) SetBody(v *ListServerGroupServersRespon
 }
 
 type ListServerGroupsRequest struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 1000.
+	//
+	// Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
 	// example:
 	//
 	// rg-atstuj3rtop****
-	ResourceGroupId  *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServerGroupIds   []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The server group IDs.
+	//
+	// You can specify at most 20 server group IDs in each call.
+	ServerGroupIds []*string `json:"ServerGroupIds,omitempty" xml:"ServerGroupIds,omitempty" type:"Repeated"`
+	// The server group names.
+	//
+	// You can specify at most 20 server group names in each call.
 	ServerGroupNames []*string `json:"ServerGroupNames,omitempty" xml:"ServerGroupNames,omitempty" type:"Repeated"`
+	// The server group type. Valid values:
+	//
+	// 	- **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	//
+	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	//
 	// example:
 	//
 	// Instance
 	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// The number of entries to be skipped in the call.
+	//
 	// example:
 	//
 	// 1
-	Skip *int32                        `json:"Skip,omitempty" xml:"Skip,omitempty"`
-	Tag  []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Skip *int32 `json:"Skip,omitempty" xml:"Skip,omitempty"`
+	// The tag keys.
+	//
+	// You can specify at most 20 tags in each call.
+	Tag []*ListServerGroupsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp15zckdt37pq72zv****
@@ -2960,10 +3742,14 @@ func (s *ListServerGroupsRequest) SetVpcId(v string) *ListServerGroupsRequest {
 }
 
 type ListServerGroupsRequestTag struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -2989,19 +3775,34 @@ func (s *ListServerGroupsRequestTag) SetValue(v string) *ListServerGroupsRequest
 }
 
 type ListServerGroupsResponseBody struct {
+	// The number of entries per page.
+	//
+	// Valid values: 1 to 1000.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// FFmyTO70tTpLG6I3FmYAXGKPd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The configurations of the server group.
 	ServerGroups []*ListServerGroupsResponseBodyServerGroups `json:"ServerGroups,omitempty" xml:"ServerGroups,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
@@ -3042,46 +3843,89 @@ func (s *ListServerGroupsResponseBody) SetTotalCount(v int32) *ListServerGroupsR
 }
 
 type ListServerGroupsResponseBodyServerGroups struct {
+	// The configurations of connection draining.
 	ConnectionDrainConfig *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
+	// The time when the resource was created. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2024-08-05T18:24:07Z
-	CreateTime        *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The configuration of health checks.
 	HealthCheckConfig *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// The backend protocol. Valid values:
+	//
+	// 	- **GENEVE**.
+	//
 	// example:
 	//
 	// GENEVE
-	Protocol               *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	// The IDs of the GWLB instances that are associated with the server group.
 	RelatedLoadBalancerIds []*string `json:"RelatedLoadBalancerIds,omitempty" xml:"RelatedLoadBalancerIds,omitempty" type:"Repeated"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-atstuj3rtop****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scheduling algorithm. Valid values:
+	//
+	// 	- **5TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **3TCH**: indicates consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **2TCH**: indicates consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
 	// example:
 	//
 	// 5TCH
 	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	// The number of server groups.
+	//
 	// example:
 	//
 	// 2
-	ServerCount *int32 `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	ServerCount        *int32  `json:"ServerCount,omitempty" xml:"ServerCount,omitempty"`
+	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The server group name.
+	//
 	// example:
 	//
 	// testServerGroupName
 	ServerGroupName *string `json:"ServerGroupName,omitempty" xml:"ServerGroupName,omitempty"`
+	// The status of the server group. Valid values:
+	//
+	// 	- **Creating**
+	//
+	// 	- **Available**
+	//
+	// 	- **Configuring**
+	//
 	// example:
 	//
 	// Available
 	ServerGroupStatus *string `json:"ServerGroupStatus,omitempty" xml:"ServerGroupStatus,omitempty"`
+	// The server group type. Valid values:
+	//
+	// 	- **Instance**: allows you to specify servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	//
+	// 	- **Ip**: allows you to add servers of by specifying IP addresses.
+	//
 	// example:
 	//
 	// Instance
-	ServerGroupType *string                                         `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
-	Tags            []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	ServerGroupType *string `json:"ServerGroupType,omitempty" xml:"ServerGroupType,omitempty"`
+	// The tags.
+	Tags []*ListServerGroupsResponseBodyServerGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp15zckdt37pq72zv****
@@ -3136,6 +3980,11 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetServerCount(v int32) *List
 	return s
 }
 
+func (s *ListServerGroupsResponseBodyServerGroups) SetServerFailoverMode(v string) *ListServerGroupsResponseBodyServerGroups {
+	s.ServerFailoverMode = &v
+	return s
+}
+
 func (s *ListServerGroupsResponseBodyServerGroups) SetServerGroupId(v string) *ListServerGroupsResponseBodyServerGroups {
 	s.ServerGroupId = &v
 	return s
@@ -3167,10 +4016,22 @@ func (s *ListServerGroupsResponseBodyServerGroups) SetVpcId(v string) *ListServe
 }
 
 type ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig struct {
+	// Indicates whether connection draining is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	// The timeout period of connection draining.
+	//
+	// Unit: seconds
+	//
+	// Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 300
@@ -3196,39 +4057,90 @@ func (s *ListServerGroupsResponseBodyServerGroupsConnectionDrainConfig) SetConne
 }
 
 type ListServerGroupsResponseBodyServerGroupsHealthCheckConfig struct {
+	// The backend server port that is used for health checks.
+	//
+	// Valid values: **1*	- to **65535**.
+	//
 	// example:
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The maximum timeout period of a health check.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **300**.
+	//
 	// example:
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that is used for health checks. Valid values:
+	//
+	// 	- **$SERVER_IP**: the internal IP address of a backend server.
+	//
+	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// Indicates whether the health check feature is enabled. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
-	HealthCheckEnabled  *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The HTTP status codes that the system returns for health checks.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	// The interval at which health checks are performed.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **50**.
+	//
 	// example:
 	//
 	// 10
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+	//
+	// 	- **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+	//
 	// example:
 	//
 	// TCP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
 	// example:
 	//
 	// 2
@@ -3294,10 +4206,14 @@ func (s *ListServerGroupsResponseBodyServerGroupsHealthCheckConfig) SetUnhealthy
 }
 
 type ListServerGroupsResponseBodyServerGroupsTags struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// example:
 	//
 	// testTagValue
@@ -3352,22 +4268,40 @@ func (s *ListServerGroupsResponse) SetBody(v *ListServerGroupsResponseBody) *Lis
 }
 
 type ListTagResourcesRequest struct {
+	// The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 1000. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// WyI2NDQ3MWUxM2EzOWNhMmY0Y2M2YTRiNzZhOWQwNmU1Y2RlNTYzMGEzIiwibiIsIm4iLDEsLTEsMTY5ODcxMzI2NjU0MywiNjU0MDRlYjI2MmI3MDhjY2JiMjM0ZmU0ODNkNTVmMGRhZDllOTBi****
-	NextToken  *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The resource IDs. You can specify at most 50 resource IDs in each call.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of resource. Valid values:
+	//
+	// 	- **loadbalancer**: Gateway Load Balancer (GWLB) instance
+	//
+	// 	- **listener**: listener
+	//
+	// 	- **servergroup**: server group
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// loadbalancer
-	ResourceType *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify at most 20 tags in each call.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListTagResourcesRequest) String() string {
@@ -3404,10 +4338,14 @@ func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListT
 }
 
 type ListTagResourcesRequestTag struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue
@@ -3433,14 +4371,23 @@ func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequest
 }
 
 type ListTagResourcesResponseBody struct {
+	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	//
+	// 	- If **NextToken*	- is empty, no next page exists.
+	//
+	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	//
 	// example:
 	//
 	// d209f4e63ec942c967c50c888a13****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A95325A2-E421-58A6-88AD-7A26CE610F45
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -3468,18 +4415,32 @@ func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResp
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// gwlb-nrnrxwd15en27r****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- **loadbalancer**: GWLB instance
+	//
+	// 	- **listener**: listener
+	//
+	// 	- **servergroup**: server group
+	//
 	// example:
 	//
 	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tag key.
+	//
 	// example:
 	//
 	// testKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// testValue
@@ -3544,26 +4505,48 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 }
 
 type MoveResourceGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The ID of the resource group to which you want to move the resource.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rg-aek253e4oit****
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The resource ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gwlb-nrnrxwd15en27r****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The type of resource. Valid values:
+	//
+	// 	- **loadbalancer**: Gateway Load Balancer (GWLB) instance
+	//
+	// 	- **servergroup**: server group
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3606,6 +4589,8 @@ func (s *MoveResourceGroupRequest) SetResourceType(v string) *MoveResourceGroupR
 }
 
 type MoveResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 78828B5C-521E-50F3-84D4-7019691D1382
@@ -3655,20 +4640,38 @@ func (s *MoveResourceGroupResponse) SetBody(v *MoveResourceGroupResponseBody) *M
 }
 
 type RemoveServersFromServerGroupRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The server group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The backend servers that you want to remove.
+	//
+	// > You can remove at most 200 backend servers in each call.
+	//
 	// This parameter is required.
 	Servers []*RemoveServersFromServerGroupRequestServers `json:"Servers,omitempty" xml:"Servers,omitempty" type:"Repeated"`
 }
@@ -3702,20 +4705,42 @@ func (s *RemoveServersFromServerGroupRequest) SetServers(v []*RemoveServersFromS
 }
 
 type RemoveServersFromServerGroupRequestServers struct {
+	// The port that is used by the backend server. Valid values:
+	//
+	// 	- **6081**
+	//
 	// example:
 	//
 	// 6081
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	// The backend server ID.
+	//
+	// 	- If the server group is of the **Instance*	- type, set this parameter to the IDs of servers of the **Ecs**, **Eni**, or **Eci*	- type.
+	//
+	// 	- If the server group is of the **Ip*	- type, set ServerId to IP addresses.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// i-bp67acfmxazb4p****
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
+	// The IP address of the backend server.
+	//
 	// example:
 	//
 	// 192.168.xxx.xxx
 	ServerIp *string `json:"ServerIp,omitempty" xml:"ServerIp,omitempty"`
+	// The type of the backend server. Valid values:
+	//
+	// 	- **Ecs**: Elastic Compute Service (ECS) instance
+	//
+	// 	- **Eni**: elastic network interface (ENI)
+	//
+	// 	- **Eci**: elastic container instance
+	//
+	// 	- **Ip**: IP address
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3753,6 +4778,8 @@ func (s *RemoveServersFromServerGroupRequestServers) SetServerType(v string) *Re
 }
 
 type RemoveServersFromServerGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
@@ -3802,22 +4829,42 @@ func (s *RemoveServersFromServerGroupResponse) SetBody(v *RemoveServersFromServe
 }
 
 type TagResourcesRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The resource IDs. You can specify at most 50 resource IDs in each call.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of resource. Valid values:
+	//
+	// 	- **loadbalancer**: Gateway Load Balancer (GWLB) instance
+	//
+	// 	- **listener**: listener
+	//
+	// 	- **servergroup**: server group
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// loadbalancer
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The tags. You can specify at most 20 tags in each call.
+	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -3856,12 +4903,16 @@ func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesR
 }
 
 type TagResourcesRequestTag struct {
+	// The tag key. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `acs:` or `aliyun`. The tag key cannot contain `http://` or `https://`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. The tag value can be up to 256 characters in length and cannot contain `http://` or `https://`.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3889,6 +4940,8 @@ func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
 }
 
 type TagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54F6E60A-1777-5C17-A6A9-BCC1A7FE945B
@@ -3938,27 +4991,52 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UntagResourcesRequest struct {
+	// Specifies whether to remove all tags from the specified resource. This parameter is ignored if the TagKey parameter is specified. Valid values:
+	//
+	// 	- **true**: removes all tags from the specified resource.
+	//
+	// 	- **false**: does not remove all tags from the specified resource. This is the default value.
+	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The resource IDs. You can specify at most 50 resource IDs in each call.
+	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// The type of resource. Valid values:
+	//
+	// 	- **loadbalancer**: Gateway Load Balancer (GWLB) instance
+	//
+	// 	- **listener**: listener
+	//
+	// 	- **servergroup**: server group
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// loadbalancer
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The keys of the tags that you want to remove. You can remove at most 20 tags in each call.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 
 func (s UntagResourcesRequest) String() string {
@@ -4000,6 +5078,8 @@ func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
 }
 
 type UntagResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 3DC0064C-C09E-5C99-8FD4-9CDB2DA7FA21
@@ -4049,24 +5129,40 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateListenerAttributeRequest struct {
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters. If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The listener description.
+	//
+	// The description must be 2 to 256 characters in length, and can contain letters, digits, commas (,), periods (.), semicolons (;), forward slashes (/), at signs (@), underscores (_), and hyphens (-).
+	//
 	// example:
 	//
 	// listener_description
 	ListenerDescription *string `json:"ListenerDescription,omitempty" xml:"ListenerDescription,omitempty"`
+	// The listener ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// lsn-lxce8iqbof2vl0****
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	// The server group ID.
+	//
 	// example:
 	//
 	// sgp-sp8d2r6y7t0xtl****
@@ -4107,6 +5203,8 @@ func (s *UpdateListenerAttributeRequest) SetServerGroupId(v string) *UpdateListe
 }
 
 type UpdateListenerAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 7DBFC67C-A272-5952-8287-6C3EBE4E04D9
@@ -4156,24 +5254,43 @@ func (s *UpdateListenerAttributeResponse) SetBody(v *UpdateListenerAttributeResp
 }
 
 type UpdateLoadBalancerAttributeRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The GWLB instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gwlb-9njtjmqt7zfcqm****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The GWLB instance name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
+	//
 	// example:
 	//
 	// testGwlbName
 	LoadBalancerName *string `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	TrafficMode      *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
 }
 
 func (s UpdateLoadBalancerAttributeRequest) String() string {
@@ -4204,7 +5321,14 @@ func (s *UpdateLoadBalancerAttributeRequest) SetLoadBalancerName(v string) *Upda
 	return s
 }
 
+func (s *UpdateLoadBalancerAttributeRequest) SetTrafficMode(v string) *UpdateLoadBalancerAttributeRequest {
+	s.TrafficMode = &v
+	return s
+}
+
 type UpdateLoadBalancerAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// B956C629-0E8C-5EFF-BAC1-B0E3A8C5CBDD
@@ -4254,20 +5378,36 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 }
 
 type UpdateLoadBalancerZonesRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Specifies whether to perform a dry run, without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The GWLB instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// gwlb-9njtjmqt7zfcqm****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
+	// The mappings between zones and vSwitches. You must specify at least one zone. You can specify at most 20 zones. If the region supports two or more zones, we recommend that you select two or more zones.
+	//
 	// This parameter is required.
 	ZoneMappings []*UpdateLoadBalancerZonesRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
@@ -4301,12 +5441,16 @@ func (s *UpdateLoadBalancerZonesRequest) SetZoneMappings(v []*UpdateLoadBalancer
 }
 
 type UpdateLoadBalancerZonesRequestZoneMappings struct {
+	// The ID of the vSwitch in the zone. You can specify only one vSwitch (subnet) in each zone of a GWLB instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vsw-bp1n75pbs77v5q6p3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The zone ID. You can call the DescribeZones operation to query the most recent zone list.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4334,6 +5478,8 @@ func (s *UpdateLoadBalancerZonesRequestZoneMappings) SetZoneId(v string) *Update
 }
 
 type UpdateLoadBalancerZonesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ED8905C2-A4F6-5E43-87B7-6A5DC8757146
@@ -4383,26 +5529,55 @@ func (s *UpdateLoadBalancerZonesResponse) SetBody(v *UpdateLoadBalancerZonesResp
 }
 
 type UpdateServerGroupAttributeRequest struct {
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
+	//
+	// > If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken           *string                                                 `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configurations of connection draining.
 	ConnectionDrainConfig *UpdateServerGroupAttributeRequestConnectionDrainConfig `json:"ConnectionDrainConfig,omitempty" xml:"ConnectionDrainConfig,omitempty" type:"Struct"`
+	// Specifies whether to perform only a dry run without performing the actual request. Valid values:
+	//
+	// 	- **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// 	- **false*	- (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+	//
 	// example:
 	//
 	// false
-	DryRun            *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The configurations of the health check feature.
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
+	// The scheduling algorithm. Valid values:
+	//
+	// 	- **5TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, source port, protocol, and destination port. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **3TCH**: specifies consistent hashing that is based on the following factors: source IP address, destination IP address, and protocol. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
+	// 	- **2TCH**: specifies consistent hashing that is based on the following factors: source IP address and destination IP address. Requests that contain the same information based on the preceding factors are forwarded to the same backend server.
+	//
 	// example:
 	//
 	// 5TCH
-	Scheduler *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	Scheduler          *string `json:"Scheduler,omitempty" xml:"Scheduler,omitempty"`
+	ServerFailoverMode *string `json:"ServerFailoverMode,omitempty" xml:"ServerFailoverMode,omitempty"`
+	// The server group ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// sgp-atstuj3rtoptyui****
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// The server group name.
+	//
+	// The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+	//
 	// example:
 	//
 	// testServerGroupName
@@ -4442,6 +5617,11 @@ func (s *UpdateServerGroupAttributeRequest) SetScheduler(v string) *UpdateServer
 	return s
 }
 
+func (s *UpdateServerGroupAttributeRequest) SetServerFailoverMode(v string) *UpdateServerGroupAttributeRequest {
+	s.ServerFailoverMode = &v
+	return s
+}
+
 func (s *UpdateServerGroupAttributeRequest) SetServerGroupId(v string) *UpdateServerGroupAttributeRequest {
 	s.ServerGroupId = &v
 	return s
@@ -4453,10 +5633,22 @@ func (s *UpdateServerGroupAttributeRequest) SetServerGroupName(v string) *Update
 }
 
 type UpdateServerGroupAttributeRequestConnectionDrainConfig struct {
+	// Specifies whether to enable connection draining. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// false
 	ConnectionDrainEnabled *bool `json:"ConnectionDrainEnabled,omitempty" xml:"ConnectionDrainEnabled,omitempty"`
+	// The timeout period of connection draining.
+	//
+	// Unit: seconds
+	//
+	// Valid values: 1 to 3600.
+	//
 	// example:
 	//
 	// 300
@@ -4482,39 +5674,90 @@ func (s *UpdateServerGroupAttributeRequestConnectionDrainConfig) SetConnectionDr
 }
 
 type UpdateServerGroupAttributeRequestHealthCheckConfig struct {
+	// The backend server port that is used by health checks.
+	//
+	// Valid values: 1 to 65535.
+	//
 	// example:
 	//
 	// 80
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
+	// The maximum timeout period of a health check response.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **300**.
+	//
 	// example:
 	//
 	// 5
 	HealthCheckConnectTimeout *int32 `json:"HealthCheckConnectTimeout,omitempty" xml:"HealthCheckConnectTimeout,omitempty"`
+	// The domain name that is used for health checks. Valid values:
+	//
+	// 	- **$SERVER_IP**: the internal IP address of a backend server.
+	//
+	// 	- **domain**: a domain name. The domain name must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), and periods (.).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// $SERVER_IP
 	HealthCheckDomain *string `json:"HealthCheckDomain,omitempty" xml:"HealthCheckDomain,omitempty"`
+	// Specifies whether to enable the health check feature. Valid values:
+	//
+	// 	- **true**
+	//
+	// 	- **false**
+	//
 	// example:
 	//
 	// true
-	HealthCheckEnabled  *bool     `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	HealthCheckEnabled *bool `json:"HealthCheckEnabled,omitempty" xml:"HealthCheckEnabled,omitempty"`
+	// The HTTP status codes that the system returns for health checks.
 	HealthCheckHttpCode []*string `json:"HealthCheckHttpCode,omitempty" xml:"HealthCheckHttpCode,omitempty" type:"Repeated"`
+	// The interval at which health checks are performed.
+	//
+	// Unit: seconds
+	//
+	// Valid values: **1*	- to **50**.
+	//
 	// example:
 	//
 	// 10
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
+	// The URL that is used for health checks.
+	//
+	// The URL must be 1 to 80 characters in length, and can contain letters, digits, and the following special characters: ` - / . % ? # &  `The URL must start with a forward slash (/).
+	//
+	// > This parameter takes effect only if you set **HealthCheckProtocol*	- to **HTTP**.
+	//
 	// example:
 	//
 	// /test/index.html
 	HealthCheckPath *string `json:"HealthCheckPath,omitempty" xml:"HealthCheckPath,omitempty"`
+	// The protocol that is used for health checks. Valid values:
+	//
+	// 	- **TCP**: TCP health checks send TCP SYN packets to a backend server to check whether the port of the backend server is reachable.
+	//
+	// 	- **HTTP**: HTTP health checks simulate a process that uses a web browser to access resources by sending HEAD or GET requests to an instance. These requests are used to check whether the instance is healthy.
+	//
 	// example:
 	//
 	// TCP
 	HealthCheckProtocol *string `json:"HealthCheckProtocol,omitempty" xml:"HealthCheckProtocol,omitempty"`
+	// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. In this case, the health status changes from **fail*	- to **success**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
 	// example:
 	//
 	// 2
 	HealthyThreshold *int32 `json:"HealthyThreshold,omitempty" xml:"HealthyThreshold,omitempty"`
+	// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. In this case, the health status changes from **success*	- to **fail**.
+	//
+	// Valid values: **2*	- to **10**.
+	//
 	// example:
 	//
 	// 2
@@ -4580,6 +5823,8 @@ func (s *UpdateServerGroupAttributeRequestHealthCheckConfig) SetUnhealthyThresho
 }
 
 type UpdateServerGroupAttributeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 54B48E3D-DF70-471B-AA93-08E683A1B45
@@ -4643,7 +5888,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -4677,7 +5922,23 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 服务器组中添加后端服务器
+// Adds backend servers to the server group of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *AddServersToServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the ListServerGroups operation to query the status of the server group.
+//
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the server group is running.
+//
+// 2.  You can call the ListServerGroupServers operation to query the status of the backend server.
+//
+//   - If the backend server is in the **Adding*	- state, the backend server is being added to the server group.
+//
+//   - If the backend server is in the **Available*	- state, the server is running.
 //
 // @param request - AddServersToServerGroupRequest
 //
@@ -4734,7 +5995,23 @@ func (client *Client) AddServersToServerGroupWithOptions(request *AddServersToSe
 
 // Summary:
 //
-// 服务器组中添加后端服务器
+// Adds backend servers to the server group of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *AddServersToServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the ListServerGroups operation to query the status of the server group.
+//
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the server group is running.
+//
+// 2.  You can call the ListServerGroupServers operation to query the status of the backend server.
+//
+//   - If the backend server is in the **Adding*	- state, the backend server is being added to the server group.
+//
+//   - If the backend server is in the **Available*	- state, the server is running.
 //
 // @param request - AddServersToServerGroupRequest
 //
@@ -4752,7 +6029,15 @@ func (client *Client) AddServersToServerGroup(request *AddServersToServerGroupRe
 
 // Summary:
 //
-// 创建监听
+// Creates a listener for a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *CreateListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
+//
+//   - If the listener is in the **Provisioning*	- state, the listener is being created.
+//
+//   - If the listener is in the **Running*	- state, the listener is running.
 //
 // @param request - CreateListenerRequest
 //
@@ -4817,7 +6102,15 @@ func (client *Client) CreateListenerWithOptions(request *CreateListenerRequest, 
 
 // Summary:
 //
-// 创建监听
+// Creates a listener for a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *CreateListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
+//
+//   - If the listener is in the **Provisioning*	- state, the listener is being created.
+//
+//   - If the listener is in the **Running*	- state, the listener is running.
 //
 // @param request - CreateListenerRequest
 //
@@ -4835,7 +6128,19 @@ func (client *Client) CreateListener(request *CreateListenerRequest) (_result *C
 
 // Summary:
 //
-// 创建负载均衡实例
+// Creates a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+//
+//   - When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
+//
+//   - CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
+//
+//   - If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
+//
+//   - If the GWLB instance is in the Active state, the GWLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -4908,7 +6213,19 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 
 // Summary:
 //
-// 创建负载均衡实例
+// Creates a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+//
+//   - When you create a GWLB instance, the service-linked role AliyunServiceRoleForGwlb is automatically created.
+//
+//   - CreateLoadBalancer is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of a GWLB instance.
+//
+//   - If the GWLB instance is in the Provisioning state, the GWLB instance is being created.
+//
+//   - If the GWLB instance is in the Active state, the GWLB instance is created.
 //
 // @param request - CreateLoadBalancerRequest
 //
@@ -4926,7 +6243,15 @@ func (client *Client) CreateLoadBalancer(request *CreateLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 创建服务器组
+// Creates a server group for a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
+//
+//   - If the server group is in the **Creating*	- state, it indicates that the server group is being created.
+//
+//   - If the server group is in the **Available*	- state, it indicates that the server group is created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -4966,6 +6291,10 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
 		body["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerFailoverMode)) {
+		body["ServerFailoverMode"] = request.ServerFailoverMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerGroupName)) {
@@ -5011,7 +6340,15 @@ func (client *Client) CreateServerGroupWithOptions(request *CreateServerGroupReq
 
 // Summary:
 //
-// 创建服务器组
+// Creates a server group for a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *CreateServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
+//
+//   - If the server group is in the **Creating*	- state, it indicates that the server group is being created.
+//
+//   - If the server group is in the **Available*	- state, it indicates that the server group is created.
 //
 // @param request - CreateServerGroupRequest
 //
@@ -5029,7 +6366,15 @@ func (client *Client) CreateServerGroup(request *CreateServerGroupRequest) (_res
 
 // Summary:
 //
-// 删除监听
+// Deletes a listener from a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
+//
+//   - If the listener is in the **Deleting*	- state, the listener is being deleted.
+//
+//   - If the listener cannot be found, the listener is deleted.
 //
 // @param request - DeleteListenerRequest
 //
@@ -5079,7 +6424,15 @@ func (client *Client) DeleteListenerWithOptions(request *DeleteListenerRequest, 
 
 // Summary:
 //
-// 删除监听
+// Deletes a listener from a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *DeleteListener*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of the task.
+//
+//   - If the listener is in the **Deleting*	- state, the listener is being deleted.
+//
+//   - If the listener cannot be found, the listener is deleted.
 //
 // @param request - DeleteListenerRequest
 //
@@ -5097,7 +6450,7 @@ func (client *Client) DeleteListener(request *DeleteListenerRequest) (_result *D
 
 // Summary:
 //
-// 删除负载均衡实例
+// Deletes a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -5147,7 +6500,7 @@ func (client *Client) DeleteLoadBalancerWithOptions(request *DeleteLoadBalancerR
 
 // Summary:
 //
-// 删除负载均衡实例
+// Deletes a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - DeleteLoadBalancerRequest
 //
@@ -5165,7 +6518,11 @@ func (client *Client) DeleteLoadBalancer(request *DeleteLoadBalancerRequest) (_r
 
 // Summary:
 //
-// 删除服务器组
+// Deletes a server group from a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// You can delete server groups that are not associated with listeners.
 //
 // @param request - DeleteServerGroupRequest
 //
@@ -5215,7 +6572,11 @@ func (client *Client) DeleteServerGroupWithOptions(request *DeleteServerGroupReq
 
 // Summary:
 //
-// 删除服务器组
+// Deletes a server group from a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// You can delete server groups that are not associated with listeners.
 //
 // @param request - DeleteServerGroupRequest
 //
@@ -5233,7 +6594,7 @@ func (client *Client) DeleteServerGroup(request *DeleteServerGroupRequest) (_res
 
 // Summary:
 //
-// 查询地域
+// Queries the most recent region list of Gateway Load Balancer (GWLB).
 //
 // @param request - DescribeRegionsRequest
 //
@@ -5275,7 +6636,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// 查询地域
+// Queries the most recent region list of Gateway Load Balancer (GWLB).
 //
 // @param request - DescribeRegionsRequest
 //
@@ -5293,7 +6654,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 查询可用区
+// Queries the most recent zone list of Gateway Load Balancer (GWLB).
 //
 // @param request - DescribeZonesRequest
 //
@@ -5335,7 +6696,7 @@ func (client *Client) DescribeZonesWithOptions(request *DescribeZonesRequest, ru
 
 // Summary:
 //
-// 查询可用区
+// Queries the most recent zone list of Gateway Load Balancer (GWLB).
 //
 // @param request - DescribeZonesRequest
 //
@@ -5353,7 +6714,7 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 
 // Summary:
 //
-// 查询监听详细信息
+// Queries the details of a Gateway Load Balancer (GWLB) listener.
 //
 // @param request - GetListenerAttributeRequest
 //
@@ -5395,7 +6756,7 @@ func (client *Client) GetListenerAttributeWithOptions(request *GetListenerAttrib
 
 // Summary:
 //
-// 查询监听详细信息
+// Queries the details of a Gateway Load Balancer (GWLB) listener.
 //
 // @param request - GetListenerAttributeRequest
 //
@@ -5413,7 +6774,7 @@ func (client *Client) GetListenerAttribute(request *GetListenerAttributeRequest)
 
 // Summary:
 //
-// 查询监听健康检查状态
+// Queries the health check status of a Gateway Load Balancer (GWLB) listener.
 //
 // @param request - GetListenerHealthStatusRequest
 //
@@ -5474,7 +6835,7 @@ func (client *Client) GetListenerHealthStatusWithOptions(request *GetListenerHea
 
 // Summary:
 //
-// 查询监听健康检查状态
+// Queries the health check status of a Gateway Load Balancer (GWLB) listener.
 //
 // @param request - GetListenerHealthStatusRequest
 //
@@ -5492,7 +6853,7 @@ func (client *Client) GetListenerHealthStatus(request *GetListenerHealthStatusRe
 
 // Summary:
 //
-// 查询负载均衡实例详细信息
+// Queries the details of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - GetLoadBalancerAttributeRequest
 //
@@ -5534,7 +6895,7 @@ func (client *Client) GetLoadBalancerAttributeWithOptions(request *GetLoadBalanc
 
 // Summary:
 //
-// 查询负载均衡实例详细信息
+// Queries the details of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - GetLoadBalancerAttributeRequest
 //
@@ -5552,7 +6913,7 @@ func (client *Client) GetLoadBalancerAttribute(request *GetLoadBalancerAttribute
 
 // Summary:
 //
-// 查询监听列表
+// Queries Gateway Load Balancer (GWLB) listeners.
 //
 // @param request - ListListenersRequest
 //
@@ -5617,7 +6978,7 @@ func (client *Client) ListListenersWithOptions(request *ListListenersRequest, ru
 
 // Summary:
 //
-// 查询监听列表
+// Queries Gateway Load Balancer (GWLB) listeners.
 //
 // @param request - ListListenersRequest
 //
@@ -5635,7 +6996,7 @@ func (client *Client) ListListeners(request *ListListenersRequest) (_result *Lis
 
 // Summary:
 //
-// 查询负载均衡实例列表
+// Queries Gateway Load Balancer (GWLB) instances.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -5689,6 +7050,10 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 		bodyFlat["Tag"] = request.Tag
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TrafficMode)) {
+		body["TrafficMode"] = request.TrafficMode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VpcIds)) {
 		bodyFlat["VpcIds"] = request.VpcIds
 	}
@@ -5724,7 +7089,7 @@ func (client *Client) ListLoadBalancersWithOptions(request *ListLoadBalancersReq
 
 // Summary:
 //
-// 查询负载均衡实例列表
+// Queries Gateway Load Balancer (GWLB) instances.
 //
 // @param request - ListLoadBalancersRequest
 //
@@ -5742,7 +7107,7 @@ func (client *Client) ListLoadBalancers(request *ListLoadBalancersRequest) (_res
 
 // Summary:
 //
-// 查询服务器组中的服务器列表
+// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - ListServerGroupServersRequest
 //
@@ -5807,7 +7172,7 @@ func (client *Client) ListServerGroupServersWithOptions(request *ListServerGroup
 
 // Summary:
 //
-// 查询服务器组中的服务器列表
+// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - ListServerGroupServersRequest
 //
@@ -5825,7 +7190,7 @@ func (client *Client) ListServerGroupServers(request *ListServerGroupServersRequ
 
 // Summary:
 //
-// 查询服务器组列表
+// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - ListServerGroupsRequest
 //
@@ -5902,7 +7267,7 @@ func (client *Client) ListServerGroupsWithOptions(request *ListServerGroupsReque
 
 // Summary:
 //
-// 查询服务器组列表
+// Queries the server groups of a Gateway Load Balancer (GWLB) instance.
 //
 // @param request - ListServerGroupsRequest
 //
@@ -5920,7 +7285,7 @@ func (client *Client) ListServerGroups(request *ListServerGroupsRequest) (_resul
 
 // Summary:
 //
-// 查询资源标签
+// Queries the tags of resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5981,7 +7346,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// 查询资源标签
+// Queries the tags of resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5999,7 +7364,7 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// 迁移资源组
+// Changes the resource group to which a specified cloud resource belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -6057,7 +7422,7 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 
 // Summary:
 //
-// 迁移资源组
+// Changes the resource group to which a specified cloud resource belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -6075,7 +7440,29 @@ func (client *Client) MoveResourceGroup(request *MoveResourceGroupRequest) (_res
 
 // Summary:
 //
-// 服务器组中删除后端服务器
+// Removes backend servers from the server group of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the ListServerGroups operation to query the status of a server group.
+//
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the server group is running.
+//
+// 2.  You can call the ListServerGroupServers operation to query the status of a backend server.
+//
+//   - If the backend server is in the **Removing*	- state, the backend server is being removed from the server group.
+//
+//   - If the backend server cannot be found, the backend server is no longer in the server group.
+//
+// >
+//
+//   - If connection draining id enabled (**ConnectionDrainEnabled*	- set to true) for the server group of the backend server, the backend server that you remove enters the **Removing*	- state before entering the **Draining*	- state. When the connection draining timeout period (**ConnectionDrainTimeout**) ends, the backend server is removed from the server group.
+//
+//   - You can add the backend server to the server group again before the connection draining timeout period ends. In this case, the status of the backend server changes from **Draining*	- to **Adding**. After the backend server is added to the server group, the backend server enters the **Available*	- state.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -6132,7 +7519,29 @@ func (client *Client) RemoveServersFromServerGroupWithOptions(request *RemoveSer
 
 // Summary:
 //
-// 服务器组中删除后端服务器
+// Removes backend servers from the server group of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *RemoveServersFromServerGroup*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background.
+//
+// 1.  You can call the ListServerGroups operation to query the status of a server group.
+//
+//   - If the server group is in the **Configuring*	- state, the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the server group is running.
+//
+// 2.  You can call the ListServerGroupServers operation to query the status of a backend server.
+//
+//   - If the backend server is in the **Removing*	- state, the backend server is being removed from the server group.
+//
+//   - If the backend server cannot be found, the backend server is no longer in the server group.
+//
+// >
+//
+//   - If connection draining id enabled (**ConnectionDrainEnabled*	- set to true) for the server group of the backend server, the backend server that you remove enters the **Removing*	- state before entering the **Draining*	- state. When the connection draining timeout period (**ConnectionDrainTimeout**) ends, the backend server is removed from the server group.
+//
+//   - You can add the backend server to the server group again before the connection draining timeout period ends. In this case, the status of the backend server changes from **Draining*	- to **Adding**. After the backend server is added to the server group, the backend server enters the **Available*	- state.
 //
 // @param request - RemoveServersFromServerGroupRequest
 //
@@ -6150,7 +7559,7 @@ func (client *Client) RemoveServersFromServerGroup(request *RemoveServersFromSer
 
 // Summary:
 //
-// 添加资源标签
+// Creates and adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -6211,7 +7620,7 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// 添加资源标签
+// Creates and adds tags to resources.
 //
 // @param request - TagResourcesRequest
 //
@@ -6229,7 +7638,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// 删除资源标签
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -6294,7 +7703,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// 删除资源标签
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -6312,7 +7721,15 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// 更新监听属性
+// Updates the configurations of a Gateway Load Balancer (GWLB) listener.
+//
+// Description:
+//
+// *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of a listener.
+//
+//   - If the listener is in the **Configuring*	- state, the listener is being modified.
+//
+//   - If the listener is in the **Running*	- state, the listener is modified.
 //
 // @param request - UpdateListenerAttributeRequest
 //
@@ -6370,7 +7787,15 @@ func (client *Client) UpdateListenerAttributeWithOptions(request *UpdateListener
 
 // Summary:
 //
-// 更新监听属性
+// Updates the configurations of a Gateway Load Balancer (GWLB) listener.
+//
+// Description:
+//
+// *UpdateListenerAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the **GetListenerAttribute*	- operation to query the status of a listener.
+//
+//   - If the listener is in the **Configuring*	- state, the listener is being modified.
+//
+//   - If the listener is in the **Running*	- state, the listener is modified.
 //
 // @param request - UpdateListenerAttributeRequest
 //
@@ -6388,7 +7813,15 @@ func (client *Client) UpdateListenerAttribute(request *UpdateListenerAttributeRe
 
 // Summary:
 //
-// 更新负载均衡实例属性
+// Updates the attributes of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+//	UpdateLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+//
+//	  	- If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//
+//	  	- If the GWLB instance is in the Active state, the GWLB instance is modified.
 //
 // @param request - UpdateLoadBalancerAttributeRequest
 //
@@ -6417,6 +7850,10 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		body["LoadBalancerName"] = request.LoadBalancerName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TrafficMode)) {
+		body["TrafficMode"] = request.TrafficMode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -6442,7 +7879,15 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 
 // Summary:
 //
-// 更新负载均衡实例属性
+// Updates the attributes of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+//	UpdateLoadBalancerAttribute is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+//
+//	  	- If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//
+//	  	- If the GWLB instance is in the Active state, the GWLB instance is modified.
 //
 // @param request - UpdateLoadBalancerAttributeRequest
 //
@@ -6460,7 +7905,19 @@ func (client *Client) UpdateLoadBalancerAttribute(request *UpdateLoadBalancerAtt
 
 // Summary:
 //
-// 更新负载均衡实例可用区
+// Updates the zones of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+//
+// UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+//
+//   - If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//
+//   - If the GWLB instance is in the Active state, the GWLB instance is modified.
+//
+// >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
@@ -6517,7 +7974,19 @@ func (client *Client) UpdateLoadBalancerZonesWithOptions(request *UpdateLoadBala
 
 // Summary:
 //
-// 更新负载均衡实例可用区
+// Updates the zones of a Gateway Load Balancer (GWLB) instance.
+//
+// Description:
+//
+// *Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/2806160.html) of GWLB before calling this operation**.
+//
+// UpdateLoadBalancerZones is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the GetLoadBalancerAttribute operation to query the status of the GWLB instance.
+//
+//   - If the GWLB instance is in the Configuring state, the GWLB instance is being modified.
+//
+//   - If the GWLB instance is in the Active state, the GWLB instance is modified.
+//
+// >  Before you call this operation, make sure that all zone parameters, including the current zones and the zones that you want to add, are specified. If you do not specify the current zones, the current zones are deleted. You can call the GetLoadBalancerAttribute operation to query the current zones of a GWLB instance.
 //
 // @param request - UpdateLoadBalancerZonesRequest
 //
@@ -6535,7 +8004,15 @@ func (client *Client) UpdateLoadBalancerZones(request *UpdateLoadBalancerZonesRe
 
 // Summary:
 //
-// 更新服务器组属性
+// Updates the attributes of a server group.
+//
+// Description:
+//
+// *UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
+//
+//   - If the server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the configuration of the server group is modified.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
@@ -6567,6 +8044,10 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 	if !tea.BoolValue(util.IsUnset(request.Scheduler)) {
 		body["Scheduler"] = request.Scheduler
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerFailoverMode)) {
+		body["ServerFailoverMode"] = request.ServerFailoverMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServerGroupId)) {
@@ -6604,7 +8085,15 @@ func (client *Client) UpdateServerGroupAttributeWithOptions(request *UpdateServe
 
 // Summary:
 //
-// 更新服务器组属性
+// Updates the attributes of a server group.
+//
+// Description:
+//
+// *UpdateServerGroupAttribute*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can call the ListServerGroups operation to query the status of the task.
+//
+//   - If the server group is in the **Configuring*	- state, the configuration of the server group is being modified.
+//
+//   - If the server group is in the **Available*	- state, the configuration of the server group is modified.
 //
 // @param request - UpdateServerGroupAttributeRequest
 //
