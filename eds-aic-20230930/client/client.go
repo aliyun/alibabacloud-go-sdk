@@ -4545,6 +4545,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	AuthorizedUserId    *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
 	//
 	// example:
@@ -4677,6 +4678,11 @@ func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceIds(v []*string) *De
 
 func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceName(v string) *DescribeAndroidInstancesRequest {
 	s.AndroidInstanceName = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetAuthorizedUserId(v string) *DescribeAndroidInstancesRequest {
+	s.AuthorizedUserId = &v
 	return s
 }
 
@@ -9610,7 +9616,8 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// example:
 	//
 	// Default Policy
-	PolicyGroupName *string `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	PolicyGroupName        *string                                                             `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
+	PolicyRelatedResources *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources `json:"PolicyRelatedResources,omitempty" xml:"PolicyRelatedResources,omitempty" type:"Struct"`
 	// The height of the resolution.
 	//
 	// example:
@@ -9675,6 +9682,11 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetPolicyGroupId(v string
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetPolicyGroupName(v string) *ListPolicyGroupsResponseBodyPolicyGroupModel {
 	s.PolicyGroupName = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetPolicyRelatedResources(v *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) *ListPolicyGroupsResponseBodyPolicyGroupModel {
+	s.PolicyRelatedResources = v
 	return s
 }
 
@@ -9835,6 +9847,29 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) Set
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules) SetTarget(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules {
 	s.Target = &v
+	return s
+}
+
+type ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources struct {
+	AndroidInstanceGroupIds []*string `json:"AndroidInstanceGroupIds,omitempty" xml:"AndroidInstanceGroupIds,omitempty" type:"Repeated"`
+	CloudPhoneMatrixIds     []*string `json:"CloudPhoneMatrixIds,omitempty" xml:"CloudPhoneMatrixIds,omitempty" type:"Repeated"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) SetAndroidInstanceGroupIds(v []*string) *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources {
+	s.AndroidInstanceGroupIds = v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) SetCloudPhoneMatrixIds(v []*string) *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources {
+	s.CloudPhoneMatrixIds = v
 	return s
 }
 
@@ -14493,6 +14528,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceName)) {
 		query["AndroidInstanceName"] = request.AndroidInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizedUserId)) {
+		query["AuthorizedUserId"] = request.AuthorizedUserId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
