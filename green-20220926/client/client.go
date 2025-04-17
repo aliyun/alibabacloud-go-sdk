@@ -5001,7 +5001,7 @@ func (s *GetCipStatsResponseBody) SetSuccess(v bool) *GetCipStatsResponseBody {
 
 type GetCipStatsResponseBodyData struct {
 	LabelStatChart []*GetCipStatsResponseBodyDataLabelStatChart `json:"LabelStatChart,omitempty" xml:"LabelStatChart,omitempty" type:"Repeated"`
-	TotalStat      map[string]interface{}                       `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
+	TotalStat      map[string]map[string]interface{}            `json:"TotalStat,omitempty" xml:"TotalStat,omitempty"`
 	Uids           []*string                                    `json:"Uids,omitempty" xml:"Uids,omitempty" type:"Repeated"`
 	X              []*string                                    `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
 	Y              []*GetCipStatsResponseBodyDataY              `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
@@ -5021,7 +5021,7 @@ func (s *GetCipStatsResponseBodyData) SetLabelStatChart(v []*GetCipStatsResponse
 	return s
 }
 
-func (s *GetCipStatsResponseBodyData) SetTotalStat(v map[string]interface{}) *GetCipStatsResponseBodyData {
+func (s *GetCipStatsResponseBodyData) SetTotalStat(v map[string]map[string]interface{}) *GetCipStatsResponseBodyData {
 	s.TotalStat = v
 	return s
 }

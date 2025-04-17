@@ -1,3 +1,6 @@
+2025-04-17 Version: v1.4.2
+- Generated golang 2022-09-26 for Green.
+
 2025-04-15 Version: v1.4.1
 - Update API GetCipStats: add response parameters Body.Data.LabelStatChart.$.TextTreeChart.
 
