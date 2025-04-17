@@ -3054,6 +3054,7 @@ func (s *CreateAICoachTaskSessionResponse) SetBody(v *CreateAICoachTaskSessionRe
 }
 
 type CreateAnchorRequest struct {
+	AnchorCategory     *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
 	AnchorMaterialName *string `json:"anchorMaterialName,omitempty" xml:"anchorMaterialName,omitempty"`
 	// example:
 	//
@@ -3067,7 +3068,8 @@ type CreateAnchorRequest struct {
 	// example:
 	//
 	// offlineSynthesis
-	UseScene *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	UseScene    *string `json:"useScene,omitempty" xml:"useScene,omitempty"`
+	VideoOssKey *string `json:"videoOssKey,omitempty" xml:"videoOssKey,omitempty"`
 }
 
 func (s CreateAnchorRequest) String() string {
@@ -3076,6 +3078,11 @@ func (s CreateAnchorRequest) String() string {
 
 func (s CreateAnchorRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAnchorRequest) SetAnchorCategory(v string) *CreateAnchorRequest {
+	s.AnchorCategory = &v
+	return s
 }
 
 func (s *CreateAnchorRequest) SetAnchorMaterialName(v string) *CreateAnchorRequest {
@@ -3100,6 +3107,11 @@ func (s *CreateAnchorRequest) SetGender(v string) *CreateAnchorRequest {
 
 func (s *CreateAnchorRequest) SetUseScene(v string) *CreateAnchorRequest {
 	s.UseScene = &v
+	return s
+}
+
+func (s *CreateAnchorRequest) SetVideoOssKey(v string) *CreateAnchorRequest {
+	s.VideoOssKey = &v
 	return s
 }
 
@@ -3421,6 +3433,135 @@ func (s *CreateIndividuationTextTaskResponse) SetStatusCode(v int32) *CreateIndi
 }
 
 func (s *CreateIndividuationTextTaskResponse) SetBody(v *CreateIndividuationTextTaskResponseBody) *CreateIndividuationTextTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateProductImageRequest struct {
+	BackgroundDescription *string `json:"backgroundDescription,omitempty" xml:"backgroundDescription,omitempty"`
+	// example:
+	//
+	// 75
+	BackgroundPriority *int32 `json:"backgroundPriority,omitempty" xml:"backgroundPriority,omitempty"`
+	// example:
+	//
+	// http://xxx/background.png
+	BackgroundUrl *string `json:"backgroundUrl,omitempty" xml:"backgroundUrl,omitempty"`
+	HighlightText *string `json:"highlightText,omitempty" xml:"highlightText,omitempty"`
+	// example:
+	//
+	// 1
+	ImageCount *int32 `json:"imageCount,omitempty" xml:"imageCount,omitempty"`
+	// example:
+	//
+	// http://xxx/image.png
+	ImageUrl *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	SubTitle *string `json:"subTitle,omitempty" xml:"subTitle,omitempty"`
+	Title    *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s CreateProductImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductImageRequest) SetBackgroundDescription(v string) *CreateProductImageRequest {
+	s.BackgroundDescription = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetBackgroundPriority(v int32) *CreateProductImageRequest {
+	s.BackgroundPriority = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetBackgroundUrl(v string) *CreateProductImageRequest {
+	s.BackgroundUrl = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetHighlightText(v string) *CreateProductImageRequest {
+	s.HighlightText = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetImageCount(v int32) *CreateProductImageRequest {
+	s.ImageCount = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetImageUrl(v string) *CreateProductImageRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetSubTitle(v string) *CreateProductImageRequest {
+	s.SubTitle = &v
+	return s
+}
+
+func (s *CreateProductImageRequest) SetTitle(v string) *CreateProductImageRequest {
+	s.Title = &v
+	return s
+}
+
+type CreateProductImageResponseBody struct {
+	// example:
+	//
+	// 3239281273464326823
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 837091359375048704
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s CreateProductImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductImageResponseBody) SetRequestId(v string) *CreateProductImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateProductImageResponseBody) SetTaskId(v string) *CreateProductImageResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateProductImageResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateProductImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateProductImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateProductImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateProductImageResponse) SetHeaders(v map[string]*string) *CreateProductImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateProductImageResponse) SetStatusCode(v int32) *CreateProductImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateProductImageResponse) SetBody(v *CreateProductImageResponseBody) *CreateProductImageResponse {
 	s.Body = v
 	return s
 }
@@ -4175,6 +4316,387 @@ func (s *FinishAICoachTaskSessionResponse) SetBody(v *FinishAICoachTaskSessionRe
 	return s
 }
 
+type GetAICoachAssessmentPointRequest struct {
+	// example:
+	//
+	// 1
+	PointId *string `json:"pointId,omitempty" xml:"pointId,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointRequest) SetPointId(v string) *GetAICoachAssessmentPointRequest {
+	s.PointId = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBody struct {
+	AnswerList []*GetAICoachAssessmentPointResponseBodyAnswerList `json:"answerList,omitempty" xml:"answerList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Citations *int32 `json:"citations,omitempty" xml:"citations,omitempty"`
+	// example:
+	//
+	// 1
+	DocumentId *string `json:"documentId,omitempty" xml:"documentId,omitempty"`
+	// example:
+	//
+	// demo
+	DocumentName *string `json:"documentName,omitempty" xml:"documentName,omitempty"`
+	// example:
+	//
+	// 2025-02-24 12:00:00
+	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-02-24 12:00:00
+	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// example:
+	//
+	// 1
+	KbId *string `json:"kbId,omitempty" xml:"kbId,omitempty"`
+	// example:
+	//
+	// Cloudcode
+	KbType        *string   `json:"kbType,omitempty" xml:"kbType,omitempty"`
+	KnowledgeList []*string `json:"knowledgeList,omitempty" xml:"knowledgeList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// demo
+	Name    *string `json:"name,omitempty" xml:"name,omitempty"`
+	PointId *string `json:"pointId,omitempty" xml:"pointId,omitempty"`
+	// example:
+	//
+	// demo
+	QuestionDescription *string `json:"questionDescription,omitempty" xml:"questionDescription,omitempty"`
+	// example:
+	//
+	// demo
+	QuestionSample *string `json:"questionSample,omitempty" xml:"questionSample,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4830493A-728F-5F19-BBCC-1443292E9C49
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// DRAFT
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetAnswerList(v []*GetAICoachAssessmentPointResponseBodyAnswerList) *GetAICoachAssessmentPointResponseBody {
+	s.AnswerList = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetCitations(v int32) *GetAICoachAssessmentPointResponseBody {
+	s.Citations = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetDocumentId(v string) *GetAICoachAssessmentPointResponseBody {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetDocumentName(v string) *GetAICoachAssessmentPointResponseBody {
+	s.DocumentName = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetGmtCreate(v string) *GetAICoachAssessmentPointResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetGmtModified(v string) *GetAICoachAssessmentPointResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetKbId(v string) *GetAICoachAssessmentPointResponseBody {
+	s.KbId = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetKbType(v string) *GetAICoachAssessmentPointResponseBody {
+	s.KbType = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetKnowledgeList(v []*string) *GetAICoachAssessmentPointResponseBody {
+	s.KnowledgeList = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetName(v string) *GetAICoachAssessmentPointResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetPointId(v string) *GetAICoachAssessmentPointResponseBody {
+	s.PointId = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetQuestionDescription(v string) *GetAICoachAssessmentPointResponseBody {
+	s.QuestionDescription = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetQuestionSample(v string) *GetAICoachAssessmentPointResponseBody {
+	s.QuestionSample = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetRequestId(v string) *GetAICoachAssessmentPointResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBody) SetStatus(v string) *GetAICoachAssessmentPointResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBodyAnswerList struct {
+	AnswerValues []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues `json:"answerValues,omitempty" xml:"answerValues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnabledKeyword *bool     `json:"enabledKeyword,omitempty" xml:"enabledKeyword,omitempty"`
+	NameList       []*string `json:"nameList,omitempty" xml:"nameList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// and
+	Operators  *string                                                      `json:"operators,omitempty" xml:"operators,omitempty"`
+	Parameters []*GetAICoachAssessmentPointResponseBodyAnswerListParameters `json:"parameters,omitempty" xml:"parameters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// custom
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// example:
+	//
+	// 100
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetAnswerValues(v []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.AnswerValues = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetEnabledKeyword(v bool) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.EnabledKeyword = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetNameList(v []*string) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.NameList = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetOperators(v string) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.Operators = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetParameters(v []*GetAICoachAssessmentPointResponseBodyAnswerListParameters) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.Parameters = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetType(v string) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerList) SetWeight(v int32) *GetAICoachAssessmentPointResponseBodyAnswerList {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues struct {
+	// example:
+	//
+	// demo
+	AnswerName *string `json:"answerName,omitempty" xml:"answerName,omitempty"`
+	// example:
+	//
+	// 50
+	AnswerWeight  *int32                                                                      `json:"answerWeight,omitempty" xml:"answerWeight,omitempty"`
+	KeywordValues []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues `json:"keywordValues,omitempty" xml:"keywordValues,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	KeywordWeight *int32                                                                     `json:"keywordWeight,omitempty" xml:"keywordWeight,omitempty"`
+	ScoringRules  []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules `json:"scoringRules,omitempty" xml:"scoringRules,omitempty" type:"Repeated"`
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) SetAnswerName(v string) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues {
+	s.AnswerName = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) SetAnswerWeight(v int32) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues {
+	s.AnswerWeight = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) SetKeywordValues(v []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues {
+	s.KeywordValues = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) SetKeywordWeight(v int32) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues {
+	s.KeywordWeight = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues) SetScoringRules(v []*GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues {
+	s.ScoringRules = v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues struct {
+	// example:
+	//
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 50
+	Weight *int32 `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) SetName(v string) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues) SetWeight(v int32) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues {
+	s.Weight = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules struct {
+	// example:
+	//
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules) SetName(v string) *GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules {
+	s.Name = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponseBodyAnswerListParameters struct {
+	// example:
+	//
+	// demo
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 441323200602114284
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponseBodyAnswerListParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListParameters) SetName(v string) *GetAICoachAssessmentPointResponseBodyAnswerListParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponseBodyAnswerListParameters) SetValue(v string) *GetAICoachAssessmentPointResponseBodyAnswerListParameters {
+	s.Value = &v
+	return s
+}
+
+type GetAICoachAssessmentPointResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAICoachAssessmentPointResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAICoachAssessmentPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachAssessmentPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachAssessmentPointResponse) SetHeaders(v map[string]*string) *GetAICoachAssessmentPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponse) SetStatusCode(v int32) *GetAICoachAssessmentPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAICoachAssessmentPointResponse) SetBody(v *GetAICoachAssessmentPointResponseBody) *GetAICoachAssessmentPointResponse {
+	s.Body = v
+	return s
+}
+
 type GetAICoachCheatDetectionRequest struct {
 	// example:
 	//
@@ -4492,6 +5014,7 @@ type GetAICoachScriptResponseBody struct {
 	// point
 	AssessmentScope  *string                                       `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
 	CheckCheatConfig *GetAICoachScriptResponseBodyCheckCheatConfig `json:"checkCheatConfig,omitempty" xml:"checkCheatConfig,omitempty" type:"Struct"`
+	ClosingRemarks   *string                                       `json:"closingRemarks,omitempty" xml:"closingRemarks,omitempty"`
 	CompleteStrategy *GetAICoachScriptResponseBodyCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -4516,8 +5039,11 @@ type GetAICoachScriptResponseBody struct {
 	// example:
 	//
 	// true
-	EvaluateReportFlag *bool             `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
-	Expressiveness     map[string]*int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	EvaluateReportFlag *bool                                             `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
+	Expressiveness     map[string]*int32                                 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	ExpressivenessList []*GetAICoachScriptResponseBodyExpressivenessList `json:"expressivenessList,omitempty" xml:"expressivenessList,omitempty" type:"Repeated"`
+	GifDynamicUrl      *string                                           `json:"gifDynamicUrl,omitempty" xml:"gifDynamicUrl,omitempty"`
+	GifStaticUrl       *string                                           `json:"gifStaticUrl,omitempty" xml:"gifStaticUrl,omitempty"`
 	// example:
 	//
 	// 2025-02-24 12:00:00
@@ -4542,7 +5068,8 @@ type GetAICoachScriptResponseBody struct {
 	// example:
 	//
 	// demo
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name           *string `json:"name,omitempty" xml:"name,omitempty"`
+	OpeningRemarks *string `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
 	// example:
 	//
 	// true
@@ -4602,6 +5129,11 @@ func (s *GetAICoachScriptResponseBody) SetCheckCheatConfig(v *GetAICoachScriptRe
 	return s
 }
 
+func (s *GetAICoachScriptResponseBody) SetClosingRemarks(v string) *GetAICoachScriptResponseBody {
+	s.ClosingRemarks = &v
+	return s
+}
+
 func (s *GetAICoachScriptResponseBody) SetCompleteStrategy(v *GetAICoachScriptResponseBodyCompleteStrategy) *GetAICoachScriptResponseBody {
 	s.CompleteStrategy = v
 	return s
@@ -4642,6 +5174,21 @@ func (s *GetAICoachScriptResponseBody) SetExpressiveness(v map[string]*int32) *G
 	return s
 }
 
+func (s *GetAICoachScriptResponseBody) SetExpressivenessList(v []*GetAICoachScriptResponseBodyExpressivenessList) *GetAICoachScriptResponseBody {
+	s.ExpressivenessList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetGifDynamicUrl(v string) *GetAICoachScriptResponseBody {
+	s.GifDynamicUrl = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetGifStaticUrl(v string) *GetAICoachScriptResponseBody {
+	s.GifStaticUrl = &v
+	return s
+}
+
 func (s *GetAICoachScriptResponseBody) SetGmtCreate(v string) *GetAICoachScriptResponseBody {
 	s.GmtCreate = &v
 	return s
@@ -4674,6 +5221,11 @@ func (s *GetAICoachScriptResponseBody) SetIntroduce(v string) *GetAICoachScriptR
 
 func (s *GetAICoachScriptResponseBody) SetName(v string) *GetAICoachScriptResponseBody {
 	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetOpeningRemarks(v string) *GetAICoachScriptResponseBody {
+	s.OpeningRemarks = &v
 	return s
 }
 
@@ -4827,6 +5379,59 @@ func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetDurationFlag(v bool) *
 
 func (s *GetAICoachScriptResponseBodyCompleteStrategy) SetFullCoverageAutoEnd(v bool) *GetAICoachScriptResponseBodyCompleteStrategy {
 	s.FullCoverageAutoEnd = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyExpressivenessList struct {
+	Desc             *string `json:"desc,omitempty" xml:"desc,omitempty"`
+	Enabled          *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	ExpressivenessId *string `json:"expressivenessId,omitempty" xml:"expressivenessId,omitempty"`
+	Name             *string `json:"name,omitempty" xml:"name,omitempty"`
+	Rule             *string `json:"rule,omitempty" xml:"rule,omitempty"`
+	Type             *string `json:"type,omitempty" xml:"type,omitempty"`
+	Weight           *int32  `json:"weight,omitempty" xml:"weight,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyExpressivenessList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyExpressivenessList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetDesc(v string) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetEnabled(v bool) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetExpressivenessId(v string) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.ExpressivenessId = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetName(v string) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetRule(v string) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Rule = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetType(v string) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Type = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyExpressivenessList) SetWeight(v int32) *GetAICoachScriptResponseBodyExpressivenessList {
+	s.Weight = &v
 	return s
 }
 
@@ -5149,7 +5754,8 @@ type GetAICoachScriptResponseBodyWeights struct {
 	// example:
 	//
 	// 10
-	AssessmentPoint *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	AssessmentPoint        *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	AssessmentPointEnabled *bool  `json:"assessmentPointEnabled,omitempty" xml:"assessmentPointEnabled,omitempty"`
 	// example:
 	//
 	// 10
@@ -5196,6 +5802,11 @@ func (s *GetAICoachScriptResponseBodyWeights) SetAbilityEvaluationEnabled(v bool
 
 func (s *GetAICoachScriptResponseBodyWeights) SetAssessmentPoint(v int32) *GetAICoachScriptResponseBodyWeights {
 	s.AssessmentPoint = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetAssessmentPointEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.AssessmentPointEnabled = &v
 	return s
 }
 
@@ -6335,6 +6946,7 @@ func (s *ListAICoachScriptPageResponseBody) SetTotal(v int32) *ListAICoachScript
 type ListAICoachScriptPageResponseBodyList struct {
 	AppendQuestionFlag *string                                                `json:"appendQuestionFlag,omitempty" xml:"appendQuestionFlag,omitempty"`
 	AssessmentScope    *string                                                `json:"assessmentScope,omitempty" xml:"assessmentScope,omitempty"`
+	ClosingRemarks     *string                                                `json:"closingRemarks,omitempty" xml:"closingRemarks,omitempty"`
 	CompleteStrategy   *ListAICoachScriptPageResponseBodyListCompleteStrategy `json:"completeStrategy,omitempty" xml:"completeStrategy,omitempty" type:"Struct"`
 	// example:
 	//
@@ -6344,6 +6956,8 @@ type ListAICoachScriptPageResponseBodyList struct {
 	DialogueTipFlag    *bool              `json:"dialogueTipFlag,omitempty" xml:"dialogueTipFlag,omitempty"`
 	EvaluateReportFlag *bool              `json:"evaluateReportFlag,omitempty" xml:"evaluateReportFlag,omitempty"`
 	Expressiveness     map[string]*string `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	GifDynamicUrl      *string            `json:"gifDynamicUrl,omitempty" xml:"gifDynamicUrl,omitempty"`
+	GifStaticUrl       *string            `json:"gifStaticUrl,omitempty" xml:"gifStaticUrl,omitempty"`
 	// example:
 	//
 	// 2024-12-25 14:00:00
@@ -6365,6 +6979,7 @@ type ListAICoachScriptPageResponseBodyList struct {
 	//
 	// prod-ydsf
 	Name               *string                                                    `json:"name,omitempty" xml:"name,omitempty"`
+	OpeningRemarks     *string                                                    `json:"openingRemarks,omitempty" xml:"openingRemarks,omitempty"`
 	OrderAckFlag       *bool                                                      `json:"orderAckFlag,omitempty" xml:"orderAckFlag,omitempty"`
 	SampleDialogueList []*ListAICoachScriptPageResponseBodyListSampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
 	ScoreConfig        *ListAICoachScriptPageResponseBodyListScoreConfig          `json:"scoreConfig,omitempty" xml:"scoreConfig,omitempty" type:"Struct"`
@@ -6401,6 +7016,11 @@ func (s *ListAICoachScriptPageResponseBodyList) SetAssessmentScope(v string) *Li
 	return s
 }
 
+func (s *ListAICoachScriptPageResponseBodyList) SetClosingRemarks(v string) *ListAICoachScriptPageResponseBodyList {
+	s.ClosingRemarks = &v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyList) SetCompleteStrategy(v *ListAICoachScriptPageResponseBodyListCompleteStrategy) *ListAICoachScriptPageResponseBodyList {
 	s.CompleteStrategy = v
 	return s
@@ -6431,6 +7051,16 @@ func (s *ListAICoachScriptPageResponseBodyList) SetExpressiveness(v map[string]*
 	return s
 }
 
+func (s *ListAICoachScriptPageResponseBodyList) SetGifDynamicUrl(v string) *ListAICoachScriptPageResponseBodyList {
+	s.GifDynamicUrl = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetGifStaticUrl(v string) *ListAICoachScriptPageResponseBodyList {
+	s.GifStaticUrl = &v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyList) SetGmtCreate(v string) *ListAICoachScriptPageResponseBodyList {
 	s.GmtCreate = &v
 	return s
@@ -6458,6 +7088,11 @@ func (s *ListAICoachScriptPageResponseBodyList) SetIntroduce(v string) *ListAICo
 
 func (s *ListAICoachScriptPageResponseBodyList) SetName(v string) *ListAICoachScriptPageResponseBodyList {
 	s.Name = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyList) SetOpeningRemarks(v string) *ListAICoachScriptPageResponseBodyList {
+	s.OpeningRemarks = &v
 	return s
 }
 
@@ -6602,7 +7237,8 @@ type ListAICoachScriptPageResponseBodyListWeights struct {
 	// example:
 	//
 	// 50
-	AssessmentPoint *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	AssessmentPoint        *int32 `json:"assessmentPoint,omitempty" xml:"assessmentPoint,omitempty"`
+	AssessmentPointEnabled *bool  `json:"assessmentPointEnabled,omitempty" xml:"assessmentPointEnabled,omitempty"`
 	// example:
 	//
 	// 30
@@ -6630,6 +7266,11 @@ func (s ListAICoachScriptPageResponseBodyListWeights) GoString() string {
 
 func (s *ListAICoachScriptPageResponseBodyListWeights) SetAssessmentPoint(v int32) *ListAICoachScriptPageResponseBodyListWeights {
 	s.AssessmentPoint = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListWeights) SetAssessmentPointEnabled(v bool) *ListAICoachScriptPageResponseBodyListWeights {
+	s.AssessmentPointEnabled = &v
 	return s
 }
 
@@ -6693,6 +7334,7 @@ func (s *ListAICoachScriptPageResponse) SetBody(v *ListAICoachScriptPageResponse
 }
 
 type ListAICoachTaskPageRequest struct {
+	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// example:
 	//
 	// 1
@@ -6700,7 +7342,8 @@ type ListAICoachTaskPageRequest struct {
 	// example:
 	//
 	// 10
-	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	PageSize  *int32  `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// example:
 	//
 	// FINISHED
@@ -6723,6 +7366,11 @@ func (s ListAICoachTaskPageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAICoachTaskPageRequest) SetEndTime(v string) *ListAICoachTaskPageRequest {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListAICoachTaskPageRequest) SetPageNumber(v int32) *ListAICoachTaskPageRequest {
 	s.PageNumber = &v
 	return s
@@ -6730,6 +7378,11 @@ func (s *ListAICoachTaskPageRequest) SetPageNumber(v int32) *ListAICoachTaskPage
 
 func (s *ListAICoachTaskPageRequest) SetPageSize(v int32) *ListAICoachTaskPageRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageRequest) SetStartTime(v string) *ListAICoachTaskPageRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -6781,6 +7434,7 @@ type ListAICoachTaskPageResponseBodyTaskList struct {
 	//
 	// yyyy-MM-dd HH:mm:ss
 	FinishTime *string `json:"finishTime,omitempty" xml:"finishTime,omitempty"`
+	GmtCreate  *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
 	// example:
 	//
 	// FINISHED
@@ -6805,6 +7459,11 @@ func (s ListAICoachTaskPageResponseBodyTaskList) GoString() string {
 
 func (s *ListAICoachTaskPageResponseBodyTaskList) SetFinishTime(v string) *ListAICoachTaskPageResponseBodyTaskList {
 	s.FinishTime = &v
+	return s
+}
+
+func (s *ListAICoachTaskPageResponseBodyTaskList) SetGmtCreate(v string) *ListAICoachTaskPageResponseBodyTaskList {
+	s.GmtCreate = &v
 	return s
 }
 
@@ -7107,6 +7766,7 @@ func (s *ListAgentsResponse) SetBody(v *ListAgentsResponseBody) *ListAgentsRespo
 
 type ListAnchorRequest struct {
 	AnchorCategory *string `json:"anchorCategory,omitempty" xml:"anchorCategory,omitempty"`
+	AnchorId       *string `json:"anchorId,omitempty" xml:"anchorId,omitempty"`
 	// example:
 	//
 	// PUBLIC_MODEL
@@ -7144,6 +7804,11 @@ func (s ListAnchorRequest) GoString() string {
 
 func (s *ListAnchorRequest) SetAnchorCategory(v string) *ListAnchorRequest {
 	s.AnchorCategory = &v
+	return s
+}
+
+func (s *ListAnchorRequest) SetAnchorId(v string) *ListAnchorRequest {
+	s.AnchorId = &v
 	return s
 }
 
@@ -7952,9 +8617,10 @@ type QueryAvatarProjectResponseBody struct {
 	// example:
 	//
 	// 2C331582-7390-5949-8D9A-AC8239185B37
-	RequestId   *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	ResSpecType *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
-	ScaleType   *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	RequestId      *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	ResSpecType    *string `json:"resSpecType,omitempty" xml:"resSpecType,omitempty"`
+	ScaleType      *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	ScriptModelTag *string `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
 	// example:
 	//
 	// DEPLOYING
@@ -8004,12 +8670,18 @@ func (s *QueryAvatarProjectResponseBody) SetScaleType(v string) *QueryAvatarProj
 	return s
 }
 
+func (s *QueryAvatarProjectResponseBody) SetScriptModelTag(v string) *QueryAvatarProjectResponseBody {
+	s.ScriptModelTag = &v
+	return s
+}
+
 func (s *QueryAvatarProjectResponseBody) SetStatus(v string) *QueryAvatarProjectResponseBody {
 	s.Status = &v
 	return s
 }
 
 type QueryAvatarProjectResponseBodyFrames struct {
+	Index       *int32                                           `json:"index,omitempty" xml:"index,omitempty"`
 	Layers      []*QueryAvatarProjectResponseBodyFramesLayers    `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	VideoScript *QueryAvatarProjectResponseBodyFramesVideoScript `json:"videoScript,omitempty" xml:"videoScript,omitempty" type:"Struct"`
 }
@@ -8020,6 +8692,11 @@ func (s QueryAvatarProjectResponseBodyFrames) String() string {
 
 func (s QueryAvatarProjectResponseBodyFrames) GoString() string {
 	return s.String()
+}
+
+func (s *QueryAvatarProjectResponseBodyFrames) SetIndex(v int32) *QueryAvatarProjectResponseBodyFrames {
+	s.Index = &v
+	return s
 }
 
 func (s *QueryAvatarProjectResponseBodyFrames) SetLayers(v []*QueryAvatarProjectResponseBodyFramesLayers) *QueryAvatarProjectResponseBodyFrames {
@@ -8034,6 +8711,7 @@ func (s *QueryAvatarProjectResponseBodyFrames) SetVideoScript(v *QueryAvatarProj
 
 type QueryAvatarProjectResponseBodyFramesLayers struct {
 	Height    *int32                                              `json:"height,omitempty" xml:"height,omitempty"`
+	Index     *int32                                              `json:"index,omitempty" xml:"index,omitempty"`
 	Material  *QueryAvatarProjectResponseBodyFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
 	PositionX *int32                                              `json:"positionX,omitempty" xml:"positionX,omitempty"`
 	PositionY *int32                                              `json:"positionY,omitempty" xml:"positionY,omitempty"`
@@ -8051,6 +8729,11 @@ func (s QueryAvatarProjectResponseBodyFramesLayers) GoString() string {
 
 func (s *QueryAvatarProjectResponseBodyFramesLayers) SetHeight(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
 	s.Height = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesLayers) SetIndex(v int32) *QueryAvatarProjectResponseBodyFramesLayers {
+	s.Index = &v
 	return s
 }
 
@@ -8109,8 +8792,13 @@ func (s *QueryAvatarProjectResponseBodyFramesLayersMaterial) SetUrl(v string) *Q
 }
 
 type QueryAvatarProjectResponseBodyFramesVideoScript struct {
+	Emotion         *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
+	PitchRate       *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
 	SpeedRate       *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	TextContent     *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
+	VoiceLanguage   *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	VoiceTemplateId *string `json:"voiceTemplateId,omitempty" xml:"voiceTemplateId,omitempty"`
+	Volume          *int32  `json:"volume,omitempty" xml:"volume,omitempty"`
 }
 
 func (s QueryAvatarProjectResponseBodyFramesVideoScript) String() string {
@@ -8121,13 +8809,38 @@ func (s QueryAvatarProjectResponseBodyFramesVideoScript) GoString() string {
 	return s.String()
 }
 
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetEmotion(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.Emotion = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetPitchRate(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.PitchRate = &v
+	return s
+}
+
 func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetSpeedRate(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
 	s.SpeedRate = &v
 	return s
 }
 
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetTextContent(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.TextContent = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetVoiceLanguage(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.VoiceLanguage = &v
+	return s
+}
+
 func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetVoiceTemplateId(v string) *QueryAvatarProjectResponseBodyFramesVideoScript {
 	s.VoiceTemplateId = &v
+	return s
+}
+
+func (s *QueryAvatarProjectResponseBodyFramesVideoScript) SetVolume(v int32) *QueryAvatarProjectResponseBodyFramesVideoScript {
+	s.Volume = &v
 	return s
 }
 
@@ -8269,6 +8982,120 @@ func (s *QueryAvatarResourceResponse) SetStatusCode(v int32) *QueryAvatarResourc
 }
 
 func (s *QueryAvatarResourceResponse) SetBody(v *QueryAvatarResourceResponseBody) *QueryAvatarResourceResponse {
+	s.Body = v
+	return s
+}
+
+type QueryImageToVideoTaskRequest struct {
+	// example:
+	//
+	// 868125994191405056
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s QueryImageToVideoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryImageToVideoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryImageToVideoTaskRequest) SetTaskId(v string) *QueryImageToVideoTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type QueryImageToVideoTaskResponseBody struct {
+	// example:
+	//
+	// None
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// https://xxx/xxx.mp4
+	OriginUrl *string `json:"originUrl,omitempty" xml:"originUrl,omitempty"`
+	// example:
+	//
+	// CC2967CA-0114-57E0-A0CF-7DEEEDAB953D
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"status,omitempty" xml:"status,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 868125994191405056
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s QueryImageToVideoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryImageToVideoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetMessage(v string) *QueryImageToVideoTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetOriginUrl(v string) *QueryImageToVideoTaskResponseBody {
+	s.OriginUrl = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetRequestId(v string) *QueryImageToVideoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetStatus(v int32) *QueryImageToVideoTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetSuccess(v bool) *QueryImageToVideoTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponseBody) SetTaskId(v string) *QueryImageToVideoTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type QueryImageToVideoTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryImageToVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryImageToVideoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryImageToVideoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryImageToVideoTaskResponse) SetHeaders(v map[string]*string) *QueryImageToVideoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponse) SetStatusCode(v int32) *QueryImageToVideoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryImageToVideoTaskResponse) SetBody(v *QueryImageToVideoTaskResponseBody) *QueryImageToVideoTaskResponse {
 	s.Body = v
 	return s
 }
@@ -8703,6 +9530,7 @@ type SaveAvatarProjectRequest struct {
 	//
 	// 9:16
 	ScaleType           *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
+	ScriptModelTag      *string `json:"scriptModelTag,omitempty" xml:"scriptModelTag,omitempty"`
 	SynchronizedDisplay *string `json:"synchronizedDisplay,omitempty" xml:"synchronizedDisplay,omitempty"`
 }
 
@@ -8764,12 +9592,18 @@ func (s *SaveAvatarProjectRequest) SetScaleType(v string) *SaveAvatarProjectRequ
 	return s
 }
 
+func (s *SaveAvatarProjectRequest) SetScriptModelTag(v string) *SaveAvatarProjectRequest {
+	s.ScriptModelTag = &v
+	return s
+}
+
 func (s *SaveAvatarProjectRequest) SetSynchronizedDisplay(v string) *SaveAvatarProjectRequest {
 	s.SynchronizedDisplay = &v
 	return s
 }
 
 type SaveAvatarProjectRequestFrames struct {
+	Index       *int32                                     `json:"index,omitempty" xml:"index,omitempty"`
 	Layers      []*SaveAvatarProjectRequestFramesLayers    `json:"layers,omitempty" xml:"layers,omitempty" type:"Repeated"`
 	VideoScript *SaveAvatarProjectRequestFramesVideoScript `json:"videoScript,omitempty" xml:"videoScript,omitempty" type:"Struct"`
 }
@@ -8780,6 +9614,11 @@ func (s SaveAvatarProjectRequestFrames) String() string {
 
 func (s SaveAvatarProjectRequestFrames) GoString() string {
 	return s.String()
+}
+
+func (s *SaveAvatarProjectRequestFrames) SetIndex(v int32) *SaveAvatarProjectRequestFrames {
+	s.Index = &v
+	return s
 }
 
 func (s *SaveAvatarProjectRequestFrames) SetLayers(v []*SaveAvatarProjectRequestFramesLayers) *SaveAvatarProjectRequestFrames {
@@ -8797,6 +9636,7 @@ type SaveAvatarProjectRequestFramesLayers struct {
 	//
 	// 100
 	Height   *int32                                        `json:"height,omitempty" xml:"height,omitempty"`
+	Index    *int32                                        `json:"index,omitempty" xml:"index,omitempty"`
 	Material *SaveAvatarProjectRequestFramesLayersMaterial `json:"material,omitempty" xml:"material,omitempty" type:"Struct"`
 	// example:
 	//
@@ -8826,6 +9666,11 @@ func (s SaveAvatarProjectRequestFramesLayers) GoString() string {
 
 func (s *SaveAvatarProjectRequestFramesLayers) SetHeight(v int32) *SaveAvatarProjectRequestFramesLayers {
 	s.Height = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesLayers) SetIndex(v int32) *SaveAvatarProjectRequestFramesLayers {
+	s.Index = &v
 	return s
 }
 
@@ -8893,10 +9738,13 @@ func (s *SaveAvatarProjectRequestFramesLayersMaterial) SetUrl(v string) *SaveAva
 }
 
 type SaveAvatarProjectRequestFramesVideoScript struct {
+	Emotion   *string `json:"emotion,omitempty" xml:"emotion,omitempty"`
+	PitchRate *string `json:"pitchRate,omitempty" xml:"pitchRate,omitempty"`
 	// example:
 	//
 	// 1.0
 	SpeedRate     *string `json:"speedRate,omitempty" xml:"speedRate,omitempty"`
+	TextContent   *string `json:"textContent,omitempty" xml:"textContent,omitempty"`
 	VoiceLanguage *string `json:"voiceLanguage,omitempty" xml:"voiceLanguage,omitempty"`
 	// example:
 	//
@@ -8916,8 +9764,23 @@ func (s SaveAvatarProjectRequestFramesVideoScript) GoString() string {
 	return s.String()
 }
 
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetEmotion(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.Emotion = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetPitchRate(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.PitchRate = &v
+	return s
+}
+
 func (s *SaveAvatarProjectRequestFramesVideoScript) SetSpeedRate(v string) *SaveAvatarProjectRequestFramesVideoScript {
 	s.SpeedRate = &v
+	return s
+}
+
+func (s *SaveAvatarProjectRequestFramesVideoScript) SetTextContent(v string) *SaveAvatarProjectRequestFramesVideoScript {
+	s.TextContent = &v
 	return s
 }
 
@@ -9512,6 +10375,113 @@ func (s *SendSdkMessageResponse) SetBody(v *SendSdkMessageResponseBody) *SendSdk
 	return s
 }
 
+type SendSdkStreamMessageRequest struct {
+	// example:
+	//
+	// {"test":""}
+	Data *string `json:"data,omitempty" xml:"data,omitempty"`
+	// header
+	//
+	// example:
+	//
+	// {}
+	Header *string `json:"header,omitempty" xml:"header,omitempty"`
+	// example:
+	//
+	// avatar
+	ModuleName *string `json:"moduleName,omitempty" xml:"moduleName,omitempty"`
+	// example:
+	//
+	// GetProject
+	OperationName *string `json:"operationName,omitempty" xml:"operationName,omitempty"`
+	// example:
+	//
+	// 123456
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s SendSdkStreamMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkStreamMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkStreamMessageRequest) SetData(v string) *SendSdkStreamMessageRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *SendSdkStreamMessageRequest) SetHeader(v string) *SendSdkStreamMessageRequest {
+	s.Header = &v
+	return s
+}
+
+func (s *SendSdkStreamMessageRequest) SetModuleName(v string) *SendSdkStreamMessageRequest {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *SendSdkStreamMessageRequest) SetOperationName(v string) *SendSdkStreamMessageRequest {
+	s.OperationName = &v
+	return s
+}
+
+func (s *SendSdkStreamMessageRequest) SetUserId(v string) *SendSdkStreamMessageRequest {
+	s.UserId = &v
+	return s
+}
+
+type SendSdkStreamMessageResponseBody struct {
+	// example:
+	//
+	// {"id":"123"}
+	CommonStreamMessage *string `json:"commonStreamMessage,omitempty" xml:"commonStreamMessage,omitempty"`
+}
+
+func (s SendSdkStreamMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkStreamMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkStreamMessageResponseBody) SetCommonStreamMessage(v string) *SendSdkStreamMessageResponseBody {
+	s.CommonStreamMessage = &v
+	return s
+}
+
+type SendSdkStreamMessageResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SendSdkStreamMessageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SendSdkStreamMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendSdkStreamMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendSdkStreamMessageResponse) SetHeaders(v map[string]*string) *SendSdkStreamMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendSdkStreamMessageResponse) SetStatusCode(v int32) *SendSdkStreamMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendSdkStreamMessageResponse) SetBody(v *SendSdkStreamMessageResponseBody) *SendSdkStreamMessageResponse {
+	s.Body = v
+	return s
+}
+
 type SendTextMsgRequest struct {
 	// example:
 	//
@@ -9911,6 +10881,108 @@ func (s *StopProjectTaskResponse) SetBody(v *StopProjectTaskResponseBody) *StopP
 	return s
 }
 
+type SubmitImageToVideoTaskRequest struct {
+	// example:
+	//
+	// http://xxx/image.png
+	ImageUrl  *string `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	PosPrompt *string `json:"posPrompt,omitempty" xml:"posPrompt,omitempty"`
+}
+
+func (s SubmitImageToVideoTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageToVideoTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageToVideoTaskRequest) SetImageUrl(v string) *SubmitImageToVideoTaskRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskRequest) SetPosPrompt(v string) *SubmitImageToVideoTaskRequest {
+	s.PosPrompt = &v
+	return s
+}
+
+type SubmitImageToVideoTaskResponseBody struct {
+	// example:
+	//
+	// job added successfully
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 53AED51A-74CE-57CE-B1BF-2703F314EEC8
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 868125994191405056
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitImageToVideoTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageToVideoTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageToVideoTaskResponseBody) SetMessage(v string) *SubmitImageToVideoTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskResponseBody) SetRequestId(v string) *SubmitImageToVideoTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskResponseBody) SetSuccess(v bool) *SubmitImageToVideoTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskResponseBody) SetTaskId(v string) *SubmitImageToVideoTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitImageToVideoTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitImageToVideoTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitImageToVideoTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitImageToVideoTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitImageToVideoTaskResponse) SetHeaders(v map[string]*string) *SubmitImageToVideoTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskResponse) SetStatusCode(v int32) *SubmitImageToVideoTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitImageToVideoTaskResponse) SetBody(v *SubmitImageToVideoTaskResponseBody) *SubmitImageToVideoTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitProjectTaskRequest struct {
 	// frame
 	Frames []*SubmitProjectTaskRequestFrames `json:"frames,omitempty" xml:"frames,omitempty" type:"Repeated"`
@@ -10071,8 +11143,9 @@ type SubmitProjectTaskRequestFramesLayersMaterial struct {
 	// example:
 	//
 	// 38863
-	Id    *string `json:"id,omitempty" xml:"id,omitempty"`
-	Speed *string `json:"speed,omitempty" xml:"speed,omitempty"`
+	Id    *string                                           `json:"id,omitempty" xml:"id,omitempty"`
+	Mask  *SubmitProjectTaskRequestFramesLayersMaterialMask `json:"mask,omitempty" xml:"mask,omitempty" type:"Struct"`
+	Speed *string                                           `json:"speed,omitempty" xml:"speed,omitempty"`
 	// example:
 	//
 	// https://meeting.dingtalk.com/j/1COFppy0POR
@@ -10103,6 +11176,11 @@ func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetId(v string) *SubmitPr
 	return s
 }
 
+func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetMask(v *SubmitProjectTaskRequestFramesLayersMaterialMask) *SubmitProjectTaskRequestFramesLayersMaterial {
+	s.Mask = v
+	return s
+}
+
 func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetSpeed(v string) *SubmitProjectTaskRequestFramesLayersMaterial {
 	s.Speed = &v
 	return s
@@ -10115,6 +11193,23 @@ func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetUrl(v string) *SubmitP
 
 func (s *SubmitProjectTaskRequestFramesLayersMaterial) SetVolume(v int32) *SubmitProjectTaskRequestFramesLayersMaterial {
 	s.Volume = &v
+	return s
+}
+
+type SubmitProjectTaskRequestFramesLayersMaterialMask struct {
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s SubmitProjectTaskRequestFramesLayersMaterialMask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitProjectTaskRequestFramesLayersMaterialMask) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitProjectTaskRequestFramesLayersMaterialMask) SetUrl(v string) *SubmitProjectTaskRequestFramesLayersMaterialMask {
+	s.Url = &v
 	return s
 }
 
@@ -10579,24 +11674,13 @@ func (client *Client) AddTextFeedbackWithOptions(request *AddTextFeedbackRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddTextFeedbackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddTextFeedbackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddTextFeedbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10654,24 +11738,13 @@ func (client *Client) BatchAddDocumentWithOptions(knowledgeBaseId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchAddDocumentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchAddDocumentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchAddDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10741,24 +11814,13 @@ func (client *Client) BatchCreateAICoachTaskWithOptions(request *BatchCreateAICo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchCreateAICoachTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchCreateAICoachTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchCreateAICoachTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10822,24 +11884,13 @@ func (client *Client) BatchGetProjectTaskWithOptions(tmpReq *BatchGetProjectTask
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchGetProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchGetProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchGetProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10907,24 +11958,13 @@ func (client *Client) BatchGetTrainTaskWithOptions(tmpReq *BatchGetTrainTaskRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchGetTrainTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchGetTrainTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchGetTrainTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10988,24 +12028,13 @@ func (client *Client) BatchGetVideoClipTaskWithOptions(tmpReq *BatchGetVideoClip
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchGetVideoClipTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchGetVideoClipTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchGetVideoClipTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11069,24 +12098,13 @@ func (client *Client) BatchQueryIndividuationTextWithOptions(tmpReq *BatchQueryI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchQueryIndividuationTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchQueryIndividuationTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchQueryIndividuationTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11148,24 +12166,13 @@ func (client *Client) CheckSessionWithOptions(request *CheckSessionRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11227,24 +12234,13 @@ func (client *Client) CloseAICoachTaskSessionWithOptions(request *CloseAICoachTa
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CloseAICoachTaskSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CloseAICoachTaskSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CloseAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11314,24 +12310,13 @@ func (client *Client) CountTextWithOptions(request *CountTextRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CountTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CountTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CountTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11401,24 +12386,13 @@ func (client *Client) CreateAICoachTaskWithOptions(request *CreateAICoachTaskReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAICoachTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAICoachTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAICoachTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11480,24 +12454,13 @@ func (client *Client) CreateAICoachTaskSessionWithOptions(request *CreateAICoach
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAICoachTaskSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAICoachTaskSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11536,6 +12499,10 @@ func (client *Client) CreateAnchorWithOptions(request *CreateAnchorRequest, head
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnchorCategory)) {
+		body["anchorCategory"] = request.AnchorCategory
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AnchorMaterialName)) {
 		body["anchorMaterialName"] = request.AnchorMaterialName
 	}
@@ -11556,6 +12523,10 @@ func (client *Client) CreateAnchorWithOptions(request *CreateAnchorRequest, head
 		body["useScene"] = request.UseScene
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.VideoOssKey)) {
+		body["videoOssKey"] = request.VideoOssKey
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -11571,24 +12542,13 @@ func (client *Client) CreateAnchorWithOptions(request *CreateAnchorRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAnchorResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAnchorResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAnchorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11641,24 +12601,13 @@ func (client *Client) CreateIllustrationTaskWithOptions(textId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIllustrationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIllustrationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIllustrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11728,24 +12677,13 @@ func (client *Client) CreateIndividuationProjectWithOptions(request *CreateIndiv
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIndividuationProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIndividuationProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIndividuationProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11811,24 +12749,13 @@ func (client *Client) CreateIndividuationTextTaskWithOptions(request *CreateIndi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIndividuationTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIndividuationTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIndividuationTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11843,6 +12770,98 @@ func (client *Client) CreateIndividuationTextTask(request *CreateIndividuationTe
 	headers := make(map[string]*string)
 	_result = &CreateIndividuationTextTaskResponse{}
 	_body, _err := client.CreateIndividuationTextTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建产品图
+//
+// @param request - CreateProductImageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProductImageResponse
+func (client *Client) CreateProductImageWithOptions(request *CreateProductImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateProductImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackgroundDescription)) {
+		body["backgroundDescription"] = request.BackgroundDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundPriority)) {
+		body["backgroundPriority"] = request.BackgroundPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundUrl)) {
+		body["backgroundUrl"] = request.BackgroundUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HighlightText)) {
+		body["highlightText"] = request.HighlightText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageCount)) {
+		body["imageCount"] = request.ImageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["imageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubTitle)) {
+		body["subTitle"] = request.SubTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["title"] = request.Title
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateProductImage"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/images/products"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateProductImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建产品图
+//
+// @param request - CreateProductImageRequest
+//
+// @return CreateProductImageResponse
+func (client *Client) CreateProductImage(request *CreateProductImageRequest) (_result *CreateProductImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateProductImageResponse{}
+	_body, _err := client.CreateProductImageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11938,24 +12957,13 @@ func (client *Client) CreateRealisticPortraitWithOptions(request *CreateRealisti
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRealisticPortraitResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRealisticPortraitResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRealisticPortraitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12008,24 +13016,13 @@ func (client *Client) CreateTextTaskWithOptions(request *CreateTextTaskRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12111,24 +13108,13 @@ func (client *Client) CreateTrainTaskWithOptions(request *CreateTrainTaskRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTrainTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTrainTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTrainTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12198,24 +13184,13 @@ func (client *Client) CreateVideoClipTaskWithOptions(request *CreateVideoClipTas
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateVideoClipTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateVideoClipTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateVideoClipTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12273,24 +13248,13 @@ func (client *Client) DeleteIndividuationProjectWithOptions(request *DeleteIndiv
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIndividuationProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIndividuationProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIndividuationProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12348,24 +13312,13 @@ func (client *Client) DeleteIndividuationTextWithOptions(request *DeleteIndividu
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIndividuationTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIndividuationTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIndividuationTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12411,24 +13364,13 @@ func (client *Client) DescribeDocumentWithOptions(knowledgeBaseId *string, docum
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDocumentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDocumentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDocumentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12488,24 +13430,13 @@ func (client *Client) FinishAICoachTaskSessionWithOptions(request *FinishAICoach
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FinishAICoachTaskSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FinishAICoachTaskSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FinishAICoachTaskSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12520,6 +13451,70 @@ func (client *Client) FinishAICoachTaskSession(request *FinishAICoachTaskSession
 	headers := make(map[string]*string)
 	_result = &FinishAICoachTaskSessionResponse{}
 	_body, _err := client.FinishAICoachTaskSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取考核点详情
+//
+// @param request - GetAICoachAssessmentPointRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAICoachAssessmentPointResponse
+func (client *Client) GetAICoachAssessmentPointWithOptions(request *GetAICoachAssessmentPointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAICoachAssessmentPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PointId)) {
+		query["pointId"] = request.PointId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAICoachAssessmentPoint"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/aicoach/getAssessmentPoint"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAICoachAssessmentPointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取考核点详情
+//
+// @param request - GetAICoachAssessmentPointRequest
+//
+// @return GetAICoachAssessmentPointResponse
+func (client *Client) GetAICoachAssessmentPoint(request *GetAICoachAssessmentPointRequest) (_result *GetAICoachAssessmentPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAICoachAssessmentPointResponse{}
+	_body, _err := client.GetAICoachAssessmentPointWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12563,24 +13558,13 @@ func (client *Client) GetAICoachCheatDetectionWithOptions(request *GetAICoachChe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAICoachCheatDetectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAICoachCheatDetectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAICoachCheatDetectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12638,24 +13622,13 @@ func (client *Client) GetAICoachScriptWithOptions(request *GetAICoachScriptReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAICoachScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAICoachScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAICoachScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12725,24 +13698,13 @@ func (client *Client) GetAICoachTaskSessionHistoryWithOptions(request *GetAICoac
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAICoachTaskSessionHistoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAICoachTaskSessionHistoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAICoachTaskSessionHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12804,24 +13766,13 @@ func (client *Client) GetAICoachTaskSessionReportWithOptions(request *GetAICoach
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAICoachTaskSessionReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAICoachTaskSessionReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAICoachTaskSessionReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12867,24 +13818,13 @@ func (client *Client) GetIllustrationWithOptions(textId *string, illustrationId 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIllustrationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIllustrationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIllustrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12928,24 +13868,13 @@ func (client *Client) GetIllustrationTaskWithOptions(textId *string, illustratio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIllustrationTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIllustrationTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIllustrationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13009,24 +13938,13 @@ func (client *Client) GetOssUploadTokenWithOptions(request *GetOssUploadTokenReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOssUploadTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOssUploadTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOssUploadTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13088,24 +14006,13 @@ func (client *Client) GetProjectTaskWithOptions(request *GetProjectTaskRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13151,24 +14058,13 @@ func (client *Client) GetTextWithOptions(textId *string, headers map[string]*str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13212,24 +14108,13 @@ func (client *Client) GetTextTaskWithOptions(textTaskId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13285,24 +14170,13 @@ func (client *Client) GetTextTemplateWithOptions(request *GetTextTemplateRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13368,24 +14242,13 @@ func (client *Client) InteractTextWithOptions(request *InteractTextRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InteractTextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InteractTextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InteractTextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13459,24 +14322,13 @@ func (client *Client) ListAICoachScriptPageWithOptions(request *ListAICoachScrip
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAICoachScriptPageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAICoachScriptPageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAICoachScriptPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13515,12 +14367,20 @@ func (client *Client) ListAICoachTaskPageWithOptions(request *ListAICoachTaskPag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["pageNumber"] = request.PageNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
@@ -13550,24 +14410,13 @@ func (client *Client) ListAICoachTaskPageWithOptions(request *ListAICoachTaskPag
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAICoachTaskPageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAICoachTaskPageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAICoachTaskPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13645,24 +14494,13 @@ func (client *Client) ListAgentsWithOptions(request *ListAgentsRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAgentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAgentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAgentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13703,6 +14541,10 @@ func (client *Client) ListAnchorWithOptions(request *ListAnchorRequest, headers 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AnchorCategory)) {
 		query["anchorCategory"] = request.AnchorCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AnchorId)) {
+		query["anchorId"] = request.AnchorId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AnchorType)) {
@@ -13748,24 +14590,13 @@ func (client *Client) ListAnchorWithOptions(request *ListAnchorRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAnchorResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAnchorResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAnchorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13829,24 +14660,13 @@ func (client *Client) ListAvatarProjectWithOptions(tmpReq *ListAvatarProjectRequ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13912,24 +14732,13 @@ func (client *Client) ListKnowledgeBaseWithOptions(request *ListKnowledgeBaseReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListKnowledgeBaseResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListKnowledgeBaseResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListKnowledgeBaseResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13987,24 +14796,13 @@ func (client *Client) ListTextThemesWithOptions(request *ListTextThemesRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextThemesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextThemesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextThemesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14090,24 +14888,13 @@ func (client *Client) ListTextsWithOptions(request *ListTextsRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14185,24 +14972,13 @@ func (client *Client) ListVoiceModelsWithOptions(request *ListVoiceModelsRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListVoiceModelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListVoiceModelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListVoiceModelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14272,24 +15048,13 @@ func (client *Client) OperateAvatarProjectWithOptions(request *OperateAvatarProj
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OperateAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OperateAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OperateAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14347,24 +15112,13 @@ func (client *Client) QueryAvatarProjectWithOptions(request *QueryAvatarProjectR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14422,24 +15176,13 @@ func (client *Client) QueryAvatarResourceWithOptions(request *QueryAvatarResourc
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryAvatarResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryAvatarResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryAvatarResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14454,6 +15197,70 @@ func (client *Client) QueryAvatarResource(request *QueryAvatarResourceRequest) (
 	headers := make(map[string]*string)
 	_result = &QueryAvatarResourceResponse{}
 	_body, _err := client.QueryAvatarResourceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片转视频任务
+//
+// @param request - QueryImageToVideoTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryImageToVideoTaskResponse
+func (client *Client) QueryImageToVideoTaskWithOptions(request *QueryImageToVideoTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryImageToVideoTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryImageToVideoTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/video/imageToVideo/task"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryImageToVideoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询图片转视频任务
+//
+// @param request - QueryImageToVideoTaskRequest
+//
+// @return QueryImageToVideoTaskResponse
+func (client *Client) QueryImageToVideoTask(request *QueryImageToVideoTaskRequest) (_result *QueryImageToVideoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryImageToVideoTaskResponse{}
+	_body, _err := client.QueryImageToVideoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14497,24 +15304,13 @@ func (client *Client) QueryIndividuationTextTaskWithOptions(request *QueryIndivi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryIndividuationTextTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryIndividuationTextTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryIndividuationTextTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14590,24 +15386,13 @@ func (client *Client) QuerySessionInfoWithOptions(tmpReq *QuerySessionInfoReques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QuerySessionInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QuerySessionInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QuerySessionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14653,24 +15438,13 @@ func (client *Client) QueryTextStreamWithOptions(textId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryTextStreamResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryTextStreamResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryTextStreamResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14747,6 +15521,10 @@ func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectReq
 		body["scaleType"] = request.ScaleType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScriptModelTag)) {
+		body["scriptModelTag"] = request.ScriptModelTag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SynchronizedDisplay)) {
 		body["synchronizedDisplay"] = request.SynchronizedDisplay
 	}
@@ -14766,24 +15544,13 @@ func (client *Client) SaveAvatarProjectWithOptions(request *SaveAvatarProjectReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveAvatarProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveAvatarProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveAvatarProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14829,24 +15596,13 @@ func (client *Client) SelectImageTaskWithOptions(taskId *string, headers map[str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SelectImageTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SelectImageTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SelectImageTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14902,24 +15658,13 @@ func (client *Client) SelectResourceWithOptions(request *SelectResourceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SelectResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SelectResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SelectResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14993,24 +15738,13 @@ func (client *Client) SendSdkMessageWithOptions(request *SendSdkMessageRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendSdkMessageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendSdkMessageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendSdkMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15025,6 +15759,86 @@ func (client *Client) SendSdkMessage(request *SendSdkMessageRequest) (_result *S
 	headers := make(map[string]*string)
 	_result = &SendSdkMessageResponse{}
 	_body, _err := client.SendSdkMessageWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送sdk流式消息
+//
+// @param request - SendSdkStreamMessageRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendSdkStreamMessageResponse
+func (client *Client) SendSdkStreamMessageWithOptions(request *SendSdkStreamMessageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SendSdkStreamMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		body["data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Header)) {
+		body["header"] = request.Header
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
+		body["moduleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationName)) {
+		body["operationName"] = request.OperationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendSdkStreamMessage"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/sdk/stream/sendMessage"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendSdkStreamMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送sdk流式消息
+//
+// @param request - SendSdkStreamMessageRequest
+//
+// @return SendSdkStreamMessageResponse
+func (client *Client) SendSdkStreamMessage(request *SendSdkStreamMessageRequest) (_result *SendSdkStreamMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SendSdkStreamMessageResponse{}
+	_body, _err := client.SendSdkStreamMessageWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15084,24 +15898,13 @@ func (client *Client) SendTextMsgWithOptions(request *SendTextMsgRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendTextMsgResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendTextMsgResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendTextMsgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15175,24 +15978,13 @@ func (client *Client) StartAvatarSessionWithOptions(request *StartAvatarSessionR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartAvatarSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartAvatarSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartAvatarSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15254,24 +16046,13 @@ func (client *Client) StopAvatarSessionWithOptions(request *StopAvatarSessionReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopAvatarSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopAvatarSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopAvatarSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15329,24 +16110,13 @@ func (client *Client) StopProjectTaskWithOptions(request *StopProjectTaskRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15361,6 +16131,74 @@ func (client *Client) StopProjectTask(request *StopProjectTaskRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &StopProjectTaskResponse{}
 	_body, _err := client.StopProjectTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交图片转视频任务
+//
+// @param request - SubmitImageToVideoTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitImageToVideoTaskResponse
+func (client *Client) SubmitImageToVideoTaskWithOptions(request *SubmitImageToVideoTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitImageToVideoTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["imageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PosPrompt)) {
+		body["posPrompt"] = request.PosPrompt
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitImageToVideoTask"),
+		Version:     tea.String("2024-03-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/yic/yic-console/openService/v1/video/imageToVideo/task"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitImageToVideoTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交图片转视频任务
+//
+// @param request - SubmitImageToVideoTaskRequest
+//
+// @return SubmitImageToVideoTaskResponse
+func (client *Client) SubmitImageToVideoTask(request *SubmitImageToVideoTaskRequest) (_result *SubmitImageToVideoTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitImageToVideoTaskResponse{}
+	_body, _err := client.SubmitImageToVideoTaskWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15416,24 +16254,13 @@ func (client *Client) SubmitProjectTaskWithOptions(request *SubmitProjectTaskReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitProjectTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitProjectTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitProjectTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15511,24 +16338,13 @@ func (client *Client) TransferPortraitStyleWithOptions(request *TransferPortrait
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TransferPortraitStyleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TransferPortraitStyleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TransferPortraitStyleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
