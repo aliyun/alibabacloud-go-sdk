@@ -22547,7 +22547,8 @@ type LlmSmartCallRequest struct {
 	// example:
 	//
 	// F32XXX2CF9
-	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	ApplicationCode *string                `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	BizParam        map[string]interface{} `json:"BizParam,omitempty" xml:"BizParam,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -22576,6 +22577,11 @@ func (s LlmSmartCallRequest) GoString() string {
 
 func (s *LlmSmartCallRequest) SetApplicationCode(v string) *LlmSmartCallRequest {
 	s.ApplicationCode = &v
+	return s
+}
+
+func (s *LlmSmartCallRequest) SetBizParam(v map[string]interface{}) *LlmSmartCallRequest {
+	s.BizParam = v
 	return s
 }
 
@@ -22611,6 +22617,7 @@ type LlmSmartCallShrinkRequest struct {
 	//
 	// F32XXX2CF9
 	ApplicationCode *string `json:"ApplicationCode,omitempty" xml:"ApplicationCode,omitempty"`
+	BizParamShrink  *string `json:"BizParam,omitempty" xml:"BizParam,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -22639,6 +22646,11 @@ func (s LlmSmartCallShrinkRequest) GoString() string {
 
 func (s *LlmSmartCallShrinkRequest) SetApplicationCode(v string) *LlmSmartCallShrinkRequest {
 	s.ApplicationCode = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetBizParamShrink(v string) *LlmSmartCallShrinkRequest {
+	s.BizParamShrink = &v
 	return s
 }
 
@@ -37785,6 +37797,10 @@ func (client *Client) LlmSmartCallWithOptions(tmpReq *LlmSmartCallRequest, runti
 	}
 	request := &LlmSmartCallShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BizParam)) {
+		request.BizParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BizParam, tea.String("BizParam"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.PromptParam)) {
 		request.PromptParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PromptParam, tea.String("PromptParam"), tea.String("json"))
 	}
@@ -37796,6 +37812,10 @@ func (client *Client) LlmSmartCallWithOptions(tmpReq *LlmSmartCallRequest, runti
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ApplicationCode)) {
 		query["ApplicationCode"] = request.ApplicationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizParamShrink)) {
+		query["BizParam"] = request.BizParamShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
