@@ -9,6 +9,41 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BandwidthLimit struct {
+	EgressRate        *string   `json:"EgressRate,omitempty" xml:"EgressRate,omitempty"`
+	EgressWhitelists  []*string `json:"EgressWhitelists,omitempty" xml:"EgressWhitelists,omitempty" type:"Repeated"`
+	IngressRate       *string   `json:"IngressRate,omitempty" xml:"IngressRate,omitempty"`
+	IngressWhitelists []*string `json:"IngressWhitelists,omitempty" xml:"IngressWhitelists,omitempty" type:"Repeated"`
+}
+
+func (s BandwidthLimit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BandwidthLimit) GoString() string {
+	return s.String()
+}
+
+func (s *BandwidthLimit) SetEgressRate(v string) *BandwidthLimit {
+	s.EgressRate = &v
+	return s
+}
+
+func (s *BandwidthLimit) SetEgressWhitelists(v []*string) *BandwidthLimit {
+	s.EgressWhitelists = v
+	return s
+}
+
+func (s *BandwidthLimit) SetIngressRate(v string) *BandwidthLimit {
+	s.IngressRate = &v
+	return s
+}
+
+func (s *BandwidthLimit) SetIngressWhitelists(v []*string) *BandwidthLimit {
+	s.IngressWhitelists = v
+	return s
+}
+
 type CredentialConfig struct {
 	// example:
 	//
@@ -228,6 +263,53 @@ func (s *DemoCategory) SetOrder(v int64) *DemoCategory {
 
 func (s *DemoCategory) SetSubCategories(v []*DemoCategory) *DemoCategory {
 	s.SubCategories = v
+	return s
+}
+
+type DynamicMount struct {
+	Enable      *bool                `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	MountPoints []*DynamicMountPoint `json:"MountPoints,omitempty" xml:"MountPoints,omitempty" type:"Repeated"`
+}
+
+func (s DynamicMount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DynamicMount) GoString() string {
+	return s.String()
+}
+
+func (s *DynamicMount) SetEnable(v bool) *DynamicMount {
+	s.Enable = &v
+	return s
+}
+
+func (s *DynamicMount) SetMountPoints(v []*DynamicMountPoint) *DynamicMount {
+	s.MountPoints = v
+	return s
+}
+
+type DynamicMountPoint struct {
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// This parameter is required.
+	RootPath *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+}
+
+func (s DynamicMountPoint) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DynamicMountPoint) GoString() string {
+	return s.String()
+}
+
+func (s *DynamicMountPoint) SetOptions(v string) *DynamicMountPoint {
+	s.Options = &v
+	return s
+}
+
+func (s *DynamicMountPoint) SetRootPath(v string) *DynamicMountPoint {
+	s.RootPath = &v
 	return s
 }
 
@@ -509,14 +591,20 @@ func (s *ForwardInfoResponseConnectInfoIntranet) SetPort(v string) *ForwardInfoR
 }
 
 type CreateIdleInstanceCullerRequest struct {
+	// The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
+	//
 	// example:
 	//
 	// 20
 	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
+	//
 	// example:
 	//
 	// 10
 	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
+	//
 	// example:
 	//
 	// 60
@@ -547,22 +635,40 @@ func (s *CreateIdleInstanceCullerRequest) SetMaxIdleTimeInMinutes(v int32) *Crea
 }
 
 type CreateIdleInstanceCullerResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -632,71 +738,143 @@ func (s *CreateIdleInstanceCullerResponse) SetBody(v *CreateIdleInstanceCullerRe
 }
 
 type CreateInstanceRequest struct {
+	// The instance accessibility.
+	//
+	// Valid values:
+	//
+	// 	- PUBLIC: The instances are accessible to all members in the workspace.
+	//
+	// 	- PRIVATE: The instances are accessible only to you and the administrator of the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Affinity      *CreateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The affinity configuration.
+	Affinity *CreateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	// The cloud disks.
+	//
 	// example:
 	//
 	// []
-	CloudDisks       []*CreateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	CredentialConfig *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Datasets         []*CreateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	CloudDisks []*CreateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	// The 
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The datasets.
+	Datasets []*CreateInstanceRequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The dynamic mount configuration.
+	DynamicMount *DynamicMount `json:"DynamicMount,omitempty" xml:"DynamicMount,omitempty"`
+	// The ECS instance type of the instance. You can call [ListEcsSpecs](https://help.aliyun.com/document_detail/470423.html) to obtain the ECS instance type.
+	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The environment variables.
+	//
 	// example:
 	//
 	// {userName: "Chris"}
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
-	ImageAuth            *string            `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The Base64-encoded account and password for the user\\"s private image. The password will be hidden.
+	//
+	// example:
+	//
+	// ****
+	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image address. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image address.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The instance name. The name must meet the following requirements:
+	//
+	// 	- The name can contain only letters, digits, and underscores (_).
+	//
+	// 	- The name can be up to 27 characters in length.
+	//
 	// example:
 	//
 	// training_data
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The custom labels.
+	//
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
 	Labels []*CreateInstanceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
+	//
+	// 	- 1: the lowest priority.
+	//
+	// 	- 9: the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The resource configurations.
+	//
 	// example:
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *CreateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// The ID of the resource group. This parameter is configured during prepayment. For information about how to create a dedicated resource group, see [Create a dedicated resource group and purchase general computing resources](https://help.aliyun.com/document_detail/202827.html).
+	//
 	// example:
 	//
 	// dsw-123456789
-	ResourceId *string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Tag        []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The tags.
+	Tag []*CreateInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The ID of the instance owner. Valid values: Alibaba Cloud account and RAM user.
+	//
 	// example:
 	//
-	// 1612285282502324
-	UserId  *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 161228528250****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The virtual private cloud (VPC) configurations.
 	UserVpc *CreateInstanceRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 40823
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The storage corresponding to the working directory. You can mount disks or datasets to /mnt/workspace at the same time. OSS datasets and dynamically mounted datasets are not supported.
+	//
+	// Valid values:
+	//
+	// 	- rootfsCloudDisk: Mount the disk to the working directory.
+	//
+	// 	- Mount path of the dataset, such as /mnt/data: Datasets in URI format only support this method.
+	//
+	// 	- Dataset ID, such as d-vsqjvs\\*\\*\\*\\*rp5l206u: If a single dataset is mounted to multiple paths, the first path is selected. We recommend that you do not use this method, use the mount path instead.
+	//
+	// If you leave this parameter empty:
+	//
+	// 	- If the instance uses cloud disks, cloud disks are selected by default.
+	//
+	// 	- if no cloud disks are available, the first NAS or CPFS dataset is selected as the working directory.
+	//
+	// 	- If no cloud disks, and NAS or CPFS datasets are available, the host space is used.
+	//
 	// example:
 	//
-	// d-123456789
+	// rootfsCloudDisk
 	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
@@ -735,6 +913,11 @@ func (s *CreateInstanceRequest) SetDatasets(v []*CreateInstanceRequestDatasets) 
 
 func (s *CreateInstanceRequest) SetDriver(v string) *CreateInstanceRequest {
 	s.Driver = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetDynamicMount(v *DynamicMount) *CreateInstanceRequest {
+	s.DynamicMount = v
 	return s
 }
 
@@ -814,6 +997,7 @@ func (s *CreateInstanceRequest) SetWorkspaceSource(v string) *CreateInstanceRequ
 }
 
 type CreateInstanceRequestAffinity struct {
+	// The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
 	CPU *CreateInstanceRequestAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
 }
 
@@ -831,6 +1015,15 @@ func (s *CreateInstanceRequestAffinity) SetCPU(v *CreateInstanceRequestAffinityC
 }
 
 type CreateInstanceRequestAffinityCPU struct {
+	// Specifies whether to enable the CPU affinity feature.
+	//
+	// 	- false
+	//
+	// 	- true
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -848,19 +1041,44 @@ func (s *CreateInstanceRequestAffinityCPU) SetEnable(v bool) *CreateInstanceRequ
 }
 
 type CreateInstanceRequestCloudDisks struct {
+	// If **Resource Type*	- is **Public Resource*	- or if **Resource Quota*	- is subscription-based general-purpose computing resources (CPU cores ≥ 2 and memory ≥ 4 GB, or configured with GPU):
+	//
+	// Each instance has a free system disk of 100 GiB for persistent storage. **If the DSW instance is stopped and not launched for more than 15 days, the disk is cleared**. The disk can be expanded. For specific pricing, refer to the console.
+	//
+	// **
+	//
+	// **Warning**
+	//
+	// 	- After the expansion, you cannot reduce the storage space. Proceed with caution.
+	//
+	// 	- After the expansion, the disk is not cleared if the instance is stopped for more than 15 days. However, it will continue to incur fees.
+	//
+	// 	- If you delete the instance, the system disk is also released and the data stored in the disk is deleted. Make sure that you have backed up your data before you delete the instance.
+	//
+	// If you need persistent storage, you can **mount a dataset*	- or add the OSS, NAS, or CPFS path to the **storage path**.
+	//
 	// example:
 	//
-	// 30Gi
+	// 100Gi
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The mount path of the cloud disk.
+	//
 	// example:
 	//
-	// /mmt/workspace
+	// /mnt/systemDisk
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The subpath of the cloud disk that is mounted to the instance.
+	//
 	// example:
 	//
 	// workspace
-	Path   *string                                `json:"Path,omitempty" xml:"Path,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The disk or snapshot usage.
 	Status *CreateInstanceRequestCloudDisksStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
+	// The cloud disk type.
+	//
+	// 	- rootfs: Mounts the disk as a system disk. The system environment is stored on the disk.
+	//
 	// example:
 	//
 	// rootfs
@@ -901,9 +1119,24 @@ func (s *CreateInstanceRequestCloudDisks) SetSubType(v string) *CreateInstanceRe
 }
 
 type CreateInstanceRequestCloudDisksStatus struct {
+	// The available capacity. Unit: bytes.
+	//
+	// example:
+	//
+	// 31841058816
 	Available *int64 `json:"Available,omitempty" xml:"Available,omitempty"`
-	Capacity  *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	Usage     *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The capacity. Unit: bytes.
+	//
+	// example:
+	//
+	// 32212254720
+	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The used capacity. Unit: bytes.
+	//
+	// example:
+	//
+	// 371195904
+	Usage *int64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
 }
 
 func (s CreateInstanceRequestCloudDisksStatus) String() string {
@@ -930,22 +1163,85 @@ func (s *CreateInstanceRequestCloudDisksStatus) SetUsage(v int64) *CreateInstanc
 }
 
 type CreateInstanceRequestDatasets struct {
+	// The dataset ID. If the dataset is read-only, you cannot change the dataset permission from read-only to read and write by using MountAccess.
+	//
+	// You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset ID. If you configure the dataset ID, you cannot configure the dataset URI.
+	//
 	// example:
 	//
 	// d-vsqjvsjp4orp5l206u
-	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version. You must also configure DatasetId. If you leave this parameter empty, the value v1 is used by default.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MountAccess    *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// Specifies whether to enable dynamic mounting. Default value: false.
+	//
+	// 	- Currently, only instances using general-purpose computing resources are supported.
+	//
+	// 	- Currently, only OSS datasets are supported. The mounted datasets are read-only.
+	//
+	// 	- The mount path of the dynamically mounted dataset must be a subpath of the root path. Example: /mnt/dynamic/data1/
+	//
+	// 	- A dynamically mounted dataset must be after non-dynamic datasets.
+	//
+	// example:
+	//
+	// true
+	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// The read and write permissions of the dataset. If the dataset is read-only, it cannot be changed to read and write.
+	//
+	// example:
+	//
+	// RW
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The mount path of the dataset.
+	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 	// Deprecated
-	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	//
+	// The mount type. You cannot specify Options at the same time. This is deprecated, and you can use Options instead.
+	//
 	// example:
 	//
-	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	// ReadOnly
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+	//
+	// example:
+	//
+	// {
+	//
+	//   "fs.oss.download.thread.concurrency": "10",
+	//
+	//   "fs.oss.upload.thread.concurrency": "10",
+	//
+	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
+	//
+	// URI formats of different types of storage:
+	//
+	// 	- OSS: oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
+	//
+	// 	- NAS: nas://29\\*\\*d-b12\\*\\*\\*\\*446.cn-hangzhou.nas.aliyuncs.com/data/path/
+	//
+	// 	- Extreme NAS: nas://29\\*\\*\\*\\*123-y\\*\\*r.cn-hangzhou.extreme.nas.aliyuncs.com/data/path/
+	//
+	// 	- CPFS: cpfs://cpfs-213\\*\\*\\*\\*87.cn-wulanchabu/ptc-292\\*\\*\\*\\*\\*cbb/exp-290\\*\\*\\*\\*\\*\\*\\*\\*03e/data/path/
+	//
+	// 	- Lingjun CPFS: bmcpfs://cpfs-290\\*\\*\\*\\*\\*\\*foflh-vpc-x\\*\\*\\*\\*8r.cn-wulanchabu.cpfs.aliyuncs.com/data/path/
+	//
+	// example:
+	//
+	// oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -964,6 +1260,11 @@ func (s *CreateInstanceRequestDatasets) SetDatasetId(v string) *CreateInstanceRe
 
 func (s *CreateInstanceRequestDatasets) SetDatasetVersion(v string) *CreateInstanceRequestDatasets {
 	s.DatasetVersion = &v
+	return s
+}
+
+func (s *CreateInstanceRequestDatasets) SetDynamic(v bool) *CreateInstanceRequestDatasets {
+	s.Dynamic = &v
 	return s
 }
 
@@ -993,10 +1294,14 @@ func (s *CreateInstanceRequestDatasets) SetUri(v string) *CreateInstanceRequestD
 }
 
 type CreateInstanceRequestLabels struct {
+	// The custom label key.
+	//
 	// example:
 	//
 	// stsTokenOwner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom label value.
+	//
 	// example:
 	//
 	// 123xxxxxxxx
@@ -1022,22 +1327,42 @@ func (s *CreateInstanceRequestLabels) SetValue(v string) *CreateInstanceRequestL
 }
 
 type CreateInstanceRequestRequestedResource struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 32
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU memory type. Valid values:
+	//
+	// 	- V100
+	//
+	// 	- A100
+	//
+	// 	- T4
+	//
+	// 	- A10
+	//
+	// 	- P100
+	//
 	// example:
 	//
 	// v100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The size of the shared memory. Unit: GB.
+	//
 	// example:
 	//
 	// 32
@@ -1078,7 +1403,17 @@ func (s *CreateInstanceRequestRequestedResource) SetSharedMemory(v string) *Crea
 }
 
 type CreateInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1101,23 +1436,43 @@ func (s *CreateInstanceRequestTag) SetValue(v string) *CreateInstanceRequestTag 
 }
 
 type CreateInstanceRequestUserVpc struct {
+	BandwidthLimit *BandwidthLimit `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The default route. Valid values:
+	//
+	// 	- eth0: The default network interface is used to access the Internet through the public gateway.
+	//
+	// 	- eth1: The user\\"s elastic network interface (ENI) is used to access the Internet through the private gateway. For more information about the configuration method, see [Enable Internet access for a DSW instance by using a private Internet NAT gateway](https://help.aliyun.com/document_detail/2525343.html).
+	//
 	// example:
 	//
-	// eth0 | eth1
+	// eth0
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR blocks.
+	//
+	// 	- If you leave the SwitchId and ExtendedCIDRs parameters empty, the system automatically obtains all CIDR blocks in a VPC.
+	//
+	// 	- If you configure the SwitchId and ExtendedCIDRs parameters, we recommend that you specify all CIDR blocks in a VPC.
+	//
 	// example:
 	//
 	// ["192.168.0.1/24", "192.168.1.1/24"]
-	ExtendedCIDRs []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos  []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The forward information.
+	ForwardInfos []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxxxx
@@ -1130,6 +1485,11 @@ func (s CreateInstanceRequestUserVpc) String() string {
 
 func (s CreateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *CreateInstanceRequestUserVpc) SetBandwidthLimit(v *BandwidthLimit) *CreateInstanceRequestUserVpc {
+	s.BandwidthLimit = v
+	return s
 }
 
 func (s *CreateInstanceRequestUserVpc) SetDefaultRoute(v string) *CreateInstanceRequestUserVpc {
@@ -1163,26 +1523,52 @@ func (s *CreateInstanceRequestUserVpc) SetVpcId(v string) *CreateInstanceRequest
 }
 
 type CreateInstanceResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
+	// 	- 200
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1257,10 +1643,14 @@ func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateI
 }
 
 type CreateInstanceShutdownTimerRequest struct {
+	// The scheduled stop time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// The time duration before the instance is stopped. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3600000
@@ -1286,26 +1676,50 @@ func (s *CreateInstanceShutdownTimerRequest) SetRemainingTimeInMs(v int64) *Crea
 }
 
 type CreateInstanceShutdownTimerResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1575,22 +1989,44 @@ func (s *CreateInstanceSnapshotResponse) SetBody(v *CreateInstanceSnapshotRespon
 }
 
 type DeleteIdleInstanceCullerResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// ValidationError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
+	// 	- If the request is successful, null is returned.
+	//
+	// 	- If the request fails, the failure cause is returned.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1660,26 +2096,52 @@ func (s *DeleteIdleInstanceCullerResponse) SetBody(v *DeleteIdleInstanceCullerRe
 }
 
 type DeleteInstanceResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
+	// 	- 200
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -1754,6 +2216,8 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 }
 
 type DeleteInstanceLabelsRequest struct {
+	// The keys of the tags that you want to delete. Separate multiple tags with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1776,6 +2240,8 @@ func (s *DeleteInstanceLabelsRequest) SetLabelKeys(v string) *DeleteInstanceLabe
 }
 
 type DeleteInstanceLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
@@ -1825,26 +2291,50 @@ func (s *DeleteInstanceLabelsResponse) SetBody(v *DeleteInstanceLabelsResponseBo
 }
 
 type DeleteInstanceShutdownTimerResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2022,38 +2512,64 @@ func (s *DeleteInstanceSnapshotResponse) SetBody(v *DeleteInstanceSnapshotRespon
 }
 
 type GetIdleInstanceCullerResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// ValidationError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
+	//
 	// example:
 	//
 	// 20
 	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
+	//
 	// example:
 	//
 	// 10
 	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// The time duration for which the instance is idle. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
+	//
 	// example:
 	//
 	// 60
 	MaxIdleTimeInMinutes *int32 `json:"MaxIdleTimeInMinutes,omitempty" xml:"MaxIdleTimeInMinutes,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -2143,6 +2659,11 @@ func (s *GetIdleInstanceCullerResponse) SetBody(v *GetIdleInstanceCullerResponse
 }
 
 type GetInstanceRequest struct {
+	// The sharing token information.
+	//
+	// example:
+	//
+	// WUzWCMr325LV0bH2JH4C4HoDaKIU6C4S
 	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -2160,172 +2681,332 @@ func (s *GetInstanceRequest) SetToken(v string) *GetInstanceRequest {
 }
 
 type GetInstanceResponseBody struct {
+	// The accelerator type of the instance.
+	//
+	// Valid values:
+	//
+	// 	- CPU
+	//
+	// 	- GPU
+	//
 	// example:
 	//
 	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The accessibility. Valid values:
+	//
+	// 	- PRIVATE: Accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: Accessible to all members in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The accumulated running duration. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3600000
-	AccumulatedRunningTimeInMs *int64                           `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	Affinity                   *GetInstanceResponseBodyAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// The affinity configuration.
+	Affinity *GetInstanceResponseBodyAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	// The cloud disks of the instance.
+	//
 	// example:
 	//
 	// []
 	CloudDisks []*GetInstanceResponseBodyCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	// The status code. Valid values:
+	//
+	// 	- InternalError: All errors, except for parameter validation errors, are internal errors.
+	//
+	// 	- ValidationError: A parameter validation error.
+	//
 	// example:
 	//
 	// null
-	Code             *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
-	CredentialConfig *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Datasets         []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The credential injection configuration.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The datasets.
+	Datasets []*GetInstanceResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The dynamic mount configuration.
+	DynamicMount *DynamicMount `json:"DynamicMount,omitempty" xml:"DynamicMount,omitempty"`
+	// The ECS instance type of the instance.
+	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The environment variables.
+	//
 	// example:
 	//
 	// {userName: "Chris"}
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// The creation time of the instance.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The last modified time of the instance.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The automatic shutdown settings.
+	//
 	// example:
 	//
 	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
 	IdleInstanceCuller *GetInstanceResponseBodyIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageAuth          *string                                    `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The Base64-encoded account and password for the user‘s private image. The password will be hidden.
+	//
+	// example:
+	//
+	// YWxpeXVuNjUzMzM5MjIwMzoqKioqKio=
+	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image address.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// training_data
-	InstanceName          *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The scheduled stop tasks.
 	InstanceShutdownTimer *GetInstanceResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// The instance snapshots.
+	//
 	// example:
 	//
 	// []
 	InstanceSnapshotList []*GetInstanceResponseBodyInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	// The instance URL.
+	//
 	// example:
 	//
 	// https://dsw-cn-shanghai.data.aliyun.com/notebook.htm?instance=39772#/
 	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
-	// Jupyterlab Url。
+	// The JupyterLab URL.
 	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/lab/
 	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// The custom tags.
+	//
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
-	Labels         []*GetInstanceResponseBodyLabels       `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Labels []*GetInstanceResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest user image saved.
 	LatestSnapshot *GetInstanceResponseBodyLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// The error message. Valid values:
+	//
+	// 	- If the request is successful, null is returned.
+	//
+	// 	- If the request fails, the cause for the failure is returned.
+	//
 	// example:
 	//
 	// "XXX"
-	Message           *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The error recovery configuration of the node.
 	NodeErrorRecovery *GetInstanceResponseBodyNodeErrorRecovery `json:"NodeErrorRecovery,omitempty" xml:"NodeErrorRecovery,omitempty" type:"Struct"`
+	// The billing method. Valid values:
+	//
+	// 	- PayAsYouGo
+	//
+	// 	- Subscription
+	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The priority based on which resources are allocated to instances.
+	//
 	// example:
 	//
 	// 1
-	Priority  *int64  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The proxy path.
+	//
+	// example:
+	//
+	// dsw-170197/proxy/
 	ProxyPath *string `json:"ProxyPath,omitempty" xml:"ProxyPath,omitempty"`
+	// The error code of the instance.
+	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The cause of the instance error.
+	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource configurations in subscription scenarios.
+	//
 	// example:
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *GetInstanceResponseBodyRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// The resource ID. This parameter is available if the billing method is subscription.
+	//
 	// example:
 	//
 	// dsw-123456789
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The specification type.
+	//
+	// 	- For subscription, this is the requested CPU and memory size.
+	//
+	// 	- For pay-as-you-go, this is the selected ECS instance type.
+	//
 	// example:
 	//
 	// ecs.g7.xlarge
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The instance status.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- SaveFailed
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- ResourceAllocating
+	//
+	// 	- Stopping
+	//
+	// 	- Updating
+	//
+	// 	- Saving
+	//
+	// 	- Queuing
+	//
+	// 	- Recovering
+	//
+	// 	- Starting
+	//
+	// 	- Running
+	//
+	// 	- Saved
+	//
+	// 	- Deleting
+	//
+	// 	- EnvPreparing
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Success *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tags    []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The tags.
+	Tags []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The terminal URL.
+	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
 	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1612285282502324
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// 测试用户
-	UserName *string                         `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc  *GetInstanceResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// Web IDE url。
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The virtual private cloud (VPC) configurations.
+	UserVpc *GetInstanceResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The Web IDE URL.
 	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/ide/
 	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 40823
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// training_data
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The storage for the workspace. If you leave this parameter empty, the workspace uses File Storage NAS (NAS) storage, cloud disks, or local disks in sequence.
+	//
 	// example:
 	//
 	// d-123456789
@@ -2382,6 +3063,11 @@ func (s *GetInstanceResponseBody) SetDatasets(v []*GetInstanceResponseBodyDatase
 
 func (s *GetInstanceResponseBody) SetDriver(v string) *GetInstanceResponseBody {
 	s.Driver = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetDynamicMount(v *DynamicMount) *GetInstanceResponseBody {
+	s.DynamicMount = v
 	return s
 }
 
@@ -2586,6 +3272,7 @@ func (s *GetInstanceResponseBody) SetWorkspaceSource(v string) *GetInstanceRespo
 }
 
 type GetInstanceResponseBodyAffinity struct {
+	// The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
 	CPU *GetInstanceResponseBodyAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
 }
 
@@ -2603,6 +3290,13 @@ func (s *GetInstanceResponseBodyAffinity) SetCPU(v *GetInstanceResponseBodyAffin
 }
 
 type GetInstanceResponseBodyAffinityCPU struct {
+	// Indicates whether CPU affinity is enabled.
+	//
+	// true false
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -2620,18 +3314,26 @@ func (s *GetInstanceResponseBodyAffinityCPU) SetEnable(v bool) *GetInstanceRespo
 }
 
 type GetInstanceResponseBodyCloudDisks struct {
+	// Disk Capacity
+	//
 	// example:
 	//
 	// 30Gi
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The mount path of the cloud disk in the container.
+	//
 	// example:
 	//
 	// /mmt/workspace
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory on the cloud disk that is mounted to the container.
+	//
 	// example:
 	//
 	// /workspace
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The usage mode of the cloud disk. The value rootfs indicates that the cloud disk is used as the root file system.
+	//
 	// example:
 	//
 	// rootfs
@@ -2667,21 +3369,61 @@ func (s *GetInstanceResponseBodyCloudDisks) SetSubType(v string) *GetInstanceRes
 }
 
 type GetInstanceResponseBodyDatasets struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-vsqjvsjp4orp5l206u
-	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MountAccess    *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// Indicates whether dynamic mounting is enabled. Default value: false.
+	//
+	// example:
+	//
+	// false
+	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// The read and write permissions. Valid values: RW and RO.
+	//
+	// example:
+	//
+	// RW
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The mount path in the container.
+	//
 	// example:
 	//
 	// /mnt/data
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The mount type of the dataset (deprecated).
+	//
 	// example:
 	//
-	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	// FastReadWrite
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	// The mount type of the dataset.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "fs.oss.download.thread.concurrency": "10",
+	//
+	//   "fs.oss.upload.thread.concurrency": "10",
+	//
+	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The dataset URI.
+	//
+	// example:
+	//
+	// oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -2700,6 +3442,11 @@ func (s *GetInstanceResponseBodyDatasets) SetDatasetId(v string) *GetInstanceRes
 
 func (s *GetInstanceResponseBodyDatasets) SetDatasetVersion(v string) *GetInstanceResponseBodyDatasets {
 	s.DatasetVersion = &v
+	return s
+}
+
+func (s *GetInstanceResponseBodyDatasets) SetDynamic(v bool) *GetInstanceResponseBodyDatasets {
+	s.Dynamic = &v
 	return s
 }
 
@@ -2729,22 +3476,32 @@ func (s *GetInstanceResponseBodyDatasets) SetUri(v string) *GetInstanceResponseB
 }
 
 type GetInstanceResponseBodyIdleInstanceCuller struct {
+	// The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
+	//
 	// example:
 	//
 	// 20
 	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
+	//
 	// example:
 	//
 	// 10
 	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// The current time duration for which the instance is idle. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
+	//
 	// example:
 	//
 	// 60
@@ -2785,22 +3542,32 @@ func (s *GetInstanceResponseBodyIdleInstanceCuller) SetMaxIdleTimeInMinutes(v in
 }
 
 type GetInstanceResponseBodyInstanceShutdownTimer struct {
+	// The scheduled stop time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The modified time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The remaining time before the instance is stopped. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3600000
@@ -2841,55 +3608,55 @@ func (s *GetInstanceResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v in
 }
 
 type GetInstanceResponseBodyInstanceSnapshotList struct {
-	// 快照创建时间
+	// The time when the snapshot was created.
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 快照修改时间
+	// The time when the snapshot was modified.
 	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// 镜像Id
+	// The image ID.
 	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// 镜像名称
+	// The image name.
 	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	// 镜像Url
+	// The image URL.
 	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// 实例快照错误代码
+	// The error code of the instance snapshot.
 	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 实例快照错误消息
+	// The error message of the instance snapshot.
 	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
-	// 镜像仓库Url
+	// The image repository URL.
 	//
 	// example:
 	//
 	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	// 实例快照状态
+	// The instance snapshot status.
 	//
 	// example:
 	//
@@ -2951,10 +3718,14 @@ func (s *GetInstanceResponseBodyInstanceSnapshotList) SetStatus(v string) *GetIn
 }
 
 type GetInstanceResponseBodyLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// stsTokenOwner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// 123xxxxxxxx
@@ -2980,43 +3751,65 @@ func (s *GetInstanceResponseBodyLabels) SetValue(v string) *GetInstanceResponseB
 }
 
 type GetInstanceResponseBodyLatestSnapshot struct {
+	// The time when the snapshot was created.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the snapshot was modified.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image URL.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// 实例快照错误代码
+	// The error code of the instance snapshot.
 	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
-	// 实例快照错误消息
+	// The error message of the instance snapshot.
 	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The image repository URL.
+	//
 	// example:
 	//
 	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
-	// 实例快照状态
+	// The instance snapshot status.
+	//
+	// Valid values:
+	//
+	// 	- Committing
+	//
+	// 	- Pushing
+	//
+	// 	- Failed
+	//
+	// 	- Saved
 	//
 	// example:
 	//
@@ -3078,9 +3871,24 @@ func (s *GetInstanceResponseBodyLatestSnapshot) SetStatus(v string) *GetInstance
 }
 
 type GetInstanceResponseBodyNodeErrorRecovery struct {
-	AutoSwitchCountdownSeconds  *int64 `json:"autoSwitchCountdownSeconds,omitempty" xml:"autoSwitchCountdownSeconds,omitempty"`
-	EnableAutoSwitchOnNodeError *bool  `json:"enableAutoSwitchOnNodeError,omitempty" xml:"enableAutoSwitchOnNodeError,omitempty"`
-	HasNodeError                *bool  `json:"hasNodeError,omitempty" xml:"hasNodeError,omitempty"`
+	// The number of seconds to wait before automatic switchover.
+	//
+	// example:
+	//
+	// 30
+	AutoSwitchCountdownSeconds *int64 `json:"autoSwitchCountdownSeconds,omitempty" xml:"autoSwitchCountdownSeconds,omitempty"`
+	// Indicates whether to enable automatic switchover when a node error occurs.
+	//
+	// example:
+	//
+	// true
+	EnableAutoSwitchOnNodeError *bool `json:"enableAutoSwitchOnNodeError,omitempty" xml:"enableAutoSwitchOnNodeError,omitempty"`
+	// Indicates whether the node has an error.
+	//
+	// example:
+	//
+	// false
+	HasNodeError *bool `json:"hasNodeError,omitempty" xml:"hasNodeError,omitempty"`
 }
 
 func (s GetInstanceResponseBodyNodeErrorRecovery) String() string {
@@ -3107,22 +3915,42 @@ func (s *GetInstanceResponseBodyNodeErrorRecovery) SetHasNodeError(v bool) *GetI
 }
 
 type GetInstanceResponseBodyRequestedResource struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 32
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU type. Valid values:
+	//
+	// 	- V100
+	//
+	// 	- A100
+	//
+	// 	- T4
+	//
+	// 	- A10
+	//
+	// 	- P100
+	//
 	// example:
 	//
 	// v100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The shared memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
@@ -3163,7 +3991,17 @@ func (s *GetInstanceResponseBodyRequestedResource) SetSharedMemory(v string) *Ge
 }
 
 type GetInstanceResponseBodyTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -3186,24 +4024,38 @@ func (s *GetInstanceResponseBodyTags) SetTagValue(v string) *GetInstanceResponse
 }
 
 type GetInstanceResponseBodyUserVpc struct {
+	BandwidthLimit *BandwidthLimit `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// Default Route
+	//
 	// example:
 	//
 	// eth0 | eth1
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR block.
+	//
+	// 	- If you leave VSwitchId empty, this parameter is not required and the system automatically obtains all CIDR blocks in the VPC.
+	//
+	// 	- If VSwitchId is not empty, this parameter is required. Specify all CIDR blocks in the VPC.
+	//
 	// example:
 	//
 	// ["192.168.0.1/24", "192.168.1.1/24"]
-	ExtendedCIDRs []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos  []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The forward information.
+	ForwardInfos []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Vpc Id。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -3217,6 +4069,11 @@ func (s GetInstanceResponseBodyUserVpc) String() string {
 
 func (s GetInstanceResponseBodyUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *GetInstanceResponseBodyUserVpc) SetBandwidthLimit(v *BandwidthLimit) *GetInstanceResponseBodyUserVpc {
+	s.BandwidthLimit = v
+	return s
 }
 
 func (s *GetInstanceResponseBodyUserVpc) SetDefaultRoute(v string) *GetInstanceResponseBodyUserVpc {
@@ -3279,19 +4136,26 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 }
 
 type GetInstanceEventsRequest struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The maximum number of events. Default value: 2000.
+	//
 	// example:
 	//
 	// 2000
 	MaxEventsNum *int32 `json:"MaxEventsNum,omitempty" xml:"MaxEventsNum,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token used to share the URL.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetInstanceEventsRequest) String() string {
@@ -3323,27 +4187,54 @@ func (s *GetInstanceEventsRequest) SetToken(v string) *GetInstanceEventsRequest 
 }
 
 type GetInstanceEventsResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// None
-	Code   *string   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The events.
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400: One or more parameters are invalid.
+	//
+	// 	- 404: The instance does not exist.
+	//
+	// 	- 200: The request is normal.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// XXX
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3423,20 +4314,44 @@ func (s *GetInstanceEventsResponse) SetBody(v *GetInstanceEventsResponseBody) *G
 }
 
 type GetInstanceMetricsRequest struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The metric type. Valid values:
+	//
+	// 	- GpuCoreUsage: the GPU utilization.
+	//
+	// 	- GpuMemoryUsage: the GPU memory utilization.
+	//
+	// 	- CpuCoreUsage: the CPU utilization.
+	//
+	// 	- MemoryUsage: the memory utilization.
+	//
+	// 	- NetworkInputRate: the network ingress rate.
+	//
+	// 	- NetworkOutputRate: the network egress rate.
+	//
+	// 	- DiskReadRate: the disk read rate.
+	//
+	// 	- DiskWriteRate: the disk write rate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// GpuCoreUsage
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The interval at which metrics are returned. Unit: minutes.
+	//
 	// example:
 	//
 	// 15m
@@ -3472,27 +4387,52 @@ func (s *GetInstanceMetricsRequest) SetTimeStep(v string) *GetInstanceMetricsReq
 }
 
 type GetInstanceMetricsResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
-	Message    *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The information about the metrics of the pod that corresponds to the instance.
 	PodMetrics []*GetInstanceMetricsResponseBodyPodMetrics `json:"PodMetrics,omitempty" xml:"PodMetrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -3543,7 +4483,10 @@ func (s *GetInstanceMetricsResponseBody) SetSuccess(v bool) *GetInstanceMetricsR
 }
 
 type GetInstanceMetricsResponseBodyPodMetrics struct {
+	// The metrics of the pod that corresponds to the instance.
 	Metrics []*GetInstanceMetricsResponseBodyPodMetricsMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The ID of the pod that corresponds to the instance.
+	//
 	// example:
 	//
 	// dsw-15870-695f44c5bc-hd6xm
@@ -3569,10 +4512,14 @@ func (s *GetInstanceMetricsResponseBodyPodMetrics) SetPodId(v string) *GetInstan
 }
 
 type GetInstanceMetricsResponseBodyPodMetricsMetrics struct {
+	// The timestamp corresponding to the metric.
+	//
 	// example:
 	//
 	// 1670890560
 	Time *int64 `json:"Time,omitempty" xml:"Time,omitempty"`
+	// The metric value.
+	//
 	// example:
 	//
 	// 25.901031
@@ -3976,27 +4923,42 @@ func (s *GetInstanceSnapshotResponse) SetBody(v *GetInstanceSnapshotResponseBody
 }
 
 type GetLifecycleRequest struct {
+	// The end of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of sessions to query.
+	//
 	// example:
 	//
 	// 1
 	Limit *int32 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	// The sorting order of the results. Valid values:
+	//
+	// 	- ASC: sorted by time in ascending order.
+	//
+	// 	- DESC: sorted by time in descending order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// A session refers to the process of an instance from startup to failure or shutdown. The sessionNumber indicates the offset value for the instance\\"s session sequence.
+	//
 	// example:
 	//
 	// 1
 	SessionNumber *int32 `json:"SessionNumber,omitempty" xml:"SessionNumber,omitempty"`
+	// The beginning of the time range to query.
+	//
 	// example:
 	//
 	// 2020-11-08T15:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// The token used to share the URL.
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
 func (s GetLifecycleRequest) String() string {
@@ -4038,26 +5000,46 @@ func (s *GetLifecycleRequest) SetToken(v string) *GetLifecycleRequest {
 }
 
 type GetLifecycleResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: All errors, except for parameter validation errors, are internal errors.
+	//
+	// 	- ValidationError: A parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The lifecycle details.
+	//
 	// example:
 	//
 	// [[{"Status":"Creating","GmtCreateTime":"2022-09-19T22:38:00Z","Reason":"","ReasonCode":""}]]
 	Lifecycle [][]*GetLifecycleResponseBodyLifecycle `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty" type:"Repeated"`
+	// The returned message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of queried sessions.
+	//
 	// example:
 	//
 	// 35
@@ -4103,18 +5085,58 @@ func (s *GetLifecycleResponseBody) SetTotalCount(v int32) *GetLifecycleResponseB
 }
 
 type GetLifecycleResponseBodyLifecycle struct {
+	// The status of the instance. Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- SaveFailed: The instance image failed to be saved.
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- ResourceAllocating
+	//
+	// 	- Stopping
+	//
+	// 	- Updating
+	//
+	// 	- Saving
+	//
+	// 	- Starting
+	//
+	// 	- Running
+	//
+	// 	- Saved
+	//
+	// 	- EnvPreparing: Preparing environment.
+	//
+	// 	- ArrearStopping: The service is being stopped due to overdue payments.
+	//
+	// 	- Arrearge: The service is stopped due to overdue payments.
+	//
+	// 	- Queuing
+	//
+	// 	- Recovering
+	//
 	// example:
 	//
 	// Starting
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason code that corresponds to an event.
+	//
 	// example:
 	//
 	// “”
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The reason message that corresponds to an event.
+	//
 	// example:
 	//
 	// “”
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The time the status was created, specifically the time the instance transitioned to this status (in GMT).
+	//
 	// example:
 	//
 	// 2022-10-21T07:27:44Z
@@ -4508,10 +5530,14 @@ func (s *GetResourceGroupStatisticsResponse) SetBody(v *GetResourceGroupStatisti
 }
 
 type GetTokenRequest struct {
+	// The validity period. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	ExpireTime *int32 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4539,22 +5565,40 @@ func (s *GetTokenRequest) SetInstanceId(v string) *GetTokenRequest {
 }
 
 type GetTokenResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: All errors, except for parameter validation errors, are internal errors.
+	//
+	// 	- ValidationError: A parameter validation error.
+	//
 	// example:
 	//
 	// ValidationError
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The temporary authentication information of the DSW instance.
+	//
 	// example:
 	//
 	// *******
@@ -5572,63 +6616,218 @@ func (s *ListInstanceStatisticsResponse) SetBody(v *ListInstanceStatisticsRespon
 }
 
 type ListInstancesRequest struct {
+	// The accelerator type.
+	//
+	// 	- CPU: Only CPU computing is used.
+	//
+	// 	- GPU: GPUs are used to accelerate computing.
+	//
 	// example:
 	//
-	// AcceleratorType
+	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The instances are accessible only to all members in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	GpuType       *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The UID of the creator.
+	//
+	// example:
+	//
+	// 12345*****67890
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// NVIDIA A10
+	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// The image name.
+	//
+	// example:
+	//
+	// modelscope:1.9.4-pytorch2.0.1tensorflow2.13.0-cpu-py38-ubuntu20.04
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/470439.html) to obtain the instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// training_data
-	InstanceName *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Labels       map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MaxCpu       *string                `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
-	MaxGpu       *string                `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
-	MaxGpuMemory *string                `json:"MaxGpuMemory,omitempty" xml:"MaxGpuMemory,omitempty"`
-	MaxMemory    *string                `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
-	MinCpu       *string                `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
-	MinGpu       *string                `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
-	MinGpuMemory *string                `json:"MinGpuMemory,omitempty" xml:"MinGpuMemory,omitempty"`
-	MinMemory    *string                `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The labels. A maximum of four labels are supported.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "key1": "value1",
+	//
+	//   "key2": "value2",
+	//
+	//   "key3": "value3"
+	//
+	// }
+	Labels map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
+	//
+	// example:
+	//
+	// 30000
+	MaxCpu *string `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
+	// The maximum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
+	//
+	// example:
+	//
+	// 8000
+	MaxGpu *string `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	// The maximum memory size per GPU card. Unit: GB.
+	//
+	// example:
+	//
+	// 16
+	MaxGpuMemory *string `json:"MaxGpuMemory,omitempty" xml:"MaxGpuMemory,omitempty"`
+	// The maximum memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 48
+	MaxMemory *string `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	// The minimum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
+	//
+	// example:
+	//
+	// 2000
+	MinCpu *string `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
+	// The minimum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
+	//
+	// example:
+	//
+	// 100
+	MinGpu *string `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
+	// The minimum memory size per GPU card. Unit: GB.
+	//
+	// example:
+	//
+	// 8
+	MinGpuMemory *string `json:"MinGpuMemory,omitempty" xml:"MinGpuMemory,omitempty"`
+	// The minimum memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 4
+	MinMemory *string `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
+	// The order that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
+	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PayAsYouGo
+	//
+	// 	- Subscription
+	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The resource group ID. If you leave this parameter empty, the instances in the pay-as-you-go resource group are queried. If you set this parameter to ALL, all instances are queried.
+	//
 	// example:
 	//
 	// rg-123456789
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- Priority
+	//
+	// 	- GmtCreateTime
+	//
+	// 	- GmtModifiedTime
+	//
 	// example:
 	//
 	// gmtCreate
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The instance status.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- SaveFailed
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- ResourceAllocating
+	//
+	// 	- Stopping
+	//
+	// 	- Updating
+	//
+	// 	- Saving
+	//
+	// 	- Queuing
+	//
+	// 	- Recovering
+	//
+	// 	- Starting
+	//
+	// 	- Running
+	//
+	// 	- Saved
+	//
+	// 	- Deleting
+	//
+	// 	- EnvPreparing
+	//
 	// example:
 	//
 	// Running
-	Status *string                    `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tag    []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tag []*ListInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 40823
@@ -5728,6 +6927,16 @@ func (s *ListInstancesRequest) SetOrder(v string) *ListInstancesRequest {
 	return s
 }
 
+func (s *ListInstancesRequest) SetOversoldInfo(v string) *ListInstancesRequest {
+	s.OversoldInfo = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetOversoldType(v string) *ListInstancesRequest {
+	s.OversoldType = &v
+	return s
+}
+
 func (s *ListInstancesRequest) SetPageNumber(v int64) *ListInstancesRequest {
 	s.PageNumber = &v
 	return s
@@ -5769,7 +6978,17 @@ func (s *ListInstancesRequest) SetWorkspaceId(v string) *ListInstancesRequest {
 }
 
 type ListInstancesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5792,63 +7011,218 @@ func (s *ListInstancesRequestTag) SetValue(v string) *ListInstancesRequestTag {
 }
 
 type ListInstancesShrinkRequest struct {
+	// The accelerator type.
+	//
+	// 	- CPU: Only CPU computing is used.
+	//
+	// 	- GPU: GPUs are used to accelerate computing.
+	//
 	// example:
 	//
-	// AcceleratorType
+	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The instances are accessible only to all members in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	CreateUserId  *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	GpuType       *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
-	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The UID of the creator.
+	//
+	// example:
+	//
+	// 12345*****67890
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// The GPU type.
+	//
+	// example:
+	//
+	// NVIDIA A10
+	GpuType *string `json:"GpuType,omitempty" xml:"GpuType,omitempty"`
+	// The image name.
+	//
+	// example:
+	//
+	// modelscope:1.9.4-pytorch2.0.1tensorflow2.13.0-cpu-py38-ubuntu20.04
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The instance ID. You can call [ListInstances](https://help.aliyun.com/document_detail/470439.html) to obtain the instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// training_data
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The labels. A maximum of four labels are supported.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "key1": "value1",
+	//
+	//   "key2": "value2",
+	//
+	//   "key3": "value3"
+	//
+	// }
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	MaxCpu       *string `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
-	MaxGpu       *string `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	// The maximum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
+	//
+	// example:
+	//
+	// 30000
+	MaxCpu *string `json:"MaxCpu,omitempty" xml:"MaxCpu,omitempty"`
+	// The maximum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
+	//
+	// example:
+	//
+	// 8000
+	MaxGpu *string `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	// The maximum memory size per GPU card. Unit: GB.
+	//
+	// example:
+	//
+	// 16
 	MaxGpuMemory *string `json:"MaxGpuMemory,omitempty" xml:"MaxGpuMemory,omitempty"`
-	MaxMemory    *string `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
-	MinCpu       *string `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
-	MinGpu       *string `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
+	// The maximum memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 48
+	MaxMemory *string `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	// The minimum number of CPUs. Unit: 0.001 CPU. The value 1000 indicates one CPU.
+	//
+	// example:
+	//
+	// 2000
+	MinCpu *string `json:"MinCpu,omitempty" xml:"MinCpu,omitempty"`
+	// The minimum number of GPUs. Unit: 0.001 GPU. The value 1000 indicates one GPU.
+	//
+	// example:
+	//
+	// 100
+	MinGpu *string `json:"MinGpu,omitempty" xml:"MinGpu,omitempty"`
+	// The minimum memory size per GPU card. Unit: GB.
+	//
+	// example:
+	//
+	// 8
 	MinGpuMemory *string `json:"MinGpuMemory,omitempty" xml:"MinGpuMemory,omitempty"`
-	MinMemory    *string `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
+	// The minimum memory size. Unit: GB.
+	//
+	// example:
+	//
+	// 4
+	MinMemory *string `json:"MinMemory,omitempty" xml:"MinMemory,omitempty"`
+	// The order that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
-	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	OversoldInfo *string `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
+	OversoldType *string `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The billing method.
+	//
+	// Valid values:
+	//
+	// 	- PayAsYouGo
+	//
+	// 	- Subscription
+	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The resource group ID. If you leave this parameter empty, the instances in the pay-as-you-go resource group are queried. If you set this parameter to ALL, all instances are queried.
+	//
 	// example:
 	//
 	// rg-123456789
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The field that you use to sort the query results.
+	//
+	// Valid values:
+	//
+	// 	- Priority
+	//
+	// 	- GmtCreateTime
+	//
+	// 	- GmtModifiedTime
+	//
 	// example:
 	//
 	// gmtCreate
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The instance status.
+	//
+	// Valid values:
+	//
+	// 	- Creating
+	//
+	// 	- SaveFailed
+	//
+	// 	- Stopped
+	//
+	// 	- Failed
+	//
+	// 	- ResourceAllocating
+	//
+	// 	- Stopping
+	//
+	// 	- Updating
+	//
+	// 	- Saving
+	//
+	// 	- Queuing
+	//
+	// 	- Recovering
+	//
+	// 	- Starting
+	//
+	// 	- Running
+	//
+	// 	- Saved
+	//
+	// 	- Deleting
+	//
+	// 	- EnvPreparing
+	//
 	// example:
 	//
 	// Running
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 40823
@@ -5948,6 +7322,16 @@ func (s *ListInstancesShrinkRequest) SetOrder(v string) *ListInstancesShrinkRequ
 	return s
 }
 
+func (s *ListInstancesShrinkRequest) SetOversoldInfo(v string) *ListInstancesShrinkRequest {
+	s.OversoldInfo = &v
+	return s
+}
+
+func (s *ListInstancesShrinkRequest) SetOversoldType(v string) *ListInstancesShrinkRequest {
+	s.OversoldType = &v
+	return s
+}
+
 func (s *ListInstancesShrinkRequest) SetPageNumber(v int64) *ListInstancesShrinkRequest {
 	s.PageNumber = &v
 	return s
@@ -5989,27 +7373,52 @@ func (s *ListInstancesShrinkRequest) SetWorkspaceId(v string) *ListInstancesShri
 }
 
 type ListInstancesResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
-	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Instances      []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instances returned on this page.
+	Instances []*ListInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of instances.
+	//
 	// example:
 	//
 	// 35
@@ -6060,150 +7469,246 @@ func (s *ListInstancesResponseBody) SetTotalCount(v int64) *ListInstancesRespons
 }
 
 type ListInstancesResponseBodyInstances struct {
+	// The accelerator type of the instance. Valid values:
+	//
+	// 	- CPU
+	//
+	// 	- GPU
+	//
 	// example:
 	//
 	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The accessibility. Valid values:
+	//
+	// 	- PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The instances are accessible only to all members in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The accumulated running duration. Unit: milliseconds.
+	//
 	// example:
 	//
 	// 3600000
-	AccumulatedRunningTimeInMs *int64                                      `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
-	Affinity                   *ListInstancesResponseBodyInstancesAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// The affinity configuration.
+	Affinity *ListInstancesResponseBodyInstancesAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	// The cloud disks of the instance.
+	//
 	// example:
 	//
 	// []
-	CloudDisks       []*ListInstancesResponseBodyInstancesCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	CredentialConfig *CredentialConfig                               `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Datasets         []*ListInstancesResponseBodyInstancesDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	CloudDisks []*ListInstancesResponseBodyInstancesCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	// The credential configuration.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The datasets.
+	Datasets []*ListInstancesResponseBodyInstancesDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The dynamic mount configurations.
+	DynamicMount *DynamicMount `json:"DynamicMount,omitempty" xml:"DynamicMount,omitempty"`
+	// The ECS instance type of the instance.
+	//
 	// example:
 	//
 	// ecs.c6.large
 	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The environment variables.
+	//
 	// example:
 	//
 	// {userName: "Chris"}
 	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the instance was modified.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The rule for stopping idle instances.
+	//
 	// example:
 	//
 	// {"InstanceId":"dsw-05cefd0be2e5a278","CpuPercentThreshold":20,"GpuPercentThreshold":10,"MaxIdleTimeInMinutes":120,"IdleTimeInMinutes":30}
 	IdleInstanceCuller *ListInstancesResponseBodyInstancesIdleInstanceCuller `json:"IdleInstanceCuller,omitempty" xml:"IdleInstanceCuller,omitempty" type:"Struct"`
-	ImageAuth          *string                                               `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The Base64-encoded account and password for the user\\"s private image. The password will be hidden.
+	//
+	// example:
+	//
+	// aGFyYm9yYWlAeGltYWxheWE6KioqKioq
+	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image address.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// training_data
-	InstanceName          *string                                                  `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The scheduled stop task.
 	InstanceShutdownTimer *ListInstancesResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// The instance snapshots.
+	//
 	// example:
 	//
 	// []
 	InstanceSnapshotList []*ListInstancesResponseBodyInstancesInstanceSnapshotList `json:"InstanceSnapshotList,omitempty" xml:"InstanceSnapshotList,omitempty" type:"Repeated"`
+	// The instance URL.
+	//
 	// example:
 	//
 	// https://dsw-cn-shanghai.data.aliyun.com/notebook.htm?instance=39772#/
 	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
-	// Jupyterlab Url。
+	// The JupyterLab URL.
 	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/lab/
 	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// The custom labels.
+	//
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
-	Labels         []*ListInstancesResponseBodyInstancesLabels       `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	Labels []*ListInstancesResponseBodyInstancesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The user image that was latest saved.
 	LatestSnapshot *ListInstancesResponseBodyInstancesLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	OversoldInfo   *string                                           `json:"OversoldInfo,omitempty" xml:"OversoldInfo,omitempty"`
+	OversoldType   *string                                           `json:"OversoldType,omitempty" xml:"OversoldType,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- PayAsYouGo
+	//
+	// 	- Subscription
+	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// The priority based on which resources are allocated to instances. Resources are preferentially allocated to instances with higher priorities.
+	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The error code of the instance.
+	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The cause of the instance error.
+	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The resource configurations.
+	//
 	// example:
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *ListInstancesResponseBodyInstancesRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// The resource ID. This parameter is valid only if you set PaymentType to Subscription.
+	//
 	// example:
 	//
 	// dsw-123456789
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The specifications.
+	//
+	// 	- In pay-as-you-go scenarios, the value is the specifications of the purchased ECS instance type.
+	//
+	// 	- In subscription scenarios, the value is the requested number of CPU cores and memory size.
+	//
 	// example:
 	//
 	// resource_group
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The instance status.
+	//
 	// example:
 	//
 	// Running
-	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
+	Tags []*ListInstancesResponseBodyInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The terminal URL.
+	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/tty/
 	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1612285282502324
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// 测试用户
-	UserName *string                                    `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	UserVpc  *ListInstancesResponseBodyInstancesUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
-	// Web IDE url。
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// The virtual private cloud (VPC) configurations.
+	UserVpc *ListInstancesResponseBodyInstancesUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// The Web IDE URL.
 	//
 	// example:
 	//
 	// https://dsw-gateway-cn-shanghai.aliyun.com/dsw-39772/ide/
 	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 40823
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name.
+	//
 	// example:
 	//
 	// training_data
 	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+	// The storage for the workspace. If you leave this parameter empty, the workspace uses File Storage NAS (NAS) storage, cloud disks, or local disks in sequence.
+	//
 	// example:
 	//
 	// d-123456789
@@ -6255,6 +7760,11 @@ func (s *ListInstancesResponseBodyInstances) SetDatasets(v []*ListInstancesRespo
 
 func (s *ListInstancesResponseBodyInstances) SetDriver(v string) *ListInstancesResponseBodyInstances {
 	s.Driver = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetDynamicMount(v *DynamicMount) *ListInstancesResponseBodyInstances {
+	s.DynamicMount = v
 	return s
 }
 
@@ -6340,6 +7850,16 @@ func (s *ListInstancesResponseBodyInstances) SetLabels(v []*ListInstancesRespons
 
 func (s *ListInstancesResponseBodyInstances) SetLatestSnapshot(v *ListInstancesResponseBodyInstancesLatestSnapshot) *ListInstancesResponseBodyInstances {
 	s.LatestSnapshot = v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetOversoldInfo(v string) *ListInstancesResponseBodyInstances {
+	s.OversoldInfo = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetOversoldType(v string) *ListInstancesResponseBodyInstances {
+	s.OversoldType = &v
 	return s
 }
 
@@ -6429,6 +7949,7 @@ func (s *ListInstancesResponseBodyInstances) SetWorkspaceSource(v string) *ListI
 }
 
 type ListInstancesResponseBodyInstancesAffinity struct {
+	// The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
 	CPU *ListInstancesResponseBodyInstancesAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
 }
 
@@ -6446,6 +7967,13 @@ func (s *ListInstancesResponseBodyInstancesAffinity) SetCPU(v *ListInstancesResp
 }
 
 type ListInstancesResponseBodyInstancesAffinityCPU struct {
+	// Indicates whether the CPU affinity feature was enabled.
+	//
+	// true false
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -6463,18 +7991,26 @@ func (s *ListInstancesResponseBodyInstancesAffinityCPU) SetEnable(v bool) *ListI
 }
 
 type ListInstancesResponseBodyInstancesCloudDisks struct {
+	// The cloud disk capacity.
+	//
 	// example:
 	//
 	// 30Gi
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The mount path of the cloud disk in the container.
+	//
 	// example:
 	//
 	// /mmt/workspace
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The directory on the cloud disk that is mounted to the container.
+	//
 	// example:
 	//
 	// /workspace
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The cloud disk type. The value rootfs indicates that the cloud disk is used as the root file system (rootfs).
+	//
 	// example:
 	//
 	// rootfs
@@ -6510,19 +8046,62 @@ func (s *ListInstancesResponseBodyInstancesCloudDisks) SetSubType(v string) *Lis
 }
 
 type ListInstancesResponseBodyInstancesDatasets struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-vsqjvsjp4orp5l206u
-	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MountAccess    *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// Indicates whether dynamic mounting was enabled. Default value: false.
+	//
+	// example:
+	//
+	// false
+	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// The read and write permissions. Valid values: RW and RO.
+	//
+	// example:
+	//
+	// RW
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The mount path in the container.
+	//
 	// example:
 	//
 	// /mnt/data
-	MountPath  *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The type of the mount option.
+	//
+	// example:
+	//
+	// FastReadWrite
 	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	Uri        *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The mount type of the dataset.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "fs.oss.download.thread.concurrency": "10",
+	//
+	//   "fs.oss.upload.thread.concurrency": "10",
+	//
+	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The dataset URI.
+	//
+	// example:
+	//
+	// oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
 func (s ListInstancesResponseBodyInstancesDatasets) String() string {
@@ -6540,6 +8119,11 @@ func (s *ListInstancesResponseBodyInstancesDatasets) SetDatasetId(v string) *Lis
 
 func (s *ListInstancesResponseBodyInstancesDatasets) SetDatasetVersion(v string) *ListInstancesResponseBodyInstancesDatasets {
 	s.DatasetVersion = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstancesDatasets) SetDynamic(v bool) *ListInstancesResponseBodyInstancesDatasets {
+	s.Dynamic = &v
 	return s
 }
 
@@ -6569,22 +8153,32 @@ func (s *ListInstancesResponseBodyInstancesDatasets) SetUri(v string) *ListInsta
 }
 
 type ListInstancesResponseBodyInstancesIdleInstanceCuller struct {
+	// The CPU utilization threshold. Unit: percentage. Valid values: 1 to 100. If the CPU utilization of the instance is lower than this threshold, the instance is considered idle.
+	//
 	// example:
 	//
 	// 20
 	CpuPercentThreshold *int32 `json:"CpuPercentThreshold,omitempty" xml:"CpuPercentThreshold,omitempty"`
+	// The GPU utilization threshold. Unit: percentage. Valid values: 1 to 100. This parameter takes effect only if the instance is of the GPU instance type. If both CPU and GPU utilization is lower than the thresholds, the instance is considered idle.
+	//
 	// example:
 	//
 	// 10
 	GpuPercentThreshold *int32 `json:"GpuPercentThreshold,omitempty" xml:"GpuPercentThreshold,omitempty"`
+	// The time duration for which the instance is idle. Unit: minutes.
+	//
 	// example:
 	//
 	// 30
 	IdleTimeInMinutes *int32 `json:"IdleTimeInMinutes,omitempty" xml:"IdleTimeInMinutes,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum time duration for which the instance is idle. Unit: minutes. If the time duration for which the instance is idle exceeds this value, the system automatically stops the instance.
+	//
 	// example:
 	//
 	// 60
@@ -6625,22 +8219,32 @@ func (s *ListInstancesResponseBodyInstancesIdleInstanceCuller) SetMaxIdleTimeInM
 }
 
 type ListInstancesResponseBodyInstancesInstanceShutdownTimer struct {
+	// The scheduled stop time.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the instance was modified.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The remaining time before the instance is stopped.
+	//
 	// example:
 	//
 	// 3600000
@@ -6681,38 +8285,56 @@ func (s *ListInstancesResponseBodyInstancesInstanceShutdownTimer) SetRemainingTi
 }
 
 type ListInstancesResponseBodyInstancesInstanceSnapshotList struct {
+	// The time when the snapshot was created.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the snapshot was modified.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image URL.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The error code of the instance snapshot.
+	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The error message of the instance snapshot.
+	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The URL of the image repository.
+	//
 	// example:
 	//
 	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// The status of the instance snapshot.
+	//
 	// example:
 	//
 	// Pushing
@@ -6773,10 +8395,14 @@ func (s *ListInstancesResponseBodyInstancesInstanceSnapshotList) SetStatus(v str
 }
 
 type ListInstancesResponseBodyInstancesLabels struct {
+	// The custom label key.
+	//
 	// example:
 	//
 	// stsTokenOwner
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The custom label value.
+	//
 	// example:
 	//
 	// 123xxxxxxxx
@@ -6802,38 +8428,56 @@ func (s *ListInstancesResponseBodyInstancesLabels) SetValue(v string) *ListInsta
 }
 
 type ListInstancesResponseBodyInstancesLatestSnapshot struct {
+	// The time when the snapshot was created.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the snapshot was modified.
+	//
 	// example:
 	//
 	// 2021-01-12T14:36:01Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image name.
+	//
 	// example:
 	//
 	// py36_cpu_tf1.12_ubuntu
 	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// The image URL.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The error code of the instance snapshot.
+	//
 	// example:
 	//
 	// Internal Error
 	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// The error message of the instance snapshot.
+	//
 	// example:
 	//
 	// ImagePullBackOff
 	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// The URL of the image repository.
+	//
 	// example:
 	//
 	// https://cr.console.aliyun.com/repository/cn-hangzhou/zouxu/kf/images
 	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+	// The status of the instance snapshot.
+	//
 	// example:
 	//
 	// Pushing
@@ -6894,22 +8538,32 @@ func (s *ListInstancesResponseBodyInstancesLatestSnapshot) SetStatus(v string) *
 }
 
 type ListInstancesResponseBodyInstancesRequestedResource struct {
+	// The number of CPU cores.
+	//
 	// example:
 	//
 	// 32
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU memory type.
+	//
 	// example:
 	//
 	// v100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size.
+	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The size of the shared memory.
+	//
 	// example:
 	//
 	// 32
@@ -6950,7 +8604,17 @@ func (s *ListInstancesResponseBodyInstancesRequestedResource) SetSharedMemory(v 
 }
 
 type ListInstancesResponseBodyInstancesTags struct {
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// tag1
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
@@ -6973,23 +8637,35 @@ func (s *ListInstancesResponseBodyInstancesTags) SetTagValue(v string) *ListInst
 }
 
 type ListInstancesResponseBodyInstancesUserVpc struct {
+	BandwidthLimit *BandwidthLimit `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The default route.
+	//
 	// example:
 	//
 	// eth0 | eth1
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR blocks.
+	//
 	// example:
 	//
 	// ["192.168.0.1/24", "192.168.1.1/24"]
-	ExtendedCIDRs []*string              `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos  []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The forward information.
+	ForwardInfos []*ForwardInfoResponse `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxxxx
@@ -7002,6 +8678,11 @@ func (s ListInstancesResponseBodyInstancesUserVpc) String() string {
 
 func (s ListInstancesResponseBodyInstancesUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstancesUserVpc) SetBandwidthLimit(v *BandwidthLimit) *ListInstancesResponseBodyInstancesUserVpc {
+	s.BandwidthLimit = v
+	return s
 }
 
 func (s *ListInstancesResponseBodyInstancesUserVpc) SetDefaultRoute(v string) *ListInstancesResponseBodyInstancesUserVpc {
@@ -7272,71 +8953,151 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateInstanceRequest struct {
+	// The visibility of the instance.
+	//
+	// Valid values:
+	//
+	// 	- PUBLIC: Accessible to all members in the workspace.
+	//
+	// 	- PRIVATE: Accessible only to you and the administrator of the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
-	Accessibility *string                        `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Affinity      *UpdateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The affinity configuration.
+	Affinity *UpdateInstanceRequestAffinity `json:"Affinity,omitempty" xml:"Affinity,omitempty" type:"Struct"`
+	// The cloud disks.
+	//
 	// example:
 	//
 	// []
-	CloudDisks             []*UpdateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
-	CredentialConfig       *CredentialConfig                  `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
-	Datasets               []*UpdateInstanceRequestDatasets   `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	DisassociateCredential *bool                              `json:"DisassociateCredential,omitempty" xml:"DisassociateCredential,omitempty"`
+	CloudDisks []*UpdateInstanceRequestCloudDisks `json:"CloudDisks,omitempty" xml:"CloudDisks,omitempty" type:"Repeated"`
+	// The credential configuration.
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// The datasets.
+	Datasets []*UpdateInstanceRequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// Specifies whether to delete the credential injection information.
+	//
+	// example:
+	//
+	// false
+	DisassociateCredential *bool `json:"DisassociateCredential,omitempty" xml:"DisassociateCredential,omitempty"`
+	// Specifies whether to delete the associated datasets.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	DisassociateDatasets *bool `json:"DisassociateDatasets,omitempty" xml:"DisassociateDatasets,omitempty"`
+	// Specifies whether to delete the NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// false
 	DisassociateDriver *bool `json:"DisassociateDriver,omitempty" xml:"DisassociateDriver,omitempty"`
+	// Specifies whether to delete the associated forward information.
+	//
 	// example:
 	//
 	// false
 	DisassociateForwardInfos *bool `json:"DisassociateForwardInfos,omitempty" xml:"DisassociateForwardInfos,omitempty"`
+	// Specifies whether to delete the associated user VPC.
+	//
 	// example:
 	//
 	// false
 	DisassociateVpc *bool `json:"DisassociateVpc,omitempty" xml:"DisassociateVpc,omitempty"`
+	// The NVIDIA driver configuration.
+	//
 	// example:
 	//
 	// 535.54.03
 	Driver *string `json:"Driver,omitempty" xml:"Driver,omitempty"`
+	// The dynamic mount configuration.
+	DynamicMount *DynamicMount `json:"DynamicMount,omitempty" xml:"DynamicMount,omitempty"`
+	// The ECS instance type of the instance. You can call [ListEcsSpecs](https://help.aliyun.com/document_detail/470423.html) to obtain the ECS instance type.
+	//
 	// example:
 	//
 	// ecs.c6.large
-	EcsSpec   *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// The Base64-encoded account and password for the user‘s private image. The password will be hidden.
+	//
+	// example:
+	//
+	// ****
 	ImageAuth *string `json:"ImageAuth,omitempty" xml:"ImageAuth,omitempty"`
+	// The image ID. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image ID.
+	//
 	// example:
 	//
 	// image-05cefd0be2exxxx
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image address. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image address.
+	//
 	// example:
 	//
 	// registry.cn-shanghai.aliyuncs.com/pai_product/tensorflow:py36_cpu_tf1.12_ubuntu
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// The instance name. Format requirements:
+	//
+	// 	- The name can contain only letters, digits, and underscores (_).
+	//
+	// 	- The name can be up to 27 characters in length.
+	//
 	// example:
 	//
 	// training_data
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The priority based on which resources are allocated to instances. Valid values: 1 to 9.
+	//
+	// 	- 1: the lowest priority.
+	//
+	// 	- 9 is the highest priority.
+	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The resource configurations.
+	//
 	// example:
 	//
 	// {"CPU":"4","Memory":"8Gi","SharedMemory":"4Gi","GPU":"1","GPUType":"Tesla-V100-16G"}
 	RequestedResource *UpdateInstanceRequestRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
+	// the User ID of the instance.
+	//
 	// example:
 	//
-	// 1612285282502324
-	UserId  *string                       `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// 16122**********
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The virtual private cloud (VPC) configurations.
 	UserVpc *UpdateInstanceRequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// Specifies the storage corresponding to the working directory. You can mount disks or datasets to /mnt/workspace at the same time. OSS datasets and dynamically mounted datasets are not supported.
+	//
+	// Valid values:
+	//
+	// 	- rootfsCloudDisk: Mount disk to the working directory.
+	//
+	// 	- Mount path of the dataset, such as /mnt/data: Datasets in URI format only support this method.
+	//
+	// 	- Dataset ID, such as d-vsqjvs\\*\\*\\*\\*rp5l206u: If a single dataset is mounted to multiple paths, the first path is selected. We recommend that you do not use this method, use the mount path instead.
+	//
+	// If you leave this parameter empty:
+	//
+	// 	- If the instance uses cloud disks, cloud disks are selected by default.
+	//
+	// 	- if no disks are available, the first NAS or CPFS dataset is selected as the working directory.
+	//
+	// 	- If no disk, NAS, or CPFS datasets is available, the host space is used.
+	//
 	// example:
 	//
-	// d-123456789
+	// /mnt/data
 	WorkspaceSource *string `json:"WorkspaceSource,omitempty" xml:"WorkspaceSource,omitempty"`
 }
 
@@ -7403,6 +9164,11 @@ func (s *UpdateInstanceRequest) SetDriver(v string) *UpdateInstanceRequest {
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetDynamicMount(v *DynamicMount) *UpdateInstanceRequest {
+	s.DynamicMount = v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetEcsSpec(v string) *UpdateInstanceRequest {
 	s.EcsSpec = &v
 	return s
@@ -7454,6 +9220,7 @@ func (s *UpdateInstanceRequest) SetWorkspaceSource(v string) *UpdateInstanceRequ
 }
 
 type UpdateInstanceRequestAffinity struct {
+	// The CPU affinity configuration. Only subscription instances that use general-purpose computing resources support CPU affinity configuration.
 	CPU *UpdateInstanceRequestAffinityCPU `json:"CPU,omitempty" xml:"CPU,omitempty" type:"Struct"`
 }
 
@@ -7471,6 +9238,15 @@ func (s *UpdateInstanceRequestAffinity) SetCPU(v *UpdateInstanceRequestAffinityC
 }
 
 type UpdateInstanceRequestAffinityCPU struct {
+	// Specifies whether CPU affinity is enabled.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
 }
 
@@ -7488,10 +9264,30 @@ func (s *UpdateInstanceRequestAffinityCPU) SetEnable(v bool) *UpdateInstanceRequ
 }
 
 type UpdateInstanceRequestCloudDisks struct {
+	// If **Resource Type*	- is **Public Resource*	- or if **Resource Quota*	- is subscription-based general-purpose computing resources (CPU cores ≥ 2 and memory ≥ 4 GB, or configured with GPU):
+	//
+	// Each instance has a free system disk quota of 100 GiB for persistent storage. **If the DSW instance is stopped and not launched for more than 15 days, the disk is cleared**. The disk can be expanded. For specific pricing, refer to the console.
+	//
+	// **
+	//
+	// **Warning**
+	//
+	// 	- After the expansion, you cannot reduce the storage space. Proceed with caution.
+	//
+	// 	- After the expansion, the disk is not cleared if the instance is stopped for more than 15 days. However, it will continue to incur fees.
+	//
+	// 	- If you delete the instance, the system disk is also released and the data stored in the disk is deleted. Make sure that you have backed up your data before you delete the instance.
+	//
+	// If you need persistent storage, you can **mount a dataset*	- or add the OSS, NAS, or CPFS path to the **storage path**.
+	//
 	// example:
 	//
-	// 30Gi
+	// 100Gi
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// Disk type:
+	//
+	// 	- rootfs: Mounts the disk as a system disk. The system environment is stored on the disk.
+	//
 	// example:
 	//
 	// rootfs
@@ -7517,22 +9313,85 @@ func (s *UpdateInstanceRequestCloudDisks) SetSubType(v string) *UpdateInstanceRe
 }
 
 type UpdateInstanceRequestDatasets struct {
+	// The dataset ID. If the dataset is read-only, you cannot change the dataset pemission from read-only to read and write by using MountAccess.
+	//
+	// You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset ID. If you configure the dataset ID, you cannot configure the dataset URI.
+	//
 	// example:
 	//
 	// d-vsqjvsjp4orp5l206u
-	DatasetId      *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version. You must also configure DatasetId. If you leave this parameter empty, the value v1 is used by default.
+	//
+	// example:
+	//
+	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MountAccess    *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// Specifies whether dynamic mounting is enabled. Default value: false.
+	//
+	// 	- Currently, only instances using general-purpose computing resources are supported.
+	//
+	// 	- Currently, only OSS datasets are supported. The mounted datasets are read-only.
+	//
+	// 	- The MountPath of the dynamically mounted dataset must be a subpath of the root path. Example: /mnt/dynamic/data1/
+	//
+	// 	- A dynamically mounted dataset must be after non-dynamic datasets.
+	//
+	// example:
+	//
+	// false
+	Dynamic *bool `json:"Dynamic,omitempty" xml:"Dynamic,omitempty"`
+	// The read and write permissions of the dataset. If the dataset is read-only, it cannot be changed to read and write.
+	//
+	// example:
+	//
+	// RW
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The mount path of the dataset.
+	//
 	// example:
 	//
 	// /mnt/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
 	// Deprecated
-	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	Options    *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	//
+	// The mount type. You cannot specify Options at the same time. This is deprecated, you can use Options instead.
+	//
 	// example:
 	//
-	// oss://bucket.oss-cn-shanghai.aliyuncs.com/data/path/
+	// ReadOnly
+	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
+	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+	//
+	// example:
+	//
+	// {
+	//
+	//   "fs.oss.download.thread.concurrency": "10",
+	//
+	//   "fs.oss.upload.thread.concurrency": "10",
+	//
+	//   "fs.jindo.args": "-oattr_timeout=3 -oentry_timeout=0 -onegative_timeout=0 -oauto_cache -ono_symlink"
+	//
+	// }
+	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The URI of the storage service directory, which can be directly mounted. This parameter is mutually exclusive with DatasetId.
+	//
+	// URI formats of different types of storage:
+	//
+	// 	- OSS: oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
+	//
+	// 	- NAS: nas://29\\*\\*d-b12\\*\\*\\*\\*446.cn-hangzhou.nas.aliyuncs.com/data/path/
+	//
+	// 	- Extreme NAS: nas://29\\*\\*\\*\\*123-y\\*\\*r.cn-hangzhou.extreme.nas.aliyuncs.com/data/path/
+	//
+	// 	- CPFS: cpfs://cpfs-213\\*\\*\\*\\*87.cn-wulanchabu/ptc-292\\*\\*\\*\\*\\*cbb/exp-290\\*\\*\\*\\*\\*\\*\\*\\*03e/data/path/
+	//
+	// 	- Lingjun CPFS: bmcpfs://cpfs-290\\*\\*\\*\\*\\*\\*foflh-vpc-x\\*\\*\\*\\*8r.cn-wulanchabu.cpfs.aliyuncs.com/data/path/
+	//
+	// example:
+	//
+	// oss://bucket-name.oss-cn-shanghai-internal.aliyuncs.com/data/path/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
 }
 
@@ -7551,6 +9410,11 @@ func (s *UpdateInstanceRequestDatasets) SetDatasetId(v string) *UpdateInstanceRe
 
 func (s *UpdateInstanceRequestDatasets) SetDatasetVersion(v string) *UpdateInstanceRequestDatasets {
 	s.DatasetVersion = &v
+	return s
+}
+
+func (s *UpdateInstanceRequestDatasets) SetDynamic(v bool) *UpdateInstanceRequestDatasets {
+	s.Dynamic = &v
 	return s
 }
 
@@ -7580,22 +9444,32 @@ func (s *UpdateInstanceRequestDatasets) SetUri(v string) *UpdateInstanceRequestD
 }
 
 type UpdateInstanceRequestRequestedResource struct {
+	// The number of vCPU cores.
+	//
 	// example:
 	//
 	// 32
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	GPU *string `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// The GPU type.
+	//
 	// example:
 	//
 	// v100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The shared memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
@@ -7636,23 +9510,43 @@ func (s *UpdateInstanceRequestRequestedResource) SetSharedMemory(v string) *Upda
 }
 
 type UpdateInstanceRequestUserVpc struct {
+	BandwidthLimit *BandwidthLimit `json:"BandwidthLimit,omitempty" xml:"BandwidthLimit,omitempty"`
+	// The default route. Valid values:
+	//
+	// 	- eth0: The default network interface is used to access the Internet through the public gateway.
+	//
+	// 	- eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
+	//
 	// example:
 	//
-	// eth0 | eth1
+	// eth0
 	DefaultRoute *string `json:"DefaultRoute,omitempty" xml:"DefaultRoute,omitempty"`
+	// The extended CIDR blocks.
+	//
+	// 	- If you leave VSwitchId empty, this parameter is not required and the system automatically obtains all CIDR blocks in the VPC.
+	//
+	// 	- If VSwitchId is not empty, this parameter is required. Specify all CIDR blocks in the VPC.
+	//
 	// example:
 	//
 	// ["192.168.0.1/24", "192.168.1.1/24"]
-	ExtendedCIDRs []*string      `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
-	ForwardInfos  []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	ExtendedCIDRs []*string `json:"ExtendedCIDRs,omitempty" xml:"ExtendedCIDRs,omitempty" type:"Repeated"`
+	// The forward configuration of the instance.
+	ForwardInfos []*ForwardInfo `json:"ForwardInfos,omitempty" xml:"ForwardInfos,omitempty" type:"Repeated"`
+	// The security group ID.
+	//
 	// example:
 	//
 	// sg-xxxxxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// The vSwitch ID.
+	//
 	// example:
 	//
 	// vsw-xxxxx
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-xxxxx
@@ -7665,6 +9559,11 @@ func (s UpdateInstanceRequestUserVpc) String() string {
 
 func (s UpdateInstanceRequestUserVpc) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateInstanceRequestUserVpc) SetBandwidthLimit(v *BandwidthLimit) *UpdateInstanceRequestUserVpc {
+	s.BandwidthLimit = v
+	return s
 }
 
 func (s *UpdateInstanceRequestUserVpc) SetDefaultRoute(v string) *UpdateInstanceRequestUserVpc {
@@ -7698,26 +9597,50 @@ func (s *UpdateInstanceRequestUserVpc) SetVpcId(v string) *UpdateInstanceRequest
 }
 
 type UpdateInstanceResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// dsw-730xxxxxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -7792,6 +9715,8 @@ func (s *UpdateInstanceResponse) SetBody(v *UpdateInstanceResponseBody) *UpdateI
 }
 
 type UpdateInstanceLabelsRequest struct {
+	// The tags that you want to update.
+	//
 	// This parameter is required.
 	Labels []*UpdateInstanceLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
@@ -7810,12 +9735,16 @@ func (s *UpdateInstanceLabelsRequest) SetLabels(v []*UpdateInstanceLabelsRequest
 }
 
 type UpdateInstanceLabelsRequestLabels struct {
+	// The key of the custom tag.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// customLabelKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the custom tag.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -7843,6 +9772,8 @@ func (s *UpdateInstanceLabelsRequestLabels) SetValue(v string) *UpdateInstanceLa
 }
 
 type UpdateInstanceLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
@@ -7938,6 +9869,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+//
 // @param request - CreateIdleInstanceCullerRequest
 //
 // @param headers - map
@@ -7978,26 +9913,19 @@ func (client *Client) CreateIdleInstanceCullerWithOptions(InstanceId *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIdleInstanceCullerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIdleInstanceCullerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIdleInstanceCullerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Creates an automatic stop policy for a specific Data Science Workshop (DSW) instance. When the conditions are met, the instance is automatically stopped. You can create only one automatic stop policy for an idle DSW instance. If the specific instance has an automatic stop policy, call DeleteIdleInstanceCuller to delete it first.
+//
 // @param request - CreateIdleInstanceCullerRequest
 //
 // @return CreateIdleInstanceCullerResponse
@@ -8015,7 +9943,7 @@ func (client *Client) CreateIdleInstanceCuller(InstanceId *string, request *Crea
 
 // Summary:
 //
-// 创建实例
+// Creates a Data Science Workshop (DSW) instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -8052,6 +9980,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Driver)) {
 		body["Driver"] = request.Driver
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DynamicMount)) {
+		body["DynamicMount"] = request.DynamicMount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
@@ -8129,29 +10061,18 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建实例
+// Creates a Data Science Workshop (DSW) instance.
 //
 // @param request - CreateInstanceRequest
 //
@@ -8170,7 +10091,7 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 
 // Summary:
 //
-// 创建定时关机任务
+// Creates a scheduled stop task for an instance.
 //
 // @param request - CreateInstanceShutdownTimerRequest
 //
@@ -8208,29 +10129,18 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceShutdownTimerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceShutdownTimerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceShutdownTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 创建定时关机任务
+// Creates a scheduled stop task for an instance.
 //
 // @param request - CreateInstanceShutdownTimerRequest
 //
@@ -8303,24 +10213,13 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceSnapshotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceSnapshotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8342,6 +10241,10 @@ func (client *Client) CreateInstanceSnapshot(InstanceId *string, request *Create
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the automatic stop policy of an instance.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8362,26 +10265,19 @@ func (client *Client) DeleteIdleInstanceCullerWithOptions(InstanceId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIdleInstanceCullerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIdleInstanceCullerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIdleInstanceCullerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Deletes the automatic stop policy of an instance.
+//
 // @return DeleteIdleInstanceCullerResponse
 func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *DeleteIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -8397,7 +10293,7 @@ func (client *Client) DeleteIdleInstanceCuller(InstanceId *string) (_result *Del
 
 // Summary:
 //
-// 删除实例
+// Deletes a specific instance.
 //
 // @param headers - map
 //
@@ -8419,29 +10315,18 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除实例
+// Deletes a specific instance.
 //
 // @return DeleteInstanceResponse
 func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanceResponse, _err error) {
@@ -8458,7 +10343,7 @@ func (client *Client) DeleteInstance(InstanceId *string) (_result *DeleteInstanc
 
 // Summary:
 //
-// 删除DSW实例的标签
+// Delete tags from a Data Science Workshop (DSW) instance.
 //
 // @param request - DeleteInstanceLabelsRequest
 //
@@ -8492,29 +10377,18 @@ func (client *Client) DeleteInstanceLabelsWithOptions(InstanceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除DSW实例的标签
+// Delete tags from a Data Science Workshop (DSW) instance.
 //
 // @param request - DeleteInstanceLabelsRequest
 //
@@ -8533,7 +10407,7 @@ func (client *Client) DeleteInstanceLabels(InstanceId *string, request *DeleteIn
 
 // Summary:
 //
-// 删除定时关机任务
+// Deletes a scheduled stop task of an instance.
 //
 // @param headers - map
 //
@@ -8555,29 +10429,18 @@ func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceShutdownTimerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceShutdownTimerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceShutdownTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除定时关机任务
+// Deletes a scheduled stop task of an instance.
 //
 // @return DeleteInstanceShutdownTimerResponse
 func (client *Client) DeleteInstanceShutdownTimer(InstanceId *string) (_result *DeleteInstanceShutdownTimerResponse, _err error) {
@@ -8616,24 +10479,13 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Snap
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceSnapshotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceSnapshotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8653,6 +10505,10 @@ func (client *Client) DeleteInstanceSnapshot(InstanceId *string, SnapshotId *str
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an auto stop policy for a specific idle instance.
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8673,26 +10529,19 @@ func (client *Client) GetIdleInstanceCullerWithOptions(InstanceId *string, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetIdleInstanceCullerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetIdleInstanceCullerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetIdleInstanceCullerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about an auto stop policy for a specific idle instance.
+//
 // @return GetIdleInstanceCullerResponse
 func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdleInstanceCullerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
@@ -8708,7 +10557,7 @@ func (client *Client) GetIdleInstanceCuller(InstanceId *string) (_result *GetIdl
 
 // Summary:
 //
-// 获取实例详情
+// Queries the details of a DSW instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -8742,29 +10591,18 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, request *GetIns
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取实例详情
+// Queries the details of a DSW instance.
 //
 // @param request - GetInstanceRequest
 //
@@ -8781,6 +10619,10 @@ func (client *Client) GetInstance(InstanceId *string, request *GetInstanceReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of system events for a Data Science Workshop (DSW) instance.
+//
 // @param request - GetInstanceEventsRequest
 //
 // @param headers - map
@@ -8825,26 +10667,19 @@ func (client *Client) GetInstanceEventsWithOptions(InstanceId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceEventsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceEventsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of system events for a Data Science Workshop (DSW) instance.
+//
 // @param request - GetInstanceEventsRequest
 //
 // @return GetInstanceEventsResponse
@@ -8860,6 +10695,10 @@ func (client *Client) GetInstanceEvents(InstanceId *string, request *GetInstance
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource metrics of an instance.
+//
 // @param request - GetInstanceMetricsRequest
 //
 // @param headers - map
@@ -8904,26 +10743,19 @@ func (client *Client) GetInstanceMetricsWithOptions(InstanceId *string, request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceMetricsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceMetricsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries the resource metrics of an instance.
+//
 // @param request - GetInstanceMetricsRequest
 //
 // @return GetInstanceMetricsResponse
@@ -8963,24 +10795,13 @@ func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceShutdownTimerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceShutdownTimerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceShutdownTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9024,24 +10845,13 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Snapsho
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceSnapshotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceSnapshotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9061,6 +10871,14 @@ func (client *Client) GetInstanceSnapshot(InstanceId *string, SnapshotId *string
 	return _result, _err
 }
 
+// Summary:
+//
+// # Obtains the lifecycle of an instance
+//
+// Description:
+//
+// Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+//
 // @param request - GetLifecycleRequest
 //
 // @param headers - map
@@ -9113,26 +10931,23 @@ func (client *Client) GetLifecycleWithOptions(InstanceId *string, request *GetLi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLifecycleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLifecycleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLifecycleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// # Obtains the lifecycle of an instance
+//
+// Description:
+//
+// Obtains the lifecycle transition information for an instance, including details on the status an instance transitions to at a specific point in time.
+//
 // @param request - GetLifecycleRequest
 //
 // @return GetLifecycleResponse
@@ -9212,24 +11027,13 @@ func (client *Client) GetMetricsWithOptions(InstanceId *string, request *GetMetr
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMetricsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMetricsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9295,24 +11099,13 @@ func (client *Client) GetResourceGroupStatisticsWithOptions(request *GetResource
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetResourceGroupStatisticsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetResourceGroupStatisticsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetResourceGroupStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetResourceGroupStatisticsRequest
@@ -9330,6 +11123,10 @@ func (client *Client) GetResourceGroupStatistics(request *GetResourceGroupStatis
 	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the temporary authentication information of a DSW instance.
+//
 // @param request - GetTokenRequest
 //
 // @param headers - map
@@ -9366,26 +11163,19 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Obtains the temporary authentication information of a DSW instance.
+//
 // @param request - GetTokenRequest
 //
 // @return GetTokenResponse
@@ -9425,24 +11215,13 @@ func (client *Client) GetUserConfigWithOptions(headers map[string]*string, runti
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9514,24 +11293,13 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEcsSpecsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEcsSpecsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEcsSpecsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9601,24 +11369,13 @@ func (client *Client) ListInstanceSnapshotWithOptions(InstanceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstanceSnapshotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstanceSnapshotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstanceSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9676,24 +11433,13 @@ func (client *Client) ListInstanceStatisticsWithOptions(request *ListInstanceSta
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstanceStatisticsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstanceStatisticsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstanceStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9715,6 +11461,10 @@ func (client *Client) ListInstanceStatistics(request *ListInstanceStatisticsRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Data Science Workshop (DSW) instances.
+//
 // @param tmpReq - ListInstancesRequest
 //
 // @param headers - map
@@ -9806,6 +11556,14 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		query["Order"] = request.Order
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OversoldInfo)) {
+		query["OversoldInfo"] = request.OversoldInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OversoldType)) {
+		query["OversoldType"] = request.OversoldType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -9853,26 +11611,19 @@ func (client *Client) ListInstancesWithOptions(tmpReq *ListInstancesRequest, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of Data Science Workshop (DSW) instances.
+//
 // @param request - ListInstancesRequest
 //
 // @return ListInstancesResponse
@@ -9912,24 +11663,13 @@ func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9985,24 +11725,13 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10026,7 +11755,7 @@ func (client *Client) StopInstance(InstanceId *string, request *StopInstanceRequ
 
 // Summary:
 //
-// 更新实例
+// Updates the properties of a DSW instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -10085,6 +11814,10 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		body["Driver"] = request.Driver
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DynamicMount)) {
+		body["DynamicMount"] = request.DynamicMount
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
 		body["EcsSpec"] = request.EcsSpec
 	}
@@ -10140,29 +11873,18 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新实例
+// Updates the properties of a DSW instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -10181,7 +11903,7 @@ func (client *Client) UpdateInstance(InstanceId *string, request *UpdateInstance
 
 // Summary:
 //
-// 修改DSW实例的标签
+// Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
 //
 // @param request - UpdateInstanceLabelsRequest
 //
@@ -10215,29 +11937,18 @@ func (client *Client) UpdateInstanceLabelsWithOptions(InstanceId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceLabelsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateInstanceLabelsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateInstanceLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 修改DSW实例的标签
+// Updates the tags of a Data Science Workshop (DSW) instance. If the tags do not exist, the system adds tags.
 //
 // @param request - UpdateInstanceLabelsRequest
 //
