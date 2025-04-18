@@ -3340,7 +3340,337 @@ func (s *GetDeviceListResponse) SetBody(v *GetDeviceListResponseBody) *GetDevice
 	return s
 }
 
+type GetDocExtractionResultRequest struct {
+	// - Task ID.
+	//
+	// - taskId is obtained from the SubmitDocExtractionTaskAdvance and SubmitDocExtractionTask interfaces.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 97693b4c-17a8-4198-aa28-798d3c855577mhrv
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetDocExtractionResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultRequest) SetTaskId(v string) *GetDocExtractionResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetDocExtractionResultResponseBody struct {
+	// Returned data structure.
+	Data *GetDocExtractionResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// ID of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDocExtractionResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponseBody) SetData(v *GetDocExtractionResultResponseBodyData) *GetDocExtractionResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBody) SetRequestId(v string) *GetDocExtractionResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDocExtractionResultResponseBodyData struct {
+	// Details of document parsing results
+	KvListInfo []*GetDocExtractionResultResponseBodyDataKvListInfo `json:"kvListInfo,omitempty" xml:"kvListInfo,omitempty" type:"Repeated"`
+}
+
+func (s GetDocExtractionResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponseBodyData) SetKvListInfo(v []*GetDocExtractionResultResponseBodyDataKvListInfo) *GetDocExtractionResultResponseBodyData {
+	s.KvListInfo = v
+	return s
+}
+
+type GetDocExtractionResultResponseBodyDataKvListInfo struct {
+	// Recalled content
+	Context *GetDocExtractionResultResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
+	// Field key name
+	//
+	// example:
+	//
+	// Tenant
+	KeyName *string `json:"keyName,omitempty" xml:"keyName,omitempty"`
+	// Field key value
+	//
+	// example:
+	//
+	// Alibaba Cloud XXX Co., Ltd.
+	KeyValue *string `json:"keyValue,omitempty" xml:"keyValue,omitempty"`
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfo) SetContext(v *GetDocExtractionResultResponseBodyDataKvListInfoContext) *GetDocExtractionResultResponseBodyDataKvListInfo {
+	s.Context = v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfo) SetKeyName(v string) *GetDocExtractionResultResponseBodyDataKvListInfo {
+	s.KeyName = &v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfo) SetKeyValue(v string) *GetDocExtractionResultResponseBodyDataKvListInfo {
+	s.KeyValue = &v
+	return s
+}
+
+type GetDocExtractionResultResponseBodyDataKvListInfoContext struct {
+	// Confidence level
+	Confidence *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence `json:"confidence,omitempty" xml:"confidence,omitempty" type:"Struct"`
+	// Details of key recall information
+	Key []*ContentItem `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
+	// Details of value recall information
+	Value []*ContentItem `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfoContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfoContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfoContext) SetConfidence(v *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence) *GetDocExtractionResultResponseBodyDataKvListInfoContext {
+	s.Confidence = v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfoContext) SetKey(v []*ContentItem) *GetDocExtractionResultResponseBodyDataKvListInfoContext {
+	s.Key = v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfoContext) SetValue(v []*ContentItem) *GetDocExtractionResultResponseBodyDataKvListInfoContext {
+	s.Value = v
+	return s
+}
+
+type GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence struct {
+	// Key confidence level
+	//
+	// example:
+	//
+	// 0.9994202852249146
+	KeyConfidence *float64 `json:"keyConfidence,omitempty" xml:"keyConfidence,omitempty"`
+	// value confidence level
+	//
+	// example:
+	//
+	// 0.9794202852249146
+	ValueConfidence *float64 `json:"valueConfidence,omitempty" xml:"valueConfidence,omitempty"`
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence) SetKeyConfidence(v float64) *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence {
+	s.KeyConfidence = &v
+	return s
+}
+
+func (s *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence) SetValueConfidence(v float64) *GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence {
+	s.ValueConfidence = &v
+	return s
+}
+
+type GetDocExtractionResultResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocExtractionResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocExtractionResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocExtractionResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocExtractionResultResponse) SetHeaders(v map[string]*string) *GetDocExtractionResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocExtractionResultResponse) SetStatusCode(v int32) *GetDocExtractionResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocExtractionResultResponse) SetBody(v *GetDocExtractionResultResponseBody) *GetDocExtractionResultResponse {
+	s.Body = v
+	return s
+}
+
+type GetDocParsingResultRequest struct {
+	// - The document parsing result supports two formats: markdown and json.
+	//
+	// - By default, the result is returned in markdown format.
+	//
+	// example:
+	//
+	// md
+	ReturnFormat *string `json:"returnFormat,omitempty" xml:"returnFormat,omitempty"`
+	// - Task ID.
+	//
+	// - The taskId is obtained from the SubmitDocParsingTaskAdvance or SubmitDocParsingTask interfaces.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2c22388d-e2ed-44fe-99e6-99922f15e7bb
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetDocParsingResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParsingResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParsingResultRequest) SetReturnFormat(v string) *GetDocParsingResultRequest {
+	s.ReturnFormat = &v
+	return s
+}
+
+func (s *GetDocParsingResultRequest) SetTaskId(v string) *GetDocParsingResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetDocParsingResultResponseBody struct {
+	// Returned result.
+	Data *GetDocParsingResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// ID of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDocParsingResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParsingResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParsingResultResponseBody) SetData(v *GetDocParsingResultResponseBodyData) *GetDocParsingResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDocParsingResultResponseBody) SetRequestId(v string) *GetDocParsingResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDocParsingResultResponseBodyData struct {
+	// - The parsed content of the document.
+	//
+	// - The format (markdown or json) is determined by the returnFormat parameter. For specific format details, refer to: [json return structure](https://www.alibabacloud.com/help/en/energy-expert/developer-reference/interface-attached-information#b644b6255cojj)
+	//
+	// example:
+	//
+	// {\\"doc_info\\":{\\"languages\\":[\\"zh\\",\\"en\\"],\\"doc_type\\":\\"pdf\\",\\"pdf_toc\\":[{\\"title\\":\\"封面\\",\\"level\\":0,\\"page\\":0}],\\"pages\\":366,\\"page_list\\":[{\\"imageWidth\\":596,\\"imageHeight\\":842,\\"pageIdAllDocs\\":0,\\"fileIndex\\":0,\\"pageIdCurDoc\\":0,\\"angle\\":0}],\\"doc_data\\":[{\\"uniqueId\\":\\"about_us_para\\",\\"page_num\\":\\"01\\",\\"index\\":\\"xxx\\",\\"name\\":\\"xxx\\",\\"type\\":\\"xxxx\\",\\"subType\\":\\"xxx\\",\\"text\\":\\"xxx\\",\\"before_text\\":\\"xxx\\",\\"after_text\\":\\"xxx\\",\\"extInfo\\":[{\\"uniqueId\\":\\"b0x1x0\\",\\"pos\\":[{\\"x\\":229,\\"y\\":208},{\\"x\\":421,\\"y\\":208},{\\"x\\":421,\\"y\\":242},{\\"x\\":229,\\"y\\":242}],\\"text\\":\\"Kurt Götze\\",\\"type\\":\\"Text\\",\\"subType\\":\\"Text\\",\\"pageNum\\":[0],\\"index\\":0}]}]}}
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+}
+
+func (s GetDocParsingResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParsingResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParsingResultResponseBodyData) SetContent(v string) *GetDocParsingResultResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+type GetDocParsingResultResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDocParsingResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDocParsingResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDocParsingResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDocParsingResultResponse) SetHeaders(v map[string]*string) *GetDocParsingResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDocParsingResultResponse) SetStatusCode(v int32) *GetDocParsingResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDocParsingResultResponse) SetBody(v *GetDocParsingResultResponseBody) *GetDocParsingResultResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocumentAnalyzeResultRequest struct {
+	// Job ID, specifying which document\\"s parsing result to query. This is a return parameter from the \\"Submit Document Parsing Job\\" interface.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3363,7 +3693,10 @@ func (s *GetDocumentAnalyzeResultRequest) SetJobId(v string) *GetDocumentAnalyze
 }
 
 type GetDocumentAnalyzeResultResponseBody struct {
+	// Returned Data
 	Data *GetDocumentAnalyzeResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 83A5A7DD-8974-5769-952E-590A97BEA34E
@@ -3389,6 +3722,7 @@ func (s *GetDocumentAnalyzeResultResponseBody) SetRequestId(v string) *GetDocume
 }
 
 type GetDocumentAnalyzeResultResponseBodyData struct {
+	// Document Parsing Result
 	KvListInfo []*GetDocumentAnalyzeResultResponseBodyDataKvListInfo `json:"kvListInfo,omitempty" xml:"kvListInfo,omitempty" type:"Repeated"`
 }
 
@@ -3406,9 +3740,20 @@ func (s *GetDocumentAnalyzeResultResponseBodyData) SetKvListInfo(v []*GetDocumen
 }
 
 type GetDocumentAnalyzeResultResponseBodyDataKvListInfo struct {
-	Context  *GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
-	KeyName  *string                                                    `json:"keyName,omitempty" xml:"keyName,omitempty"`
-	KeyValue *string                                                    `json:"keyValue,omitempty" xml:"keyValue,omitempty"`
+	// Recalled Content
+	Context *GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
+	// Field Key Name
+	//
+	// example:
+	//
+	// Tenant
+	KeyName *string `json:"keyName,omitempty" xml:"keyName,omitempty"`
+	// Field Key Value
+	//
+	// example:
+	//
+	// Aliyun XXX Co., Ltd.
+	KeyValue *string `json:"keyValue,omitempty" xml:"keyValue,omitempty"`
 }
 
 func (s GetDocumentAnalyzeResultResponseBodyDataKvListInfo) String() string {
@@ -3435,9 +3780,12 @@ func (s *GetDocumentAnalyzeResultResponseBodyDataKvListInfo) SetKeyValue(v strin
 }
 
 type GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext struct {
+	// Confidence
 	Confidence *GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence `json:"confidence,omitempty" xml:"confidence,omitempty" type:"Struct"`
-	Key        []*ContentItem                                                       `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
-	Value      []*ContentItem                                                       `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+	// Key Recall Information
+	Key []*ContentItem `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
+	// Value Recall Information
+	Value []*ContentItem `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
 }
 
 func (s GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext) String() string {
@@ -3464,10 +3812,14 @@ func (s *GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext) SetValue(v [
 }
 
 type GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence struct {
+	// Confidence of Key
+	//
 	// example:
 	//
 	// 0.9994202852249146
 	KeyConfidence *float64 `json:"keyConfidence,omitempty" xml:"keyConfidence,omitempty"`
+	// Confidence of Value
+	//
 	// example:
 	//
 	// 0.9794202852249146
@@ -7913,6 +8265,213 @@ func (s *GetReductionProposalResponse) SetBody(v *GetReductionProposalResponseBo
 	return s
 }
 
+type GetVLExtractionResultRequest struct {
+	// - taskID.
+	//
+	// - The taskId is obtained from the interfaces SubmitVLExtractionTaskAdvance and SubmitVLExtractionTask.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1436b6f5-ddea-4308-9d1c-60939e5d5ea8
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s GetVLExtractionResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultRequest) SetTaskId(v string) *GetVLExtractionResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetVLExtractionResultResponseBody struct {
+	// Returned Data
+	Data *GetVLExtractionResultResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetVLExtractionResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponseBody) SetData(v *GetVLExtractionResultResponseBodyData) *GetVLExtractionResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBody) SetRequestId(v string) *GetVLExtractionResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetVLExtractionResultResponseBodyData struct {
+	// Document Parsing Result
+	KvListInfo []*GetVLExtractionResultResponseBodyDataKvListInfo `json:"kvListInfo,omitempty" xml:"kvListInfo,omitempty" type:"Repeated"`
+}
+
+func (s GetVLExtractionResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponseBodyData) SetKvListInfo(v []*GetVLExtractionResultResponseBodyDataKvListInfo) *GetVLExtractionResultResponseBodyData {
+	s.KvListInfo = v
+	return s
+}
+
+type GetVLExtractionResultResponseBodyDataKvListInfo struct {
+	// Recall content
+	Context *GetVLExtractionResultResponseBodyDataKvListInfoContext `json:"context,omitempty" xml:"context,omitempty" type:"Struct"`
+	// Field Key name
+	//
+	// example:
+	//
+	// Tenant
+	KeyName *string `json:"keyName,omitempty" xml:"keyName,omitempty"`
+	// Field key value
+	//
+	// example:
+	//
+	// Alibaba Cloud XXX Co., Ltd.
+	KeyValue *string `json:"keyValue,omitempty" xml:"keyValue,omitempty"`
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfo) SetContext(v *GetVLExtractionResultResponseBodyDataKvListInfoContext) *GetVLExtractionResultResponseBodyDataKvListInfo {
+	s.Context = v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfo) SetKeyName(v string) *GetVLExtractionResultResponseBodyDataKvListInfo {
+	s.KeyName = &v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfo) SetKeyValue(v string) *GetVLExtractionResultResponseBodyDataKvListInfo {
+	s.KeyValue = &v
+	return s
+}
+
+type GetVLExtractionResultResponseBodyDataKvListInfoContext struct {
+	// Confidence
+	Confidence *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence `json:"confidence,omitempty" xml:"confidence,omitempty" type:"Struct"`
+	// Key recall information details
+	Key []*ContentItem `json:"key,omitempty" xml:"key,omitempty" type:"Repeated"`
+	// Value Recall Information
+	Value []*ContentItem `json:"value,omitempty" xml:"value,omitempty" type:"Repeated"`
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfoContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfoContext) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfoContext) SetConfidence(v *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence) *GetVLExtractionResultResponseBodyDataKvListInfoContext {
+	s.Confidence = v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfoContext) SetKey(v []*ContentItem) *GetVLExtractionResultResponseBodyDataKvListInfoContext {
+	s.Key = v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfoContext) SetValue(v []*ContentItem) *GetVLExtractionResultResponseBodyDataKvListInfoContext {
+	s.Value = v
+	return s
+}
+
+type GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence struct {
+	// Confidence of Key
+	//
+	// example:
+	//
+	// 0.9994202852249146
+	KeyConfidence *float64 `json:"keyConfidence,omitempty" xml:"keyConfidence,omitempty"`
+	// Confidence of Value
+	//
+	// example:
+	//
+	// 0.9794202852249146
+	ValueConfidence *float64 `json:"valueConfidence,omitempty" xml:"valueConfidence,omitempty"`
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence) SetKeyConfidence(v float64) *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence {
+	s.KeyConfidence = &v
+	return s
+}
+
+func (s *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence) SetValueConfidence(v float64) *GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence {
+	s.ValueConfidence = &v
+	return s
+}
+
+type GetVLExtractionResultResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetVLExtractionResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetVLExtractionResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetVLExtractionResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetVLExtractionResultResponse) SetHeaders(v map[string]*string) *GetVLExtractionResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetVLExtractionResultResponse) SetStatusCode(v int32) *GetVLExtractionResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetVLExtractionResultResponse) SetBody(v *GetVLExtractionResultResponseBody) *GetVLExtractionResultResponse {
+	s.Body = v
+	return s
+}
+
 type IsCompletedRequest struct {
 	// The enterprise code.
 	//
@@ -8527,12 +9086,22 @@ func (s *RecalculateCarbonEmissionResponse) SetBody(v *RecalculateCarbonEmission
 }
 
 type SendDocumentAskQuestionRequest struct {
+	// Folder ID, used to specify the range of documents for the query. If it is empty, it indicates that all documents under the tenant will be queried.
+	//
 	// example:
 	//
 	// 1a851c4a-1d65-11ef-99a7-ssfsfdd
 	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The question queried by the user
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Total carbon emissions in 2023
 	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+	// Q&A session ID, used to record multiple Q&A interactions of the same user. If it is empty, it indicates that sessions are not distinguished.
+	//
 	// example:
 	//
 	// bfce2248-1546-4298-8bcf-70ac26e69646
@@ -8563,7 +9132,10 @@ func (s *SendDocumentAskQuestionRequest) SetSessionId(v string) *SendDocumentAsk
 }
 
 type SendDocumentAskQuestionResponseBody struct {
+	// Returned data
 	Data *SendDocumentAskQuestionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 83A5A7DD-8974-5769-952E-590A97BEA34E
@@ -8589,7 +9161,13 @@ func (s *SendDocumentAskQuestionResponseBody) SetRequestId(v string) *SendDocume
 }
 
 type SendDocumentAskQuestionResponseBodyData struct {
-	Answer   *string   `json:"answer,omitempty" xml:"answer,omitempty"`
+	// Q&A result
+	//
+	// example:
+	//
+	// Carbon emissions in 2023 totaled 4.681 million tons
+	Answer *string `json:"answer,omitempty" xml:"answer,omitempty"`
+	// Documents associated with the answer returned by the query
 	Document []*string `json:"document,omitempty" xml:"document,omitempty" type:"Repeated"`
 }
 
@@ -8859,18 +9437,539 @@ func (s *SetRunningPlanResponse) SetBody(v *SetRunningPlanResponseBody) *SetRunn
 	return s
 }
 
-type SubmitDocumentAnalyzeJobRequest struct {
-	AnalysisType *string `json:"analysisType,omitempty" xml:"analysisType,omitempty"`
+type SubmitDocExtractionTaskRequest struct {
+	// Document parsing type:
+	//
+	// Supports rag and long text understanding types, default is rag.
+	//
+	// example:
+	//
+	// rag
+	ExtractType *string `json:"extractType,omitempty" xml:"extractType,omitempty"`
+	// The filename must include the file type extension.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages, 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：FileInputStream generated from a local file
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
+	//
+	// - The folder ID needs to be obtained by logging into the intelligent document console.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s SubmitDocExtractionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocExtractionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocExtractionTaskRequest) SetExtractType(v string) *SubmitDocExtractionTaskRequest {
+	s.ExtractType = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskRequest) SetFileName(v string) *SubmitDocExtractionTaskRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskRequest) SetFileUrl(v string) *SubmitDocExtractionTaskRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskRequest) SetFolderId(v string) *SubmitDocExtractionTaskRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskRequest) SetTemplateId(v string) *SubmitDocExtractionTaskRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitDocExtractionTaskAdvanceRequest struct {
+	// Document parsing type:
+	//
+	// Supports rag and long text understanding types, default is rag.
+	//
+	// example:
+	//
+	// rag
+	ExtractType *string `json:"extractType,omitempty" xml:"extractType,omitempty"`
+	// The filename must include the file type extension.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages, 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages, 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long text understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：FileInputStream generated from a local file
+	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - A unique knowledge base folder ID, used when you need to categorize documents and control the scope of documents for online Q&A queries.
+	//
+	// - The folder ID needs to be obtained by logging into the intelligent document console.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s SubmitDocExtractionTaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocExtractionTaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocExtractionTaskAdvanceRequest) SetExtractType(v string) *SubmitDocExtractionTaskAdvanceRequest {
+	s.ExtractType = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskAdvanceRequest) SetFileName(v string) *SubmitDocExtractionTaskAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocExtractionTaskAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskAdvanceRequest) SetFolderId(v string) *SubmitDocExtractionTaskAdvanceRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskAdvanceRequest) SetTemplateId(v string) *SubmitDocExtractionTaskAdvanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitDocExtractionTaskResponseBody struct {
+	// Returned data
+	Data *SubmitDocExtractionTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s SubmitDocExtractionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocExtractionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocExtractionTaskResponseBody) SetData(v *SubmitDocExtractionTaskResponseBodyData) *SubmitDocExtractionTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskResponseBody) SetRequestId(v string) *SubmitDocExtractionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDocExtractionTaskResponseBodyData struct {
+	// Task ID.
+	//
+	// example:
+	//
+	// 864773ec-d35b-4c36-8871-52d07fbe806d
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitDocExtractionTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocExtractionTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocExtractionTaskResponseBodyData) SetTaskId(v string) *SubmitDocExtractionTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitDocExtractionTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocExtractionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitDocExtractionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocExtractionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocExtractionTaskResponse) SetHeaders(v map[string]*string) *SubmitDocExtractionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskResponse) SetStatusCode(v int32) *SubmitDocExtractionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDocExtractionTaskResponse) SetBody(v *SubmitDocExtractionTaskResponseBody) *SubmitDocExtractionTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDocParsingTaskRequest struct {
+	// The filename must include the file type extension.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, supports up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：FileInputStream generated from a local file
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - Unique knowledge base folder ID, used when categorizing documents and controlling the scope of documents for online Q&A queries.
+	//
+	// - The folder ID needs to be obtained from the Intelligent Document Console after logging in.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Whether to parse image content within the document.
+	//
+	// example:
+	//
+	// false
+	NeedAnalyzeImg *bool `json:"needAnalyzeImg,omitempty" xml:"needAnalyzeImg,omitempty"`
+}
+
+func (s SubmitDocParsingTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParsingTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParsingTaskRequest) SetFileName(v string) *SubmitDocParsingTaskRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskRequest) SetFileUrl(v string) *SubmitDocParsingTaskRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskRequest) SetFolderId(v string) *SubmitDocParsingTaskRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskRequest) SetNeedAnalyzeImg(v bool) *SubmitDocParsingTaskRequest {
+	s.NeedAnalyzeImg = &v
+	return s
+}
+
+type SubmitDocParsingTaskAdvanceRequest struct {
+	// The filename must include the file type extension.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, supports up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：FileInputStream generated from a local file
+	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - Unique knowledge base folder ID, used when categorizing documents and controlling the scope of documents for online Q&A queries.
+	//
+	// - The folder ID needs to be obtained from the Intelligent Document Console after logging in.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Whether to parse image content within the document.
+	//
+	// example:
+	//
+	// false
+	NeedAnalyzeImg *bool `json:"needAnalyzeImg,omitempty" xml:"needAnalyzeImg,omitempty"`
+}
+
+func (s SubmitDocParsingTaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParsingTaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParsingTaskAdvanceRequest) SetFileName(v string) *SubmitDocParsingTaskAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitDocParsingTaskAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitDocParsingTaskAdvanceRequest) SetFolderId(v string) *SubmitDocParsingTaskAdvanceRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskAdvanceRequest) SetNeedAnalyzeImg(v bool) *SubmitDocParsingTaskAdvanceRequest {
+	s.NeedAnalyzeImg = &v
+	return s
+}
+
+type SubmitDocParsingTaskResponseBody struct {
+	// Return result.
+	Data *SubmitDocParsingTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s SubmitDocParsingTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParsingTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParsingTaskResponseBody) SetData(v *SubmitDocParsingTaskResponseBodyData) *SubmitDocParsingTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitDocParsingTaskResponseBody) SetRequestId(v string) *SubmitDocParsingTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitDocParsingTaskResponseBodyData struct {
+	// TaskID
+	//
+	// example:
+	//
+	// ae9d07be-1a11-4d30-be75-cc962b98279c
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitDocParsingTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParsingTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParsingTaskResponseBodyData) SetTaskId(v string) *SubmitDocParsingTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitDocParsingTaskResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitDocParsingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitDocParsingTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitDocParsingTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitDocParsingTaskResponse) SetHeaders(v map[string]*string) *SubmitDocParsingTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitDocParsingTaskResponse) SetStatusCode(v int32) *SubmitDocParsingTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitDocParsingTaskResponse) SetBody(v *SubmitDocParsingTaskResponseBody) *SubmitDocParsingTaskResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitDocumentAnalyzeJobRequest struct {
+	// The default extraction method is "doc", with the following optional values:
+	//
+	// - vl: Image processing
+	//
+	// - doc: Long text RAG (Retrieval-Augmented Generation)
+	//
+	// - docUnderstanding: Long text comprehension
+	//
+	// - recommender: Recommendation type
+	//
+	// example:
+	//
+	// doc
+	AnalysisType *string `json:"analysisType,omitempty" xml:"analysisType,omitempty"`
+	// The filename must include the file type extension.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one between fileUrl and fileUrlObject:
+	//
+	// - fileUrl: Use the document URL method for a single document (supports documents with up to 1000 pages and within 100MB).
+	//
+	// - fileUrlObject: Use when calling the API via local file upload, for a single document (supports documents with up to 1000 pages and
+	//
+	// within 100MB).
+	//
+	// > Relationship between file parsing methods and supported document types.
+	//
+	// >- Long Text RAG: Supports pdf, doc/docx, and up to 1000 pages
+	//
+	// >- Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// >- Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
 	// example:
 	//
 	// https://example.com/example.pdf
 	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// Unique knowledge base folder ID, used for categorizing documents and controlling the scope of online Q&A queries. If empty, the document will be uploaded to the tenant\\"s root directory.
+	//
 	// example:
 	//
 	// folderCode
 	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The unique extraction template ID is used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8913,17 +10012,56 @@ func (s *SubmitDocumentAnalyzeJobRequest) SetTemplateId(v string) *SubmitDocumen
 }
 
 type SubmitDocumentAnalyzeJobAdvanceRequest struct {
+	// The default extraction method is "doc", with the following optional values:
+	//
+	// - vl: Image processing
+	//
+	// - doc: Long text RAG (Retrieval-Augmented Generation)
+	//
+	// - docUnderstanding: Long text comprehension
+	//
+	// - recommender: Recommendation type
+	//
+	// example:
+	//
+	// doc
 	AnalysisType *string `json:"analysisType,omitempty" xml:"analysisType,omitempty"`
+	// The filename must include the file type extension.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one between fileUrl and fileUrlObject:
+	//
+	// - fileUrl: Use the document URL method for a single document (supports documents with up to 1000 pages and within 100MB).
+	//
+	// - fileUrlObject: Use when calling the API via local file upload, for a single document (supports documents with up to 1000 pages and
+	//
+	// within 100MB).
+	//
+	// > Relationship between file parsing methods and supported document types.
+	//
+	// >- Long Text RAG: Supports pdf, doc/docx, and up to 1000 pages
+	//
+	// >- Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// >- Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
 	// example:
 	//
 	// https://example.com/example.pdf
 	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// Unique knowledge base folder ID, used for categorizing documents and controlling the scope of online Q&A queries. If empty, the document will be uploaded to the tenant\\"s root directory.
+	//
 	// example:
 	//
 	// folderCode
 	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// The unique extraction template ID is used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page to configure the template and obtain the corresponding template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8966,6 +10104,7 @@ func (s *SubmitDocumentAnalyzeJobAdvanceRequest) SetTemplateId(v string) *Submit
 }
 
 type SubmitDocumentAnalyzeJobResponseBody struct {
+	// The data returned.
 	Data *SubmitDocumentAnalyzeJobResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -8994,6 +10133,8 @@ func (s *SubmitDocumentAnalyzeJobResponseBody) SetRequestId(v string) *SubmitDoc
 }
 
 type SubmitDocumentAnalyzeJobResponseBodyData struct {
+	// The job ID.
+	//
 	// example:
 	//
 	// adkc-kk2k41-kk2ol-222424
@@ -9038,6 +10179,232 @@ func (s *SubmitDocumentAnalyzeJobResponse) SetStatusCode(v int32) *SubmitDocumen
 }
 
 func (s *SubmitDocumentAnalyzeJobResponse) SetBody(v *SubmitDocumentAnalyzeJobResponseBody) *SubmitDocumentAnalyzeJobResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitVLExtractionTaskRequest struct {
+	// The filename must include the file type suffix.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：本地文件生成的FileInputStream
+	FileUrl *string `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - Unique knowledge base folder ID, used when you need to categorize documents and control the scope of online Q&A queries.
+	//
+	// - The folder ID needs to be obtained from the intelligent document console after logging in.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Unique parsing template ID, used to specify the key-value pairs to be extracted from the document. You need to configure the template on the template management page and then obtain the corresponding template ID.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s SubmitVLExtractionTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVLExtractionTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVLExtractionTaskRequest) SetFileName(v string) *SubmitVLExtractionTaskRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskRequest) SetFileUrl(v string) *SubmitVLExtractionTaskRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskRequest) SetFolderId(v string) *SubmitVLExtractionTaskRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskRequest) SetTemplateId(v string) *SubmitVLExtractionTaskRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitVLExtractionTaskAdvanceRequest struct {
+	// The filename must include the file type suffix.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// example.pdf
+	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	// Choose one of fileUrl or fileUrlObject:
+	//
+	// - fileUrl: Use by providing the document URL, for a single document (supports up to 1000 pages and 100MB in size)
+	//
+	// - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB in size)
+	//
+	// > The relationship between file parsing methods and supported document types
+	//
+	// > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
+	//
+	// > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
+	//
+	// > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+	//
+	// example:
+	//
+	// fileUrl：https://example.com/example.pdf
+	//
+	// fileUrlObject：本地文件生成的FileInputStream
+	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// - Unique knowledge base folder ID, used when you need to categorize documents and control the scope of online Q&A queries.
+	//
+	// - The folder ID needs to be obtained from the intelligent document console after logging in.
+	//
+	// example:
+	//
+	// xxxxx
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Unique parsing template ID, used to specify the key-value pairs to be extracted from the document. You need to configure the template on the template management page and then obtain the corresponding template ID.
+	//
+	// example:
+	//
+	// 572d24k0c95a
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s SubmitVLExtractionTaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVLExtractionTaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVLExtractionTaskAdvanceRequest) SetFileName(v string) *SubmitVLExtractionTaskAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskAdvanceRequest) SetFileUrlObject(v io.Reader) *SubmitVLExtractionTaskAdvanceRequest {
+	s.FileUrlObject = v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskAdvanceRequest) SetFolderId(v string) *SubmitVLExtractionTaskAdvanceRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskAdvanceRequest) SetTemplateId(v string) *SubmitVLExtractionTaskAdvanceRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type SubmitVLExtractionTaskResponseBody struct {
+	// Returned data structure.
+	Data *SubmitVLExtractionTaskResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s SubmitVLExtractionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVLExtractionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVLExtractionTaskResponseBody) SetData(v *SubmitVLExtractionTaskResponseBodyData) *SubmitVLExtractionTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskResponseBody) SetRequestId(v string) *SubmitVLExtractionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SubmitVLExtractionTaskResponseBodyData struct {
+	// Task ID.
+	//
+	// example:
+	//
+	// 411ce93a-7eb5-40cf-836a-53c32f097663
+	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
+}
+
+func (s SubmitVLExtractionTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVLExtractionTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVLExtractionTaskResponseBodyData) SetTaskId(v string) *SubmitVLExtractionTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitVLExtractionTaskResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitVLExtractionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitVLExtractionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitVLExtractionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitVLExtractionTaskResponse) SetHeaders(v map[string]*string) *SubmitVLExtractionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskResponse) SetStatusCode(v int32) *SubmitVLExtractionTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitVLExtractionTaskResponse) SetBody(v *SubmitVLExtractionTaskResponseBody) *SubmitVLExtractionTaskResponse {
 	s.Body = v
 	return s
 }
@@ -9091,7 +10458,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Get Document Results
+// # Get Document Results
 //
 // Description:
 //
@@ -9137,29 +10504,18 @@ func (client *Client) AnalyzeVlRealtimeWithOptions(request *AnalyzeVlRealtimeReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AnalyzeVlRealtimeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AnalyzeVlRealtimeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AnalyzeVlRealtimeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Get Document Results
+// # Get Document Results
 //
 // Description:
 //
@@ -9335,24 +10691,13 @@ func (client *Client) BatchSaveInstructionStatusWithOptions(request *BatchSaveIn
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchSaveInstructionStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchSaveInstructionStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchSaveInstructionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9462,24 +10807,13 @@ func (client *Client) BatchUpdateSystemRunningPlanWithOptions(request *BatchUpda
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchUpdateSystemRunningPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchUpdateSystemRunningPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchUpdateSystemRunningPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9545,24 +10879,13 @@ func (client *Client) EditProhibitedDevicesWithOptions(request *EditProhibitedDe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EditProhibitedDevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EditProhibitedDevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EditProhibitedDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9628,24 +10951,13 @@ func (client *Client) EditUnfavorableAreaDevicesWithOptions(request *EditUnfavor
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EditUnfavorableAreaDevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EditUnfavorableAreaDevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EditUnfavorableAreaDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9715,24 +11027,13 @@ func (client *Client) GenerateResultWithOptions(request *GenerateResultRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenerateResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenerateResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenerateResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9798,24 +11099,13 @@ func (client *Client) GetAreaElecConstituteWithOptions(request *GetAreaElecConst
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAreaElecConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAreaElecConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAreaElecConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9889,24 +11179,13 @@ func (client *Client) GetCarbonEmissionTrendWithOptions(request *GetCarbonEmissi
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCarbonEmissionTrendResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCarbonEmissionTrendResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCarbonEmissionTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9968,24 +11247,13 @@ func (client *Client) GetDataItemListWithOptions(request *GetDataItemListRequest
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDataItemListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDataItemListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDataItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10063,24 +11331,13 @@ func (client *Client) GetDataQualityAnalysisWithOptions(request *GetDataQualityA
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDataQualityAnalysisResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDataQualityAnalysisResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDataQualityAnalysisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10112,9 +11369,9 @@ func (client *Client) GetDataQualityAnalysis(request *GetDataQualityAnalysisRequ
 //
 // Description:
 //
-//   You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+//	  You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
 //
-// 	- You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+//		- You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -10162,24 +11419,13 @@ func (client *Client) GetDeviceInfoWithOptions(request *GetDeviceInfoRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10188,9 +11434,9 @@ func (client *Client) GetDeviceInfoWithOptions(request *GetDeviceInfoRequest, he
 //
 // Description:
 //
-//   You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
+//	  You can call this operation to query the parameters of a data collection device based on the device ID. If the verification is passed, the device parameters are returned. If the verification fails, a null value is returned.
 //
-// 	- You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
+//		- You can query the parameters of a single device by day. If data of the device does not exist, a null value is returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -10219,9 +11465,9 @@ func (client *Client) GetDeviceInfo(request *GetDeviceInfoRequest) (_result *Get
 //
 // Description:
 //
-//   You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+//	  You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
 //
-// 	- Virtual meters at the site are not returned.
+//		- Virtual meters at the site are not returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -10261,24 +11507,13 @@ func (client *Client) GetDeviceListWithOptions(request *GetDeviceListRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDeviceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDeviceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDeviceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10287,9 +11522,9 @@ func (client *Client) GetDeviceListWithOptions(request *GetDeviceListRequest, he
 //
 // Description:
 //
-//   You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
+//	  You can query the information about data collection devices of a site based on the ID of the site. If the verification is passed, the information about the devices of the site is returned. If the verification fails, a null value is returned.
 //
-// 	- Virtual meters at the site are not returned.
+//		- Virtual meters at the site are not returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -10314,7 +11549,155 @@ func (client *Client) GetDeviceList(request *GetDeviceListRequest) (_result *Get
 
 // Summary:
 //
-// 获取文档结果
+// For Querying Information Extraction Result.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+//
+// The query results can reflect one of three statuses: processing, successfully completed, or failed.
+//
+// @param request - GetDocExtractionResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocExtractionResultResponse
+func (client *Client) GetDocExtractionResultWithOptions(request *GetDocExtractionResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDocExtractionResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocExtractionResult"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/getDocExtractionResult"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocExtractionResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// For Querying Information Extraction Result.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocExtractionTaskAdvance or SubmitDocExtractionTask.
+//
+// The query results can reflect one of three statuses: processing, successfully completed, or failed.
+//
+// @param request - GetDocExtractionResultRequest
+//
+// @return GetDocExtractionResultResponse
+func (client *Client) GetDocExtractionResult(request *GetDocExtractionResultRequest) (_result *GetDocExtractionResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDocExtractionResultResponse{}
+	_body, _err := client.GetDocExtractionResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// For Querying Document Parsing Results.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+//
+// The query results can be one of three statuses: processing, successful, or failed.
+//
+// @param request - GetDocParsingResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDocParsingResultResponse
+func (client *Client) GetDocParsingResultWithOptions(request *GetDocParsingResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDocParsingResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReturnFormat)) {
+		body["returnFormat"] = request.ReturnFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDocParsingResult"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/getDocParsingResult"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDocParsingResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// For Querying Document Parsing Results.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitDocParsingTaskAdvance or SubmitDocParsingTask.
+//
+// The query results can be one of three statuses: processing, successful, or failed.
+//
+// @param request - GetDocParsingResultRequest
+//
+// @return GetDocParsingResultResponse
+func (client *Client) GetDocParsingResult(request *GetDocParsingResultRequest) (_result *GetDocParsingResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDocParsingResultResponse{}
+	_body, _err := client.GetDocParsingResultWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get document parsing/extraction result
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -10348,29 +11731,18 @@ func (client *Client) GetDocumentAnalyzeResultWithOptions(request *GetDocumentAn
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDocumentAnalyzeResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDocumentAnalyzeResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDocumentAnalyzeResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取文档结果
+// Get document parsing/extraction result
 //
 // @param request - GetDocumentAnalyzeResultRequest
 //
@@ -10427,24 +11799,13 @@ func (client *Client) GetElecConstituteWithOptions(request *GetElecConstituteReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetElecConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetElecConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetElecConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10506,24 +11867,13 @@ func (client *Client) GetElecTrendWithOptions(request *GetElecTrendRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetElecTrendResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetElecTrendResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetElecTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10593,24 +11943,13 @@ func (client *Client) GetEmissionSourceConstituteWithOptions(request *GetEmissio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEmissionSourceConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEmissionSourceConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEmissionSourceConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10680,24 +12019,13 @@ func (client *Client) GetEmissionSummaryWithOptions(request *GetEmissionSummaryR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEmissionSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEmissionSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEmissionSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10767,24 +12095,13 @@ func (client *Client) GetEpdInventoryConstituteWithOptions(request *GetEpdInvent
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEpdInventoryConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEpdInventoryConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEpdInventoryConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10858,24 +12175,13 @@ func (client *Client) GetEpdSummaryWithOptions(request *GetEpdSummaryRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEpdSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEpdSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEpdSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10953,24 +12259,13 @@ func (client *Client) GetFootprintListWithOptions(request *GetFootprintListReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFootprintListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFootprintListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFootprintListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11044,24 +12339,13 @@ func (client *Client) GetGasConstituteWithOptions(request *GetGasConstituteReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGasConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGasConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGasConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11131,24 +12415,13 @@ func (client *Client) GetGwpBenchmarkListWithOptions(request *GetGwpBenchmarkLis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGwpBenchmarkListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGwpBenchmarkListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGwpBenchmarkListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11222,24 +12495,13 @@ func (client *Client) GetGwpBenchmarkSummaryWithOptions(request *GetGwpBenchmark
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGwpBenchmarkSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGwpBenchmarkSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGwpBenchmarkSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11313,24 +12575,13 @@ func (client *Client) GetGwpInventoryConstituteWithOptions(request *GetGwpInvent
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGwpInventoryConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGwpInventoryConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGwpInventoryConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11404,24 +12655,13 @@ func (client *Client) GetGwpInventorySummaryWithOptions(request *GetGwpInventory
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGwpInventorySummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGwpInventorySummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGwpInventorySummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11507,24 +12747,13 @@ func (client *Client) GetInventoryListWithOptions(request *GetInventoryListReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInventoryListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInventoryListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInventoryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11556,7 +12785,7 @@ func (client *Client) GetInventoryList(request *GetInventoryListRequest) (_resul
 //
 // Description:
 //
-//   If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+//	If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -11584,24 +12813,13 @@ func (client *Client) GetOrgAndFactoryWithOptions(headers map[string]*string, ru
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOrgAndFactoryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOrgAndFactoryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOrgAndFactoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11610,7 +12828,7 @@ func (client *Client) GetOrgAndFactoryWithOptions(headers map[string]*string, ru
 //
 // Description:
 //
-//   If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
+//	If an activated site exists, the information about the site and the organization to which the site belongs is returned. If no activated site exists, null is returned.
 //
 // - By current, endpoint only supports Hangzhou: `energyexpertexternal.cn-hangzhou.aliyuncs.com`.
 //
@@ -11679,24 +12897,13 @@ func (client *Client) GetOrgConstituteWithOptions(request *GetOrgConstituteReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOrgConstituteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOrgConstituteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOrgConstituteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11766,24 +12973,13 @@ func (client *Client) GetPcrInfoWithOptions(request *GetPcrInfoRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPcrInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPcrInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPcrInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11861,24 +13057,13 @@ func (client *Client) GetReductionProposalWithOptions(request *GetReductionPropo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetReductionProposalResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetReductionProposalResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetReductionProposalResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11897,6 +13082,78 @@ func (client *Client) GetReductionProposal(request *GetReductionProposalRequest)
 	headers := make(map[string]*string)
 	_result = &GetReductionProposalResponse{}
 	_body, _err := client.GetReductionProposalWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// For Querying Qwen-VL Model Information Extraction Results.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+//
+// The query results can be in one of three statuses: processing, successfully completed, or failed.
+//
+// @param request - GetVLExtractionResultRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetVLExtractionResultResponse
+func (client *Client) GetVLExtractionResultWithOptions(request *GetVLExtractionResultRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetVLExtractionResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["taskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetVLExtractionResult"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/getVLExtractionResult"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetVLExtractionResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// For Querying Qwen-VL Model Information Extraction Results.
+//
+// The input parameter taskId is obtained from the taskId returned by the interfaces SubmitVLExtractionTask or SubmitVLExtractionTaskAdvance.
+//
+// The query results can be in one of three statuses: processing, successfully completed, or failed.
+//
+// @param request - GetVLExtractionResultRequest
+//
+// @return GetVLExtractionResultResponse
+func (client *Client) GetVLExtractionResult(request *GetVLExtractionResultRequest) (_result *GetVLExtractionResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetVLExtractionResultResponse{}
+	_body, _err := client.GetVLExtractionResultWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11952,24 +13209,13 @@ func (client *Client) IsCompletedWithOptions(request *IsCompletedRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &IsCompletedResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &IsCompletedResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &IsCompletedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12035,24 +13281,13 @@ func (client *Client) PushDeviceDataWithOptions(request *PushDeviceDataRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PushDeviceDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PushDeviceDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PushDeviceDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12126,24 +13361,13 @@ func (client *Client) PushItemDataWithOptions(request *PushItemDataRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PushItemDataResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PushItemDataResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PushItemDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12217,24 +13441,13 @@ func (client *Client) RecalculateCarbonEmissionWithOptions(request *RecalculateC
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RecalculateCarbonEmissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RecalculateCarbonEmissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RecalculateCarbonEmissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12262,7 +13475,7 @@ func (client *Client) RecalculateCarbonEmission(request *RecalculateCarbonEmissi
 
 // Summary:
 //
-// 在线文档问答
+// Online Document Q\\&A
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -12304,29 +13517,18 @@ func (client *Client) SendDocumentAskQuestionWithOptions(request *SendDocumentAs
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendDocumentAskQuestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendDocumentAskQuestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendDocumentAskQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 在线文档问答
+// Online Document Q\\&A
 //
 // @param request - SendDocumentAskQuestionRequest
 //
@@ -12439,24 +13641,13 @@ func (client *Client) SetRunningPlanWithOptions(request *SetRunningPlanRequest, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetRunningPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetRunningPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetRunningPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12480,7 +13671,409 @@ func (client *Client) SetRunningPlan(request *SetRunningPlanRequest) (_result *S
 
 // Summary:
 //
-// 获取文档结果
+// Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+//
+// Supports:
+//
+// URL Upload: SubmitDocExtractionTask
+//
+// Local File Upload: SubmitDocExtractionTask
+//
+// @param request - SubmitDocExtractionTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocExtractionTaskResponse
+func (client *Client) SubmitDocExtractionTaskWithOptions(request *SubmitDocExtractionTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitDocExtractionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtractType)) {
+		query["extractType"] = request.ExtractType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["fileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["folderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["templateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDocExtractionTask"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/submitDocExtractionTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDocExtractionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Extracts key information from documents using user-defined Key-Value or prompt templates. A taskId is returned upon successful execution for retrieving extraction results via GetDocExtractionResult.
+//
+// Supports:
+//
+// URL Upload: SubmitDocExtractionTask
+//
+// Local File Upload: SubmitDocExtractionTask
+//
+// @param request - SubmitDocExtractionTaskRequest
+//
+// @return SubmitDocExtractionTaskResponse
+func (client *Client) SubmitDocExtractionTask(request *SubmitDocExtractionTaskRequest) (_result *SubmitDocExtractionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitDocExtractionTaskResponse{}
+	_body, _err := client.SubmitDocExtractionTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDocExtractionTaskAdvance(request *SubmitDocExtractionTaskAdvanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitDocExtractionTaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("energyExpertExternal"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitDocExtractionTaskReq := &SubmitDocExtractionTaskRequest{}
+	openapiutil.Convert(request, submitDocExtractionTaskReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitDocExtractionTaskReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitDocExtractionTaskResp, _err := client.SubmitDocExtractionTaskWithOptions(submitDocExtractionTaskReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitDocExtractionTaskResp
+	return _result, _err
+}
+
+// Summary:
+//
+// Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+//
+// Supports:
+//
+// URL Upload: SubmitDocParsingTask
+//
+// Local File Upload: SubmitDocParsingTaskAdvance
+//
+// @param request - SubmitDocParsingTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitDocParsingTaskResponse
+func (client *Client) SubmitDocParsingTaskWithOptions(request *SubmitDocParsingTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitDocParsingTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["fileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["folderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedAnalyzeImg)) {
+		query["needAnalyzeImg"] = request.NeedAnalyzeImg
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitDocParsingTask"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/submitDocParsingTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitDocParsingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Parses text, tables, images, and more from documents. After execution, a taskId is returned for retrieving document parsing results via GetDocParsingResult.
+//
+// Supports:
+//
+// URL Upload: SubmitDocParsingTask
+//
+// Local File Upload: SubmitDocParsingTaskAdvance
+//
+// @param request - SubmitDocParsingTaskRequest
+//
+// @return SubmitDocParsingTaskResponse
+func (client *Client) SubmitDocParsingTask(request *SubmitDocParsingTaskRequest) (_result *SubmitDocParsingTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitDocParsingTaskResponse{}
+	_body, _err := client.SubmitDocParsingTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitDocParsingTaskAdvance(request *SubmitDocParsingTaskAdvanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitDocParsingTaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("energyExpertExternal"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitDocParsingTaskReq := &SubmitDocParsingTaskRequest{}
+	openapiutil.Convert(request, submitDocParsingTaskReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitDocParsingTaskReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitDocParsingTaskResp, _err := client.SubmitDocParsingTaskWithOptions(submitDocParsingTaskReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitDocParsingTaskResp
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get document extraction result
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
@@ -12530,29 +14123,18 @@ func (client *Client) SubmitDocumentAnalyzeJobWithOptions(request *SubmitDocumen
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitDocumentAnalyzeJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitDocumentAnalyzeJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitDocumentAnalyzeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 获取文档结果
+// # Get document extraction result
 //
 // @param request - SubmitDocumentAnalyzeJobRequest
 //
@@ -12677,5 +14259,204 @@ func (client *Client) SubmitDocumentAnalyzeJobAdvance(request *SubmitDocumentAna
 	}
 
 	_result = submitDocumentAnalyzeJobResp
+	return _result, _err
+}
+
+// Summary:
+//
+// Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+//
+// Supports:
+//
+// URL Upload: SubmitVLExtractionTask.
+//
+// Local File Upload: SubmitVLExtractionTaskAdvance
+//
+// @param request - SubmitVLExtractionTaskRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitVLExtractionTaskResponse
+func (client *Client) SubmitVLExtractionTaskWithOptions(request *SubmitVLExtractionTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitVLExtractionTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["fileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		query["fileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		query["folderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["templateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitVLExtractionTask"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/submitVLExtractionTask"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitVLExtractionTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Extracts key information from documents using KV templates or prompts with the Qwen-VL model, ideal for image extraction.
+//
+// Supports:
+//
+// URL Upload: SubmitVLExtractionTask.
+//
+// Local File Upload: SubmitVLExtractionTaskAdvance
+//
+// @param request - SubmitVLExtractionTaskRequest
+//
+// @return SubmitVLExtractionTaskResponse
+func (client *Client) SubmitVLExtractionTask(request *SubmitVLExtractionTaskRequest) (_result *SubmitVLExtractionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SubmitVLExtractionTaskResponse{}
+	_body, _err := client.SubmitVLExtractionTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SubmitVLExtractionTaskAdvance(request *SubmitVLExtractionTaskAdvanceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SubmitVLExtractionTaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("energyExpertExternal"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	submitVLExtractionTaskReq := &SubmitVLExtractionTaskRequest{}
+	openapiutil.Convert(request, submitVLExtractionTaskReq)
+	if !tea.BoolValue(util.IsUnset(request.FileUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.FileUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		submitVLExtractionTaskReq.FileUrl = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	submitVLExtractionTaskResp, _err := client.SubmitVLExtractionTaskWithOptions(submitVLExtractionTaskReq, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = submitVLExtractionTaskResp
 	return _result, _err
 }
