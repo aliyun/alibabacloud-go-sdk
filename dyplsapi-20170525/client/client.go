@@ -3751,9 +3751,7 @@ type CreateFixedNoAReportRequest struct {
 	//
 	// 赵**
 	CustName *string `json:"CustName,omitempty" xml:"CustName,omitempty"`
-	// 法人/经办人手机号
-	//
-	// This parameter is required.
+	// 经办人/法人电话
 	//
 	// example:
 	//
