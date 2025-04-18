@@ -1,0 +1,28 @@
+2025-04-18 Version: v1.0.0
+- Support API CreateExplorerTask.
+- Support API GetExplorerTask.
+- Support API ListExplorerTasks.
+- Support API UpdateExplorerTaskAttribute.
+- Update API CreateJob: add request parameters body.taskType.
+- Update API CreateTask: add request parameters body.taskBackend.
+- Update API GetJob: add request parameters taskType.
+- Update API GetJob: add response parameters Body.job.executeType.
+- Update API GetJob: add response parameters Body.job.taskType.
+- Update API GetJob: add request The number of query or body parameters has changed from zero to many.
+- Update API ListJobs: add request parameters taskType.
+- Update API ListJobs: add response parameters Body.jobs.$.executeType.
+- Update API ListJobs: add response parameters Body.jobs.$.config.isDestroy.
+- Update API ListJobs: add response parameters Body.jobs.$.config.subCommand.
+- Update API ListTerraformProviderVersions: add request parameters keyword.
+- Update API ListTerraformProviderVersions: add request parameters maxResults.
+- Update API ListTerraformProviderVersions: add request parameters nextToken.
+- Update API ListTerraformProviderVersions: add request parameters usage.
+- Update API ListTerraformProviderVersions: add response parameters Body.maxResults.
+- Update API ListTerraformProviderVersions: add response parameters Body.nextToken.
+- Update API ListTerraformProviderVersions: add response parameters Body.versions.
+- Update API ListTerraformProviderVersions: delete request parameters keyWord.
+- Update API ListTerraformProviderVersions: delete request parameters pageNumber.
+- Update API ListTerraformProviderVersions: delete request parameters pageSize.
+- Update API OperateJob: add request parameters taskType.
+
+
