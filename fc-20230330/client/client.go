@@ -7244,7 +7244,8 @@ type ListFunctionsRequest struct {
 	// example:
 	//
 	// v3
-	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	FcVersion    *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// The GPU type of the functions to retrieve.
 	//
 	// example:
@@ -7297,6 +7298,11 @@ func (s *ListFunctionsRequest) SetFcVersion(v string) *ListFunctionsRequest {
 	return s
 }
 
+func (s *ListFunctionsRequest) SetFunctionName(v string) *ListFunctionsRequest {
+	s.FunctionName = &v
+	return s
+}
+
 func (s *ListFunctionsRequest) SetGpuType(v string) *ListFunctionsRequest {
 	s.GpuType = &v
 	return s
@@ -7345,7 +7351,8 @@ type ListFunctionsShrinkRequest struct {
 	// example:
 	//
 	// v3
-	FcVersion *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	FcVersion    *string `json:"fcVersion,omitempty" xml:"fcVersion,omitempty"`
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
 	// The GPU type of the functions to retrieve.
 	//
 	// example:
@@ -7395,6 +7402,11 @@ func (s *ListFunctionsShrinkRequest) SetDescription(v string) *ListFunctionsShri
 
 func (s *ListFunctionsShrinkRequest) SetFcVersion(v string) *ListFunctionsShrinkRequest {
 	s.FcVersion = &v
+	return s
+}
+
+func (s *ListFunctionsShrinkRequest) SetFunctionName(v string) *ListFunctionsShrinkRequest {
+	s.FunctionName = &v
 	return s
 }
 
@@ -11191,6 +11203,10 @@ func (client *Client) ListFunctionsWithOptions(tmpReq *ListFunctionsRequest, hea
 
 	if !tea.BoolValue(util.IsUnset(request.FcVersion)) {
 		query["fcVersion"] = request.FcVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionName)) {
+		query["functionName"] = request.FunctionName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GpuType)) {
