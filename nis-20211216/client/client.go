@@ -1654,12 +1654,14 @@ type DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendatio
 	Abnormality *string `json:"Abnormality,omitempty" xml:"Abnormality,omitempty"`
 	Metadata    *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	ReasonCode  *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
 	// example:
 	//
 	// nat_snat_cross_az_warn
 	RecommendationCode *string `json:"RecommendationCode,omitempty" xml:"RecommendationCode,omitempty"`
 	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
 	Suggestion         *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+	SuggestionCode     *string `json:"SuggestionCode,omitempty" xml:"SuggestionCode,omitempty"`
 }
 
 func (s DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) String() string {
@@ -1685,6 +1687,11 @@ func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommend
 	return s
 }
 
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetReasonCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.ReasonCode = &v
+	return s
+}
+
 func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetRecommendationCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
 	s.RecommendationCode = &v
 	return s
@@ -1697,6 +1704,11 @@ func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommend
 
 func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetSuggestion(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
 	s.Suggestion = &v
+	return s
+}
+
+func (s *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList) SetSuggestionCode(v string) *DescribeNisInspectionReportCheckItemsResponseBodyCheckItemListRecommendationList {
+	s.SuggestionCode = &v
 	return s
 }
 
@@ -7345,9 +7357,9 @@ func (client *Client) CreateAndAnalyzeNetworkPath(request *CreateAndAnalyzeNetwo
 //
 // Description:
 //
-//   You can call the **CreateNetworkPath*	- operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+//	  You can call the **CreateNetworkPath*	- operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
 //
-// 	- You can create up to 100 network paths within one Alibaba Cloud account.
+//		- You can create up to 100 network paths within one Alibaba Cloud account.
 //
 // @param request - CreateNetworkPathRequest
 //
@@ -7445,9 +7457,9 @@ func (client *Client) CreateNetworkPathWithOptions(request *CreateNetworkPathReq
 //
 // Description:
 //
-//   You can call the **CreateNetworkPath*	- operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
+//	  You can call the **CreateNetworkPath*	- operation to create network paths in multiple networking scenarios and between multiple resources. After a path is created, the path parameters are saved for repeated analysis.
 //
-// 	- You can create up to 100 network paths within one Alibaba Cloud account.
+//		- You can create up to 100 network paths within one Alibaba Cloud account.
 //
 // @param request - CreateNetworkPathRequest
 //
@@ -7469,11 +7481,11 @@ func (client *Client) CreateNetworkPath(request *CreateNetworkPathRequest) (_res
 //
 // Description:
 //
-//   The **CreateNetworkReachableAnalysis*	- operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath*	- operation and record the analysis results.
+//	  The **CreateNetworkReachableAnalysis*	- operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath*	- operation and record the analysis results.
 //
-// 	- The **CreateNetworkReachableAnalysis*	- operation can be called to repeatedly analyze the reachability of a network path.
+//		- The **CreateNetworkReachableAnalysis*	- operation can be called to repeatedly analyze the reachability of a network path.
 //
-// 	- You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+//		- You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
 //
 // @param request - CreateNetworkReachableAnalysisRequest
 //
@@ -7527,11 +7539,11 @@ func (client *Client) CreateNetworkReachableAnalysisWithOptions(request *CreateN
 //
 // Description:
 //
-//   The **CreateNetworkReachableAnalysis*	- operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath*	- operation and record the analysis results.
+//	  The **CreateNetworkReachableAnalysis*	- operation is used to create a task for analyzing the reachability of the network path that is created by calling the **CreateNetworkPath*	- operation and record the analysis results.
 //
-// 	- The **CreateNetworkReachableAnalysis*	- operation can be called to repeatedly analyze the reachability of a network path.
+//		- The **CreateNetworkReachableAnalysis*	- operation can be called to repeatedly analyze the reachability of a network path.
 //
-// 	- You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
+//		- You can create up to 1,000 reachability analysis records within one Alibaba Cloud account.
 //
 // @param request - CreateNetworkReachableAnalysisRequest
 //
@@ -8415,9 +8427,9 @@ func (client *Client) GetNatTopN(request *GetNatTopNRequest) (_result *GetNatTop
 //
 // *GetNetworkReachableAnalysis*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
 //
-// 	- The **init*	- state indicates that the task is in progress.
+//   - The **init*	- state indicates that the task is in progress.
 //
-// 	- The **finish*	- state indicates that the task is complete. In this state, you can obtain the analysis result.
+//   - The **finish*	- state indicates that the task is complete. In this state, you can obtain the analysis result.
 //
 // @param request - GetNetworkReachableAnalysisRequest
 //
@@ -8469,9 +8481,9 @@ func (client *Client) GetNetworkReachableAnalysisWithOptions(request *GetNetwork
 //
 // *GetNetworkReachableAnalysis*	- is an asynchronous operation. After a request is sent, the system returns a request ID and runs the task in the background. You can query the state of the task for analyzing network reachability.
 //
-// 	- The **init*	- state indicates that the task is in progress.
+//   - The **init*	- state indicates that the task is in progress.
 //
-// 	- The **finish*	- state indicates that the task is complete. In this state, you can obtain the analysis result.
+//   - The **finish*	- state indicates that the task is complete. In this state, you can obtain the analysis result.
 //
 // @param request - GetNetworkReachableAnalysisRequest
 //
