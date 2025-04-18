@@ -24422,6 +24422,7 @@ func (s *DescribeDiagnosisSQLInfoResponseBody) SetStageInfos(v []*DescribeDiagno
 }
 
 type DescribeDiagnosisSQLInfoResponseBodyStageInfos struct {
+	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
 	// The total amount of input data in the stage. Unit: bytes.
 	//
 	// example:
@@ -24484,6 +24485,11 @@ func (s DescribeDiagnosisSQLInfoResponseBodyStageInfos) String() string {
 
 func (s DescribeDiagnosisSQLInfoResponseBodyStageInfos) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBodyStageInfos) SetExecutionType(v string) *DescribeDiagnosisSQLInfoResponseBodyStageInfos {
+	s.ExecutionType = &v
+	return s
 }
 
 func (s *DescribeDiagnosisSQLInfoResponseBodyStageInfos) SetInputDataSize(v int64) *DescribeDiagnosisSQLInfoResponseBodyStageInfos {
@@ -59661,7 +59667,35 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessId)) {
+		query["ProcessId"] = request.ProcessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessRcHost)) {
+		query["ProcessRcHost"] = request.ProcessRcHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessStartTime)) {
+		query["ProcessStartTime"] = request.ProcessStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessState)) {
+		query["ProcessState"] = request.ProcessState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -59670,7 +59704,7 @@ func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagn
 		Version:     tea.String("2021-12-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
