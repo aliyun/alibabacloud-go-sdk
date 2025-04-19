@@ -191,48 +191,64 @@ func (s *ApproveFotaUpdateResponse) SetBody(v *ApproveFotaUpdateResponseBody) *A
 }
 
 type ChangePasswordRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 42f6645a-9c3c-4772-be2a-cc5f5732****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// liming
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The new password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 67436290
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-shanghai+dir-227468****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The current password.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12345678
 	OldPassword *string `json:"OldPassword,omitempty" xml:"OldPassword,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 1
@@ -288,10 +304,14 @@ func (s *ChangePasswordRequest) SetSessionId(v string) *ChangePasswordRequest {
 }
 
 type ChangePasswordResponseBody struct {
+	// The logon token.
+	//
 	// example:
 	//
 	// v18101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 484256DA-D816-44D2-9D86-B6EE4D5B****
@@ -470,13 +490,18 @@ func (s *DeleteFingerPrintTemplateResponse) SetBody(v *DeleteFingerPrintTemplate
 }
 
 type DescribeDirectoriesRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 54c17e1d-2d72-4b87-aa33-25f3b3f2****
-	ClientId    *string   `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The directory IDs.
 	DirectoryId []*string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty" type:"Repeated"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -509,7 +534,10 @@ func (s *DescribeDirectoriesRequest) SetRegionId(v string) *DescribeDirectoriesR
 }
 
 type DescribeDirectoriesResponseBody struct {
+	// The directories.
 	Directories []*DescribeDirectoriesResponseBodyDirectories `json:"Directories,omitempty" xml:"Directories,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// F369A091-002F-49C8-AD55-02A77629****
@@ -535,22 +563,40 @@ func (s *DescribeDirectoriesResponseBody) SetRequestId(v string) *DescribeDirect
 }
 
 type DescribeDirectoriesResponseBodyDirectories struct {
+	// The connection method.
+	//
+	// Valid values:
+	//
+	// 	- VPC: End users connect to cloud computers over an enterprise virtual private cloud (VPC).
+	//
+	// 	- INTERNET: End users connect to cloud computers over the Internet.
+	//
+	// 	- ANY: End users connect to cloud computers over the Internet or an enterprise VPC.
+	//
 	// example:
 	//
 	// INTERNET
 	DesktopAccessType *string `json:"DesktopAccessType,omitempty" xml:"DesktopAccessType,omitempty"`
+	// The directory ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-gx2x1dhsmu52rd****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The directory type.
+	//
 	// example:
 	//
 	// AD_CONNECTOR
 	DirectoryType *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	// The provider ID.
+	//
 	// example:
 	//
 	// 26842
 	ProviderId *string `json:"ProviderId,omitempty" xml:"ProviderId,omitempty"`
+	// The URL of the SSO service.
+	//
 	// example:
 	//
 	// https://eds-cn-shanghai-67726****
@@ -620,24 +666,32 @@ func (s *DescribeDirectoriesResponse) SetBody(v *DescribeDirectoriesResponseBody
 }
 
 type DescribeFingerPrintTemplatesRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 61e39dc6-0450-45f6-a372-2a09e938****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v189646d6f329e4dfcbf51653542202890570fec26e4f9ee26427c5920fcd93871f017d2190199c4c7d0c0bf00f573****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The region ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -675,7 +729,10 @@ func (s *DescribeFingerPrintTemplatesRequest) SetSessionId(v string) *DescribeFi
 }
 
 type DescribeFingerPrintTemplatesResponseBody struct {
+	// The fingerprint templates.
 	FingerPrintTemplates []*DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates `json:"FingerPrintTemplates,omitempty" xml:"FingerPrintTemplates,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9C1D3FBE-84E1-5ABB-AD98-2003AC71****
@@ -701,30 +758,44 @@ func (s *DescribeFingerPrintTemplatesResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// example:
 	//
 	// 2258a3d5-b8f8-4d79-a221-eaecf211****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The time when the template was created.
+	//
 	// example:
 	//
 	// 2022-03-13T13:26:29Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	// The description of the template.
+	//
 	// example:
 	//
 	// Finger 1
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// liming
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The index.
+	//
 	// example:
 	//
 	// 1
 	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// The logon time.
+	//
 	// example:
 	//
 	// 2022-03-13T13:26:29Z
 	LoginTime *string `json:"LoginTime,omitempty" xml:"LoginTime,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-074949****
@@ -1827,12 +1898,16 @@ func (s *DescribeOfficeSitesResponse) SetBody(v *DescribeOfficeSitesResponseBody
 }
 
 type DescribeRegionsRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac4a73ad-789a-449a-a88f-d18571d6****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -1858,7 +1933,10 @@ func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
 }
 
 type DescribeRegionsResponseBody struct {
+	// The regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -1884,10 +1962,14 @@ func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsRes
 }
 
 type DescribeRegionsResponseBodyRegions struct {
+	// The region endpoint.
+	//
 	// example:
 	//
 	// ecd.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -3404,38 +3486,52 @@ func (s *DescribeUserResourcesResponse) SetBody(v *DescribeUserResourcesResponse
 }
 
 type EncryptPasswordRequest struct {
+	// The ID of the client. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1d40776f-e9cb-4e2b-a8da-308d10e8****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The directory ID.
+	//
 	// example:
 	//
 	// cn-beijing+dir-131196****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1b16dcff3ab21a6c5ec01652238375511cff5a1db59fd4dc49afb37e2ea7a626af6f38109fd0498b6abd9de1af7743****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-beijing+dir-131196****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The password that you want to encrypt.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Ab123456
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3488,10 +3584,14 @@ func (s *EncryptPasswordRequest) SetSessionId(v string) *EncryptPasswordRequest 
 }
 
 type EncryptPasswordResponseBody struct {
+	// The encrypted password.
+	//
 	// example:
 	//
 	// d34601bc-e6b1-4433-b0cc-8f6c5e52;n4apvGub3OBoj4Grwg==;thhO4UEomJfdvwnwlA==
 	EncryptedPassword *string `json:"EncryptedPassword,omitempty" xml:"EncryptedPassword,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// AF538DA8-FFC6-52DA-8FF8-7B92579F****
@@ -5281,38 +5381,52 @@ func (s *ReportSessionStatusResponse) SetBody(v *ReportSessionStatusResponseBody
 }
 
 type ResetPasswordRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 95e41934-383e-4c9f-824f-3b93b19b****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	//
 	// example:
 	//
 	// 2f00ab32-a473-4c90-9aae-dd8842ae****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The email address of the user.
+	//
 	// example:
 	//
 	// a***@example.edu
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// liming
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The office network ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-899235****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The phone number of the user.
+	//
 	// example:
 	//
 	// 1827912****
@@ -5363,6 +5477,8 @@ func (s *ResetPasswordRequest) SetPhone(v string) *ResetPasswordRequest {
 }
 
 type ResetPasswordResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A00477A5-167F-56D2-A315-EA77E4BD****
@@ -5412,36 +5528,56 @@ func (s *ResetPasswordResponse) SetBody(v *ResetPasswordResponseBody) *ResetPass
 }
 
 type ResetSnapshotRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// b9d8ddfd-65d4-4857-9e97-56477d1f****
-	ClientId  *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The cloud computer ID.
+	//
+	// example:
+	//
+	// ecd-e964cr92klwqb****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1fdef51b727aa91d6c881658978508114d3f5680fa99a66b2a631d17d5bb4860cccf1173be24d77d5ef1423c83aea****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// 05182b8c-bb0d-49d3-963c-ee63a507****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The snapshot ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// s-2zeipxmnhej803x7****
-	SnapshotId  *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	StopDesktop *bool   `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// Specifies whether to stop the cloud computer.
+	//
+	// example:
+	//
+	// true
+	StopDesktop *bool `json:"StopDesktop,omitempty" xml:"StopDesktop,omitempty"`
 }
 
 func (s ResetSnapshotRequest) String() string {
@@ -5488,6 +5624,8 @@ func (s *ResetSnapshotRequest) SetStopDesktop(v bool) *ResetSnapshotRequest {
 }
 
 type ResetSnapshotResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
@@ -5537,36 +5675,52 @@ func (s *ResetSnapshotResponse) SetBody(v *ResetSnapshotResponseBody) *ResetSnap
 }
 
 type SendTokenCodeRequest struct {
+	// The client ID. The system generates a unique ID for each client.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f4a0dc8e-1702-4728-9a60-95b27a35****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The operating system on which the client runs.
+	//
 	// example:
 	//
 	// Windows_NT 10.0.18363 x64
 	ClientOS *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	// The client version. If you use an Alibaba Cloud Workspace client, you can view the client version in the "About" dialog box on the client logon page.
+	//
 	// example:
 	//
 	// 2.1.0-R-20210731.151756
 	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// The username of the account.
+	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	// The logon token.
+	//
 	// example:
 	//
 	// v28101ac6a9e69c66b04a163031680463660b4b216cd758f34b60b9ad6a7c7f7334b83dd8f75eef4209c68f9f1080b****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The office network ID.
+	//
 	// example:
 	//
 	// cn-hangzhou+dir-2925105532
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// cd45e873-650d-4d70-acb9-f996187a****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// If two-factor authentication is enabled for clients in the Elastic Desktop Service (EDS) Enterprise console, the system will send a verification code to the user\\"s email address if it detects that the current logged-on user is at risk. This parameter is required if you set `CurrentStage` to `TokenVerify`.
+	//
 	// example:
 	//
 	// 63****
@@ -5622,6 +5776,8 @@ func (s *SendTokenCodeRequest) SetTokenCode(v string) *SendTokenCodeRequest {
 }
 
 type SendTokenCodeResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 134BD0B2-B848-5743-9CE2-C1FD3D5F****
@@ -6324,6 +6480,7 @@ type StopDesktopsRequest struct {
 	//
 	// 04b7b80a0b020715c5c1b4175fc4771698****9e2a759557a4624665fd53ae40
 	SessionToken *string `json:"SessionToken,omitempty" xml:"SessionToken,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s StopDesktopsRequest) String() string {
@@ -6381,6 +6538,11 @@ func (s *StopDesktopsRequest) SetSessionId(v string) *StopDesktopsRequest {
 
 func (s *StopDesktopsRequest) SetSessionToken(v string) *StopDesktopsRequest {
 	s.SessionToken = &v
+	return s
+}
+
+func (s *StopDesktopsRequest) SetUuid(v string) *StopDesktopsRequest {
+	s.Uuid = &v
 	return s
 }
 
@@ -6540,38 +6702,58 @@ func (s *StopRecordContentResponse) SetBody(v *StopRecordContentResponseBody) *S
 }
 
 type UnbindUserDesktopRequest struct {
+	// The client ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 58f96f67-7944-4f97-9342-****
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	// The client type.
+	//
 	// example:
 	//
 	// windows
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// Specifies whether to enable forced unbinding.
+	//
+	// Valid values:
+	//
+	// 	- true: Even when end users connect to cloud computers, the forced unbinding is still enforced.
+	//
+	// 	- false: Forced unbinding is only enforced when end users are disconnected from cloud computers.
+	//
 	// example:
 	//
 	// true
 	Force *bool `json:"Force,omitempty" xml:"Force,omitempty"`
+	// The logon token.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v12307f5e0****
 	LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The session ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3b053331-dc98-43d8-b247-****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The cloud computer ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6624,6 +6806,8 @@ func (s *UnbindUserDesktopRequest) SetUserDesktopId(v string) *UnbindUserDesktop
 }
 
 type UnbindUserDesktopResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D5B7CF35-E078-5EBF-A010-****
@@ -6923,24 +7107,13 @@ func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ApproveFotaUpdateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ApproveFotaUpdateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ApproveFotaUpdateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6961,6 +7134,10 @@ func (client *Client) ApproveFotaUpdate(request *ApproveFotaUpdateRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a user account.
+//
 // @param request - ChangePasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7018,26 +7195,19 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangePasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangePasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangePasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Changes the password of a user account.
+//
 // @param request - ChangePasswordRequest
 //
 // @return ChangePasswordResponse
@@ -7101,24 +7271,13 @@ func (client *Client) DeleteFingerPrintTemplateWithOptions(request *DeleteFinger
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteFingerPrintTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteFingerPrintTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteFingerPrintTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteFingerPrintTemplateRequest
@@ -7135,6 +7294,10 @@ func (client *Client) DeleteFingerPrintTemplate(request *DeleteFingerPrintTempla
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries directory details.
+//
 // @param request - DescribeDirectoriesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7172,26 +7335,19 @@ func (client *Client) DescribeDirectoriesWithOptions(request *DescribeDirectorie
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDirectoriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDirectoriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries directory details.
+//
 // @param request - DescribeDirectoriesRequest
 //
 // @return DescribeDirectoriesResponse
@@ -7206,6 +7362,10 @@ func (client *Client) DescribeDirectories(request *DescribeDirectoriesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries fingerprint templates.
+//
 // @param request - DescribeFingerPrintTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7247,26 +7407,19 @@ func (client *Client) DescribeFingerPrintTemplatesWithOptions(request *DescribeF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeFingerPrintTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeFingerPrintTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeFingerPrintTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries fingerprint templates.
+//
 // @param request - DescribeFingerPrintTemplatesRequest
 //
 // @return DescribeFingerPrintTemplatesResponse
@@ -7386,24 +7539,13 @@ func (client *Client) DescribeGlobalDesktopsWithOptions(request *DescribeGlobalD
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGlobalDesktopsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGlobalDesktopsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGlobalDesktopsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeGlobalDesktopsRequest
@@ -7457,24 +7599,13 @@ func (client *Client) DescribeOfficeSitesWithOptions(request *DescribeOfficeSite
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeOfficeSitesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeOfficeSitesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeOfficeSitesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeOfficeSitesRequest
@@ -7524,24 +7655,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeRegionsRequest
@@ -7619,24 +7739,13 @@ func (client *Client) DescribeSnapshotsWithOptions(request *DescribeSnapshotsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSnapshotsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSnapshotsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7790,24 +7899,13 @@ func (client *Client) DescribeUserResourcesWithOptions(request *DescribeUserReso
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUserResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUserResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUserResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7828,6 +7926,10 @@ func (client *Client) DescribeUserResources(request *DescribeUserResourcesReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Encrypts a password.
+//
 // @param request - EncryptPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7881,26 +7983,19 @@ func (client *Client) EncryptPasswordWithOptions(request *EncryptPasswordRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EncryptPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EncryptPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EncryptPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Encrypts a password.
+//
 // @param request - EncryptPasswordRequest
 //
 // @return EncryptPasswordResponse
@@ -7964,24 +8059,13 @@ func (client *Client) GetCloudDriveServiceMountTokenWithOptions(request *GetClou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCloudDriveServiceMountTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCloudDriveServiceMountTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCloudDriveServiceMountTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8087,24 +8171,13 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetConnectionTicketResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetConnectionTicketResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetConnectionTicketResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetConnectionTicketRequest
@@ -8222,24 +8295,13 @@ func (client *Client) GetLoginTokenWithOptions(request *GetLoginTokenRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLoginTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLoginTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLoginTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8301,24 +8363,13 @@ func (client *Client) IsKeepAliveWithOptions(request *IsKeepAliveRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &IsKeepAliveResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &IsKeepAliveResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &IsKeepAliveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8380,24 +8431,13 @@ func (client *Client) QueryEdsAgentReportConfigWithOptions(request *QueryEdsAgen
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryEdsAgentReportConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryEdsAgentReportConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryEdsAgentReportConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8491,24 +8531,13 @@ func (client *Client) RebootDesktopsWithOptions(request *RebootDesktopsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RebootDesktopsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RebootDesktopsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RebootDesktopsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8582,24 +8611,13 @@ func (client *Client) RefreshLoginTokenWithOptions(request *RefreshLoginTokenReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshLoginTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshLoginTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshLoginTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RefreshLoginTokenRequest
@@ -8661,24 +8679,13 @@ func (client *Client) ReportEdsAgentInfoWithOptions(request *ReportEdsAgentInfoR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReportEdsAgentInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReportEdsAgentInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReportEdsAgentInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8748,24 +8755,13 @@ func (client *Client) ReportSessionStatusWithOptions(request *ReportSessionStatu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReportSessionStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReportSessionStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReportSessionStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ReportSessionStatusRequest
@@ -8782,6 +8778,10 @@ func (client *Client) ReportSessionStatus(request *ReportSessionStatusRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Resets a password.
+//
 // @param request - ResetPasswordRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8835,26 +8835,19 @@ func (client *Client) ResetPasswordWithOptions(request *ResetPasswordRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Resets a password.
+//
 // @param request - ResetPasswordRequest
 //
 // @return ResetPasswordResponse
@@ -8871,7 +8864,7 @@ func (client *Client) ResetPassword(request *ResetPasswordRequest) (_result *Res
 
 // Summary:
 //
-// 还原快照
+// Restores the data of a disk from a snapshot.
 //
 // @param request - ResetSnapshotRequest
 //
@@ -8926,29 +8919,18 @@ func (client *Client) ResetSnapshotWithOptions(request *ResetSnapshotRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetSnapshotResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetSnapshotResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetSnapshotResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 还原快照
+// Restores the data of a disk from a snapshot.
 //
 // @param request - ResetSnapshotRequest
 //
@@ -8964,6 +8946,10 @@ func (client *Client) ResetSnapshot(request *ResetSnapshotRequest) (_result *Res
 	return _result, _err
 }
 
+// Summary:
+//
+// Sends a logon verification code.
+//
 // @param request - SendTokenCodeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9021,26 +9007,19 @@ func (client *Client) SendTokenCodeWithOptions(request *SendTokenCodeRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SendTokenCodeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SendTokenCodeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SendTokenCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Sends a logon verification code.
+//
 // @param request - SendTokenCodeRequest
 //
 // @return SendTokenCodeResponse
@@ -9120,24 +9099,13 @@ func (client *Client) SetFingerPrintTemplateWithOptions(request *SetFingerPrintT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetFingerPrintTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetFingerPrintTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetFingerPrintTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SetFingerPrintTemplateRequest
@@ -9207,24 +9175,13 @@ func (client *Client) SetFingerPrintTemplateDescriptionWithOptions(request *SetF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetFingerPrintTemplateDescriptionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetFingerPrintTemplateDescriptionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetFingerPrintTemplateDescriptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SetFingerPrintTemplateDescriptionRequest
@@ -9310,24 +9267,13 @@ func (client *Client) StartDesktopsWithOptions(request *StartDesktopsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartDesktopsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartDesktopsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartDesktopsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9409,24 +9355,13 @@ func (client *Client) StartRecordContentWithOptions(request *StartRecordContentR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartRecordContentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartRecordContentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartRecordContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StartRecordContentRequest
@@ -9502,6 +9437,10 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 		query["SessionToken"] = request.SessionToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9516,24 +9455,13 @@ func (client *Client) StopDesktopsWithOptions(request *StopDesktopsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopDesktopsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopDesktopsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopDesktopsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9611,24 +9539,13 @@ func (client *Client) StopRecordContentWithOptions(request *StopRecordContentReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopRecordContentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopRecordContentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopRecordContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StopRecordContentRequest
@@ -9647,7 +9564,7 @@ func (client *Client) StopRecordContent(request *StopRecordContentRequest) (_res
 
 // Summary:
 //
-// 解绑用户桌面
+// Unbinds end users from cloud computers.
 //
 // @param request - UnbindUserDesktopRequest
 //
@@ -9702,29 +9619,18 @@ func (client *Client) UnbindUserDesktopWithOptions(request *UnbindUserDesktopReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnbindUserDesktopResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnbindUserDesktopResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnbindUserDesktopResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 解绑用户桌面
+// Unbinds end users from cloud computers.
 //
 // @param request - UnbindUserDesktopRequest
 //
@@ -9797,24 +9703,13 @@ func (client *Client) VerifyCredentialWithOptions(request *VerifyCredentialReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &VerifyCredentialResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &VerifyCredentialResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &VerifyCredentialResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - VerifyCredentialRequest
