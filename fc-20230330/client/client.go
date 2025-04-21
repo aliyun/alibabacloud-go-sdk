@@ -695,8 +695,9 @@ type CreateFunctionInput struct {
 	// example:
 	//
 	// python3.10
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
-	Tags    []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
+	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
+	Tags            []*Tag  `json:"tags" xml:"tags" type:"Repeated"`
 	// example:
 	//
 	// 60
@@ -820,6 +821,11 @@ func (s *CreateFunctionInput) SetRole(v string) *CreateFunctionInput {
 
 func (s *CreateFunctionInput) SetRuntime(v string) *CreateFunctionInput {
 	s.Runtime = &v
+	return s
+}
+
+func (s *CreateFunctionInput) SetSessionAffinity(v string) *CreateFunctionInput {
+	s.SessionAffinity = &v
 	return s
 }
 
@@ -1799,7 +1805,8 @@ type Function struct {
 	// example:
 	//
 	// python3.10
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	// example:
 	//
 	// Pending
@@ -1981,6 +1988,11 @@ func (s *Function) SetRole(v string) *Function {
 
 func (s *Function) SetRuntime(v string) *Function {
 	s.Runtime = &v
+	return s
+}
+
+func (s *Function) SetSessionAffinity(v string) *Function {
+	s.SessionAffinity = &v
 	return s
 }
 
@@ -2563,6 +2575,7 @@ func (s *Layer) SetVersion(v int32) *Layer {
 }
 
 type LifecycleHook struct {
+	Command []*string `json:"command" xml:"command" type:"Repeated"`
 	// example:
 	//
 	// index.initializer
@@ -2579,6 +2592,11 @@ func (s LifecycleHook) String() string {
 
 func (s LifecycleHook) GoString() string {
 	return s.String()
+}
+
+func (s *LifecycleHook) SetCommand(v []*string) *LifecycleHook {
+	s.Command = v
+	return s
 }
 
 func (s *LifecycleHook) SetHandler(v string) *LifecycleHook {
@@ -5080,8 +5098,9 @@ type UpdateFunctionInput struct {
 	// example:
 	//
 	// acs:ram::188077086902****:role/fc-test
-	Role    *string `json:"role,omitempty" xml:"role,omitempty"`
-	Runtime *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	Role            *string `json:"role,omitempty" xml:"role,omitempty"`
+	Runtime         *string `json:"runtime,omitempty" xml:"runtime,omitempty"`
+	SessionAffinity *string `json:"sessionAffinity,omitempty" xml:"sessionAffinity,omitempty"`
 	// example:
 	//
 	// 60
@@ -5200,6 +5219,11 @@ func (s *UpdateFunctionInput) SetRole(v string) *UpdateFunctionInput {
 
 func (s *UpdateFunctionInput) SetRuntime(v string) *UpdateFunctionInput {
 	s.Runtime = &v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetSessionAffinity(v string) *UpdateFunctionInput {
+	s.SessionAffinity = &v
 	return s
 }
 

@@ -1,3 +1,6 @@
+2025-04-21 Version: v4.3.4
+- Generated golang 2023-03-30 for FC.
+
 2025-04-18 Version: v4.3.3
 - Update API ListFunctions: add request parameters functionName.
 
