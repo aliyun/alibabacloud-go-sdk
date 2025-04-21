@@ -1,3 +1,6 @@
+2025-04-21 Version: v2.0.9
+- Generated golang 2020-03-20 for videorecog.
+
 2023-03-14 Version: v2.0.8
 - Update SplitVideoParts.
 

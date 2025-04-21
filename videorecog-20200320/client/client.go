@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -18,6 +15,11 @@ import (
 )
 
 type DetectVideoShotRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/DetectVideoShot/DetectVideoShot2.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -35,6 +37,11 @@ func (s *DetectVideoShotRequest) SetVideoUrl(v string) *DetectVideoShotRequest {
 }
 
 type DetectVideoShotAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/DetectVideoShot/DetectVideoShot2.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -52,9 +59,12 @@ func (s *DetectVideoShotAdvanceRequest) SetVideoUrlObject(v io.Reader) *DetectVi
 }
 
 type DetectVideoShotResponseBody struct {
-	Data      *DetectVideoShotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *DetectVideoShotResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0033B795-09C7-4EB9-A33C-EBA325192B0D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DetectVideoShotResponseBody) String() string {
@@ -99,9 +109,9 @@ func (s *DetectVideoShotResponseBodyData) SetShotFrameIds(v []*int32) *DetectVid
 }
 
 type DetectVideoShotResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DetectVideoShotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DetectVideoShotResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s DetectVideoShotResponse) String() string {
@@ -128,7 +138,15 @@ func (s *DetectVideoShotResponse) SetBody(v *DetectVideoShotResponseBody) *Detec
 }
 
 type EvaluateVideoQualityRequest struct {
-	Mode     *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// vqa_plus
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://public-vigen-video.oss-cn-shanghai.aliyuncs.com/Common/xxx/dont_delete/decaption/123.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -151,7 +169,15 @@ func (s *EvaluateVideoQualityRequest) SetVideoUrl(v string) *EvaluateVideoQualit
 }
 
 type EvaluateVideoQualityAdvanceRequest struct {
-	Mode           *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// example:
+	//
+	// vqa_plus
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://public-vigen-video.oss-cn-shanghai.aliyuncs.com/Common/xxx/dont_delete/decaption/123.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -174,9 +200,12 @@ func (s *EvaluateVideoQualityAdvanceRequest) SetVideoUrlObject(v io.Reader) *Eva
 }
 
 type EvaluateVideoQualityResponseBody struct {
-	Data      *EvaluateVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *EvaluateVideoQualityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1d33e538-c949-4fcd-83f6-4d57e4b31527
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EvaluateVideoQualityResponseBody) String() string {
@@ -203,7 +232,13 @@ func (s *EvaluateVideoQualityResponseBody) SetRequestId(v string) *EvaluateVideo
 }
 
 type EvaluateVideoQualityResponseBodyData struct {
-	JsonUrl          *string                                               `json:"JsonUrl,omitempty" xml:"JsonUrl,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-damo-eas-cn-shanghai.oss-cn-shanghai.aliyuncs.com/eas-video-quality-assessment/2023-01-13-10/31%3A08-cVeN9ZQlzIPfGqsa.json?Expires=1673578869&amp;OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&amp;Signature=AiSsOsZ7rYfhf9w3Mxn%2Fq4GKKy****
+	JsonUrl *string `json:"JsonUrl,omitempty" xml:"JsonUrl,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-damo-eas-cn-shanghai.oss-cn-shanghai.aliyuncs.com/eas-video-quality-assessment/2023-01-13-10/31%3A08-cVeN9ZQlzIPfGqsa.pdf?Expires=1673578869&amp;OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&amp;Signature=xULlZzVuhoYWAXRbp9A4EzzZcS****
 	PdfUrl           *string                                               `json:"PdfUrl,omitempty" xml:"PdfUrl,omitempty"`
 	VideoQualityInfo *EvaluateVideoQualityResponseBodyDataVideoQualityInfo `json:"VideoQualityInfo,omitempty" xml:"VideoQualityInfo,omitempty" type:"Struct"`
 }
@@ -232,14 +267,38 @@ func (s *EvaluateVideoQualityResponseBodyData) SetVideoQualityInfo(v *EvaluateVi
 }
 
 type EvaluateVideoQualityResponseBodyDataVideoQualityInfo struct {
-	Blurriness          *float32 `json:"Blurriness,omitempty" xml:"Blurriness,omitempty"`
-	ColorContrast       *float32 `json:"ColorContrast,omitempty" xml:"ColorContrast,omitempty"`
-	ColorSaturation     *float32 `json:"ColorSaturation,omitempty" xml:"ColorSaturation,omitempty"`
-	Colorfulness        *float32 `json:"Colorfulness,omitempty" xml:"Colorfulness,omitempty"`
+	// example:
+	//
+	// 0.15
+	Blurriness *float32 `json:"Blurriness,omitempty" xml:"Blurriness,omitempty"`
+	// example:
+	//
+	// 0.55
+	ColorContrast *float32 `json:"ColorContrast,omitempty" xml:"ColorContrast,omitempty"`
+	// example:
+	//
+	// 0.17
+	ColorSaturation *float32 `json:"ColorSaturation,omitempty" xml:"ColorSaturation,omitempty"`
+	// example:
+	//
+	// 0.48
+	Colorfulness *float32 `json:"Colorfulness,omitempty" xml:"Colorfulness,omitempty"`
+	// example:
+	//
+	// 0.25
 	CompressiveStrength *float32 `json:"CompressiveStrength,omitempty" xml:"CompressiveStrength,omitempty"`
-	Luminance           *float32 `json:"Luminance,omitempty" xml:"Luminance,omitempty"`
-	MosScore            *float32 `json:"MosScore,omitempty" xml:"MosScore,omitempty"`
-	NoiseIntensity      *float32 `json:"NoiseIntensity,omitempty" xml:"NoiseIntensity,omitempty"`
+	// example:
+	//
+	// 0.51
+	Luminance *float32 `json:"Luminance,omitempty" xml:"Luminance,omitempty"`
+	// example:
+	//
+	// 0.7048
+	MosScore *float32 `json:"MosScore,omitempty" xml:"MosScore,omitempty"`
+	// example:
+	//
+	// 0.01
+	NoiseIntensity *float32 `json:"NoiseIntensity,omitempty" xml:"NoiseIntensity,omitempty"`
 }
 
 func (s EvaluateVideoQualityResponseBodyDataVideoQualityInfo) String() string {
@@ -291,9 +350,9 @@ func (s *EvaluateVideoQualityResponseBodyDataVideoQualityInfo) SetNoiseIntensity
 }
 
 type EvaluateVideoQualityResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *EvaluateVideoQualityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EvaluateVideoQualityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s EvaluateVideoQualityResponse) String() string {
@@ -320,7 +379,17 @@ func (s *EvaluateVideoQualityResponse) SetBody(v *EvaluateVideoQualityResponseBo
 }
 
 type GenerateVideoCoverRequest struct {
-	IsGif    *bool   `json:"IsGif,omitempty" xml:"IsGif,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsGif *bool `json:"IsGif,omitempty" xml:"IsGif,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/videorecog/videorecog1.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -343,7 +412,17 @@ func (s *GenerateVideoCoverRequest) SetVideoUrl(v string) *GenerateVideoCoverReq
 }
 
 type GenerateVideoCoverAdvanceRequest struct {
-	IsGif          *bool     `json:"IsGif,omitempty" xml:"IsGif,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsGif *bool `json:"IsGif,omitempty" xml:"IsGif,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/videorecog/videorecog1.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -366,9 +445,12 @@ func (s *GenerateVideoCoverAdvanceRequest) SetVideoUrlObject(v io.Reader) *Gener
 }
 
 type GenerateVideoCoverResponseBody struct {
-	Data      *GenerateVideoCoverResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *GenerateVideoCoverResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 5B95B724-C5B9-4F77-A743-0CA4EA95CC82
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateVideoCoverResponseBody) String() string {
@@ -412,8 +494,14 @@ func (s *GenerateVideoCoverResponseBodyData) SetOutputs(v []*GenerateVideoCoverR
 }
 
 type GenerateVideoCoverResponseBodyDataOutputs struct {
+	// example:
+	//
+	// 6.1819260887924425
 	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	ImageURL   *string  `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+	// example:
+	//
+	// http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-cover/2020-05-11-07/pic_lOyxGGAqQYSANGxP.mp4_202_544_960_c9f88b2a5f75e17c093d1a65f5edff4d_beautified.png?Expires=1589185385&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=PAalKsfeZC4UQzYDTU%2F3D1G7Xt****
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
 }
 
 func (s GenerateVideoCoverResponseBodyDataOutputs) String() string {
@@ -435,9 +523,9 @@ func (s *GenerateVideoCoverResponseBodyDataOutputs) SetImageURL(v string) *Gener
 }
 
 type GenerateVideoCoverResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GenerateVideoCoverResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateVideoCoverResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GenerateVideoCoverResponse) String() string {
@@ -464,6 +552,11 @@ func (s *GenerateVideoCoverResponse) SetBody(v *GenerateVideoCoverResponseBody) 
 }
 
 type GetAsyncJobResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// E75FE679-0303-4DD1-8252-1143B4FA8A27
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 }
 
@@ -481,8 +574,11 @@ func (s *GetAsyncJobResultRequest) SetJobId(v string) *GetAsyncJobResultRequest 
 }
 
 type GetAsyncJobResultResponseBody struct {
-	Data      *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *GetAsyncJobResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// A1F44EC4-118D-4A03-B213-F908F36F7DAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBody) String() string {
@@ -504,11 +600,26 @@ func (s *GetAsyncJobResultResponseBody) SetRequestId(v string) *GetAsyncJobResul
 }
 
 type GetAsyncJobResultResponseBodyData struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// InvalidParameter
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// paramsIllegal
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Result       *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 7DFDA846-178B-4ADB-B69A-62C641214D81
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// example:
+	//
+	// {\\"Outputs\\":[{\\"ImageURL\\":\\"http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-cover/2020-03-25-11/pic_4t7zW6R6SUGn4DLF.mp4_2375_1920_1080_96ce5a96b5b16628cd778c035b68356d_beautified.png?Expires=1585136160&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=MDd7BqbivlLRd16MTKbPFQHV3u****\\",\\"Confidence\\":8.426481079120514},{\\"ImageURL\\":\\"http://algo-app-aic-vd-cn-shanghai-prod.oss-cn-shanghai.aliyuncs.com/video-cover/2020-03-25-11/pic_4t7zW6R6SUGn4DLF.mp4_2996_1920_1080_d5df0556bf420242c84fe6f7a45d01e1_beautified.png?Expires=1585136160&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=htaW5G%2BpqPBW%2BEMTe01ckVoGsQ****\\",\\"Confidence\\":6.225726566341124}]}
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// example:
+	//
+	// PROCESS_SUCCESS
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s GetAsyncJobResultResponseBodyData) String() string {
@@ -545,9 +656,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -574,8 +685,13 @@ func (s *GetAsyncJobResultResponse) SetBody(v *GetAsyncJobResultResponseBody) *G
 }
 
 type RecognizeVideoCastCrewListRequest struct {
-	Params   []*RecognizeVideoCastCrewListRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	VideoUrl *string                                    `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Params []*RecognizeVideoCastCrewListRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://shanghai.oss-cn-shanghai.aliyuncs.com/download/xxxx.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListRequest) String() string {
@@ -597,6 +713,9 @@ func (s *RecognizeVideoCastCrewListRequest) SetVideoUrl(v string) *RecognizeVide
 }
 
 type RecognizeVideoCastCrewListRequestParams struct {
+	// example:
+	//
+	// cast
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -614,8 +733,13 @@ func (s *RecognizeVideoCastCrewListRequestParams) SetType(v string) *RecognizeVi
 }
 
 type RecognizeVideoCastCrewListAdvanceRequest struct {
-	Params         []*RecognizeVideoCastCrewListAdvanceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
-	VideoUrlObject io.Reader                                         `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	Params []*RecognizeVideoCastCrewListAdvanceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://shanghai.oss-cn-shanghai.aliyuncs.com/download/xxxx.mp4
+	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListAdvanceRequest) String() string {
@@ -637,6 +761,9 @@ func (s *RecognizeVideoCastCrewListAdvanceRequest) SetVideoUrlObject(v io.Reader
 }
 
 type RecognizeVideoCastCrewListAdvanceRequestParams struct {
+	// example:
+	//
+	// cast
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -655,7 +782,12 @@ func (s *RecognizeVideoCastCrewListAdvanceRequestParams) SetType(v string) *Reco
 
 type RecognizeVideoCastCrewListShrinkRequest struct {
 	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://shanghai.oss-cn-shanghai.aliyuncs.com/download/xxxx.mp4
+	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListShrinkRequest) String() string {
@@ -677,9 +809,12 @@ func (s *RecognizeVideoCastCrewListShrinkRequest) SetVideoUrl(v string) *Recogni
 }
 
 type RecognizeVideoCastCrewListResponseBody struct {
-	Data      *RecognizeVideoCastCrewListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *RecognizeVideoCastCrewListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// EE5B1A95-064F-1C5E-A6FE-FEE0D734A632
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBody) String() string {
@@ -706,9 +841,15 @@ func (s *RecognizeVideoCastCrewListResponseBody) SetRequestId(v string) *Recogni
 }
 
 type RecognizeVideoCastCrewListResponseBodyData struct {
-	CastResults        []*RecognizeVideoCastCrewListResponseBodyDataCastResults      `json:"CastResults,omitempty" xml:"CastResults,omitempty" type:"Repeated"`
-	OcrResults         []*RecognizeVideoCastCrewListResponseBodyDataOcrResults       `json:"OcrResults,omitempty" xml:"OcrResults,omitempty" type:"Repeated"`
-	OcrResultsUrl      *string                                                       `json:"OcrResultsUrl,omitempty" xml:"OcrResultsUrl,omitempty"`
+	CastResults []*RecognizeVideoCastCrewListResponseBodyDataCastResults `json:"CastResults,omitempty" xml:"CastResults,omitempty" type:"Repeated"`
+	OcrResults  []*RecognizeVideoCastCrewListResponseBodyDataOcrResults  `json:"OcrResults,omitempty" xml:"OcrResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-media-ai-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-ocr/1665475907_bGHMygKsFw.json?Expires=1665477707&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=6KQb9OXQldsg30w%2FNurHwAbjiJs%3D
+	OcrResultsUrl *string `json:"OcrResultsUrl,omitempty" xml:"OcrResultsUrl,omitempty"`
+	// example:
+	//
+	// http://vibktprfx-prod-prod-media-ai-cn-shanghai.oss-cn-shanghai.aliyuncs.com/video-ocr/1665475907_VSRvetTHon.json?Expires=1665477707&OSSAccessKeyId=LTAI4FoLmvQ9urWXgSRp****&Signature=wfQviVVSyVRLPVlHDKXi6cTefHY%3D
 	OcrVideoResultsUrl *string                                                       `json:"OcrVideoResultsUrl,omitempty" xml:"OcrVideoResultsUrl,omitempty"`
 	SubtitlesResults   []*RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults `json:"SubtitlesResults,omitempty" xml:"SubtitlesResults,omitempty" type:"Repeated"`
 	VideoOcrResults    []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults  `json:"VideoOcrResults,omitempty" xml:"VideoOcrResults,omitempty" type:"Repeated"`
@@ -754,8 +895,14 @@ func (s *RecognizeVideoCastCrewListResponseBodyData) SetVideoOcrResults(v []*Rec
 
 type RecognizeVideoCastCrewListResponseBodyDataCastResults struct {
 	DetailInfo map[string]*string `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
-	EndTime    *float32           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime  *float32           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 0.6
+	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0.6
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataCastResults) String() string {
@@ -783,8 +930,14 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetStartTime(v f
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResults struct {
 	DetailInfo []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Repeated"`
-	EndTime    *float32                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime  *float32                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 0.28
+	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0.28
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataOcrResults) String() string {
@@ -811,15 +964,30 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetStartTime(v fl
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo struct {
-	Boxes      []*int32                                                                  `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	CharProbs  [][]*float32                                                              `json:"CharProbs,omitempty" xml:"CharProbs,omitempty" type:"Repeated"`
+	Boxes     []*int32     `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	CharProbs [][]*float32 `json:"CharProbs,omitempty" xml:"CharProbs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 17
 	FrameIndex *int64                                                                    `json:"FrameIndex,omitempty" xml:"FrameIndex,omitempty"`
 	Position   []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	Score      *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text       *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
-	TextProb   *float32                                                                  `json:"TextProb,omitempty" xml:"TextProb,omitempty"`
-	TimeStamp  *float32                                                                  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TrackId    *int64                                                                    `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+	// example:
+	//
+	// 92.07685702563117
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0.9207685702563116
+	TextProb *float32 `json:"TextProb,omitempty" xml:"TextProb,omitempty"`
+	// example:
+	//
+	// 0.28
+	TimeStamp *float32 `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	// example:
+	//
+	// 1
+	TrackId *int64 `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) String() string {
@@ -876,7 +1044,13 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetTrac
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition struct {
+	// example:
+	//
+	// 266
 	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 440
 	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -899,12 +1073,24 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition)
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults struct {
-	SubtitlesAllResults        map[string]*string     `json:"SubtitlesAllResults,omitempty" xml:"SubtitlesAllResults,omitempty"`
-	SubtitlesAllResultsUrl     *string                `json:"SubtitlesAllResultsUrl,omitempty" xml:"SubtitlesAllResultsUrl,omitempty"`
-	SubtitlesChineseResults    map[string]*string     `json:"SubtitlesChineseResults,omitempty" xml:"SubtitlesChineseResults,omitempty"`
-	SubtitlesChineseResultsUrl *string                `json:"SubtitlesChineseResultsUrl,omitempty" xml:"SubtitlesChineseResultsUrl,omitempty"`
-	SubtitlesEnglishResults    map[string]interface{} `json:"SubtitlesEnglishResults,omitempty" xml:"SubtitlesEnglishResults,omitempty"`
-	SubtitlesEnglishResultsUrl *string                `json:"SubtitlesEnglishResultsUrl,omitempty" xml:"SubtitlesEnglishResultsUrl,omitempty"`
+	SubtitlesAllResults map[string]*string `json:"SubtitlesAllResults,omitempty" xml:"SubtitlesAllResults,omitempty"`
+	// example:
+	//
+	// url
+	SubtitlesAllResultsUrl  *string            `json:"SubtitlesAllResultsUrl,omitempty" xml:"SubtitlesAllResultsUrl,omitempty"`
+	SubtitlesChineseResults map[string]*string `json:"SubtitlesChineseResults,omitempty" xml:"SubtitlesChineseResults,omitempty"`
+	// example:
+	//
+	// url1
+	SubtitlesChineseResultsUrl *string `json:"SubtitlesChineseResultsUrl,omitempty" xml:"SubtitlesChineseResultsUrl,omitempty"`
+	// example:
+	//
+	// hello
+	SubtitlesEnglishResults map[string]interface{} `json:"SubtitlesEnglishResults,omitempty" xml:"SubtitlesEnglishResults,omitempty"`
+	// example:
+	//
+	// url2
+	SubtitlesEnglishResultsUrl *string `json:"SubtitlesEnglishResultsUrl,omitempty" xml:"SubtitlesEnglishResultsUrl,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) String() string {
@@ -947,8 +1133,14 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitle
 
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults struct {
 	DetailInfo []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Repeated"`
-	EndTime    *float32                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime  *float32                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// example:
+	//
+	// 0.92
+	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 0.92
+	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) String() string {
@@ -977,9 +1169,15 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetStartTime
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo struct {
 	Boxes    []*int64                                                                       `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
 	Position []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	Score    *float32                                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text     *string                                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
-	TextType *int64                                                                         `json:"TextType,omitempty" xml:"TextType,omitempty"`
+	// example:
+	//
+	// 92.07685702563117
+	Score *float32 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text  *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	// example:
+	//
+	// 0
+	TextType *int64 `json:"TextType,omitempty" xml:"TextType,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) String() string {
@@ -1016,7 +1214,13 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) Se
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition struct {
+	// example:
+	//
+	// 269
 	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	// example:
+	//
+	// 423
 	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
@@ -1039,9 +1243,9 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosi
 }
 
 type RecognizeVideoCastCrewListResponse struct {
-	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RecognizeVideoCastCrewListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecognizeVideoCastCrewListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponse) String() string {
@@ -1071,6 +1275,11 @@ type SplitVideoPartsRequest struct {
 	MaxTime  *int32  `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
 	MinTime  *int32  `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/ocr/xxxx.mp4
 	VideoUrl *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1103,9 +1312,14 @@ func (s *SplitVideoPartsRequest) SetVideoUrl(v string) *SplitVideoPartsRequest {
 }
 
 type SplitVideoPartsAdvanceRequest struct {
-	MaxTime        *int32    `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
-	MinTime        *int32    `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
-	Template       *string   `json:"Template,omitempty" xml:"Template,omitempty"`
+	MaxTime  *int32  `json:"MaxTime,omitempty" xml:"MaxTime,omitempty"`
+	MinTime  *int32  `json:"MinTime,omitempty" xml:"MinTime,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://viapi-test.oss-cn-shanghai.aliyuncs.com/test-team/ocr/xxxx.mp4
 	VideoUrlObject io.Reader `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
 }
 
@@ -1138,9 +1352,12 @@ func (s *SplitVideoPartsAdvanceRequest) SetVideoUrlObject(v io.Reader) *SplitVid
 }
 
 type SplitVideoPartsResponseBody struct {
-	Data      *SplitVideoPartsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *SplitVideoPartsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A00A3C17-61D5-1489-860D-B709F83A7C40
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s SplitVideoPartsResponseBody) String() string {
@@ -1190,9 +1407,18 @@ func (s *SplitVideoPartsResponseBodyData) SetSplitVideoPartResults(v []*SplitVid
 }
 
 type SplitVideoPartsResponseBodyDataElements struct {
+	// example:
+	//
+	// 10.06
 	BeginTime *float32 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime   *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Index     *int64   `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// 17.3
+	EndTime *float32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int64 `json:"Index,omitempty" xml:"Index,omitempty"`
 }
 
 func (s SplitVideoPartsResponseBodyDataElements) String() string {
@@ -1260,9 +1486,9 @@ func (s *SplitVideoPartsResponseBodyDataSplitVideoPartResults) SetType(v string)
 }
 
 type SplitVideoPartsResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SplitVideoPartsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SplitVideoPartsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s SplitVideoPartsResponse) String() string {
@@ -1289,6 +1515,11 @@ func (s *SplitVideoPartsResponse) SetBody(v *SplitVideoPartsResponseBody) *Split
 }
 
 type UnderstandVideoContentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/UnderstandVideoContent/UnderstandVideoContent1.mp4
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -1306,6 +1537,11 @@ func (s *UnderstandVideoContentRequest) SetVideoURL(v string) *UnderstandVideoCo
 }
 
 type UnderstandVideoContentAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// http://viapi-test.oss-cn-shanghai.aliyuncs.com/viapi-3.0domepic/videorecog/UnderstandVideoContent/UnderstandVideoContent1.mp4
 	VideoURLObject io.Reader `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
 }
 
@@ -1323,9 +1559,12 @@ func (s *UnderstandVideoContentAdvanceRequest) SetVideoURLObject(v io.Reader) *U
 }
 
 type UnderstandVideoContentResponseBody struct {
-	Data      *UnderstandVideoContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data    *UnderstandVideoContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 71EC3F13-F0CA-4558-AC7F-A351106F59F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s UnderstandVideoContentResponseBody) String() string {
@@ -1375,10 +1614,22 @@ func (s *UnderstandVideoContentResponseBodyData) SetVideoInfo(v *UnderstandVideo
 }
 
 type UnderstandVideoContentResponseBodyDataVideoInfo struct {
-	Duration *int64   `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Fps      *float32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
-	Height   *int64   `json:"Height,omitempty" xml:"Height,omitempty"`
-	Width    *int64   `json:"Width,omitempty" xml:"Width,omitempty"`
+	// example:
+	//
+	// 43380
+	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// example:
+	//
+	// 25.0
+	Fps *float32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// example:
+	//
+	// 1280
+	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// 720
+	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
 func (s UnderstandVideoContentResponseBodyDataVideoInfo) String() string {
@@ -1410,9 +1661,9 @@ func (s *UnderstandVideoContentResponseBodyDataVideoInfo) SetWidth(v int64) *Und
 }
 
 type UnderstandVideoContentResponse struct {
-	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UnderstandVideoContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnderstandVideoContentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
 }
 
 func (s UnderstandVideoContentResponse) String() string {
@@ -1485,6 +1736,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - DetectVideoShotRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectVideoShotResponse
 func (client *Client) DetectVideoShotWithOptions(request *DetectVideoShotRequest, runtime *util.RuntimeOptions) (_result *DetectVideoShotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1518,6 +1774,9 @@ func (client *Client) DetectVideoShotWithOptions(request *DetectVideoShotRequest
 	return _result, _err
 }
 
+// @param request - DetectVideoShotRequest
+//
+// @return DetectVideoShotResponse
 func (client *Client) DetectVideoShot(request *DetectVideoShotRequest) (_result *DetectVideoShotResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectVideoShotResponse{}
@@ -1548,7 +1807,7 @@ func (client *Client) DetectVideoShotAdvance(request *DetectVideoShotAdvanceRequ
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -1576,12 +1835,17 @@ func (client *Client) DetectVideoShotAdvance(request *DetectVideoShotAdvanceRequ
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -1635,6 +1899,15 @@ func (client *Client) DetectVideoShotAdvance(request *DetectVideoShotAdvanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频质量评估
+//
+// @param request - EvaluateVideoQualityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EvaluateVideoQualityResponse
 func (client *Client) EvaluateVideoQualityWithOptions(request *EvaluateVideoQualityRequest, runtime *util.RuntimeOptions) (_result *EvaluateVideoQualityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1672,6 +1945,13 @@ func (client *Client) EvaluateVideoQualityWithOptions(request *EvaluateVideoQual
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频质量评估
+//
+// @param request - EvaluateVideoQualityRequest
+//
+// @return EvaluateVideoQualityResponse
 func (client *Client) EvaluateVideoQuality(request *EvaluateVideoQualityRequest) (_result *EvaluateVideoQualityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &EvaluateVideoQualityResponse{}
@@ -1702,7 +1982,7 @@ func (client *Client) EvaluateVideoQualityAdvance(request *EvaluateVideoQualityA
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -1730,12 +2010,17 @@ func (client *Client) EvaluateVideoQualityAdvance(request *EvaluateVideoQualityA
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -1789,6 +2074,11 @@ func (client *Client) EvaluateVideoQualityAdvance(request *EvaluateVideoQualityA
 	return _result, _err
 }
 
+// @param request - GenerateVideoCoverRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateVideoCoverResponse
 func (client *Client) GenerateVideoCoverWithOptions(request *GenerateVideoCoverRequest, runtime *util.RuntimeOptions) (_result *GenerateVideoCoverResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1826,6 +2116,9 @@ func (client *Client) GenerateVideoCoverWithOptions(request *GenerateVideoCoverR
 	return _result, _err
 }
 
+// @param request - GenerateVideoCoverRequest
+//
+// @return GenerateVideoCoverResponse
 func (client *Client) GenerateVideoCover(request *GenerateVideoCoverRequest) (_result *GenerateVideoCoverResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateVideoCoverResponse{}
@@ -1856,7 +2149,7 @@ func (client *Client) GenerateVideoCoverAdvance(request *GenerateVideoCoverAdvan
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -1884,12 +2177,17 @@ func (client *Client) GenerateVideoCoverAdvance(request *GenerateVideoCoverAdvan
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -1943,6 +2241,11 @@ func (client *Client) GenerateVideoCoverAdvance(request *GenerateVideoCoverAdvan
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultRequest, runtime *util.RuntimeOptions) (_result *GetAsyncJobResultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1976,6 +2279,9 @@ func (client *Client) GetAsyncJobResultWithOptions(request *GetAsyncJobResultReq
 	return _result, _err
 }
 
+// @param request - GetAsyncJobResultRequest
+//
+// @return GetAsyncJobResultResponse
 func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_result *GetAsyncJobResultResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAsyncJobResultResponse{}
@@ -1987,6 +2293,15 @@ func (client *Client) GetAsyncJobResult(request *GetAsyncJobResultRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频OCR
+//
+// @param tmpReq - RecognizeVideoCastCrewListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecognizeVideoCastCrewListResponse
 func (client *Client) RecognizeVideoCastCrewListWithOptions(tmpReq *RecognizeVideoCastCrewListRequest, runtime *util.RuntimeOptions) (_result *RecognizeVideoCastCrewListResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -2030,6 +2345,13 @@ func (client *Client) RecognizeVideoCastCrewListWithOptions(tmpReq *RecognizeVid
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频OCR
+//
+// @param request - RecognizeVideoCastCrewListRequest
+//
+// @return RecognizeVideoCastCrewListResponse
 func (client *Client) RecognizeVideoCastCrewList(request *RecognizeVideoCastCrewListRequest) (_result *RecognizeVideoCastCrewListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecognizeVideoCastCrewListResponse{}
@@ -2060,7 +2382,7 @@ func (client *Client) RecognizeVideoCastCrewListAdvance(request *RecognizeVideoC
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2088,12 +2410,17 @@ func (client *Client) RecognizeVideoCastCrewListAdvance(request *RecognizeVideoC
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2147,6 +2474,15 @@ func (client *Client) RecognizeVideoCastCrewListAdvance(request *RecognizeVideoC
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频拆条
+//
+// @param request - SplitVideoPartsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SplitVideoPartsResponse
 func (client *Client) SplitVideoPartsWithOptions(request *SplitVideoPartsRequest, runtime *util.RuntimeOptions) (_result *SplitVideoPartsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2192,6 +2528,13 @@ func (client *Client) SplitVideoPartsWithOptions(request *SplitVideoPartsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频拆条
+//
+// @param request - SplitVideoPartsRequest
+//
+// @return SplitVideoPartsResponse
 func (client *Client) SplitVideoParts(request *SplitVideoPartsRequest) (_result *SplitVideoPartsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SplitVideoPartsResponse{}
@@ -2222,7 +2565,7 @@ func (client *Client) SplitVideoPartsAdvance(request *SplitVideoPartsAdvanceRequ
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2250,12 +2593,17 @@ func (client *Client) SplitVideoPartsAdvance(request *SplitVideoPartsAdvanceRequ
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
@@ -2309,6 +2657,15 @@ func (client *Client) SplitVideoPartsAdvance(request *SplitVideoPartsAdvanceRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频内容理解
+//
+// @param request - UnderstandVideoContentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnderstandVideoContentResponse
 func (client *Client) UnderstandVideoContentWithOptions(request *UnderstandVideoContentRequest, runtime *util.RuntimeOptions) (_result *UnderstandVideoContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2342,6 +2699,13 @@ func (client *Client) UnderstandVideoContentWithOptions(request *UnderstandVideo
 	return _result, _err
 }
 
+// Summary:
+//
+// 视频内容理解
+//
+// @param request - UnderstandVideoContentRequest
+//
+// @return UnderstandVideoContentResponse
 func (client *Client) UnderstandVideoContent(request *UnderstandVideoContentRequest) (_result *UnderstandVideoContentResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &UnderstandVideoContentResponse{}
@@ -2372,7 +2736,7 @@ func (client *Client) UnderstandVideoContentAdvance(request *UnderstandVideoCont
 
 	credentialType := client.Credential.GetType()
 	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
 		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
 	}
 
@@ -2400,12 +2764,17 @@ func (client *Client) UnderstandVideoContentAdvance(request *UnderstandVideoCont
 	}
 	authResponse := &openplatform.AuthorizeFileUploadResponse{}
 	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
 		AccessKeySecret: accessKeySecret,
 		Type:            tea.String("access_key"),
 		Protocol:        client.Protocol,
 		RegionId:        client.RegionId,
 	}
-	var ossClient *oss.Client
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
 	fileObj := &fileform.FileField{}
 	ossHeader := &oss.PostObjectRequestHeader{}
 	uploadRequest := &oss.PostObjectRequest{}
