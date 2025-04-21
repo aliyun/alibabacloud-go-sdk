@@ -14974,18 +14974,7 @@ type CreatePluginConfigRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
-	//
-	// example:
-	//
-	// status_code: 200
-	//
-	// headers:
-	//
-	// - Content-Type=application/json
-	//
-	// body: "{\\"rule\\": \\"global\\"}"
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The application scope of the plug-in. Valid values:
 	//
 	// 	- 0: global
@@ -15078,18 +15067,7 @@ type CreatePluginConfigShrinkRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in configuration. The configuration content of the WebAssembly (Wasm) plug-in is in the YAML format. The configuration content of the Lua plug-in is Lua code.
-	//
-	// example:
-	//
-	// status_code: 200
-	//
-	// headers:
-	//
-	// - Content-Type=application/json
-	//
-	// body: "{\\"rule\\": \\"global\\"}"
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The application scope of the plug-in. Valid values:
 	//
 	// 	- 0: global
@@ -78836,12 +78814,7 @@ type UpdatePluginConfigRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
-	//
-	// example:
-	//
-	// \\# Configure a check for the required fields of the plug-in, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The application scope of the plug-in.
 	//
 	// 	- 0: global
@@ -78977,12 +78950,7 @@ type UpdatePluginConfigShrinkRequest struct {
 	//
 	// zh
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// The plug-in configuration. Configurations of WebAssembly plug-ins are in the YAML format, and configurations of Lua plug-ins are in the Lua code.
-	//
-	// example:
-	//
-	// \\# Configure a check for the required fields of the plug-in, such as name, age, and friends. Sample configuration: name: John age: 18 friends: - David - Anne
-	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Config         *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The application scope of the plug-in.
 	//
 	// 	- 0: global
@@ -84046,10 +84014,6 @@ func (client *Client) CreatePluginConfigWithOptions(tmpReq *CreatePluginConfigRe
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
 		query["ConfigLevel"] = request.ConfigLevel
 	}
@@ -84070,8 +84034,14 @@ func (client *Client) CreatePluginConfigWithOptions(tmpReq *CreatePluginConfigRe
 		query["ResourceIdList"] = request.ResourceIdListShrink
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePluginConfig"),
@@ -99654,10 +99624,6 @@ func (client *Client) UpdatePluginConfigWithOptions(tmpReq *UpdatePluginConfigRe
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ConfigLevel)) {
 		query["ConfigLevel"] = request.ConfigLevel
 	}
@@ -99694,8 +99660,14 @@ func (client *Client) UpdatePluginConfigWithOptions(tmpReq *UpdatePluginConfigRe
 		query["ResourceIdList"] = request.ResourceIdListShrink
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		body["Config"] = request.Config
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdatePluginConfig"),
