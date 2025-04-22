@@ -9,6 +9,276 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreatePlayingListRequest struct {
+	// This parameter is required.
+	DeviceInfo *CreatePlayingListRequestDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	// This parameter is required.
+	OpenCreatePlayingListRequest *CreatePlayingListRequestOpenCreatePlayingListRequest `json:"OpenCreatePlayingListRequest,omitempty" xml:"OpenCreatePlayingListRequest,omitempty" type:"Struct"`
+}
+
+func (s CreatePlayingListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListRequest) SetDeviceInfo(v *CreatePlayingListRequestDeviceInfo) *CreatePlayingListRequest {
+	s.DeviceInfo = v
+	return s
+}
+
+func (s *CreatePlayingListRequest) SetOpenCreatePlayingListRequest(v *CreatePlayingListRequestOpenCreatePlayingListRequest) *CreatePlayingListRequest {
+	s.OpenCreatePlayingListRequest = v
+	return s
+}
+
+type CreatePlayingListRequestDeviceInfo struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	EncodeKey *string `json:"EncodeKey,omitempty" xml:"EncodeKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// UC_CLIENT_ID
+	EncodeType *string `json:"EncodeType,omitempty" xml:"EncodeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OPEN_ID
+	IdType *string `json:"IdType,omitempty" xml:"IdType,omitempty"`
+	// example:
+	//
+	// 1
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+}
+
+func (s CreatePlayingListRequestDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListRequestDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListRequestDeviceInfo) SetEncodeKey(v string) *CreatePlayingListRequestDeviceInfo {
+	s.EncodeKey = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestDeviceInfo) SetEncodeType(v string) *CreatePlayingListRequestDeviceInfo {
+	s.EncodeType = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestDeviceInfo) SetId(v string) *CreatePlayingListRequestDeviceInfo {
+	s.Id = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestDeviceInfo) SetIdType(v string) *CreatePlayingListRequestDeviceInfo {
+	s.IdType = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestDeviceInfo) SetOrganizationId(v string) *CreatePlayingListRequestDeviceInfo {
+	s.OrganizationId = &v
+	return s
+}
+
+type CreatePlayingListRequestOpenCreatePlayingListRequest struct {
+	// This parameter is required.
+	ContentList []*CreatePlayingListRequestOpenCreatePlayingListRequestContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// content
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
+	// {}
+	ExtendInfo map[string]interface{} `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// true
+	NeedAlbumContinued *bool `json:"NeedAlbumContinued,omitempty" xml:"NeedAlbumContinued,omitempty"`
+	// example:
+	//
+	// default
+	PlayFrom *string `json:"PlayFrom,omitempty" xml:"PlayFrom,omitempty"`
+	// example:
+	//
+	// Normal
+	PlayMode *string `json:"PlayMode,omitempty" xml:"PlayMode,omitempty"`
+}
+
+func (s CreatePlayingListRequestOpenCreatePlayingListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListRequestOpenCreatePlayingListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetContentList(v []*CreatePlayingListRequestOpenCreatePlayingListRequestContentList) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.ContentList = v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetContentType(v string) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetExtendInfo(v map[string]interface{}) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.ExtendInfo = v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetIndex(v int32) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.Index = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetNeedAlbumContinued(v bool) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.NeedAlbumContinued = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetPlayFrom(v string) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.PlayFrom = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequest) SetPlayMode(v string) *CreatePlayingListRequestOpenCreatePlayingListRequest {
+	s.PlayMode = &v
+	return s
+}
+
+type CreatePlayingListRequestOpenCreatePlayingListRequestContentList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	RawId *string `json:"RawId,omitempty" xml:"RawId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ximalayaH5
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+}
+
+func (s CreatePlayingListRequestOpenCreatePlayingListRequestContentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListRequestOpenCreatePlayingListRequestContentList) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequestContentList) SetRawId(v string) *CreatePlayingListRequestOpenCreatePlayingListRequestContentList {
+	s.RawId = &v
+	return s
+}
+
+func (s *CreatePlayingListRequestOpenCreatePlayingListRequestContentList) SetSource(v string) *CreatePlayingListRequestOpenCreatePlayingListRequestContentList {
+	s.Source = &v
+	return s
+}
+
+type CreatePlayingListShrinkRequest struct {
+	// This parameter is required.
+	DeviceInfoShrink *string `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty"`
+	// This parameter is required.
+	OpenCreatePlayingListRequestShrink *string `json:"OpenCreatePlayingListRequest,omitempty" xml:"OpenCreatePlayingListRequest,omitempty"`
+}
+
+func (s CreatePlayingListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListShrinkRequest) SetDeviceInfoShrink(v string) *CreatePlayingListShrinkRequest {
+	s.DeviceInfoShrink = &v
+	return s
+}
+
+func (s *CreatePlayingListShrinkRequest) SetOpenCreatePlayingListRequestShrink(v string) *CreatePlayingListShrinkRequest {
+	s.OpenCreatePlayingListRequestShrink = &v
+	return s
+}
+
+type CreatePlayingListResponseBody struct {
+	// example:
+	//
+	// 10002398812
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreatePlayingListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListResponseBody) SetRequestId(v string) *CreatePlayingListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePlayingListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePlayingListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePlayingListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePlayingListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePlayingListResponse) SetHeaders(v map[string]*string) *CreatePlayingListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePlayingListResponse) SetStatusCode(v int32) *CreatePlayingListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePlayingListResponse) SetBody(v *CreatePlayingListResponseBody) *CreatePlayingListResponse {
+	s.Body = v
+	return s
+}
+
 type ExecuteSceneRequest struct {
 	// example:
 	//
@@ -1017,6 +1287,86 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 创建播放列表
+//
+// @param tmpReq - CreatePlayingListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePlayingListResponse
+func (client *Client) CreatePlayingListWithOptions(tmpReq *CreatePlayingListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePlayingListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePlayingListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceInfo)) {
+		request.DeviceInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceInfo, tea.String("DeviceInfo"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OpenCreatePlayingListRequest)) {
+		request.OpenCreatePlayingListRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OpenCreatePlayingListRequest, tea.String("OpenCreatePlayingListRequest"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceInfoShrink)) {
+		query["DeviceInfo"] = request.DeviceInfoShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpenCreatePlayingListRequestShrink)) {
+		body["OpenCreatePlayingListRequest"] = request.OpenCreatePlayingListRequestShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePlayingList"),
+		Version:     tea.String("oauth2_1.0"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1.0/oauth2/content/playing/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePlayingListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建播放列表
+//
+// @param request - CreatePlayingListRequest
+//
+// @return CreatePlayingListResponse
+func (client *Client) CreatePlayingList(request *CreatePlayingListRequest) (_result *CreatePlayingListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePlayingListResponse{}
+	_body, _err := client.CreatePlayingListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 执行场景
 //
 // @param request - ExecuteSceneRequest
@@ -1051,24 +1401,13 @@ func (client *Client) ExecuteSceneWithOptions(request *ExecuteSceneRequest, head
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteSceneResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteSceneResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1114,24 +1453,13 @@ func (client *Client) GetSceneListWithOptions(headers map[string]*string, runtim
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSceneListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSceneListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSceneListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1175,24 +1503,13 @@ func (client *Client) GetUserBasicInfoWithOptions(headers map[string]*string, ru
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserBasicInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserBasicInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserBasicInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1236,24 +1553,13 @@ func (client *Client) GetUserPhoneWithOptions(headers map[string]*string, runtim
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserPhoneResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserPhoneResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserPhoneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1326,24 +1632,13 @@ func (client *Client) OAuth2RevocationEndpointWithOptions(request *OAuth2Revocat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OAuth2RevocationEndpointResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OAuth2RevocationEndpointResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OAuth2RevocationEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1426,24 +1721,13 @@ func (client *Client) OAuth2TokenEndpointWithOptions(request *OAuth2TokenEndpoin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OAuth2TokenEndpointResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OAuth2TokenEndpointResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OAuth2TokenEndpointResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1515,24 +1799,13 @@ func (client *Client) PushDeviceNotificationWithOptions(tmpReq *PushDeviceNotifi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PushDeviceNotificationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PushDeviceNotificationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PushDeviceNotificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1578,24 +1851,13 @@ func (client *Client) QueryDeviceListWithOptions(headers map[string]*string, run
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryDeviceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryDeviceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryDeviceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
