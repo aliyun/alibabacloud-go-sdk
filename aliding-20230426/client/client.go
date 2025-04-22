@@ -75795,6 +75795,260 @@ func (s *SubscribeEventResponse) SetBody(v *SubscribeEventResponseBody) *Subscri
 	return s
 }
 
+type SwitchMainOrgHeaders struct {
+	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *SwitchMainOrgHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s SwitchMainOrgHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgHeaders) SetCommonHeaders(v map[string]*string) *SwitchMainOrgHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SwitchMainOrgHeaders) SetAccountContext(v *SwitchMainOrgHeadersAccountContext) *SwitchMainOrgHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type SwitchMainOrgHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s SwitchMainOrgHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgHeadersAccountContext) SetAccountId(v string) *SwitchMainOrgHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type SwitchMainOrgShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s SwitchMainOrgShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgShrinkHeaders) SetCommonHeaders(v map[string]*string) *SwitchMainOrgShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *SwitchMainOrgShrinkHeaders) SetAccountContextShrink(v string) *SwitchMainOrgShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type SwitchMainOrgRequest struct {
+	// example:
+	//
+	// 21001
+	TargetOrgId   *int64                             `json:"TargetOrgId,omitempty" xml:"TargetOrgId,omitempty"`
+	TenantContext *SwitchMainOrgRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s SwitchMainOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgRequest) SetTargetOrgId(v int64) *SwitchMainOrgRequest {
+	s.TargetOrgId = &v
+	return s
+}
+
+func (s *SwitchMainOrgRequest) SetTenantContext(v *SwitchMainOrgRequestTenantContext) *SwitchMainOrgRequest {
+	s.TenantContext = v
+	return s
+}
+
+type SwitchMainOrgRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s SwitchMainOrgRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgRequestTenantContext) SetTenantId(v string) *SwitchMainOrgRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type SwitchMainOrgShrinkRequest struct {
+	// example:
+	//
+	// 21001
+	TargetOrgId         *int64  `json:"TargetOrgId,omitempty" xml:"TargetOrgId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s SwitchMainOrgShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgShrinkRequest) SetTargetOrgId(v int64) *SwitchMainOrgShrinkRequest {
+	s.TargetOrgId = &v
+	return s
+}
+
+func (s *SwitchMainOrgShrinkRequest) SetTenantContextShrink(v string) *SwitchMainOrgShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type SwitchMainOrgResponseBody struct {
+	Content *SwitchMainOrgResponseBodyContent `json:"content,omitempty" xml:"content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	ErrorCode *string                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorCtx  map[string]interface{} `json:"errorCtx,omitempty" xml:"errorCtx,omitempty"`
+	ErrorMsg  *string                `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s SwitchMainOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgResponseBody) SetContent(v *SwitchMainOrgResponseBodyContent) *SwitchMainOrgResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetErrorCode(v string) *SwitchMainOrgResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetErrorCtx(v map[string]interface{}) *SwitchMainOrgResponseBody {
+	s.ErrorCtx = v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetErrorMsg(v string) *SwitchMainOrgResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetHttpStatusCode(v int32) *SwitchMainOrgResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetRequestId(v string) *SwitchMainOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SwitchMainOrgResponseBody) SetSuccess(v bool) *SwitchMainOrgResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SwitchMainOrgResponseBodyContent struct {
+	// example:
+	//
+	// null
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+}
+
+func (s SwitchMainOrgResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgResponseBodyContent) SetData(v interface{}) *SwitchMainOrgResponseBodyContent {
+	s.Data = v
+	return s
+}
+
+type SwitchMainOrgResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SwitchMainOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SwitchMainOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SwitchMainOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SwitchMainOrgResponse) SetHeaders(v map[string]*string) *SwitchMainOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SwitchMainOrgResponse) SetStatusCode(v int32) *SwitchMainOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SwitchMainOrgResponse) SetBody(v *SwitchMainOrgResponseBody) *SwitchMainOrgResponse {
+	s.Body = v
+	return s
+}
+
 type SyncDingTypeHeaders struct {
 	CommonHeaders  map[string]*string                 `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *SyncDingTypeHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -104159,6 +104413,87 @@ func (client *Client) SubscribeEvent(request *SubscribeEventRequest) (_result *S
 	headers := &SubscribeEventHeaders{}
 	_result = &SubscribeEventResponse{}
 	_body, _err := client.SubscribeEventWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param tmpReq - SwitchMainOrgRequest
+//
+// @param tmpHeader - SwitchMainOrgHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SwitchMainOrgResponse
+func (client *Client) SwitchMainOrgWithOptions(tmpReq *SwitchMainOrgRequest, tmpHeader *SwitchMainOrgHeaders, runtime *util.RuntimeOptions) (_result *SwitchMainOrgResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SwitchMainOrgShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &SwitchMainOrgShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TargetOrgId)) {
+		body["TargetOrgId"] = request.TargetOrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchMainOrg"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/aliding/v1/user/switchMainOrg"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SwitchMainOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SwitchMainOrgRequest
+//
+// @return SwitchMainOrgResponse
+func (client *Client) SwitchMainOrg(request *SwitchMainOrgRequest) (_result *SwitchMainOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &SwitchMainOrgHeaders{}
+	_result = &SwitchMainOrgResponse{}
+	_body, _err := client.SwitchMainOrgWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
