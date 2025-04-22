@@ -6049,7 +6049,8 @@ type ListEcsSpecsResponseBodyEcsSpecs struct {
 	// example:
 	//
 	// 4
-	GPU *int64 `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPU           *int64   `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	GPUMemorySize *float32 `json:"GPUMemorySize,omitempty" xml:"GPUMemorySize,omitempty"`
 	// example:
 	//
 	// v100
@@ -6077,7 +6078,8 @@ type ListEcsSpecsResponseBodyEcsSpecs struct {
 	// example:
 	//
 	// 22.8
-	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	Price           *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	SpotStockStatus *string  `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
 	// example:
 	//
 	// 500
@@ -6109,6 +6111,11 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetCurrency(v string) *ListEcsSpecsRe
 
 func (s *ListEcsSpecsResponseBodyEcsSpecs) SetGPU(v int64) *ListEcsSpecsResponseBodyEcsSpecs {
 	s.GPU = &v
+	return s
+}
+
+func (s *ListEcsSpecsResponseBodyEcsSpecs) SetGPUMemorySize(v float32) *ListEcsSpecsResponseBodyEcsSpecs {
+	s.GPUMemorySize = &v
 	return s
 }
 
@@ -6144,6 +6151,11 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetMemory(v float32) *ListEcsSpecsRes
 
 func (s *ListEcsSpecsResponseBodyEcsSpecs) SetPrice(v float64) *ListEcsSpecsResponseBodyEcsSpecs {
 	s.Price = &v
+	return s
+}
+
+func (s *ListEcsSpecsResponseBodyEcsSpecs) SetSpotStockStatus(v string) *ListEcsSpecsResponseBodyEcsSpecs {
+	s.SpotStockStatus = &v
 	return s
 }
 
