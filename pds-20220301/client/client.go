@@ -2826,9 +2826,13 @@ type Domain struct {
 	SizeQuota                  *int64             `json:"size_quota,omitempty" xml:"size_quota,omitempty"`
 	SizeQuotaUsed              *int64             `json:"size_quota_used,omitempty" xml:"size_quota_used,omitempty"`
 	Status                     *int64             `json:"status,omitempty" xml:"status,omitempty"`
-	UpdatedAt                  *string            `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
-	UsedSize                   *int64             `json:"used_size,omitempty" xml:"used_size,omitempty"`
-	UserCountQuota             *int64             `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
+	// example:
+	//
+	// LRS
+	StoreRedundancyType *string `json:"store_redundancy_type,omitempty" xml:"store_redundancy_type,omitempty"`
+	UpdatedAt           *string `json:"updated_at,omitempty" xml:"updated_at,omitempty"`
+	UsedSize            *int64  `json:"used_size,omitempty" xml:"used_size,omitempty"`
+	UserCountQuota      *int64  `json:"user_count_quota,omitempty" xml:"user_count_quota,omitempty"`
 }
 
 func (s Domain) String() string {
@@ -2901,6 +2905,11 @@ func (s *Domain) SetSizeQuotaUsed(v int64) *Domain {
 
 func (s *Domain) SetStatus(v int64) *Domain {
 	s.Status = &v
+	return s
+}
+
+func (s *Domain) SetStoreRedundancyType(v string) *Domain {
+	s.StoreRedundancyType = &v
 	return s
 }
 
@@ -5694,6 +5703,228 @@ func (s *PersonalSpaceInfo) SetTotalSize(v int64) *PersonalSpaceInfo {
 
 func (s *PersonalSpaceInfo) SetUsedSize(v int64) *PersonalSpaceInfo {
 	s.UsedSize = &v
+	return s
+}
+
+type ReceivedMsg struct {
+	// example:
+	//
+	// false
+	HasRead *bool `json:"has_read,omitempty" xml:"has_read,omitempty"`
+	// example:
+	//
+	// system
+	MsgCategory *string                `json:"msg_category,omitempty" xml:"msg_category,omitempty"`
+	MsgContent  *ReceivedMsgMsgContent `json:"msg_content,omitempty" xml:"msg_content,omitempty" type:"Struct"`
+	// example:
+	//
+	// 50d6f2aaa16525c7d053998e48fac265962f585f
+	MsgId *string `json:"msg_id,omitempty" xml:"msg_id,omitempty"`
+	// example:
+	//
+	// change_user_setting
+	MsgSubCategory *string `json:"msg_sub_category,omitempty" xml:"msg_sub_category,omitempty"`
+	// example:
+	//
+	// edit_user
+	MsgType *string `json:"msg_type,omitempty" xml:"msg_type,omitempty"`
+	// example:
+	//
+	// 1716363191123
+	PublishAt *int64 `json:"publish_at,omitempty" xml:"publish_at,omitempty"`
+	// example:
+	//
+	// 1716363191123
+	ReadAt *int64 `json:"read_at,omitempty" xml:"read_at,omitempty"`
+}
+
+func (s ReceivedMsg) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReceivedMsg) GoString() string {
+	return s.String()
+}
+
+func (s *ReceivedMsg) SetHasRead(v bool) *ReceivedMsg {
+	s.HasRead = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetMsgCategory(v string) *ReceivedMsg {
+	s.MsgCategory = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetMsgContent(v *ReceivedMsgMsgContent) *ReceivedMsg {
+	s.MsgContent = v
+	return s
+}
+
+func (s *ReceivedMsg) SetMsgId(v string) *ReceivedMsg {
+	s.MsgId = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetMsgSubCategory(v string) *ReceivedMsg {
+	s.MsgSubCategory = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetMsgType(v string) *ReceivedMsg {
+	s.MsgType = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetPublishAt(v int64) *ReceivedMsg {
+	s.PublishAt = &v
+	return s
+}
+
+func (s *ReceivedMsg) SetReadAt(v int64) *ReceivedMsg {
+	s.ReadAt = &v
+	return s
+}
+
+type ReceivedMsgMsgContent struct {
+	MsgData map[string]interface{} `json:"msg_data,omitempty" xml:"msg_data,omitempty"`
+}
+
+func (s ReceivedMsgMsgContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReceivedMsgMsgContent) GoString() string {
+	return s.String()
+}
+
+func (s *ReceivedMsgMsgContent) SetMsgData(v map[string]interface{}) *ReceivedMsgMsgContent {
+	s.MsgData = v
+	return s
+}
+
+type RecentActedFile struct {
+	ActionList []*string `json:"action_list,omitempty" xml:"action_list,omitempty" type:"Repeated"`
+	// example:
+	//
+	// doc
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// example:
+	//
+	// true
+	Deleted *bool `json:"deleted,omitempty" xml:"deleted,omitempty"`
+	// example:
+	//
+	// 50d6f2aaa16525c7d053998e48fac265962f585f
+	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// example:
+	//
+	// false
+	DriveIsHandover *bool `json:"drive_is_handover,omitempty" xml:"drive_is_handover,omitempty"`
+	// example:
+	//
+	// group drive
+	DriveName *string `json:"drive_name,omitempty" xml:"drive_name,omitempty"`
+	// example:
+	//
+	// 50d6f2aaa16525c7d053998e48fac265962f585f
+	DriveOwnerId *string `json:"drive_owner_id,omitempty" xml:"drive_owner_id,omitempty"`
+	// example:
+	//
+	// group
+	DriveOwnerType *string `json:"drive_owner_type,omitempty" xml:"drive_owner_type,omitempty"`
+	// example:
+	//
+	// 50d6f2aaa16525c7d053998e48fac265962f585f
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// example:
+	//
+	// a.jpg
+	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	// example:
+	//
+	// 100
+	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
+	// example:
+	//
+	// https://xxx.jpg
+	Thumbnail *string `json:"thumbnail,omitempty" xml:"thumbnail,omitempty"`
+	// example:
+	//
+	// true
+	Trashed *bool `json:"trashed,omitempty" xml:"trashed,omitempty"`
+}
+
+func (s RecentActedFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecentActedFile) GoString() string {
+	return s.String()
+}
+
+func (s *RecentActedFile) SetActionList(v []*string) *RecentActedFile {
+	s.ActionList = v
+	return s
+}
+
+func (s *RecentActedFile) SetCategory(v string) *RecentActedFile {
+	s.Category = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDeleted(v bool) *RecentActedFile {
+	s.Deleted = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDriveId(v string) *RecentActedFile {
+	s.DriveId = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDriveIsHandover(v bool) *RecentActedFile {
+	s.DriveIsHandover = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDriveName(v string) *RecentActedFile {
+	s.DriveName = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDriveOwnerId(v string) *RecentActedFile {
+	s.DriveOwnerId = &v
+	return s
+}
+
+func (s *RecentActedFile) SetDriveOwnerType(v string) *RecentActedFile {
+	s.DriveOwnerType = &v
+	return s
+}
+
+func (s *RecentActedFile) SetFileId(v string) *RecentActedFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *RecentActedFile) SetFileName(v string) *RecentActedFile {
+	s.FileName = &v
+	return s
+}
+
+func (s *RecentActedFile) SetSize(v int64) *RecentActedFile {
+	s.Size = &v
+	return s
+}
+
+func (s *RecentActedFile) SetThumbnail(v string) *RecentActedFile {
+	s.Thumbnail = &v
+	return s
+}
+
+func (s *RecentActedFile) SetTrashed(v bool) *RecentActedFile {
+	s.Trashed = &v
 	return s
 }
 
@@ -8519,18 +8750,42 @@ func (s *AssignRoleResponse) SetStatusCode(v int32) *AssignRoleResponse {
 }
 
 type AuditLogExportRequest struct {
+	// The name of the exported file. The name can be up to 1,024 characters in length. The default name suffix is log.csv.
+	//
 	// example:
 	//
 	// 2024-01-log.csv
 	FileName *string `json:"file_name,omitempty" xml:"file_name,omitempty"`
+	// The export language. Default value: zh-CN. Valid values:
+	//
+	// 	- zh-CN: Chinese
+	//
+	// 	- en_US: English
+	//
 	// example:
 	//
 	// zh_CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
+	// The sort order based on the operation time. If you leave this parameter empty, the value acted_at DESC is used. Valid values:
+	//
+	// 	- acted_at DESC: sorts the entries by operation time in descending order
+	//
+	// 	- acted_at ASC: sorts the entries by operation time in ascending order
+	//
 	// example:
 	//
 	// acted_at DESC
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
+	// The fields used for query. You can specify one or more of the following fields:
+	//
+	// 	- drive_id (space ID, in the form of a string)
+	//
+	// 	- actor_id (operator ID, in the form of a string)
+	//
+	// 	- acted_at (operation time, in the yyyy-MM-ddTHH:mm:ssZ format in UTC, for example, 2006-01-02T00:00:00)
+	//
+	// 	- action_type (operation type, in the form of a string)
+	//
 	// example:
 	//
 	// acted_at > \\"2025-03-10T16:00:00\\" and acted_at < \\"2025-03-17T15:59:59\\"
@@ -8566,6 +8821,8 @@ func (s *AuditLogExportRequest) SetQuery(v string) *AuditLogExportRequest {
 }
 
 type AuditLogExportResponseBody struct {
+	// The ID of the asynchronous task used to export audit logs.
+	//
 	// example:
 	//
 	// 4221bf6e6ab43c255edc4463bf3a6f5f5d31****
@@ -14390,6 +14647,7 @@ type GetShareLinkByAnonymousResponseBody struct {
 	//
 	// 2020-08-20T06:51:27.292Z
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
+	HasPwd     *bool   `json:"has_pwd,omitempty" xml:"has_pwd,omitempty"`
 	// The number of times that the shared files are previewed.
 	//
 	// example:
@@ -14502,6 +14760,11 @@ func (s *GetShareLinkByAnonymousResponseBody) SetDownloadLimit(v int64) *GetShar
 
 func (s *GetShareLinkByAnonymousResponseBody) SetExpiration(v string) *GetShareLinkByAnonymousResponseBody {
 	s.Expiration = &v
+	return s
+}
+
+func (s *GetShareLinkByAnonymousResponseBody) SetHasPwd(v bool) *GetShareLinkByAnonymousResponseBody {
+	s.HasPwd = &v
 	return s
 }
 
@@ -16867,9 +17130,9 @@ func (s *ListFacegroupsResponse) SetBody(v *ListFacegroupsResponseBody) *ListFac
 }
 
 type ListFileRequest struct {
-	// The category of the file. Valid values:
+	// The file category. Valid values:
 	//
-	// app: installation package. zip: compressed package. image: image. doc: document. video: video. audio: audio. others: other files.
+	// app: installation package zip: compressed package image doc: document video audio others
 	//
 	// By default, files of all categories are returned.
 	//
@@ -16883,15 +17146,27 @@ type ListFileRequest struct {
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// The fields to return.
+	// The field that is used to return additional information about a child subject. Valid values:
 	//
-	// 1.  If this parameter is set to \\*, all fields of the file except the fields that must be specified are returned.
+	// 	- url: returns the URL of the thumbnail of a file in the response.
 	//
-	// 2.  If only specific fields are required, you can specify the following fields: url, exif, cropping_suggestion, characteristic_hash, video_metadata, and video_preview_metadata. If multiple fields are required, separate them with commas (,). Example: url,exif.
+	// 	- exif: returns the Exchangeable Image File Format (EXIF) data of a file in the response.
 	//
-	// 3.  The investigation_info field is returned only if you specify this field.
+	// 	- cropping_suggestion: returns the cropping suggestion on a file in the response.
 	//
-	// By default, all fields except the fields that must be specified are returned.
+	// 	- characteristic_hash: returns the characteristic hash value of a file in the response.
+	//
+	// 	- video_metadata: returns the metadata of a video file, such as the video duration, bitrate, height, and width, in the response.
+	//
+	// 	- video_preview_metadata: returns the transcoding information of a video file, such as the transcoding specification for each definition, in the response.
+	//
+	// 	- investigation_info: returns the investigation information in the response.
+	//
+	// 	- dir_size: returns the statistics on each subfolder in the response.
+	//
+	// 	- user_tags: returns the user tags of each child subject in the response.
+	//
+	// You can specify multiple fields by separating them with commas (,). Example: "url,dir_size,user_tags".
 	//
 	// example:
 	//
@@ -16899,81 +17174,35 @@ type ListFileRequest struct {
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
 	// The maximum number of results to return. Valid values: 1 to 100.
 	//
-	// The number of returned results must be less than or equal to the specified number.
+	// The number of returned entries must be less than or equal to the value of this parameter.
 	//
 	// example:
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
+	// The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned.\\
 	//
-	// By default, this parameter is empty.
+	// This parameter is left empty by default.
 	//
 	// example:
 	//
 	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The sorting field.
+	// The sorting field. Valid values:
+	//
+	// created_at: sorts the entries by creation time. updated_at: sorts the entries by update time. size: sorts the entries by file size. name: sorts the entries by file name.
 	//
 	// Default value: created_at.
 	//
-	// Valid values:
+	// Enumeration:
 	//
-	// 	- updated_at
+	// 	- updated_at: update time
 	//
-	//     <!-- -->
+	// 	- size: file size
 	//
-	//     :
+	// 	- name: file name
 	//
-	//     <!-- -->
-	//
-	//     sorts the results based on the time when the file was last modified
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- size
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts the results based on the size of the file
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- name
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts the results based on the name of the file
-	//
-	//     <!-- -->
-	//
-	//     .
-	//
-	// 	- created_at
-	//
-	//     <!-- -->
-	//
-	//     :
-	//
-	//     <!-- -->
-	//
-	//     sorts the results based on the time when the file was created
-	//
-	//     <!-- -->
-	//
-	//     .
+	// 	- created_at: creation time
 	//
 	// example:
 	//
@@ -16981,7 +17210,7 @@ type ListFileRequest struct {
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
 	// The sorting direction. Valid values:
 	//
-	// ASC: ascending order. DESC: descending order.
+	// ASC: ascending order DESC: descending order
 	//
 	// Default value: ASC.
 	//
@@ -16997,15 +17226,15 @@ type ListFileRequest struct {
 	//
 	// root
 	ParentFileId *string `json:"parent_file_id,omitempty" xml:"parent_file_id,omitempty"`
-	// The share ID. If you want to manage a file by using a share link, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
+	// The share ID. If you want to share a file, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
 	//
 	// example:
 	//
 	// 7JQX1FswpQ8
 	ShareId *string `json:"share_id,omitempty" xml:"share_id,omitempty"`
-	// The state of the file. Valid values:
+	// The state of the files to return. Valid values:
 	//
-	// available: Only normal files are returned. uploading: Only files that are being uploaded are returned.
+	// available: returns only normal files. uploading: returns only files that are being uploaded.
 	//
 	// By default, only files in the available state are returned.
 	//
@@ -17015,9 +17244,9 @@ type ListFileRequest struct {
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 	// The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
 	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
-	// The type of the file. Valid values:
+	// The file type. Valid values:
 	//
-	// file: Only files are returned. folder: Only folders are returned.
+	// file: returns only files. folder: returns only folders.
 	//
 	// By default, files of all types are returned.
 	//
@@ -19885,71 +20114,75 @@ type SearchFileRequest struct {
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
-	// Deprecated
-	//
 	// example:
 	//
 	// url,thumbnail
 	Fields *string `json:"fields,omitempty" xml:"fields,omitempty"`
-	// The maximum number of results to return. Valid values: 1 to 100.
+	// The maximum number of entries to return. Valid values: 1 to 100.
 	//
-	// The number of returned results must be less than or equal to the specified number.
+	// The number of returned entries must be less than or equal to the value of this parameter.
 	//
 	// example:
 	//
 	// 50
 	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of marker.\\
+	// The name of the entry after which the list begins. Entries whose names are alphabetically after the value of this parameter are returned. If you do not specify this parameter, all entries are returned.\\
 	//
-	// By default, this parameter is left empty.
+	// This parameter is left empty by default.
 	//
 	// example:
 	//
 	// NWQ1Yjk4YmI1ZDRlYmU1Y2E0YWE0NmJhYWJmODBhNDQ2NzhlMTRhMg
 	Marker *string `json:"marker,omitempty" xml:"marker,omitempty"`
-	// The field by which to sort the returned results. Default value: created_at. Valid values:
+	// The field by which to sort the returned entries. Default value: created_at. Valid values:
 	//
-	// 	- created_at: sorts the results by the time when the file was created.
+	// 	- created_at: sorts the entries by creation time.
 	//
-	// 	- updated_at: sorts the results by the time when the file was modified.
+	// 	- updated_at: sorts the entries by update time.
 	//
-	// 	- size: sorts the results by the size of the file.
+	// 	- size: sorts the entries by file size.
 	//
-	// 	- name: sorts the results by the name of the file.
+	// 	- name: sorts the entries by file name.
 	//
-	// The order in which you want to sort the returned results. Valid values:
+	// The order in which you want to sort the returned entries. Valid values:
 	//
-	// 	- ASC: sorts the results in ascending order.
+	// 	- ASC: ascending order
 	//
-	// 	- DESC: sorts the results in descending order.
+	// 	- DESC: descending order
 	//
-	// You must specify this parameter in the \\<field name> \\<ASC or DESC> format. Separate multiple field names with commas (,). A preceding field has a higher priority than a following field. Examples:
+	// You must specify this parameter in the \\<field> \\<ASC or DESC> format. Separate multiple fields with commas (,). A preceding field has a higher priority than a following field. Examples:
 	//
-	// 	- If you want to sort the results based on the file name in ascending order, set this parameter to "name ASC".
+	// 	- If you want to sort the entries by file name in ascending order, set this parameter to "name ASC".
 	//
-	// 	- If you want to sort the results based on the creation time in descending order, set this parameter to "created_at DESC".
+	// 	- If you want to sort the entries by creation time in descending order, set this parameter to "created_at DESC".
 	//
-	// 	- If you want to sort the results based on the creation time in descending order first, and then sort the results based on the file name in ascending order if the creation time is the same, set this parameter to "created_at DESC,name ASC".
+	// 	- If you want to sort the entries by creation time in descending order and sort the entries by file name in ascending order in case of the same creation time, set this parameter to "created_at DESC,name ASC".
 	//
 	// example:
 	//
 	// name
 	OrderBy *string `json:"order_by,omitempty" xml:"order_by,omitempty"`
-	// The search condition. Fuzzy searches based on the file name or directory name are supported. The search condition can be up to 4,096 characters in length.
+	// The search conditions. Fuzzy searches based on the file name or directory name are supported. The value of this parameter can be up to 4,096 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// not name=123
-	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
-	Recursive *bool   `json:"recursive,omitempty" xml:"recursive,omitempty"`
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// Specifies whether to perform recursive search on a folder that is specified by setting parent_file_id in the query parameter.
+	//
+	// example:
+	//
+	// true
+	Recursive *bool `json:"recursive,omitempty" xml:"recursive,omitempty"`
 	// Specifies whether to return the total number of retrieved files.
 	//
 	// example:
 	//
 	// true
-	ReturnTotalCount   *bool                    `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	ReturnTotalCount *bool `json:"return_total_count,omitempty" xml:"return_total_count,omitempty"`
+	// The thumbnail configurations. Up to five thumbnails can be returned at a time. The value contains key-value pairs. You can customize the keys. The URL of a thumbnail is returned based on the key.
 	ThumbnailProcesses map[string]*ImageProcess `json:"thumbnail_processes,omitempty" xml:"thumbnail_processes,omitempty"`
 }
 
@@ -22915,7 +23148,11 @@ func (client *Client) AssignRole(request *AssignRoleRequest) (_result *AssignRol
 
 // Summary:
 //
-// 导出审计日志
+// Exports audit logs.
+//
+// Description:
+//
+// Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
 //
 // @param request - AuditLogExportRequest
 //
@@ -22972,7 +23209,11 @@ func (client *Client) AuditLogExportWithOptions(request *AuditLogExportRequest, 
 
 // Summary:
 //
-// 导出审计日志
+// Exports audit logs.
+//
+// Description:
+//
+// Log audit is a value-added feature that is provided by Drive and Photo Service (PDS) Developer Edition. Before you call this operation, make sure that you learn about the [value-added billable items](https://www.alibabacloud.com/help/document_detail/425220.html).
 //
 // @param request - AuditLogExportRequest
 //
@@ -29935,7 +30176,7 @@ func (client *Client) SearchDrive(request *SearchDriveRequest) (_result *SearchD
 
 // Summary:
 //
-// Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+// Searches for files.
 //
 // @param request - SearchFileRequest
 //
@@ -30012,7 +30253,7 @@ func (client *Client) SearchFileWithOptions(request *SearchFileRequest, headers 
 
 // Summary:
 //
-// Queries files. For more information about best practices, visit https://help.aliyun.com/document_detail/175890.html.
+// Searches for files.
 //
 // @param request - SearchFileRequest
 //
