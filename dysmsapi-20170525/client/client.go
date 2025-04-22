@@ -771,6 +771,204 @@ func (s *AddSmsTemplateResponse) SetBody(v *AddSmsTemplateResponseBody) *AddSmsT
 	return s
 }
 
+type ChangeSignatureQualificationRequest struct {
+	// 授权委托书id
+	//
+	// example:
+	//
+	// 1000********1234
+	AuthorizationLetterId *int64 `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	OwnerId               *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1*****2
+	QualificationId      *int64  `json:"QualificationId,omitempty" xml:"QualificationId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	SignatureName *string `json:"SignatureName,omitempty" xml:"SignatureName,omitempty"`
+}
+
+func (s ChangeSignatureQualificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeSignatureQualificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeSignatureQualificationRequest) SetAuthorizationLetterId(v int64) *ChangeSignatureQualificationRequest {
+	s.AuthorizationLetterId = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationRequest) SetOwnerId(v int64) *ChangeSignatureQualificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationRequest) SetQualificationId(v int64) *ChangeSignatureQualificationRequest {
+	s.QualificationId = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationRequest) SetResourceOwnerAccount(v string) *ChangeSignatureQualificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationRequest) SetResourceOwnerId(v int64) *ChangeSignatureQualificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationRequest) SetSignatureName(v string) *ChangeSignatureQualificationRequest {
+	s.SignatureName = &v
+	return s
+}
+
+type ChangeSignatureQualificationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ChangeSignatureQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0A974B78-02BF-4C79-ADF3-90CFBA1B55B1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeSignatureQualificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeSignatureQualificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetAccessDeniedDetail(v string) *ChangeSignatureQualificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetCode(v string) *ChangeSignatureQualificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetData(v *ChangeSignatureQualificationResponseBodyData) *ChangeSignatureQualificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetMessage(v string) *ChangeSignatureQualificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetRequestId(v string) *ChangeSignatureQualificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBody) SetSuccess(v bool) *ChangeSignatureQualificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeSignatureQualificationResponseBodyData struct {
+	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 示例值
+	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeSignatureQualificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeSignatureQualificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeSignatureQualificationResponseBodyData) SetData(v map[string]interface{}) *ChangeSignatureQualificationResponseBodyData {
+	s.Data = v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBodyData) SetErrCode(v string) *ChangeSignatureQualificationResponseBodyData {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBodyData) SetErrMessage(v string) *ChangeSignatureQualificationResponseBodyData {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponseBodyData) SetSuccess(v bool) *ChangeSignatureQualificationResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type ChangeSignatureQualificationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChangeSignatureQualificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChangeSignatureQualificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeSignatureQualificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeSignatureQualificationResponse) SetHeaders(v map[string]*string) *ChangeSignatureQualificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponse) SetStatusCode(v int32) *ChangeSignatureQualificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeSignatureQualificationResponse) SetBody(v *ChangeSignatureQualificationResponseBody) *ChangeSignatureQualificationResponse {
+	s.Body = v
+	return s
+}
+
 type CheckMobilesCardSupportRequest struct {
 	// The list of mobile phone numbers that receive messages.
 	//
@@ -1744,6 +1942,321 @@ func (s *CreateSmartShortUrlResponse) SetBody(v *CreateSmartShortUrlResponseBody
 	return s
 }
 
+type CreateSmsAuthorizationLetterRequest struct {
+	// 授权方，授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里云有限公司
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// 委托授权书有效期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2026-01-01
+	AuthorizationLetterExpDate *string `json:"AuthorizationLetterExpDate,omitempty" xml:"AuthorizationLetterExpDate,omitempty"`
+	// 委托授权书命名非空，不超过100个字符，支持中文、英文或与数字组合进行命名，暂不支持任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx公司授权书
+	AuthorizationLetterName *string `json:"AuthorizationLetterName,omitempty" xml:"AuthorizationLetterName,omitempty"`
+	// 上传oss的委托授权书图片标识
+	//
+	// This parameter is required.
+	AuthorizationLetterPic *string `json:"AuthorizationLetterPic,omitempty" xml:"AuthorizationLetterPic,omitempty"`
+	// 授权方社会统一信用代码，长度不超过150个字符
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9****************A
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 被授权方，被授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx公司
+	ProxyAuthorization   *string `json:"ProxyAuthorization,omitempty" xml:"ProxyAuthorization,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 委托授权签名列表，签名数量限制100个以内
+	//
+	// This parameter is required.
+	SignList []*string `json:"SignList,omitempty" xml:"SignList,omitempty" type:"Repeated"`
+}
+
+func (s CreateSmsAuthorizationLetterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsAuthorizationLetterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetAuthorization(v string) *CreateSmsAuthorizationLetterRequest {
+	s.Authorization = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetAuthorizationLetterExpDate(v string) *CreateSmsAuthorizationLetterRequest {
+	s.AuthorizationLetterExpDate = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetAuthorizationLetterName(v string) *CreateSmsAuthorizationLetterRequest {
+	s.AuthorizationLetterName = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetAuthorizationLetterPic(v string) *CreateSmsAuthorizationLetterRequest {
+	s.AuthorizationLetterPic = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetOrganizationCode(v string) *CreateSmsAuthorizationLetterRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetOwnerId(v int64) *CreateSmsAuthorizationLetterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetProxyAuthorization(v string) *CreateSmsAuthorizationLetterRequest {
+	s.ProxyAuthorization = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetResourceOwnerAccount(v string) *CreateSmsAuthorizationLetterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetResourceOwnerId(v int64) *CreateSmsAuthorizationLetterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterRequest) SetSignList(v []*string) *CreateSmsAuthorizationLetterRequest {
+	s.SignList = v
+	return s
+}
+
+type CreateSmsAuthorizationLetterShrinkRequest struct {
+	// 授权方，授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 阿里云有限公司
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// 委托授权书有效期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2026-01-01
+	AuthorizationLetterExpDate *string `json:"AuthorizationLetterExpDate,omitempty" xml:"AuthorizationLetterExpDate,omitempty"`
+	// 委托授权书命名非空，不超过100个字符，支持中文、英文或与数字组合进行命名，暂不支持任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx公司授权书
+	AuthorizationLetterName *string `json:"AuthorizationLetterName,omitempty" xml:"AuthorizationLetterName,omitempty"`
+	// 上传oss的委托授权书图片标识
+	//
+	// This parameter is required.
+	AuthorizationLetterPic *string `json:"AuthorizationLetterPic,omitempty" xml:"AuthorizationLetterPic,omitempty"`
+	// 授权方社会统一信用代码，长度不超过150个字符
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 9****************A
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 被授权方，被授权方命名长度不超过1000个字符，暂不支持包含除中点（·）、空格、中文括号【】、英文括号()外的任何符号或纯数字输入
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxx公司
+	ProxyAuthorization   *string `json:"ProxyAuthorization,omitempty" xml:"ProxyAuthorization,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 委托授权签名列表，签名数量限制100个以内
+	//
+	// This parameter is required.
+	SignListShrink *string `json:"SignList,omitempty" xml:"SignList,omitempty"`
+}
+
+func (s CreateSmsAuthorizationLetterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsAuthorizationLetterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetAuthorization(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.Authorization = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetAuthorizationLetterExpDate(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.AuthorizationLetterExpDate = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetAuthorizationLetterName(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.AuthorizationLetterName = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetAuthorizationLetterPic(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.AuthorizationLetterPic = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetOrganizationCode(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetOwnerId(v int64) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetProxyAuthorization(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.ProxyAuthorization = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetResourceOwnerAccount(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetResourceOwnerId(v int64) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterShrinkRequest) SetSignListShrink(v string) *CreateSmsAuthorizationLetterShrinkRequest {
+	s.SignListShrink = &v
+	return s
+}
+
+type CreateSmsAuthorizationLetterResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 10000****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F655A8D5-B967-440B-8683-DAD6FF8DE990
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSmsAuthorizationLetterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsAuthorizationLetterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetAccessDeniedDetail(v string) *CreateSmsAuthorizationLetterResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetCode(v string) *CreateSmsAuthorizationLetterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetData(v string) *CreateSmsAuthorizationLetterResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetMessage(v string) *CreateSmsAuthorizationLetterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetRequestId(v string) *CreateSmsAuthorizationLetterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponseBody) SetSuccess(v bool) *CreateSmsAuthorizationLetterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSmsAuthorizationLetterResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateSmsAuthorizationLetterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateSmsAuthorizationLetterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSmsAuthorizationLetterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSmsAuthorizationLetterResponse) SetHeaders(v map[string]*string) *CreateSmsAuthorizationLetterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponse) SetStatusCode(v int32) *CreateSmsAuthorizationLetterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSmsAuthorizationLetterResponse) SetBody(v *CreateSmsAuthorizationLetterResponseBody) *CreateSmsAuthorizationLetterResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSmsSignRequest struct {
 	// Application scenarios, instructions as follows:
 	//
@@ -1759,7 +2272,7 @@ type CreateSmsSignRequest struct {
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent     *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	AuthorizationLetterId *string `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
 	//
 	// This parameter is optional; please fill it out based on your actual needs.
@@ -1862,7 +2375,7 @@ func (s *CreateSmsSignRequest) SetApplySceneContent(v string) *CreateSmsSignRequ
 	return s
 }
 
-func (s *CreateSmsSignRequest) SetAuthorizationLetterId(v string) *CreateSmsSignRequest {
+func (s *CreateSmsSignRequest) SetAuthorizationLetterId(v int64) *CreateSmsSignRequest {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -1932,7 +2445,7 @@ type CreateSmsSignShrinkRequest struct {
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent     *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	AuthorizationLetterId *string `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// Additional information to supplement uploaded business proof documents or screenshots, which helps reviewers understand your business details.
 	//
 	// This parameter is optional; please fill it out based on your actual needs.
@@ -2035,7 +2548,7 @@ func (s *CreateSmsSignShrinkRequest) SetApplySceneContent(v string) *CreateSmsSi
 	return s
 }
 
-func (s *CreateSmsSignShrinkRequest) SetAuthorizationLetterId(v string) *CreateSmsSignShrinkRequest {
+func (s *CreateSmsSignShrinkRequest) SetAuthorizationLetterId(v int64) *CreateSmsSignShrinkRequest {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -4470,6 +4983,213 @@ func (s *GetOSSInfoForUploadFileResponse) SetBody(v *GetOSSInfoForUploadFileResp
 	return s
 }
 
+type GetQualificationOssInfoRequest struct {
+	// 业务，非空
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// dysms
+	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s GetQualificationOssInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualificationOssInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualificationOssInfoRequest) SetBizType(v string) *GetQualificationOssInfoRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoRequest) SetOwnerId(v int64) *GetQualificationOssInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoRequest) SetResourceOwnerAccount(v string) *GetQualificationOssInfoRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoRequest) SetResourceOwnerId(v int64) *GetQualificationOssInfoRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type GetQualificationOssInfoResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetQualificationOssInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetQualificationOssInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualificationOssInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetAccessDeniedDetail(v string) *GetQualificationOssInfoResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetCode(v string) *GetQualificationOssInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetData(v *GetQualificationOssInfoResponseBodyData) *GetQualificationOssInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetMessage(v string) *GetQualificationOssInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetRequestId(v string) *GetQualificationOssInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBody) SetSuccess(v bool) *GetQualificationOssInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetQualificationOssInfoResponseBodyData struct {
+	// ak
+	//
+	// example:
+	//
+	// bypFNbG******
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// 过期时间
+	//
+	// example:
+	//
+	// 1741521339
+	Expire *int64 `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	// 域名
+	//
+	// example:
+	//
+	// http://***.oss-cn-zhangjiakou.aliyuncs.com
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// 策略
+	//
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAyNS0wMy0wOVQxMTo1NTozOS4wMDFaIiwiY29uZGl0aW9ucyI6W1siY29udGVudC1sZW5ndGgtcmFuZ2UiLDAsMTA0ODU3NjAwMF0seyJidWNrZXQiOiJhbGljb20tZmMtbWVkaWEifSxbImVxIiwiJGtleSIsIjEwMDAwMDM1ODA4MjA2M1wv********
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// 签名
+	//
+	// example:
+	//
+	// QvNTGC9DSLTeByP+ZWW******
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	// 前缀
+	//
+	// example:
+	//
+	// 1000********001
+	StartPath *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
+}
+
+func (s GetQualificationOssInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualificationOssInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetAccessKeyId(v string) *GetQualificationOssInfoResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetExpire(v int64) *GetQualificationOssInfoResponseBodyData {
+	s.Expire = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetHost(v string) *GetQualificationOssInfoResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetPolicy(v string) *GetQualificationOssInfoResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetSignature(v string) *GetQualificationOssInfoResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponseBodyData) SetStartPath(v string) *GetQualificationOssInfoResponseBodyData {
+	s.StartPath = &v
+	return s
+}
+
+type GetQualificationOssInfoResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetQualificationOssInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetQualificationOssInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQualificationOssInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQualificationOssInfoResponse) SetHeaders(v map[string]*string) *GetQualificationOssInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponse) SetStatusCode(v int32) *GetQualificationOssInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetQualificationOssInfoResponse) SetBody(v *GetQualificationOssInfoResponseBody) *GetQualificationOssInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetSmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -4526,7 +5246,7 @@ type GetSmsSignResponseBody struct {
 	// Audit information.
 	AuditInfo                    *GetSmsSignResponseBodyAuditInfo `json:"AuditInfo,omitempty" xml:"AuditInfo,omitempty" type:"Struct"`
 	AuthorizationLetterAuditPass *bool                            `json:"AuthorizationLetterAuditPass,omitempty" xml:"AuthorizationLetterAuditPass,omitempty"`
-	AuthorizationLetterId        *string                          `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId        *int64                           `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// Request status code.
 	//
 	// - OK indicates a successful request.
@@ -4659,7 +5379,7 @@ func (s *GetSmsSignResponseBody) SetAuthorizationLetterAuditPass(v bool) *GetSms
 	return s
 }
 
-func (s *GetSmsSignResponseBody) SetAuthorizationLetterId(v string) *GetSmsSignResponseBody {
+func (s *GetSmsSignResponseBody) SetAuthorizationLetterId(v int64) *GetSmsSignResponseBody {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -7835,6 +8555,371 @@ func (s *QueryShortUrlResponse) SetBody(v *QueryShortUrlResponseBody) *QueryShor
 	return s
 }
 
+type QuerySmsAuthorizationLetterRequest struct {
+	// 委托授权书id列表
+	AuthorizationLetterIdList []*int64 `json:"AuthorizationLetterIdList,omitempty" xml:"AuthorizationLetterIdList,omitempty" type:"Repeated"`
+	// 授权方社会统一信用代码
+	//
+	// example:
+	//
+	// 9****************A
+	OrganizationCode     *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名名称（支持命中签名范围查询）
+	//
+	// example:
+	//
+	// 示例值示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// 授权书审核状态，INT:审核中，PASSED:审核通过
+	//
+	// example:
+	//
+	// PASSED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 授权书可用状态，VALID可用，INVALID不可用
+	//
+	// example:
+	//
+	// VALID
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QuerySmsAuthorizationLetterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsAuthorizationLetterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetAuthorizationLetterIdList(v []*int64) *QuerySmsAuthorizationLetterRequest {
+	s.AuthorizationLetterIdList = v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetOrganizationCode(v string) *QuerySmsAuthorizationLetterRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetOwnerId(v int64) *QuerySmsAuthorizationLetterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetResourceOwnerAccount(v string) *QuerySmsAuthorizationLetterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetResourceOwnerId(v int64) *QuerySmsAuthorizationLetterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetSignName(v string) *QuerySmsAuthorizationLetterRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetState(v string) *QuerySmsAuthorizationLetterRequest {
+	s.State = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterRequest) SetStatus(v string) *QuerySmsAuthorizationLetterRequest {
+	s.Status = &v
+	return s
+}
+
+type QuerySmsAuthorizationLetterShrinkRequest struct {
+	// 委托授权书id列表
+	AuthorizationLetterIdListShrink *string `json:"AuthorizationLetterIdList,omitempty" xml:"AuthorizationLetterIdList,omitempty"`
+	// 授权方社会统一信用代码
+	//
+	// example:
+	//
+	// 9****************A
+	OrganizationCode     *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 签名名称（支持命中签名范围查询）
+	//
+	// example:
+	//
+	// 示例值示例值
+	SignName *string `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	// 授权书审核状态，INT:审核中，PASSED:审核通过
+	//
+	// example:
+	//
+	// PASSED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 授权书可用状态，VALID可用，INVALID不可用
+	//
+	// example:
+	//
+	// VALID
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QuerySmsAuthorizationLetterShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsAuthorizationLetterShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetAuthorizationLetterIdListShrink(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.AuthorizationLetterIdListShrink = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetOrganizationCode(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetOwnerId(v int64) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetResourceOwnerAccount(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetResourceOwnerId(v int64) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetSignName(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetState(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.State = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterShrinkRequest) SetStatus(v string) *QuerySmsAuthorizationLetterShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type QuerySmsAuthorizationLetterResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*QuerySmsAuthorizationLetterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySmsAuthorizationLetterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsAuthorizationLetterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetAccessDeniedDetail(v string) *QuerySmsAuthorizationLetterResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetCode(v string) *QuerySmsAuthorizationLetterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetData(v []*QuerySmsAuthorizationLetterResponseBodyData) *QuerySmsAuthorizationLetterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetMessage(v string) *QuerySmsAuthorizationLetterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetRequestId(v string) *QuerySmsAuthorizationLetterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBody) SetSuccess(v bool) *QuerySmsAuthorizationLetterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySmsAuthorizationLetterResponseBodyData struct {
+	// 委托授权方
+	//
+	// example:
+	//
+	// 示例值示例值
+	Authorization *string `json:"Authorization,omitempty" xml:"Authorization,omitempty"`
+	// 委托授权书有效期
+	//
+	// example:
+	//
+	// 2023-01-01~2026-01-01
+	AuthorizationLetterExpDate *string `json:"AuthorizationLetterExpDate,omitempty" xml:"AuthorizationLetterExpDate,omitempty"`
+	// 委托授权书id
+	//
+	// example:
+	//
+	// 10000******
+	AuthorizationLetterId *int64 `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	// 委托授权书命名
+	//
+	// example:
+	//
+	// 示例值示例值
+	AuthorizationLetterName *string `json:"AuthorizationLetterName,omitempty" xml:"AuthorizationLetterName,omitempty"`
+	// 委托授权书图片地址
+	AuthorizationLetterPic *string `json:"AuthorizationLetterPic,omitempty" xml:"AuthorizationLetterPic,omitempty"`
+	// 授权方统一社会信用代码
+	//
+	// example:
+	//
+	// 9****************A
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	// 被委托授权方
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	ProxyAuthorization *string `json:"ProxyAuthorization,omitempty" xml:"ProxyAuthorization,omitempty"`
+	// 委托授权签名范围
+	//
+	// example:
+	//
+	// 示例值
+	SignScope *string `json:"SignScope,omitempty" xml:"SignScope,omitempty"`
+	// 委托授权书审核状态（初始化INT/审核通过PASSED）
+	//
+	// example:
+	//
+	// PASSED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 委托授权书可用状态（可用VALID/不可用INVALID）
+	//
+	// example:
+	//
+	// VALID
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QuerySmsAuthorizationLetterResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsAuthorizationLetterResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetAuthorization(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.Authorization = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetAuthorizationLetterExpDate(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.AuthorizationLetterExpDate = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetAuthorizationLetterId(v int64) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.AuthorizationLetterId = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetAuthorizationLetterName(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.AuthorizationLetterName = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetAuthorizationLetterPic(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.AuthorizationLetterPic = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetOrganizationCode(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetProxyAuthorization(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.ProxyAuthorization = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetSignScope(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.SignScope = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetState(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponseBodyData) SetStatus(v string) *QuerySmsAuthorizationLetterResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type QuerySmsAuthorizationLetterResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsAuthorizationLetterResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySmsAuthorizationLetterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsAuthorizationLetterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsAuthorizationLetterResponse) SetHeaders(v map[string]*string) *QuerySmsAuthorizationLetterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponse) SetStatusCode(v int32) *QuerySmsAuthorizationLetterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySmsAuthorizationLetterResponse) SetBody(v *QuerySmsAuthorizationLetterResponseBody) *QuerySmsAuthorizationLetterResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -8164,7 +9249,7 @@ type QuerySmsSignListResponseBodySmsSignList struct {
 	//
 	// AUDIT_STATE_NOT_PASS
 	AuditStatus           *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	AuthorizationLetterId *string `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// The type of the signature scenario. The return value ends with "type". Valid values:
 	//
 	// 	- Verification code type
@@ -8215,7 +9300,7 @@ func (s *QuerySmsSignListResponseBodySmsSignList) SetAuditStatus(v string) *Quer
 	return s
 }
 
-func (s *QuerySmsSignListResponseBodySmsSignList) SetAuthorizationLetterId(v string) *QuerySmsSignListResponseBodySmsSignList {
+func (s *QuerySmsSignListResponseBodySmsSignList) SetAuthorizationLetterId(v int64) *QuerySmsSignListResponseBodySmsSignList {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -10775,7 +11860,7 @@ type UpdateSmsSignRequest struct {
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent     *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	AuthorizationLetterId *string `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
 	MoreData []*string `json:"MoreData,omitempty" xml:"MoreData,omitempty" type:"Repeated"`
 	OwnerId  *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -10866,7 +11951,7 @@ func (s *UpdateSmsSignRequest) SetApplySceneContent(v string) *UpdateSmsSignRequ
 	return s
 }
 
-func (s *UpdateSmsSignRequest) SetAuthorizationLetterId(v string) *UpdateSmsSignRequest {
+func (s *UpdateSmsSignRequest) SetAuthorizationLetterId(v int64) *UpdateSmsSignRequest {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -10936,7 +12021,7 @@ type UpdateSmsSignShrinkRequest struct {
 	//
 	// http://www.aliyun.com/
 	ApplySceneContent     *string `json:"ApplySceneContent,omitempty" xml:"ApplySceneContent,omitempty"`
-	AuthorizationLetterId *string `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
+	AuthorizationLetterId *int64  `json:"AuthorizationLetterId,omitempty" xml:"AuthorizationLetterId,omitempty"`
 	// Additional materials, such as uploading business proof documents or screenshots of business operations, to help reviewers understand your business details.
 	MoreDataShrink *string `json:"MoreData,omitempty" xml:"MoreData,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -11027,7 +12112,7 @@ func (s *UpdateSmsSignShrinkRequest) SetApplySceneContent(v string) *UpdateSmsSi
 	return s
 }
 
-func (s *UpdateSmsSignShrinkRequest) SetAuthorizationLetterId(v string) *UpdateSmsSignShrinkRequest {
+func (s *UpdateSmsSignShrinkRequest) SetAuthorizationLetterId(v int64) *UpdateSmsSignShrinkRequest {
 	s.AuthorizationLetterId = &v
 	return s
 }
@@ -12136,6 +13221,86 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 
 // Summary:
 //
+// 更换签名的资质和授权书
+//
+// @param request - ChangeSignatureQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChangeSignatureQualificationResponse
+func (client *Client) ChangeSignatureQualificationWithOptions(request *ChangeSignatureQualificationRequest, runtime *util.RuntimeOptions) (_result *ChangeSignatureQualificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationLetterId)) {
+		query["AuthorizationLetterId"] = request.AuthorizationLetterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationId)) {
+		query["QualificationId"] = request.QualificationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureName)) {
+		query["SignatureName"] = request.SignatureName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeSignatureQualification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeSignatureQualificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更换签名的资质和授权书
+//
+// @param request - ChangeSignatureQualificationRequest
+//
+// @return ChangeSignatureQualificationResponse
+func (client *Client) ChangeSignatureQualification(request *ChangeSignatureQualificationRequest) (_result *ChangeSignatureQualificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeSignatureQualificationResponse{}
+	_body, _err := client.ChangeSignatureQualificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Checks whether a mobile phone number can receive card messages.
 //
 // Description:
@@ -12461,6 +13626,108 @@ func (client *Client) CreateSmartShortUrl(request *CreateSmartShortUrlRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSmartShortUrlResponse{}
 	_body, _err := client.CreateSmartShortUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建委托授权书
+//
+// @param tmpReq - CreateSmsAuthorizationLetterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateSmsAuthorizationLetterResponse
+func (client *Client) CreateSmsAuthorizationLetterWithOptions(tmpReq *CreateSmsAuthorizationLetterRequest, runtime *util.RuntimeOptions) (_result *CreateSmsAuthorizationLetterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSmsAuthorizationLetterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SignList)) {
+		request.SignListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SignList, tea.String("SignList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Authorization)) {
+		query["Authorization"] = request.Authorization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationLetterExpDate)) {
+		query["AuthorizationLetterExpDate"] = request.AuthorizationLetterExpDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationLetterName)) {
+		query["AuthorizationLetterName"] = request.AuthorizationLetterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationLetterPic)) {
+		query["AuthorizationLetterPic"] = request.AuthorizationLetterPic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationCode)) {
+		query["OrganizationCode"] = request.OrganizationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyAuthorization)) {
+		query["ProxyAuthorization"] = request.ProxyAuthorization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignListShrink)) {
+		query["SignList"] = request.SignListShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSmsAuthorizationLetter"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSmsAuthorizationLetterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建委托授权书
+//
+// @param request - CreateSmsAuthorizationLetterRequest
+//
+// @return CreateSmsAuthorizationLetterResponse
+func (client *Client) CreateSmsAuthorizationLetter(request *CreateSmsAuthorizationLetterRequest) (_result *CreateSmsAuthorizationLetterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSmsAuthorizationLetterResponse{}
+	_body, _err := client.CreateSmsAuthorizationLetterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13514,6 +14781,78 @@ func (client *Client) GetOSSInfoForUploadFile(request *GetOSSInfoForUploadFileRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOSSInfoForUploadFileResponse{}
 	_body, _err := client.GetOSSInfoForUploadFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传文件获取oss配置
+//
+// @param request - GetQualificationOssInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetQualificationOssInfoResponse
+func (client *Client) GetQualificationOssInfoWithOptions(request *GetQualificationOssInfoRequest, runtime *util.RuntimeOptions) (_result *GetQualificationOssInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQualificationOssInfo"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQualificationOssInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 上传文件获取oss配置
+//
+// @param request - GetQualificationOssInfoRequest
+//
+// @return GetQualificationOssInfoResponse
+func (client *Client) GetQualificationOssInfo(request *GetQualificationOssInfoRequest) (_result *GetQualificationOssInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetQualificationOssInfoResponse{}
+	_body, _err := client.GetQualificationOssInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14730,6 +16069,100 @@ func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *Que
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryShortUrlResponse{}
 	_body, _err := client.QueryShortUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询委托授权书
+//
+// @param tmpReq - QuerySmsAuthorizationLetterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsAuthorizationLetterResponse
+func (client *Client) QuerySmsAuthorizationLetterWithOptions(tmpReq *QuerySmsAuthorizationLetterRequest, runtime *util.RuntimeOptions) (_result *QuerySmsAuthorizationLetterResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QuerySmsAuthorizationLetterShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AuthorizationLetterIdList)) {
+		request.AuthorizationLetterIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthorizationLetterIdList, tea.String("AuthorizationLetterIdList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthorizationLetterIdListShrink)) {
+		query["AuthorizationLetterIdList"] = request.AuthorizationLetterIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationCode)) {
+		query["OrganizationCode"] = request.OrganizationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmsAuthorizationLetter"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmsAuthorizationLetterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询委托授权书
+//
+// @param request - QuerySmsAuthorizationLetterRequest
+//
+// @return QuerySmsAuthorizationLetterResponse
+func (client *Client) QuerySmsAuthorizationLetter(request *QuerySmsAuthorizationLetterRequest) (_result *QuerySmsAuthorizationLetterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmsAuthorizationLetterResponse{}
+	_body, _err := client.QuerySmsAuthorizationLetterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

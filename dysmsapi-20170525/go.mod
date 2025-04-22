@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/dysmsapi-20170525/v4
+module github.com/alibabacloud-go/dysmsapi-20170525/v5
 
 go 1.14
 
