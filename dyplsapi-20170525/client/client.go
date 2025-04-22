@@ -6092,6 +6092,165 @@ func (s *DeleteAxgGroupResponse) SetBody(v *DeleteAxgGroupResponseBody) *DeleteA
 	return s
 }
 
+type DeleteSecretAPhoneNoToCustRequest struct {
+	// A号码组ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 51
+	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
+	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130*****1234
+	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteSecretAPhoneNoToCustRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretAPhoneNoToCustRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretAPhoneNoToCustRequest) SetANoWhiteGroupId(v int64) *DeleteSecretAPhoneNoToCustRequest {
+	s.ANoWhiteGroupId = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustRequest) SetOwnerId(v int64) *DeleteSecretAPhoneNoToCustRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustRequest) SetPhoneNoA(v string) *DeleteSecretAPhoneNoToCustRequest {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustRequest) SetResourceOwnerAccount(v string) *DeleteSecretAPhoneNoToCustRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustRequest) SetResourceOwnerId(v int64) *DeleteSecretAPhoneNoToCustRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteSecretAPhoneNoToCustResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 请求状态码
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 删除是否成功
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 失败错误提示
+	//
+	// example:
+	//
+	// 号码组不存在
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回id
+	//
+	// example:
+	//
+	// 1D73E648-0978-18A5-B089-3BB2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求是否成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSecretAPhoneNoToCustResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretAPhoneNoToCustResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetAccessDeniedDetail(v string) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetCode(v string) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetData(v bool) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetMessage(v string) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetRequestId(v string) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponseBody) SetSuccess(v bool) *DeleteSecretAPhoneNoToCustResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSecretAPhoneNoToCustResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSecretAPhoneNoToCustResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSecretAPhoneNoToCustResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSecretAPhoneNoToCustResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponse) SetHeaders(v map[string]*string) *DeleteSecretAPhoneNoToCustResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponse) SetStatusCode(v int32) *DeleteSecretAPhoneNoToCustResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSecretAPhoneNoToCustResponse) SetBody(v *DeleteSecretAPhoneNoToCustResponseBody) *DeleteSecretAPhoneNoToCustResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSecretBlacklistRequest struct {
 	// The phone numbers in the blacklist. A point-to-point blacklist has a pair of numbers separated by a colon (":"). A number pool blacklist or a platform blacklist has only one single number.
 	//
@@ -8945,6 +9104,249 @@ func (s *QueryRecordFileDownloadUrlResponse) SetStatusCode(v int32) *QueryRecord
 }
 
 func (s *QueryRecordFileDownloadUrlResponse) SetBody(v *QueryRecordFileDownloadUrlResponseBody) *QueryRecordFileDownloadUrlResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySecretAPhoneNoToCustRequest struct {
+	// 号码组ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 58
+	ANoWhiteGroupId *int64 `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
+	OwnerId         *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 130*****8888
+	PhoneNoA             *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QuerySecretAPhoneNoToCustRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySecretAPhoneNoToCustRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySecretAPhoneNoToCustRequest) SetANoWhiteGroupId(v int64) *QuerySecretAPhoneNoToCustRequest {
+	s.ANoWhiteGroupId = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustRequest) SetOwnerId(v int64) *QuerySecretAPhoneNoToCustRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustRequest) SetPhoneNoA(v string) *QuerySecretAPhoneNoToCustRequest {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustRequest) SetResourceOwnerAccount(v string) *QuerySecretAPhoneNoToCustRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustRequest) SetResourceOwnerId(v int64) *QuerySecretAPhoneNoToCustRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QuerySecretAPhoneNoToCustResponseBody struct {
+	// example:
+	//
+	// 0
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 请求状态码
+	//
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// A号码报备状态查询结构体
+	Data *QuerySecretAPhoneNoToCustResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 失败错误提示
+	//
+	// example:
+	//
+	// 号码组不存在
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 返回id
+	//
+	// example:
+	//
+	// 1D73E648-0978-18A5-B089-3BB2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 请求是否成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySecretAPhoneNoToCustResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySecretAPhoneNoToCustResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetAccessDeniedDetail(v string) *QuerySecretAPhoneNoToCustResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetCode(v string) *QuerySecretAPhoneNoToCustResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetData(v *QuerySecretAPhoneNoToCustResponseBodyData) *QuerySecretAPhoneNoToCustResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetMessage(v string) *QuerySecretAPhoneNoToCustResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetRequestId(v string) *QuerySecretAPhoneNoToCustResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBody) SetSuccess(v bool) *QuerySecretAPhoneNoToCustResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySecretAPhoneNoToCustResponseBodyData struct {
+	// 所属a号码组id
+	//
+	// example:
+	//
+	// 19
+	ANoWhiteGroupId *string `json:"ANoWhiteGroupId,omitempty" xml:"ANoWhiteGroupId,omitempty"`
+	// 固话报备的经办人/法人电话
+	//
+	// example:
+	//
+	// 130*****8888
+	CustPhoneNo *string `json:"CustPhoneNo,omitempty" xml:"CustPhoneNo,omitempty"`
+	// 号码类型
+	//
+	// example:
+	//
+	// Mobile
+	NoType *string `json:"NoType,omitempty" xml:"NoType,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 130*****1234
+	PhoneNoA *string `json:"PhoneNoA,omitempty" xml:"PhoneNoA,omitempty"`
+	// 备注（客户自己的业务备注，可编辑）
+	//
+	// example:
+	//
+	// ***报备
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 报备失败原因
+	//
+	// example:
+	//
+	// ["系统判断为不同人"]
+	ReportResult *string `json:"ReportResult,omitempty" xml:"ReportResult,omitempty"`
+	// 报备结果
+	//
+	// example:
+	//
+	// REVIEWING
+	ReportStatus *string `json:"ReportStatus,omitempty" xml:"ReportStatus,omitempty"`
+}
+
+func (s QuerySecretAPhoneNoToCustResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySecretAPhoneNoToCustResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetANoWhiteGroupId(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.ANoWhiteGroupId = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetCustPhoneNo(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.CustPhoneNo = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetNoType(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.NoType = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetPhoneNoA(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.PhoneNoA = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetRemark(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetReportResult(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.ReportResult = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponseBodyData) SetReportStatus(v string) *QuerySecretAPhoneNoToCustResponseBodyData {
+	s.ReportStatus = &v
+	return s
+}
+
+type QuerySecretAPhoneNoToCustResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySecretAPhoneNoToCustResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySecretAPhoneNoToCustResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySecretAPhoneNoToCustResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySecretAPhoneNoToCustResponse) SetHeaders(v map[string]*string) *QuerySecretAPhoneNoToCustResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponse) SetStatusCode(v int32) *QuerySecretAPhoneNoToCustResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySecretAPhoneNoToCustResponse) SetBody(v *QuerySecretAPhoneNoToCustResponseBody) *QuerySecretAPhoneNoToCustResponse {
 	s.Body = v
 	return s
 }
@@ -13482,6 +13884,82 @@ func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *D
 
 // Summary:
 //
+// # A号码报备数据删除
+//
+// @param request - DeleteSecretAPhoneNoToCustRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecretAPhoneNoToCustResponse
+func (client *Client) DeleteSecretAPhoneNoToCustWithOptions(request *DeleteSecretAPhoneNoToCustRequest, runtime *util.RuntimeOptions) (_result *DeleteSecretAPhoneNoToCustResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ANoWhiteGroupId)) {
+		query["ANoWhiteGroupId"] = request.ANoWhiteGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSecretAPhoneNoToCust"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSecretAPhoneNoToCustResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # A号码报备数据删除
+//
+// @param request - DeleteSecretAPhoneNoToCustRequest
+//
+// @return DeleteSecretAPhoneNoToCustResponse
+func (client *Client) DeleteSecretAPhoneNoToCust(request *DeleteSecretAPhoneNoToCustRequest) (_result *DeleteSecretAPhoneNoToCustResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSecretAPhoneNoToCustResponse{}
+	_body, _err := client.DeleteSecretAPhoneNoToCustWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a blacklist.
 //
 // Description:
@@ -14577,6 +15055,82 @@ func (client *Client) QueryRecordFileDownloadUrl(request *QueryRecordFileDownloa
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryRecordFileDownloadUrlResponse{}
 	_body, _err := client.QueryRecordFileDownloadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # A号码报备状态查询
+//
+// @param request - QuerySecretAPhoneNoToCustRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySecretAPhoneNoToCustResponse
+func (client *Client) QuerySecretAPhoneNoToCustWithOptions(request *QuerySecretAPhoneNoToCustRequest, runtime *util.RuntimeOptions) (_result *QuerySecretAPhoneNoToCustResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ANoWhiteGroupId)) {
+		query["ANoWhiteGroupId"] = request.ANoWhiteGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNoA)) {
+		query["PhoneNoA"] = request.PhoneNoA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySecretAPhoneNoToCust"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySecretAPhoneNoToCustResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # A号码报备状态查询
+//
+// @param request - QuerySecretAPhoneNoToCustRequest
+//
+// @return QuerySecretAPhoneNoToCustResponse
+func (client *Client) QuerySecretAPhoneNoToCust(request *QuerySecretAPhoneNoToCustRequest) (_result *QuerySecretAPhoneNoToCustResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySecretAPhoneNoToCustResponse{}
+	_body, _err := client.QuerySecretAPhoneNoToCustWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
