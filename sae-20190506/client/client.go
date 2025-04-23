@@ -24714,8 +24714,9 @@ type DescribeConfigurationPriceRequest struct {
 	// example:
 	//
 	// 4096
-	Memory       *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Memory        *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// Scenarios:
 	//
 	// 	- Web
@@ -24743,6 +24744,11 @@ func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurati
 
 func (s *DescribeConfigurationPriceRequest) SetMemory(v int32) *DescribeConfigurationPriceRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetNewSaeVersion(v string) *DescribeConfigurationPriceRequest {
+	s.NewSaeVersion = &v
 	return s
 }
 
@@ -41658,7 +41664,8 @@ type QueryResourceStaticsResponseBodyDataRealTimeRes struct {
 	// example:
 	//
 	// 13
-	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cpu              *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
 	// The memory usage. Unit: GiB per minute.
 	//
 	// example:
@@ -41680,6 +41687,11 @@ func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) SetCpu(v float32) *Que
 	return s
 }
 
+func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) SetEphemeralStorage(v float32) *QueryResourceStaticsResponseBodyDataRealTimeRes {
+	s.EphemeralStorage = &v
+	return s
+}
+
 func (s *QueryResourceStaticsResponseBodyDataRealTimeRes) SetMemory(v float32) *QueryResourceStaticsResponseBodyDataRealTimeRes {
 	s.Memory = &v
 	return s
@@ -41692,8 +41704,10 @@ type QueryResourceStaticsResponseBodyDataSummary struct {
 	// example:
 	//
 	// 3354
-	Cpu     *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	IdleCpu *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
+	Cpu              *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Cu               *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
+	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	IdleCpu          *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
 	// The memory usage. Unit: GiB per minute.
 	//
 	// example:
@@ -41717,6 +41731,16 @@ func (s *QueryResourceStaticsResponseBodyDataSummary) SetActiveCpu(v float32) *Q
 
 func (s *QueryResourceStaticsResponseBodyDataSummary) SetCpu(v float32) *QueryResourceStaticsResponseBodyDataSummary {
 	s.Cpu = &v
+	return s
+}
+
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetCu(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.Cu = &v
+	return s
+}
+
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetEphemeralStorage(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.EphemeralStorage = &v
 	return s
 }
 
@@ -52152,6 +52176,10 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 
 	if !tea.BoolValue(util.IsUnset(request.Memory)) {
 		query["Memory"] = request.Memory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSaeVersion)) {
+		query["NewSaeVersion"] = request.NewSaeVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
