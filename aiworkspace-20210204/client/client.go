@@ -1524,7 +1524,8 @@ type Model struct {
 	// example:
 	//
 	// pai
-	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Provider *string  `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Tags     []*Label `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// example:
 	//
 	// text-classifiaction
@@ -1624,6 +1625,11 @@ func (s *Model) SetOwnerId(v string) *Model {
 
 func (s *Model) SetProvider(v string) *Model {
 	s.Provider = &v
+	return s
+}
+
+func (s *Model) SetTags(v []*Label) *Model {
+	s.Tags = v
 	return s
 }
 
@@ -2204,10 +2210,14 @@ func (s *TrialLabel) SetValue(v string) *TrialLabel {
 }
 
 type AcceptDataworksEventRequest struct {
+	// The event content in the message.
+	//
 	// example:
 	//
 	// {"eventCode":"d****ct","projectId":"8***6","tenantId":4*******8,"operator":"115*****901"}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The message ID. You can obtain the ID from the message received when an extension point event is triggered. For more information about the message format, see [Message formats](https://help.aliyun.com/document_detail/436911.html).
+	//
 	// example:
 	//
 	// 539306ba-*****-41a0-****-6dc81060985c
@@ -2233,6 +2243,8 @@ func (s *AcceptDataworksEventRequest) SetMessageId(v string) *AcceptDataworksEve
 }
 
 type AcceptDataworksEventResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// ADF6D849-*****-7E7030F0CE53
@@ -2282,28 +2294,94 @@ func (s *AcceptDataworksEventResponse) SetBody(v *AcceptDataworksEventResponseBo
 }
 
 type AddImageRequest struct {
+	// The accessibility of the image. Valid values:
+	//
+	// 	- PUBLIC: The image is accessible to all members in the workspace.
+	//
+	// 	- PRIVATE: The image is accessible only to the image creator.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImageId       *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image ID. If you do not specify this parameter, the system automatically generates an image ID. The image ID must start with image- followed by 18 characters in letters or digits.
+	//
+	// example:
+	//
+	// image-k83*****cv
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The URL of the image, which can be repeated. You can call [ListImage](https://help.aliyun.com/document_detail/449118.html) to view the image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-compression/nlp:gpu
-	ImageUri *string                  `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels   []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The image tag, which is an array. Each element in the array contains a key-value pair. Alibaba Cloud images have the system.official=true tag. You can add the following keys to an image:
+	//
+	// 	- system.chipType
+	//
+	// 	- system.dsw.cudaVersion
+	//
+	// 	- system.dsw.fromImageId
+	//
+	// 	- system.dsw.fromInstanceId
+	//
+	// 	- system.dsw.id
+	//
+	// 	- system.dsw.os
+	//
+	// 	- system.dsw.osVersion
+	//
+	// 	- system.dsw.resourceType
+	//
+	// 	- system.dsw.rootImageId
+	//
+	// 	- system.dsw.stage
+	//
+	// 	- system.dsw.tag
+	//
+	// 	- system.dsw.type
+	//
+	// 	- system.framework
+	//
+	// 	- system.origin
+	//
+	// 	- system.pythonVersion
+	//
+	// 	- system.source
+	//
+	// 	- system.supported.dlc
+	//
+	// 	- system.supported.dsw
+	Labels []*AddImageRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The image name. The name must meet the following requirements:
+	//
+	// 	- The name must be 1 to 50 characters in length.
+	//
+	// 	- The name can contain lowercase letters, digits, and hyphens (-). The name must start with a lowercase letter.
+	//
+	// 	- The name must be unique in a workspace.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nlp-compression
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The size of the image. Unit: GB.
+	//
+	// example:
+	//
+	// 2
 	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 15******45
@@ -2369,10 +2447,14 @@ func (s *AddImageRequest) SetWorkspaceId(v string) *AddImageRequest {
 }
 
 type AddImageRequestLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// GPU
@@ -2398,10 +2480,14 @@ func (s *AddImageRequestLabels) SetValue(v string) *AddImageRequestLabels {
 }
 
 type AddImageResponseBody struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// image-4c62******53uor
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -2456,6 +2542,8 @@ func (s *AddImageResponse) SetBody(v *AddImageResponseBody) *AddImageResponse {
 }
 
 type AddImageLabelsRequest struct {
+	// The list of image tags.
+	//
 	// This parameter is required.
 	Labels []*AddImageLabelsRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
@@ -2474,10 +2562,50 @@ func (s *AddImageLabelsRequest) SetLabels(v []*AddImageLabelsRequestLabels) *Add
 }
 
 type AddImageLabelsRequestLabels struct {
+	// The tag key. The following keys can be added:
+	//
+	// 	- system.chipType
+	//
+	// 	- system.dsw.cudaVersion
+	//
+	// 	- system.dsw.fromImageId
+	//
+	// 	- system.dsw.fromInstanceId
+	//
+	// 	- system.dsw.id
+	//
+	// 	- system.dsw.os
+	//
+	// 	- system.dsw.osVersion
+	//
+	// 	- system.dsw.resourceType
+	//
+	// 	- system.dsw.rootImageId
+	//
+	// 	- system.dsw.stage
+	//
+	// 	- system.dsw.tag
+	//
+	// 	- system.dsw.type
+	//
+	// 	- system.framework
+	//
+	// 	- system.origin
+	//
+	// 	- system.pythonVersion
+	//
+	// 	- system.source
+	//
+	// 	- system.supported.dlc
+	//
+	// 	- system.supported.dsw
+	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// GPU
@@ -2503,6 +2631,8 @@ func (s *AddImageLabelsRequestLabels) SetValue(v string) *AddImageLabelsRequestL
 }
 
 type AddImageLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -2552,6 +2682,8 @@ func (s *AddImageLabelsResponse) SetBody(v *AddImageLabelsResponseBody) *AddImag
 }
 
 type AddMemberRoleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -2601,14 +2733,20 @@ func (s *AddMemberRoleResponse) SetBody(v *AddMemberRoleResponseBody) *AddMember
 }
 
 type ChangeResourceGroupRequest struct {
+	// The ID of the target resource group. For information about how to obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
+	//
 	// example:
 	//
 	// rg-df********534dy
 	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	// The resource ID, which is the workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 12**56
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The resource group type, which must be set to workspace.
+	//
 	// example:
 	//
 	// workspace
@@ -2639,6 +2777,8 @@ func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGr
 }
 
 type ChangeResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6****27E-****-5144-A002-89C****8660F
@@ -2688,41 +2828,63 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 }
 
 type CreateCodeSourceRequest struct {
+	// The visibility of the code build. Valid values:
+	//
+	// 	- PUBLIC: The code build is visible to all members in the workspace.
+	//
+	// 	- PRIVATE: The code build is visible only to you and the administrator of the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The code branch.
+	//
 	// example:
 	//
 	// master
 	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
 	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// The URL of the code repository.
+	//
 	// example:
 	//
 	// https://code.aliyun.com/******
 	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// The token used to access the code repository.
+	//
 	// example:
 	//
 	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
+	// The username of the code repository.
+	//
 	// example:
 	//
 	// use***
 	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// The description of the code build, which helps you distinguish between code builds.
+	//
 	// example:
 	//
 	// code source of dlc examples
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the code build.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MyCodeSource1
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The local mount path of the code. By default, the code is mounted to the /root/code/ path.
+	//
 	// example:
 	//
 	// /root/code/code-source-1
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2790,10 +2952,14 @@ func (s *CreateCodeSourceRequest) SetWorkspaceId(v string) *CreateCodeSourceRequ
 }
 
 type CreateCodeSourceResponseBody struct {
+	// The ID of the created code build.
+	//
 	// example:
 	//
 	// code-20********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3**********
@@ -2848,32 +3014,163 @@ func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *Cre
 }
 
 type CreateDatasetRequest struct {
+	// The visibility of the workspace. Valid values:
+	//
+	// 	- PRIVATE (default): The workspace is visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The workspace is visible to all users.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	DataCount     *int64  `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	DataSize      *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The number of dataset files.
+	//
+	// example:
+	//
+	// 500
+	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
+	// The size of the dataset file. Unit: bytes.
+	//
+	// example:
+	//
+	// 10000
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- OSS: Object Storage Service (OSS).
+	//
+	// 	- NAS: File Storage NAS (NAS).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The type of the dataset. Default value: COMMON. Valid values:
+	//
+	// 	- COMMON: common
+	//
+	// 	- PIC: picture
+	//
+	// 	- TEXT: text
+	//
+	// 	- Video: video
+	//
+	// 	- AUDIO: audio
+	//
 	// example:
 	//
 	// COMMON
-	DataType                       *string   `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	Description                    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	ImportInfo                     *string   `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	Labels                         []*Label  `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The description of the dataset. Descriptions are used to differentiate datasets.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dataset configurations to be imported to a storage, such as OSS, NAS, or Cloud Parallel File Storage (CPFS).
+	//
+	// **OSS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "bucket": "${bucket}",//The bucket name\\
+	//
+	// "path": "${path}" // The file path\\
+	//
+	// }\\
+	//
+	//
+	// **NAS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+	//
+	// "exportId": "${export_id}", // The file system export directory\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS for Lingjun**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+	//
+	// "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only\\
+	//
+	// }\\
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+	//
+	// 	- If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
+	//
+	// 	- If you set the value to ["\\*"], all accounts are granted the read and write permissions.
+	//
+	// 	- If you set the value to [], only the creator of the dataset has the read and write permissions.
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
+	// The dataset name. The name must meet the following requirements:
+	//
+	// 	- The name must start with a letter, digit, or Chinese character.
+	//
+	// 	- The name can contain underscores (_) and hyphens (-).
+	//
+	// 	- The name must be 1 to 127 characters in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
+	//
 	// example:
 	//
 	// {
@@ -2882,39 +3179,98 @@ type CreateDatasetRequest struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The property of the dataset. Valid values:
+	//
+	// 	- FILE
+	//
+	// 	- DIRECTORY
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// DIRECTORY
 	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The dataset provider. The value cannot be set to pai.
+	//
+	// example:
+	//
+	// Github
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The source type of the dataset. Valid values:
+	//
+	// 	- Ecs (default)
+	//
+	// 	- Lingjun
+	//
 	// example:
 	//
 	// Ecs
-	ProviderType         *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	SourceDatasetId      *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The ID of the source dataset of the labeled dataset.
+	//
+	// example:
+	//
+	// d-bvfasdfxxxxj8o411
+	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	// The version of the source dataset of the labeled dataset.
+	//
+	// example:
+	//
+	// v2
 	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
+	// The ID of the data source.
+	//
+	// 	- If SourceType is set to USER, the value of SourceId can be a custom string.
+	//
+	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	//
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, the value of SourceId is empty by default.
+	//
 	// example:
 	//
 	// jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the data source. Default value: USER. Valid values:
+	//
+	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	//
+	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	//
+	// 	- USER: a dataset registered by a user.
+	//
 	// example:
 	//
 	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The URI of the data source.
+	//
+	// 	- Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+	//
+	// 	- Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// nas://09f****f2.cn-hangzhou/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The ID of the Alibaba Cloud account to which the dataset belongs. The workspace owner and administrator have permissions to create datasets for specified members in the workspace.
+	//
 	// example:
 	//
-	// 29884000000186970
-	UserId             *string  `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	VersionDescription *string  `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	VersionLabels      []*Label `json:"VersionLabels,omitempty" xml:"VersionLabels,omitempty" type:"Repeated"`
+	// 2485765****023475
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The description of the dataset of the initial version.
+	//
+	// example:
+	//
+	// The initial version
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// The list of tags to be added to the dataset of the initial version.
+	VersionLabels []*Label `json:"VersionLabels,omitempty" xml:"VersionLabels,omitempty" type:"Repeated"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
+	//
 	// example:
 	//
 	// 478**
@@ -3045,10 +3401,14 @@ func (s *CreateDatasetRequest) SetWorkspaceId(v string) *CreateDatasetRequest {
 }
 
 type CreateDatasetResponseBody struct {
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-rbvg5*****jhc9ks92
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B2C51F93-1C07-5477-9705-5FDB****F19F
@@ -3103,14 +3463,20 @@ func (s *CreateDatasetResponse) SetBody(v *CreateDatasetResponseBody) *CreateDat
 }
 
 type CreateDatasetFileMetasRequest struct {
+	// The metadata of the file.
+	//
 	// This parameter is required.
 	DatasetFileMetas []*DatasetFileMetaContentCreate `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
+	// The dataset version name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3143,15 +3509,27 @@ func (s *CreateDatasetFileMetasRequest) SetWorkspaceId(v string) *CreateDatasetF
 }
 
 type CreateDatasetFileMetasResponseBody struct {
+	// The metadata that failed to be created.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the metadata records of all dataset files were created. The value true indicates that the metadata records of all dataset files are created. If the value is false, view the failure details specified by FailedDetails.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Status         *bool                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The metadata that is created.
 	SucceedDetails []*DatasetFileMetaResponse `json:"SucceedDetails,omitempty" xml:"SucceedDetails,omitempty" type:"Repeated"`
 }
 
@@ -3213,27 +3591,50 @@ func (s *CreateDatasetFileMetasResponse) SetBody(v *CreateDatasetFileMetasRespon
 }
 
 type CreateDatasetJobRequest struct {
+	// The dataset version.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The job description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The job action.
+	//
+	// Valid values:
+	//
+	// 	- SemanticIndex
+	//
+	// 	- IntelligentTag
+	//
+	// 	- FileMetaExport
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
+	// The job mode.
+	//
+	// Valid values:
+	//
+	// 	- Full: full mode.
+	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	// The job configuration.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// {\\"modelId\\":\\"xxx\\"}
 	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3281,10 +3682,14 @@ func (s *CreateDatasetJobRequest) SetWorkspaceId(v string) *CreateDatasetJobRequ
 }
 
 type CreateDatasetJobResponseBody struct {
+	// The ID of the dataset job.
+	//
 	// example:
 	//
 	// dsjob-9jx1******uj9e
 	DatasetJobId *string `json:"DatasetJobId,omitempty" xml:"DatasetJobId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 99341606-****-0757724D97EE
@@ -3339,18 +3744,38 @@ func (s *CreateDatasetJobResponse) SetBody(v *CreateDatasetJobResponseBody) *Cre
 }
 
 type CreateDatasetJobConfigRequest struct {
+	// The configuration content. Format:
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	//
+	// 	- MultimodalSemanticIndex
+	//
+	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration type.
+	//
+	// Valid values:
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// 	- MultimodalSemanticIndex
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// MultimodalIntelligentTag
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3383,10 +3808,14 @@ func (s *CreateDatasetJobConfigRequest) SetWorkspaceId(v string) *CreateDatasetJ
 }
 
 type CreateDatasetJobConfigResponseBody struct {
+	// The configuration ID.
+	//
 	// example:
 	//
 	// dscfg-xxxxxxxxxxxxxx
 	DatasetJobConfigId *string `json:"DatasetJobConfigId,omitempty" xml:"DatasetJobConfigId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -3441,6 +3870,7 @@ func (s *CreateDatasetJobConfigResponse) SetBody(v *CreateDatasetJobConfigRespon
 }
 
 type CreateDatasetLabelsRequest struct {
+	// The tags.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -3458,6 +3888,8 @@ func (s *CreateDatasetLabelsRequest) SetLabels(v []*Label) *CreateDatasetLabelsR
 }
 
 type CreateDatasetLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A083731B-4973-54D1-B324-E53****4DD44
@@ -3879,19 +4311,27 @@ func (s *CreateDatasetVersionLabelsResponse) SetBody(v *CreateDatasetVersionLabe
 }
 
 type CreateExperimentRequest struct {
+	// The visibility of the experiment. Valid values: PRIVATE (the experiment is visible only to the creator and the Alibaba Cloud account) and PUBLIC (the experiment is visible to all users). This parameter is optional and the default value is PRIVATE.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// Artifact的OSS存储路径
+	// The default artifact output path of all jobs that are associated with the experiment. Only Object Storage Service (OSS) paths are supported.
 	//
 	// example:
 	//
 	// oss://test-bucket.oss-cn-hangzhou.aliyuncs.com/test
 	ArtifactUri *string `json:"ArtifactUri,omitempty" xml:"ArtifactUri,omitempty"`
-	// 标签
+	// The tags.
 	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// 名称
+	// The experiment name. The name must meet the following requirements:
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be 1 to 63 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -3899,7 +4339,7 @@ type CreateExperimentRequest struct {
 	//
 	// exp-test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 工作空间ID
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -3943,8 +4383,9 @@ func (s *CreateExperimentRequest) SetWorkspaceId(v string) *CreateExperimentRequ
 }
 
 type CreateExperimentResponseBody struct {
+	// The returned data. If the operation is asynchronously implemented, the job ID is returned.
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -3996,6 +4437,8 @@ func (s *CreateExperimentResponse) SetBody(v *CreateExperimentResponseBody) *Cre
 }
 
 type CreateMemberRequest struct {
+	// The members.
+	//
 	// This parameter is required.
 	Members []*CreateMemberRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
 }
@@ -4014,8 +4457,12 @@ func (s *CreateMemberRequest) SetMembers(v []*CreateMemberRequestMembers) *Creat
 }
 
 type CreateMemberRequestMembers struct {
+	// The list of roles.
+	//
 	// This parameter is required.
 	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The member IDs. Multiple member IDs are separated by commas (,). You can call [ListMembers](https://help.aliyun.com/document_detail/449135.html) to obtain the member IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4043,7 +4490,10 @@ func (s *CreateMemberRequestMembers) SetUserId(v string) *CreateMemberRequestMem
 }
 
 type CreateMemberResponseBody struct {
+	// The returned members.
 	Members []*CreateMemberResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// DA869D1B-035A-43B2-ACC1-C56681BD9FAA
@@ -4069,15 +4519,22 @@ func (s *CreateMemberResponseBody) SetRequestId(v string) *CreateMemberResponseB
 }
 
 type CreateMemberResponseBodyMembers struct {
+	// The display name.
+	//
 	// example:
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The member ID.
+	//
 	// example:
 	//
 	// 145883-21513926******88039
-	MemberId *string   `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	Roles    []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The list of roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 21513926******88039
@@ -4214,7 +4671,8 @@ type CreateModelRequest struct {
 	// example:
 	//
 	// ModelScope
-	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Origin *string  `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	Tag    []*Label `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The task of the model. Describes the specific problem that the model solves. Example: text-classification.
 	//
 	// example:
@@ -4284,6 +4742,11 @@ func (s *CreateModelRequest) SetOrderNumber(v int64) *CreateModelRequest {
 
 func (s *CreateModelRequest) SetOrigin(v string) *CreateModelRequest {
 	s.Origin = &v
+	return s
+}
+
+func (s *CreateModelRequest) SetTag(v []*Label) *CreateModelRequest {
+	s.Tag = v
 	return s
 }
 
@@ -4780,6 +5243,7 @@ func (s *CreateModelVersionResponse) SetBody(v *CreateModelVersionResponseBody) 
 }
 
 type CreateModelVersionLabelsRequest struct {
+	// The tags.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -4797,6 +5261,8 @@ func (s *CreateModelVersionLabelsRequest) SetLabels(v []*Label) *CreateModelVers
 }
 
 type CreateModelVersionLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -4993,7 +5459,7 @@ type CreateProductOrdersRequestProductsInstanceProperties struct {
 	//
 	// example:
 	//
-	// commodity_type。
+	// commodity_type
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The property name.
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -5001,7 +5467,7 @@ type CreateProductOrdersRequestProductsInstanceProperties struct {
 	//
 	// example:
 	//
-	// oss。
+	// oss
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5385,10 +5851,20 @@ func (s *CreateWorkspaceResponse) SetBody(v *CreateWorkspaceResponseBody) *Creat
 }
 
 type CreateWorkspaceResourceRequest struct {
+	// The operation to perform. Valid values:
+	//
+	// 	- CreateAndAttach: creates resources and associates the resources with a workspace.
+	//
+	// 	- Attach: associates resources with a workspace.
+	//
+	// >  MaxCompute supports only the Attach operation.
+	//
 	// example:
 	//
 	// CreateAndAttach
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// The resources.
+	//
 	// This parameter is required.
 	Resources []*CreateWorkspaceResourceRequestResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
@@ -5412,34 +5888,76 @@ func (s *CreateWorkspaceResourceRequest) SetResources(v []*CreateWorkspaceResour
 }
 
 type CreateWorkspaceResourceRequestResources struct {
+	// The environment type. Valid values:
+	//
+	// 	- dev: development environment
+	//
+	// 	- prod: production environment
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// The name of the resource group, which is unique within your Alibaba Cloud account.
+	//
 	// example:
 	//
 	// groupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Specifies whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
-	IsDefault *bool                                            `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels    []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The tags added to the resource.
+	Labels []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The resource name. Format:
+	//
+	// 	- The name must be 3 to 28 characters in length, and can contain only letters, digits, and underscores (_). The name must start with a letter.
+	//
+	// 	- The name is unique in the region.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ResourceName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **This field is no longer used and will be removed. Use the ResourceType field instead.
+	//
 	// example:
 	//
 	// MaxCompute
-	ProductType  *string                                          `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Quotas       []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	ResourceType *string                                          `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Spec         map[string]interface{}                           `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The list of quotas. Only MaxCompute quotas are available.
+	Quotas []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- MaxCompute
+	//
+	// 	- ECS
+	//
+	// 	- Lingjun
+	//
+	// 	- ACS
+	//
+	// 	- FLINK
+	//
+	// example:
+	//
+	// MaxCompute
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource specifications in the JSON format.
+	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5507,7 +6025,17 @@ func (s *CreateWorkspaceResourceRequestResources) SetWorkspaceId(v string) *Crea
 }
 
 type CreateWorkspaceResourceRequestResourcesLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// system.support.eas
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// true
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -5530,6 +6058,8 @@ func (s *CreateWorkspaceResourceRequestResourcesLabels) SetValue(v string) *Crea
 }
 
 type CreateWorkspaceResourceRequestResourcesQuotas struct {
+	// The quota ID. You can call [ListQuotas](https://help.aliyun.com/document_detail/449144.html) to obtain the quota ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -5552,11 +6082,16 @@ func (s *CreateWorkspaceResourceRequestResourcesQuotas) SetId(v string) *CreateW
 }
 
 type CreateWorkspaceResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1e195c5116124202371861018d5bde
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources.
 	Resources []*CreateWorkspaceResourceResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The total number of resources.
+	//
 	// example:
 	//
 	// 1
@@ -5587,6 +6122,8 @@ func (s *CreateWorkspaceResourceResponseBody) SetTotalCount(v int64) *CreateWork
 }
 
 type CreateWorkspaceResourceResponseBodyResources struct {
+	// The resource ID.
+	//
 	// example:
 	//
 	// 1234
@@ -5698,6 +6235,8 @@ func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *Del
 }
 
 type DeleteDatasetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0F049F0-8D69-5BAC-8F10-B******A34C
@@ -5747,16 +6286,22 @@ func (s *DeleteDatasetResponse) SetBody(v *DeleteDatasetResponseBody) *DeleteDat
 }
 
 type DeleteDatasetFileMetasRequest struct {
+	// The metadata ID of the dataset file.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 07914c9534586e4e7aa6e9dbca5009082df******fd8a0d857b33296c59bf6
 	DatasetFileMetaIds *string `json:"DatasetFileMetaIds,omitempty" xml:"DatasetFileMetaIds,omitempty"`
+	// The dataset version.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 132602
@@ -5787,11 +6332,16 @@ func (s *DeleteDatasetFileMetasRequest) SetWorkspaceId(v string) *DeleteDatasetF
 }
 
 type DeleteDatasetFileMetasResponseBody struct {
+	// The metadata records that fail to be deleted for the dataset files.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the metadata records of all dataset files were deleted. The value true indicates that the metadata records of all dataset files are deleted. If the value is false, view the failure details specified by FailedDetails.
+	//
 	// example:
 	//
 	// true
@@ -5851,6 +6401,8 @@ func (s *DeleteDatasetFileMetasResponse) SetBody(v *DeleteDatasetFileMetasRespon
 }
 
 type DeleteDatasetJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
@@ -5900,6 +6452,8 @@ func (s *DeleteDatasetJobResponse) SetBody(v *DeleteDatasetJobResponseBody) *Del
 }
 
 type DeleteDatasetJobConfigRequest struct {
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 513663
@@ -5920,6 +6474,8 @@ func (s *DeleteDatasetJobConfigRequest) SetWorkspaceId(v string) *DeleteDatasetJ
 }
 
 type DeleteDatasetJobConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// DA869D1B-035A-43B2-ACC1-C56681BD9FAA
@@ -5969,6 +6525,8 @@ func (s *DeleteDatasetJobConfigResponse) SetBody(v *DeleteDatasetJobConfigRespon
 }
 
 type DeleteDatasetLabelsRequest struct {
+	// The tag key. You can call [GetDataset](https://help.aliyun.com/document_detail/457218.html) to obtain the tag key. Multiple tag keys are separated by commas (,).
+	//
 	// example:
 	//
 	// key1,key2
@@ -5989,6 +6547,8 @@ func (s *DeleteDatasetLabelsRequest) SetLabelKeys(v string) *DeleteDatasetLabels
 }
 
 type DeleteDatasetLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 64B50C1D-D4C2-560C-86A3-A6ED****16D
@@ -6085,6 +6645,8 @@ func (s *DeleteDatasetVersionResponse) SetBody(v *DeleteDatasetVersionResponseBo
 }
 
 type DeleteDatasetVersionLabelsRequest struct {
+	// The tag keys. Multiple tags are separated by commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6107,6 +6669,7 @@ func (s *DeleteDatasetVersionLabelsRequest) SetKeys(v string) *DeleteDatasetVers
 }
 
 type DeleteDatasetVersionLabelsResponseBody struct {
+	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -6153,6 +6716,8 @@ func (s *DeleteDatasetVersionLabelsResponse) SetBody(v *DeleteDatasetVersionLabe
 }
 
 type DeleteExperimentResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
@@ -6202,6 +6767,8 @@ func (s *DeleteExperimentResponse) SetBody(v *DeleteExperimentResponseBody) *Del
 }
 
 type DeleteExperimentLabelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -6399,6 +6966,8 @@ func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelRe
 }
 
 type DeleteModelLabelsRequest struct {
+	// The label key to be deleted. To delete multiple label keys, separate them with commas (,).
+	//
 	// example:
 	//
 	// key1,key2
@@ -6419,6 +6988,8 @@ func (s *DeleteModelLabelsRequest) SetLabelKeys(v string) *DeleteModelLabelsRequ
 }
 
 type DeleteModelLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -6468,6 +7039,8 @@ func (s *DeleteModelLabelsResponse) SetBody(v *DeleteModelLabelsResponseBody) *D
 }
 
 type DeleteModelVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -6641,7 +7214,7 @@ func (s *DeleteRunResponse) SetBody(v *DeleteRunResponseBody) *DeleteRunResponse
 }
 
 type DeleteRunLabelResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -6765,6 +7338,8 @@ func (s *DeleteUserConfigResponse) SetBody(v *DeleteUserConfigResponseBody) *Del
 }
 
 type DeleteWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -6814,20 +7389,55 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 }
 
 type DeleteWorkspaceResourceRequest struct {
+	// The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
+	//
 	// example:
 	//
 	// group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The tags. Multiple tags are separated by commas (,).
+	//
+	// example:
+	//
+	// system.supported.eas=true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The operation to perform. Valid values:
+	//
+	// 	- DetachAndDelete: disassociates a resource from a workspace and deletes the resource in the workspace. This is the default value.
+	//
+	// 	- Detach: disassociates a resource group from a workspace.
+	//
 	// example:
 	//
 	// DetachAndDelete
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// **This field is no longer used and will be removed. Use the ResourceType field instead.
+	//
 	// example:
 	//
 	// DLC
-	ProductType  *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceIds  *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The resource IDs. Multiple resource IDs are separated by commas (,). The GroupName values for the specified resources must be the same. You cannot leave both GroupName and ResourceIds empty. You can specify both parameters.
+	//
+	// example:
+	//
+	// Resource-dks******jkf,Resource-adf******dss
+	ResourceIds *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	// The resource type. Valid values:
+	//
+	// 	- ECS
+	//
+	// 	- Lingjun
+	//
+	// 	- ACS
+	//
+	// 	- FLINK
+	//
+	// 	- MaxCompute (This resource type is valid only if Option is set to Detach.)
+	//
+	// example:
+	//
+	// DLC
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
@@ -6870,10 +7480,13 @@ func (s *DeleteWorkspaceResourceRequest) SetResourceType(v string) *DeleteWorksp
 }
 
 type DeleteWorkspaceResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource IDs.
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
@@ -7134,40 +7747,165 @@ func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSo
 }
 
 type GetDatasetResponseBody struct {
+	// The visibility of the workspace. Valid values:
+	//
+	// 	- PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The workspace is visible to all users.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The type of the data source. Valid values:
+	//
+	// 	- OSS: Object Storage Service (OSS)
+	//
+	// 	- NAS: File Storage NAS (NAS)
+	//
 	// example:
 	//
 	// NAS
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	// The data type. Valid values:
+	//
+	// 	- COMMON: common
+	//
+	// 	- PIC: picture
+	//
+	// 	- TEXT: text
+	//
+	// 	- VIDEO: video
+	//
+	// 	- AUDIO: audio
+	//
 	// example:
 	//
 	// COMMON
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-rbvg5wz****c9ks92
-	DatasetId   *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The update time.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
-	GmtModifiedTime                *string         `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImportInfo                     *string         `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	Labels                         []*Label        `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion                  *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	MountAccess                    *string         `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	MountAccessReadWriteRoleIdList []*string       `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The dataset configurations to be imported to a storage, such as OSS, NAS, or CPFS.
+	//
+	// **OSS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "bucket": "${bucket}",// The bucket name\\
+	//
+	// "path": "${path}" // The file path\\
+	//
+	// }\\
+	//
+	//
+	// **NAS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+	//
+	// "exportId": "${export_id}", // The file system export directory\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// }\\
+	//
+	//
+	// **CPFS for Lingjun**
+	//
+	// {\\
+	//
+	// "region": "${region}",// The region ID\\
+	//
+	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	//
+	// "path": "${path}", // The file system path\\
+	//
+	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+	//
+	// "isVpcMount": boolean, // Whether the mount point is a VPC mount point, CPFS for Lingjun only\\
+	//
+	// }\\
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest version of the dataset.
+	LatestVersion *DatasetVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The access permission on the dataset when the dataset is mounted. Valid values:
+	//
+	// 	- RO: read-only permissions
+	//
+	// 	- RW: read and write permissions
+	//
+	// example:
+	//
+	// RW
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
+	// The dataset name.
+	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended fields of the dataset v1 (initial version). The value is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can use the mountPath field to specify the default mount path of the dataset.
+	//
 	// example:
 	//
 	// {
@@ -7176,39 +7914,104 @@ type GetDatasetResponseBody struct {
 	//
 	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ID of the Alibaba Could account.
+	//
 	// example:
 	//
 	// 1631044****3440
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The property of the dataset of the initial version v1. Valid values:
+	//
+	// 	- FILE
+	//
+	// 	- DIRECTORY
+	//
 	// example:
 	//
 	// DIRECTORY
-	Property     *string `json:"Property,omitempty" xml:"Property,omitempty"`
-	Provider     *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// The dataset provider. If the value pai is returned, the dataset is a public dataset in PAI.
+	//
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The type of the data source for the dataset. Valid values:
+	//
+	// 	- Ecs (default)
+	//
+	// 	- Lingjun
+	//
+	// example:
+	//
+	// Ecs
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SourceDatasetId      *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the source dataset generated from a labeling job of iTAG.
+	//
+	// example:
+	//
+	// d-rcdg3wxxxxxhc5jk87
+	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	// The version of the source dataset generated from a labeling job of iTAG.
+	//
+	// example:
+	//
+	// v2
 	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
+	// The ID of the source for the dataset v1 (initial version). Valid values:
+	//
+	// 	- If SourceType is set to USER, the value of SourceId can be a custom string.
+	//
+	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	//
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	//
 	// example:
 	//
 	// jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the source for the dataset v1 (initial version). Valid values:
+	//
+	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	//
+	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	//
+	// 	- USER: a dataset registered by a user.
+	//
 	// example:
 	//
 	// USER
-	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The labeling template for the source dataset generated from a labeling job of iTAG.
+	//
+	// example:
+	//
+	// TextClassification
 	TagTemplateType *string `json:"TagTemplateType,omitempty" xml:"TagTemplateType,omitempty"`
+	// The URI of the initial version v1.
+	//
+	// 	- Sample format for the OSS data source: `oss://bucket.endpoint/object`
+	//
+	// 	- Sample formats for the NAS data source: `nas://<nasfisid>.region/subpath/to/dir/`: General-purpose NAS. `nas://<cpfs-fsid>.region/subpath/to/dir/`: Cloud Parallel File Storage (CPFS) 1.0. `nas://<cpfs-fsid>.region/<protocolserviceid>/`: CPFS 2.0. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID. The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+	//
 	// example:
 	//
 	// nas://09f****f2.cn-hangzhou/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The ID of the user to which the dataset belongs.
+	//
 	// example:
 	//
 	// 2485765****023475
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The ID of the workspace to which the dataset belongs.
+	//
 	// example:
 	//
 	// 478**
@@ -7388,10 +8191,14 @@ func (s *GetDatasetResponse) SetBody(v *GetDatasetResponseBody) *GetDatasetRespo
 }
 
 type GetDatasetFileMetaRequest struct {
+	// The dataset version.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -7417,13 +8224,31 @@ func (s *GetDatasetFileMetaRequest) SetWorkspaceId(v string) *GetDatasetFileMeta
 }
 
 type GetDatasetFileMetaResponseBody struct {
+	// The queried metadata records of dataset files.
 	DatasetFileMeta *DatasetFileMetaContentGet `json:"DatasetFileMeta,omitempty" xml:"DatasetFileMeta,omitempty"`
-	DatasetId       *string                    `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetVersion  *string                    `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The dataset ID.
+	//
+	// example:
+	//
+	// d-rbvg5wz****c9ks92
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -7489,11 +8314,130 @@ func (s *GetDatasetFileMetaResponse) SetBody(v *GetDatasetFileMetaResponseBody) 
 	return s
 }
 
-type GetDatasetJobRequest struct {
+type GetDatasetFileMetasStatisticsRequest struct {
+	// example:
+	//
+	// filedir
+	AggregateBy *string `json:"AggregateBy,omitempty" xml:"AggregateBy,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 145883
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetDatasetFileMetasStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetFileMetasStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetFileMetasStatisticsRequest) SetAggregateBy(v string) *GetDatasetFileMetasStatisticsRequest {
+	s.AggregateBy = &v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsRequest) SetDatasetVersion(v string) *GetDatasetFileMetasStatisticsRequest {
+	s.DatasetVersion = &v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsRequest) SetMaxResults(v int32) *GetDatasetFileMetasStatisticsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsRequest) SetWorkspaceId(v string) *GetDatasetFileMetasStatisticsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetDatasetFileMetasStatisticsResponseBody struct {
+	DatasetFileMetasStats []*DatasetFileMetasStat `json:"DatasetFileMetasStats,omitempty" xml:"DatasetFileMetasStats,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 73
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// ADF6D849-*****-7E7030F0CE53
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetDatasetFileMetasStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetFileMetasStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetFileMetasStatisticsResponseBody) SetDatasetFileMetasStats(v []*DatasetFileMetasStat) *GetDatasetFileMetasStatisticsResponseBody {
+	s.DatasetFileMetasStats = v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsResponseBody) SetTotalCount(v int32) *GetDatasetFileMetasStatisticsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsResponseBody) SetRequestId(v string) *GetDatasetFileMetasStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDatasetFileMetasStatisticsResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDatasetFileMetasStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDatasetFileMetasStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDatasetFileMetasStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDatasetFileMetasStatisticsResponse) SetHeaders(v map[string]*string) *GetDatasetFileMetasStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsResponse) SetStatusCode(v int32) *GetDatasetFileMetasStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDatasetFileMetasStatisticsResponse) SetBody(v *GetDatasetFileMetasStatisticsResponseBody) *GetDatasetFileMetasStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type GetDatasetJobRequest struct {
+	// The dataset version name.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 478**
@@ -7519,44 +8463,94 @@ func (s *GetDatasetJobRequest) SetWorkspaceId(v string) *GetDatasetJobRequest {
 }
 
 type GetDatasetJobResponseBody struct {
+	// The total number of completed files.
+	//
 	// example:
 	//
 	// 990
 	CompletedFileCount *int64 `json:"CompletedFileCount,omitempty" xml:"CompletedFileCount,omitempty"`
+	// The time when the job is started.
+	//
 	// example:
 	//
 	// 2024-11-15T07:06:42Z
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The job description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The total number of failed files.
+	//
 	// example:
 	//
 	// 10
 	FailedFileCount *int64 `json:"FailedFileCount,omitempty" xml:"FailedFileCount,omitempty"`
+	// The time when the job ends.
+	//
 	// example:
 	//
 	// 2024-07-16T02:03:23Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	// The action that is performed on the job.
+	//
+	// Valid values:
+	//
+	// 	- SemanticIndex: semantic indexing
+	//
+	// 	- IntelligentTag: smart labeling
+	//
+	// 	- FileMetaExport: metadata export
+	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
+	// The job mode.
+	//
+	// Valid value:
+	//
+	// 	- Full: full data mode.
+	//
 	// example:
 	//
 	// Full
 	JobMode *string `json:"JobMode,omitempty" xml:"JobMode,omitempty"`
+	// The job details.
+	//
 	// example:
 	//
 	// {\\"modelId\\":\\"xxx\\"}
-	JobSpec *string   `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
-	Logs    []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	JobSpec *string `json:"JobSpec,omitempty" xml:"JobSpec,omitempty"`
+	// The job logs.
+	Logs []*string `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 64B50C1D-D4C2-560C-86A3-A6ED****16D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The job state.
+	//
+	// Valid values:
+	//
+	// 	- Succeeded
+	//
+	// 	- Failed
+	//
+	// 	- Running
+	//
+	// 	- Pending
+	//
+	// 	- PartialFailed
+	//
+	// 	- Deleting
+	//
+	// 	- ManuallyStop
+	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The total number of job files.
+	//
 	// example:
 	//
 	// 1000
@@ -7661,6 +8655,8 @@ func (s *GetDatasetJobResponse) SetBody(v *GetDatasetJobResponseBody) *GetDatase
 }
 
 type GetDatasetJobConfigRequest struct {
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 114243
@@ -7681,32 +8677,57 @@ func (s *GetDatasetJobConfigRequest) SetWorkspaceId(v string) *GetDatasetJobConf
 }
 
 type GetDatasetJobConfigResponseBody struct {
+	// The configuration content. Configuration format for MultimodalIntelligentTag:
+	//
+	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	//
+	// MultimodalSemanticIndex
+	//
+	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	//
 	// example:
 	//
 	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration type. Valid values:
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// 	- MultimodalSemanticIndex
+	//
 	// example:
 	//
 	// MultimodalIntelligentTag
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The time when the configuration is created.
+	//
 	// example:
 	//
 	// 2024-10-16T01:44:10Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The dataset ID.
+	//
 	// example:
 	//
 	// d-lfd60v0p****ujtsdx
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The time when the configuration is modified.
+	//
 	// example:
 	//
 	// 2024-12-26T02:17:18Z
 	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
 	// D5BFFEE3-6025-443F-8A03-02D619B5C4B9
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 114243
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -7783,69 +8804,131 @@ func (s *GetDatasetJobConfigResponse) SetBody(v *GetDatasetJobConfigResponseBody
 }
 
 type GetDatasetVersionResponseBody struct {
-	// 数据集的数据量
+	// The number of data records.
+	//
+	// example:
+	//
+	// 10000
 	DataCount *int64 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// 数据集版本的数据大小。
+	// The size of the dataset.
+	//
+	// example:
+	//
+	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// 数据源类型。支持以下取值：
-	//
-	// - OSS：阿里云对象存储（OSS）。
-	//
-	// - NAS：阿里云文件存储（NAS）。
+	// The type of the data source.
 	//
 	// This parameter is required.
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	// 代表资源一级ID的资源属性字段
+	// The request ID.
+	//
+	// example:
+	//
+	// d-dkdbnnap0g7b6su4yg
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	// 数据集版本的描述信息。
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The version description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 2023-12-13T10:22:05.694Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// 创建时间。
+	// The last modification time.
+	//
+	// example:
+	//
+	// 2023-12-13T10:22:05.694Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	ImportInfo      *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
-	// 代表资源标签的资源属性字段
-	Labels      []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	MountAccess *string  `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
-	// 扩展字段，JsonString类型。
+	// The dataset configurations to be imported to a storage, such as Object Storage Service (OSS), File Storage NAS (NAS), or Cloud Parallel File Storage (CPFS).
 	//
-	// 当DLC使用数据集时，可通过配置mountPath字段指定数据集默认挂载路径。
+	// **OSS**
+	//
+	// { "region": "${region}",// The region ID. $bucket = $options["bucket"]; // The bucket name. "path": "${path}" // The file path. }
+	//
+	// **NAS**
+	//
+	// **CPFS**
+	//
+	// **CPFS for Lingjun**
+	//
+	// example:
+	//
+	// {
+	//
+	//     "region": "cn-wulanchabu",
+	//
+	//     "fileSystemId": "bmcpfs-xxxxxxxxxxx",
+	//
+	//     "path": "/mnt",
+	//
+	//     "mountTarget": "cpfs-xxxxxxxxxxxx-vpc-gacs9f.cn-wulanchabu.cpfs.aliyuncs.com",
+	//
+	//     "isVpcMount": true
+	//
+	// }
+	ImportInfo *string `json:"ImportInfo,omitempty" xml:"ImportInfo,omitempty"`
+	// The resource tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The access permission on the dataset when the dataset is mounted. Valid values:
+	//
+	// 	- RO: read-only permissions
+	//
+	// 	- RW: read and write permissions
+	//
+	// example:
+	//
+	// RO
+	MountAccess *string `json:"MountAccess,omitempty" xml:"MountAccess,omitempty"`
+	// The extended fields.
+	//
+	// example:
+	//
+	// {
+	//
+	//   "mountPath": "/mnt/data/"
+	//
+	// }
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// 数据集的属性。支持以下取值：
-	//
-	// - FILE：文件。
-	//
-	// - DIRECTORY：文件夹。
+	// The property of the dataset.
 	//
 	// This parameter is required.
-	Property  *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	//
+	// example:
+	//
+	// DIRECTORY
+	Property *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C55DF3DA-F120-5E37-A374-F49365531701
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 数据来源ID。
+	// The ID of the source dataset.
+	//
+	// example:
+	//
+	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// 数据来源类型，默认为USER。支持以下取值：
+	// The type of the data source.
 	//
-	// - PAI-PUBLIC-DATASET：PAI公共数据集。
+	// example:
 	//
-	// - ITAG：iTAG模块标注结果生成的数据集。
-	//
-	// - USER：用户注册的数据集。
+	// USER
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Uri配置样例如下：
-	//
-	// - 数据源类型为OSS：`oss://bucket.endpoint/object`
-	//
-	// - 数据源类型为NAS：
-	//
-	// 通用型NAS格式为：`nas://<nasfisid>.region/subpath/to/dir/`；
-	//
-	// CPFS1.0：`nas://<cpfs-fsid>.region/subpath/to/dir/`；
-	//
-	// CPFS2.0：`nas://<cpfs-fsid>.region/<protocolserviceid>/`。
-	//
-	// CPFS1.0和CPFS2.0根据fsid的格式来区分：CPFS1.0 格式为cpfs-<8位ascii字符>；CPFS2.0 格式为cpfs-<16为ascii字符>。
+	// The sample URI of the dataset.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// oss://ai4d-br7hx9ngzelo2o6uip.oss-cn-shanghai.aliyuncs.com/365349/data-1157703270994901/datasets/aka108o/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// 代表资源名称的资源属性字段
+	// The version name of the dataset.
+	//
+	// example:
+	//
+	// v1
 	VersionName *string `json:"VersionName,omitempty" xml:"VersionName,omitempty"`
 }
 
@@ -7972,6 +9055,12 @@ func (s *GetDatasetVersionResponse) SetBody(v *GetDatasetVersionResponseBody) *G
 }
 
 type GetDefaultWorkspaceRequest struct {
+	// Specifies whether to show the details of the default workspace. The details include the conditions of the workspace in different phases. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
@@ -7992,41 +9081,78 @@ func (s *GetDefaultWorkspaceRequest) SetVerbose(v bool) *GetDefaultWorkspaceRequ
 }
 
 type GetDefaultWorkspaceResponseBody struct {
+	// The conditions of the default workspace in the creation process.
 	Conditions []*GetDefaultWorkspaceResponseBodyConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// The UID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 17915******4216
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The workspace description.
+	//
 	// example:
 	//
 	// workspace description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the workspace.
+	//
 	// example:
 	//
 	// workspace-example
-	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environments of the workspace. Valid values:
+	//
+	// 	- Workspaces in basic mode can run only in the production environment.
+	//
+	// 	- Workspaces in standard mode can run in both the development and production environments.
+	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// The time when the workspace was created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the workspace was modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
-	GmtModifiedTime *string                               `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Owner           *GetDefaultWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The UID of the Alibaba Cloud account.
+	Owner *GetDefaultWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace status. Valid values:
+	//
+	// 	- ENABLED
+	//
+	// 	- INITIALIZING
+	//
+	// 	- FAILURE
+	//
+	// 	- DISABLED
+	//
+	// 	- FROZEN
+	//
+	// 	- UPDATING
+	//
 	// example:
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The workspace name, which is unique in a region.
+	//
 	// example:
 	//
 	// workspace-example
@@ -8102,14 +9228,28 @@ func (s *GetDefaultWorkspaceResponseBody) SetWorkspaceName(v string) *GetDefault
 }
 
 type GetDefaultWorkspaceResponseBodyConditions struct {
+	// The returned status code. HTTP status code 200 indicates that the request was successful. Other HTTP status codes indicate that the request failed.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The error message. If the returned status code is 200, this parameter is empty.
+	//
 	// example:
 	//
 	// Create Failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The task type. Valid values:
+	//
+	// 	- CREATING: The workspace is being created.
+	//
+	// 	- WORKSPACE_CREATED: The workspace is created.
+	//
+	// 	- MEMBERS_ADDED: The member is added.
+	//
+	// 	- ENABLED: The workspace is created and the member is added.
+	//
 	// example:
 	//
 	// CREATING
@@ -8140,14 +9280,20 @@ func (s *GetDefaultWorkspaceResponseBodyConditions) SetType(v string) *GetDefaul
 }
 
 type GetDefaultWorkspaceResponseBodyOwner struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 17915******4216
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 17915******4216
 	UserKp *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// username
@@ -8264,6 +9410,12 @@ func (s *GetExperimentResponse) SetBody(v *Experiment) *GetExperimentResponse {
 }
 
 type GetImageRequest struct {
+	// Specifies whether to display non-essential information, which contains tags. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// false
@@ -8284,43 +9436,74 @@ func (s *GetImageRequest) SetVerbose(v bool) *GetImageRequest {
 }
 
 type GetImageResponseBody struct {
+	// The accessibility of the image. Valid values:
+	//
+	// 	- PUBLIC: All members can access the workspace.
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The image description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the image is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The image address, which contains the version number.
+	//
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.******ession/nlp:gpu
-	ImageUri *string                       `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels   []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The image tags, which are of the array data type. Each element in the array contains a key-value pair. The key of official tags is system.official and the tag value is true.
+	Labels []*GetImageResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The image name.
+	//
 	// example:
 	//
 	// nlp-compression
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Alibaba Cloud account of the creator.
+	//
 	// example:
 	//
 	// 15577******8921
 	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Size       *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SourceId   *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The size of the image. Unit: GB.
+	//
+	// example:
+	//
+	// 10
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 镜像来源 ID
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// 镜像来源类型
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The user ID of the image.
+	//
 	// example:
 	//
 	// 15577******8921
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 15945
@@ -8406,10 +9589,14 @@ func (s *GetImageResponseBody) SetWorkspaceId(v string) *GetImageResponseBody {
 }
 
 type GetImageResponseBodyLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// GPU
@@ -8464,7 +9651,14 @@ func (s *GetImageResponse) SetBody(v *GetImageResponseBody) *GetImageResponse {
 }
 
 type GetMemberRequest struct {
+	// The member ID. You must specify only one of the following parameters: UserId and MemberId.
+	//
+	// example:
+	//
+	// 145883-21513926******88039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The ID of the Alibaba Cloud account. You can call [ListWorkspaceUsers](https://help.aliyun.com/document_detail/449133.html) to obtain the ID of the Alibaba Cloud account. You must specify only one of the following parameters: UserId and MemberId.
+	//
 	// example:
 	//
 	// 21513926******88039
@@ -8490,27 +9684,40 @@ func (s *GetMemberRequest) SetUserId(v string) *GetMemberRequest {
 }
 
 type GetMemberResponseBody struct {
+	// The display name of the member.
+	//
 	// example:
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The member ID.
+	//
 	// example:
 	//
 	// 145883-21513926******88039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// user1
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Roles     []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 21513926******88039
@@ -8590,67 +9797,126 @@ func (s *GetMemberResponse) SetBody(v *GetMemberResponseBody) *GetMemberResponse
 }
 
 type GetModelResponseBody struct {
+	// The visibility of the workspace.
+	//
+	// 	- PRIVATE: The workspace is visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The workspace is visible to all users.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The domain. This parameter specifies the domain for which the model is developed. Valid values: nlp and cv. nlp indicates natural language processing and cv indicates computer vision.
+	//
 	// example:
 	//
 	// cv
-	Domain    *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Other information about the model.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"RatingCount": 2866,
+	//
+	// 	"Rating": 4.94,
+	//
+	// 	"FavoriteCount": 34992,
+	//
+	// 	"CommentCount": 754,
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/drea***w.png"],
+	//
+	// 	"TippedAmountCount": 32,
+	//
+	// 	"DownloadCount": 606056
+	//
+	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The time when the model is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the model is last modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
-	GmtModifiedTime  *string       `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	Labels           []*Label      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	LatestVersion    *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	ModelDescription *string       `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The model tags.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The latest version of the model.
+	LatestVersion *ModelVersion `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
+	// The model description.
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// The documentation of the model.
+	//
 	// example:
 	//
 	// https://***.md
 	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// The model ID.
+	//
 	// example:
 	//
 	// model-rbvg5wzljz****ks92
-	ModelId   *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// The model name.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The sequence number of the model.
+	//
 	// example:
 	//
 	// 1
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// The source of the model. The community or organization to which the model belongs, such as ModelScope or HuggingFace.
+	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1234567890******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The provider.
+	//
 	// example:
 	//
 	// pai
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task of the model. This parameter describes specific issues that the model solves, such as text-classification.
+	//
 	// example:
 	//
 	// text-classification
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1234567890******
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 234**
@@ -8795,38 +10061,100 @@ func (s *GetModelResponse) SetBody(v *GetModelResponseBody) *GetModelResponse {
 }
 
 type GetModelVersionResponseBody struct {
+	// The approval status. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Approved
+	//
+	// 	- Rejected
+	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The compression configuration.
+	//
 	// example:
 	//
 	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// The evaluation configuration.
+	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// The additional information.
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/st****017.preview.png"],
+	//
+	// 	"TrainedWords": ["albedo_overlord"]
+	//
+	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The model format. Valid values:
+	//
+	// 	- OfflineModel
+	//
+	// 	- SavedModel
+	//
+	// 	- Keras H5
+	//
+	// 	- Frozen Pb
+	//
+	// 	- Caffe Prototxt
+	//
+	// 	- TorchScript
+	//
+	// 	- XGBoost
+	//
+	// 	- PMML
+	//
+	// 	- AlinkModel
+	//
+	// 	- ONNX
+	//
 	// example:
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// The model framework. Valid values:
+	//
+	// 	- Pytorch -XGBoost
+	//
+	// 	- Keras
+	//
+	// 	- Caffe
+	//
+	// 	- Alink
+	//
+	// 	- Xflow
+	//
+	// 	- TensorFlow
+	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// The time when the model was created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the model was last modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS).
+	//
 	// example:
 	//
 	// {
@@ -8835,41 +10163,90 @@ type GetModelVersionResponseBody struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	Labels        []*Label               `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The labels.
+	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The metrics.
+	//
 	// example:
 	//
 	// {}
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// The extended field. The value of this parameter is a JSON string.
+	//
 	// example:
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 1234567890******
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The source ID.
+	//
+	// 	- If the source type is Custom, this field is not limited.
+	//
+	// 	- If the source type is PAIFlow or TrainingService, the format is:
+	//
+	// <!---->
+	//
+	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	//
+	// Take note of the following parameters:
+	//
+	// 	- region is the region ID.
+	//
+	// 	- workspaceId is the ID of the workspace.
+	//
+	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	//
+	// 	- id is a unique identifier.
+	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type of the model. Valid values:
+	//
+	// 	- Custom
+	//
+	// 	- PAIFlow
+	//
+	// 	- TrainingService
+	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The training configurations used for fine-tuning and incremental training.
+	//
 	// example:
 	//
 	// {}
 	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	Uri          *string                `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The URI of the model version, which is the location where the model is stored. Valid values:
+	//
+	// 	- The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
+	//
+	// 	- The Object Storage Service (OSS) path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1234567890******
-	UserId             *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The version description.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	// The model version.
+	//
 	// example:
 	//
 	// 0.1.0
@@ -9019,17 +10396,39 @@ func (s *GetModelVersionResponse) SetBody(v *GetModelVersionResponseBody) *GetMo
 }
 
 type GetPermissionRequest struct {
+	// The accessibility. Valid values:
+	//
+	// 	- PUBLIC: All members in the workspace can access the workspace.
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The UID of the Alibaba Cloud account that is used to create the workspace.
+	//
 	// example:
 	//
 	// 17915******4216
-	Creator  *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	Labels   map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Option   *string                `json:"Option,omitempty" xml:"Option,omitempty"`
-	Resource *string                `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	Creator *string                `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Labels  map[string]interface{} `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The configuration. Separate multiple configurations with commas (,). Valid values:
+	//
+	// 	- ResourceEmpty: The Resource parameter is not configured.
+	//
+	// 	- DisableRam: The RAM check is not performed.
+	//
+	// example:
+	//
+	// ResourceEmpty,DisableRam
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// The resource.
+	//
+	// example:
+	//
+	// job/dlc-ksd******s12
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s GetPermissionRequest) String() string {
@@ -9066,17 +10465,39 @@ func (s *GetPermissionRequest) SetResource(v string) *GetPermissionRequest {
 }
 
 type GetPermissionShrinkRequest struct {
+	// The accessibility. Valid values:
+	//
+	// 	- PUBLIC: All members in the workspace can access the workspace.
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The UID of the Alibaba Cloud account that is used to create the workspace.
+	//
 	// example:
 	//
 	// 17915******4216
 	Creator      *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	LabelsShrink *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Option       *string `json:"Option,omitempty" xml:"Option,omitempty"`
-	Resource     *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// The configuration. Separate multiple configurations with commas (,). Valid values:
+	//
+	// 	- ResourceEmpty: The Resource parameter is not configured.
+	//
+	// 	- DisableRam: The RAM check is not performed.
+	//
+	// example:
+	//
+	// ResourceEmpty,DisableRam
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// The resource.
+	//
+	// example:
+	//
+	// job/dlc-ksd******s12
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 }
 
 func (s GetPermissionShrinkRequest) String() string {
@@ -9113,11 +10534,16 @@ func (s *GetPermissionShrinkRequest) SetResource(v string) *GetPermissionShrinkR
 }
 
 type GetPermissionResponseBody struct {
+	// The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html).
+	//
 	// example:
 	//
 	// PaiDLC:ListJobs
-	PermissionCode  *string                                     `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
+	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
+	// The permission rules.
 	PermissionRules []*GetPermissionResponseBodyPermissionRules `json:"PermissionRules,omitempty" xml:"PermissionRules,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -9148,10 +10574,24 @@ func (s *GetPermissionResponseBody) SetRequestId(v string) *GetPermissionRespons
 }
 
 type GetPermissionResponseBodyPermissionRules struct {
+	// The accessibility. Valid values:
+	//
+	// 	- PUBLIC: All members can access the workspace.
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
+	// 	- ANY: All users can access the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The access type. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the value of this parameter can be:
+	//
+	// 	- PRIVATE: Only the creator can access the workspace.
+	//
+	// 	- ANY: All users can access the workspace.
+	//
 	// example:
 	//
 	// CREATOR
@@ -9206,6 +10646,8 @@ func (s *GetPermissionResponse) SetBody(v *GetPermissionResponseBody) *GetPermis
 }
 
 type GetRunRequest struct {
+	// Specifies whether to obtain the Metrics, Params, and Labels information. Default value: false.
+	//
 	// example:
 	//
 	// true
@@ -9255,6 +10697,12 @@ func (s *GetRunResponse) SetBody(v *Run) *GetRunResponse {
 }
 
 type GetWorkspaceRequest struct {
+	// Specifies whether to display supplementary information such as the workspace owner. Valid values:
+	//
+	// 	- false (default)
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
@@ -9275,50 +10723,100 @@ func (s *GetWorkspaceRequest) SetVerbose(v bool) *GetWorkspaceRequest {
 }
 
 type GetWorkspaceResponseBody struct {
+	// The names of the administrator accounts.
 	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
+	// The ID of the user who creates the workspace.
+	//
 	// example:
 	//
 	// 1157******94123
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// The description of the workspace.
+	//
 	// example:
 	//
 	// workspace description example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the workspace.
+	//
 	// example:
 	//
 	// workspace-example
-	DisplayName *string   `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	EnvTypes    []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The environment information of the workspace.
+	//
+	// 	- Workspaces in basic mode can run only in the production environment.
+	//
+	// 	- Workspaces in standard mode can run in both the development and production environments.
+	EnvTypes []*string `json:"EnvTypes,omitempty" xml:"EnvTypes,omitempty" type:"Repeated"`
+	// The additional information, which only contains the TenantId field.
+	//
 	// example:
 	//
 	// {"TenantId": "4286******98"}
 	ExtraInfos map[string]interface{} `json:"ExtraInfos,omitempty" xml:"ExtraInfos,omitempty"`
+	// The time when the workspace is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the workspace is modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// Indicates whether the workspace is the default workspace. Valid values:
+	//
+	// 	- false
+	//
+	// 	- true
+	//
 	// example:
 	//
 	// true
-	IsDefault *bool                          `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Owner     *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The information about the workspace owner. This parameter is valid only when Verbose is set to true.
+	Owner *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A0F049F0-8D69-5BAC-8F10-B4DED1B5A34C
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resource group ID.
+	//
+	// example:
+	//
+	// rg-acfmwp7rkyq****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The workspace state. Valid values:
+	//
+	// 	- ENABLED
+	//
+	// 	- INITIALIZING
+	//
+	// 	- FAILURE:
+	//
+	// 	- DISABLED
+	//
+	// 	- FROZEN
+	//
+	// 	- UPDATING
+	//
 	// example:
 	//
 	// ENABLED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// The name of the workspace.
+	//
 	// example:
 	//
 	// workspace-example
@@ -9409,18 +10907,26 @@ func (s *GetWorkspaceResponseBody) SetWorkspaceName(v string) *GetWorkspaceRespo
 }
 
 type GetWorkspaceResponseBodyOwner struct {
+	// The display name.
+	//
 	// example:
 	//
 	// mings****t
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1157******94123
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1157******94123
 	UserKp *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// mings****t
@@ -9485,26 +10991,52 @@ func (s *GetWorkspaceResponse) SetBody(v *GetWorkspaceResponseBody) *GetWorkspac
 }
 
 type ListCodeSourcesRequest struct {
+	// The display name of the code source. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page.
+	//
+	// Valid values:
+	//
+	// 	- asc: ascending order. This is the default value.
+	//
+	// 	- desc: descending order.
+	//
 	// example:
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field used for sorting. Valid values:
+	//
+	// 	- GmtModifyTime: the time when the source code is modified.
+	//
+	// 	- DisplayName: the display name.
+	//
+	// 	- CodeSourceId: the ID of the code source.
+	//
+	// 	- GmtCreateTime: the time when the code source is created. This is the default value.
+	//
 	// example:
 	//
 	// GmtModifyTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -9550,11 +11082,16 @@ func (s *ListCodeSourcesRequest) SetWorkspaceId(v string) *ListCodeSourcesReques
 }
 
 type ListCodeSourcesResponseBody struct {
+	// The code sources.
 	CodeSources []*CodeSourceItem `json:"CodeSources,omitempty" xml:"CodeSources,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of code sources that meet the filter conditions.
+	//
 	// example:
 	//
 	// 2
@@ -9614,12 +11151,16 @@ func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListC
 }
 
 type ListDatasetFileMetasRequest struct {
+	// The dataset version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
@@ -9629,15 +11170,27 @@ type ListDatasetFileMetasRequest struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
+	//
 	// example:
 	//
 	// 90a6ee35-****-4cd4-927e-1f45e1cb8b62_1729644433000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC.
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// Deprecated
+	//
+	// The number of entries per page. Default value: 10. Maximum value: 1000.
 	//
 	// example:
 	//
@@ -9650,19 +11203,36 @@ type ListDatasetFileMetasRequest struct {
 	QueryTagsExclude        []*string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty" type:"Repeated"`
 	QueryTagsIncludeAll     []*string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty" type:"Repeated"`
 	QueryTagsIncludeAny     []*string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty" type:"Repeated"`
-	QueryText               *string   `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The text content to be queried.
+	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The retrieval type.
+	//
+	// 	- TAG (default)
+	//
+	// 	- VECTOR
+	//
 	// example:
 	//
 	// TAG
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The similarity score. Only dataset files whose similarity score is greater than the value of ScoreThreshold are returned. This parameter is valid only when QueryType is set to VECTOR.
+	//
 	// example:
 	//
 	// 0.6
 	ScoreThreshold *float32 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
+	// The field used to sort the results. Default value: GmtCreateTime. Valid values:
+	//
+	// 	- FileCreateTime (default): The results are sorted by the time when the file is created.
+	//
+	// 	- FileUpdateTime: The results are sorted by the time when the file is last modified.
+	//
 	// example:
 	//
 	// FileCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
@@ -9672,10 +11242,14 @@ type ListDatasetFileMetasRequest struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
 	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
+	// The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
+	//
 	// example:
 	//
 	// 100
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -9808,12 +11382,16 @@ func (s *ListDatasetFileMetasRequest) SetWorkspaceId(v string) *ListDatasetFileM
 }
 
 type ListDatasetFileMetasShrinkRequest struct {
+	// The dataset version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
@@ -9823,15 +11401,27 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
 	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
+	// >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
+	//
 	// example:
 	//
 	// 90a6ee35-****-4cd4-927e-1f45e1cb8b62_1729644433000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC.
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// Deprecated
+	//
+	// The number of entries per page. Default value: 10. Maximum value: 1000.
 	//
 	// example:
 	//
@@ -9844,19 +11434,36 @@ type ListDatasetFileMetasShrinkRequest struct {
 	QueryTagsExcludeShrink        *string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty"`
 	QueryTagsIncludeAllShrink     *string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty"`
 	QueryTagsIncludeAnyShrink     *string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty"`
-	QueryText                     *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The text content to be queried.
+	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
+	// The retrieval type.
+	//
+	// 	- TAG (default)
+	//
+	// 	- VECTOR
+	//
 	// example:
 	//
 	// TAG
 	QueryType *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	// The similarity score. Only dataset files whose similarity score is greater than the value of ScoreThreshold are returned. This parameter is valid only when QueryType is set to VECTOR.
+	//
 	// example:
 	//
 	// 0.6
 	ScoreThreshold *float32 `json:"ScoreThreshold,omitempty" xml:"ScoreThreshold,omitempty"`
+	// The field used to sort the results. Default value: GmtCreateTime. Valid values:
+	//
+	// 	- FileCreateTime (default): The results are sorted by the time when the file is created.
+	//
+	// 	- FileUpdateTime: The results are sorted by the time when the file is last modified.
+	//
 	// example:
 	//
 	// FileCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
@@ -9866,10 +11473,14 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
 	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
+	// The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
+	//
 	// example:
 	//
 	// 100
 	TopK *int32 `json:"TopK,omitempty" xml:"TopK,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10002,24 +11613,46 @@ func (s *ListDatasetFileMetasShrinkRequest) SetWorkspaceId(v string) *ListDatase
 }
 
 type ListDatasetFileMetasResponseBody struct {
+	// The metadata records of the dataset files.
 	DatasetFileMetas []*DatasetFileMeta `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
-	DatasetId        *string            `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
-	DatasetVersion   *string            `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MaxResults       *int32             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The dataset ID.
+	//
+	// example:
+	//
+	// d-rbvg5*****jhc9ks92
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// The dataset version.
+	//
+	// example:
+	//
+	// v1
+	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. If the number of results exceeds the maximum number of entries allowed per page, a pagination token is returned. This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
+	//
 	// example:
 	//
 	// 90******-f5c5-4cd4-927e-1f45e1cb8b62_1729644433000
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
 	//
+	// The number of entries returned per page.
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 123
-	TotalCount  *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 105173
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
@@ -10101,18 +11734,30 @@ func (s *ListDatasetFileMetasResponse) SetBody(v *ListDatasetFileMetasResponseBo
 }
 
 type ListDatasetJobConfigsRequest struct {
+	// The configuration type.
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// 	- MultimodalSemanticIndex
+	//
 	// example:
 	//
 	// MultimodalIntelligentTag
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 431514
@@ -10148,11 +11793,16 @@ func (s *ListDatasetJobConfigsRequest) SetWorkspaceId(v string) *ListDatasetJobC
 }
 
 type ListDatasetJobConfigsResponseBody struct {
+	// The dataset job configurations.
 	DatasetJobConfigs []*DatasetJobConfig `json:"DatasetJobConfigs,omitempty" xml:"DatasetJobConfigs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 15
@@ -10212,22 +11862,32 @@ func (s *ListDatasetJobConfigsResponse) SetBody(v *ListDatasetJobConfigsResponse
 }
 
 type ListDatasetJobsRequest struct {
+	// The dataset version name.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The action to be performed on the job.
+	//
 	// example:
 	//
 	// SemanticIndex
 	JobAction *string `json:"JobAction,omitempty" xml:"JobAction,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 1234
@@ -10268,12 +11928,16 @@ func (s *ListDatasetJobsRequest) SetWorkspaceId(v string) *ListDatasetJobsReques
 }
 
 type ListDatasetJobsResponseBody struct {
+	// The jobs in the dataset.
 	DatasetJobs []*DatasetJob `json:"DatasetJobs,omitempty" xml:"DatasetJobs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 8D7B2E70-F770-505B-A672-09F1D8F2EC1E
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of jobs.
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDatasetJobsResponseBody) String() string {
@@ -10329,39 +11993,120 @@ func (s *ListDatasetJobsResponse) SetBody(v *ListDatasetJobsResponseBody) *ListD
 }
 
 type ListDatasetVersionsRequest struct {
+	// The dataset tag keys, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+	//
 	// example:
 	//
 	// key1,key2
-	LabelKeys   *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+	LabelKeys *string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty"`
+	// The dataset tag values, which are used to filter datasets. Datasets whose tag keys or tag values contain a specified string are filtered.
+	//
+	// example:
+	//
+	// value1,value2
 	LabelValues *string `json:"LabelValues,omitempty" xml:"LabelValues,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC. Valid values:
+	//
+	// 	- ASC: ascending order
+	//
+	// 	- DESC: descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The dataset properties. Valid values:
+	//
+	// 	- DIRECTORY
+	//
+	// 	- FILE
+	//
 	// example:
 	//
 	// DIRECTORY
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The field used to sort the results in queries by page. Default value: GmtCreateTime.
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
+	// Valid values:
+	//
+	// 	- SourceType
+	//
+	// 	- DataSourceType
+	//
+	// 	- DataSize
+	//
+	// 	- DataCount
+	//
+	// 	- Property
+	//
+	// 	- GmtCreateTime: The results are sorted by creation time. This is the default value.
+	//
+	// 	- GmtModifiedTime: The results are sorted by modification time.
+	//
+	// 	- DatasetId
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The data source ID.
+	//
+	// 	- If SourceType is set to USER, the value of SourceId is a custom string.
+	//
+	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	//
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	//
 	// example:
 	//
 	// d-a0xbe5n03bhqof46ce
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type. Valid values:
+	//
+	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	//
+	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	//
+	// 	- USER: a dataset registered by a user.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// USER
@@ -10422,16 +12167,28 @@ func (s *ListDatasetVersionsRequest) SetSourceTypes(v string) *ListDatasetVersio
 }
 
 type ListDatasetVersionsResponseBody struct {
+	// The dataset versions.
 	DatasetVersions []*DatasetVersion `json:"DatasetVersions,omitempty" xml:"DatasetVersions,omitempty" type:"Repeated"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// 0648C5BB-68D0-54D2-92A5-607135B8806B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of dataset versions that meet the filter conditions.
+	//
 	// example:
 	//
 	// 5
@@ -10501,49 +12258,128 @@ func (s *ListDatasetVersionsResponse) SetBody(v *ListDatasetVersionsResponseBody
 }
 
 type ListDatasetsRequest struct {
+	// The storage types of the data source. Multiple data source types are separated by commas (,). Valid values:
+	//
+	// 	- NAS: File Storage NAS (NAS).
+	//
+	// 	- OSS: Object Storage Service (OSS).
+	//
 	// example:
 	//
 	// OSS
 	DataSourceTypes *string `json:"DataSourceTypes,omitempty" xml:"DataSourceTypes,omitempty"`
+	// The dataset types. Multiple dataset types are separated by commas (,). Valid values:
+	//
+	// 	- Video: video
+	//
+	// 	- COMMON: common
+	//
+	// 	- TEXT: text
+	//
+	// 	- PIC: picture
+	//
+	// 	- AUDIO: audio
+	//
 	// example:
 	//
 	// COMMON,TEXT
 	DataTypes *string `json:"DataTypes,omitempty" xml:"DataTypes,omitempty"`
+	// The dataset tag, which is used to filter datasets. Datasets whose tag key or tag value contains a specified string are filtered.
+	//
 	// example:
 	//
 	// test
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The dataset name. Fuzzy search based on the dataset name is supported.
+	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order of specific fields of the entries on the returned page. Valid values: ASC and DESC. Default value: ASC.
+	//
+	// 	- ASC: The entries are sorted in ascending order.
+	//
+	// 	- DESC: The entries are sorted in descending order.
+	//
 	// example:
 	//
 	// ASC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The dataset properties. Multiple properties are separated by commas (,). Valid values:
+	//
+	// 	- DIRECTORY
+	//
+	// 	- FILE
+	//
 	// example:
 	//
 	// FILE
-	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	Provider        *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	SortBy          *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// The dataset provider. If the value pai is returned, the dataset is a public dataset provided by PAI.
+	//
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The field used for sorting.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the iTAG labeled dataset that is used as the source dataset.
+	//
+	// example:
+	//
+	// d-rcdg3wxxxxxhc5jk87
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
+	// The data source ID.
+	//
+	// 	- If SourceType is set to USER, the value of SourceId is a custom string.
+	//
+	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
+	//
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
+	//
 	// example:
 	//
 	// d-rbvg5wzljzjhc9ks92
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source types. Multiple source types are separated by commas (,). Valid values:
+	//
+	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	//
+	// 	- ITAG: a dataset generated from a labeling job of iTAG.
+	//
+	// 	- USER: a dataset registered by a user.
+	//
+	// <!---->
+	//
+	// *
+	//
+	// *
+	//
+	// *
+	//
 	// example:
 	//
 	// USER,ITAG
 	SourceTypes *string `json:"SourceTypes,omitempty" xml:"SourceTypes,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID. If you do not specify this parameter, the default workspace is used. If the default workspace does not exist, an error is reported.
+	//
 	// example:
 	//
 	// 324**
@@ -10629,11 +12465,16 @@ func (s *ListDatasetsRequest) SetWorkspaceId(v string) *ListDatasetsRequest {
 }
 
 type ListDatasetsResponseBody struct {
+	// The datasets.
 	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 15
@@ -10693,47 +12534,76 @@ func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDataset
 }
 
 type ListExperimentRequest struct {
+	// The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
+	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of entries in the request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The experiment name.
+	//
 	// example:
 	//
 	// exp-test
-	Name    *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The optional parameters.
 	Options *ListExperimentRequestOptions `json:"Options,omitempty" xml:"Options,omitempty" type:"Struct"`
+	// The order of specific fields of results in a paged query (ascending or descending).
+	//
+	// 	- ASC: ascending order
+	//
+	// 	- DESC: descending order. This is the default value.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
+	//
 	// example:
 	//
 	// GmtCreateTime DESC,Name ASC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. The value starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The pagination token, which starts from 0. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The field used for sorting. The GmtCreateTime field is used.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether to obtain the LatestRun value that is related to the experiment.
+	//
 	// example:
 	//
 	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
+	//
 	// example:
 	//
 	// 151739
@@ -10809,6 +12679,8 @@ func (s *ListExperimentRequest) SetWorkspaceId(v string) *ListExperimentRequest 
 }
 
 type ListExperimentRequestOptions struct {
+	// Specifies whether to exactly match the experiment by name. Valid values: true and false.
+	//
 	// example:
 	//
 	// true
@@ -10829,47 +12701,76 @@ func (s *ListExperimentRequestOptions) SetMatchNameExactly(v string) *ListExperi
 }
 
 type ListExperimentShrinkRequest struct {
+	// The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`.
+	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of entries in the request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The experiment name.
+	//
 	// example:
 	//
 	// exp-test
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The optional parameters.
 	OptionsShrink *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The order of specific fields of results in a paged query (ascending or descending).
+	//
+	// 	- ASC: ascending order
+	//
+	// 	- DESC: descending order. This is the default value.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The strings used for sorting. The following fields can be used for sorting: GmtCreateTime, Name, GmtModifiedTime, and ExperimentId. The sorting order can be ASC (default) and DESC.
+	//
 	// example:
 	//
 	// GmtCreateTime DESC,Name ASC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. The value starts from 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The pagination token, which starts from 0. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The field used for sorting. The GmtCreateTime field is used.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether to obtain the LatestRun value that is related to the experiment.
+	//
 	// example:
 	//
 	// false
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// >  If you do not specify a workspace ID, the system returns the experiments in the default workspace.
+	//
 	// example:
 	//
 	// 151739
@@ -10945,15 +12846,22 @@ func (s *ListExperimentShrinkRequest) SetWorkspaceId(v string) *ListExperimentSh
 }
 
 type ListExperimentResponseBody struct {
+	// The list of experiments.
 	Experiments []*Experiment `json:"Experiments,omitempty" xml:"Experiments,omitempty" type:"Repeated"`
+	// The pagination token. It can be used in the next request to retrieve a new page of results.
+	//
 	// example:
 	//
 	// 0
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
 	// 5
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0C6835C5-A424-5AFB-ACC2-F1E3CA1ABF7C
@@ -11186,37 +13094,111 @@ func (s *ListImageLabelsResponse) SetBody(v *ListImageLabelsResponseBody) *ListI
 }
 
 type ListImagesRequest struct {
+	// The visibility of the image. This parameter is valid only for custom images.
+	//
+	// 	- PUBLIC: The image is visible to all users.
+	//
+	// 	- PRIVATE: The image is visible only to you and the administrator of the workspace.
+	//
+	// example:
+	//
+	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	ImageUri      *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The tag filter conditions. Multiple conditions are separated by commas (,). The format of a single condition filter is `key=value`. The following keys are supported:
+	//
+	// 	- system.chipType
+	//
+	// 	- system.dsw.cudaVersion
+	//
+	// 	- system.dsw.fromImageId
+	//
+	// 	- system.dsw.fromInstanceId
+	//
+	// 	- system.dsw.id
+	//
+	// 	- system.dsw.os
+	//
+	// 	- system.dsw.osVersion
+	//
+	// 	- system.dsw.resourceType
+	//
+	// 	- system.dsw.rootImageId
+	//
+	// 	- system.dsw.stage
+	//
+	// 	- system.dsw.tag
+	//
+	// 	- system.dsw.type
+	//
+	// 	- system.framework
+	//
+	// 	- system.origin
+	//
+	// 	- system.pythonVersion
+	//
+	// 	- system.source
+	//
+	// 	- system.supported.dlc
+	//
+	// 	- system.supported.dsw
+	//
 	// example:
 	//
 	// system.framework=XGBoost 1.6.0,system.official=true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The image name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy. Default value: ASC. Valid values:
+	//
+	// 	- ASC: ascending order
+	//
+	// 	- DESC: descending order.
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Query    *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The image name and description that are used for fuzzy search.
+	//
+	// example:
+	//
+	// name
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The field used for sorting. The GmtCreateTime field is used.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether to display non-essential information, which contains tags. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 20******55
@@ -11287,11 +13269,16 @@ func (s *ListImagesRequest) SetWorkspaceId(v string) *ListImagesRequest {
 }
 
 type ListImagesResponseBody struct {
+	// The images.
 	Images []*ListImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of returned images.
+	//
 	// example:
 	//
 	// 2
@@ -11322,43 +13309,74 @@ func (s *ListImagesResponseBody) SetTotalCount(v int64) *ListImagesResponseBody 
 }
 
 type ListImagesResponseBodyImages struct {
+	// The accessibility of the image. Valid values:
+	//
+	// 	- PUBLIC: All members can access the image.
+	//
+	// 	- PRIVATE: Only the creator can access the image.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The image description.
+	//
 	// example:
 	//
 	// desc
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The time when the image is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The time when the image is modified, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// The image ID.
+	//
 	// example:
 	//
 	// image-tzi7f9******s45t
-	ImageId  *string                               `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	ImageUri *string                               `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
-	Labels   []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The image address, which includes the version number.
+	ImageUri *string `json:"ImageUri,omitempty" xml:"ImageUri,omitempty"`
+	// The image tags.
+	Labels []*ListImagesResponseBodyImagesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The image name.
+	//
 	// example:
 	//
 	// tensorflow_2.9
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The ID of the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// 15577******82932
 	ParentUserId *string `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
-	Size         *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	SourceId     *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The image size. Unit: GB.
+	//
+	// example:
+	//
+	// 2
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// 镜像来源 ID
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// 镜像来源类型
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 15577******82932
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 20******55
@@ -11444,10 +13462,14 @@ func (s *ListImagesResponseBodyImages) SetWorkspaceId(v string) *ListImagesRespo
 }
 
 type ListImagesResponseBodyImagesLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// system.chipType
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// GPU
@@ -11502,18 +13524,40 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 }
 
 type ListMembersRequest struct {
+	// The member name. Fuzzy match is supported.
+	//
 	// example:
 	//
 	// zhangsan
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The page number of the workspace list. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The roles that are used to filter members. Multiple roles are separated by commas (,). Valid values:
+	//
+	// 	- PAI.AlgoDeveloper: algorithm developer
+	//
+	// 	- PAI.AlgoOperator: algorithm O\\&M engineer
+	//
+	// 	- PAI.LabelManager: labeling administrator
+	//
+	// 	- PAI.MaxComputeDeveloper: MaxCompute developer
+	//
+	// 	- PAI.WorkspaceAdmin: administrator
+	//
+	// 	- PAI.WorkspaceGuest: guest
+	//
+	// 	- PAI.WorkspaceOwner: owner
+	//
 	// example:
 	//
 	// PAI.AlgoDeveloper
@@ -11549,11 +13593,16 @@ func (s *ListMembersRequest) SetRoles(v string) *ListMembersRequest {
 }
 
 type ListMembersResponseBody struct {
+	// The members.
 	Members []*ListMembersResponseBodyMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of members that meet the filter conditions.
+	//
 	// example:
 	//
 	// 1
@@ -11585,23 +13634,34 @@ func (s *ListMembersResponseBody) SetTotalCount(v int64) *ListMembersResponseBod
 
 type ListMembersResponseBodyMembers struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	// The display name of the member.
+	//
 	// example:
 	//
 	// myDisplayName
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the user is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The member ID.
+	//
 	// example:
 	//
 	// 14588*****51688039
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// user1
-	MemberName *string   `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
-	Roles      []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
+	// The list of roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 215139******88039
@@ -11681,46 +13741,134 @@ func (s *ListMembersResponse) SetBody(v *ListMembersResponseBody) *ListMembersRe
 }
 
 type ListModelVersionsRequest struct {
+	// The approval status based on which the model versions are queried. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Approved
+	//
+	// 	- Rejected
+	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The model format used to filter model versions. Valid values:
+	//
+	// 	- OfflineModel
+	//
+	// 	- SavedModel
+	//
+	// 	- Keras H5
+	//
+	// 	- Frozen Pb
+	//
+	// 	- Caffe Prototxt
+	//
+	// 	- TorchScript
+	//
+	// 	- XGBoost
+	//
+	// 	- PMML
+	//
+	// 	- AlinkModel
+	//
+	// 	- ONNX
+	//
 	// example:
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// The framework used to filter model versions.
+	//
+	// 	- Pytorch -XGBoost
+	//
+	// 	- Keras
+	//
+	// 	- Caffe
+	//
+	// 	- Alink
+	//
+	// 	- Xflow
+	//
+	// 	- TensorFlow
+	//
 	// example:
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	// The label. Model versions whose label key or label value contains a specific label are filtered.
+	//
 	// example:
 	//
 	// key1
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field used to sort the results. The GmtCreateTime field is used for sorting.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The source ID.
+	//
+	// 	- If the source type is Custom, this field is not limited.
+	//
+	// 	- If the source type is PAIFlow or TrainingService, the format is:
+	//
+	// <!---->
+	//
+	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	//
+	// Take note of the following parameters:
+	//
+	// 	- region is the region ID.
+	//
+	// 	- workspaceId is the ID of the workspace.
+	//
+	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	//
+	// 	- id is a unique identifier.
+	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The source type used to filter model versions. Valid values:
+	//
+	// 	- Custom (default)
+	//
+	// 	- PAIFlow
+	//
+	// 	- TrainingService
+	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The model version used to filter model versions.
+	//
 	// example:
 	//
 	// 1.0.1
@@ -11791,15 +13939,20 @@ func (s *ListModelVersionsRequest) SetVersionName(v string) *ListModelVersionsRe
 }
 
 type ListModelVersionsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC***3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of model versions.
+	//
 	// example:
 	//
 	// 15
-	TotalCount *int64          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Versions   []*ModelVersion `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The model versions.
+	Versions []*ModelVersion `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 }
 
 func (s ListModelVersionsResponseBody) String() string {
@@ -11855,55 +14008,87 @@ func (s *ListModelVersionsResponse) SetBody(v *ListModelVersionsResponseBody) *L
 }
 
 type ListModelsRequest struct {
+	// The collection where the model is located. You can specify multiple collections and separate them with commas (,).
+	//
 	// example:
 	//
 	// AI4D,QuickStart
 	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
+	// The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
+	//
 	// example:
 	//
 	// nlp
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The label. Models whose label key or label value contains a specific label are filtered.
+	//
 	// example:
 	//
 	// key1
-	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The model name used to filter the returned models.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type.
+	//
 	// example:
 	//
 	// Endpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The model source used to filter the models that belong to a community or organization, such as ModelScope and Hugging Face.
+	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The provider. If you configure this parameter, only the models exposed by the provider are returned. If you leave this parameter empty, only models owned by the user are returned.
+	//
 	// example:
 	//
 	// pai
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The query condition. For example, if you set the value to nlp, all models that match ModelName, Domain, Task, LabelKey, and LabelValue are returned.
+	//
 	// example:
 	//
 	// nlp
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The field used to sort the results. The GmtCreateTime field is used for sorting.
+	//
 	// example:
 	//
 	// GmtCreateTime
-	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string                 `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Tag    []*ListModelsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The task used to filter the models that belong to the task type. Example: text-classification.
+	//
 	// example:
 	//
 	// text-classification
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The workspace ID. Only models in this workspace are queried. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 324**
@@ -11978,6 +14163,11 @@ func (s *ListModelsRequest) SetSortBy(v string) *ListModelsRequest {
 	return s
 }
 
+func (s *ListModelsRequest) SetTag(v []*ListModelsRequestTag) *ListModelsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListModelsRequest) SetTask(v string) *ListModelsRequest {
 	s.Task = &v
 	return s
@@ -11988,12 +14178,211 @@ func (s *ListModelsRequest) SetWorkspaceId(v string) *ListModelsRequest {
 	return s
 }
 
+type ListModelsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListModelsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsRequestTag) SetKey(v string) *ListModelsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListModelsRequestTag) SetValue(v string) *ListModelsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListModelsShrinkRequest struct {
+	// The collection where the model is located. You can specify multiple collections and separate them with commas (,).
+	//
+	// example:
+	//
+	// AI4D,QuickStart
+	Collections *string `json:"Collections,omitempty" xml:"Collections,omitempty"`
+	// The domain. Only models in the domain are returned. Valid values: nlp (Natural Language Processing) and cv (Computer Vision).
+	//
+	// example:
+	//
+	// nlp
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// The label. Models whose label key or label value contains a specific label are filtered.
+	//
+	// example:
+	//
+	// key1
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	// The model name used to filter the returned models.
+	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type.
+	//
+	// example:
+	//
+	// Endpoint
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. Default value: ASC.
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The model source used to filter the models that belong to a community or organization, such as ModelScope and Hugging Face.
+	//
+	// example:
+	//
+	// ModelScope
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The provider. If you configure this parameter, only the models exposed by the provider are returned. If you leave this parameter empty, only models owned by the user are returned.
+	//
+	// example:
+	//
+	// pai
+	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
+	// The query condition. For example, if you set the value to nlp, all models that match ModelName, Domain, Task, LabelKey, and LabelValue are returned.
+	//
+	// example:
+	//
+	// nlp
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The field used to sort the results. The GmtCreateTime field is used for sorting.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// The task used to filter the models that belong to the task type. Example: text-classification.
+	//
+	// example:
+	//
+	// text-classification
+	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
+	// The workspace ID. Only models in this workspace are queried. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// example:
+	//
+	// 324**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListModelsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListModelsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListModelsShrinkRequest) SetCollections(v string) *ListModelsShrinkRequest {
+	s.Collections = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetDomain(v string) *ListModelsShrinkRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetLabel(v string) *ListModelsShrinkRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetModelName(v string) *ListModelsShrinkRequest {
+	s.ModelName = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetModelType(v string) *ListModelsShrinkRequest {
+	s.ModelType = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetOrder(v string) *ListModelsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetOrigin(v string) *ListModelsShrinkRequest {
+	s.Origin = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetPageNumber(v int32) *ListModelsShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetPageSize(v int32) *ListModelsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetProvider(v string) *ListModelsShrinkRequest {
+	s.Provider = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetQuery(v string) *ListModelsShrinkRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetSortBy(v string) *ListModelsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetTagShrink(v string) *ListModelsShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetTask(v string) *ListModelsShrinkRequest {
+	s.Task = &v
+	return s
+}
+
+func (s *ListModelsShrinkRequest) SetWorkspaceId(v string) *ListModelsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
 type ListModelsResponseBody struct {
+	// The models.
 	Models []*Model `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of models.
+	//
 	// example:
 	//
 	// 15
@@ -12053,11 +14442,16 @@ func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsRespo
 }
 
 type ListPermissionsResponseBody struct {
+	// The permissions.
 	Permissions []*ListPermissionsResponseBodyPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2AE63638-5420-56DC-B******8174039A0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of permissions that meet the filter conditions.
+	//
 	// example:
 	//
 	// 1
@@ -12088,10 +14482,13 @@ func (s *ListPermissionsResponseBody) SetTotalCount(v int64) *ListPermissionsRes
 }
 
 type ListPermissionsResponseBodyPermissions struct {
+	// The permission name, which is unique in a region. For more information about permissions, see [Appendix: Roles and permissions](https://help.aliyun.com/document_detail/2840449.html). The example value PaiDLC:GetTensorboard indicates the permission to view details about a TensorBoard job on the Deep Learning Containers (DLC) page.
+	//
 	// example:
 	//
 	// PaiDLC:GetTensorboard
-	PermissionCode  *string                                                  `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
+	PermissionCode *string `json:"PermissionCode,omitempty" xml:"PermissionCode,omitempty"`
+	// The permission rules.
 	PermissionRules []*ListPermissionsResponseBodyPermissionsPermissionRules `json:"PermissionRules,omitempty" xml:"PermissionRules,omitempty" type:"Repeated"`
 }
 
@@ -12114,10 +14511,24 @@ func (s *ListPermissionsResponseBodyPermissions) SetPermissionRules(v []*ListPer
 }
 
 type ListPermissionsResponseBodyPermissionsPermissionRules struct {
+	// The accessibility of the permission rule. Valid values:
+	//
+	// 	- PUBLIC: All members in the workspace can access the permission rule.
+	//
+	// 	- PRIVATE: Only the creator can access the permission rule.
+	//
+	// 	- ANY: All users can access the permission rule.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The type of access. If you set Accessibility to PUBLIC, all users can access the workspace. This parameter is invalid. If you set Accessibility to PRIVATE, the permissions are determined based on the value of EntityAccessType. The value of EntityAccessType can be:
+	//
+	// 	- CREATOR: Only the creator can access the workspace.
+	//
+	// 	- ANY: All users can access the workspace.
+	//
 	// example:
 	//
 	// CREATOR
@@ -12353,6 +14764,8 @@ func (s *ListProductsResponse) SetBody(v *ListProductsResponseBody) *ListProduct
 }
 
 type ListQuotasRequest struct {
+	// The quota name. Fuzzy search is supported.
+	//
 	// example:
 	//
 	// quota-name
@@ -12373,11 +14786,16 @@ func (s *ListQuotasRequest) SetName(v string) *ListQuotasRequest {
 }
 
 type ListQuotasResponseBody struct {
+	// The returned quotas.
 	Quotas []*ListQuotasResponseBodyQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of quotas that meet the filter conditions.
+	//
 	// example:
 	//
 	// 1
@@ -12408,27 +14826,50 @@ func (s *ListQuotasResponseBody) SetTotalCount(v int64) *ListQuotasResponseBody 
 }
 
 type ListQuotasResponseBodyQuotas struct {
+	// The alias of the quota.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The quota ID.
+	//
 	// example:
 	//
 	// 1828233
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- isolate: subscription
+	//
+	// 	- share: pay-as-you-go
+	//
 	// example:
 	//
 	// isolate
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The quota name.
+	//
 	// example:
 	//
 	// quota-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The product code. Valid values:
+	//
+	// 	- PAI_isolate: CPU subscription resource groups of PAI
+	//
+	// 	- PAI_share: GPU pay-as-you-go resource groups of PAI
+	//
 	// example:
 	//
 	// MaxCompute_share
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The quota type. Valid value:
+	//
+	// PAI: indicates GPU resource groups of MaxCompute.
+	//
 	// example:
 	//
 	// MaxCompute
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The quota specifications.
+	//
 	// example:
 	//
 	// {\\"cu\\":\\"11500\\",\\"minCu\\":\\"2300\\",\\"parentId\\":\\"0\\"}
@@ -12479,14 +14920,20 @@ func (s *ListQuotasResponseBodyQuotas) SetSpecs(v []*ListQuotasResponseBodyQuota
 }
 
 type ListQuotasResponseBodyQuotasSpecs struct {
+	// The specification name.
+	//
 	// example:
 	//
 	// cu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The specification type. The parameter can be left empty.
+	//
 	// example:
 	//
 	// string
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The specification value.
+	//
 	// example:
 	//
 	// 11500
@@ -12546,38 +14993,110 @@ func (s *ListQuotasResponse) SetBody(v *ListQuotasResponseBody) *ListQuotasRespo
 }
 
 type ListResourcesRequest struct {
+	// The name of the resource group. You can call [ListResources](https://help.aliyun.com/document_detail/449143.html) to obtain the name of the resource group.
+	//
 	// example:
 	//
 	// group
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Labels    *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Tag-based filter conditions. Multiple conditions are separated by commas (,). Only resources that meet all the specified tag-based filter conditions are returned.
+	//
+	// This parameter is available only for resources whose ProductType is ACS.
+	//
+	// example:
+	//
+	// system.supported.dsw=true,system.supported.dlc=true
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The operation to perform. Valid values:
+	//
+	// 	- ListResourceByWorkspace: obtains the resources in the workspace. This is the default value.
+	//
+	// 	- ListResource: obtains the resources of the user.
+	//
 	// example:
 	//
 	// ListResourceByWorkspace
 	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// The page number. The pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 20.
+	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// **This field is no longer used and will be removed. Use the ResourceType field instead.
+	//
 	// example:
 	//
 	// MaxCompute
 	ProductTypes *string `json:"ProductTypes,omitempty" xml:"ProductTypes,omitempty"`
-	QuotaIds     *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// The quota IDs, which are separated by commas (,). Only resources that contain all the specified quotas are returned.
+	//
+	// >  This parameter is available only for resources whose ResourceTypes is ACS.
+	//
+	// example:
+	//
+	// quota-k******da,quota-cd******w
+	QuotaIds *string `json:"QuotaIds,omitempty" xml:"QuotaIds,omitempty"`
+	// The resource name. The value must meet the following requirements:
+	//
+	// 	- The name must be 3 to 28 characters in length.
+	//
+	// 	- The name is unique in the region.
+	//
 	// example:
 	//
 	// resource
-	ResourceName  *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The resource types. Valid values:
+	//
+	// 	- MaxCompute
+	//
+	// 	- ECS
+	//
+	// 	- Lingjun
+	//
+	// 	- ACS
+	//
+	// 	- FLINK
+	//
+	// example:
+	//
+	// MaxCompute
 	ResourceTypes *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+	// Specifies whether to show detailed information, which includes the Quotas field. Valid values:
+	//
+	// 	- true (default)
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Verbose       *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The fields to return. Multiple fields are separated by commas (,). Valid values:
+	//
+	// 	- Quota
+	//
+	// 	- Label
+	//
+	// 	- IsDefault
+	//
+	// example:
+	//
+	// Quota,IsDefault
 	VerboseFields *string `json:"VerboseFields,omitempty" xml:"VerboseFields,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// 	- This parameter is required when the Option parameter is set to ListResourceByWorkspace.
+	//
+	// 	- You do not need to configure this parameter when the Option parameter is set to ListResource.
+	//
 	// example:
 	//
 	// 123
@@ -12653,11 +15172,16 @@ func (s *ListResourcesRequest) SetWorkspaceId(v string) *ListResourcesRequest {
 }
 
 type ListResourcesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1e195c5116124202371861018d5bde
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources.
 	Resources []*ListResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+	// The number of resources that meet the filter conditions.
+	//
 	// example:
 	//
 	// 2
@@ -12688,43 +15212,84 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int64) *ListResourcesRespons
 }
 
 type ListResourcesResponseBodyResources struct {
+	// The encryption information, which is valid only for MaxCompute resources.
 	Encryption *ListResourcesResponseBodyResourcesEncryption `json:"Encryption,omitempty" xml:"Encryption,omitempty" type:"Struct"`
+	// The environment type. Valid values:
+	//
+	// 	- dev: development environment
+	//
+	// 	- prod: production environment
+	//
 	// example:
 	//
 	// prod
-	EnvType  *string                                     `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// This parameter is invalid and deprecated.
 	Executor *ListResourcesResponseBodyResourcesExecutor `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
+	// The time when the resource group is created, in UTC. The time follows the ISO 8601 standard.
+	//
 	// example:
 	//
 	// 2021-01-21T17:12:35.232Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The name of the resource group, which is unique within the Alibaba Cloud account.
+	//
 	// example:
 	//
 	// groupName
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// The resource ID.
+	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// Indicates whether the resource is the default resource. Each type of resources has a default resource. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	IsDefault *bool                                       `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels    []*ListResourcesResponseBodyResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The tags.
+	Labels []*ListResourcesResponseBodyResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The resource name.
+	//
 	// example:
 	//
 	// ResourceName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// **This field is no longer used and will be removed. Use the ResourceType field.
+	//
 	// example:
 	//
 	// MaxCompute
-	ProductType  *string                                     `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	Quotas       []*ListResourcesResponseBodyResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	ResourceType *string                                     `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The quotas.
+	Quotas []*ListResourcesResponseBodyResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- MaxCompute
+	//
+	// 	- DLC
+	//
+	// 	- FLINK
+	//
+	// example:
+	//
+	// MaxCompute
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The resource specification.
+	//
 	// example:
 	//
 	// 对于MaxCompute {"Endpoint": "odps.alibaba-inc.com", "Project": "mignshi"}
 	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 123
@@ -12810,9 +15375,24 @@ func (s *ListResourcesResponseBodyResources) SetWorkspaceId(v string) *ListResou
 }
 
 type ListResourcesResponseBodyResourcesEncryption struct {
+	// The encryption algorithm.
+	//
+	// example:
+	//
+	// AESCTR
 	Algorithm *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	Enabled   *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Indicates whether the resources are encrypted.
+	//
+	// example:
+	//
+	// false
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The primary key for the encryption.
+	//
+	// example:
+	//
+	// DEFAULT
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 }
 
 func (s ListResourcesResponseBodyResourcesEncryption) String() string {
@@ -12839,6 +15419,11 @@ func (s *ListResourcesResponseBodyResourcesEncryption) SetKey(v string) *ListRes
 }
 
 type ListResourcesResponseBodyResourcesExecutor struct {
+	// This parameter is invalid and deprecated.
+	//
+	// example:
+	//
+	// 110973******7793
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
 
@@ -12856,7 +15441,17 @@ func (s *ListResourcesResponseBodyResourcesExecutor) SetOwnerId(v string) *ListR
 }
 
 type ListResourcesResponseBodyResourcesLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// system.supported.dsw
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// true
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12879,31 +15474,74 @@ func (s *ListResourcesResponseBodyResourcesLabels) SetValue(v string) *ListResou
 }
 
 type ListResourcesResponseBodyResourcesQuotas struct {
+	// The resource group type. Valid values:
+	//
+	// 	- CPU
+	//
+	// 	- GPU
+	//
 	// example:
 	//
 	// cpu
-	CardType    *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	CardType *string `json:"CardType,omitempty" xml:"CardType,omitempty"`
+	// The alias of the quota.
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The quota ID.
+	//
 	// example:
 	//
 	// 123
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- isolate: subscription
+	//
+	// 	- share: pay-as-you-go
+	//
 	// example:
 	//
 	// develop
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// The quota name.
+	//
 	// example:
 	//
 	// QuotaName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The product code. Valid values:
+	//
+	// 	- PAI_isolate: CPU subscription resource groups of PAI
+	//
+	// 	- PAI_share: GPU pay-as-you-go resource groups of PAI
+	//
+	// 	- MaxCompute_share: pay-as-you-go resource groups of MaxCompute
+	//
+	// 	- MaxCompute_isolate: subscription resource groups of MaxCompute
+	//
+	// 	- DataWorks_isolate: subscription resource groups of DataWorks
+	//
+	// 	- DataWorks_share: pay-as-you-go resource groups of DataWorks
+	//
+	// 	- DLC_share: pay-as-you-go resource groups of Deep Learning Containers (DLC)
+	//
 	// example:
 	//
 	// MaxCompute_isolate
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The quota type. Valid values:
+	//
+	// 	- PAI
+	//
+	// 	- MaxCompute
+	//
+	// 	- DLC
+	//
 	// example:
 	//
 	// MaxCompute
 	QuotaType *string `json:"QuotaType,omitempty" xml:"QuotaType,omitempty"`
+	// The quota specifications.
+	//
 	// example:
 	//
 	// {\\"cu\\":\\"11500\\",\\"minCu\\":\\"2300\\",\\"parentId\\":\\"0\\"}
@@ -12959,10 +15597,14 @@ func (s *ListResourcesResponseBodyResourcesQuotas) SetSpecs(v []*ListResourcesRe
 }
 
 type ListResourcesResponseBodyResourcesQuotasSpecs struct {
+	// The specification name.
+	//
 	// example:
 	//
 	// cu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The specification description.
+	//
 	// example:
 	//
 	// 11500
@@ -13017,16 +15659,22 @@ func (s *ListResourcesResponse) SetBody(v *ListResourcesResponseBody) *ListResou
 }
 
 type ListRunMetricsRequest struct {
+	// The metric key of the run.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// loss
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The maximum number of entries in the request. Default value: 10.
+	//
 	// example:
 	//
 	// 100
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token, which starts from 0. Default value: 0.
+	//
 	// example:
 	//
 	// 0
@@ -13057,7 +15705,10 @@ func (s *ListRunMetricsRequest) SetPageToken(v int64) *ListRunMetricsRequest {
 }
 
 type ListRunMetricsResponseBody struct {
+	// The metrics.
 	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
+	// The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken*	- field.
+	//
 	// example:
 	//
 	// 0
@@ -13123,62 +15774,110 @@ func (s *ListRunMetricsResponse) SetBody(v *ListRunMetricsResponseBody) *ListRun
 }
 
 type ListRunsRequest struct {
+	// The ID of the experiment that the run belongs.
+	//
 	// example:
 	//
 	// exp-1zpfthdx******
 	ExperimentId *string `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// The time when the instance was created.
+	//
 	// example:
 	//
 	// 2021-01-30T12:51:33.028Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// The label. Exact match is supported. Valid values:
+	//
+	// 	- Single-label query: Set the value to is_evaluation.
+	//
+	// 	- Multi-label query (not recommended in non-special scenarios and may have performance issues): Set the value to is_evaluation:true,LLM_evaluation:true. Multiple labels are separated with commas (,), indicating that the key-value pairs of multiple labels must be matched at the same time.
+	//
 	// example:
 	//
 	// is_evaluation:true
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// The maximum number of entries in the request. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The run name.
+	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+	//
+	// 	- ASC
+	//
+	// 	- DESC (default)
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The strings by which the results are sorted. The following parameters can be used to sort the results: GmtCreateTime and Name. The sorting order can be ASC (default) and DESC. Separate multiple strings with commas (,).
+	//
 	// example:
 	//
 	// GmtCreateTime DESC,Name ASC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// The page number. The value must be greater than 0. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The pagination token, which starts from 0. Default value: 0.
+	//
 	// example:
 	//
 	// 0
 	PageToken *int64 `json:"PageToken,omitempty" xml:"PageToken,omitempty"`
+	// The field used for sorting. Valid values:
+	//
+	// 	- Name: the name of the run.
+	//
+	// 	- GmtCreateTime: the time when the run is created.
+	//
 	// example:
 	//
 	// GmtCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The ID of the workload associated with the run.
+	//
 	// example:
 	//
 	// job-rbvg5wzlj****
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the workload associated with the run.
+	//
 	// example:
 	//
 	// TrainingService
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Specifies whether to show detailed information, including Metrics, Params, and Labels. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false (default)
+	//
 	// example:
 	//
 	// true
 	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+	// The ID of the workspace to which the experiment belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// >  If you do not specify a workspace ID, the system returns the runs of the default workspace.
+	//
 	// example:
 	//
 	// 22840
@@ -13269,16 +15968,21 @@ func (s *ListRunsRequest) SetWorkspaceId(v string) *ListRunsRequest {
 }
 
 type ListRunsResponseBody struct {
+	// The pagination token that is used to retrieve the next page. You do not need to specify this parameter for the first request. You must specify the pagination token in the result of the previous query. If the pagination token is 0, no next page exists. You can obtain the pagination token that is used to retrieve the next page in the value of the **NextPageToken*	- field.
+	//
 	// example:
 	//
 	// 0
 	NextPageToken *int64 `json:"NextPageToken,omitempty" xml:"NextPageToken,omitempty"`
-	Runs          []*Run `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	// The runs.
+	Runs []*Run `json:"Runs,omitempty" xml:"Runs,omitempty" type:"Repeated"`
+	// The total number of entries returned. By default, this parameter is not returned.
+	//
 	// example:
 	//
 	// 1
 	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -13501,6 +16205,11 @@ func (s *ListUserConfigsResponse) SetBody(v *ListUserConfigsResponseBody) *ListU
 }
 
 type ListWorkspaceUsersRequest struct {
+	// The display names of users who can be added to the workspace as members.
+	//
+	// example:
+	//
+	// doctest****
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -13518,15 +16227,20 @@ func (s *ListWorkspaceUsersRequest) SetUserName(v string) *ListWorkspaceUsersReq
 }
 
 type ListWorkspaceUsersResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 1e195c5116124202371861018d5bde
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of users who meet the filter conditions.
+	//
 	// example:
 	//
 	// 2
-	TotalCount *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Users      []*ListWorkspaceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The users.
+	Users []*ListWorkspaceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListWorkspaceUsersResponseBody) String() string {
@@ -13553,10 +16267,14 @@ func (s *ListWorkspaceUsersResponseBody) SetUsers(v []*ListWorkspaceUsersRespons
 }
 
 type ListWorkspaceUsersResponseBodyUsers struct {
+	// The user ID.
+	//
 	// example:
 	//
 	// 1611******3000
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username.
+	//
 	// example:
 	//
 	// she******mo
@@ -13655,7 +16373,7 @@ type ListWorkspacesRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/zh/resource-management/resource-group/user-guide/view-basic-information-of-a-resource-group?spm=a2c4g.11186623.help-menu-94362.d_2_0_1.86386c21FKqhTk\\&scm=20140722.H_151181._.OR_help-T_cn~zh-V_1).
+	// The resource group ID. To obtain the ID of a resource group, see [View basic information of a resource group](https://help.aliyun.com/document_detail/151181.html).
 	//
 	// example:
 	//
@@ -14019,6 +16737,7 @@ func (s *ListWorkspacesResponse) SetBody(v *ListWorkspacesResponseBody) *ListWor
 }
 
 type LogRunMetricsRequest struct {
+	// The metrics.
 	Metrics []*RunMetric `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Repeated"`
 }
 
@@ -14036,7 +16755,7 @@ func (s *LogRunMetricsRequest) SetMetrics(v []*RunMetric) *LogRunMetricsRequest 
 }
 
 type LogRunMetricsResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -14087,10 +16806,14 @@ func (s *LogRunMetricsResponse) SetBody(v *LogRunMetricsResponseBody) *LogRunMet
 }
 
 type PublishCodeSourceResponseBody struct {
+	// The ID of the code source that is successfully published.
+	//
 	// example:
 	//
 	// code-a797*******
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The request ID. You can use the ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14145,6 +16868,8 @@ func (s *PublishCodeSourceResponse) SetBody(v *PublishCodeSourceResponseBody) *P
 }
 
 type PublishDatasetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0F049F0-8D69-5BAC-8F10-B******A34C
@@ -14194,10 +16919,14 @@ func (s *PublishDatasetResponse) SetBody(v *PublishDatasetResponseBody) *Publish
 }
 
 type PublishImageResponseBody struct {
+	// The image ID.
+	//
 	// example:
 	//
 	// image-dk******fa
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// A0F049F0-8D69-5BAC-8F10-B******A34C
@@ -14252,6 +16981,8 @@ func (s *PublishImageResponse) SetBody(v *PublishImageResponseBody) *PublishImag
 }
 
 type RemoveImageResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14301,6 +17032,8 @@ func (s *RemoveImageResponse) SetBody(v *RemoveImageResponseBody) *RemoveImageRe
 }
 
 type RemoveImageLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14350,6 +17083,8 @@ func (s *RemoveImageLabelsResponse) SetBody(v *RemoveImageLabelsResponseBody) *R
 }
 
 type RemoveMemberRoleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14399,6 +17134,7 @@ func (s *RemoveMemberRoleResponse) SetBody(v *RemoveMemberRoleResponseBody) *Rem
 }
 
 type SetExperimentLabelsRequest struct {
+	// The tags.
 	Labels []*LabelInfo `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
@@ -14416,6 +17152,8 @@ func (s *SetExperimentLabelsRequest) SetLabels(v []*LabelInfo) *SetExperimentLab
 }
 
 type SetExperimentLabelsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14589,10 +17327,14 @@ func (s *SetUserConfigsResponse) SetBody(v *SetUserConfigsResponseBody) *SetUser
 }
 
 type StopDatasetJobRequest struct {
+	// The dataset version.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 478**
@@ -14618,6 +17360,8 @@ func (s *StopDatasetJobRequest) SetWorkspaceId(v string) *StopDatasetJobRequest 
 }
 
 type StopDatasetJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// F620FFD3-FFDC-5873-A70C-6971CC45F467
@@ -14667,16 +17411,46 @@ func (s *StopDatasetJobResponse) SetBody(v *StopDatasetJobResponseBody) *StopDat
 }
 
 type UpdateCodeSourceRequest struct {
+	// The name of the code branch.
+	//
 	// example:
 	//
 	// dev
-	CodeBranch          *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
-	CodeCommit          *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
-	CodeRepo            *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	CodeBranch *string `json:"CodeBranch,omitempty" xml:"CodeBranch,omitempty"`
+	// The code commit ID.
+	//
+	// example:
+	//
+	// 3a6*****
+	CodeCommit *string `json:"CodeCommit,omitempty" xml:"CodeCommit,omitempty"`
+	// The address of the code repository.
+	//
+	// example:
+	//
+	// https://code.aliyun.com/******
+	CodeRepo *string `json:"CodeRepo,omitempty" xml:"CodeRepo,omitempty"`
+	// The access token corresponding to the username.
+	//
+	// example:
+	//
+	// ***
 	CodeRepoAccessToken *string `json:"CodeRepoAccessToken,omitempty" xml:"CodeRepoAccessToken,omitempty"`
-	CodeRepoUserName    *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DisplayName         *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The username used to access the code repository.
+	//
+	// example:
+	//
+	// demo-user
+	CodeRepoUserName *string `json:"CodeRepoUserName,omitempty" xml:"CodeRepoUserName,omitempty"`
+	// The description of the code build.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the code build.
+	//
+	// example:
+	//
+	// MyCodeSource1
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The default mount path.
+	//
 	// example:
 	//
 	// /root/code/code-source-1
@@ -14732,10 +17506,14 @@ func (s *UpdateCodeSourceRequest) SetMountPath(v string) *UpdateCodeSourceReques
 }
 
 type UpdateCodeSourceResponseBody struct {
+	// The ID of the code build.
+	//
 	// example:
 	//
 	// code-20********
 	CodeSourceId *string `json:"CodeSourceId,omitempty" xml:"CodeSourceId,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 40325405-579C-4D82****
@@ -14790,12 +17568,24 @@ func (s *UpdateCodeSourceResponse) SetBody(v *UpdateCodeSourceResponseBody) *Upd
 }
 
 type UpdateDatasetRequest struct {
-	Description                    *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The description of the dataset.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The list of role names in the workspace that have read and write permissions on the mounted database. The names start with PAI are basic role names and the names start with role- are custom role names. If the list contains asterisks (\\*), all roles have read and write permissions.
+	//
+	// 	- If you set the value to ["PAI.AlgoOperator", "role-hiuwpd01ncrokkgp21"], the account of the specified role is granted the read and write permissions.
+	//
+	// 	- If you set the value to ["\\*"], all accounts are granted the read and write permissions.
+	//
+	// 	- If you set the value to [], only the creator of the dataset has the read and write permissions.
 	MountAccessReadWriteRoleIdList []*string `json:"MountAccessReadWriteRoleIdList,omitempty" xml:"MountAccessReadWriteRoleIdList,omitempty" type:"Repeated"`
+	// The dataset name. You can call [ListDatasets](https://help.aliyun.com/document_detail/457222.html) to obtain the dataset name.
+	//
 	// example:
 	//
 	// myName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The extended field, which is a JSON string. When you use the dataset in Deep Learning Containers (DLC), you can configure the mountPath field to specify the default mount path of the dataset.
+	//
 	// example:
 	//
 	// {
@@ -14835,6 +17625,8 @@ func (s *UpdateDatasetRequest) SetOptions(v string) *UpdateDatasetRequest {
 }
 
 type UpdateDatasetResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -14884,16 +17676,24 @@ func (s *UpdateDatasetResponse) SetBody(v *UpdateDatasetResponseBody) *UpdateDat
 }
 
 type UpdateDatasetFileMetasRequest struct {
+	// The metadata records to be updated for the dataset files.
+	//
 	// This parameter is required.
 	DatasetFileMetas []*DatasetFileMetaConentUpdate `json:"DatasetFileMetas,omitempty" xml:"DatasetFileMetas,omitempty" type:"Repeated"`
+	// The dataset version.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The ID of the tagging job that is associated with the metadata tag of the dataset file.
+	//
 	// example:
 	//
 	// dsjob-hv0b1****u8taig3y
 	TagJobId *string `json:"TagJobId,omitempty" xml:"TagJobId,omitempty"`
+	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 796**
@@ -14929,11 +17729,16 @@ func (s *UpdateDatasetFileMetasRequest) SetWorkspaceId(v string) *UpdateDatasetF
 }
 
 type UpdateDatasetFileMetasResponseBody struct {
+	// The metadata records that fail to be updated for the dataset files.
 	FailedDetails []*DatasetFileMetaResponse `json:"FailedDetails,omitempty" xml:"FailedDetails,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the metadata records of all dataset files were updated. Valid values: true and false. If the value is false, view the failure details specified by FailedDetails.
+	//
 	// example:
 	//
 	// true
@@ -14993,11 +17798,16 @@ func (s *UpdateDatasetFileMetasResponse) SetBody(v *UpdateDatasetFileMetasRespon
 }
 
 type UpdateDatasetJobRequest struct {
+	// The dataset version name.
+	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The dataset job description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 478**
@@ -15028,6 +17838,8 @@ func (s *UpdateDatasetJobRequest) SetWorkspaceId(v string) *UpdateDatasetJobRequ
 }
 
 type UpdateDatasetJobResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -15077,14 +17889,32 @@ func (s *UpdateDatasetJobResponse) SetBody(v *UpdateDatasetJobResponseBody) *Upd
 }
 
 type UpdateDatasetJobConfigRequest struct {
+	// The configuration content. Formats:
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
+	//
+	// 	- MultimodalSemanticIndex
+	//
+	// { "defaultModelId": "xxx" "defaultModelVersion":"1.0.0" }
+	//
 	// example:
 	//
 	// { "apiKey":"sk-xxxxxxxxxxxxxxxxxxxxx" }
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The configuration type.
+	//
+	// 	- MultimodalIntelligentTag
+	//
+	// 	- MultimodalSemanticIndex
+	//
 	// example:
 	//
 	// MultimodalSemanticIndex
 	ConfigType *string `json:"ConfigType,omitempty" xml:"ConfigType,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 167497
@@ -15115,6 +17945,8 @@ func (s *UpdateDatasetJobConfigRequest) SetWorkspaceId(v string) *UpdateDatasetJ
 }
 
 type UpdateDatasetJobConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D5BFFEE3-6025-443F-8A03-02D619B5C4B9
@@ -15259,6 +18091,8 @@ func (s *UpdateDatasetVersionResponse) SetBody(v *UpdateDatasetVersionResponseBo
 }
 
 type UpdateDefaultWorkspaceRequest struct {
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// example:
 	//
 	// 12345
@@ -15279,6 +18113,8 @@ func (s *UpdateDefaultWorkspaceRequest) SetWorkspaceId(v string) *UpdateDefaultW
 }
 
 type UpdateDefaultWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 17915******4216
@@ -15328,11 +18164,23 @@ func (s *UpdateDefaultWorkspaceResponse) SetBody(v *UpdateDefaultWorkspaceRespon
 }
 
 type UpdateExperimentRequest struct {
+	// The accessibility of the experiment in the workspace. Valid values:
+	//
+	// 	- PRIVATE: The experiment is accessible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The experiment is accessible to all users in the workspace.
+	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// 名称
+	// The experiment name. The name must meet the following requirements:
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name can contain letters, digits, underscores (_), and hyphens (-).
+	//
+	// 	- The name must be 1 to 63 characters in length.
 	//
 	// example:
 	//
@@ -15359,6 +18207,8 @@ func (s *UpdateExperimentRequest) SetName(v string) *UpdateExperimentRequest {
 }
 
 type UpdateExperimentResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -15408,33 +18258,74 @@ func (s *UpdateExperimentResponse) SetBody(v *UpdateExperimentResponseBody) *Upd
 }
 
 type UpdateModelRequest struct {
+	// The visibility of the model in the workspace. Valid values:
+	//
+	// 	- PRIVATE: The model is visible only to you and the administrator of the workspace.
+	//
+	// 	- PUBLIC: The model is visible to all users in the workspace.
+	//
 	// example:
 	//
 	// PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// The domain. This parameter describes the domain in which the model is applied. Valid values: nlp (natural language processing) and cv (computer vision).
+	//
 	// example:
 	//
 	// nlp
-	Domain           *string                `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	ExtraInfo        map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	ModelDescription *string                `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// Other information about the model.
+	//
+	// example:
+	//
+	// {
+	//
+	// 	"RatingCount": 2866,
+	//
+	// 	"Rating": 4.94,
+	//
+	// 	"FavoriteCount": 34992,
+	//
+	// 	"CommentCount": 754,
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/drea***w.png"],
+	//
+	// 	"TippedAmountCount": 32,
+	//
+	// 	"DownloadCount": 606056
+	//
+	// }
+	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// The model description.
+	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
+	// The documentation of the model.
+	//
 	// example:
 	//
 	// https://*.md
-	ModelDoc  *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	ModelDoc *string `json:"ModelDoc,omitempty" xml:"ModelDoc,omitempty"`
+	// The model name, which must be 1 to 127 characters in length.
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	// The model type. Valid values: Checkpoint and LoRA.
+	//
 	// example:
 	//
 	// Checkpoint
 	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The sequence number of the model. This parameter can be used for custom sorting.
+	//
 	// example:
 	//
-	// 101
+	// 0
 	OrderNumber *int64 `json:"OrderNumber,omitempty" xml:"OrderNumber,omitempty"`
+	// The source of the model. This parameter describes the community or organization to which the source model belongs. Valid values: ModelScope and HuggingFace.
+	//
 	// example:
 	//
 	// ModelScope
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The task. This parameter specifies the specific issue that the model resolves. Example: text-classification.
+	//
 	// example:
 	//
 	// text-classification
@@ -15500,6 +18391,8 @@ func (s *UpdateModelRequest) SetTask(v string) *UpdateModelRequest {
 }
 
 type UpdateModelResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// A0F049F0-8D69-5BAC-8F10-B******A34C
@@ -15549,47 +18442,136 @@ func (s *UpdateModelResponse) SetBody(v *UpdateModelResponseBody) *UpdateModelRe
 }
 
 type UpdateModelVersionRequest struct {
+	// The approval status. Valid values:
+	//
+	// 	- Pending
+	//
+	// 	- Approved
+	//
+	// 	- Rejected
+	//
 	// example:
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
+	// The compression configuration.
+	//
 	// example:
 	//
 	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
+	// The evaluation configuration.
+	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
+	// The additional information.
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	// 	"CoverUris": ["https://e***u.oss-cn-hangzhou.aliyuncs.com/st****017.preview.png"],
+	//
+	// 	"TrainedWords": ["albedo_overlord"]
+	//
+	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	// Describes how to apply to downstream inference services. For example, describes the processor and container of Elastic Algorithm Service (EAS). Example: `{ "processor": "tensorflow_gpu_1.12" }`.
+	//
 	// example:
 	//
 	// {     "processor": "tensorflow_gpu_1.12" }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
+	// The model metrics. The length after serialization is limited to 8,192.
+	//
 	// example:
 	//
-	// {}
+	// {
+	//
+	//   "Results": [{
+	//
+	//     "Dataset": {
+	//
+	//       "DatasetId": "d-sdkjanksaklerhfd"
+	//
+	//     },
+	//
+	//     "Metrics": {
+	//
+	//       "cer": 0.175
+	//
+	//     }
+	//
+	//   }, {
+	//
+	//     "Dataset": {
+	//
+	//       "Uri": "oss://xxxx/"
+	//
+	//     },
+	//
+	//     "Metrics": {
+	//
+	//       "cer": 0.172
+	//
+	//     }
+	//
+	//   }]
+	//
+	// }
 	Metrics map[string]interface{} `json:"Metrics,omitempty" xml:"Metrics,omitempty"`
+	// The extended field, which is of the JsonString type.
+	//
 	// example:
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	// The source ID.
+	//
+	// 	- If the source type is Custom, this field is not limited.
+	//
+	// 	- If the source type is PAIFlow or TrainingService, the format is:
+	//
+	// <!---->
+	//
+	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
+	//
+	// Take note of the following parameters:
+	//
+	// 	- region is the region ID.
+	//
+	// 	- workspaceId is the ID of the workspace.
+	//
+	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	//
+	// 	- id is a unique identifier.
+	//
 	// example:
 	//
 	// region=cn-shanghai,workspaceId=13**,kind=PipelineRun,id=run-sakdb****jdf
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// The type of the model source. Valid values:
+	//
+	// 	- Custom (default)
+	//
+	// 	- PAIFlow
+	//
+	// 	- TrainingService
+	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The training configurations used for fine-tuning and incremental training.
+	//
 	// example:
 	//
 	// {}
-	TrainingSpec       map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
-	VersionDescription *string                `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+	TrainingSpec map[string]interface{} `json:"TrainingSpec,omitempty" xml:"TrainingSpec,omitempty"`
+	// The model version description.
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
 }
 
 func (s UpdateModelVersionRequest) String() string {
@@ -15656,6 +18638,8 @@ func (s *UpdateModelVersionRequest) SetVersionDescription(v string) *UpdateModel
 }
 
 type UpdateModelVersionResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// D5BFFEE3-6025-443F-8A03-02D61***C4B9
@@ -15798,10 +18782,20 @@ func (s *UpdateRunResponse) SetBody(v *UpdateRunResponseBody) *UpdateRunResponse
 }
 
 type UpdateWorkspaceRequest struct {
+	// The workspace description.
+	//
 	// example:
 	//
 	// Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The display name of the workspace.
+	//
+	// 	- The name must be 3 to 23 characters in length, and can contain letters, underscores (_), and digits.
+	//
+	// 	- The name must start with a letter.
+	//
+	// 	- The name must be unique in the current region.
+	//
 	// example:
 	//
 	// workspace-example
@@ -15827,6 +18821,8 @@ func (s *UpdateWorkspaceRequest) SetDisplayName(v string) *UpdateWorkspaceReques
 }
 
 type UpdateWorkspaceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
@@ -15876,22 +18872,56 @@ func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *Updat
 }
 
 type UpdateWorkspaceResourceRequest struct {
+	// The group name.
+	//
 	// example:
 	//
 	// group-kjds******sd
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// Specifies whether the resource is the default resource. This parameter can only be set to true and cannot be set to false.
+	//
 	// example:
 	//
 	// true
-	IsDefault *bool                                   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	Labels    []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	// The resource tags. If you specify multiple tags, only resources that meet all the specified tag-based filter conditions are returned.
+	Labels []*UpdateWorkspaceResourceRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// **This field is no longer used and will be removed. Use the ResourceType field.
+	//
 	// example:
 	//
 	// MaxCompute
-	ProductType  *string                `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	ResourceIds  []*string              `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
-	ResourceType *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Spec         map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// The resource IDs.
+	//
+	// You cannot leave both GroupName and ResourceIds empty. If you specify both the parameters, the value of GroupName of each resource ID in the dataset must be the same.
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// The resource type. Valid values:
+	//
+	// 	- MaxCompute
+	//
+	// 	- ECS
+	//
+	// 	- Lingjun
+	//
+	// 	- ACS
+	//
+	// 	- FLINK
+	//
+	// example:
+	//
+	// MaxCompute
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The specification of the resource.
+	//
+	// example:
+	//
+	// {
+	//
+	//       "clusterType": "share"
+	//
+	// }
+	Spec map[string]interface{} `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s UpdateWorkspaceResourceRequest) String() string {
@@ -15938,7 +18968,17 @@ func (s *UpdateWorkspaceResourceRequest) SetSpec(v map[string]interface{}) *Upda
 }
 
 type UpdateWorkspaceResourceRequestLabels struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// system.******
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// True
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -15961,10 +19001,17 @@ func (s *UpdateWorkspaceResourceRequestLabels) SetValue(v string) *UpdateWorkspa
 }
 
 type UpdateWorkspaceResourceResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 5A14FA81-DD4E-******-6343FE44B941
-	RequestId   *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The updated resource IDs.
+	//
+	// example:
+	//
+	// Resource-dks******jkf
 	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 }
 
@@ -16064,7 +19111,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 接受并处理Dataworks发送的事件
+// Receives and processes system event messages sent by DataWorks.
+//
+// Description:
+//
+// This operation can be called only by the internal system and cannot be called by external users.
 //
 // @param request - AcceptDataworksEventRequest
 //
@@ -16113,7 +19164,11 @@ func (client *Client) AcceptDataworksEventWithOptions(request *AcceptDataworksEv
 
 // Summary:
 //
-// 接受并处理Dataworks发送的事件
+// Receives and processes system event messages sent by DataWorks.
+//
+// Description:
+//
+// This operation can be called only by the internal system and cannot be called by external users.
 //
 // @param request - AcceptDataworksEventRequest
 //
@@ -16132,7 +19187,7 @@ func (client *Client) AcceptDataworksEvent(request *AcceptDataworksEventRequest)
 
 // Summary:
 //
-// 增加 Image
+// Adds a custom image to a workspace.
 //
 // @param request - AddImageRequest
 //
@@ -16213,7 +19268,7 @@ func (client *Client) AddImageWithOptions(request *AddImageRequest, headers map[
 
 // Summary:
 //
-// 增加 Image
+// Adds a custom image to a workspace.
 //
 // @param request - AddImageRequest
 //
@@ -16232,7 +19287,7 @@ func (client *Client) AddImage(request *AddImageRequest) (_result *AddImageRespo
 
 // Summary:
 //
-// 增加 Image 的标签
+// Adds tags to an image.
 //
 // @param request - AddImageLabelsRequest
 //
@@ -16277,7 +19332,7 @@ func (client *Client) AddImageLabelsWithOptions(ImageId *string, request *AddIma
 
 // Summary:
 //
-// 增加 Image 的标签
+// Adds tags to an image.
 //
 // @param request - AddImageLabelsRequest
 //
@@ -16296,7 +19351,7 @@ func (client *Client) AddImageLabels(ImageId *string, request *AddImageLabelsReq
 
 // Summary:
 //
-// 增加成员角色
+// Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
 //
 // @param headers - map
 //
@@ -16329,7 +19384,7 @@ func (client *Client) AddMemberRoleWithOptions(WorkspaceId *string, MemberId *st
 
 // Summary:
 //
-// 增加成员角色
+// Adds a role to a member in a workspace. After you add a role to a member, the member is granted the permissions of the role.
 //
 // @return AddMemberRoleResponse
 func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *AddMemberRoleResponse, _err error) {
@@ -16346,7 +19401,7 @@ func (client *Client) AddMemberRole(WorkspaceId *string, MemberId *string, RoleN
 
 // Summary:
 //
-// 更改资源组
+// Changes the resource group to which a resource belongs based on the ID.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -16399,7 +19454,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 更改资源组
+// Changes the resource group to which a resource belongs based on the ID.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -16418,7 +19473,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// 创建一个代码源配置
+// Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -16499,7 +19554,7 @@ func (client *Client) CreateCodeSourceWithOptions(request *CreateCodeSourceReque
 
 // Summary:
 //
-// 创建一个代码源配置
+// Creates a code build in Platform for AI (PAI). You can configure Git branches and commit IDs. After the code build is created, you can reference the code build in a Deep Learning Containers (DLC) job.
 //
 // @param request - CreateCodeSourceRequest
 //
@@ -16518,7 +19573,7 @@ func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_resul
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
 //
 // @param request - CreateDatasetRequest
 //
@@ -16651,7 +19706,7 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, he
 
 // Summary:
 //
-// 创建数据集
+// Creates a dataset.
 //
 // @param request - CreateDatasetRequest
 //
@@ -16670,7 +19725,7 @@ func (client *Client) CreateDataset(request *CreateDatasetRequest) (_result *Cre
 
 // Summary:
 //
-// 批量创建数据集下的文件元数据记录
+// Creates the metadata records of multiple files in a dataset at a time.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -16723,7 +19778,7 @@ func (client *Client) CreateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// 批量创建数据集下的文件元数据记录
+// Creates the metadata records of multiple files in a dataset at a time.
 //
 // @param request - CreateDatasetFileMetasRequest
 //
@@ -16742,7 +19797,7 @@ func (client *Client) CreateDatasetFileMetas(DatasetId *string, request *CreateD
 
 // Summary:
 //
-// 创建数据集任务
+// Creates a dataset job.
 //
 // @param request - CreateDatasetJobRequest
 //
@@ -16807,7 +19862,7 @@ func (client *Client) CreateDatasetJobWithOptions(DatasetId *string, request *Cr
 
 // Summary:
 //
-// 创建数据集任务
+// Creates a dataset job.
 //
 // @param request - CreateDatasetJobRequest
 //
@@ -16826,7 +19881,7 @@ func (client *Client) CreateDatasetJob(DatasetId *string, request *CreateDataset
 
 // Summary:
 //
-// 创建数据集任务配置
+// Creates a job configuration for a dataset.
 //
 // @param request - CreateDatasetJobConfigRequest
 //
@@ -16879,7 +19934,7 @@ func (client *Client) CreateDatasetJobConfigWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// 创建数据集任务配置
+// Creates a job configuration for a dataset.
 //
 // @param request - CreateDatasetJobConfigRequest
 //
@@ -16898,7 +19953,15 @@ func (client *Client) CreateDatasetJobConfig(DatasetId *string, request *CreateD
 
 // Summary:
 //
-// 创建或更新 Dataset 的标签
+// Creates tags for a dataset.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+//   - The tag key and value are not empty strings and cannot exceed 128 characters in length.
+//
+//   - The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
 //
 // @param request - CreateDatasetLabelsRequest
 //
@@ -16943,7 +20006,15 @@ func (client *Client) CreateDatasetLabelsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// 创建或更新 Dataset 的标签
+// Creates tags for a dataset.
+//
+// Description:
+//
+// Before you call this operation, take note of the following items:
+//
+//   - The tag key and value are not empty strings and cannot exceed 128 characters in length.
+//
+//   - The tag key cannot start with any of the following strings: "aliyun", "acs", "http://", and "https://".
 //
 // @param request - CreateDatasetLabelsRequest
 //
@@ -17130,7 +20201,7 @@ func (client *Client) CreateDatasetVersionLabels(DatasetId *string, VersionName 
 
 // Summary:
 //
-// 创建实验
+// Creates an experiment.
 //
 // @param request - CreateExperimentRequest
 //
@@ -17191,7 +20262,7 @@ func (client *Client) CreateExperimentWithOptions(request *CreateExperimentReque
 
 // Summary:
 //
-// 创建实验
+// Creates an experiment.
 //
 // @param request - CreateExperimentRequest
 //
@@ -17210,7 +20281,7 @@ func (client *Client) CreateExperiment(request *CreateExperimentRequest) (_resul
 
 // Summary:
 //
-// 创建成员
+// Adds a user to a workspace as a member. You can add multiple users as members.
 //
 // @param request - CreateMemberRequest
 //
@@ -17255,7 +20326,7 @@ func (client *Client) CreateMemberWithOptions(WorkspaceId *string, request *Crea
 
 // Summary:
 //
-// 创建成员
+// Adds a user to a workspace as a member. You can add multiple users as members.
 //
 // @param request - CreateMemberRequest
 //
@@ -17327,6 +20398,10 @@ func (client *Client) CreateModelWithOptions(request *CreateModelRequest, header
 
 	if !tea.BoolValue(util.IsUnset(request.Origin)) {
 		body["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
@@ -17570,7 +20645,7 @@ func (client *Client) CreateModelVersion(ModelId *string, request *CreateModelVe
 
 // Summary:
 //
-// 创建或更新模型版本的标签
+// Creates a tag for a model version.
 //
 // @param request - CreateModelVersionLabelsRequest
 //
@@ -17615,7 +20690,7 @@ func (client *Client) CreateModelVersionLabelsWithOptions(ModelId *string, Versi
 
 // Summary:
 //
-// 创建或更新模型版本的标签
+// Creates a tag for a model version.
 //
 // @param request - CreateModelVersionLabelsRequest
 //
@@ -17866,7 +20941,7 @@ func (client *Client) CreateWorkspace(request *CreateWorkspaceRequest) (_result 
 
 // Summary:
 //
-// 创建资源
+// Associates resources with a workspace.
 //
 // @param request - CreateWorkspaceResourceRequest
 //
@@ -17915,7 +20990,7 @@ func (client *Client) CreateWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// 创建资源
+// Associates resources with a workspace.
 //
 // @param request - CreateWorkspaceResourceRequest
 //
@@ -17984,7 +21059,7 @@ func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCod
 
 // Summary:
 //
-// 删除数据集
+// Deletes a dataset.
 //
 // @param headers - map
 //
@@ -18017,7 +21092,7 @@ func (client *Client) DeleteDatasetWithOptions(DatasetId *string, headers map[st
 
 // Summary:
 //
-// 删除数据集
+// Deletes a dataset.
 //
 // @return DeleteDatasetResponse
 func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetResponse, _err error) {
@@ -18034,7 +21109,7 @@ func (client *Client) DeleteDataset(DatasetId *string) (_result *DeleteDatasetRe
 
 // Summary:
 //
-// 批量删除数据集下的文件元数据记录
+// Deletes the metadata records of multiple files in a dataset at a time.
 //
 // @param request - DeleteDatasetFileMetasRequest
 //
@@ -18087,7 +21162,7 @@ func (client *Client) DeleteDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// 批量删除数据集下的文件元数据记录
+// Deletes the metadata records of multiple files in a dataset at a time.
 //
 // @param request - DeleteDatasetFileMetasRequest
 //
@@ -18106,7 +21181,7 @@ func (client *Client) DeleteDatasetFileMetas(DatasetId *string, request *DeleteD
 
 // Summary:
 //
-// 删除数据集任务
+// Deletes a dataset job.
 //
 // @param headers - map
 //
@@ -18139,7 +21214,7 @@ func (client *Client) DeleteDatasetJobWithOptions(DatasetId *string, DatasetJobI
 
 // Summary:
 //
-// 删除数据集任务
+// Deletes a dataset job.
 //
 // @return DeleteDatasetJobResponse
 func (client *Client) DeleteDatasetJob(DatasetId *string, DatasetJobId *string) (_result *DeleteDatasetJobResponse, _err error) {
@@ -18156,7 +21231,7 @@ func (client *Client) DeleteDatasetJob(DatasetId *string, DatasetJobId *string) 
 
 // Summary:
 //
-// 删除数据集任务配置
+// Deletes a job configuration for a dataset.
 //
 // @param request - DeleteDatasetJobConfigRequest
 //
@@ -18201,7 +21276,7 @@ func (client *Client) DeleteDatasetJobConfigWithOptions(DatasetId *string, Datas
 
 // Summary:
 //
-// 删除数据集任务配置
+// Deletes a job configuration for a dataset.
 //
 // @param request - DeleteDatasetJobConfigRequest
 //
@@ -18220,7 +21295,7 @@ func (client *Client) DeleteDatasetJobConfig(DatasetId *string, DatasetJobConfig
 
 // Summary:
 //
-// 删除 Dataset 的标签
+// Deletes a dataset tag.
 //
 // @param request - DeleteDatasetLabelsRequest
 //
@@ -18265,7 +21340,7 @@ func (client *Client) DeleteDatasetLabelsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// 删除 Dataset 的标签
+// Deletes a dataset tag.
 //
 // @param request - DeleteDatasetLabelsRequest
 //
@@ -18334,7 +21409,7 @@ func (client *Client) DeleteDatasetVersion(DatasetId *string, VersionName *strin
 
 // Summary:
 //
-// 删除数据集版本的标签。
+// Deletes tags for a dataset version.
 //
 // @param request - DeleteDatasetVersionLabelsRequest
 //
@@ -18379,7 +21454,7 @@ func (client *Client) DeleteDatasetVersionLabelsWithOptions(DatasetId *string, V
 
 // Summary:
 //
-// 删除数据集版本的标签。
+// Deletes tags for a dataset version.
 //
 // @param request - DeleteDatasetVersionLabelsRequest
 //
@@ -18398,7 +21473,7 @@ func (client *Client) DeleteDatasetVersionLabels(DatasetId *string, VersionName 
 
 // Summary:
 //
-// 删除实验
+// Deletes an experiment.
 //
 // @param headers - map
 //
@@ -18431,7 +21506,7 @@ func (client *Client) DeleteExperimentWithOptions(ExperimentId *string, headers 
 
 // Summary:
 //
-// 删除实验
+// Deletes an experiment.
 //
 // @return DeleteExperimentResponse
 func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExperimentResponse, _err error) {
@@ -18448,7 +21523,7 @@ func (client *Client) DeleteExperiment(ExperimentId *string) (_result *DeleteExp
 
 // Summary:
 //
-// 删除实验标签
+// Deletes an experiment tag.
 //
 // @param headers - map
 //
@@ -18481,7 +21556,7 @@ func (client *Client) DeleteExperimentLabelWithOptions(ExperimentId *string, Key
 
 // Summary:
 //
-// 删除实验标签
+// Deletes an experiment tag.
 //
 // @return DeleteExperimentLabelResponse
 func (client *Client) DeleteExperimentLabel(ExperimentId *string, Key *string) (_result *DeleteExperimentLabelResponse, _err error) {
@@ -18612,7 +21687,7 @@ func (client *Client) DeleteModel(ModelId *string) (_result *DeleteModelResponse
 
 // Summary:
 //
-// 删除模型的标签
+// Deletes the labels of a model.
 //
 // @param request - DeleteModelLabelsRequest
 //
@@ -18657,7 +21732,7 @@ func (client *Client) DeleteModelLabelsWithOptions(ModelId *string, request *Del
 
 // Summary:
 //
-// 删除模型的标签
+// Deletes the labels of a model.
 //
 // @param request - DeleteModelLabelsRequest
 //
@@ -18676,7 +21751,7 @@ func (client *Client) DeleteModelLabels(ModelId *string, request *DeleteModelLab
 
 // Summary:
 //
-// 删除模型版本
+// Deletes a model version.
 //
 // @param headers - map
 //
@@ -18709,7 +21784,7 @@ func (client *Client) DeleteModelVersionWithOptions(ModelId *string, VersionName
 
 // Summary:
 //
-// 删除模型版本
+// Deletes a model version.
 //
 // @return DeleteModelVersionResponse
 func (client *Client) DeleteModelVersion(ModelId *string, VersionName *string) (_result *DeleteModelVersionResponse, _err error) {
@@ -18840,7 +21915,7 @@ func (client *Client) DeleteRun(RunId *string) (_result *DeleteRunResponse, _err
 
 // Summary:
 //
-// 删除Run标签
+// Deletes a tag that is added to a run.
 //
 // @param headers - map
 //
@@ -18873,7 +21948,7 @@ func (client *Client) DeleteRunLabelWithOptions(RunId *string, Key *string, head
 
 // Summary:
 //
-// 删除Run标签
+// Deletes a tag that is added to a run.
 //
 // @return DeleteRunLabelResponse
 func (client *Client) DeleteRunLabel(RunId *string, Key *string) (_result *DeleteRunLabelResponse, _err error) {
@@ -18954,7 +22029,7 @@ func (client *Client) DeleteUserConfig(CategoryName *string, request *DeleteUser
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
 //
 // @param headers - map
 //
@@ -18987,7 +22062,7 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers ma
 
 // Summary:
 //
-// 删除工作空间
+// Deletes a workspace. After you delete a workspace, the associated resources are not automatically released. You must manually release the resources.
 //
 // @return DeleteWorkspaceResponse
 func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorkspaceResponse, _err error) {
@@ -19004,7 +22079,7 @@ func (client *Client) DeleteWorkspace(WorkspaceId *string) (_result *DeleteWorks
 
 // Summary:
 //
-// 删除工作空间资源
+// Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -19069,7 +22144,7 @@ func (client *Client) DeleteWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// 删除工作空间资源
+// Deletes a resource from a workspace. The resource is not deleted at the underlying layer.
 //
 // @param request - DeleteWorkspaceResourceRequest
 //
@@ -19138,7 +22213,7 @@ func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourc
 
 // Summary:
 //
-// 获取数据集
+// Obtains a dataset.
 //
 // @param headers - map
 //
@@ -19171,7 +22246,7 @@ func (client *Client) GetDatasetWithOptions(DatasetId *string, headers map[strin
 
 // Summary:
 //
-// 获取数据集
+// Obtains a dataset.
 //
 // @return GetDatasetResponse
 func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse, _err error) {
@@ -19188,7 +22263,7 @@ func (client *Client) GetDataset(DatasetId *string) (_result *GetDatasetResponse
 
 // Summary:
 //
-// 获取数据集下的指定文件元数据记录
+// Queries the metadata records of specific files in a dataset.
 //
 // @param request - GetDatasetFileMetaRequest
 //
@@ -19237,7 +22312,7 @@ func (client *Client) GetDatasetFileMetaWithOptions(DatasetId *string, DatasetFi
 
 // Summary:
 //
-// 获取数据集下的指定文件元数据记录
+// Queries the metadata records of specific files in a dataset.
 //
 // @param request - GetDatasetFileMetaRequest
 //
@@ -19256,7 +22331,83 @@ func (client *Client) GetDatasetFileMeta(DatasetId *string, DatasetFileMetaId *s
 
 // Summary:
 //
-// 获取数据集任务
+// 获取数据集下元数据的统计信息。
+//
+// @param request - GetDatasetFileMetasStatisticsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDatasetFileMetasStatisticsResponse
+func (client *Client) GetDatasetFileMetasStatisticsWithOptions(DatasetId *string, request *GetDatasetFileMetasStatisticsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDatasetFileMetasStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregateBy)) {
+		query["AggregateBy"] = request.AggregateBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatasetVersion)) {
+		query["DatasetVersion"] = request.DatasetVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDatasetFileMetasStatistics"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/statistics/datasets/" + tea.StringValue(openapiutil.GetEncodeParam(DatasetId)) + "/datasetfilemetas"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDatasetFileMetasStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据集下元数据的统计信息。
+//
+// @param request - GetDatasetFileMetasStatisticsRequest
+//
+// @return GetDatasetFileMetasStatisticsResponse
+func (client *Client) GetDatasetFileMetasStatistics(DatasetId *string, request *GetDatasetFileMetasStatisticsRequest) (_result *GetDatasetFileMetasStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetDatasetFileMetasStatisticsResponse{}
+	_body, _err := client.GetDatasetFileMetasStatisticsWithOptions(DatasetId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Obtains a dataset job.
 //
 // @param request - GetDatasetJobRequest
 //
@@ -19305,7 +22456,7 @@ func (client *Client) GetDatasetJobWithOptions(DatasetId *string, DatasetJobId *
 
 // Summary:
 //
-// 获取数据集任务
+// Obtains a dataset job.
 //
 // @param request - GetDatasetJobRequest
 //
@@ -19324,7 +22475,7 @@ func (client *Client) GetDatasetJob(DatasetId *string, DatasetJobId *string, req
 
 // Summary:
 //
-// 获取数据集任务配置
+// Obtains a job configuration for a dataset.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -19369,7 +22520,7 @@ func (client *Client) GetDatasetJobConfigWithOptions(DatasetId *string, DatasetJ
 
 // Summary:
 //
-// 获取数据集任务配置
+// Obtains a job configuration for a dataset.
 //
 // @param request - GetDatasetJobConfigRequest
 //
@@ -19388,7 +22539,7 @@ func (client *Client) GetDatasetJobConfig(DatasetId *string, DatasetJobConfigId 
 
 // Summary:
 //
-// 获取指定版本的数据集信息
+// Obtains the information about a specified version of a dataset.
 //
 // @param headers - map
 //
@@ -19421,7 +22572,7 @@ func (client *Client) GetDatasetVersionWithOptions(DatasetId *string, VersionNam
 
 // Summary:
 //
-// 获取指定版本的数据集信息
+// Obtains the information about a specified version of a dataset.
 //
 // @return GetDatasetVersionResponse
 func (client *Client) GetDatasetVersion(DatasetId *string, VersionName *string) (_result *GetDatasetVersionResponse, _err error) {
@@ -19438,7 +22589,7 @@ func (client *Client) GetDatasetVersion(DatasetId *string, VersionName *string) 
 
 // Summary:
 //
-// 获取默认工作空间
+// Queries information about the default workspace.
 //
 // @param request - GetDefaultWorkspaceRequest
 //
@@ -19483,7 +22634,7 @@ func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspac
 
 // Summary:
 //
-// 获取默认工作空间
+// Queries information about the default workspace.
 //
 // @param request - GetDefaultWorkspaceRequest
 //
@@ -19566,7 +22717,7 @@ func (client *Client) GetExperiment(ExperimentId *string, request *GetExperiment
 
 // Summary:
 //
-// 获取镜像
+// Obtains the information about an image.
 //
 // @param request - GetImageRequest
 //
@@ -19611,7 +22762,7 @@ func (client *Client) GetImageWithOptions(ImageId *string, request *GetImageRequ
 
 // Summary:
 //
-// 获取镜像
+// Obtains the information about an image.
 //
 // @param request - GetImageRequest
 //
@@ -19630,7 +22781,7 @@ func (client *Client) GetImage(ImageId *string, request *GetImageRequest) (_resu
 
 // Summary:
 //
-// 获取成员
+// Obtains a member in a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -19679,7 +22830,7 @@ func (client *Client) GetMemberWithOptions(WorkspaceId *string, request *GetMemb
 
 // Summary:
 //
-// 获取成员
+// Obtains a member in a workspace.
 //
 // @param request - GetMemberRequest
 //
@@ -19698,7 +22849,7 @@ func (client *Client) GetMember(WorkspaceId *string, request *GetMemberRequest) 
 
 // Summary:
 //
-// 获取模型
+// Obtains the details of a specified model.
 //
 // @param headers - map
 //
@@ -19731,7 +22882,7 @@ func (client *Client) GetModelWithOptions(ModelId *string, headers map[string]*s
 
 // Summary:
 //
-// 获取模型
+// Obtains the details of a specified model.
 //
 // @return GetModelResponse
 func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err error) {
@@ -19748,7 +22899,7 @@ func (client *Client) GetModel(ModelId *string) (_result *GetModelResponse, _err
 
 // Summary:
 //
-// 获取模型版本
+// Queries a model version.
 //
 // @param headers - map
 //
@@ -19781,7 +22932,7 @@ func (client *Client) GetModelVersionWithOptions(ModelId *string, VersionName *s
 
 // Summary:
 //
-// 获取模型版本
+// Queries a model version.
 //
 // @return GetModelVersionResponse
 func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_result *GetModelVersionResponse, _err error) {
@@ -19798,7 +22949,7 @@ func (client *Client) GetModelVersion(ModelId *string, VersionName *string) (_re
 
 // Summary:
 //
-// 获取权限，若无权限则返回错误
+// Obtains permissions on a workspace.
 //
 // @param tmpReq - GetPermissionRequest
 //
@@ -19865,7 +23016,7 @@ func (client *Client) GetPermissionWithOptions(WorkspaceId *string, PermissionCo
 
 // Summary:
 //
-// 获取权限，若无权限则返回错误
+// Obtains permissions on a workspace.
 //
 // @param request - GetPermissionRequest
 //
@@ -19884,7 +23035,7 @@ func (client *Client) GetPermission(WorkspaceId *string, PermissionCode *string,
 
 // Summary:
 //
-// 获取Run详情
+// Queries the run information.
 //
 // @param request - GetRunRequest
 //
@@ -19929,7 +23080,7 @@ func (client *Client) GetRunWithOptions(RunId *string, request *GetRunRequest, h
 
 // Summary:
 //
-// 获取Run详情
+// Queries the run information.
 //
 // @param request - GetRunRequest
 //
@@ -19948,7 +23099,7 @@ func (client *Client) GetRun(RunId *string, request *GetRunRequest) (_result *Ge
 
 // Summary:
 //
-// 获取工作空间
+// Queries the details about a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -19993,7 +23144,7 @@ func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetW
 
 // Summary:
 //
-// 获取工作空间
+// Queries the details about a workspace.
 //
 // @param request - GetWorkspaceRequest
 //
@@ -20012,7 +23163,7 @@ func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceReq
 
 // Summary:
 //
-// 获取代码源配置列表
+// Lists code sources. Pagination, sorting, and filtering by condition are supported.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -20077,7 +23228,7 @@ func (client *Client) ListCodeSourcesWithOptions(request *ListCodeSourcesRequest
 
 // Summary:
 //
-// 获取代码源配置列表
+// Lists code sources. Pagination, sorting, and filtering by condition are supported.
 //
 // @param request - ListCodeSourcesRequest
 //
@@ -20096,7 +23247,7 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 
 // Summary:
 //
-// 查询数据集文件列表
+// Queries a list of dataset files.
 //
 // @param tmpReq - ListDatasetFileMetasRequest
 //
@@ -20247,7 +23398,7 @@ func (client *Client) ListDatasetFileMetasWithOptions(DatasetId *string, tmpReq 
 
 // Summary:
 //
-// 查询数据集文件列表
+// Queries a list of dataset files.
 //
 // @param request - ListDatasetFileMetasRequest
 //
@@ -20266,7 +23417,7 @@ func (client *Client) ListDatasetFileMetas(DatasetId *string, request *ListDatas
 
 // Summary:
 //
-// 批量查询数据集任务配置
+// Queries the dataset job configurations at a time.
 //
 // @param request - ListDatasetJobConfigsRequest
 //
@@ -20323,7 +23474,7 @@ func (client *Client) ListDatasetJobConfigsWithOptions(DatasetId *string, reques
 
 // Summary:
 //
-// 批量查询数据集任务配置
+// Queries the dataset job configurations at a time.
 //
 // @param request - ListDatasetJobConfigsRequest
 //
@@ -20342,7 +23493,7 @@ func (client *Client) ListDatasetJobConfigs(DatasetId *string, request *ListData
 
 // Summary:
 //
-// 获取数据集任务
+// Lists jobs in a dataset.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -20403,7 +23554,7 @@ func (client *Client) ListDatasetJobsWithOptions(DatasetId *string, request *Lis
 
 // Summary:
 //
-// 获取数据集任务
+// Lists jobs in a dataset.
 //
 // @param request - ListDatasetJobsRequest
 //
@@ -20422,7 +23573,7 @@ func (client *Client) ListDatasetJobs(DatasetId *string, request *ListDatasetJob
 
 // Summary:
 //
-// 获取数据集版本列表
+// Lists dataset versions.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -20499,7 +23650,7 @@ func (client *Client) ListDatasetVersionsWithOptions(DatasetId *string, request 
 
 // Summary:
 //
-// 获取数据集版本列表
+// Lists dataset versions.
 //
 // @param request - ListDatasetVersionsRequest
 //
@@ -20518,7 +23669,7 @@ func (client *Client) ListDatasetVersions(DatasetId *string, request *ListDatase
 
 // Summary:
 //
-// 获取数据集列表
+// Lists the datasets in a workspace.
 //
 // @param request - ListDatasetsRequest
 //
@@ -20615,7 +23766,7 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, head
 
 // Summary:
 //
-// 获取数据集列表
+// Lists the datasets in a workspace.
 //
 // @param request - ListDatasetsRequest
 //
@@ -20634,7 +23785,7 @@ func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListD
 
 // Summary:
 //
-// 获取实验列表
+// Lists experiments.
 //
 // @param tmpReq - ListExperimentRequest
 //
@@ -20729,7 +23880,7 @@ func (client *Client) ListExperimentWithOptions(tmpReq *ListExperimentRequest, h
 
 // Summary:
 //
-// 获取实验列表
+// Lists experiments.
 //
 // @param request - ListExperimentRequest
 //
@@ -20828,7 +23979,7 @@ func (client *Client) ListImageLabels(request *ListImageLabelsRequest) (_result 
 
 // Summary:
 //
-// 列举已注册镜像
+// Queries a list of images.
 //
 // @param request - ListImagesRequest
 //
@@ -20913,7 +24064,7 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 
 // Summary:
 //
-// 列举已注册镜像
+// Queries a list of images.
 //
 // @param request - ListImagesRequest
 //
@@ -20932,7 +24083,7 @@ func (client *Client) ListImages(request *ListImagesRequest) (_result *ListImage
 
 // Summary:
 //
-// 列举工作空间成员
+// Obtains the members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -20989,7 +24140,7 @@ func (client *Client) ListMembersWithOptions(WorkspaceId *string, request *ListM
 
 // Summary:
 //
-// 列举工作空间成员
+// Obtains the members in a workspace.
 //
 // @param request - ListMembersRequest
 //
@@ -21008,7 +24159,7 @@ func (client *Client) ListMembers(WorkspaceId *string, request *ListMembersReque
 
 // Summary:
 //
-// 获取模型版本列表
+// Queries a list of model versions.
 //
 // @param request - ListModelVersionsRequest
 //
@@ -21093,7 +24244,7 @@ func (client *Client) ListModelVersionsWithOptions(ModelId *string, request *Lis
 
 // Summary:
 //
-// 获取模型版本列表
+// Queries a list of model versions.
 //
 // @param request - ListModelVersionsRequest
 //
@@ -21112,20 +24263,26 @@ func (client *Client) ListModelVersions(ModelId *string, request *ListModelVersi
 
 // Summary:
 //
-// 获取模型列表
+// Queries a list of models.
 //
-// @param request - ListModelsRequest
+// @param tmpReq - ListModelsRequest
 //
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListModelsResponse
-func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListModelsWithOptions(tmpReq *ListModelsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListModelsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListModelsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Collections)) {
 		query["Collections"] = request.Collections
@@ -21175,6 +24332,10 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 		query["SortBy"] = request.SortBy
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Task)) {
 		query["Task"] = request.Task
 	}
@@ -21209,7 +24370,7 @@ func (client *Client) ListModelsWithOptions(request *ListModelsRequest, headers 
 
 // Summary:
 //
-// 获取模型列表
+// Queries a list of models.
 //
 // @param request - ListModelsRequest
 //
@@ -21228,7 +24389,7 @@ func (client *Client) ListModels(request *ListModelsRequest) (_result *ListModel
 
 // Summary:
 //
-// 列举权限
+// Lists the permissions that a user has in a workspace.
 //
 // @param headers - map
 //
@@ -21261,7 +24422,7 @@ func (client *Client) ListPermissionsWithOptions(WorkspaceId *string, headers ma
 
 // Summary:
 //
-// 列举权限
+// Lists the permissions that a user has in a workspace.
 //
 // @return ListPermissionsResponse
 func (client *Client) ListPermissions(WorkspaceId *string) (_result *ListPermissionsResponse, _err error) {
@@ -21350,7 +24511,7 @@ func (client *Client) ListProducts(request *ListProductsRequest) (_result *ListP
 
 // Summary:
 //
-// 获取已有配额列表
+// Obtains the list of quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -21395,7 +24556,7 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 
 // Summary:
 //
-// 获取已有配额列表
+// Obtains the list of quotas.
 //
 // @param request - ListQuotasRequest
 //
@@ -21414,7 +24575,7 @@ func (client *Client) ListQuotas(request *ListQuotasRequest) (_result *ListQuota
 
 // Summary:
 //
-// 列举工作空间资源
+// Queries the resources that are associated with a workspace.
 //
 // @param request - ListResourcesRequest
 //
@@ -21503,7 +24664,7 @@ func (client *Client) ListResourcesWithOptions(request *ListResourcesRequest, he
 
 // Summary:
 //
-// 列举工作空间资源
+// Queries the resources that are associated with a workspace.
 //
 // @param request - ListResourcesRequest
 //
@@ -21522,7 +24683,7 @@ func (client *Client) ListResources(request *ListResourcesRequest) (_result *Lis
 
 // Summary:
 //
-// 获取Run的指标记录列表
+// Lists the metrics for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -21575,7 +24736,7 @@ func (client *Client) ListRunMetricsWithOptions(RunId *string, request *ListRunM
 
 // Summary:
 //
-// 获取Run的指标记录列表
+// Lists the metrics for a run.
 //
 // @param request - ListRunMetricsRequest
 //
@@ -21594,7 +24755,7 @@ func (client *Client) ListRunMetrics(RunId *string, request *ListRunMetricsReque
 
 // Summary:
 //
-// 获取Run列表
+// Queries a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -21695,7 +24856,7 @@ func (client *Client) ListRunsWithOptions(request *ListRunsRequest, headers map[
 
 // Summary:
 //
-// 获取Run列表
+// Queries a list of runs.
 //
 // @param request - ListRunsRequest
 //
@@ -21782,7 +24943,7 @@ func (client *Client) ListUserConfigs(request *ListUserConfigsRequest) (_result 
 
 // Summary:
 //
-// 列出工作空间的可变为成员的用户
+// Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -21827,7 +24988,7 @@ func (client *Client) ListWorkspaceUsersWithOptions(WorkspaceId *string, request
 
 // Summary:
 //
-// 列出工作空间的可变为成员的用户
+// Lists the users who do not belong to a workspace. These users can be added to the workspace as members.
 //
 // @param request - ListWorkspaceUsersRequest
 //
@@ -21962,7 +25123,7 @@ func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *L
 
 // Summary:
 //
-// 批量记录Run的指标
+// Logs multiple metrics for a run at a time.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -22007,7 +25168,7 @@ func (client *Client) LogRunMetricsWithOptions(RunId *string, request *LogRunMet
 
 // Summary:
 //
-// 批量记录Run的指标
+// Logs multiple metrics for a run at a time.
 //
 // @param request - LogRunMetricsRequest
 //
@@ -22026,7 +25187,7 @@ func (client *Client) LogRunMetrics(RunId *string, request *LogRunMetricsRequest
 
 // Summary:
 //
-// 发布一个代码源配置为本工作空间下所有人可见
+// Publishes a private code source to a workspace to make the code source publicly accessible.
 //
 // @param headers - map
 //
@@ -22059,7 +25220,7 @@ func (client *Client) PublishCodeSourceWithOptions(CodeSourceId *string, headers
 
 // Summary:
 //
-// 发布一个代码源配置为本工作空间下所有人可见
+// Publishes a private code source to a workspace to make the code source publicly accessible.
 //
 // @return PublishCodeSourceResponse
 func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishCodeSourceResponse, _err error) {
@@ -22076,7 +25237,7 @@ func (client *Client) PublishCodeSource(CodeSourceId *string) (_result *PublishC
 
 // Summary:
 //
-// 更新数据集
+// Publishes a private dataset in a workspace.
 //
 // @param headers - map
 //
@@ -22109,7 +25270,7 @@ func (client *Client) PublishDatasetWithOptions(DatasetId *string, headers map[s
 
 // Summary:
 //
-// 更新数据集
+// Publishes a private dataset in a workspace.
 //
 // @return PublishDatasetResponse
 func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDatasetResponse, _err error) {
@@ -22126,7 +25287,7 @@ func (client *Client) PublishDataset(DatasetId *string) (_result *PublishDataset
 
 // Summary:
 //
-// 发布 Image
+// Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
 //
 // @param headers - map
 //
@@ -22159,7 +25320,7 @@ func (client *Client) PublishImageWithOptions(ImageId *string, headers map[strin
 
 // Summary:
 //
-// 发布 Image
+// Publishes an image. After the image is published, the visibility of the image is changed from PRIVATE to PUBLIC.
 //
 // @return PublishImageResponse
 func (client *Client) PublishImage(ImageId *string) (_result *PublishImageResponse, _err error) {
@@ -22176,7 +25337,7 @@ func (client *Client) PublishImage(ImageId *string) (_result *PublishImageRespon
 
 // Summary:
 //
-// 删除 Image
+// Removes an image.
 //
 // @param headers - map
 //
@@ -22209,7 +25370,7 @@ func (client *Client) RemoveImageWithOptions(ImageId *string, headers map[string
 
 // Summary:
 //
-// 删除 Image
+// Removes an image.
 //
 // @return RemoveImageResponse
 func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse, _err error) {
@@ -22226,7 +25387,7 @@ func (client *Client) RemoveImage(ImageId *string) (_result *RemoveImageResponse
 
 // Summary:
 //
-// 删除 Image 的标签
+// Removes an image tag.
 //
 // @param headers - map
 //
@@ -22259,7 +25420,7 @@ func (client *Client) RemoveImageLabelsWithOptions(ImageId *string, LabelKey *st
 
 // Summary:
 //
-// 删除 Image 的标签
+// Removes an image tag.
 //
 // @return RemoveImageLabelsResponse
 func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_result *RemoveImageLabelsResponse, _err error) {
@@ -22276,7 +25437,7 @@ func (client *Client) RemoveImageLabels(ImageId *string, LabelKey *string) (_res
 
 // Summary:
 //
-// 删除成员角色
+// Removes a member role.
 //
 // @param headers - map
 //
@@ -22309,7 +25470,7 @@ func (client *Client) RemoveMemberRoleWithOptions(WorkspaceId *string, MemberId 
 
 // Summary:
 //
-// 删除成员角色
+// Removes a member role.
 //
 // @return RemoveMemberRoleResponse
 func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, RoleName *string) (_result *RemoveMemberRoleResponse, _err error) {
@@ -22326,7 +25487,7 @@ func (client *Client) RemoveMemberRole(WorkspaceId *string, MemberId *string, Ro
 
 // Summary:
 //
-// 更新实验标签
+// Updates a experiment tag.
 //
 // @param request - SetExperimentLabelsRequest
 //
@@ -22371,7 +25532,7 @@ func (client *Client) SetExperimentLabelsWithOptions(ExperimentId *string, reque
 
 // Summary:
 //
-// 更新实验标签
+// Updates a experiment tag.
 //
 // @param request - SetExperimentLabelsRequest
 //
@@ -22454,7 +25615,7 @@ func (client *Client) SetUserConfigs(request *SetUserConfigsRequest) (_result *S
 
 // Summary:
 //
-// 停止数据集任务
+// Stops a dataset job.
 //
 // @param request - StopDatasetJobRequest
 //
@@ -22503,7 +25664,7 @@ func (client *Client) StopDatasetJobWithOptions(DatasetId *string, DatasetJobId 
 
 // Summary:
 //
-// 停止数据集任务
+// Stops a dataset job.
 //
 // @param request - StopDatasetJobRequest
 //
@@ -22522,7 +25683,7 @@ func (client *Client) StopDatasetJob(DatasetId *string, DatasetJobId *string, re
 
 // Summary:
 //
-// 更新代码配置
+// Updates a code build.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -22595,7 +25756,7 @@ func (client *Client) UpdateCodeSourceWithOptions(CodeSourceId *string, request 
 
 // Summary:
 //
-// 更新代码配置
+// Updates a code build.
 //
 // @param request - UpdateCodeSourceRequest
 //
@@ -22614,7 +25775,7 @@ func (client *Client) UpdateCodeSource(CodeSourceId *string, request *UpdateCode
 
 // Summary:
 //
-// 更新数据集
+// Updates the name, description, and other information about a dataset.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -22671,7 +25832,7 @@ func (client *Client) UpdateDatasetWithOptions(DatasetId *string, request *Updat
 
 // Summary:
 //
-// 更新数据集
+// Updates the name, description, and other information about a dataset.
 //
 // @param request - UpdateDatasetRequest
 //
@@ -22690,7 +25851,7 @@ func (client *Client) UpdateDataset(DatasetId *string, request *UpdateDatasetReq
 
 // Summary:
 //
-// 批量更新数据集下的文件元数据记录
+// Updates the metadata records of multiple files in a dataset at a time.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -22747,7 +25908,7 @@ func (client *Client) UpdateDatasetFileMetasWithOptions(DatasetId *string, reque
 
 // Summary:
 //
-// 批量更新数据集下的文件元数据记录
+// Updates the metadata records of multiple files in a dataset at a time.
 //
 // @param request - UpdateDatasetFileMetasRequest
 //
@@ -22766,7 +25927,7 @@ func (client *Client) UpdateDatasetFileMetas(DatasetId *string, request *UpdateD
 
 // Summary:
 //
-// 更新数据集任务
+// Updates a dataset job.
 //
 // @param request - UpdateDatasetJobRequest
 //
@@ -22819,7 +25980,7 @@ func (client *Client) UpdateDatasetJobWithOptions(DatasetId *string, DatasetJobI
 
 // Summary:
 //
-// 更新数据集任务
+// Updates a dataset job.
 //
 // @param request - UpdateDatasetJobRequest
 //
@@ -22838,7 +25999,7 @@ func (client *Client) UpdateDatasetJob(DatasetId *string, DatasetJobId *string, 
 
 // Summary:
 //
-// 更新数据集任务配置
+// Updates a job configuration for a dataset.
 //
 // @param request - UpdateDatasetJobConfigRequest
 //
@@ -22891,7 +26052,7 @@ func (client *Client) UpdateDatasetJobConfigWithOptions(DatasetId *string, Datas
 
 // Summary:
 //
-// 更新数据集任务配置
+// Updates a job configuration for a dataset.
 //
 // @param request - UpdateDatasetJobConfigRequest
 //
@@ -22986,7 +26147,7 @@ func (client *Client) UpdateDatasetVersion(DatasetId *string, VersionName *strin
 
 // Summary:
 //
-// 更新默认工作空间
+// Specifies a workspace as the default workspace.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -23031,7 +26192,7 @@ func (client *Client) UpdateDefaultWorkspaceWithOptions(request *UpdateDefaultWo
 
 // Summary:
 //
-// 更新默认工作空间
+// Specifies a workspace as the default workspace.
 //
 // @param request - UpdateDefaultWorkspaceRequest
 //
@@ -23050,7 +26211,7 @@ func (client *Client) UpdateDefaultWorkspace(request *UpdateDefaultWorkspaceRequ
 
 // Summary:
 //
-// 更新实验
+// Updates an experiment.
 //
 // @param request - UpdateExperimentRequest
 //
@@ -23099,7 +26260,7 @@ func (client *Client) UpdateExperimentWithOptions(ExperimentId *string, request 
 
 // Summary:
 //
-// 更新实验
+// Updates an experiment.
 //
 // @param request - UpdateExperimentRequest
 //
@@ -23118,7 +26279,7 @@ func (client *Client) UpdateExperiment(ExperimentId *string, request *UpdateExpe
 
 // Summary:
 //
-// 更新模型
+// Updates the basic configuration information about a model.
 //
 // @param request - UpdateModelRequest
 //
@@ -23199,7 +26360,7 @@ func (client *Client) UpdateModelWithOptions(ModelId *string, request *UpdateMod
 
 // Summary:
 //
-// 更新模型
+// Updates the basic configuration information about a model.
 //
 // @param request - UpdateModelRequest
 //
@@ -23218,7 +26379,7 @@ func (client *Client) UpdateModel(ModelId *string, request *UpdateModelRequest) 
 
 // Summary:
 //
-// 更新模型版本
+// Updates a model version.
 //
 // @param request - UpdateModelVersionRequest
 //
@@ -23303,7 +26464,7 @@ func (client *Client) UpdateModelVersionWithOptions(ModelId *string, VersionName
 
 // Summary:
 //
-// 更新模型版本
+// Updates a model version.
 //
 // @param request - UpdateModelVersionRequest
 //
@@ -23394,7 +26555,7 @@ func (client *Client) UpdateRun(RunId *string, request *UpdateRunRequest) (_resu
 
 // Summary:
 //
-// 更新工作空间
+// Updates the name and description of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -23443,7 +26604,7 @@ func (client *Client) UpdateWorkspaceWithOptions(WorkspaceId *string, request *U
 
 // Summary:
 //
-// 更新工作空间
+// Updates the name and description of a workspace.
 //
 // @param request - UpdateWorkspaceRequest
 //
@@ -23462,7 +26623,7 @@ func (client *Client) UpdateWorkspace(WorkspaceId *string, request *UpdateWorksp
 
 // Summary:
 //
-// 更新工作空间资源
+// Updates the resources of a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
@@ -23531,7 +26692,7 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, re
 
 // Summary:
 //
-// 更新工作空间资源
+// Updates the resources of a workspace.
 //
 // @param request - UpdateWorkspaceResourceRequest
 //
