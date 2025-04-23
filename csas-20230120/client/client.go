@@ -7856,6 +7856,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	// 2023-08-24 19:04:42
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Workshop   *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
 func (s GetUserDeviceResponseBodyDevice) String() string {
@@ -8003,6 +8004,11 @@ func (s *GetUserDeviceResponseBodyDevice) SetUpdateTime(v string) *GetUserDevice
 
 func (s *GetUserDeviceResponseBodyDevice) SetUsername(v string) *GetUserDeviceResponseBodyDevice {
 	s.Username = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetWorkshop(v string) *GetUserDeviceResponseBodyDevice {
+	s.Workshop = &v
 	return s
 }
 
@@ -16363,6 +16369,7 @@ type ListUserDevicesRequest struct {
 	SharingStatus *bool   `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
 	SortBy        *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	Username      *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Workshop      *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
 func (s ListUserDevicesRequest) String() string {
@@ -16470,6 +16477,11 @@ func (s *ListUserDevicesRequest) SetSortBy(v string) *ListUserDevicesRequest {
 
 func (s *ListUserDevicesRequest) SetUsername(v string) *ListUserDevicesRequest {
 	s.Username = &v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetWorkshop(v string) *ListUserDevicesRequest {
+	s.Workshop = &v
 	return s
 }
 
@@ -16605,6 +16617,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	// 2023-08-24 19:04:42
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	Username   *string `json:"Username,omitempty" xml:"Username,omitempty"`
+	Workshop   *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
 func (s ListUserDevicesResponseBodyDevices) String() string {
@@ -16747,6 +16760,11 @@ func (s *ListUserDevicesResponseBodyDevices) SetUpdateTime(v string) *ListUserDe
 
 func (s *ListUserDevicesResponseBodyDevices) SetUsername(v string) *ListUserDevicesResponseBodyDevices {
 	s.Username = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetWorkshop(v string) *ListUserDevicesResponseBodyDevices {
+	s.Workshop = &v
 	return s
 }
 
