@@ -557,7 +557,7 @@ type CheckUsedPropertyValueResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of convenience users that are associated with the property value.
+	// The number of convenience accounts that are associated with the specified custom property value.
 	//
 	// example:
 	//
@@ -608,6 +608,93 @@ func (s *CheckUsedPropertyValueResponse) SetStatusCode(v int32) *CheckUsedProper
 }
 
 func (s *CheckUsedPropertyValueResponse) SetBody(v *CheckUsedPropertyValueResponseBody) *CheckUsedPropertyValueResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrgRequest struct {
+	// This parameter is required.
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-evk12ozjvmlxl****
+	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+}
+
+func (s CreateOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrgRequest) SetOrgName(v string) *CreateOrgRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *CreateOrgRequest) SetParentOrgId(v string) *CreateOrgRequest {
+	s.ParentOrgId = &v
+	return s
+}
+
+type CreateOrgResponseBody struct {
+	// example:
+	//
+	// org-evk12ozjvmlxl****
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// example:
+	//
+	// 7A2C3803-C975-5871-A232-80A91009****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrgResponseBody) SetOrgId(v string) *CreateOrgResponseBody {
+	s.OrgId = &v
+	return s
+}
+
+func (s *CreateOrgResponseBody) SetRequestId(v string) *CreateOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateOrgResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrgResponse) SetHeaders(v map[string]*string) *CreateOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrgResponse) SetStatusCode(v int32) *CreateOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrgResponse) SetBody(v *CreateOrgResponseBody) *CreateOrgResponse {
 	s.Body = v
 	return s
 }
@@ -1237,7 +1324,7 @@ func (s *CreateUsersResponse) SetBody(v *CreateUsersResponseBody) *CreateUsersRe
 }
 
 type DeleteUserPropertyValueRequest struct {
-	// The property ID.
+	// The property ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property ID.
 	//
 	// This parameter is required.
 	//
@@ -1245,7 +1332,7 @@ type DeleteUserPropertyValueRequest struct {
 	//
 	// 390
 	PropertyId *int64 `json:"PropertyId,omitempty" xml:"PropertyId,omitempty"`
-	// The ID of the property value.
+	// The property value ID. You can call the [ListProperty](~~ListProperty~~) operation to query the property value ID.
 	//
 	// This parameter is required.
 	//
@@ -1253,7 +1340,7 @@ type DeleteUserPropertyValueRequest struct {
 	//
 	// 978
 	PropertyValueId *int64 `json:"PropertyValueId,omitempty" xml:"PropertyValueId,omitempty"`
-	// The ID of the convenience user.
+	// The user ID. You can call the [DescribeUsers](~~DescribeUsers~~) operation to query the user ID, which is the return value of the `Id` parameter.
 	//
 	// This parameter is required.
 	//
@@ -1610,6 +1697,122 @@ func (s *DescribeMfaDevicesResponse) SetBody(v *DescribeMfaDevicesResponseBody) 
 	return s
 }
 
+type DescribeOrgByLayerRequest struct {
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// example:
+	//
+	// org-11fs****
+	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+}
+
+func (s DescribeOrgByLayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrgByLayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrgByLayerRequest) SetOrgName(v string) *DescribeOrgByLayerRequest {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DescribeOrgByLayerRequest) SetParentOrgId(v string) *DescribeOrgByLayerRequest {
+	s.ParentOrgId = &v
+	return s
+}
+
+type DescribeOrgByLayerResponseBody struct {
+	Orgs []*DescribeOrgByLayerResponseBodyOrgs `json:"Orgs,omitempty" xml:"Orgs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeOrgByLayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrgByLayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrgByLayerResponseBody) SetOrgs(v []*DescribeOrgByLayerResponseBodyOrgs) *DescribeOrgByLayerResponseBody {
+	s.Orgs = v
+	return s
+}
+
+func (s *DescribeOrgByLayerResponseBody) SetRequestId(v string) *DescribeOrgByLayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeOrgByLayerResponseBodyOrgs struct {
+	// example:
+	//
+	// org-1mox****
+	OrgId   *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+	// example:
+	//
+	// org-ezqr****
+	ParentOrgId *string `json:"ParentOrgId,omitempty" xml:"ParentOrgId,omitempty"`
+}
+
+func (s DescribeOrgByLayerResponseBodyOrgs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrgByLayerResponseBodyOrgs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrgByLayerResponseBodyOrgs) SetOrgId(v string) *DescribeOrgByLayerResponseBodyOrgs {
+	s.OrgId = &v
+	return s
+}
+
+func (s *DescribeOrgByLayerResponseBodyOrgs) SetOrgName(v string) *DescribeOrgByLayerResponseBodyOrgs {
+	s.OrgName = &v
+	return s
+}
+
+func (s *DescribeOrgByLayerResponseBodyOrgs) SetParentOrgId(v string) *DescribeOrgByLayerResponseBodyOrgs {
+	s.ParentOrgId = &v
+	return s
+}
+
+type DescribeOrgByLayerResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeOrgByLayerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeOrgByLayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOrgByLayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOrgByLayerResponse) SetHeaders(v map[string]*string) *DescribeOrgByLayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOrgByLayerResponse) SetStatusCode(v int32) *DescribeOrgByLayerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOrgByLayerResponse) SetBody(v *DescribeOrgByLayerResponseBody) *DescribeOrgByLayerResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeOrgsRequest struct {
 	// The maximum number of entries to return. Valid values: 1 to 100.\\
 	//
@@ -1782,9 +1985,9 @@ func (s *DescribeOrgsResponse) SetBody(v *DescribeOrgsResponseBody) *DescribeOrg
 
 type DescribeUsersRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The list of usernames that must be exactly matched.
+	// The usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The list of usernames to be exactly excluded.
+	// The usernames that must be exactly excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
 	// The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
 	//
@@ -1801,11 +2004,11 @@ type DescribeUsersRequest struct {
 	// ug-12341234****
 	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsQueryAllSubOrgs *bool   `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
-	// 	- Valid values: 1 to 500
+	// 	- Valid values: 1 to 500.
 	//
-	// 	- Default value: 500
+	// 	- Default value: 500.
 	//
 	// example:
 	//
@@ -1904,9 +2107,9 @@ func (s *DescribeUsersRequest) SetSolutionId(v string) *DescribeUsersRequest {
 
 type DescribeUsersShrinkRequest struct {
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The list of usernames that must be exactly matched.
+	// The usernames that must be exactly matched.
 	EndUserIds []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	// The list of usernames to be exactly excluded.
+	// The usernames that must be exactly excluded.
 	ExcludeEndUserIds []*string `json:"ExcludeEndUserIds,omitempty" xml:"ExcludeEndUserIds,omitempty" type:"Repeated"`
 	// The string that is used for fuzzy search. You perform fuzzy search by username (EndUserId) and email address (Email). Wildcard characters (\\*) are supported. For example, if you set this parameter to `a*m`, usernames or email addresses that start with `a` and end with `m` are returned.
 	//
@@ -1923,11 +2126,11 @@ type DescribeUsersShrinkRequest struct {
 	// ug-12341234****
 	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IsQueryAllSubOrgs *bool   `json:"IsQueryAllSubOrgs,omitempty" xml:"IsQueryAllSubOrgs,omitempty"`
-	// The number of entries per page.
+	// The maximum number of entries per page.
 	//
-	// 	- Valid values: 1 to 500
+	// 	- Valid values: 1 to 500.
 	//
-	// 	- Default value: 500
+	// 	- Default value: 500.
 	//
 	// example:
 	//
@@ -2037,7 +2240,7 @@ type DescribeUsersResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the convenience users.
+	// The convenience accounts.
 	Users []*DescribeUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -2524,7 +2727,7 @@ type FilterUsersRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The parameters that are used to sort query results.
+	// The parameter that might affect the sorting logic.
 	OrderParam *FilterUsersRequestOrderParam `json:"OrderParam,omitempty" xml:"OrderParam,omitempty" type:"Struct"`
 	// The ID of the organization.
 	//
@@ -2532,7 +2735,13 @@ type FilterUsersRequest struct {
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The type of the account ownership.
+	// The activation type of the convenience account.
+	//
+	// Valid values:
+	//
+	// 	- CreateFromManager: administrator-activated.
+	//
+	// 	- Normal: user-activated.
 	//
 	// example:
 	//
@@ -2629,39 +2838,27 @@ func (s *FilterUsersRequest) SetStatus(v int32) *FilterUsersRequest {
 }
 
 type FilterUsersRequestOrderParam struct {
-	// The parameter based on which to sort query results.
+	// The field that you want to sort by.
 	//
 	// Valid values:
 	//
 	// 	- EndUserId: the username.
 	//
-	// 	- id: the ID of the user primary key.
+	// 	- id: the ID of the primary key.
 	//
-	// 	- gmt_created: the time when the convenience user was created.
+	// 	- gmt_created: the creation time.
 	//
 	// example:
 	//
 	// id
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// Specifies whether to sort query results in ascending or descending order.
+	// The direction of the sort.
 	//
 	// Valid values:
 	//
-	// 	- ASC: ascending
+	// 	- ASC: the ascending order.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- DESC (default): descending
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- DESC (default): the descending order.
 	//
 	// example:
 	//
@@ -2825,7 +3022,7 @@ type FilterUsersShrinkRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The parameters that are used to sort query results.
+	// The parameter that might affect the sorting logic.
 	OrderParamShrink *string `json:"OrderParam,omitempty" xml:"OrderParam,omitempty"`
 	// The ID of the organization.
 	//
@@ -2833,7 +3030,13 @@ type FilterUsersShrinkRequest struct {
 	//
 	// org-aliyun-wy-org-id
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// The type of the account ownership.
+	// The activation type of the convenience account.
+	//
+	// Valid values:
+	//
+	// 	- CreateFromManager: administrator-activated.
+	//
+	// 	- Normal: user-activated.
 	//
 	// example:
 	//
@@ -3008,7 +3211,7 @@ type FilterUsersResponseBody struct {
 	//
 	// DBD276B5-00FF-5E04-8EF7-5CBA09BF112A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the convenience user.
+	// The convenience accounts.
 	Users []*FilterUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
@@ -3036,6 +3239,11 @@ func (s *FilterUsersResponseBody) SetUsers(v []*FilterUsersResponseBodyUsers) *F
 }
 
 type FilterUsersResponseBodyUsers struct {
+	// The date when a convenience account is automatically locked.
+	//
+	// example:
+	//
+	// 2023-03-03
 	AutoLockTime *string `json:"AutoLockTime,omitempty" xml:"AutoLockTime,omitempty"`
 	// The number of cloud desktops that are assigned to the convenience user.
 	//
@@ -3129,9 +3337,21 @@ type FilterUsersResponseBodyUsers struct {
 	// example:
 	//
 	// Normal
-	OwnerType              *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
-	PasswordExpireDays     *int32  `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
-	PasswordExpireRestDays *int32  `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
+	OwnerType *string `json:"OwnerType,omitempty" xml:"OwnerType,omitempty"`
+	// By default, user account passwords do not expire. However, you can set a validity period between 30 and 365 days. Once the period expires, end users must change their password before they can log on to terminals.
+	//
+	// >  The feature is in invitational preview. If you want to use this feature, submit a ticket.
+	//
+	// example:
+	//
+	// 30
+	PasswordExpireDays *int32 `json:"PasswordExpireDays,omitempty" xml:"PasswordExpireDays,omitempty"`
+	// The number of days remaining until the account password expires.
+	//
+	// example:
+	//
+	// 10
+	PasswordExpireRestDays *int32 `json:"PasswordExpireRestDays,omitempty" xml:"PasswordExpireRestDays,omitempty"`
 	// The mobile number of the convenience user.
 	//
 	// example:
@@ -3150,25 +3370,13 @@ type FilterUsersResponseBodyUsers struct {
 	//
 	// 1
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The status of the convenience user.
+	// The remarks on the convenience account.
 	//
 	// Valid values:
 	//
-	// 	- 0: The convenience user is normal.
+	// 	- 0: The convenience account is normal.
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	// 	- 9: The convenience user is locked.
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- 9: The convenience account is locked.
 	//
 	// example:
 	//
@@ -3622,6 +3830,117 @@ func (s *GetManagerInfoByAuthCodeResponse) SetStatusCode(v int32) *GetManagerInf
 }
 
 func (s *GetManagerInfoByAuthCodeResponse) SetBody(v *GetManagerInfoByAuthCodeResponseBody) *GetManagerInfoByAuthCodeResponse {
+	s.Body = v
+	return s
+}
+
+type InitTenantAliasResponseBody struct {
+	AliasInfo *InitTenantAliasResponseBodyAliasInfo `json:"AliasInfo,omitempty" xml:"AliasInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// WY23***
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InitTenantAliasResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitTenantAliasResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InitTenantAliasResponseBody) SetAliasInfo(v *InitTenantAliasResponseBodyAliasInfo) *InitTenantAliasResponseBody {
+	s.AliasInfo = v
+	return s
+}
+
+func (s *InitTenantAliasResponseBody) SetData(v string) *InitTenantAliasResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InitTenantAliasResponseBody) SetRequestId(v string) *InitTenantAliasResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InitTenantAliasResponseBodyAliasInfo struct {
+	// example:
+	//
+	// FrequencyExceedsLimit
+	AliasEditDisabledReason *string `json:"AliasEditDisabledReason,omitempty" xml:"AliasEditDisabledReason,omitempty"`
+	// example:
+	//
+	// False
+	AliasEditable *bool `json:"AliasEditable,omitempty" xml:"AliasEditable,omitempty"`
+	// example:
+	//
+	// Customized
+	AliasSourceType *string `json:"AliasSourceType,omitempty" xml:"AliasSourceType,omitempty"`
+	// example:
+	//
+	// 2025-04-17 20:31:48
+	NextModifyTime *string `json:"NextModifyTime,omitempty" xml:"NextModifyTime,omitempty"`
+}
+
+func (s InitTenantAliasResponseBodyAliasInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitTenantAliasResponseBodyAliasInfo) GoString() string {
+	return s.String()
+}
+
+func (s *InitTenantAliasResponseBodyAliasInfo) SetAliasEditDisabledReason(v string) *InitTenantAliasResponseBodyAliasInfo {
+	s.AliasEditDisabledReason = &v
+	return s
+}
+
+func (s *InitTenantAliasResponseBodyAliasInfo) SetAliasEditable(v bool) *InitTenantAliasResponseBodyAliasInfo {
+	s.AliasEditable = &v
+	return s
+}
+
+func (s *InitTenantAliasResponseBodyAliasInfo) SetAliasSourceType(v string) *InitTenantAliasResponseBodyAliasInfo {
+	s.AliasSourceType = &v
+	return s
+}
+
+func (s *InitTenantAliasResponseBodyAliasInfo) SetNextModifyTime(v string) *InitTenantAliasResponseBodyAliasInfo {
+	s.NextModifyTime = &v
+	return s
+}
+
+type InitTenantAliasResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InitTenantAliasResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InitTenantAliasResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitTenantAliasResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InitTenantAliasResponse) SetHeaders(v map[string]*string) *InitTenantAliasResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InitTenantAliasResponse) SetStatusCode(v int32) *InitTenantAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InitTenantAliasResponse) SetBody(v *InitTenantAliasResponseBody) *InitTenantAliasResponse {
 	s.Body = v
 	return s
 }
@@ -4124,6 +4443,84 @@ func (s *LockUsersResponse) SetBody(v *LockUsersResponseBody) *LockUsersResponse
 	return s
 }
 
+type ModifyOrgRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-76joc57khvnhdh***
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+	// This parameter is required.
+	OrgName *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
+}
+
+func (s ModifyOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOrgRequest) SetOrgId(v string) *ModifyOrgRequest {
+	s.OrgId = &v
+	return s
+}
+
+func (s *ModifyOrgRequest) SetOrgName(v string) *ModifyOrgRequest {
+	s.OrgName = &v
+	return s
+}
+
+type ModifyOrgResponseBody struct {
+	// example:
+	//
+	// 0296EDF8-3C8A-5128-8682-27B29C99****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOrgResponseBody) SetRequestId(v string) *ModifyOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyOrgResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyOrgResponse) SetHeaders(v map[string]*string) *ModifyOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyOrgResponse) SetStatusCode(v int32) *ModifyOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyOrgResponse) SetBody(v *ModifyOrgResponseBody) *ModifyOrgResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyUserRequest struct {
 	// The email address of the convenience user. For a user-activated convenience user, the email address or mobile number must be verified. You can choose to verify the email address or the mobile number. For an administrator-activated convenience user, the email address and mobile number can be left empty.
 	//
@@ -4219,6 +4616,88 @@ func (s *ModifyUserResponse) SetStatusCode(v int32) *ModifyUserResponse {
 }
 
 func (s *ModifyUserResponse) SetBody(v *ModifyUserResponseBody) *ModifyUserResponse {
+	s.Body = v
+	return s
+}
+
+type MoveOrgRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-5yy5icj981xe5****
+	NewParentOrgId *string `json:"NewParentOrgId,omitempty" xml:"NewParentOrgId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-5yy5icj981xe5****
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s MoveOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MoveOrgRequest) SetNewParentOrgId(v string) *MoveOrgRequest {
+	s.NewParentOrgId = &v
+	return s
+}
+
+func (s *MoveOrgRequest) SetOrgId(v string) *MoveOrgRequest {
+	s.OrgId = &v
+	return s
+}
+
+type MoveOrgResponseBody struct {
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s MoveOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *MoveOrgResponseBody) SetRequestId(v string) *MoveOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type MoveOrgResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *MoveOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s MoveOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MoveOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MoveOrgResponse) SetHeaders(v map[string]*string) *MoveOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MoveOrgResponse) SetStatusCode(v int32) *MoveOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MoveOrgResponse) SetBody(v *MoveOrgResponseBody) *MoveOrgResponse {
 	s.Body = v
 	return s
 }
@@ -4488,6 +4967,77 @@ func (s *RemoveMfaDeviceResponse) SetStatusCode(v int32) *RemoveMfaDeviceRespons
 }
 
 func (s *RemoveMfaDeviceResponse) SetBody(v *RemoveMfaDeviceResponseBody) *RemoveMfaDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveOrgRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// org-5yy5icj981xe5****
+	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
+}
+
+func (s RemoveOrgRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveOrgRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveOrgRequest) SetOrgId(v string) *RemoveOrgRequest {
+	s.OrgId = &v
+	return s
+}
+
+type RemoveOrgResponseBody struct {
+	// example:
+	//
+	// 6C352609-EE7F-5603-B5E6-57C3EDDD****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveOrgResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveOrgResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveOrgResponseBody) SetRequestId(v string) *RemoveOrgResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveOrgResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RemoveOrgResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RemoveOrgResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveOrgResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveOrgResponse) SetHeaders(v map[string]*string) *RemoveOrgResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveOrgResponse) SetStatusCode(v int32) *RemoveOrgResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveOrgResponse) SetBody(v *RemoveOrgResponseBody) *RemoveOrgResponse {
 	s.Body = v
 	return s
 }
@@ -5702,24 +6252,13 @@ func (client *Client) BatchSetDesktopManagerWithOptions(request *BatchSetDesktop
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BatchSetDesktopManagerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BatchSetDesktopManagerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BatchSetDesktopManagerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5777,24 +6316,13 @@ func (client *Client) ChangeUserPasswordWithOptions(request *ChangeUserPasswordR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeUserPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeUserPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5848,24 +6376,13 @@ func (client *Client) CheckUsedPropertyWithOptions(request *CheckUsedPropertyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckUsedPropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckUsedPropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckUsedPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5888,7 +6405,7 @@ func (client *Client) CheckUsedProperty(request *CheckUsedPropertyRequest) (_res
 
 // Summary:
 //
-// Checks whether a property value is associated with a user.
+// Queries the number of convenience accounts that are associated with the specified custom property value.
 //
 // Description:
 //
@@ -5927,29 +6444,18 @@ func (client *Client) CheckUsedPropertyValueWithOptions(request *CheckUsedProper
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckUsedPropertyValueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckUsedPropertyValueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckUsedPropertyValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Checks whether a property value is associated with a user.
+// Queries the number of convenience accounts that are associated with the specified custom property value.
 //
 // Description:
 //
@@ -5962,6 +6468,70 @@ func (client *Client) CheckUsedPropertyValue(request *CheckUsedPropertyValueRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckUsedPropertyValueResponse{}
 	_body, _err := client.CheckUsedPropertyValueWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建组织
+//
+// @param request - CreateOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrgResponse
+func (client *Client) CreateOrgWithOptions(request *CreateOrgRequest, runtime *util.RuntimeOptions) (_result *CreateOrgResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		query["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentOrgId)) {
+		query["ParentOrgId"] = request.ParentOrgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrg"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建组织
+//
+// @param request - CreateOrgRequest
+//
+// @return CreateOrgResponse
+func (client *Client) CreateOrg(request *CreateOrgRequest) (_result *CreateOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateOrgResponse{}
+	_body, _err := client.CreateOrgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6006,24 +6576,13 @@ func (client *Client) CreatePropertyWithOptions(request *CreatePropertyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreatePropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreatePropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreatePropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6099,24 +6658,13 @@ func (client *Client) CreateUsersWithOptions(request *CreateUsersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6186,24 +6734,13 @@ func (client *Client) DeleteUserPropertyValueWithOptions(request *DeleteUserProp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserPropertyValueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserPropertyValueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserPropertyValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6277,24 +6814,13 @@ func (client *Client) DescribeMfaDevicesWithOptions(request *DescribeMfaDevicesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeMfaDevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeMfaDevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeMfaDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6308,6 +6834,70 @@ func (client *Client) DescribeMfaDevices(request *DescribeMfaDevicesRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeMfaDevicesResponse{}
 	_body, _err := client.DescribeMfaDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查找下级组织
+//
+// @param request - DescribeOrgByLayerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeOrgByLayerResponse
+func (client *Client) DescribeOrgByLayerWithOptions(request *DescribeOrgByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeOrgByLayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		body["OrgName"] = request.OrgName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentOrgId)) {
+		body["ParentOrgId"] = request.ParentOrgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOrgByLayer"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOrgByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查找下级组织
+//
+// @param request - DescribeOrgByLayerRequest
+//
+// @return DescribeOrgByLayerResponse
+func (client *Client) DescribeOrgByLayer(request *DescribeOrgByLayerRequest) (_result *DescribeOrgByLayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOrgByLayerResponse{}
+	_body, _err := client.DescribeOrgByLayerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6364,24 +6954,13 @@ func (client *Client) DescribeOrgsWithOptions(request *DescribeOrgsRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeOrgsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeOrgsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeOrgsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6503,24 +7082,13 @@ func (client *Client) DescribeUsersWithOptions(tmpReq *DescribeUsersRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6543,7 +7111,7 @@ func (client *Client) DescribeUsers(request *DescribeUsersRequest) (_result *Des
 
 // Summary:
 //
-// Filters convenience users by property.
+// Filters convenience accounts by property.
 //
 // @param tmpReq - FilterUsersRequest
 //
@@ -6636,29 +7204,18 @@ func (client *Client) FilterUsersWithOptions(tmpReq *FilterUsersRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &FilterUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &FilterUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &FilterUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Filters convenience users by property.
+// Filters convenience accounts by property.
 //
 // @param request - FilterUsersRequest
 //
@@ -6707,24 +7264,13 @@ func (client *Client) GetManagerInfoByAuthCodeWithOptions(request *GetManagerInf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetManagerInfoByAuthCodeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetManagerInfoByAuthCodeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetManagerInfoByAuthCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6738,6 +7284,53 @@ func (client *Client) GetManagerInfoByAuthCode(request *GetManagerInfoByAuthCode
 	runtime := &util.RuntimeOptions{}
 	_result = &GetManagerInfoByAuthCodeResponse{}
 	_body, _err := client.GetManagerInfoByAuthCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 初始化TenantAlias
+//
+// @param request - InitTenantAliasRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InitTenantAliasResponse
+func (client *Client) InitTenantAliasWithOptions(runtime *util.RuntimeOptions) (_result *InitTenantAliasResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("InitTenantAlias"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InitTenantAliasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 初始化TenantAlias
+//
+// @return InitTenantAliasResponse
+func (client *Client) InitTenantAlias() (_result *InitTenantAliasResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InitTenantAliasResponse{}
+	_body, _err := client.InitTenantAliasWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6767,24 +7360,13 @@ func (client *Client) ListPropertyWithOptions(runtime *util.RuntimeOptions) (_re
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6836,24 +7418,13 @@ func (client *Client) ListPropertyValueWithOptions(request *ListPropertyValueReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPropertyValueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPropertyValueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPropertyValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6915,24 +7486,13 @@ func (client *Client) LockMfaDeviceWithOptions(request *LockMfaDeviceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LockMfaDeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LockMfaDeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LockMfaDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6996,24 +7556,13 @@ func (client *Client) LockUsersWithOptions(request *LockUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &LockUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &LockUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &LockUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7027,6 +7576,70 @@ func (client *Client) LockUsers(request *LockUsersRequest) (_result *LockUsersRe
 	runtime := &util.RuntimeOptions{}
 	_result = &LockUsersResponse{}
 	_body, _err := client.LockUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改组织
+//
+// @param request - ModifyOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyOrgResponse
+func (client *Client) ModifyOrgWithOptions(request *ModifyOrgRequest, runtime *util.RuntimeOptions) (_result *ModifyOrgResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		query["OrgId"] = request.OrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
+		query["OrgName"] = request.OrgName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyOrg"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改组织
+//
+// @param request - ModifyOrgRequest
+//
+// @return ModifyOrgResponse
+func (client *Client) ModifyOrg(request *ModifyOrgRequest) (_result *ModifyOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyOrgResponse{}
+	_body, _err := client.ModifyOrgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7075,24 +7688,13 @@ func (client *Client) ModifyUserWithOptions(request *ModifyUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7106,6 +7708,70 @@ func (client *Client) ModifyUser(request *ModifyUserRequest) (_result *ModifyUse
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyUserResponse{}
 	_body, _err := client.ModifyUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动组织
+//
+// @param request - MoveOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return MoveOrgResponse
+func (client *Client) MoveOrgWithOptions(request *MoveOrgRequest, runtime *util.RuntimeOptions) (_result *MoveOrgResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewParentOrgId)) {
+		body["NewParentOrgId"] = request.NewParentOrgId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveOrg"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &MoveOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移动组织
+//
+// @param request - MoveOrgRequest
+//
+// @return MoveOrgResponse
+func (client *Client) MoveOrg(request *MoveOrgRequest) (_result *MoveOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &MoveOrgResponse{}
+	_body, _err := client.MoveOrgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7135,24 +7801,13 @@ func (client *Client) QuerySyncStatusByAliUidWithOptions(runtime *util.RuntimeOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QuerySyncStatusByAliUidResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QuerySyncStatusByAliUidResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QuerySyncStatusByAliUidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7212,24 +7867,13 @@ func (client *Client) RemoveMfaDeviceWithOptions(request *RemoveMfaDeviceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveMfaDeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveMfaDeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveMfaDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7247,6 +7891,66 @@ func (client *Client) RemoveMfaDevice(request *RemoveMfaDeviceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveMfaDeviceResponse{}
 	_body, _err := client.RemoveMfaDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除组织
+//
+// @param request - RemoveOrgRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveOrgResponse
+func (client *Client) RemoveOrgWithOptions(request *RemoveOrgRequest, runtime *util.RuntimeOptions) (_result *RemoveOrgResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
+		body["OrgId"] = request.OrgId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveOrg"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveOrgResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 移除组织
+//
+// @param request - RemoveOrgRequest
+//
+// @return RemoveOrgResponse
+func (client *Client) RemoveOrg(request *RemoveOrgRequest) (_result *RemoveOrgResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveOrgResponse{}
+	_body, _err := client.RemoveOrgWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7287,24 +7991,13 @@ func (client *Client) RemovePropertyWithOptions(request *RemovePropertyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemovePropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemovePropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemovePropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7358,24 +8051,13 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7433,24 +8115,13 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetUserPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetUserPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetUserPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7516,24 +8187,13 @@ func (client *Client) SetUserPropertyValueWithOptions(request *SetUserPropertyVa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetUserPropertyValueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetUserPropertyValueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetUserPropertyValueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7576,24 +8236,13 @@ func (client *Client) SyncAllEduInfoWithOptions(runtime *util.RuntimeOptions) (_
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SyncAllEduInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SyncAllEduInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SyncAllEduInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7649,24 +8298,13 @@ func (client *Client) UnlockMfaDeviceWithOptions(request *UnlockMfaDeviceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnlockMfaDeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnlockMfaDeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnlockMfaDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7726,24 +8364,13 @@ func (client *Client) UnlockUsersWithOptions(request *UnlockUsersRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnlockUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnlockUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnlockUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -7805,24 +8432,13 @@ func (client *Client) UpdatePropertyWithOptions(request *UpdatePropertyRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdatePropertyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdatePropertyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdatePropertyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
