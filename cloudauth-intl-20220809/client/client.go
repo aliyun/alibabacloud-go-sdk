@@ -2479,13 +2479,17 @@ type InitializeRequest struct {
 	// example:
 	//
 	// *
-	Crop        *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
-	DocScanMode *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
+	Crop          *string   `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DateOfBirth   *string   `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
+	DateOfExpiry  *string   `json:"DateOfExpiry,omitempty" xml:"DateOfExpiry,omitempty"`
+	DocPageConfig []*string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty" type:"Repeated"`
+	DocScanMode   *string   `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
 	// example:
 	//
 	// 01000000
 	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
 	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
+	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
 	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
 	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
 	// example:
@@ -2502,6 +2506,7 @@ type InitializeRequest struct {
 	IdSpoof        *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
 	IdThreshold    *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
 	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
+	MRTDInput      *string `json:"MRTDInput,omitempty" xml:"MRTDInput,omitempty"`
 	// example:
 	//
 	// e0c34a***353888
@@ -2540,6 +2545,7 @@ type InitializeRequest struct {
 	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
 	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
 	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
+	UseNFC        *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
 }
 
 func (s InitializeRequest) String() string {
@@ -2575,6 +2581,21 @@ func (s *InitializeRequest) SetCrop(v string) *InitializeRequest {
 	return s
 }
 
+func (s *InitializeRequest) SetDateOfBirth(v string) *InitializeRequest {
+	s.DateOfBirth = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDateOfExpiry(v string) *InitializeRequest {
+	s.DateOfExpiry = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDocPageConfig(v []*string) *InitializeRequest {
+	s.DocPageConfig = v
+	return s
+}
+
 func (s *InitializeRequest) SetDocScanMode(v string) *InitializeRequest {
 	s.DocScanMode = &v
 	return s
@@ -2587,6 +2608,11 @@ func (s *InitializeRequest) SetDocType(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetDocVideo(v string) *InitializeRequest {
 	s.DocVideo = &v
+	return s
+}
+
+func (s *InitializeRequest) SetDocumentNumber(v string) *InitializeRequest {
+	s.DocumentNumber = &v
 	return s
 }
 
@@ -2622,6 +2648,11 @@ func (s *InitializeRequest) SetIdThreshold(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetLanguageConfig(v string) *InitializeRequest {
 	s.LanguageConfig = &v
+	return s
+}
+
+func (s *InitializeRequest) SetMRTDInput(v string) *InitializeRequest {
+	s.MRTDInput = &v
 	return s
 }
 
@@ -2697,6 +2728,276 @@ func (s *InitializeRequest) SetShowOcrResult(v string) *InitializeRequest {
 
 func (s *InitializeRequest) SetStyleConfig(v string) *InitializeRequest {
 	s.StyleConfig = &v
+	return s
+}
+
+func (s *InitializeRequest) SetUseNFC(v string) *InitializeRequest {
+	s.UseNFC = &v
+	return s
+}
+
+type InitializeShrinkRequest struct {
+	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
+	Authorize       *string `json:"Authorize,omitempty" xml:"Authorize,omitempty"`
+	CallbackToken   *string `json:"CallbackToken,omitempty" xml:"CallbackToken,omitempty"`
+	CallbackUrl     *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// example:
+	//
+	// *
+	Crop                *string `json:"Crop,omitempty" xml:"Crop,omitempty"`
+	DateOfBirth         *string `json:"DateOfBirth,omitempty" xml:"DateOfBirth,omitempty"`
+	DateOfExpiry        *string `json:"DateOfExpiry,omitempty" xml:"DateOfExpiry,omitempty"`
+	DocPageConfigShrink *string `json:"DocPageConfig,omitempty" xml:"DocPageConfig,omitempty"`
+	DocScanMode         *string `json:"DocScanMode,omitempty" xml:"DocScanMode,omitempty"`
+	// example:
+	//
+	// 01000000
+	DocType           *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	DocVideo          *string `json:"DocVideo,omitempty" xml:"DocVideo,omitempty"`
+	DocumentNumber    *string `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty"`
+	ExperienceCode    *string `json:"ExperienceCode,omitempty" xml:"ExperienceCode,omitempty"`
+	FacePictureBase64 *string `json:"FacePictureBase64,omitempty" xml:"FacePictureBase64,omitempty"`
+	// example:
+	//
+	// ***
+	FacePictureUrl *string `json:"FacePictureUrl,omitempty" xml:"FacePictureUrl,omitempty"`
+	// example:
+	//
+	// *
+	IdFaceQuality *string `json:"IdFaceQuality,omitempty" xml:"IdFaceQuality,omitempty"`
+	// example:
+	//
+	// Y
+	IdSpoof        *string `json:"IdSpoof,omitempty" xml:"IdSpoof,omitempty"`
+	IdThreshold    *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	LanguageConfig *string `json:"LanguageConfig,omitempty" xml:"LanguageConfig,omitempty"`
+	MRTDInput      *string `json:"MRTDInput,omitempty" xml:"MRTDInput,omitempty"`
+	// example:
+	//
+	// e0c34a***353888
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// example:
+	//
+	// 1221****6543
+	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// example:
+	//
+	// {\\"bioMetaInfo\\":\\"4.1.0:2916352,0\\",\\"deviceType\\":\\"web\\",\\"ua\\":\\"Mozilla/5.0 (Macintosh
+	MetaInfo *string `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
+	Model    *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// OCR。
+	//
+	// example:
+	//
+	// *
+	Ocr               *string `json:"Ocr,omitempty" xml:"Ocr,omitempty"`
+	ProcedurePriority *string `json:"ProcedurePriority,omitempty" xml:"ProcedurePriority,omitempty"`
+	// example:
+	//
+	// eKYC
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductFlow *string `json:"ProductFlow,omitempty" xml:"ProductFlow,omitempty"`
+	// example:
+	//
+	// http*****
+	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
+	// example:
+	//
+	// PAY**
+	SceneCode     *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	SecurityLevel *string `json:"SecurityLevel,omitempty" xml:"SecurityLevel,omitempty"`
+	ShowAlbumIcon *string `json:"ShowAlbumIcon,omitempty" xml:"ShowAlbumIcon,omitempty"`
+	ShowGuidePage *string `json:"ShowGuidePage,omitempty" xml:"ShowGuidePage,omitempty"`
+	ShowOcrResult *string `json:"ShowOcrResult,omitempty" xml:"ShowOcrResult,omitempty"`
+	StyleConfig   *string `json:"StyleConfig,omitempty" xml:"StyleConfig,omitempty"`
+	UseNFC        *string `json:"UseNFC,omitempty" xml:"UseNFC,omitempty"`
+}
+
+func (s InitializeShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitializeShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InitializeShrinkRequest) SetAppQualityCheck(v string) *InitializeShrinkRequest {
+	s.AppQualityCheck = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetAuthorize(v string) *InitializeShrinkRequest {
+	s.Authorize = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetCallbackToken(v string) *InitializeShrinkRequest {
+	s.CallbackToken = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetCallbackUrl(v string) *InitializeShrinkRequest {
+	s.CallbackUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetCrop(v string) *InitializeShrinkRequest {
+	s.Crop = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDateOfBirth(v string) *InitializeShrinkRequest {
+	s.DateOfBirth = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDateOfExpiry(v string) *InitializeShrinkRequest {
+	s.DateOfExpiry = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocPageConfigShrink(v string) *InitializeShrinkRequest {
+	s.DocPageConfigShrink = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocScanMode(v string) *InitializeShrinkRequest {
+	s.DocScanMode = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocType(v string) *InitializeShrinkRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocVideo(v string) *InitializeShrinkRequest {
+	s.DocVideo = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetDocumentNumber(v string) *InitializeShrinkRequest {
+	s.DocumentNumber = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetExperienceCode(v string) *InitializeShrinkRequest {
+	s.ExperienceCode = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetFacePictureBase64(v string) *InitializeShrinkRequest {
+	s.FacePictureBase64 = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetFacePictureUrl(v string) *InitializeShrinkRequest {
+	s.FacePictureUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetIdFaceQuality(v string) *InitializeShrinkRequest {
+	s.IdFaceQuality = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetIdSpoof(v string) *InitializeShrinkRequest {
+	s.IdSpoof = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetIdThreshold(v string) *InitializeShrinkRequest {
+	s.IdThreshold = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetLanguageConfig(v string) *InitializeShrinkRequest {
+	s.LanguageConfig = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetMRTDInput(v string) *InitializeShrinkRequest {
+	s.MRTDInput = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetMerchantBizId(v string) *InitializeShrinkRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetMerchantUserId(v string) *InitializeShrinkRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetMetaInfo(v string) *InitializeShrinkRequest {
+	s.MetaInfo = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetModel(v string) *InitializeShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetOcr(v string) *InitializeShrinkRequest {
+	s.Ocr = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetProcedurePriority(v string) *InitializeShrinkRequest {
+	s.ProcedurePriority = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetProductCode(v string) *InitializeShrinkRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetProductFlow(v string) *InitializeShrinkRequest {
+	s.ProductFlow = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetReturnUrl(v string) *InitializeShrinkRequest {
+	s.ReturnUrl = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetSceneCode(v string) *InitializeShrinkRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetSecurityLevel(v string) *InitializeShrinkRequest {
+	s.SecurityLevel = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetShowAlbumIcon(v string) *InitializeShrinkRequest {
+	s.ShowAlbumIcon = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetShowGuidePage(v string) *InitializeShrinkRequest {
+	s.ShowGuidePage = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetShowOcrResult(v string) *InitializeShrinkRequest {
+	s.ShowOcrResult = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetStyleConfig(v string) *InitializeShrinkRequest {
+	s.StyleConfig = &v
+	return s
+}
+
+func (s *InitializeShrinkRequest) SetUseNFC(v string) *InitializeShrinkRequest {
+	s.UseNFC = &v
 	return s
 }
 
@@ -4106,16 +4407,22 @@ func (client *Client) Id2MetaVerifyIntl(request *Id2MetaVerifyIntlRequest) (_res
 //
 // 认证初始化
 //
-// @param request - InitializeRequest
+// @param tmpReq - InitializeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return InitializeResponse
-func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime *util.RuntimeOptions) (_result *InitializeResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) InitializeWithOptions(tmpReq *InitializeRequest, runtime *util.RuntimeOptions) (_result *InitializeResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &InitializeShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DocPageConfig)) {
+		request.DocPageConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DocPageConfig, tea.String("DocPageConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppQualityCheck)) {
 		query["AppQualityCheck"] = request.AppQualityCheck
@@ -4137,6 +4444,18 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 		query["Crop"] = request.Crop
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DateOfBirth)) {
+		query["DateOfBirth"] = request.DateOfBirth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DateOfExpiry)) {
+		query["DateOfExpiry"] = request.DateOfExpiry
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocPageConfigShrink)) {
+		query["DocPageConfig"] = request.DocPageConfigShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DocScanMode)) {
 		query["DocScanMode"] = request.DocScanMode
 	}
@@ -4147,6 +4466,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.DocVideo)) {
 		query["DocVideo"] = request.DocVideo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentNumber)) {
+		query["DocumentNumber"] = request.DocumentNumber
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ExperienceCode)) {
@@ -4171,6 +4494,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.LanguageConfig)) {
 		query["LanguageConfig"] = request.LanguageConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MRTDInput)) {
+		query["MRTDInput"] = request.MRTDInput
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
@@ -4231,6 +4558,10 @@ func (client *Client) InitializeWithOptions(request *InitializeRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.StyleConfig)) {
 		query["StyleConfig"] = request.StyleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseNFC)) {
+		query["UseNFC"] = request.UseNFC
 	}
 
 	body := map[string]interface{}{}
