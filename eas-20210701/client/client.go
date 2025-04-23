@@ -2507,7 +2507,8 @@ type CreateResourceRequest struct {
 	// ecs.c6.8xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
 	// The custom tag.
-	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	ResourceName *string            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
 	// 	- Dedicated: the dedicated resource group.
@@ -2566,6 +2567,11 @@ func (s *CreateResourceRequest) SetEcsInstanceType(v string) *CreateResourceRequ
 
 func (s *CreateResourceRequest) SetLabels(v map[string]*string) *CreateResourceRequest {
 	s.Labels = v
+	return s
+}
+
+func (s *CreateResourceRequest) SetResourceName(v string) *CreateResourceRequest {
+	s.ResourceName = &v
 	return s
 }
 
@@ -2854,6 +2860,8 @@ type CreateResourceInstancesRequest struct {
 	//
 	// 200
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// Deprecated
+	//
 	// The user-defined information. This parameter is not in use.
 	//
 	// example:
@@ -17435,6 +17443,10 @@ func (client *Client) CreateResourceWithOptions(request *CreateResourceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Labels)) {
 		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		body["ResourceName"] = request.ResourceName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
