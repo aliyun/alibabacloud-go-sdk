@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,24 @@ import (
 )
 
 type CreateConsumerGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// consumer_group_test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-0pp1954n****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateConsumerGroupRequest) String() string {
@@ -42,10 +54,22 @@ func (s *CreateConsumerGroupRequest) SetRegionId(v string) *CreateConsumerGroupR
 }
 
 type CreateConsumerGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B191CC4D-B067-4508-987A-ACDA8D89****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateConsumerGroupResponseBody) String() string {
@@ -106,10 +130,30 @@ func (s *CreateConsumerGroupResponse) SetBody(v *CreateConsumerGroupResponseBody
 }
 
 type CreateTopicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_topic_test
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_topic_test
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s CreateTopicRequest) String() string {
@@ -141,10 +185,22 @@ func (s *CreateTopicRequest) SetTopic(v string) *CreateTopicRequest {
 }
 
 type CreateTopicResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9C0F207C-77A6-43E5-991C-9D98510A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateTopicResponseBody) String() string {
@@ -205,9 +261,24 @@ func (s *CreateTopicResponse) SetBody(v *CreateTopicResponseBody) *CreateTopicRe
 }
 
 type DeleteConsumerGroupRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testconsumer
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_post-cn-mp91a44k****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DeleteConsumerGroupRequest) String() string {
@@ -234,10 +305,22 @@ func (s *DeleteConsumerGroupRequest) SetRegionId(v string) *DeleteConsumerGroupR
 }
 
 type DeleteConsumerGroupResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1AA2A2AD-2727-4573-B1C7-A0388BCD****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteConsumerGroupResponseBody) String() string {
@@ -298,9 +381,24 @@ func (s *DeleteConsumerGroupResponse) SetBody(v *DeleteConsumerGroupResponseBody
 }
 
 type DeleteTopicRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_post-cn-mp91a44k****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Kafkatest
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DeleteTopicRequest) String() string {
@@ -327,10 +425,22 @@ func (s *DeleteTopicRequest) SetTopic(v string) *DeleteTopicRequest {
 }
 
 type DeleteTopicResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 9B618B3F-9506-4661-A211-D00C4556****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DeleteTopicResponseBody) String() string {
@@ -391,8 +501,18 @@ func (s *DeleteTopicResponse) SetBody(v *DeleteTopicResponseBody) *DeleteTopicRe
 }
 
 type GetConsumerListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_post-cn-v0h18sav****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerListRequest) String() string {
@@ -414,11 +534,23 @@ func (s *GetConsumerListRequest) SetRegionId(v string) *GetConsumerListRequest {
 }
 
 type GetConsumerListResponseBody struct {
+	// example:
+	//
+	// 200
 	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumerList *GetConsumerListResponseBodyConsumerList `json:"ConsumerList,omitempty" xml:"ConsumerList,omitempty" type:"Struct"`
-	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 808F042B-CB9A-4FBC-9009-00E7DDB6****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConsumerListResponseBody) String() string {
@@ -472,9 +604,18 @@ func (s *GetConsumerListResponseBodyConsumerList) SetConsumerVO(v []*GetConsumer
 }
 
 type GetConsumerListResponseBodyConsumerListConsumerVO struct {
+	// example:
+	//
+	// CID_c34a6f44915f80d70cb42c4b14ee40c3_4
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// example:
+	//
+	// alikafka_post-cn-v0h18sav0001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerListResponseBodyConsumerListConsumerVO) String() string {
@@ -531,9 +672,25 @@ func (s *GetConsumerListResponse) SetBody(v *GetConsumerListResponseBody) *GetCo
 
 type GetConsumerProgressRequest struct {
 	// Consumer Group ID。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// kafka-test
 	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-mp919o4v****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetConsumerProgressRequest) String() string {
@@ -560,11 +717,23 @@ func (s *GetConsumerProgressRequest) SetRegionId(v string) *GetConsumerProgressR
 }
 
 type GetConsumerProgressResponseBody struct {
+	// example:
+	//
+	// 200
 	Code             *int32                                           `json:"Code,omitempty" xml:"Code,omitempty"`
 	ConsumerProgress *GetConsumerProgressResponseBodyConsumerProgress `json:"ConsumerProgress,omitempty" xml:"ConsumerProgress,omitempty" type:"Struct"`
-	Message          *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId        *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success          *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 252820E1-A2E6-45F2-B4C9-1056B8CE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBody) String() string {
@@ -601,9 +770,16 @@ func (s *GetConsumerProgressResponseBody) SetSuccess(v bool) *GetConsumerProgres
 }
 
 type GetConsumerProgressResponseBodyConsumerProgress struct {
+	// example:
+	//
+	// 1566874931671
 	LastTimestamp *int64                                                    `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
 	TopicList     *GetConsumerProgressResponseBodyConsumerProgressTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	TotalDiff     *int64                                                    `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// example:
+	//
+	// 0
+	TotalDiff *int64  `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	State     *string `json:"state,omitempty" xml:"state,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgress) String() string {
@@ -629,6 +805,11 @@ func (s *GetConsumerProgressResponseBodyConsumerProgress) SetTotalDiff(v int64) 
 	return s
 }
 
+func (s *GetConsumerProgressResponseBodyConsumerProgress) SetState(v string) *GetConsumerProgressResponseBodyConsumerProgress {
+	s.State = &v
+	return s
+}
+
 type GetConsumerProgressResponseBodyConsumerProgressTopicList struct {
 	TopicList []*GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Repeated"`
 }
@@ -647,10 +828,19 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicList) SetTopicList(
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList struct {
+	// example:
+	//
+	// 1566874931649
 	LastTimestamp *int64                                                                       `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
 	OffsetList    *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetList `json:"OffsetList,omitempty" xml:"OffsetList,omitempty" type:"Struct"`
-	Topic         *string                                                                      `json:"Topic,omitempty" xml:"Topic,omitempty"`
-	TotalDiff     *int64                                                                       `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
+	// example:
+	//
+	// kafka-test
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 0
+	TotalDiff *int64 `json:"TotalDiff,omitempty" xml:"TotalDiff,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicList) String() string {
@@ -699,10 +889,22 @@ func (s *GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffset
 }
 
 type GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList struct {
-	BrokerOffset   *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	// example:
+	//
+	// 9
+	BrokerOffset *int64 `json:"BrokerOffset,omitempty" xml:"BrokerOffset,omitempty"`
+	// example:
+	//
+	// 9
 	ConsumerOffset *int64 `json:"ConsumerOffset,omitempty" xml:"ConsumerOffset,omitempty"`
-	LastTimestamp  *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
-	Partition      *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// example:
+	//
+	// 1566874931649
+	LastTimestamp *int64 `json:"LastTimestamp,omitempty" xml:"LastTimestamp,omitempty"`
+	// example:
+	//
+	// 0
+	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
 }
 
 func (s GetConsumerProgressResponseBodyConsumerProgressTopicListTopicListOffsetListOffsetList) String() string {
@@ -763,6 +965,11 @@ func (s *GetConsumerProgressResponse) SetBody(v *GetConsumerProgressResponseBody
 }
 
 type GetInstanceListRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -780,11 +987,23 @@ func (s *GetInstanceListRequest) SetRegionId(v string) *GetInstanceListRequest {
 }
 
 type GetInstanceListResponseBody struct {
+	// example:
+	//
+	// 200
 	Code         *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	InstanceList *GetInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Struct"`
-	Message      *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// ABA4A7FD-E10F-45C7-9774-A5236015****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetInstanceListResponseBody) String() string {
@@ -838,19 +1057,54 @@ func (s *GetInstanceListResponseBodyInstanceList) SetInstanceVO(v []*GetInstance
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVO struct {
-	CreateTime               *int64                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeployType               *int32                                                                     `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	EndPoint                 *string                                                                    `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
-	ExpiredTime              *int64                                                                     `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	InstanceId               *string                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name                     *string                                                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                 *string                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceStatus            *int32                                                                     `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// example:
+	//
+	// 1566215995000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 4
+	DeployType *int32 `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
+	// example:
+	//
+	// 192.168.0.212:9092,192.168.0.210:9092,192.168.0.211:****
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// example:
+	//
+	// 1568908800000
+	ExpiredTime *int64 `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// example:
+	//
+	// alikafka_pre-cn-mp919o4v****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// alikafka_pre-cn-mp919o4v****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 5
+	ServiceStatus *int32 `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// example:
+	//
+	// 47.111.110.11:9093,121.40.96.141:9093,47.111.118.133:****
 	SslEndPoint              *string                                                                    `json:"SslEndPoint,omitempty" xml:"SslEndPoint,omitempty"`
 	UpgradeServiceDetailInfo *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfo `json:"UpgradeServiceDetailInfo,omitempty" xml:"UpgradeServiceDetailInfo,omitempty" type:"Struct"`
 	// VSwitch ID。
+	//
+	// example:
+	//
+	// vsw-bp13rg6bcpkxofr78****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// VPC ID。
+	//
+	// example:
+	//
+	// vpc-bp1l6hrlykj3405r7****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
@@ -940,6 +1194,9 @@ func (s *GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailIn
 }
 
 type GetInstanceListResponseBodyInstanceListInstanceVOUpgradeServiceDetailInfoUpgradeServiceDetailInfoVO struct {
+	// example:
+	//
+	// 0.10
 	Current2OpenSourceVersion *string `json:"Current2OpenSourceVersion,omitempty" xml:"Current2OpenSourceVersion,omitempty"`
 }
 
@@ -987,9 +1244,17 @@ func (s *GetInstanceListResponse) SetBody(v *GetInstanceListResponseBody) *GetIn
 
 type GetTopicListRequest struct {
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-0pp1954n2003
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageSize   *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s GetTopicListRequest) String() string {
@@ -1021,14 +1286,35 @@ func (s *GetTopicListRequest) SetRegionId(v string) *GetTopicListRequest {
 }
 
 type GetTopicListResponseBody struct {
-	Code        *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	CurrentPage *int32                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Message     *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
-	PageSize    *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success     *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-	TopicList   *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
-	Total       *int32                             `json:"Total,omitempty" xml:"Total,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 10000
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 82BD585C-17A1-486E-B3E8-AABCE8EE****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TopicList *GetTopicListResponseBodyTopicList `json:"TopicList,omitempty" xml:"TopicList,omitempty" type:"Struct"`
+	// example:
+	//
+	// 12
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s GetTopicListResponseBody) String() string {
@@ -1097,13 +1383,31 @@ func (s *GetTopicListResponseBodyTopicList) SetTopicVO(v []*GetTopicListResponse
 }
 
 type GetTopicListResponseBodyTopicListTopicVO struct {
-	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1566804394000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// alikafka_pre-cn-0pp1954n****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Remark     *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// kafka_test_topic
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// example:
+	//
+	// 0
 	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// poptest
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicListResponseBodyTopicListTopicVO) String() string {
@@ -1179,9 +1483,19 @@ func (s *GetTopicListResponse) SetBody(v *GetTopicListResponseBody) *GetTopicLis
 }
 
 type GetTopicStatusRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-v0h15tjmo003
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Topic      *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// normal_topic_9d034262835916103455551be06cc2dc_6
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicStatusRequest) String() string {
@@ -1208,9 +1522,21 @@ func (s *GetTopicStatusRequest) SetTopic(v string) *GetTopicStatusRequest {
 }
 
 type GetTopicStatusResponseBody struct {
-	Code        *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message     *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E475C7E2-8C35-46EF-BE7D-5D2A9F5D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
 	Success     *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 	TopicStatus *GetTopicStatusResponseBodyTopicStatus `json:"TopicStatus,omitempty" xml:"TopicStatus,omitempty" type:"Struct"`
 }
@@ -1249,9 +1575,15 @@ func (s *GetTopicStatusResponseBody) SetTopicStatus(v *GetTopicStatusResponseBod
 }
 
 type GetTopicStatusResponseBodyTopicStatus struct {
+	// example:
+	//
+	// 1566470063575
 	LastTimeStamp *int64                                            `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
 	OffsetTable   *GetTopicStatusResponseBodyTopicStatusOffsetTable `json:"OffsetTable,omitempty" xml:"OffsetTable,omitempty" type:"Struct"`
-	TotalCount    *int64                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// example:
+	//
+	// 423
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s GetTopicStatusResponseBodyTopicStatus) String() string {
@@ -1295,11 +1627,26 @@ func (s *GetTopicStatusResponseBodyTopicStatusOffsetTable) SetOffsetTable(v []*G
 }
 
 type GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable struct {
-	LastUpdateTimestamp *int64  `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
-	MaxOffset           *int64  `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
-	MinOffset           *int64  `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
-	Partition           *int32  `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	Topic               *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+	// example:
+	//
+	// 1566470063547
+	LastUpdateTimestamp *int64 `json:"LastUpdateTimestamp,omitempty" xml:"LastUpdateTimestamp,omitempty"`
+	// example:
+	//
+	// 76
+	MaxOffset *int64 `json:"MaxOffset,omitempty" xml:"MaxOffset,omitempty"`
+	// example:
+	//
+	// 0
+	MinOffset *int64 `json:"MinOffset,omitempty" xml:"MinOffset,omitempty"`
+	// example:
+	//
+	// 0
+	Partition *int32 `json:"Partition,omitempty" xml:"Partition,omitempty"`
+	// example:
+	//
+	// testkafka
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s GetTopicStatusResponseBodyTopicStatusOffsetTableOffsetTable) String() string {
@@ -1411,6 +1758,15 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建 Group
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *CreateConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1452,6 +1808,13 @@ func (client *Client) CreateConsumerGroupWithOptions(request *CreateConsumerGrou
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建 Group
+//
+// @param request - CreateConsumerGroupRequest
+//
+// @return CreateConsumerGroupResponse
 func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateConsumerGroupResponse{}
@@ -1463,6 +1826,11 @@ func (client *Client) CreateConsumerGroup(request *CreateConsumerGroupRequest) (
 	return _result, _err
 }
 
+// @param request - CreateTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTopicResponse
 func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtime *util.RuntimeOptions) (_result *CreateTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1508,6 +1876,9 @@ func (client *Client) CreateTopicWithOptions(request *CreateTopicRequest, runtim
 	return _result, _err
 }
 
+// @param request - CreateTopicRequest
+//
+// @return CreateTopicResponse
 func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTopicResponse{}
@@ -1519,6 +1890,11 @@ func (client *Client) CreateTopic(request *CreateTopicRequest) (_result *CreateT
 	return _result, _err
 }
 
+// @param request - DeleteConsumerGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1560,6 +1936,9 @@ func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGrou
 	return _result, _err
 }
 
+// @param request - DeleteConsumerGroupRequest
+//
+// @return DeleteConsumerGroupResponse
 func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (_result *DeleteConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteConsumerGroupResponse{}
@@ -1571,6 +1950,11 @@ func (client *Client) DeleteConsumerGroup(request *DeleteConsumerGroupRequest) (
 	return _result, _err
 }
 
+// @param request - DeleteTopicRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTopicResponse
 func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtime *util.RuntimeOptions) (_result *DeleteTopicResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1612,6 +1996,9 @@ func (client *Client) DeleteTopicWithOptions(request *DeleteTopicRequest, runtim
 	return _result, _err
 }
 
+// @param request - DeleteTopicRequest
+//
+// @return DeleteTopicResponse
 func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteTopicResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTopicResponse{}
@@ -1623,6 +2010,11 @@ func (client *Client) DeleteTopic(request *DeleteTopicRequest) (_result *DeleteT
 	return _result, _err
 }
 
+// @param request - GetConsumerListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerListResponse
 func (client *Client) GetConsumerListWithOptions(request *GetConsumerListRequest, runtime *util.RuntimeOptions) (_result *GetConsumerListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1660,6 +2052,9 @@ func (client *Client) GetConsumerListWithOptions(request *GetConsumerListRequest
 	return _result, _err
 }
 
+// @param request - GetConsumerListRequest
+//
+// @return GetConsumerListResponse
 func (client *Client) GetConsumerList(request *GetConsumerListRequest) (_result *GetConsumerListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConsumerListResponse{}
@@ -1671,6 +2066,11 @@ func (client *Client) GetConsumerList(request *GetConsumerListRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetConsumerProgressRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConsumerProgressResponse
 func (client *Client) GetConsumerProgressWithOptions(request *GetConsumerProgressRequest, runtime *util.RuntimeOptions) (_result *GetConsumerProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1712,6 +2112,9 @@ func (client *Client) GetConsumerProgressWithOptions(request *GetConsumerProgres
 	return _result, _err
 }
 
+// @param request - GetConsumerProgressRequest
+//
+// @return GetConsumerProgressResponse
 func (client *Client) GetConsumerProgress(request *GetConsumerProgressRequest) (_result *GetConsumerProgressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConsumerProgressResponse{}
@@ -1723,6 +2126,11 @@ func (client *Client) GetConsumerProgress(request *GetConsumerProgressRequest) (
 	return _result, _err
 }
 
+// @param request - GetInstanceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetInstanceListResponse
 func (client *Client) GetInstanceListWithOptions(request *GetInstanceListRequest, runtime *util.RuntimeOptions) (_result *GetInstanceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1756,6 +2164,9 @@ func (client *Client) GetInstanceListWithOptions(request *GetInstanceListRequest
 	return _result, _err
 }
 
+// @param request - GetInstanceListRequest
+//
+// @return GetInstanceListResponse
 func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result *GetInstanceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceListResponse{}
@@ -1767,6 +2178,11 @@ func (client *Client) GetInstanceList(request *GetInstanceListRequest) (_result 
 	return _result, _err
 }
 
+// @param request - GetTopicListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTopicListResponse
 func (client *Client) GetTopicListWithOptions(request *GetTopicListRequest, runtime *util.RuntimeOptions) (_result *GetTopicListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1812,6 +2228,9 @@ func (client *Client) GetTopicListWithOptions(request *GetTopicListRequest, runt
 	return _result, _err
 }
 
+// @param request - GetTopicListRequest
+//
+// @return GetTopicListResponse
 func (client *Client) GetTopicList(request *GetTopicListRequest) (_result *GetTopicListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicListResponse{}
@@ -1823,6 +2242,11 @@ func (client *Client) GetTopicList(request *GetTopicListRequest) (_result *GetTo
 	return _result, _err
 }
 
+// @param request - GetTopicStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTopicStatusResponse
 func (client *Client) GetTopicStatusWithOptions(request *GetTopicStatusRequest, runtime *util.RuntimeOptions) (_result *GetTopicStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1864,6 +2288,9 @@ func (client *Client) GetTopicStatusWithOptions(request *GetTopicStatusRequest, 
 	return _result, _err
 }
 
+// @param request - GetTopicStatusRequest
+//
+// @return GetTopicStatusResponse
 func (client *Client) GetTopicStatus(request *GetTopicStatusRequest) (_result *GetTopicStatusResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicStatusResponse{}
