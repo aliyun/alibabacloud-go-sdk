@@ -62307,7 +62307,8 @@ type QueryConfigResponseBodyDataNacosRunningEnv struct {
 	// example:
 	//
 	// true
-	EmptyProtect *bool `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
+	EmptyProtect *bool   `json:"emptyProtect,omitempty" xml:"emptyProtect,omitempty"`
+	GrayAuth     *string `json:"grayAuth,omitempty" xml:"grayAuth,omitempty"`
 }
 
 func (s QueryConfigResponseBodyDataNacosRunningEnv) String() string {
@@ -62320,6 +62321,11 @@ func (s QueryConfigResponseBodyDataNacosRunningEnv) GoString() string {
 
 func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetEmptyProtect(v bool) *QueryConfigResponseBodyDataNacosRunningEnv {
 	s.EmptyProtect = &v
+	return s
+}
+
+func (s *QueryConfigResponseBodyDataNacosRunningEnv) SetGrayAuth(v string) *QueryConfigResponseBodyDataNacosRunningEnv {
+	s.GrayAuth = &v
 	return s
 }
 
