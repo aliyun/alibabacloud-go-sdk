@@ -5704,6 +5704,7 @@ func (s *BatchGetMediaInfosResponseBodyMediaInfosFileInfoListFileBasicInfo) SetW
 }
 
 type BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo struct {
+	Biz *string `json:"Biz,omitempty" xml:"Biz,omitempty"`
 	// The business type of the media asset.
 	//
 	// example:
@@ -5816,6 +5817,11 @@ func (s BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) String() string 
 
 func (s BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) GoString() string {
 	return s.String()
+}
+
+func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetBiz(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
+	s.Biz = &v
+	return s
 }
 
 func (s *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo) SetBusinessType(v string) *BatchGetMediaInfosResponseBodyMediaInfosMediaBasicInfo {
