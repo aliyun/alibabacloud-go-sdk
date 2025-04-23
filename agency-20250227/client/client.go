@@ -205,7 +205,13 @@ type GetCommissionDetailFileListRequest struct {
 	// example:
 	//
 	// 202501
-	BillMonth *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
+	BillMonth          *string `json:"BillMonth,omitempty" xml:"BillMonth,omitempty"`
+	OssAccessKeyId     *string `json:"OssAccessKeyId,omitempty" xml:"OssAccessKeyId,omitempty"`
+	OssAccessKeySecret *string `json:"OssAccessKeySecret,omitempty" xml:"OssAccessKeySecret,omitempty"`
+	OssBucketName      *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
+	OssEndpoint        *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	OssRegion          *string `json:"OssRegion,omitempty" xml:"OssRegion,omitempty"`
+	OssSecurityToken   *string `json:"OssSecurityToken,omitempty" xml:"OssSecurityToken,omitempty"`
 }
 
 func (s GetCommissionDetailFileListRequest) String() string {
@@ -218,6 +224,36 @@ func (s GetCommissionDetailFileListRequest) GoString() string {
 
 func (s *GetCommissionDetailFileListRequest) SetBillMonth(v string) *GetCommissionDetailFileListRequest {
 	s.BillMonth = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssAccessKeyId(v string) *GetCommissionDetailFileListRequest {
+	s.OssAccessKeyId = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssAccessKeySecret(v string) *GetCommissionDetailFileListRequest {
+	s.OssAccessKeySecret = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssBucketName(v string) *GetCommissionDetailFileListRequest {
+	s.OssBucketName = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssEndpoint(v string) *GetCommissionDetailFileListRequest {
+	s.OssEndpoint = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssRegion(v string) *GetCommissionDetailFileListRequest {
+	s.OssRegion = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListRequest) SetOssSecurityToken(v string) *GetCommissionDetailFileListRequest {
+	s.OssSecurityToken = &v
 	return s
 }
 
@@ -311,7 +347,9 @@ func (s *GetCommissionDetailFileListResponseBodyData) SetPartnerUid(v string) *G
 }
 
 type GetCommissionDetailFileListResponseBodyDataFileList struct {
+	BucketSyncStatus     *string `json:"BucketSyncStatus,omitempty" xml:"BucketSyncStatus,omitempty"`
 	CommissionPolicyName *string `json:"CommissionPolicyName,omitempty" xml:"CommissionPolicyName,omitempty"`
+	FileName             *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileType             *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// example:
 	//
@@ -327,8 +365,18 @@ func (s GetCommissionDetailFileListResponseBodyDataFileList) GoString() string {
 	return s.String()
 }
 
+func (s *GetCommissionDetailFileListResponseBodyDataFileList) SetBucketSyncStatus(v string) *GetCommissionDetailFileListResponseBodyDataFileList {
+	s.BucketSyncStatus = &v
+	return s
+}
+
 func (s *GetCommissionDetailFileListResponseBodyDataFileList) SetCommissionPolicyName(v string) *GetCommissionDetailFileListResponseBodyDataFileList {
 	s.CommissionPolicyName = &v
+	return s
+}
+
+func (s *GetCommissionDetailFileListResponseBodyDataFileList) SetFileName(v string) *GetCommissionDetailFileListResponseBodyDataFileList {
+	s.FileName = &v
 	return s
 }
 
@@ -2363,6 +2411,30 @@ func (client *Client) GetCommissionDetailFileListWithOptions(request *GetCommiss
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BillMonth)) {
 		query["BillMonth"] = request.BillMonth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAccessKeyId)) {
+		query["OssAccessKeyId"] = request.OssAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssAccessKeySecret)) {
+		query["OssAccessKeySecret"] = request.OssAccessKeySecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssBucketName)) {
+		query["OssBucketName"] = request.OssBucketName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssEndpoint)) {
+		query["OssEndpoint"] = request.OssEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssRegion)) {
+		query["OssRegion"] = request.OssRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssSecurityToken)) {
+		query["OssSecurityToken"] = request.OssSecurityToken
 	}
 
 	req := &openapi.OpenApiRequest{
