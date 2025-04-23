@@ -2035,7 +2035,8 @@ type DescribeCostCheckAdvicesRequest struct {
 	// example:
 	//
 	// EcsCostLowUtilizationCheck
-	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckPlanId *int64  `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// zh
@@ -2047,9 +2048,11 @@ type DescribeCostCheckAdvicesRequest struct {
 	// example:
 	//
 	// 10
-	PageSize    *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIds   []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
-	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	PageSize            *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIds           []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
+	ResourceGroupIdList []*string `json:"ResourceGroupIdList,omitempty" xml:"ResourceGroupIdList,omitempty" type:"Repeated"`
+	ResourceId          *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceIds         []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// example:
 	//
 	// test
@@ -2081,6 +2084,11 @@ func (s *DescribeCostCheckAdvicesRequest) SetCheckId(v string) *DescribeCostChec
 	return s
 }
 
+func (s *DescribeCostCheckAdvicesRequest) SetCheckPlanId(v int64) *DescribeCostCheckAdvicesRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *DescribeCostCheckAdvicesRequest) SetLanguage(v string) *DescribeCostCheckAdvicesRequest {
 	s.Language = &v
 	return s
@@ -2098,6 +2106,16 @@ func (s *DescribeCostCheckAdvicesRequest) SetPageSize(v int32) *DescribeCostChec
 
 func (s *DescribeCostCheckAdvicesRequest) SetRegionIds(v []*string) *DescribeCostCheckAdvicesRequest {
 	s.RegionIds = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetResourceGroupIdList(v []*string) *DescribeCostCheckAdvicesRequest {
+	s.ResourceGroupIdList = v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesRequest) SetResourceId(v string) *DescribeCostCheckAdvicesRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2162,7 +2180,8 @@ type DescribeCostCheckAdvicesShrinkRequest struct {
 	// example:
 	//
 	// EcsCostLowUtilizationCheck
-	CheckId *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckId     *string `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckPlanId *int64  `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// zh
@@ -2174,9 +2193,11 @@ type DescribeCostCheckAdvicesShrinkRequest struct {
 	// example:
 	//
 	// 10
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RegionIdsShrink   *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
-	ResourceIdsShrink *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
+	PageSize                  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionIdsShrink           *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
+	ResourceGroupIdListShrink *string `json:"ResourceGroupIdList,omitempty" xml:"ResourceGroupIdList,omitempty"`
+	ResourceId                *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceIdsShrink         *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// example:
 	//
 	// test
@@ -2208,6 +2229,11 @@ func (s *DescribeCostCheckAdvicesShrinkRequest) SetCheckId(v string) *DescribeCo
 	return s
 }
 
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetCheckPlanId(v int64) *DescribeCostCheckAdvicesShrinkRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *DescribeCostCheckAdvicesShrinkRequest) SetLanguage(v string) *DescribeCostCheckAdvicesShrinkRequest {
 	s.Language = &v
 	return s
@@ -2225,6 +2251,16 @@ func (s *DescribeCostCheckAdvicesShrinkRequest) SetPageSize(v int32) *DescribeCo
 
 func (s *DescribeCostCheckAdvicesShrinkRequest) SetRegionIdsShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
 	s.RegionIdsShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetResourceGroupIdListShrink(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.ResourceGroupIdListShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckAdvicesShrinkRequest) SetResourceId(v string) *DescribeCostCheckAdvicesShrinkRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2587,6 +2623,7 @@ func (s *DescribeCostCheckAdvicesResponse) SetBody(v *DescribeCostCheckAdvicesRe
 type DescribeCostCheckResultsRequest struct {
 	AssumeAliyunIdList []*int64  `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
 	CheckIds           []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckPlanId        *int64    `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// Category
@@ -2597,6 +2634,7 @@ type DescribeCostCheckResultsRequest struct {
 	Product             *string   `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionIds           []*string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty" type:"Repeated"`
 	ResourceGroupIdList []*string `json:"ResourceGroupIdList,omitempty" xml:"ResourceGroupIdList,omitempty" type:"Repeated"`
+	ResourceId          *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceIds         []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2629,6 +2667,11 @@ func (s *DescribeCostCheckResultsRequest) SetCheckIds(v []*string) *DescribeCost
 	return s
 }
 
+func (s *DescribeCostCheckResultsRequest) SetCheckPlanId(v int64) *DescribeCostCheckResultsRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *DescribeCostCheckResultsRequest) SetGroupBy(v string) *DescribeCostCheckResultsRequest {
 	s.GroupBy = &v
 	return s
@@ -2646,6 +2689,11 @@ func (s *DescribeCostCheckResultsRequest) SetRegionIds(v []*string) *DescribeCos
 
 func (s *DescribeCostCheckResultsRequest) SetResourceGroupIdList(v []*string) *DescribeCostCheckResultsRequest {
 	s.ResourceGroupIdList = v
+	return s
+}
+
+func (s *DescribeCostCheckResultsRequest) SetResourceId(v string) *DescribeCostCheckResultsRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2708,6 +2756,7 @@ func (s *DescribeCostCheckResultsRequestTagList) SetTagValue(v []*string) *Descr
 type DescribeCostCheckResultsShrinkRequest struct {
 	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
 	CheckIdsShrink           *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
+	CheckPlanId              *int64  `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// Category
@@ -2718,6 +2767,7 @@ type DescribeCostCheckResultsShrinkRequest struct {
 	Product                   *string `json:"Product,omitempty" xml:"Product,omitempty"`
 	RegionIdsShrink           *string `json:"RegionIds,omitempty" xml:"RegionIds,omitempty"`
 	ResourceGroupIdListShrink *string `json:"ResourceGroupIdList,omitempty" xml:"ResourceGroupIdList,omitempty"`
+	ResourceId                *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceIdsShrink         *string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty"`
 	// example:
 	//
@@ -2750,6 +2800,11 @@ func (s *DescribeCostCheckResultsShrinkRequest) SetCheckIdsShrink(v string) *Des
 	return s
 }
 
+func (s *DescribeCostCheckResultsShrinkRequest) SetCheckPlanId(v int64) *DescribeCostCheckResultsShrinkRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *DescribeCostCheckResultsShrinkRequest) SetGroupBy(v string) *DescribeCostCheckResultsShrinkRequest {
 	s.GroupBy = &v
 	return s
@@ -2767,6 +2822,11 @@ func (s *DescribeCostCheckResultsShrinkRequest) SetRegionIdsShrink(v string) *De
 
 func (s *DescribeCostCheckResultsShrinkRequest) SetResourceGroupIdListShrink(v string) *DescribeCostCheckResultsShrinkRequest {
 	s.ResourceGroupIdListShrink = &v
+	return s
+}
+
+func (s *DescribeCostCheckResultsShrinkRequest) SetResourceId(v string) *DescribeCostCheckResultsShrinkRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -3130,6 +3190,7 @@ type DescribeCostOptimizationOverviewRequest struct {
 	// 11***********35
 	AssumeAliyunId     *int64   `json:"AssumeAliyunId,omitempty" xml:"AssumeAliyunId,omitempty"`
 	AssumeAliyunIdList []*int64 `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
+	CheckPlanId        *int64   `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// ***
@@ -3154,6 +3215,11 @@ func (s *DescribeCostOptimizationOverviewRequest) SetAssumeAliyunIdList(v []*int
 	return s
 }
 
+func (s *DescribeCostOptimizationOverviewRequest) SetCheckPlanId(v int64) *DescribeCostOptimizationOverviewRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *DescribeCostOptimizationOverviewRequest) SetToken(v string) *DescribeCostOptimizationOverviewRequest {
 	s.Token = &v
 	return s
@@ -3165,6 +3231,7 @@ type DescribeCostOptimizationOverviewShrinkRequest struct {
 	// 11***********35
 	AssumeAliyunId           *int64  `json:"AssumeAliyunId,omitempty" xml:"AssumeAliyunId,omitempty"`
 	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
+	CheckPlanId              *int64  `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// ***
@@ -3186,6 +3253,11 @@ func (s *DescribeCostOptimizationOverviewShrinkRequest) SetAssumeAliyunId(v int6
 
 func (s *DescribeCostOptimizationOverviewShrinkRequest) SetAssumeAliyunIdListShrink(v string) *DescribeCostOptimizationOverviewShrinkRequest {
 	s.AssumeAliyunIdListShrink = &v
+	return s
+}
+
+func (s *DescribeCostOptimizationOverviewShrinkRequest) SetCheckPlanId(v int64) *DescribeCostOptimizationOverviewShrinkRequest {
+	s.CheckPlanId = &v
 	return s
 }
 
@@ -3355,11 +3427,14 @@ type DescribeCostOptimizationOverviewResponseBodyData struct {
 	// example:
 	//
 	// 100
-	OptResourceNum *string `json:"OptResourceNum,omitempty" xml:"OptResourceNum,omitempty"`
+	OptResourceNum         *string `json:"OptResourceNum,omitempty" xml:"OptResourceNum,omitempty"`
+	ProcessedResourceCount *string `json:"ProcessedResourceCount,omitempty" xml:"ProcessedResourceCount,omitempty"`
+	ProcessedSaveAmount    *string `json:"ProcessedSaveAmount,omitempty" xml:"ProcessedSaveAmount,omitempty"`
 	// example:
 	//
 	// 95***135
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId                   *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	WaitProcessResourceCount *string `json:"WaitProcessResourceCount,omitempty" xml:"WaitProcessResourceCount,omitempty"`
 }
 
 func (s DescribeCostOptimizationOverviewResponseBodyData) String() string {
@@ -3400,8 +3475,23 @@ func (s *DescribeCostOptimizationOverviewResponseBodyData) SetOptResourceNum(v s
 	return s
 }
 
+func (s *DescribeCostOptimizationOverviewResponseBodyData) SetProcessedResourceCount(v string) *DescribeCostOptimizationOverviewResponseBodyData {
+	s.ProcessedResourceCount = &v
+	return s
+}
+
+func (s *DescribeCostOptimizationOverviewResponseBodyData) SetProcessedSaveAmount(v string) *DescribeCostOptimizationOverviewResponseBodyData {
+	s.ProcessedSaveAmount = &v
+	return s
+}
+
 func (s *DescribeCostOptimizationOverviewResponseBodyData) SetTaskId(v int64) *DescribeCostOptimizationOverviewResponseBodyData {
 	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeCostOptimizationOverviewResponseBodyData) SetWaitProcessResourceCount(v string) *DescribeCostOptimizationOverviewResponseBodyData {
+	s.WaitProcessResourceCount = &v
 	return s
 }
 
@@ -4520,6 +4610,7 @@ func (s *RefreshAdvisorCheckResponse) SetBody(v *RefreshAdvisorCheckResponseBody
 type RefreshAdvisorCostCheckRequest struct {
 	AssumeAliyunIdList []*int64  `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty" type:"Repeated"`
 	CheckIds           []*string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty" type:"Repeated"`
+	CheckPlanId        *int64    `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// ecs
@@ -4549,6 +4640,11 @@ func (s *RefreshAdvisorCostCheckRequest) SetCheckIds(v []*string) *RefreshAdviso
 	return s
 }
 
+func (s *RefreshAdvisorCostCheckRequest) SetCheckPlanId(v int64) *RefreshAdvisorCostCheckRequest {
+	s.CheckPlanId = &v
+	return s
+}
+
 func (s *RefreshAdvisorCostCheckRequest) SetProduct(v string) *RefreshAdvisorCostCheckRequest {
 	s.Product = &v
 	return s
@@ -4567,6 +4663,7 @@ func (s *RefreshAdvisorCostCheckRequest) SetResourceIds(v []*string) *RefreshAdv
 type RefreshAdvisorCostCheckShrinkRequest struct {
 	AssumeAliyunIdListShrink *string `json:"AssumeAliyunIdList,omitempty" xml:"AssumeAliyunIdList,omitempty"`
 	CheckIdsShrink           *string `json:"CheckIds,omitempty" xml:"CheckIds,omitempty"`
+	CheckPlanId              *int64  `json:"CheckPlanId,omitempty" xml:"CheckPlanId,omitempty"`
 	// example:
 	//
 	// ecs
@@ -4593,6 +4690,11 @@ func (s *RefreshAdvisorCostCheckShrinkRequest) SetAssumeAliyunIdListShrink(v str
 
 func (s *RefreshAdvisorCostCheckShrinkRequest) SetCheckIdsShrink(v string) *RefreshAdvisorCostCheckShrinkRequest {
 	s.CheckIdsShrink = &v
+	return s
+}
+
+func (s *RefreshAdvisorCostCheckShrinkRequest) SetCheckPlanId(v int64) *RefreshAdvisorCostCheckShrinkRequest {
+	s.CheckPlanId = &v
 	return s
 }
 
@@ -5146,24 +5248,13 @@ func (client *Client) DescribeAdvicesWithOptions(request *DescribeAdvicesRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5241,24 +5332,13 @@ func (client *Client) DescribeAdvicesFlatPageWithOptions(request *DescribeAdvice
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvicesFlatPageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvicesFlatPageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvicesFlatPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5340,24 +5420,13 @@ func (client *Client) DescribeAdvicesPageWithOptions(request *DescribeAdvicesPag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvicesPageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvicesPageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvicesPageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5411,24 +5480,13 @@ func (client *Client) DescribeAdvisorChecksWithOptions(request *DescribeAdvisorC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvisorChecksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvisorChecksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvisorChecksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeAdvisorChecksRequest
@@ -5524,24 +5582,13 @@ func (client *Client) DescribeAdvisorChecksFoPagesWithOptions(tmpReq *DescribeAd
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvisorChecksFoPagesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvisorChecksFoPagesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvisorChecksFoPagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5611,24 +5658,13 @@ func (client *Client) DescribeAdvisorResourcesWithOptions(request *DescribeAdvis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAdvisorResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAdvisorResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAdvisorResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeAdvisorResourcesRequest
@@ -5669,6 +5705,10 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		request.RegionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RegionIds, tea.String("RegionIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceGroupIdList)) {
+		request.ResourceGroupIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceGroupIdList, tea.String("ResourceGroupIdList"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceIds)) {
 		request.ResourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceIds, tea.String("ResourceIds"), tea.String("json"))
 	}
@@ -5694,6 +5734,10 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		query["CheckId"] = request.CheckId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CheckPlanId)) {
+		query["CheckPlanId"] = request.CheckPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
 		query["Language"] = request.Language
 	}
@@ -5708,6 +5752,14 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 
 	if !tea.BoolValue(util.IsUnset(request.RegionIdsShrink)) {
 		query["RegionIds"] = request.RegionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdListShrink)) {
+		query["ResourceGroupIdList"] = request.ResourceGroupIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
@@ -5748,24 +5800,13 @@ func (client *Client) DescribeCostCheckAdvicesWithOptions(tmpReq *DescribeCostCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCostCheckAdvicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCostCheckAdvicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCostCheckAdvicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5843,6 +5884,10 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 		query["CheckIds"] = request.CheckIdsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CheckPlanId)) {
+		query["CheckPlanId"] = request.CheckPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
 		query["GroupBy"] = request.GroupBy
 	}
@@ -5857,6 +5902,10 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdListShrink)) {
 		query["ResourceGroupIdList"] = request.ResourceGroupIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceIdsShrink)) {
@@ -5897,24 +5946,13 @@ func (client *Client) DescribeCostCheckResultsWithOptions(tmpReq *DescribeCostCh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCostCheckResultsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCostCheckResultsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCostCheckResultsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5964,6 +6002,10 @@ func (client *Client) DescribeCostOptimizationOverviewWithOptions(tmpReq *Descri
 		query["AssumeAliyunIdList"] = request.AssumeAliyunIdListShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CheckPlanId)) {
+		query["CheckPlanId"] = request.CheckPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
 		query["Token"] = request.Token
 	}
@@ -5982,24 +6024,13 @@ func (client *Client) DescribeCostOptimizationOverviewWithOptions(tmpReq *Descri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCostOptimizationOverviewResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCostOptimizationOverviewResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCostOptimizationOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6077,24 +6108,13 @@ func (client *Client) GetHistoryAdvicesWithOptions(request *GetHistoryAdvicesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetHistoryAdvicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetHistoryAdvicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetHistoryAdvicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetHistoryAdvicesRequest
@@ -6152,24 +6172,13 @@ func (client *Client) GetInspectProgressWithOptions(request *GetInspectProgressR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInspectProgressResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInspectProgressResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInspectProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6223,24 +6232,13 @@ func (client *Client) GetProductListWithOptions(request *GetProductListRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetProductListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetProductListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetProductListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6290,24 +6288,13 @@ func (client *Client) GetTaskStatusByIdWithOptions(request *GetTaskStatusByIdReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTaskStatusByIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTaskStatusByIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTaskStatusByIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6397,24 +6384,13 @@ func (client *Client) RefreshAdvisorCheckWithOptions(tmpReq *RefreshAdvisorCheck
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshAdvisorCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshAdvisorCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshAdvisorCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6472,6 +6448,10 @@ func (client *Client) RefreshAdvisorCostCheckWithOptions(tmpReq *RefreshAdvisorC
 		query["CheckIds"] = request.CheckIdsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CheckPlanId)) {
+		query["CheckPlanId"] = request.CheckPlanId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Product)) {
 		query["Product"] = request.Product
 	}
@@ -6498,24 +6478,13 @@ func (client *Client) RefreshAdvisorCostCheckWithOptions(tmpReq *RefreshAdvisorC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshAdvisorCostCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshAdvisorCostCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshAdvisorCostCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -6536,6 +6505,10 @@ func (client *Client) RefreshAdvisorCostCheck(request *RefreshAdvisorCostCheckRe
 	return _result, _err
 }
 
+// Summary:
+//
+// # RefreshAdvisorResource
+//
 // @param request - RefreshAdvisorResourceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6569,26 +6542,19 @@ func (client *Client) RefreshAdvisorResourceWithOptions(request *RefreshAdvisorR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RefreshAdvisorResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RefreshAdvisorResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RefreshAdvisorResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// # RefreshAdvisorResource
+//
 // @param request - RefreshAdvisorResourceRequest
 //
 // @return RefreshAdvisorResourceResponse
@@ -6670,24 +6636,13 @@ func (client *Client) ReportBizAlertInfoWithOptions(tmpReq *ReportBizAlertInfoRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReportBizAlertInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReportBizAlertInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReportBizAlertInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
