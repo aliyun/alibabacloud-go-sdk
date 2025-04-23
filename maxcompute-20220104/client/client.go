@@ -7146,6 +7146,8 @@ func (s *GetProjectResponse) SetBody(v *GetProjectResponseBody) *GetProjectRespo
 }
 
 type GetQuotaRequest struct {
+	// Deprecated
+	//
 	// The trusted AccessKey pairs.
 	//
 	// example:
@@ -7158,12 +7160,16 @@ type GetQuotaRequest struct {
 	//
 	// false
 	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
+	// Deprecated
+	//
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// Deprecated
+	//
 	// The tenant ID.
 	//
 	// example:
@@ -7884,7 +7890,7 @@ type GetQuotaResponseBodyDataSubQuotaInfoList struct {
 	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
 	// The description of the quota.
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Parameter *GetQuotaResponseBodyDataSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
 	// The ID of the parent resource.
 	//
 	// example:
@@ -7976,7 +7982,7 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetNickName(v string) *GetQuo
 	return s
 }
 
-func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetParameter(v map[string]interface{}) *GetQuotaResponseBodyDataSubQuotaInfoList {
+func (s *GetQuotaResponseBodyDataSubQuotaInfoList) SetParameter(v *GetQuotaResponseBodyDataSubQuotaInfoListParameter) *GetQuotaResponseBodyDataSubQuotaInfoList {
 	s.Parameter = v
 	return s
 }
@@ -8071,6 +8077,61 @@ func (s *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy) SetOdpsSpecCode(
 
 func (s *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy) SetOrderId(v string) *GetQuotaResponseBodyDataSubQuotaInfoListBillingPolicy {
 	s.OrderId = &v
+	return s
+}
+
+type GetQuotaResponseBodyDataSubQuotaInfoListParameter struct {
+	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// This parameter is required.
+	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	// This parameter is required.
+	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+}
+
+func (s GetQuotaResponseBodyDataSubQuotaInfoListParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaResponseBodyDataSubQuotaInfoListParameter) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetElasticReservedCU(v int64) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.ElasticReservedCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetEnablePriority(v bool) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.EnablePriority = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetForceReservedMin(v bool) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.ForceReservedMin = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetMaxCU(v int64) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.MaxCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetMinCU(v int64) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.MinCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetSchedulerType(v string) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodyDataSubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *GetQuotaResponseBodyDataSubQuotaInfoListParameter {
+	s.SingleJobCULimit = &v
 	return s
 }
 
@@ -8382,7 +8443,7 @@ type GetQuotaResponseBodySubQuotaInfoList struct {
 	// "schedulerType":"Fair",
 	//
 	// }
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Parameter *GetQuotaResponseBodySubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
 	// The ID of the parent resource.
 	//
 	// example:
@@ -8474,7 +8535,7 @@ func (s *GetQuotaResponseBodySubQuotaInfoList) SetNickName(v string) *GetQuotaRe
 	return s
 }
 
-func (s *GetQuotaResponseBodySubQuotaInfoList) SetParameter(v map[string]interface{}) *GetQuotaResponseBodySubQuotaInfoList {
+func (s *GetQuotaResponseBodySubQuotaInfoList) SetParameter(v *GetQuotaResponseBodySubQuotaInfoListParameter) *GetQuotaResponseBodySubQuotaInfoList {
 	s.Parameter = v
 	return s
 }
@@ -8569,6 +8630,61 @@ func (s *GetQuotaResponseBodySubQuotaInfoListBillingPolicy) SetOdpsSpecCode(v st
 
 func (s *GetQuotaResponseBodySubQuotaInfoListBillingPolicy) SetOrderId(v string) *GetQuotaResponseBodySubQuotaInfoListBillingPolicy {
 	s.OrderId = &v
+	return s
+}
+
+type GetQuotaResponseBodySubQuotaInfoListParameter struct {
+	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// This parameter is required.
+	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	// This parameter is required.
+	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+}
+
+func (s GetQuotaResponseBodySubQuotaInfoListParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQuotaResponseBodySubQuotaInfoListParameter) GoString() string {
+	return s.String()
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetElasticReservedCU(v int64) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.ElasticReservedCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetEnablePriority(v bool) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.EnablePriority = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetForceReservedMin(v bool) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.ForceReservedMin = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetMaxCU(v int64) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.MaxCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetMinCU(v int64) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.MinCU = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetSchedulerType(v string) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *GetQuotaResponseBodySubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *GetQuotaResponseBodySubQuotaInfoListParameter {
+	s.SingleJobCULimit = &v
 	return s
 }
 
@@ -19281,12 +19397,16 @@ type ListQuotasRequest struct {
 	//
 	// 100
 	MaxItem *int64 `json:"maxItem,omitempty" xml:"maxItem,omitempty"`
+	// Deprecated
+	//
 	// The service ID.
 	//
 	// example:
 	//
 	// ODPS
 	ProductId *string `json:"productId,omitempty" xml:"productId,omitempty"`
+	// Deprecated
+	//
 	// The ID of the region.
 	//
 	// example:
@@ -19299,6 +19419,8 @@ type ListQuotasRequest struct {
 	//
 	// {"tag":"this_is_tag_demo"}
 	SaleTags *string `json:"saleTags,omitempty" xml:"saleTags,omitempty"`
+	// Deprecated
+	//
 	// The ID of the tenant.
 	//
 	// example:
@@ -19939,7 +20061,7 @@ type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList struct {
 	// "schedulerType":"Fair",
 	//
 	// }
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Parameter *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
 	// The ID of the parent resource.
 	//
 	// example:
@@ -20031,7 +20153,7 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) SetNickName(v 
 	return s
 }
 
-func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) SetParameter(v map[string]interface{}) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList {
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList) SetParameter(v *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoList {
 	s.Parameter = v
 	return s
 }
@@ -20126,6 +20248,61 @@ func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy) S
 
 func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy) SetOrderId(v string) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListBillingPolicy {
 	s.OrderId = &v
+	return s
+}
+
+type ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter struct {
+	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// This parameter is required.
+	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	// This parameter is required.
+	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+}
+
+func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetElasticReservedCU(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.ElasticReservedCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetEnablePriority(v bool) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.EnablePriority = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetForceReservedMin(v bool) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.ForceReservedMin = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMaxCU(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.MaxCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetMinCU(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.MinCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetSchedulerType(v string) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *ListQuotasResponseBodyDataQuotaInfoListSubQuotaInfoListParameter {
+	s.SingleJobCULimit = &v
 	return s
 }
 
@@ -20726,7 +20903,7 @@ type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList struct {
 	// "schedulerType":"Fair",
 	//
 	// }
-	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	Parameter *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
 	// The ID of the parent resource.
 	//
 	// example:
@@ -20818,7 +20995,7 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) SetNickName(v stri
 	return s
 }
 
-func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) SetParameter(v map[string]interface{}) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList {
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList) SetParameter(v *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoList {
 	s.Parameter = v
 	return s
 }
@@ -20913,6 +21090,61 @@ func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy) SetOd
 
 func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy) SetOrderId(v string) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListBillingPolicy {
 	s.OrderId = &v
+	return s
+}
+
+type ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter struct {
+	ElasticReservedCU *int64 `json:"elasticReservedCU,omitempty" xml:"elasticReservedCU,omitempty"`
+	EnablePriority    *bool  `json:"enablePriority,omitempty" xml:"enablePriority,omitempty"`
+	ForceReservedMin  *bool  `json:"forceReservedMin,omitempty" xml:"forceReservedMin,omitempty"`
+	// This parameter is required.
+	MaxCU *int64 `json:"maxCU,omitempty" xml:"maxCU,omitempty"`
+	// This parameter is required.
+	MinCU            *int64  `json:"minCU,omitempty" xml:"minCU,omitempty"`
+	SchedulerType    *string `json:"schedulerType,omitempty" xml:"schedulerType,omitempty"`
+	SingleJobCULimit *int64  `json:"singleJobCULimit,omitempty" xml:"singleJobCULimit,omitempty"`
+}
+
+func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) GoString() string {
+	return s.String()
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetElasticReservedCU(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.ElasticReservedCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetEnablePriority(v bool) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.EnablePriority = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetForceReservedMin(v bool) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.ForceReservedMin = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMaxCU(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.MaxCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetMinCU(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.MinCU = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetSchedulerType(v string) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter) SetSingleJobCULimit(v int64) *ListQuotasResponseBodyQuotaInfoListSubQuotaInfoListParameter {
+	s.SingleJobCULimit = &v
 	return s
 }
 
@@ -22595,7 +22827,7 @@ type ListStoragePartitionsInfoRequest struct {
 	//
 	// example:
 	//
-	// 20241201
+	// ds=20241201
 	PartitionPrefix *string `json:"partitionPrefix,omitempty" xml:"partitionPrefix,omitempty"`
 	// The region ID.
 	//
@@ -22714,7 +22946,7 @@ type ListStoragePartitionsInfoShrinkRequest struct {
 	//
 	// example:
 	//
-	// 20241201
+	// ds=20241201
 	PartitionPrefix *string `json:"partitionPrefix,omitempty" xml:"partitionPrefix,omitempty"`
 	// The region ID.
 	//
@@ -24601,18 +24833,26 @@ func (s *ListUsersByRoleResponse) SetBody(v *ListUsersByRoleResponseBody) *ListU
 }
 
 type QueryQuotaRequest struct {
+	// The trusted AccessKey pairs.
+	//
 	// example:
 	//
 	// null
 	AkProven *string `json:"AkProven,omitempty" xml:"AkProven,omitempty"`
+	// Specifies whether to include submodules. Valid values: true and false. -true: The request includes submodules. -false (default): The request does not include submodules.
+	//
 	// example:
 	//
 	// false
 	Mock *bool `json:"mock,omitempty" xml:"mock,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-chengdu
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 483212237127906
@@ -24648,16 +24888,28 @@ func (s *QueryQuotaRequest) SetTenantId(v string) *QueryQuotaRequest {
 }
 
 type QueryQuotaResponseBody struct {
+	// The data returned.
 	Data *QueryQuotaResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// The error code.
+	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	ErrorMsg  *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The error message.
+	//
+	// example:
+	//
+	// Exception information
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 0bc1eeed16675342848904412e08dd
@@ -24698,37 +24950,52 @@ func (s *QueryQuotaResponseBody) SetRequestId(v string) *QueryQuotaResponseBody 
 }
 
 type QueryQuotaResponseBodyData struct {
+	// The order information.
 	BillingPolicy *QueryQuotaResponseBodyDataBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
+	// The ID of the Managed Service for Prometheus cluster.
+	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	//
 	// example:
 	//
 	// 1714356241163
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the quota plan.
+	//
 	// example:
 	//
 	// 1248953767546358
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The group name.
+	//
 	// example:
 	//
 	// abc
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// quota ID
+	// The quota ID.
 	//
 	// example:
 	//
 	// 2523
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The quota name.
+	//
 	// example:
 	//
 	// quota_a
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The quota alias.
+	//
 	// example:
 	//
 	// quota_nickname
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The quota description.
+	//
 	// example:
 	//
 	// {"minCU":10,
@@ -24741,33 +25008,50 @@ type QueryQuotaResponseBodyData struct {
 	//
 	// }
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The parent resource ID.
+	//
 	// example:
 	//
 	// null
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string                                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SaleTag      *QueryQuotaResponseBodyDataSaleTag      `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The identifiers of MaxCompute quota objects. The identifiers are the same as those in the Alibaba Cloud sales bill. This parameter is used for tags.
+	SaleTag *QueryQuotaResponseBodyDataSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
 	ScheduleInfo *QueryQuotaResponseBodyDataScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	//
 	// example:
 	//
 	// ON
-	Status           *string                                       `json:"status,omitempty" xml:"status,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The level-2 quotas.
 	SubQuotaInfoList []*QueryQuotaResponseBodyDataSubQuotaInfoList `json:"subQuotaInfoList,omitempty" xml:"subQuotaInfoList,omitempty" type:"Repeated"`
+	// The resource tag of a quota.
+	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// This parameter corresponds to the resourceSystemType field.
+	//
 	// example:
 	//
 	// FUXI_OFFLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -24878,18 +25162,30 @@ func (s *QueryQuotaResponseBodyData) SetVersion(v string) *QueryQuotaResponseBod
 }
 
 type QueryQuotaResponseBodyDataBillingPolicy struct {
+	// The billing method. Valid values:
+	//
+	// 	- subscription: the subscription quota.
+	//
+	// 	- payasyougo: the pay-as-you-go quota.
+	//
 	// example:
 	//
 	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
+	// In MaxCompute, instanceId and orderId are considered the same.
+	//
 	// example:
 	//
 	// 880c0d0d-5d79-4217-b683-8e8bdd2a2523
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The order specifications.
+	//
 	// example:
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 880c0d0d-5d79-4217-b683-8e8bdd2a2523
@@ -24925,7 +25221,10 @@ func (s *QueryQuotaResponseBodyDataBillingPolicy) SetOrderId(v string) *QueryQuo
 }
 
 type QueryQuotaResponseBodyDataSaleTag struct {
+	// The identifier of a MaxCompute quota object. This identifier exists in the Alibaba Cloud sales bill. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The object type. Valid values: quota and project.
+	//
 	// example:
 	//
 	// project
@@ -24951,34 +25250,50 @@ func (s *QueryQuotaResponseBodyDataSaleTag) SetResourceType(v string) *QueryQuot
 }
 
 type QueryQuotaResponseBodyDataScheduleInfo struct {
+	// The current quota plan that has taken effect based on the scheduling plan.
+	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the plan specified by currPlan is scheduled.
+	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The quota plan that will take effect based on the scheduling plan.
+	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the plan specified by nextPlan is scheduled.
+	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan specified by this parameter is triggered and the plan is different from the plan specified by currPlan, this parameter is not empty.
+	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan specified by oncePlan is scheduled.
+	//
 	// example:
 	//
 	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The operator name.
+	//
 	// example:
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
+	// The time zone of the project.
+	//
 	// example:
 	//
 	// UTC+8
@@ -25034,65 +25349,98 @@ func (s *QueryQuotaResponseBodyDataScheduleInfo) SetTimezone(v string) *QueryQuo
 }
 
 type QueryQuotaResponseBodyDataSubQuotaInfoList struct {
+	// The order information.
 	BillingPolicy *QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy `json:"billingPolicy,omitempty" xml:"billingPolicy,omitempty" type:"Struct"`
+	// The cluster ID.
+	//
 	// example:
 	//
 	// AT-120N
 	Cluster *string `json:"cluster,omitempty" xml:"cluster,omitempty"`
+	// The time when the resource was created.
+	//
 	// example:
 	//
 	// 1688653978768
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// The ID of the Alibaba Cloud account that is used to create the quota plan.
+	//
 	// example:
 	//
 	// 672863518
 	CreatorId *string `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// The role group name.
+	//
 	// example:
 	//
 	// abc
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// The ID of the level-2 quota.
+	//
 	// example:
 	//
 	// 1000048
 	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// The name of the level-2 quota.
+	//
 	// example:
 	//
 	// subquotaA
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The nickname of the level-2 quota.
+	//
 	// example:
 	//
 	// subquotaA
 	NickName *string `json:"nickName,omitempty" xml:"nickName,omitempty"`
+	// The quota description.
+	//
 	// example:
 	//
 	// {\\"maxCU\\": 10, \\"minCU\\": 10, \\"adhocCU\\": 0, \\"schedulerType\\": \\"Fifo\\"}
 	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// The parent resource ID.
+	//
 	// example:
 	//
 	// 0
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
-	RegionId     *string                                                 `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	SaleTag      *QueryQuotaResponseBodyDataSubQuotaInfoListSaleTag      `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	// The identifiers of MaxCompute quota objects. The identifiers are the same as those in the Alibaba Cloud sales bill. This parameter is used for tags.
+	SaleTag *QueryQuotaResponseBodyDataSubQuotaInfoListSaleTag `json:"saleTag,omitempty" xml:"saleTag,omitempty" type:"Struct"`
+	// The information about the scheduling plan.
 	ScheduleInfo *QueryQuotaResponseBodyDataSubQuotaInfoListScheduleInfo `json:"scheduleInfo,omitempty" xml:"scheduleInfo,omitempty" type:"Struct"`
+	// The status of the resource.
+	//
 	// example:
 	//
 	// ON
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The resource tag of a quota.
+	//
 	// example:
 	//
 	// abc
 	Tag *string `json:"tag,omitempty" xml:"tag,omitempty"`
+	// The tenant ID.
+	//
 	// example:
 	//
 	// 478403690625249
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+	// This parameter corresponds to the resourceSystemType field.
+	//
 	// example:
 	//
 	// FUXI_ONLINE
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The version number.
+	//
 	// example:
 	//
 	// 1
@@ -25198,18 +25546,30 @@ func (s *QueryQuotaResponseBodyDataSubQuotaInfoList) SetVersion(v string) *Query
 }
 
 type QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy struct {
+	// The billing method. Valid values:
+	//
+	// 	- subscription: the subscription quota.
+	//
+	// 	- payasyougo: the pay-as-you-go quota.
+	//
 	// example:
 	//
 	// subscription
 	BillingMethod *string `json:"billingMethod,omitempty" xml:"billingMethod,omitempty"`
+	// In MaxCompute, instanceId and orderId are considered the same.
+	//
 	// example:
 	//
 	// 880c0d0d-5d79-4217-b683-8e8bdd2a2523
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// The order specifications.
+	//
 	// example:
 	//
 	// OdpsStandard
 	OdpsSpecCode *string `json:"odpsSpecCode,omitempty" xml:"odpsSpecCode,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 880c0d0d-5d79-4217-b683-8e8bdd2a2523
@@ -25245,7 +25605,10 @@ func (s *QueryQuotaResponseBodyDataSubQuotaInfoListBillingPolicy) SetOrderId(v s
 }
 
 type QueryQuotaResponseBodyDataSubQuotaInfoListSaleTag struct {
+	// The identifier of a MaxCompute quota object. This identifier exists in the Alibaba Cloud sales bill. You can use this identifier to associate the cost of a quota object with a tag.
 	ResourceIds []*string `json:"resourceIds,omitempty" xml:"resourceIds,omitempty" type:"Repeated"`
+	// The object type. Valid values: quota and project.
+	//
 	// example:
 	//
 	// "quota"
@@ -25271,34 +25634,50 @@ func (s *QueryQuotaResponseBodyDataSubQuotaInfoListSaleTag) SetResourceType(v st
 }
 
 type QueryQuotaResponseBodyDataSubQuotaInfoListScheduleInfo struct {
+	// The current quota plan that has taken effect based on the scheduling plan.
+	//
 	// example:
 	//
 	// planA
 	CurrPlan *string `json:"currPlan,omitempty" xml:"currPlan,omitempty"`
+	// The time when the plan specified by currPlan is scheduled.
+	//
 	// example:
 	//
 	// 0800
 	CurrTime *string `json:"currTime,omitempty" xml:"currTime,omitempty"`
+	// The quota plan that will take effect based on the scheduling plan.
+	//
 	// example:
 	//
 	// planB
 	NextPlan *string `json:"nextPlan,omitempty" xml:"nextPlan,omitempty"`
+	// The time when the plan specified by nextPlan is scheduled.
+	//
 	// example:
 	//
 	// 1700
 	NextTime *string `json:"nextTime,omitempty" xml:"nextTime,omitempty"`
+	// The quota plan that immediately takes effect. If the quota plan specified by this parameter is triggered and the plan is different from the plan specified by currPlan, this parameter is not empty.
+	//
 	// example:
 	//
 	// planC
 	OncePlan *string `json:"oncePlan,omitempty" xml:"oncePlan,omitempty"`
+	// The time when the quota plan specified by oncePlan is scheduled.
+	//
 	// example:
 	//
 	// 1500
 	OnceTime *string `json:"onceTime,omitempty" xml:"onceTime,omitempty"`
+	// The operator name.
+	//
 	// example:
 	//
 	// userA
 	OperatorName *string `json:"operatorName,omitempty" xml:"operatorName,omitempty"`
+	// The time zone of the project.
+	//
 	// example:
 	//
 	// UTC+8
@@ -25378,6 +25757,478 @@ func (s *QueryQuotaResponse) SetStatusCode(v int32) *QueryQuotaResponse {
 }
 
 func (s *QueryQuotaResponse) SetBody(v *QueryQuotaResponseBody) *QueryQuotaResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTunnelMetricRequest struct {
+	CodeList      []*int32  `json:"codeList,omitempty" xml:"codeList,omitempty" type:"Repeated"`
+	GroupList     []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
+	OperationList []*string `json:"operationList,omitempty" xml:"operationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// project_a
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// default
+	QuotaNickname *string   `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	TableList     []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TopN *int32 `json:"topN,omitempty" xml:"topN,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1735536322
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1735534322
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	// example:
+	//
+	// max
+	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
+}
+
+func (s QueryTunnelMetricRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricRequest) SetCodeList(v []*int32) *QueryTunnelMetricRequest {
+	s.CodeList = v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetGroupList(v []*string) *QueryTunnelMetricRequest {
+	s.GroupList = v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetOperationList(v []*string) *QueryTunnelMetricRequest {
+	s.OperationList = v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetProject(v string) *QueryTunnelMetricRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetQuotaNickname(v string) *QueryTunnelMetricRequest {
+	s.QuotaNickname = &v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetTableList(v []*string) *QueryTunnelMetricRequest {
+	s.TableList = v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetTopN(v int32) *QueryTunnelMetricRequest {
+	s.TopN = &v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetEndTime(v int64) *QueryTunnelMetricRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetStartTime(v int64) *QueryTunnelMetricRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryTunnelMetricRequest) SetStrategy(v string) *QueryTunnelMetricRequest {
+	s.Strategy = &v
+	return s
+}
+
+type QueryTunnelMetricResponseBody struct {
+	Data *QueryTunnelMetricResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// 0A3B1E82006A23A918C70905BF08AEC7
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 0bc3b4b016674434996033675e71ee
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s QueryTunnelMetricResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricResponseBody) SetData(v *QueryTunnelMetricResponseBodyData) *QueryTunnelMetricResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBody) SetErrorCode(v string) *QueryTunnelMetricResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBody) SetErrorMsg(v string) *QueryTunnelMetricResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBody) SetHttpCode(v int32) *QueryTunnelMetricResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBody) SetRequestId(v string) *QueryTunnelMetricResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryTunnelMetricResponseBodyData struct {
+	// example:
+	//
+	// tunnel
+	Category *string                                     `json:"category,omitempty" xml:"category,omitempty"`
+	Metrics  []*QueryTunnelMetricResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// slot_usage
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 60
+	Period *int64 `json:"period,omitempty" xml:"period,omitempty"`
+}
+
+func (s QueryTunnelMetricResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricResponseBodyData) SetCategory(v string) *QueryTunnelMetricResponseBodyData {
+	s.Category = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBodyData) SetMetrics(v []*QueryTunnelMetricResponseBodyDataMetrics) *QueryTunnelMetricResponseBodyData {
+	s.Metrics = v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBodyData) SetName(v string) *QueryTunnelMetricResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBodyData) SetPeriod(v int64) *QueryTunnelMetricResponseBodyData {
+	s.Period = &v
+	return s
+}
+
+type QueryTunnelMetricResponseBodyDataMetrics struct {
+	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
+	Values [][]*float64       `json:"values,omitempty" xml:"values,omitempty" type:"Repeated"`
+}
+
+func (s QueryTunnelMetricResponseBodyDataMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricResponseBodyDataMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricResponseBodyDataMetrics) SetMetric(v map[string]*string) *QueryTunnelMetricResponseBodyDataMetrics {
+	s.Metric = v
+	return s
+}
+
+func (s *QueryTunnelMetricResponseBodyDataMetrics) SetValues(v [][]*float64) *QueryTunnelMetricResponseBodyDataMetrics {
+	s.Values = v
+	return s
+}
+
+type QueryTunnelMetricResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTunnelMetricResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTunnelMetricResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricResponse) SetHeaders(v map[string]*string) *QueryTunnelMetricResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTunnelMetricResponse) SetStatusCode(v int32) *QueryTunnelMetricResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricResponse) SetBody(v *QueryTunnelMetricResponseBody) *QueryTunnelMetricResponse {
+	s.Body = v
+	return s
+}
+
+type QueryTunnelMetricDetailRequest struct {
+	// example:
+	//
+	// false
+	AscOrder  *bool     `json:"ascOrder,omitempty" xml:"ascOrder,omitempty"`
+	GroupList []*string `json:"groupList,omitempty" xml:"groupList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	Limit         *int64    `json:"limit,omitempty" xml:"limit,omitempty"`
+	OperationList []*string `json:"operationList,omitempty" xml:"operationList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// maxValue
+	OrderColumn *string `json:"orderColumn,omitempty" xml:"orderColumn,omitempty"`
+	// example:
+	//
+	// project_a
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+	// example:
+	//
+	// quota_A
+	QuotaNickname *string   `json:"quotaNickname,omitempty" xml:"quotaNickname,omitempty"`
+	TableList     []*string `json:"tableList,omitempty" xml:"tableList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1735536322
+	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1735534322
+	StartTime *int64 `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s QueryTunnelMetricDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetAscOrder(v bool) *QueryTunnelMetricDetailRequest {
+	s.AscOrder = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetGroupList(v []*string) *QueryTunnelMetricDetailRequest {
+	s.GroupList = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetLimit(v int64) *QueryTunnelMetricDetailRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetOperationList(v []*string) *QueryTunnelMetricDetailRequest {
+	s.OperationList = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetOrderColumn(v string) *QueryTunnelMetricDetailRequest {
+	s.OrderColumn = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetProject(v string) *QueryTunnelMetricDetailRequest {
+	s.Project = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetQuotaNickname(v string) *QueryTunnelMetricDetailRequest {
+	s.QuotaNickname = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetTableList(v []*string) *QueryTunnelMetricDetailRequest {
+	s.TableList = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetEndTime(v int64) *QueryTunnelMetricDetailRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailRequest) SetStartTime(v int64) *QueryTunnelMetricDetailRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryTunnelMetricDetailResponseBody struct {
+	Data *QueryTunnelMetricDetailResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OBJECT_NOT_EXIST
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// plan \\"***\\" does not exist
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpCode *int32 `json:"httpCode,omitempty" xml:"httpCode,omitempty"`
+	// example:
+	//
+	// 0a06dd4516687375802853481ec9fd
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s QueryTunnelMetricDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricDetailResponseBody) SetData(v *QueryTunnelMetricDetailResponseBodyData) *QueryTunnelMetricDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBody) SetErrorCode(v string) *QueryTunnelMetricDetailResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBody) SetErrorMsg(v string) *QueryTunnelMetricDetailResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBody) SetHttpCode(v int32) *QueryTunnelMetricDetailResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBody) SetRequestId(v string) *QueryTunnelMetricDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryTunnelMetricDetailResponseBodyData struct {
+	Metrics []*QueryTunnelMetricDetailResponseBodyDataMetrics `json:"metrics,omitempty" xml:"metrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// tableA
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s QueryTunnelMetricDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricDetailResponseBodyData) SetMetrics(v []*QueryTunnelMetricDetailResponseBodyDataMetrics) *QueryTunnelMetricDetailResponseBodyData {
+	s.Metrics = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBodyData) SetName(v string) *QueryTunnelMetricDetailResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+type QueryTunnelMetricDetailResponseBodyDataMetrics struct {
+	Metric map[string]*string `json:"metric,omitempty" xml:"metric,omitempty"`
+	// example:
+	//
+	// "avgValue":"11.5"
+	Value map[string]interface{} `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s QueryTunnelMetricDetailResponseBodyDataMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricDetailResponseBodyDataMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricDetailResponseBodyDataMetrics) SetMetric(v map[string]*string) *QueryTunnelMetricDetailResponseBodyDataMetrics {
+	s.Metric = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponseBodyDataMetrics) SetValue(v map[string]interface{}) *QueryTunnelMetricDetailResponseBodyDataMetrics {
+	s.Value = v
+	return s
+}
+
+type QueryTunnelMetricDetailResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryTunnelMetricDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryTunnelMetricDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryTunnelMetricDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryTunnelMetricDetailResponse) SetHeaders(v map[string]*string) *QueryTunnelMetricDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponse) SetStatusCode(v int32) *QueryTunnelMetricDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryTunnelMetricDetailResponse) SetBody(v *QueryTunnelMetricDetailResponseBody) *QueryTunnelMetricDetailResponse {
 	s.Body = v
 	return s
 }
@@ -27725,24 +28576,13 @@ func (client *Client) ApplyComputeQuotaPlanWithOptions(nickname *string, planNam
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ApplyComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ApplyComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ApplyComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27814,24 +28654,13 @@ func (client *Client) CreateComputeQuotaPlanWithOptions(nickname *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -27903,24 +28732,13 @@ func (client *Client) CreateMmsDataSourceWithOptions(request *CreateMmsDataSourc
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMmsDataSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMmsDataSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMmsDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateMmsDataSourceRequest
@@ -27962,24 +28780,13 @@ func (client *Client) CreateMmsFetchMetadataJobWithOptions(sourceId *string, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMmsFetchMetadataJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMmsFetchMetadataJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMmsFetchMetadataJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28111,24 +28918,13 @@ func (client *Client) CreateMmsJobWithOptions(sourceId *string, request *CreateM
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28187,24 +28983,13 @@ func (client *Client) CreatePackageWithOptions(projectName *string, request *Cre
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreatePackageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreatePackageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreatePackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28257,24 +29042,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28337,24 +29111,13 @@ func (client *Client) CreateQuotaPlanWithOptions(nickname *string, request *Crea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28407,24 +29170,13 @@ func (client *Client) CreateRoleWithOptions(projectName *string, request *Create
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28470,24 +29222,13 @@ func (client *Client) DeleteComputeQuotaPlanWithOptions(nickname *string, planNa
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28531,24 +29272,13 @@ func (client *Client) DeleteMmsDataSourceWithOptions(sourceId *string, headers m
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteMmsDataSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteMmsDataSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteMmsDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28588,24 +29318,13 @@ func (client *Client) DeleteMmsJobWithOptions(sourceId *string, jobId *string, h
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return DeleteMmsJobResponse
@@ -28661,24 +29380,13 @@ func (client *Client) DeleteQuotaPlanWithOptions(nickname *string, planName *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28724,24 +29432,13 @@ func (client *Client) GetComputeEffectivePlanWithOptions(nickname *string, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetComputeEffectivePlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetComputeEffectivePlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetComputeEffectivePlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28785,24 +29482,13 @@ func (client *Client) GetComputeQuotaPlanWithOptions(nickname *string, planName 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28858,24 +29544,13 @@ func (client *Client) GetComputeQuotaScheduleWithOptions(nickname *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetComputeQuotaScheduleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetComputeQuotaScheduleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetComputeQuotaScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -28921,24 +29596,13 @@ func (client *Client) GetJobInfoWithOptions(instanceId *string, headers map[stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetJobInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetJobInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29020,24 +29684,13 @@ func (client *Client) GetJobResourceUsageWithOptions(tmpReq *GetJobResourceUsage
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetJobResourceUsageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetJobResourceUsageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetJobResourceUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29079,24 +29732,13 @@ func (client *Client) GetMmsAsyncTaskWithOptions(sourceId *string, asyncTaskId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsAsyncTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsAsyncTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsAsyncTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsAsyncTaskResponse
@@ -29148,24 +29790,13 @@ func (client *Client) GetMmsDataSourceWithOptions(sourceId *string, request *Get
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsDataSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsDataSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetMmsDataSourceRequest
@@ -29203,24 +29834,13 @@ func (client *Client) GetMmsDbWithOptions(sourceId *string, dbId *string, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsDbResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsDbResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsDbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsDbResponse
@@ -29256,24 +29876,13 @@ func (client *Client) GetMmsFetchMetadataJobWithOptions(sourceId *string, scanId
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsFetchMetadataJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsFetchMetadataJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsFetchMetadataJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsFetchMetadataJobResponse
@@ -29309,24 +29918,13 @@ func (client *Client) GetMmsJobWithOptions(sourceId *string, jobId *string, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsJobResponse
@@ -29362,24 +29960,13 @@ func (client *Client) GetMmsPartitionWithOptions(sourceId *string, partitionId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsPartitionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsPartitionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsPartitionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsPartitionResponse
@@ -29415,24 +30002,13 @@ func (client *Client) GetMmsTableWithOptions(sourceId *string, tableId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsTableResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsTableResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsTableResponse
@@ -29468,24 +30044,13 @@ func (client *Client) GetMmsTaskWithOptions(sourceId *string, taskId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMmsTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMmsTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMmsTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetMmsTaskResponse
@@ -29537,24 +30102,13 @@ func (client *Client) GetPackageWithOptions(projectName *string, packageName *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPackageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPackageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29612,24 +30166,13 @@ func (client *Client) GetProjectWithOptions(projectName *string, request *GetPro
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29699,24 +30242,13 @@ func (client *Client) GetQuotaWithOptions(nickname *string, request *GetQuotaReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29778,24 +30310,13 @@ func (client *Client) GetQuotaPlanWithOptions(nickname *string, planName *string
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29861,24 +30382,13 @@ func (client *Client) GetQuotaScheduleWithOptions(nickname *string, request *Get
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetQuotaScheduleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetQuotaScheduleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetQuotaScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -29978,24 +30488,13 @@ func (client *Client) GetQuotaUsageWithOptions(nickname *string, tmpReq *GetQuot
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetQuotaUsageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetQuotaUsageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetQuotaUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30041,24 +30540,13 @@ func (client *Client) GetRoleAclWithOptions(projectName *string, roleName *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRoleAclResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRoleAclResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRoleAclResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30118,24 +30606,13 @@ func (client *Client) GetRoleAclOnObjectWithOptions(projectName *string, roleNam
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRoleAclOnObjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRoleAclOnObjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRoleAclOnObjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30181,24 +30658,13 @@ func (client *Client) GetRolePolicyWithOptions(projectName *string, roleName *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRolePolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRolePolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRolePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30284,24 +30750,13 @@ func (client *Client) GetRunningJobsWithOptions(tmpReq *GetRunningJobsRequest, h
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRunningJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRunningJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRunningJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30363,24 +30818,13 @@ func (client *Client) GetTableInfoWithOptions(projectName *string, tableName *st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTableInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTableInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTableInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30426,24 +30870,13 @@ func (client *Client) GetTrustedProjectsWithOptions(projectName *string, headers
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTrustedProjectsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTrustedProjectsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTrustedProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30504,24 +30937,13 @@ func (client *Client) KillJobsWithOptions(request *KillJobsRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &KillJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &KillJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &KillJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30619,24 +31041,13 @@ func (client *Client) ListComputeMetricsByInstanceWithOptions(request *ListCompu
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListComputeMetricsByInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListComputeMetricsByInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListComputeMetricsByInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30682,24 +31093,13 @@ func (client *Client) ListComputeQuotaPlanWithOptions(nickname *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30767,24 +31167,13 @@ func (client *Client) ListFunctionsWithOptions(projectName *string, request *Lis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFunctionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFunctionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFunctionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -30920,24 +31309,13 @@ func (client *Client) ListJobInfosWithOptions(request *ListJobInfosRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobInfosResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobInfosResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31025,24 +31403,13 @@ func (client *Client) ListJobMetricWithOptions(request *ListJobMetricRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobMetricResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobMetricResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31174,24 +31541,13 @@ func (client *Client) ListJobSnapshotInfosWithOptions(request *ListJobSnapshotIn
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobSnapshotInfosResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobSnapshotInfosResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobSnapshotInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31261,24 +31617,13 @@ func (client *Client) ListMmsDataSourcesWithOptions(request *ListMmsDataSourcesR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsDataSourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsDataSourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsDataSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListMmsDataSourcesRequest
@@ -31354,24 +31699,13 @@ func (client *Client) ListMmsDbsWithOptions(sourceId *string, tmpReq *ListMmsDbs
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsDbsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsDbsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsDbsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31461,24 +31795,13 @@ func (client *Client) ListMmsJobsWithOptions(sourceId *string, request *ListMmsJ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListMmsJobsRequest
@@ -31574,24 +31897,13 @@ func (client *Client) ListMmsPartitionsWithOptions(sourceId *string, tmpReq *Lis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsPartitionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsPartitionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsPartitionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListMmsPartitionsRequest
@@ -31691,24 +32003,13 @@ func (client *Client) ListMmsTablesWithOptions(sourceId *string, tmpReq *ListMms
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsTablesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsTablesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListMmsTablesRequest
@@ -31746,24 +32047,13 @@ func (client *Client) ListMmsTaskLogsWithOptions(sourceId *string, taskId *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsTaskLogsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsTaskLogsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsTaskLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return ListMmsTaskLogsResponse
@@ -31851,24 +32141,13 @@ func (client *Client) ListMmsTasksWithOptions(sourceId *string, request *ListMms
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListMmsTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListMmsTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListMmsTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListMmsTasksRequest
@@ -31910,24 +32189,13 @@ func (client *Client) ListPackagesWithOptions(projectName *string, headers map[s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPackagesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPackagesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPackagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -31971,24 +32239,13 @@ func (client *Client) ListProjectUsersWithOptions(projectName *string, headers m
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListProjectUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListProjectUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListProjectUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32080,24 +32337,13 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListProjectsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListProjectsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32179,24 +32425,13 @@ func (client *Client) ListQuotasWithOptions(request *ListQuotasRequest, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListQuotasResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListQuotasResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListQuotasResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32258,24 +32493,13 @@ func (client *Client) ListQuotasPlansWithOptions(nickname *string, request *List
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListQuotasPlansResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListQuotasPlansResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListQuotasPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32345,24 +32569,13 @@ func (client *Client) ListResourcesWithOptions(projectName *string, request *Lis
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32408,24 +32621,13 @@ func (client *Client) ListRolesWithOptions(projectName *string, headers map[stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRolesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRolesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRolesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32523,24 +32725,13 @@ func (client *Client) ListStoragePartitionsInfoWithOptions(project *string, tabl
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListStoragePartitionsInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListStoragePartitionsInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListStoragePartitionsInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32644,24 +32835,13 @@ func (client *Client) ListStorageTablesInfoWithOptions(project *string, tmpReq *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListStorageTablesInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListStorageTablesInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListStorageTablesInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32735,24 +32915,13 @@ func (client *Client) ListTablesWithOptions(projectName *string, request *ListTa
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTablesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTablesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTablesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32798,24 +32967,13 @@ func (client *Client) ListTunnelQuotaTimerWithOptions(nickname *string, headers 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTunnelQuotaTimerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTunnelQuotaTimerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTunnelQuotaTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32875,24 +33033,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32938,24 +33085,13 @@ func (client *Client) ListUsersByRoleWithOptions(projectName *string, roleName *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersByRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersByRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersByRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -32975,6 +33111,10 @@ func (client *Client) ListUsersByRole(projectName *string, roleName *string) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a specified level-1 quota group.
+//
 // @param request - QueryQuotaRequest
 //
 // @param headers - map
@@ -33019,26 +33159,19 @@ func (client *Client) QueryQuotaWithOptions(nickname *string, request *QueryQuot
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries the information about a specified level-1 quota group.
+//
 // @param request - QueryQuotaRequest
 //
 // @return QueryQuotaResponse
@@ -33047,6 +33180,210 @@ func (client *Client) QueryQuota(nickname *string, request *QueryQuotaRequest) (
 	headers := make(map[string]*string)
 	_result = &QueryQuotaResponse{}
 	_body, _err := client.QueryQuotaWithOptions(nickname, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询tunnel资源使用信息
+//
+// @param request - QueryTunnelMetricRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTunnelMetricResponse
+func (client *Client) QueryTunnelMetricWithOptions(metric *string, request *QueryTunnelMetricRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTunnelMetricResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		query["strategy"] = request.Strategy
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CodeList)) {
+		body["codeList"] = request.CodeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupList)) {
+		body["groupList"] = request.GroupList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationList)) {
+		body["operationList"] = request.OperationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaNickname)) {
+		body["quotaNickname"] = request.QuotaNickname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableList)) {
+		body["tableList"] = request.TableList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopN)) {
+		body["topN"] = request.TopN
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTunnelMetric"),
+		Version:     tea.String("2022-01-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/observations/tunnel/" + tea.StringValue(openapiutil.GetEncodeParam(metric))),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTunnelMetricResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询tunnel资源使用信息
+//
+// @param request - QueryTunnelMetricRequest
+//
+// @return QueryTunnelMetricResponse
+func (client *Client) QueryTunnelMetric(metric *string, request *QueryTunnelMetricRequest) (_result *QueryTunnelMetricResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryTunnelMetricResponse{}
+	_body, _err := client.QueryTunnelMetricWithOptions(metric, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询tunnel资源使用详情
+//
+// @param request - QueryTunnelMetricDetailRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryTunnelMetricDetailResponse
+func (client *Client) QueryTunnelMetricDetailWithOptions(metric *string, request *QueryTunnelMetricDetailRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryTunnelMetricDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["startTime"] = request.StartTime
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AscOrder)) {
+		body["ascOrder"] = request.AscOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupList)) {
+		body["groupList"] = request.GroupList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationList)) {
+		body["operationList"] = request.OperationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderColumn)) {
+		body["orderColumn"] = request.OrderColumn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Project)) {
+		body["project"] = request.Project
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QuotaNickname)) {
+		body["quotaNickname"] = request.QuotaNickname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableList)) {
+		body["tableList"] = request.TableList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTunnelMetricDetail"),
+		Version:     tea.String("2022-01-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/observations/tunnel/" + tea.StringValue(openapiutil.GetEncodeParam(metric)) + "/detail"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryTunnelMetricDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询tunnel资源使用详情
+//
+// @param request - QueryTunnelMetricDetailRequest
+//
+// @return QueryTunnelMetricDetailResponse
+func (client *Client) QueryTunnelMetricDetail(metric *string, request *QueryTunnelMetricDetailRequest) (_result *QueryTunnelMetricDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &QueryTunnelMetricDetailResponse{}
+	_body, _err := client.QueryTunnelMetricDetailWithOptions(metric, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33074,24 +33411,13 @@ func (client *Client) RetryMmsJobWithOptions(sourceId *string, jobId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RetryMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RetryMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RetryMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return RetryMmsJobResponse
@@ -33127,24 +33453,13 @@ func (client *Client) StartMmsJobWithOptions(sourceId *string, jobId *string, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return StartMmsJobResponse
@@ -33180,24 +33495,13 @@ func (client *Client) StopMmsJobWithOptions(sourceId *string, jobId *string, hea
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopMmsJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopMmsJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopMmsJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return StopMmsJobResponse
@@ -33259,24 +33563,13 @@ func (client *Client) UpdateComputeQuotaPlanWithOptions(nickname *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateComputeQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateComputeQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateComputeQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33347,24 +33640,13 @@ func (client *Client) UpdateComputeQuotaScheduleWithOptions(nickname *string, re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateComputeQuotaScheduleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateComputeQuotaScheduleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateComputeQuotaScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33428,24 +33710,13 @@ func (client *Client) UpdateComputeSubQuotaWithOptions(nickname *string, request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateComputeSubQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateComputeSubQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateComputeSubQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33515,24 +33786,13 @@ func (client *Client) UpdateMmsDataSourceWithOptions(sourceId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateMmsDataSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateMmsDataSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateMmsDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33585,24 +33845,13 @@ func (client *Client) UpdatePackageWithOptions(projectName *string, packageName 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdatePackageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdatePackageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdatePackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33664,24 +33913,13 @@ func (client *Client) UpdateProjectBasicMetaWithOptions(projectName *string, req
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateProjectBasicMetaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateProjectBasicMetaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateProjectBasicMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33739,24 +33977,13 @@ func (client *Client) UpdateProjectDefaultQuotaWithOptions(projectName *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateProjectDefaultQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateProjectDefaultQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateProjectDefaultQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33809,24 +34036,13 @@ func (client *Client) UpdateProjectIpWhiteListWithOptions(projectName *string, r
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateProjectIpWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateProjectIpWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateProjectIpWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33889,24 +34105,13 @@ func (client *Client) UpdateQuotaPlanWithOptions(nickname *string, planName *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateQuotaPlanResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateQuotaPlanResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateQuotaPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -33969,24 +34174,13 @@ func (client *Client) UpdateQuotaScheduleWithOptions(nickname *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateQuotaScheduleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateQuotaScheduleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateQuotaScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34049,24 +34243,13 @@ func (client *Client) UpdateTunnelQuotaTimerWithOptions(nickname *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateTunnelQuotaTimerResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateTunnelQuotaTimerResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateTunnelQuotaTimerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
