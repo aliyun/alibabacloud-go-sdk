@@ -3395,6 +3395,152 @@ func (s *DeleteShortUrlResponse) SetBody(v *DeleteShortUrlResponseBody) *DeleteS
 	return s
 }
 
+type DeleteSmsQualificationRequest struct {
+	// 工单ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2001****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质组ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000****
+	QualificationGroupId *int64  `json:"QualificationGroupId,omitempty" xml:"QualificationGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteSmsQualificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmsQualificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmsQualificationRequest) SetOrderId(v int64) *DeleteSmsQualificationRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationRequest) SetOwnerId(v int64) *DeleteSmsQualificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationRequest) SetQualificationGroupId(v int64) *DeleteSmsQualificationRequest {
+	s.QualificationGroupId = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationRequest) SetResourceOwnerAccount(v string) *DeleteSmsQualificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationRequest) SetResourceOwnerId(v int64) *DeleteSmsQualificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteSmsQualificationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSmsQualificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmsQualificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetAccessDeniedDetail(v string) *DeleteSmsQualificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetCode(v string) *DeleteSmsQualificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetData(v bool) *DeleteSmsQualificationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetMessage(v string) *DeleteSmsQualificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetRequestId(v string) *DeleteSmsQualificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponseBody) SetSuccess(v bool) *DeleteSmsQualificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSmsQualificationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSmsQualificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSmsQualificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSmsQualificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSmsQualificationResponse) SetHeaders(v map[string]*string) *DeleteSmsQualificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponse) SetStatusCode(v int32) *DeleteSmsQualificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSmsQualificationResponse) SetBody(v *DeleteSmsQualificationResponseBody) *DeleteSmsQualificationResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSmsSignRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -8555,6 +8701,490 @@ func (s *QueryShortUrlResponse) SetBody(v *QueryShortUrlResponseBody) *QueryShor
 	return s
 }
 
+type QuerySingleSmsQualificationRequest struct {
+	// 工单id
+	//
+	// example:
+	//
+	// 2001****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000****
+	QualificationGroupId *int64  `json:"QualificationGroupId,omitempty" xml:"QualificationGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationRequest) SetOrderId(v int64) *QuerySingleSmsQualificationRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationRequest) SetOwnerId(v int64) *QuerySingleSmsQualificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationRequest) SetQualificationGroupId(v int64) *QuerySingleSmsQualificationRequest {
+	s.QualificationGroupId = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationRequest) SetResourceOwnerAccount(v string) *QuerySingleSmsQualificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationRequest) SetResourceOwnerId(v int64) *QuerySingleSmsQualificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type QuerySingleSmsQualificationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QuerySingleSmsQualificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetAccessDeniedDetail(v string) *QuerySingleSmsQualificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetCode(v string) *QuerySingleSmsQualificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetData(v *QuerySingleSmsQualificationResponseBodyData) *QuerySingleSmsQualificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetMessage(v string) *QuerySingleSmsQualificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetRequestId(v string) *QuerySingleSmsQualificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBody) SetSuccess(v bool) *QuerySingleSmsQualificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySingleSmsQualificationResponseBodyData struct {
+	// 经办人身份证有效期
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	AdminIDCardExpDate *string `json:"AdminIDCardExpDate,omitempty" xml:"AdminIDCardExpDate,omitempty"`
+	// 经办人身份证国徽面，产品需求，要求身份证可以分正反面上传
+	//
+	// example:
+	//
+	// https://******.aliyuncs.com/******
+	AdminIDCardFrontFace *string `json:"AdminIDCardFrontFace,omitempty" xml:"AdminIDCardFrontFace,omitempty"`
+	// 经办人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	AdminIDCardNo *string `json:"AdminIDCardNo,omitempty" xml:"AdminIDCardNo,omitempty"`
+	// 经办人身份证图片地址，正反面合一
+	//
+	// example:
+	//
+	// https://******.aliyuncs.com/******
+	AdminIDCardPic *string `json:"AdminIDCardPic,omitempty" xml:"AdminIDCardPic,omitempty"`
+	// 管理员身份证类型
+	//
+	// example:
+	//
+	// identityCard
+	AdminIDCardType *string `json:"AdminIDCardType,omitempty" xml:"AdminIDCardType,omitempty"`
+	// 经办人姓名
+	//
+	// example:
+	//
+	// 示例值示例值
+	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// 经办人手机号码
+	//
+	// example:
+	//
+	// 137*******
+	AdminPhoneNo *string `json:"AdminPhoneNo,omitempty" xml:"AdminPhoneNo,omitempty"`
+	// 证件信息
+	BusinessLicensePics []*QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics `json:"BusinessLicensePics,omitempty" xml:"BusinessLicensePics,omitempty" type:"Repeated"`
+	// 行业类型，在当前模式下是可以用产品线code来区分
+	//
+	// example:
+	//
+	// dysms
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	// 公司名称
+	//
+	// example:
+	//
+	// 示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 企业类型, COMPANY:公司，政府或者事业单位:NON_PROFIT_ORGANIZATION
+	//
+	// example:
+	//
+	// COMPANY
+	CompanyType *string `json:"CompanyType,omitempty" xml:"CompanyType,omitempty"`
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	EffTimeStr *string `json:"EffTimeStr,omitempty" xml:"EffTimeStr,omitempty"`
+	// 法人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	LegalPersonIDCardNo *string `json:"LegalPersonIDCardNo,omitempty" xml:"LegalPersonIDCardNo,omitempty"`
+	// 法人身份证类型
+	//
+	// example:
+	//
+	// identityCard
+	LegalPersonIDCardType *string `json:"LegalPersonIDCardType,omitempty" xml:"LegalPersonIDCardType,omitempty"`
+	// 法人身份证有效期
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	LegalPersonIdCardEffTime *string `json:"LegalPersonIdCardEffTime,omitempty" xml:"LegalPersonIdCardEffTime,omitempty"`
+	// 法人姓名
+	//
+	// example:
+	//
+	// 示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 社会统一信用代码
+	//
+	// example:
+	//
+	// 910X********0012
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	// 更多资料
+	OtherFiles []*QuerySingleSmsQualificationResponseBodyDataOtherFiles `json:"OtherFiles,omitempty" xml:"OtherFiles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10000****
+	QualificationGroupId *int64 `json:"QualificationGroupId,omitempty" xml:"QualificationGroupId,omitempty"`
+	// 资质名称
+	//
+	// example:
+	//
+	// 示例值示例值
+	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
+	// 备注
+	//
+	// example:
+	//
+	// 示例值示例值
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 当前审核状态
+	//
+	// example:
+	//
+	// PASSED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 是否自用
+	//
+	// example:
+	//
+	// false
+	UseBySelf *bool `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
+	// example:
+	//
+	// false
+	WhetherShare *bool `json:"WhetherShare,omitempty" xml:"WhetherShare,omitempty"`
+	// 乾坤袋工单ID
+	//
+	// example:
+	//
+	// 2001****
+	WorkOrderId *int64 `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminIDCardExpDate(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminIDCardExpDate = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminIDCardFrontFace(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminIDCardFrontFace = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminIDCardNo(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminIDCardNo = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminIDCardPic(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminIDCardPic = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminIDCardType(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminIDCardType = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminName(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminName = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetAdminPhoneNo(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.AdminPhoneNo = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetBusinessLicensePics(v []*QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) *QuerySingleSmsQualificationResponseBodyData {
+	s.BusinessLicensePics = v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetBusinessType(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetCompanyName(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetCompanyType(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.CompanyType = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetEffTimeStr(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.EffTimeStr = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetLegalPersonIDCardNo(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.LegalPersonIDCardNo = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetLegalPersonIDCardType(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.LegalPersonIDCardType = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetLegalPersonIdCardEffTime(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.LegalPersonIdCardEffTime = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetLegalPersonName(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetOrganizationCode(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetOtherFiles(v []*QuerySingleSmsQualificationResponseBodyDataOtherFiles) *QuerySingleSmsQualificationResponseBodyData {
+	s.OtherFiles = v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetQualificationGroupId(v int64) *QuerySingleSmsQualificationResponseBodyData {
+	s.QualificationGroupId = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetQualificationName(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.QualificationName = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetRemark(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetState(v string) *QuerySingleSmsQualificationResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetUseBySelf(v bool) *QuerySingleSmsQualificationResponseBodyData {
+	s.UseBySelf = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetWhetherShare(v bool) *QuerySingleSmsQualificationResponseBodyData {
+	s.WhetherShare = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyData) SetWorkOrderId(v int64) *QuerySingleSmsQualificationResponseBodyData {
+	s.WorkOrderId = &v
+	return s
+}
+
+type QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics struct {
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+	// 文件的完整路径
+	//
+	// example:
+	//
+	// https://******.aliyuncs.com/******
+	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	// example:
+	//
+	// businessLicense
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) SetLicensePic(v string) *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics {
+	s.LicensePic = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) SetPicUrl(v string) *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics {
+	s.PicUrl = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics) SetType(v string) *QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics {
+	s.Type = &v
+	return s
+}
+
+type QuerySingleSmsQualificationResponseBodyDataOtherFiles struct {
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+	// 文件的完整路径
+	//
+	// example:
+	//
+	// https://******.aliyuncs.com/******
+	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationResponseBodyDataOtherFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationResponseBodyDataOtherFiles) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyDataOtherFiles) SetLicensePic(v string) *QuerySingleSmsQualificationResponseBodyDataOtherFiles {
+	s.LicensePic = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponseBodyDataOtherFiles) SetPicUrl(v string) *QuerySingleSmsQualificationResponseBodyDataOtherFiles {
+	s.PicUrl = &v
+	return s
+}
+
+type QuerySingleSmsQualificationResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySingleSmsQualificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySingleSmsQualificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySingleSmsQualificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySingleSmsQualificationResponse) SetHeaders(v map[string]*string) *QuerySingleSmsQualificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponse) SetStatusCode(v int32) *QuerySingleSmsQualificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySingleSmsQualificationResponse) SetBody(v *QuerySingleSmsQualificationResponseBody) *QuerySingleSmsQualificationResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySmsAuthorizationLetterRequest struct {
 	// 委托授权书id列表
 	AuthorizationLetterIdList []*int64 `json:"AuthorizationLetterIdList,omitempty" xml:"AuthorizationLetterIdList,omitempty" type:"Repeated"`
@@ -8916,6 +9546,372 @@ func (s *QuerySmsAuthorizationLetterResponse) SetStatusCode(v int32) *QuerySmsAu
 }
 
 func (s *QuerySmsAuthorizationLetterResponse) SetBody(v *QuerySmsAuthorizationLetterResponseBody) *QuerySmsAuthorizationLetterResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySmsQualificationRecordRequest struct {
+	// 公司名
+	//
+	// example:
+	//
+	// 示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 法人姓名
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	OwnerId         *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 资质组名称
+	//
+	// example:
+	//
+	// 示例值示例值
+	QualificationGroupName *string `json:"QualificationGroupName,omitempty" xml:"QualificationGroupName,omitempty"`
+	ResourceOwnerAccount   *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId        *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 审核状态。INT:审核中FAILED:审核失败,PASSED:审核通过,NOT_FINISH:资料待补充,CANCELED:已撤回
+	//
+	// example:
+	//
+	// PASSED
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+	// 是否自用
+	//
+	// example:
+	//
+	// true
+	UseBySelf *bool `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
+	// 工单ID
+	//
+	// example:
+	//
+	// 2001****
+	WorkOrderId *int64 `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
+}
+
+func (s QuerySmsQualificationRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsQualificationRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetCompanyName(v string) *QuerySmsQualificationRecordRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetLegalPersonName(v string) *QuerySmsQualificationRecordRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetOwnerId(v int64) *QuerySmsQualificationRecordRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetPageNo(v int64) *QuerySmsQualificationRecordRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetPageSize(v int64) *QuerySmsQualificationRecordRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetQualificationGroupName(v string) *QuerySmsQualificationRecordRequest {
+	s.QualificationGroupName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetResourceOwnerAccount(v string) *QuerySmsQualificationRecordRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetResourceOwnerId(v int64) *QuerySmsQualificationRecordRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetState(v string) *QuerySmsQualificationRecordRequest {
+	s.State = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetUseBySelf(v bool) *QuerySmsQualificationRecordRequest {
+	s.UseBySelf = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordRequest) SetWorkOrderId(v int64) *QuerySmsQualificationRecordRequest {
+	s.WorkOrderId = &v
+	return s
+}
+
+type QuerySmsQualificationRecordResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QuerySmsQualificationRecordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySmsQualificationRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsQualificationRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetAccessDeniedDetail(v string) *QuerySmsQualificationRecordResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetCode(v string) *QuerySmsQualificationRecordResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetData(v *QuerySmsQualificationRecordResponseBodyData) *QuerySmsQualificationRecordResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetMessage(v string) *QuerySmsQualificationRecordResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetRequestId(v string) *QuerySmsQualificationRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBody) SetSuccess(v bool) *QuerySmsQualificationRecordResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySmsQualificationRecordResponseBodyData struct {
+	List []*QuerySmsQualificationRecordResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 25
+	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySmsQualificationRecordResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsQualificationRecordResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyData) SetList(v []*QuerySmsQualificationRecordResponseBodyDataList) *QuerySmsQualificationRecordResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyData) SetPageNo(v int64) *QuerySmsQualificationRecordResponseBodyData {
+	s.PageNo = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyData) SetPageSize(v int64) *QuerySmsQualificationRecordResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyData) SetTotal(v int64) *QuerySmsQualificationRecordResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySmsQualificationRecordResponseBodyDataList struct {
+	// 审核备注
+	//
+	// example:
+	//
+	// 示例值示例值
+	AuditRemark *string `json:"AuditRemark,omitempty" xml:"AuditRemark,omitempty"`
+	// 审核时间
+	//
+	// example:
+	//
+	// 2024-12-26 17:29:04
+	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// 公司名称或实人认证姓名
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 创建时间
+	//
+	// example:
+	//
+	// 2025-02-20 11:59:30
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// 资质组ID
+	//
+	// example:
+	//
+	// 10000****
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// 法人名称
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 资质组名称
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	QualificationGroupName *string `json:"QualificationGroupName,omitempty" xml:"QualificationGroupName,omitempty"`
+	// 审核状态名
+	//
+	// example:
+	//
+	// INT
+	StateName *string `json:"StateName,omitempty" xml:"StateName,omitempty"`
+	// 是否自用
+	//
+	// example:
+	//
+	// true
+	UseBySelf *string `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
+	// 工单ID
+	//
+	// example:
+	//
+	// 2001****
+	WorkOrderId *int64 `json:"WorkOrderId,omitempty" xml:"WorkOrderId,omitempty"`
+}
+
+func (s QuerySmsQualificationRecordResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsQualificationRecordResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetAuditRemark(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.AuditRemark = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetAuditTime(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.AuditTime = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetCompanyName(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetCreateDate(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetGroupId(v int64) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetLegalPersonName(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetQualificationGroupName(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.QualificationGroupName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetStateName(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.StateName = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetUseBySelf(v string) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.UseBySelf = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponseBodyDataList) SetWorkOrderId(v int64) *QuerySmsQualificationRecordResponseBodyDataList {
+	s.WorkOrderId = &v
+	return s
+}
+
+type QuerySmsQualificationRecordResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QuerySmsQualificationRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QuerySmsQualificationRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySmsQualificationRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySmsQualificationRecordResponse) SetHeaders(v map[string]*string) *QuerySmsQualificationRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponse) SetStatusCode(v int32) *QuerySmsQualificationRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QuerySmsQualificationRecordResponse) SetBody(v *QuerySmsQualificationRecordResponseBody) *QuerySmsQualificationRecordResponse {
 	s.Body = v
 	return s
 }
@@ -9976,6 +10972,137 @@ func (s *QuerySmsTemplateListResponse) SetStatusCode(v int32) *QuerySmsTemplateL
 }
 
 func (s *QuerySmsTemplateListResponse) SetBody(v *QuerySmsTemplateListResponseBody) *QuerySmsTemplateListResponse {
+	s.Body = v
+	return s
+}
+
+type RequiredPhoneCodeRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****1234
+	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RequiredPhoneCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequiredPhoneCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RequiredPhoneCodeRequest) SetOwnerId(v int64) *RequiredPhoneCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeRequest) SetPhoneNo(v string) *RequiredPhoneCodeRequest {
+	s.PhoneNo = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeRequest) SetResourceOwnerAccount(v string) *RequiredPhoneCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeRequest) SetResourceOwnerId(v int64) *RequiredPhoneCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RequiredPhoneCodeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// -
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RequiredPhoneCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequiredPhoneCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetAccessDeniedDetail(v string) *RequiredPhoneCodeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetCode(v string) *RequiredPhoneCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetData(v string) *RequiredPhoneCodeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetMessage(v string) *RequiredPhoneCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetRequestId(v string) *RequiredPhoneCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponseBody) SetSuccess(v bool) *RequiredPhoneCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RequiredPhoneCodeResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RequiredPhoneCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RequiredPhoneCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequiredPhoneCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RequiredPhoneCodeResponse) SetHeaders(v map[string]*string) *RequiredPhoneCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponse) SetStatusCode(v int32) *RequiredPhoneCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RequiredPhoneCodeResponse) SetBody(v *RequiredPhoneCodeResponseBody) *RequiredPhoneCodeResponse {
 	s.Body = v
 	return s
 }
@@ -11302,6 +12429,796 @@ func (s *SmsConversionIntlResponse) SetBody(v *SmsConversionIntlResponseBody) *S
 	return s
 }
 
+type SubmitSmsQualificationRequest struct {
+	// 经办人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	AdminIDCardExpDate *string `json:"AdminIDCardExpDate,omitempty" xml:"AdminIDCardExpDate,omitempty"`
+	// 经办人身份证照片国徽面
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardFrontFace *string `json:"AdminIDCardFrontFace,omitempty" xml:"AdminIDCardFrontFace,omitempty"`
+	// 经办人身份证号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 511391********5123
+	AdminIDCardNo *string `json:"AdminIDCardNo,omitempty" xml:"AdminIDCardNo,omitempty"`
+	// 经办人身份证照片人像面
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardPic *string `json:"AdminIDCardPic,omitempty" xml:"AdminIDCardPic,omitempty"`
+	// 管理员身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// identityCard
+	AdminIDCardType *string `json:"AdminIDCardType,omitempty" xml:"AdminIDCardType,omitempty"`
+	// 经办人姓名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// 经办人手机号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****1234
+	AdminPhoneNo *string `json:"AdminPhoneNo,omitempty" xml:"AdminPhoneNo,omitempty"`
+	// 企业营业证件信息，非大客户必填
+	BusinessLicensePics []*SubmitSmsQualificationRequestBusinessLicensePics `json:"BusinessLicensePics,omitempty" xml:"BusinessLicensePics,omitempty" type:"Repeated"`
+	// 企业营业时间开始和结束字符串，格式示例2023-01-01~2033-01-01
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	BussinessLicenseExpDate *string `json:"BussinessLicenseExpDate,omitempty" xml:"BussinessLicenseExpDate,omitempty"`
+	// 手机号验证码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
+	// 公司名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 企业类型, COMPANY:公司;NON_PROFIT_ORGANIZATION:政府或者事业单位
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPANY
+	CompanyType *string `json:"CompanyType,omitempty" xml:"CompanyType,omitempty"`
+	// 法人身份证号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 511391********5123
+	LegalPersonIDCardNo *string `json:"LegalPersonIDCardNo,omitempty" xml:"LegalPersonIDCardNo,omitempty"`
+	// 法人身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// identityCard
+	LegalPersonIDCardType *string `json:"LegalPersonIDCardType,omitempty" xml:"LegalPersonIDCardType,omitempty"`
+	// 法人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardBackSide *string `json:"LegalPersonIdCardBackSide,omitempty" xml:"LegalPersonIdCardBackSide,omitempty"`
+	// 法人身份证有效期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	LegalPersonIdCardEffTime *string `json:"LegalPersonIdCardEffTime,omitempty" xml:"LegalPersonIdCardEffTime,omitempty"`
+	// 法人身份证照片国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardFrontSide *string `json:"LegalPersonIdCardFrontSide,omitempty" xml:"LegalPersonIdCardFrontSide,omitempty"`
+	// 法人姓名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 社会统一信用代码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 910X********0012
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	// 更多资料
+	OtherFiles []*SubmitSmsQualificationRequestOtherFiles `json:"OtherFiles,omitempty" xml:"OtherFiles,omitempty" type:"Repeated"`
+	OwnerId    *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质名称,名称不能重复
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
+	// 备注
+	//
+	// example:
+	//
+	// 示例值示例值
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 资质是自用还是他用，true：自用，false：他用
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	UseBySelf *bool `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
+	// 是否同意与其他业务线共享
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	WhetherShare *bool `json:"WhetherShare,omitempty" xml:"WhetherShare,omitempty"`
+}
+
+func (s SubmitSmsQualificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminIDCardExpDate(v string) *SubmitSmsQualificationRequest {
+	s.AdminIDCardExpDate = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminIDCardFrontFace(v string) *SubmitSmsQualificationRequest {
+	s.AdminIDCardFrontFace = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminIDCardNo(v string) *SubmitSmsQualificationRequest {
+	s.AdminIDCardNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminIDCardPic(v string) *SubmitSmsQualificationRequest {
+	s.AdminIDCardPic = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminIDCardType(v string) *SubmitSmsQualificationRequest {
+	s.AdminIDCardType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminName(v string) *SubmitSmsQualificationRequest {
+	s.AdminName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetAdminPhoneNo(v string) *SubmitSmsQualificationRequest {
+	s.AdminPhoneNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetBusinessLicensePics(v []*SubmitSmsQualificationRequestBusinessLicensePics) *SubmitSmsQualificationRequest {
+	s.BusinessLicensePics = v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetBussinessLicenseExpDate(v string) *SubmitSmsQualificationRequest {
+	s.BussinessLicenseExpDate = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetCertifyCode(v string) *SubmitSmsQualificationRequest {
+	s.CertifyCode = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetCompanyName(v string) *SubmitSmsQualificationRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetCompanyType(v string) *SubmitSmsQualificationRequest {
+	s.CompanyType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonIDCardNo(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonIDCardNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonIDCardType(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonIDCardType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonIdCardBackSide(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonIdCardBackSide = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonIdCardEffTime(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonIdCardEffTime = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonIdCardFrontSide(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonIdCardFrontSide = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetLegalPersonName(v string) *SubmitSmsQualificationRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetOrganizationCode(v string) *SubmitSmsQualificationRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetOtherFiles(v []*SubmitSmsQualificationRequestOtherFiles) *SubmitSmsQualificationRequest {
+	s.OtherFiles = v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetOwnerId(v int64) *SubmitSmsQualificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetQualificationName(v string) *SubmitSmsQualificationRequest {
+	s.QualificationName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetRemark(v string) *SubmitSmsQualificationRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetResourceOwnerAccount(v string) *SubmitSmsQualificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetResourceOwnerId(v int64) *SubmitSmsQualificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetUseBySelf(v bool) *SubmitSmsQualificationRequest {
+	s.UseBySelf = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequest) SetWhetherShare(v bool) *SubmitSmsQualificationRequest {
+	s.WhetherShare = &v
+	return s
+}
+
+type SubmitSmsQualificationRequestBusinessLicensePics struct {
+	// 营业证件图片标识的osskey
+	//
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+	// 营业证件类型，businessLicense:营业执照;organizationCodeLicense:组织机构代码证;taxRegistrationLicense:税务登记证;socialCreditLicense:社会信用代码证书;newStyleBusinessLicense:三证合一;signLegalLicense:签名归属方的事业单位法人证书;otherLicense:其他类型执照证书
+	//
+	// example:
+	//
+	// businessLicense
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SubmitSmsQualificationRequestBusinessLicensePics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationRequestBusinessLicensePics) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationRequestBusinessLicensePics) SetLicensePic(v string) *SubmitSmsQualificationRequestBusinessLicensePics {
+	s.LicensePic = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationRequestBusinessLicensePics) SetType(v string) *SubmitSmsQualificationRequestBusinessLicensePics {
+	s.Type = &v
+	return s
+}
+
+type SubmitSmsQualificationRequestOtherFiles struct {
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+}
+
+func (s SubmitSmsQualificationRequestOtherFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationRequestOtherFiles) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationRequestOtherFiles) SetLicensePic(v string) *SubmitSmsQualificationRequestOtherFiles {
+	s.LicensePic = &v
+	return s
+}
+
+type SubmitSmsQualificationShrinkRequest struct {
+	// 经办人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	AdminIDCardExpDate *string `json:"AdminIDCardExpDate,omitempty" xml:"AdminIDCardExpDate,omitempty"`
+	// 经办人身份证照片国徽面
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardFrontFace *string `json:"AdminIDCardFrontFace,omitempty" xml:"AdminIDCardFrontFace,omitempty"`
+	// 经办人身份证号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 511391********5123
+	AdminIDCardNo *string `json:"AdminIDCardNo,omitempty" xml:"AdminIDCardNo,omitempty"`
+	// 经办人身份证照片人像面
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardPic *string `json:"AdminIDCardPic,omitempty" xml:"AdminIDCardPic,omitempty"`
+	// 管理员身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// identityCard
+	AdminIDCardType *string `json:"AdminIDCardType,omitempty" xml:"AdminIDCardType,omitempty"`
+	// 经办人姓名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// 经办人手机号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****1234
+	AdminPhoneNo *string `json:"AdminPhoneNo,omitempty" xml:"AdminPhoneNo,omitempty"`
+	// 企业营业证件信息，非大客户必填
+	BusinessLicensePicsShrink *string `json:"BusinessLicensePics,omitempty" xml:"BusinessLicensePics,omitempty"`
+	// 企业营业时间开始和结束字符串，格式示例2023-01-01~2033-01-01
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	BussinessLicenseExpDate *string `json:"BussinessLicenseExpDate,omitempty" xml:"BussinessLicenseExpDate,omitempty"`
+	// 手机号验证码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
+	// 公司名称
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 企业类型, COMPANY:公司;NON_PROFIT_ORGANIZATION:政府或者事业单位
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// COMPANY
+	CompanyType *string `json:"CompanyType,omitempty" xml:"CompanyType,omitempty"`
+	// 法人身份证号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 511391********5123
+	LegalPersonIDCardNo *string `json:"LegalPersonIDCardNo,omitempty" xml:"LegalPersonIDCardNo,omitempty"`
+	// 法人身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// identityCard
+	LegalPersonIDCardType *string `json:"LegalPersonIDCardType,omitempty" xml:"LegalPersonIDCardType,omitempty"`
+	// 法人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardBackSide *string `json:"LegalPersonIdCardBackSide,omitempty" xml:"LegalPersonIdCardBackSide,omitempty"`
+	// 法人身份证有效期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	LegalPersonIdCardEffTime *string `json:"LegalPersonIdCardEffTime,omitempty" xml:"LegalPersonIdCardEffTime,omitempty"`
+	// 法人身份证照片国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardFrontSide *string `json:"LegalPersonIdCardFrontSide,omitempty" xml:"LegalPersonIdCardFrontSide,omitempty"`
+	// 法人姓名
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 社会统一信用代码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 910X********0012
+	OrganizationCode *string `json:"OrganizationCode,omitempty" xml:"OrganizationCode,omitempty"`
+	// 更多资料
+	OtherFilesShrink *string `json:"OtherFiles,omitempty" xml:"OtherFiles,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质名称,名称不能重复
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	QualificationName *string `json:"QualificationName,omitempty" xml:"QualificationName,omitempty"`
+	// 备注
+	//
+	// example:
+	//
+	// 示例值示例值
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 资质是自用还是他用，true：自用，false：他用
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// true
+	UseBySelf *bool `json:"UseBySelf,omitempty" xml:"UseBySelf,omitempty"`
+	// 是否同意与其他业务线共享
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	WhetherShare *bool `json:"WhetherShare,omitempty" xml:"WhetherShare,omitempty"`
+}
+
+func (s SubmitSmsQualificationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminIDCardExpDate(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminIDCardExpDate = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminIDCardFrontFace(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminIDCardFrontFace = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminIDCardNo(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminIDCardNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminIDCardPic(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminIDCardPic = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminIDCardType(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminIDCardType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminName(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetAdminPhoneNo(v string) *SubmitSmsQualificationShrinkRequest {
+	s.AdminPhoneNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetBusinessLicensePicsShrink(v string) *SubmitSmsQualificationShrinkRequest {
+	s.BusinessLicensePicsShrink = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetBussinessLicenseExpDate(v string) *SubmitSmsQualificationShrinkRequest {
+	s.BussinessLicenseExpDate = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetCertifyCode(v string) *SubmitSmsQualificationShrinkRequest {
+	s.CertifyCode = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetCompanyName(v string) *SubmitSmsQualificationShrinkRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetCompanyType(v string) *SubmitSmsQualificationShrinkRequest {
+	s.CompanyType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonIDCardNo(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonIDCardNo = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonIDCardType(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonIDCardType = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonIdCardBackSide(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardBackSide = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonIdCardEffTime(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardEffTime = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonIdCardFrontSide(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardFrontSide = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetLegalPersonName(v string) *SubmitSmsQualificationShrinkRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetOrganizationCode(v string) *SubmitSmsQualificationShrinkRequest {
+	s.OrganizationCode = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetOtherFilesShrink(v string) *SubmitSmsQualificationShrinkRequest {
+	s.OtherFilesShrink = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetOwnerId(v int64) *SubmitSmsQualificationShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetQualificationName(v string) *SubmitSmsQualificationShrinkRequest {
+	s.QualificationName = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetRemark(v string) *SubmitSmsQualificationShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetResourceOwnerAccount(v string) *SubmitSmsQualificationShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetResourceOwnerId(v int64) *SubmitSmsQualificationShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetUseBySelf(v bool) *SubmitSmsQualificationShrinkRequest {
+	s.UseBySelf = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationShrinkRequest) SetWhetherShare(v bool) *SubmitSmsQualificationShrinkRequest {
+	s.WhetherShare = &v
+	return s
+}
+
+type SubmitSmsQualificationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 1000****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitSmsQualificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetAccessDeniedDetail(v string) *SubmitSmsQualificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetCode(v string) *SubmitSmsQualificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetData(v string) *SubmitSmsQualificationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetMessage(v string) *SubmitSmsQualificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetRequestId(v string) *SubmitSmsQualificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponseBody) SetSuccess(v bool) *SubmitSmsQualificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitSmsQualificationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitSmsQualificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitSmsQualificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitSmsQualificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitSmsQualificationResponse) SetHeaders(v map[string]*string) *SubmitSmsQualificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponse) SetStatusCode(v int32) *SubmitSmsQualificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitSmsQualificationResponse) SetBody(v *SubmitSmsQualificationResponseBody) *SubmitSmsQualificationResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The name of the cloud service. Set the value to **dysms**.
@@ -11841,6 +13758,648 @@ func (s *UpdateExtCodeSignResponse) SetStatusCode(v int32) *UpdateExtCodeSignRes
 }
 
 func (s *UpdateExtCodeSignResponse) SetBody(v *UpdateExtCodeSignResponseBody) *UpdateExtCodeSignResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSmsQualificationRequest struct {
+	// 经办人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	AdminIDCardExpDate *string `json:"AdminIDCardExpDate,omitempty" xml:"AdminIDCardExpDate,omitempty"`
+	// 经办人身份证照片国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardFrontFace *string `json:"AdminIDCardFrontFace,omitempty" xml:"AdminIDCardFrontFace,omitempty"`
+	// 经办人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	AdminIDCardNo *string `json:"AdminIDCardNo,omitempty" xml:"AdminIDCardNo,omitempty"`
+	// 经办人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardPic *string `json:"AdminIDCardPic,omitempty" xml:"AdminIDCardPic,omitempty"`
+	// 管理员身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// example:
+	//
+	// identityCard
+	AdminIDCardType *string `json:"AdminIDCardType,omitempty" xml:"AdminIDCardType,omitempty"`
+	// 经办人姓名
+	//
+	// example:
+	//
+	// 示例值
+	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// 经办人手机号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137********
+	AdminPhoneNo *string `json:"AdminPhoneNo,omitempty" xml:"AdminPhoneNo,omitempty"`
+	// 企业证件信息
+	BusinessLicensePics []*UpdateSmsQualificationRequestBusinessLicensePics `json:"BusinessLicensePics,omitempty" xml:"BusinessLicensePics,omitempty" type:"Repeated"`
+	// 企业营业时间开始和结束字符串，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	BussinessLicenseExpDate *string `json:"BussinessLicenseExpDate,omitempty" xml:"BussinessLicenseExpDate,omitempty"`
+	// 手机号验证码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
+	// 公司名称
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 法人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	LegalPersonIDCardNo *string `json:"LegalPersonIDCardNo,omitempty" xml:"LegalPersonIDCardNo,omitempty"`
+	// 法人身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// example:
+	//
+	// identityCard
+	LegalPersonIDCardType *string `json:"LegalPersonIDCardType,omitempty" xml:"LegalPersonIDCardType,omitempty"`
+	// 法人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardBackSide *string `json:"LegalPersonIdCardBackSide,omitempty" xml:"LegalPersonIdCardBackSide,omitempty"`
+	// 法人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	LegalPersonIdCardEffTime *string `json:"LegalPersonIdCardEffTime,omitempty" xml:"LegalPersonIdCardEffTime,omitempty"`
+	// 法人身份照片证国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardFrontSide *string `json:"LegalPersonIdCardFrontSide,omitempty" xml:"LegalPersonIdCardFrontSide,omitempty"`
+	// 法人姓名
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 工单ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2001*****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// 更多资料
+	OtherFiles []*UpdateSmsQualificationRequestOtherFiles `json:"OtherFiles,omitempty" xml:"OtherFiles,omitempty" type:"Repeated"`
+	OwnerId    *int64                                     `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质组ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000****
+	QualificationGroupId *int64  `json:"QualificationGroupId,omitempty" xml:"QualificationGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateSmsQualificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminIDCardExpDate(v string) *UpdateSmsQualificationRequest {
+	s.AdminIDCardExpDate = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminIDCardFrontFace(v string) *UpdateSmsQualificationRequest {
+	s.AdminIDCardFrontFace = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminIDCardNo(v string) *UpdateSmsQualificationRequest {
+	s.AdminIDCardNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminIDCardPic(v string) *UpdateSmsQualificationRequest {
+	s.AdminIDCardPic = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminIDCardType(v string) *UpdateSmsQualificationRequest {
+	s.AdminIDCardType = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminName(v string) *UpdateSmsQualificationRequest {
+	s.AdminName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetAdminPhoneNo(v string) *UpdateSmsQualificationRequest {
+	s.AdminPhoneNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetBusinessLicensePics(v []*UpdateSmsQualificationRequestBusinessLicensePics) *UpdateSmsQualificationRequest {
+	s.BusinessLicensePics = v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetBussinessLicenseExpDate(v string) *UpdateSmsQualificationRequest {
+	s.BussinessLicenseExpDate = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetCertifyCode(v string) *UpdateSmsQualificationRequest {
+	s.CertifyCode = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetCompanyName(v string) *UpdateSmsQualificationRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonIDCardNo(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonIDCardNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonIDCardType(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonIDCardType = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonIdCardBackSide(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonIdCardBackSide = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonIdCardEffTime(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonIdCardEffTime = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonIdCardFrontSide(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonIdCardFrontSide = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetLegalPersonName(v string) *UpdateSmsQualificationRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetOrderId(v int64) *UpdateSmsQualificationRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetOtherFiles(v []*UpdateSmsQualificationRequestOtherFiles) *UpdateSmsQualificationRequest {
+	s.OtherFiles = v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetOwnerId(v int64) *UpdateSmsQualificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetQualificationGroupId(v int64) *UpdateSmsQualificationRequest {
+	s.QualificationGroupId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetResourceOwnerAccount(v string) *UpdateSmsQualificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequest) SetResourceOwnerId(v int64) *UpdateSmsQualificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateSmsQualificationRequestBusinessLicensePics struct {
+	// 证件图片标识的osskey
+	//
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+	// 企业证件类型，businessLicense:营业执照;organizationCodeLicense:组织机构代码证;taxRegistrationLicense:税务登记证;socialCreditLicense:社会信用代码证书;newStyleBusinessLicense:三证合一;signLegalLicense:签名归属方的事业单位法人证书;otherLicense:其他类型执照证书
+	//
+	// example:
+	//
+	// businessLicense
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateSmsQualificationRequestBusinessLicensePics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationRequestBusinessLicensePics) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationRequestBusinessLicensePics) SetLicensePic(v string) *UpdateSmsQualificationRequestBusinessLicensePics {
+	s.LicensePic = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationRequestBusinessLicensePics) SetType(v string) *UpdateSmsQualificationRequestBusinessLicensePics {
+	s.Type = &v
+	return s
+}
+
+type UpdateSmsQualificationRequestOtherFiles struct {
+	// example:
+	//
+	// 123456/111.png
+	LicensePic *string `json:"LicensePic,omitempty" xml:"LicensePic,omitempty"`
+}
+
+func (s UpdateSmsQualificationRequestOtherFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationRequestOtherFiles) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationRequestOtherFiles) SetLicensePic(v string) *UpdateSmsQualificationRequestOtherFiles {
+	s.LicensePic = &v
+	return s
+}
+
+type UpdateSmsQualificationShrinkRequest struct {
+	// 经办人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	AdminIDCardExpDate *string `json:"AdminIDCardExpDate,omitempty" xml:"AdminIDCardExpDate,omitempty"`
+	// 经办人身份证照片国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardFrontFace *string `json:"AdminIDCardFrontFace,omitempty" xml:"AdminIDCardFrontFace,omitempty"`
+	// 经办人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	AdminIDCardNo *string `json:"AdminIDCardNo,omitempty" xml:"AdminIDCardNo,omitempty"`
+	// 经办人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	AdminIDCardPic *string `json:"AdminIDCardPic,omitempty" xml:"AdminIDCardPic,omitempty"`
+	// 管理员身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// example:
+	//
+	// identityCard
+	AdminIDCardType *string `json:"AdminIDCardType,omitempty" xml:"AdminIDCardType,omitempty"`
+	// 经办人姓名
+	//
+	// example:
+	//
+	// 示例值
+	AdminName *string `json:"AdminName,omitempty" xml:"AdminName,omitempty"`
+	// 经办人手机号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137********
+	AdminPhoneNo *string `json:"AdminPhoneNo,omitempty" xml:"AdminPhoneNo,omitempty"`
+	// 企业证件信息
+	BusinessLicensePicsShrink *string `json:"BusinessLicensePics,omitempty" xml:"BusinessLicensePics,omitempty"`
+	// 企业营业时间开始和结束字符串，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	BussinessLicenseExpDate *string `json:"BussinessLicenseExpDate,omitempty" xml:"BussinessLicenseExpDate,omitempty"`
+	// 手机号验证码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
+	// 公司名称
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	CompanyName *string `json:"CompanyName,omitempty" xml:"CompanyName,omitempty"`
+	// 法人身份证号码
+	//
+	// example:
+	//
+	// 511391********5123
+	LegalPersonIDCardNo *string `json:"LegalPersonIDCardNo,omitempty" xml:"LegalPersonIDCardNo,omitempty"`
+	// 法人身份证类型。identityCard:中国居民身份证;passport:护照;homeReturnPermit:港澳居民来往内地通行证;TaiwanCompatriotPermit:台湾居民来往大陆通行证;residencePermit:港澳台居民居住证";other:其他
+	//
+	// example:
+	//
+	// identityCard
+	LegalPersonIDCardType *string `json:"LegalPersonIDCardType,omitempty" xml:"LegalPersonIDCardType,omitempty"`
+	// 法人身份证照片人像面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardBackSide *string `json:"LegalPersonIdCardBackSide,omitempty" xml:"LegalPersonIdCardBackSide,omitempty"`
+	// 法人身份证有效期，格式示例2023-01-01~2033-01-01
+	//
+	// example:
+	//
+	// 2023-01-01~2033-01-01
+	LegalPersonIdCardEffTime *string `json:"LegalPersonIdCardEffTime,omitempty" xml:"LegalPersonIdCardEffTime,omitempty"`
+	// 法人身份照片证国徽面
+	//
+	// example:
+	//
+	// 123456/111.png
+	LegalPersonIdCardFrontSide *string `json:"LegalPersonIdCardFrontSide,omitempty" xml:"LegalPersonIdCardFrontSide,omitempty"`
+	// 法人姓名
+	//
+	// example:
+	//
+	// 示例值示例值
+	LegalPersonName *string `json:"LegalPersonName,omitempty" xml:"LegalPersonName,omitempty"`
+	// 工单ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2001*****
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// 更多资料
+	OtherFilesShrink *string `json:"OtherFiles,omitempty" xml:"OtherFiles,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 资质组ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000****
+	QualificationGroupId *int64  `json:"QualificationGroupId,omitempty" xml:"QualificationGroupId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UpdateSmsQualificationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminIDCardExpDate(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminIDCardExpDate = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminIDCardFrontFace(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminIDCardFrontFace = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminIDCardNo(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminIDCardNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminIDCardPic(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminIDCardPic = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminIDCardType(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminIDCardType = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminName(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetAdminPhoneNo(v string) *UpdateSmsQualificationShrinkRequest {
+	s.AdminPhoneNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetBusinessLicensePicsShrink(v string) *UpdateSmsQualificationShrinkRequest {
+	s.BusinessLicensePicsShrink = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetBussinessLicenseExpDate(v string) *UpdateSmsQualificationShrinkRequest {
+	s.BussinessLicenseExpDate = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetCertifyCode(v string) *UpdateSmsQualificationShrinkRequest {
+	s.CertifyCode = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetCompanyName(v string) *UpdateSmsQualificationShrinkRequest {
+	s.CompanyName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonIDCardNo(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonIDCardNo = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonIDCardType(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonIDCardType = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonIdCardBackSide(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardBackSide = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonIdCardEffTime(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardEffTime = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonIdCardFrontSide(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonIdCardFrontSide = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetLegalPersonName(v string) *UpdateSmsQualificationShrinkRequest {
+	s.LegalPersonName = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetOrderId(v int64) *UpdateSmsQualificationShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetOtherFilesShrink(v string) *UpdateSmsQualificationShrinkRequest {
+	s.OtherFilesShrink = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetOwnerId(v int64) *UpdateSmsQualificationShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetQualificationGroupId(v int64) *UpdateSmsQualificationShrinkRequest {
+	s.QualificationGroupId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetResourceOwnerAccount(v string) *UpdateSmsQualificationShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationShrinkRequest) SetResourceOwnerId(v int64) *UpdateSmsQualificationShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UpdateSmsQualificationResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 10000****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 25D5AFDE-8EBC-132E-8909-1FDC071DA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSmsQualificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetAccessDeniedDetail(v string) *UpdateSmsQualificationResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetCode(v string) *UpdateSmsQualificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetData(v string) *UpdateSmsQualificationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetMessage(v string) *UpdateSmsQualificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetRequestId(v string) *UpdateSmsQualificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponseBody) SetSuccess(v bool) *UpdateSmsQualificationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSmsQualificationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSmsQualificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSmsQualificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSmsQualificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSmsQualificationResponse) SetHeaders(v map[string]*string) *UpdateSmsQualificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponse) SetStatusCode(v int32) *UpdateSmsQualificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSmsQualificationResponse) SetBody(v *UpdateSmsQualificationResponseBody) *UpdateSmsQualificationResponse {
 	s.Body = v
 	return s
 }
@@ -12718,6 +15277,152 @@ func (s *UpdateSmsTemplateResponse) SetStatusCode(v int32) *UpdateSmsTemplateRes
 }
 
 func (s *UpdateSmsTemplateResponse) SetBody(v *UpdateSmsTemplateResponseBody) *UpdateSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ValidPhoneCodeRequest struct {
+	// 验证码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234
+	CertifyCode *string `json:"CertifyCode,omitempty" xml:"CertifyCode,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 手机号
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 137****1234
+	PhoneNo              *string `json:"PhoneNo,omitempty" xml:"PhoneNo,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ValidPhoneCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidPhoneCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidPhoneCodeRequest) SetCertifyCode(v string) *ValidPhoneCodeRequest {
+	s.CertifyCode = &v
+	return s
+}
+
+func (s *ValidPhoneCodeRequest) SetOwnerId(v int64) *ValidPhoneCodeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ValidPhoneCodeRequest) SetPhoneNo(v string) *ValidPhoneCodeRequest {
+	s.PhoneNo = &v
+	return s
+}
+
+func (s *ValidPhoneCodeRequest) SetResourceOwnerAccount(v string) *ValidPhoneCodeRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ValidPhoneCodeRequest) SetResourceOwnerId(v int64) *ValidPhoneCodeRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ValidPhoneCodeResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 90E63D28-E31D-1EB2-8939-A9486641****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ValidPhoneCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidPhoneCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidPhoneCodeResponseBody) SetAccessDeniedDetail(v string) *ValidPhoneCodeResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponseBody) SetCode(v string) *ValidPhoneCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponseBody) SetData(v bool) *ValidPhoneCodeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponseBody) SetMessage(v string) *ValidPhoneCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponseBody) SetRequestId(v string) *ValidPhoneCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponseBody) SetSuccess(v bool) *ValidPhoneCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidPhoneCodeResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ValidPhoneCodeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ValidPhoneCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidPhoneCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidPhoneCodeResponse) SetHeaders(v map[string]*string) *ValidPhoneCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidPhoneCodeResponse) SetStatusCode(v int32) *ValidPhoneCodeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidPhoneCodeResponse) SetBody(v *ValidPhoneCodeResponseBody) *ValidPhoneCodeResponse {
 	s.Body = v
 	return s
 }
@@ -14158,6 +16863,82 @@ func (client *Client) DeleteShortUrl(request *DeleteShortUrlRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteShortUrlResponse{}
 	_body, _err := client.DeleteShortUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资质对客openAPI
+//
+// @param request - DeleteSmsQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSmsQualificationResponse
+func (client *Client) DeleteSmsQualificationWithOptions(request *DeleteSmsQualificationRequest, runtime *util.RuntimeOptions) (_result *DeleteSmsQualificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationGroupId)) {
+		query["QualificationGroupId"] = request.QualificationGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSmsQualification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSmsQualificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资质对客openAPI
+//
+// @param request - DeleteSmsQualificationRequest
+//
+// @return DeleteSmsQualificationResponse
+func (client *Client) DeleteSmsQualification(request *DeleteSmsQualificationRequest) (_result *DeleteSmsQualificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSmsQualificationResponse{}
+	_body, _err := client.DeleteSmsQualificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16078,6 +18859,82 @@ func (client *Client) QueryShortUrl(request *QueryShortUrlRequest) (_result *Que
 
 // Summary:
 //
+// 查询单个资质详情
+//
+// @param request - QuerySingleSmsQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySingleSmsQualificationResponse
+func (client *Client) QuerySingleSmsQualificationWithOptions(request *QuerySingleSmsQualificationRequest, runtime *util.RuntimeOptions) (_result *QuerySingleSmsQualificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationGroupId)) {
+		query["QualificationGroupId"] = request.QualificationGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySingleSmsQualification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySingleSmsQualificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询单个资质详情
+//
+// @param request - QuerySingleSmsQualificationRequest
+//
+// @return QuerySingleSmsQualificationResponse
+func (client *Client) QuerySingleSmsQualification(request *QuerySingleSmsQualificationRequest) (_result *QuerySingleSmsQualificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySingleSmsQualificationResponse{}
+	_body, _err := client.QuerySingleSmsQualificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询委托授权书
 //
 // @param tmpReq - QuerySmsAuthorizationLetterRequest
@@ -16163,6 +19020,106 @@ func (client *Client) QuerySmsAuthorizationLetter(request *QuerySmsAuthorization
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsAuthorizationLetterResponse{}
 	_body, _err := client.QuerySmsAuthorizationLetterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资质审核列表页
+//
+// @param request - QuerySmsQualificationRecordRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QuerySmsQualificationRecordResponse
+func (client *Client) QuerySmsQualificationRecordWithOptions(request *QuerySmsQualificationRecordRequest, runtime *util.RuntimeOptions) (_result *QuerySmsQualificationRecordResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonName)) {
+		query["LegalPersonName"] = request.LegalPersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationGroupName)) {
+		query["QualificationGroupName"] = request.QualificationGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.State)) {
+		query["State"] = request.State
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseBySelf)) {
+		query["UseBySelf"] = request.UseBySelf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkOrderId)) {
+		query["WorkOrderId"] = request.WorkOrderId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySmsQualificationRecord"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySmsQualificationRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询资质审核列表页
+//
+// @param request - QuerySmsQualificationRecordRequest
+//
+// @return QuerySmsQualificationRecordResponse
+func (client *Client) QuerySmsQualificationRecord(request *QuerySmsQualificationRecordRequest) (_result *QuerySmsQualificationRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySmsQualificationRecordResponse{}
+	_body, _err := client.QuerySmsQualificationRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16529,6 +19486,78 @@ func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySmsTemplateListResponse{}
 	_body, _err := client.QuerySmsTemplateListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证手机验证码
+//
+// @param request - RequiredPhoneCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RequiredPhoneCodeResponse
+func (client *Client) RequiredPhoneCodeWithOptions(request *RequiredPhoneCodeRequest, runtime *util.RuntimeOptions) (_result *RequiredPhoneCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNo)) {
+		query["PhoneNo"] = request.PhoneNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RequiredPhoneCode"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RequiredPhoneCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 验证手机验证码
+//
+// @param request - RequiredPhoneCodeRequest
+//
+// @return RequiredPhoneCodeResponse
+func (client *Client) RequiredPhoneCode(request *RequiredPhoneCodeRequest) (_result *RequiredPhoneCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RequiredPhoneCodeResponse{}
+	_body, _err := client.RequiredPhoneCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17104,6 +20133,180 @@ func (client *Client) SmsConversionIntl(request *SmsConversionIntlRequest) (_res
 
 // Summary:
 //
+// 创建资质对客openAPI
+//
+// @param tmpReq - SubmitSmsQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSmsQualificationResponse
+func (client *Client) SubmitSmsQualificationWithOptions(tmpReq *SubmitSmsQualificationRequest, runtime *util.RuntimeOptions) (_result *SubmitSmsQualificationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SubmitSmsQualificationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BusinessLicensePics)) {
+		request.BusinessLicensePicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessLicensePics, tea.String("BusinessLicensePics"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OtherFiles)) {
+		request.OtherFilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OtherFiles, tea.String("OtherFiles"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardExpDate)) {
+		query["AdminIDCardExpDate"] = request.AdminIDCardExpDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardFrontFace)) {
+		query["AdminIDCardFrontFace"] = request.AdminIDCardFrontFace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardNo)) {
+		query["AdminIDCardNo"] = request.AdminIDCardNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardPic)) {
+		query["AdminIDCardPic"] = request.AdminIDCardPic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardType)) {
+		query["AdminIDCardType"] = request.AdminIDCardType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminName)) {
+		query["AdminName"] = request.AdminName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminPhoneNo)) {
+		query["AdminPhoneNo"] = request.AdminPhoneNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessLicensePicsShrink)) {
+		query["BusinessLicensePics"] = request.BusinessLicensePicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BussinessLicenseExpDate)) {
+		query["BussinessLicenseExpDate"] = request.BussinessLicenseExpDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyCode)) {
+		query["CertifyCode"] = request.CertifyCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompanyType)) {
+		query["CompanyType"] = request.CompanyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIDCardNo)) {
+		query["LegalPersonIDCardNo"] = request.LegalPersonIDCardNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIDCardType)) {
+		query["LegalPersonIDCardType"] = request.LegalPersonIDCardType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardBackSide)) {
+		query["LegalPersonIdCardBackSide"] = request.LegalPersonIdCardBackSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardEffTime)) {
+		query["LegalPersonIdCardEffTime"] = request.LegalPersonIdCardEffTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardFrontSide)) {
+		query["LegalPersonIdCardFrontSide"] = request.LegalPersonIdCardFrontSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonName)) {
+		query["LegalPersonName"] = request.LegalPersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationCode)) {
+		query["OrganizationCode"] = request.OrganizationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherFilesShrink)) {
+		query["OtherFiles"] = request.OtherFilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationName)) {
+		query["QualificationName"] = request.QualificationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseBySelf)) {
+		query["UseBySelf"] = request.UseBySelf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhetherShare)) {
+		query["WhetherShare"] = request.WhetherShare
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitSmsQualification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitSmsQualificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资质对客openAPI
+//
+// @param request - SubmitSmsQualificationRequest
+//
+// @return SubmitSmsQualificationResponse
+func (client *Client) SubmitSmsQualification(request *SubmitSmsQualificationRequest) (_result *SubmitSmsQualificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitSmsQualificationResponse{}
+	_body, _err := client.SubmitSmsQualificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches tags to a message template.
 //
 // Description:
@@ -17388,6 +20591,164 @@ func (client *Client) UpdateExtCodeSign(request *UpdateExtCodeSignRequest) (_res
 
 // Summary:
 //
+// 修改资质对客openAPI
+//
+// @param tmpReq - UpdateSmsQualificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSmsQualificationResponse
+func (client *Client) UpdateSmsQualificationWithOptions(tmpReq *UpdateSmsQualificationRequest, runtime *util.RuntimeOptions) (_result *UpdateSmsQualificationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSmsQualificationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.BusinessLicensePics)) {
+		request.BusinessLicensePicsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.BusinessLicensePics, tea.String("BusinessLicensePics"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.OtherFiles)) {
+		request.OtherFilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.OtherFiles, tea.String("OtherFiles"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardExpDate)) {
+		query["AdminIDCardExpDate"] = request.AdminIDCardExpDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardFrontFace)) {
+		query["AdminIDCardFrontFace"] = request.AdminIDCardFrontFace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardNo)) {
+		query["AdminIDCardNo"] = request.AdminIDCardNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardPic)) {
+		query["AdminIDCardPic"] = request.AdminIDCardPic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminIDCardType)) {
+		query["AdminIDCardType"] = request.AdminIDCardType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminName)) {
+		query["AdminName"] = request.AdminName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AdminPhoneNo)) {
+		query["AdminPhoneNo"] = request.AdminPhoneNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessLicensePicsShrink)) {
+		query["BusinessLicensePics"] = request.BusinessLicensePicsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BussinessLicenseExpDate)) {
+		query["BussinessLicenseExpDate"] = request.BussinessLicenseExpDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertifyCode)) {
+		query["CertifyCode"] = request.CertifyCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIDCardNo)) {
+		query["LegalPersonIDCardNo"] = request.LegalPersonIDCardNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIDCardType)) {
+		query["LegalPersonIDCardType"] = request.LegalPersonIDCardType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardBackSide)) {
+		query["LegalPersonIdCardBackSide"] = request.LegalPersonIdCardBackSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardEffTime)) {
+		query["LegalPersonIdCardEffTime"] = request.LegalPersonIdCardEffTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonIdCardFrontSide)) {
+		query["LegalPersonIdCardFrontSide"] = request.LegalPersonIdCardFrontSide
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LegalPersonName)) {
+		query["LegalPersonName"] = request.LegalPersonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OtherFilesShrink)) {
+		query["OtherFiles"] = request.OtherFilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QualificationGroupId)) {
+		query["QualificationGroupId"] = request.QualificationGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSmsQualification"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSmsQualificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改资质对客openAPI
+//
+// @param request - UpdateSmsQualificationRequest
+//
+// @return UpdateSmsQualificationResponse
+func (client *Client) UpdateSmsQualification(request *UpdateSmsQualificationRequest) (_result *UpdateSmsQualificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSmsQualificationResponse{}
+	_body, _err := client.UpdateSmsQualificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Update Text SMS Signature
 //
 // Description:
@@ -17643,6 +21004,82 @@ func (client *Client) UpdateSmsTemplate(request *UpdateSmsTemplateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSmsTemplateResponse{}
 	_body, _err := client.UpdateSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送手机验证码
+//
+// @param request - ValidPhoneCodeRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ValidPhoneCodeResponse
+func (client *Client) ValidPhoneCodeWithOptions(request *ValidPhoneCodeRequest, runtime *util.RuntimeOptions) (_result *ValidPhoneCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertifyCode)) {
+		query["CertifyCode"] = request.CertifyCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNo)) {
+		query["PhoneNo"] = request.PhoneNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidPhoneCode"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidPhoneCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 发送手机验证码
+//
+// @param request - ValidPhoneCodeRequest
+//
+// @return ValidPhoneCodeResponse
+func (client *Client) ValidPhoneCode(request *ValidPhoneCodeRequest) (_result *ValidPhoneCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidPhoneCodeResponse{}
+	_body, _err := client.ValidPhoneCodeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
