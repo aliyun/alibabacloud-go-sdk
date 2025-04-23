@@ -23019,6 +23019,7 @@ type GetJobDetailResponseBody struct {
 	SnapshotJobDetail *GetJobDetailResponseBodySnapshotJobDetail `json:"SnapshotJobDetail,omitempty" xml:"SnapshotJobDetail,omitempty" type:"Struct"`
 	// The details of the transcoding task. This parameter takes effect only when the jobType parameter is set to Transcode.
 	TranscodeJobDetail *GetJobDetailResponseBodyTranscodeJobDetail `json:"TranscodeJobDetail,omitempty" xml:"TranscodeJobDetail,omitempty" type:"Struct"`
+	WorkflowTaskDetail *GetJobDetailResponseBodyWorkflowTaskDetail `json:"WorkflowTaskDetail,omitempty" xml:"WorkflowTaskDetail,omitempty" type:"Struct"`
 }
 
 func (s GetJobDetailResponseBody) String() string {
@@ -23051,6 +23052,11 @@ func (s *GetJobDetailResponseBody) SetSnapshotJobDetail(v *GetJobDetailResponseB
 
 func (s *GetJobDetailResponseBody) SetTranscodeJobDetail(v *GetJobDetailResponseBodyTranscodeJobDetail) *GetJobDetailResponseBody {
 	s.TranscodeJobDetail = v
+	return s
+}
+
+func (s *GetJobDetailResponseBody) SetWorkflowTaskDetail(v *GetJobDetailResponseBodyWorkflowTaskDetail) *GetJobDetailResponseBody {
+	s.WorkflowTaskDetail = v
 	return s
 }
 
@@ -23406,6 +23412,118 @@ func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetUserId(v int64) *GetJobD
 
 func (s *GetJobDetailResponseBodyTranscodeJobDetail) SetVideoId(v string) *GetJobDetailResponseBodyTranscodeJobDetail {
 	s.VideoId = &v
+	return s
+}
+
+type GetJobDetailResponseBodyWorkflowTaskDetail struct {
+	ActivityResults *string                                             `json:"ActivityResults,omitempty" xml:"ActivityResults,omitempty"`
+	CreateTime      *string                                             `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FinishTime      *string                                             `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
+	Status          *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string                                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskInput       *string                                             `json:"TaskInput,omitempty" xml:"TaskInput,omitempty"`
+	UserData        *string                                             `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	Workflow        *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow `json:"Workflow,omitempty" xml:"Workflow,omitempty" type:"Struct"`
+}
+
+func (s GetJobDetailResponseBodyWorkflowTaskDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBodyWorkflowTaskDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetActivityResults(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.ActivityResults = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetCreateTime(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetFinishTime(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.FinishTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetStatus(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetTaskId(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetTaskInput(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.TaskInput = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetUserData(v string) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.UserData = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetail) SetWorkflow(v *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) *GetJobDetailResponseBodyWorkflowTaskDetail {
+	s.Workflow = v
+	return s
+}
+
+type GetJobDetailResponseBodyWorkflowTaskDetailWorkflow struct {
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WorkflowId   *string `json:"WorkflowId,omitempty" xml:"WorkflowId,omitempty"`
+}
+
+func (s GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) GoString() string {
+	return s.String()
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetAppId(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetCreateTime(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetModifiedTime(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetName(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.Name = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetStatus(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.Status = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetType(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.Type = &v
+	return s
+}
+
+func (s *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow) SetWorkflowId(v string) *GetJobDetailResponseBodyWorkflowTaskDetailWorkflow {
+	s.WorkflowId = &v
 	return s
 }
 
