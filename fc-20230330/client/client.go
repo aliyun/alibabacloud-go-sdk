@@ -655,6 +655,7 @@ type CreateFunctionInput struct {
 	//
 	// 512
 	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableLongLiving     *bool              `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// This parameter is required.
 	//
@@ -751,6 +752,11 @@ func (s *CreateFunctionInput) SetDisableOndemand(v bool) *CreateFunctionInput {
 
 func (s *CreateFunctionInput) SetDiskSize(v int32) *CreateFunctionInput {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *CreateFunctionInput) SetEnableLongLiving(v bool) *CreateFunctionInput {
+	s.EnableLongLiving = &v
 	return s
 }
 
@@ -1746,6 +1752,7 @@ type Function struct {
 	//
 	// 512
 	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableLongLiving     *bool              `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	// example:
 	//
@@ -1883,6 +1890,11 @@ func (s *Function) SetDisableOndemand(v bool) *Function {
 
 func (s *Function) SetDiskSize(v int32) *Function {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *Function) SetEnableLongLiving(v bool) *Function {
+	s.EnableLongLiving = &v
 	return s
 }
 
@@ -5072,6 +5084,7 @@ type UpdateFunctionInput struct {
 	//
 	// 512
 	DiskSize             *int32             `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
+	EnableLongLiving     *bool              `json:"enableLongLiving,omitempty" xml:"enableLongLiving,omitempty"`
 	EnvironmentVariables map[string]*string `json:"environmentVariables" xml:"environmentVariables"`
 	GpuConfig            *GPUConfig         `json:"gpuConfig,omitempty" xml:"gpuConfig,omitempty"`
 	// example:
@@ -5154,6 +5167,11 @@ func (s *UpdateFunctionInput) SetDisableOndemand(v bool) *UpdateFunctionInput {
 
 func (s *UpdateFunctionInput) SetDiskSize(v int32) *UpdateFunctionInput {
 	s.DiskSize = &v
+	return s
+}
+
+func (s *UpdateFunctionInput) SetEnableLongLiving(v bool) *UpdateFunctionInput {
+	s.EnableLongLiving = &v
 	return s
 }
 
