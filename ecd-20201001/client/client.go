@@ -1011,8 +1011,9 @@ func (s *GetMcpResourceResponseBody) SetSuccess(v bool) *GetMcpResourceResponseB
 }
 
 type GetMcpResourceResponseBodyData struct {
-	ResourceUrl *string `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
-	SessionId   *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	DesktopInfo *GetMcpResourceResponseBodyDataDesktopInfo `json:"DesktopInfo,omitempty" xml:"DesktopInfo,omitempty" type:"Struct"`
+	ResourceUrl *string                                    `json:"ResourceUrl,omitempty" xml:"ResourceUrl,omitempty"`
+	SessionId   *string                                    `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
 }
 
 func (s GetMcpResourceResponseBodyData) String() string {
@@ -1023,6 +1024,11 @@ func (s GetMcpResourceResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetMcpResourceResponseBodyData) SetDesktopInfo(v *GetMcpResourceResponseBodyDataDesktopInfo) *GetMcpResourceResponseBodyData {
+	s.DesktopInfo = v
+	return s
+}
+
 func (s *GetMcpResourceResponseBodyData) SetResourceUrl(v string) *GetMcpResourceResponseBodyData {
 	s.ResourceUrl = &v
 	return s
@@ -1030,6 +1036,47 @@ func (s *GetMcpResourceResponseBodyData) SetResourceUrl(v string) *GetMcpResourc
 
 func (s *GetMcpResourceResponseBodyData) SetSessionId(v string) *GetMcpResourceResponseBodyData {
 	s.SessionId = &v
+	return s
+}
+
+type GetMcpResourceResponseBodyDataDesktopInfo struct {
+	AppId                *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	ConnectionProperties *string `json:"ConnectionProperties,omitempty" xml:"ConnectionProperties,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetMcpResourceResponseBodyDataDesktopInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMcpResourceResponseBodyDataDesktopInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetMcpResourceResponseBodyDataDesktopInfo) SetAppId(v string) *GetMcpResourceResponseBodyDataDesktopInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetMcpResourceResponseBodyDataDesktopInfo) SetAuthCode(v string) *GetMcpResourceResponseBodyDataDesktopInfo {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *GetMcpResourceResponseBodyDataDesktopInfo) SetConnectionProperties(v string) *GetMcpResourceResponseBodyDataDesktopInfo {
+	s.ConnectionProperties = &v
+	return s
+}
+
+func (s *GetMcpResourceResponseBodyDataDesktopInfo) SetResourceId(v string) *GetMcpResourceResponseBodyDataDesktopInfo {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetMcpResourceResponseBodyDataDesktopInfo) SetResourceType(v string) *GetMcpResourceResponseBodyDataDesktopInfo {
+	s.ResourceType = &v
 	return s
 }
 
