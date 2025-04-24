@@ -5,8 +5,13 @@ import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
+	openplatform "github.com/alibabacloud-go/openplatform-20191219/v2/client"
+	fileform "github.com/alibabacloud-go/tea-fileform/service"
+	oss "github.com/alibabacloud-go/tea-oss-sdk/client"
+	ossutil "github.com/alibabacloud-go/tea-oss-utils/service"
 	util "github.com/alibabacloud-go/tea-utils/v2/service"
 	"github.com/alibabacloud-go/tea/tea"
+	"io"
 )
 
 type CardOcrRequest struct {
@@ -645,6 +650,230 @@ func (s *CheckVerifyLogResponse) SetStatusCode(v int32) *CheckVerifyLogResponse 
 }
 
 func (s *CheckVerifyLogResponse) SetBody(v *CheckVerifyLogResponseBody) *CheckVerifyLogResponse {
+	s.Body = v
+	return s
+}
+
+type CredentialVerifyIntlRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0101
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	CredType  *string `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	ImageFile *string `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	// example:
+	//
+	// https://oss-bj01.avic.com/eavic-prod-commodity/pic/commodity/94677ee6-1067-4287-8ff4-6e030ef3a5a8.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// This parameter is required.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s CredentialVerifyIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyIntlRequest) SetCredName(v string) *CredentialVerifyIntlRequest {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlRequest) SetCredType(v string) *CredentialVerifyIntlRequest {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlRequest) SetImageFile(v string) *CredentialVerifyIntlRequest {
+	s.ImageFile = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlRequest) SetImageUrl(v string) *CredentialVerifyIntlRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlRequest) SetProductCode(v string) *CredentialVerifyIntlRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type CredentialVerifyIntlAdvanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0101
+	CredName *string `json:"CredName,omitempty" xml:"CredName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 01
+	CredType        *string   `json:"CredType,omitempty" xml:"CredType,omitempty"`
+	ImageFileObject io.Reader `json:"ImageFile,omitempty" xml:"ImageFile,omitempty"`
+	// example:
+	//
+	// https://oss-bj01.avic.com/eavic-prod-commodity/pic/commodity/94677ee6-1067-4287-8ff4-6e030ef3a5a8.jpg
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// This parameter is required.
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s CredentialVerifyIntlAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyIntlAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyIntlAdvanceRequest) SetCredName(v string) *CredentialVerifyIntlAdvanceRequest {
+	s.CredName = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlAdvanceRequest) SetCredType(v string) *CredentialVerifyIntlAdvanceRequest {
+	s.CredType = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlAdvanceRequest) SetImageFileObject(v io.Reader) *CredentialVerifyIntlAdvanceRequest {
+	s.ImageFileObject = v
+	return s
+}
+
+func (s *CredentialVerifyIntlAdvanceRequest) SetImageUrl(v string) *CredentialVerifyIntlAdvanceRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlAdvanceRequest) SetProductCode(v string) *CredentialVerifyIntlAdvanceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type CredentialVerifyIntlResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF039795
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *CredentialVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s CredentialVerifyIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyIntlResponseBody) SetCode(v string) *CredentialVerifyIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBody) SetMessage(v string) *CredentialVerifyIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBody) SetRequestId(v string) *CredentialVerifyIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBody) SetResultObject(v *CredentialVerifyIntlResponseBodyResultObject) *CredentialVerifyIntlResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type CredentialVerifyIntlResponseBodyResultObject struct {
+	MaterialInfo *string `json:"MaterialInfo,omitempty" xml:"MaterialInfo,omitempty"`
+	// example:
+	//
+	// 1
+	Result    *string            `json:"Result,omitempty" xml:"Result,omitempty"`
+	RiskScore map[string]*string `json:"RiskScore,omitempty" xml:"RiskScore,omitempty"`
+	// example:
+	//
+	// PS
+	RiskTag *string `json:"RiskTag,omitempty" xml:"RiskTag,omitempty"`
+}
+
+func (s CredentialVerifyIntlResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyIntlResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyIntlResponseBodyResultObject) SetMaterialInfo(v string) *CredentialVerifyIntlResponseBodyResultObject {
+	s.MaterialInfo = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBodyResultObject) SetResult(v string) *CredentialVerifyIntlResponseBodyResultObject {
+	s.Result = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBodyResultObject) SetRiskScore(v map[string]*string) *CredentialVerifyIntlResponseBodyResultObject {
+	s.RiskScore = v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponseBodyResultObject) SetRiskTag(v string) *CredentialVerifyIntlResponseBodyResultObject {
+	s.RiskTag = &v
+	return s
+}
+
+type CredentialVerifyIntlResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CredentialVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CredentialVerifyIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CredentialVerifyIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CredentialVerifyIntlResponse) SetHeaders(v map[string]*string) *CredentialVerifyIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponse) SetStatusCode(v int32) *CredentialVerifyIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CredentialVerifyIntlResponse) SetBody(v *CredentialVerifyIntlResponseBody) *CredentialVerifyIntlResponse {
 	s.Body = v
 	return s
 }
@@ -3562,6 +3791,195 @@ func (client *Client) CheckVerifyLog(request *CheckVerifyLogRequest) (_result *C
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 凭证核验
+//
+// @param request - CredentialVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CredentialVerifyIntlResponse
+func (client *Client) CredentialVerifyIntlWithOptions(request *CredentialVerifyIntlRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredName)) {
+		query["CredName"] = request.CredName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredType)) {
+		query["CredType"] = request.CredType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		query["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageFile)) {
+		body["ImageFile"] = request.ImageFile
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CredentialVerifyIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CredentialVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 凭证核验
+//
+// @param request - CredentialVerifyIntlRequest
+//
+// @return CredentialVerifyIntlResponse
+func (client *Client) CredentialVerifyIntl(request *CredentialVerifyIntlRequest) (_result *CredentialVerifyIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CredentialVerifyIntlResponse{}
+	_body, _err := client.CredentialVerifyIntlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CredentialVerifyIntlAdvance(request *CredentialVerifyIntlAdvanceRequest, runtime *util.RuntimeOptions) (_result *CredentialVerifyIntlResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Cloudauth-intl"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	credentialVerifyIntlReq := &CredentialVerifyIntlRequest{}
+	openapiutil.Convert(request, credentialVerifyIntlReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ImageFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		credentialVerifyIntlReq.ImageFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	credentialVerifyIntlResp, _err := client.CredentialVerifyIntlWithOptions(credentialVerifyIntlReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = credentialVerifyIntlResp
 	return _result, _err
 }
 
