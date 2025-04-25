@@ -2907,7 +2907,8 @@ type CreatePolicyGroupRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	ResolutionWidth *int32                             `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	Watermark       *CreatePolicyGroupRequestWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s CreatePolicyGroupRequest) String() string {
@@ -2965,6 +2966,11 @@ func (s *CreatePolicyGroupRequest) SetResolutionHeight(v int32) *CreatePolicyGro
 
 func (s *CreatePolicyGroupRequest) SetResolutionWidth(v int32) *CreatePolicyGroupRequest {
 	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetWatermark(v *CreatePolicyGroupRequestWatermark) *CreatePolicyGroupRequest {
+	s.Watermark = v
 	return s
 }
 
@@ -3118,6 +3124,53 @@ func (s *CreatePolicyGroupRequestNetRedirectPolicyRules) SetTarget(v string) *Cr
 	return s
 }
 
+type CreatePolicyGroupRequestWatermark struct {
+	WatermarkColor             *int32    `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	WatermarkCustomText        *string   `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	WatermarkFontSize          *int32    `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	WatermarkSwitch            *string   `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
+	WatermarkTransparencyValue *int32    `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	WatermarkTypes             []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+}
+
+func (s CreatePolicyGroupRequestWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyGroupRequestWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkColor(v int32) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkCustomText(v string) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkFontSize(v int32) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkSwitch(v string) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkSwitch = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkTransparencyValue(v int32) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestWatermark) SetWatermarkTypes(v []*string) *CreatePolicyGroupRequestWatermark {
+	s.WatermarkTypes = v
+	return s
+}
+
 type CreatePolicyGroupShrinkRequest struct {
 	// Specifies whether to enable the webcam redirection feature.
 	//
@@ -3207,7 +3260,8 @@ type CreatePolicyGroupShrinkRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	ResolutionWidth *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s CreatePolicyGroupShrinkRequest) String() string {
@@ -3265,6 +3319,11 @@ func (s *CreatePolicyGroupShrinkRequest) SetResolutionHeight(v int32) *CreatePol
 
 func (s *CreatePolicyGroupShrinkRequest) SetResolutionWidth(v int32) *CreatePolicyGroupShrinkRequest {
 	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *CreatePolicyGroupShrinkRequest) SetWatermarkShrink(v string) *CreatePolicyGroupShrinkRequest {
+	s.WatermarkShrink = &v
 	return s
 }
 
@@ -9629,7 +9688,8 @@ type ListPolicyGroupsResponseBodyPolicyGroupModel struct {
 	// example:
 	//
 	// 1920
-	SessionResolutionWidth *int32 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	SessionResolutionWidth *int32                                                 `json:"SessionResolutionWidth,omitempty" xml:"SessionResolutionWidth,omitempty"`
+	Watermark              *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s ListPolicyGroupsResponseBodyPolicyGroupModel) String() string {
@@ -9697,6 +9757,11 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionHeigh
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetSessionResolutionWidth(v int32) *ListPolicyGroupsResponseBodyPolicyGroupModel {
 	s.SessionResolutionWidth = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModel) SetWatermark(v *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) *ListPolicyGroupsResponseBodyPolicyGroupModel {
+	s.Watermark = v
 	return s
 }
 
@@ -9870,6 +9935,53 @@ func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) Set
 
 func (s *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources) SetCloudPhoneMatrixIds(v []*string) *ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources {
 	s.CloudPhoneMatrixIds = v
+	return s
+}
+
+type ListPolicyGroupsResponseBodyPolicyGroupModelWatermark struct {
+	WatermarkColor             *int32    `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	WatermarkCustomText        *string   `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	WatermarkFontSize          *int32    `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	WatermarkSwitch            *string   `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
+	WatermarkTransparencyValue *int32    `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	WatermarkTypes             []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkColor(v int32) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkCustomText(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkFontSize(v int32) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkSwitch(v string) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkSwitch = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkTransparencyValue(v int32) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark) SetWatermarkTypes(v []*string) *ListPolicyGroupsResponseBodyPolicyGroupModelWatermark {
+	s.WatermarkTypes = v
 	return s
 }
 
@@ -10611,7 +10723,8 @@ type ModifyPolicyGroupRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	ResolutionWidth *int32                             `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	Watermark       *ModifyPolicyGroupRequestWatermark `json:"Watermark,omitempty" xml:"Watermark,omitempty" type:"Struct"`
 }
 
 func (s ModifyPolicyGroupRequest) String() string {
@@ -10669,6 +10782,11 @@ func (s *ModifyPolicyGroupRequest) SetResolutionHeight(v int32) *ModifyPolicyGro
 
 func (s *ModifyPolicyGroupRequest) SetResolutionWidth(v int32) *ModifyPolicyGroupRequest {
 	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetWatermark(v *ModifyPolicyGroupRequestWatermark) *ModifyPolicyGroupRequest {
+	s.Watermark = v
 	return s
 }
 
@@ -10805,6 +10923,53 @@ func (s *ModifyPolicyGroupRequestNetRedirectPolicyRules) SetTarget(v string) *Mo
 	return s
 }
 
+type ModifyPolicyGroupRequestWatermark struct {
+	WatermarkColor             *int32    `json:"WatermarkColor,omitempty" xml:"WatermarkColor,omitempty"`
+	WatermarkCustomText        *string   `json:"WatermarkCustomText,omitempty" xml:"WatermarkCustomText,omitempty"`
+	WatermarkFontSize          *int32    `json:"WatermarkFontSize,omitempty" xml:"WatermarkFontSize,omitempty"`
+	WatermarkSwitch            *string   `json:"WatermarkSwitch,omitempty" xml:"WatermarkSwitch,omitempty"`
+	WatermarkTransparencyValue *int32    `json:"WatermarkTransparencyValue,omitempty" xml:"WatermarkTransparencyValue,omitempty"`
+	WatermarkTypes             []*string `json:"WatermarkTypes,omitempty" xml:"WatermarkTypes,omitempty" type:"Repeated"`
+}
+
+func (s ModifyPolicyGroupRequestWatermark) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPolicyGroupRequestWatermark) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkColor(v int32) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkColor = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkCustomText(v string) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkCustomText = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkFontSize(v int32) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkFontSize = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkSwitch(v string) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkSwitch = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkTransparencyValue(v int32) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkTransparencyValue = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestWatermark) SetWatermarkTypes(v []*string) *ModifyPolicyGroupRequestWatermark {
+	s.WatermarkTypes = v
+	return s
+}
+
 type ModifyPolicyGroupShrinkRequest struct {
 	// Specifies whether to enable the webcam redirection feature.
 	//
@@ -10899,7 +11064,8 @@ type ModifyPolicyGroupShrinkRequest struct {
 	// example:
 	//
 	// 720
-	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	ResolutionWidth *int32  `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+	WatermarkShrink *string `json:"Watermark,omitempty" xml:"Watermark,omitempty"`
 }
 
 func (s ModifyPolicyGroupShrinkRequest) String() string {
@@ -10957,6 +11123,11 @@ func (s *ModifyPolicyGroupShrinkRequest) SetResolutionHeight(v int32) *ModifyPol
 
 func (s *ModifyPolicyGroupShrinkRequest) SetResolutionWidth(v int32) *ModifyPolicyGroupShrinkRequest {
 	s.ResolutionWidth = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupShrinkRequest) SetWatermarkShrink(v string) *ModifyPolicyGroupShrinkRequest {
+	s.WatermarkShrink = &v
 	return s
 }
 
@@ -11535,6 +11706,7 @@ func (s *RenewAndroidInstanceGroupsResponse) SetBody(v *RenewAndroidInstanceGrou
 }
 
 type RenewCloudPhoneNodesRequest struct {
+	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// Specifies whether to enable the auto-renewal feature.
 	//
 	// Valid values:
@@ -11579,6 +11751,11 @@ func (s RenewCloudPhoneNodesRequest) String() string {
 
 func (s RenewCloudPhoneNodesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RenewCloudPhoneNodesRequest) SetAutoPay(v bool) *RenewCloudPhoneNodesRequest {
+	s.AutoPay = &v
+	return s
 }
 
 func (s *RenewCloudPhoneNodesRequest) SetAutoRenew(v bool) *RenewCloudPhoneNodesRequest {
@@ -12594,6 +12771,90 @@ func (s *UpdateInstanceGroupImageResponse) SetStatusCode(v int32) *UpdateInstanc
 }
 
 func (s *UpdateInstanceGroupImageResponse) SetBody(v *UpdateInstanceGroupImageResponseBody) *UpdateInstanceGroupImageResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateInstanceImageRequest struct {
+	// example:
+	//
+	// imgc-075cllfeuazh0****
+	ImageId        *string   `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateInstanceImageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceImageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceImageRequest) SetImageId(v string) *UpdateInstanceImageRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpdateInstanceImageRequest) SetInstanceIdList(v []*string) *UpdateInstanceImageRequest {
+	s.InstanceIdList = v
+	return s
+}
+
+type UpdateInstanceImageResponseBody struct {
+	// example:
+	//
+	// 1A923337-44D9-5CAD-9A53-95084BD4****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// t-1ljew7on6ay0j****
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpdateInstanceImageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceImageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceImageResponseBody) SetRequestId(v string) *UpdateInstanceImageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateInstanceImageResponseBody) SetTaskId(v string) *UpdateInstanceImageResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UpdateInstanceImageResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateInstanceImageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateInstanceImageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceImageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceImageResponse) SetHeaders(v map[string]*string) *UpdateInstanceImageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceImageResponse) SetStatusCode(v int32) *UpdateInstanceImageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateInstanceImageResponse) SetBody(v *UpdateInstanceImageResponseBody) *UpdateInstanceImageResponse {
 	s.Body = v
 	return s
 }
@@ -13847,6 +14108,10 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 		request.NetRedirectPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetRedirectPolicy, tea.String("NetRedirectPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Watermark)) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Watermark, tea.String("Watermark"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
 		body["CameraRedirect"] = request.CameraRedirect
@@ -13886,6 +14151,10 @@ func (client *Client) CreatePolicyGroupWithOptions(tmpReq *CreatePolicyGroupRequ
 
 	if !tea.BoolValue(util.IsUnset(request.ResolutionWidth)) {
 		body["ResolutionWidth"] = request.ResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkShrink)) {
+		body["Watermark"] = request.WatermarkShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -15947,7 +16216,7 @@ func (client *Client) FetchFile(request *FetchFileRequest) (_result *FetchFileRe
 //
 // Description:
 //
-// You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+// You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
 //
 // @param request - GenerateCoordinationCodeRequest
 //
@@ -15997,7 +16266,7 @@ func (client *Client) GenerateCoordinationCodeWithOptions(request *GenerateCoord
 //
 // Description:
 //
-// You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client. They can then call the [ApplyCoordinationWithCode](https://help.aliyun.com/zh/wuying-workspace/developer-reference/api-metaspace-2022-03-07-applycoordinationwithcode?spm=a2c4g.11174283.help-menu-68242.d_5_3_2_1.70e5e380fUFgOH\\&scm=20140722.H_2863194._.OR_help-T_cn~zh-V_1) operation to initiate a coordination request, which will provide them with a connection token.
+// You can call this operation to generate a collaboration code for a cloud phone accessed by your current account and share this code with other convenience users to allow them to access the same cloud phone over the desktop, mobile, or web client.
 //
 // @param request - GenerateCoordinationCodeRequest
 //
@@ -16661,6 +16930,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 		request.NetRedirectPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NetRedirectPolicy, tea.String("NetRedirectPolicy"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Watermark)) {
+		request.WatermarkShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Watermark, tea.String("Watermark"), tea.String("json"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CameraRedirect)) {
 		body["CameraRedirect"] = request.CameraRedirect
@@ -16700,6 +16973,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(tmpReq *ModifyPolicyGroupRequ
 
 	if !tea.BoolValue(util.IsUnset(request.ResolutionWidth)) {
 		body["ResolutionWidth"] = request.ResolutionWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WatermarkShrink)) {
+		body["Watermark"] = request.WatermarkShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -17069,6 +17346,11 @@ func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		body["AutoRenew"] = request.AutoRenew
@@ -17087,7 +17369,8 @@ func (client *Client) RenewCloudPhoneNodesWithOptions(request *RenewCloudPhoneNo
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RenewCloudPhoneNodes"),
@@ -17784,6 +18067,70 @@ func (client *Client) UpdateInstanceGroupImage(request *UpdateInstanceGroupImage
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateInstanceGroupImageResponse{}
 	_body, _err := client.UpdateInstanceGroupImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例镜像
+//
+// @param request - UpdateInstanceImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateInstanceImageResponse
+func (client *Client) UpdateInstanceImageWithOptions(request *UpdateInstanceImageRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceImageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceImage"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新实例镜像
+//
+// @param request - UpdateInstanceImageRequest
+//
+// @return UpdateInstanceImageResponse
+func (client *Client) UpdateInstanceImage(request *UpdateInstanceImageRequest) (_result *UpdateInstanceImageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInstanceImageResponse{}
+	_body, _err := client.UpdateInstanceImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
