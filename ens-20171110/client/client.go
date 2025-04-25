@@ -743,7 +743,7 @@ type AddBackendServersRequestBackendServers struct {
 	//
 	// 3309
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The ID of the backend server.
+	// The ID of the ENS instance.
 	//
 	// This parameter is required.
 	//
@@ -989,7 +989,7 @@ func (s *AddBackendServersResponse) SetBody(v *AddBackendServersResponseBody) *A
 }
 
 type AddNetworkInterfaceToInstanceRequest struct {
-	// Specifies whether to specify the instance.
+	// Specifies whether to automatically restart the instance.
 	//
 	// example:
 	//
@@ -1318,15 +1318,15 @@ type AssociateEnsEipAddressRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of instance with which you want to associate the EIP. Valid values:
 	//
-	// 	- **Nat**: a NAT gateway.
+	// 	- **Nat**: NAT gateway.
 	//
-	// 	- **SlbInstance**: an ELB instance.
+	// 	- **SlbInstance**: Edge Load Balancer (ELB) instance.
 	//
-	// 	- **NetworkInterface**: a secondary elastic network interface (ENI).
+	// 	- **NetworkInterface**: secondary elastic network interface (ENI).
 	//
-	// 	- **NatSlbInstance**: If you want to associate multiple EIPs to an ELB instance, you need to set the parameter to this value.
+	// 	- **NatSlbInstance**: If you want to associate multiple EIPs with an ELB instance, you need to set the parameter to this value.
 	//
-	// 	- **EnsInstance*	- (default): an ENS instance.
+	// 	- **EnsInstance*	- (default): ENS instance.
 	//
 	// example:
 	//
@@ -1442,9 +1442,9 @@ type AssociateHaVipRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the instance to be associated with the HAVIP. Valid values:
 	//
-	// 	- EnsInstance (default): ENS instance.
+	// 	- EnsInstance (default): ENS instance
 	//
-	// 	- NetworkInterface: ENI. If you want to associate the HAVIP with an ENI, this parameter is required.
+	// 	- NetworkInterface: elastic network interface (ENI)
 	//
 	// example:
 	//
@@ -3758,9 +3758,7 @@ type CreateDiskRequest struct {
 	//
 	// s-897654321****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The tags.
-	//
-	// You can specify at most 20 tags.
+	// The tags of the instance. You can specify at most 20 tags in each call.
 	Tag []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -3818,7 +3816,7 @@ func (s *CreateDiskRequest) SetTag(v []*CreateDiskRequestTag) *CreateDiskRequest
 }
 
 type CreateDiskRequestTag struct {
-	// The key of tag N of the instance. Valid values of N: **1*	- to **20**.
+	// The key of the tag. Valid values of N: **1*	- to **20**.
 	//
 	// 	- The key cannot start with `aliyun`, `acs:`, `http://`, or `https://`.
 	//
@@ -3832,11 +3830,11 @@ type CreateDiskRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of a tag that is attached to the topics you want to query. This parameter is not required. If you configure this parameter, you must also configure the **Key*	- parameter.***	- If you include the Key and Value parameters in a request, this operation queries only the topics that use the specified tags. If you do not include these parameters in a request, this operation queries all topics that you can access.
 	//
-	// 	- Valid values of N: 1 to 20.
+	// 	- Valid values: 1 to 20.
 	//
 	// 	- The value of this parameter can be an empty string.
 	//
-	// 	- The tag key can be up to 128 characters in length and cannot contain http:// or https://. The tag key cannot start with acs: or aliyun.
+	// 	- The tag value can be up to 128 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
 	//
 	// example:
 	//
@@ -3940,7 +3938,15 @@ type CreateEipInstanceRequest struct {
 	//
 	// 5
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+	//
+	// 	- You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// 	- If you use a ClientToken that has been used and other request parameters remain unchanged in a repeated request, the client will receive the same result as the first request. This does not affect the status of your server.
+	//
+	// 	- You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
+	//
+	// 	- A client token is valid for 10 minutes.
 	//
 	// example:
 	//
@@ -4207,7 +4213,7 @@ type CreateEnsRouteEntryRequest struct {
 	//
 	// vtb-bp1cifr72dioje82lse2j
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The new source CIDR block of the inbound or outbound traffic.
+	// The source CIDR block is available when you configure a route entry in the gateway route table, but is not unavailable when you configure a route entry in the vSwitch route table.
 	//
 	// example:
 	//
@@ -5240,6 +5246,10 @@ func (s *CreateForwardEntryResponse) SetBody(v *CreateForwardEntryResponseBody) 
 }
 
 type CreateHaVipRequest struct {
+	// The number of HAVIPs that you want to create. Valid values: 1 to 10. The value can be only 1 if you specify an IP address.
+	//
+	// Default value: 1.
+	//
 	// example:
 	//
 	// 6
@@ -5383,13 +5393,22 @@ type CreateImageRequest struct {
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The region of the target OSS where the image is to be stored.
+	// The region of the destination OSS bucket where the image is to be stored.
 	//
 	// example:
 	//
 	// cn-beijing
 	TargetOSSRegionId *string `json:"TargetOSSRegionId,omitempty" xml:"TargetOSSRegionId,omitempty"`
-	WithDataDisks     *bool   `json:"WithDataDisks,omitempty" xml:"WithDataDisks,omitempty"`
+	// 创建镜像是否包含数据盘。
+	//
+	// example:
+	//
+	// 取值
+	//
+	// true：附带数据盘
+	//
+	// false：默认值，不附带数据盘
+	WithDataDisks *bool `json:"WithDataDisks,omitempty" xml:"WithDataDisks,omitempty"`
 }
 
 func (s CreateImageRequest) String() string {
@@ -6146,6 +6165,19 @@ func (s *CreateKeyPairResponse) SetBody(v *CreateKeyPairResponseBody) *CreateKey
 }
 
 type CreateLoadBalancerRequest struct {
+	// The client token that is used to ensure the idempotence of the request. This prevents repeated operations caused by multiple retries.
+	//
+	// 	- You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
+	//
+	// 	- If you retry an API request with the same client token and request parameters after it has completed successfully, the result of the original request is returned. The server status does not change.
+	//
+	// 	- You can initiate a retry when the operation times out or the error code is PROCESSING. The idempotence is valid. If HTTP status code 200 is returned, the client receives the same result as the last request. However, your server status is not affected. If HTTP status code 4xx is returned and error code is not PROCESSING, the idempotence is invalid.
+	//
+	// 	- A client token is valid for 10 minutes.
+	//
+	// example:
+	//
+	// 26C28756-2586-17AF-B802-0DC50D8FDEBB
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The ID of the Edge Node Service (ENS) node.
 	//
@@ -6336,7 +6368,7 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 }
 
 type CreateLoadBalancerHTTPListenerRequest struct {
-	// The port used by the backend ELB server of the ELB instance. Valid values: **1*	- to **65535**.
+	// The port used by the backend server of the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -6408,13 +6440,13 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//
 	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The health check method used in HTTP health checks. Valid values:
+	// The HTTP request method for health checks. Valid values:
 	//
 	// 	- **head*	- (default)
 	//
 	// 	- **get**
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// >  This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
 	// example:
 	//
@@ -6466,7 +6498,7 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+	// Specifies whether to enable redirection from HTTP to HTTPS. Valid values:
 	//
 	// 	- **on**
 	//
@@ -6502,19 +6534,19 @@ type CreateLoadBalancerHTTPListenerRequest struct {
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
-	// 	- **wrr**: Backend servers with higher weights receive more requests than backend servers with lower weights. This is the default value.
+	// 	- **wrr*	- (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -6700,7 +6732,7 @@ func (s *CreateLoadBalancerHTTPListenerResponse) SetBody(v *CreateLoadBalancerHT
 }
 
 type CreateLoadBalancerHTTPSListenerRequest struct {
-	// The listening port that is used by the backend instances. Valid values: 1 to 65535.
+	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -6736,7 +6768,7 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 0
 	ForwardPort *int32 `json:"ForwardPort,omitempty" xml:"ForwardPort,omitempty"`
-	// Specifies whether to enable the health check feature. Valid values:
+	// Indicates whether the health check feature is enabled. Valid values:
 	//
 	// 	- **on**
 	//
@@ -6788,13 +6820,13 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The health check method used by HTTP listeners. Valid values:
+	// The HTTP request method for health checks. Valid values:
 	//
 	// 	- **head*	- (default): requests the head of the page.
 	//
 	// 	- **get**: requests the specified part of the page and returns the entity body.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// >  This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
 	// example:
 	//
@@ -6842,7 +6874,7 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 15
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
-	// Specifies whether to enable HTTP-to-HTTPS redirection. Valid values:
+	// Specifies whether to enable redirection from HTTP to HTTPS. Valid values:
 	//
 	// 	- **on**
 	//
@@ -6878,7 +6910,7 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
 	// 	- **wrr*	- (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
 	//
@@ -6886,11 +6918,11 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -6904,13 +6936,13 @@ type CreateLoadBalancerHTTPSListenerRequest struct {
 	//
 	// 60276**
 	ServerCertificateId *string `json:"ServerCertificateId,omitempty" xml:"ServerCertificateId,omitempty"`
-	// The method that is used to handle a cookie. Valid values:
+	// The method that is used to handle cookies. Valid values:
 	//
 	// 	- **insert**: inserts a cookie. ELB inserts a session cookie (SERVERID) into the first HTTP or HTTPS response that is sent to a client. Subsequent requests to ELB carry this cookie, and ELB determines the destination servers of the requests based on the cookies.
 	//
-	// 	- **server**: rewrites a cookie. When ELB detects a user-defined cookie, it overwrites the original cookie with the user-defined cookie. The next request from the client carries the user-defined cookie, and the listener forwards this request to the recorded backend server.
+	// 	- **server**: rewrites the original cookie. SLB rewrites the custom cookies in requests from a client. Subsequent requests from the client that carry the new cookie are forwarded to the same backend server as the first request.
 	//
-	// >  This parameter is required if you set StickySession to on.
+	// >  This parameter is required when the StickySession parameter is set to on.
 	//
 	// example:
 	//
@@ -7115,7 +7147,7 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	// Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
 	//
 	// 	- **on**
 	//
@@ -7233,15 +7265,15 @@ type CreateLoadBalancerTCPListenerRequest struct {
 	//
 	// 	- **wrr*	- (default): Backend servers with higher weights receive more requests than backend servers with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -7812,7 +7844,7 @@ type CreateNatGatewayRequest struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	// The tags.
 	Tag []*CreateNatGatewayRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// The ID of the new vSwitch.
 	//
 	// example:
 	//
@@ -8261,7 +8293,7 @@ type CreateNetworkAclEntryRequest struct {
 	//
 	// This is my NetworkAcl.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether the ACL rule controls inbound or outbound access requests. Valid values:
+	// The direction in which the rule is applied. Valid values:
 	//
 	// 	- **ingress**
 	//
@@ -8321,7 +8353,7 @@ type CreateNetworkAclEntryRequest struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The protocol. Valid values:
+	// The type of the protocol. Valid values:
 	//
 	// 	- **icmp**: ICMP
 	//
@@ -8743,7 +8775,7 @@ type CreateSecurityGroupRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Schema of Response
+	// An array of security group rules. You can specify up to 200 IDs of security group rules.
 	Permissions []*CreateSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
 	//
@@ -8777,9 +8809,7 @@ func (s *CreateSecurityGroupRequest) SetSecurityGroupName(v string) *CreateSecur
 }
 
 type CreateSecurityGroupRequestPermissions struct {
-	// The description of the SDG.
-	//
-	// >  We recommend that you specify this parameter in details for subsequent queries.
+	// The description. It must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -8787,13 +8817,15 @@ type CreateSecurityGroupRequestPermissions struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
 	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
-	//
 	// example:
 	//
 	// 0.0.0.0/0
 	DestCidrIp *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
 	// The direction in which the security group rule is applied.
+	//
+	// 	- egress
+	//
+	// 	- ingress
 	//
 	// This parameter is required.
 	//
@@ -8801,17 +8833,13 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// ingress
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The protocol. The values of this parameter are case-insensitive. Valid values:
+	// The protocol type. Valid values:
 	//
-	// 	- TCP.
+	// 	- TCP
 	//
-	// 	- UDP.
+	// 	- UDP
 	//
-	// 	- ICMP.
-	//
-	// 	- ICMPv6.
-	//
-	// 	- GRE.
+	// 	- ICMP
 	//
 	// 	- ALL: All protocols are supported.
 	//
@@ -8823,11 +8851,9 @@ type CreateSecurityGroupRequestPermissions struct {
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
 	// The action of the security group rule. Valid values:
 	//
-	// 	- accept: allows inbound access.
+	// 	- Accept
 	//
-	// 	- drop: denies inbound access and returns no responses. In this case, the request times out or the connection cannot be established.
-	//
-	// Default value: accept.
+	// 	- Drop
 	//
 	// This parameter is required.
 	//
@@ -8841,9 +8867,7 @@ type CreateSecurityGroupRequestPermissions struct {
 	//
 	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
-	//
-	// 	- If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
+	// 	- If you set IpProtocol to ALL, the port number range is -1/-1.
 	//
 	// This parameter is required.
 	//
@@ -8853,8 +8877,6 @@ type CreateSecurityGroupRequestPermissions struct {
 	PortRange *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
 	// The priority of the security group rule. A smaller value specifies a higher priority. Valid values: 1 to 100.
 	//
-	// Default value: 1.
-	//
 	// This parameter is required.
 	//
 	// example:
@@ -8863,23 +8885,17 @@ type CreateSecurityGroupRequestPermissions struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The source IPv4 CIDR block. IPv4 CIDR blocks and IPv4 addresses are supported.
 	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
-	//
 	// example:
 	//
 	// 0.0.0.0/0
 	SourceCidrIp *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
 	// The range of source port numbers for the protocols specified in the security group rule. Valid values:
 	//
-	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port number range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
+	// 	- If you set IpProtocol to TCP or UDP, the port number range is 1 to 65535. Specify a port range in the format of \\<Start port number>/\\<End port number>. Example: 1/200.
 	//
 	// 	- If you set IpProtocol to ICMP, the port number range is -1/-1.
 	//
-	// 	- If you set IpProtocol to GRE, the port number range is -1/-1.
-	//
 	// 	- If you set IpProtocol to ALL, the port number range is -1/-1, which indicates all port numbers.
-	//
-	// This parameter is used to support quintuple rules. For more information, see [Security group quintuple rules](https://help.aliyun.com/document_detail/97439.html).
 	//
 	// example:
 	//
@@ -8947,7 +8963,7 @@ type CreateSecurityGroupShrinkRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Schema of Response
+	// An array of security group rules. You can specify up to 200 IDs of security group rules.
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The name of the security group. The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-). By default, this parameter is empty.
 	//
@@ -9059,7 +9075,7 @@ type CreateSnapshotRequest struct {
 	//
 	// d-bp1s5fnvk4gn2tws0****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](~~DescribeEnsRegions~~) operation.
+	// The ID of the edge node.
 	//
 	// This parameter is required.
 	//
@@ -9177,15 +9193,13 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 }
 
 type CreateSnatEntryRequest struct {
-	// Specifies whether to enable EIP affinity. Valid values:
+	// Specifies whether to enable IP affinity. If you do not specify this parameter, IP affinity is enabled by default. Valid values:
 	//
-	// 	- **0**: no
+	// 	- **false**
 	//
-	// 	- **1**: yes
+	// 	- **true**
 	//
-	// **
-	//
-	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+	// >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
 	//
 	// example:
 	//
@@ -9682,19 +9696,19 @@ type CreateStorageVolumeRequest struct {
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	// Specifies whether to enable authentication. Valid values:
 	//
-	// 	- **1**: enable authentication.
+	// 	- **1**: Authentication is enabled.
 	//
-	// 	- **0*	- (default): disable authentication.
+	// 	- **0*	- (default): Authentication is disabled.
 	//
 	// example:
 	//
 	// 0
 	IsAuth *string `json:"IsAuth,omitempty" xml:"IsAuth,omitempty"`
-	// Specifies whether to enable the volume. Valid values:
+	// Indicates whether the volume is enabled. Valid values:
 	//
-	// 	- **1*	- (default): enable the volume.
+	// 	- **1*	- (default): The volume is enabled.
 	//
-	// 	- **0**: disable the volume.
+	// 	- **0**: The volume is disabled.
 	//
 	// example:
 	//
@@ -11341,16 +11355,6 @@ type DeleteLoadBalancerListenerRequest struct {
 	//
 	// >  This parameter is required if the same port is used by listeners that use different protocols.
 	//
-	// Valid values:
-	//
-	// 	- tcp
-	//
-	// 	- udp
-	//
-	// 	- http
-	//
-	// 	- https
-	//
 	// example:
 	//
 	// tcp
@@ -11541,17 +11545,7 @@ func (s *DeleteMountTargetResponse) SetBody(v *DeleteMountTargetResponseBody) *D
 }
 
 type DeleteNatGatewayRequest struct {
-	// Specifies whether to forcefully delete the VPC. Valid values:
-	//
-	// - **true**: yes
-	//
-	// - **false*	- (default): no
-	//
-	// You can forcefully delete a VPC in the following scenarios:
-	//
-	// - Only an IPv4 gateway and routes that point to the IPv4 gateway exist in the VPC.
-	//
-	// - Only an IPv6 gateway and routes that point to the IPv6 gateway exist in the VPC.
+	// Specifies whether to forcefully delete the NAT instance.
 	//
 	// example:
 	//
@@ -13682,7 +13676,7 @@ type DescribeARMServerInstancesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is **100**.
+	// The number of entries to return on each page. Maximum value: **100**.
 	//
 	// Default value: **10**.
 	//
@@ -13826,7 +13820,7 @@ type DescribeARMServerInstancesShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is **100**.
+	// The number of entries to return on each page. Maximum value: **100**.
 	//
 	// Default value: **10**.
 	//
@@ -14429,7 +14423,7 @@ type DescribeApplicationRequest struct {
 	//
 	// {\\"appInfo\\":true,\\"detailStat\\": true, \\"appVersionStat\\": true, \\"districtStat\\":true ,\\"instanceStat\\": true, \\"podCountStat\\": true}
 	OutDetailStatParams *string `json:"OutDetailStatParams,omitempty" xml:"OutDetailStatParams,omitempty"`
-	// The resource filter.
+	// The resource filtering condition.
 	//
 	// example:
 	//
@@ -16623,7 +16617,7 @@ type DescribeDataDistResultRequest struct {
 	//
 	// 2022-01-02
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	// The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
 	//
 	// example:
 	//
@@ -16731,7 +16725,7 @@ type DescribeDataDistResultShrinkRequest struct {
 	//
 	// 2022-01-02
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	// The page number. Pages start from page 1. This parameter is optional if you want to return the distribution status of all data files.
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
 	//
 	// example:
 	//
@@ -17343,8 +17337,6 @@ type DescribeDataPushResultRequest struct {
 	//
 	// 2022-02-15
 	MinDate *string `json:"MinDate,omitempty" xml:"MinDate,omitempty"`
-	// The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
-	//
 	// example:
 	//
 	// 1
@@ -18942,13 +18934,11 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	//
 	// 2021-11-11T14:34:55+08:00
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Specifies whether the disk to be attached is released with the instance. Valid values:
+	// Indicates whether the disk is released when the instance to which the disk is attached is released. Valid values:
 	//
-	// 	- true: The disk will be released when the ECS instance is released.
+	// 	- true: The disk is released when the associated instance is released.
 	//
-	// 	- false: The disk will be retained when the ECS instance is released.
-	//
-	// 	- If you leave this parameter empty, the default value is used.
+	// 	- false: The disk is retained when the associated instance is released.
 	//
 	// example:
 	//
@@ -19583,11 +19573,11 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// lb-5t18quoohsrc3xkf86spmnu77
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the instance with which you want to associate the EIP. Valid values:
+	// The type of the instance that is associated with the EIP. Valid values:
 	//
 	// 	- **EnsInstance**: ENS instance in a VPC
 	//
-	// 	- **SlbInstance**: Edge Load Balancer (ELB) instance
+	// 	- **SlbInstance**: SLB instance
 	//
 	// example:
 	//
@@ -19610,7 +19600,8 @@ type DescribeEnsEipAddressesRequest struct {
 	// example:
 	//
 	// cn-chengdu-telecom
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// ENS节点ID数组。数组长度：1~100。
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -20007,12 +19998,26 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag) String() string {
@@ -21653,7 +21658,7 @@ func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *Describe
 }
 
 type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
-	// The time when the entry was created. The time is displayed in UTC.
+	// The time when the IP address was created. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -21691,7 +21696,7 @@ type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
 	//
 	// vtb-uf62p9o5cn35fi8xgurnm
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The new source CIDR block of the inbound or outbound traffic.
+	// The source CIDR block. This field is used when you configure a route entry in the gateway route table. This field is not supported in the vSwitch route table.
 	//
 	// example:
 	//
@@ -21843,11 +21848,11 @@ func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryList
 }
 
 type DescribeEnsRouteTablesRequest struct {
-	// The type of the route table. Valid values:
+	// The type of the resource with which the route table is associated. Valid values:
 	//
-	// 	- **VSwitch*	- (default): vSwitch route table
+	// 	- **VSwitch**
 	//
-	// 	- **Gateway**: gateway route table
+	// 	- **Gateway**
 	//
 	// example:
 	//
@@ -21885,17 +21890,13 @@ type DescribeEnsRouteTablesRequest struct {
 	//
 	// vtb-5p1cifr72di****
 	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
-	// The name of the route table that you want to query.
-	//
-	// The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the route table.
 	//
 	// example:
 	//
 	// tftest-nat04
 	RouteTableName *string `json:"RouteTableName,omitempty" xml:"RouteTableName,omitempty"`
-	// The type of the NAT.
-	//
-	// 	- Empty: symmetric NAT.
+	// The SNAT type.
 	//
 	// 	- FullCone: full cone NAT.
 	//
@@ -22021,11 +22022,11 @@ func (s *DescribeEnsRouteTablesResponseBody) SetTotalCount(v int32) *DescribeEns
 }
 
 type DescribeEnsRouteTablesResponseBodyRouteTables struct {
-	// The type of the route table. Valid values:
+	// The type of the resource with which the route table is associated. Valid values:
 	//
-	// 	- **VSwitch*	- (default): vSwitch route table
+	// 	- **VSwitch**
 	//
-	// 	- **Gateway**: gateway route table
+	// 	- **Gateway**
 	//
 	// example:
 	//
@@ -22037,9 +22038,7 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// 2024-03-08T08:35:18Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the network.
-	//
-	// The description must be 2 to 256 characters in length. It must start with a letter but cannot start with http:// or https://.
+	// The description.
 	//
 	// example:
 	//
@@ -22051,7 +22050,7 @@ type DescribeEnsRouteTablesResponseBodyRouteTables struct {
 	//
 	// cn-beijing-15
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// Is the gateway routing table the default.
+	// Specifies whether it is the default gateway route table.
 	//
 	// example:
 	//
@@ -25584,7 +25583,8 @@ type DescribeHaVipsRequest struct {
 	// example:
 	//
 	// cn-beijing-cmcc
-	EnsRegionId  *string   `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The IP address of the HAVIP.
 	//
@@ -26361,7 +26361,7 @@ type DescribeImageSharePermissionRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Maximum value: **100**.
 	//
-	// Default value: **10**
+	// Default value: **10**.
 	//
 	// example:
 	//
@@ -26406,7 +26406,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	//
 	// m-5qkf6jv9a0tzd5ipwx5fi****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -26418,7 +26418,7 @@ type DescribeImageSharePermissionResponseBody struct {
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -26636,7 +26636,7 @@ type DescribeImagesResponseBody struct {
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about images.
+	// The information about the images.
 	Images *DescribeImagesResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -26774,7 +26774,7 @@ type DescribeImagesResponseBodyImagesImage struct {
 	//
 	// centos
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The ID of the Edge Node Service (ENS) node.
+	// The region ID.
 	//
 	// example:
 	//
@@ -27138,10 +27138,14 @@ type DescribeInstanceBandwidthDetailRequest struct {
 	//
 	// vm
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Default value: 200.
+	//
 	// example:
 	//
 	// 10
@@ -27401,18 +27405,26 @@ func (s *DescribeInstanceBandwidthDetailResponse) SetBody(v *DescribeInstanceBan
 }
 
 type DescribeInstanceBootConfigurationRequest struct {
+	// The startup method.
+	//
 	// example:
 	//
 	// legacy
 	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// The startup type.
+	//
 	// example:
 	//
 	// pxe
 	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// Specifies whether the startup depends on the disk.
+	//
 	// example:
 	//
 	// on
 	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -27479,18 +27491,26 @@ func (s *DescribeInstanceBootConfigurationResponseBody) SetRequestId(v string) *
 }
 
 type DescribeInstanceBootConfigurationResponseBodyInstances struct {
+	// The startup method.
+	//
 	// example:
 	//
 	// legacy
 	BootSet *string `json:"BootSet,omitempty" xml:"BootSet,omitempty"`
+	// The startup type.
+	//
 	// example:
 	//
 	// disk
 	BootType *string `json:"BootType,omitempty" xml:"BootType,omitempty"`
+	// Specifies whether the startup depends on the disk.
+	//
 	// example:
 	//
 	// off
 	DiskSet *string `json:"DiskSet,omitempty" xml:"DiskSet,omitempty"`
+	// The ID of the instance.
+	//
 	// example:
 	//
 	// i-****
@@ -27758,7 +27778,7 @@ type DescribeInstanceSDGStatusRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -27822,7 +27842,7 @@ type DescribeInstanceSDGStatusShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned on each page.
 	//
 	// example:
 	//
@@ -29473,11 +29493,7 @@ type DescribeInstancesResponseBodyInstancesInstanceDataDiskDataDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fxxxxx
 	EncryptKeyId *string `json:"EncryptKeyId,omitempty" xml:"EncryptKeyId,omitempty"`
-	// Specifies whether to encrypt the new system disk. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false*	- (default): no
+	// Specifies whether to encrypt the disk.
 	//
 	// example:
 	//
@@ -30224,15 +30240,15 @@ type DescribeKeyPairsRequest struct {
 	//
 	// ssh-50cynkq42sgj4ej1tn78t4***
 	KeyPairId *string `json:"KeyPairId,omitempty" xml:"KeyPairId,omitempty"`
-	// The name of the key pair. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
+	// The name of the key pair that you want to bind to the simple application server. The name must be 2 to 128 characters in length. The name must start with a letter but cannot start with `http://` or `https://`. The name can contain the following characters:
 	//
-	// 	- Digits
+	// 	- Numbers.
 	//
 	// 	- :
 	//
 	// 	- _
 	//
-	// 	- *
+	// 	- .
 	//
 	// You can specify only one name. By default, all key pairs are queried.
 	//
@@ -30873,7 +30889,7 @@ func (s *DescribeLoadBalancerHTTPListenerAttributeRequest) SetLoadBalancerId(v s
 }
 
 type DescribeLoadBalancerHTTPListenerAttributeResponseBody struct {
-	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	// The port used by the backend server of the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -31287,7 +31303,7 @@ func (s *DescribeLoadBalancerHTTPSListenerAttributeRequest) SetLoadBalancerId(v 
 }
 
 type DescribeLoadBalancerHTTPSListenerAttributeResponseBody struct {
-	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	// The port used by the backend server of the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
@@ -31862,7 +31878,7 @@ type DescribeLoadBalancerListenMonitorResponseBodyLoadBalancerMonitorListenData 
 	//
 	// 2
 	ValidRsNum *string `json:"ValidRsNum,omitempty" xml:"ValidRsNum,omitempty"`
-	// The VIP of the instance.
+	// The virtual IP address (VIP) of the instance.
 	//
 	// example:
 	//
@@ -32467,7 +32483,7 @@ func (s *DescribeLoadBalancerSpecResponse) SetBody(v *DescribeLoadBalancerSpecRe
 }
 
 type DescribeLoadBalancerTCPListenerAttributeRequest struct {
-	// The frontend port that is used by the Edge Load Balance (ELB) instance. Valid values: **1*	- to **65535**.
+	// The listening port that you want to query. Valid values: **1*	- to **65535**.
 	//
 	// This parameter is required.
 	//
@@ -32504,19 +32520,19 @@ func (s *DescribeLoadBalancerTCPListenerAttributeRequest) SetLoadBalancerId(v st
 }
 
 type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
-	// The backend port that is used by the ELB instance. Valid values: **1*	- to **65535**.
+	// The port used by the backend server of the ELB instance. Valid values: **1*	- to **65535**.
 	//
 	// example:
 	//
 	// 8080
 	BackendServerPort *int32 `json:"BackendServerPort,omitempty" xml:"BackendServerPort,omitempty"`
-	// The maximum bandwidth of the elastic IP address (EIP). Default value: 5. Valid values: **5*	- to **10000**. Unit: Mbit/s.
+	// The peak bandwidth of the Edge Load Balancer (ELB) instance. The default value is -1, which indicates that the bandwidth is not limited.
 	//
 	// example:
 	//
 	// 5
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The description of the listener.
+	// The name of the listener.
 	//
 	// example:
 	//
@@ -32556,7 +32572,7 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	//
 	// 8000
 	HealthCheckConnectPort *int32 `json:"HealthCheckConnectPort,omitempty" xml:"HealthCheckConnectPort,omitempty"`
-	// The timeout period of a health check response. If a backend server does not respond within the specified timeout period, the server fails to pass the health check.
+	// The timeout period for a health check response. If a backend server does not respond within the specified timeout period, the server fails the health check.
 	//
 	// 	- Default value: 5.
 	//
@@ -32566,9 +32582,9 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	//
 	// >
 	//
-	// 	- This parameter is returned only if you set HealthCheck to on.
+	// 	- This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
-	// 	- If the value of the HealthCheckConnectTimeout parameter is smaller than that of the HealthCheckInterval parameter, the timeout period specified by the HealthCheckConnectTimeout parameter becomes invalid and the value of the HealthCheckInterval parameter is used as the timeout period.
+	// 	- If the value of the HealthCheckTimeout property is smaller than the value of the HealthCheckInterval property, the timeout period specified by the HealthCheckTimeout property becomes invalid and the value of the HealthCheckInterval property is used as the timeout period.
 	//
 	// example:
 	//
@@ -32614,13 +32630,13 @@ type DescribeLoadBalancerTCPListenerAttributeResponseBody struct {
 	//
 	// tcp
 	HealthCheckType *string `json:"HealthCheckType,omitempty" xml:"HealthCheckType,omitempty"`
-	// The Uniform Resource Identifier (URI) that is used for health checks. The URI must be **1*	- to **80*	- characters in length.
+	// The URI used for health checks. The URI must be **1*	- to **80*	- characters in length.
 	//
 	// >
 	//
-	// 	- The URL must start with a forward slash (`/`) and contain characters other than forward slashes (`/`).
+	// 	- A URL must start with a forward slash (`/`) but cannot contain only forward slashes (`/`).
 	//
-	// 	- This parameter is returned only if you set HealthCheck to on.
+	// 	- This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
 	// example:
 	//
@@ -33918,13 +33934,13 @@ type DescribeMountTargetsRequest struct {
 	//
 	// TestMountPath
 	MountTargetName *string `json:"MountTargetName,omitempty" xml:"MountTargetName,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The number of the page to return. Pages start from page 1. Default value: 1
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. The maximum value is 100. Default value: 10.
+	// The number of entries returned per page. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -34886,7 +34902,7 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// cn-wuxi-9
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The node information.
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
@@ -34900,7 +34916,7 @@ type DescribeNatGatewaysRequest struct {
 	//
 	// nat-5t7nh1cfm6kxiszlttr38****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The IDs of NAT Gateways.
+	// The IDs of the NAT gateways. You can specify 1 to 100 IDs.
 	NatGatewayIds []*string `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Repeated"`
 	// The ID of the network.
 	//
@@ -35060,7 +35076,7 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	//
 	// cn-xiangyang-5
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
+	// The EIPs that are associated with the NAT gateway.
 	IpLists []*DescribeNatGatewaysResponseBodyNatGatewaysIpLists `json:"IpLists,omitempty" xml:"IpLists,omitempty" type:"Repeated"`
 	// The name of the NAT gateway.
 	//
@@ -35086,13 +35102,13 @@ type DescribeNatGatewaysResponseBodyNatGateways struct {
 	//
 	// enat.default
 	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	// The status of the SNAT entry.
+	// The status of the NAT gateway. Valid values:
 	//
-	// 	- Pending: The SNAT entry is being created or modified.
+	// 	- **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
 	//
-	// 	- Available: The SNAT entry is available.
+	// 	- **Available**: The NAT gateway is in the Available state after the creation is complete.
 	//
-	// 	- Deleting: The SNAT entry is being deleted.
+	// 	- **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
 	//
 	// example:
 	//
@@ -35166,13 +35182,13 @@ func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVSwitchId(v string) *Des
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {
-	// The ID of the instance.
+	// The ID of the EIP.
 	//
 	// example:
 	//
 	// eip-50g****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The IP address of the EIP associated with the NAT gateway.
+	// The EIP.
 	//
 	// example:
 	//
@@ -35184,9 +35200,7 @@ type DescribeNatGatewaysResponseBodyNatGatewaysIpLists struct {
 	//
 	// 	- **UsedBySnatTable**: The EIP is specified in an SNAT entry.
 	//
-	// 	- **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-	//
-	// 	- **Idle**: The EIP is not specified in a DNAT or SNAT entry.
+	// 	- **Idle**: The EIP is not specified in an SNAT entry or a DNAT entry.
 	//
 	// example:
 	//
@@ -35218,12 +35232,26 @@ func (s *DescribeNatGatewaysResponseBodyNatGatewaysIpLists) SetUsingStatus(v str
 }
 
 type DescribeNatGatewaysResponseBodyNatGatewaysTags struct {
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeNatGatewaysResponseBodyNatGatewaysTags) String() string {
@@ -35903,9 +35931,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// cn-beijing
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the gateway route table associated with the IPv6 gateway.
-	//
-	// >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+	// The ID of the gateway route table.
 	//
 	// example:
 	//
@@ -35945,7 +35971,7 @@ type DescribeNetworkAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the route table that you want to query.
+	// The ID of the route table.
 	//
 	// example:
 	//
@@ -36286,7 +36312,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// cn-tianjin-cmcc
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The node information.
+	// The IDs of edge nodes. N indicates the number of edge node IDs that you can specify at the same time. Valid values of N: 1 to 100.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
@@ -36308,7 +36334,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// eni-58z57orgmt6d1****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// A list of multicast source IDs.
+	// The IDs of the elastic network interfaces (ENIs). N indicates the number of ENI IDs that you can specify at the same time. Valid values of N: 1 to 100.
 	NetworkInterfaceIds []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
 	// The name of the ENI.
 	//
@@ -37056,9 +37082,7 @@ type DescribeNetworksResponseBodyNetworksNetwork struct {
 	//
 	// cn-beijing
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The ID of the gateway route table associated with the IPv6 gateway.
-	//
-	// >  This parameter is available only when the IPv6 gateway is associated with a gateway route table.
+	// The ID of the gateway route table.
 	//
 	// example:
 	//
@@ -37224,12 +37248,26 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkTags) SetTag(v []*DescribeNe
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeNetworksResponseBodyNetworksNetworkTagsTag) String() string {
@@ -40121,9 +40159,9 @@ type DescribeSDGRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// Default value: 10
+	// Default value: 10.
 	//
 	// example:
 	//
@@ -40163,9 +40201,9 @@ type DescribeSDGShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries to return on each page.
 	//
-	// Default value: 10
+	// Default value: 10.
 	//
 	// example:
 	//
@@ -41971,9 +42009,9 @@ type DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroup struct {
 	//
 	// 5
 	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	// The list of instance IDs.
+	// The IDs of the instances that are associated with the security group.
 	InstanceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupInstanceIds `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Struct"`
-	// The IDs of ENIs.
+	// The IDs of the ENIs that are associated with the security group.
 	NetworkInterfaceIds *DescribeSecurityGroupsResponseBodySecurityGroupsSecurityGroupNetworkInterfaceIds `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Struct"`
 	// The ID of the security group.
 	//
@@ -43440,7 +43478,7 @@ type DescribeSnapshotsRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The region ID of the disk. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent list of regions.
+	// The ID of the ENS node. You can query the node ID by calling the [DescribeEnsRegions](https://help.aliyun.com/document_detail/2637662.html) operation.
 	//
 	// example:
 	//
@@ -43823,15 +43861,13 @@ type DescribeSnatAttributeResponseBody struct {
 	//
 	// 101.10. XX.XX/24
 	DestCIDR *string `json:"DestCIDR,omitempty" xml:"DestCIDR,omitempty"`
-	// Specifies whether to enable EIP affinity. Valid values:
+	// Specifies whether to enable IP affinity. Valid values:
 	//
-	// 	- **0**: no
+	// 	- **false**
 	//
-	// 	- **1**: yes
+	// 	- **true**
 	//
-	// **
-	//
-	// **Description*	- After you enable EIP affinity, if multiple EIPs are associated with an SNAT entry, each client uses one EIP to access the Internet. If EIP affinity is disabled, each client uses a random EIP to access the Internet.
+	// >  After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
 	//
 	// example:
 	//
@@ -45645,7 +45681,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// cn-xian-unicom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// The node information.
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the vSwitch belongs.
 	//
@@ -45671,7 +45707,7 @@ type DescribeVSwitchesRequest struct {
 	//
 	// vsw-5m9xhlq8oh***
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The list of vSwitches in the network.
+	// The IDs of vSwitches. You can specify 1 to 100 IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The name of the vSwitch.
 	//
@@ -45946,12 +45982,26 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) SetTag(v []*Describe
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
+	// example:
+	//
+	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
 	// Deprecated
+	//
+	// example:
+	//
+	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// example:
+	//
+	// TestValue
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag) String() string {
@@ -48613,7 +48663,7 @@ type ListApplicationsRequest struct {
 	//
 	// {\\"appInfo\\":true,\\"detailStat\\": true, \\"appVersionStat\\": true, \\"districtStat\\":true ,\\"instanceStat\\": true, \\"podCountStat\\": true}
 	OutAppInfoParams *string `json:"OutAppInfoParams,omitempty" xml:"OutAppInfoParams,omitempty"`
-	// The page number. Pages start from page 1. This parameter is optional if you want to return all information about the applications.
+	// The page number. Pages start from page 1. This parameter is optional if you want to return the push status of all data files.
 	//
 	// example:
 	//
@@ -49579,7 +49629,10 @@ func (s *ListObjectsResponse) SetBody(v *ListObjectsResponseBody) *ListObjectsRe
 }
 
 type ListProductAbilitiesResponseBody struct {
+	// Products supported by the edge node.
 	ProductAbilities []*string `json:"ProductAbilities,omitempty" xml:"ProductAbilities,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// xxxxx-75ED-422E-A022-7121FA18C968
@@ -49642,7 +49695,7 @@ type ListTagResourcesRequest struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The IDs of resources. Valid values of N: 1 to 50.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Set the value to instance.
+	// The resource type. Set the value to instance.
 	//
 	// This parameter is required.
 	//
@@ -50266,7 +50319,7 @@ func (s *ModifyFileSystemResponse) SetBody(v *ModifyFileSystemResponseBody) *Mod
 }
 
 type ModifyForwardEntryRequest struct {
-	// The elastic IP address (EIP) that is used to access the Internet.
+	// The EIP in the DNAT entry. The public IP address is used to access the Internet.
 	//
 	// example:
 	//
@@ -50276,9 +50329,11 @@ type ModifyForwardEntryRequest struct {
 	//
 	// 	- Valid values: 1 to 65535.
 	//
-	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
 	//
 	// 	- If you set ExternalPort to a port range, you must also set InternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+	//
+	// 	- The maximum port range is 1000.
 	//
 	// example:
 	//
@@ -50310,11 +50365,15 @@ type ModifyForwardEntryRequest struct {
 	//
 	// 10.XXX.XXX.50
 	InternalIp *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
-	// The internal port or port range that is used for port forwarding.
+	// The private port or port range that is used in port forwarding.
 	//
 	// 	- Valid values: 1 to 65535.
 	//
-	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20.
+	// 	- To specify a port range, separate the first port and the last port with a forward slash (/), such as 10/20. The first port and the last port are included.
+	//
+	// 	- If you set InternalPort to a port range, you must also set ExternalPort to a port range. The number of ports in the port ranges must be the same. For example, if you set ExternalPort to 10/20, you can set InternalPort to 80/90.
+	//
+	// 	- The maximum port range is 1000.
 	//
 	// example:
 	//
@@ -51106,7 +51165,8 @@ type ModifyInstanceChargeTypeRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew    *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// Specifies whether to change the billing method of all data disks that are created with the instance to subscription when you change the billing method of the instance from pay-as-you-go to subscription. Valid values:
 	//
 	// true
@@ -51173,6 +51233,11 @@ func (s *ModifyInstanceChargeTypeRequest) SetAutoRenew(v bool) *ModifyInstanceCh
 	return s
 }
 
+func (s *ModifyInstanceChargeTypeRequest) SetBillingCycle(v string) *ModifyInstanceChargeTypeRequest {
+	s.BillingCycle = &v
+	return s
+}
+
 func (s *ModifyInstanceChargeTypeRequest) SetIncludeDataDisks(v bool) *ModifyInstanceChargeTypeRequest {
 	s.IncludeDataDisks = &v
 	return s
@@ -51218,7 +51283,8 @@ type ModifyInstanceChargeTypeShrinkRequest struct {
 	// example:
 	//
 	// false
-	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenew    *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// Specifies whether to change the billing method of all data disks that are created with the instance to subscription when you change the billing method of the instance from pay-as-you-go to subscription. Valid values:
 	//
 	// true
@@ -51282,6 +51348,11 @@ func (s *ModifyInstanceChargeTypeShrinkRequest) SetAutoPay(v bool) *ModifyInstan
 
 func (s *ModifyInstanceChargeTypeShrinkRequest) SetAutoRenew(v bool) *ModifyInstanceChargeTypeShrinkRequest {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *ModifyInstanceChargeTypeShrinkRequest) SetBillingCycle(v string) *ModifyInstanceChargeTypeShrinkRequest {
+	s.BillingCycle = &v
 	return s
 }
 
@@ -51958,6 +52029,17 @@ func (s *ModifySnapshotAttributeResponse) SetBody(v *ModifySnapshotAttributeResp
 }
 
 type ModifySnatEntryRequest struct {
+	// Specifies whether to enable IP affinity. Default value: true. Valid values:
+	//
+	// 	- **false**
+	//
+	// 	- **true**
+	//
+	// >  Description After you enable IP affinity, if multiple EIPs are associated with an SNAT entry, one client uses the same EIP to for communication. If IP affinity is disabled, the client uses a random EIP for communication.
+	//
+	// example:
+	//
+	// false
 	EipAffinity *bool `json:"EipAffinity,omitempty" xml:"EipAffinity,omitempty"`
 	// example:
 	//
@@ -51973,7 +52055,12 @@ type ModifySnatEntryRequest struct {
 	//
 	// test0
 	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
-	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	// Separate multiple EIPs in the SNAT entry with commas (,).
+	//
+	// example:
+	//
+	// 120.XXX.XXX.71
+	SnatIp *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
 }
 
 func (s ModifySnatEntryRequest) String() string {
@@ -52059,11 +52146,11 @@ func (s *ModifySnatEntryResponse) SetBody(v *ModifySnatEntryResponseBody) *Modif
 }
 
 type ModifyVSwitchAttributeRequest struct {
-	// The description of the vSwitch.
+	// The description of the listener.
 	//
 	// 	- The description must be 2 to 256 characters in length.
 	//
-	// 	- The description cannot start with http:// or https://.
+	// 	- It must start with a letter but cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -52079,9 +52166,9 @@ type ModifyVSwitchAttributeRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	// The name of the vSwitch.
 	//
-	// 	- The name must be 2 to 128 characters in length.
+	// 	- The name must be 2 to 128 characters in length and can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
-	// 	- The name must start with a letter and cannot start with http:// or https://.
+	// 	- It must start with a letter but cannot start with http:// or https://.
 	//
 	// example:
 	//
@@ -52409,7 +52496,7 @@ type PreloadRegionSDGRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The namespaces.
+	// An array that consists of queried namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The number of redundant replicas to support rapid deployment.
 	//
@@ -52462,7 +52549,7 @@ type PreloadRegionSDGShrinkRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
-	// The namespaces.
+	// An array that consists of queried namespaces.
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
 	// The number of redundant replicas to support rapid deployment.
 	//
@@ -52590,7 +52677,7 @@ type PreloadRegionSDGResponseBodyDataResult struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about failed tasks.
+	// Details about the failed tasks.
 	FailedItems []*PreloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
 	// The number of successful tasks.
 	//
@@ -53663,11 +53750,11 @@ func (s *RebootARMServerInstanceResponse) SetBody(v *RebootARMServerInstanceResp
 }
 
 type RebootInstanceRequest struct {
-	// Indicates whether to stop the instance forcibly before you reboot it. Default value: false. Valid values:
+	// Specifies whether to forcefully stop the instance before you restart it.
 	//
 	// 	- **true**
 	//
-	// 	- **false**
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -55533,13 +55620,15 @@ type RescaleApplicationRequest struct {
 	//
 	// 474bdef0-d149-4695-abfb-52912d9143f0
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The level of resource scaling. The value must be of the enumerated data type. Valid values:
+	// The level of resource scaling. The value is of the enumeration type. Valid values:
 	//
 	// 	- AreaIspCode (default): scales resources based on the Internet service provider (ISP).
 	//
 	// 	- RegionId: scales resources based on the edge node.
 	//
 	// 	- InstanceId: scales resources based on the instance ID. Resource scale-out specifies resource hosting and scale-in specifies resource release.
+	//
+	// Default value: AreaIspCode.
 	//
 	// example:
 	//
@@ -56736,7 +56825,7 @@ type RunInstancesRequest struct {
 	//
 	// 2023-06-28T14:38:52Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
+	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
 	//
 	// 	- **true**.
 	//
@@ -56766,7 +56855,11 @@ type RunInstancesRequest struct {
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The Internet service provider (ISP).
 	//
-	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	// >  This parameter required if ScheduleAreaLevel is set to Region.\\
+	//
+	// If you set ScheduleAreaLevel to Region, a node has multiple ISPs, and you do not specify an ISP, then the create instance uses the ISP of the node. If the node has two ISPs, such as China Mobile and China Unicom, the created instance has two ISPs.\\
+	//
+	// You can call the DescribeRegionIsps operation to query ISPs of the edge node.[](~~2637461~~)
 	//
 	// example:
 	//
@@ -56804,11 +56897,11 @@ type RunInstancesRequest struct {
 	//
 	// instance
 	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	// The billing method of the instance. Examples:
+	// The billing method of the instance. Valid values:
 	//
 	// 	- **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid:*	- pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -56960,7 +57053,7 @@ type RunInstancesRequest struct {
 	//
 	// Region
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// The scheduling price policy. Examples:
+	// The scheduling price policy. Valid values:
 	//
 	// 	- **PriceHighPriority**: The high price prevails.
 	//
@@ -57232,7 +57325,7 @@ func (s *RunInstancesRequest) SetVSwitchId(v string) *RunInstancesRequest {
 }
 
 type RunInstancesRequestDataDisk struct {
-	// The category of the disk. Examples:
+	// The category of the disk. Valid values:
 	//
 	// 	- **cloud_efficiency**: ultra disk.
 	//
@@ -57391,7 +57484,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// 2023-06-28T14:38:52Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Examples:
+	// Specifies whether to enable auto-renewal for the premium bandwidth plan. Valid values:
 	//
 	// 	- **true**.
 	//
@@ -57421,7 +57514,11 @@ type RunInstancesShrinkRequest struct {
 	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
 	// The Internet service provider (ISP).
 	//
-	// >  This parameter is not available if ScheduleAreaLevel is set to Region and is required if ScheduleAreaLevel is set to other values.
+	// >  This parameter required if ScheduleAreaLevel is set to Region.\\
+	//
+	// If you set ScheduleAreaLevel to Region, a node has multiple ISPs, and you do not specify an ISP, then the create instance uses the ISP of the node. If the node has two ISPs, such as China Mobile and China Unicom, the created instance has two ISPs.\\
+	//
+	// You can call the DescribeRegionIsps operation to query ISPs of the edge node.[](~~2637461~~)
 	//
 	// example:
 	//
@@ -57459,11 +57556,11 @@ type RunInstancesShrinkRequest struct {
 	//
 	// instance
 	InstanceChargeStrategy *string `json:"InstanceChargeStrategy,omitempty" xml:"InstanceChargeStrategy,omitempty"`
-	// The billing method of the instance. Examples:
+	// The billing method of the instance. Valid values:
 	//
 	// 	- **PrePaid**: subscription.
 	//
-	// 	- **PostPaid**: pay-as-you-go.
+	// 	- **PostPaid:*	- pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -57615,7 +57712,7 @@ type RunInstancesShrinkRequest struct {
 	//
 	// Region
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
-	// The scheduling price policy. Examples:
+	// The scheduling price policy. Valid values:
 	//
 	// 	- **PriceHighPriority**: The high price prevails.
 	//
@@ -58383,7 +58480,7 @@ func (s *SaveSDGResponse) SetBody(v *SaveSDGResponseBody) *SaveSDGResponse {
 }
 
 type SetBackendServersRequest struct {
-	// The list of backend servers that you want to add. You can modify at most 20 backend servers.
+	// The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
 	//
 	// This parameter is required.
 	BackendServers []*SetBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
@@ -58416,7 +58513,7 @@ func (s *SetBackendServersRequest) SetLoadBalancerId(v string) *SetBackendServer
 }
 
 type SetBackendServersRequestBackendServers struct {
-	// The ID of the instance that you want to use as the backend server.
+	// The ID of the instance that you use as the backend server.
 	//
 	// This parameter is required.
 	//
@@ -58426,9 +58523,9 @@ type SetBackendServersRequestBackendServers struct {
 	ServerId *string `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
 	// The type of the backend server. Valid values:
 	//
-	// 	- **ens**: ENS instance.
+	// 	- **ens**: ENS instance
 	//
-	// 	- **eni**: Elastic Network Interface (ENI) instance.
+	// 	- **eni**: elastic network interface (ENI)
 	//
 	// example:
 	//
@@ -58470,7 +58567,7 @@ func (s *SetBackendServersRequestBackendServers) SetWeight(v int32) *SetBackendS
 }
 
 type SetBackendServersShrinkRequest struct {
-	// The list of backend servers that you want to add. You can modify at most 20 backend servers.
+	// The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
 	//
 	// This parameter is required.
 	BackendServersShrink *string `json:"BackendServers,omitempty" xml:"BackendServers,omitempty"`
@@ -58794,15 +58891,15 @@ type SetLoadBalancerHTTPListenerAttributeRequest struct {
 	//
 	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: Consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: Consistent hashing based on Quick UDP Internet Connection (QUIC) IDs. Requests that contain the same QUIC ID are scheduled to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: Consistent hashing based on three specific bytes of iQUIC CID. Requests with the same second, third, and forth bytes are scheduled to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -59031,13 +59128,13 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//
 	// 2
 	HealthCheckInterval *int32 `json:"HealthCheckInterval,omitempty" xml:"HealthCheckInterval,omitempty"`
-	// The health check method used in HTTP health checks. Valid values:
+	// The HTTP request method for health checks. Valid values:
 	//
 	// 	- **head*	- (default): requests the head of the page.
 	//
 	// 	- **get**: requests the specified part of the page and returns the entity body.
 	//
-	// >  This parameter takes effect only if you set HealthCheck to on.
+	// >  This parameter takes effect only if the HealthCheck parameter is set to on.
 	//
 	// example:
 	//
@@ -59113,19 +59210,19 @@ type SetLoadBalancerHTTPSListenerAttributeRequest struct {
 	//
 	// 60
 	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
 	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -59300,11 +59397,11 @@ type SetLoadBalancerStatusRequest struct {
 	//
 	// lb-5t18quoohsrc3xkf86spmnu77
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The status of the listener after the modification. Valid values:
+	// The new instance status. Valid values:
 	//
-	// 	- **Active**: The listener for the instance can forward the received traffic based on forwarding rules.
+	// 	- **Active**
 	//
-	// 	- **InActive**: The listener for the instance does not forward the received traffic.
+	// 	- **InActive**
 	//
 	// This parameter is required.
 	//
@@ -59392,7 +59489,7 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	// Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
 	//
 	// 	- **on**
 	//
@@ -59506,19 +59603,19 @@ type SetLoadBalancerTCPListenerAttributeRequest struct {
 	//
 	// 0
 	PersistenceTimeout *int32 `json:"PersistenceTimeout,omitempty" xml:"PersistenceTimeout,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
 	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections to a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -59680,7 +59777,7 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Elastic IP address (EIP) pass-through. Valid values:
+	// Specifies whether to enable elastic IP address (EIP) pass-through. Valid values:
 	//
 	// 	- **on**
 	//
@@ -59756,19 +59853,19 @@ type SetLoadBalancerUDPListenerAttributeRequest struct {
 	//
 	// lb-5pzipr2fszqtl2xf64uy5****
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
-	// The routing algorithm. Valid values:
+	// The scheduling algorithm. Valid values:
 	//
 	// 	- **wrr**: Backend servers with higher weights receive more requests than those with lower weights.
 	//
-	// 	- **wlc**: Requests are distributed based on the weight and load of each backend server. The load refers to the number of connections on a backend server. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
+	// 	- **wlc**: Requests are distributed based on the weights and number of connections to backend servers. If two backend servers have the same weight, the backend server that has fewer connections receives more requests.
 	//
 	// 	- **rr**: Requests are distributed to backend servers in sequence.
 	//
-	// 	- **sch**: consistent hashing that is based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
+	// 	- **sch**: consistent hashing based on source IP addresses. Requests from the same source IP address are distributed to the same backend server.
 	//
-	// 	- **qch**: consistent hashing that is based on QUIC connection IDs. Requests that contain the same QUIC connection ID are distributed to the same backend server.
+	// 	- **qch**: consistent hashing based on QUIC connection IDs (CIDs). Requests that contain the same QUIC CID are distributed to the same backend server.
 	//
-	// 	- **iqch**: consistent hashing that is based on specific three bytes of the iQUIC CIDs. Requests whose second to fourth bytes are the same are distributed to the same backend server.
+	// 	- **iqch**: consistent hashing based on three specific bytes of iQUIC CIDs. Requests with the same second, third, and fourth bytes are distributed to the same backend server.
 	//
 	// example:
 	//
@@ -60426,11 +60523,11 @@ func (s *StopEpnInstanceResponse) SetBody(v *StopEpnInstanceResponseBody) *StopE
 }
 
 type StopInstanceRequest struct {
-	// Specifies whether to forcibly stop the servers.
+	// Specifies whether to forcibly stop the instance.
 	//
-	// 	- **true**: forcibly stops the instance.
+	// 	- **true**
 	//
-	// 	- **false**: normally stops the servers. This is the default value.
+	// 	- **false*	- (default)
 	//
 	// example:
 	//
@@ -60940,11 +61037,11 @@ type UnAssociateEnsEipAddressRequest struct {
 	//
 	// eip-5sqa431nx3vee8heqxfxp****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// Specifies whether to forcefully release the instance if it is in the Running status. Valid values:
+	// Specifies whether to disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway. Valid values:
 	//
-	// 	- true. If you set the Force parameter to true, temporary data in the memory and storage of the instance is erased and cannot be restored after you call the operation, which is similar to the effect of a power-off action.
+	// 	- **false*	- (default): does not disassociate the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
 	//
-	// 	- false (default)
+	// 	- **true**: disassociates the EIP from a NAT gateway if a DNAT or SNAT entry is added to the NAT gateway.
 	//
 	// example:
 	//
@@ -61321,7 +61418,7 @@ type UnloadRegionSDGRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIds []*string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty" type:"Repeated"`
-	// The namespaces.
+	// An array that consists of queried namespaces.
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// Deletes the shared data group (SDG) ID of the preloaded data.
 	//
@@ -61361,7 +61458,7 @@ type UnloadRegionSDGShrinkRequest struct {
 	//
 	// This parameter is required.
 	DestinationRegionIdsShrink *string `json:"DestinationRegionIds,omitempty" xml:"DestinationRegionIds,omitempty"`
-	// The namespaces.
+	// An array that consists of queried namespaces.
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
 	// Deletes the shared data group (SDG) ID of the preloaded data.
 	//
@@ -61476,7 +61573,7 @@ type UnloadRegionSDGResponseBodyDataResult struct {
 	//
 	// 0
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// Details about failed tasks.
+	// Details about the failed tasks.
 	FailedItems []*UnloadRegionSDGResponseBodyDataResultFailedItems `json:"FailedItems,omitempty" xml:"FailedItems,omitempty" type:"Repeated"`
 	// The number of successful tasks.
 	//
@@ -61828,20 +61925,6 @@ type UntagResourcesRequest struct {
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The type of the resource.
-	//
-	// Valid values:
-	//
-	// 	- instance
-	//
-	// 	- eip
-	//
-	// 	- disk
-	//
-	// 	- network
-	//
-	// 	- natgateway
-	//
-	// 	- vswitch
 	//
 	// This parameter is required.
 	//
@@ -62611,13 +62694,11 @@ func (client *Client) AddBackendServers(request *AddBackendServersRequest) (_res
 //
 // Description:
 //
-// # [](#)Usage notes
+//	  You can call this operation up to 100 times per second per account.
 //
-//   - You can call this operation up to 100 times per second.
+//		- You can call this operation up to 5 times per second per user.
 //
-//   - You can call this operation up to 5 times per second per user.
-//
-//   - Internal networks and IPv4 addresses are not supported.
+//		- Internal networks and IPv4 addresses are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -62671,13 +62752,11 @@ func (client *Client) AddNetworkInterfaceToInstanceWithOptions(request *AddNetwo
 //
 // Description:
 //
-// # [](#)Usage notes
+//	  You can call this operation up to 100 times per second per account.
 //
-//   - You can call this operation up to 100 times per second.
+//		- You can call this operation up to 5 times per second per user.
 //
-//   - You can call this operation up to 5 times per second per user.
-//
-//   - Internal networks and IPv4 addresses are not supported.
+//		- Internal networks and IPv4 addresses are not supported.
 //
 // @param request - AddNetworkInterfaceToInstanceRequest
 //
@@ -72371,7 +72450,11 @@ func (client *Client) DescribeInstanceBandwidthDetail(request *DescribeInstanceB
 
 // Summary:
 //
-// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+//
+// Description:
+//
+// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
 //
 // @param request - DescribeInstanceBootConfigurationRequest
 //
@@ -72425,7 +72508,11 @@ func (client *Client) DescribeInstanceBootConfigurationWithOptions(request *Desc
 
 // Summary:
 //
-// 修改启动配置，只支持异构实例(PCFarm裸金属)。
+// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
+//
+// Description:
+//
+// Queries the boot configuration of a heterogeneous PC Farm bare metal instance.
 //
 // @param request - DescribeInstanceBootConfigurationRequest
 //
@@ -74201,7 +74288,7 @@ func (client *Client) DescribeNetworks(request *DescribeNetworksRequest) (_resul
 
 // Summary:
 //
-// The specifications of resources that can be purchased in subscription billing mode are queried.
+// Queries the specifications of resources that can be purchased in subscription billing mode.
 //
 // @param request - DescribePrePaidInstanceStockRequest
 //
@@ -74255,7 +74342,7 @@ func (client *Client) DescribePrePaidInstanceStockWithOptions(request *DescribeP
 
 // Summary:
 //
-// The specifications of resources that can be purchased in subscription billing mode are queried.
+// Queries the specifications of resources that can be purchased in subscription billing mode.
 //
 // @param request - DescribePrePaidInstanceStockRequest
 //
@@ -77040,7 +77127,11 @@ func (client *Client) JoinSecurityGroup(request *JoinSecurityGroupRequest) (_res
 
 // Summary:
 //
-// For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+// Performs networking.
+//
+// Description:
+//
+// For the Internal Connection mode and the Intelligent Acceleration and Internal Connection mode, instances of the vSwitch take effect automatically. You do not need to manually add instances. For public connections such as intelligent acceleration, you need to call an operation to manually add the instances to Internet-facing instances.
 //
 // @param request - JoinVSwitchesToEpnInstanceRequest
 //
@@ -77086,7 +77177,11 @@ func (client *Client) JoinVSwitchesToEpnInstanceWithOptions(request *JoinVSwitch
 
 // Summary:
 //
-// For internal connections, instances that are associated with a vSwitch automatically take effect. For public connections such as intelligent acceleration, you need to manually add the instances.
+// Performs networking.
+//
+// Description:
+//
+// For the Internal Connection mode and the Intelligent Acceleration and Internal Connection mode, instances of the vSwitch take effect automatically. You do not need to manually add instances. For public connections such as intelligent acceleration, you need to call an operation to manually add the instances to Internet-facing instances.
 //
 // @param request - JoinVSwitchesToEpnInstanceRequest
 //
@@ -78358,6 +78453,10 @@ func (client *Client) ModifyInstanceChargeTypeWithOptions(tmpReq *ModifyInstance
 
 	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
 		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IncludeDataDisks)) {
@@ -80595,7 +80694,7 @@ func (client *Client) RemovePublicIpsFromEpnInstance(request *RemovePublicIpsFro
 
 // Summary:
 //
-// Removes shared data groups (SDGs) that are deployed on instances.
+// Removes a deployed shared data group (SDG) and restore local storage.
 //
 // @param tmpReq - RemoveSDGRequest
 //
@@ -80639,7 +80738,7 @@ func (client *Client) RemoveSDGWithOptions(tmpReq *RemoveSDGRequest, runtime *ut
 
 // Summary:
 //
-// Removes shared data groups (SDGs) that are deployed on instances.
+// Removes a deployed shared data group (SDG) and restore local storage.
 //
 // @param request - RemoveSDGRequest
 //
@@ -81499,7 +81598,7 @@ func (client *Client) RollbackApplication(request *RollbackApplicationRequest) (
 
 // Summary:
 //
-// Purchases instances.
+// Creates a pay-as-you-go or subscription ENS instance.
 //
 // @param tmpReq - RunInstancesRequest
 //
@@ -81695,7 +81794,7 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 // Summary:
 //
-// Purchases instances.
+// Creates a pay-as-you-go or subscription ENS instance.
 //
 // @param request - RunInstancesRequest
 //
@@ -82215,7 +82314,7 @@ func (client *Client) SetLoadBalancerHTTPSListenerAttribute(request *SetLoadBala
 
 // Summary:
 //
-// Modifies the status of the listener for an Edge Load Balancer (ELB) instance.
+// Modifies the status of an Edge Load Balancer (ELB) instance.
 //
 // Description:
 //
@@ -82267,7 +82366,7 @@ func (client *Client) SetLoadBalancerStatusWithOptions(request *SetLoadBalancerS
 
 // Summary:
 //
-// Modifies the status of the listener for an Edge Load Balancer (ELB) instance.
+// Modifies the status of an Edge Load Balancer (ELB) instance.
 //
 // Description:
 //
