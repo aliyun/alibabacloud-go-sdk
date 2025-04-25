@@ -9,6 +9,152 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DataModuleMapListSpnTypeMapListValue struct {
+	FilterModules []*DataModuleMapListSpnTypeMapListValueFilterModules `json:"FilterModules,omitempty" xml:"FilterModules,omitempty" type:"Repeated"`
+	ShowModules   []*DataModuleMapListSpnTypeMapListValueShowModules   `json:"ShowModules,omitempty" xml:"ShowModules,omitempty" type:"Repeated"`
+}
+
+func (s DataModuleMapListSpnTypeMapListValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataModuleMapListSpnTypeMapListValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataModuleMapListSpnTypeMapListValue) SetFilterModules(v []*DataModuleMapListSpnTypeMapListValueFilterModules) *DataModuleMapListSpnTypeMapListValue {
+	s.FilterModules = v
+	return s
+}
+
+func (s *DataModuleMapListSpnTypeMapListValue) SetShowModules(v []*DataModuleMapListSpnTypeMapListValueShowModules) *DataModuleMapListSpnTypeMapListValue {
+	s.ShowModules = v
+	return s
+}
+
+type DataModuleMapListSpnTypeMapListValueFilterModules struct {
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s DataModuleMapListSpnTypeMapListValueFilterModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataModuleMapListSpnTypeMapListValueFilterModules) GoString() string {
+	return s.String()
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueFilterModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueFilterModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueFilterModules) SetModuleName(v string) *DataModuleMapListSpnTypeMapListValueFilterModules {
+	s.ModuleName = &v
+	return s
+}
+
+type DataModuleMapListSpnTypeMapListValueShowModules struct {
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s DataModuleMapListSpnTypeMapListValueShowModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataModuleMapListSpnTypeMapListValueShowModules) GoString() string {
+	return s.String()
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleId(v int64) *DataModuleMapListSpnTypeMapListValueShowModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleCode(v string) *DataModuleMapListSpnTypeMapListValueShowModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DataModuleMapListSpnTypeMapListValueShowModules) SetModuleName(v string) *DataModuleMapListSpnTypeMapListValueShowModules {
+	s.ModuleName = &v
+	return s
+}
+
+type DataStepPriceMapValue struct {
+	RightClose      *bool   `json:"RightClose,omitempty" xml:"RightClose,omitempty"`
+	Min             *string `json:"Min,omitempty" xml:"Min,omitempty"`
+	Max             *string `json:"Max,omitempty" xml:"Max,omitempty"`
+	Currency        *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	LeftClose       *bool   `json:"LeftClose,omitempty" xml:"LeftClose,omitempty"`
+	StepPriceValue  *string `json:"StepPriceValue,omitempty" xml:"StepPriceValue,omitempty"`
+	PriceValueType  *string `json:"PriceValueType,omitempty" xml:"PriceValueType,omitempty"`
+	PriceValue      *string `json:"PriceValue,omitempty" xml:"PriceValue,omitempty"`
+	DeductCycleType *string `json:"DeductCycleType,omitempty" xml:"DeductCycleType,omitempty"`
+}
+
+func (s DataStepPriceMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataStepPriceMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataStepPriceMapValue) SetRightClose(v bool) *DataStepPriceMapValue {
+	s.RightClose = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetMin(v string) *DataStepPriceMapValue {
+	s.Min = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetMax(v string) *DataStepPriceMapValue {
+	s.Max = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetCurrency(v string) *DataStepPriceMapValue {
+	s.Currency = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetLeftClose(v bool) *DataStepPriceMapValue {
+	s.LeftClose = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetStepPriceValue(v string) *DataStepPriceMapValue {
+	s.StepPriceValue = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetPriceValueType(v string) *DataStepPriceMapValue {
+	s.PriceValueType = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetPriceValue(v string) *DataStepPriceMapValue {
+	s.PriceValue = &v
+	return s
+}
+
+func (s *DataStepPriceMapValue) SetDeductCycleType(v string) *DataStepPriceMapValue {
+	s.DeductCycleType = &v
+	return s
+}
+
 type AddCouponDeductTagRequest struct {
 	CouponId       *string                                    `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	EcIdAccountIds []*AddCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
@@ -882,7 +1028,8 @@ type DescribeCouponResponseBodyData struct {
 	// example:
 	//
 	// 9929.750000
-	Amount *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount        *string `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	CertainAmount *string `json:"CertainAmount,omitempty" xml:"CertainAmount,omitempty"`
 	// example:
 	//
 	// 59243658
@@ -959,6 +1106,11 @@ func (s DescribeCouponResponseBodyData) GoString() string {
 
 func (s *DescribeCouponResponseBodyData) SetAmount(v string) *DescribeCouponResponseBodyData {
 	s.Amount = &v
+	return s
+}
+
+func (s *DescribeCouponResponseBodyData) SetCertainAmount(v string) *DescribeCouponResponseBodyData {
+	s.CertainAmount = &v
 	return s
 }
 
@@ -1377,6 +1529,198 @@ func (s *DescribeCouponItemListResponse) SetStatusCode(v int32) *DescribeCouponI
 }
 
 func (s *DescribeCouponItemListResponse) SetBody(v *DescribeCouponItemListResponseBody) *DescribeCouponItemListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoRequest struct {
+	EcIdAccountIds []*DescribeUserSpnSummaryInfoRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid           *string                                            `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoRequest) SetEcIdAccountIds(v []*DescribeUserSpnSummaryInfoRequestEcIdAccountIds) *DescribeUserSpnSummaryInfoRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoRequest) SetNbid(v string) *DescribeUserSpnSummaryInfoRequest {
+	s.Nbid = &v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoRequestEcIdAccountIds) SetAccountIds(v []*int64) *DescribeUserSpnSummaryInfoRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoRequestEcIdAccountIds) SetEcId(v string) *DescribeUserSpnSummaryInfoRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoShrinkRequest struct {
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoShrinkRequest) SetEcIdAccountIdsShrink(v string) *DescribeUserSpnSummaryInfoShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoShrinkRequest) SetNbid(v string) *DescribeUserSpnSummaryInfoShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoResponseBody struct {
+	InstanceFamilyList []*string                                                   `json:"InstanceFamilyList,omitempty" xml:"InstanceFamilyList,omitempty" type:"Repeated"`
+	RegionList         []*DescribeUserSpnSummaryInfoResponseBodyRegionList         `json:"RegionList,omitempty" xml:"RegionList,omitempty" type:"Repeated"`
+	RequestId          *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpnCodeAndTypeList []*DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList `json:"SpnCodeAndTypeList,omitempty" xml:"SpnCodeAndTypeList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBody) SetInstanceFamilyList(v []*string) *DescribeUserSpnSummaryInfoResponseBody {
+	s.InstanceFamilyList = v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBody) SetRegionList(v []*DescribeUserSpnSummaryInfoResponseBodyRegionList) *DescribeUserSpnSummaryInfoResponseBody {
+	s.RegionList = v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBody) SetRequestId(v string) *DescribeUserSpnSummaryInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBody) SetSpnCodeAndTypeList(v []*DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) *DescribeUserSpnSummaryInfoResponseBody {
+	s.SpnCodeAndTypeList = v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoResponseBodyRegionList struct {
+	RegionCode *string `json:"RegionCode,omitempty" xml:"RegionCode,omitempty"`
+	RegionName *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBodyRegionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBodyRegionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodyRegionList) SetRegionCode(v string) *DescribeUserSpnSummaryInfoResponseBodyRegionList {
+	s.RegionCode = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodyRegionList) SetRegionName(v string) *DescribeUserSpnSummaryInfoResponseBodyRegionList {
+	s.RegionName = &v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList struct {
+	ProductCode      *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	SpnCommodityCode *string `json:"SpnCommodityCode,omitempty" xml:"SpnCommodityCode,omitempty"`
+	SpnType          *string `json:"SpnType,omitempty" xml:"SpnType,omitempty"`
+	SpnTypeName      *string `json:"SpnTypeName,omitempty" xml:"SpnTypeName,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) SetProductCode(v string) *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) SetSpnCommodityCode(v string) *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList {
+	s.SpnCommodityCode = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) SetSpnType(v string) *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList {
+	s.SpnType = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList) SetSpnTypeName(v string) *DescribeUserSpnSummaryInfoResponseBodySpnCodeAndTypeList {
+	s.SpnTypeName = &v
+	return s
+}
+
+type DescribeUserSpnSummaryInfoResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeUserSpnSummaryInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeUserSpnSummaryInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserSpnSummaryInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserSpnSummaryInfoResponse) SetHeaders(v map[string]*string) *DescribeUserSpnSummaryInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponse) SetStatusCode(v int32) *DescribeUserSpnSummaryInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserSpnSummaryInfoResponse) SetBody(v *DescribeUserSpnSummaryInfoResponseBody) *DescribeUserSpnSummaryInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3000,6 +3344,888 @@ func (s *GetFundAccountTransactionDetailsResponse) SetBody(v *GetFundAccountTran
 	return s
 }
 
+type GetSavingPlanDeductableCommodityRequest struct {
+	EcIdAccountIds []*GetSavingPlanDeductableCommodityRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid           *string                                                  `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityRequest) SetEcIdAccountIds(v []*GetSavingPlanDeductableCommodityRequestEcIdAccountIds) *GetSavingPlanDeductableCommodityRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityRequest) SetNbid(v string) *GetSavingPlanDeductableCommodityRequest {
+	s.Nbid = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityRequestEcIdAccountIds) SetAccountIds(v []*int64) *GetSavingPlanDeductableCommodityRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityRequestEcIdAccountIds) SetEcId(v string) *GetSavingPlanDeductableCommodityRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityShrinkRequest struct {
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityShrinkRequest) SetEcIdAccountIdsShrink(v string) *GetSavingPlanDeductableCommodityShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityShrinkRequest) SetNbid(v string) *GetSavingPlanDeductableCommodityShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBody struct {
+	Data      []*GetSavingPlanDeductableCommodityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBody) SetData(v []*GetSavingPlanDeductableCommodityResponseBodyData) *GetSavingPlanDeductableCommodityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBody) SetRequestId(v string) *GetSavingPlanDeductableCommodityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyData struct {
+	ActivityId            *int64                                                            `json:"ActivityId,omitempty" xml:"ActivityId,omitempty"`
+	CommodityCode         *string                                                           `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityId           *int64                                                            `json:"CommodityId,omitempty" xml:"CommodityId,omitempty"`
+	CommodityName         *string                                                           `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	CycleList             []*GetSavingPlanDeductableCommodityResponseBodyDataCycleList      `json:"CycleList,omitempty" xml:"CycleList,omitempty" type:"Repeated"`
+	FilterModules         []*GetSavingPlanDeductableCommodityResponseBodyDataFilterModules  `json:"FilterModules,omitempty" xml:"FilterModules,omitempty" type:"Repeated"`
+	ItemCode              *string                                                           `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+	ItemId                *int64                                                            `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
+	ItemName              *string                                                           `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
+	ModuleMapList         []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList  `json:"ModuleMapList,omitempty" xml:"ModuleMapList,omitempty" type:"Repeated"`
+	PayModeList           []*GetSavingPlanDeductableCommodityResponseBodyDataPayModeList    `json:"PayModeList,omitempty" xml:"PayModeList,omitempty" type:"Repeated"`
+	PricingModules        []*GetSavingPlanDeductableCommodityResponseBodyDataPricingModules `json:"PricingModules,omitempty" xml:"PricingModules,omitempty" type:"Repeated"`
+	SpnCommodityCode      *string                                                           `json:"SpnCommodityCode,omitempty" xml:"SpnCommodityCode,omitempty"`
+	SpnCommodityName      *string                                                           `json:"SpnCommodityName,omitempty" xml:"SpnCommodityName,omitempty"`
+	SpnDiscountConfigType *string                                                           `json:"SpnDiscountConfigType,omitempty" xml:"SpnDiscountConfigType,omitempty"`
+	StepPriceMap          map[string][]*DataStepPriceMapValue                               `json:"StepPriceMap,omitempty" xml:"StepPriceMap,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetActivityId(v int64) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.ActivityId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetCommodityCode(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetCommodityId(v int64) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.CommodityId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetCommodityName(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.CommodityName = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetCycleList(v []*GetSavingPlanDeductableCommodityResponseBodyDataCycleList) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.CycleList = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetFilterModules(v []*GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.FilterModules = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetItemCode(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.ItemCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetItemId(v int64) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.ItemId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetItemName(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.ItemName = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetModuleMapList(v []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.ModuleMapList = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetPayModeList(v []*GetSavingPlanDeductableCommodityResponseBodyDataPayModeList) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.PayModeList = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetPricingModules(v []*GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.PricingModules = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetSpnCommodityCode(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.SpnCommodityCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetSpnCommodityName(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.SpnCommodityName = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetSpnDiscountConfigType(v string) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.SpnDiscountConfigType = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyData) SetStepPriceMap(v map[string][]*DataStepPriceMapValue) *GetSavingPlanDeductableCommodityResponseBodyData {
+	s.StepPriceMap = v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataCycleList struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataCycleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataCycleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataCycleList) SetCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataCycleList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataCycleList) SetName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataCycleList {
+	s.Name = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataFilterModules struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) SetModuleCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) SetModuleId(v int64) *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules) SetModuleName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataFilterModules {
+	s.ModuleName = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList struct {
+	FilterModules   []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules   `json:"FilterModules,omitempty" xml:"FilterModules,omitempty" type:"Repeated"`
+	ModuleCode      *string                                                                         `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId        *int64                                                                          `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName      *string                                                                         `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	ShowModules     []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules     `json:"ShowModules,omitempty" xml:"ShowModules,omitempty" type:"Repeated"`
+	SpnTypeList     []*string                                                                       `json:"SpnTypeList,omitempty" xml:"SpnTypeList,omitempty" type:"Repeated"`
+	SpnTypeMapList  []map[string]*DataModuleMapListSpnTypeMapListValue                              `json:"SpnTypeMapList,omitempty" xml:"SpnTypeMapList,omitempty" type:"Repeated"`
+	SpnTypeNameList []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList `json:"SpnTypeNameList,omitempty" xml:"SpnTypeNameList,omitempty" type:"Repeated"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetFilterModules(v []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.FilterModules = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetModuleCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetModuleId(v int64) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetModuleName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetShowModules(v []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.ShowModules = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetSpnTypeList(v []*string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.SpnTypeList = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetSpnTypeMapList(v []map[string]*DataModuleMapListSpnTypeMapListValue) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.SpnTypeMapList = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList) SetSpnTypeNameList(v []*GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapList {
+	s.SpnTypeNameList = v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) SetModuleCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) SetModuleId(v int64) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules) SetModuleName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListFilterModules {
+	s.ModuleName = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) SetModuleCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) SetModuleId(v int64) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules) SetModuleName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListShowModules {
+	s.ModuleName = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList) SetCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList) SetName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataModuleMapListSpnTypeNameList {
+	s.Name = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataPayModeList struct {
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataPayModeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataPayModeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataPayModeList) SetCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataPayModeList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataPayModeList) SetName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataPayModeList {
+	s.Name = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponseBodyDataPricingModules struct {
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleId   *int64  `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) SetModuleCode(v string) *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) SetModuleId(v int64) *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules) SetModuleName(v string) *GetSavingPlanDeductableCommodityResponseBodyDataPricingModules {
+	s.ModuleName = &v
+	return s
+}
+
+type GetSavingPlanDeductableCommodityResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSavingPlanDeductableCommodityResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSavingPlanDeductableCommodityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanDeductableCommodityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanDeductableCommodityResponse) SetHeaders(v map[string]*string) *GetSavingPlanDeductableCommodityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponse) SetStatusCode(v int32) *GetSavingPlanDeductableCommodityResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSavingPlanDeductableCommodityResponse) SetBody(v *GetSavingPlanDeductableCommodityResponseBody) *GetSavingPlanDeductableCommodityResponse {
+	s.Body = v
+	return s
+}
+
+type GetSavingPlanShareAccountsRequest struct {
+	CurrentPage     *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIds  []*GetSavingPlanShareAccountsRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid            *string                                            `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	PageSize        *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpnInstanceCode *string                                            `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsRequest) SetCurrentPage(v int32) *GetSavingPlanShareAccountsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsRequest) SetEcIdAccountIds(v []*GetSavingPlanShareAccountsRequestEcIdAccountIds) *GetSavingPlanShareAccountsRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsRequest) SetNbid(v string) *GetSavingPlanShareAccountsRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsRequest) SetPageSize(v int32) *GetSavingPlanShareAccountsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsRequest) SetSpnInstanceCode(v string) *GetSavingPlanShareAccountsRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+type GetSavingPlanShareAccountsRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsRequestEcIdAccountIds) SetAccountIds(v []*int64) *GetSavingPlanShareAccountsRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsRequestEcIdAccountIds) SetEcId(v string) *GetSavingPlanShareAccountsRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type GetSavingPlanShareAccountsShrinkRequest struct {
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpnInstanceCode      *string `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsShrinkRequest) SetCurrentPage(v int32) *GetSavingPlanShareAccountsShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsShrinkRequest) SetEcIdAccountIdsShrink(v string) *GetSavingPlanShareAccountsShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsShrinkRequest) SetNbid(v string) *GetSavingPlanShareAccountsShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsShrinkRequest) SetPageSize(v int32) *GetSavingPlanShareAccountsShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsShrinkRequest) SetSpnInstanceCode(v string) *GetSavingPlanShareAccountsShrinkRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+type GetSavingPlanShareAccountsResponseBody struct {
+	Data      []*GetSavingPlanShareAccountsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsResponseBody) SetData(v []*GetSavingPlanShareAccountsResponseBodyData) *GetSavingPlanShareAccountsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponseBody) SetRequestId(v string) *GetSavingPlanShareAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSavingPlanShareAccountsResponseBodyData struct {
+	AccountId     *string                                                    `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AliUid        *int64                                                     `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ShareTimeList []*GetSavingPlanShareAccountsResponseBodyDataShareTimeList `json:"ShareTimeList,omitempty" xml:"ShareTimeList,omitempty" type:"Repeated"`
+}
+
+func (s GetSavingPlanShareAccountsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsResponseBodyData) SetAccountId(v string) *GetSavingPlanShareAccountsResponseBodyData {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponseBodyData) SetAliUid(v int64) *GetSavingPlanShareAccountsResponseBodyData {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponseBodyData) SetShareTimeList(v []*GetSavingPlanShareAccountsResponseBodyDataShareTimeList) *GetSavingPlanShareAccountsResponseBodyData {
+	s.ShareTimeList = v
+	return s
+}
+
+type GetSavingPlanShareAccountsResponseBodyDataShareTimeList struct {
+	ShareEndTime   *string `json:"ShareEndTime,omitempty" xml:"ShareEndTime,omitempty"`
+	ShareStartTime *string `json:"ShareStartTime,omitempty" xml:"ShareStartTime,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsResponseBodyDataShareTimeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsResponseBodyDataShareTimeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsResponseBodyDataShareTimeList) SetShareEndTime(v string) *GetSavingPlanShareAccountsResponseBodyDataShareTimeList {
+	s.ShareEndTime = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponseBodyDataShareTimeList) SetShareStartTime(v string) *GetSavingPlanShareAccountsResponseBodyDataShareTimeList {
+	s.ShareStartTime = &v
+	return s
+}
+
+type GetSavingPlanShareAccountsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSavingPlanShareAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSavingPlanShareAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanShareAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanShareAccountsResponse) SetHeaders(v map[string]*string) *GetSavingPlanShareAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponse) SetStatusCode(v int32) *GetSavingPlanShareAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSavingPlanShareAccountsResponse) SetBody(v *GetSavingPlanShareAccountsResponseBody) *GetSavingPlanShareAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleRequest struct {
+	CurrentPage     *int32                                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIds  []*GetSavingPlanUserDeductRuleRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
+	Nbid            *string                                             `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpnInstanceCode *string                                             `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleRequest) SetCurrentPage(v int32) *GetSavingPlanUserDeductRuleRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleRequest) SetEcIdAccountIds(v []*GetSavingPlanUserDeductRuleRequestEcIdAccountIds) *GetSavingPlanUserDeductRuleRequest {
+	s.EcIdAccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleRequest) SetNbid(v string) *GetSavingPlanUserDeductRuleRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleRequest) SetPageSize(v int32) *GetSavingPlanUserDeductRuleRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleRequest) SetSpnInstanceCode(v string) *GetSavingPlanUserDeductRuleRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleRequestEcIdAccountIds struct {
+	AccountIds []*int64 `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	EcId *string `json:"EcId,omitempty" xml:"EcId,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleRequestEcIdAccountIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleRequestEcIdAccountIds) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetAccountIds(v []*int64) *GetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.AccountIds = v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleRequestEcIdAccountIds) SetEcId(v string) *GetSavingPlanUserDeductRuleRequestEcIdAccountIds {
+	s.EcId = &v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleShrinkRequest struct {
+	CurrentPage          *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EcIdAccountIdsShrink *string `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty"`
+	Nbid                 *string `json:"Nbid,omitempty" xml:"Nbid,omitempty"`
+	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpnInstanceCode      *string `json:"SpnInstanceCode,omitempty" xml:"SpnInstanceCode,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleShrinkRequest) SetCurrentPage(v int32) *GetSavingPlanUserDeductRuleShrinkRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleShrinkRequest) SetEcIdAccountIdsShrink(v string) *GetSavingPlanUserDeductRuleShrinkRequest {
+	s.EcIdAccountIdsShrink = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleShrinkRequest) SetNbid(v string) *GetSavingPlanUserDeductRuleShrinkRequest {
+	s.Nbid = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleShrinkRequest) SetPageSize(v int32) *GetSavingPlanUserDeductRuleShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleShrinkRequest) SetSpnInstanceCode(v string) *GetSavingPlanUserDeductRuleShrinkRequest {
+	s.SpnInstanceCode = &v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleResponseBody struct {
+	Data      []*GetSavingPlanUserDeductRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBody) SetData(v []*GetSavingPlanUserDeductRuleResponseBodyData) *GetSavingPlanUserDeductRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBody) SetRequestId(v string) *GetSavingPlanUserDeductRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleResponseBodyData struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	CommodityName *string `json:"CommodityName,omitempty" xml:"CommodityName,omitempty"`
+	ModuleCode    *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName    *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	SkipDeduct    *bool   `json:"SkipDeduct,omitempty" xml:"SkipDeduct,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBodyData) SetCommodityCode(v string) *GetSavingPlanUserDeductRuleResponseBodyData {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBodyData) SetCommodityName(v string) *GetSavingPlanUserDeductRuleResponseBodyData {
+	s.CommodityName = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBodyData) SetModuleCode(v string) *GetSavingPlanUserDeductRuleResponseBodyData {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBodyData) SetModuleName(v string) *GetSavingPlanUserDeductRuleResponseBodyData {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponseBodyData) SetSkipDeduct(v bool) *GetSavingPlanUserDeductRuleResponseBodyData {
+	s.SkipDeduct = &v
+	return s
+}
+
+type GetSavingPlanUserDeductRuleResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSavingPlanUserDeductRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSavingPlanUserDeductRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSavingPlanUserDeductRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSavingPlanUserDeductRuleResponse) SetHeaders(v map[string]*string) *GetSavingPlanUserDeductRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponse) SetStatusCode(v int32) *GetSavingPlanUserDeductRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSavingPlanUserDeductRuleResponse) SetBody(v *GetSavingPlanUserDeductRuleResponseBody) *GetSavingPlanUserDeductRuleResponse {
+	s.Body = v
+	return s
+}
+
 type ListCouponDeductTagRequest struct {
 	CouponId       *string                                     `json:"CouponId,omitempty" xml:"CouponId,omitempty"`
 	EcIdAccountIds []*ListCouponDeductTagRequestEcIdAccountIds `json:"EcIdAccountIds,omitempty" xml:"EcIdAccountIds,omitempty" type:"Repeated"`
@@ -4178,24 +5404,13 @@ func (client *Client) AddCouponDeductTagWithOptions(tmpReq *AddCouponDeductTagRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddCouponDeductTagResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddCouponDeductTagResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddCouponDeductTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4249,24 +5464,13 @@ func (client *Client) CancelFundAccountLowAvailableAmountAlarmWithOptions(reques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4344,24 +5548,13 @@ func (client *Client) CreateFundAccountTransferWithOptions(request *CreateFundAc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateFundAccountTransferResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateFundAccountTransferResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateFundAccountTransferResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4437,24 +5630,13 @@ func (client *Client) DeleteCouponDeductTagWithOptions(tmpReq *DeleteCouponDeduc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCouponDeductTagResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCouponDeductTagResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCouponDeductTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4510,24 +5692,13 @@ func (client *Client) DescribeCouponWithOptions(tmpReq *DescribeCouponRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCouponResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCouponResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCouponResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4583,24 +5754,13 @@ func (client *Client) DescribeCouponItemListWithOptions(tmpReq *DescribeCouponIt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeCouponItemListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeCouponItemListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeCouponItemListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4614,6 +5774,76 @@ func (client *Client) DescribeCouponItemList(request *DescribeCouponItemListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCouponItemListResponse{}
 	_body, _err := client.DescribeCouponItemListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户使用SPN的概述信息
+//
+// @param tmpReq - DescribeUserSpnSummaryInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeUserSpnSummaryInfoResponse
+func (client *Client) DescribeUserSpnSummaryInfoWithOptions(tmpReq *DescribeUserSpnSummaryInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeUserSpnSummaryInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeUserSpnSummaryInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserSpnSummaryInfo"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserSpnSummaryInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取客户使用SPN的概述信息
+//
+// @param request - DescribeUserSpnSummaryInfoRequest
+//
+// @return DescribeUserSpnSummaryInfoResponse
+func (client *Client) DescribeUserSpnSummaryInfo(request *DescribeUserSpnSummaryInfoRequest) (_result *DescribeUserSpnSummaryInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserSpnSummaryInfoResponse{}
+	_body, _err := client.DescribeUserSpnSummaryInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4654,24 +5884,13 @@ func (client *Client) GetFundAccountAvailableAmountWithOptions(request *GetFundA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountAvailableAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountAvailableAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountAvailableAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4725,24 +5944,13 @@ func (client *Client) GetFundAccountCanAllocateCreditAmountWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountCanAllocateCreditAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountCanAllocateCreditAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountCanAllocateCreditAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4800,24 +6008,13 @@ func (client *Client) GetFundAccountCanRecycleAmountWithOptions(request *GetFund
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountCanRecycleAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountCanRecycleAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountCanRecycleAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4875,24 +6072,13 @@ func (client *Client) GetFundAccountCanTransferAmountWithOptions(request *GetFun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountCanTransferAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountCanTransferAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountCanTransferAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -4946,24 +6132,13 @@ func (client *Client) GetFundAccountCanWithdrawAmountWithOptions(request *GetFun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountCanWithdrawAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountCanWithdrawAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountCanWithdrawAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5017,24 +6192,13 @@ func (client *Client) GetFundAccountLowAvailableAmountAlarmWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5144,24 +6308,13 @@ func (client *Client) GetFundAccountTransactionDetailsWithOptions(tmpReq *GetFun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetFundAccountTransactionDetailsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetFundAccountTransactionDetailsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetFundAccountTransactionDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5175,6 +6328,240 @@ func (client *Client) GetFundAccountTransactionDetails(request *GetFundAccountTr
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFundAccountTransactionDetailsResponse{}
 	_body, _err := client.GetFundAccountTransactionDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划及可抵扣商品信息
+//
+// @param tmpReq - GetSavingPlanDeductableCommodityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSavingPlanDeductableCommodityResponse
+func (client *Client) GetSavingPlanDeductableCommodityWithOptions(tmpReq *GetSavingPlanDeductableCommodityRequest, runtime *util.RuntimeOptions) (_result *GetSavingPlanDeductableCommodityResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetSavingPlanDeductableCommodityShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSavingPlanDeductableCommodity"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSavingPlanDeductableCommodityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划及可抵扣商品信息
+//
+// @param request - GetSavingPlanDeductableCommodityRequest
+//
+// @return GetSavingPlanDeductableCommodityResponse
+func (client *Client) GetSavingPlanDeductableCommodity(request *GetSavingPlanDeductableCommodityRequest) (_result *GetSavingPlanDeductableCommodityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSavingPlanDeductableCommodityResponse{}
+	_body, _err := client.GetSavingPlanDeductableCommodityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划实例共享账号信息
+//
+// @param tmpReq - GetSavingPlanShareAccountsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSavingPlanShareAccountsResponse
+func (client *Client) GetSavingPlanShareAccountsWithOptions(tmpReq *GetSavingPlanShareAccountsRequest, runtime *util.RuntimeOptions) (_result *GetSavingPlanShareAccountsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetSavingPlanShareAccountsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpnInstanceCode)) {
+		query["SpnInstanceCode"] = request.SpnInstanceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSavingPlanShareAccounts"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSavingPlanShareAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划实例共享账号信息
+//
+// @param request - GetSavingPlanShareAccountsRequest
+//
+// @return GetSavingPlanShareAccountsResponse
+func (client *Client) GetSavingPlanShareAccounts(request *GetSavingPlanShareAccountsRequest) (_result *GetSavingPlanShareAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSavingPlanShareAccountsResponse{}
+	_body, _err := client.GetSavingPlanShareAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划实例客户自定义规则
+//
+// @param tmpReq - GetSavingPlanUserDeductRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSavingPlanUserDeductRuleResponse
+func (client *Client) GetSavingPlanUserDeductRuleWithOptions(tmpReq *GetSavingPlanUserDeductRuleRequest, runtime *util.RuntimeOptions) (_result *GetSavingPlanUserDeductRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetSavingPlanUserDeductRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.EcIdAccountIds)) {
+		request.EcIdAccountIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EcIdAccountIds, tea.String("EcIdAccountIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcIdAccountIdsShrink)) {
+		query["EcIdAccountIds"] = request.EcIdAccountIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nbid)) {
+		query["Nbid"] = request.Nbid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpnInstanceCode)) {
+		query["SpnInstanceCode"] = request.SpnInstanceCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSavingPlanUserDeductRule"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取节省计划实例客户自定义规则
+//
+// @param request - GetSavingPlanUserDeductRuleRequest
+//
+// @return GetSavingPlanUserDeductRuleResponse
+func (client *Client) GetSavingPlanUserDeductRule(request *GetSavingPlanUserDeductRuleRequest) (_result *GetSavingPlanUserDeductRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.GetSavingPlanUserDeductRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5229,24 +6616,13 @@ func (client *Client) ListCouponDeductTagWithOptions(tmpReq *ListCouponDeductTag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCouponDeductTagResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListCouponDeductTagResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListCouponDeductTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5310,24 +6686,13 @@ func (client *Client) ListFundAccountWithOptions(request *ListFundAccountRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFundAccountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFundAccountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFundAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5399,24 +6764,13 @@ func (client *Client) ListFundAccountPayRelationWithOptions(request *ListFundAcc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFundAccountPayRelationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFundAccountPayRelationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFundAccountPayRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5478,24 +6832,13 @@ func (client *Client) SetFundAccountCreditAmountWithOptions(request *SetFundAcco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetFundAccountCreditAmountResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetFundAccountCreditAmountResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetFundAccountCreditAmountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5553,24 +6896,13 @@ func (client *Client) SetFundAccountLowAvailableAmountAlarmWithOptions(request *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetFundAccountLowAvailableAmountAlarmResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -5648,24 +6980,13 @@ func (client *Client) SetSavingPlanUserDeductRuleWithOptions(tmpReq *SetSavingPl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetSavingPlanUserDeductRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetSavingPlanUserDeductRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetSavingPlanUserDeductRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
