@@ -2063,6 +2063,637 @@ func (s *CreateBatchRepeatJobResponse) SetBody(v *CreateBatchRepeatJobResponseBo
 	return s
 }
 
+type CreateBeebotIntentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntentDefinition *CreateBeebotIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s CreateBeebotIntentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentRequest) SetInstanceId(v string) *CreateBeebotIntentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentRequest) SetIntentDefinition(v *CreateBeebotIntentRequestIntentDefinition) *CreateBeebotIntentRequest {
+	s.IntentDefinition = v
+	return s
+}
+
+func (s *CreateBeebotIntentRequest) SetScriptId(v string) *CreateBeebotIntentRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type CreateBeebotIntentRequestIntentDefinition struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+}
+
+func (s CreateBeebotIntentRequestIntentDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentRequestIntentDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentRequestIntentDefinition) SetAliasName(v string) *CreateBeebotIntentRequestIntentDefinition {
+	s.AliasName = &v
+	return s
+}
+
+func (s *CreateBeebotIntentRequestIntentDefinition) SetIntentName(v string) *CreateBeebotIntentRequestIntentDefinition {
+	s.IntentName = &v
+	return s
+}
+
+type CreateBeebotIntentShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s CreateBeebotIntentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentShrinkRequest) SetInstanceId(v string) *CreateBeebotIntentShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentShrinkRequest) SetIntentDefinitionShrink(v string) *CreateBeebotIntentShrinkRequest {
+	s.IntentDefinitionShrink = &v
+	return s
+}
+
+func (s *CreateBeebotIntentShrinkRequest) SetScriptId(v string) *CreateBeebotIntentShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type CreateBeebotIntentResponseBody struct {
+	// example:
+	//
+	// 497CFAFF-48CC-161A-AD2C-252DED569037
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateBeebotIntentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentResponseBody) SetBeebotRequestId(v string) *CreateBeebotIntentResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetCode(v string) *CreateBeebotIntentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetHttpStatusCode(v int32) *CreateBeebotIntentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetIntentId(v int64) *CreateBeebotIntentResponseBody {
+	s.IntentId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetMessage(v string) *CreateBeebotIntentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetRequestId(v string) *CreateBeebotIntentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponseBody) SetSuccess(v bool) *CreateBeebotIntentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBeebotIntentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBeebotIntentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBeebotIntentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentResponse) SetHeaders(v map[string]*string) *CreateBeebotIntentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBeebotIntentResponse) SetStatusCode(v int32) *CreateBeebotIntentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentResponse) SetBody(v *CreateBeebotIntentResponseBody) *CreateBeebotIntentResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBeebotIntentLgfRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	LgfDefinition *CreateBeebotIntentLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s CreateBeebotIntentLgfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentLgfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentLgfRequest) SetInstanceId(v string) *CreateBeebotIntentLgfRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfRequest) SetLgfDefinition(v *CreateBeebotIntentLgfRequestLgfDefinition) *CreateBeebotIntentLgfRequest {
+	s.LgfDefinition = v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfRequest) SetScriptId(v string) *CreateBeebotIntentLgfRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type CreateBeebotIntentLgfRequestLgfDefinition struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
+}
+
+func (s CreateBeebotIntentLgfRequestLgfDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentLgfRequestLgfDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentLgfRequestLgfDefinition) SetIntentId(v int64) *CreateBeebotIntentLgfRequestLgfDefinition {
+	s.IntentId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfRequestLgfDefinition) SetRuleText(v string) *CreateBeebotIntentLgfRequestLgfDefinition {
+	s.RuleText = &v
+	return s
+}
+
+type CreateBeebotIntentLgfShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s CreateBeebotIntentLgfShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentLgfShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentLgfShrinkRequest) SetInstanceId(v string) *CreateBeebotIntentLgfShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfShrinkRequest) SetLgfDefinitionShrink(v string) *CreateBeebotIntentLgfShrinkRequest {
+	s.LgfDefinitionShrink = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfShrinkRequest) SetScriptId(v string) *CreateBeebotIntentLgfShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type CreateBeebotIntentLgfResponseBody struct {
+	// example:
+	//
+	// 497CFAFF-48CC-161A-AD2C-252DED569037
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateBeebotIntentLgfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentLgfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetBeebotRequestId(v string) *CreateBeebotIntentLgfResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetCode(v string) *CreateBeebotIntentLgfResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetHttpStatusCode(v int32) *CreateBeebotIntentLgfResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetLgfId(v int64) *CreateBeebotIntentLgfResponseBody {
+	s.LgfId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetMessage(v string) *CreateBeebotIntentLgfResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetRequestId(v string) *CreateBeebotIntentLgfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponseBody) SetSuccess(v bool) *CreateBeebotIntentLgfResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBeebotIntentLgfResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBeebotIntentLgfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBeebotIntentLgfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentLgfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentLgfResponse) SetHeaders(v map[string]*string) *CreateBeebotIntentLgfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponse) SetStatusCode(v int32) *CreateBeebotIntentLgfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentLgfResponse) SetBody(v *CreateBeebotIntentLgfResponseBody) *CreateBeebotIntentLgfResponse {
+	s.Body = v
+	return s
+}
+
+type CreateBeebotIntentUserSayRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// This parameter is required.
+	UserSayDefinition *CreateBeebotIntentUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
+}
+
+func (s CreateBeebotIntentUserSayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentUserSayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentUserSayRequest) SetInstanceId(v string) *CreateBeebotIntentUserSayRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayRequest) SetScriptId(v string) *CreateBeebotIntentUserSayRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayRequest) SetUserSayDefinition(v *CreateBeebotIntentUserSayRequestUserSayDefinition) *CreateBeebotIntentUserSayRequest {
+	s.UserSayDefinition = v
+	return s
+}
+
+type CreateBeebotIntentUserSayRequestUserSayDefinition struct {
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+}
+
+func (s CreateBeebotIntentUserSayRequestUserSayDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentUserSayRequestUserSayDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentUserSayRequestUserSayDefinition) SetContent(v string) *CreateBeebotIntentUserSayRequestUserSayDefinition {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayRequestUserSayDefinition) SetIntentId(v int64) *CreateBeebotIntentUserSayRequestUserSayDefinition {
+	s.IntentId = &v
+	return s
+}
+
+type CreateBeebotIntentUserSayShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// This parameter is required.
+	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
+}
+
+func (s CreateBeebotIntentUserSayShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentUserSayShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentUserSayShrinkRequest) SetInstanceId(v string) *CreateBeebotIntentUserSayShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayShrinkRequest) SetScriptId(v string) *CreateBeebotIntentUserSayShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayShrinkRequest) SetUserSayDefinitionShrink(v string) *CreateBeebotIntentUserSayShrinkRequest {
+	s.UserSayDefinitionShrink = &v
+	return s
+}
+
+type CreateBeebotIntentUserSayResponseBody struct {
+	// example:
+	//
+	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 17448458
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s CreateBeebotIntentUserSayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentUserSayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetBeebotRequestId(v string) *CreateBeebotIntentUserSayResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetCode(v string) *CreateBeebotIntentUserSayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetHttpStatusCode(v int32) *CreateBeebotIntentUserSayResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetMessage(v string) *CreateBeebotIntentUserSayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetRequestId(v string) *CreateBeebotIntentUserSayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetSuccess(v bool) *CreateBeebotIntentUserSayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponseBody) SetUserSayId(v int64) *CreateBeebotIntentUserSayResponseBody {
+	s.UserSayId = &v
+	return s
+}
+
+type CreateBeebotIntentUserSayResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBeebotIntentUserSayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBeebotIntentUserSayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBeebotIntentUserSayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBeebotIntentUserSayResponse) SetHeaders(v map[string]*string) *CreateBeebotIntentUserSayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponse) SetStatusCode(v int32) *CreateBeebotIntentUserSayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBeebotIntentUserSayResponse) SetBody(v *CreateBeebotIntentUserSayResponseBody) *CreateBeebotIntentUserSayResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDialogueFlowRequest struct {
 	// This parameter is required.
 	//
@@ -4315,7 +4946,8 @@ type CreateScriptRequest struct {
 	ScriptContent     []*string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty" type:"Repeated"`
 	ScriptDescription *string   `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// This parameter is required.
-	ScriptName *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	ScriptName                 *string `json:"ScriptName,omitempty" xml:"ScriptName,omitempty"`
+	ScriptNluProfileJsonString *string `json:"ScriptNluProfileJsonString,omitempty" xml:"ScriptNluProfileJsonString,omitempty"`
 	// example:
 	//
 	// []
@@ -4416,6 +5048,11 @@ func (s *CreateScriptRequest) SetScriptDescription(v string) *CreateScriptReques
 
 func (s *CreateScriptRequest) SetScriptName(v string) *CreateScriptRequest {
 	s.ScriptName = &v
+	return s
+}
+
+func (s *CreateScriptRequest) SetScriptNluProfileJsonString(v string) *CreateScriptRequest {
+	s.ScriptNluProfileJsonString = &v
 	return s
 }
 
@@ -5446,6 +6083,469 @@ func (s *DeleteAllNumberDistrictInfoResponse) SetStatusCode(v int32) *DeleteAllN
 }
 
 func (s *DeleteAllNumberDistrictInfoResponse) SetBody(v *DeleteAllNumberDistrictInfoResponseBody) *DeleteAllNumberDistrictInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBeebotIntentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s DeleteBeebotIntentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentRequest) SetInstanceId(v string) *DeleteBeebotIntentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentRequest) SetIntentId(v int64) *DeleteBeebotIntentRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentRequest) SetScriptId(v string) *DeleteBeebotIntentRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type DeleteBeebotIntentResponseBody struct {
+	// example:
+	//
+	// 497CFAFF-48CC-161A-AD2C-252DED569037
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteBeebotIntentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetBeebotRequestId(v string) *DeleteBeebotIntentResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetCode(v string) *DeleteBeebotIntentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetHttpStatusCode(v int32) *DeleteBeebotIntentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetIntentId(v int64) *DeleteBeebotIntentResponseBody {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetMessage(v string) *DeleteBeebotIntentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetRequestId(v string) *DeleteBeebotIntentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponseBody) SetSuccess(v bool) *DeleteBeebotIntentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteBeebotIntentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBeebotIntentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBeebotIntentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentResponse) SetHeaders(v map[string]*string) *DeleteBeebotIntentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponse) SetStatusCode(v int32) *DeleteBeebotIntentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentResponse) SetBody(v *DeleteBeebotIntentResponseBody) *DeleteBeebotIntentResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBeebotIntentLgfRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s DeleteBeebotIntentLgfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentLgfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentLgfRequest) SetInstanceId(v string) *DeleteBeebotIntentLgfRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfRequest) SetIntentId(v int64) *DeleteBeebotIntentLgfRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfRequest) SetLgfId(v int64) *DeleteBeebotIntentLgfRequest {
+	s.LgfId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfRequest) SetScriptId(v string) *DeleteBeebotIntentLgfRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type DeleteBeebotIntentLgfResponseBody struct {
+	// example:
+	//
+	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteBeebotIntentLgfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentLgfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetBeebotRequestId(v string) *DeleteBeebotIntentLgfResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetCode(v string) *DeleteBeebotIntentLgfResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetHttpStatusCode(v int32) *DeleteBeebotIntentLgfResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetLgfId(v int64) *DeleteBeebotIntentLgfResponseBody {
+	s.LgfId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetMessage(v string) *DeleteBeebotIntentLgfResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetRequestId(v string) *DeleteBeebotIntentLgfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponseBody) SetSuccess(v bool) *DeleteBeebotIntentLgfResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteBeebotIntentLgfResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBeebotIntentLgfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBeebotIntentLgfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentLgfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentLgfResponse) SetHeaders(v map[string]*string) *DeleteBeebotIntentLgfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponse) SetStatusCode(v int32) *DeleteBeebotIntentLgfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentLgfResponse) SetBody(v *DeleteBeebotIntentLgfResponseBody) *DeleteBeebotIntentLgfResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBeebotIntentUserSayRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17448458
+	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s DeleteBeebotIntentUserSayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentUserSayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentUserSayRequest) SetInstanceId(v string) *DeleteBeebotIntentUserSayRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayRequest) SetIntentId(v string) *DeleteBeebotIntentUserSayRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayRequest) SetScriptId(v string) *DeleteBeebotIntentUserSayRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayRequest) SetUserSayId(v string) *DeleteBeebotIntentUserSayRequest {
+	s.UserSayId = &v
+	return s
+}
+
+type DeleteBeebotIntentUserSayResponseBody struct {
+	// example:
+	//
+	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 17448458
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s DeleteBeebotIntentUserSayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentUserSayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetBeebotRequestId(v string) *DeleteBeebotIntentUserSayResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetCode(v string) *DeleteBeebotIntentUserSayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetHttpStatusCode(v int32) *DeleteBeebotIntentUserSayResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetMessage(v string) *DeleteBeebotIntentUserSayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetRequestId(v string) *DeleteBeebotIntentUserSayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetSuccess(v bool) *DeleteBeebotIntentUserSayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponseBody) SetUserSayId(v int64) *DeleteBeebotIntentUserSayResponseBody {
+	s.UserSayId = &v
+	return s
+}
+
+type DeleteBeebotIntentUserSayResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBeebotIntentUserSayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBeebotIntentUserSayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBeebotIntentUserSayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBeebotIntentUserSayResponse) SetHeaders(v map[string]*string) *DeleteBeebotIntentUserSayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponse) SetStatusCode(v int32) *DeleteBeebotIntentUserSayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBeebotIntentUserSayResponse) SetBody(v *DeleteBeebotIntentUserSayResponseBody) *DeleteBeebotIntentUserSayResponse {
 	s.Body = v
 	return s
 }
@@ -6799,6 +7899,245 @@ func (s *DeleteScriptWaveformResponse) SetStatusCode(v int32) *DeleteScriptWavef
 }
 
 func (s *DeleteScriptWaveformResponse) SetBody(v *DeleteScriptWaveformResponseBody) *DeleteScriptWaveformResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBeebotIntentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s DescribeBeebotIntentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBeebotIntentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBeebotIntentRequest) SetInstanceId(v string) *DescribeBeebotIntentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentRequest) SetIntentId(v int64) *DescribeBeebotIntentRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentRequest) SetScriptId(v string) *DescribeBeebotIntentRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type DescribeBeebotIntentResponseBody struct {
+	// example:
+	//
+	// 0B219FCB-EC71-1F08-BB1B-0E87C20158C8
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Intent         *DescribeBeebotIntentResponseBodyIntent `json:"Intent,omitempty" xml:"Intent,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeBeebotIntentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBeebotIntentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetBeebotRequestId(v string) *DescribeBeebotIntentResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetCode(v string) *DescribeBeebotIntentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetHttpStatusCode(v int32) *DescribeBeebotIntentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetIntent(v *DescribeBeebotIntentResponseBodyIntent) *DescribeBeebotIntentResponseBody {
+	s.Intent = v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetIntentId(v int64) *DescribeBeebotIntentResponseBody {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetMessage(v string) *DescribeBeebotIntentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetRequestId(v string) *DescribeBeebotIntentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBody) SetSuccess(v bool) *DescribeBeebotIntentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeBeebotIntentResponseBodyIntent struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 2025-04-21 10:29:59.+0800
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1252504
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// xxx@voice-navigator-testonaliyun.com
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 2025-04-21 15:52:57.+0800
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1252504
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// xxx@voice-navigator-testonaliyun.com
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+}
+
+func (s DescribeBeebotIntentResponseBodyIntent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBeebotIntentResponseBodyIntent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetAliasName(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetCreateTime(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetCreateUserId(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetCreateUserName(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetIntentId(v int64) *DescribeBeebotIntentResponseBodyIntent {
+	s.IntentId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetIntentName(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.IntentName = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetModifyTime(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetModifyUserId(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.ModifyUserId = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponseBodyIntent) SetModifyUserName(v string) *DescribeBeebotIntentResponseBodyIntent {
+	s.ModifyUserName = &v
+	return s
+}
+
+type DescribeBeebotIntentResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeBeebotIntentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeBeebotIntentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBeebotIntentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBeebotIntentResponse) SetHeaders(v map[string]*string) *DescribeBeebotIntentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponse) SetStatusCode(v int32) *DescribeBeebotIntentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBeebotIntentResponse) SetBody(v *DescribeBeebotIntentResponseBody) *DescribeBeebotIntentResponse {
 	s.Body = v
 	return s
 }
@@ -10992,9 +12331,11 @@ type DescribeScriptResponseBodyScript struct {
 	// example:
 	//
 	// true
-	NewBargeInEnable  *bool   `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	NewBargeInEnable  *bool                                       `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
+	NluEngine         *string                                     `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	NluProfile        *DescribeScriptResponseBodyScriptNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
+	Scene             *string                                     `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	ScriptDescription *string                                     `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// example:
 	//
 	// 810b5872-57f0-4b27-80ab-7b3f4d8a6374
@@ -11092,6 +12433,16 @@ func (s *DescribeScriptResponseBodyScript) SetNewBargeInEnable(v bool) *Describe
 	return s
 }
 
+func (s *DescribeScriptResponseBodyScript) SetNluEngine(v string) *DescribeScriptResponseBodyScript {
+	s.NluEngine = &v
+	return s
+}
+
+func (s *DescribeScriptResponseBodyScript) SetNluProfile(v *DescribeScriptResponseBodyScriptNluProfile) *DescribeScriptResponseBodyScript {
+	s.NluProfile = v
+	return s
+}
+
 func (s *DescribeScriptResponseBodyScript) SetScene(v string) *DescribeScriptResponseBodyScript {
 	s.Scene = &v
 	return s
@@ -11124,6 +12475,35 @@ func (s *DescribeScriptResponseBodyScript) SetTtsConfig(v string) *DescribeScrip
 
 func (s *DescribeScriptResponseBodyScript) SetUpdateTime(v int64) *DescribeScriptResponseBodyScript {
 	s.UpdateTime = &v
+	return s
+}
+
+type DescribeScriptResponseBodyScriptNluProfile struct {
+	FcFunction       *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
+	FcHttpTriggerUrl *string `json:"FcHttpTriggerUrl,omitempty" xml:"FcHttpTriggerUrl,omitempty"`
+	FcRegion         *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
+}
+
+func (s DescribeScriptResponseBodyScriptNluProfile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScriptResponseBodyScriptNluProfile) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScriptResponseBodyScriptNluProfile) SetFcFunction(v string) *DescribeScriptResponseBodyScriptNluProfile {
+	s.FcFunction = &v
+	return s
+}
+
+func (s *DescribeScriptResponseBodyScriptNluProfile) SetFcHttpTriggerUrl(v string) *DescribeScriptResponseBodyScriptNluProfile {
+	s.FcHttpTriggerUrl = &v
+	return s
+}
+
+func (s *DescribeScriptResponseBodyScriptNluProfile) SetFcRegion(v string) *DescribeScriptResponseBodyScriptNluProfile {
+	s.FcRegion = &v
 	return s
 }
 
@@ -19394,6 +20774,784 @@ func (s *ListApiPluginsResponse) SetBody(v *ListApiPluginsResponseBody) *ListApi
 	return s
 }
 
+type ListBeebotIntentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ListBeebotIntentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentRequest) SetInstanceId(v string) *ListBeebotIntentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBeebotIntentRequest) SetIntentName(v string) *ListBeebotIntentRequest {
+	s.IntentName = &v
+	return s
+}
+
+func (s *ListBeebotIntentRequest) SetPageNumber(v int32) *ListBeebotIntentRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentRequest) SetPageSize(v int32) *ListBeebotIntentRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentRequest) SetScriptId(v string) *ListBeebotIntentRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ListBeebotIntentResponseBody struct {
+	// example:
+	//
+	// 497CFAFF-48CC-161A-AD2C-252DED569037
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Intents        []*ListBeebotIntentResponseBodyIntents `json:"Intents,omitempty" xml:"Intents,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBeebotIntentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentResponseBody) SetBeebotRequestId(v string) *ListBeebotIntentResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetCode(v string) *ListBeebotIntentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetHttpStatusCode(v int32) *ListBeebotIntentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetIntents(v []*ListBeebotIntentResponseBodyIntents) *ListBeebotIntentResponseBody {
+	s.Intents = v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetMessage(v string) *ListBeebotIntentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetPageNumber(v int32) *ListBeebotIntentResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetPageSize(v int32) *ListBeebotIntentResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetRequestId(v string) *ListBeebotIntentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetSuccess(v bool) *ListBeebotIntentResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBody) SetTotalCount(v int32) *ListBeebotIntentResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBeebotIntentResponseBodyIntents struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// 2025-04-21 16:03:15.+0800
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1252504
+	CreateUserId *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	// example:
+	//
+	// xxx@voice-navigator-testonaliyun.com
+	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId   *int64  `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	// example:
+	//
+	// 2025-04-21 16:03:15.+0800
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 1252504
+	ModifyUserId *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	// example:
+	//
+	// xxx@voice-navigator-testonaliyun.com
+	ModifyUserName *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+}
+
+func (s ListBeebotIntentResponseBodyIntents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentResponseBodyIntents) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetAliasName(v string) *ListBeebotIntentResponseBodyIntents {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetCreateTime(v string) *ListBeebotIntentResponseBodyIntents {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetCreateUserId(v string) *ListBeebotIntentResponseBodyIntents {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetCreateUserName(v string) *ListBeebotIntentResponseBodyIntents {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetIntentId(v int64) *ListBeebotIntentResponseBodyIntents {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetIntentName(v string) *ListBeebotIntentResponseBodyIntents {
+	s.IntentName = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetModifyTime(v string) *ListBeebotIntentResponseBodyIntents {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetModifyUserId(v string) *ListBeebotIntentResponseBodyIntents {
+	s.ModifyUserId = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponseBodyIntents) SetModifyUserName(v string) *ListBeebotIntentResponseBodyIntents {
+	s.ModifyUserName = &v
+	return s
+}
+
+type ListBeebotIntentResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBeebotIntentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBeebotIntentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentResponse) SetHeaders(v map[string]*string) *ListBeebotIntentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBeebotIntentResponse) SetStatusCode(v int32) *ListBeebotIntentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentResponse) SetBody(v *ListBeebotIntentResponseBody) *ListBeebotIntentResponse {
+	s.Body = v
+	return s
+}
+
+type ListBeebotIntentLgfRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	LgfText  *string `json:"LgfText,omitempty" xml:"LgfText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ListBeebotIntentLgfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentLgfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentLgfRequest) SetInstanceId(v string) *ListBeebotIntentLgfRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfRequest) SetIntentId(v string) *ListBeebotIntentLgfRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfRequest) SetLgfText(v string) *ListBeebotIntentLgfRequest {
+	s.LgfText = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfRequest) SetPageNumber(v int32) *ListBeebotIntentLgfRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfRequest) SetPageSize(v int32) *ListBeebotIntentLgfRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfRequest) SetScriptId(v string) *ListBeebotIntentLgfRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ListBeebotIntentLgfResponseBody struct {
+	// example:
+	//
+	// 497CFAFF-48CC-161A-AD2C-252DED569037
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Lgfs           []*ListBeebotIntentLgfResponseBodyLgfs `json:"Lgfs,omitempty" xml:"Lgfs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBeebotIntentLgfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentLgfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetBeebotRequestId(v string) *ListBeebotIntentLgfResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetCode(v string) *ListBeebotIntentLgfResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetHttpStatusCode(v int32) *ListBeebotIntentLgfResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetLgfs(v []*ListBeebotIntentLgfResponseBodyLgfs) *ListBeebotIntentLgfResponseBody {
+	s.Lgfs = v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetMessage(v string) *ListBeebotIntentLgfResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetPageNumber(v int32) *ListBeebotIntentLgfResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetPageSize(v int32) *ListBeebotIntentLgfResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetRequestId(v string) *ListBeebotIntentLgfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetSuccess(v bool) *ListBeebotIntentLgfResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBody) SetTotalCount(v int32) *ListBeebotIntentLgfResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBeebotIntentLgfResponseBodyLgfs struct {
+	// example:
+	//
+	// 2025-04-21 10:54:18.+0800
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// 2025-04-21 10:54:18.+0800
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	RuleText   *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
+}
+
+func (s ListBeebotIntentLgfResponseBodyLgfs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentLgfResponseBodyLgfs) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentLgfResponseBodyLgfs) SetCreateTime(v string) *ListBeebotIntentLgfResponseBodyLgfs {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBodyLgfs) SetIntentId(v int64) *ListBeebotIntentLgfResponseBodyLgfs {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBodyLgfs) SetLgfId(v int64) *ListBeebotIntentLgfResponseBodyLgfs {
+	s.LgfId = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBodyLgfs) SetModifyTime(v string) *ListBeebotIntentLgfResponseBodyLgfs {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponseBodyLgfs) SetRuleText(v string) *ListBeebotIntentLgfResponseBodyLgfs {
+	s.RuleText = &v
+	return s
+}
+
+type ListBeebotIntentLgfResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBeebotIntentLgfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBeebotIntentLgfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentLgfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentLgfResponse) SetHeaders(v map[string]*string) *ListBeebotIntentLgfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponse) SetStatusCode(v int32) *ListBeebotIntentLgfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentLgfResponse) SetBody(v *ListBeebotIntentLgfResponseBody) *ListBeebotIntentLgfResponse {
+	s.Body = v
+	return s
+}
+
+type ListBeebotIntentUserSayRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *string `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ListBeebotIntentUserSayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentUserSayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetContent(v string) *ListBeebotIntentUserSayRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetInstanceId(v string) *ListBeebotIntentUserSayRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetIntentId(v string) *ListBeebotIntentUserSayRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetPageNumber(v int32) *ListBeebotIntentUserSayRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetPageSize(v int32) *ListBeebotIntentUserSayRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayRequest) SetScriptId(v string) *ListBeebotIntentUserSayRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ListBeebotIntentUserSayResponseBody struct {
+	// example:
+	//
+	// D7BBFCDF-59B0-1ADA-BCA3-4B77F642DDFB
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0956D5DA-0978-5DC9-94B0-C68527DA7475
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UserSays   []*ListBeebotIntentUserSayResponseBodyUserSays `json:"UserSays,omitempty" xml:"UserSays,omitempty" type:"Repeated"`
+}
+
+func (s ListBeebotIntentUserSayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentUserSayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetBeebotRequestId(v string) *ListBeebotIntentUserSayResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetCode(v string) *ListBeebotIntentUserSayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetHttpStatusCode(v int32) *ListBeebotIntentUserSayResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetMessage(v string) *ListBeebotIntentUserSayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetPageNumber(v int32) *ListBeebotIntentUserSayResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetPageSize(v int32) *ListBeebotIntentUserSayResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetRequestId(v string) *ListBeebotIntentUserSayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetSuccess(v bool) *ListBeebotIntentUserSayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetTotalCount(v int32) *ListBeebotIntentUserSayResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBody) SetUserSays(v []*ListBeebotIntentUserSayResponseBodyUserSays) *ListBeebotIntentUserSayResponseBody {
+	s.UserSays = v
+	return s
+}
+
+type ListBeebotIntentUserSayResponseBodyUserSays struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2025-04-21 14:16:05.+0800
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 2025-04-21 14:16:05.+0800
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// 17448458
+	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s ListBeebotIntentUserSayResponseBodyUserSays) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentUserSayResponseBodyUserSays) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentUserSayResponseBodyUserSays) SetContent(v string) *ListBeebotIntentUserSayResponseBodyUserSays {
+	s.Content = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBodyUserSays) SetCreateTime(v string) *ListBeebotIntentUserSayResponseBodyUserSays {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBodyUserSays) SetIntentId(v int64) *ListBeebotIntentUserSayResponseBodyUserSays {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBodyUserSays) SetModifyTime(v string) *ListBeebotIntentUserSayResponseBodyUserSays {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponseBodyUserSays) SetUserSayId(v string) *ListBeebotIntentUserSayResponseBodyUserSays {
+	s.UserSayId = &v
+	return s
+}
+
+type ListBeebotIntentUserSayResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBeebotIntentUserSayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBeebotIntentUserSayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBeebotIntentUserSayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBeebotIntentUserSayResponse) SetHeaders(v map[string]*string) *ListBeebotIntentUserSayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponse) SetStatusCode(v int32) *ListBeebotIntentUserSayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBeebotIntentUserSayResponse) SetBody(v *ListBeebotIntentUserSayResponseBody) *ListBeebotIntentUserSayResponse {
+	s.Body = v
+	return s
+}
+
 type ListChatbotInstancesRequest struct {
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	// This parameter is required.
@@ -20788,6 +22946,717 @@ func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
 }
 
 func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type ListIntentionsRequest struct {
+	// example:
+	//
+	// 1
+	AnnotationMissionDataSourceType *int64 `json:"AnnotationMissionDataSourceType,omitempty" xml:"AnnotationMissionDataSourceType,omitempty"`
+	// example:
+	//
+	// chatbot-cn-n7QmzrUnNe
+	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// example:
+	//
+	// 2
+	Environment *int64 `json:"Environment,omitempty" xml:"Environment,omitempty"`
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	UserNick *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+}
+
+func (s ListIntentionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsRequest) SetAnnotationMissionDataSourceType(v int64) *ListIntentionsRequest {
+	s.AnnotationMissionDataSourceType = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetBotId(v string) *ListIntentionsRequest {
+	s.BotId = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetEnvironment(v int64) *ListIntentionsRequest {
+	s.Environment = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetInstanceId(v string) *ListIntentionsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetIntentId(v int64) *ListIntentionsRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetPageIndex(v int32) *ListIntentionsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetPageSize(v int32) *ListIntentionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetScriptId(v string) *ListIntentionsRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *ListIntentionsRequest) SetUserNick(v string) *ListIntentionsRequest {
+	s.UserNick = &v
+	return s
+}
+
+type ListIntentionsResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListIntentionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 254EB995-DEDF-48A4-9101-9CA5B72FFBCC
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIntentionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBody) SetCode(v string) *ListIntentionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBody) SetData(v *ListIntentionsResponseBodyData) *ListIntentionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListIntentionsResponseBody) SetHttpStatusCode(v int32) *ListIntentionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBody) SetMessage(v string) *ListIntentionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBody) SetRequestId(v string) *ListIntentionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBody) SetSuccess(v bool) *ListIntentionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListIntentionsResponseBodyData struct {
+	// example:
+	//
+	// chatbot-cn-n7QmzrUnNe
+	BotId      *string                                     `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	IntentList []*ListIntentionsResponseBodyDataIntentList `json:"IntentList,omitempty" xml:"IntentList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyData) SetBotId(v string) *ListIntentionsResponseBodyData {
+	s.BotId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyData) SetIntentList(v []*ListIntentionsResponseBodyDataIntentList) *ListIntentionsResponseBodyData {
+	s.IntentList = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyData) SetMessage(v string) *ListIntentionsResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyData) SetSuccess(v bool) *ListIntentionsResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentList struct {
+	Alias []*string `json:"Alias,omitempty" xml:"Alias,omitempty" type:"Repeated"`
+	// example:
+	//
+	// chatbot-cn-n7QmzrUnNe
+	BotId *int64 `json:"BotId,omitempty" xml:"BotId,omitempty"`
+	// example:
+	//
+	// 111
+	BotName *string `json:"BotName,omitempty" xml:"BotName,omitempty"`
+	// example:
+	//
+	// 50099
+	DialogId *string `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// example:
+	//
+	// 10717802
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// zh-cn
+	Language  *string                                              `json:"Language,omitempty" xml:"Language,omitempty"`
+	Name      *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RuleCheck []*ListIntentionsResponseBodyDataIntentListRuleCheck `json:"RuleCheck,omitempty" xml:"RuleCheck,omitempty" type:"Repeated"`
+	Slot      []*ListIntentionsResponseBodyDataIntentListSlot      `json:"Slot,omitempty" xml:"Slot,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 43258
+	TableId *int64 `json:"TableId,omitempty" xml:"TableId,omitempty"`
+	// example:
+	//
+	// 0
+	Type    *int32                                             `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserSay []*ListIntentionsResponseBodyDataIntentListUserSay `json:"UserSay,omitempty" xml:"UserSay,omitempty" type:"Repeated"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentList) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetAlias(v []*string) *ListIntentionsResponseBodyDataIntentList {
+	s.Alias = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetBotId(v int64) *ListIntentionsResponseBodyDataIntentList {
+	s.BotId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetBotName(v string) *ListIntentionsResponseBodyDataIntentList {
+	s.BotName = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetDialogId(v string) *ListIntentionsResponseBodyDataIntentList {
+	s.DialogId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetId(v int64) *ListIntentionsResponseBodyDataIntentList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetLanguage(v string) *ListIntentionsResponseBodyDataIntentList {
+	s.Language = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetName(v string) *ListIntentionsResponseBodyDataIntentList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetRuleCheck(v []*ListIntentionsResponseBodyDataIntentListRuleCheck) *ListIntentionsResponseBodyDataIntentList {
+	s.RuleCheck = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetSlot(v []*ListIntentionsResponseBodyDataIntentListSlot) *ListIntentionsResponseBodyDataIntentList {
+	s.Slot = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetTableId(v int64) *ListIntentionsResponseBodyDataIntentList {
+	s.TableId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetType(v int32) *ListIntentionsResponseBodyDataIntentList {
+	s.Type = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentList) SetUserSay(v []*ListIntentionsResponseBodyDataIntentListUserSay) *ListIntentionsResponseBodyDataIntentList {
+	s.UserSay = v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListRuleCheck struct {
+	Error []*string `json:"Error,omitempty" xml:"Error,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	Strict  *bool     `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	Text    *string   `json:"Text,omitempty" xml:"Text,omitempty"`
+	Warning []*string `json:"Warning,omitempty" xml:"Warning,omitempty" type:"Repeated"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListRuleCheck) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListRuleCheck) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) SetError(v []*string) *ListIntentionsResponseBodyDataIntentListRuleCheck {
+	s.Error = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) SetStrict(v bool) *ListIntentionsResponseBodyDataIntentListRuleCheck {
+	s.Strict = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) SetText(v string) *ListIntentionsResponseBodyDataIntentListRuleCheck {
+	s.Text = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListRuleCheck) SetWarning(v []*string) *ListIntentionsResponseBodyDataIntentListRuleCheck {
+	s.Warning = v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListSlot struct {
+	FeedbackFunctions []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions `json:"FeedbackFunctions,omitempty" xml:"FeedbackFunctions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test
+	FeedbackType *string `json:"FeedbackType,omitempty" xml:"FeedbackType,omitempty"`
+	// example:
+	//
+	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// false
+	IsArray *bool `json:"IsArray,omitempty" xml:"IsArray,omitempty"`
+	// example:
+	//
+	// false
+	IsEncrypt *bool `json:"IsEncrypt,omitempty" xml:"IsEncrypt,omitempty"`
+	// example:
+	//
+	// false
+	IsInteractive *bool `json:"IsInteractive,omitempty" xml:"IsInteractive,omitempty"`
+	// example:
+	//
+	// true
+	IsNecessary *bool `json:"IsNecessary,omitempty" xml:"IsNecessary,omitempty"`
+	// example:
+	//
+	// 0
+	LifeSpan *int32                                              `json:"LifeSpan,omitempty" xml:"LifeSpan,omitempty"`
+	Name     *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Question []*string                                           `json:"Question,omitempty" xml:"Question,omitempty" type:"Repeated"`
+	Tags     []*ListIntentionsResponseBodyDataIntentListSlotTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Value    *string                                             `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlot) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetFeedbackFunctions(v []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.FeedbackFunctions = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetFeedbackType(v string) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.FeedbackType = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetId(v string) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetIsArray(v bool) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.IsArray = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetIsEncrypt(v bool) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.IsEncrypt = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetIsInteractive(v bool) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.IsInteractive = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetIsNecessary(v bool) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.IsNecessary = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetLifeSpan(v int32) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.LifeSpan = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetName(v string) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetQuestion(v []*string) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.Question = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetTags(v []*ListIntentionsResponseBodyDataIntentListSlotTags) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.Tags = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlot) SetValue(v string) *ListIntentionsResponseBodyDataIntentListSlot {
+	s.Value = &v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions struct {
+	// example:
+	//
+	// test
+	AliyunFunction *string `json:"AliyunFunction,omitempty" xml:"AliyunFunction,omitempty"`
+	// example:
+	//
+	// test
+	AliyunService *string `json:"AliyunService,omitempty" xml:"AliyunService,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// GA setup for HPC cn4-HPC-EndUserServer-GlobalAccelerator
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// cn-hangzhou.log.aliyuncs.com
+	EndPoint *string `json:"EndPoint,omitempty" xml:"EndPoint,omitempty"`
+	// example:
+	//
+	// count
+	Function *string                                                                `json:"Function,omitempty" xml:"Function,omitempty"`
+	Name     *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Params   map[string]interface{}                                                 `json:"Params,omitempty" xml:"Params,omitempty"`
+	Switch   []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch `json:"Switch,omitempty" xml:"Switch,omitempty" type:"Repeated"`
+	// example:
+	//
+	// cluster
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetAliyunFunction(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.AliyunFunction = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetAliyunService(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.AliyunService = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetCode(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Code = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetDescription(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetEndPoint(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.EndPoint = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetFunction(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Function = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetName(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetParams(v map[string]interface{}) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Params = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetSwitch(v []*ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Switch = v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions) SetType(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctions {
+	s.Type = &v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch struct {
+	// example:
+	//
+	// b9932604-08ae-4525-bbe5-c8cce3066070
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// SQL_SUB_QUERY
+	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// PASSKEY
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// BASE_VALIDATE_FILTER_SWITCH
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) SetId(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) SetLabel(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch {
+	s.Label = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) SetName(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch {
+	s.Name = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) SetType(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch {
+	s.Type = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch) SetValue(v string) *ListIntentionsResponseBodyDataIntentListSlotFeedbackFunctionsSwitch {
+	s.Value = &v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListSlotTags struct {
+	// example:
+	//
+	// 17448458
+	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListSlotTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotTags) SetUserSayId(v string) *ListIntentionsResponseBodyDataIntentListSlotTags {
+	s.UserSayId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListSlotTags) SetValue(v string) *ListIntentionsResponseBodyDataIntentListSlotTags {
+	s.Value = &v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListUserSay struct {
+	// example:
+	//
+	// 1234567
+	FromId *string `json:"FromId,omitempty" xml:"FromId,omitempty"`
+	// example:
+	//
+	// 17448458
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	Strict      *bool                                                         `json:"Strict,omitempty" xml:"Strict,omitempty"`
+	UserSayData []*ListIntentionsResponseBodyDataIntentListUserSayUserSayData `json:"UserSayData,omitempty" xml:"UserSayData,omitempty" type:"Repeated"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListUserSay) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListUserSay) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSay) SetFromId(v string) *ListIntentionsResponseBodyDataIntentListUserSay {
+	s.FromId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSay) SetId(v string) *ListIntentionsResponseBodyDataIntentListUserSay {
+	s.Id = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSay) SetStrict(v bool) *ListIntentionsResponseBodyDataIntentListUserSay {
+	s.Strict = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSay) SetUserSayData(v []*ListIntentionsResponseBodyDataIntentListUserSayUserSayData) *ListIntentionsResponseBodyDataIntentListUserSay {
+	s.UserSayData = v
+	return s
+}
+
+type ListIntentionsResponseBodyDataIntentListUserSayUserSayData struct {
+	// example:
+	//
+	// 9ec31b50-32b8-11eb-9478-19d2d885afdb
+	SlotId *string `json:"SlotId,omitempty" xml:"SlotId,omitempty"`
+	Text   *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s ListIntentionsResponseBodyDataIntentListUserSayUserSayData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponseBodyDataIntentListUserSayUserSayData) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSayUserSayData) SetSlotId(v string) *ListIntentionsResponseBodyDataIntentListUserSayUserSayData {
+	s.SlotId = &v
+	return s
+}
+
+func (s *ListIntentionsResponseBodyDataIntentListUserSayUserSayData) SetText(v string) *ListIntentionsResponseBodyDataIntentListUserSayUserSayData {
+	s.Text = &v
+	return s
+}
+
+type ListIntentionsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListIntentionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListIntentionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIntentionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIntentionsResponse) SetHeaders(v map[string]*string) *ListIntentionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIntentionsResponse) SetStatusCode(v int32) *ListIntentionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIntentionsResponse) SetBody(v *ListIntentionsResponseBody) *ListIntentionsResponse {
 	s.Body = v
 	return s
 }
@@ -24891,12 +27760,13 @@ type ListScriptsResponseBodyScriptsList struct {
 	// example:
 	//
 	// false
-	NewBargeInEnable  *bool   `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
-	NluAccessType     *string `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
-	NluEngine         *string `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
-	RejectReason      *string `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
-	Scene             *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	ScriptDescription *string `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
+	NewBargeInEnable  *bool                                         `json:"NewBargeInEnable,omitempty" xml:"NewBargeInEnable,omitempty"`
+	NluAccessType     *string                                       `json:"NluAccessType,omitempty" xml:"NluAccessType,omitempty"`
+	NluEngine         *string                                       `json:"NluEngine,omitempty" xml:"NluEngine,omitempty"`
+	NluProfile        *ListScriptsResponseBodyScriptsListNluProfile `json:"NluProfile,omitempty" xml:"NluProfile,omitempty" type:"Struct"`
+	RejectReason      *string                                       `json:"RejectReason,omitempty" xml:"RejectReason,omitempty"`
+	Scene             *string                                       `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	ScriptDescription *string                                       `json:"ScriptDescription,omitempty" xml:"ScriptDescription,omitempty"`
 	// example:
 	//
 	// 8d6a6e41-8093-49af-a9d1-0281878758ac
@@ -24991,6 +27861,11 @@ func (s *ListScriptsResponseBodyScriptsList) SetNluEngine(v string) *ListScripts
 	return s
 }
 
+func (s *ListScriptsResponseBodyScriptsList) SetNluProfile(v *ListScriptsResponseBodyScriptsListNluProfile) *ListScriptsResponseBodyScriptsList {
+	s.NluProfile = v
+	return s
+}
+
 func (s *ListScriptsResponseBodyScriptsList) SetRejectReason(v string) *ListScriptsResponseBodyScriptsList {
 	s.RejectReason = &v
 	return s
@@ -25028,6 +27903,35 @@ func (s *ListScriptsResponseBodyScriptsList) SetUpdateTime(v int64) *ListScripts
 
 func (s *ListScriptsResponseBodyScriptsList) SetAgentId(v int64) *ListScriptsResponseBodyScriptsList {
 	s.AgentId = &v
+	return s
+}
+
+type ListScriptsResponseBodyScriptsListNluProfile struct {
+	FcFunction       *string `json:"FcFunction,omitempty" xml:"FcFunction,omitempty"`
+	FcHttpTriggerUrl *string `json:"FcHttpTriggerUrl,omitempty" xml:"FcHttpTriggerUrl,omitempty"`
+	FcRegion         *string `json:"FcRegion,omitempty" xml:"FcRegion,omitempty"`
+}
+
+func (s ListScriptsResponseBodyScriptsListNluProfile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListScriptsResponseBodyScriptsListNluProfile) GoString() string {
+	return s.String()
+}
+
+func (s *ListScriptsResponseBodyScriptsListNluProfile) SetFcFunction(v string) *ListScriptsResponseBodyScriptsListNluProfile {
+	s.FcFunction = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScriptsListNluProfile) SetFcHttpTriggerUrl(v string) *ListScriptsResponseBodyScriptsListNluProfile {
+	s.FcHttpTriggerUrl = &v
+	return s
+}
+
+func (s *ListScriptsResponseBodyScriptsListNluProfile) SetFcRegion(v string) *ListScriptsResponseBodyScriptsListNluProfile {
+	s.FcRegion = &v
 	return s
 }
 
@@ -26585,6 +29489,703 @@ func (s *ModifyBatchJobsResponse) SetStatusCode(v int32) *ModifyBatchJobsRespons
 }
 
 func (s *ModifyBatchJobsResponse) SetBody(v *ModifyBatchJobsResponseBody) *ModifyBatchJobsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBeebotIntentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntentDefinition *ModifyBeebotIntentRequestIntentDefinition `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ModifyBeebotIntentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentRequest) SetInstanceId(v string) *ModifyBeebotIntentRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentRequest) SetIntentDefinition(v *ModifyBeebotIntentRequestIntentDefinition) *ModifyBeebotIntentRequest {
+	s.IntentDefinition = v
+	return s
+}
+
+func (s *ModifyBeebotIntentRequest) SetIntentId(v int64) *ModifyBeebotIntentRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentRequest) SetScriptId(v string) *ModifyBeebotIntentRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ModifyBeebotIntentRequestIntentDefinition struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// This parameter is required.
+	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+}
+
+func (s ModifyBeebotIntentRequestIntentDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentRequestIntentDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentRequestIntentDefinition) SetAliasName(v string) *ModifyBeebotIntentRequestIntentDefinition {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentRequestIntentDefinition) SetIntentName(v string) *ModifyBeebotIntentRequestIntentDefinition {
+	s.IntentName = &v
+	return s
+}
+
+type ModifyBeebotIntentShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	IntentDefinitionShrink *string `json:"IntentDefinition,omitempty" xml:"IntentDefinition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ModifyBeebotIntentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentShrinkRequest) SetInstanceId(v string) *ModifyBeebotIntentShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentShrinkRequest) SetIntentDefinitionShrink(v string) *ModifyBeebotIntentShrinkRequest {
+	s.IntentDefinitionShrink = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentShrinkRequest) SetIntentId(v int64) *ModifyBeebotIntentShrinkRequest {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentShrinkRequest) SetScriptId(v string) *ModifyBeebotIntentShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ModifyBeebotIntentResponseBody struct {
+	// example:
+	//
+	// A1F21BF2-CB21-1968-8039-C74699E7DDEB
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 8785D26A-7406-50A1-9653-1313C292E23B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyBeebotIntentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetBeebotRequestId(v string) *ModifyBeebotIntentResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetCode(v string) *ModifyBeebotIntentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetHttpStatusCode(v int32) *ModifyBeebotIntentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetIntentId(v int64) *ModifyBeebotIntentResponseBody {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetMessage(v string) *ModifyBeebotIntentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetRequestId(v string) *ModifyBeebotIntentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponseBody) SetSuccess(v bool) *ModifyBeebotIntentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyBeebotIntentResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBeebotIntentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBeebotIntentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentResponse) SetHeaders(v map[string]*string) *ModifyBeebotIntentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponse) SetStatusCode(v int32) *ModifyBeebotIntentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentResponse) SetBody(v *ModifyBeebotIntentResponseBody) *ModifyBeebotIntentResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBeebotIntentLgfRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	LgfDefinition *ModifyBeebotIntentLgfRequestLgfDefinition `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ModifyBeebotIntentLgfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentLgfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentLgfRequest) SetInstanceId(v string) *ModifyBeebotIntentLgfRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfRequest) SetLgfDefinition(v *ModifyBeebotIntentLgfRequestLgfDefinition) *ModifyBeebotIntentLgfRequest {
+	s.LgfDefinition = v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfRequest) SetLgfId(v int64) *ModifyBeebotIntentLgfRequest {
+	s.LgfId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfRequest) SetScriptId(v string) *ModifyBeebotIntentLgfRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ModifyBeebotIntentLgfRequestLgfDefinition struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+	// This parameter is required.
+	RuleText *string `json:"RuleText,omitempty" xml:"RuleText,omitempty"`
+}
+
+func (s ModifyBeebotIntentLgfRequestLgfDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentLgfRequestLgfDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentLgfRequestLgfDefinition) SetIntentId(v int64) *ModifyBeebotIntentLgfRequestLgfDefinition {
+	s.IntentId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfRequestLgfDefinition) SetRuleText(v string) *ModifyBeebotIntentLgfRequestLgfDefinition {
+	s.RuleText = &v
+	return s
+}
+
+type ModifyBeebotIntentLgfShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	LgfDefinitionShrink *string `json:"LgfDefinition,omitempty" xml:"LgfDefinition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+}
+
+func (s ModifyBeebotIntentLgfShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentLgfShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentLgfShrinkRequest) SetInstanceId(v string) *ModifyBeebotIntentLgfShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfShrinkRequest) SetLgfDefinitionShrink(v string) *ModifyBeebotIntentLgfShrinkRequest {
+	s.LgfDefinitionShrink = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfShrinkRequest) SetLgfId(v int64) *ModifyBeebotIntentLgfShrinkRequest {
+	s.LgfId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfShrinkRequest) SetScriptId(v string) *ModifyBeebotIntentLgfShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+type ModifyBeebotIntentLgfResponseBody struct {
+	// example:
+	//
+	// A1F21BF2-CB21-1968-8039-C74699E7DDEB
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 5666117
+	LgfId *int64 `json:"LgfId,omitempty" xml:"LgfId,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 302C67BD-19FF-5B66-A45D-F95544604155
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyBeebotIntentLgfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentLgfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetBeebotRequestId(v string) *ModifyBeebotIntentLgfResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetCode(v string) *ModifyBeebotIntentLgfResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetHttpStatusCode(v int32) *ModifyBeebotIntentLgfResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetLgfId(v int64) *ModifyBeebotIntentLgfResponseBody {
+	s.LgfId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetMessage(v string) *ModifyBeebotIntentLgfResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetRequestId(v string) *ModifyBeebotIntentLgfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponseBody) SetSuccess(v bool) *ModifyBeebotIntentLgfResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyBeebotIntentLgfResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBeebotIntentLgfResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBeebotIntentLgfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentLgfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentLgfResponse) SetHeaders(v map[string]*string) *ModifyBeebotIntentLgfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponse) SetStatusCode(v int32) *ModifyBeebotIntentLgfResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentLgfResponse) SetBody(v *ModifyBeebotIntentLgfResponseBody) *ModifyBeebotIntentLgfResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyBeebotIntentUserSayRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// This parameter is required.
+	UserSayDefinition *ModifyBeebotIntentUserSayRequestUserSayDefinition `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17448458
+	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s ModifyBeebotIntentUserSayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentUserSayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentUserSayRequest) SetInstanceId(v string) *ModifyBeebotIntentUserSayRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayRequest) SetScriptId(v string) *ModifyBeebotIntentUserSayRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayRequest) SetUserSayDefinition(v *ModifyBeebotIntentUserSayRequestUserSayDefinition) *ModifyBeebotIntentUserSayRequest {
+	s.UserSayDefinition = v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayRequest) SetUserSayId(v string) *ModifyBeebotIntentUserSayRequest {
+	s.UserSayId = &v
+	return s
+}
+
+type ModifyBeebotIntentUserSayRequestUserSayDefinition struct {
+	// This parameter is required.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10717802
+	IntentId *int64 `json:"IntentId,omitempty" xml:"IntentId,omitempty"`
+}
+
+func (s ModifyBeebotIntentUserSayRequestUserSayDefinition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentUserSayRequestUserSayDefinition) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentUserSayRequestUserSayDefinition) SetContent(v string) *ModifyBeebotIntentUserSayRequestUserSayDefinition {
+	s.Content = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayRequestUserSayDefinition) SetIntentId(v int64) *ModifyBeebotIntentUserSayRequestUserSayDefinition {
+	s.IntentId = &v
+	return s
+}
+
+type ModifyBeebotIntentUserSayShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e5035654-1745-484a-8c5b-165f7c7bcd79
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// c5c5d8c0-c0f1-48a7-be2b-dc46006d888a
+	ScriptId *string `json:"ScriptId,omitempty" xml:"ScriptId,omitempty"`
+	// This parameter is required.
+	UserSayDefinitionShrink *string `json:"UserSayDefinition,omitempty" xml:"UserSayDefinition,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 17448458
+	UserSayId *string `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s ModifyBeebotIntentUserSayShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentUserSayShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentUserSayShrinkRequest) SetInstanceId(v string) *ModifyBeebotIntentUserSayShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayShrinkRequest) SetScriptId(v string) *ModifyBeebotIntentUserSayShrinkRequest {
+	s.ScriptId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayShrinkRequest) SetUserSayDefinitionShrink(v string) *ModifyBeebotIntentUserSayShrinkRequest {
+	s.UserSayDefinitionShrink = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayShrinkRequest) SetUserSayId(v string) *ModifyBeebotIntentUserSayShrinkRequest {
+	s.UserSayId = &v
+	return s
+}
+
+type ModifyBeebotIntentUserSayResponseBody struct {
+	// example:
+	//
+	// A1F21BF2-CB21-1968-8039-C74699E7DDEB
+	BeebotRequestId *string `json:"BeebotRequestId,omitempty" xml:"BeebotRequestId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// Success
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 17448458
+	UserSayId *int64 `json:"UserSayId,omitempty" xml:"UserSayId,omitempty"`
+}
+
+func (s ModifyBeebotIntentUserSayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentUserSayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetBeebotRequestId(v string) *ModifyBeebotIntentUserSayResponseBody {
+	s.BeebotRequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetCode(v string) *ModifyBeebotIntentUserSayResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetHttpStatusCode(v int32) *ModifyBeebotIntentUserSayResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetMessage(v string) *ModifyBeebotIntentUserSayResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetRequestId(v string) *ModifyBeebotIntentUserSayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetSuccess(v bool) *ModifyBeebotIntentUserSayResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponseBody) SetUserSayId(v int64) *ModifyBeebotIntentUserSayResponseBody {
+	s.UserSayId = &v
+	return s
+}
+
+type ModifyBeebotIntentUserSayResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyBeebotIntentUserSayResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyBeebotIntentUserSayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyBeebotIntentUserSayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyBeebotIntentUserSayResponse) SetHeaders(v map[string]*string) *ModifyBeebotIntentUserSayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponse) SetStatusCode(v int32) *ModifyBeebotIntentUserSayResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyBeebotIntentUserSayResponse) SetBody(v *ModifyBeebotIntentUserSayResponseBody) *ModifyBeebotIntentUserSayResponse {
 	s.Body = v
 	return s
 }
@@ -36403,24 +40004,13 @@ func (client *Client) ApplyNumberDistrictInfoParsingResultWithOptions(request *A
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ApplyNumberDistrictInfoParsingResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ApplyNumberDistrictInfoParsingResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ApplyNumberDistrictInfoParsingResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36498,24 +40088,13 @@ func (client *Client) AssignJobsWithOptions(request *AssignJobsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AssignJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AssignJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AssignJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - AssignJobsRequest
@@ -36581,24 +40160,13 @@ func (client *Client) CancelJobsWithOptions(request *CancelJobsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CancelJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CancelJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CancelJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CancelJobsRequest
@@ -36648,24 +40216,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ChangeResourceGroupRequest
@@ -36763,24 +40320,13 @@ func (client *Client) CreateAgentProfileWithOptions(request *CreateAgentProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAgentProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAgentProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAgentProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateAgentProfileRequest
@@ -36900,24 +40446,13 @@ func (client *Client) CreateAnnotationMissionWithOptions(tmpReq *CreateAnnotatio
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAnnotationMissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAnnotationMissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAnnotationMissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateAnnotationMissionRequest
@@ -36995,24 +40530,13 @@ func (client *Client) CreateBatchJobsWithOptions(request *CreateBatchJobsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateBatchJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateBatchJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateBatchJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateBatchJobsRequest
@@ -37114,24 +40638,13 @@ func (client *Client) CreateBatchRepeatJobWithOptions(request *CreateBatchRepeat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateBatchRepeatJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateBatchRepeatJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateBatchRepeatJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37145,6 +40658,228 @@ func (client *Client) CreateBatchRepeatJob(request *CreateBatchRepeatJobRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBatchRepeatJobResponse{}
 	_body, _err := client.CreateBatchRepeatJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntent
+//
+// @param tmpReq - CreateBeebotIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBeebotIntentResponse
+func (client *Client) CreateBeebotIntentWithOptions(tmpReq *CreateBeebotIntentRequest, runtime *util.RuntimeOptions) (_result *CreateBeebotIntentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateBeebotIntentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentDefinitionShrink)) {
+		query["IntentDefinition"] = request.IntentDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBeebotIntent"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBeebotIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntent
+//
+// @param request - CreateBeebotIntentRequest
+//
+// @return CreateBeebotIntentResponse
+func (client *Client) CreateBeebotIntent(request *CreateBeebotIntentRequest) (_result *CreateBeebotIntentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBeebotIntentResponse{}
+	_body, _err := client.CreateBeebotIntentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntentLgf
+//
+// @param tmpReq - CreateBeebotIntentLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBeebotIntentLgfResponse
+func (client *Client) CreateBeebotIntentLgfWithOptions(tmpReq *CreateBeebotIntentLgfRequest, runtime *util.RuntimeOptions) (_result *CreateBeebotIntentLgfResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateBeebotIntentLgfShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LgfDefinition)) {
+		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LgfDefinition, tea.String("LgfDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LgfDefinitionShrink)) {
+		query["LgfDefinition"] = request.LgfDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBeebotIntentLgf"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBeebotIntentLgfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntentLgf
+//
+// @param request - CreateBeebotIntentLgfRequest
+//
+// @return CreateBeebotIntentLgfResponse
+func (client *Client) CreateBeebotIntentLgf(request *CreateBeebotIntentLgfRequest) (_result *CreateBeebotIntentLgfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBeebotIntentLgfResponse{}
+	_body, _err := client.CreateBeebotIntentLgfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntentUserSay
+//
+// @param tmpReq - CreateBeebotIntentUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBeebotIntentUserSayResponse
+func (client *Client) CreateBeebotIntentUserSayWithOptions(tmpReq *CreateBeebotIntentUserSayRequest, runtime *util.RuntimeOptions) (_result *CreateBeebotIntentUserSayResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateBeebotIntentUserSayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserSayDefinition)) {
+		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSayDefinition, tea.String("UserSayDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSayDefinitionShrink)) {
+		query["UserSayDefinition"] = request.UserSayDefinitionShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBeebotIntentUserSay"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBeebotIntentUserSayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # CreateBeebotIntentUserSay
+//
+// @param request - CreateBeebotIntentUserSayRequest
+//
+// @return CreateBeebotIntentUserSayResponse
+func (client *Client) CreateBeebotIntentUserSay(request *CreateBeebotIntentUserSayRequest) (_result *CreateBeebotIntentUserSayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBeebotIntentUserSayResponse{}
+	_body, _err := client.CreateBeebotIntentUserSayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -37193,24 +40928,13 @@ func (client *Client) CreateDialogueFlowWithOptions(request *CreateDialogueFlowR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDialogueFlowResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDialogueFlowResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDialogueFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateDialogueFlowRequest
@@ -37252,24 +40976,13 @@ func (client *Client) CreateDownloadUrlWithOptions(request *CreateDownloadUrlReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDownloadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDownloadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateDownloadUrlRequest
@@ -37335,24 +41048,13 @@ func (client *Client) CreateGlobalQuestionWithOptions(request *CreateGlobalQuest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateGlobalQuestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateGlobalQuestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateGlobalQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateGlobalQuestionRequest
@@ -37418,24 +41120,13 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateInstanceRequest
@@ -37489,24 +41180,13 @@ func (client *Client) CreateInstanceBindNumberWithOptions(request *CreateInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateInstanceBindNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateInstanceBindNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateInstanceBindNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37576,24 +41256,13 @@ func (client *Client) CreateIntentWithOptions(request *CreateIntentRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateIntentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateIntentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateIntentRequest
@@ -37643,24 +41312,13 @@ func (client *Client) CreateJobDataParsingTaskWithOptions(request *CreateJobData
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateJobDataParsingTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateJobDataParsingTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateJobDataParsingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateJobDataParsingTaskRequest
@@ -37754,24 +41412,13 @@ func (client *Client) CreateJobGroupWithOptions(request *CreateJobGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateJobGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateJobGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateJobGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateJobGroupRequest
@@ -37825,24 +41472,13 @@ func (client *Client) CreateJobGroupExportTaskWithOptions(request *CreateJobGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateJobGroupExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateJobGroupExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateJobGroupExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateJobGroupExportTaskRequest
@@ -37892,24 +41528,13 @@ func (client *Client) CreateNumberDistrictInfoDownloadUrlWithOptions(request *Cr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateNumberDistrictInfoDownloadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateNumberDistrictInfoDownloadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateNumberDistrictInfoDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37967,24 +41592,13 @@ func (client *Client) CreateNumberDistrictInfoParsingTaskWithOptions(request *Cr
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateNumberDistrictInfoParsingTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateNumberDistrictInfoParsingTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateNumberDistrictInfoParsingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38050,24 +41664,13 @@ func (client *Client) CreateOutboundCallNumberWithOptions(request *CreateOutboun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateOutboundCallNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateOutboundCallNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateOutboundCallNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38088,6 +41691,10 @@ func (client *Client) CreateOutboundCallNumber(request *CreateOutboundCallNumber
 	return _result, _err
 }
 
+// Summary:
+//
+// 新建场景
+//
 // @param request - CreateScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -38167,6 +41774,10 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 		query["ScriptName"] = request.ScriptName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ScriptNluProfileJsonString)) {
+		query["ScriptNluProfileJsonString"] = request.ScriptNluProfileJsonString
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScriptWaveform)) {
 		query["ScriptWaveform"] = request.ScriptWaveform
 	}
@@ -38189,26 +41800,19 @@ func (client *Client) CreateScriptWithOptions(request *CreateScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// 新建场景
+//
 // @param request - CreateScriptRequest
 //
 // @return CreateScriptResponse
@@ -38268,24 +41872,13 @@ func (client *Client) CreateScriptWaveformWithOptions(request *CreateScriptWavef
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateScriptWaveformResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateScriptWaveformResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateScriptWaveformResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateScriptWaveformRequest
@@ -38343,24 +41936,13 @@ func (client *Client) CreateTagWithOptions(request *CreateTagRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTagResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTagResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTagResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateTagRequest
@@ -38406,24 +41988,13 @@ func (client *Client) CreateTaskExportTaskWithOptions(request *CreateTaskExportT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateTaskExportTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateTaskExportTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateTaskExportTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38483,24 +42054,13 @@ func (client *Client) DeleteAgentProfilesWithOptions(tmpReq *DeleteAgentProfiles
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAgentProfilesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAgentProfilesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAgentProfilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteAgentProfilesRequest
@@ -38539,24 +42099,13 @@ func (client *Client) DeleteAllNumberDistrictInfoWithOptions(runtime *util.Runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAllNumberDistrictInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAllNumberDistrictInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAllNumberDistrictInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38568,6 +42117,218 @@ func (client *Client) DeleteAllNumberDistrictInfo() (_result *DeleteAllNumberDis
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAllNumberDistrictInfoResponse{}
 	_body, _err := client.DeleteAllNumberDistrictInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntent
+//
+// @param request - DeleteBeebotIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBeebotIntentResponse
+func (client *Client) DeleteBeebotIntentWithOptions(request *DeleteBeebotIntentRequest, runtime *util.RuntimeOptions) (_result *DeleteBeebotIntentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBeebotIntent"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBeebotIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntent
+//
+// @param request - DeleteBeebotIntentRequest
+//
+// @return DeleteBeebotIntentResponse
+func (client *Client) DeleteBeebotIntent(request *DeleteBeebotIntentRequest) (_result *DeleteBeebotIntentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBeebotIntentResponse{}
+	_body, _err := client.DeleteBeebotIntentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntentLgf
+//
+// @param request - DeleteBeebotIntentLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBeebotIntentLgfResponse
+func (client *Client) DeleteBeebotIntentLgfWithOptions(request *DeleteBeebotIntentLgfRequest, runtime *util.RuntimeOptions) (_result *DeleteBeebotIntentLgfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LgfId)) {
+		query["LgfId"] = request.LgfId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBeebotIntentLgf"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBeebotIntentLgfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntentLgf
+//
+// @param request - DeleteBeebotIntentLgfRequest
+//
+// @return DeleteBeebotIntentLgfResponse
+func (client *Client) DeleteBeebotIntentLgf(request *DeleteBeebotIntentLgfRequest) (_result *DeleteBeebotIntentLgfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBeebotIntentLgfResponse{}
+	_body, _err := client.DeleteBeebotIntentLgfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntentUserSay
+//
+// @param request - DeleteBeebotIntentUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBeebotIntentUserSayResponse
+func (client *Client) DeleteBeebotIntentUserSayWithOptions(request *DeleteBeebotIntentUserSayRequest, runtime *util.RuntimeOptions) (_result *DeleteBeebotIntentUserSayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSayId)) {
+		query["UserSayId"] = request.UserSayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBeebotIntentUserSay"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBeebotIntentUserSayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteBeebotIntentUserSay
+//
+// @param request - DeleteBeebotIntentUserSayRequest
+//
+// @return DeleteBeebotIntentUserSayResponse
+func (client *Client) DeleteBeebotIntentUserSay(request *DeleteBeebotIntentUserSayRequest) (_result *DeleteBeebotIntentUserSayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBeebotIntentUserSayResponse{}
+	_body, _err := client.DeleteBeebotIntentUserSayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -38612,24 +42373,13 @@ func (client *Client) DeleteContactBlockListWithOptions(request *DeleteContactBl
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteContactBlockListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteContactBlockListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteContactBlockListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteContactBlockListRequest
@@ -38683,24 +42433,13 @@ func (client *Client) DeleteContactWhiteListWithOptions(request *DeleteContactWh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteContactWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteContactWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteContactWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteContactWhiteListRequest
@@ -38754,24 +42493,13 @@ func (client *Client) DeleteDialogueFlowWithOptions(request *DeleteDialogueFlowR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDialogueFlowResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDialogueFlowResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDialogueFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteDialogueFlowRequest
@@ -38825,24 +42553,13 @@ func (client *Client) DeleteGlobalQuestionWithOptions(request *DeleteGlobalQuest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteGlobalQuestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteGlobalQuestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteGlobalQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteGlobalQuestionRequest
@@ -38888,24 +42605,13 @@ func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteInstanceRequest
@@ -38959,24 +42665,13 @@ func (client *Client) DeleteIntentWithOptions(request *DeleteIntentRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteIntentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteIntentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteIntentRequest
@@ -39026,24 +42721,13 @@ func (client *Client) DeleteJobGroupWithOptions(request *DeleteJobGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteJobGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteJobGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteJobGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteJobGroupRequest
@@ -39093,24 +42777,13 @@ func (client *Client) DeleteOutboundCallNumberWithOptions(request *DeleteOutboun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteOutboundCallNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteOutboundCallNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteOutboundCallNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteOutboundCallNumberRequest
@@ -39160,24 +42833,13 @@ func (client *Client) DeleteScriptWithOptions(request *DeleteScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteScriptRequest
@@ -39231,24 +42893,13 @@ func (client *Client) DeleteScriptRecordingWithOptions(request *DeleteScriptReco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteScriptRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteScriptRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteScriptRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteScriptRecordingRequest
@@ -39302,24 +42953,13 @@ func (client *Client) DeleteScriptWaveformWithOptions(request *DeleteScriptWavef
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteScriptWaveformResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteScriptWaveformResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteScriptWaveformResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteScriptWaveformRequest
@@ -39329,6 +42969,82 @@ func (client *Client) DeleteScriptWaveform(request *DeleteScriptWaveformRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteScriptWaveformResponse{}
 	_body, _err := client.DeleteScriptWaveformWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeBeebotIntent
+//
+// Description:
+//
+// ***
+//
+// @param request - DescribeBeebotIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeBeebotIntentResponse
+func (client *Client) DescribeBeebotIntentWithOptions(request *DescribeBeebotIntentRequest, runtime *util.RuntimeOptions) (_result *DescribeBeebotIntentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBeebotIntent"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBeebotIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeBeebotIntent
+//
+// Description:
+//
+// ***
+//
+// @param request - DescribeBeebotIntentRequest
+//
+// @return DescribeBeebotIntentResponse
+func (client *Client) DescribeBeebotIntent(request *DescribeBeebotIntentRequest) (_result *DescribeBeebotIntentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBeebotIntentResponse{}
+	_body, _err := client.DescribeBeebotIntentWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39373,24 +43089,13 @@ func (client *Client) DescribeDialogueNodeStatisticsWithOptions(request *Describ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDialogueNodeStatisticsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDialogueNodeStatisticsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDialogueNodeStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeDialogueNodeStatisticsRequest
@@ -39444,24 +43149,13 @@ func (client *Client) DescribeDsReportsWithOptions(request *DescribeDsReportsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDsReportsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDsReportsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDsReportsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39519,24 +43213,13 @@ func (client *Client) DescribeGlobalQuestionWithOptions(request *DescribeGlobalQ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGlobalQuestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGlobalQuestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGlobalQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeGlobalQuestionRequest
@@ -39586,24 +43269,13 @@ func (client *Client) DescribeGroupExecutingInfoWithOptions(request *DescribeGro
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeGroupExecutingInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeGroupExecutingInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeGroupExecutingInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeGroupExecutingInfoRequest
@@ -39653,24 +43325,13 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39728,24 +43389,13 @@ func (client *Client) DescribeIntentWithOptions(request *DescribeIntentRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeIntentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeIntentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeIntentRequest
@@ -39799,24 +43449,13 @@ func (client *Client) DescribeIntentStatisticsWithOptions(request *DescribeInten
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeIntentStatisticsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeIntentStatisticsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeIntentStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeIntentStatisticsRequest
@@ -39874,24 +43513,13 @@ func (client *Client) DescribeJobWithOptions(request *DescribeJobRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -39945,24 +43573,13 @@ func (client *Client) DescribeJobDataParsingTaskProgressWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeJobDataParsingTaskProgressResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeJobDataParsingTaskProgressResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeJobDataParsingTaskProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeJobDataParsingTaskProgressRequest
@@ -40020,24 +43637,13 @@ func (client *Client) DescribeJobGroupWithOptions(request *DescribeJobGroupReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeJobGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeJobGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeJobGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40091,24 +43697,13 @@ func (client *Client) DescribeJobGroupExportTaskProgressWithOptions(request *Des
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeJobGroupExportTaskProgressResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeJobGroupExportTaskProgressResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeJobGroupExportTaskProgressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeJobGroupExportTaskProgressRequest
@@ -40147,24 +43742,13 @@ func (client *Client) DescribeNumberDistrictInfoStatusWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeNumberDistrictInfoStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeNumberDistrictInfoStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeNumberDistrictInfoStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40183,6 +43767,10 @@ func (client *Client) DescribeNumberDistrictInfoStatus() (_result *DescribeNumbe
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景信息
+//
 // @param request - DescribeScriptRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -40216,26 +43804,19 @@ func (client *Client) DescribeScriptWithOptions(request *DescribeScriptRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// 获取场景信息
+//
 // @param request - DescribeScriptRequest
 //
 // @return DescribeScriptResponse
@@ -40287,24 +43868,13 @@ func (client *Client) DescribeScriptVoiceConfigWithOptions(request *DescribeScri
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeScriptVoiceConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeScriptVoiceConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeScriptVoiceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeScriptVoiceConfigRequest
@@ -40354,24 +43924,13 @@ func (client *Client) DescribeTTSConfigWithOptions(request *DescribeTTSConfigReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTTSConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTTSConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTTSConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeTTSConfigRequest
@@ -40465,24 +44024,13 @@ func (client *Client) DescribeTTSDemoWithOptions(request *DescribeTTSDemoRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTTSDemoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTTSDemoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTTSDemoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeTTSDemoRequest
@@ -40532,24 +44080,13 @@ func (client *Client) DescribeTagHitsSummaryWithOptions(request *DescribeTagHits
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTagHitsSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTagHitsSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTagHitsSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DescribeTagHitsSummaryRequest
@@ -40599,24 +44136,13 @@ func (client *Client) DescribeTenantBindNumberWithOptions(request *DescribeTenan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeTenantBindNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeTenantBindNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeTenantBindNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40706,24 +44232,13 @@ func (client *Client) DialogueWithOptions(request *DialogueRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DialogueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DialogueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DialogueRequest
@@ -40773,24 +44288,13 @@ func (client *Client) DismissNumberDistrictInfoParsingResultWithOptions(request 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DismissNumberDistrictInfoParsingResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DismissNumberDistrictInfoParsingResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DismissNumberDistrictInfoParsingResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40852,24 +44356,13 @@ func (client *Client) DownloadRecordingWithOptions(request *DownloadRecordingReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DownloadRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DownloadRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DownloadRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -40927,24 +44420,13 @@ func (client *Client) DownloadScriptRecordingWithOptions(request *DownloadScript
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DownloadScriptRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DownloadScriptRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DownloadScriptRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DownloadScriptRecordingRequest
@@ -40998,24 +44480,13 @@ func (client *Client) DuplicateScriptWithOptions(request *DuplicateScriptRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DuplicateScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DuplicateScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DuplicateScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DuplicateScriptRequest
@@ -41065,24 +44536,13 @@ func (client *Client) ExportScriptWithOptions(request *ExportScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExportScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExportScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExportScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ExportScriptRequest
@@ -41132,24 +44592,13 @@ func (client *Client) GenerateUploadUrlWithOptions(request *GenerateUploadUrlReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenerateUploadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenerateUploadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenerateUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GenerateUploadUrlRequest
@@ -41199,24 +44648,13 @@ func (client *Client) GetAfterAnswerDelayPlaybackWithOptions(request *GetAfterAn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAfterAnswerDelayPlaybackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAfterAnswerDelayPlaybackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAfterAnswerDelayPlaybackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAfterAnswerDelayPlaybackRequest
@@ -41270,24 +44708,13 @@ func (client *Client) GetAgentProfileWithOptions(request *GetAgentProfileRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAgentProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAgentProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAgentProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAgentProfileRequest
@@ -41337,24 +44764,13 @@ func (client *Client) GetAgentProfileTemplateWithOptions(request *GetAgentProfil
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAgentProfileTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAgentProfileTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAgentProfileTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAgentProfileTemplateRequest
@@ -41400,24 +44816,13 @@ func (client *Client) GetAnnotationMissionSummaryWithOptions(request *GetAnnotat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAnnotationMissionSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAnnotationMissionSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAnnotationMissionSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAnnotationMissionSummaryRequest
@@ -41471,24 +44876,13 @@ func (client *Client) GetAnnotationMissionTagInfoListWithOptions(request *GetAnn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAnnotationMissionTagInfoListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAnnotationMissionTagInfoListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAnnotationMissionTagInfoListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAnnotationMissionTagInfoListRequest
@@ -41538,24 +44932,13 @@ func (client *Client) GetAsrServerInfoWithOptions(request *GetAsrServerInfoReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAsrServerInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAsrServerInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAsrServerInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAsrServerInfoRequest
@@ -41605,24 +44988,13 @@ func (client *Client) GetBaseStrategyPeriodWithOptions(request *GetBaseStrategyP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetBaseStrategyPeriodResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetBaseStrategyPeriodResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetBaseStrategyPeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetBaseStrategyPeriodRequest
@@ -41657,24 +45029,13 @@ func (client *Client) GetConcurrentConversationQuotaWithOptions(runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetConcurrentConversationQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetConcurrentConversationQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetConcurrentConversationQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetConcurrentConversationQuotaResponse
@@ -41730,24 +45091,13 @@ func (client *Client) GetContactBlockListWithOptions(request *GetContactBlockLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetContactBlockListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetContactBlockListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetContactBlockListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetContactBlockListRequest
@@ -41805,24 +45155,13 @@ func (client *Client) GetContactWhiteListWithOptions(request *GetContactWhiteLis
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetContactWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetContactWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetContactWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetContactWhiteListRequest
@@ -41868,24 +45207,13 @@ func (client *Client) GetCurrentConcurrencyWithOptions(request *GetCurrentConcur
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCurrentConcurrencyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCurrentConcurrencyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCurrentConcurrencyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetCurrentConcurrencyRequest
@@ -41935,24 +45263,13 @@ func (client *Client) GetEffectiveDaysWithOptions(request *GetEffectiveDaysReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEffectiveDaysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEffectiveDaysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEffectiveDaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetEffectiveDaysRequest
@@ -42002,24 +45319,13 @@ func (client *Client) GetEmptyNumberNoMoreCallsInfoWithOptions(request *GetEmpty
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEmptyNumberNoMoreCallsInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEmptyNumberNoMoreCallsInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEmptyNumberNoMoreCallsInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetEmptyNumberNoMoreCallsInfoRequest
@@ -42081,24 +45387,13 @@ func (client *Client) GetJobDataUploadParamsWithOptions(request *GetJobDataUploa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetJobDataUploadParamsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetJobDataUploadParamsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetJobDataUploadParamsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetJobDataUploadParamsRequest
@@ -42148,24 +45443,13 @@ func (client *Client) GetMaxAttemptsPerDayWithOptions(request *GetMaxAttemptsPer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetMaxAttemptsPerDayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetMaxAttemptsPerDayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetMaxAttemptsPerDayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetMaxAttemptsPerDayRequest
@@ -42204,24 +45488,13 @@ func (client *Client) GetNumberDistrictInfoTemplateDownloadUrlWithOptions(runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetNumberDistrictInfoTemplateDownloadUrlResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetNumberDistrictInfoTemplateDownloadUrlResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetNumberDistrictInfoTemplateDownloadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42269,24 +45542,13 @@ func (client *Client) GetRealtimeConcurrencyReportWithOptions(request *GetRealti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRealtimeConcurrencyReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRealtimeConcurrencyReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRealtimeConcurrencyReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42336,24 +45598,13 @@ func (client *Client) GetSummaryInfoWithOptions(request *GetSummaryInfoRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSummaryInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSummaryInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSummaryInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetSummaryInfoRequest
@@ -42395,24 +45646,13 @@ func (client *Client) GetTaskByUuidWithOptions(request *GetTaskByUuidRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTaskByUuidResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTaskByUuidResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTaskByUuidResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetTaskByUuidRequest
@@ -42447,24 +45687,13 @@ func (client *Client) GetVersionWithOptions(runtime *util.RuntimeOptions) (_resu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return GetVersionResponse
@@ -42516,24 +45745,13 @@ func (client *Client) ImportScriptWithOptions(request *ImportScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImportScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ImportScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ImportScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ImportScriptRequest
@@ -42591,24 +45809,13 @@ func (client *Client) InflightTaskTimeoutWithOptions(request *InflightTaskTimeou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InflightTaskTimeoutResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InflightTaskTimeoutResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InflightTaskTimeoutResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42666,24 +45873,13 @@ func (client *Client) ListAgentProfilesWithOptions(request *ListAgentProfilesReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAgentProfilesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAgentProfilesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAgentProfilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAgentProfilesRequest
@@ -42722,24 +45918,13 @@ func (client *Client) ListAllTenantBindNumberBindingWithOptions(runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAllTenantBindNumberBindingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAllTenantBindNumberBindingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAllTenantBindNumberBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -42819,24 +46004,13 @@ func (client *Client) ListAnnotationMissionWithOptions(request *ListAnnotationMi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAnnotationMissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAnnotationMissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAnnotationMissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAnnotationMissionRequest
@@ -42902,24 +46076,13 @@ func (client *Client) ListAnnotationMissionSessionWithOptions(request *ListAnnot
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAnnotationMissionSessionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAnnotationMissionSessionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAnnotationMissionSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAnnotationMissionSessionRequest
@@ -42977,24 +46140,13 @@ func (client *Client) ListApiPluginsWithOptions(request *ListApiPluginsRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApiPluginsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApiPluginsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApiPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListApiPluginsRequest
@@ -43004,6 +46156,242 @@ func (client *Client) ListApiPlugins(request *ListApiPluginsRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApiPluginsResponse{}
 	_body, _err := client.ListApiPluginsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntent
+//
+// @param request - ListBeebotIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBeebotIntentResponse
+func (client *Client) ListBeebotIntentWithOptions(request *ListBeebotIntentRequest, runtime *util.RuntimeOptions) (_result *ListBeebotIntentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
+		query["IntentName"] = request.IntentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBeebotIntent"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBeebotIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntent
+//
+// @param request - ListBeebotIntentRequest
+//
+// @return ListBeebotIntentResponse
+func (client *Client) ListBeebotIntent(request *ListBeebotIntentRequest) (_result *ListBeebotIntentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBeebotIntentResponse{}
+	_body, _err := client.ListBeebotIntentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntentLgf
+//
+// @param request - ListBeebotIntentLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBeebotIntentLgfResponse
+func (client *Client) ListBeebotIntentLgfWithOptions(request *ListBeebotIntentLgfRequest, runtime *util.RuntimeOptions) (_result *ListBeebotIntentLgfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LgfText)) {
+		query["LgfText"] = request.LgfText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBeebotIntentLgf"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBeebotIntentLgfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntentLgf
+//
+// @param request - ListBeebotIntentLgfRequest
+//
+// @return ListBeebotIntentLgfResponse
+func (client *Client) ListBeebotIntentLgf(request *ListBeebotIntentLgfRequest) (_result *ListBeebotIntentLgfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBeebotIntentLgfResponse{}
+	_body, _err := client.ListBeebotIntentLgfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntentUserSay
+//
+// @param request - ListBeebotIntentUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBeebotIntentUserSayResponse
+func (client *Client) ListBeebotIntentUserSayWithOptions(request *ListBeebotIntentUserSayRequest, runtime *util.RuntimeOptions) (_result *ListBeebotIntentUserSayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBeebotIntentUserSay"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBeebotIntentUserSayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListBeebotIntentUserSay
+//
+// @param request - ListBeebotIntentUserSayRequest
+//
+// @return ListBeebotIntentUserSayResponse
+func (client *Client) ListBeebotIntentUserSay(request *ListBeebotIntentUserSayRequest) (_result *ListBeebotIntentUserSayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBeebotIntentUserSayResponse{}
+	_body, _err := client.ListBeebotIntentUserSayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43048,24 +46436,13 @@ func (client *Client) ListChatbotInstancesWithOptions(request *ListChatbotInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListChatbotInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListChatbotInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListChatbotInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListChatbotInstancesRequest
@@ -43115,24 +46492,13 @@ func (client *Client) ListDialogueFlowsWithOptions(request *ListDialogueFlowsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDialogueFlowsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDialogueFlowsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDialogueFlowsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListDialogueFlowsRequest
@@ -43174,24 +46540,13 @@ func (client *Client) ListDownloadTasksWithOptions(request *ListDownloadTasksReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDownloadTasksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDownloadTasksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDownloadTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListDownloadTasksRequest
@@ -43233,24 +46588,13 @@ func (client *Client) ListFlashSmsTemplatesWithOptions(request *ListFlashSmsTemp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListFlashSmsTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListFlashSmsTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListFlashSmsTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListFlashSmsTemplatesRequest
@@ -43308,24 +46652,13 @@ func (client *Client) ListGlobalQuestionsWithOptions(request *ListGlobalQuestion
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListGlobalQuestionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListGlobalQuestionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListGlobalQuestionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListGlobalQuestionsRequest
@@ -43387,24 +46720,13 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListInstancesRequest
@@ -43414,6 +46736,98 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 意图列表
+//
+// @param request - ListIntentionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntentionsResponse
+func (client *Client) ListIntentionsWithOptions(request *ListIntentionsRequest, runtime *util.RuntimeOptions) (_result *ListIntentionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AnnotationMissionDataSourceType)) {
+		query["AnnotationMissionDataSourceType"] = request.AnnotationMissionDataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BotId)) {
+		query["BotId"] = request.BotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Environment)) {
+		query["Environment"] = request.Environment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserNick)) {
+		query["UserNick"] = request.UserNick
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIntentions"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIntentionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 意图列表
+//
+// @param request - ListIntentionsRequest
+//
+// @return ListIntentionsResponse
+func (client *Client) ListIntentions(request *ListIntentionsRequest) (_result *ListIntentionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIntentionsResponse{}
+	_body, _err := client.ListIntentionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -43466,24 +46880,13 @@ func (client *Client) ListIntentsWithOptions(request *ListIntentsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListIntentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListIntentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListIntentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListIntentsRequest
@@ -43561,24 +46964,13 @@ func (client *Client) ListJobGroupsWithOptions(request *ListJobGroupsRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListJobGroupsRequest
@@ -43620,24 +47012,13 @@ func (client *Client) ListJobGroupsAsyncWithOptions(request *ListJobGroupsAsyncR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobGroupsAsyncResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobGroupsAsyncResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobGroupsAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListJobGroupsAsyncRequest
@@ -43691,24 +47072,13 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -43778,24 +47148,13 @@ func (client *Client) ListJobsByGroupWithOptions(request *ListJobsByGroupRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobsByGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobsByGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobsByGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListJobsByGroupRequest
@@ -43849,24 +47208,13 @@ func (client *Client) ListOutboundCallNumbersWithOptions(request *ListOutboundCa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListOutboundCallNumbersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListOutboundCallNumbersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListOutboundCallNumbersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListOutboundCallNumbersRequest
@@ -43920,24 +47268,13 @@ func (client *Client) ListResourceTagsWithOptions(request *ListResourceTagsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListResourceTagsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListResourceTagsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListResourceTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListResourceTagsRequest
@@ -43983,24 +47320,13 @@ func (client *Client) ListSchedulerInstancesWithOptions(request *ListSchedulerIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSchedulerInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSchedulerInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSchedulerInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListSchedulerInstancesRequest
@@ -44058,24 +47384,13 @@ func (client *Client) ListScriptPublishHistoriesWithOptions(request *ListScriptP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListScriptPublishHistoriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListScriptPublishHistoriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListScriptPublishHistoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListScriptPublishHistoriesRequest
@@ -44149,24 +47464,13 @@ func (client *Client) ListScriptRecordingWithOptions(request *ListScriptRecordin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListScriptRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListScriptRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListScriptRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListScriptRecordingRequest
@@ -44224,24 +47528,13 @@ func (client *Client) ListScriptVoiceConfigsWithOptions(request *ListScriptVoice
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListScriptVoiceConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListScriptVoiceConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListScriptVoiceConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListScriptVoiceConfigsRequest
@@ -44307,24 +47600,13 @@ func (client *Client) ListScriptsWithOptions(request *ListScriptsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListScriptsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListScriptsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -44390,24 +47672,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListTagResourcesRequest
@@ -44457,24 +47728,13 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListTagsRequest
@@ -44574,24 +47834,13 @@ func (client *Client) ModifyAgentProfileWithOptions(tmpReq *ModifyAgentProfileRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAgentProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAgentProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAgentProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyAgentProfileRequest
@@ -44649,24 +47898,13 @@ func (client *Client) ModifyAnnotationMissionWithOptions(request *ModifyAnnotati
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAnnotationMissionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAnnotationMissionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAnnotationMissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyAnnotationMissionRequest
@@ -44748,24 +47986,13 @@ func (client *Client) ModifyBatchJobsWithOptions(request *ModifyBatchJobsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyBatchJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyBatchJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyBatchJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyBatchJobsRequest
@@ -44775,6 +48002,240 @@ func (client *Client) ModifyBatchJobs(request *ModifyBatchJobsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBatchJobsResponse{}
 	_body, _err := client.ModifyBatchJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntent
+//
+// @param tmpReq - ModifyBeebotIntentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBeebotIntentResponse
+func (client *Client) ModifyBeebotIntentWithOptions(tmpReq *ModifyBeebotIntentRequest, runtime *util.RuntimeOptions) (_result *ModifyBeebotIntentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyBeebotIntentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.IntentDefinition)) {
+		request.IntentDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.IntentDefinition, tea.String("IntentDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentDefinitionShrink)) {
+		query["IntentDefinition"] = request.IntentDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IntentId)) {
+		query["IntentId"] = request.IntentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBeebotIntent"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBeebotIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntent
+//
+// @param request - ModifyBeebotIntentRequest
+//
+// @return ModifyBeebotIntentResponse
+func (client *Client) ModifyBeebotIntent(request *ModifyBeebotIntentRequest) (_result *ModifyBeebotIntentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBeebotIntentResponse{}
+	_body, _err := client.ModifyBeebotIntentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntentLgf
+//
+// @param tmpReq - ModifyBeebotIntentLgfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBeebotIntentLgfResponse
+func (client *Client) ModifyBeebotIntentLgfWithOptions(tmpReq *ModifyBeebotIntentLgfRequest, runtime *util.RuntimeOptions) (_result *ModifyBeebotIntentLgfResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyBeebotIntentLgfShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.LgfDefinition)) {
+		request.LgfDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.LgfDefinition, tea.String("LgfDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LgfDefinitionShrink)) {
+		query["LgfDefinition"] = request.LgfDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LgfId)) {
+		query["LgfId"] = request.LgfId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBeebotIntentLgf"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBeebotIntentLgfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntentLgf
+//
+// @param request - ModifyBeebotIntentLgfRequest
+//
+// @return ModifyBeebotIntentLgfResponse
+func (client *Client) ModifyBeebotIntentLgf(request *ModifyBeebotIntentLgfRequest) (_result *ModifyBeebotIntentLgfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBeebotIntentLgfResponse{}
+	_body, _err := client.ModifyBeebotIntentLgfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntentUserSay
+//
+// @param tmpReq - ModifyBeebotIntentUserSayRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyBeebotIntentUserSayResponse
+func (client *Client) ModifyBeebotIntentUserSayWithOptions(tmpReq *ModifyBeebotIntentUserSayRequest, runtime *util.RuntimeOptions) (_result *ModifyBeebotIntentUserSayResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyBeebotIntentUserSayShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UserSayDefinition)) {
+		request.UserSayDefinitionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UserSayDefinition, tea.String("UserSayDefinition"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptId)) {
+		query["ScriptId"] = request.ScriptId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSayDefinitionShrink)) {
+		query["UserSayDefinition"] = request.UserSayDefinitionShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserSayId)) {
+		query["UserSayId"] = request.UserSayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBeebotIntentUserSay"),
+		Version:     tea.String("2019-12-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyBeebotIntentUserSayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ModifyBeebotIntentUserSay
+//
+// @param request - ModifyBeebotIntentUserSayRequest
+//
+// @return ModifyBeebotIntentUserSayResponse
+func (client *Client) ModifyBeebotIntentUserSay(request *ModifyBeebotIntentUserSayRequest) (_result *ModifyBeebotIntentUserSayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyBeebotIntentUserSayResponse{}
+	_body, _err := client.ModifyBeebotIntentUserSayWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44827,24 +48288,13 @@ func (client *Client) ModifyDialogueFlowWithOptions(request *ModifyDialogueFlowR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDialogueFlowResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDialogueFlowResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDialogueFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyDialogueFlowRequest
@@ -44898,24 +48348,13 @@ func (client *Client) ModifyEmptyNumberNoMoreCallsInfoWithOptions(request *Modif
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyEmptyNumberNoMoreCallsInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyEmptyNumberNoMoreCallsInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyEmptyNumberNoMoreCallsInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyEmptyNumberNoMoreCallsInfoRequest
@@ -44985,24 +48424,13 @@ func (client *Client) ModifyGlobalQuestionWithOptions(request *ModifyGlobalQuest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyGlobalQuestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyGlobalQuestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyGlobalQuestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyGlobalQuestionRequest
@@ -45064,24 +48492,13 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyInstanceRequest
@@ -45151,24 +48568,13 @@ func (client *Client) ModifyIntentWithOptions(request *ModifyIntentRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyIntentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyIntentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyIntentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyIntentRequest
@@ -45270,24 +48676,13 @@ func (client *Client) ModifyJobGroupWithOptions(request *ModifyJobGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyJobGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyJobGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyJobGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyJobGroupRequest
@@ -45353,24 +48748,13 @@ func (client *Client) ModifyOutboundCallNumberWithOptions(request *ModifyOutboun
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyOutboundCallNumberResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyOutboundCallNumberResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyOutboundCallNumberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -45508,24 +48892,13 @@ func (client *Client) ModifyScriptWithOptions(request *ModifyScriptRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyScriptRequest
@@ -45587,24 +48960,13 @@ func (client *Client) ModifyScriptVoiceConfigWithOptions(request *ModifyScriptVo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyScriptVoiceConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyScriptVoiceConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyScriptVoiceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyScriptVoiceConfigRequest
@@ -45678,24 +49040,13 @@ func (client *Client) ModifyTTSConfigWithOptions(request *ModifyTTSConfigRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyTTSConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyTTSConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyTTSConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyTTSConfigRequest
@@ -45753,24 +49104,13 @@ func (client *Client) ModifyTagGroupsWithOptions(request *ModifyTagGroupsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyTagGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyTagGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyTagGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyTagGroupsRequest
@@ -45824,24 +49164,13 @@ func (client *Client) PublishScriptWithOptions(request *PublishScriptRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - PublishScriptRequest
@@ -45891,24 +49220,13 @@ func (client *Client) PublishScriptForDebugWithOptions(request *PublishScriptFor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PublishScriptForDebugResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PublishScriptForDebugResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PublishScriptForDebugResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - PublishScriptForDebugRequest
@@ -45994,24 +49312,13 @@ func (client *Client) QueryJobsWithOptions(request *QueryJobsRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -46109,24 +49416,13 @@ func (client *Client) QueryJobsWithResultWithOptions(request *QueryJobsWithResul
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryJobsWithResultResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryJobsWithResultResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryJobsWithResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - QueryJobsWithResultRequest
@@ -46180,24 +49476,13 @@ func (client *Client) QueryScriptWaveformsWithOptions(request *QueryScriptWavefo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryScriptWaveformsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryScriptWaveformsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryScriptWaveformsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - QueryScriptWaveformsRequest
@@ -46255,24 +49540,13 @@ func (client *Client) QueryScriptsByStatusWithOptions(request *QueryScriptsBySta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryScriptsByStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryScriptsByStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryScriptsByStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - QueryScriptsByStatusRequest
@@ -46346,24 +49620,13 @@ func (client *Client) RecordFailureWithOptions(request *RecordFailureRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RecordFailureResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RecordFailureResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RecordFailureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RecordFailureRequest
@@ -46429,24 +49692,13 @@ func (client *Client) ResumeJobsWithOptions(request *ResumeJobsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResumeJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResumeJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResumeJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ResumeJobsRequest
@@ -46500,24 +49752,13 @@ func (client *Client) RollbackScriptWithOptions(request *RollbackScriptRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RollbackScriptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RollbackScriptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RollbackScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RollbackScriptRequest
@@ -46571,24 +49812,13 @@ func (client *Client) SaveAfterAnswerDelayPlaybackWithOptions(request *SaveAfter
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveAfterAnswerDelayPlaybackResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveAfterAnswerDelayPlaybackResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveAfterAnswerDelayPlaybackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveAfterAnswerDelayPlaybackRequest
@@ -46658,24 +49888,13 @@ func (client *Client) SaveAnnotationMissionSessionListWithOptions(request *SaveA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveAnnotationMissionSessionListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveAnnotationMissionSessionListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveAnnotationMissionSessionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveAnnotationMissionSessionListRequest
@@ -46733,24 +49952,13 @@ func (client *Client) SaveAnnotationMissionTagInfoListWithOptions(request *SaveA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveAnnotationMissionTagInfoListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveAnnotationMissionTagInfoListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveAnnotationMissionTagInfoListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveAnnotationMissionTagInfoListRequest
@@ -46816,24 +50024,13 @@ func (client *Client) SaveBaseStrategyPeriodWithOptions(request *SaveBaseStrateg
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveBaseStrategyPeriodResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveBaseStrategyPeriodResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveBaseStrategyPeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveBaseStrategyPeriodRequest
@@ -46887,24 +50084,13 @@ func (client *Client) SaveContactBlockListWithOptions(request *SaveContactBlockL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveContactBlockListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveContactBlockListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveContactBlockListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveContactBlockListRequest
@@ -46958,24 +50144,13 @@ func (client *Client) SaveContactWhiteListWithOptions(request *SaveContactWhiteL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveContactWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveContactWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveContactWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveContactWhiteListRequest
@@ -47029,24 +50204,13 @@ func (client *Client) SaveEffectiveDaysWithOptions(request *SaveEffectiveDaysReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveEffectiveDaysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveEffectiveDaysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveEffectiveDaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveEffectiveDaysRequest
@@ -47100,24 +50264,13 @@ func (client *Client) SaveMaxAttemptsPerDayWithOptions(request *SaveMaxAttemptsP
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SaveMaxAttemptsPerDayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SaveMaxAttemptsPerDayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SaveMaxAttemptsPerDayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SaveMaxAttemptsPerDayRequest
@@ -47159,24 +50312,13 @@ func (client *Client) SearchTaskWithOptions(request *SearchTaskRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SearchTaskResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SearchTaskResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SearchTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SearchTaskRequest
@@ -47242,24 +50384,13 @@ func (client *Client) StartJobWithOptions(request *StartJobRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - StartJobRequest
@@ -47309,24 +50440,13 @@ func (client *Client) SubmitBatchJobsWithOptions(request *SubmitBatchJobsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitBatchJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitBatchJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitBatchJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SubmitBatchJobsRequest
@@ -47384,24 +50504,13 @@ func (client *Client) SubmitRecordingWithOptions(request *SubmitRecordingRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SubmitRecordingRequest
@@ -47459,24 +50568,13 @@ func (client *Client) SubmitScriptReviewWithOptions(request *SubmitScriptReviewR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SubmitScriptReviewResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SubmitScriptReviewResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SubmitScriptReviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SubmitScriptReviewRequest
@@ -47530,24 +50628,13 @@ func (client *Client) SuspendCallWithOptions(request *SuspendCallRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SuspendCallResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SuspendCallResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SuspendCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SuspendCallRequest
@@ -47601,24 +50688,13 @@ func (client *Client) SuspendCallWithFileWithOptions(request *SuspendCallWithFil
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SuspendCallWithFileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SuspendCallWithFileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SuspendCallWithFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SuspendCallWithFileRequest
@@ -47684,24 +50760,13 @@ func (client *Client) SuspendJobsWithOptions(request *SuspendJobsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SuspendJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SuspendJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SuspendJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SuspendJobsRequest
@@ -47763,24 +50828,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Description:
@@ -47842,24 +50896,13 @@ func (client *Client) TaskPreparingWithOptions(request *TaskPreparingRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TaskPreparingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TaskPreparingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TaskPreparingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -47913,24 +50956,13 @@ func (client *Client) TerminateCallWithOptions(request *TerminateCallRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TerminateCallResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TerminateCallResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TerminateCallResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - TerminateCallRequest
@@ -47992,24 +51024,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UntagResourcesRequest
@@ -48071,24 +51092,13 @@ func (client *Client) UploadScriptRecordingWithOptions(request *UploadScriptReco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UploadScriptRecordingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UploadScriptRecordingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UploadScriptRecordingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UploadScriptRecordingRequest
@@ -48146,24 +51156,13 @@ func (client *Client) WithdrawScriptReviewWithOptions(request *WithdrawScriptRev
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &WithdrawScriptReviewResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &WithdrawScriptReviewResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &WithdrawScriptReviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
