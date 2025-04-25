@@ -9,6 +9,436 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type SinkBaiLianParameters struct {
+	After           *SinkBaiLianParametersAfter     `json:"After,omitempty" xml:"After,omitempty" type:"Struct"`
+	ApplicationType *string                         `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
+	Before          *SinkBaiLianParametersBefore    `json:"Before,omitempty" xml:"Before,omitempty" type:"Struct"`
+	Context         interface{}                     `json:"Context,omitempty" xml:"Context,omitempty"`
+	Extend          interface{}                     `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	Offset          *SinkBaiLianParametersOffset    `json:"Offset,omitempty" xml:"Offset,omitempty" type:"Struct"`
+	Op              *SinkBaiLianParametersOp        `json:"Op,omitempty" xml:"Op,omitempty" type:"Struct"`
+	Partition       *SinkBaiLianParametersPartition `json:"Partition,omitempty" xml:"Partition,omitempty" type:"Struct"`
+	WorkspaceId     *string                         `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SinkBaiLianParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParameters) SetAfter(v *SinkBaiLianParametersAfter) *SinkBaiLianParameters {
+	s.After = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetApplicationType(v string) *SinkBaiLianParameters {
+	s.ApplicationType = &v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetBefore(v *SinkBaiLianParametersBefore) *SinkBaiLianParameters {
+	s.Before = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetContext(v interface{}) *SinkBaiLianParameters {
+	s.Context = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetExtend(v interface{}) *SinkBaiLianParameters {
+	s.Extend = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetOffset(v *SinkBaiLianParametersOffset) *SinkBaiLianParameters {
+	s.Offset = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetOp(v *SinkBaiLianParametersOp) *SinkBaiLianParameters {
+	s.Op = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetPartition(v *SinkBaiLianParametersPartition) *SinkBaiLianParameters {
+	s.Partition = v
+	return s
+}
+
+func (s *SinkBaiLianParameters) SetWorkspaceId(v string) *SinkBaiLianParameters {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SinkBaiLianParametersAfter struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SinkBaiLianParametersAfter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParametersAfter) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParametersAfter) SetForm(v string) *SinkBaiLianParametersAfter {
+	s.Form = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersAfter) SetTemplate(v string) *SinkBaiLianParametersAfter {
+	s.Template = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersAfter) SetValue(v string) *SinkBaiLianParametersAfter {
+	s.Value = &v
+	return s
+}
+
+type SinkBaiLianParametersBefore struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SinkBaiLianParametersBefore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParametersBefore) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParametersBefore) SetForm(v string) *SinkBaiLianParametersBefore {
+	s.Form = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersBefore) SetTemplate(v string) *SinkBaiLianParametersBefore {
+	s.Template = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersBefore) SetValue(v string) *SinkBaiLianParametersBefore {
+	s.Value = &v
+	return s
+}
+
+type SinkBaiLianParametersOffset struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SinkBaiLianParametersOffset) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParametersOffset) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParametersOffset) SetForm(v string) *SinkBaiLianParametersOffset {
+	s.Form = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersOffset) SetTemplate(v string) *SinkBaiLianParametersOffset {
+	s.Template = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersOffset) SetValue(v string) *SinkBaiLianParametersOffset {
+	s.Value = &v
+	return s
+}
+
+type SinkBaiLianParametersOp struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SinkBaiLianParametersOp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParametersOp) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParametersOp) SetForm(v string) *SinkBaiLianParametersOp {
+	s.Form = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersOp) SetTemplate(v string) *SinkBaiLianParametersOp {
+	s.Template = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersOp) SetValue(v string) *SinkBaiLianParametersOp {
+	s.Value = &v
+	return s
+}
+
+type SinkBaiLianParametersPartition struct {
+	Form     *string `json:"Form,omitempty" xml:"Form,omitempty"`
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SinkBaiLianParametersPartition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SinkBaiLianParametersPartition) GoString() string {
+	return s.String()
+}
+
+func (s *SinkBaiLianParametersPartition) SetForm(v string) *SinkBaiLianParametersPartition {
+	s.Form = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersPartition) SetTemplate(v string) *SinkBaiLianParametersPartition {
+	s.Template = &v
+	return s
+}
+
+func (s *SinkBaiLianParametersPartition) SetValue(v string) *SinkBaiLianParametersPartition {
+	s.Value = &v
+	return s
+}
+
+type SourceMySQLParameters struct {
+	DatabaseName         *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	HostName             *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	IncludeSchemaChanges *string `json:"IncludeSchemaChanges,omitempty" xml:"IncludeSchemaChanges,omitempty"`
+	NetworkType          *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Password             *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port                 *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SnapshotMode         *string `json:"SnapshotMode,omitempty" xml:"SnapshotMode,omitempty"`
+	TableNames           *string `json:"TableNames,omitempty" xml:"TableNames,omitempty"`
+	User                 *string `json:"User,omitempty" xml:"User,omitempty"`
+	VSwitchIds           *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s SourceMySQLParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceMySQLParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceMySQLParameters) SetDatabaseName(v string) *SourceMySQLParameters {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetHostName(v string) *SourceMySQLParameters {
+	s.HostName = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetIncludeSchemaChanges(v string) *SourceMySQLParameters {
+	s.IncludeSchemaChanges = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetNetworkType(v string) *SourceMySQLParameters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetPassword(v string) *SourceMySQLParameters {
+	s.Password = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetPort(v int32) *SourceMySQLParameters {
+	s.Port = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetRegionId(v string) *SourceMySQLParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetSecurityGroupId(v string) *SourceMySQLParameters {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetSnapshotMode(v string) *SourceMySQLParameters {
+	s.SnapshotMode = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetTableNames(v string) *SourceMySQLParameters {
+	s.TableNames = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetUser(v string) *SourceMySQLParameters {
+	s.User = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetVSwitchIds(v string) *SourceMySQLParameters {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *SourceMySQLParameters) SetVpcId(v string) *SourceMySQLParameters {
+	s.VpcId = &v
+	return s
+}
+
+type CheckServiceLinkedRoleForProductRequest struct {
+	// example:
+	//
+	// AliyunServiceRoleForEventBridgeConnectVPC
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleForProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForProductRequest) SetProductName(v string) *CheckServiceLinkedRoleForProductRequest {
+	s.ProductName = &v
+	return s
+}
+
+type CheckServiceLinkedRoleForProductResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string                                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CheckServiceLinkedRoleForProductResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 34AD682D-5B91-5773-8132-AA38C130****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleForProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBody) SetCode(v string) *CheckServiceLinkedRoleForProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBody) SetData(v *CheckServiceLinkedRoleForProductResponseBodyData) *CheckServiceLinkedRoleForProductResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBody) SetMessage(v string) *CheckServiceLinkedRoleForProductResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBody) SetRequestId(v string) *CheckServiceLinkedRoleForProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBody) SetSuccess(v bool) *CheckServiceLinkedRoleForProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckServiceLinkedRoleForProductResponseBodyData struct {
+	// example:
+	//
+	// true
+	CheckPass *bool `json:"CheckPass,omitempty" xml:"CheckPass,omitempty"`
+	// example:
+	//
+	// AliyunServiceRoleForEventBridgeConnectVPC
+	StsRoleName *string `json:"StsRoleName,omitempty" xml:"StsRoleName,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleForProductResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForProductResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBodyData) SetCheckPass(v bool) *CheckServiceLinkedRoleForProductResponseBodyData {
+	s.CheckPass = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponseBodyData) SetStsRoleName(v string) *CheckServiceLinkedRoleForProductResponseBodyData {
+	s.StsRoleName = &v
+	return s
+}
+
+type CheckServiceLinkedRoleForProductResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckServiceLinkedRoleForProductResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleForProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleForProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleForProductResponse) SetHeaders(v map[string]*string) *CheckServiceLinkedRoleForProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponse) SetStatusCode(v int32) *CheckServiceLinkedRoleForProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleForProductResponse) SetBody(v *CheckServiceLinkedRoleForProductResponseBody) *CheckServiceLinkedRoleForProductResponse {
+	s.Body = v
+	return s
+}
+
 type CreateApiDestinationRequest struct {
 	// The name of the API destination. The name must be 2 to 127 characters in length.
 	//
@@ -2263,6 +2693,7 @@ func (s *CreateEventStreamingRequestRunOptionsRetryStrategy) SetPushRetryStrateg
 
 type CreateEventStreamingRequestSink struct {
 	SinkApacheRocketMQCheckpointParameters *CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
+	SinkBaiLianParameters                  *SinkBaiLianParameters                                                 `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *CreateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *CreateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *CreateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
@@ -2298,6 +2729,11 @@ func (s CreateEventStreamingRequestSink) GoString() string {
 
 func (s *CreateEventStreamingRequestSink) SetSinkApacheRocketMQCheckpointParameters(v *CreateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters) *CreateEventStreamingRequestSink {
 	s.SinkApacheRocketMQCheckpointParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSink) SetSinkBaiLianParameters(v *SinkBaiLianParameters) *CreateEventStreamingRequestSink {
+	s.SinkBaiLianParameters = v
 	return s
 }
 
@@ -6546,6 +6982,7 @@ type CreateEventStreamingRequestSource struct {
 	SourceMNSParameters *CreateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
 	SourceMQTTParameters               *CreateEventStreamingRequestSourceSourceMQTTParameters               `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMySQLParameters              *SourceMySQLParameters                                               `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *CreateEventStreamingRequestSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *CreateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// Parameters that are configured if you specify Managed Service for Prometheus as the event source.
@@ -6604,6 +7041,11 @@ func (s *CreateEventStreamingRequestSource) SetSourceMNSParameters(v *CreateEven
 
 func (s *CreateEventStreamingRequestSource) SetSourceMQTTParameters(v *CreateEventStreamingRequestSourceSourceMQTTParameters) *CreateEventStreamingRequestSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestSource) SetSourceMySQLParameters(v *SourceMySQLParameters) *CreateEventStreamingRequestSource {
+	s.SourceMySQLParameters = v
 	return s
 }
 
@@ -11688,6 +12130,7 @@ func (s *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy) SetPushRetryS
 
 type GetEventStreamingResponseBodyDataSink struct {
 	SinkApacheRocketMQCheckpointParameters *GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
+	SinkBaiLianParameters                  *SinkBaiLianParameters                                                       `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *GetEventStreamingResponseBodyDataSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *GetEventStreamingResponseBodyDataSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
@@ -11720,6 +12163,11 @@ func (s GetEventStreamingResponseBodyDataSink) GoString() string {
 
 func (s *GetEventStreamingResponseBodyDataSink) SetSinkApacheRocketMQCheckpointParameters(v *GetEventStreamingResponseBodyDataSinkSinkApacheRocketMQCheckpointParameters) *GetEventStreamingResponseBodyDataSink {
 	s.SinkApacheRocketMQCheckpointParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSink) SetSinkBaiLianParameters(v *SinkBaiLianParameters) *GetEventStreamingResponseBodyDataSink {
+	s.SinkBaiLianParameters = v
 	return s
 }
 
@@ -15242,6 +15690,7 @@ type GetEventStreamingResponseBodyDataSource struct {
 	SourceMNSParameters *GetEventStreamingResponseBodyDataSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for MQTT is specified as the event source.
 	SourceMQTTParameters               *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters               `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMySQLParameters              *SourceMySQLParameters                                                     `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *GetEventStreamingResponseBodyDataSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *GetEventStreamingResponseBodyDataSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourcePrometheusParameters         *GetEventStreamingResponseBodyDataSourceSourcePrometheusParameters         `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
@@ -15299,6 +15748,11 @@ func (s *GetEventStreamingResponseBodyDataSource) SetSourceMNSParameters(v *GetE
 
 func (s *GetEventStreamingResponseBodyDataSource) SetSourceMQTTParameters(v *GetEventStreamingResponseBodyDataSourceSourceMQTTParameters) *GetEventStreamingResponseBodyDataSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataSource) SetSourceMySQLParameters(v *SourceMySQLParameters) *GetEventStreamingResponseBodyDataSource {
+	s.SourceMySQLParameters = v
 	return s
 }
 
@@ -18742,6 +19196,7 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrate
 
 type ListEventStreamingsResponseBodyDataEventStreamingsSink struct {
 	SinkApacheRocketMQCheckpointParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
+	SinkBaiLianParameters                  *SinkBaiLianParameters                                                                        `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
@@ -18774,6 +19229,11 @@ func (s ListEventStreamingsResponseBodyDataEventStreamingsSink) GoString() strin
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkApacheRocketMQCheckpointParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkApacheRocketMQCheckpointParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
 	s.SinkApacheRocketMQCheckpointParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSink) SetSinkBaiLianParameters(v *SinkBaiLianParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSink {
+	s.SinkBaiLianParameters = v
 	return s
 }
 
@@ -22277,6 +22737,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsSource struct {
 	SourceMNSParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are returned if ApsaraMQ for MQTT is specified as the event source.
 	SourceMQTTParameters               *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters               `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMySQLParameters              *SourceMySQLParameters                                                                      `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	SourcePrometheusParameters         *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourcePrometheusParameters         `json:"SourcePrometheusParameters,omitempty" xml:"SourcePrometheusParameters,omitempty" type:"Struct"`
@@ -22334,6 +22795,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceMNSP
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceMQTTParameters(v *ListEventStreamingsResponseBodyDataEventStreamingsSourceSourceMQTTParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsSource) SetSourceMySQLParameters(v *SourceMySQLParameters) *ListEventStreamingsResponseBodyDataEventStreamingsSource {
+	s.SourceMySQLParameters = v
 	return s
 }
 
@@ -29083,6 +29549,7 @@ func (s *UpdateEventStreamingRequestRunOptionsRetryStrategy) SetPushRetryStrateg
 
 type UpdateEventStreamingRequestSink struct {
 	SinkApacheRocketMQCheckpointParameters *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters `json:"SinkApacheRocketMQCheckpointParameters,omitempty" xml:"SinkApacheRocketMQCheckpointParameters,omitempty" type:"Struct"`
+	SinkBaiLianParameters                  *SinkBaiLianParameters                                                 `json:"SinkBaiLianParameters,omitempty" xml:"SinkBaiLianParameters,omitempty"`
 	SinkCustomizedKafkaConnectorParameters *UpdateEventStreamingRequestSinkSinkCustomizedKafkaConnectorParameters `json:"SinkCustomizedKafkaConnectorParameters,omitempty" xml:"SinkCustomizedKafkaConnectorParameters,omitempty" type:"Struct"`
 	SinkCustomizedKafkaParameters          *UpdateEventStreamingRequestSinkSinkCustomizedKafkaParameters          `json:"SinkCustomizedKafkaParameters,omitempty" xml:"SinkCustomizedKafkaParameters,omitempty" type:"Struct"`
 	SinkDashVectorParameters               *UpdateEventStreamingRequestSinkSinkDashVectorParameters               `json:"SinkDashVectorParameters,omitempty" xml:"SinkDashVectorParameters,omitempty" type:"Struct"`
@@ -29117,6 +29584,11 @@ func (s UpdateEventStreamingRequestSink) GoString() string {
 
 func (s *UpdateEventStreamingRequestSink) SetSinkApacheRocketMQCheckpointParameters(v *UpdateEventStreamingRequestSinkSinkApacheRocketMQCheckpointParameters) *UpdateEventStreamingRequestSink {
 	s.SinkApacheRocketMQCheckpointParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSink) SetSinkBaiLianParameters(v *SinkBaiLianParameters) *UpdateEventStreamingRequestSink {
+	s.SinkBaiLianParameters = v
 	return s
 }
 
@@ -33179,6 +33651,7 @@ type UpdateEventStreamingRequestSource struct {
 	SourceMNSParameters *UpdateEventStreamingRequestSourceSourceMNSParameters `json:"SourceMNSParameters,omitempty" xml:"SourceMNSParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify ApsaraMQ for MQTT as the event source.
 	SourceMQTTParameters               *UpdateEventStreamingRequestSourceSourceMQTTParameters               `json:"SourceMQTTParameters,omitempty" xml:"SourceMQTTParameters,omitempty" type:"Struct"`
+	SourceMySQLParameters              *SourceMySQLParameters                                               `json:"SourceMySQLParameters,omitempty" xml:"SourceMySQLParameters,omitempty"`
 	SourceOSSParameters                *UpdateEventStreamingRequestSourceSourceOSSParameters                `json:"SourceOSSParameters,omitempty" xml:"SourceOSSParameters,omitempty" type:"Struct"`
 	SourceOpenSourceRabbitMQParameters *UpdateEventStreamingRequestSourceSourceOpenSourceRabbitMQParameters `json:"SourceOpenSourceRabbitMQParameters,omitempty" xml:"SourceOpenSourceRabbitMQParameters,omitempty" type:"Struct"`
 	// The parameters that are configured if you specify Managed Service for Prometheus as the event source.
@@ -33237,6 +33710,11 @@ func (s *UpdateEventStreamingRequestSource) SetSourceMNSParameters(v *UpdateEven
 
 func (s *UpdateEventStreamingRequestSource) SetSourceMQTTParameters(v *UpdateEventStreamingRequestSourceSourceMQTTParameters) *UpdateEventStreamingRequestSource {
 	s.SourceMQTTParameters = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestSource) SetSourceMySQLParameters(v *SourceMySQLParameters) *UpdateEventStreamingRequestSource {
+	s.SourceMySQLParameters = v
 	return s
 }
 
@@ -34665,6 +35143,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// 检查账号是否存在ServiceLinkedRole授权
+//
+// @param request - CheckServiceLinkedRoleForProductRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceLinkedRoleForProductResponse
+func (client *Client) CheckServiceLinkedRoleForProductWithOptions(request *CheckServiceLinkedRoleForProductRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleForProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductName)) {
+		query["ProductName"] = request.ProductName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckServiceLinkedRoleForProduct"),
+		Version:     tea.String("2020-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckServiceLinkedRoleForProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查账号是否存在ServiceLinkedRole授权
+//
+// @param request - CheckServiceLinkedRoleForProductRequest
+//
+// @return CheckServiceLinkedRoleForProductResponse
+func (client *Client) CheckServiceLinkedRoleForProduct(request *CheckServiceLinkedRoleForProductRequest) (_result *CheckServiceLinkedRoleForProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckServiceLinkedRoleForProductResponse{}
+	_body, _err := client.CheckServiceLinkedRoleForProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates an API destination.
 //
 // Description:
@@ -34718,24 +35256,13 @@ func (client *Client) CreateApiDestinationWithOptions(tmpReq *CreateApiDestinati
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateApiDestinationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateApiDestinationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateApiDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34819,24 +35346,13 @@ func (client *Client) CreateConnectionWithOptions(tmpReq *CreateConnectionReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -34902,24 +35418,13 @@ func (client *Client) CreateEventBusWithOptions(request *CreateEventBusRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEventBusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEventBusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEventBusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35063,24 +35568,13 @@ func (client *Client) CreateEventSourceWithOptions(tmpReq *CreateEventSourceRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEventSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEventSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEventSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35188,24 +35682,13 @@ func (client *Client) CreateEventStreamingWithOptions(tmpReq *CreateEventStreami
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35293,24 +35776,13 @@ func (client *Client) CreateRuleWithOptions(tmpReq *CreateRuleRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35372,24 +35844,13 @@ func (client *Client) CreateServiceLinkedRoleForProductWithOptions(request *Crea
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServiceLinkedRoleForProductResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServiceLinkedRoleForProductResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServiceLinkedRoleForProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35451,24 +35912,13 @@ func (client *Client) DeleteApiDestinationWithOptions(request *DeleteApiDestinat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteApiDestinationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteApiDestinationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteApiDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35530,24 +35980,13 @@ func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35609,24 +36048,13 @@ func (client *Client) DeleteEventBusWithOptions(request *DeleteEventBusRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEventBusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEventBusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEventBusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35692,24 +36120,13 @@ func (client *Client) DeleteEventSourceWithOptions(request *DeleteEventSourceReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEventSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEventSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEventSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35771,24 +36188,13 @@ func (client *Client) DeleteEventStreamingWithOptions(request *DeleteEventStream
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35854,24 +36260,13 @@ func (client *Client) DeleteRuleWithOptions(request *DeleteRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -35947,24 +36342,13 @@ func (client *Client) DeleteTargetsWithOptions(tmpReq *DeleteTargetsRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteTargetsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteTargetsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36030,24 +36414,13 @@ func (client *Client) DisableRuleWithOptions(request *DisableRuleRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36113,24 +36486,13 @@ func (client *Client) EnableRuleWithOptions(request *EnableRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnableRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnableRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnableRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36208,24 +36570,13 @@ func (client *Client) EventCenterQueryEventsWithOptions(tmpReq *EventCenterQuery
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EventCenterQueryEventsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EventCenterQueryEventsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EventCenterQueryEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36283,24 +36634,13 @@ func (client *Client) GetApiDestinationWithOptions(request *GetApiDestinationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetApiDestinationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetApiDestinationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetApiDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36362,24 +36702,13 @@ func (client *Client) GetConnectionWithOptions(request *GetConnectionRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36441,24 +36770,13 @@ func (client *Client) GetEventBusWithOptions(request *GetEventBusRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEventBusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEventBusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEventBusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36520,24 +36838,13 @@ func (client *Client) GetEventStreamingWithOptions(request *GetEventStreamingReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36603,24 +36910,13 @@ func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36671,24 +36967,13 @@ func (client *Client) ListAliyunOfficialEventSourcesWithOptions(runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAliyunOfficialEventSourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAliyunOfficialEventSourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAliyunOfficialEventSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36760,24 +37045,13 @@ func (client *Client) ListApiDestinationsWithOptions(request *ListApiDestination
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApiDestinationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApiDestinationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApiDestinationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36847,24 +37121,13 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListConnectionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListConnectionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -36934,24 +37197,13 @@ func (client *Client) ListEventBusesWithOptions(request *ListEventBusesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEventBusesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEventBusesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEventBusesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37033,24 +37285,13 @@ func (client *Client) ListEventStreamingsWithOptions(request *ListEventStreaming
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEventStreamingsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEventStreamingsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEventStreamingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37124,24 +37365,13 @@ func (client *Client) ListRulesWithOptions(request *ListRulesRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37215,24 +37445,13 @@ func (client *Client) ListTargetsWithOptions(request *ListTargetsRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTargetsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTargetsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37302,24 +37521,13 @@ func (client *Client) ListUserDefinedEventSourcesWithOptions(request *ListUserDe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUserDefinedEventSourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUserDefinedEventSourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUserDefinedEventSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37381,24 +37589,13 @@ func (client *Client) PauseEventStreamingWithOptions(request *PauseEventStreamin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PauseEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PauseEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PauseEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37474,24 +37671,13 @@ func (client *Client) PutTargetsWithOptions(tmpReq *PutTargetsRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PutTargetsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PutTargetsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PutTargetsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37561,24 +37747,13 @@ func (client *Client) QueryEventWithOptions(request *QueryEventRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryEventResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryEventResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37644,24 +37819,13 @@ func (client *Client) QueryEventTracesWithOptions(request *QueryEventTracesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryEventTracesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryEventTracesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryEventTracesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37731,24 +37895,13 @@ func (client *Client) QueryTracedEventByEventIdWithOptions(request *QueryTracedE
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryTracedEventByEventIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryTracedEventByEventIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryTracedEventByEventIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37838,24 +37991,13 @@ func (client *Client) QueryTracedEventsWithOptions(request *QueryTracedEventsReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryTracedEventsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryTracedEventsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryTracedEventsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -37917,24 +38059,13 @@ func (client *Client) StartEventStreamingWithOptions(request *StartEventStreamin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38000,24 +38131,13 @@ func (client *Client) TestEventPatternWithOptions(request *TestEventPatternReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TestEventPatternResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TestEventPatternResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TestEventPatternResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38097,24 +38217,13 @@ func (client *Client) UpdateApiDestinationWithOptions(tmpReq *UpdateApiDestinati
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateApiDestinationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateApiDestinationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateApiDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38198,24 +38307,13 @@ func (client *Client) UpdateConnectionWithOptions(tmpReq *UpdateConnectionReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38281,24 +38379,13 @@ func (client *Client) UpdateEventBusWithOptions(request *UpdateEventBusRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEventBusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEventBusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEventBusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38442,24 +38529,13 @@ func (client *Client) UpdateEventSourceWithOptions(tmpReq *UpdateEventSourceRequ
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEventSourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEventSourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEventSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38563,24 +38639,13 @@ func (client *Client) UpdateEventStreamingWithOptions(tmpReq *UpdateEventStreami
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEventStreamingResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEventStreamingResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEventStreamingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -38658,24 +38723,13 @@ func (client *Client) UpdateRuleWithOptions(request *UpdateRuleRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
