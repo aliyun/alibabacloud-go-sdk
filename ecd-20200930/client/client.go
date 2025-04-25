@@ -6336,6 +6336,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// both
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
 	// Valid values:
@@ -6648,6 +6649,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// desktop
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SafeMenu     *string `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
 	// The effective scope of the policy.
 	//
 	// Valid values:
@@ -7110,6 +7112,11 @@ func (s *CreateCenterPolicyRequest) SetInternetCommunicationProtocol(v string) *
 	return s
 }
 
+func (s *CreateCenterPolicyRequest) SetInternetPrinter(v string) *CreateCenterPolicyRequest {
+	s.InternetPrinter = &v
+	return s
+}
+
 func (s *CreateCenterPolicyRequest) SetLocalDrive(v string) *CreateCenterPolicyRequest {
 	s.LocalDrive = &v
 	return s
@@ -7292,6 +7299,11 @@ func (s *CreateCenterPolicyRequest) SetResolutionWidth(v int32) *CreateCenterPol
 
 func (s *CreateCenterPolicyRequest) SetResourceType(v string) *CreateCenterPolicyRequest {
 	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequest) SetSafeMenu(v string) *CreateCenterPolicyRequest {
+	s.SafeMenu = &v
 	return s
 }
 
@@ -7771,6 +7783,7 @@ type CreateCenterPolicyRequestDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// Valid values:
@@ -7817,6 +7830,11 @@ func (s *CreateCenterPolicyRequestDeviceRules) SetDeviceVid(v string) *CreateCen
 
 func (s *CreateCenterPolicyRequestDeviceRules) SetOptCommand(v string) *CreateCenterPolicyRequestDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *CreateCenterPolicyRequestDeviceRules) SetPlatforms(v string) *CreateCenterPolicyRequestDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -14147,6 +14165,7 @@ type CreatePolicyGroupRequestDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// Valid values:
@@ -14193,6 +14212,11 @@ func (s *CreatePolicyGroupRequestDeviceRules) SetDeviceVid(v string) *CreatePoli
 
 func (s *CreatePolicyGroupRequestDeviceRules) SetOptCommand(v string) *CreatePolicyGroupRequestDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequestDeviceRules) SetPlatforms(v string) *CreatePolicyGroupRequestDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -19178,6 +19202,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// tcp
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
 	// example:
@@ -19403,7 +19428,8 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	// example:
 	//
 	// 1
-	ResourceGroupCount *int32 `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	ResourceGroupCount *int32  `json:"ResourceGroupCount,omitempty" xml:"ResourceGroupCount,omitempty"`
+	SafeMenu           *string `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
 	// The effective scope of the policy.
 	//
 	// example:
@@ -19732,6 +19758,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetInternetCo
 	return s
 }
 
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetInternetPrinter(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.InternetPrinter = &v
+	return s
+}
+
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetLocalDrive(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.LocalDrive = &v
 	return s
@@ -19924,6 +19955,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResolution
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetResourceGroupCount(v int32) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
 	s.ResourceGroupCount = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroups) SetSafeMenu(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroups {
+	s.SafeMenu = &v
 	return s
 }
 
@@ -20290,6 +20326,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules struct 
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// example:
@@ -20328,6 +20365,11 @@ func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) Se
 
 func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetOptCommand(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules) SetPlatforms(v string) *DescribeCenterPolicyListResponseBodyDescribePolicyGroupsDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -31252,6 +31294,7 @@ type DescribeImageModifiedRecordsResponseBodyImageModifiedRecords struct {
 	//
 	// xxxxImageID
 	NewImageName *string `json:"NewImageName,omitempty" xml:"NewImageName,omitempty"`
+	Reason       *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The status of the image modification.
 	//
 	// Valid values:
@@ -31299,6 +31342,11 @@ func (s *DescribeImageModifiedRecordsResponseBodyImageModifiedRecords) SetNewIma
 
 func (s *DescribeImageModifiedRecordsResponseBodyImageModifiedRecords) SetNewImageName(v string) *DescribeImageModifiedRecordsResponseBodyImageModifiedRecords {
 	s.NewImageName = &v
+	return s
+}
+
+func (s *DescribeImageModifiedRecordsResponseBodyImageModifiedRecords) SetReason(v string) *DescribeImageModifiedRecordsResponseBodyImageModifiedRecords {
+	s.Reason = &v
 	return s
 }
 
@@ -35742,6 +35790,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// BOTH
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
 	// The permissions on local disk mapping.
 	//
 	// Valid values:
@@ -36085,6 +36134,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	//
 	// center
 	ResourceRegionId *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	SafeMenu         *string `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
 	// The effective scope of the policy.
 	//
 	// Valid values:
@@ -36538,6 +36588,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetInternetCommun
 	return s
 }
 
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetInternetPrinter(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.InternetPrinter = &v
+	return s
+}
+
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetLocalDrive(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.LocalDrive = &v
 	return s
@@ -36740,6 +36795,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResourceGroupC
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetResourceRegionId(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetSafeMenu(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.SafeMenu = &v
 	return s
 }
 
@@ -37191,6 +37251,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// Valid values:
@@ -37237,6 +37298,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetDev
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetOptCommand(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules) SetPlatforms(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroupsDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -50697,6 +50763,7 @@ type ModifyCenterPolicyRequest struct {
 	//
 	// both
 	InternetCommunicationProtocol *string `json:"InternetCommunicationProtocol,omitempty" xml:"InternetCommunicationProtocol,omitempty"`
+	InternetPrinter               *string `json:"InternetPrinter,omitempty" xml:"InternetPrinter,omitempty"`
 	// The read/write permissions on the on-premises drive.
 	//
 	// Valid values:
@@ -51025,6 +51092,7 @@ type ModifyCenterPolicyRequest struct {
 	RevokeAccessPolicyRule []*ModifyCenterPolicyRequestRevokeAccessPolicyRule `json:"RevokeAccessPolicyRule,omitempty" xml:"RevokeAccessPolicyRule,omitempty" type:"Repeated"`
 	// The security group rules that you want to delete.
 	RevokeSecurityPolicyRule []*ModifyCenterPolicyRequestRevokeSecurityPolicyRule `json:"RevokeSecurityPolicyRule,omitempty" xml:"RevokeSecurityPolicyRule,omitempty" type:"Repeated"`
+	SafeMenu                 *string                                              `json:"SafeMenu,omitempty" xml:"SafeMenu,omitempty"`
 	// The effective scope of the policy.
 	//
 	// Valid values:
@@ -51493,6 +51561,11 @@ func (s *ModifyCenterPolicyRequest) SetInternetCommunicationProtocol(v string) *
 	return s
 }
 
+func (s *ModifyCenterPolicyRequest) SetInternetPrinter(v string) *ModifyCenterPolicyRequest {
+	s.InternetPrinter = &v
+	return s
+}
+
 func (s *ModifyCenterPolicyRequest) SetLocalDrive(v string) *ModifyCenterPolicyRequest {
 	s.LocalDrive = &v
 	return s
@@ -51690,6 +51763,11 @@ func (s *ModifyCenterPolicyRequest) SetRevokeAccessPolicyRule(v []*ModifyCenterP
 
 func (s *ModifyCenterPolicyRequest) SetRevokeSecurityPolicyRule(v []*ModifyCenterPolicyRequestRevokeSecurityPolicyRule) *ModifyCenterPolicyRequest {
 	s.RevokeSecurityPolicyRule = v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequest) SetSafeMenu(v string) *ModifyCenterPolicyRequest {
+	s.SafeMenu = &v
 	return s
 }
 
@@ -52165,6 +52243,7 @@ type ModifyCenterPolicyRequestDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// Valid values:
@@ -52211,6 +52290,11 @@ func (s *ModifyCenterPolicyRequestDeviceRules) SetDeviceVid(v string) *ModifyCen
 
 func (s *ModifyCenterPolicyRequestDeviceRules) SetOptCommand(v string) *ModifyCenterPolicyRequestDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *ModifyCenterPolicyRequestDeviceRules) SetPlatforms(v string) *ModifyCenterPolicyRequestDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -57903,6 +57987,7 @@ type ModifyPolicyGroupRequestDeviceRules struct {
 	//
 	// 2:0
 	OptCommand *string `json:"OptCommand,omitempty" xml:"OptCommand,omitempty"`
+	Platforms  *string `json:"Platforms,omitempty" xml:"Platforms,omitempty"`
 	// The redirection type.
 	//
 	// Valid values:
@@ -57949,6 +58034,11 @@ func (s *ModifyPolicyGroupRequestDeviceRules) SetDeviceVid(v string) *ModifyPoli
 
 func (s *ModifyPolicyGroupRequestDeviceRules) SetOptCommand(v string) *ModifyPolicyGroupRequestDeviceRules {
 	s.OptCommand = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequestDeviceRules) SetPlatforms(v string) *ModifyPolicyGroupRequestDeviceRules {
+	s.Platforms = &v
 	return s
 }
 
@@ -67342,6 +67432,10 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建无地域策略
+//
 // @param request - CreateCenterPolicyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -67471,6 +67565,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.InternetCommunicationProtocol)) {
 		query["InternetCommunicationProtocol"] = request.InternetCommunicationProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetPrinter)) {
+		query["InternetPrinter"] = request.InternetPrinter
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
@@ -67619,6 +67717,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeMenu)) {
+		query["SafeMenu"] = request.SafeMenu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
@@ -67772,6 +67874,10 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 	return _result, _err
 }
 
+// Summary:
+//
+// 创建无地域策略
+//
 // @param request - CreateCenterPolicyRequest
 //
 // @return CreateCenterPolicyResponse
@@ -79105,6 +79211,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 		query["InternetCommunicationProtocol"] = request.InternetCommunicationProtocol
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InternetPrinter)) {
+		query["InternetPrinter"] = request.InternetPrinter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.LocalDrive)) {
 		query["LocalDrive"] = request.LocalDrive
 	}
@@ -79263,6 +79373,10 @@ func (client *Client) ModifyCenterPolicyWithOptions(request *ModifyCenterPolicyR
 
 	if !tea.BoolValue(util.IsUnset(request.RevokeSecurityPolicyRule)) {
 		query["RevokeSecurityPolicyRule"] = request.RevokeSecurityPolicyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SafeMenu)) {
+		query["SafeMenu"] = request.SafeMenu
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
