@@ -1022,12 +1022,19 @@ func (s *CreateClusterRequestNetworksVpdInfo) SetVpdSubnets(v []*string) *Create
 }
 
 type CreateClusterRequestNodeGroups struct {
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// System image ID
 	//
 	// example:
 	//
 	// i190297201634099844192
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the key pair.
+	//
+	// example:
+	//
+	// sc-key
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// Machine type
 	//
 	// example:
@@ -1047,7 +1054,8 @@ type CreateClusterRequestNodeGroups struct {
 	// emr-default
 	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
 	// Node list
-	Nodes      []*CreateClusterRequestNodeGroupsNodes    `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Nodes []*CreateClusterRequestNodeGroupsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// SystemDisk
 	SystemDisk *CreateClusterRequestNodeGroupsSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// Instance custom data. It needs to be Base64 encoded, and the original data should not exceed 16 KB.
 	//
@@ -1071,8 +1079,18 @@ func (s CreateClusterRequestNodeGroups) GoString() string {
 	return s.String()
 }
 
+func (s *CreateClusterRequestNodeGroups) SetFileSystemMountEnabled(v bool) *CreateClusterRequestNodeGroups {
+	s.FileSystemMountEnabled = &v
+	return s
+}
+
 func (s *CreateClusterRequestNodeGroups) SetImageId(v string) *CreateClusterRequestNodeGroups {
 	s.ImageId = &v
+	return s
+}
+
+func (s *CreateClusterRequestNodeGroups) SetKeyPairName(v string) *CreateClusterRequestNodeGroups {
+	s.KeyPairName = &v
 	return s
 }
 
@@ -1178,9 +1196,33 @@ func (s *CreateClusterRequestNodeGroupsNodes) SetVpcId(v string) *CreateClusterR
 }
 
 type CreateClusterRequestNodeGroupsSystemDisk struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The disk type. Valid values:
+	//
+	// 	- cloud_ssd: standard SSD
+	//
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The performance level of the ESSD that is used as the system disk. Valid values:
+	//
+	// 	- PL0: A single ESSD can provide up to 10,000 random read/write IOPS.
+	//
+	// 	- PL1: A single ESSD can provide up to 50,000 random read/write IOPS.
+	//
+	//
+	// Default value: PL1.
+	//
+	// example:
+	//
+	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The size. Unit: GB.
+	//
+	// example:
+	//
+	// 20
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CreateClusterRequestNodeGroupsSystemDisk) String() string {
@@ -2433,7 +2475,8 @@ type CreateNodeGroupRequestNodeGroup struct {
 	// example:
 	//
 	// cn-wulanchabu-b
-	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	Az                     *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	FileSystemMountEnabled *bool   `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Image ID.
 	//
 	// This parameter is required.
@@ -2442,6 +2485,12 @@ type CreateNodeGroupRequestNodeGroup struct {
 	//
 	// i191887641687336652616
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The name of the key pair.
+	//
+	// example:
+	//
+	// test-keypair
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// Machine type
 	//
 	// This parameter is required.
@@ -2463,8 +2512,9 @@ type CreateNodeGroupRequestNodeGroup struct {
 	// example:
 	//
 	// PAI-LINGJUN
-	NodeGroupName *string                                    `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
-	SystemDisk    *CreateNodeGroupRequestNodeGroupSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	NodeGroupName *string `json:"NodeGroupName,omitempty" xml:"NodeGroupName,omitempty"`
+	// SystemDisk
+	SystemDisk *CreateNodeGroupRequestNodeGroupSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
 	// user data
 	//
 	// example:
@@ -2490,8 +2540,18 @@ func (s *CreateNodeGroupRequestNodeGroup) SetAz(v string) *CreateNodeGroupReques
 	return s
 }
 
+func (s *CreateNodeGroupRequestNodeGroup) SetFileSystemMountEnabled(v bool) *CreateNodeGroupRequestNodeGroup {
+	s.FileSystemMountEnabled = &v
+	return s
+}
+
 func (s *CreateNodeGroupRequestNodeGroup) SetImageId(v string) *CreateNodeGroupRequestNodeGroup {
 	s.ImageId = &v
+	return s
+}
+
+func (s *CreateNodeGroupRequestNodeGroup) SetKeyPairName(v string) *CreateNodeGroupRequestNodeGroup {
+	s.KeyPairName = &v
 	return s
 }
 
@@ -2521,9 +2581,33 @@ func (s *CreateNodeGroupRequestNodeGroup) SetUserData(v string) *CreateNodeGroup
 }
 
 type CreateNodeGroupRequestNodeGroupSystemDisk struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Disk performance level
+	//
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The performance level of the disk if the disk is an ESSD. Valid values:
+	//
+	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	//
+	// 	- PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	//
+	//
+	// Default value: PL1.
+	//
+	// For information about ESSD performance levels, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	//
+	// example:
+	//
+	// PL!
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// System disk size
+	//
+	// example:
+	//
+	// 250
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
 func (s CreateNodeGroupRequestNodeGroupSystemDisk) String() string {
@@ -2805,6 +2889,159 @@ func (s *CreateSessionResponse) SetBody(v *CreateSessionResponseBody) *CreateSes
 	return s
 }
 
+type CreateVscRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// e01-cn-zvp2tgykr08
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// rg-aek2xdkc6icwfha
+	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateVscRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_name
+	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// example:
+	//
+	// primary
+	VscType *string `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s CreateVscRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscRequest) SetClientToken(v string) *CreateVscRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateVscRequest) SetNodeId(v string) *CreateVscRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *CreateVscRequest) SetResourceGroupId(v string) *CreateVscRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateVscRequest) SetTag(v []*CreateVscRequestTag) *CreateVscRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *CreateVscRequest) SetVscName(v string) *CreateVscRequest {
+	s.VscName = &v
+	return s
+}
+
+func (s *CreateVscRequest) SetVscType(v string) *CreateVscRequest {
+	s.VscType = &v
+	return s
+}
+
+type CreateVscRequestTag struct {
+	// example:
+	//
+	// key001
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value001
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateVscRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscRequestTag) SetKey(v string) *CreateVscRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateVscRequestTag) SetValue(v string) *CreateVscRequestTag {
+	s.Value = &v
+	return s
+}
+
+type CreateVscResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 887FA855-89F4-5DB3-B305-C5879EC480E6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// vsc-001
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+}
+
+func (s CreateVscResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscResponseBody) SetRequestId(v string) *CreateVscResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVscResponseBody) SetVscId(v string) *CreateVscResponseBody {
+	s.VscId = &v
+	return s
+}
+
+type CreateVscResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateVscResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateVscResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVscResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVscResponse) SetHeaders(v map[string]*string) *CreateVscResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVscResponse) SetStatusCode(v int32) *CreateVscResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVscResponse) SetBody(v *CreateVscResponseBody) *CreateVscResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteClusterRequest struct {
 	// Cluster ID
 	//
@@ -2960,6 +3197,88 @@ func (s *DeleteNodeGroupResponse) SetStatusCode(v int32) *DeleteNodeGroupRespons
 }
 
 func (s *DeleteNodeGroupResponse) SetBody(v *DeleteNodeGroupResponseBody) *DeleteNodeGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteVscRequest struct {
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-426655440000
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsc-001
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+}
+
+func (s DeleteVscRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscRequest) SetClientToken(v string) *DeleteVscRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteVscRequest) SetVscId(v string) *DeleteVscRequest {
+	s.VscId = &v
+	return s
+}
+
+type DeleteVscResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteVscResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscResponseBody) SetRequestId(v string) *DeleteVscResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteVscResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteVscResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteVscResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteVscResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteVscResponse) SetHeaders(v map[string]*string) *DeleteVscResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteVscResponse) SetStatusCode(v int32) *DeleteVscResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteVscResponse) SetBody(v *DeleteVscResponseBody) *DeleteVscResponse {
 	s.Body = v
 	return s
 }
@@ -4712,14 +5031,17 @@ type DescribeNodeResponseBody struct {
 	// example:
 	//
 	// 2022-09-30T03:35:53Z
-	CreateTime *string                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Disks      []*DescribeNodeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Disk infos
+	Disks []*DescribeNodeResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
 	// Expiration time
 	//
 	// example:
 	//
 	// 2022-06-23T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 是否支持文件存储挂载
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Hostname
 	//
 	// example:
@@ -4845,6 +5167,11 @@ func (s *DescribeNodeResponseBody) SetExpiredTime(v string) *DescribeNodeRespons
 	return s
 }
 
+func (s *DescribeNodeResponseBody) SetFileSystemMountEnabled(v bool) *DescribeNodeResponseBody {
+	s.FileSystemMountEnabled = &v
+	return s
+}
+
 func (s *DescribeNodeResponseBody) SetHostname(v string) *DescribeNodeResponseBody {
 	s.Hostname = &v
 	return s
@@ -4921,11 +5248,44 @@ func (s *DescribeNodeResponseBody) SetZoneId(v string) *DescribeNodeResponseBody
 }
 
 type DescribeNodeResponseBodyDisks struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	DiskId           *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The category of the disk.
+	//
+	// 	- cloud_ssd: all-flash disk.
+	//
+	// example:
+	//
+	// cloud_essd
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The ID of the disk.
+	//
+	// example:
+	//
+	// d-bp1fi88ryk4yah8a6yos
+	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	// The performance level of the ESSD. Valid values:
+	//
+	// 	- PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
+	//
+	// 	- PL1: A single ESSD can deliver up to 50,000 random read/write IOPS.
+	//
+	// example:
+	//
+	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	Size             *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The size of the disk. Unit: GiB.
+	//
+	// example:
+	//
+	// 100
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The type of the disk. Valid values:
+	//
+	// 	- system: system disk
+	//
+	// example:
+	//
+	// system
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeNodeResponseBodyDisks) String() string {
@@ -6013,6 +6373,135 @@ func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTas
 	return s
 }
 
+type DescribeVscRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// vsc-001
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+}
+
+func (s DescribeVscRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscRequest) SetVscId(v string) *DescribeVscRequest {
+	s.VscId = &v
+	return s
+}
+
+type DescribeVscResponseBody struct {
+	// example:
+	//
+	// e01-cn-kvw44e6dn04
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-aek2k3rqlvv6ytq
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// VscId
+	//
+	// example:
+	//
+	// vsc-001
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	// example:
+	//
+	// test_name
+	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// example:
+	//
+	// primary
+	VscType *string `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s DescribeVscResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscResponseBody) SetNodeId(v string) *DescribeVscResponseBody {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetRequestId(v string) *DescribeVscResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetResourceGroupId(v string) *DescribeVscResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetStatus(v string) *DescribeVscResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetVscId(v string) *DescribeVscResponseBody {
+	s.VscId = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetVscName(v string) *DescribeVscResponseBody {
+	s.VscName = &v
+	return s
+}
+
+func (s *DescribeVscResponseBody) SetVscType(v string) *DescribeVscResponseBody {
+	s.VscType = &v
+	return s
+}
+
+type DescribeVscResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeVscResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeVscResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVscResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVscResponse) SetHeaders(v map[string]*string) *DescribeVscResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVscResponse) SetStatusCode(v int32) *DescribeVscResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeVscResponse) SetBody(v *DescribeVscResponseBody) *DescribeVscResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeZonesRequest struct {
 	// Filter the returned results based on Chinese or English. For more information, see RFC7231. Valid values:
 	//
@@ -6995,6 +7484,8 @@ type ListClusterNodesResponseBodyNodes struct {
 	//
 	// 1762185600000
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// whether or not support file system mount
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Hostname
 	//
 	// example:
@@ -7105,6 +7596,11 @@ func (s *ListClusterNodesResponseBodyNodes) SetCreateTime(v string) *ListCluster
 
 func (s *ListClusterNodesResponseBodyNodes) SetExpiredTime(v string) *ListClusterNodesResponseBodyNodes {
 	s.ExpiredTime = &v
+	return s
+}
+
+func (s *ListClusterNodesResponseBodyNodes) SetFileSystemMountEnabled(v bool) *ListClusterNodesResponseBodyNodes {
+	s.FileSystemMountEnabled = &v
 	return s
 }
 
@@ -9725,7 +10221,8 @@ type ListNodeGroupsResponseBodyGroups struct {
 	// example:
 	//
 	// created by ga2_prepare
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FileSystemMountEnabled *bool   `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Group ID.
 	//
 	// example:
@@ -9801,6 +10298,11 @@ func (s *ListNodeGroupsResponseBodyGroups) SetCreateTime(v string) *ListNodeGrou
 
 func (s *ListNodeGroupsResponseBodyGroups) SetDescription(v string) *ListNodeGroupsResponseBodyGroups {
 	s.Description = &v
+	return s
+}
+
+func (s *ListNodeGroupsResponseBodyGroups) SetFileSystemMountEnabled(v bool) *ListNodeGroupsResponseBodyGroups {
+	s.FileSystemMountEnabled = &v
 	return s
 }
 
@@ -10207,6 +10709,370 @@ func (s *ListUserClusterTypesResponse) SetStatusCode(v int32) *ListUserClusterTy
 }
 
 func (s *ListUserClusterTypesResponse) SetBody(v *ListUserClusterTypesResponseBody) *ListUserClusterTypesResponse {
+	s.Body = v
+	return s
+}
+
+type ListVscsRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 563d42ae0b17572449ec8c97f7f66069
+	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NodeIds   []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-aek2xdkc6icwfha
+	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListVscsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_name
+	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+}
+
+func (s ListVscsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsRequest) SetMaxResults(v int32) *ListVscsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListVscsRequest) SetNextToken(v string) *ListVscsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListVscsRequest) SetNodeIds(v []*string) *ListVscsRequest {
+	s.NodeIds = v
+	return s
+}
+
+func (s *ListVscsRequest) SetResourceGroupId(v string) *ListVscsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListVscsRequest) SetTag(v []*ListVscsRequestTag) *ListVscsRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListVscsRequest) SetVscName(v string) *ListVscsRequest {
+	s.VscName = &v
+	return s
+}
+
+type ListVscsRequestTag struct {
+	// example:
+	//
+	// key001
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value001
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVscsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsRequestTag) SetKey(v string) *ListVscsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVscsRequestTag) SetValue(v string) *ListVscsRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListVscsShrinkRequest struct {
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 563d42ae0b17572449ec8c97f7f66069
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NodeIdsShrink *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// example:
+	//
+	// rg-aek2xdkc6icwfha
+	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListVscsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// example:
+	//
+	// test_name
+	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+}
+
+func (s ListVscsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsShrinkRequest) SetMaxResults(v int32) *ListVscsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListVscsShrinkRequest) SetNextToken(v string) *ListVscsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListVscsShrinkRequest) SetNodeIdsShrink(v string) *ListVscsShrinkRequest {
+	s.NodeIdsShrink = &v
+	return s
+}
+
+func (s *ListVscsShrinkRequest) SetResourceGroupId(v string) *ListVscsShrinkRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListVscsShrinkRequest) SetTag(v []*ListVscsShrinkRequestTag) *ListVscsShrinkRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListVscsShrinkRequest) SetVscName(v string) *ListVscsShrinkRequest {
+	s.VscName = &v
+	return s
+}
+
+type ListVscsShrinkRequestTag struct {
+	// example:
+	//
+	// key001
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value001
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListVscsShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsShrinkRequestTag) SetKey(v string) *ListVscsShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListVscsShrinkRequestTag) SetValue(v string) *ListVscsShrinkRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListVscsResponseBody struct {
+	// example:
+	//
+	// 0
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3a6b93229825ac667104463b56790c91
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 03668372-18FF-5959-98D9-6B36A4643C7A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vscs       []*ListVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
+}
+
+func (s ListVscsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsResponseBody) SetMaxResults(v int32) *ListVscsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListVscsResponseBody) SetNextToken(v string) *ListVscsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListVscsResponseBody) SetRequestId(v string) *ListVscsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVscsResponseBody) SetTotalCount(v int32) *ListVscsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListVscsResponseBody) SetVscs(v []*ListVscsResponseBodyVscs) *ListVscsResponseBody {
+	s.Vscs = v
+	return s
+}
+
+type ListVscsResponseBodyVscs struct {
+	// example:
+	//
+	// e01-cn-fzh47xd7u08
+	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// rg-acfm2zkwhkns57i
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// VscId
+	//
+	// example:
+	//
+	// vsc-001
+	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	// example:
+	//
+	// test_name
+	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// example:
+	//
+	// primary
+	VscType *string `json:"VscType,omitempty" xml:"VscType,omitempty"`
+}
+
+func (s ListVscsResponseBodyVscs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsResponseBodyVscs) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsResponseBodyVscs) SetNodeId(v string) *ListVscsResponseBodyVscs {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetResourceGroupId(v string) *ListVscsResponseBodyVscs {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetStatus(v string) *ListVscsResponseBodyVscs {
+	s.Status = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetTags(v []*ListVscsResponseBodyVscsTags) *ListVscsResponseBodyVscs {
+	s.Tags = v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetVscId(v string) *ListVscsResponseBodyVscs {
+	s.VscId = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetVscName(v string) *ListVscsResponseBodyVscs {
+	s.VscName = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscs) SetVscType(v string) *ListVscsResponseBodyVscs {
+	s.VscType = &v
+	return s
+}
+
+type ListVscsResponseBodyVscsTags struct {
+	// example:
+	//
+	// key001
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// example:
+	//
+	// value001
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListVscsResponseBodyVscsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsResponseBodyVscsTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsResponseBodyVscsTags) SetTagKey(v string) *ListVscsResponseBodyVscsTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListVscsResponseBodyVscsTags) SetTagValue(v string) *ListVscsResponseBodyVscsTags {
+	s.TagValue = &v
+	return s
+}
+
+type ListVscsResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListVscsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListVscsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVscsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVscsResponse) SetHeaders(v map[string]*string) *ListVscsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVscsResponse) SetStatusCode(v int32) *ListVscsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListVscsResponse) SetBody(v *ListVscsResponseBody) *ListVscsResponse {
 	s.Body = v
 	return s
 }
@@ -12233,6 +13099,13 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateNodeGroupRequest struct {
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
+	// The name of the key pair.
+	//
+	// example:
+	//
+	// sc-key
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// Node group name
 	//
 	// example:
@@ -12265,6 +13138,16 @@ func (s UpdateNodeGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateNodeGroupRequest) SetFileSystemMountEnabled(v bool) *UpdateNodeGroupRequest {
+	s.FileSystemMountEnabled = &v
+	return s
+}
+
+func (s *UpdateNodeGroupRequest) SetKeyPairName(v string) *UpdateNodeGroupRequest {
+	s.KeyPairName = &v
+	return s
+}
+
 func (s *UpdateNodeGroupRequest) SetNewNodeGroupName(v string) *UpdateNodeGroupRequest {
 	s.NewNodeGroupName = &v
 	return s
@@ -12287,6 +13170,12 @@ type UpdateNodeGroupResponseBody struct {
 	//
 	// 8F065DDD-6996-5973-9691-9EC57BD0072E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Task ID
+	//
+	// example:
+	//
+	// i15374011238111706
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s UpdateNodeGroupResponseBody) String() string {
@@ -12299,6 +13188,11 @@ func (s UpdateNodeGroupResponseBody) GoString() string {
 
 func (s *UpdateNodeGroupResponseBody) SetRequestId(v string) *UpdateNodeGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateNodeGroupResponseBody) SetTaskId(v string) *UpdateNodeGroupResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -13066,6 +13960,88 @@ func (client *Client) CreateSession(request *CreateSessionRequest) (_result *Cre
 
 // Summary:
 //
+// 创建Vsc
+//
+// @param request - CreateVscRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateVscResponse
+func (client *Client) CreateVscWithOptions(request *CreateVscRequest, runtime *util.RuntimeOptions) (_result *CreateVscResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscName)) {
+		body["VscName"] = request.VscName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscType)) {
+		body["VscType"] = request.VscType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVsc"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVscResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建Vsc
+//
+// @param request - CreateVscRequest
+//
+// @return CreateVscResponse
+func (client *Client) CreateVsc(request *CreateVscRequest) (_result *CreateVscResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVscResponse{}
+	_body, _err := client.CreateVscWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Delete cluster instance
 //
 // @param request - DeleteClusterRequest
@@ -13189,6 +14165,72 @@ func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteNodeGroupResponse{}
 	_body, _err := client.DeleteNodeGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Vsc
+//
+// @param request - DeleteVscRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteVscResponse
+func (client *Client) DeleteVscWithOptions(request *DeleteVscRequest, runtime *util.RuntimeOptions) (_result *DeleteVscResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VscId)) {
+		body["VscId"] = request.VscId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVsc"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteVscResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除Vsc
+//
+// @param request - DeleteVscRequest
+//
+// @return DeleteVscResponse
+func (client *Client) DeleteVsc(request *DeleteVscRequest) (_result *DeleteVscResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteVscResponse{}
+	_body, _err := client.DeleteVscWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13701,6 +14743,66 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTaskResponse{}
 	_body, _err := client.DescribeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取单个Vsc详情
+//
+// @param request - DescribeVscRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeVscResponse
+func (client *Client) DescribeVscWithOptions(request *DescribeVscRequest, runtime *util.RuntimeOptions) (_result *DescribeVscResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VscId)) {
+		body["VscId"] = request.VscId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVsc"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVscResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取单个Vsc详情
+//
+// @param request - DescribeVscRequest
+//
+// @return DescribeVscResponse
+func (client *Client) DescribeVsc(request *DescribeVscRequest) (_result *DescribeVscResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVscResponse{}
+	_body, _err := client.DescribeVscWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14671,6 +15773,94 @@ func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesRespo
 
 // Summary:
 //
+// 查询Vsc列表
+//
+// @param tmpReq - ListVscsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListVscsResponse
+func (client *Client) ListVscsWithOptions(tmpReq *ListVscsRequest, runtime *util.RuntimeOptions) (_result *ListVscsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListVscsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.NodeIds)) {
+		request.NodeIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.NodeIds, tea.String("NodeIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIdsShrink)) {
+		body["NodeIds"] = request.NodeIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VscName)) {
+		body["VscName"] = request.VscName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVscs"),
+		Version:     tea.String("2022-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVscsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Vsc列表
+//
+// @param request - ListVscsRequest
+//
+// @return ListVscsResponse
+func (client *Client) ListVscs(request *ListVscsRequest) (_result *ListVscsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVscsResponse{}
+	_body, _err := client.ListVscsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Reboot Machine
 //
 // @param tmpReq - RebootNodesRequest
@@ -15438,6 +16628,14 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileSystemMountEnabled)) {
+		body["FileSystemMountEnabled"] = request.FileSystemMountEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		body["KeyPairName"] = request.KeyPairName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NewNodeGroupName)) {
 		body["NewNodeGroupName"] = request.NewNodeGroupName
 	}
