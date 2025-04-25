@@ -3892,6 +3892,53 @@ func (s *ImageRegistryConfig) SetCertConfig(v *RegistryCertificateConfig) *Image
 	return s
 }
 
+type InitContainerConfig struct {
+	Command            *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs        *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc *string `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty"`
+	Envs               *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl           *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s InitContainerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InitContainerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *InitContainerConfig) SetCommand(v string) *InitContainerConfig {
+	s.Command = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetCommandArgs(v string) *InitContainerConfig {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetConfigMapMountDesc(v string) *InitContainerConfig {
+	s.ConfigMapMountDesc = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetEnvs(v string) *InitContainerConfig {
+	s.Envs = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetImageUrl(v string) *InitContainerConfig {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *InitContainerConfig) SetName(v string) *InitContainerConfig {
+	s.Name = &v
+	return s
+}
+
 type InputCodeLocation struct {
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
 	OssObjectName *string `json:"ossObjectName,omitempty" xml:"ossObjectName,omitempty"`
@@ -9798,7 +9845,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl             *string                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainersConfig []*InitContainerConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
 	// custom-args
 	//
 	// example:
@@ -10165,6 +10213,11 @@ func (s *CreateApplicationRequest) SetImageUrl(v string) *CreateApplicationReque
 	return s
 }
 
+func (s *CreateApplicationRequest) SetInitContainersConfig(v []*InitContainerConfig) *CreateApplicationRequest {
+	s.InitContainersConfig = v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetJarStartArgs(v string) *CreateApplicationRequest {
 	s.JarStartArgs = &v
 	return s
@@ -10510,7 +10563,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl                   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainersConfigShrink *string `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty"`
 	// custom-args
 	//
 	// example:
@@ -10874,6 +10928,11 @@ func (s *CreateApplicationShrinkRequest) SetImagePullSecrets(v string) *CreateAp
 
 func (s *CreateApplicationShrinkRequest) SetImageUrl(v string) *CreateApplicationShrinkRequest {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetInitContainersConfigShrink(v string) *CreateApplicationShrinkRequest {
+	s.InitContainersConfigShrink = &v
 	return s
 }
 
@@ -16020,7 +16079,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl             *string                `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainersConfig []*InitContainerConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
@@ -16552,6 +16612,11 @@ func (s *DeployApplicationRequest) SetImageUrl(v string) *DeployApplicationReque
 	return s
 }
 
+func (s *DeployApplicationRequest) SetInitContainersConfig(v []*InitContainerConfig) *DeployApplicationRequest {
+	s.InitContainersConfig = v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetJarStartArgs(v string) *DeployApplicationRequest {
 	s.JarStartArgs = &v
 	return s
@@ -16985,7 +17050,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/sae_test/ali_sae_test:0.0.1
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl                   *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainersConfigShrink *string `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
@@ -17514,6 +17580,11 @@ func (s *DeployApplicationShrinkRequest) SetImagePullSecrets(v string) *DeployAp
 
 func (s *DeployApplicationShrinkRequest) SetImageUrl(v string) *DeployApplicationShrinkRequest {
 	s.ImageUrl = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetInitContainersConfigShrink(v string) *DeployApplicationShrinkRequest {
+	s.InitContainersConfigShrink = &v
 	return s
 }
 
@@ -18737,7 +18808,8 @@ type DescribeApplicationConfigResponseBodyData struct {
 	// example:
 	//
 	// docker.io/library/nginx:1.14.2
-	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	ImageUrl             *string                                                          `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	InitContainersConfig []*DescribeApplicationConfigResponseBodyDataInitContainersConfig `json:"InitContainersConfig,omitempty" xml:"InitContainersConfig,omitempty" type:"Repeated"`
 	// The arguments in the JAR package. The arguments are used to start the application container. The default startup command is `$JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS "$package_path" $JarStartArgs`.
 	//
 	// example:
@@ -19327,6 +19399,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetImageUrl(v string) *Descr
 	return s
 }
 
+func (s *DescribeApplicationConfigResponseBodyData) SetInitContainersConfig(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfig) *DescribeApplicationConfigResponseBodyData {
+	s.InitContainersConfig = v
+	return s
+}
+
 func (s *DescribeApplicationConfigResponseBodyData) SetJarStartArgs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.JarStartArgs = &v
 	return s
@@ -19653,6 +19730,88 @@ func (s *DescribeApplicationConfigResponseBodyDataConfigMapMountDesc) SetKey(v s
 }
 
 func (s *DescribeApplicationConfigResponseBodyDataConfigMapMountDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataConfigMapMountDesc {
+	s.MountPath = &v
+	return s
+}
+
+type DescribeApplicationConfigResponseBodyDataInitContainersConfig struct {
+	Command            *string                                                                            `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs        *string                                                                            `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	ConfigMapMountDesc []*DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc `json:"ConfigMapMountDesc,omitempty" xml:"ConfigMapMountDesc,omitempty" type:"Repeated"`
+	Envs               *string                                                                            `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	ImageUrl           *string                                                                            `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	Name               *string                                                                            `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetCommand(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.Command = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetCommandArgs(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetConfigMapMountDesc(v []*DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.ConfigMapMountDesc = v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetEnvs(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.Envs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetImageUrl(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfig) SetName(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfig {
+	s.Name = &v
+	return s
+}
+
+type DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc struct {
+	ConfigMapId   *int64  `json:"ConfigMapId,omitempty" xml:"ConfigMapId,omitempty"`
+	ConfigMapName *string `json:"ConfigMapName,omitempty" xml:"ConfigMapName,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	MountPath     *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) SetConfigMapId(v int64) *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc {
+	s.ConfigMapId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) SetConfigMapName(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc {
+	s.ConfigMapName = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) SetKey(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc) SetMountPath(v string) *DescribeApplicationConfigResponseBodyDataInitContainersConfigConfigMapMountDesc {
 	s.MountPath = &v
 	return s
 }
@@ -48797,6 +48956,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	}
 	request := &CreateApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InitContainersConfig)) {
+		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, tea.String("InitContainersConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SidecarContainersConfig)) {
 		request.SidecarContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SidecarContainersConfig, tea.String("SidecarContainersConfig"), tea.String("json"))
 	}
@@ -49061,6 +49224,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSidecarResourceIsolated)) {
 		body["EnableSidecarResourceIsolated"] = request.EnableSidecarResourceIsolated
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitContainersConfigShrink)) {
+		body["InitContainersConfig"] = request.InitContainersConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MicroRegistrationConfig)) {
@@ -50987,6 +51154,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 	}
 	request := &DeployApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.InitContainersConfig)) {
+		request.InitContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.InitContainersConfig, tea.String("InitContainersConfig"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.SidecarContainersConfig)) {
 		request.SidecarContainersConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SidecarContainersConfig, tea.String("SidecarContainersConfig"), tea.String("json"))
 	}
@@ -51239,6 +51410,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.EnableSidecarResourceIsolated)) {
 		body["EnableSidecarResourceIsolated"] = request.EnableSidecarResourceIsolated
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitContainersConfigShrink)) {
+		body["InitContainersConfig"] = request.InitContainersConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MicroRegistrationConfig)) {
