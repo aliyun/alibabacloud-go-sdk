@@ -14803,7 +14803,8 @@ type DeleteMediaConnectFlowInputRequest struct {
 	// example:
 	//
 	// 0381f478-7d53-4076-9d5f-27680a6f73e7
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	InputName *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
 }
 
 func (s DeleteMediaConnectFlowInputRequest) String() string {
@@ -14816,6 +14817,11 @@ func (s DeleteMediaConnectFlowInputRequest) GoString() string {
 
 func (s *DeleteMediaConnectFlowInputRequest) SetFlowId(v string) *DeleteMediaConnectFlowInputRequest {
 	s.FlowId = &v
+	return s
+}
+
+func (s *DeleteMediaConnectFlowInputRequest) SetInputName(v string) *DeleteMediaConnectFlowInputRequest {
+	s.InputName = &v
 	return s
 }
 
@@ -25949,7 +25955,8 @@ type GetMediaConnectFlowResponseBodyContent struct {
 	// example:
 	//
 	// 2024-07-18T01:29:24Z
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	FlowFailover *string `json:"FlowFailover,omitempty" xml:"FlowFailover,omitempty"`
 	// The flow ID.
 	//
 	// example:
@@ -25986,6 +25993,11 @@ func (s GetMediaConnectFlowResponseBodyContent) GoString() string {
 
 func (s *GetMediaConnectFlowResponseBodyContent) SetCreateTime(v string) *GetMediaConnectFlowResponseBodyContent {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowResponseBodyContent) SetFlowFailover(v string) *GetMediaConnectFlowResponseBodyContent {
+	s.FlowFailover = &v
 	return s
 }
 
@@ -26114,6 +26126,15 @@ func (s *GetMediaConnectFlowInputResponseBody) SetRetCode(v int32) *GetMediaConn
 }
 
 type GetMediaConnectFlowInputResponseBodyContent struct {
+	BackupCidrs         *string `json:"BackupCidrs,omitempty" xml:"BackupCidrs,omitempty"`
+	BackupCreateTime    *string `json:"BackupCreateTime,omitempty" xml:"BackupCreateTime,omitempty"`
+	BackupInputName     *string `json:"BackupInputName,omitempty" xml:"BackupInputName,omitempty"`
+	BackupInputStatus   *string `json:"BackupInputStatus,omitempty" xml:"BackupInputStatus,omitempty"`
+	BackupInputUrl      *string `json:"BackupInputUrl,omitempty" xml:"BackupInputUrl,omitempty"`
+	BackupMaxBitrate    *int32  `json:"BackupMaxBitrate,omitempty" xml:"BackupMaxBitrate,omitempty"`
+	BackupSrtLatency    *int32  `json:"BackupSrtLatency,omitempty" xml:"BackupSrtLatency,omitempty"`
+	BackupSrtPassphrase *string `json:"BackupSrtPassphrase,omitempty" xml:"BackupSrtPassphrase,omitempty"`
+	BackupSrtPbkeyLen   *int32  `json:"BackupSrtPbkeyLen,omitempty" xml:"BackupSrtPbkeyLen,omitempty"`
 	// The IP address whitelist in CIDR format. CIDR blocks are separated with commas (,).
 	//
 	// example:
@@ -26150,6 +26171,7 @@ type GetMediaConnectFlowInputResponseBodyContent struct {
 	//
 	// RTMP-PUSH
 	InputProtocol *string `json:"InputProtocol,omitempty" xml:"InputProtocol,omitempty"`
+	InputStatus   *string `json:"InputStatus,omitempty" xml:"InputStatus,omitempty"`
 	// The source URL.
 	//
 	// example:
@@ -26212,6 +26234,51 @@ func (s GetMediaConnectFlowInputResponseBodyContent) GoString() string {
 	return s.String()
 }
 
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupCidrs(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupCidrs = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupCreateTime(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupCreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupInputName(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupInputName = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupInputStatus(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupInputStatus = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupInputUrl(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupInputUrl = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupMaxBitrate(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupMaxBitrate = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupSrtLatency(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupSrtLatency = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupSrtPassphrase(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupSrtPassphrase = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetBackupSrtPbkeyLen(v int32) *GetMediaConnectFlowInputResponseBodyContent {
+	s.BackupSrtPbkeyLen = &v
+	return s
+}
+
 func (s *GetMediaConnectFlowInputResponseBodyContent) SetCidrs(v string) *GetMediaConnectFlowInputResponseBodyContent {
 	s.Cidrs = &v
 	return s
@@ -26229,6 +26296,11 @@ func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputName(v string) *Ge
 
 func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputProtocol(v string) *GetMediaConnectFlowInputResponseBodyContent {
 	s.InputProtocol = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowInputResponseBodyContent) SetInputStatus(v string) *GetMediaConnectFlowInputResponseBodyContent {
+	s.InputStatus = &v
 	return s
 }
 
@@ -26397,6 +26469,7 @@ type GetMediaConnectFlowOutputResponseBodyContent struct {
 	//
 	// 2024-07-18T01:29:24Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Forbid     *string `json:"Forbid,omitempty" xml:"Forbid,omitempty"`
 	// The output name.
 	//
 	// example:
@@ -26490,6 +26563,11 @@ func (s *GetMediaConnectFlowOutputResponseBodyContent) SetCidrs(v string) *GetMe
 
 func (s *GetMediaConnectFlowOutputResponseBodyContent) SetCreateTime(v string) *GetMediaConnectFlowOutputResponseBodyContent {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMediaConnectFlowOutputResponseBodyContent) SetForbid(v string) *GetMediaConnectFlowOutputResponseBodyContent {
+	s.Forbid = &v
 	return s
 }
 
@@ -90718,6 +90796,7 @@ type UpdateMediaConnectFlowInputRequest struct {
 	//
 	// rtmp://pull.test.alivecdn.com/live/alitest
 	InputFromUrl *string `json:"InputFromUrl,omitempty" xml:"InputFromUrl,omitempty"`
+	InputName    *string `json:"InputName,omitempty" xml:"InputName,omitempty"`
 	// The maximum bitrate. Unit: bit/s.
 	//
 	// example:
@@ -90764,6 +90843,11 @@ func (s *UpdateMediaConnectFlowInputRequest) SetFlowId(v string) *UpdateMediaCon
 
 func (s *UpdateMediaConnectFlowInputRequest) SetInputFromUrl(v string) *UpdateMediaConnectFlowInputRequest {
 	s.InputFromUrl = &v
+	return s
+}
+
+func (s *UpdateMediaConnectFlowInputRequest) SetInputName(v string) *UpdateMediaConnectFlowInputRequest {
+	s.InputName = &v
 	return s
 }
 
@@ -99275,6 +99359,10 @@ func (client *Client) DeleteMediaConnectFlowInputWithOptions(request *DeleteMedi
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
 		query["FlowId"] = request.FlowId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputName)) {
+		query["InputName"] = request.InputName
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -118195,6 +118283,10 @@ func (client *Client) UpdateMediaConnectFlowInputWithOptions(request *UpdateMedi
 
 	if !tea.BoolValue(util.IsUnset(request.InputFromUrl)) {
 		query["InputFromUrl"] = request.InputFromUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputName)) {
+		query["InputName"] = request.InputName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxBitrate)) {
