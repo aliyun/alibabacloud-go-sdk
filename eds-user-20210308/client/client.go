@@ -1109,6 +1109,7 @@ func (s *CreateUsersRequestUsers) SetRemark(v string) *CreateUsersRequestUsers {
 }
 
 type CreateUsersResponseBody struct {
+	AllSucceed *bool `json:"AllSucceed,omitempty" xml:"AllSucceed,omitempty"`
 	// The result of user creation.
 	CreateResult *CreateUsersResponseBodyCreateResult `json:"CreateResult,omitempty" xml:"CreateResult,omitempty" type:"Struct"`
 	// The ID of the request.
@@ -1125,6 +1126,11 @@ func (s CreateUsersResponseBody) String() string {
 
 func (s CreateUsersResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateUsersResponseBody) SetAllSucceed(v bool) *CreateUsersResponseBody {
+	s.AllSucceed = &v
+	return s
 }
 
 func (s *CreateUsersResponseBody) SetCreateResult(v *CreateUsersResponseBodyCreateResult) *CreateUsersResponseBody {
