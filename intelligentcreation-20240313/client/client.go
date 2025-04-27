@@ -5081,6 +5081,7 @@ type GetAICoachScriptResponseBody struct {
 	// 1
 	RequestId          *string                                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	SampleDialogueList []*GetAICoachScriptResponseBodySampleDialogueList `json:"sampleDialogueList,omitempty" xml:"sampleDialogueList,omitempty" type:"Repeated"`
+	ScoreConfig        *GetAICoachScriptResponseBodyScoreConfig          `json:"scoreConfig,omitempty" xml:"scoreConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 1
@@ -5251,6 +5252,11 @@ func (s *GetAICoachScriptResponseBody) SetRequestId(v string) *GetAICoachScriptR
 
 func (s *GetAICoachScriptResponseBody) SetSampleDialogueList(v []*GetAICoachScriptResponseBodySampleDialogueList) *GetAICoachScriptResponseBody {
 	s.SampleDialogueList = v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBody) SetScoreConfig(v *GetAICoachScriptResponseBodyScoreConfig) *GetAICoachScriptResponseBody {
+	s.ScoreConfig = v
 	return s
 }
 
@@ -5739,6 +5745,29 @@ func (s *GetAICoachScriptResponseBodySampleDialogueList) SetMessage(v string) *G
 
 func (s *GetAICoachScriptResponseBodySampleDialogueList) SetRole(v string) *GetAICoachScriptResponseBodySampleDialogueList {
 	s.Role = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyScoreConfig struct {
+	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	PassScore *string `json:"passScore,omitempty" xml:"passScore,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyScoreConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyScoreConfig) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfig) SetEnabled(v bool) *GetAICoachScriptResponseBodyScoreConfig {
+	s.Enabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfig) SetPassScore(v string) *GetAICoachScriptResponseBodyScoreConfig {
+	s.PassScore = &v
 	return s
 }
 
