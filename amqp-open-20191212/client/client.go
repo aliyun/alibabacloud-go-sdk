@@ -14,7 +14,7 @@ type DataValue struct {
 	//
 	// example:
 	//
-	// 1565*******973901
+	// 1565************1
 	MasterUid *int64 `json:"masterUid,omitempty" xml:"masterUid,omitempty"`
 	// The ID of the ApsaraMQ for RabbitMQ instance.
 	//
@@ -26,7 +26,7 @@ type DataValue struct {
 	//
 	// example:
 	//
-	// LTAI5***********eRZtEJ6vfo
+	// LTAI****************
 	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
 	// The static username.
 	//
@@ -106,7 +106,7 @@ type CreateAccountRequest struct {
 	//
 	// example:
 	//
-	// LTAI5t8be*******tEJ6vfo
+	// yourAccessKeyID
 	AccountAccessKey *string `json:"accountAccessKey,omitempty" xml:"accountAccessKey,omitempty"`
 	// The timestamp that indicates when the password is created. Unit: milliseconds.
 	//
@@ -134,7 +134,7 @@ type CreateAccountRequest struct {
 	//
 	// example:
 	//
-	// 4c1a6367ce4c4255e9617326f9133ac6359533f6
+	// 4c1a6367ce4c4255e9617326f9133ac635******
 	SecretSign *string `json:"secretSign,omitempty" xml:"secretSign,omitempty"`
 	// The signature. The system generates a static password based on the signature in the request, the AccessKey secret signature, and the username.
 	//
@@ -144,7 +144,7 @@ type CreateAccountRequest struct {
 	//
 	// example:
 	//
-	// 22c2d7d1769cb53c5a6d9213248e2de524c4f799
+	// 22c2d7d1769cb53c5a6d9213248e2de524******
 	Signature *string `json:"signature,omitempty" xml:"signature,omitempty"`
 	// The static username that you want to create.
 	//
@@ -154,7 +154,7 @@ type CreateAccountRequest struct {
 	//
 	// example:
 	//
-	// MjphbXFwLWNuLXp***********************Q4YmVNbVZNMWVSWnRFSjZ2Zm8=
+	// Mjo****************
 	UserName *string `json:"userName,omitempty" xml:"userName,omitempty"`
 }
 
@@ -263,7 +263,7 @@ type CreateAccountResponseBodyData struct {
 	//
 	// example:
 	//
-	// LTAI5***********eRZtEJ6vfo
+	// LTAI****************
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// The timestamp that indicates when the password was created. Unit: milliseconds.
 	//
@@ -727,7 +727,7 @@ type CreateInstanceRequest struct {
 	//
 	// AutoRenewal
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal duration. Unit: months.
+	// The auto-renewal period. The unit of the auto-renewal period is specified by RenewalDurationUnit. Default value: Month.
 	//
 	// >  This parameter takes effect only if you set AutoRenew to true. Default value: 1.
 	//
@@ -740,53 +740,79 @@ type CreateInstanceRequest struct {
 	// example:
 	//
 	// c2c5d1274axxxxxxxx
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
-	// The instance name. We recommend that you specify a name that does not exceed 64 characters in length.
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	// Specifies whether to enable storage encryption for the instance. This parameter is available only for exclusive instances.
+	//
+	// example:
+	//
+	// false
+	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	// The name of the instance. We recommend that you specify a name that does not exceed 64 characters in length.
 	//
 	// example:
 	//
 	// amqp-xxxxx
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance edition. Valid values:
+	// The instance edition. Valid values if you create a subscription instance:
 	//
-	// 	- professional: Professional Edition
+	// 	- professional: Professional Edition.
 	//
 	// 	- enterprise: Enterprise Edition
 	//
 	// 	- vip: Enterprise Platinum Edition
 	//
+	// If you create a serverless instance, you do not need to specify this parameter.
+	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The ID of the Key Management Service (KMS)-managed key used for storage encryption. This parameter is available only for exclusive instances and required only if you set EncryptedInstance to true. The key must meet the following conditions:
+	//
+	// 	- The key cannot be a service key.
+	//
+	// 	- The key must be in the Enabled state.
+	//
+	// 	- The key must be a symmetric key.
+	//
+	// 	- The key must be used for encryption and decryption.
+	//
+	// 	- After the key is expired or deleted, you cannot read or write data and exceptions can occur in the ApsaraMQ for RabbitMQ instance.
+	//
 	// example:
 	//
 	// key-xxx
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
-	// The maximum number of connections that can be established to the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// The maximum number of connections that can be established to the instance.
+	//
+	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
 	//
 	// example:
 	//
 	// 50000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
-	// The maximum number of EIP-based TPS on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// The maximum number of Internet-based TPS on the instance.
+	//
+	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
 	//
 	// example:
 	//
 	// 128
 	MaxEipTps *int64 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
-	// The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance. Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
+	// The maximum number of virtual private cloud (VPC)-based transactions per second (TPS) on the instance.
+	//
+	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
 	//
 	// example:
 	//
 	// 1000
 	MaxPrivateTps *int64 `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
-	// The billing method. Valid value:
+	// The billing method of the instance. Valid values:
 	//
-	// 	- Subscription
+	// 	- Subscription: subscription instance
 	//
-	// >  API operations provided by ApsaraMQ for RabbitMQ are supported only by subscription instances. You can set this parameter only to Subscription.
+	// 	- PayAsYouGo: serverless instance
 	//
 	// This parameter is required.
 	//
@@ -808,19 +834,16 @@ type CreateInstanceRequest struct {
 	//
 	// 	- Year
 	//
-	// >  This parameter takes effect only if you set PaymentType to Subscription. Default value: Month.
+	// This parameter is valid only if you set PaymentType to Subscription. Default value: Month.
 	//
 	// example:
 	//
 	// Month
-	PeriodCycle *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
-	// The number of queues. Valid values:
+	PeriodCycle         *string `json:"PeriodCycle,omitempty" xml:"PeriodCycle,omitempty"`
+	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
+	// The number of queues on the instance.
 	//
-	// 	- Professional Edition: 50 to 1000. The number of queues must increase in increments of 5.
-	//
-	// 	- Enterprise Edition: 200 to 6000. The number of queues must increase in increments of 100.
-	//
-	// 	- Enterprise Platinum Edition: 10000 to 80000. The number of queues must increase in increments of 100.
+	// Configure this parameter based on the values provided on the [ApsaraMQ for RocketMQ buy page](https://common-buy.aliyun.com/?commodityCode=ons_onsproxy_pre).
 	//
 	// example:
 	//
@@ -828,9 +851,9 @@ type CreateInstanceRequest struct {
 	QueueCapacity *int32 `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
 	// The renewal status. This parameter is the same as AutoRenew. You can configure one of these parameters. Valid value:
 	//
-	// - AutoRenewal
+	// 	- AutoRenewal
 	//
-	// > If you configure both this parameter and AutoRenew, the value of this parameter is used.
+	// >  If you configure both this parameter and AutoRenew, the value of this parameter is used.
 	//
 	// example:
 	//
@@ -838,18 +861,23 @@ type CreateInstanceRequest struct {
 	RenewStatus *string `json:"RenewStatus,omitempty" xml:"RenewStatus,omitempty"`
 	// The unit of the auto-renewal period. Valid values:
 	//
-	// - Month
+	// 	- Month
 	//
-	// - Year
+	// 	- Year
 	//
 	// example:
 	//
 	// Month
 	RenewalDurationUnit *string `json:"RenewalDurationUnit,omitempty" xml:"RenewalDurationUnit,omitempty"`
-	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The billing method of the pay-as-you-go instance. Valid values:
+	// The ID of the resource group to which the instance belongs.
 	//
-	// - onDemand: You are charged based on your actual usage
+	// example:
+	//
+	// rg-acfmvvajg5qkxhi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The billing method of the serverless instance. Valid value:
+	//
+	// 	- onDemand: You are charged based on your actual usage.
 	//
 	// example:
 	//
@@ -857,11 +885,11 @@ type CreateInstanceRequest struct {
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
 	// The storage capacity. Unit: GB. Valid values:
 	//
-	// 	- Professional Edition and Enterprise Edition instances: Set this parameter to 0.
+	// 	- Professional Edition and Enterprise Edition instances: Set the value to 0.
 	//
 	// >  The value 0 specifies that storage space is available for Professional Edition and Enterprise Edition instances, but no storage fees are generated.
 	//
-	// 	- Platinum Edition instances: Set the value to m × 100, where m ranges from 7 to 28.
+	// 	- Enterprise Platinum Edition instances: Set the value to m × 100, where m is an integer that ranges from 7 to 28.
 	//
 	// example:
 	//
@@ -885,7 +913,7 @@ type CreateInstanceRequest struct {
 	//
 	// >
 	//
-	// 	- Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you use an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
+	// 	- Enterprise Platinum Edition instances allow you to retain message traces for 15 days free of charge. If you create an Enterprise Platinum Edition instance, you can set this parameter only to true and TracingStorageTime only to 15.
 	//
 	// 	- For instances of other editions, you can set this parameter to true or false.
 	//
@@ -901,7 +929,7 @@ type CreateInstanceRequest struct {
 	//
 	// 	- 15
 	//
-	// >  This parameter takes effect only if you set SupportTracing to true.
+	// This parameter is valid only if you set SupportTracing to true.
 	//
 	// example:
 	//
@@ -929,6 +957,11 @@ func (s *CreateInstanceRequest) SetAutoRenewPeriod(v int32) *CreateInstanceReque
 
 func (s *CreateInstanceRequest) SetClientToken(v string) *CreateInstanceRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetEdition(v string) *CreateInstanceRequest {
+	s.Edition = &v
 	return s
 }
 
@@ -979,6 +1012,11 @@ func (s *CreateInstanceRequest) SetPeriod(v int32) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPeriodCycle(v string) *CreateInstanceRequest {
 	s.PeriodCycle = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetProvisionedCapacity(v int32) *CreateInstanceRequest {
+	s.ProvisionedCapacity = &v
 	return s
 }
 
@@ -1433,8 +1471,6 @@ type DeleteAccountRequest struct {
 	// The timestamp that indicates when the pair of static username and password that you want to delete was created. Unit: milliseconds.
 	//
 	// You can call the [ListAccounts](https://help.aliyun.com/document_detail/472730.html) operation to view the timestamp.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -3673,7 +3709,12 @@ type ListInstancesRequest struct {
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a****
-	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the resource group to which the instances belong.
+	//
+	// example:
+	//
+	// rg-aekzu74zjgdu4mq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
@@ -3701,7 +3742,7 @@ func (s *ListInstancesRequest) SetResourceGroupId(v string) *ListInstancesReques
 }
 
 type ListInstancesResponseBody struct {
-	// The returned data.
+	// The data returned.
 	Data *ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -3781,8 +3822,13 @@ type ListInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// amqp-cn-st21x7kv****.not-support
-	ClassicEndpoint   *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
-	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	ClassicEndpoint *string `json:"ClassicEndpoint,omitempty" xml:"ClassicEndpoint,omitempty"`
+	// Indicates whether the encryption at rest feature is enabled for the instance.
+	//
+	// example:
+	//
+	// false
+	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
 	// The timestamp that indicates when the instance expires. Unit: milliseconds.
 	//
 	// example:
@@ -3813,7 +3859,12 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	KmsKeyId     *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The ID of the Key Management Service (KMS) key used for the data disk.
+	//
+	// example:
+	//
+	// key-bjj66c2a893vmhawtq5fd
+	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	// The maximum number of Internet-based transactions per second (TPS) for the instance.
 	//
 	// example:
@@ -3865,7 +3916,12 @@ type ListInstancesResponseBodyDataInstances struct {
 	// example:
 	//
 	// amqp-cn-st21x7kv****.mq-amqp.cn-hangzhou-a.aliyuncs.com
-	PublicEndpoint  *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	PublicEndpoint *string `json:"PublicEndpoint,omitempty" xml:"PublicEndpoint,omitempty"`
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-aek3axfj2w4czrq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// The instance status. Valid values:
 	//
@@ -3895,7 +3951,7 @@ type ListInstancesResponseBodyDataInstances struct {
 	//
 	// true
 	SupportEIP *bool `json:"SupportEIP,omitempty" xml:"SupportEIP,omitempty"`
-	// 标签列表。
+	// The tags that are added to the instance.
 	Tags []*ListInstancesResponseBodyDataInstancesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -4013,13 +4069,13 @@ func (s *ListInstancesResponseBodyDataInstances) SetTags(v []*ListInstancesRespo
 }
 
 type ListInstancesResponseBodyDataInstancesTags struct {
-	// 标签键。
+	// The tag key.
 	//
 	// example:
 	//
 	// region
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值。
+	// The tag value.
 	//
 	// example:
 	//
@@ -4955,63 +5011,118 @@ func (s *ListVirtualHostsResponse) SetBody(v *ListVirtualHostsResponseBody) *Lis
 }
 
 type UpdateInstanceRequest struct {
+	// The client token.
+	//
 	// example:
 	//
 	// c2c5d1274axxxxxxxx
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	EncryptedInstance *bool   `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 实例是否开通数据存储加密功能
+	//
+	// example:
+	//
+	// false
+	EncryptedInstance *bool `json:"EncryptedInstance,omitempty" xml:"EncryptedInstance,omitempty"`
+	// The ID of the ApsaraMQ for RabbitMQ instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amqp-cn-jtexxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance edition. Valid values for subscription instances:
+	//
+	// 	- professional: Professional Edition
+	//
+	// 	- enterprise: Enterprise Edition
+	//
+	// 	- vip: Enterprise Platinum Edition.
+	//
+	// If your instance is a pay-as-you-go instance, you do not need to configure this parameter.
+	//
 	// example:
 	//
 	// professional
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 使用同地域下KMS密钥ID
+	//
 	// example:
 	//
-	// key-xxx
+	// key-bjj66c2a893vmhawtq5fd
 	KmsKeyId *string `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
+	// The maximum number of connections that can be created on the instance.
+	//
 	// example:
 	//
 	// 1000
 	MaxConnections *int32 `json:"MaxConnections,omitempty" xml:"MaxConnections,omitempty"`
+	// The peak TPS for accessing the instance over the Internet.
+	//
 	// example:
 	//
 	// 128
 	MaxEipTps *int64 `json:"MaxEipTps,omitempty" xml:"MaxEipTps,omitempty"`
+	// The peak transactions per second (TPS) for accessing the instance in a virtual private cloud (VPC).
+	//
 	// example:
 	//
 	// 1000
 	MaxPrivateTps *int64 `json:"MaxPrivateTps,omitempty" xml:"MaxPrivateTps,omitempty"`
+	// The type of the configuration change. Valid values:
+	//
+	// 	- UPGRADE
+	//
+	// 	- DOWNGRADE
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// UPGRADE
 	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	// The maximum number of queues that can be created on the instance.
+	//
 	// example:
 	//
 	// 1000
 	QueueCapacity *int32 `json:"QueueCapacity,omitempty" xml:"QueueCapacity,omitempty"`
+	// The billing method of the serverless instance. Valid values:
+	//
+	// 	- onDemand: You are charged based on your actual usage.
+	//
 	// example:
 	//
 	// onDemand
 	ServerlessChargeType *string `json:"ServerlessChargeType,omitempty" xml:"ServerlessChargeType,omitempty"`
+	// The size of the storage space that can be used to store messages.
+	//
 	// example:
 	//
 	// 7
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	// Specifies whether elastic IP addresses (EIPs) are supported.
+	//
 	// example:
 	//
 	// false
 	SupportEip *bool `json:"SupportEip,omitempty" xml:"SupportEip,omitempty"`
+	// Specifies whether to enable the message trace feature.
+	//
 	// example:
 	//
 	// false
 	SupportTracing *bool `json:"SupportTracing,omitempty" xml:"SupportTracing,omitempty"`
+	// The retention period of message traces.
+	//
+	// Valid values:
+	//
+	// 	- 3
+	//
+	// 	- 7
+	//
+	// 	- 15
+	//
 	// example:
 	//
 	// 3
@@ -5102,26 +5213,50 @@ func (s *UpdateInstanceRequest) SetTracingStorageTime(v int32) *UpdateInstanceRe
 }
 
 type UpdateInstanceResponseBody struct {
+	// The response code. The status code 200 indicates that the request was successful.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data, which includes orderId and instanceId. Sample returned data:
+	//
+	// ```json
+	//
+	// "Data": {
+	//
+	//     "instanceId": "amqp-cn-xxxxx",
+	//
+	//     "orderId": 22222
+	//
+	//   }
+	//
+	// ```
+	//
 	// example:
 	//
 	// {“instanceId”: “amqp-cn-jtexxxxx”, “orderId”: 2222222}
 	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The returned message.
+	//
 	// example:
 	//
 	// InstanceNotExist
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 628705FD-03EE-4ABE-BB21-E1672960***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The response code.
+	//
 	// example:
 	//
 	// 200
 	StatusCode *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// Indicates whether the request was successful.
+	//
 	// example:
 	//
 	// true
@@ -5657,6 +5792,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		query["Edition"] = request.Edition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptedInstance)) {
 		query["EncryptedInstance"] = request.EncryptedInstance
 	}
@@ -5695,6 +5834,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.PeriodCycle)) {
 		query["PeriodCycle"] = request.PeriodCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedCapacity)) {
+		query["ProvisionedCapacity"] = request.ProvisionedCapacity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.QueueCapacity)) {
@@ -6094,9 +6237,9 @@ func (client *Client) DeleteBinding(request *DeleteBindingRequest) (_result *Del
 //
 // ## [](#)Usage notes
 //
-// 	- You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
+//   - You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
 //
-// 	- You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+//   - You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
 //
 // @param request - DeleteExchangeRequest
 //
@@ -6152,9 +6295,9 @@ func (client *Client) DeleteExchangeWithOptions(request *DeleteExchangeRequest, 
 //
 // ## [](#)Usage notes
 //
-// 	- You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
+//   - You cannot delete exchanges of the **headers*	- and **x-jms-topic*	- types.
 //
-// 	- You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
+//   - You cannot delete built-in exchanges in a vhost. These exchanges are amq.direct, amq.topic, and amq.fanout.
 //
 // @param request - DeleteExchangeRequest
 //
@@ -6996,7 +7139,7 @@ func (client *Client) ListVirtualHosts(request *ListVirtualHostsRequest) (_resul
 
 // Summary:
 //
-// 变更实例，升降配
+// Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
 //
 // @param request - UpdateInstanceRequest
 //
@@ -7094,7 +7237,7 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 // Summary:
 //
-// 变更实例，升降配
+// Upgrades or downgrades the configurations of an ApsaraMQ for RabbitMQ instance.
 //
 // @param request - UpdateInstanceRequest
 //
