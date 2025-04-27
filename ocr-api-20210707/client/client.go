@@ -814,6 +814,7 @@ func (s *RecognizeAllTextRequestAdvancedConfig) SetOutputTableHtml(v bool) *Reco
 }
 
 type RecognizeAllTextRequestIdCardConfig struct {
+	LlmRec *bool `json:"Llm_rec,omitempty" xml:"Llm_rec,omitempty"`
 	// example:
 	//
 	// false
@@ -826,6 +827,11 @@ func (s RecognizeAllTextRequestIdCardConfig) String() string {
 
 func (s RecognizeAllTextRequestIdCardConfig) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeAllTextRequestIdCardConfig) SetLlmRec(v bool) *RecognizeAllTextRequestIdCardConfig {
+	s.LlmRec = &v
+	return s
 }
 
 func (s *RecognizeAllTextRequestIdCardConfig) SetOutputIdCardQuality(v bool) *RecognizeAllTextRequestIdCardConfig {
@@ -6867,6 +6873,7 @@ func (s *RecognizeHouseholdResponse) SetBody(v *RecognizeHouseholdResponseBody) 
 }
 
 type RecognizeIdcardRequest struct {
+	LlmRec *bool `json:"Llm_rec,omitempty" xml:"Llm_rec,omitempty"`
 	// example:
 	//
 	// false
@@ -6888,6 +6895,11 @@ func (s RecognizeIdcardRequest) String() string {
 
 func (s RecognizeIdcardRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeIdcardRequest) SetLlmRec(v bool) *RecognizeIdcardRequest {
+	s.LlmRec = &v
+	return s
 }
 
 func (s *RecognizeIdcardRequest) SetOutputFigure(v bool) *RecognizeIdcardRequest {
@@ -13130,7 +13142,7 @@ func (client *Client) RecognizeGeneral(request *RecognizeGeneralRequest) (_resul
 
 // Summary:
 //
-// DocMaster
+// # DocMaster
 //
 // @param tmpReq - RecognizeGeneralStructureRequest
 //
@@ -13184,7 +13196,7 @@ func (client *Client) RecognizeGeneralStructureWithOptions(tmpReq *RecognizeGene
 
 // Summary:
 //
-// DocMaster
+// # DocMaster
 //
 // @param request - RecognizeGeneralStructureRequest
 //
@@ -13549,6 +13561,10 @@ func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LlmRec)) {
+		query["Llm_rec"] = request.LlmRec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OutputFigure)) {
 		query["OutputFigure"] = request.OutputFigure
 	}
