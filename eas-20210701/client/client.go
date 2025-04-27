@@ -12893,7 +12893,11 @@ type ListServicesRequest struct {
 	// example:
 	//
 	// quota12345
-	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaId           *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	//
 	// The name or ID of the resource group to which the service belongs.
 	//
 	// example:
@@ -13211,6 +13215,16 @@ func (s *ListServicesRequest) SetQuotaId(v string) *ListServicesRequest {
 	return s
 }
 
+func (s *ListServicesRequest) SetResourceAliasName(v string) *ListServicesRequest {
+	s.ResourceAliasName = &v
+	return s
+}
+
+func (s *ListServicesRequest) SetResourceId(v string) *ListServicesRequest {
+	s.ResourceId = &v
+	return s
+}
+
 func (s *ListServicesRequest) SetResourceName(v string) *ListServicesRequest {
 	s.ResourceName = &v
 	return s
@@ -13311,7 +13325,11 @@ type ListServicesShrinkRequest struct {
 	// example:
 	//
 	// quota12345
-	QuotaId *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	QuotaId           *string `json:"QuotaId,omitempty" xml:"QuotaId,omitempty"`
+	ResourceAliasName *string `json:"ResourceAliasName,omitempty" xml:"ResourceAliasName,omitempty"`
+	ResourceId        *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Deprecated
+	//
 	// The name or ID of the resource group to which the service belongs.
 	//
 	// example:
@@ -13626,6 +13644,16 @@ func (s *ListServicesShrinkRequest) SetParentServiceUid(v string) *ListServicesS
 
 func (s *ListServicesShrinkRequest) SetQuotaId(v string) *ListServicesShrinkRequest {
 	s.QuotaId = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetResourceAliasName(v string) *ListServicesShrinkRequest {
+	s.ResourceAliasName = &v
+	return s
+}
+
+func (s *ListServicesShrinkRequest) SetResourceId(v string) *ListServicesShrinkRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -21588,6 +21616,14 @@ func (client *Client) ListServicesWithOptions(tmpReq *ListServicesRequest, heade
 
 	if !tea.BoolValue(util.IsUnset(request.QuotaId)) {
 		query["QuotaId"] = request.QuotaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAliasName)) {
+		query["ResourceAliasName"] = request.ResourceAliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
