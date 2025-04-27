@@ -434,7 +434,8 @@ type GetLoginTokenRequest struct {
 	// example:
 	//
 	// 05967f80-6f51-46cb-a27c-****
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
 	// example:
 	//
 	// windows_\\"Windows 10 Pro\\" 10.0 (Build 22631)
@@ -528,6 +529,7 @@ type GetLoginTokenRequest struct {
 	//
 	// 321123
 	PhoneVerifyCode *string `json:"PhoneVerifyCode,omitempty" xml:"PhoneVerifyCode,omitempty"`
+	ProfileRegion   *string `json:"ProfileRegion,omitempty" xml:"ProfileRegion,omitempty"`
 	// example:
 	//
 	// cn-shanghai
@@ -578,6 +580,11 @@ func (s *GetLoginTokenRequest) SetAvailableFeatures(v map[string]*string) *GetLo
 
 func (s *GetLoginTokenRequest) SetClientId(v string) *GetLoginTokenRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *GetLoginTokenRequest) SetClientName(v string) *GetLoginTokenRequest {
+	s.ClientName = &v
 	return s
 }
 
@@ -701,6 +708,11 @@ func (s *GetLoginTokenRequest) SetPhoneVerifyCode(v string) *GetLoginTokenReques
 	return s
 }
 
+func (s *GetLoginTokenRequest) SetProfileRegion(v string) *GetLoginTokenRequest {
+	s.ProfileRegion = &v
+	return s
+}
+
 func (s *GetLoginTokenRequest) SetRegionId(v string) *GetLoginTokenRequest {
 	s.RegionId = &v
 	return s
@@ -747,7 +759,8 @@ type GetLoginTokenShrinkRequest struct {
 	// example:
 	//
 	// 05967f80-6f51-46cb-a27c-****
-	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
 	// example:
 	//
 	// windows_\\"Windows 10 Pro\\" 10.0 (Build 22631)
@@ -841,6 +854,7 @@ type GetLoginTokenShrinkRequest struct {
 	//
 	// 321123
 	PhoneVerifyCode *string `json:"PhoneVerifyCode,omitempty" xml:"PhoneVerifyCode,omitempty"`
+	ProfileRegion   *string `json:"ProfileRegion,omitempty" xml:"ProfileRegion,omitempty"`
 	// example:
 	//
 	// cn-shanghai
@@ -891,6 +905,11 @@ func (s *GetLoginTokenShrinkRequest) SetAvailableFeaturesShrink(v string) *GetLo
 
 func (s *GetLoginTokenShrinkRequest) SetClientId(v string) *GetLoginTokenShrinkRequest {
 	s.ClientId = &v
+	return s
+}
+
+func (s *GetLoginTokenShrinkRequest) SetClientName(v string) *GetLoginTokenShrinkRequest {
+	s.ClientName = &v
 	return s
 }
 
@@ -1014,6 +1033,11 @@ func (s *GetLoginTokenShrinkRequest) SetPhoneVerifyCode(v string) *GetLoginToken
 	return s
 }
 
+func (s *GetLoginTokenShrinkRequest) SetProfileRegion(v string) *GetLoginTokenShrinkRequest {
+	s.ProfileRegion = &v
+	return s
+}
+
 func (s *GetLoginTokenShrinkRequest) SetRegionId(v string) *GetLoginTokenShrinkRequest {
 	s.RegionId = &v
 	return s
@@ -1095,6 +1119,7 @@ type GetLoginTokenResponseBody struct {
 	//
 	// MFABind
 	NextStage        *string                                    `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
+	NickName         *string                                    `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	OfficeSites      []*string                                  `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	PasswordStrategy *GetLoginTokenResponseBodyPasswordStrategy `json:"PasswordStrategy,omitempty" xml:"PasswordStrategy,omitempty" type:"Struct"`
 	// example:
@@ -1211,6 +1236,11 @@ func (s *GetLoginTokenResponseBody) SetMfaTypeList(v []*GetLoginTokenResponseBod
 
 func (s *GetLoginTokenResponseBody) SetNextStage(v string) *GetLoginTokenResponseBody {
 	s.NextStage = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBody) SetNickName(v string) *GetLoginTokenResponseBody {
+	s.NickName = &v
 	return s
 }
 
@@ -1911,7 +1941,7 @@ func (client *Client) FindIdpListByLoginIdentifier(request *FindIdpListByLoginId
 
 // Summary:
 //
-// GetLoginToken
+// # GetLoginToken
 //
 // @param tmpReq - GetLoginTokenRequest
 //
@@ -1940,6 +1970,10 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
 		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientName)) {
+		query["ClientName"] = request.ClientName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientOS)) {
@@ -2038,6 +2072,10 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 		query["PhoneVerifyCode"] = request.PhoneVerifyCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProfileRegion)) {
+		query["ProfileRegion"] = request.ProfileRegion
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -2091,7 +2129,7 @@ func (client *Client) GetLoginTokenWithOptions(tmpReq *GetLoginTokenRequest, run
 
 // Summary:
 //
-// GetLoginToken
+// # GetLoginToken
 //
 // @param request - GetLoginTokenRequest
 //
