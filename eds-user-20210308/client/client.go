@@ -941,6 +941,99 @@ func (s *CreatePropertyResponse) SetBody(v *CreatePropertyResponseBody) *CreateP
 	return s
 }
 
+type CreateResourceGroupRequest struct {
+	// example:
+	//
+	// 0
+	IsResourceGroupWithOfficeSite *int64 `json:"IsResourceGroupWithOfficeSite,omitempty" xml:"IsResourceGroupWithOfficeSite,omitempty"`
+	// example:
+	//
+	// AliyunConsole
+	Platform          *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s CreateResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupRequest) SetIsResourceGroupWithOfficeSite(v int64) *CreateResourceGroupRequest {
+	s.IsResourceGroupWithOfficeSite = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetPlatform(v string) *CreateResourceGroupRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *CreateResourceGroupRequest) SetResourceGroupName(v string) *CreateResourceGroupRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type CreateResourceGroupResponseBody struct {
+	// example:
+	//
+	// 868B8926-2E7A-5BE7-9897-E811E994****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-ckf3cx7isinhk***
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+}
+
+func (s CreateResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupResponseBody) SetRequestId(v string) *CreateResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateResourceGroupResponseBody) SetResourceGroupId(v string) *CreateResourceGroupResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+type CreateResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceGroupResponse) SetHeaders(v map[string]*string) *CreateResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceGroupResponse) SetStatusCode(v int32) *CreateResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceGroupResponse) SetBody(v *CreateResourceGroupResponseBody) *CreateResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateUsersRequest struct {
 	// The date on which the convenience users are automatically locked.
 	//
@@ -1325,6 +1418,81 @@ func (s *CreateUsersResponse) SetStatusCode(v int32) *CreateUsersResponse {
 }
 
 func (s *CreateUsersResponse) SetBody(v *CreateUsersResponseBody) *CreateUsersResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteResourceGroupRequest struct {
+	// example:
+	//
+	// rg-aj01tck67a0szp***
+	ResourceGroupId  *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceGroupRequest) SetResourceGroupId(v string) *DeleteResourceGroupRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteResourceGroupRequest) SetResourceGroupIds(v []*string) *DeleteResourceGroupRequest {
+	s.ResourceGroupIds = v
+	return s
+}
+
+type DeleteResourceGroupResponseBody struct {
+	// example:
+	//
+	// 2463A343-BD32-5803-959E-9A8472A1***
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceGroupResponseBody) SetRequestId(v string) *DeleteResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteResourceGroupResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteResourceGroupResponse) SetHeaders(v map[string]*string) *DeleteResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceGroupResponse) SetStatusCode(v int32) *DeleteResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteResourceGroupResponse) SetBody(v *DeleteResourceGroupResponseBody) *DeleteResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1985,6 +2153,255 @@ func (s *DescribeOrgsResponse) SetStatusCode(v int32) *DescribeOrgsResponse {
 }
 
 func (s *DescribeOrgsResponse) SetBody(v *DescribeOrgsResponseBody) *DescribeOrgsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeResourceGroupsRequest struct {
+	// example:
+	//
+	// 0
+	NeedContainResourceGroupWithOfficeSite *int64 `json:"NeedContainResourceGroupWithOfficeSite,omitempty" xml:"NeedContainResourceGroupWithOfficeSite,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// AliyunConsole
+	Platform          *string   `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	ResourceGroupIds  []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
+	ResourceGroupName *string   `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+}
+
+func (s DescribeResourceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsRequest) SetNeedContainResourceGroupWithOfficeSite(v int64) *DescribeResourceGroupsRequest {
+	s.NeedContainResourceGroupWithOfficeSite = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetPageNumber(v int32) *DescribeResourceGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetPageSize(v int32) *DescribeResourceGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetPlatform(v string) *DescribeResourceGroupsRequest {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetResourceGroupIds(v []*string) *DescribeResourceGroupsRequest {
+	s.ResourceGroupIds = v
+	return s
+}
+
+func (s *DescribeResourceGroupsRequest) SetResourceGroupName(v string) *DescribeResourceGroupsRequest {
+	s.ResourceGroupName = &v
+	return s
+}
+
+type DescribeResourceGroupsResponseBody struct {
+	// example:
+	//
+	// 68BA1DF7-8814-5AED-B844-F8F7F7****
+	RequestId     *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroup []*DescribeResourceGroupsResponseBodyResourceGroup `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 7
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeResourceGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBody) SetRequestId(v string) *DescribeResourceGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBody) SetResourceGroup(v []*DescribeResourceGroupsResponseBodyResourceGroup) *DescribeResourceGroupsResponseBody {
+	s.ResourceGroup = v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBody) SetTotalCount(v string) *DescribeResourceGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeResourceGroupsResponseBodyResourceGroup struct {
+	// example:
+	//
+	// 3
+	AuthCount *string `json:"AuthCount,omitempty" xml:"AuthCount,omitempty"`
+	// example:
+	//
+	// 2022-11-29T17:25:40.000000000Z
+	CreateTime *string                                                    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Policies   []*DescribeResourceGroupsResponseBodyResourceGroupPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 119
+	ResourceCount *string `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
+	// example:
+	//
+	// rg-cyo0il2pzge1***
+	ResourceGroupId   *string                                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupName *string                                                  `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
+	Timers            []*DescribeResourceGroupsResponseBodyResourceGroupTimers `json:"Timers,omitempty" xml:"Timers,omitempty" type:"Repeated"`
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAuthCount(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.AuthCount = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetCreateTime(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetPolicies(v []*DescribeResourceGroupsResponseBodyResourceGroupPolicies) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetResourceCount(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.ResourceCount = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetResourceGroupId(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetResourceGroupName(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.ResourceGroupName = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetTimers(v []*DescribeResourceGroupsResponseBodyResourceGroupTimers) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.Timers = v
+	return s
+}
+
+type DescribeResourceGroupsResponseBodyResourceGroupPolicies struct {
+	// example:
+	//
+	// pl-a8jnatl8kjasb***
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// False
+	IsDefault *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) SetId(v string) *DescribeResourceGroupsResponseBodyResourceGroupPolicies {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) SetIsDefault(v bool) *DescribeResourceGroupsResponseBodyResourceGroupPolicies {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) SetName(v string) *DescribeResourceGroupsResponseBodyResourceGroupPolicies {
+	s.Name = &v
+	return s
+}
+
+type DescribeResourceGroupsResponseBodyResourceGroupTimers struct {
+	// example:
+	//
+	// t-asdzx0mbjhg***
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupTimers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetId(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetName(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
+	s.Name = &v
+	return s
+}
+
+type DescribeResourceGroupsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeResourceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeResourceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponse) SetHeaders(v map[string]*string) *DescribeResourceGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponse) SetStatusCode(v int32) *DescribeResourceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponse) SetBody(v *DescribeResourceGroupsResponseBody) *DescribeResourceGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -6611,6 +7028,74 @@ func (client *Client) CreateProperty(request *CreatePropertyRequest) (_result *C
 
 // Summary:
 //
+// 创建资源组
+//
+// @param request - CreateResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceGroupResponse
+func (client *Client) CreateResourceGroupWithOptions(request *CreateResourceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IsResourceGroupWithOfficeSite)) {
+		query["IsResourceGroupWithOfficeSite"] = request.IsResourceGroupWithOfficeSite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建资源组
+//
+// @param request - CreateResourceGroupRequest
+//
+// @return CreateResourceGroupResponse
+func (client *Client) CreateResourceGroup(request *CreateResourceGroupRequest) (_result *CreateResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateResourceGroupResponse{}
+	_body, _err := client.CreateResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a convenience user.
 //
 // Description:
@@ -6688,6 +7173,70 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateUsersResponse{}
 	_body, _err := client.CreateUsersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源组
+//
+// @param request - DeleteResourceGroupRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteResourceGroupResponse
+func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
+		query["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteResourceGroup"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除资源组
+//
+// @param request - DeleteResourceGroupRequest
+//
+// @return DeleteResourceGroupResponse
+func (client *Client) DeleteResourceGroup(request *DeleteResourceGroupRequest) (_result *DeleteResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteResourceGroupResponse{}
+	_body, _err := client.DeleteResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6984,6 +7533,86 @@ func (client *Client) DescribeOrgs(request *DescribeOrgsRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOrgsResponse{}
 	_body, _err := client.DescribeOrgsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看资源组
+//
+// @param request - DescribeResourceGroupsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceGroupsResponse
+func (client *Client) DescribeResourceGroupsWithOptions(request *DescribeResourceGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeResourceGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NeedContainResourceGroupWithOfficeSite)) {
+		query["NeedContainResourceGroupWithOfficeSite"] = request.NeedContainResourceGroupWithOfficeSite
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platform)) {
+		query["Platform"] = request.Platform
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIds)) {
+		query["ResourceGroupIds"] = request.ResourceGroupIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupName)) {
+		query["ResourceGroupName"] = request.ResourceGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceGroups"),
+		Version:     tea.String("2021-03-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeResourceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看资源组
+//
+// @param request - DescribeResourceGroupsRequest
+//
+// @return DescribeResourceGroupsResponse
+func (client *Client) DescribeResourceGroups(request *DescribeResourceGroupsRequest) (_result *DescribeResourceGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeResourceGroupsResponse{}
+	_body, _err := client.DescribeResourceGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
