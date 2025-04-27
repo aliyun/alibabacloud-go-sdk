@@ -7090,6 +7090,8 @@ func (s *RetrieveResponse) SetBody(v *RetrieveResponseBody) *RetrieveResponse {
 type SubmitIndexAddDocumentsJobRequest struct {
 	// The list of primary key IDs of the category.
 	CategoryIds []*string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty" type:"Repeated"`
+	ChunkMode   *string   `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
+	ChunkSize   *int32    `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	// The list of the primary key IDs of the documents.
 	DocumentIds []*string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty" type:"Repeated"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
@@ -7099,7 +7101,9 @@ type SubmitIndexAddDocumentsJobRequest struct {
 	// example:
 	//
 	// 79c0aly8zw
-	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	IndexId     *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	OverlapSize *int32  `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	Separator   *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
 	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
 	//
 	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
@@ -7129,6 +7133,16 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetCategoryIds(v []*string) *SubmitI
 	return s
 }
 
+func (s *SubmitIndexAddDocumentsJobRequest) SetChunkMode(v string) *SubmitIndexAddDocumentsJobRequest {
+	s.ChunkMode = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetChunkSize(v int32) *SubmitIndexAddDocumentsJobRequest {
+	s.ChunkSize = &v
+	return s
+}
+
 func (s *SubmitIndexAddDocumentsJobRequest) SetDocumentIds(v []*string) *SubmitIndexAddDocumentsJobRequest {
 	s.DocumentIds = v
 	return s
@@ -7136,6 +7150,16 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetDocumentIds(v []*string) *SubmitI
 
 func (s *SubmitIndexAddDocumentsJobRequest) SetIndexId(v string) *SubmitIndexAddDocumentsJobRequest {
 	s.IndexId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetOverlapSize(v int32) *SubmitIndexAddDocumentsJobRequest {
+	s.OverlapSize = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobRequest) SetSeparator(v string) *SubmitIndexAddDocumentsJobRequest {
+	s.Separator = &v
 	return s
 }
 
@@ -7147,6 +7171,8 @@ func (s *SubmitIndexAddDocumentsJobRequest) SetSourceType(v string) *SubmitIndex
 type SubmitIndexAddDocumentsJobShrinkRequest struct {
 	// The list of primary key IDs of the category.
 	CategoryIdsShrink *string `json:"CategoryIds,omitempty" xml:"CategoryIds,omitempty"`
+	ChunkMode         *string `json:"ChunkMode,omitempty" xml:"ChunkMode,omitempty"`
+	ChunkSize         *int32  `json:"ChunkSize,omitempty" xml:"ChunkSize,omitempty"`
 	// The list of the primary key IDs of the documents.
 	DocumentIdsShrink *string `json:"DocumentIds,omitempty" xml:"DocumentIds,omitempty"`
 	// The primary key ID of the knowledge base, which is the `Data.Id` parameter returned by the [CreateIndex](https://www.alibabacloud.com/help/en/model-studio/developer-reference/api-bailian-2023-12-29-createindex) operation.
@@ -7156,7 +7182,9 @@ type SubmitIndexAddDocumentsJobShrinkRequest struct {
 	// example:
 	//
 	// 79c0aly8zw
-	IndexId *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	IndexId     *string `json:"IndexId,omitempty" xml:"IndexId,omitempty"`
+	OverlapSize *int32  `json:"OverlapSize,omitempty" xml:"OverlapSize,omitempty"`
+	Separator   *string `json:"Separator,omitempty" xml:"Separator,omitempty"`
 	// The data type of [Data Management](https://bailian.console.aliyun.com/#/data-center). For more information, see [Create a knowledge base](https://www.alibabacloud.com/help/en/model-studio/user-guide/rag-knowledge-base). Valid values:
 	//
 	// 	- DATA_CENTER_CATEGORY: The category type. Import all documents from one or more categories in Data Center.
@@ -7186,6 +7214,16 @@ func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetCategoryIdsShrink(v string)
 	return s
 }
 
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetChunkMode(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.ChunkMode = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetChunkSize(v int32) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.ChunkSize = &v
+	return s
+}
+
 func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetDocumentIdsShrink(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
 	s.DocumentIdsShrink = &v
 	return s
@@ -7193,6 +7231,16 @@ func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetDocumentIdsShrink(v string)
 
 func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetIndexId(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
 	s.IndexId = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetOverlapSize(v int32) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.OverlapSize = &v
+	return s
+}
+
+func (s *SubmitIndexAddDocumentsJobShrinkRequest) SetSeparator(v string) *SubmitIndexAddDocumentsJobShrinkRequest {
+	s.Separator = &v
 	return s
 }
 
@@ -11308,12 +11356,28 @@ func (client *Client) SubmitIndexAddDocumentsJobWithOptions(WorkspaceId *string,
 		query["CategoryIds"] = request.CategoryIdsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ChunkMode)) {
+		query["ChunkMode"] = request.ChunkMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChunkSize)) {
+		query["ChunkSize"] = request.ChunkSize
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DocumentIdsShrink)) {
 		query["DocumentIds"] = request.DocumentIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IndexId)) {
 		query["IndexId"] = request.IndexId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OverlapSize)) {
+		query["OverlapSize"] = request.OverlapSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Separator)) {
+		query["Separator"] = request.Separator
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
