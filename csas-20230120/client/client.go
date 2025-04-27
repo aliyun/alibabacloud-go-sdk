@@ -851,7 +851,8 @@ type CreateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	DomainWhitelistSchemaId   *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	EndpointHardeningSchemaId *string `json:"EndpointHardeningSchemaId,omitempty" xml:"EndpointHardeningSchemaId,omitempty"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -859,7 +860,8 @@ type CreateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareBlockSchemaId     *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareHardeningSchemaId *string `json:"SoftwareHardeningSchemaId,omitempty" xml:"SoftwareHardeningSchemaId,omitempty"`
 }
 
 func (s CreateApprovalProcessRequestMatchSchemas) String() string {
@@ -895,6 +897,11 @@ func (s *CreateApprovalProcessRequestMatchSchemas) SetDomainWhitelistSchemaId(v 
 	return s
 }
 
+func (s *CreateApprovalProcessRequestMatchSchemas) SetEndpointHardeningSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.EndpointHardeningSchemaId = &v
+	return s
+}
+
 func (s *CreateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
 	s.PeripheralBlockSchemaId = &v
 	return s
@@ -902,6 +909,11 @@ func (s *CreateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v 
 
 func (s *CreateApprovalProcessRequestMatchSchemas) SetSoftwareBlockSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
 	s.SoftwareBlockSchemaId = &v
+	return s
+}
+
+func (s *CreateApprovalProcessRequestMatchSchemas) SetSoftwareHardeningSchemaId(v string) *CreateApprovalProcessRequestMatchSchemas {
+	s.SoftwareHardeningSchemaId = &v
 	return s
 }
 
@@ -983,14 +995,16 @@ type CreateApprovalProcessResponseBodyProcess struct {
 	DlpSendPolicies            *CreateApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	DomainBlacklistPolicies    *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	DomainWhitelistPolicies    *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	EndpointHardeningPolicies  *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
 	PeripheralBlockPolicies    *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
 	// example:
 	//
 	// approval-process-dc61e92ba5c5****
-	ProcessId             *string                                                        `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName           *string                                                        `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes          [][]*CreateApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	SoftwareBlockPolicies *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	ProcessId                 *string                                                            `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName               *string                                                            `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes              [][]*CreateApprovalProcessResponseBodyProcessProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies     *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareHardeningPolicies *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
 func (s CreateApprovalProcessResponseBodyProcess) String() string {
@@ -1036,6 +1050,11 @@ func (s *CreateApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v 
 	return s
 }
 
+func (s *CreateApprovalProcessResponseBodyProcess) SetEndpointHardeningPolicies(v *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.EndpointHardeningPolicies = v
+	return s
+}
+
 func (s *CreateApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) *CreateApprovalProcessResponseBodyProcess {
 	s.PeripheralBlockPolicies = v
 	return s
@@ -1058,6 +1077,11 @@ func (s *CreateApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*Create
 
 func (s *CreateApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *CreateApprovalProcessResponseBodyProcess {
 	s.SoftwareBlockPolicies = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcess) SetSoftwareHardeningPolicies(v *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) *CreateApprovalProcessResponseBodyProcess {
+	s.SoftwareHardeningPolicies = v
 	return s
 }
 
@@ -1191,6 +1215,29 @@ func (s *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSch
 	return s
 }
 
+type CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.SchemaId = &v
+	return s
+}
+
 type CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
@@ -1265,6 +1312,29 @@ func (s *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolic
 }
 
 func (s *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetPolicyIds(v []*string) *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetSchemaId(v string) *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
 	s.SchemaId = &v
 	return s
 }
@@ -5659,14 +5729,16 @@ type GetApprovalProcessResponseBodyProcess struct {
 	DlpSendPolicies            *GetApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	DomainBlacklistPolicies    *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	DomainWhitelistPolicies    *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	EndpointHardeningPolicies  *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
 	PeripheralBlockPolicies    *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
 	// example:
 	//
 	// approval-process-35ee09077ee9****
-	ProcessId             *string                                                     `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName           *string                                                     `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes          [][]*GetApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	SoftwareBlockPolicies *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	ProcessId                 *string                                                         `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName               *string                                                         `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes              [][]*GetApprovalProcessResponseBodyProcessProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies     *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareHardeningPolicies *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
 func (s GetApprovalProcessResponseBodyProcess) String() string {
@@ -5712,6 +5784,11 @@ func (s *GetApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v *Ge
 	return s
 }
 
+func (s *GetApprovalProcessResponseBodyProcess) SetEndpointHardeningPolicies(v *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.EndpointHardeningPolicies = v
+	return s
+}
+
 func (s *GetApprovalProcessResponseBodyProcess) SetPeripheralBlockPolicies(v *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) *GetApprovalProcessResponseBodyProcess {
 	s.PeripheralBlockPolicies = v
 	return s
@@ -5734,6 +5811,11 @@ func (s *GetApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*GetApprov
 
 func (s *GetApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *GetApprovalProcessResponseBodyProcess {
 	s.SoftwareBlockPolicies = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcess) SetSoftwareHardeningPolicies(v *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) *GetApprovalProcessResponseBodyProcess {
+	s.SoftwareHardeningPolicies = v
 	return s
 }
 
@@ -5867,6 +5949,29 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSchema
 	return s
 }
 
+type GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.SchemaId = &v
+	return s
+}
+
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
@@ -5941,6 +6046,29 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolicyId
 }
 
 func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetPolicyIds(v []*string) *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetSchemaId(v string) *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
 	s.SchemaId = &v
 	return s
 }
@@ -9098,14 +9226,16 @@ type ListApprovalProcessesResponseBodyProcesses struct {
 	DlpSendPolicies            *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	DomainBlacklistPolicies    *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	DomainWhitelistPolicies    *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	EndpointHardeningPolicies  *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
 	PeripheralBlockPolicies    *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
 	// example:
 	//
 	// approval-process-35ee09077ee9****
-	ProcessId             *string                                                          `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName           *string                                                          `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes          [][]*ListApprovalProcessesResponseBodyProcessesProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	SoftwareBlockPolicies *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	ProcessId                 *string                                                              `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName               *string                                                              `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes              [][]*ListApprovalProcessesResponseBodyProcessesProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies     *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareHardeningPolicies *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
 func (s ListApprovalProcessesResponseBodyProcesses) String() string {
@@ -9151,6 +9281,11 @@ func (s *ListApprovalProcessesResponseBodyProcesses) SetDomainWhitelistPolicies(
 	return s
 }
 
+func (s *ListApprovalProcessesResponseBodyProcesses) SetEndpointHardeningPolicies(v *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.EndpointHardeningPolicies = v
+	return s
+}
+
 func (s *ListApprovalProcessesResponseBodyProcesses) SetPeripheralBlockPolicies(v *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) *ListApprovalProcessesResponseBodyProcesses {
 	s.PeripheralBlockPolicies = v
 	return s
@@ -9173,6 +9308,11 @@ func (s *ListApprovalProcessesResponseBodyProcesses) SetProcessNodes(v [][]*List
 
 func (s *ListApprovalProcessesResponseBodyProcesses) SetSoftwareBlockPolicies(v *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) *ListApprovalProcessesResponseBodyProcesses {
 	s.SoftwareBlockPolicies = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcesses) SetSoftwareHardeningPolicies(v *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) *ListApprovalProcessesResponseBodyProcesses {
+	s.SoftwareHardeningPolicies = v
 	return s
 }
 
@@ -9306,6 +9446,29 @@ func (s *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) SetS
 	return s
 }
 
+type ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies {
+	s.SchemaId = &v
+	return s
+}
+
 type ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies struct {
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
@@ -9380,6 +9543,29 @@ func (s *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) SetPol
 }
 
 func (s *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) SetPolicyIds(v []*string) *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) SetSchemaId(v string) *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies {
 	s.SchemaId = &v
 	return s
 }
@@ -18137,7 +18323,8 @@ type UpdateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	DomainWhitelistSchemaId   *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	EndpointHardeningSchemaId *string `json:"EndpointHardeningSchemaId,omitempty" xml:"EndpointHardeningSchemaId,omitempty"`
 	// example:
 	//
 	// approval-schema-090134f1ebff****
@@ -18145,7 +18332,8 @@ type UpdateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareBlockSchemaId     *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareHardeningSchemaId *string `json:"SoftwareHardeningSchemaId,omitempty" xml:"SoftwareHardeningSchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemas) String() string {
@@ -18181,6 +18369,11 @@ func (s *UpdateApprovalProcessRequestMatchSchemas) SetDomainWhitelistSchemaId(v 
 	return s
 }
 
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetEndpointHardeningSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.EndpointHardeningSchemaId = &v
+	return s
+}
+
 func (s *UpdateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
 	s.PeripheralBlockSchemaId = &v
 	return s
@@ -18188,6 +18381,11 @@ func (s *UpdateApprovalProcessRequestMatchSchemas) SetPeripheralBlockSchemaId(v 
 
 func (s *UpdateApprovalProcessRequestMatchSchemas) SetSoftwareBlockSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
 	s.SoftwareBlockSchemaId = &v
+	return s
+}
+
+func (s *UpdateApprovalProcessRequestMatchSchemas) SetSoftwareHardeningSchemaId(v string) *UpdateApprovalProcessRequestMatchSchemas {
+	s.SoftwareHardeningSchemaId = &v
 	return s
 }
 
@@ -18274,14 +18472,16 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	DlpSendPolicies            *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies            `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	DomainBlacklistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies    `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	DomainWhitelistPolicies    *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies    `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	EndpointHardeningPolicies  *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies  `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
 	PeripheraBlockPolicies     *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies     `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
 	// example:
 	//
 	// approval-process-2677fcf063f5****
-	ProcessId             *string                                                        `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName           *string                                                        `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	ProcessNodes          [][]*UpdateApprovalProcessResponseBodyProcessProcessNodes      `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	SoftwareBlockPolicies *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	ProcessId                 *string                                                            `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
+	ProcessName               *string                                                            `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
+	ProcessNodes              [][]*UpdateApprovalProcessResponseBodyProcessProcessNodes          `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
+	SoftwareBlockPolicies     *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareHardeningPolicies *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcess) String() string {
@@ -18327,6 +18527,11 @@ func (s *UpdateApprovalProcessResponseBodyProcess) SetDomainWhitelistPolicies(v 
 	return s
 }
 
+func (s *UpdateApprovalProcessResponseBodyProcess) SetEndpointHardeningPolicies(v *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.EndpointHardeningPolicies = v
+	return s
+}
+
 func (s *UpdateApprovalProcessResponseBodyProcess) SetPeripheraBlockPolicies(v *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) *UpdateApprovalProcessResponseBodyProcess {
 	s.PeripheraBlockPolicies = v
 	return s
@@ -18349,6 +18554,11 @@ func (s *UpdateApprovalProcessResponseBodyProcess) SetProcessNodes(v [][]*Update
 
 func (s *UpdateApprovalProcessResponseBodyProcess) SetSoftwareBlockPolicies(v *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) *UpdateApprovalProcessResponseBodyProcess {
 	s.SoftwareBlockPolicies = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcess) SetSoftwareHardeningPolicies(v *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) *UpdateApprovalProcessResponseBodyProcess {
+	s.SoftwareHardeningPolicies = v
 	return s
 }
 
@@ -18482,6 +18692,29 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) SetSch
 	return s
 }
 
+type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies {
+	s.SchemaId = &v
+	return s
+}
+
 type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies struct {
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// example:
@@ -18556,6 +18789,29 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetPolic
 }
 
 func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies {
+	s.SchemaId = &v
+	return s
+}
+
+type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetPolicyIds(v []*string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
+	s.PolicyIds = v
+	return s
+}
+
+func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) SetSchemaId(v string) *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies {
 	s.SchemaId = &v
 	return s
 }
