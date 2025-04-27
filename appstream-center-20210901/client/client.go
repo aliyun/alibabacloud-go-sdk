@@ -2910,7 +2910,8 @@ type GetAppInstanceGroupResponseBodyAppInstanceGroupModels struct {
 	// example:
 	//
 	// PUBLISHED
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModels) String() string {
@@ -3083,6 +3084,11 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetSpecId(v stri
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetStatus(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
 	s.Status = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModels) SetTags(v []*GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) *GetAppInstanceGroupResponseBodyAppInstanceGroupModels {
+	s.Tags = v
 	return s
 }
 
@@ -3408,6 +3414,35 @@ func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) SetOtaVer
 
 func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo) SetTaskId(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsOtaInfo {
 	s.TaskId = &v
+	return s
+}
+
+type GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) SetKey(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) SetScope(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags {
+	s.Scope = &v
+	return s
+}
+
+func (s *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags) SetValue(v string) *GetAppInstanceGroupResponseBodyAppInstanceGroupModelsTags {
+	s.Value = &v
 	return s
 }
 
