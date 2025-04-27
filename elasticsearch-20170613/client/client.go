@@ -1333,6 +1333,7 @@ func (s *NodeInfo) SetZoneId(v string) *NodeInfo {
 type NodeSpec struct {
 	Disk             *int32  `json:"disk,omitempty" xml:"disk,omitempty"`
 	DiskEncryption   *bool   `json:"diskEncryption,omitempty" xml:"diskEncryption,omitempty"`
+	DiskPreference   *string `json:"diskPreference,omitempty" xml:"diskPreference,omitempty"`
 	DiskType         *string `json:"diskType,omitempty" xml:"diskType,omitempty"`
 	PerformanceLevel *string `json:"performanceLevel,omitempty" xml:"performanceLevel,omitempty"`
 	// This parameter is required.
@@ -1354,6 +1355,11 @@ func (s *NodeSpec) SetDisk(v int32) *NodeSpec {
 
 func (s *NodeSpec) SetDiskEncryption(v bool) *NodeSpec {
 	s.DiskEncryption = &v
+	return s
+}
+
+func (s *NodeSpec) SetDiskPreference(v string) *NodeSpec {
+	s.DiskPreference = &v
 	return s
 }
 
@@ -14007,24 +14013,24 @@ func (s *ListActionRecordsResponseBody) SetResult(v []*ListActionRecordsResponse
 }
 
 type ListActionRecordsResponseBodyResult struct {
-	ActionName             *string                                          `json:"ActionName,omitempty" xml:"ActionName,omitempty"`
-	ActionParams           map[string]interface{}                           `json:"ActionParams,omitempty" xml:"ActionParams,omitempty"`
-	ActionResultAccessList []*string                                        `json:"ActionResultAccessList,omitempty" xml:"ActionResultAccessList,omitempty" type:"Repeated"`
-	EndTime                *int64                                           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId             *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MetaNow                *string                                          `json:"MetaNow,omitempty" xml:"MetaNow,omitempty"`
-	MetaOld                *string                                          `json:"MetaOld,omitempty" xml:"MetaOld,omitempty"`
-	OwnerId                *string                                          `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Process                *string                                          `json:"Process,omitempty" xml:"Process,omitempty"`
-	RecordDiff             map[string]interface{}                           `json:"RecordDiff,omitempty" xml:"RecordDiff,omitempty"`
-	RecordIds              []*string                                        `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
-	RequestId              *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StartTime              *int64                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	StateType              *string                                          `json:"StateType,omitempty" xml:"StateType,omitempty"`
-	StatusInfo             []*ListActionRecordsResponseBodyResultStatusInfo `json:"StatusInfo,omitempty" xml:"StatusInfo,omitempty" type:"Repeated"`
-	UserId                 *string                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserInfo               *string                                          `json:"UserInfo,omitempty" xml:"UserInfo,omitempty"`
-	UserType               *string                                          `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	ActionName             *string                                          `json:"actionName,omitempty" xml:"actionName,omitempty"`
+	ActionParams           map[string]interface{}                           `json:"actionParams,omitempty" xml:"actionParams,omitempty"`
+	ActionResultAccessList []*string                                        `json:"actionResultAccessList,omitempty" xml:"actionResultAccessList,omitempty" type:"Repeated"`
+	EndTime                *int64                                           `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	InstanceId             *string                                          `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	MetaNow                *string                                          `json:"metaNow,omitempty" xml:"metaNow,omitempty"`
+	MetaOld                *string                                          `json:"metaOld,omitempty" xml:"metaOld,omitempty"`
+	OwnerId                *string                                          `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	Process                *string                                          `json:"process,omitempty" xml:"process,omitempty"`
+	RecordDiff             map[string]interface{}                           `json:"recordDiff,omitempty" xml:"recordDiff,omitempty"`
+	RecordIds              []*string                                        `json:"recordIds,omitempty" xml:"recordIds,omitempty" type:"Repeated"`
+	RequestId              *string                                          `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	StartTime              *int64                                           `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StateType              *string                                          `json:"stateType,omitempty" xml:"stateType,omitempty"`
+	StatusInfo             []*ListActionRecordsResponseBodyResultStatusInfo `json:"statusInfo,omitempty" xml:"statusInfo,omitempty" type:"Repeated"`
+	UserId                 *string                                          `json:"userId,omitempty" xml:"userId,omitempty"`
+	UserInfo               *string                                          `json:"userInfo,omitempty" xml:"userInfo,omitempty"`
+	UserType               *string                                          `json:"userType,omitempty" xml:"userType,omitempty"`
 }
 
 func (s ListActionRecordsResponseBodyResult) String() string {
@@ -19323,6 +19329,7 @@ type ListInstanceResponseBodyResult struct {
 	//
 	// postpaid
 	PaymentType *string `json:"paymentType,omitempty" xml:"paymentType,omitempty"`
+	Port        *string `json:"port,omitempty" xml:"port,omitempty"`
 	// The tags of the instance. Each tag is a key-value pair.
 	//
 	// example:
@@ -19330,6 +19337,7 @@ type ListInstanceResponseBodyResult struct {
 	// active
 	PostpaidServiceStatus     *string   `json:"postpaidServiceStatus,omitempty" xml:"postpaidServiceStatus,omitempty"`
 	PrivateNetworkIpWhiteList []*string `json:"privateNetworkIpWhiteList,omitempty" xml:"privateNetworkIpWhiteList,omitempty" type:"Repeated"`
+	Protocol                  *string   `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	PublicIpWhitelist         []*string `json:"publicIpWhitelist,omitempty" xml:"publicIpWhitelist,omitempty" type:"Repeated"`
 	// The ID of the instance.
 	//
@@ -19476,6 +19484,11 @@ func (s *ListInstanceResponseBodyResult) SetPaymentType(v string) *ListInstanceR
 	return s
 }
 
+func (s *ListInstanceResponseBodyResult) SetPort(v string) *ListInstanceResponseBodyResult {
+	s.Port = &v
+	return s
+}
+
 func (s *ListInstanceResponseBodyResult) SetPostpaidServiceStatus(v string) *ListInstanceResponseBodyResult {
 	s.PostpaidServiceStatus = &v
 	return s
@@ -19483,6 +19496,11 @@ func (s *ListInstanceResponseBodyResult) SetPostpaidServiceStatus(v string) *Lis
 
 func (s *ListInstanceResponseBodyResult) SetPrivateNetworkIpWhiteList(v []*string) *ListInstanceResponseBodyResult {
 	s.PrivateNetworkIpWhiteList = v
+	return s
+}
+
+func (s *ListInstanceResponseBodyResult) SetProtocol(v string) *ListInstanceResponseBodyResult {
+	s.Protocol = &v
 	return s
 }
 
@@ -31779,7 +31797,8 @@ type UpdateInstanceSettingsRequest struct {
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
-	ClientToken *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	ClientToken    *string `json:"clientToken,omitempty" xml:"clientToken,omitempty"`
+	UpdateStrategy *string `json:"updateStrategy,omitempty" xml:"updateStrategy,omitempty"`
 }
 
 func (s UpdateInstanceSettingsRequest) String() string {
@@ -31797,6 +31816,11 @@ func (s *UpdateInstanceSettingsRequest) SetBody(v string) *UpdateInstanceSetting
 
 func (s *UpdateInstanceSettingsRequest) SetClientToken(v string) *UpdateInstanceSettingsRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *UpdateInstanceSettingsRequest) SetUpdateStrategy(v string) *UpdateInstanceSettingsRequest {
+	s.UpdateStrategy = &v
 	return s
 }
 
@@ -35412,7 +35436,7 @@ func (client *Client) CancelTask(InstanceId *string, request *CancelTaskRequest)
 
 // Summary:
 //
-// Capacity Planning
+// # Capacity Planning
 //
 // @param request - CapacityPlanRequest
 //
@@ -35469,7 +35493,7 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 
 // Summary:
 //
-// Capacity Planning
+// # Capacity Planning
 //
 // @param request - CapacityPlanRequest
 //
@@ -35612,7 +35636,7 @@ func (client *Client) CloseHttps(InstanceId *string, request *CloseHttpsRequest)
 
 // Summary:
 //
-// Disable Managed Index
+// # Disable Managed Index
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -35657,7 +35681,7 @@ func (client *Client) CloseManagedIndexWithOptions(InstanceId *string, Index *st
 
 // Summary:
 //
-// Disable Managed Index
+// # Disable Managed Index
 //
 // @param request - CloseManagedIndexRequest
 //
@@ -37263,7 +37287,7 @@ func (client *Client) DescribeAckOperator(ClusterId *string) (_result *DescribeA
 
 // Summary:
 //
-// Describe APM
+// # Describe APM
 //
 // @param headers - map
 //
@@ -37296,7 +37320,7 @@ func (client *Client) DescribeApmWithOptions(instanceId *string, headers map[str
 
 // Summary:
 //
-// Describe APM
+// # Describe APM
 //
 // @return DescribeApmResponse
 func (client *Client) DescribeApm(instanceId *string) (_result *DescribeApmResponse, _err error) {
@@ -37469,7 +37493,7 @@ func (client *Client) DescribeConnectableClusters(InstanceId *string, request *D
 
 // Summary:
 //
-// DescribeDeprecatedTemplate
+// # DescribeDeprecatedTemplate
 //
 // @param headers - map
 //
@@ -37502,7 +37526,7 @@ func (client *Client) DescribeDeprecatedTemplateWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// DescribeDeprecatedTemplate
+// # DescribeDeprecatedTemplate
 //
 // @return DescribeDeprecatedTemplateResponse
 func (client *Client) DescribeDeprecatedTemplate(InstanceId *string, name *string) (_result *DescribeDeprecatedTemplateResponse, _err error) {
@@ -37687,11 +37711,11 @@ func (client *Client) DescribeDynamicSettings(InstanceId *string) (_result *Desc
 //
 // An Elasticsearch cluster can be in a health state indicated by one of the following colors:
 //
-// 	- GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+//   - GREEN: Primary shards and replica shards for the primary shards are normally allocated.
 //
-// 	- YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+//   - YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
 //
-// 	- RED: Primary shards are not normally allocated.
+//   - RED: Primary shards are not normally allocated.
 //
 // @param headers - map
 //
@@ -37730,11 +37754,11 @@ func (client *Client) DescribeElasticsearchHealthWithOptions(InstanceId *string,
 //
 // An Elasticsearch cluster can be in a health state indicated by one of the following colors:
 //
-// 	- GREEN: Primary shards and replica shards for the primary shards are normally allocated.
+//   - GREEN: Primary shards and replica shards for the primary shards are normally allocated.
 //
-// 	- YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
+//   - YELLOW: Primary shards are normally allocated, but replica shards for the primary shards are not normally allocated.
 //
-// 	- RED: Primary shards are not normally allocated.
+//   - RED: Primary shards are not normally allocated.
 //
 // @return DescribeElasticsearchHealthResponse
 func (client *Client) DescribeElasticsearchHealth(InstanceId *string) (_result *DescribeElasticsearchHealthResponse, _err error) {
@@ -39039,7 +39063,7 @@ func (client *Client) GetRegionalInstanceConfig() (_result *GetRegionalInstanceC
 
 // Summary:
 //
-// ES集群可缩容节点
+// # ES集群可缩容节点
 //
 // @param request - GetSuggestShrinkableNodesRequest
 //
@@ -39092,7 +39116,7 @@ func (client *Client) GetSuggestShrinkableNodesWithOptions(InstanceId *string, r
 
 // Summary:
 //
-// ES集群可缩容节点
+// # ES集群可缩容节点
 //
 // @param request - GetSuggestShrinkableNodesRequest
 //
@@ -40075,7 +40099,7 @@ func (client *Client) ListAlternativeSnapshotRepos(InstanceId *string, request *
 
 // Summary:
 //
-// ListApm
+// # ListApm
 //
 // @param request - ListApmRequest
 //
@@ -40136,7 +40160,7 @@ func (client *Client) ListApmWithOptions(request *ListApmRequest, headers map[st
 
 // Summary:
 //
-// ListApm
+// # ListApm
 //
 // @param request - ListApmRequest
 //
@@ -40289,7 +40313,7 @@ func (client *Client) ListCollectors(request *ListCollectorsRequest) (_result *L
 
 // Summary:
 //
-// ES集群组合索引列表
+// # ES集群组合索引列表
 //
 // @param request - ListComponentIndicesRequest
 //
@@ -40342,7 +40366,7 @@ func (client *Client) ListComponentIndicesWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// ES集群组合索引列表
+// # ES集群组合索引列表
 //
 // @param request - ListComponentIndicesRequest
 //
@@ -40585,7 +40609,7 @@ func (client *Client) ListDefaultCollectorConfigurations(request *ListDefaultCol
 
 // Summary:
 //
-// ListDeprecatedTemplates
+// # ListDeprecatedTemplates
 //
 // @param request - ListDeprecatedTemplatesRequest
 //
@@ -40638,7 +40662,7 @@ func (client *Client) ListDeprecatedTemplatesWithOptions(InstanceId *string, req
 
 // Summary:
 //
-// ListDeprecatedTemplates
+// # ListDeprecatedTemplates
 //
 // @param request - ListDeprecatedTemplatesRequest
 //
@@ -41776,7 +41800,7 @@ func (client *Client) ListKibanaPvlNetwork(InstanceId *string) (_result *ListKib
 
 // Summary:
 //
-// Logstash集群列表
+// # Logstash集群列表
 //
 // @param request - ListLogstashRequest
 //
@@ -41845,7 +41869,7 @@ func (client *Client) ListLogstashWithOptions(request *ListLogstashRequest, head
 
 // Summary:
 //
-// Logstash集群列表
+// # Logstash集群列表
 //
 // @param request - ListLogstashRequest
 //
@@ -41948,7 +41972,7 @@ func (client *Client) ListLogstashLog(InstanceId *string, request *ListLogstashL
 
 // Summary:
 //
-// Logstash插件列表
+// # Logstash插件列表
 //
 // @param request - ListLogstashPluginsRequest
 //
@@ -42005,7 +42029,7 @@ func (client *Client) ListLogstashPluginsWithOptions(InstanceId *string, request
 
 // Summary:
 //
-// Logstash插件列表
+// # Logstash插件列表
 //
 // @param request - ListLogstashPluginsRequest
 //
@@ -42227,7 +42251,7 @@ func (client *Client) ListPipelineIds(InstanceId *string, request *ListPipelineI
 
 // Summary:
 //
-// ES系统插件列表
+// # ES系统插件列表
 //
 // @param request - ListPluginsRequest
 //
@@ -42284,7 +42308,7 @@ func (client *Client) ListPluginsWithOptions(InstanceId *string, request *ListPl
 
 // Summary:
 //
-// ES系统插件列表
+// # ES系统插件列表
 //
 // @param request - ListPluginsRequest
 //
@@ -42735,11 +42759,11 @@ func (client *Client) ListVpcEndpoints(InstanceId *string, request *ListVpcEndpo
 //
 // If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
 //
-// 	- The error message returned because the current account is in a zone that has sufficient resources.
+//   - The error message returned because the current account is in a zone that has sufficient resources.
 //
 //     After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
 //
-// 	- The cluster is in the healthy state.
+//   - The cluster is in the healthy state.
 //
 //     Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
 //
@@ -42793,11 +42817,11 @@ func (client *Client) MigrateToOtherZoneWithOptions(InstanceId *string, request 
 //
 // If the specifications in your zone are insufficient, you can upgrade your instance to nodes in another zone. Before calling this interface, you must ensure that:
 //
-// 	- The error message returned because the current account is in a zone that has sufficient resources.
+//   - The error message returned because the current account is in a zone that has sufficient resources.
 //
 //     After migrating nodes with current specifications to another zone, you need to manually [upgrade cluster](https://help.aliyun.com/document_detail/96650.html) because the cluster will not be upgraded during the migration process. Therefore, select a zone with sufficient resources to avoid cluster upgrade failure. We recommend that you choose new zones that are in lower alphabetical order. For example, for cn-hangzhou-e and cn-hangzhou-h zones, choose cn-hangzhou-h first.
 //
-// 	- The cluster is in the healthy state.
+//   - The cluster is in the healthy state.
 //
 //     Can be passed`  GET _cat/health?v  `command to view the health status of the cluster.
 //
@@ -42954,11 +42978,11 @@ func (client *Client) ModifyElastictask(InstanceId *string, request *ModifyElast
 //
 // {
 //
-//     "openMaintainTime": true,
+//	"openMaintainTime": true,
 //
-//     "maintainStartTime": "03:00Z",
+//	"maintainStartTime": "03:00Z",
 //
-//     "maintainEndTime": "04:00Z"
+//	"maintainEndTime": "04:00Z"
 //
 // }
 //
@@ -43032,11 +43056,11 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(InstanceId *string, 
 //
 // {
 //
-//     "openMaintainTime": true,
+//	"openMaintainTime": true,
 //
-//     "maintainStartTime": "03:00Z",
+//	"maintainStartTime": "03:00Z",
 //
-//     "maintainEndTime": "04:00Z"
+//	"maintainEndTime": "04:00Z"
 //
 // }
 //
@@ -43065,11 +43089,11 @@ func (client *Client) ModifyInstanceMaintainTime(InstanceId *string, request *Mo
 //
 // >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
 //
-// 	- If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+//   - If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
 //
-// 	- If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+//   - If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
 //
-// 	- If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+//   - If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
 //
 // Description:
 //
@@ -43142,11 +43166,11 @@ func (client *Client) ModifyWhiteIpsWithOptions(InstanceId *string, request *Mod
 //
 // >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
 //
-// 	- If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+//   - If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
 //
-// 	- If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+//   - If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
 //
-// 	- If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+//   - If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
 //
 // Description:
 //
@@ -43530,7 +43554,7 @@ func (client *Client) ReinstallCollector(ResId *string, request *ReinstallCollec
 
 // Summary:
 //
-// RemoveApm
+// # RemoveApm
 //
 // @param headers - map
 //
@@ -43563,7 +43587,7 @@ func (client *Client) RemoveApmWithOptions(instanceId *string, headers map[strin
 
 // Summary:
 //
-// RemoveApm
+// # RemoveApm
 //
 // @return RemoveApmResponse
 func (client *Client) RemoveApm(instanceId *string) (_result *RemoveApmResponse, _err error) {
@@ -44190,7 +44214,7 @@ func (client *Client) RunPipelines(InstanceId *string, request *RunPipelinesRequ
 
 // Summary:
 //
-// ES集群缩节点
+// # ES集群缩节点
 //
 // @param request - ShrinkNodeRequest
 //
@@ -44248,7 +44272,7 @@ func (client *Client) ShrinkNodeWithOptions(InstanceId *string, request *ShrinkN
 
 // Summary:
 //
-// ES集群缩节点
+// # ES集群缩节点
 //
 // @param request - ShrinkNodeRequest
 //
@@ -44267,7 +44291,7 @@ func (client *Client) ShrinkNode(InstanceId *string, request *ShrinkNodeRequest)
 
 // Summary:
 //
-// StartApm
+// # StartApm
 //
 // @param headers - map
 //
@@ -44300,7 +44324,7 @@ func (client *Client) StartApmWithOptions(instanceId *string, headers map[string
 
 // Summary:
 //
-// StartApm
+// # StartApm
 //
 // @return StartApmResponse
 func (client *Client) StartApm(instanceId *string) (_result *StartApmResponse, _err error) {
@@ -44381,7 +44405,7 @@ func (client *Client) StartCollector(ResId *string, request *StartCollectorReque
 
 // Summary:
 //
-// StopApm
+// # StopApm
 //
 // @param headers - map
 //
@@ -44414,7 +44438,7 @@ func (client *Client) StopApmWithOptions(instanceId *string, headers map[string]
 
 // Summary:
 //
-// StopApm
+// # StopApm
 //
 // @return StopApmResponse
 func (client *Client) StopApm(instanceId *string) (_result *StopApmResponse, _err error) {
@@ -44984,11 +45008,11 @@ func (client *Client) UninstallPlugin(InstanceId *string, request *UninstallPlug
 //
 // When you call this operation, take note of the following items:
 //
-// 	- You can only delete user tags.
+//   - You can only delete user tags.
 //
 // > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
 //
-// 	- If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+//   - If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45052,11 +45076,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 //
 // When you call this operation, take note of the following items:
 //
-// 	- You can only delete user tags.
+//   - You can only delete user tags.
 //
 // > User labels are manually added to instances by users. A system Tag is a tag that Alibaba Cloud services add to instances. System labels are divided into visible labels and invisible labels.
 //
-// 	- If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
+//   - If you delete a resource tag relationship that is not associated with any resources, you must delete the tags.
 //
 // @param request - UntagResourcesRequest
 //
@@ -45224,11 +45248,11 @@ func (client *Client) UpdateAdvancedSetting(InstanceId *string, request *UpdateA
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+//   - Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateAliwsDictRequest
 //
@@ -45280,11 +45304,11 @@ func (client *Client) UpdateAliwsDictWithOptions(InstanceId *string, request *Up
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
+//   - Elasticsearch V5.X clusters do not support the analysis-aliws plug-in.
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateAliwsDictRequest
 //
@@ -45796,9 +45820,9 @@ func (client *Client) UpdateDiagnosisSettings(InstanceId *string, request *Updat
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateDictRequest
 //
@@ -45850,9 +45874,9 @@ func (client *Client) UpdateDictWithOptions(InstanceId *string, request *UpdateD
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateDictRequest
 //
@@ -46080,9 +46104,9 @@ func (client *Client) UpdateExtendfiles(InstanceId *string, request *UpdateExten
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateHotIkDictsRequest
 //
@@ -46134,9 +46158,9 @@ func (client *Client) UpdateHotIkDictsWithOptions(InstanceId *string, request *U
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateHotIkDictsRequest
 //
@@ -46489,6 +46513,10 @@ func (client *Client) UpdateInstanceSettingsWithOptions(InstanceId *string, requ
 		query["clientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UpdateStrategy)) {
+		query["updateStrategy"] = request.UpdateStrategy
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -46684,15 +46712,15 @@ func (client *Client) UpdateKibanaSettings(InstanceId *string, request *UpdateKi
 //
 // Description:
 //
-//   Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+//	  Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
 //
-// 	- You can update an IP address whitelist by using the following parameters:
+//		- You can update an IP address whitelist by using the following parameters:
 //
-//     	- kibanaIPWhitelist
+//	    	- kibanaIPWhitelist
 //
-//     	- modifyMode and whiteIpGroup
+//	    	- modifyMode and whiteIpGroup
 //
-// 	- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+//		- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
 //
 // @param request - UpdateKibanaWhiteIpsRequest
 //
@@ -46755,15 +46783,15 @@ func (client *Client) UpdateKibanaWhiteIpsWithOptions(InstanceId *string, reques
 //
 // Description:
 //
-//   Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
+//	  Before you call this operation, you must make sure that the cluster is not in the activating, invalid, or inactive state.
 //
-// 	- You can update an IP address whitelist by using the following parameters:
+//		- You can update an IP address whitelist by using the following parameters:
 //
-//     	- kibanaIPWhitelist
+//	    	- kibanaIPWhitelist
 //
-//     	- modifyMode and whiteIpGroup
+//	    	- modifyMode and whiteIpGroup
 //
-// 	- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
+//		- You cannot specify private IP addresses for public IP address whitelists and cannot specify public IP addresses for private IP address whitelists.
 //
 // @param request - UpdateKibanaWhiteIpsRequest
 //
@@ -47684,9 +47712,9 @@ func (client *Client) UpdateSnapshotSetting(InstanceId *string, request *UpdateS
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateSynonymsDictsRequest
 //
@@ -47738,9 +47766,9 @@ func (client *Client) UpdateSynonymsDictsWithOptions(InstanceId *string, request
 //
 // Before you call this operation, take note of the following items:
 //
-// 	- If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
+//   - If the dictionary file is stored in an Object Storage Service (OSS) bucket, you must make sure that the access control list (ACL) of the bucket is public read.
 //
-// 	- If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
+//   - If you do not set sourceType to ORIGIN for an uploaded dictionary file, the file will be deleted after you call this operation.
 //
 // @param request - UpdateSynonymsDictsRequest
 //
@@ -47818,11 +47846,11 @@ func (client *Client) UpdateTemplate(InstanceId *string, TemplateName *string, r
 //
 // >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
 //
-// 	- If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+//   - If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
 //
-// 	- If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+//   - If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
 //
-// 	- If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+//   - If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
 //
 // Description:
 //
@@ -47887,11 +47915,11 @@ func (client *Client) UpdateWhiteIpsWithOptions(InstanceId *string, request *Upd
 //
 // >  If you want to add an IP address whitelist, you can set the modifyMode parameter only to Cover. If you set this parameter to Delete or Append, you can only update an IP address whitelist.
 //
-// 	- If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
+//   - If you set the modifyMode parameter to Cover and leave the ips parameter empty, the system deletes the specified whitelist. If the whitelist specified by using the groupName parameter does not exist, the system creates such a whitelist.
 //
-// 	- If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
+//   - If you set the modifyMode parameter to Delete, at least one IP address must be retained for the specified whitelist.
 //
-// 	- If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
+//   - If you set the modifyMode parameter to Append, you must make sure that the specified whitelist exists. Otherwise, the system reports the NotFound error.
 //
 // Description:
 //
@@ -47996,7 +48024,7 @@ func (client *Client) UpdateXpackMonitorConfig(InstanceId *string, request *Upda
 
 // Summary:
 //
-// ES集群版本升级
+// # ES集群版本升级
 //
 // Description:
 //
@@ -48067,7 +48095,7 @@ func (client *Client) UpgradeEngineVersionWithOptions(InstanceId *string, reques
 
 // Summary:
 //
-// ES集群版本升级
+// # ES集群版本升级
 //
 // Description:
 //
