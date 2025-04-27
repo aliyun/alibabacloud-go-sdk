@@ -5444,6 +5444,187 @@ func (s *Id2MetaVerifyResponse) SetBody(v *Id2MetaVerifyResponseBody) *Id2MetaVe
 	return s
 }
 
+type Id2MetaVerifyWithOCRRequest struct {
+	CertFile         *string `json:"CertFile,omitempty" xml:"CertFile,omitempty"`
+	CertNationalFile *string `json:"CertNationalFile,omitempty" xml:"CertNationalFile,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com/cert.jpeg
+	CertNationalUrl *string `json:"CertNationalUrl,omitempty" xml:"CertNationalUrl,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com/cert.jpeg
+	CertUrl *string `json:"CertUrl,omitempty" xml:"CertUrl,omitempty"`
+}
+
+func (s Id2MetaVerifyWithOCRRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyWithOCRRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyWithOCRRequest) SetCertFile(v string) *Id2MetaVerifyWithOCRRequest {
+	s.CertFile = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRRequest) SetCertNationalFile(v string) *Id2MetaVerifyWithOCRRequest {
+	s.CertNationalFile = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRRequest) SetCertNationalUrl(v string) *Id2MetaVerifyWithOCRRequest {
+	s.CertNationalUrl = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRRequest) SetCertUrl(v string) *Id2MetaVerifyWithOCRRequest {
+	s.CertUrl = &v
+	return s
+}
+
+type Id2MetaVerifyWithOCRAdvanceRequest struct {
+	CertFileObject         io.Reader `json:"CertFile,omitempty" xml:"CertFile,omitempty"`
+	CertNationalFileObject io.Reader `json:"CertNationalFile,omitempty" xml:"CertNationalFile,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com/cert.jpeg
+	CertNationalUrl *string `json:"CertNationalUrl,omitempty" xml:"CertNationalUrl,omitempty"`
+	// example:
+	//
+	// https://www.aliyun.com/cert.jpeg
+	CertUrl *string `json:"CertUrl,omitempty" xml:"CertUrl,omitempty"`
+}
+
+func (s Id2MetaVerifyWithOCRAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyWithOCRAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyWithOCRAdvanceRequest) SetCertFileObject(v io.Reader) *Id2MetaVerifyWithOCRAdvanceRequest {
+	s.CertFileObject = v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRAdvanceRequest) SetCertNationalFileObject(v io.Reader) *Id2MetaVerifyWithOCRAdvanceRequest {
+	s.CertNationalFileObject = v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRAdvanceRequest) SetCertNationalUrl(v string) *Id2MetaVerifyWithOCRAdvanceRequest {
+	s.CertNationalUrl = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRAdvanceRequest) SetCertUrl(v string) *Id2MetaVerifyWithOCRAdvanceRequest {
+	s.CertUrl = &v
+	return s
+}
+
+type Id2MetaVerifyWithOCRResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 130A2C10-B9EE-4D84-88E3-5384FF03****
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *Id2MetaVerifyWithOCRResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s Id2MetaVerifyWithOCRResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyWithOCRResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBody) SetCode(v string) *Id2MetaVerifyWithOCRResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBody) SetMessage(v string) *Id2MetaVerifyWithOCRResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBody) SetRequestId(v string) *Id2MetaVerifyWithOCRResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBody) SetResultObject(v *Id2MetaVerifyWithOCRResponseBodyResultObject) *Id2MetaVerifyWithOCRResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type Id2MetaVerifyWithOCRResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode  *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	CardInfo *string `json:"CardInfo,omitempty" xml:"CardInfo,omitempty"`
+}
+
+func (s Id2MetaVerifyWithOCRResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyWithOCRResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBodyResultObject) SetBizCode(v string) *Id2MetaVerifyWithOCRResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponseBodyResultObject) SetCardInfo(v string) *Id2MetaVerifyWithOCRResponseBodyResultObject {
+	s.CardInfo = &v
+	return s
+}
+
+type Id2MetaVerifyWithOCRResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *Id2MetaVerifyWithOCRResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s Id2MetaVerifyWithOCRResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Id2MetaVerifyWithOCRResponse) GoString() string {
+	return s.String()
+}
+
+func (s *Id2MetaVerifyWithOCRResponse) SetHeaders(v map[string]*string) *Id2MetaVerifyWithOCRResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponse) SetStatusCode(v int32) *Id2MetaVerifyWithOCRResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *Id2MetaVerifyWithOCRResponse) SetBody(v *Id2MetaVerifyWithOCRResponseBody) *Id2MetaVerifyWithOCRResponse {
+	s.Body = v
+	return s
+}
+
 type InitFaceVerifyRequest struct {
 	AppQualityCheck *string `json:"AppQualityCheck,omitempty" xml:"AppQualityCheck,omitempty"`
 	AuthId          *string `json:"AuthId,omitempty" xml:"AuthId,omitempty"`
@@ -11015,6 +11196,226 @@ func (client *Client) Id2MetaVerify(request *Id2MetaVerifyRequest) (_result *Id2
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素图片核验
+//
+// @param request - Id2MetaVerifyWithOCRRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return Id2MetaVerifyWithOCRResponse
+func (client *Client) Id2MetaVerifyWithOCRWithOptions(request *Id2MetaVerifyWithOCRRequest, runtime *util.RuntimeOptions) (_result *Id2MetaVerifyWithOCRResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertFile)) {
+		body["CertFile"] = request.CertFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNationalFile)) {
+		body["CertNationalFile"] = request.CertNationalFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNationalUrl)) {
+		body["CertNationalUrl"] = request.CertNationalUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertUrl)) {
+		body["CertUrl"] = request.CertUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Id2MetaVerifyWithOCR"),
+		Version:     tea.String("2019-03-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &Id2MetaVerifyWithOCRResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 身份二要素图片核验
+//
+// @param request - Id2MetaVerifyWithOCRRequest
+//
+// @return Id2MetaVerifyWithOCRResponse
+func (client *Client) Id2MetaVerifyWithOCR(request *Id2MetaVerifyWithOCRRequest) (_result *Id2MetaVerifyWithOCRResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &Id2MetaVerifyWithOCRResponse{}
+	_body, _err := client.Id2MetaVerifyWithOCRWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Id2MetaVerifyWithOCRAdvance(request *Id2MetaVerifyWithOCRAdvanceRequest, runtime *util.RuntimeOptions) (_result *Id2MetaVerifyWithOCRResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("Cloudauth"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	id2MetaVerifyWithOCRReq := &Id2MetaVerifyWithOCRRequest{}
+	openapiutil.Convert(request, id2MetaVerifyWithOCRReq)
+	if !tea.BoolValue(util.IsUnset(request.CertFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.CertFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		id2MetaVerifyWithOCRReq.CertFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertNationalFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.CertNationalFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		id2MetaVerifyWithOCRReq.CertNationalFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	id2MetaVerifyWithOCRResp, _err := client.Id2MetaVerifyWithOCRWithOptions(id2MetaVerifyWithOCRReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = id2MetaVerifyWithOCRResp
 	return _result, _err
 }
 
