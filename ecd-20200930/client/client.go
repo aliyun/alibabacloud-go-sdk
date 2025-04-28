@@ -8197,7 +8197,8 @@ type CreateCloudDriveServiceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// >  This parameter is not publicly available.
 	//
 	// example:
@@ -8301,6 +8302,11 @@ func (s *CreateCloudDriveServiceRequest) SetPeriodUnit(v string) *CreateCloudDri
 
 func (s *CreateCloudDriveServiceRequest) SetRegionId(v string) *CreateCloudDriveServiceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateCloudDriveServiceRequest) SetResellerOwnerUid(v int64) *CreateCloudDriveServiceRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -9405,7 +9411,8 @@ type CreateDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The reset option of the shared group.
 	//
 	// Valid values:
@@ -9737,6 +9744,11 @@ func (s *CreateDesktopGroupRequest) SetRatioThreshold(v float32) *CreateDesktopG
 
 func (s *CreateDesktopGroupRequest) SetRegionId(v string) *CreateDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetResellerOwnerUid(v int64) *CreateDesktopGroupRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -10308,7 +10320,8 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -10511,6 +10524,11 @@ func (s *CreateDesktopsRequest) SetPromotionId(v string) *CreateDesktopsRequest 
 
 func (s *CreateDesktopsRequest) SetRegionId(v string) *CreateDesktopsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetResellerOwnerUid(v int64) *CreateDesktopsRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -11319,7 +11337,8 @@ type CreateDesktopsShrinkRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The ID of the resource group.
 	//
 	// example:
@@ -11522,6 +11541,11 @@ func (s *CreateDesktopsShrinkRequest) SetPromotionId(v string) *CreateDesktopsSh
 
 func (s *CreateDesktopsShrinkRequest) SetRegionId(v string) *CreateDesktopsShrinkRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetResellerOwnerUid(v int64) *CreateDesktopsShrinkRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -12701,7 +12725,8 @@ type CreateNetworkPackageRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s CreateNetworkPackageRequest) String() string {
@@ -12759,6 +12784,11 @@ func (s *CreateNetworkPackageRequest) SetPromotionId(v string) *CreateNetworkPac
 
 func (s *CreateNetworkPackageRequest) SetRegionId(v string) *CreateNetworkPackageRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateNetworkPackageRequest) SetResellerOwnerUid(v int64) *CreateNetworkPackageRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -15920,7 +15950,8 @@ type DeleteDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s DeleteDesktopGroupRequest) String() string {
@@ -15938,6 +15969,11 @@ func (s *DeleteDesktopGroupRequest) SetDesktopGroupId(v string) *DeleteDesktopGr
 
 func (s *DeleteDesktopGroupRequest) SetRegionId(v string) *DeleteDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDesktopGroupRequest) SetResellerOwnerUid(v int64) *DeleteDesktopGroupRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -16004,7 +16040,8 @@ type DeleteDesktopsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s DeleteDesktopsRequest) String() string {
@@ -16022,6 +16059,11 @@ func (s *DeleteDesktopsRequest) SetDesktopId(v []*string) *DeleteDesktopsRequest
 
 func (s *DeleteDesktopsRequest) SetRegionId(v string) *DeleteDesktopsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteDesktopsRequest) SetResellerOwnerUid(v int64) *DeleteDesktopsRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -16550,7 +16592,8 @@ type DeleteNetworkPackagesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s DeleteNetworkPackagesRequest) String() string {
@@ -16568,6 +16611,11 @@ func (s *DeleteNetworkPackagesRequest) SetNetworkPackageId(v []*string) *DeleteN
 
 func (s *DeleteNetworkPackagesRequest) SetRegionId(v string) *DeleteNetworkPackagesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteNetworkPackagesRequest) SetResellerOwnerUid(v int64) *DeleteNetworkPackagesRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -23549,7 +23597,7 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	//
 	// example:
 	//
-	// example.com\\wuying\\users
+	// example.com
 	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 	// The version number of the cloud computer share.
 	//
@@ -32961,7 +33009,8 @@ type DescribeModificationPriceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The resource type. The required parameters depend on the resource type.
 	//
 	// 	- When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
@@ -33017,6 +33066,11 @@ func (s *DescribeModificationPriceRequest) SetInstanceType(v string) *DescribeMo
 
 func (s *DescribeModificationPriceRequest) SetRegionId(v string) *DescribeModificationPriceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequest) SetResellerOwnerUid(v int64) *DescribeModificationPriceRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -37660,7 +37714,8 @@ type DescribePriceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The type of the resource.
 	//
 	// Valid values:
@@ -37779,6 +37834,11 @@ func (s *DescribePriceRequest) SetPromotionId(v string) *DescribePriceRequest {
 
 func (s *DescribePriceRequest) SetRegionId(v string) *DescribePriceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribePriceRequest) SetResellerOwnerUid(v int64) *DescribePriceRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -38773,7 +38833,8 @@ type DescribeRefundPriceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s DescribeRefundPriceRequest) String() string {
@@ -38796,6 +38857,11 @@ func (s *DescribeRefundPriceRequest) SetRefundType(v string) *DescribeRefundPric
 
 func (s *DescribeRefundPriceRequest) SetRegionId(v string) *DescribeRefundPriceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRefundPriceRequest) SetResellerOwnerUid(v int64) *DescribeRefundPriceRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -39073,7 +39139,8 @@ type DescribeRenewalPriceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The resource type.
 	//
 	// Valid values:
@@ -39120,6 +39187,11 @@ func (s *DescribeRenewalPriceRequest) SetPeriodUnit(v string) *DescribeRenewalPr
 
 func (s *DescribeRenewalPriceRequest) SetRegionId(v string) *DescribeRenewalPriceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRenewalPriceRequest) SetResellerOwnerUid(v int64) *DescribeRenewalPriceRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -53540,7 +53612,8 @@ type ModifyDesktopChargeTypeRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// >  This parameter is in invitational preview and not publicly available.
 	//
 	// example:
@@ -53589,6 +53662,11 @@ func (s *ModifyDesktopChargeTypeRequest) SetPromotionId(v string) *ModifyDesktop
 
 func (s *ModifyDesktopChargeTypeRequest) SetRegionId(v string) *ModifyDesktopChargeTypeRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDesktopChargeTypeRequest) SetResellerOwnerUid(v int64) *ModifyDesktopChargeTypeRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -54702,7 +54780,8 @@ type ModifyDesktopSpecRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// The array of resource specification templates.
 	ResourceSpecs []*ModifyDesktopSpecRequestResourceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
 	// The resource type.
@@ -54801,6 +54880,11 @@ func (s *ModifyDesktopSpecRequest) SetPromotionId(v string) *ModifyDesktopSpecRe
 
 func (s *ModifyDesktopSpecRequest) SetRegionId(v string) *ModifyDesktopSpecRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDesktopSpecRequest) SetResellerOwnerUid(v int64) *ModifyDesktopSpecRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -56093,7 +56177,8 @@ type ModifyNetworkPackageBandwidthRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s ModifyNetworkPackageBandwidthRequest) String() string {
@@ -56126,6 +56211,11 @@ func (s *ModifyNetworkPackageBandwidthRequest) SetPromotionId(v string) *ModifyN
 
 func (s *ModifyNetworkPackageBandwidthRequest) SetRegionId(v string) *ModifyNetworkPackageBandwidthRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyNetworkPackageBandwidthRequest) SetResellerOwnerUid(v int64) *ModifyNetworkPackageBandwidthRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -60382,7 +60472,8 @@ type RenewDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s RenewDesktopGroupRequest) String() string {
@@ -60420,6 +60511,11 @@ func (s *RenewDesktopGroupRequest) SetPeriodUnit(v string) *RenewDesktopGroupReq
 
 func (s *RenewDesktopGroupRequest) SetRegionId(v string) *RenewDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RenewDesktopGroupRequest) SetResellerOwnerUid(v int64) *RenewDesktopGroupRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -60661,7 +60757,8 @@ type RenewDesktopsRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 	// >  This field is not available for public use.
 	//
 	// example:
@@ -60710,6 +60807,11 @@ func (s *RenewDesktopsRequest) SetPromotionId(v string) *RenewDesktopsRequest {
 
 func (s *RenewDesktopsRequest) SetRegionId(v string) *RenewDesktopsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RenewDesktopsRequest) SetResellerOwnerUid(v int64) *RenewDesktopsRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -60851,7 +60953,8 @@ type RenewNetworkPackagesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
 }
 
 func (s RenewNetworkPackagesRequest) String() string {
@@ -60894,6 +60997,11 @@ func (s *RenewNetworkPackagesRequest) SetPromotionId(v string) *RenewNetworkPack
 
 func (s *RenewNetworkPackagesRequest) SetRegionId(v string) *RenewNetworkPackagesRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RenewNetworkPackagesRequest) SetResellerOwnerUid(v int64) *RenewNetworkPackagesRequest {
+	s.ResellerOwnerUid = &v
 	return s
 }
 
@@ -67967,6 +68075,10 @@ func (client *Client) CreateCloudDriveServiceWithOptions(request *CreateCloudDri
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
 		query["SolutionId"] = request.SolutionId
 	}
@@ -68369,6 +68481,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
 		query["ResetType"] = request.ResetType
 	}
@@ -68719,6 +68835,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
@@ -69155,6 +69275,10 @@ func (client *Client) CreateNetworkPackageWithOptions(request *CreateNetworkPack
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -70289,6 +70413,10 @@ func (client *Client) DeleteDesktopGroupWithOptions(request *DeleteDesktopGroupR
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -70359,6 +70487,10 @@ func (client *Client) DeleteDesktopsWithOptions(request *DeleteDesktopsRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -70787,6 +70919,10 @@ func (client *Client) DeleteNetworkPackagesWithOptions(request *DeleteNetworkPac
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -74277,6 +74413,10 @@ func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModi
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -74731,6 +74871,10 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -75153,6 +75297,10 @@ func (client *Client) DescribeRefundPriceWithOptions(request *DescribeRefundPric
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -75291,6 +75439,10 @@ func (client *Client) DescribeRenewalPriceWithOptions(request *DescribeRenewalPr
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
@@ -79967,6 +80119,10 @@ func (client *Client) ModifyDesktopChargeTypeWithOptions(request *ModifyDesktopC
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UseDuration)) {
 		query["UseDuration"] = request.UseDuration
 	}
@@ -80631,6 +80787,10 @@ func (client *Client) ModifyDesktopSpecWithOptions(request *ModifyDesktopSpecReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceSpecs)) {
@@ -81365,6 +81525,10 @@ func (client *Client) ModifyNetworkPackageBandwidthWithOptions(request *ModifyNe
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -82909,6 +83073,10 @@ func (client *Client) RenewDesktopGroupWithOptions(request *RenewDesktopGroupReq
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -83061,6 +83229,10 @@ func (client *Client) RenewDesktopsWithOptions(request *RenewDesktopsRequest, ru
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -83147,6 +83319,10 @@ func (client *Client) RenewNetworkPackagesWithOptions(request *RenewNetworkPacka
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
 	req := &openapi.OpenApiRequest{
