@@ -426,6 +426,10 @@ func (s *Dataset) SetWorkspaceId(v string) *Dataset {
 type DatasetFileMeta struct {
 	// example:
 	//
+	// image/jpeg
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+	// example:
+	//
 	// 12
 	DataSize          *int64  `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	DatasetFileMetaId *string `json:"DatasetFileMetaId,omitempty" xml:"DatasetFileMetaId,omitempty"`
@@ -441,6 +445,10 @@ type DatasetFileMeta struct {
 	//
 	// car.png
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// image
+	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -478,6 +486,11 @@ func (s DatasetFileMeta) GoString() string {
 	return s.String()
 }
 
+func (s *DatasetFileMeta) SetContentType(v string) *DatasetFileMeta {
+	s.ContentType = &v
+	return s
+}
+
 func (s *DatasetFileMeta) SetDataSize(v int64) *DatasetFileMeta {
 	s.DataSize = &v
 	return s
@@ -505,6 +518,11 @@ func (s *DatasetFileMeta) SetFileFingerPrint(v string) *DatasetFileMeta {
 
 func (s *DatasetFileMeta) SetFileName(v string) *DatasetFileMeta {
 	s.FileName = &v
+	return s
+}
+
+func (s *DatasetFileMeta) SetFileType(v string) *DatasetFileMeta {
+	s.FileType = &v
 	return s
 }
 
@@ -4603,13 +4621,13 @@ type CreateModelRequest struct {
 	//
 	// 	- PRIVATE (default): Visible only to you and the administrator of the workspace.
 	//
-	// 	- PUBLIC: Visible to all users in the workspace.
+	// 	- PUBLIC: Vvisible to all users in the workspace.
 	//
 	// example:
 	//
 	// PRIVATE
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
-	// The domain of the model. Describes the domain in which the model is for. Example: nlp (Natural Language Processing), cv (computer vision), and others.
+	// The domain of the model. Describes the domain in which the model is for. Example: nlp (natural language processing), cv (computer vision), and others.
 	//
 	// example:
 	//
@@ -4640,9 +4658,9 @@ type CreateModelRequest struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The tags.
+	// The tags. This parameter will be deprecated and replaced by Tag.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The model description, which is used to distinguish different models.
+	// The model description, used to distinguish different models.
 	ModelDescription *string `json:"ModelDescription,omitempty" xml:"ModelDescription,omitempty"`
 	// The documentation of the model.
 	//
@@ -4671,15 +4689,16 @@ type CreateModelRequest struct {
 	// example:
 	//
 	// ModelScope
-	Origin *string  `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	Tag    []*Label `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	// The tags.
+	Tag []*Label `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The task of the model. Describes the specific problem that the model solves. Example: text-classification.
 	//
 	// example:
 	//
 	// text-classification
 	Task *string `json:"Task,omitempty" xml:"Task,omitempty"`
-	// The workspace ID. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
+	// The workspace ID. Call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
 	//
 	// example:
 	//
@@ -5900,7 +5919,7 @@ type CreateWorkspaceResourceRequestResources struct {
 	//
 	// prod
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	// The name of the resource group, which is unique within your Alibaba Cloud account.
+	// The name of the resource group, which is unique within your Alibaba Cloud account. This parameter is required for MaxCompute, Elastic Compute Service (ECS), Lingjun, Alibaba Cloud Container Compute Service (ACS), and Realtime Compute for Apache Flink resources.
 	//
 	// example:
 	//
@@ -5916,13 +5935,13 @@ type CreateWorkspaceResourceRequestResources struct {
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The tags added to the resource.
+	// The labels added to the resource.
 	Labels []*CreateWorkspaceResourceRequestResourcesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The resource name. Format:
+	// The resource name. The name must meet the following requirements:
 	//
 	// 	- The name must be 3 to 28 characters in length, and can contain only letters, digits, and underscores (_). The name must start with a letter.
 	//
-	// 	- The name is unique in the region.
+	// 	- The name must be unique in the region.
 	//
 	// This parameter is required.
 	//
@@ -5930,15 +5949,15 @@ type CreateWorkspaceResourceRequestResources struct {
 	//
 	// ResourceName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// **This field is no longer used and will be removed. Use the ResourceType field instead.
+	// **This parameter is no longer used and will be removed. Use the ResourceType parameter instead.
 	//
 	// example:
 	//
 	// MaxCompute
 	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
-	// The list of quotas. Only MaxCompute quotas are available.
+	// The quotas. Only MaxCompute quotas are available.
 	Quotas []*CreateWorkspaceResourceRequestResourcesQuotas `json:"Quotas,omitempty" xml:"Quotas,omitempty" type:"Repeated"`
-	// The resource type. Valid values:
+	// The resource types. Valid values:
 	//
 	// 	- MaxCompute
 	//
@@ -6025,13 +6044,13 @@ func (s *CreateWorkspaceResourceRequestResources) SetWorkspaceId(v string) *Crea
 }
 
 type CreateWorkspaceResourceRequestResourcesLabels struct {
-	// The tag key.
+	// The label key.
 	//
 	// example:
 	//
 	// system.support.eas
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value.
+	// The label value.
 	//
 	// example:
 	//
@@ -6230,6 +6249,98 @@ func (s *DeleteCodeSourceResponse) SetStatusCode(v int32) *DeleteCodeSourceRespo
 }
 
 func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *DeleteCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteConfigRequest struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle - DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The filter conditions. Separate multiple conditions with commas (,). The conditions have an AND relationship.
+	//
+	// example:
+	//
+	// key1=value;key2=value2
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+}
+
+func (s DeleteConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigRequest) SetCategoryName(v string) *DeleteConfigRequest {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *DeleteConfigRequest) SetLabels(v string) *DeleteConfigRequest {
+	s.Labels = &v
+	return s
+}
+
+type DeleteConfigResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A******C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigResponseBody) SetRequestId(v string) *DeleteConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConfigResponse) SetHeaders(v map[string]*string) *DeleteConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConfigResponse) SetStatusCode(v int32) *DeleteConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConfigResponse) SetBody(v *DeleteConfigResponseBody) *DeleteConfigResponse {
 	s.Body = v
 	return s
 }
@@ -7287,7 +7398,7 @@ func (s *DeleteUserConfigRequest) SetConfigKey(v string) *DeleteUserConfigReques
 }
 
 type DeleteUserConfigResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -7742,6 +7853,164 @@ func (s *GetCodeSourceResponse) SetStatusCode(v int32) *GetCodeSourceResponse {
 }
 
 func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSourceResponse {
+	s.Body = v
+	return s
+}
+
+type GetConfigRequest struct {
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// tempStoragePath
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// example:
+	//
+	// oss://***
+	Verbose *string `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigRequest) SetCategoryName(v string) *GetConfigRequest {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *GetConfigRequest) SetConfigKey(v string) *GetConfigRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *GetConfigRequest) SetVerbose(v string) *GetConfigRequest {
+	s.Verbose = &v
+	return s
+}
+
+type GetConfigResponseBody struct {
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// tempStoragePath
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// example:
+	//
+	// oss://***
+	ConfigValue *string                        `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Labels      []*GetConfigResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A******C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1234******2
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigResponseBody) SetCategoryName(v string) *GetConfigResponseBody {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetConfigKey(v string) *GetConfigResponseBody {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetConfigValue(v string) *GetConfigResponseBody {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetLabels(v []*GetConfigResponseBodyLabels) *GetConfigResponseBody {
+	s.Labels = v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetRequestId(v string) *GetConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConfigResponseBody) SetWorkspaceId(v string) *GetConfigResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetConfigResponseBodyLabels struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetConfigResponseBodyLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigResponseBodyLabels) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigResponseBodyLabels) SetKey(v string) *GetConfigResponseBodyLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *GetConfigResponseBodyLabels) SetValue(v string) *GetConfigResponseBodyLabels {
+	s.Value = &v
+	return s
+}
+
+type GetConfigResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigResponse) SetHeaders(v map[string]*string) *GetConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConfigResponse) SetStatusCode(v int32) *GetConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConfigResponse) SetBody(v *GetConfigResponseBody) *GetConfigResponse {
 	s.Body = v
 	return s
 }
@@ -8315,20 +8584,40 @@ func (s *GetDatasetFileMetaResponse) SetBody(v *GetDatasetFileMetaResponseBody) 
 }
 
 type GetDatasetFileMetasStatisticsRequest struct {
+	// Aggregates statistics based on the specified metadata field. The value is not case-sensitive. If not specified, the total number of dataset file metadata will be returned, instead of aggregation lists. Valid values:
+	//
+	// 	- filedir: the directory path of the file
+	//
+	// 	- file_type: the file type
+	//
+	// 	- tags.user: user-defined tag
+	//
+	// 	- tags.user-delete-ai-tags: algorithm tags deleted by the user
+	//
+	// 	- tags.ai: algorithm tags (aggregated by all tagging tasks)
+	//
+	// 	- tags.all: algorithm tags and user-defined tags (excluding alogorithm tags deleted by the user)
+	//
 	// example:
 	//
 	// filedir
 	AggregateBy *string `json:"AggregateBy,omitempty" xml:"AggregateBy,omitempty"`
+	// The dataset version.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
+	// The maximum number of results to be returned from a single query when the NextToken parameter is used in the query. Valid values: 1 to 100. Default value: 10.
+	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8366,11 +8655,16 @@ func (s *GetDatasetFileMetasStatisticsRequest) SetWorkspaceId(v string) *GetData
 }
 
 type GetDatasetFileMetasStatisticsResponseBody struct {
+	// The details of the returned aggregation list, including the number of each aggregate item. The list is by default sorted in descending order based on the count number.
 	DatasetFileMetasStats []*DatasetFileMetasStat `json:"DatasetFileMetasStats,omitempty" xml:"DatasetFileMetasStats,omitempty" type:"Repeated"`
+	// The returned number. Example: the number of metadata records or the number of user-defined tags.
+	//
 	// example:
 	//
 	// 73
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// ADF6D849-*****-7E7030F0CE53
@@ -10997,13 +11291,11 @@ type ListCodeSourcesRequest struct {
 	//
 	// MyDataSource
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	// The order in which the entries are sorted by the specific field on the returned page.
+	// The order in which the entries are sorted by the specific field on the returned page. Valid values:
 	//
-	// Valid values:
+	// 	- ASC (default)
 	//
-	// 	- asc: ascending order. This is the default value.
-	//
-	// 	- desc: descending order.
+	// 	- DESC
 	//
 	// example:
 	//
@@ -11023,13 +11315,13 @@ type ListCodeSourcesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The field used for sorting. Valid values:
 	//
-	// 	- GmtModifyTime: the time when the source code is modified.
+	// 	- GmtModifyTime: the time when the code source was modified.
 	//
 	// 	- DisplayName: the display name.
 	//
-	// 	- CodeSourceId: the ID of the code source.
+	// 	- CodeSourceId: the code source ID.
 	//
-	// 	- GmtCreateTime: the time when the code source is created. This is the default value.
+	// 	- GmtCreateTime: the time when the code source was created. This is the default value.
 	//
 	// example:
 	//
@@ -11150,6 +11442,181 @@ func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListC
 	return s
 }
 
+type ListConfigsRequest struct {
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// tempStoragePath
+	ConfigKeys *string `json:"ConfigKeys,omitempty" xml:"ConfigKeys,omitempty"`
+	// example:
+	//
+	// key1=value1,key2=value2
+	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// true
+	Verbose *string `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s ListConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigsRequest) SetCategoryName(v string) *ListConfigsRequest {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *ListConfigsRequest) SetConfigKeys(v string) *ListConfigsRequest {
+	s.ConfigKeys = &v
+	return s
+}
+
+func (s *ListConfigsRequest) SetLabels(v string) *ListConfigsRequest {
+	s.Labels = &v
+	return s
+}
+
+func (s *ListConfigsRequest) SetVerbose(v string) *ListConfigsRequest {
+	s.Verbose = &v
+	return s
+}
+
+type ListConfigsResponseBody struct {
+	Configs []*ListConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A******C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 15
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigsResponseBody) SetConfigs(v []*ListConfigsResponseBodyConfigs) *ListConfigsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *ListConfigsResponseBody) SetRequestId(v string) *ListConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConfigsResponseBody) SetTotalCount(v int64) *ListConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConfigsResponseBodyConfigs struct {
+	// example:
+	//
+	// tempTableLifecycle
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// example:
+	//
+	// oss://***
+	ConfigValue *string                                 `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Labels      []*ListConfigsResponseBodyConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s ListConfigsResponseBodyConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigsResponseBodyConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigsResponseBodyConfigs) SetConfigKey(v string) *ListConfigsResponseBodyConfigs {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *ListConfigsResponseBodyConfigs) SetConfigValue(v string) *ListConfigsResponseBodyConfigs {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *ListConfigsResponseBodyConfigs) SetLabels(v []*ListConfigsResponseBodyConfigsLabels) *ListConfigsResponseBodyConfigs {
+	s.Labels = v
+	return s
+}
+
+type ListConfigsResponseBodyConfigsLabels struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListConfigsResponseBodyConfigsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigsResponseBodyConfigsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigsResponseBodyConfigsLabels) SetKey(v string) *ListConfigsResponseBodyConfigsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *ListConfigsResponseBodyConfigsLabels) SetValue(v string) *ListConfigsResponseBodyConfigsLabels {
+	s.Value = &v
+	return s
+}
+
+type ListConfigsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConfigsResponse) SetHeaders(v map[string]*string) *ListConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConfigsResponse) SetStatusCode(v int32) *ListConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConfigsResponse) SetBody(v *ListConfigsResponseBody) *ListConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDatasetFileMetasRequest struct {
 	// The dataset version.
 	//
@@ -11159,7 +11626,7 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	// The update time range to query. The end time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -11168,8 +11635,15 @@ type ListDatasetFileMetasRequest struct {
 	// 2025-01-12T14:36:01Z
 	EndFileUpdateTime *string `json:"EndFileUpdateTime,omitempty" xml:"EndFileUpdateTime,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01.000Z
 	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token.
 	//
 	// >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
@@ -11195,14 +11669,23 @@ type ListDatasetFileMetasRequest struct {
 	// example:
 	//
 	// 10
-	PageSize                *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryFileDir            *string   `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cars/20250221/
+	QueryFileDir *string `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	// example:
+	//
+	// shuima
 	QueryFileName           *string   `json:"QueryFileName,omitempty" xml:"QueryFileName,omitempty"`
 	QueryFileTypeIncludeAny []*string `json:"QueryFileTypeIncludeAny,omitempty" xml:"QueryFileTypeIncludeAny,omitempty" type:"Repeated"`
-	QueryImage              *string   `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
-	QueryTagsExclude        []*string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty" type:"Repeated"`
-	QueryTagsIncludeAll     []*string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty" type:"Repeated"`
-	QueryTagsIncludeAny     []*string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty" type:"Repeated"`
+	// example:
+	//
+	// oss://test-xxx-oss/car/0001.png
+	QueryImage          *string   `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
+	QueryTagsExclude    []*string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty" type:"Repeated"`
+	QueryTagsIncludeAll []*string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty" type:"Repeated"`
+	QueryTagsIncludeAny []*string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty" type:"Repeated"`
 	// The text content to be queried.
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
 	// The retrieval type.
@@ -11231,7 +11714,7 @@ type ListDatasetFileMetasRequest struct {
 	//
 	// FileCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	// The update time range to query. The start time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -11240,8 +11723,15 @@ type ListDatasetFileMetasRequest struct {
 	// 2025-01-12T14:36:01Z
 	StartFileUpdateTime *string `json:"StartFileUpdateTime,omitempty" xml:"StartFileUpdateTime,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01.000Z
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
-	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
+	// example:
+	//
+	// w_100
+	ThumbnailMode *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
 	// The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
 	//
 	// example:
@@ -11390,7 +11880,7 @@ type ListDatasetFileMetasShrinkRequest struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	// The end time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	// The update time range to query. The end time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -11399,8 +11889,15 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// 2025-01-12T14:36:01Z
 	EndFileUpdateTime *string `json:"EndFileUpdateTime,omitempty" xml:"EndFileUpdateTime,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01.000Z
 	EndTagUpdateTime *string `json:"EndTagUpdateTime,omitempty" xml:"EndTagUpdateTime,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token.
 	//
 	// >  If you do not configure this parameter, the data on the first page is returned. A return value other than Null of this parameter indicates that not all entries have been returned. You can use this value as an input parameter to obtain entries on the next page. The value Null indicates that all query results have been returned.
@@ -11426,14 +11923,23 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// example:
 	//
 	// 10
-	PageSize                      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryFileDir                  *string `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cars/20250221/
+	QueryFileDir *string `json:"QueryFileDir,omitempty" xml:"QueryFileDir,omitempty"`
+	// example:
+	//
+	// shuima
 	QueryFileName                 *string `json:"QueryFileName,omitempty" xml:"QueryFileName,omitempty"`
 	QueryFileTypeIncludeAnyShrink *string `json:"QueryFileTypeIncludeAny,omitempty" xml:"QueryFileTypeIncludeAny,omitempty"`
-	QueryImage                    *string `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
-	QueryTagsExcludeShrink        *string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty"`
-	QueryTagsIncludeAllShrink     *string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty"`
-	QueryTagsIncludeAnyShrink     *string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty"`
+	// example:
+	//
+	// oss://test-xxx-oss/car/0001.png
+	QueryImage                *string `json:"QueryImage,omitempty" xml:"QueryImage,omitempty"`
+	QueryTagsExcludeShrink    *string `json:"QueryTagsExclude,omitempty" xml:"QueryTagsExclude,omitempty"`
+	QueryTagsIncludeAllShrink *string `json:"QueryTagsIncludeAll,omitempty" xml:"QueryTagsIncludeAll,omitempty"`
+	QueryTagsIncludeAnyShrink *string `json:"QueryTagsIncludeAny,omitempty" xml:"QueryTagsIncludeAny,omitempty"`
 	// The text content to be queried.
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
 	// The retrieval type.
@@ -11462,7 +11968,7 @@ type ListDatasetFileMetasShrinkRequest struct {
 	//
 	// FileCreateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start time when the file is updated. This parameter is used when you want to query file metadata during a period of time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
+	// The update time range to query. The start time. The time follows the ISO 8601 standard. This parameter is valid only when QueryType is set to TAG.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -11471,8 +11977,15 @@ type ListDatasetFileMetasShrinkRequest struct {
 	// 2025-01-12T14:36:01Z
 	StartFileUpdateTime *string `json:"StartFileUpdateTime,omitempty" xml:"StartFileUpdateTime,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
+	//
+	// example:
+	//
+	// 2025-01-12T14:36:01.000Z
 	StartTagUpdateTime *string `json:"StartTagUpdateTime,omitempty" xml:"StartTagUpdateTime,omitempty"`
-	ThumbnailMode      *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
+	// example:
+	//
+	// w_100
+	ThumbnailMode *string `json:"ThumbnailMode,omitempty" xml:"ThumbnailMode,omitempty"`
 	// The number of search results to return. A maximum of Top K search results can be returned. This parameter is valid only when QueryType is set to VECTOR.
 	//
 	// example:
@@ -11627,7 +12140,10 @@ type ListDatasetFileMetasResponseBody struct {
 	//
 	// v1
 	DatasetVersion *string `json:"DatasetVersion,omitempty" xml:"DatasetVersion,omitempty"`
-	MaxResults     *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The pagination token. If the number of results exceeds the maximum number of entries allowed per page, a pagination token is returned. This token can be used as an input parameter to obtain the next page of results. If all results are obtained, no token is returned.
 	//
 	// example:
@@ -11636,7 +12152,7 @@ type ListDatasetFileMetasResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Deprecated
 	//
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -12043,20 +12559,6 @@ type ListDatasetVersionsRequest struct {
 	Properties *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
 	// The field used to sort the results in queries by page. Default value: GmtCreateTime.
 	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
-	// *
-	//
 	// Valid values:
 	//
 	// 	- SourceType
@@ -12098,14 +12600,6 @@ type ListDatasetVersionsRequest struct {
 	// 	- ITAG: a dataset generated from a labeling job of iTAG.
 	//
 	// 	- USER: a dataset registered by a user.
-	//
-	// <!---->
-	//
-	// *
-	//
-	// *
-	//
-	// *
 	//
 	// example:
 	//
@@ -12365,14 +12859,6 @@ type ListDatasetsRequest struct {
 	// 	- ITAG: a dataset generated from a labeling job of iTAG.
 	//
 	// 	- USER: a dataset registered by a user.
-	//
-	// <!---->
-	//
-	// *
-	//
-	// *
-	//
-	// *
 	//
 	// example:
 	//
@@ -14079,8 +14565,9 @@ type ListModelsRequest struct {
 	// example:
 	//
 	// GmtCreateTime
-	SortBy *string                 `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	Tag    []*ListModelsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The tags of the model.
+	Tag []*ListModelsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The task used to filter the models that belong to the task type. Example: text-classification.
 	//
 	// example:
@@ -14179,7 +14666,17 @@ func (s *ListModelsRequest) SetWorkspaceId(v string) *ListModelsRequest {
 }
 
 type ListModelsRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// value1
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -14273,7 +14770,8 @@ type ListModelsShrinkRequest struct {
 	// example:
 	//
 	// GmtCreateTime
-	SortBy    *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// The tags of the model.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// The task used to filter the models that belong to the task type. Example: text-classification.
 	//
@@ -17276,7 +17774,7 @@ func (s *SetUserConfigsRequestConfigs) SetScope(v string) *SetUserConfigsRequest
 }
 
 type SetUserConfigsResponseBody struct {
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -17567,6 +18065,267 @@ func (s *UpdateCodeSourceResponse) SetBody(v *UpdateCodeSourceResponseBody) *Upd
 	return s
 }
 
+type UpdateConfigRequest struct {
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// tempStoragePath
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// example:
+	//
+	// oss://***
+	ConfigValue *string                      `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Labels      []*UpdateConfigRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRequest) SetCategoryName(v string) *UpdateConfigRequest {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetConfigKey(v string) *UpdateConfigRequest {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetConfigValue(v string) *UpdateConfigRequest {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *UpdateConfigRequest) SetLabels(v []*UpdateConfigRequestLabels) *UpdateConfigRequest {
+	s.Labels = v
+	return s
+}
+
+type UpdateConfigRequestLabels struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateConfigRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigRequestLabels) SetKey(v string) *UpdateConfigRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateConfigRequestLabels) SetValue(v string) *UpdateConfigRequestLabels {
+	s.Value = &v
+	return s
+}
+
+type UpdateConfigResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A******C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigResponseBody) SetRequestId(v string) *UpdateConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigResponse) SetHeaders(v map[string]*string) *UpdateConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConfigResponse) SetStatusCode(v int32) *UpdateConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConfigResponse) SetBody(v *UpdateConfigResponseBody) *UpdateConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateConfigsRequest struct {
+	Configs []*UpdateConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigsRequest) SetConfigs(v []*UpdateConfigsRequestConfigs) *UpdateConfigsRequest {
+	s.Configs = v
+	return s
+}
+
+type UpdateConfigsRequestConfigs struct {
+	// example:
+	//
+	// CommonResourceConfig
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// example:
+	//
+	// tempStoragePath
+	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// example:
+	//
+	// oss://test/s/
+	ConfigValue *string                              `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	Labels      []*UpdateConfigsRequestConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+}
+
+func (s UpdateConfigsRequestConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigsRequestConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigsRequestConfigs) SetCategoryName(v string) *UpdateConfigsRequestConfigs {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *UpdateConfigsRequestConfigs) SetConfigKey(v string) *UpdateConfigsRequestConfigs {
+	s.ConfigKey = &v
+	return s
+}
+
+func (s *UpdateConfigsRequestConfigs) SetConfigValue(v string) *UpdateConfigsRequestConfigs {
+	s.ConfigValue = &v
+	return s
+}
+
+func (s *UpdateConfigsRequestConfigs) SetLabels(v []*UpdateConfigsRequestConfigsLabels) *UpdateConfigsRequestConfigs {
+	s.Labels = v
+	return s
+}
+
+type UpdateConfigsRequestConfigsLabels struct {
+	// example:
+	//
+	// key1
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// value1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateConfigsRequestConfigsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigsRequestConfigsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigsRequestConfigsLabels) SetKey(v string) *UpdateConfigsRequestConfigsLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateConfigsRequestConfigsLabels) SetValue(v string) *UpdateConfigsRequestConfigsLabels {
+	s.Value = &v
+	return s
+}
+
+type UpdateConfigsResponseBody struct {
+	// example:
+	//
+	// 473469C7-AA6F-4DC5-B3DB-A******C83E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigsResponseBody) SetRequestId(v string) *UpdateConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateConfigsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConfigsResponse) SetHeaders(v map[string]*string) *UpdateConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConfigsResponse) SetStatusCode(v int32) *UpdateConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConfigsResponse) SetBody(v *UpdateConfigsResponseBody) *UpdateConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDatasetRequest struct {
 	// The description of the dataset.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -17692,7 +18451,7 @@ type UpdateDatasetFileMetasRequest struct {
 	//
 	// dsjob-hv0b1****u8taig3y
 	TagJobId *string `json:"TagJobId,omitempty" xml:"TagJobId,omitempty"`
-	// The ID of the workspace to which the dataset belongs. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	// The ID of the workspace to which the dataset belongs. To obtain the workspace ID, see [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html).
 	//
 	// example:
 	//
@@ -21059,6 +21818,74 @@ func (client *Client) DeleteCodeSource(CodeSourceId *string) (_result *DeleteCod
 
 // Summary:
 //
+// Deletes workspace configurations.
+//
+// @param request - DeleteConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConfigResponse
+func (client *Client) DeleteConfigWithOptions(WorkspaceId *string, ConfigKey *string, request *DeleteConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConfig"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/configs/" + tea.StringValue(openapiutil.GetEncodeParam(ConfigKey))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes workspace configurations.
+//
+// @param request - DeleteConfigRequest
+//
+// @return DeleteConfigResponse
+func (client *Client) DeleteConfig(WorkspaceId *string, ConfigKey *string, request *DeleteConfigRequest) (_result *DeleteConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConfigResponse{}
+	_body, _err := client.DeleteConfigWithOptions(WorkspaceId, ConfigKey, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a dataset.
 //
 // @param headers - map
@@ -22213,6 +23040,78 @@ func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourc
 
 // Summary:
 //
+// 获取配置
+//
+// @param request - GetConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConfigResponse
+func (client *Client) GetConfigWithOptions(WorkspaceId *string, request *GetConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConfig"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/config"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取配置
+//
+// @param request - GetConfigRequest
+//
+// @return GetConfigResponse
+func (client *Client) GetConfig(WorkspaceId *string, request *GetConfigRequest) (_result *GetConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConfigResponse{}
+	_body, _err := client.GetConfigWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains a dataset.
 //
 // @param headers - map
@@ -22331,7 +23230,7 @@ func (client *Client) GetDatasetFileMeta(DatasetId *string, DatasetFileMetaId *s
 
 // Summary:
 //
-// 获取数据集下元数据的统计信息。
+// Obtains metadata statistics of a dataset.
 //
 // @param request - GetDatasetFileMetasStatisticsRequest
 //
@@ -22388,7 +23287,7 @@ func (client *Client) GetDatasetFileMetasStatisticsWithOptions(DatasetId *string
 
 // Summary:
 //
-// 获取数据集下元数据的统计信息。
+// Obtains metadata statistics of a dataset.
 //
 // @param request - GetDatasetFileMetasStatisticsRequest
 //
@@ -23238,6 +24137,82 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 	headers := make(map[string]*string)
 	_result = &ListCodeSourcesResponse{}
 	_body, _err := client.ListCodeSourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取配置
+//
+// @param request - ListConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConfigsResponse
+func (client *Client) ListConfigsWithOptions(WorkspaceId *string, request *ListConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		query["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigKeys)) {
+		query["ConfigKeys"] = request.ConfigKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConfigs"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取配置
+//
+// @param request - ListConfigsRequest
+//
+// @return ListConfigsResponse
+func (client *Client) ListConfigs(WorkspaceId *string, request *ListConfigsRequest) (_result *ListConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConfigsResponse{}
+	_body, _err := client.ListConfigsWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24875,7 +25850,7 @@ func (client *Client) ListRuns(request *ListRunsRequest) (_result *ListRunsRespo
 
 // Summary:
 //
-// Obtains the user configurations.
+// Queries user information.
 //
 // @param request - ListUserConfigsRequest
 //
@@ -24924,7 +25899,7 @@ func (client *Client) ListUserConfigsWithOptions(request *ListUserConfigsRequest
 
 // Summary:
 //
-// Obtains the user configurations.
+// Queries user information.
 //
 // @param request - ListUserConfigsRequest
 //
@@ -25766,6 +26741,146 @@ func (client *Client) UpdateCodeSource(CodeSourceId *string, request *UpdateCode
 	headers := make(map[string]*string)
 	_result = &UpdateCodeSourceResponse{}
 	_body, _err := client.UpdateCodeSourceWithOptions(CodeSourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新配置
+//
+// @param request - UpdateConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConfigResponse
+func (client *Client) UpdateConfigWithOptions(WorkspaceId *string, request *UpdateConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		body["CategoryName"] = request.CategoryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
+		body["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigValue)) {
+		body["ConfigValue"] = request.ConfigValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConfig"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/config"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新配置
+//
+// @param request - UpdateConfigRequest
+//
+// @return UpdateConfigResponse
+func (client *Client) UpdateConfig(WorkspaceId *string, request *UpdateConfigRequest) (_result *UpdateConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConfigResponse{}
+	_body, _err := client.UpdateConfigWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新配置
+//
+// @param request - UpdateConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConfigsResponse
+func (client *Client) UpdateConfigsWithOptions(WorkspaceId *string, request *UpdateConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		body["Configs"] = request.Configs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConfigs"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(openapiutil.GetEncodeParam(WorkspaceId)) + "/configs"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新配置
+//
+// @param request - UpdateConfigsRequest
+//
+// @return UpdateConfigsResponse
+func (client *Client) UpdateConfigs(WorkspaceId *string, request *UpdateConfigsRequest) (_result *UpdateConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConfigsResponse{}
+	_body, _err := client.UpdateConfigsWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
