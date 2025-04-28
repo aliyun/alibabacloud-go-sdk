@@ -2565,6 +2565,533 @@ func (s *CreateDataDomainResponse) SetBody(v *CreateDataDomainResponseBody) *Cre
 	return s
 }
 
+type CreateDataServiceApiRequest struct {
+	// This parameter is required.
+	CreateCommand *CreateDataServiceApiRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s CreateDataServiceApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequest) SetCreateCommand(v *CreateDataServiceApiRequestCreateCommand) *CreateDataServiceApiRequest {
+	s.CreateCommand = v
+	return s
+}
+
+func (s *CreateDataServiceApiRequest) SetOpTenantId(v int64) *CreateDataServiceApiRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type CreateDataServiceApiRequestCreateCommand struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 101
+	ApiGroupId *int64 `json:"ApiGroupId,omitempty" xml:"ApiGroupId,omitempty"`
+	// This parameter is required.
+	ApiGroupName *string `json:"ApiGroupName,omitempty" xml:"ApiGroupName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// API_01
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3
+	ApiType *int32 `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
+	// This parameter is required.
+	BizProtocol []*int32 `json:"BizProtocol,omitempty" xml:"BizProtocol,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 600
+	CacheTimeout *int32 `json:"CacheTimeout,omitempty" xml:"CacheTimeout,omitempty"`
+	// example:
+	//
+	// 1
+	CallMode         *int32  `json:"CallMode,omitempty" xml:"CallMode,omitempty"`
+	CustomUpdateRate *string `json:"CustomUpdateRate,omitempty" xml:"CustomUpdateRate,omitempty"`
+	// example:
+	//
+	// test
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 30
+	ExecutionTimeout *int32 `json:"ExecutionTimeout,omitempty" xml:"ExecutionTimeout,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RequestType *int32 `json:"RequestType,omitempty" xml:"RequestType,omitempty"`
+	// This parameter is required.
+	ScriptDetails *CreateDataServiceApiRequestCreateCommandScriptDetails `json:"ScriptDetails,omitempty" xml:"ScriptDetails,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+	// example:
+	//
+	// 1
+	UpdateRate *int32 `json:"UpdateRate,omitempty" xml:"UpdateRate,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// V1
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateDataServiceApiRequestCreateCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequestCreateCommand) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetApiGroupId(v int64) *CreateDataServiceApiRequestCreateCommand {
+	s.ApiGroupId = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetApiGroupName(v string) *CreateDataServiceApiRequestCreateCommand {
+	s.ApiGroupName = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetApiName(v string) *CreateDataServiceApiRequestCreateCommand {
+	s.ApiName = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetApiType(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.ApiType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetBizProtocol(v []*int32) *CreateDataServiceApiRequestCreateCommand {
+	s.BizProtocol = v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetCacheTimeout(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.CacheTimeout = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetCallMode(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.CallMode = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetCustomUpdateRate(v string) *CreateDataServiceApiRequestCreateCommand {
+	s.CustomUpdateRate = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetDescription(v string) *CreateDataServiceApiRequestCreateCommand {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetExecutionTimeout(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.ExecutionTimeout = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetMode(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetProjectId(v int64) *CreateDataServiceApiRequestCreateCommand {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetRequestType(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.RequestType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetScriptDetails(v *CreateDataServiceApiRequestCreateCommandScriptDetails) *CreateDataServiceApiRequestCreateCommand {
+	s.ScriptDetails = v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetTimeout(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.Timeout = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetUpdateRate(v int32) *CreateDataServiceApiRequestCreateCommand {
+	s.UpdateRate = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommand) SetVersion(v string) *CreateDataServiceApiRequestCreateCommand {
+	s.Version = &v
+	return s
+}
+
+type CreateDataServiceApiRequestCreateCommandScriptDetails struct {
+	// example:
+	//
+	// 6668888888888812345L
+	DatasourceID *int64 `json:"DatasourceID,omitempty" xml:"DatasourceID,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	DatasourceType *int32 `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
+	// example:
+	//
+	// false
+	IsPaginated *bool `json:"IsPaginated,omitempty" xml:"IsPaginated,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// select a,b,c from table1 where d = ${d}
+	Script *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	// This parameter is required.
+	ScriptRequestParameters []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters `json:"ScriptRequestParameters,omitempty" xml:"ScriptRequestParameters,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ScriptResponseParameters []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters `json:"ScriptResponseParameters,omitempty" xml:"ScriptResponseParameters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2
+	SortPriority *int32 `json:"SortPriority,omitempty" xml:"SortPriority,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SqlMode *int32 `json:"SqlMode,omitempty" xml:"SqlMode,omitempty"`
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetails) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetDatasourceID(v int64) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.DatasourceID = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetDatasourceType(v int32) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.DatasourceType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetIsPaginated(v bool) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.IsPaginated = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetScript(v string) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.Script = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetScriptRequestParameters(v []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.ScriptRequestParameters = v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetScriptResponseParameters(v []*CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.ScriptResponseParameters = v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetSortPriority(v int32) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.SortPriority = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetails) SetSqlMode(v int32) *CreateDataServiceApiRequestCreateCommandScriptDetails {
+	s.SqlMode = &v
+	return s
+}
+
+type CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters struct {
+	// example:
+	//
+	// test
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	IsRequiredParameter *bool `json:"IsRequiredParameter,omitempty" xml:"IsRequiredParameter,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ParameterDataType    *string `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// =
+	ParameterValueType *string `json:"ParameterValueType,omitempty" xml:"ParameterValueType,omitempty"`
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetExampleValue(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.ExampleValue = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetIsRequiredParameter(v bool) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.IsRequiredParameter = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetParameterDataType(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.ParameterDataType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetParameterDescription(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetParameterName(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters) SetParameterValueType(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters {
+	s.ParameterValueType = &v
+	return s
+}
+
+type CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters struct {
+	// example:
+	//
+	// amazing
+	ExampleValue *string `json:"ExampleValue,omitempty" xml:"ExampleValue,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ParameterDataType    *string `json:"ParameterDataType,omitempty" xml:"ParameterDataType,omitempty"`
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// a
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetExampleValue(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
+	s.ExampleValue = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetParameterDataType(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
+	s.ParameterDataType = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetParameterDescription(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters) SetParameterName(v string) *CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters {
+	s.ParameterName = &v
+	return s
+}
+
+type CreateDataServiceApiShrinkRequest struct {
+	// This parameter is required.
+	CreateCommandShrink *string `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s CreateDataServiceApiShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiShrinkRequest) SetCreateCommandShrink(v string) *CreateDataServiceApiShrinkRequest {
+	s.CreateCommandShrink = &v
+	return s
+}
+
+func (s *CreateDataServiceApiShrinkRequest) SetOpTenantId(v int64) *CreateDataServiceApiShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type CreateDataServiceApiResponseBody struct {
+	// example:
+	//
+	// 10086
+	ApiId *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// internal error
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 82E78D6B-AA8F-1FEF-8AA3-5C9DA2A79140
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataServiceApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiResponseBody) SetApiId(v int64) *CreateDataServiceApiResponseBody {
+	s.ApiId = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponseBody) SetCode(v string) *CreateDataServiceApiResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponseBody) SetHttpStatusCode(v int32) *CreateDataServiceApiResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponseBody) SetMessage(v string) *CreateDataServiceApiResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponseBody) SetRequestId(v string) *CreateDataServiceApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponseBody) SetSuccess(v bool) *CreateDataServiceApiResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataServiceApiResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDataServiceApiResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDataServiceApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataServiceApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataServiceApiResponse) SetHeaders(v map[string]*string) *CreateDataServiceApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataServiceApiResponse) SetStatusCode(v int32) *CreateDataServiceApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDataServiceApiResponse) SetBody(v *CreateDataServiceApiResponseBody) *CreateDataServiceApiResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataSourceRequest struct {
 	CreateCommand *CreateDataSourceRequestCreateCommand `json:"CreateCommand,omitempty" xml:"CreateCommand,omitempty" type:"Struct"`
 	// This parameter is required.
@@ -3880,6 +4407,459 @@ func (s *CreatePipelineNodeResponse) SetStatusCode(v int32) *CreatePipelineNodeR
 }
 
 func (s *CreatePipelineNodeResponse) SetBody(v *CreatePipelineNodeResponseBody) *CreatePipelineNodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRowPermissionRequest struct {
+	// This parameter is required.
+	CreateRowPermissionCommand *CreateRowPermissionRequestCreateRowPermissionCommand `json:"CreateRowPermissionCommand,omitempty" xml:"CreateRowPermissionCommand,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s CreateRowPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequest) SetCreateRowPermissionCommand(v *CreateRowPermissionRequestCreateRowPermissionCommand) *CreateRowPermissionRequest {
+	s.CreateRowPermissionCommand = v
+	return s
+}
+
+func (s *CreateRowPermissionRequest) SetOpTenantId(v int64) *CreateRowPermissionRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommand struct {
+	// This parameter is required.
+	MappingColumns    []*CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns `json:"MappingColumns,omitempty" xml:"MappingColumns,omitempty" type:"Repeated"`
+	RowPermissionDesc *string                                                               `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
+	// This parameter is required.
+	RowPermissionName *string                                                       `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
+	Rules             []*CreateRowPermissionRequestCreateRowPermissionCommandRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Tables            []*CreateRowPermissionRequestCreateRowPermissionCommandTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommand) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommand) SetMappingColumns(v []*CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) *CreateRowPermissionRequestCreateRowPermissionCommand {
+	s.MappingColumns = v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommand) SetRowPermissionDesc(v string) *CreateRowPermissionRequestCreateRowPermissionCommand {
+	s.RowPermissionDesc = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommand) SetRowPermissionName(v string) *CreateRowPermissionRequestCreateRowPermissionCommand {
+	s.RowPermissionName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommand) SetRules(v []*CreateRowPermissionRequestCreateRowPermissionCommandRules) *CreateRowPermissionRequestCreateRowPermissionCommand {
+	s.Rules = v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommand) SetTables(v []*CreateRowPermissionRequestCreateRowPermissionCommandTables) *CreateRowPermissionRequestCreateRowPermissionCommand {
+	s.Tables = v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns struct {
+	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) SetColumnDesc(v string) *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns {
+	s.ColumnDesc = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) SetColumnName(v string) *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns) SetColumnType(v string) *CreateRowPermissionRequestCreateRowPermissionCommandMappingColumns {
+	s.ColumnType = &v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandRules struct {
+	// This parameter is required.
+	Expressions []*CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	IsDelete *bool `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// This parameter is required.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT_COLUMN
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status          *int32                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserMappingList []*CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetExpressions(v []*CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.Expressions = v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetIsDelete(v bool) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetRuleName(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetScopeType(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetStatus(v int32) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRules) SetUserMappingList(v []*CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList) *CreateRowPermissionRequestCreateRowPermissionCommandRules {
+	s.UserMappingList = v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EQUAL
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// This parameter is required.
+	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// RELATION
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) SetMappingColumnName(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) SetOperator(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) SetSubConditions(v []interface{}) *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions {
+	s.SubConditions = v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) SetType(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions) SetValues(v []*string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesExpressions {
+	s.Values = v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PERSONAL
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PERSONAL
+	Accounts []*CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList) SetAccountType(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList) SetAccounts(v []*CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts) *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingList {
+	s.Accounts = v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300001111
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts) SetAccountId(v string) *CreateRowPermissionRequestCreateRowPermissionCommandRulesUserMappingListAccounts {
+	s.AccountId = &v
+	return s
+}
+
+type CreateRowPermissionRequestCreateRowPermissionCommandTables struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps.300199897.project_name.table_name
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionRequestCreateRowPermissionCommandTables) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandTables) SetColumnName(v string) *CreateRowPermissionRequestCreateRowPermissionCommandTables {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandTables) SetMappingColumnName(v string) *CreateRowPermissionRequestCreateRowPermissionCommandTables {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *CreateRowPermissionRequestCreateRowPermissionCommandTables) SetResourceId(v string) *CreateRowPermissionRequestCreateRowPermissionCommandTables {
+	s.ResourceId = &v
+	return s
+}
+
+type CreateRowPermissionShrinkRequest struct {
+	// This parameter is required.
+	CreateRowPermissionCommandShrink *string `json:"CreateRowPermissionCommand,omitempty" xml:"CreateRowPermissionCommand,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s CreateRowPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionShrinkRequest) SetCreateRowPermissionCommandShrink(v string) *CreateRowPermissionShrinkRequest {
+	s.CreateRowPermissionCommandShrink = &v
+	return s
+}
+
+func (s *CreateRowPermissionShrinkRequest) SetOpTenantId(v int64) *CreateRowPermissionShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type CreateRowPermissionResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateRowPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionResponseBody) SetCode(v string) *CreateRowPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponseBody) SetData(v int64) *CreateRowPermissionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponseBody) SetHttpStatusCode(v int32) *CreateRowPermissionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponseBody) SetMessage(v string) *CreateRowPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponseBody) SetRequestId(v string) *CreateRowPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponseBody) SetSuccess(v bool) *CreateRowPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateRowPermissionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateRowPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateRowPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRowPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRowPermissionResponse) SetHeaders(v map[string]*string) *CreateRowPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRowPermissionResponse) SetStatusCode(v int32) *CreateRowPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateRowPermissionResponse) SetBody(v *CreateRowPermissionResponseBody) *CreateRowPermissionResponse {
 	s.Body = v
 	return s
 }
@@ -5371,6 +6351,177 @@ func (s *DeleteDirectoryResponse) SetBody(v *DeleteDirectoryResponseBody) *Delet
 	return s
 }
 
+type DeleteRowPermissionRequest struct {
+	// This parameter is required.
+	DeleteRowPermissionCommand *DeleteRowPermissionRequestDeleteRowPermissionCommand `json:"DeleteRowPermissionCommand,omitempty" xml:"DeleteRowPermissionCommand,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s DeleteRowPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRowPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRowPermissionRequest) SetDeleteRowPermissionCommand(v *DeleteRowPermissionRequestDeleteRowPermissionCommand) *DeleteRowPermissionRequest {
+	s.DeleteRowPermissionCommand = v
+	return s
+}
+
+func (s *DeleteRowPermissionRequest) SetOpTenantId(v int64) *DeleteRowPermissionRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type DeleteRowPermissionRequestDeleteRowPermissionCommand struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300001234
+	RowPermissionId *int64 `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
+}
+
+func (s DeleteRowPermissionRequestDeleteRowPermissionCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRowPermissionRequestDeleteRowPermissionCommand) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRowPermissionRequestDeleteRowPermissionCommand) SetRowPermissionId(v int64) *DeleteRowPermissionRequestDeleteRowPermissionCommand {
+	s.RowPermissionId = &v
+	return s
+}
+
+type DeleteRowPermissionShrinkRequest struct {
+	// This parameter is required.
+	DeleteRowPermissionCommandShrink *string `json:"DeleteRowPermissionCommand,omitempty" xml:"DeleteRowPermissionCommand,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s DeleteRowPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRowPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRowPermissionShrinkRequest) SetDeleteRowPermissionCommandShrink(v string) *DeleteRowPermissionShrinkRequest {
+	s.DeleteRowPermissionCommandShrink = &v
+	return s
+}
+
+func (s *DeleteRowPermissionShrinkRequest) SetOpTenantId(v int64) *DeleteRowPermissionShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type DeleteRowPermissionResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteRowPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRowPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRowPermissionResponseBody) SetCode(v string) *DeleteRowPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponseBody) SetData(v bool) *DeleteRowPermissionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponseBody) SetHttpStatusCode(v int32) *DeleteRowPermissionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponseBody) SetMessage(v string) *DeleteRowPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponseBody) SetRequestId(v string) *DeleteRowPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponseBody) SetSuccess(v bool) *DeleteRowPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteRowPermissionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteRowPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteRowPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRowPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRowPermissionResponse) SetHeaders(v map[string]*string) *DeleteRowPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRowPermissionResponse) SetStatusCode(v int32) *DeleteRowPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteRowPermissionResponse) SetBody(v *DeleteRowPermissionResponseBody) *DeleteRowPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteUserGroupRequest struct {
 	// This parameter is required.
 	//
@@ -6328,6 +7479,259 @@ func (s *FixDataResponse) SetStatusCode(v int32) *FixDataResponse {
 }
 
 func (s *FixDataResponse) SetBody(v *FixDataResponseBody) *FixDataResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccountByRowPermissionIdRequest struct {
+	// This parameter is required.
+	GetAccountByRowPermissionIdQuery *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery `json:"GetAccountByRowPermissionIdQuery,omitempty" xml:"GetAccountByRowPermissionIdQuery,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s GetAccountByRowPermissionIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdRequest) SetGetAccountByRowPermissionIdQuery(v *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) *GetAccountByRowPermissionIdRequest {
+	s.GetAccountByRowPermissionIdQuery = v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdRequest) SetOpTenantId(v int64) *GetAccountByRowPermissionIdRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300001234
+	RowPermissionId *int64 `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
+	// This parameter is required.
+	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
+}
+
+func (s GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) SetRowPermissionId(v int64) *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery {
+	s.RowPermissionId = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery) SetRuleIds(v []*int64) *GetAccountByRowPermissionIdRequestGetAccountByRowPermissionIdQuery {
+	s.RuleIds = v
+	return s
+}
+
+type GetAccountByRowPermissionIdShrinkRequest struct {
+	// This parameter is required.
+	GetAccountByRowPermissionIdQueryShrink *string `json:"GetAccountByRowPermissionIdQuery,omitempty" xml:"GetAccountByRowPermissionIdQuery,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s GetAccountByRowPermissionIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdShrinkRequest) SetGetAccountByRowPermissionIdQueryShrink(v string) *GetAccountByRowPermissionIdShrinkRequest {
+	s.GetAccountByRowPermissionIdQueryShrink = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdShrinkRequest) SetOpTenantId(v int64) *GetAccountByRowPermissionIdShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type GetAccountByRowPermissionIdResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetAccountByRowPermissionIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAccountByRowPermissionIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetCode(v string) *GetAccountByRowPermissionIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetData(v []*GetAccountByRowPermissionIdResponseBodyData) *GetAccountByRowPermissionIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetHttpStatusCode(v int32) *GetAccountByRowPermissionIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetMessage(v string) *GetAccountByRowPermissionIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetRequestId(v string) *GetAccountByRowPermissionIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBody) SetSuccess(v bool) *GetAccountByRowPermissionIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAccountByRowPermissionIdResponseBodyData struct {
+	// example:
+	//
+	// 300001235
+	Id              *int64                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	UserMappingList []*GetAccountByRowPermissionIdResponseBodyDataUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyData) SetId(v int64) *GetAccountByRowPermissionIdResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyData) SetUserMappingList(v []*GetAccountByRowPermissionIdResponseBodyDataUserMappingList) *GetAccountByRowPermissionIdResponseBodyData {
+	s.UserMappingList = v
+	return s
+}
+
+type GetAccountByRowPermissionIdResponseBodyDataUserMappingList struct {
+	// example:
+	//
+	// PERSONAL
+	AccountType *string                                                               `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Accounts    []*GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyDataUserMappingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyDataUserMappingList) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingList) SetAccountType(v string) *GetAccountByRowPermissionIdResponseBodyDataUserMappingList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingList) SetAccounts(v []*GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts) *GetAccountByRowPermissionIdResponseBodyDataUserMappingList {
+	s.Accounts = v
+	return s
+}
+
+type GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts struct {
+	// example:
+	//
+	// 300901111
+	AccountId   *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts) SetAccountId(v string) *GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts) SetAccountName(v string) *GetAccountByRowPermissionIdResponseBodyDataUserMappingListAccounts {
+	s.AccountName = &v
+	return s
+}
+
+type GetAccountByRowPermissionIdResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccountByRowPermissionIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAccountByRowPermissionIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountByRowPermissionIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountByRowPermissionIdResponse) SetHeaders(v map[string]*string) *GetAccountByRowPermissionIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponse) SetStatusCode(v int32) *GetAccountByRowPermissionIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccountByRowPermissionIdResponse) SetBody(v *GetAccountByRowPermissionIdResponseBody) *GetAccountByRowPermissionIdResponse {
 	s.Body = v
 	return s
 }
@@ -17606,6 +19010,838 @@ func (s *GetSupplementDagrunInstanceResponse) SetBody(v *GetSupplementDagrunInst
 	return s
 }
 
+type GetTableColumnLineageByTaskIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	TableColumnLineageByTaskIdQuery *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery `json:"TableColumnLineageByTaskIdQuery,omitempty" xml:"TableColumnLineageByTaskIdQuery,omitempty" type:"Struct"`
+}
+
+func (s GetTableColumnLineageByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdRequest) SetOpTenantId(v int64) *GetTableColumnLineageByTaskIdRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdRequest) SetTableColumnLineageByTaskIdQuery(v *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) *GetTableColumnLineageByTaskIdRequest {
+	s.TableColumnLineageByTaskIdQuery = v
+	return s
+}
+
+type GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery struct {
+	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
+	// example:
+	//
+	// DEV
+	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// n_123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) SetNeedNotExistObject(v bool) *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery {
+	s.NeedNotExistObject = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) SetTaskEnv(v string) *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery {
+	s.TaskEnv = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery) SetTaskId(v string) *GetTableColumnLineageByTaskIdRequestTableColumnLineageByTaskIdQuery {
+	s.TaskId = &v
+	return s
+}
+
+type GetTableColumnLineageByTaskIdShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	TableColumnLineageByTaskIdQueryShrink *string `json:"TableColumnLineageByTaskIdQuery,omitempty" xml:"TableColumnLineageByTaskIdQuery,omitempty"`
+}
+
+func (s GetTableColumnLineageByTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdShrinkRequest) SetOpTenantId(v int64) *GetTableColumnLineageByTaskIdShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdShrinkRequest) SetTableColumnLineageByTaskIdQueryShrink(v string) *GetTableColumnLineageByTaskIdShrinkRequest {
+	s.TableColumnLineageByTaskIdQueryShrink = &v
+	return s
+}
+
+type GetTableColumnLineageByTaskIdResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetTableColumnLineageByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTableColumnLineageByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetCode(v string) *GetTableColumnLineageByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetData(v []*GetTableColumnLineageByTaskIdResponseBodyData) *GetTableColumnLineageByTaskIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetHttpStatusCode(v int32) *GetTableColumnLineageByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetMessage(v string) *GetTableColumnLineageByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetRequestId(v string) *GetTableColumnLineageByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBody) SetSuccess(v bool) *GetTableColumnLineageByTaskIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTableColumnLineageByTaskIdResponseBodyData struct {
+	// example:
+	//
+	// 123
+	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.input_table.id
+	InputColumnId *string `json:"InputColumnId,omitempty" xml:"InputColumnId,omitempty"`
+	// example:
+	//
+	// id
+	InputColumnName *string `json:"InputColumnName,omitempty" xml:"InputColumnName,omitempty"`
+	// example:
+	//
+	// 123
+	InputDataSourceId *int64 `json:"InputDataSourceId,omitempty" xml:"InputDataSourceId,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	InputDataSourceType *string `json:"InputDataSourceType,omitempty" xml:"InputDataSourceType,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	InputDbType *string `json:"InputDbType,omitempty" xml:"InputDbType,omitempty"`
+	// example:
+	//
+	// DEV
+	InputEnv *string `json:"InputEnv,omitempty" xml:"InputEnv,omitempty"`
+	// example:
+	//
+	// 123
+	InputProjectId    *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
+	InputTableDeleted *bool  `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.order
+	InputTableId *string `json:"InputTableId,omitempty" xml:"InputTableId,omitempty"`
+	// example:
+	//
+	// order
+	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
+	// example:
+	//
+	// PHYSICAL_TABLE
+	InputTableType *string `json:"InputTableType,omitempty" xml:"InputTableType,omitempty"`
+	// example:
+	//
+	// 123
+	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.input_table.id
+	OutputColumnId *string `json:"OutputColumnId,omitempty" xml:"OutputColumnId,omitempty"`
+	// example:
+	//
+	// id
+	OutputColumnName *string `json:"OutputColumnName,omitempty" xml:"OutputColumnName,omitempty"`
+	// example:
+	//
+	// 123
+	OutputDataSourceId *int64 `json:"OutputDataSourceId,omitempty" xml:"OutputDataSourceId,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	OutputDataSourceType *string `json:"OutputDataSourceType,omitempty" xml:"OutputDataSourceType,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	OutputDbType *string `json:"OutputDbType,omitempty" xml:"OutputDbType,omitempty"`
+	// example:
+	//
+	// DEV
+	OutputEnv *string `json:"OutputEnv,omitempty" xml:"OutputEnv,omitempty"`
+	// example:
+	//
+	// 123
+	OutputProjectId    *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
+	OutputTableDeleted *bool  `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.order
+	OutputTableId *string `json:"OutputTableId,omitempty" xml:"OutputTableId,omitempty"`
+	// example:
+	//
+	// order
+	OutputTableName *string `json:"OutputTableName,omitempty" xml:"OutputTableName,omitempty"`
+	// example:
+	//
+	// PHYSICAL_TABLE
+	OutputTableType *string `json:"OutputTableType,omitempty" xml:"OutputTableType,omitempty"`
+	// example:
+	//
+	// DEV
+	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// example:
+	//
+	// n_123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 12345
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s GetTableColumnLineageByTaskIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputBizUnitId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputBizUnitId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputColumnId(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputColumnId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputColumnName(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputColumnName = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputDataSourceId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputDataSourceId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputDataSourceType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputDataSourceType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputDbType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputDbType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputEnv(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputEnv = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputProjectId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputProjectId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputTableDeleted(v bool) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputTableDeleted = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputTableId(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputTableId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputTableName(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputTableName = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetInputTableType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.InputTableType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputBizUnitId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputBizUnitId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputColumnId(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputColumnId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputColumnName(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputColumnName = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputDataSourceId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputDataSourceId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputDataSourceType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputDataSourceType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputDbType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputDbType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputEnv(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputEnv = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputProjectId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputProjectId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputTableDeleted(v bool) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputTableDeleted = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputTableId(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputTableId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputTableName(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputTableName = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetOutputTableType(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.OutputTableType = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetTaskEnv(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.TaskEnv = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetTaskId(v string) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponseBodyData) SetTenantId(v int64) *GetTableColumnLineageByTaskIdResponseBodyData {
+	s.TenantId = &v
+	return s
+}
+
+type GetTableColumnLineageByTaskIdResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableColumnLineageByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableColumnLineageByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableColumnLineageByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableColumnLineageByTaskIdResponse) SetHeaders(v map[string]*string) *GetTableColumnLineageByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponse) SetStatusCode(v int32) *GetTableColumnLineageByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableColumnLineageByTaskIdResponse) SetBody(v *GetTableColumnLineageByTaskIdResponseBody) *GetTableColumnLineageByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetTableLineageByTaskIdRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	TableLineageByTaskIdQuery *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery `json:"TableLineageByTaskIdQuery,omitempty" xml:"TableLineageByTaskIdQuery,omitempty" type:"Struct"`
+}
+
+func (s GetTableLineageByTaskIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdRequest) SetOpTenantId(v int64) *GetTableLineageByTaskIdRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdRequest) SetTableLineageByTaskIdQuery(v *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) *GetTableLineageByTaskIdRequest {
+	s.TableLineageByTaskIdQuery = v
+	return s
+}
+
+type GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery struct {
+	NeedNotExistObject *bool `json:"NeedNotExistObject,omitempty" xml:"NeedNotExistObject,omitempty"`
+	// example:
+	//
+	// DEV
+	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// n_123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) SetNeedNotExistObject(v bool) *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery {
+	s.NeedNotExistObject = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) SetTaskEnv(v string) *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery {
+	s.TaskEnv = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery) SetTaskId(v string) *GetTableLineageByTaskIdRequestTableLineageByTaskIdQuery {
+	s.TaskId = &v
+	return s
+}
+
+type GetTableLineageByTaskIdShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	TableLineageByTaskIdQueryShrink *string `json:"TableLineageByTaskIdQuery,omitempty" xml:"TableLineageByTaskIdQuery,omitempty"`
+}
+
+func (s GetTableLineageByTaskIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdShrinkRequest) SetOpTenantId(v int64) *GetTableLineageByTaskIdShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdShrinkRequest) SetTableLineageByTaskIdQueryShrink(v string) *GetTableLineageByTaskIdShrinkRequest {
+	s.TableLineageByTaskIdQueryShrink = &v
+	return s
+}
+
+type GetTableLineageByTaskIdResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*GetTableLineageByTaskIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTableLineageByTaskIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetCode(v string) *GetTableLineageByTaskIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetData(v []*GetTableLineageByTaskIdResponseBodyData) *GetTableLineageByTaskIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetHttpStatusCode(v int32) *GetTableLineageByTaskIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetMessage(v string) *GetTableLineageByTaskIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetRequestId(v string) *GetTableLineageByTaskIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBody) SetSuccess(v bool) *GetTableLineageByTaskIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTableLineageByTaskIdResponseBodyData struct {
+	// example:
+	//
+	// 123
+	InputBizUnitId *int64 `json:"InputBizUnitId,omitempty" xml:"InputBizUnitId,omitempty"`
+	// example:
+	//
+	// 123
+	InputDataSourceId *int64 `json:"InputDataSourceId,omitempty" xml:"InputDataSourceId,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	InputDataSourceType *string `json:"InputDataSourceType,omitempty" xml:"InputDataSourceType,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	InputDbType *string `json:"InputDbType,omitempty" xml:"InputDbType,omitempty"`
+	// example:
+	//
+	// DEV
+	InputEnv *string `json:"InputEnv,omitempty" xml:"InputEnv,omitempty"`
+	// example:
+	//
+	// 123
+	InputProjectId    *int64 `json:"InputProjectId,omitempty" xml:"InputProjectId,omitempty"`
+	InputTableDeleted *bool  `json:"InputTableDeleted,omitempty" xml:"InputTableDeleted,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.order
+	InputTableId *string `json:"InputTableId,omitempty" xml:"InputTableId,omitempty"`
+	// example:
+	//
+	// order
+	InputTableName *string `json:"InputTableName,omitempty" xml:"InputTableName,omitempty"`
+	// example:
+	//
+	// PHYSICAL_TABLE
+	InputTableType *string `json:"InputTableType,omitempty" xml:"InputTableType,omitempty"`
+	// example:
+	//
+	// 123
+	OutputBizUnitId *int64 `json:"OutputBizUnitId,omitempty" xml:"OutputBizUnitId,omitempty"`
+	// example:
+	//
+	// 123
+	OutputDataSourceId *int64 `json:"OutputDataSourceId,omitempty" xml:"OutputDataSourceId,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	OutputDataSourceType *string `json:"OutputDataSourceType,omitempty" xml:"OutputDataSourceType,omitempty"`
+	// example:
+	//
+	// MAX_COMPUTE
+	OutputDbType *string `json:"OutputDbType,omitempty" xml:"OutputDbType,omitempty"`
+	// example:
+	//
+	// DEV/PROD
+	OutputEnv *string `json:"OutputEnv,omitempty" xml:"OutputEnv,omitempty"`
+	// example:
+	//
+	// 123
+	OutputProjectId    *int64 `json:"OutputProjectId,omitempty" xml:"OutputProjectId,omitempty"`
+	OutputTableDeleted *bool  `json:"OutputTableDeleted,omitempty" xml:"OutputTableDeleted,omitempty"`
+	// example:
+	//
+	// odps.123.test_project.order
+	OutputTableId *string `json:"OutputTableId,omitempty" xml:"OutputTableId,omitempty"`
+	// example:
+	//
+	// order
+	OutputTableName *string `json:"OutputTableName,omitempty" xml:"OutputTableName,omitempty"`
+	// example:
+	//
+	// PHYSICAL_TABLE
+	OutputTableType *string `json:"OutputTableType,omitempty" xml:"OutputTableType,omitempty"`
+	// example:
+	//
+	// DEV
+	TaskEnv *string `json:"TaskEnv,omitempty" xml:"TaskEnv,omitempty"`
+	// example:
+	//
+	// n_123
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 12345
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s GetTableLineageByTaskIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputBizUnitId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputBizUnitId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputDataSourceId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputDataSourceId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputDataSourceType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputDataSourceType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputDbType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputDbType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputEnv(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputEnv = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputProjectId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputProjectId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputTableDeleted(v bool) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputTableDeleted = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputTableId(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputTableId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputTableName(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputTableName = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetInputTableType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.InputTableType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputBizUnitId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputBizUnitId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputDataSourceId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputDataSourceId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputDataSourceType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputDataSourceType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputDbType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputDbType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputEnv(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputEnv = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputProjectId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputProjectId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputTableDeleted(v bool) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputTableDeleted = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputTableId(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputTableId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputTableName(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputTableName = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetOutputTableType(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.OutputTableType = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetTaskEnv(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.TaskEnv = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetTaskId(v string) *GetTableLineageByTaskIdResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponseBodyData) SetTenantId(v int64) *GetTableLineageByTaskIdResponseBodyData {
+	s.TenantId = &v
+	return s
+}
+
+type GetTableLineageByTaskIdResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetTableLineageByTaskIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetTableLineageByTaskIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTableLineageByTaskIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTableLineageByTaskIdResponse) SetHeaders(v map[string]*string) *GetTableLineageByTaskIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponse) SetStatusCode(v int32) *GetTableLineageByTaskIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetTableLineageByTaskIdResponse) SetBody(v *GetTableLineageByTaskIdResponseBody) *GetTableLineageByTaskIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserBySourceIdRequest struct {
 	// This parameter is required.
 	//
@@ -27138,6 +29374,1005 @@ func (s *ListResourcePermissionsResponse) SetBody(v *ListResourcePermissionsResp
 	return s
 }
 
+type ListRowPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	PageRowPermissionQuery *ListRowPermissionRequestPageRowPermissionQuery `json:"PageRowPermissionQuery,omitempty" xml:"PageRowPermissionQuery,omitempty" type:"Struct"`
+}
+
+func (s ListRowPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionRequest) SetOpTenantId(v int64) *ListRowPermissionRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListRowPermissionRequest) SetPageRowPermissionQuery(v *ListRowPermissionRequestPageRowPermissionQuery) *ListRowPermissionRequest {
+	s.PageRowPermissionQuery = v
+	return s
+}
+
+type ListRowPermissionRequestPageRowPermissionQuery struct {
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListRowPermissionRequestPageRowPermissionQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionRequestPageRowPermissionQuery) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionRequestPageRowPermissionQuery) SetKeyword(v string) *ListRowPermissionRequestPageRowPermissionQuery {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListRowPermissionRequestPageRowPermissionQuery) SetPageNum(v int32) *ListRowPermissionRequestPageRowPermissionQuery {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListRowPermissionRequestPageRowPermissionQuery) SetPageSize(v int32) *ListRowPermissionRequestPageRowPermissionQuery {
+	s.PageSize = &v
+	return s
+}
+
+type ListRowPermissionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	PageRowPermissionQueryShrink *string `json:"PageRowPermissionQuery,omitempty" xml:"PageRowPermissionQuery,omitempty"`
+}
+
+func (s ListRowPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionShrinkRequest) SetOpTenantId(v int64) *ListRowPermissionShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *ListRowPermissionShrinkRequest) SetPageRowPermissionQueryShrink(v string) *ListRowPermissionShrinkRequest {
+	s.PageRowPermissionQueryShrink = &v
+	return s
+}
+
+type ListRowPermissionResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageResult *ListRowPermissionResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListRowPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBody) SetCode(v string) *ListRowPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBody) SetHttpStatusCode(v int32) *ListRowPermissionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBody) SetMessage(v string) *ListRowPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBody) SetPageResult(v *ListRowPermissionResponseBodyPageResult) *ListRowPermissionResponseBody {
+	s.PageResult = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBody) SetRequestId(v string) *ListRowPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBody) SetSuccess(v bool) *ListRowPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResult struct {
+	Data []*ListRowPermissionResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRowPermissionResponseBodyPageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResult) SetData(v []*ListRowPermissionResponseBodyPageResultData) *ListRowPermissionResponseBodyPageResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResult) SetTotalCount(v int32) *ListRowPermissionResponseBodyPageResult {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultData struct {
+	// example:
+	//
+	// 30008888
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 2023-08-23T08:01:44Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-02-12T02:16:45Z
+	GmtModified    *string                                                      `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MappingColumns []*ListRowPermissionResponseBodyPageResultDataMappingColumns `json:"MappingColumns,omitempty" xml:"MappingColumns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30008888
+	Modifier          *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	RowPermissionDesc *string `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
+	// example:
+	//
+	// 30008888
+	RowPermissionId   *int64                                               `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
+	RowPermissionName *string                                              `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
+	Rules             []*ListRowPermissionResponseBodyPageResultDataRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Tables            []*ListRowPermissionResponseBodyPageResultDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30000001
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetCreator(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetGmtCreate(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetGmtModified(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetMappingColumns(v []*ListRowPermissionResponseBodyPageResultDataMappingColumns) *ListRowPermissionResponseBodyPageResultData {
+	s.MappingColumns = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetModifier(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetRowPermissionDesc(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.RowPermissionDesc = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetRowPermissionId(v int64) *ListRowPermissionResponseBodyPageResultData {
+	s.RowPermissionId = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetRowPermissionName(v string) *ListRowPermissionResponseBodyPageResultData {
+	s.RowPermissionName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetRules(v []*ListRowPermissionResponseBodyPageResultDataRules) *ListRowPermissionResponseBodyPageResultData {
+	s.Rules = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetTables(v []*ListRowPermissionResponseBodyPageResultDataTables) *ListRowPermissionResponseBodyPageResultData {
+	s.Tables = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultData) SetTenantId(v int64) *ListRowPermissionResponseBodyPageResultData {
+	s.TenantId = &v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataMappingColumns struct {
+	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// string
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataMappingColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataMappingColumns) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataMappingColumns) SetColumnDesc(v string) *ListRowPermissionResponseBodyPageResultDataMappingColumns {
+	s.ColumnDesc = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataMappingColumns) SetColumnName(v string) *ListRowPermissionResponseBodyPageResultDataMappingColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataMappingColumns) SetColumnType(v string) *ListRowPermissionResponseBodyPageResultDataMappingColumns {
+	s.ColumnType = &v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataRules struct {
+	Expressions []*ListRowPermissionResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	IsDelete    *bool                                                          `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	RuleName    *string                                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// SELECT_COLUMN
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
+	// 1
+	Status          *int32                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserMappingList []*ListRowPermissionResponseBodyPageResultDataRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetExpressions(v []*ListRowPermissionResponseBodyPageResultDataRulesExpressions) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.Expressions = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetIsDelete(v bool) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetRuleName(v string) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetScopeType(v string) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetStatus(v int32) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRules) SetUserMappingList(v []*ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) *ListRowPermissionResponseBodyPageResultDataRules {
+	s.UserMappingList = v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataRulesExpressions struct {
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// example:
+	//
+	// 30008888
+	Operator      *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// EXPRESSION
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesExpressions) SetMappingColumnName(v string) *ListRowPermissionResponseBodyPageResultDataRulesExpressions {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesExpressions) SetOperator(v string) *ListRowPermissionResponseBodyPageResultDataRulesExpressions {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesExpressions) SetSubConditions(v []interface{}) *ListRowPermissionResponseBodyPageResultDataRulesExpressions {
+	s.SubConditions = v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesExpressions) SetType(v string) *ListRowPermissionResponseBodyPageResultDataRulesExpressions {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesExpressions) SetValues(v []*string) *ListRowPermissionResponseBodyPageResultDataRulesExpressions {
+	s.Values = v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataRulesUserMappingList struct {
+	// example:
+	//
+	// PERSONAL
+	AccountType *string                                                                    `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Accounts    []*ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) SetAccountType(v string) *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList) SetAccounts(v []*ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts) *ListRowPermissionResponseBodyPageResultDataRulesUserMappingList {
+	s.Accounts = v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts struct {
+	// example:
+	//
+	// 30008888
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts) SetAccountId(v string) *ListRowPermissionResponseBodyPageResultDataRulesUserMappingListAccounts {
+	s.AccountId = &v
+	return s
+}
+
+type ListRowPermissionResponseBodyPageResultDataTables struct {
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// example:
+	//
+	// odps.300199897.project_name.table_name
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponseBodyPageResultDataTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataTables) SetColumnName(v string) *ListRowPermissionResponseBodyPageResultDataTables {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataTables) SetMappingColumnName(v string) *ListRowPermissionResponseBodyPageResultDataTables {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionResponseBodyPageResultDataTables) SetResourceId(v string) *ListRowPermissionResponseBodyPageResultDataTables {
+	s.ResourceId = &v
+	return s
+}
+
+type ListRowPermissionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRowPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRowPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionResponse) SetHeaders(v map[string]*string) *ListRowPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRowPermissionResponse) SetStatusCode(v int32) *ListRowPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRowPermissionResponse) SetBody(v *ListRowPermissionResponseBody) *ListRowPermissionResponse {
+	s.Body = v
+	return s
+}
+
+type ListRowPermissionByUserIdRequest struct {
+	// This parameter is required.
+	ListRowPermissionByUserIdQuery *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery `json:"ListRowPermissionByUserIdQuery,omitempty" xml:"ListRowPermissionByUserIdQuery,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdRequest) SetListRowPermissionByUserIdQuery(v *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) *ListRowPermissionByUserIdRequest {
+	s.ListRowPermissionByUserIdQuery = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdRequest) SetOpTenantId(v int64) *ListRowPermissionByUserIdRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30008888
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) SetOperator(v string) *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) SetPageNum(v int32) *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery) SetPageSize(v int32) *ListRowPermissionByUserIdRequestListRowPermissionByUserIdQuery {
+	s.PageSize = &v
+	return s
+}
+
+type ListRowPermissionByUserIdShrinkRequest struct {
+	// This parameter is required.
+	ListRowPermissionByUserIdQueryShrink *string `json:"ListRowPermissionByUserIdQuery,omitempty" xml:"ListRowPermissionByUserIdQuery,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdShrinkRequest) SetListRowPermissionByUserIdQueryShrink(v string) *ListRowPermissionByUserIdShrinkRequest {
+	s.ListRowPermissionByUserIdQueryShrink = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdShrinkRequest) SetOpTenantId(v int64) *ListRowPermissionByUserIdShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageResult *ListRowPermissionByUserIdResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetCode(v string) *ListRowPermissionByUserIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetHttpStatusCode(v int32) *ListRowPermissionByUserIdResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetMessage(v string) *ListRowPermissionByUserIdResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetPageResult(v *ListRowPermissionByUserIdResponseBodyPageResult) *ListRowPermissionByUserIdResponseBody {
+	s.PageResult = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetRequestId(v string) *ListRowPermissionByUserIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBody) SetSuccess(v bool) *ListRowPermissionByUserIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResult struct {
+	Data []*ListRowPermissionByUserIdResponseBodyPageResultData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 121
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResult) SetData(v []*ListRowPermissionByUserIdResponseBodyPageResultData) *ListRowPermissionByUserIdResponseBodyPageResult {
+	s.Data = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResult) SetTotalCount(v int32) *ListRowPermissionByUserIdResponseBodyPageResult {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultData struct {
+	// example:
+	//
+	// 30008888
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 2023-03-30T21:37:23Z
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-03-03T10:14Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// 30008888
+	Modifier *string                                                      `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	Rules    []*ListRowPermissionByUserIdResponseBodyPageResultDataRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Tables   []*ListRowPermissionByUserIdResponseBodyPageResultDataTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 30000001
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetCreator(v string) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetGmtCreate(v string) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetGmtModified(v string) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetModifier(v string) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetRules(v []*ListRowPermissionByUserIdResponseBodyPageResultDataRules) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.Rules = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetTables(v []*ListRowPermissionByUserIdResponseBodyPageResultDataTables) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.Tables = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultData) SetTenantId(v int64) *ListRowPermissionByUserIdResponseBodyPageResultData {
+	s.TenantId = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultDataRules struct {
+	Expressions []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	IsDelete *bool   `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// example:
+	//
+	// SELECT_COLUMN
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// example:
+	//
+	// 1
+	Status          *int32                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserMappingList []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRules) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetExpressions(v []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.Expressions = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetIsDelete(v bool) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetRuleName(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetScopeType(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetStatus(v int32) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.Status = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRules) SetUserMappingList(v []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) *ListRowPermissionByUserIdResponseBodyPageResultDataRules {
+	s.UserMappingList = v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions struct {
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// example:
+	//
+	// EQUAL
+	Operator      *string       `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// EXPRESSION
+	Type   *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) SetMappingColumnName(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) SetOperator(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) SetSubConditions(v []interface{}) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions {
+	s.SubConditions = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) SetType(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions) SetValues(v []*string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions {
+	s.Values = v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList struct {
+	// example:
+	//
+	// PERSONAL
+	AccountType *string                                                                            `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Accounts    []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) SetAccountType(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList) SetAccounts(v []*ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList {
+	s.Accounts = v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts struct {
+	// example:
+	//
+	// 30008888
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts) SetAccountId(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingListAccounts {
+	s.AccountId = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponseBodyPageResultDataTables struct {
+	// example:
+	//
+	// business_id
+	ColumnName        *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// example:
+	//
+	// odps.300199897.project_name.table_name
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponseBodyPageResultDataTables) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataTables) SetColumnName(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataTables {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataTables) SetMappingColumnName(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataTables {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponseBodyPageResultDataTables) SetResourceId(v string) *ListRowPermissionByUserIdResponseBodyPageResultDataTables {
+	s.ResourceId = &v
+	return s
+}
+
+type ListRowPermissionByUserIdResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRowPermissionByUserIdResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRowPermissionByUserIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRowPermissionByUserIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRowPermissionByUserIdResponse) SetHeaders(v map[string]*string) *ListRowPermissionByUserIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponse) SetStatusCode(v int32) *ListRowPermissionByUserIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRowPermissionByUserIdResponse) SetBody(v *ListRowPermissionByUserIdResponseBody) *ListRowPermissionByUserIdResponse {
+	s.Body = v
+	return s
+}
+
 type ListSubmitRecordsRequest struct {
 	// This parameter is required.
 	ListQuery *ListSubmitRecordsRequestListQuery `json:"ListQuery,omitempty" xml:"ListQuery,omitempty" type:"Struct"`
@@ -31786,6 +35021,413 @@ func (s *SubmitBatchTaskResponse) SetBody(v *SubmitBatchTaskResponseBody) *Submi
 	return s
 }
 
+type SyncDepartmentRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	SyncDepartmentCommand *SyncDepartmentRequestSyncDepartmentCommand `json:"SyncDepartmentCommand,omitempty" xml:"SyncDepartmentCommand,omitempty" type:"Struct"`
+}
+
+func (s SyncDepartmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentRequest) SetOpTenantId(v int64) *SyncDepartmentRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *SyncDepartmentRequest) SetSyncDepartmentCommand(v *SyncDepartmentRequestSyncDepartmentCommand) *SyncDepartmentRequest {
+	s.SyncDepartmentCommand = v
+	return s
+}
+
+type SyncDepartmentRequestSyncDepartmentCommand struct {
+	// This parameter is required.
+	DepartmentList []*SyncDepartmentRequestSyncDepartmentCommandDepartmentList `json:"DepartmentList,omitempty" xml:"DepartmentList,omitempty" type:"Repeated"`
+}
+
+func (s SyncDepartmentRequestSyncDepartmentCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentRequestSyncDepartmentCommand) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentRequestSyncDepartmentCommand) SetDepartmentList(v []*SyncDepartmentRequestSyncDepartmentCommandDepartmentList) *SyncDepartmentRequestSyncDepartmentCommand {
+	s.DepartmentList = v
+	return s
+}
+
+type SyncDepartmentRequestSyncDepartmentCommandDepartmentList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001
+	DepartmentId *string `json:"DepartmentId,omitempty" xml:"DepartmentId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 研发中心
+	DepartmentName *string `json:"DepartmentName,omitempty" xml:"DepartmentName,omitempty"`
+	// example:
+	//
+	// 10001
+	ParentDepartmentId *string `json:"ParentDepartmentId,omitempty" xml:"ParentDepartmentId,omitempty"`
+}
+
+func (s SyncDepartmentRequestSyncDepartmentCommandDepartmentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentRequestSyncDepartmentCommandDepartmentList) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentRequestSyncDepartmentCommandDepartmentList) SetDepartmentId(v string) *SyncDepartmentRequestSyncDepartmentCommandDepartmentList {
+	s.DepartmentId = &v
+	return s
+}
+
+func (s *SyncDepartmentRequestSyncDepartmentCommandDepartmentList) SetDepartmentName(v string) *SyncDepartmentRequestSyncDepartmentCommandDepartmentList {
+	s.DepartmentName = &v
+	return s
+}
+
+func (s *SyncDepartmentRequestSyncDepartmentCommandDepartmentList) SetParentDepartmentId(v string) *SyncDepartmentRequestSyncDepartmentCommandDepartmentList {
+	s.ParentDepartmentId = &v
+	return s
+}
+
+type SyncDepartmentShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	SyncDepartmentCommandShrink *string `json:"SyncDepartmentCommand,omitempty" xml:"SyncDepartmentCommand,omitempty"`
+}
+
+func (s SyncDepartmentShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentShrinkRequest) SetOpTenantId(v int64) *SyncDepartmentShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *SyncDepartmentShrinkRequest) SetSyncDepartmentCommandShrink(v string) *SyncDepartmentShrinkRequest {
+	s.SyncDepartmentCommandShrink = &v
+	return s
+}
+
+type SyncDepartmentResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SyncDepartmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentResponseBody) SetCode(v string) *SyncDepartmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SyncDepartmentResponseBody) SetData(v bool) *SyncDepartmentResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SyncDepartmentResponseBody) SetHttpStatusCode(v int32) *SyncDepartmentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SyncDepartmentResponseBody) SetMessage(v string) *SyncDepartmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SyncDepartmentResponseBody) SetRequestId(v string) *SyncDepartmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncDepartmentResponseBody) SetSuccess(v bool) *SyncDepartmentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SyncDepartmentResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncDepartmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDepartmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentResponse) SetHeaders(v map[string]*string) *SyncDepartmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDepartmentResponse) SetStatusCode(v int32) *SyncDepartmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDepartmentResponse) SetBody(v *SyncDepartmentResponseBody) *SyncDepartmentResponse {
+	s.Body = v
+	return s
+}
+
+type SyncDepartmentUserRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	SyncDepartmentUserCommand *SyncDepartmentUserRequestSyncDepartmentUserCommand `json:"SyncDepartmentUserCommand,omitempty" xml:"SyncDepartmentUserCommand,omitempty" type:"Struct"`
+}
+
+func (s SyncDepartmentUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserRequest) SetOpTenantId(v int64) *SyncDepartmentUserRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *SyncDepartmentUserRequest) SetSyncDepartmentUserCommand(v *SyncDepartmentUserRequestSyncDepartmentUserCommand) *SyncDepartmentUserRequest {
+	s.SyncDepartmentUserCommand = v
+	return s
+}
+
+type SyncDepartmentUserRequestSyncDepartmentUserCommand struct {
+	// This parameter is required.
+	DeptUserMapping []*SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping `json:"DeptUserMapping,omitempty" xml:"DeptUserMapping,omitempty" type:"Repeated"`
+}
+
+func (s SyncDepartmentUserRequestSyncDepartmentUserCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserRequestSyncDepartmentUserCommand) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserRequestSyncDepartmentUserCommand) SetDeptUserMapping(v []*SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) *SyncDepartmentUserRequestSyncDepartmentUserCommand {
+	s.DeptUserMapping = v
+	return s
+}
+
+type SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping struct {
+	DepartmentIdList []*string `json:"DepartmentIdList,omitempty" xml:"DepartmentIdList,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30000001
+	SourceUserId *string `json:"SourceUserId,omitempty" xml:"SourceUserId,omitempty"`
+}
+
+func (s SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) SetDepartmentIdList(v []*string) *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping {
+	s.DepartmentIdList = v
+	return s
+}
+
+func (s *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping) SetSourceUserId(v string) *SyncDepartmentUserRequestSyncDepartmentUserCommandDeptUserMapping {
+	s.SourceUserId = &v
+	return s
+}
+
+type SyncDepartmentUserShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	SyncDepartmentUserCommandShrink *string `json:"SyncDepartmentUserCommand,omitempty" xml:"SyncDepartmentUserCommand,omitempty"`
+}
+
+func (s SyncDepartmentUserShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserShrinkRequest) SetOpTenantId(v int64) *SyncDepartmentUserShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *SyncDepartmentUserShrinkRequest) SetSyncDepartmentUserCommandShrink(v string) *SyncDepartmentUserShrinkRequest {
+	s.SyncDepartmentUserCommandShrink = &v
+	return s
+}
+
+type SyncDepartmentUserResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SyncDepartmentUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserResponseBody) SetCode(v string) *SyncDepartmentUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponseBody) SetData(v bool) *SyncDepartmentUserResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponseBody) SetHttpStatusCode(v int32) *SyncDepartmentUserResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponseBody) SetMessage(v string) *SyncDepartmentUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponseBody) SetRequestId(v string) *SyncDepartmentUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponseBody) SetSuccess(v bool) *SyncDepartmentUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SyncDepartmentUserResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SyncDepartmentUserResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SyncDepartmentUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SyncDepartmentUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SyncDepartmentUserResponse) SetHeaders(v map[string]*string) *SyncDepartmentUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SyncDepartmentUserResponse) SetStatusCode(v int32) *SyncDepartmentUserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SyncDepartmentUserResponse) SetBody(v *SyncDepartmentUserResponseBody) *SyncDepartmentUserResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAdHocFileRequest struct {
 	// This parameter is required.
 	//
@@ -34340,6 +37982,466 @@ func (s *UpdateFileNameResponse) SetBody(v *UpdateFileNameResponseBody) *UpdateF
 	return s
 }
 
+type UpdateRowPermissionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	UpdateRowPermissionCommand *UpdateRowPermissionRequestUpdateRowPermissionCommand `json:"UpdateRowPermissionCommand,omitempty" xml:"UpdateRowPermissionCommand,omitempty" type:"Struct"`
+}
+
+func (s UpdateRowPermissionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequest) SetOpTenantId(v int64) *UpdateRowPermissionRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequest) SetUpdateRowPermissionCommand(v *UpdateRowPermissionRequestUpdateRowPermissionCommand) *UpdateRowPermissionRequest {
+	s.UpdateRowPermissionCommand = v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommand struct {
+	// This parameter is required.
+	MappingColumns    []*UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns `json:"MappingColumns,omitempty" xml:"MappingColumns,omitempty" type:"Repeated"`
+	RowPermissionDesc *string                                                               `json:"RowPermissionDesc,omitempty" xml:"RowPermissionDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30009999
+	RowPermissionId *int64 `json:"RowPermissionId,omitempty" xml:"RowPermissionId,omitempty"`
+	// This parameter is required.
+	RowPermissionName *string                                                       `json:"RowPermissionName,omitempty" xml:"RowPermissionName,omitempty"`
+	Rules             []*UpdateRowPermissionRequestUpdateRowPermissionCommandRules  `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	Tables            []*UpdateRowPermissionRequestUpdateRowPermissionCommandTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommand) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetMappingColumns(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.MappingColumns = v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetRowPermissionDesc(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.RowPermissionDesc = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetRowPermissionId(v int64) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.RowPermissionId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetRowPermissionName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.RowPermissionName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetRules(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandRules) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.Rules = v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommand) SetTables(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandTables) *UpdateRowPermissionRequestUpdateRowPermissionCommand {
+	s.Tables = v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns struct {
+	ColumnDesc *string `json:"ColumnDesc,omitempty" xml:"ColumnDesc,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) SetColumnDesc(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns {
+	s.ColumnDesc = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) SetColumnName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns) SetColumnType(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandMappingColumns {
+	s.ColumnType = &v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandRules struct {
+	// This parameter is required.
+	Expressions []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	IsDelete *bool `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// This parameter is required.
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// SELECT_COLUMN
+	ScopeType *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	Status          *int32                                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserMappingList []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList `json:"UserMappingList,omitempty" xml:"UserMappingList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetExpressions(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.Expressions = v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetIsDelete(v bool) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetRuleName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetScopeType(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.ScopeType = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetStatus(v int32) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRules) SetUserMappingList(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) *UpdateRowPermissionRequestUpdateRowPermissionCommandRules {
+	s.UserMappingList = v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// OR
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// This parameter is required.
+	SubConditions []interface{} `json:"SubConditions,omitempty" xml:"SubConditions,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// EXPRESSION
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) SetMappingColumnName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) SetOperator(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions {
+	s.Operator = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) SetSubConditions(v []interface{}) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions {
+	s.SubConditions = v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) SetType(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions) SetValues(v []*string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesExpressions {
+	s.Values = v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// PERSONAL
+	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	// This parameter is required.
+	Accounts []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) SetAccountType(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList {
+	s.AccountType = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList) SetAccounts(v []*UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingList {
+	s.Accounts = v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts) SetAccountId(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandRulesUserMappingListAccounts {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateRowPermissionRequestUpdateRowPermissionCommandTables struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// business_id
+	MappingColumnName *string `json:"MappingColumnName,omitempty" xml:"MappingColumnName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps.300199897.project_name.table_name
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandTables) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionRequestUpdateRowPermissionCommandTables) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandTables) SetColumnName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandTables {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandTables) SetMappingColumnName(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandTables {
+	s.MappingColumnName = &v
+	return s
+}
+
+func (s *UpdateRowPermissionRequestUpdateRowPermissionCommandTables) SetResourceId(v string) *UpdateRowPermissionRequestUpdateRowPermissionCommandTables {
+	s.ResourceId = &v
+	return s
+}
+
+type UpdateRowPermissionShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30001011
+	OpTenantId *int64 `json:"OpTenantId,omitempty" xml:"OpTenantId,omitempty"`
+	// This parameter is required.
+	UpdateRowPermissionCommandShrink *string `json:"UpdateRowPermissionCommand,omitempty" xml:"UpdateRowPermissionCommand,omitempty"`
+}
+
+func (s UpdateRowPermissionShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionShrinkRequest) SetOpTenantId(v int64) *UpdateRowPermissionShrinkRequest {
+	s.OpTenantId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionShrinkRequest) SetUpdateRowPermissionCommandShrink(v string) *UpdateRowPermissionShrinkRequest {
+	s.UpdateRowPermissionCommandShrink = &v
+	return s
+}
+
+type UpdateRowPermissionResponseBody struct {
+	// example:
+	//
+	// OK
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 75DD06F8-1661-5A6E-B0A6-7E23133BDC60
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateRowPermissionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionResponseBody) SetCode(v string) *UpdateRowPermissionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponseBody) SetData(v bool) *UpdateRowPermissionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponseBody) SetHttpStatusCode(v int32) *UpdateRowPermissionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponseBody) SetMessage(v string) *UpdateRowPermissionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponseBody) SetRequestId(v string) *UpdateRowPermissionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponseBody) SetSuccess(v bool) *UpdateRowPermissionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateRowPermissionResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateRowPermissionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateRowPermissionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateRowPermissionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateRowPermissionResponse) SetHeaders(v map[string]*string) *UpdateRowPermissionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateRowPermissionResponse) SetStatusCode(v int32) *UpdateRowPermissionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateRowPermissionResponse) SetBody(v *UpdateRowPermissionResponseBody) *UpdateRowPermissionResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateTenantMemberRequest struct {
 	// This parameter is required.
 	//
@@ -35718,6 +39820,78 @@ func (client *Client) CreateDataDomain(request *CreateDataDomainRequest) (_resul
 
 // Summary:
 //
+// 创建新的数据服务API并提交。
+//
+// @param tmpReq - CreateDataServiceApiRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDataServiceApiResponse
+func (client *Client) CreateDataServiceApiWithOptions(tmpReq *CreateDataServiceApiRequest, runtime *util.RuntimeOptions) (_result *CreateDataServiceApiResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataServiceApiShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateCommand)) {
+		request.CreateCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateCommand, tea.String("CreateCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateCommandShrink)) {
+		body["CreateCommand"] = request.CreateCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataServiceApi"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataServiceApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建新的数据服务API并提交。
+//
+// @param request - CreateDataServiceApiRequest
+//
+// @return CreateDataServiceApiResponse
+func (client *Client) CreateDataServiceApi(request *CreateDataServiceApiRequest) (_result *CreateDataServiceApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataServiceApiResponse{}
+	_body, _err := client.CreateDataServiceApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新建数据源
 //
 // @param tmpReq - CreateDataSourceRequest
@@ -36001,6 +40175,78 @@ func (client *Client) CreatePipelineNode(request *CreatePipelineNodeRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &CreatePipelineNodeResponse{}
 	_body, _err := client.CreatePipelineNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建行级权限
+//
+// @param tmpReq - CreateRowPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRowPermissionResponse
+func (client *Client) CreateRowPermissionWithOptions(tmpReq *CreateRowPermissionRequest, runtime *util.RuntimeOptions) (_result *CreateRowPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateRowPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CreateRowPermissionCommand)) {
+		request.CreateRowPermissionCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CreateRowPermissionCommand, tea.String("CreateRowPermissionCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateRowPermissionCommandShrink)) {
+		body["CreateRowPermissionCommand"] = request.CreateRowPermissionCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRowPermission"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRowPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建行级权限
+//
+// @param request - CreateRowPermissionRequest
+//
+// @return CreateRowPermissionResponse
+func (client *Client) CreateRowPermission(request *CreateRowPermissionRequest) (_result *CreateRowPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRowPermissionResponse{}
+	_body, _err := client.CreateRowPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -36638,6 +40884,78 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 
 // Summary:
 //
+// 删除行级权限
+//
+// @param tmpReq - DeleteRowPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRowPermissionResponse
+func (client *Client) DeleteRowPermissionWithOptions(tmpReq *DeleteRowPermissionRequest, runtime *util.RuntimeOptions) (_result *DeleteRowPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteRowPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeleteRowPermissionCommand)) {
+		request.DeleteRowPermissionCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeleteRowPermissionCommand, tea.String("DeleteRowPermissionCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteRowPermissionCommandShrink)) {
+		body["DeleteRowPermissionCommand"] = request.DeleteRowPermissionCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRowPermission"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRowPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除行级权限
+//
+// @param request - DeleteRowPermissionRequest
+//
+// @return DeleteRowPermissionResponse
+func (client *Client) DeleteRowPermission(request *DeleteRowPermissionRequest) (_result *DeleteRowPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRowPermissionResponse{}
+	_body, _err := client.DeleteRowPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除用户组.
 //
 // @param request - DeleteUserGroupRequest
@@ -36917,6 +41235,78 @@ func (client *Client) FixData(request *FixDataRequest) (_result *FixDataResponse
 	runtime := &util.RuntimeOptions{}
 	_result = &FixDataResponse{}
 	_body, _err := client.FixDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据行级权限ID获取某一行级权限下的所有授权账号
+//
+// @param tmpReq - GetAccountByRowPermissionIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccountByRowPermissionIdResponse
+func (client *Client) GetAccountByRowPermissionIdWithOptions(tmpReq *GetAccountByRowPermissionIdRequest, runtime *util.RuntimeOptions) (_result *GetAccountByRowPermissionIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetAccountByRowPermissionIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.GetAccountByRowPermissionIdQuery)) {
+		request.GetAccountByRowPermissionIdQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.GetAccountByRowPermissionIdQuery, tea.String("GetAccountByRowPermissionIdQuery"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GetAccountByRowPermissionIdQueryShrink)) {
+		body["GetAccountByRowPermissionIdQuery"] = request.GetAccountByRowPermissionIdQueryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountByRowPermissionId"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccountByRowPermissionIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 根据行级权限ID获取某一行级权限下的所有授权账号
+//
+// @param request - GetAccountByRowPermissionIdRequest
+//
+// @return GetAccountByRowPermissionIdResponse
+func (client *Client) GetAccountByRowPermissionId(request *GetAccountByRowPermissionIdRequest) (_result *GetAccountByRowPermissionIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccountByRowPermissionIdResponse{}
+	_body, _err := client.GetAccountByRowPermissionIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -39270,6 +43660,150 @@ func (client *Client) GetSupplementDagrunInstance(request *GetSupplementDagrunIn
 
 // Summary:
 //
+// 查询表字段血缘信息
+//
+// @param tmpReq - GetTableColumnLineageByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableColumnLineageByTaskIdResponse
+func (client *Client) GetTableColumnLineageByTaskIdWithOptions(tmpReq *GetTableColumnLineageByTaskIdRequest, runtime *util.RuntimeOptions) (_result *GetTableColumnLineageByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTableColumnLineageByTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableColumnLineageByTaskIdQuery)) {
+		request.TableColumnLineageByTaskIdQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableColumnLineageByTaskIdQuery, tea.String("TableColumnLineageByTaskIdQuery"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TableColumnLineageByTaskIdQueryShrink)) {
+		body["TableColumnLineageByTaskIdQuery"] = request.TableColumnLineageByTaskIdQueryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableColumnLineageByTaskId"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableColumnLineageByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表字段血缘信息
+//
+// @param request - GetTableColumnLineageByTaskIdRequest
+//
+// @return GetTableColumnLineageByTaskIdResponse
+func (client *Client) GetTableColumnLineageByTaskId(request *GetTableColumnLineageByTaskIdRequest) (_result *GetTableColumnLineageByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableColumnLineageByTaskIdResponse{}
+	_body, _err := client.GetTableColumnLineageByTaskIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表血缘信息
+//
+// @param tmpReq - GetTableLineageByTaskIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetTableLineageByTaskIdResponse
+func (client *Client) GetTableLineageByTaskIdWithOptions(tmpReq *GetTableLineageByTaskIdRequest, runtime *util.RuntimeOptions) (_result *GetTableLineageByTaskIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &GetTableLineageByTaskIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TableLineageByTaskIdQuery)) {
+		request.TableLineageByTaskIdQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TableLineageByTaskIdQuery, tea.String("TableLineageByTaskIdQuery"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TableLineageByTaskIdQueryShrink)) {
+		body["TableLineageByTaskIdQuery"] = request.TableLineageByTaskIdQueryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTableLineageByTaskId"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTableLineageByTaskIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表血缘信息
+//
+// @param request - GetTableLineageByTaskIdRequest
+//
+// @return GetTableLineageByTaskIdResponse
+func (client *Client) GetTableLineageByTaskId(request *GetTableLineageByTaskIdRequest) (_result *GetTableLineageByTaskIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTableLineageByTaskIdResponse{}
+	_body, _err := client.GetTableLineageByTaskIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 通过用户原始Id（如阿里云Id）获取用户详情
 //
 // @param request - GetUserBySourceIdRequest
@@ -40754,6 +45288,150 @@ func (client *Client) ListResourcePermissions(request *ListResourcePermissionsRe
 
 // Summary:
 //
+// 分页查询行级权限
+//
+// @param tmpReq - ListRowPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRowPermissionResponse
+func (client *Client) ListRowPermissionWithOptions(tmpReq *ListRowPermissionRequest, runtime *util.RuntimeOptions) (_result *ListRowPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListRowPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PageRowPermissionQuery)) {
+		request.PageRowPermissionQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PageRowPermissionQuery, tea.String("PageRowPermissionQuery"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageRowPermissionQueryShrink)) {
+		body["PageRowPermissionQuery"] = request.PageRowPermissionQueryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRowPermission"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRowPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询行级权限
+//
+// @param request - ListRowPermissionRequest
+//
+// @return ListRowPermissionResponse
+func (client *Client) ListRowPermission(request *ListRowPermissionRequest) (_result *ListRowPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRowPermissionResponse{}
+	_body, _err := client.ListRowPermissionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询指定用户行级权限
+//
+// @param tmpReq - ListRowPermissionByUserIdRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRowPermissionByUserIdResponse
+func (client *Client) ListRowPermissionByUserIdWithOptions(tmpReq *ListRowPermissionByUserIdRequest, runtime *util.RuntimeOptions) (_result *ListRowPermissionByUserIdResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListRowPermissionByUserIdShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ListRowPermissionByUserIdQuery)) {
+		request.ListRowPermissionByUserIdQueryShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ListRowPermissionByUserIdQuery, tea.String("ListRowPermissionByUserIdQuery"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ListRowPermissionByUserIdQueryShrink)) {
+		body["ListRowPermissionByUserIdQuery"] = request.ListRowPermissionByUserIdQueryShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRowPermissionByUserId"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRowPermissionByUserIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 分页查询指定用户行级权限
+//
+// @param request - ListRowPermissionByUserIdRequest
+//
+// @return ListRowPermissionByUserIdResponse
+func (client *Client) ListRowPermissionByUserId(request *ListRowPermissionByUserIdRequest) (_result *ListRowPermissionByUserIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRowPermissionByUserIdResponse{}
+	_body, _err := client.ListRowPermissionByUserIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 分页获取待发布记录列表
 //
 // @param tmpReq - ListSubmitRecordsRequest
@@ -41986,6 +46664,150 @@ func (client *Client) SubmitBatchTask(request *SubmitBatchTaskRequest) (_result 
 
 // Summary:
 //
+// 同步部门信息
+//
+// @param tmpReq - SyncDepartmentRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDepartmentResponse
+func (client *Client) SyncDepartmentWithOptions(tmpReq *SyncDepartmentRequest, runtime *util.RuntimeOptions) (_result *SyncDepartmentResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SyncDepartmentShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SyncDepartmentCommand)) {
+		request.SyncDepartmentCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncDepartmentCommand, tea.String("SyncDepartmentCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SyncDepartmentCommandShrink)) {
+		body["SyncDepartmentCommand"] = request.SyncDepartmentCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDepartment"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncDepartmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门信息
+//
+// @param request - SyncDepartmentRequest
+//
+// @return SyncDepartmentResponse
+func (client *Client) SyncDepartment(request *SyncDepartmentRequest) (_result *SyncDepartmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncDepartmentResponse{}
+	_body, _err := client.SyncDepartmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门成员信息
+//
+// @param tmpReq - SyncDepartmentUserRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SyncDepartmentUserResponse
+func (client *Client) SyncDepartmentUserWithOptions(tmpReq *SyncDepartmentUserRequest, runtime *util.RuntimeOptions) (_result *SyncDepartmentUserResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SyncDepartmentUserShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SyncDepartmentUserCommand)) {
+		request.SyncDepartmentUserCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SyncDepartmentUserCommand, tea.String("SyncDepartmentUserCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SyncDepartmentUserCommandShrink)) {
+		body["SyncDepartmentUserCommand"] = request.SyncDepartmentUserCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SyncDepartmentUser"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SyncDepartmentUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 同步部门成员信息
+//
+// @param request - SyncDepartmentUserRequest
+//
+// @return SyncDepartmentUserResponse
+func (client *Client) SyncDepartmentUser(request *SyncDepartmentUserRequest) (_result *SyncDepartmentUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SyncDepartmentUserResponse{}
+	_body, _err := client.SyncDepartmentUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑即席查询文件。
 //
 // @param tmpReq - UpdateAdHocFileRequest
@@ -42697,6 +47519,78 @@ func (client *Client) UpdateFileName(request *UpdateFileNameRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFileNameResponse{}
 	_body, _err := client.UpdateFileNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新行级权限
+//
+// @param tmpReq - UpdateRowPermissionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRowPermissionResponse
+func (client *Client) UpdateRowPermissionWithOptions(tmpReq *UpdateRowPermissionRequest, runtime *util.RuntimeOptions) (_result *UpdateRowPermissionResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateRowPermissionShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UpdateRowPermissionCommand)) {
+		request.UpdateRowPermissionCommandShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UpdateRowPermissionCommand, tea.String("UpdateRowPermissionCommand"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpTenantId)) {
+		query["OpTenantId"] = request.OpTenantId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UpdateRowPermissionCommandShrink)) {
+		body["UpdateRowPermissionCommand"] = request.UpdateRowPermissionCommandShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRowPermission"),
+		Version:     tea.String("2023-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateRowPermissionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新行级权限
+//
+// @param request - UpdateRowPermissionRequest
+//
+// @return UpdateRowPermissionResponse
+func (client *Client) UpdateRowPermission(request *UpdateRowPermissionRequest) (_result *UpdateRowPermissionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateRowPermissionResponse{}
+	_body, _err := client.UpdateRowPermissionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
