@@ -12783,6 +12783,7 @@ type DeleteAIAgentDialogueRequest struct {
 	//
 	// f27f9b9be28642a88e18*******
 	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -12801,6 +12802,11 @@ func (s DeleteAIAgentDialogueRequest) GoString() string {
 
 func (s *DeleteAIAgentDialogueRequest) SetDialogueId(v string) *DeleteAIAgentDialogueRequest {
 	s.DialogueId = &v
+	return s
+}
+
+func (s *DeleteAIAgentDialogueRequest) SetNodeId(v string) *DeleteAIAgentDialogueRequest {
+	s.NodeId = &v
 	return s
 }
 
@@ -40800,7 +40806,8 @@ type ListAIAgentDialoguesRequest struct {
 	// example:
 	//
 	// 20
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RoundLimit *string `json:"RoundLimit,omitempty" xml:"RoundLimit,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -40840,6 +40847,11 @@ func (s *ListAIAgentDialoguesRequest) SetPageNumber(v int64) *ListAIAgentDialogu
 
 func (s *ListAIAgentDialoguesRequest) SetPageSize(v int32) *ListAIAgentDialoguesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesRequest) SetRoundLimit(v string) *ListAIAgentDialoguesRequest {
+	s.RoundLimit = &v
 	return s
 }
 
@@ -40885,6 +40897,8 @@ type ListAIAgentDialoguesResponseBodyDialogues struct {
 	//
 	// 19de81b3b3d94abda22****
 	DialogueId *string `json:"DialogueId,omitempty" xml:"DialogueId,omitempty"`
+	Extend     *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	// example:
 	//
 	// user
@@ -40918,6 +40932,16 @@ func (s *ListAIAgentDialoguesResponseBodyDialogues) SetAttachedFileList(v []*Lis
 
 func (s *ListAIAgentDialoguesResponseBodyDialogues) SetDialogueId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
 	s.DialogueId = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetExtend(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.Extend = &v
+	return s
+}
+
+func (s *ListAIAgentDialoguesResponseBodyDialogues) SetNodeId(v string) *ListAIAgentDialoguesResponseBodyDialogues {
+	s.NodeId = &v
 	return s
 }
 
@@ -97955,6 +97979,10 @@ func (client *Client) DeleteAIAgentDialogueWithOptions(request *DeleteAIAgentDia
 		query["DialogueId"] = request.DialogueId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		query["NodeId"] = request.NodeId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
 		query["SessionId"] = request.SessionId
 	}
@@ -105753,6 +105781,10 @@ func (client *Client) ListAIAgentDialoguesWithOptions(request *ListAIAgentDialog
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoundLimit)) {
+		query["RoundLimit"] = request.RoundLimit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
