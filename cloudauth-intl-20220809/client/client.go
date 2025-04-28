@@ -1412,6 +1412,263 @@ func (s *DocOcrResponse) SetBody(v *DocOcrResponseBody) *DocOcrResponse {
 	return s
 }
 
+type DocOcrMaxRequest struct {
+	// example:
+	//
+	// CNSSC01
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// base64
+	IdOcrPictureBase64 *string `json:"IdOcrPictureBase64,omitempty" xml:"IdOcrPictureBase64,omitempty"`
+	// example:
+	//
+	// https://***********.oss-cn-hangzhou.aliyuncs.com/1669520556530-expo/default/face/20221127114236530_w3kx2e6t.jpg
+	IdOcrPictureUrl *string `json:"IdOcrPictureUrl,omitempty" xml:"IdOcrPictureUrl,omitempty"`
+	// example:
+	//
+	// 0
+	IdThreshold *string `json:"IdThreshold,omitempty" xml:"IdThreshold,omitempty"`
+	// example:
+	//
+	// e0c34a77f5ac40a5aa5e6ed20c******
+	MerchantBizId *string `json:"MerchantBizId,omitempty" xml:"MerchantBizId,omitempty"`
+	// example:
+	//
+	// 123456789
+	MerchantUserId *string `json:"MerchantUserId,omitempty" xml:"MerchantUserId,omitempty"`
+	// example:
+	//
+	// 0
+	OcrModel *string `json:"OcrModel,omitempty" xml:"OcrModel,omitempty"`
+	// example:
+	//
+	// ID_OCR_MAX
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	Prompt      *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// 1234567890
+	SceneCode *string `json:"SceneCode,omitempty" xml:"SceneCode,omitempty"`
+	// example:
+	//
+	// F
+	Spoof *string `json:"Spoof,omitempty" xml:"Spoof,omitempty"`
+}
+
+func (s DocOcrMaxRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrMaxRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrMaxRequest) SetDocType(v string) *DocOcrMaxRequest {
+	s.DocType = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetIdOcrPictureBase64(v string) *DocOcrMaxRequest {
+	s.IdOcrPictureBase64 = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetIdOcrPictureUrl(v string) *DocOcrMaxRequest {
+	s.IdOcrPictureUrl = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetIdThreshold(v string) *DocOcrMaxRequest {
+	s.IdThreshold = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetMerchantBizId(v string) *DocOcrMaxRequest {
+	s.MerchantBizId = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetMerchantUserId(v string) *DocOcrMaxRequest {
+	s.MerchantUserId = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetOcrModel(v string) *DocOcrMaxRequest {
+	s.OcrModel = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetProductCode(v string) *DocOcrMaxRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetPrompt(v string) *DocOcrMaxRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetSceneCode(v string) *DocOcrMaxRequest {
+	s.SceneCode = &v
+	return s
+}
+
+func (s *DocOcrMaxRequest) SetSpoof(v string) *DocOcrMaxRequest {
+	s.Spoof = &v
+	return s
+}
+
+type DocOcrMaxResponseBody struct {
+	// example:
+	//
+	// Success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4EB35****87EBA1
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *DocOcrMaxResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+}
+
+func (s DocOcrMaxResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrMaxResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrMaxResponseBody) SetCode(v string) *DocOcrMaxResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBody) SetMessage(v string) *DocOcrMaxResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBody) SetRequestId(v string) *DocOcrMaxResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBody) SetResult(v *DocOcrMaxResponseBodyResult) *DocOcrMaxResponseBody {
+	s.Result = v
+	return s
+}
+
+type DocOcrMaxResponseBodyResult struct {
+	// example:
+	//
+	// {
+	//
+	//   "docType": "PPTW01",
+	//
+	//   "ocrIdInfo": {
+	//
+	//     "passportNo": "36*******",
+	//
+	//     "expiryDate": "2032/02/10",
+	//
+	//     "placeOfBirth": "TAIWAN",
+	//
+	//     "surname": "CHEN",
+	//
+	//     "givenname": "LIN-CHUN",
+	//
+	//     "countryCode": "TWN",
+	//
+	//     "sex": "F",
+	//
+	//     "personalNo": "S22********",
+	//
+	//     "issueDate": "2022/02/10",
+	//
+	//     "birthDate": "1988/10/04"
+	//
+	//   }
+	//
+	// }
+	ExtIdInfo *string `json:"ExtIdInfo,omitempty" xml:"ExtIdInfo,omitempty"`
+	// example:
+	//
+	// Y
+	Passed *string `json:"Passed,omitempty" xml:"Passed,omitempty"`
+	// example:
+	//
+	// 200
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+	// example:
+	//
+	// hk573be80f944d95ac812e0*******a8
+	TransactionId *string `json:"TransactionId,omitempty" xml:"TransactionId,omitempty"`
+}
+
+func (s DocOcrMaxResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrMaxResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrMaxResponseBodyResult) SetExtIdInfo(v string) *DocOcrMaxResponseBodyResult {
+	s.ExtIdInfo = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBodyResult) SetPassed(v string) *DocOcrMaxResponseBodyResult {
+	s.Passed = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBodyResult) SetSubCode(v string) *DocOcrMaxResponseBodyResult {
+	s.SubCode = &v
+	return s
+}
+
+func (s *DocOcrMaxResponseBodyResult) SetTransactionId(v string) *DocOcrMaxResponseBodyResult {
+	s.TransactionId = &v
+	return s
+}
+
+type DocOcrMaxResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DocOcrMaxResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DocOcrMaxResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocOcrMaxResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DocOcrMaxResponse) SetHeaders(v map[string]*string) *DocOcrMaxResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DocOcrMaxResponse) SetStatusCode(v int32) *DocOcrMaxResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DocOcrMaxResponse) SetBody(v *DocOcrMaxResponseBody) *DocOcrMaxResponse {
+	s.Body = v
+	return s
+}
+
 type EkycVerifyRequest struct {
 	// example:
 	//
@@ -4228,6 +4485,106 @@ func (client *Client) DocOcr(request *DocOcrRequest) (_result *DocOcrResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &DocOcrResponse{}
 	_body, _err := client.DocOcrWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 全球证件ocr识别接口
+//
+// @param request - DocOcrMaxRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocOcrMaxResponse
+func (client *Client) DocOcrMaxWithOptions(request *DocOcrMaxRequest, runtime *util.RuntimeOptions) (_result *DocOcrMaxResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocType)) {
+		body["DocType"] = request.DocType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureBase64)) {
+		body["IdOcrPictureBase64"] = request.IdOcrPictureBase64
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdOcrPictureUrl)) {
+		body["IdOcrPictureUrl"] = request.IdOcrPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdThreshold)) {
+		body["IdThreshold"] = request.IdThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantBizId)) {
+		body["MerchantBizId"] = request.MerchantBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MerchantUserId)) {
+		body["MerchantUserId"] = request.MerchantUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OcrModel)) {
+		body["OcrModel"] = request.OcrModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		body["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneCode)) {
+		body["SceneCode"] = request.SceneCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spoof)) {
+		body["Spoof"] = request.Spoof
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DocOcrMax"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DocOcrMaxResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 全球证件ocr识别接口
+//
+// @param request - DocOcrMaxRequest
+//
+// @return DocOcrMaxResponse
+func (client *Client) DocOcrMax(request *DocOcrMaxRequest) (_result *DocOcrMaxResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DocOcrMaxResponse{}
+	_body, _err := client.DocOcrMaxWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
