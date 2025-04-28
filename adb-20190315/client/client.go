@@ -10310,7 +10310,8 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// 3306
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port        *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	ProductForm *string `json:"ProductForm,omitempty" xml:"ProductForm,omitempty"`
 	// The edition of the cluster. Valid values:
 	//
 	// 	- **BasicVersion**: Basic Edition.
@@ -10332,7 +10333,9 @@ type DescribeDBClusterAttributeResponseBodyItemsDBCluster struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ReservedNodeCount *int32  `json:"ReservedNodeCount,omitempty" xml:"ReservedNodeCount,omitempty"`
+	ReservedNodeSize  *string `json:"ReservedNodeSize,omitempty" xml:"ReservedNodeSize,omitempty"`
 	// The resource group ID.
 	//
 	// example:
@@ -10589,6 +10592,11 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetPort(v int32) 
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetProductForm(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ProductForm = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetProductVersion(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.ProductVersion = &v
 	return s
@@ -10601,6 +10609,16 @@ func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetRdsInstanceId(
 
 func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetRegionId(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetReservedNodeCount(v int32) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ReservedNodeCount = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyItemsDBCluster) SetReservedNodeSize(v string) *DescribeDBClusterAttributeResponseBodyItemsDBCluster {
+	s.ReservedNodeSize = &v
 	return s
 }
 
