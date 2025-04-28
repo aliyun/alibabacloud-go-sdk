@@ -13614,7 +13614,8 @@ type CreateRunResponseBody struct {
 	// example:
 	//
 	// 1642448000000
-	CreateAt *int64 `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	CreateAt *int64                     `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	Data     *CreateRunResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// example:
 	//
 	// {}
@@ -13686,6 +13687,11 @@ func (s *CreateRunResponseBody) SetContent(v *CreateRunResponseBodyContent) *Cre
 
 func (s *CreateRunResponseBody) SetCreateAt(v int64) *CreateRunResponseBody {
 	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBody) SetData(v *CreateRunResponseBodyData) *CreateRunResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -13961,6 +13967,245 @@ func (s CreateRunResponseBodyContentText) GoString() string {
 }
 
 func (s *CreateRunResponseBodyContentText) SetValue(v string) *CreateRunResponseBodyContentText {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyData struct {
+	Content  []*CreateRunResponseBodyDataContent `json:"content,omitempty" xml:"content,omitempty" type:"Repeated"`
+	CreateAt *int64                              `json:"createAt,omitempty" xml:"createAt,omitempty"`
+	Id       *string                             `json:"id,omitempty" xml:"id,omitempty"`
+	Metadata map[string]interface{}              `json:"metadata,omitempty" xml:"metadata,omitempty"`
+	Object   *string                             `json:"object,omitempty" xml:"object,omitempty"`
+	Role     *string                             `json:"role,omitempty" xml:"role,omitempty"`
+	RunId    *string                             `json:"runId,omitempty" xml:"runId,omitempty"`
+	ThreadId *string                             `json:"threadId,omitempty" xml:"threadId,omitempty"`
+}
+
+func (s CreateRunResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyData) SetContent(v []*CreateRunResponseBodyDataContent) *CreateRunResponseBodyData {
+	s.Content = v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetCreateAt(v int64) *CreateRunResponseBodyData {
+	s.CreateAt = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetId(v string) *CreateRunResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetMetadata(v map[string]interface{}) *CreateRunResponseBodyData {
+	s.Metadata = v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetObject(v string) *CreateRunResponseBodyData {
+	s.Object = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetRole(v string) *CreateRunResponseBodyData {
+	s.Role = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetRunId(v string) *CreateRunResponseBodyData {
+	s.RunId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyData) SetThreadId(v string) *CreateRunResponseBodyData {
+	s.ThreadId = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContent struct {
+	CardCallback *CreateRunResponseBodyDataContentCardCallback `json:"cardCallback,omitempty" xml:"cardCallback,omitempty" type:"Struct"`
+	DingCard     *CreateRunResponseBodyDataContentDingCard     `json:"dingCard,omitempty" xml:"dingCard,omitempty" type:"Struct"`
+	ImageUrl     *CreateRunResponseBodyDataContentImageUrl     `json:"imageUrl,omitempty" xml:"imageUrl,omitempty" type:"Struct"`
+	Markdown     *CreateRunResponseBodyDataContentMarkdown     `json:"markdown,omitempty" xml:"markdown,omitempty" type:"Struct"`
+	Text         *CreateRunResponseBodyDataContentText         `json:"text,omitempty" xml:"text,omitempty" type:"Struct"`
+	Type         *string                                       `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContent) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContent) SetCardCallback(v *CreateRunResponseBodyDataContentCardCallback) *CreateRunResponseBodyDataContent {
+	s.CardCallback = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContent) SetDingCard(v *CreateRunResponseBodyDataContentDingCard) *CreateRunResponseBodyDataContent {
+	s.DingCard = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContent) SetImageUrl(v *CreateRunResponseBodyDataContentImageUrl) *CreateRunResponseBodyDataContent {
+	s.ImageUrl = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContent) SetMarkdown(v *CreateRunResponseBodyDataContentMarkdown) *CreateRunResponseBodyDataContent {
+	s.Markdown = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContent) SetText(v *CreateRunResponseBodyDataContentText) *CreateRunResponseBodyDataContent {
+	s.Text = v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContent) SetType(v string) *CreateRunResponseBodyDataContent {
+	s.Type = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContentCardCallback struct {
+	Content    *string `json:"content,omitempty" xml:"content,omitempty"`
+	TemplateId *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+	UserId     *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContentCardCallback) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContentCardCallback) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContentCardCallback) SetContent(v string) *CreateRunResponseBodyDataContentCardCallback {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentCardCallback) SetTemplateId(v string) *CreateRunResponseBodyDataContentCardCallback {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentCardCallback) SetUserId(v string) *CreateRunResponseBodyDataContentCardCallback {
+	s.UserId = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContentDingCard struct {
+	CardDesc    *string `json:"cardDesc,omitempty" xml:"cardDesc,omitempty"`
+	Content     *string `json:"content,omitempty" xml:"content,omitempty"`
+	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
+	Finished    *bool   `json:"finished,omitempty" xml:"finished,omitempty"`
+	TemplateId  *string `json:"templateId,omitempty" xml:"templateId,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContentDingCard) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContentDingCard) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContentDingCard) SetCardDesc(v string) *CreateRunResponseBodyDataContentDingCard {
+	s.CardDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentDingCard) SetContent(v string) *CreateRunResponseBodyDataContentDingCard {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentDingCard) SetContentType(v string) *CreateRunResponseBodyDataContentDingCard {
+	s.ContentType = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentDingCard) SetFinished(v bool) *CreateRunResponseBodyDataContentDingCard {
+	s.Finished = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentDingCard) SetTemplateId(v string) *CreateRunResponseBodyDataContentDingCard {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContentImageUrl struct {
+	Detail    *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	ImageDesc *string `json:"imageDesc,omitempty" xml:"imageDesc,omitempty"`
+	Url       *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContentImageUrl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContentImageUrl) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContentImageUrl) SetDetail(v string) *CreateRunResponseBodyDataContentImageUrl {
+	s.Detail = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentImageUrl) SetImageDesc(v string) *CreateRunResponseBodyDataContentImageUrl {
+	s.ImageDesc = &v
+	return s
+}
+
+func (s *CreateRunResponseBodyDataContentImageUrl) SetUrl(v string) *CreateRunResponseBodyDataContentImageUrl {
+	s.Url = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContentMarkdown struct {
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContentMarkdown) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContentMarkdown) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContentMarkdown) SetValue(v string) *CreateRunResponseBodyDataContentMarkdown {
+	s.Value = &v
+	return s
+}
+
+type CreateRunResponseBodyDataContentText struct {
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateRunResponseBodyDataContentText) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRunResponseBodyDataContentText) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRunResponseBodyDataContentText) SetValue(v string) *CreateRunResponseBodyDataContentText {
 	s.Value = &v
 	return s
 }
@@ -38880,6 +39125,10 @@ type GetRangeResponseBody struct {
 	//
 	// []
 	Formulas [][]*string `json:"formulas,omitempty" xml:"formulas,omitempty" type:"Repeated"`
+	// example:
+	//
+	// []
+	Hyperlinks [][]*GetRangeResponseBodyHyperlinks `json:"hyperlinks,omitempty" xml:"hyperlinks,omitempty" type:"Repeated"`
 	// requestId
 	//
 	// example:
@@ -38912,6 +39161,11 @@ func (s *GetRangeResponseBody) SetDisplayValues(v [][]*string) *GetRangeResponse
 
 func (s *GetRangeResponseBody) SetFormulas(v [][]*string) *GetRangeResponseBody {
 	s.Formulas = v
+	return s
+}
+
+func (s *GetRangeResponseBody) SetHyperlinks(v [][]*GetRangeResponseBodyHyperlinks) *GetRangeResponseBody {
+	s.Hyperlinks = v
 	return s
 }
 
@@ -38977,6 +39231,35 @@ func (s *GetRangeResponseBodyBackgroundColors) SetBlue(v int32) *GetRangeRespons
 
 func (s *GetRangeResponseBodyBackgroundColors) SetHexString(v string) *GetRangeResponseBodyBackgroundColors {
 	s.HexString = &v
+	return s
+}
+
+type GetRangeResponseBodyHyperlinks struct {
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	Link *string `json:"link,omitempty" xml:"link,omitempty"`
+	Text *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetRangeResponseBodyHyperlinks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRangeResponseBodyHyperlinks) GoString() string {
+	return s.String()
+}
+
+func (s *GetRangeResponseBodyHyperlinks) SetType(v string) *GetRangeResponseBodyHyperlinks {
+	s.Type = &v
+	return s
+}
+
+func (s *GetRangeResponseBodyHyperlinks) SetLink(v string) *GetRangeResponseBodyHyperlinks {
+	s.Link = &v
+	return s
+}
+
+func (s *GetRangeResponseBodyHyperlinks) SetText(v string) *GetRangeResponseBodyHyperlinks {
+	s.Text = &v
 	return s
 }
 
