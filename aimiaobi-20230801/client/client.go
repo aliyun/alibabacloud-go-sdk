@@ -28841,6 +28841,10 @@ type RunSearchGenerationRequest struct {
 	ChatConfig *RunSearchGenerationRequestChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
 	// example:
 	//
+	// qwen-max-latest
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
 	// xxx
 	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
 	// example:
@@ -28874,6 +28878,11 @@ func (s *RunSearchGenerationRequest) SetAgentContext(v *RunSearchGenerationReque
 
 func (s *RunSearchGenerationRequest) SetChatConfig(v *RunSearchGenerationRequestChatConfig) *RunSearchGenerationRequest {
 	s.ChatConfig = v
+	return s
+}
+
+func (s *RunSearchGenerationRequest) SetModelId(v string) *RunSearchGenerationRequest {
+	s.ModelId = &v
 	return s
 }
 
@@ -29260,6 +29269,10 @@ type RunSearchGenerationShrinkRequest struct {
 	ChatConfigShrink *string `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty"`
 	// example:
 	//
+	// qwen-max-latest
+	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
+	// example:
+	//
 	// xxx
 	OriginalSessionId *string `json:"OriginalSessionId,omitempty" xml:"OriginalSessionId,omitempty"`
 	// example:
@@ -29293,6 +29306,11 @@ func (s *RunSearchGenerationShrinkRequest) SetAgentContextShrink(v string) *RunS
 
 func (s *RunSearchGenerationShrinkRequest) SetChatConfigShrink(v string) *RunSearchGenerationShrinkRequest {
 	s.ChatConfigShrink = &v
+	return s
+}
+
+func (s *RunSearchGenerationShrinkRequest) SetModelId(v string) *RunSearchGenerationShrinkRequest {
+	s.ModelId = &v
 	return s
 }
 
@@ -29503,6 +29521,7 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
 	// start
 	CurrentStep      *string                                                                             `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
 	GeneratedContent *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent `json:"GeneratedContent,omitempty" xml:"GeneratedContent,omitempty" type:"Struct"`
+	ModelId          *string                                                                             `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// example:
 	//
 	// search
@@ -29517,7 +29536,8 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
 	// example:
 	//
 	// true
-	SupplementEnable *bool `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+	SupplementEnable *bool                                                                             `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+	TokenCalculate   *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate `json:"TokenCalculate,omitempty" xml:"TokenCalculate,omitempty" type:"Struct"`
 }
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) String() string {
@@ -29535,6 +29555,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Set
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetGeneratedContent(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
 	s.GeneratedContent = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetModelId(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.ModelId = &v
 	return s
 }
 
@@ -29565,6 +29590,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Set
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetSupplementEnable(v bool) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
 	s.SupplementEnable = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetTokenCalculate(v *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.TokenCalculate = v
 	return s
 }
 
@@ -30238,8 +30268,9 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	// example:
 	//
 	// concise
-	GenerateLevel *string                                                                                                        `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
-	SearchResult  []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
+	GenerateLevel      *string                                                                                                        `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	ReasonTextGenerate *string                                                                                                        `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
+	SearchResult       []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult `json:"SearchResult,omitempty" xml:"SearchResult,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xx
@@ -30261,6 +30292,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetGenerateLevel(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
 	s.GenerateLevel = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult) SetReasonTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResult {
+	s.ReasonTextGenerate = &v
 	return s
 }
 
@@ -31001,6 +31037,7 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	GenerateLevel              *string                                                                                                                           `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
 	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
 	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
+	ReasonTextGenerate         *string                                                                                                                           `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
 	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -31034,6 +31071,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetMultimodalSearchResultList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultMultimodalSearchResultList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
 	s.MultimodalSearchResultList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult) SetReasonTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResult {
+	s.ReasonTextGenerate = &v
 	return s
 }
 
@@ -31849,6 +31891,7 @@ type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerated
 	GenerateFinished           *bool                                                                                                                         `json:"GenerateFinished,omitempty" xml:"GenerateFinished,omitempty"`
 	GenerateTraceability       *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultGenerateTraceability         `json:"GenerateTraceability,omitempty" xml:"GenerateTraceability,omitempty" type:"Struct"`
 	MultimodalSearchResultList []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList `json:"MultimodalSearchResultList,omitempty" xml:"MultimodalSearchResultList,omitempty" type:"Repeated"`
+	ReasonTextGenerate         *string                                                                                                                       `json:"ReasonTextGenerate,omitempty" xml:"ReasonTextGenerate,omitempty"`
 	ReferenceList              []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList              `json:"ReferenceList,omitempty" xml:"ReferenceList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -31877,6 +31920,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetMultimodalSearchResultList(v []*RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultMultimodalSearchResultList) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
 	s.MultimodalSearchResultList = v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult) SetReasonTextGenerate(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResult {
+	s.ReasonTextGenerate = &v
 	return s
 }
 
@@ -32680,6 +32728,47 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGener
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos) SetType(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultClipInfos {
 	s.Type = &v
+	return s
+}
+
+type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate struct {
+	FirstTokenTime *float32 `json:"FirstTokenTime,omitempty" xml:"FirstTokenTime,omitempty"`
+	OutputAvgTime  *float32 `json:"OutputAvgTime,omitempty" xml:"OutputAvgTime,omitempty"`
+	SearchTime     *float32 `json:"SearchTime,omitempty" xml:"SearchTime,omitempty"`
+	Time           *float32 `json:"Time,omitempty" xml:"Time,omitempty"`
+	TotalTokens    *int64   `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) GoString() string {
+	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) SetFirstTokenTime(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate {
+	s.FirstTokenTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) SetOutputAvgTime(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate {
+	s.OutputAvgTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) SetSearchTime(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate {
+	s.SearchTime = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) SetTime(v float32) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate {
+	s.Time = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate) SetTotalTokens(v int64) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextTokenCalculate {
+	s.TotalTokens = &v
 	return s
 }
 
@@ -37315,6 +37404,218 @@ func (s *SaveMaterialDocumentResponse) SetStatusCode(v int32) *SaveMaterialDocum
 }
 
 func (s *SaveMaterialDocumentResponse) SetBody(v *SaveMaterialDocumentResponseBody) *SaveMaterialDocumentResponse {
+	s.Body = v
+	return s
+}
+
+type SaveStyleLearningResultRequest struct {
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey         *string  `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AigcResult       *string  `json:"AigcResult,omitempty" xml:"AigcResult,omitempty"`
+	CustomTextIdList []*int64 `json:"CustomTextIdList,omitempty" xml:"CustomTextIdList,omitempty" type:"Repeated"`
+	MaterialIdList   []*int64 `json:"MaterialIdList,omitempty" xml:"MaterialIdList,omitempty" type:"Repeated"`
+	RewriteResult    *string  `json:"RewriteResult,omitempty" xml:"RewriteResult,omitempty"`
+	StyleName        *string  `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SaveStyleLearningResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveStyleLearningResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveStyleLearningResultRequest) SetAgentKey(v string) *SaveStyleLearningResultRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetAigcResult(v string) *SaveStyleLearningResultRequest {
+	s.AigcResult = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetCustomTextIdList(v []*int64) *SaveStyleLearningResultRequest {
+	s.CustomTextIdList = v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetMaterialIdList(v []*int64) *SaveStyleLearningResultRequest {
+	s.MaterialIdList = v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetRewriteResult(v string) *SaveStyleLearningResultRequest {
+	s.RewriteResult = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetStyleName(v string) *SaveStyleLearningResultRequest {
+	s.StyleName = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultRequest) SetTaskId(v string) *SaveStyleLearningResultRequest {
+	s.TaskId = &v
+	return s
+}
+
+type SaveStyleLearningResultShrinkRequest struct {
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey               *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	AigcResult             *string `json:"AigcResult,omitempty" xml:"AigcResult,omitempty"`
+	CustomTextIdListShrink *string `json:"CustomTextIdList,omitempty" xml:"CustomTextIdList,omitempty"`
+	MaterialIdListShrink   *string `json:"MaterialIdList,omitempty" xml:"MaterialIdList,omitempty"`
+	RewriteResult          *string `json:"RewriteResult,omitempty" xml:"RewriteResult,omitempty"`
+	StyleName              *string `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SaveStyleLearningResultShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveStyleLearningResultShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetAgentKey(v string) *SaveStyleLearningResultShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetAigcResult(v string) *SaveStyleLearningResultShrinkRequest {
+	s.AigcResult = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetCustomTextIdListShrink(v string) *SaveStyleLearningResultShrinkRequest {
+	s.CustomTextIdListShrink = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetMaterialIdListShrink(v string) *SaveStyleLearningResultShrinkRequest {
+	s.MaterialIdListShrink = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetRewriteResult(v string) *SaveStyleLearningResultShrinkRequest {
+	s.RewriteResult = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetStyleName(v string) *SaveStyleLearningResultShrinkRequest {
+	s.StyleName = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultShrinkRequest) SetTaskId(v string) *SaveStyleLearningResultShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type SaveStyleLearningResultResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveStyleLearningResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveStyleLearningResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetCode(v string) *SaveStyleLearningResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetData(v bool) *SaveStyleLearningResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetHttpStatusCode(v int32) *SaveStyleLearningResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetMessage(v string) *SaveStyleLearningResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetRequestId(v string) *SaveStyleLearningResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponseBody) SetSuccess(v bool) *SaveStyleLearningResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveStyleLearningResultResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SaveStyleLearningResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SaveStyleLearningResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveStyleLearningResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveStyleLearningResultResponse) SetHeaders(v map[string]*string) *SaveStyleLearningResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponse) SetStatusCode(v int32) *SaveStyleLearningResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveStyleLearningResultResponse) SetBody(v *SaveStyleLearningResultResponseBody) *SaveStyleLearningResultResponse {
 	s.Body = v
 	return s
 }
@@ -50752,6 +51053,10 @@ func (client *Client) RunSearchGenerationWithOptions(tmpReq *RunSearchGeneration
 		body["ChatConfig"] = request.ChatConfigShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModelId)) {
+		body["ModelId"] = request.ModelId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OriginalSessionId)) {
 		body["OriginalSessionId"] = request.OriginalSessionId
 	}
@@ -51794,6 +52099,100 @@ func (client *Client) SaveMaterialDocument(request *SaveMaterialDocumentRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveMaterialDocumentResponse{}
 	_body, _err := client.SaveMaterialDocumentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存自定义文体
+//
+// @param tmpReq - SaveStyleLearningResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SaveStyleLearningResultResponse
+func (client *Client) SaveStyleLearningResultWithOptions(tmpReq *SaveStyleLearningResultRequest, runtime *util.RuntimeOptions) (_result *SaveStyleLearningResultResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SaveStyleLearningResultShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.CustomTextIdList)) {
+		request.CustomTextIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomTextIdList, tea.String("CustomTextIdList"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MaterialIdList)) {
+		request.MaterialIdListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MaterialIdList, tea.String("MaterialIdList"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		body["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AigcResult)) {
+		body["AigcResult"] = request.AigcResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomTextIdListShrink)) {
+		body["CustomTextIdList"] = request.CustomTextIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaterialIdListShrink)) {
+		body["MaterialIdList"] = request.MaterialIdListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RewriteResult)) {
+		body["RewriteResult"] = request.RewriteResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StyleName)) {
+		body["StyleName"] = request.StyleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveStyleLearningResult"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveStyleLearningResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 保存自定义文体
+//
+// @param request - SaveStyleLearningResultRequest
+//
+// @return SaveStyleLearningResultResponse
+func (client *Client) SaveStyleLearningResult(request *SaveStyleLearningResultRequest) (_result *SaveStyleLearningResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveStyleLearningResultResponse{}
+	_body, _err := client.SaveStyleLearningResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
