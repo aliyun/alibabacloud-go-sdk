@@ -4637,6 +4637,7 @@ type PhoneNumberEncryptRequest struct {
 	//
 	// NORMAL
 	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -4662,6 +4663,11 @@ func (s *PhoneNumberEncryptRequest) SetInputNumber(v string) *PhoneNumberEncrypt
 
 func (s *PhoneNumberEncryptRequest) SetMask(v string) *PhoneNumberEncryptRequest {
 	s.Mask = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetOutId(v string) *PhoneNumberEncryptRequest {
+	s.OutId = &v
 	return s
 }
 
@@ -4754,6 +4760,7 @@ type PhoneNumberEncryptResponseBodyData struct {
 	//
 	// 1390000****
 	OriginalNumber *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
+	OutId          *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 }
 
 func (s PhoneNumberEncryptResponseBodyData) String() string {
@@ -4776,6 +4783,11 @@ func (s *PhoneNumberEncryptResponseBodyData) SetExpireTime(v string) *PhoneNumbe
 
 func (s *PhoneNumberEncryptResponseBodyData) SetOriginalNumber(v string) *PhoneNumberEncryptResponseBodyData {
 	s.OriginalNumber = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBodyData) SetOutId(v string) *PhoneNumberEncryptResponseBodyData {
+	s.OutId = &v
 	return s
 }
 
@@ -5712,202 +5724,6 @@ func (s *PhoneNumberStatusForSmsResponse) SetStatusCode(v int32) *PhoneNumberSta
 }
 
 func (s *PhoneNumberStatusForSmsResponse) SetBody(v *PhoneNumberStatusForSmsResponseBody) *PhoneNumberStatusForSmsResponse {
-	s.Body = v
-	return s
-}
-
-type PhoneNumberStatusForVirtualRequest struct {
-	// The authorization code.
-	//
-	// >  On the **My Applications*	- page in the [Cell Phone Number Service console](https://dytns.console.aliyun.com/analysis/apply), you can obtain the authorization ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// Dd1r***4id
-	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The phone number to be queried.
-	//
-	// 	- If the value of Mask is NORMAL, the value of this field is an 11-digit phone number.
-	//
-	// 	- If the value of Mask is MD5, the value of this field is a 32-bit encrypted string.
-	//
-	// 	- If the value of Mask is SHA256, the value of this field is a 64-bit encrypted string.
-	//
-	// >  Letters in the encrypted strings are not case-sensitive.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 139****0000
-	InputNumber *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
-	// The encryption method of the phone number. Valid values:
-	//
-	// 	- **NORMAL**: The phone number is not encrypted.
-	//
-	// 	- **MD5**
-	//
-	// 	- **SHA256**
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// NORMAL
-	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s PhoneNumberStatusForVirtualRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PhoneNumberStatusForVirtualRequest) GoString() string {
-	return s.String()
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetAuthCode(v string) *PhoneNumberStatusForVirtualRequest {
-	s.AuthCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetInputNumber(v string) *PhoneNumberStatusForVirtualRequest {
-	s.InputNumber = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetMask(v string) *PhoneNumberStatusForVirtualRequest {
-	s.Mask = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetOwnerId(v int64) *PhoneNumberStatusForVirtualRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetResourceOwnerAccount(v string) *PhoneNumberStatusForVirtualRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualRequest) SetResourceOwnerId(v int64) *PhoneNumberStatusForVirtualRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type PhoneNumberStatusForVirtualResponseBody struct {
-	// The response code. Valid values:
-	//
-	// 	- **OK**: The request is successful.
-	//
-	// 	- **OperatorLimit**: The carrier prohibits the query of the phone number.
-	//
-	// 	- **RequestFrequencyLimit**: Repeated queries for the same phone number at a high frequency within a short period of time are prohibited due to restrictions that are set by carriers. If this error code is returned, please try again later.
-	//
-	// example:
-	//
-	// OK
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response parameters.
-	Data *PhoneNumberStatusForVirtualResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message.
-	//
-	// example:
-	//
-	// OK
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
-	//
-	// example:
-	//
-	// CC3BB6D2-2FDF-4321-9DCE-B38165CE4C47
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s PhoneNumberStatusForVirtualResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PhoneNumberStatusForVirtualResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *PhoneNumberStatusForVirtualResponseBody) SetCode(v string) *PhoneNumberStatusForVirtualResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualResponseBody) SetData(v *PhoneNumberStatusForVirtualResponseBodyData) *PhoneNumberStatusForVirtualResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualResponseBody) SetMessage(v string) *PhoneNumberStatusForVirtualResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualResponseBody) SetRequestId(v string) *PhoneNumberStatusForVirtualResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type PhoneNumberStatusForVirtualResponseBodyData struct {
-	// Indicate whether the phone number is a virtual number assigned by the carrier. Valid values:
-	//
-	// 	- **true**
-	//
-	// 	- **false**
-	//
-	// example:
-	//
-	// true
-	IsPrivacyNumber *bool `json:"IsPrivacyNumber,omitempty" xml:"IsPrivacyNumber,omitempty"`
-}
-
-func (s PhoneNumberStatusForVirtualResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PhoneNumberStatusForVirtualResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *PhoneNumberStatusForVirtualResponseBodyData) SetIsPrivacyNumber(v bool) *PhoneNumberStatusForVirtualResponseBodyData {
-	s.IsPrivacyNumber = &v
-	return s
-}
-
-type PhoneNumberStatusForVirtualResponse struct {
-	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *PhoneNumberStatusForVirtualResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s PhoneNumberStatusForVirtualResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PhoneNumberStatusForVirtualResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PhoneNumberStatusForVirtualResponse) SetHeaders(v map[string]*string) *PhoneNumberStatusForVirtualResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualResponse) SetStatusCode(v int32) *PhoneNumberStatusForVirtualResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *PhoneNumberStatusForVirtualResponse) SetBody(v *PhoneNumberStatusForVirtualResponseBody) *PhoneNumberStatusForVirtualResponse {
 	s.Body = v
 	return s
 }
@@ -9192,11 +9008,11 @@ func (client *Client) CertNoTwoElementVerification(request *CertNoTwoElementVeri
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyFourElementsVerificationRequest
 //
@@ -9270,11 +9086,11 @@ func (client *Client) CompanyFourElementsVerificationWithOptions(request *Compan
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to four-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyFourElementsVerificationRequest
 //
@@ -9296,11 +9112,11 @@ func (client *Client) CompanyFourElementsVerification(request *CompanyFourElemen
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyThreeElementsVerificationRequest
 //
@@ -9370,11 +9186,11 @@ func (client *Client) CompanyThreeElementsVerificationWithOptions(request *Compa
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to three-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0, 1, or 2.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyThreeElementsVerificationRequest
 //
@@ -9396,11 +9212,11 @@ func (client *Client) CompanyThreeElementsVerification(request *CompanyThreeElem
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyTwoElementsVerificationRequest
 //
@@ -9466,11 +9282,11 @@ func (client *Client) CompanyTwoElementsVerificationWithOptions(request *Company
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
+//	  Before you call this operation, make sure that you are familiar with the billing of services related to two-element verification for enterprises. For more information, see [Billing](https://help.aliyun.com/document_detail/154751.html?spm=a2c4g.154007.0.0.3edd7eb6E90YT4).
 //
-// 	- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
+//		- You are charged only if the value of VerifyResult is true or false and the value of ReasonCode is 0 or 1.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the [Cell Phone Number Service console](https://account.aliyun.com/login/login.htm?oauth_callback=https%3A%2F%2Fdytns.console.aliyun.com%2Foverview%3Fspm%3Da2c4g.608385.0.0.79847f8b3awqUC\\&lang=zh). On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - CompanyTwoElementsVerificationRequest
 //
@@ -9492,13 +9308,13 @@ func (client *Client) CompanyTwoElementsVerification(request *CompanyTwoElements
 //
 // Description:
 //
-//   You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
+//	  You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
 //
-// 	- You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
+//		- You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
 //
-// 	- The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
+//		- The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -9572,13 +9388,13 @@ func (client *Client) DescribeEmptyNumberWithOptions(request *DescribeEmptyNumbe
 //
 // Description:
 //
-//   You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
+//	  You can call this operation to verify whether a phone number is a nonexistent number. When you call this operation to verify a number, the system charges you CNY 0.01 per verification based on the number of verifications. **Before you call this operation, make sure that you are familiar with the billing of Cell Phone Number Service.**
 //
-// 	- You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
+//		- You are charged only if the value of Code is OK and the value of Status is not UNKNOWN.
 //
-// 	- The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
+//		- The prediction is not strictly accurate because Cell Phone Number Service predicts the nonexistent number probability by using AI algorithms. The accuracy rate of the prediction and the recall rate of empty numbers are about 95%. **Pay attention to this point when you call this operation**.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -10038,9 +9854,9 @@ func (client *Client) DescribePhoneNumberAnalysisTransparent(request *DescribePh
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
 // ### [](#qps)QPS limits
 //
@@ -10105,9 +9921,9 @@ func (client *Client) DescribePhoneNumberAttributeWithOptions(request *DescribeP
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
 // ### [](#qps)QPS limits
 //
@@ -10134,9 +9950,9 @@ func (client *Client) DescribePhoneNumberAttribute(request *DescribePhoneNumberA
 //
 // Description:
 //
-//   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//	  Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//		- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
 // ### [](#qps)QPS limits
 //
@@ -10210,9 +10026,9 @@ func (client *Client) DescribePhoneNumberOnlineTimeWithOptions(request *Describe
 //
 // Description:
 //
-//   Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//	  Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//		- Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
 // ### [](#qps)QPS limits
 //
@@ -10238,13 +10054,13 @@ func (client *Client) DescribePhoneNumberOnlineTime(request *DescribePhoneNumber
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154008.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154008.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext*	- and phone numbers that are encrypted by using **MD5*	- and **SHA256**.
+//		- You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext*	- and phone numbers that are encrypted by using **MD5*	- and **SHA256**.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - DescribePhoneNumberOperatorAttributeRequest
 //
@@ -10318,13 +10134,13 @@ func (client *Client) DescribePhoneNumberOperatorAttributeWithOptions(request *D
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154008.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154008.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext*	- and phone numbers that are encrypted by using **MD5*	- and **SHA256**.
+//		- You can call this operation to obtain the carrier, registration location, and mobile number portability information about a phone number. You can query phone numbers in **plaintext*	- and phone numbers that are encrypted by using **MD5*	- and **SHA256**.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // @param request - DescribePhoneNumberOperatorAttributeRequest
 //
@@ -10562,11 +10378,11 @@ func (client *Client) DescribePhoneNumberRisk(request *DescribePhoneNumberRiskRe
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
+//		- You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ## [](#qps)QPS limits
 //
@@ -10644,11 +10460,11 @@ func (client *Client) DescribePhoneTwiceTelVerifyWithOptions(request *DescribePh
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
+//		- You are charged for phone number verifications only if the value of Code is OK and the value of VerifyResult is not 0.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ## [](#qps)QPS limits
 //
@@ -11075,6 +10891,10 @@ func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptR
 		query["Mask"] = request.Mask
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -11142,11 +10962,11 @@ func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_r
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11216,11 +11036,11 @@ func (client *Client) PhoneNumberStatusForAccountWithOptions(request *PhoneNumbe
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11246,11 +11066,11 @@ func (client *Client) PhoneNumberStatusForAccount(request *PhoneNumberStatusForA
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11320,11 +11140,11 @@ func (client *Client) PhoneNumberStatusForPublicWithOptions(request *PhoneNumber
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11350,11 +11170,11 @@ func (client *Client) PhoneNumberStatusForPublic(request *PhoneNumberStatusForPu
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11424,11 +11244,11 @@ func (client *Client) PhoneNumberStatusForRealWithOptions(request *PhoneNumberSt
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11454,11 +11274,11 @@ func (client *Client) PhoneNumberStatusForReal(request *PhoneNumberStatusForReal
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11528,11 +11348,11 @@ func (client *Client) PhoneNumberStatusForSmsWithOptions(request *PhoneNumberSta
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11554,123 +11374,15 @@ func (client *Client) PhoneNumberStatusForSms(request *PhoneNumberStatusForSmsRe
 
 // Summary:
 //
-// Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-//
-// Description:
-//
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-//
-// 	- You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-//
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-//
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - PhoneNumberStatusForVirtualRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return PhoneNumberStatusForVirtualResponse
-func (client *Client) PhoneNumberStatusForVirtualWithOptions(request *PhoneNumberStatusForVirtualRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberStatusForVirtualResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
-		query["AuthCode"] = request.AuthCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
-		query["InputNumber"] = request.InputNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Mask)) {
-		query["Mask"] = request.Mask
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PhoneNumberStatusForVirtual"),
-		Version:     tea.String("2020-02-17"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &PhoneNumberStatusForVirtualResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Queries the status of a virtual phone number. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
-//
-// Description:
-//
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
-//
-// 	- You are charged only if the value of Code is OK and the value of IsPrivacyNumber is true or false.
-//
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
-//
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
-//
-// ### [](#qps)QPS limits
-//
-// You can call this operation up to 300 times per second per account. If the number of calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-//
-// @param request - PhoneNumberStatusForVirtualRequest
-//
-// @return PhoneNumberStatusForVirtualResponse
-func (client *Client) PhoneNumberStatusForVirtual(request *PhoneNumberStatusForVirtualRequest) (_result *PhoneNumberStatusForVirtualResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &PhoneNumberStatusForVirtualResponse{}
-	_body, _err := client.PhoneNumberStatusForVirtualWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // Queries the real-time service state of a phone number. The state includes NORMAL, SHUTDOWN, and NOT_EXIST. You can choose an encryption method for your phone number query, including plaintext, MD5, and SHA256.
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -11740,11 +11452,11 @@ func (client *Client) PhoneNumberStatusForVoiceWithOptions(request *PhoneNumberS
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
+//		- By default, only Alibaba Cloud accounts can call this operation. RAM users can call this operation only after the RAM users are granted the related permissions. For more information, see [Grant permissions to RAM users](https://help.aliyun.com/document_detail/154006.html).
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
 // ### [](#qps)QPS limits
 //
@@ -12322,11 +12034,11 @@ func (client *Client) QueryUsageStatisticsByTagId(request *QueryUsageStatisticsB
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+//		- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
 //
 // ### [](#qps)QPS limits
 //
@@ -12404,11 +12116,11 @@ func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElement
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+//		- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
 //
 // ### [](#qps)QPS limits
 //
@@ -12434,11 +12146,11 @@ func (client *Client) ThreeElementsVerification(request *ThreeElementsVerificati
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+//		- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
 //
 // ### [](#qps)QPS limits
 //
@@ -12512,11 +12224,11 @@ func (client *Client) TwoElementsVerificationWithOptions(request *TwoElementsVer
 //
 // Description:
 //
-//   Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
+//	  Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/154751.html) of Cell Phone Number Service.
 //
-// 	- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
+//		- Before you call this operation, perform the following operations: Log on to the Cell Phone Number Service console. On the [Labels](https://dytns.console.aliyun.com/analysis/square) page, find the label that you want to use, click **Activate Now**, enter the required information, and then submit your application. After your application is approved, you can use the label.
 //
-// 	- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
+//		- You are charged only if the value of Code is OK and the value of IsConsistent is not 2.
 //
 // ### [](#qps)QPS limits
 //
@@ -12538,7 +12250,7 @@ func (client *Client) TwoElementsVerification(request *TwoElementsVerificationRe
 
 // Summary:
 //
-// UAID采集
+// # UAID采集
 //
 // @param request - UAIDCollectionRequest
 //
@@ -12616,7 +12328,7 @@ func (client *Client) UAIDCollectionWithOptions(request *UAIDCollectionRequest, 
 
 // Summary:
 //
-// UAID采集
+// # UAID采集
 //
 // @param request - UAIDCollectionRequest
 //
