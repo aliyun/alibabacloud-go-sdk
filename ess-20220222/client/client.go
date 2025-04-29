@@ -10174,6 +10174,7 @@ type CreateScalingRuleRequest struct {
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The metric dimensions. This parameter is applicable to target tracking scaling rules. If your predefined metric requires extra dimensions, you must specify this parameter. For example, if you use LoadBalancerRealServerAverageQps as your predefined metric, you must use this parameter to specify the rulePool dimension.
 	AlarmDimensions []*CreateScalingRuleRequestAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
+	AlarmOptions    *CreateScalingRuleRequestAlarmOptions      `json:"AlarmOptions,omitempty" xml:"AlarmOptions,omitempty" type:"Struct"`
 	// The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule. Valid values: 0 to 86400. Unit: seconds.
 	//
 	// By default, this parameter is left empty.
@@ -10406,6 +10407,11 @@ func (s *CreateScalingRuleRequest) SetAlarmDimensions(v []*CreateScalingRuleRequ
 	return s
 }
 
+func (s *CreateScalingRuleRequest) SetAlarmOptions(v *CreateScalingRuleRequestAlarmOptions) *CreateScalingRuleRequest {
+	s.AlarmOptions = v
+	return s
+}
+
 func (s *CreateScalingRuleRequest) SetCooldown(v int32) *CreateScalingRuleRequest {
 	s.Cooldown = &v
 	return s
@@ -10556,6 +10562,23 @@ func (s *CreateScalingRuleRequestAlarmDimensions) SetDimensionKey(v string) *Cre
 
 func (s *CreateScalingRuleRequestAlarmDimensions) SetDimensionValue(v string) *CreateScalingRuleRequestAlarmDimensions {
 	s.DimensionValue = &v
+	return s
+}
+
+type CreateScalingRuleRequestAlarmOptions struct {
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+}
+
+func (s CreateScalingRuleRequestAlarmOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateScalingRuleRequestAlarmOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateScalingRuleRequestAlarmOptions) SetPeriod(v int32) *CreateScalingRuleRequestAlarmOptions {
+	s.Period = &v
 	return s
 }
 
@@ -10802,11 +10825,11 @@ type CreateScheduledTaskRequest struct {
 	//
 	// 600
 	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The point in time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a point in time that is later than 90 days from the point in time at which the scheduled task is created.
+	// The point in time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard. The time must be in UTC. You cannot trigger a scheduled task more than 90 days after its creation.
 	//
-	// 	- If you specify the `RecurrenceType` parameter, the scheduled task is repeatedly executed at the point in time that is specified by the LaunchTime parameter.
+	// 	- If you specify `RecurrenceType`, the scheduled task is repeatedly triggered at the point in time that is specified by LaunchTime.
 	//
-	// 	- If you do not specify the `RecurrenceType` parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter.
+	// 	- If you do not specify `RecurrenceType`, the scheduled task is triggered only once at the time point that is specified by LaunchTime.
 	//
 	// example:
 	//
@@ -18152,6 +18175,14 @@ func (s *DescribeElasticStrengthRequest) SetVSwitchIds(v []*string) *DescribeEla
 }
 
 type DescribeElasticStrengthResponseBody struct {
+	// The scaling strength level of the scaling group. Valid values:
+	//
+	// 	- Strong
+	//
+	// 	- Medium
+	//
+	// 	- Weak
+	//
 	// example:
 	//
 	// Strong
@@ -18452,7 +18483,8 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	// example:
 	//
 	// ecs.c7t.xlarge
-	InstanceType    *string                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// The inventory health.
 	InventoryHealth *DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth `json:"InventoryHealth,omitempty" xml:"InventoryHealth,omitempty" type:"Struct"`
 	// The error message returned when the scaling strength is the weakest.
 	//
@@ -18460,6 +18492,12 @@ type DescribeElasticStrengthResponseBodyResourcePools struct {
 	//
 	// The instanceType does not support the image in the configuration.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// Indicates whether the resource pool is available. Valid values:
+	//
+	// 	- Available
+	//
+	// 	- Unavailable (If a constraint is not provided, the instance type is not deployed, or the instance type is out of stock, the resource pool becomes unavailable.)
+	//
 	// example:
 	//
 	// Available
@@ -18529,18 +18567,40 @@ func (s *DescribeElasticStrengthResponseBodyResourcePools) SetZoneId(v string) *
 }
 
 type DescribeElasticStrengthResponseBodyResourcePoolsInventoryHealth struct {
+	// The adequacy score.
+	//
+	// Valid values: 0 to 3.
+	//
 	// example:
 	//
 	// 3
 	AdequacyScore *int32 `json:"AdequacyScore,omitempty" xml:"AdequacyScore,omitempty"`
+	// The inventory health score.
+	//
+	// 	- A score between 5 and 6 indicates a sufficient inventory.
+	//
+	// 	- A score between 1 and 4 indicates that there is no guarantee of a sufficient inventory. Select a reservation as necessary.
+	//
+	// 	- A score between -3 and 0 indicates that the inventory is sufficient, and an alert is triggered. Select another instance type.
+	//
+	// Calculation formula: `HealthScore` = `AdequacyScore` + `SupplyScore` - `HotScore`.
+	//
 	// example:
 	//
 	// 3
 	HealthScore *int32 `json:"HealthScore,omitempty" xml:"HealthScore,omitempty"`
+	// The popularity score.
+	//
+	// Valid values: 0 to 3.
+	//
 	// example:
 	//
 	// 3
 	HotScore *int32 `json:"HotScore,omitempty" xml:"HotScore,omitempty"`
+	// The replenishment capability score.
+	//
+	// Valid values: 0 to 3.
+	//
 	// example:
 	//
 	// 3
@@ -24495,12 +24555,16 @@ func (s *DescribeScalingGroupDetailResponse) SetBody(v *DescribeScalingGroupDeta
 }
 
 type DescribeScalingGroupDiagnoseDetailsRequest struct {
+	// The ID of the region to which the scaling group belongs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The ID of the scaling group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -24528,8 +24592,9 @@ func (s *DescribeScalingGroupDiagnoseDetailsRequest) SetScalingGroupId(v string)
 }
 
 type DescribeScalingGroupDiagnoseDetailsResponseBody struct {
+	// Details of the diagnostic report.
 	Details []*DescribeScalingGroupDiagnoseDetailsResponseBodyDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -24556,18 +24621,68 @@ func (s *DescribeScalingGroupDiagnoseDetailsResponseBody) SetRequestId(v string)
 }
 
 type DescribeScalingGroupDiagnoseDetailsResponseBodyDetails struct {
+	// Item type for diagnostics. Possible values:
+	//
+	// - AccountArrearage: Checks if the user\\"s account is in arrears.
+	//
+	// - AccountNotEnoughBalance: Checks the account balance.
+	//
+	// - ElasticStrength: Checks the inventory health of instance types corresponding to the scaling group configuration.
+	//
+	// - VSwitch: Checks if the switch is available, for example, whether it has been deleted.
+	//
+	// - SecurityGroup: Checks if the security group is available, for example, whether it has been deleted.
+	//
+	// - KeyPair: Checks if the key pair is available, for example, whether it has been deleted.
+	//
+	// - SlbBackendServerQuota: Checks if the number of ECS instances mounted to the default SLB group and virtual server group exceeds the quota.
+	//
+	// - AlbBackendServerQuota: Checks if the number of ECS instances mounted to the ALB group exceeds the quota.
+	//
+	// - NlbBackendServerQuota: Checks if the number of ECS instances mounted to the NLB group exceeds the quota.
+	//
 	// example:
 	//
 	// SecurityGroup
 	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
+	// Error code of the diagnostic item. Possible values:
+	//
+	// - VSwitchIdNotFound: The VSwitch does not exist.
+	//
+	// - SecurityGroupNotFound: The security group does not exist.
+	//
+	// - KeyPairNotFound: The key pair does not exist.
+	//
+	// - SlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the SLB default group and virtual server group exceeds the quota.
+	//
+	// - AlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the ALB group exceeds the quota.
+	//
+	// - NlbBackendServerQuotaExceeded: The number of ECS instances mounted on the backend of the NLB group exceeds the quota.
+	//
+	// - AccountArrearage: The account is in arrears.
+	//
+	// - AccountNotEnoughBalance: The account balance is insufficient.
+	//
+	// - ElasticStrengthAlert: The inventory health is poor.
+	//
 	// example:
 	//
 	// AccountArrearage
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The resource ID corresponding to the diagnostic result.
+	//
 	// example:
 	//
 	// sg-280ih****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Status of the diagnostic item. Possible values:
+	//
+	// - Normal: The diagnostic result is normal.
+	//
+	// - Warn: The diagnostic result is a warning.
+	//
+	// - Critical: The diagnostic result is critical.
+	//
 	// example:
 	//
 	// Normal
@@ -27252,6 +27367,7 @@ type DescribeScalingRulesResponseBodyScalingRulesAlarms struct {
 	//
 	// system
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	// The statistical method of the event-triggered task that is associated with the scaling rule. Valid values:
 	//
 	// 	- Average
@@ -27312,6 +27428,11 @@ func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) SetMetricName(v str
 
 func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) SetMetricType(v string) *DescribeScalingRulesResponseBodyScalingRulesAlarms {
 	s.MetricType = &v
+	return s
+}
+
+func (s *DescribeScalingRulesResponseBodyScalingRulesAlarms) SetPeriod(v int32) *DescribeScalingRulesResponseBodyScalingRulesAlarms {
+	s.Period = &v
 	return s
 }
 
@@ -38342,6 +38463,7 @@ type ModifyScalingRuleRequest struct {
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
 	// The dimensions. This parameter is applicable to target tracking scaling rules. You can specify this parameter if your predefined metric requires extra dimensions. For example, if you predefine the LoadBalancerRealServerAverageQps metric, you must use this parameter to specify the rulePool dimension.
 	AlarmDimensions []*ModifyScalingRuleRequestAlarmDimensions `json:"AlarmDimensions,omitempty" xml:"AlarmDimensions,omitempty" type:"Repeated"`
+	AlarmOptions    *ModifyScalingRuleRequestAlarmOptions      `json:"AlarmOptions,omitempty" xml:"AlarmOptions,omitempty" type:"Struct"`
 	// The cooldown time of the scaling rule. This parameter is available only if you set the ScalingRuleType parameter to SimpleScalingRule.
 	//
 	// Valid values: 0 to 86400. Unit: seconds.
@@ -38533,6 +38655,11 @@ func (s *ModifyScalingRuleRequest) SetAlarmDimensions(v []*ModifyScalingRuleRequ
 	return s
 }
 
+func (s *ModifyScalingRuleRequest) SetAlarmOptions(v *ModifyScalingRuleRequestAlarmOptions) *ModifyScalingRuleRequest {
+	s.AlarmOptions = v
+	return s
+}
+
 func (s *ModifyScalingRuleRequest) SetCooldown(v int32) *ModifyScalingRuleRequest {
 	s.Cooldown = &v
 	return s
@@ -38678,6 +38805,23 @@ func (s *ModifyScalingRuleRequestAlarmDimensions) SetDimensionKey(v string) *Mod
 
 func (s *ModifyScalingRuleRequestAlarmDimensions) SetDimensionValue(v string) *ModifyScalingRuleRequestAlarmDimensions {
 	s.DimensionValue = &v
+	return s
+}
+
+type ModifyScalingRuleRequestAlarmOptions struct {
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+}
+
+func (s ModifyScalingRuleRequestAlarmOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyScalingRuleRequestAlarmOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScalingRuleRequestAlarmOptions) SetPeriod(v int32) *ModifyScalingRuleRequestAlarmOptions {
+	s.Period = &v
 	return s
 }
 
@@ -39461,7 +39605,8 @@ type RemoveInstancesRequest struct {
 	// The IDs of the ECS instances that you want to remove from the scaling group.
 	//
 	// This parameter is required.
-	InstanceIds          []*string                                   `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The context of the lifecycle hook.
 	LifecycleHookContext *RemoveInstancesRequestLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
 	OwnerAccount         *string                                     `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64                                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -39599,7 +39744,17 @@ func (s *RemoveInstancesRequest) SetStopInstanceTimeout(v int32) *RemoveInstance
 }
 
 type RemoveInstancesRequestLifecycleHookContext struct {
-	DisableLifecycleHook    *bool     `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
+	// Specifies whether to disable the lifecycle hook. Valid Values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// false
+	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
+	// The IDs of the lifecycle hooks that you want to disable.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
 }
 
@@ -39655,10 +39810,11 @@ type RemoveInstancesShrinkRequest struct {
 	// The IDs of the ECS instances that you want to remove from the scaling group.
 	//
 	// This parameter is required.
-	InstanceIds                []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	LifecycleHookContextShrink *string   `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty"`
-	OwnerAccount               *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                    *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// The context of the lifecycle hook.
+	LifecycleHookContextShrink *string `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty"`
+	OwnerAccount               *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID of the scaling group.
 	//
 	// example:
@@ -44850,6 +45006,10 @@ func (client *Client) CreateScalingRuleWithOptions(request *CreateScalingRuleReq
 		query["AlarmDimensions"] = request.AlarmDimensions
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.AlarmOptions)) {
+		query["AlarmOptions"] = request.AlarmOptions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Cooldown)) {
 		query["Cooldown"] = request.Cooldown
 	}
@@ -47411,7 +47571,7 @@ func (client *Client) DescribeScalingGroupDetail(request *DescribeScalingGroupDe
 
 // Summary:
 //
-// Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+// # DescribeScalingGroupDiagnoseDetails
 //
 // @param request - DescribeScalingGroupDiagnoseDetailsRequest
 //
@@ -47449,7 +47609,7 @@ func (client *Client) DescribeScalingGroupDiagnoseDetailsWithOptions(request *De
 
 // Summary:
 //
-// Queries the latest diagnosis details for a scaling group. Diagnosis details are only returned in the presence of exceptions.
+// # DescribeScalingGroupDiagnoseDetails
 //
 // @param request - DescribeScalingGroupDiagnoseDetailsRequest
 //
@@ -50896,6 +51056,10 @@ func (client *Client) ModifyScalingRuleWithOptions(request *ModifyScalingRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.AlarmDimensions)) {
 		query["AlarmDimensions"] = request.AlarmDimensions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlarmOptions)) {
+		query["AlarmOptions"] = request.AlarmOptions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Cooldown)) {
