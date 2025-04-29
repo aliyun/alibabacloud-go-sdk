@@ -5017,6 +5017,7 @@ type UpdateInstanceRequest struct {
 	//
 	// c2c5d1274axxxxxxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Edition     *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
 	// 实例是否开通数据存储加密功能
 	//
 	// example:
@@ -5080,7 +5081,8 @@ type UpdateInstanceRequest struct {
 	// example:
 	//
 	// UPGRADE
-	ModifyType *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	ModifyType          *string `json:"ModifyType,omitempty" xml:"ModifyType,omitempty"`
+	ProvisionedCapacity *int32  `json:"ProvisionedCapacity,omitempty" xml:"ProvisionedCapacity,omitempty"`
 	// The maximum number of queues that can be created on the instance.
 	//
 	// example:
@@ -5142,6 +5144,11 @@ func (s *UpdateInstanceRequest) SetClientToken(v string) *UpdateInstanceRequest 
 	return s
 }
 
+func (s *UpdateInstanceRequest) SetEdition(v string) *UpdateInstanceRequest {
+	s.Edition = &v
+	return s
+}
+
 func (s *UpdateInstanceRequest) SetEncryptedInstance(v bool) *UpdateInstanceRequest {
 	s.EncryptedInstance = &v
 	return s
@@ -5179,6 +5186,11 @@ func (s *UpdateInstanceRequest) SetMaxPrivateTps(v int64) *UpdateInstanceRequest
 
 func (s *UpdateInstanceRequest) SetModifyType(v string) *UpdateInstanceRequest {
 	s.ModifyType = &v
+	return s
+}
+
+func (s *UpdateInstanceRequest) SetProvisionedCapacity(v int32) *UpdateInstanceRequest {
+	s.ProvisionedCapacity = &v
 	return s
 }
 
@@ -7156,6 +7168,10 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Edition)) {
+		query["Edition"] = request.Edition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EncryptedInstance)) {
 		query["EncryptedInstance"] = request.EncryptedInstance
 	}
@@ -7186,6 +7202,10 @@ func (client *Client) UpdateInstanceWithOptions(request *UpdateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
 		query["ModifyType"] = request.ModifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvisionedCapacity)) {
+		query["ProvisionedCapacity"] = request.ProvisionedCapacity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.QueueCapacity)) {
