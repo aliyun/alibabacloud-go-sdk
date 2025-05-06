@@ -711,6 +711,10 @@ type CreateDatasetRequest struct {
 	DocumentHandleConfig *CreateDatasetRequestDocumentHandleConfig `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty" type:"Struct"`
 	// example:
 	//
+	// portal
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// example:
+	//
 	// 3
 	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
 	// This parameter is required.
@@ -751,6 +755,11 @@ func (s *CreateDatasetRequest) SetDatasetType(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetDocumentHandleConfig(v *CreateDatasetRequestDocumentHandleConfig) *CreateDatasetRequest {
 	s.DocumentHandleConfig = v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetInvokeType(v string) *CreateDatasetRequest {
+	s.InvokeType = &v
 	return s
 }
 
@@ -1169,6 +1178,10 @@ type CreateDatasetShrinkRequest struct {
 	DocumentHandleConfigShrink *string `json:"DocumentHandleConfig,omitempty" xml:"DocumentHandleConfig,omitempty"`
 	// example:
 	//
+	// portal
+	InvokeType *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	// example:
+	//
 	// 3
 	SearchDatasetEnable *int32 `json:"SearchDatasetEnable,omitempty" xml:"SearchDatasetEnable,omitempty"`
 	// This parameter is required.
@@ -1209,6 +1222,11 @@ func (s *CreateDatasetShrinkRequest) SetDatasetType(v string) *CreateDatasetShri
 
 func (s *CreateDatasetShrinkRequest) SetDocumentHandleConfigShrink(v string) *CreateDatasetShrinkRequest {
 	s.DocumentHandleConfigShrink = &v
+	return s
+}
+
+func (s *CreateDatasetShrinkRequest) SetInvokeType(v string) *CreateDatasetShrinkRequest {
+	s.InvokeType = &v
 	return s
 }
 
@@ -43495,6 +43513,10 @@ func (client *Client) CreateDatasetWithOptions(tmpReq *CreateDatasetRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.DocumentHandleConfigShrink)) {
 		body["DocumentHandleConfig"] = request.DocumentHandleConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeType)) {
+		body["InvokeType"] = request.InvokeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SearchDatasetEnable)) {
