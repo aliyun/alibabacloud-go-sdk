@@ -1375,6 +1375,7 @@ type RunSearchCaseFullTextRequest struct {
 	// This parameter is required.
 	Query               *string                             `json:"query,omitempty" xml:"query,omitempty"`
 	QueryKeywords       []*string                           `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty" type:"Repeated"`
+	ReferLevel          *string                             `json:"referLevel,omitempty" xml:"referLevel,omitempty"`
 	SortKeyAndDirection map[string]*string                  `json:"sortKeyAndDirection,omitempty" xml:"sortKeyAndDirection,omitempty"`
 	Thread              *RunSearchCaseFullTextRequestThread `json:"thread,omitempty" xml:"thread,omitempty" type:"Struct"`
 }
@@ -1409,6 +1410,11 @@ func (s *RunSearchCaseFullTextRequest) SetQuery(v string) *RunSearchCaseFullText
 
 func (s *RunSearchCaseFullTextRequest) SetQueryKeywords(v []*string) *RunSearchCaseFullTextRequest {
 	s.QueryKeywords = v
+	return s
+}
+
+func (s *RunSearchCaseFullTextRequest) SetReferLevel(v string) *RunSearchCaseFullTextRequest {
+	s.ReferLevel = &v
 	return s
 }
 
@@ -1528,6 +1534,7 @@ type RunSearchCaseFullTextShrinkRequest struct {
 	// This parameter is required.
 	Query                     *string `json:"query,omitempty" xml:"query,omitempty"`
 	QueryKeywordsShrink       *string `json:"queryKeywords,omitempty" xml:"queryKeywords,omitempty"`
+	ReferLevel                *string `json:"referLevel,omitempty" xml:"referLevel,omitempty"`
 	SortKeyAndDirectionShrink *string `json:"sortKeyAndDirection,omitempty" xml:"sortKeyAndDirection,omitempty"`
 	ThreadShrink              *string `json:"thread,omitempty" xml:"thread,omitempty"`
 }
@@ -1562,6 +1569,11 @@ func (s *RunSearchCaseFullTextShrinkRequest) SetQuery(v string) *RunSearchCaseFu
 
 func (s *RunSearchCaseFullTextShrinkRequest) SetQueryKeywordsShrink(v string) *RunSearchCaseFullTextShrinkRequest {
 	s.QueryKeywordsShrink = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextShrinkRequest) SetReferLevel(v string) *RunSearchCaseFullTextShrinkRequest {
+	s.ReferLevel = &v
 	return s
 }
 
@@ -1637,6 +1649,7 @@ func (s *RunSearchCaseFullTextResponseBody) SetSuccess(v bool) *RunSearchCaseFul
 }
 
 type RunSearchCaseFullTextResponseBodyData struct {
+	CaseLevel  *string                                            `json:"caseLevel,omitempty" xml:"caseLevel,omitempty"`
 	CaseResult []*RunSearchCaseFullTextResponseBodyDataCaseResult `json:"caseResult,omitempty" xml:"caseResult,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1660,6 +1673,11 @@ func (s RunSearchCaseFullTextResponseBodyData) String() string {
 
 func (s RunSearchCaseFullTextResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *RunSearchCaseFullTextResponseBodyData) SetCaseLevel(v string) *RunSearchCaseFullTextResponseBodyData {
+	s.CaseLevel = &v
+	return s
 }
 
 func (s *RunSearchCaseFullTextResponseBodyData) SetCaseResult(v []*RunSearchCaseFullTextResponseBodyDataCaseResult) *RunSearchCaseFullTextResponseBodyData {
@@ -1694,6 +1712,7 @@ func (s *RunSearchCaseFullTextResponseBodyData) SetTotalCount(v int64) *RunSearc
 
 type RunSearchCaseFullTextResponseBodyDataCaseResult struct {
 	CaseDomain *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain `json:"caseDomain,omitempty" xml:"caseDomain,omitempty" type:"Struct"`
+	Mode       *string                                                    `json:"mode,omitempty" xml:"mode,omitempty"`
 	// example:
 	//
 	// 0.88
@@ -1713,6 +1732,11 @@ func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetCaseDomain(v *RunSe
 	return s
 }
 
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetMode(v string) *RunSearchCaseFullTextResponseBodyDataCaseResult {
+	s.Mode = &v
+	return s
+}
+
 func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetSimilarity(v string) *RunSearchCaseFullTextResponseBodyDataCaseResult {
 	s.Similarity = &v
 	return s
@@ -1721,7 +1745,9 @@ func (s *RunSearchCaseFullTextResponseBodyDataCaseResult) SetSimilarity(v string
 type RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain struct {
 	AbstractObj           *string                                                              `json:"abstractObj,omitempty" xml:"abstractObj,omitempty"`
 	AppliedLaws           *string                                                              `json:"appliedLaws,omitempty" xml:"appliedLaws,omitempty"`
+	BasicCase             *string                                                              `json:"basicCase,omitempty" xml:"basicCase,omitempty"`
 	CaseBasic             *string                                                              `json:"caseBasic,omitempty" xml:"caseBasic,omitempty"`
+	CaseCause             *string                                                              `json:"caseCause,omitempty" xml:"caseCause,omitempty"`
 	CaseFeature           *string                                                              `json:"caseFeature,omitempty" xml:"caseFeature,omitempty"`
 	CaseId                *string                                                              `json:"caseId,omitempty" xml:"caseId,omitempty"`
 	CaseNo                *string                                                              `json:"caseNo,omitempty" xml:"caseNo,omitempty"`
@@ -1736,6 +1762,7 @@ type RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain struct {
 	DisputeFocusTag       []*string                                                            `json:"disputeFocusTag,omitempty" xml:"disputeFocusTag,omitempty" type:"Repeated"`
 	Disputedpoints        *string                                                              `json:"disputedpoints,omitempty" xml:"disputedpoints,omitempty"`
 	DocumentType          *string                                                              `json:"documentType,omitempty" xml:"documentType,omitempty"`
+	JudgReason            *string                                                              `json:"judgReason,omitempty" xml:"judgReason,omitempty"`
 	Keyfacts              *string                                                              `json:"keyfacts,omitempty" xml:"keyfacts,omitempty"`
 	LegalBasis            *string                                                              `json:"legalBasis,omitempty" xml:"legalBasis,omitempty"`
 	Litigants             *string                                                              `json:"litigants,omitempty" xml:"litigants,omitempty"`
@@ -1743,6 +1770,7 @@ type RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain struct {
 	OpenCaseCause         *string                                                              `json:"openCaseCause,omitempty" xml:"openCaseCause,omitempty"`
 	PreTrialProcess       *string                                                              `json:"preTrialProcess,omitempty" xml:"preTrialProcess,omitempty"`
 	ReferLevel            *string                                                              `json:"referLevel,omitempty" xml:"referLevel,omitempty"`
+	RefereeGist           *string                                                              `json:"refereeGist,omitempty" xml:"refereeGist,omitempty"`
 	SourceContent         *string                                                              `json:"sourceContent,omitempty" xml:"sourceContent,omitempty"`
 	TrialCourt            *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomainTrialCourt `json:"trialCourt,omitempty" xml:"trialCourt,omitempty" type:"Struct"`
 	// example:
@@ -1773,8 +1801,18 @@ func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetAppliedLa
 	return s
 }
 
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetBasicCase(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.BasicCase = &v
+	return s
+}
+
 func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseBasic(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
 	s.CaseBasic = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetCaseCause(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.CaseCause = &v
 	return s
 }
 
@@ -1848,6 +1886,11 @@ func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetDocumentT
 	return s
 }
 
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetJudgReason(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.JudgReason = &v
+	return s
+}
+
 func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetKeyfacts(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
 	s.Keyfacts = &v
 	return s
@@ -1880,6 +1923,11 @@ func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetPreTrialP
 
 func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetReferLevel(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
 	s.ReferLevel = &v
+	return s
+}
+
+func (s *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain) SetRefereeGist(v string) *RunSearchCaseFullTextResponseBodyDataCaseResultCaseDomain {
+	s.RefereeGist = &v
 	return s
 }
 
@@ -3065,6 +3113,10 @@ func (client *Client) RunSearchCaseFullTextWithOptions(workspaceId *string, tmpR
 
 	if !tea.BoolValue(util.IsUnset(request.QueryKeywordsShrink)) {
 		body["queryKeywords"] = request.QueryKeywordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReferLevel)) {
+		body["referLevel"] = request.ReferLevel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortKeyAndDirectionShrink)) {
