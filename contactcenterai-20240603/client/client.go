@@ -1450,8 +1450,9 @@ type CreateTaskRequestTranscription struct {
 	// example:
 	//
 	// sss.mp3
-	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	Level    *string `json:"level,omitempty" xml:"level,omitempty"`
+	FileName           *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
+	Level              *string `json:"level,omitempty" xml:"level,omitempty"`
+	RoleIdentification *bool   `json:"roleIdentification,omitempty" xml:"roleIdentification,omitempty"`
 	// example:
 	//
 	// 1
@@ -1496,6 +1497,11 @@ func (s *CreateTaskRequestTranscription) SetFileName(v string) *CreateTaskReques
 
 func (s *CreateTaskRequestTranscription) SetLevel(v string) *CreateTaskRequestTranscription {
 	s.Level = &v
+	return s
+}
+
+func (s *CreateTaskRequestTranscription) SetRoleIdentification(v bool) *CreateTaskRequestTranscription {
+	s.RoleIdentification = &v
 	return s
 }
 
