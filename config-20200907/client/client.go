@@ -8985,6 +8985,7 @@ type GenerateAggregateCompliancePackReportRequest struct {
 	//
 	// cp-fdc8626622af00f9****
 	CompliancePackId *string `json:"CompliancePackId,omitempty" xml:"CompliancePackId,omitempty"`
+	MultiFiles       *bool   `json:"MultiFiles,omitempty" xml:"MultiFiles,omitempty"`
 }
 
 func (s GenerateAggregateCompliancePackReportRequest) String() string {
@@ -9007,6 +9008,11 @@ func (s *GenerateAggregateCompliancePackReportRequest) SetClientToken(v string) 
 
 func (s *GenerateAggregateCompliancePackReportRequest) SetCompliancePackId(v string) *GenerateAggregateCompliancePackReportRequest {
 	s.CompliancePackId = &v
+	return s
+}
+
+func (s *GenerateAggregateCompliancePackReportRequest) SetMultiFiles(v bool) *GenerateAggregateCompliancePackReportRequest {
+	s.MultiFiles = &v
 	return s
 }
 
@@ -25007,7 +25013,7 @@ type ListAggregateRemediationExecutionsRequest struct {
 	//
 	// aVCjqFaSy0Ps6zSMGw09****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the member account in the account group.
+	// The ID of the member account in the account group. When left unfilled, this rule queries the remediation result for the account that created the rule. If the account is not in the account group, the result will be empty.
 	//
 	// example:
 	//
@@ -42593,6 +42599,10 @@ func (client *Client) GenerateAggregateCompliancePackReportWithOptions(request *
 
 	if !tea.BoolValue(util.IsUnset(request.CompliancePackId)) {
 		body["CompliancePackId"] = request.CompliancePackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiFiles)) {
+		body["MultiFiles"] = request.MultiFiles
 	}
 
 	req := &openapi.OpenApiRequest{
