@@ -9,6 +9,113 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type DeletePromptRequest struct {
+	// example:
+	//
+	// chat
+	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+}
+
+func (s DeletePromptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePromptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePromptRequest) SetGroupId(v string) *DeletePromptRequest {
+	s.GroupId = &v
+	return s
+}
+
+type DeletePromptResponseBody struct {
+	// example:
+	//
+	// {$PromptContent}
+	Data interface{} `json:"data,omitempty" xml:"data,omitempty"`
+	// example:
+	//
+	// success
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// example:
+	//
+	// successful
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 5090DEE5-E7DB-59A8-B712-28918D3AAA8A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 200
+	StatusCode *int32 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+}
+
+func (s DeletePromptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePromptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePromptResponseBody) SetData(v interface{}) *DeletePromptResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeletePromptResponseBody) SetErrorCode(v string) *DeletePromptResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeletePromptResponseBody) SetMessage(v string) *DeletePromptResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePromptResponseBody) SetRequestId(v string) *DeletePromptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePromptResponseBody) SetStatusCode(v int32) *DeletePromptResponseBody {
+	s.StatusCode = &v
+	return s
+}
+
+type DeletePromptResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePromptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePromptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePromptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePromptResponse) SetHeaders(v map[string]*string) *DeletePromptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePromptResponse) SetStatusCode(v int32) *DeletePromptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePromptResponse) SetBody(v *DeletePromptResponseBody) *DeletePromptResponse {
+	s.Body = v
+	return s
+}
+
 type GetPromptRequest struct {
 	// example:
 	//
@@ -278,6 +385,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// delete prompt
+//
+// @param request - DeletePromptRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePromptResponse
+func (client *Client) DeletePromptWithOptions(request *DeletePromptRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePromptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["groupId"] = request.GroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePrompt"),
+		Version:     tea.String("2025-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/prompt/delete"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// delete prompt
+//
+// @param request - DeletePromptRequest
+//
+// @return DeletePromptResponse
+func (client *Client) DeletePrompt(request *DeletePromptRequest) (_result *DeletePromptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePromptResponse{}
+	_body, _err := client.DeletePromptWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // get prompt
 //
 // @param request - GetPromptRequest
@@ -312,24 +483,13 @@ func (client *Client) GetPromptWithOptions(request *GetPromptRequest, headers ma
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPromptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPromptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -393,24 +553,13 @@ func (client *Client) PushPromptWithOptions(request *PushPromptRequest, headers 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PushPromptResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PushPromptResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PushPromptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
