@@ -977,6 +977,575 @@ func (s *BindAxbResponse) SetBody(v *BindAxbResponseBody) *BindAxbResponse {
 	return s
 }
 
+type BindAxbFixedLineRequest struct {
+	// 主叫侧放音编码，AXB业务时必须设置。  放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2,3
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 接通后被叫侧放音编码,接通后被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，B号码为被叫侧接听时的放音编号为2。
+	//
+	// example:
+	//
+	// 示例值示例值
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 应用id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 区号,去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费。
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	Extra *BindAxbFixedLineRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15433678436
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，不能超过100个长度
+	//
+	// example:
+	//
+	// remark
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧的放音编码,接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，B号码为被叫时主叫侧的放音编号为2。
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// 真实号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18456713271
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 对端号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18971362645
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数  格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// example:
+	//
+	// 19767562345
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxbFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineRequest) SetAnucode(v string) *BindAxbFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetAnucodecalled(v string) *BindAxbFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetAppId(v string) *BindAxbFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetAreacode(v string) *BindAxbFixedLineRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetBindType(v string) *BindAxbFixedLineRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetExpiration(v string) *BindAxbFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetExtra(v *BindAxbFixedLineRequestExtra) *BindAxbFixedLineRequest {
+	s.Extra = v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetOrderId(v string) *BindAxbFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetOwnerId(v int64) *BindAxbFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetRemark(v string) *BindAxbFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetResourceOwnerAccount(v string) *BindAxbFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetResourceOwnerId(v int64) *BindAxbFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetSubts(v string) *BindAxbFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetTAnucodeConnect(v string) *BindAxbFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetTelA(v string) *BindAxbFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetTelB(v string) *BindAxbFixedLineRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetTelX(v string) *BindAxbFixedLineRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxbFixedLineRequest) SetTs(v string) *BindAxbFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxbFixedLineRequestExtra struct {
+	// 录音控制，默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 示例值示例值
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s BindAxbFixedLineRequestExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineRequestExtra) SetCallrecording(v string) *BindAxbFixedLineRequestExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type BindAxbFixedLineShrinkRequest struct {
+	// 主叫侧放音编码，AXB业务时必须设置。  放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1,2,3
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 接通后被叫侧放音编码,接通后被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，B号码为被叫侧接听时的放音编号为2。
+	//
+	// example:
+	//
+	// 示例值示例值
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 应用id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 区号,去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费。
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15433678436
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，不能超过100个长度
+	//
+	// example:
+	//
+	// remark
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧的放音编码,接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,B被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，B号码为被叫时主叫侧的放音编号为2。
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// 真实号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18456713271
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 对端号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18971362645
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数  格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// example:
+	//
+	// 19767562345
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxbFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetAnucode(v string) *BindAxbFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetAnucodecalled(v string) *BindAxbFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetAppId(v string) *BindAxbFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetAreacode(v string) *BindAxbFixedLineShrinkRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetBindType(v string) *BindAxbFixedLineShrinkRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetExpiration(v string) *BindAxbFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetExtraShrink(v string) *BindAxbFixedLineShrinkRequest {
+	s.ExtraShrink = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetOrderId(v string) *BindAxbFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetOwnerId(v int64) *BindAxbFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetRemark(v string) *BindAxbFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *BindAxbFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetResourceOwnerId(v int64) *BindAxbFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetSubts(v string) *BindAxbFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetTAnucodeConnect(v string) *BindAxbFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetTelA(v string) *BindAxbFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetTelB(v string) *BindAxbFixedLineShrinkRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetTelX(v string) *BindAxbFixedLineShrinkRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxbFixedLineShrinkRequest) SetTs(v string) *BindAxbFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxbFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码 0-成功
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 响应内容
+	Data *BindAxbFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 响应消息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 649E9EB5-9436-53CF-B41A-C4F0433212E7
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否处理成功  true-成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindAxbFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineResponseBody) SetAccessDeniedDetail(v string) *BindAxbFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBody) SetCode(v string) *BindAxbFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBody) SetData(v *BindAxbFixedLineResponseBodyData) *BindAxbFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBody) SetMessage(v string) *BindAxbFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBody) SetRequestId(v string) *BindAxbFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBody) SetSuccess(v bool) *BindAxbFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindAxbFixedLineResponseBodyData struct {
+	// 绑定id
+	//
+	// example:
+	//
+	// 示例值
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// X号码
+	//
+	// example:
+	//
+	// 示例值
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s BindAxbFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineResponseBodyData) SetSubid(v string) *BindAxbFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponseBodyData) SetTelX(v string) *BindAxbFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+type BindAxbFixedLineResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxbFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindAxbFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxbFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxbFixedLineResponse) SetHeaders(v map[string]*string) *BindAxbFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAxbFixedLineResponse) SetStatusCode(v int32) *BindAxbFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAxbFixedLineResponse) SetBody(v *BindAxbFixedLineResponseBody) *BindAxbFixedLineResponse {
+	s.Body = v
+	return s
+}
+
 type BindAxgRequest struct {
 	// The ID of the ASR model.
 	//
@@ -2088,6 +2657,1160 @@ func (s *BindAxnExtensionResponse) SetStatusCode(v int32) *BindAxnExtensionRespo
 }
 
 func (s *BindAxnExtensionResponse) SetBody(v *BindAxnExtensionResponseBody) *BindAxnExtensionResponse {
+	s.Body = v
+	return s
+}
+
+type BindAxnExtensionFixedLineRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mode101
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	Extraaxx *BindAxnExtensionFixedLineRequestExtraaxx `json:"Extraaxx,omitempty" xml:"Extraaxx,omitempty" type:"Struct"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 12444
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// X号码；平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 分机号；平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 1009
+	TelXext *string `json:"TelXext,omitempty" xml:"TelXext,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetAnucode(v string) *BindAxnExtensionFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetAnucodecalled(v string) *BindAxnExtensionFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetAppId(v string) *BindAxnExtensionFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetAreacode(v string) *BindAxnExtensionFixedLineRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetBindType(v string) *BindAxnExtensionFixedLineRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetExpiration(v string) *BindAxnExtensionFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetExtraaxx(v *BindAxnExtensionFixedLineRequestExtraaxx) *BindAxnExtensionFixedLineRequest {
+	s.Extraaxx = v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetOrderId(v string) *BindAxnExtensionFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetOwnerId(v int64) *BindAxnExtensionFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetRemark(v string) *BindAxnExtensionFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetResourceOwnerAccount(v string) *BindAxnExtensionFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetResourceOwnerId(v int64) *BindAxnExtensionFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetSubts(v string) *BindAxnExtensionFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetTAnucodeConnect(v string) *BindAxnExtensionFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetTelA(v string) *BindAxnExtensionFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetTelX(v string) *BindAxnExtensionFixedLineRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetTelXext(v string) *BindAxnExtensionFixedLineRequest {
+	s.TelXext = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequest) SetTs(v string) *BindAxnExtensionFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxnExtensionFixedLineRequestExtraaxx struct {
+	// A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的B号码
+	//
+	// example:
+	//
+	// 0
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 1
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineRequestExtraaxx) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineRequestExtraaxx) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineRequestExtraaxx) SetCallback(v string) *BindAxnExtensionFixedLineRequestExtraaxx {
+	s.Callback = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineRequestExtraaxx) SetCallrecording(v string) *BindAxnExtensionFixedLineRequestExtraaxx {
+	s.Callrecording = &v
+	return s
+}
+
+type BindAxnExtensionFixedLineShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mode101
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	ExtraaxxShrink *string `json:"Extraaxx,omitempty" xml:"Extraaxx,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 12444
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// X号码；平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 分机号；平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 1009
+	TelXext *string `json:"TelXext,omitempty" xml:"TelXext,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetAnucode(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetAnucodecalled(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetAppId(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetAreacode(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetBindType(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetExpiration(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetExtraaxxShrink(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.ExtraaxxShrink = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetOrderId(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetOwnerId(v int64) *BindAxnExtensionFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetRemark(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetResourceOwnerId(v int64) *BindAxnExtensionFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetSubts(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetTAnucodeConnect(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetTelA(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetTelX(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetTelXext(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.TelXext = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineShrinkRequest) SetTs(v string) *BindAxnExtensionFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxnExtensionFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 响应信息
+	Data *BindAxnExtensionFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AE2D6997-643A-59CB-9B3C-918572E5CEAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetAccessDeniedDetail(v string) *BindAxnExtensionFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetCode(v string) *BindAxnExtensionFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetData(v *BindAxnExtensionFixedLineResponseBodyData) *BindAxnExtensionFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetMessage(v string) *BindAxnExtensionFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetRequestId(v string) *BindAxnExtensionFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBody) SetSuccess(v string) *BindAxnExtensionFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindAxnExtensionFixedLineResponseBodyData struct {
+	// 绑定id
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// 隐私号码
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 分机号，只有4位
+	//
+	// example:
+	//
+	// 1001
+	TelXext *string `json:"TelXext,omitempty" xml:"TelXext,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineResponseBodyData) SetSubid(v string) *BindAxnExtensionFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBodyData) SetTelX(v string) *BindAxnExtensionFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponseBodyData) SetTelXext(v string) *BindAxnExtensionFixedLineResponseBodyData {
+	s.TelXext = &v
+	return s
+}
+
+type BindAxnExtensionFixedLineResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxnExtensionFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindAxnExtensionFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnExtensionFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnExtensionFixedLineResponse) SetHeaders(v map[string]*string) *BindAxnExtensionFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponse) SetStatusCode(v int32) *BindAxnExtensionFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAxnExtensionFixedLineResponse) SetBody(v *BindAxnExtensionFixedLineResponseBody) *BindAxnExtensionFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type BindAxnFixedLineRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mode101
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	Extra *BindAxnFixedLineRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 12444
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// N号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxnFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineRequest) SetAnucode(v string) *BindAxnFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetAnucodecalled(v string) *BindAxnFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetAppId(v string) *BindAxnFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetAreacode(v string) *BindAxnFixedLineRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetBindType(v string) *BindAxnFixedLineRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetExpiration(v string) *BindAxnFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetExtra(v *BindAxnFixedLineRequestExtra) *BindAxnFixedLineRequest {
+	s.Extra = v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetOrderId(v string) *BindAxnFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetOwnerId(v int64) *BindAxnFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetRemark(v string) *BindAxnFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetResourceOwnerAccount(v string) *BindAxnFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetResourceOwnerId(v int64) *BindAxnFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetSubts(v string) *BindAxnFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetTAnucodeConnect(v string) *BindAxnFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetTelA(v string) *BindAxnFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetTelB(v string) *BindAxnFixedLineRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetTelX(v string) *BindAxnFixedLineRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequest) SetTs(v string) *BindAxnFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxnFixedLineRequestExtra struct {
+	// A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+	//
+	// example:
+	//
+	// 0
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 0
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s BindAxnFixedLineRequestExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineRequestExtra) SetCallback(v string) *BindAxnFixedLineRequestExtra {
+	s.Callback = &v
+	return s
+}
+
+func (s *BindAxnFixedLineRequestExtra) SetCallrecording(v string) *BindAxnFixedLineRequestExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type BindAxnFixedLineShrinkRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 去掉“0” 例如：北京（10）；在平台分配X号码模式中，平台从号码池中分配该地区的X号码，避免产生呼叫长途费
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定类型，值如下： mode101：客户携带X号码 mode102：平台分配X号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// mode101
+	BindType *string `json:"BindType,omitempty" xml:"BindType,omitempty"`
+	// 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 12444
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// N号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// X号码； 平台分配号码模式下，该参数可不带，系统忽略该参数
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s BindAxnFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetAnucode(v string) *BindAxnFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetAnucodecalled(v string) *BindAxnFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetAppId(v string) *BindAxnFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetAreacode(v string) *BindAxnFixedLineShrinkRequest {
+	s.Areacode = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetBindType(v string) *BindAxnFixedLineShrinkRequest {
+	s.BindType = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetExpiration(v string) *BindAxnFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetExtraShrink(v string) *BindAxnFixedLineShrinkRequest {
+	s.ExtraShrink = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetOrderId(v string) *BindAxnFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetOwnerId(v int64) *BindAxnFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetRemark(v string) *BindAxnFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *BindAxnFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetResourceOwnerId(v int64) *BindAxnFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetSubts(v string) *BindAxnFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetTAnucodeConnect(v string) *BindAxnFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetTelA(v string) *BindAxnFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetTelB(v string) *BindAxnFixedLineShrinkRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetTelX(v string) *BindAxnFixedLineShrinkRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *BindAxnFixedLineShrinkRequest) SetTs(v string) *BindAxnFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type BindAxnFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *BindAxnFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4D690962-08CE-5D38-A65A-AB247D7DF7A2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindAxnFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineResponseBody) SetAccessDeniedDetail(v string) *BindAxnFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBody) SetCode(v string) *BindAxnFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBody) SetData(v *BindAxnFixedLineResponseBodyData) *BindAxnFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBody) SetMessage(v string) *BindAxnFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBody) SetRequestId(v string) *BindAxnFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBody) SetSuccess(v bool) *BindAxnFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindAxnFixedLineResponseBodyData struct {
+	// 绑定id
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// 隐私号码
+	//
+	// example:
+	//
+	// 0571409312
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s BindAxnFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineResponseBodyData) SetSubid(v string) *BindAxnFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponseBodyData) SetTelX(v string) *BindAxnFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+type BindAxnFixedLineResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BindAxnFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BindAxnFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindAxnFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindAxnFixedLineResponse) SetHeaders(v map[string]*string) *BindAxnFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindAxnFixedLineResponse) SetStatusCode(v int32) *BindAxnFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BindAxnFixedLineResponse) SetBody(v *BindAxnFixedLineResponseBody) *BindAxnFixedLineResponse {
 	s.Body = v
 	return s
 }
@@ -5974,6 +7697,222 @@ func (s *CreateSmsSignResponse) SetBody(v *CreateSmsSignResponseBody) *CreateSms
 	return s
 }
 
+type DeleteAxbBindFixedLineRequest struct {
+	// 应用id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A93IOELD93
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s DeleteAxbBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxbBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetAppId(v string) *DeleteAxbBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetOrderId(v string) *DeleteAxbBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetOwnerId(v int64) *DeleteAxbBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetResourceOwnerAccount(v string) *DeleteAxbBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetResourceOwnerId(v int64) *DeleteAxbBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetSubId(v string) *DeleteAxbBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineRequest) SetTs(v string) *DeleteAxbBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type DeleteAxbBindFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// isp.SYSTEM_ERROR
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteAxbBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F036366A-0182-5066-A686-19C4C82F2D51
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxbBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxbBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *DeleteAxbBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetCode(v string) *DeleteAxbBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetData(v *DeleteAxbBindFixedLineResponseBodyData) *DeleteAxbBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetMessage(v string) *DeleteAxbBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetRequestId(v string) *DeleteAxbBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBody) SetSuccess(v bool) *DeleteAxbBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxbBindFixedLineResponseBodyData struct {
+	// 响应码  0-成功
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 响应消息
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 是否处理成功  true-成功  false-失败
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxbBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxbBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxbBindFixedLineResponseBodyData) SetCode(v string) *DeleteAxbBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBodyData) SetMessage(v string) *DeleteAxbBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponseBodyData) SetSuccess(v bool) *DeleteAxbBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxbBindFixedLineResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAxbBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAxbBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxbBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxbBindFixedLineResponse) SetHeaders(v map[string]*string) *DeleteAxbBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponse) SetStatusCode(v int32) *DeleteAxbBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAxbBindFixedLineResponse) SetBody(v *DeleteAxbBindFixedLineResponseBody) *DeleteAxbBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAxgGroupRequest struct {
 	// This parameter is required.
 	//
@@ -6088,6 +8027,434 @@ func (s *DeleteAxgGroupResponse) SetStatusCode(v int32) *DeleteAxgGroupResponse 
 }
 
 func (s *DeleteAxgGroupResponse) SetBody(v *DeleteAxgGroupResponseBody) *DeleteAxgGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAxnBindFixedLineRequest struct {
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s DeleteAxnBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetAppId(v string) *DeleteAxnBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetOrderId(v string) *DeleteAxnBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetOwnerId(v int64) *DeleteAxnBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetResourceOwnerAccount(v string) *DeleteAxnBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetResourceOwnerId(v int64) *DeleteAxnBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetSubId(v string) *DeleteAxnBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineRequest) SetTs(v string) *DeleteAxnBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type DeleteAxnBindFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteAxnBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// AE2D6997-643A-59CB-9B3C-918572E5CEAA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxnBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *DeleteAxnBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetCode(v string) *DeleteAxnBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetData(v *DeleteAxnBindFixedLineResponseBodyData) *DeleteAxnBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetMessage(v string) *DeleteAxnBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetRequestId(v string) *DeleteAxnBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBody) SetSuccess(v bool) *DeleteAxnBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxnBindFixedLineResponseBodyData struct {
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxnBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnBindFixedLineResponseBodyData) SetCode(v string) *DeleteAxnBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBodyData) SetMessage(v string) *DeleteAxnBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponseBodyData) SetSuccess(v bool) *DeleteAxnBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxnBindFixedLineResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAxnBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAxnBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnBindFixedLineResponse) SetHeaders(v map[string]*string) *DeleteAxnBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponse) SetStatusCode(v int32) *DeleteAxnBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAxnBindFixedLineResponse) SetBody(v *DeleteAxnBindFixedLineResponseBody) *DeleteAxnBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAxnExtensionBindFixedLineRequest struct {
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId              *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s DeleteAxnExtensionBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnExtensionBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetAppId(v string) *DeleteAxnExtensionBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetOrderId(v string) *DeleteAxnExtensionBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetOwnerId(v int64) *DeleteAxnExtensionBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetResourceOwnerAccount(v string) *DeleteAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetResourceOwnerId(v int64) *DeleteAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetSubId(v string) *DeleteAxnExtensionBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineRequest) SetTs(v string) *DeleteAxnExtensionBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type DeleteAxnExtensionBindFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *DeleteAxnExtensionBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// conflict with subs id=1000203635098305, phoneA conflict
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3DA9D6DF-C5FA-5A0D-B6C2-547B1FD1F9B4
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetCode(v string) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetData(v *DeleteAxnExtensionBindFixedLineResponseBodyData) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetMessage(v string) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetRequestId(v string) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBody) SetSuccess(v bool) *DeleteAxnExtensionBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxnExtensionBindFixedLineResponseBodyData struct {
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBodyData) SetCode(v string) *DeleteAxnExtensionBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBodyData) SetMessage(v string) *DeleteAxnExtensionBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponseBodyData) SetSuccess(v bool) *DeleteAxnExtensionBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type DeleteAxnExtensionBindFixedLineResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAxnExtensionBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAxnExtensionBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponse) SetHeaders(v map[string]*string) *DeleteAxnExtensionBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponse) SetStatusCode(v int32) *DeleteAxnExtensionBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAxnExtensionBindFixedLineResponse) SetBody(v *DeleteAxnExtensionBindFixedLineResponseBody) *DeleteAxnExtensionBindFixedLineResponse {
 	s.Body = v
 	return s
 }
@@ -8733,6 +11100,1132 @@ func (s *OperateBlackNoResponse) SetStatusCode(v int32) *OperateBlackNoResponse 
 }
 
 func (s *OperateBlackNoResponse) SetBody(v *OperateBlackNoResponseBody) *OperateBlackNoResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAxbBindFixedLineRequest struct {
+	// 应用id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 业务id，消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3ererrrdrrrr
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A/B号码，queryType=1时，必传
+	//
+	// example:
+	//
+	// 示例值
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// 查询类型 0：根据绑定id查询 1：根据X和A/B号码查询
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id， queryType=0时，必传
+	//
+	// example:
+	//
+	// A20304o0200303004j
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// x号码，queryType=1时，必传
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s QueryAxbBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxbBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetAppId(v string) *QueryAxbBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetOrderId(v string) *QueryAxbBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetOwnerId(v int64) *QueryAxbBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetPhone(v string) *QueryAxbBindFixedLineRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetQueryType(v string) *QueryAxbBindFixedLineRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetResourceOwnerAccount(v string) *QueryAxbBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetResourceOwnerId(v int64) *QueryAxbBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetSubId(v string) *QueryAxbBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetTelX(v string) *QueryAxbBindFixedLineRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineRequest) SetTs(v string) *QueryAxbBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type QueryAxbBindFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 绑定信息
+	Data *QueryAxbBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3179F199-C6C5-5963-85A6-21CBA2F47592
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 处理是否成功 true-成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAxbBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxbBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *QueryAxbBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetCode(v string) *QueryAxbBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetData(v *QueryAxbBindFixedLineResponseBodyData) *QueryAxbBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetMessage(v string) *QueryAxbBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetRequestId(v string) *QueryAxbBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBody) SetSuccess(v bool) *QueryAxbBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAxbBindFixedLineResponseBodyData struct {
+	// 接通前放音编码，放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 接通后被叫侧放音编码
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 隐私号码区号
+	//
+	// example:
+	//
+	// 010
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 绑定过期时间
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	Extra *QueryAxbBindFixedLineResponseBodyDataExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 19394
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 绑定id
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxb
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// 绑定时间，格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// example:
+	//
+	// 20250421141723
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码
+	//
+	// example:
+	//
+	// 示例值示例值
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// B号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 小号号码
+	//
+	// example:
+	//
+	// 19700002222
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s QueryAxbBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxbBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetAnucode(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Anucode = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetAnucodecalled(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetAreacode(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Areacode = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetExpiration(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Expiration = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetExtra(v *QueryAxbBindFixedLineResponseBodyDataExtra) *QueryAxbBindFixedLineResponseBodyData {
+	s.Extra = v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetRemark(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetSubid(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetSubts(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.Subts = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetTAnucodeConnect(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetTelA(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.TelA = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetTelB(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.TelB = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyData) SetTelX(v string) *QueryAxbBindFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+type QueryAxbBindFixedLineResponseBodyDataExtra struct {
+	// 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 1
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s QueryAxbBindFixedLineResponseBodyDataExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxbBindFixedLineResponseBodyDataExtra) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxbBindFixedLineResponseBodyDataExtra) SetCallrecording(v string) *QueryAxbBindFixedLineResponseBodyDataExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type QueryAxbBindFixedLineResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAxbBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAxbBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxbBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxbBindFixedLineResponse) SetHeaders(v map[string]*string) *QueryAxbBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponse) SetStatusCode(v int32) *QueryAxbBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAxbBindFixedLineResponse) SetBody(v *QueryAxbBindFixedLineResponseBody) *QueryAxbBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAxnBindFixedLineRequest struct {
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 示例值示例值
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A号码，queryType=1时，必传
+	//
+	// example:
+	//
+	// 15500001111
+	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
+	// 查询类型 0：根据绑定id查询 1：根据A号码查询 2：根据X查询
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id queryType=0时，必传
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 隐私号码
+	//
+	// example:
+	//
+	// 05718950
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s QueryAxnBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetAppId(v string) *QueryAxnBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetOrderId(v string) *QueryAxnBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetOwnerId(v int64) *QueryAxnBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetPhone(v string) *QueryAxnBindFixedLineRequest {
+	s.Phone = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetQueryType(v string) *QueryAxnBindFixedLineRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetResourceOwnerAccount(v string) *QueryAxnBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetResourceOwnerId(v int64) *QueryAxnBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetSubId(v string) *QueryAxnBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetTelX(v string) *QueryAxnBindFixedLineRequest {
+	s.TelX = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineRequest) SetTs(v string) *QueryAxnBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type QueryAxnBindFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 绑定对象
+	Data []*QueryAxnBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E8B9C3ED-D9BD-5E27-9588-6D84D3070160
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAxnBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *QueryAxnBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetCode(v string) *QueryAxnBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetData(v []*QueryAxnBindFixedLineResponseBodyData) *QueryAxnBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetMessage(v string) *QueryAxnBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetRequestId(v string) *QueryAxnBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBody) SetSuccess(v bool) *QueryAxnBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAxnBindFixedLineResponseBodyData struct {
+	// 接通前放音啊编码
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 隐私号码区号
+	//
+	// example:
+	//
+	// 010
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 过期时间
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	Extra *QueryAxnBindFixedLineResponseBodyDataExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 12444
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 绑定id
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// example:
+	//
+	// 20250421141723
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// N号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 隐私号码
+	//
+	// example:
+	//
+	// 057112345678
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+}
+
+func (s QueryAxnBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetAnucode(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Anucode = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetAnucodecalled(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetAreacode(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Areacode = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetExpiration(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Expiration = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetExtra(v *QueryAxnBindFixedLineResponseBodyDataExtra) *QueryAxnBindFixedLineResponseBodyData {
+	s.Extra = v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetRemark(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetSubid(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetSubts(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.Subts = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetTAnucodeConnect(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetTelA(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.TelA = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetTelB(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.TelB = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyData) SetTelX(v string) *QueryAxnBindFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+type QueryAxnBindFixedLineResponseBodyDataExtra struct {
+	// A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+	//
+	// example:
+	//
+	// 1
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 1
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s QueryAxnBindFixedLineResponseBodyDataExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnBindFixedLineResponseBodyDataExtra) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyDataExtra) SetCallback(v string) *QueryAxnBindFixedLineResponseBodyDataExtra {
+	s.Callback = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponseBodyDataExtra) SetCallrecording(v string) *QueryAxnBindFixedLineResponseBodyDataExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type QueryAxnBindFixedLineResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAxnBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAxnBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnBindFixedLineResponse) SetHeaders(v map[string]*string) *QueryAxnBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponse) SetStatusCode(v int32) *QueryAxnBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAxnBindFixedLineResponse) SetBody(v *QueryAxnBindFixedLineResponseBody) *QueryAxnBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type QueryAxnExtensionBindFixedLineRequest struct {
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 查询类型 0：根据绑定id查询 1：根据A号码查询
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	QueryType            *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id，queryType=0时，必传
+	//
+	// example:
+	//
+	// 可参考绑定响应
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// A号码，queryType=1时，必传
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s QueryAxnExtensionBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnExtensionBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetAppId(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetOrderId(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetOwnerId(v int64) *QueryAxnExtensionBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetQueryType(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetResourceOwnerAccount(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetResourceOwnerId(v int64) *QueryAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetSubId(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetTelA(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineRequest) SetTs(v string) *QueryAxnExtensionBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type QueryAxnExtensionBindFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// 响应码
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 查询绑定对象集合，具体对象字段见绑定请求
+	Data []*QueryAxnExtensionBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 74EFA0E8-CFCA-54D9-BFE5-904F9FA88DBD
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetCode(v string) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetData(v []*QueryAxnExtensionBindFixedLineResponseBodyData) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetMessage(v string) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetRequestId(v string) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBody) SetSuccess(v bool) *QueryAxnExtensionBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAxnExtensionBindFixedLineResponseBodyData struct {
+	// 放音编码
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 隐私号码区号
+	//
+	// example:
+	//
+	// 10
+	Areacode *string `json:"Areacode,omitempty" xml:"Areacode,omitempty"`
+	// 过期时间
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	Extraaxx *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx `json:"Extraaxx,omitempty" xml:"Extraaxx,omitempty" type:"Struct"`
+	// 接入商自有字段
+	//
+	// example:
+	//
+	// 12444
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 绑定ID
+	//
+	// example:
+	//
+	// 可参考绑定响应
+	Subid *string `json:"Subid,omitempty" xml:"Subid,omitempty"`
+	// 绑定时间
+	//
+	// example:
+	//
+	// 20250421141723
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 小号号码
+	//
+	// example:
+	//
+	// 19700002222
+	TelX *string `json:"TelX,omitempty" xml:"TelX,omitempty"`
+	// 分机号
+	//
+	// example:
+	//
+	// 1009
+	TelXext *string `json:"TelXext,omitempty" xml:"TelXext,omitempty"`
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetAnucode(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Anucode = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetAnucodecalled(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetAreacode(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Areacode = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetExpiration(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Expiration = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetExtraaxx(v *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Extraaxx = v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetRemark(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetSubid(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Subid = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetSubts(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.Subts = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetTAnucodeConnect(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetTelA(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.TelA = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetTelX(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.TelX = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyData) SetTelXext(v string) *QueryAxnExtensionBindFixedLineResponseBodyData {
+	s.TelXext = &v
+	return s
+}
+
+type QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx struct {
+	// 回拨控制
+	//
+	// example:
+	//
+	// 示例值示例值
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 录音控制
+	//
+	// example:
+	//
+	// 示例值示例值
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx) SetCallback(v string) *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx {
+	s.Callback = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx) SetCallrecording(v string) *QueryAxnExtensionBindFixedLineResponseBodyDataExtraaxx {
+	s.Callrecording = &v
+	return s
+}
+
+type QueryAxnExtensionBindFixedLineResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAxnExtensionBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAxnExtensionBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAxnExtensionBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponse) SetHeaders(v map[string]*string) *QueryAxnExtensionBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponse) SetStatusCode(v int32) *QueryAxnExtensionBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAxnExtensionBindFixedLineResponse) SetBody(v *QueryAxnExtensionBindFixedLineResponseBody) *QueryAxnExtensionBindFixedLineResponse {
 	s.Body = v
 	return s
 }
@@ -11396,6 +14889,1545 @@ func (s *UnlockSecretNoResponse) SetBody(v *UnlockSecretNoResponseBody) *UnlockS
 	return s
 }
 
+type UpdateAxbBindFixedLineRequest struct {
+	// 主叫侧放音编码
+	//
+	// example:
+	//
+	// 1,2,3
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码
+	//
+	// example:
+	//
+	// 1,2
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 应用id，请求和绑定时的appId必须一致
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 10
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	Extra *UpdateAxbBindFixedLineRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，不能超过100个字符
+	//
+	// example:
+	//
+	// remark
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A100X558X0000400023
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20150920190126
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧的放音编码
+	//
+	// example:
+	//
+	// 1,2
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// 真实号码，telA,telB不允许同时更新
+	//
+	// example:
+	//
+	// 13900000000
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 对端号码，telA,telB不允许同时更新
+	//
+	// example:
+	//
+	// 13005711234
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetAnucode(v string) *UpdateAxbBindFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetAnucodecalled(v string) *UpdateAxbBindFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetAppId(v string) *UpdateAxbBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetExpiration(v string) *UpdateAxbBindFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetExtra(v *UpdateAxbBindFixedLineRequestExtra) *UpdateAxbBindFixedLineRequest {
+	s.Extra = v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetOrderId(v string) *UpdateAxbBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetOwnerId(v int64) *UpdateAxbBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetRemark(v string) *UpdateAxbBindFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetResourceOwnerAccount(v string) *UpdateAxbBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetResourceOwnerId(v int64) *UpdateAxbBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetSubId(v string) *UpdateAxbBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetSubts(v string) *UpdateAxbBindFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetTAnucodeConnect(v string) *UpdateAxbBindFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetTelA(v string) *UpdateAxbBindFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetTelB(v string) *UpdateAxbBindFixedLineRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineRequest) SetTs(v string) *UpdateAxbBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxbBindFixedLineRequestExtra struct {
+	// 录音控制， 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 0
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineRequestExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineRequestExtra) SetCallrecording(v string) *UpdateAxbBindFixedLineRequestExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type UpdateAxbBindFixedLineShrinkRequest struct {
+	// 主叫侧放音编码
+	//
+	// example:
+	//
+	// 1,2,3
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码
+	//
+	// example:
+	//
+	// 1,2
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 应用id，请求和绑定时的appId必须一致
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ALPT_1234
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 过期时间,单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 10
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 扩展参数
+	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1234567890
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，不能超过100个字符
+	//
+	// example:
+	//
+	// remark
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// A100X558X0000400023
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20150920190126
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧的放音编码
+	//
+	// example:
+	//
+	// 1,2
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// 真实号码，telA,telB不允许同时更新
+	//
+	// example:
+	//
+	// 13900000000
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 对端号码，telA,telB不允许同时更新
+	//
+	// example:
+	//
+	// 13005711234
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 业务时间戳，格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20161114143116001
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetAnucode(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetAnucodecalled(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetAppId(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetExpiration(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetExtraShrink(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.ExtraShrink = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetOrderId(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetOwnerId(v int64) *UpdateAxbBindFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetRemark(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetResourceOwnerId(v int64) *UpdateAxbBindFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetSubId(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetSubts(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetTAnucodeConnect(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetTelA(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetTelB(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineShrinkRequest) SetTs(v string) *UpdateAxbBindFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxbBindFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateAxbBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 73A5C73A-1D97-54B6-B47C-541BE59F84D9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *UpdateAxbBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetCode(v string) *UpdateAxbBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetData(v *UpdateAxbBindFixedLineResponseBodyData) *UpdateAxbBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetMessage(v string) *UpdateAxbBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetRequestId(v string) *UpdateAxbBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBody) SetSuccess(v bool) *UpdateAxbBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxbBindFixedLineResponseBodyData struct {
+	// 响应码 0-成功
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 响应消息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 是否处理成功  true-成功
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineResponseBodyData) SetCode(v string) *UpdateAxbBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBodyData) SetMessage(v string) *UpdateAxbBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponseBodyData) SetSuccess(v bool) *UpdateAxbBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxbBindFixedLineResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAxbBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAxbBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxbBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxbBindFixedLineResponse) SetHeaders(v map[string]*string) *UpdateAxbBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponse) SetStatusCode(v int32) *UpdateAxbBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAxbBindFixedLineResponse) SetBody(v *UpdateAxbBindFixedLineResponseBody) *UpdateAxbBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAxnBindFixedLineRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3。
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2。
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	Extra *UpdateAxnBindFixedLineRequestExtra `json:"Extra,omitempty" xml:"Extra,omitempty" type:"Struct"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 1234
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// B号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetAnucode(v string) *UpdateAxnBindFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetAnucodecalled(v string) *UpdateAxnBindFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetAppId(v string) *UpdateAxnBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetExpiration(v string) *UpdateAxnBindFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetExtra(v *UpdateAxnBindFixedLineRequestExtra) *UpdateAxnBindFixedLineRequest {
+	s.Extra = v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetOrderId(v string) *UpdateAxnBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetOwnerId(v int64) *UpdateAxnBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetRemark(v string) *UpdateAxnBindFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetResourceOwnerAccount(v string) *UpdateAxnBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetResourceOwnerId(v int64) *UpdateAxnBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetSubId(v string) *UpdateAxnBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetSubts(v string) *UpdateAxnBindFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetTAnucodeConnect(v string) *UpdateAxnBindFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetTelA(v string) *UpdateAxnBindFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetTelB(v string) *UpdateAxnBindFixedLineRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequest) SetTs(v string) *UpdateAxnBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxnBindFixedLineRequestExtra struct {
+	// A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的N号码 2：回拨固定号码：telB
+	//
+	// example:
+	//
+	// 0
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 1
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineRequestExtra) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineRequestExtra) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineRequestExtra) SetCallback(v string) *UpdateAxnBindFixedLineRequestExtra {
+	s.Callback = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineRequestExtra) SetCallrecording(v string) *UpdateAxnBindFixedLineRequestExtra {
+	s.Callrecording = &v
+	return s
+}
+
+type UpdateAxnBindFixedLineShrinkRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3。
+	//
+	// example:
+	//
+	// 示例值示例值示例值
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2。
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// 额外字段
+	ExtraShrink *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	// 消息请求唯一标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 1234
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// GHX0534X202504221531579290029-2-1-aliaxn
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码被叫为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// B号码
+	//
+	// example:
+	//
+	// 15500002222
+	TelB *string `json:"TelB,omitempty" xml:"TelB,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetAnucode(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetAnucodecalled(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetAppId(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetExpiration(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetExtraShrink(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.ExtraShrink = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetOrderId(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetOwnerId(v int64) *UpdateAxnBindFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetRemark(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetResourceOwnerId(v int64) *UpdateAxnBindFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetSubId(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetSubts(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetTAnucodeConnect(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetTelA(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetTelB(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.TelB = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineShrinkRequest) SetTs(v string) *UpdateAxnBindFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxnBindFixedLineResponseBody struct {
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateAxnBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 3FDD0A8F-34F1-5BD4-AF9F-CD90B3DE7C06
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *UpdateAxnBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetCode(v string) *UpdateAxnBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetData(v *UpdateAxnBindFixedLineResponseBodyData) *UpdateAxnBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetMessage(v string) *UpdateAxnBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetRequestId(v string) *UpdateAxnBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBody) SetSuccess(v bool) *UpdateAxnBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxnBindFixedLineResponseBodyData struct {
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineResponseBodyData) SetCode(v string) *UpdateAxnBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBodyData) SetMessage(v string) *UpdateAxnBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponseBodyData) SetSuccess(v bool) *UpdateAxnBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxnBindFixedLineResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAxnBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAxnBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnBindFixedLineResponse) SetHeaders(v map[string]*string) *UpdateAxnBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponse) SetStatusCode(v int32) *UpdateAxnBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAxnBindFixedLineResponse) SetBody(v *UpdateAxnBindFixedLineResponseBody) *UpdateAxnBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// AXx的扩展参数项
+	Extraaxx *UpdateAxnExtensionBindFixedLineRequestExtraaxx `json:"Extraaxx,omitempty" xml:"Extraaxx,omitempty" type:"Struct"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 1233
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 可参考绑定响应
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetAnucode(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetAnucodecalled(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetAppId(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetExpiration(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetExtraaxx(v *UpdateAxnExtensionBindFixedLineRequestExtraaxx) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Extraaxx = v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetOrderId(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetOwnerId(v int64) *UpdateAxnExtensionBindFixedLineRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetRemark(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetResourceOwnerAccount(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetResourceOwnerId(v int64) *UpdateAxnExtensionBindFixedLineRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetSubId(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetSubts(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetTAnucodeConnect(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetTelA(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequest) SetTs(v string) *UpdateAxnExtensionBindFixedLineRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineRequestExtraaxx struct {
+	// 可选。 A通过X呼叫，即A主叫X，仅下列值有效。默认是0。 0：不能外呼 1：接续最近的B号码
+	//
+	// example:
+	//
+	// 0
+	Callback *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
+	// 录音控制，仅下列值有效。默认是0（不开通录音功能）。 0：不录音 1：录音
+	//
+	// example:
+	//
+	// 0
+	Callrecording *string `json:"Callrecording,omitempty" xml:"Callrecording,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineRequestExtraaxx) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineRequestExtraaxx) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequestExtraaxx) SetCallback(v string) *UpdateAxnExtensionBindFixedLineRequestExtraaxx {
+	s.Callback = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineRequestExtraaxx) SetCallrecording(v string) *UpdateAxnExtensionBindFixedLineRequestExtraaxx {
+	s.Callrecording = &v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineShrinkRequest struct {
+	// 放音编码必须包含3个场景的编码。按照“B->X,A->X,其他号码->X”的顺序填写编码，编码之间以逗号分隔。  AXN分机号业务的放音编码,B->X和其他号码->X的编码一致  比如：“1,2,3”表示B->X放音编号为1，A->X放音编号为2， 其他号码->X放音编号为3
+	//
+	// example:
+	//
+	// 10001,10002,10003
+	Anucode *string `json:"Anucode,omitempty" xml:"Anucode,omitempty"`
+	// 被叫侧放音编码  被叫放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫侧接听时的放音编号为1，其他号码为被叫侧接听时的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	Anucodecalled *string `json:"Anucodecalled,omitempty" xml:"Anucodecalled,omitempty"`
+	// 业务id标识，由阿里云分配给客户侧
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alitest
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 单位：秒，必须为数字 0：不会自动解绑 非0：自动解绑周期
+	//
+	// example:
+	//
+	// 60
+	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	// AXx的扩展参数项
+	ExtraaxxShrink *string `json:"Extraaxx,omitempty" xml:"Extraaxx,omitempty"`
+	// 消息请求标识
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345dkwkd99d
+	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 接入商自有字段，最大100字符长度
+	//
+	// example:
+	//
+	// 1233
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 绑定id
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 可参考绑定响应
+	SubId *string `json:"SubId,omitempty" xml:"SubId,omitempty"`
+	// 格式为yyyyMMddHHmmss。时间采用北京时间，24小时制。
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Subts *string `json:"Subts,omitempty" xml:"Subts,omitempty"`
+	// 接通后主叫侧放音编码  接通后主叫侧放音编码必须包含2个场景的编码。按照“A被叫,其他号码被叫”的顺序填写编码，编码之间以逗号分隔。  比如：“1,2”表示A号码为被叫时主叫侧的放音编号为1，其他号码为被叫时主叫侧的放音编号为2
+	//
+	// example:
+	//
+	// 10001,10002
+	TAnucodeConnect *string `json:"TAnucodeConnect,omitempty" xml:"TAnucodeConnect,omitempty"`
+	// A号码
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15500001111
+	TelA *string `json:"TelA,omitempty" xml:"TelA,omitempty"`
+	// 格式yyyyMMddHHmmssSSS，时间采用北京时间，24小时制，精确至毫秒
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20250421141723098
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetAnucode(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Anucode = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetAnucodecalled(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Anucodecalled = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetAppId(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetExpiration(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Expiration = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetExtraaxxShrink(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.ExtraaxxShrink = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetOrderId(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.OrderId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetOwnerId(v int64) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetRemark(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetResourceOwnerAccount(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetResourceOwnerId(v int64) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetSubId(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.SubId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetSubts(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Subts = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetTAnucodeConnect(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.TAnucodeConnect = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetTelA(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.TelA = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineShrinkRequest) SetTs(v string) *UpdateAxnExtensionBindFixedLineShrinkRequest {
+	s.Ts = &v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineResponseBody struct {
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// OK
+	Code *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateAxnExtensionBindFixedLineResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 31031C54-7727-5057-9ED1-FA276B64205E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetAccessDeniedDetail(v string) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetCode(v string) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetData(v *UpdateAxnExtensionBindFixedLineResponseBodyData) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetMessage(v string) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetRequestId(v string) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBody) SetSuccess(v bool) *UpdateAxnExtensionBindFixedLineResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineResponseBodyData struct {
+	// 响应码 0：成功，其它失败，具体见文档
+	//
+	// example:
+	//
+	// 0
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 描述信息
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBodyData) SetCode(v string) *UpdateAxnExtensionBindFixedLineResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBodyData) SetMessage(v string) *UpdateAxnExtensionBindFixedLineResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponseBodyData) SetSuccess(v bool) *UpdateAxnExtensionBindFixedLineResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UpdateAxnExtensionBindFixedLineResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateAxnExtensionBindFixedLineResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAxnExtensionBindFixedLineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponse) SetHeaders(v map[string]*string) *UpdateAxnExtensionBindFixedLineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponse) SetStatusCode(v int32) *UpdateAxnExtensionBindFixedLineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAxnExtensionBindFixedLineResponse) SetBody(v *UpdateAxnExtensionBindFixedLineResponseBody) *UpdateAxnExtensionBindFixedLineResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSubscriptionRequest struct {
 	// The ID of the ASR model.
 	//
@@ -12252,6 +17284,140 @@ func (client *Client) BindAxb(request *BindAxbRequest) (_result *BindAxbResponse
 
 // Summary:
 //
+// 固话AxB绑定
+//
+// @param tmpReq - BindAxbFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxbFixedLineResponse
+func (client *Client) BindAxbFixedLineWithOptions(tmpReq *BindAxbFixedLineRequest, runtime *util.RuntimeOptions) (_result *BindAxbFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindAxbFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extra)) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, tea.String("Extra"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Areacode)) {
+		query["Areacode"] = request.Areacode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindType)) {
+		query["BindType"] = request.BindType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraShrink)) {
+		query["Extra"] = request.ExtraShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAxbFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAxbFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB绑定
+//
+// @param request - BindAxbFixedLineRequest
+//
+// @return BindAxbFixedLineResponse
+func (client *Client) BindAxbFixedLine(request *BindAxbFixedLineRequest) (_result *BindAxbFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAxbFixedLineResponse{}
+	_body, _err := client.BindAxbFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds an AXG binding.
 //
 // Description:
@@ -12679,6 +17845,274 @@ func (client *Client) BindAxnExtension(request *BindAxnExtensionRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &BindAxnExtensionResponse{}
 	_body, _err := client.BindAxnExtensionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # AXN分机号-号码绑定
+//
+// @param tmpReq - BindAxnExtensionFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxnExtensionFixedLineResponse
+func (client *Client) BindAxnExtensionFixedLineWithOptions(tmpReq *BindAxnExtensionFixedLineRequest, runtime *util.RuntimeOptions) (_result *BindAxnExtensionFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindAxnExtensionFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extraaxx)) {
+		request.ExtraaxxShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extraaxx, tea.String("Extraaxx"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Areacode)) {
+		query["Areacode"] = request.Areacode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindType)) {
+		query["BindType"] = request.BindType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraaxxShrink)) {
+		query["Extraaxx"] = request.ExtraaxxShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelXext)) {
+		query["TelXext"] = request.TelXext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAxnExtensionFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAxnExtensionFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AXN分机号-号码绑定
+//
+// @param request - BindAxnExtensionFixedLineRequest
+//
+// @return BindAxnExtensionFixedLineResponse
+func (client *Client) BindAxnExtensionFixedLine(request *BindAxnExtensionFixedLineRequest) (_result *BindAxnExtensionFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAxnExtensionFixedLineResponse{}
+	_body, _err := client.BindAxnExtensionFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # AXN模式绑定，分配X号码
+//
+// @param tmpReq - BindAxnFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindAxnFixedLineResponse
+func (client *Client) BindAxnFixedLineWithOptions(tmpReq *BindAxnFixedLineRequest, runtime *util.RuntimeOptions) (_result *BindAxnFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BindAxnFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extra)) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, tea.String("Extra"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Areacode)) {
+		query["Areacode"] = request.Areacode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BindType)) {
+		query["BindType"] = request.BindType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraShrink)) {
+		query["Extra"] = request.ExtraShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAxnFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindAxnFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # AXN模式绑定，分配X号码
+//
+// @param request - BindAxnFixedLineRequest
+//
+// @return BindAxnFixedLineResponse
+func (client *Client) BindAxnFixedLine(request *BindAxnFixedLineRequest) (_result *BindAxnFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindAxnFixedLineResponse{}
+	_body, _err := client.BindAxnFixedLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13814,6 +19248,90 @@ func (client *Client) CreateSmsSign(request *CreateSmsSignRequest) (_result *Cre
 	return _result, _err
 }
 
+// Summary:
+//
+// 固话AxB解绑
+//
+// @param request - DeleteAxbBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAxbBindFixedLineResponse
+func (client *Client) DeleteAxbBindFixedLineWithOptions(request *DeleteAxbBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *DeleteAxbBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAxbBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAxbBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB解绑
+//
+// @param request - DeleteAxbBindFixedLineRequest
+//
+// @return DeleteAxbBindFixedLineResponse
+func (client *Client) DeleteAxbBindFixedLine(request *DeleteAxbBindFixedLineRequest) (_result *DeleteAxbBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAxbBindFixedLineResponse{}
+	_body, _err := client.DeleteAxbBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // @param request - DeleteAxgGroupRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -13875,6 +19393,174 @@ func (client *Client) DeleteAxgGroup(request *DeleteAxgGroupRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAxgGroupResponse{}
 	_body, _err := client.DeleteAxgGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑已有Axn绑定
+//
+// @param request - DeleteAxnBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAxnBindFixedLineResponse
+func (client *Client) DeleteAxnBindFixedLineWithOptions(request *DeleteAxnBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *DeleteAxnBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAxnBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAxnBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑已有Axn绑定
+//
+// @param request - DeleteAxnBindFixedLineRequest
+//
+// @return DeleteAxnBindFixedLineResponse
+func (client *Client) DeleteAxnBindFixedLine(request *DeleteAxnBindFixedLineRequest) (_result *DeleteAxnBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAxnBindFixedLineResponse{}
+	_body, _err := client.DeleteAxnBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑已有AXN分机号绑定
+//
+// @param request - DeleteAxnExtensionBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAxnExtensionBindFixedLineResponse
+func (client *Client) DeleteAxnExtensionBindFixedLineWithOptions(request *DeleteAxnExtensionBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *DeleteAxnExtensionBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAxnExtensionBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 解绑已有AXN分机号绑定
+//
+// @param request - DeleteAxnExtensionBindFixedLineRequest
+//
+// @return DeleteAxnExtensionBindFixedLineResponse
+func (client *Client) DeleteAxnExtensionBindFixedLine(request *DeleteAxnExtensionBindFixedLineRequest) (_result *DeleteAxnExtensionBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.DeleteAxnExtensionBindFixedLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14839,6 +20525,290 @@ func (client *Client) OperateBlackNo(request *OperateBlackNoRequest) (_result *O
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateBlackNoResponse{}
 	_body, _err := client.OperateBlackNoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB查询
+//
+// @param request - QueryAxbBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAxbBindFixedLineResponse
+func (client *Client) QueryAxbBindFixedLineWithOptions(request *QueryAxbBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *QueryAxbBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAxbBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAxbBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB查询
+//
+// @param request - QueryAxbBindFixedLineRequest
+//
+// @return QueryAxbBindFixedLineResponse
+func (client *Client) QueryAxbBindFixedLine(request *QueryAxbBindFixedLineRequest) (_result *QueryAxbBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAxbBindFixedLineResponse{}
+	_body, _err := client.QueryAxbBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Axn绑定关系
+//
+// @param request - QueryAxnBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAxnBindFixedLineResponse
+func (client *Client) QueryAxnBindFixedLineWithOptions(request *QueryAxnBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *QueryAxnBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelX)) {
+		query["TelX"] = request.TelX
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAxnBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAxnBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Axn绑定关系
+//
+// @param request - QueryAxnBindFixedLineRequest
+//
+// @return QueryAxnBindFixedLineResponse
+func (client *Client) QueryAxnBindFixedLine(request *QueryAxnBindFixedLineRequest) (_result *QueryAxnBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAxnBindFixedLineResponse{}
+	_body, _err := client.QueryAxnBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AXN分机号绑定关系
+//
+// @param request - QueryAxnExtensionBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAxnExtensionBindFixedLineResponse
+func (client *Client) QueryAxnExtensionBindFixedLineWithOptions(request *QueryAxnExtensionBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *QueryAxnExtensionBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAxnExtensionBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询AXN分机号绑定关系
+//
+// @param request - QueryAxnExtensionBindFixedLineRequest
+//
+// @return QueryAxnExtensionBindFixedLineResponse
+func (client *Client) QueryAxnExtensionBindFixedLine(request *QueryAxnExtensionBindFixedLineRequest) (_result *QueryAxnExtensionBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.QueryAxnExtensionBindFixedLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16023,6 +21993,380 @@ func (client *Client) UnlockSecretNo(request *UnlockSecretNoRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UnlockSecretNoResponse{}
 	_body, _err := client.UnlockSecretNoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB绑定更新
+//
+// @param tmpReq - UpdateAxbBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAxbBindFixedLineResponse
+func (client *Client) UpdateAxbBindFixedLineWithOptions(tmpReq *UpdateAxbBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *UpdateAxbBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAxbBindFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extra)) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, tea.String("Extra"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraShrink)) {
+		query["Extra"] = request.ExtraShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAxbBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAxbBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 固话AxB绑定更新
+//
+// @param request - UpdateAxbBindFixedLineRequest
+//
+// @return UpdateAxbBindFixedLineResponse
+func (client *Client) UpdateAxbBindFixedLine(request *UpdateAxbBindFixedLineRequest) (_result *UpdateAxbBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAxbBindFixedLineResponse{}
+	_body, _err := client.UpdateAxbBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Axn绑定关系
+//
+// @param tmpReq - UpdateAxnBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAxnBindFixedLineResponse
+func (client *Client) UpdateAxnBindFixedLineWithOptions(tmpReq *UpdateAxnBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *UpdateAxnBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAxnBindFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extra)) {
+		request.ExtraShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extra, tea.String("Extra"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraShrink)) {
+		query["Extra"] = request.ExtraShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelB)) {
+		query["TelB"] = request.TelB
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAxnBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAxnBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新Axn绑定关系
+//
+// @param request - UpdateAxnBindFixedLineRequest
+//
+// @return UpdateAxnBindFixedLineResponse
+func (client *Client) UpdateAxnBindFixedLine(request *UpdateAxnBindFixedLineRequest) (_result *UpdateAxnBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAxnBindFixedLineResponse{}
+	_body, _err := client.UpdateAxnBindFixedLineWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AXN分机号绑定关系
+//
+// @param tmpReq - UpdateAxnExtensionBindFixedLineRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateAxnExtensionBindFixedLineResponse
+func (client *Client) UpdateAxnExtensionBindFixedLineWithOptions(tmpReq *UpdateAxnExtensionBindFixedLineRequest, runtime *util.RuntimeOptions) (_result *UpdateAxnExtensionBindFixedLineResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateAxnExtensionBindFixedLineShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extraaxx)) {
+		request.ExtraaxxShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extraaxx, tea.String("Extraaxx"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Anucode)) {
+		query["Anucode"] = request.Anucode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Anucodecalled)) {
+		query["Anucodecalled"] = request.Anucodecalled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Expiration)) {
+		query["Expiration"] = request.Expiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraaxxShrink)) {
+		query["Extraaxx"] = request.ExtraaxxShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubId)) {
+		query["SubId"] = request.SubId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subts)) {
+		query["Subts"] = request.Subts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TAnucodeConnect)) {
+		query["TAnucodeConnect"] = request.TAnucodeConnect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TelA)) {
+		query["TelA"] = request.TelA
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ts)) {
+		query["Ts"] = request.Ts
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAxnExtensionBindFixedLine"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新AXN分机号绑定关系
+//
+// @param request - UpdateAxnExtensionBindFixedLineRequest
+//
+// @return UpdateAxnExtensionBindFixedLineResponse
+func (client *Client) UpdateAxnExtensionBindFixedLine(request *UpdateAxnExtensionBindFixedLineRequest) (_result *UpdateAxnExtensionBindFixedLineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAxnExtensionBindFixedLineResponse{}
+	_body, _err := client.UpdateAxnExtensionBindFixedLineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
