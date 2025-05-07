@@ -320,6 +320,7 @@ func (s *CreateUserInvestigationInfoQueryTaskResponse) SetBody(v *CreateUserInve
 }
 
 type FindInstanceInfoRequest struct {
+	BusinessCodes *string                `json:"businessCodes,omitempty" xml:"businessCodes,omitempty"`
 	BussinessCode *string                `json:"bussinessCode,omitempty" xml:"bussinessCode,omitempty"`
 	Domain        *string                `json:"domain,omitempty" xml:"domain,omitempty"`
 	EndTime       *int64                 `json:"endTime,omitempty" xml:"endTime,omitempty"`
@@ -337,6 +338,11 @@ func (s FindInstanceInfoRequest) String() string {
 
 func (s FindInstanceInfoRequest) GoString() string {
 	return s.String()
+}
+
+func (s *FindInstanceInfoRequest) SetBusinessCodes(v string) *FindInstanceInfoRequest {
+	s.BusinessCodes = &v
+	return s
 }
 
 func (s *FindInstanceInfoRequest) SetBussinessCode(v string) *FindInstanceInfoRequest {
@@ -385,6 +391,7 @@ func (s *FindInstanceInfoRequest) SetUserId(v string) *FindInstanceInfoRequest {
 }
 
 type FindInstanceInfoShrinkRequest struct {
+	BusinessCodes *string `json:"businessCodes,omitempty" xml:"businessCodes,omitempty"`
 	BussinessCode *string `json:"bussinessCode,omitempty" xml:"bussinessCode,omitempty"`
 	Domain        *string `json:"domain,omitempty" xml:"domain,omitempty"`
 	EndTime       *int64  `json:"endTime,omitempty" xml:"endTime,omitempty"`
@@ -402,6 +409,11 @@ func (s FindInstanceInfoShrinkRequest) String() string {
 
 func (s FindInstanceInfoShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *FindInstanceInfoShrinkRequest) SetBusinessCodes(v string) *FindInstanceInfoShrinkRequest {
+	s.BusinessCodes = &v
+	return s
 }
 
 func (s *FindInstanceInfoShrinkRequest) SetBussinessCode(v string) *FindInstanceInfoShrinkRequest {
@@ -919,6 +931,194 @@ func (s *FindUserAvailbleResourcesResponse) SetBody(v *FindUserAvailbleResources
 	return s
 }
 
+type GetSecurityEventDetailRequest struct {
+	AliUid         *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EventId        *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	CallerParentId *int64  `json:"callerParentId,omitempty" xml:"callerParentId,omitempty"`
+	CallerType     *string `json:"callerType,omitempty" xml:"callerType,omitempty"`
+	CallerUid      *int64  `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+}
+
+func (s GetSecurityEventDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityEventDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityEventDetailRequest) SetAliUid(v string) *GetSecurityEventDetailRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailRequest) SetEventId(v string) *GetSecurityEventDetailRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailRequest) SetCallerParentId(v int64) *GetSecurityEventDetailRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailRequest) SetCallerType(v string) *GetSecurityEventDetailRequest {
+	s.CallerType = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailRequest) SetCallerUid(v int64) *GetSecurityEventDetailRequest {
+	s.CallerUid = &v
+	return s
+}
+
+type GetSecurityEventDetailResponseBody struct {
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetSecurityEventDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSecurityEventDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityEventDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityEventDetailResponseBody) SetCode(v string) *GetSecurityEventDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBody) SetData(v *GetSecurityEventDetailResponseBodyData) *GetSecurityEventDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBody) SetMessage(v string) *GetSecurityEventDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBody) SetRequestId(v string) *GetSecurityEventDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBody) SetSuccess(v bool) *GetSecurityEventDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSecurityEventDetailResponseBodyData struct {
+	Aliuid      *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
+	DataSource  *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	EventCode   *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventId     *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventTime   *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	Extra       *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
+	Level       *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetSecurityEventDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityEventDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetAliuid(v string) *GetSecurityEventDetailResponseBodyData {
+	s.Aliuid = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetDataSource(v string) *GetSecurityEventDetailResponseBodyData {
+	s.DataSource = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetEventCode(v string) *GetSecurityEventDetailResponseBodyData {
+	s.EventCode = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetEventId(v string) *GetSecurityEventDetailResponseBodyData {
+	s.EventId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetEventTime(v string) *GetSecurityEventDetailResponseBodyData {
+	s.EventTime = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetExtra(v string) *GetSecurityEventDetailResponseBodyData {
+	s.Extra = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetLevel(v string) *GetSecurityEventDetailResponseBodyData {
+	s.Level = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetPrincipalId(v string) *GetSecurityEventDetailResponseBodyData {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetResourceId(v string) *GetSecurityEventDetailResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetStatus(v string) *GetSecurityEventDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponseBodyData) SetType(v string) *GetSecurityEventDetailResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetSecurityEventDetailResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetSecurityEventDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetSecurityEventDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSecurityEventDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSecurityEventDetailResponse) SetHeaders(v map[string]*string) *GetSecurityEventDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponse) SetStatusCode(v int32) *GetSecurityEventDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSecurityEventDetailResponse) SetBody(v *GetSecurityEventDetailResponseBody) *GetSecurityEventDetailResponse {
+	s.Body = v
+	return s
+}
+
 type PunishResourceSearchRequest struct {
 	ActionCodes    []*string `json:"ActionCodes,omitempty" xml:"ActionCodes,omitempty" type:"Repeated"`
 	BussinessCodes []*string `json:"BussinessCodes,omitempty" xml:"BussinessCodes,omitempty" type:"Repeated"`
@@ -1336,6 +1536,93 @@ func (s *PunishResourceSearchResponse) SetStatusCode(v int32) *PunishResourceSea
 }
 
 func (s *PunishResourceSearchResponse) SetBody(v *PunishResourceSearchResponseBody) *PunishResourceSearchResponse {
+	s.Body = v
+	return s
+}
+
+type RecordClickLinkActionRequest struct {
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s RecordClickLinkActionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecordClickLinkActionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecordClickLinkActionRequest) SetTag(v string) *RecordClickLinkActionRequest {
+	s.Tag = &v
+	return s
+}
+
+type RecordClickLinkActionResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Count     *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RecordClickLinkActionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecordClickLinkActionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecordClickLinkActionResponseBody) SetCode(v string) *RecordClickLinkActionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecordClickLinkActionResponseBody) SetCount(v int32) *RecordClickLinkActionResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *RecordClickLinkActionResponseBody) SetMessage(v string) *RecordClickLinkActionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecordClickLinkActionResponseBody) SetRequestId(v string) *RecordClickLinkActionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecordClickLinkActionResponseBody) SetSuccess(v bool) *RecordClickLinkActionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RecordClickLinkActionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RecordClickLinkActionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecordClickLinkActionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecordClickLinkActionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecordClickLinkActionResponse) SetHeaders(v map[string]*string) *RecordClickLinkActionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecordClickLinkActionResponse) SetStatusCode(v int32) *RecordClickLinkActionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecordClickLinkActionResponse) SetBody(v *RecordClickLinkActionResponseBody) *RecordClickLinkActionResponse {
 	s.Body = v
 	return s
 }
@@ -2407,8 +2694,12 @@ type SearchPunishRequestResponseBodyDataList struct {
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IpString           *string `json:"IpString,omitempty" xml:"IpString,omitempty"`
 	Modifier           *string `json:"Modifier,omitempty" xml:"Modifier,omitempty"`
+	Operator           *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OperatorNum        *string `json:"OperatorNum,omitempty" xml:"OperatorNum,omitempty"`
 	PunishDomain       *string `json:"PunishDomain,omitempty" xml:"PunishDomain,omitempty"`
 	PunishIp           *string `json:"PunishIp,omitempty" xml:"PunishIp,omitempty"`
+	PunishOfficer      *string `json:"PunishOfficer,omitempty" xml:"PunishOfficer,omitempty"`
+	PunishOfficerNum   *string `json:"PunishOfficerNum,omitempty" xml:"PunishOfficerNum,omitempty"`
 	PunishRequest      *string `json:"PunishRequest,omitempty" xml:"PunishRequest,omitempty"`
 	PunishRespTime     *string `json:"PunishRespTime,omitempty" xml:"PunishRespTime,omitempty"`
 	PunishResult       *string `json:"PunishResult,omitempty" xml:"PunishResult,omitempty"`
@@ -2533,6 +2824,16 @@ func (s *SearchPunishRequestResponseBodyDataList) SetModifier(v string) *SearchP
 	return s
 }
 
+func (s *SearchPunishRequestResponseBodyDataList) SetOperator(v string) *SearchPunishRequestResponseBodyDataList {
+	s.Operator = &v
+	return s
+}
+
+func (s *SearchPunishRequestResponseBodyDataList) SetOperatorNum(v string) *SearchPunishRequestResponseBodyDataList {
+	s.OperatorNum = &v
+	return s
+}
+
 func (s *SearchPunishRequestResponseBodyDataList) SetPunishDomain(v string) *SearchPunishRequestResponseBodyDataList {
 	s.PunishDomain = &v
 	return s
@@ -2540,6 +2841,16 @@ func (s *SearchPunishRequestResponseBodyDataList) SetPunishDomain(v string) *Sea
 
 func (s *SearchPunishRequestResponseBodyDataList) SetPunishIp(v string) *SearchPunishRequestResponseBodyDataList {
 	s.PunishIp = &v
+	return s
+}
+
+func (s *SearchPunishRequestResponseBodyDataList) SetPunishOfficer(v string) *SearchPunishRequestResponseBodyDataList {
+	s.PunishOfficer = &v
+	return s
+}
+
+func (s *SearchPunishRequestResponseBodyDataList) SetPunishOfficerNum(v string) *SearchPunishRequestResponseBodyDataList {
+	s.PunishOfficerNum = &v
 	return s
 }
 
@@ -2613,6 +2924,123 @@ func (s *SearchPunishRequestResponse) SetStatusCode(v int32) *SearchPunishReques
 }
 
 func (s *SearchPunishRequestResponse) SetBody(v *SearchPunishRequestResponseBody) *SearchPunishRequestResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSecurityEventStatusRequest struct {
+	AliUid         *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EventId        *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CallerParentId *int64  `json:"callerParentId,omitempty" xml:"callerParentId,omitempty"`
+	CallerType     *string `json:"callerType,omitempty" xml:"callerType,omitempty"`
+	CallerUid      *int64  `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
+}
+
+func (s UpdateSecurityEventStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecurityEventStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetAliUid(v string) *UpdateSecurityEventStatusRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetEventId(v string) *UpdateSecurityEventStatusRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetStatus(v string) *UpdateSecurityEventStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetCallerParentId(v int64) *UpdateSecurityEventStatusRequest {
+	s.CallerParentId = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetCallerType(v string) *UpdateSecurityEventStatusRequest {
+	s.CallerType = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusRequest) SetCallerUid(v int64) *UpdateSecurityEventStatusRequest {
+	s.CallerUid = &v
+	return s
+}
+
+type UpdateSecurityEventStatusResponseBody struct {
+	Code      *string     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSecurityEventStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecurityEventStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecurityEventStatusResponseBody) SetCode(v string) *UpdateSecurityEventStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponseBody) SetData(v interface{}) *UpdateSecurityEventStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponseBody) SetMessage(v string) *UpdateSecurityEventStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponseBody) SetRequestId(v string) *UpdateSecurityEventStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponseBody) SetSuccess(v bool) *UpdateSecurityEventStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSecurityEventStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSecurityEventStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSecurityEventStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecurityEventStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecurityEventStatusResponse) SetHeaders(v map[string]*string) *UpdateSecurityEventStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponse) SetStatusCode(v int32) *UpdateSecurityEventStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSecurityEventStatusResponse) SetBody(v *UpdateSecurityEventStatusResponseBody) *UpdateSecurityEventStatusResponse {
 	s.Body = v
 	return s
 }
@@ -2902,6 +3330,62 @@ func (client *Client) FindUserAvailbleResources(request *FindUserAvailbleResourc
 
 // Summary:
 //
+// 查询安全事件详情
+//
+// @param request - GetSecurityEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityEventDetailResponse
+func (client *Client) GetSecurityEventDetailWithOptions(request *GetSecurityEventDetailRequest, runtime *util.RuntimeOptions) (_result *GetSecurityEventDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSecurityEventDetail"),
+		Version:     tea.String("2022-08-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSecurityEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询安全事件详情
+//
+// @param request - GetSecurityEventDetailRequest
+//
+// @return GetSecurityEventDetailResponse
+func (client *Client) GetSecurityEventDetail(request *GetSecurityEventDetailRequest) (_result *GetSecurityEventDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSecurityEventDetailResponse{}
+	_body, _err := client.GetSecurityEventDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 处罚资源搜索
 //
 // @param tmpReq - PunishResourceSearchRequest
@@ -2967,6 +3451,66 @@ func (client *Client) PunishResourceSearch(request *PunishResourceSearchRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &PunishResourceSearchResponse{}
 	_body, _err := client.PunishResourceSearchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 记录是否点击链接
+//
+// @param request - RecordClickLinkActionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecordClickLinkActionResponse
+func (client *Client) RecordClickLinkActionWithOptions(request *RecordClickLinkActionRequest, runtime *util.RuntimeOptions) (_result *RecordClickLinkActionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecordClickLinkAction"),
+		Version:     tea.String("2022-08-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecordClickLinkActionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 记录是否点击链接
+//
+// @param request - RecordClickLinkActionRequest
+//
+// @return RecordClickLinkActionResponse
+func (client *Client) RecordClickLinkAction(request *RecordClickLinkActionRequest) (_result *RecordClickLinkActionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecordClickLinkActionResponse{}
+	_body, _err := client.RecordClickLinkActionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3381,6 +3925,62 @@ func (client *Client) SearchPunishRequest(request *SearchPunishRequestRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchPunishRequestResponse{}
 	_body, _err := client.SearchPunishRequestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新安全事件状态
+//
+// @param request - UpdateSecurityEventStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSecurityEventStatusResponse
+func (client *Client) UpdateSecurityEventStatusWithOptions(request *UpdateSecurityEventStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateSecurityEventStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSecurityEventStatus"),
+		Version:     tea.String("2022-08-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSecurityEventStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新安全事件状态
+//
+// @param request - UpdateSecurityEventStatusRequest
+//
+// @return UpdateSecurityEventStatusResponse
+func (client *Client) UpdateSecurityEventStatus(request *UpdateSecurityEventStatusRequest) (_result *UpdateSecurityEventStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSecurityEventStatusResponse{}
+	_body, _err := client.UpdateSecurityEventStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
