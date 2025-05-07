@@ -6208,6 +6208,10 @@ func (s *GetDataSourceOrderConfigResponseBody) SetSuccess(v bool) *GetDataSource
 }
 
 type GetDataSourceOrderConfigResponseBodyData struct {
+	// example:
+	//
+	// 1
+	TotalDocSize             *int32                                                              `json:"TotalDocSize,omitempty" xml:"TotalDocSize,omitempty"`
 	UserConfigDataSourceList []*GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList `json:"UserConfigDataSourceList,omitempty" xml:"UserConfigDataSourceList,omitempty" type:"Repeated"`
 }
 
@@ -6217,6 +6221,11 @@ func (s GetDataSourceOrderConfigResponseBodyData) String() string {
 
 func (s GetDataSourceOrderConfigResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetDataSourceOrderConfigResponseBodyData) SetTotalDocSize(v int32) *GetDataSourceOrderConfigResponseBodyData {
+	s.TotalDocSize = &v
+	return s
 }
 
 func (s *GetDataSourceOrderConfigResponseBodyData) SetUserConfigDataSourceList(v []*GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList) *GetDataSourceOrderConfigResponseBodyData {
