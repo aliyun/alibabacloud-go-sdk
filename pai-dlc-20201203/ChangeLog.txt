@@ -1,3 +1,7 @@
+2025-05-07 Version: v1.6.2
+- Update API ListJobs: add request parameters JobIds.
+
+
 2025-04-18 Version: v1.6.1
 - Generated golang 2020-12-03 for pai-dlc.
 

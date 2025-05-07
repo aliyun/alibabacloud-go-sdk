@@ -6554,10 +6554,20 @@ func (s *GetPodLogsResponse) SetBody(v *GetPodLogsResponseBody) *GetPodLogsRespo
 }
 
 type GetRayDashboardRequest struct {
+	// Specifies whether the link is a sharing link. If yes, a token is required.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// false
 	IsShared *bool `json:"isShared,omitempty" xml:"isShared,omitempty"`
+	// The token obtained from GetToken
+	//
 	// example:
 	//
 	// some_token_value
@@ -6583,10 +6593,14 @@ func (s *GetRayDashboardRequest) SetToken(v string) *GetRayDashboardRequest {
 }
 
 type GetRayDashboardResponseBody struct {
+	// Indicates whether the dashboard has been integrated with CloudMonitor and supports ray metrics
+	//
 	// example:
 	//
 	// true
 	MetricsEnabled *string `json:"metricsEnabled,omitempty" xml:"metricsEnabled,omitempty"`
+	// The Ray Dashboard URL
+	//
 	// example:
 	//
 	// https://pre-pai-dlc-proxy-cn-hangzhou.aliyun.com/ray/dashboard/dlc1k7426goc7bvy
@@ -6806,13 +6820,13 @@ func (s *GetTensorboardSharedUrlResponse) SetBody(v *GetTensorboardSharedUrlResp
 }
 
 type GetTokenRequest struct {
-	// The time when the share link expires. Default value: 604800 seconds. Minimum value: 0.
+	// The time when the share link expires. Default value: 604800. Minimum value: 0. Unit: seconds.
 	//
 	// example:
 	//
 	// 60
 	ExpireTime *int64 `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The ID of the job that is waiting to be shared.
+	// The ID of the job to be shared.
 	//
 	// example:
 	//
@@ -6856,7 +6870,7 @@ type GetTokenResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-xxxxxxxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The token of the shared job, which can be used as the value of the Token parameter in the GetJob API operation to view information about the shared job.
+	// The sharing token, used to view the information about the shared job.
 	//
 	// example:
 	//
@@ -7392,7 +7406,8 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// dlc********
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 	// The job type. The default value null indicates any type. Valid values:
 	//
 	// 	- TFJob
@@ -7444,7 +7459,18 @@ type ListJobsRequest struct {
 	// example:
 	//
 	// 50
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// 	- PrePaid: Resource quota
+	//
+	// 	- Spot: Preemptible resources
+	//
+	// 	- PostPaid: Public resources
+	//
+	// example:
+	//
+	// PostPaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The specific pipeline ID used to filter jobs.
 	//
@@ -7589,6 +7615,11 @@ func (s *ListJobsRequest) SetJobId(v string) *ListJobsRequest {
 	return s
 }
 
+func (s *ListJobsRequest) SetJobIds(v string) *ListJobsRequest {
+	s.JobIds = &v
+	return s
+}
+
 func (s *ListJobsRequest) SetJobType(v string) *ListJobsRequest {
 	s.JobType = &v
 	return s
@@ -7720,7 +7751,8 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// dlc********
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobId  *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobIds *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
 	// The job type. The default value null indicates any type. Valid values:
 	//
 	// 	- TFJob
@@ -7772,7 +7804,18 @@ type ListJobsShrinkRequest struct {
 	// example:
 	//
 	// 50
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The type of the resource. Valid values:
+	//
+	// 	- PrePaid: Resource quota
+	//
+	// 	- Spot: Preemptible resources
+	//
+	// 	- PostPaid: Public resources
+	//
+	// example:
+	//
+	// PostPaid
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// The specific pipeline ID used to filter jobs.
 	//
@@ -7914,6 +7957,11 @@ func (s *ListJobsShrinkRequest) SetFromAllWorkspaces(v bool) *ListJobsShrinkRequ
 
 func (s *ListJobsShrinkRequest) SetJobId(v string) *ListJobsShrinkRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *ListJobsShrinkRequest) SetJobIds(v string) *ListJobsShrinkRequest {
+	s.JobIds = &v
 	return s
 }
 
@@ -9806,7 +9854,11 @@ func (client *Client) GetPodLogs(JobId *string, PodId *string, request *GetPodLo
 
 // Summary:
 //
-// 获取 Ray Dashboard 链接
+// Obtains a Ray Dashboard URL.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -9855,7 +9907,11 @@ func (client *Client) GetRayDashboardWithOptions(jobId *string, request *GetRayD
 
 // Summary:
 //
-// 获取 Ray Dashboard 链接
+// Obtains a Ray Dashboard URL.
+//
+// Description:
+//
+// Before you call this operation, make sure that you understand the billing methods and [pricing](https://help.aliyun.com/document_detail/171758.html) of Deep Learning Containers (DLC) of Platform for AI (PAI).
 //
 // @param request - GetRayDashboardRequest
 //
@@ -10010,7 +10066,7 @@ func (client *Client) GetTensorboardSharedUrl(TensorboardId *string, request *Ge
 
 // Summary:
 //
-// Queries a user token.
+// Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
 //
 // @param request - GetTokenRequest
 //
@@ -10063,7 +10119,7 @@ func (client *Client) GetTokenWithOptions(request *GetTokenRequest, headers map[
 
 // Summary:
 //
-// Queries a user token.
+// Obtains the sharing token of a DLC job. This token is used to view the information about the shared job.
 //
 // @param request - GetTokenRequest
 //
@@ -10349,6 +10405,10 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, headers map[s
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
+		query["JobIds"] = request.JobIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobType)) {
