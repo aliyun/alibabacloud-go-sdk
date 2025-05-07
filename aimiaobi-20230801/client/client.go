@@ -6228,8 +6228,9 @@ type GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList struct {
 	// example:
 	//
 	// QuarkCommonNews
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// example:
 	//
 	// 20
@@ -6250,6 +6251,11 @@ func (s GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList) GoStri
 
 func (s *GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList) SetCode(v string) *GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList {
 	s.Code = &v
+	return s
+}
+
+func (s *GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList) SetEnable(v bool) *GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList {
+	s.Enable = &v
 	return s
 }
 
