@@ -34378,10 +34378,12 @@ func (s *GetWebshellTokenResponseBody) SetTraceId(v string) *GetWebshellTokenRes
 }
 
 type GetWebshellTokenResponseBodyData struct {
+	HttpUrl *string `json:"HttpUrl,omitempty" xml:"HttpUrl,omitempty"`
 	// example:
 	//
 	// zWWpvRj_5pzof4hfo7-hGynM8oGMmO_7
-	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	WebSocketUrl *string `json:"WebSocketUrl,omitempty" xml:"WebSocketUrl,omitempty"`
 }
 
 func (s GetWebshellTokenResponseBodyData) String() string {
@@ -34392,8 +34394,18 @@ func (s GetWebshellTokenResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *GetWebshellTokenResponseBodyData) SetHttpUrl(v string) *GetWebshellTokenResponseBodyData {
+	s.HttpUrl = &v
+	return s
+}
+
 func (s *GetWebshellTokenResponseBodyData) SetToken(v string) *GetWebshellTokenResponseBodyData {
 	s.Token = &v
+	return s
+}
+
+func (s *GetWebshellTokenResponseBodyData) SetWebSocketUrl(v string) *GetWebshellTokenResponseBodyData {
+	s.WebSocketUrl = &v
 	return s
 }
 
