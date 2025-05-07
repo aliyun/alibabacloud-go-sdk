@@ -28957,8 +28957,16 @@ func (s *RunSearchGenerationRequestAgentContext) SetBizContext(v *RunSearchGener
 }
 
 type RunSearchGenerationRequestAgentContextBizContext struct {
+	AskUser                  *string                                                                   `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	AskUserKeywords          []*string                                                                 `json:"AskUserKeywords,omitempty" xml:"AskUserKeywords,omitempty" type:"Repeated"`
+	CurrentStep              *string                                                                   `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
 	MultimodalMediaSelection *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection `json:"MultimodalMediaSelection,omitempty" xml:"MultimodalMediaSelection,omitempty" type:"Struct"`
+	NextStep                 *string                                                                   `json:"NextStep,omitempty" xml:"NextStep,omitempty"`
 	SkipCurrentSupplement    *bool                                                                     `json:"SkipCurrentSupplement,omitempty" xml:"SkipCurrentSupplement,omitempty"`
+	SupplementDataType       *string                                                                   `json:"SupplementDataType,omitempty" xml:"SupplementDataType,omitempty"`
+	SupplementEnable         *bool                                                                     `json:"SupplementEnable,omitempty" xml:"SupplementEnable,omitempty"`
+	UserBack                 *string                                                                   `json:"UserBack,omitempty" xml:"UserBack,omitempty"`
+	UserBackKeywords         []*string                                                                 `json:"UserBackKeywords,omitempty" xml:"UserBackKeywords,omitempty" type:"Repeated"`
 }
 
 func (s RunSearchGenerationRequestAgentContextBizContext) String() string {
@@ -28969,13 +28977,53 @@ func (s RunSearchGenerationRequestAgentContextBizContext) GoString() string {
 	return s.String()
 }
 
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetAskUser(v string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.AskUser = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetAskUserKeywords(v []*string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.AskUserKeywords = v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetCurrentStep(v string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.CurrentStep = &v
+	return s
+}
+
 func (s *RunSearchGenerationRequestAgentContextBizContext) SetMultimodalMediaSelection(v *RunSearchGenerationRequestAgentContextBizContextMultimodalMediaSelection) *RunSearchGenerationRequestAgentContextBizContext {
 	s.MultimodalMediaSelection = v
 	return s
 }
 
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetNextStep(v string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.NextStep = &v
+	return s
+}
+
 func (s *RunSearchGenerationRequestAgentContextBizContext) SetSkipCurrentSupplement(v bool) *RunSearchGenerationRequestAgentContextBizContext {
 	s.SkipCurrentSupplement = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetSupplementDataType(v string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.SupplementDataType = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetSupplementEnable(v bool) *RunSearchGenerationRequestAgentContextBizContext {
+	s.SupplementEnable = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetUserBack(v string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.UserBack = &v
+	return s
+}
+
+func (s *RunSearchGenerationRequestAgentContextBizContext) SetUserBackKeywords(v []*string) *RunSearchGenerationRequestAgentContextBizContext {
+	s.UserBackKeywords = v
 	return s
 }
 
@@ -29551,6 +29599,11 @@ func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContext) SetBizContext
 type RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext struct {
 	// example:
 	//
+	// 您想了解关于xx的哪些信息？
+	AskUser         *string   `json:"AskUser,omitempty" xml:"AskUser,omitempty"`
+	AskUserKeywords []*string `json:"AskUserKeywords,omitempty" xml:"AskUserKeywords,omitempty" type:"Repeated"`
+	// example:
+	//
 	// start
 	CurrentStep      *string                                                                             `json:"CurrentStep,omitempty" xml:"CurrentStep,omitempty"`
 	GeneratedContent *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContent `json:"GeneratedContent,omitempty" xml:"GeneratedContent,omitempty" type:"Struct"`
@@ -29579,6 +29632,16 @@ func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) Stri
 
 func (s RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) GoString() string {
 	return s.String()
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetAskUser(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.AskUser = &v
+	return s
+}
+
+func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetAskUserKeywords(v []*string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
+	s.AskUserKeywords = v
+	return s
 }
 
 func (s *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext) SetCurrentStep(v string) *RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContext {
