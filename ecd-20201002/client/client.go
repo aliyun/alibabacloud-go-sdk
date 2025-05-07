@@ -3419,6 +3419,7 @@ func (s *DescribeUserResourcesResponseBodyResourcesOsUpdatePackages) SetTitle(v 
 }
 
 type DescribeUserResourcesResponseBodyResourcesSessions struct {
+	NickName *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// example:
 	//
 	// 2025-01-22T11:03:36Z
@@ -3439,6 +3440,11 @@ func (s DescribeUserResourcesResponseBodyResourcesSessions) String() string {
 
 func (s DescribeUserResourcesResponseBodyResourcesSessions) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetNickName(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
+	s.NickName = &v
+	return s
 }
 
 func (s *DescribeUserResourcesResponseBodyResourcesSessions) SetResourceSessionStartTime(v string) *DescribeUserResourcesResponseBodyResourcesSessions {
