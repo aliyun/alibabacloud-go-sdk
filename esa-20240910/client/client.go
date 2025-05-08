@@ -52592,6 +52592,146 @@ func (s *ListRoutineCanaryAreasResponse) SetBody(v *ListRoutineCanaryAreasRespon
 	return s
 }
 
+type ListRoutineCodeVersionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ListRoutineCodeVersions
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PageNumber    *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+}
+
+func (s ListRoutineCodeVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCodeVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCodeVersionsRequest) SetName(v string) *ListRoutineCodeVersionsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsRequest) SetPageNumber(v int64) *ListRoutineCodeVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsRequest) SetPageSize(v int64) *ListRoutineCodeVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsRequest) SetSearchKeyWord(v string) *ListRoutineCodeVersionsRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+type ListRoutineCodeVersionsResponseBody struct {
+	CodeVersions []*ListRoutineCodeVersionsResponseBodyCodeVersions `json:"CodeVersions,omitempty" xml:"CodeVersions,omitempty" type:"Repeated"`
+	PageNumber   *int64                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int64                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListRoutineCodeVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCodeVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCodeVersionsResponseBody) SetCodeVersions(v []*ListRoutineCodeVersionsResponseBodyCodeVersions) *ListRoutineCodeVersionsResponseBody {
+	s.CodeVersions = v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBody) SetPageNumber(v int64) *ListRoutineCodeVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBody) SetPageSize(v int64) *ListRoutineCodeVersionsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBody) SetRequestId(v string) *ListRoutineCodeVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBody) SetTotalCount(v int64) *ListRoutineCodeVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListRoutineCodeVersionsResponseBodyCodeVersions struct {
+	CodeDescription *string `json:"CodeDescription,omitempty" xml:"CodeDescription,omitempty"`
+	CodeVersion     *string `json:"CodeVersion,omitempty" xml:"CodeVersion,omitempty"`
+	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s ListRoutineCodeVersionsResponseBodyCodeVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCodeVersionsResponseBodyCodeVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCodeDescription(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.CodeDescription = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCodeVersion(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.CodeVersion = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponseBodyCodeVersions) SetCreateTime(v string) *ListRoutineCodeVersionsResponseBodyCodeVersions {
+	s.CreateTime = &v
+	return s
+}
+
+type ListRoutineCodeVersionsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRoutineCodeVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRoutineCodeVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRoutineCodeVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRoutineCodeVersionsResponse) SetHeaders(v map[string]*string) *ListRoutineCodeVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponse) SetStatusCode(v int32) *ListRoutineCodeVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRoutineCodeVersionsResponse) SetBody(v *ListRoutineCodeVersionsResponseBody) *ListRoutineCodeVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListRoutineRelatedRecordsRequest struct {
 	// This parameter is required.
 	//
@@ -88746,6 +88886,78 @@ func (client *Client) ListRoutineCanaryAreas() (_result *ListRoutineCanaryAreasR
 	runtime := &util.RuntimeOptions{}
 	_result = &ListRoutineCanaryAreasResponse{}
 	_body, _err := client.ListRoutineCanaryAreasWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine的代码版本列表
+//
+// @param request - ListRoutineCodeVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRoutineCodeVersionsResponse
+func (client *Client) ListRoutineCodeVersionsWithOptions(request *ListRoutineCodeVersionsRequest, runtime *util.RuntimeOptions) (_result *ListRoutineCodeVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRoutineCodeVersions"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRoutineCodeVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询Routine的代码版本列表
+//
+// @param request - ListRoutineCodeVersionsRequest
+//
+// @return ListRoutineCodeVersionsResponse
+func (client *Client) ListRoutineCodeVersions(request *ListRoutineCodeVersionsRequest) (_result *ListRoutineCodeVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRoutineCodeVersionsResponse{}
+	_body, _err := client.ListRoutineCodeVersionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
