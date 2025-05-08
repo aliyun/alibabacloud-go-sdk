@@ -20712,6 +20712,7 @@ func (s *ListSearchTaskDialoguesResponseBody) SetTotalCount(v int32) *ListSearch
 }
 
 type ListSearchTaskDialoguesResponseBodyData struct {
+	ChatConfig *ListSearchTaskDialoguesResponseBodyDataChatConfig `json:"ChatConfig,omitempty" xml:"ChatConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 2024-11-25 13:33:01
@@ -20761,6 +20762,11 @@ func (s ListSearchTaskDialoguesResponseBodyData) String() string {
 
 func (s ListSearchTaskDialoguesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyData) SetChatConfig(v *ListSearchTaskDialoguesResponseBodyDataChatConfig) *ListSearchTaskDialoguesResponseBodyData {
+	s.ChatConfig = v
+	return s
 }
 
 func (s *ListSearchTaskDialoguesResponseBodyData) SetCreateTime(v string) *ListSearchTaskDialoguesResponseBodyData {
@@ -20815,6 +20821,135 @@ func (s *ListSearchTaskDialoguesResponseBodyData) SetTaskId(v string) *ListSearc
 
 func (s *ListSearchTaskDialoguesResponseBodyData) SetText(v string) *ListSearchTaskDialoguesResponseBodyData {
 	s.Text = &v
+	return s
+}
+
+type ListSearchTaskDialoguesResponseBodyDataChatConfig struct {
+	// example:
+	//
+	// 24
+	DialogueType *int32 `json:"DialogueType,omitempty" xml:"DialogueType,omitempty"`
+	EndToEnd     *bool  `json:"EndToEnd,omitempty" xml:"EndToEnd,omitempty"`
+	// example:
+	//
+	// concise
+	GenerateLevel *string `json:"GenerateLevel,omitempty" xml:"GenerateLevel,omitempty"`
+	// example:
+	//
+	// copilotReference
+	GenerateTechnology *string                                                       `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
+	SearchModels       []*string                                                     `json:"SearchModels,omitempty" xml:"SearchModels,omitempty" type:"Repeated"`
+	SearchParam        *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam `json:"SearchParam,omitempty" xml:"SearchParam,omitempty" type:"Struct"`
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetDialogueType(v int32) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.DialogueType = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetEndToEnd(v bool) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.EndToEnd = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetGenerateLevel(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.GenerateLevel = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetGenerateTechnology(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.GenerateTechnology = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetSearchModels(v []*string) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.SearchModels = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfig) SetSearchParam(v *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) *ListSearchTaskDialoguesResponseBodyDataChatConfig {
+	s.SearchParam = v
+	return s
+}
+
+type ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam struct {
+	EndTime               *string                                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	MultimodalSearchTypes []*string                                                                    `json:"MultimodalSearchTypes,omitempty" xml:"MultimodalSearchTypes,omitempty" type:"Repeated"`
+	SearchSources         []*ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	StartTime             *string                                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) SetEndTime(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) SetMultimodalSearchTypes(v []*string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam {
+	s.MultimodalSearchTypes = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) SetSearchSources(v []*ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam {
+	s.SearchSources = v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam) SetStartTime(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParam {
+	s.StartTime = &v
+	return s
+}
+
+type ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources struct {
+	// example:
+	//
+	// x\"x
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xx
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) GoString() string {
+	return s.String()
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) SetCode(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) SetDatasetName(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources) SetName(v string) *ListSearchTaskDialoguesResponseBodyDataChatConfigSearchParamSearchSources {
+	s.Name = &v
 	return s
 }
 

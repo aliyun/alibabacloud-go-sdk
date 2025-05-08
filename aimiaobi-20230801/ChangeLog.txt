@@ -1,3 +1,7 @@
+2025-05-08 Version: v1.20.5
+- Update API ListSearchTaskDialogues: add response parameters Body.Data.$.ChatConfig.
+
+
 2025-05-07 Version: v1.20.4
 - Update API RunSearchGeneration: add request parameters AgentContext.BizContext.AskUser.
 - Update API RunSearchGeneration: add request parameters AgentContext.BizContext.AskUserKeywords.
