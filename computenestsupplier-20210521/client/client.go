@@ -5571,7 +5571,12 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// { "RepoUrl": "https://github.com/user/repo.git", "Brancn": "main"}
-	BuildInfo       *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	BuildInfo *string `json:"BuildInfo,omitempty" xml:"BuildInfo,omitempty"`
+	// The parameters for building the service
+	//
+	// example:
+	//
+	// { "ServiceTemplateId": "st-xxxxx"}
 	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
 	// The category of the service.
 	//
@@ -5854,7 +5859,8 @@ type GetServiceResponseBody struct {
 	// example:
 	//
 	// http://example.com
-	SupplierUrl     *string                                  `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// Contact information of the service provider.
 	SupportContacts []*GetServiceResponseBodySupportContacts `json:"SupportContacts,omitempty" xml:"SupportContacts,omitempty" type:"Repeated"`
 	// The service tags.
 	Tags []*GetServiceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -6446,7 +6452,7 @@ type GetServiceResponseBodyCommodityCssMetadataMeteringEntityMappings struct {
 	//
 	// example:
 	//
-	// 按量付费套餐
+	// Pay-as-you-go package
 	SpecificationName *string `json:"SpecificationName,omitempty" xml:"SpecificationName,omitempty"`
 	// The template name.
 	//
@@ -7065,7 +7071,17 @@ func (s *GetServiceResponseBodyStatistic) SetSubmittedUsageCount(v int32) *GetSe
 }
 
 type GetServiceResponseBodySupportContacts struct {
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of Contact information.
+	//
+	// example:
+	//
+	// Email
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of Contact information.
+	//
+	// example:
+	//
+	// supplier@test.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9993,7 +10009,8 @@ type GetSupplierInformationResponseBody struct {
 	// example:
 	//
 	// http://www.xxx.xxx.cn
-	SupplierUrl     *string                                              `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// Contact information of the service provider
 	SupportContacts []*GetSupplierInformationResponseBodySupportContacts `json:"SupportContacts,omitempty" xml:"SupportContacts,omitempty" type:"Repeated"`
 }
 
@@ -10120,7 +10137,17 @@ func (s *GetSupplierInformationResponseBodyDeliverySettings) SetOssPath(v string
 }
 
 type GetSupplierInformationResponseBodySupportContacts struct {
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of contact information.
+	//
+	// example:
+	//
+	// Email
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of contact information.
+	//
+	// example:
+	//
+	// supplier@example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -12244,6 +12271,447 @@ func (s *ListResellersResponse) SetStatusCode(v int32) *ListResellersResponse {
 }
 
 func (s *ListResellersResponse) SetBody(v *ListResellersResponseBody) *ListResellersResponse {
+	s.Body = v
+	return s
+}
+
+type ListServiceInstanceBillRequest struct {
+	// The billing cycle. Format: YYYY-MM.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2025-03
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing date. This parameter is required only if the **Granularity*	- parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2024-12-05
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The granularity at which bills are queried. Valid values:
+	//
+	// 	- MONTHLY: queries bills by month. The data queried is consistent with the data that is displayed for the specified billing cycle on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// 	- DAILY: queries bills by day. The data queried is consistent with the data that is displayed for the specified day on the Billing Details tab of the Bill Details page in User Center.
+	//
+	// You must set the **BillingDate*	- parameter before you can set the Granularity parameter to DAILY.
+	//
+	// example:
+	//
+	// MONTHLY
+	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The service ID.
+	//
+	// example:
+	//
+	// service-6121296da4f44e469519
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	// The ID of the service instance.
+	//
+	// example:
+	//
+	// si-0d0d7bc9accc4e2e8a8f
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The service version.
+	//
+	// example:
+	//
+	// 1
+	ServiceVersion *string `json:"ServiceVersion,omitempty" xml:"ServiceVersion,omitempty"`
+}
+
+func (s ListServiceInstanceBillRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceBillRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceBillRequest) SetBillingCycle(v string) *ListServiceInstanceBillRequest {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetBillingDate(v string) *ListServiceInstanceBillRequest {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetGranularity(v string) *ListServiceInstanceBillRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetMaxResults(v int32) *ListServiceInstanceBillRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetNextToken(v string) *ListServiceInstanceBillRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetServiceId(v string) *ListServiceInstanceBillRequest {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetServiceInstanceId(v string) *ListServiceInstanceBillRequest {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillRequest) SetServiceVersion(v string) *ListServiceInstanceBillRequest {
+	s.ServiceVersion = &v
+	return s
+}
+
+type ListServiceInstanceBillResponseBody struct {
+	// The billing information of the backup schedule.
+	Item []*ListServiceInstanceBillResponseBodyItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+	// The number of entries per page. Valid values: 1 to 100. Default value: 20.
+	//
+	// example:
+	//
+	// 20
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
+	// example:
+	//
+	// AAAAAfu+XtuBE55iRLHEYYuojI4=
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7B68C6D1-0C22-53F7-997C-F95D109C31AA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
+	// example:
+	//
+	// 65
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListServiceInstanceBillResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceBillResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceBillResponseBody) SetItem(v []*ListServiceInstanceBillResponseBodyItem) *ListServiceInstanceBillResponseBody {
+	s.Item = v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBody) SetMaxResults(v int32) *ListServiceInstanceBillResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBody) SetNextToken(v string) *ListServiceInstanceBillResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBody) SetRequestId(v string) *ListServiceInstanceBillResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBody) SetTotalCount(v int64) *ListServiceInstanceBillResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListServiceInstanceBillResponseBodyItem struct {
+	// The billing cycle. Format: YYYY-MM.
+	//
+	// example:
+	//
+	// 2024-12
+	BillingCycle *string `json:"BillingCycle,omitempty" xml:"BillingCycle,omitempty"`
+	// The billing date. This parameter is required only if the **Granularity*	- parameter is set to DAILY. Format: YYYY-MM-DD.
+	//
+	// example:
+	//
+	// 2024-12-05
+	BillingDate *string `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
+	// The billable item.
+	//
+	// example:
+	//
+	// Bandwidth
+	BillingItem *string `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	// The code of the billable item.
+	//
+	// example:
+	//
+	// disk
+	BillingItemCode *string `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
+	// The currency unit.
+	//
+	// 	- China site: **CNY**.
+	//
+	// 	- International site: **USD**.
+	//
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The amount deducted with resource plans.
+	//
+	// example:
+	//
+	// 0
+	DeductedByResourcePackage *string `json:"DeductedByResourcePackage,omitempty" xml:"DeductedByResourcePackage,omitempty"`
+	// The ID of the instance.
+	//
+	// example:
+	//
+	// rm-wz9k051l23j3o3xa9
+	InstanceID *string `json:"InstanceID,omitempty" xml:"InstanceID,omitempty"`
+	// The discount amount.
+	//
+	// example:
+	//
+	// 0
+	InvoiceDiscount *string `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
+	// The unit price.
+	//
+	// example:
+	//
+	// 0.12
+	ListPrice *string `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
+	// The unit of the unit price.
+	//
+	// example:
+	//
+	// CNY/GB
+	ListPriceUnit *string `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
+	// The pretax amount.
+	//
+	// example:
+	//
+	// 0
+	PretaxAmount *string `json:"PretaxAmount,omitempty" xml:"PretaxAmount,omitempty"`
+	// The pretax gross amount.
+	//
+	// example:
+	//
+	// 0
+	PretaxGrossAmount *string `json:"PretaxGrossAmount,omitempty" xml:"PretaxGrossAmount,omitempty"`
+	// The code of the service.
+	//
+	// example:
+	//
+	// oss
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// The details of the service.
+	//
+	// example:
+	//
+	// sls
+	ProductDetail *string `json:"ProductDetail,omitempty" xml:"ProductDetail,omitempty"`
+	// The name of the cloud service or the name of the service-linked role with which the cloud service is associated.
+	//
+	// example:
+	//
+	// oss
+	ProductName *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	// Service instance ID.
+	//
+	// example:
+	//
+	// si-bc5d6ac7022647d3a3bd
+	ServiceInstanceId *string `json:"ServiceInstanceId,omitempty" xml:"ServiceInstanceId,omitempty"`
+	// The billing cycle in which the bill is split.
+	//
+	// example:
+	//
+	// 2021-06
+	SplitBillingCycle *string `json:"SplitBillingCycle,omitempty" xml:"SplitBillingCycle,omitempty"`
+	// The billing method. Valid values:
+	//
+	// 	- Subscription: the subscription billing method.
+	//
+	// 	- PayAsYouGo: the pay-as-you-go billing method.
+	//
+	// example:
+	//
+	// Subscription
+	SubscriptionType *string `json:"SubscriptionType,omitempty" xml:"SubscriptionType,omitempty"`
+	// The amount of resource usage.
+	//
+	// example:
+	//
+	// 1
+	Usage *string `json:"Usage,omitempty" xml:"Usage,omitempty"`
+	// The unit of usage.
+	//
+	// example:
+	//
+	// GB
+	UsageUnit *string `json:"UsageUnit,omitempty" xml:"UsageUnit,omitempty"`
+}
+
+func (s ListServiceInstanceBillResponseBodyItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceBillResponseBodyItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetBillingCycle(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.BillingCycle = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetBillingDate(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.BillingDate = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetBillingItem(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.BillingItem = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetBillingItemCode(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.BillingItemCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetCurrency(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.Currency = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetDeductedByResourcePackage(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.DeductedByResourcePackage = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetInstanceID(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.InstanceID = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetInvoiceDiscount(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.InvoiceDiscount = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetListPrice(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ListPrice = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetListPriceUnit(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ListPriceUnit = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetPretaxAmount(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.PretaxAmount = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetPretaxGrossAmount(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.PretaxGrossAmount = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetProductCode(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetProductDetail(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ProductDetail = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetProductName(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetServiceInstanceId(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.ServiceInstanceId = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetSplitBillingCycle(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.SplitBillingCycle = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetSubscriptionType(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.SubscriptionType = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetUsage(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.Usage = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponseBodyItem) SetUsageUnit(v string) *ListServiceInstanceBillResponseBodyItem {
+	s.UsageUnit = &v
+	return s
+}
+
+type ListServiceInstanceBillResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListServiceInstanceBillResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListServiceInstanceBillResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListServiceInstanceBillResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListServiceInstanceBillResponse) SetHeaders(v map[string]*string) *ListServiceInstanceBillResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponse) SetStatusCode(v int32) *ListServiceInstanceBillResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListServiceInstanceBillResponse) SetBody(v *ListServiceInstanceBillResponseBody) *ListServiceInstanceBillResponse {
 	s.Body = v
 	return s
 }
@@ -20318,7 +20786,8 @@ type UpdateServiceRequest struct {
 	// example:
 	//
 	// Manual
-	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ApprovalType    *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -20512,6 +20981,11 @@ func (s *UpdateServiceRequest) SetAlarmMetadata(v string) *UpdateServiceRequest 
 
 func (s *UpdateServiceRequest) SetApprovalType(v string) *UpdateServiceRequest {
 	s.ApprovalType = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetBuildParameters(v string) *UpdateServiceRequest {
+	s.BuildParameters = &v
 	return s
 }
 
@@ -21092,7 +21566,8 @@ type UpdateServiceShrinkRequest struct {
 	// example:
 	//
 	// Manual
-	ApprovalType *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	ApprovalType    *string `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	BuildParameters *string `json:"BuildParameters,omitempty" xml:"BuildParameters,omitempty"`
 	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
@@ -21286,6 +21761,11 @@ func (s *UpdateServiceShrinkRequest) SetAlarmMetadata(v string) *UpdateServiceSh
 
 func (s *UpdateServiceShrinkRequest) SetApprovalType(v string) *UpdateServiceShrinkRequest {
 	s.ApprovalType = &v
+	return s
+}
+
+func (s *UpdateServiceShrinkRequest) SetBuildParameters(v string) *UpdateServiceShrinkRequest {
+	s.BuildParameters = &v
 	return s
 }
 
@@ -22479,7 +22959,8 @@ type UpdateSupplierInformationRequest struct {
 	// example:
 	//
 	// http://www.xxx.xxx.cn
-	SupplierUrl     *string                                            `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	SupplierUrl *string `json:"SupplierUrl,omitempty" xml:"SupplierUrl,omitempty"`
+	// Contact information of the service provider
 	SupportContacts []*UpdateSupplierInformationRequestSupportContacts `json:"SupportContacts,omitempty" xml:"SupportContacts,omitempty" type:"Repeated"`
 }
 
@@ -22591,7 +23072,17 @@ func (s *UpdateSupplierInformationRequestDeliverySettings) SetOssPath(v string) 
 }
 
 type UpdateSupplierInformationRequestSupportContacts struct {
-	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The type of  contact information
+	//
+	// example:
+	//
+	// Email
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The value of contact information
+	//
+	// example:
+	//
+	// supplier@example.com
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -25996,6 +26487,94 @@ func (client *Client) ListResellers(request *ListResellersRequest) (_result *Lis
 
 // Summary:
 //
+// 展示服务实例账单
+//
+// @param request - ListServiceInstanceBillRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListServiceInstanceBillResponse
+func (client *Client) ListServiceInstanceBillWithOptions(request *ListServiceInstanceBillRequest, runtime *util.RuntimeOptions) (_result *ListServiceInstanceBillResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingDate)) {
+		query["BillingDate"] = request.BillingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceInstanceId)) {
+		query["ServiceInstanceId"] = request.ServiceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceVersion)) {
+		query["ServiceVersion"] = request.ServiceVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListServiceInstanceBill"),
+		Version:     tea.String("2021-05-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListServiceInstanceBillResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 展示服务实例账单
+//
+// @param request - ListServiceInstanceBillRequest
+//
+// @return ListServiceInstanceBillResponse
+func (client *Client) ListServiceInstanceBill(request *ListServiceInstanceBillRequest) (_result *ListServiceInstanceBillResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListServiceInstanceBillResponse{}
+	_body, _err := client.ListServiceInstanceBillWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询服务实例部署详情
 //
 // @param request - ListServiceInstanceDeployDetailsRequest
@@ -28263,6 +28842,10 @@ func (client *Client) UpdateServiceWithOptions(tmpReq *UpdateServiceRequest, run
 
 	if !tea.BoolValue(util.IsUnset(request.ApprovalType)) {
 		query["ApprovalType"] = request.ApprovalType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildParameters)) {
+		query["BuildParameters"] = request.BuildParameters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
