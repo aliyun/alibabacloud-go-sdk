@@ -4370,6 +4370,7 @@ type GetLoginTokenResponseBody struct {
 	//
 	// MFAVerify
 	NextStage *string `json:"NextStage,omitempty" xml:"NextStage,omitempty"`
+	NickName  *string `json:"NickName,omitempty" xml:"NickName,omitempty"`
 	// > This is a parameter only for internal use.
 	PasswordStrategy *GetLoginTokenResponseBodyPasswordStrategy `json:"PasswordStrategy,omitempty" xml:"PasswordStrategy,omitempty" type:"Struct"`
 	// Enter the mobile number of the convenience user. For an AD user, null is returned.
@@ -4472,6 +4473,11 @@ func (s *GetLoginTokenResponseBody) SetLoginToken(v string) *GetLoginTokenRespon
 
 func (s *GetLoginTokenResponseBody) SetNextStage(v string) *GetLoginTokenResponseBody {
 	s.NextStage = &v
+	return s
+}
+
+func (s *GetLoginTokenResponseBody) SetNickName(v string) *GetLoginTokenResponseBody {
+	s.NickName = &v
 	return s
 }
 
