@@ -10235,6 +10235,7 @@ func (s *GetPropertiesResponseBodyDataConsoleConfig) SetTitle(v string) *GetProp
 }
 
 type GetPropertiesResponseBodyDataIntelligentSearchConfig struct {
+	CopilotPreciseSearchSources []*GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources `json:"CopilotPreciseSearchSources,omitempty" xml:"CopilotPreciseSearchSources,omitempty" type:"Repeated"`
 	// example:
 	//
 	// xxx
@@ -10251,6 +10252,11 @@ func (s GetPropertiesResponseBodyDataIntelligentSearchConfig) GoString() string 
 	return s.String()
 }
 
+func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) SetCopilotPreciseSearchSources(v []*GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) *GetPropertiesResponseBodyDataIntelligentSearchConfig {
+	s.CopilotPreciseSearchSources = v
+	return s
+}
+
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) SetProductDescription(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfig {
 	s.ProductDescription = &v
 	return s
@@ -10263,6 +10269,44 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) SetSearchSamples(
 
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfig) SetSearchSources(v []*GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) *GetPropertiesResponseBodyDataIntelligentSearchConfig {
 	s.SearchSources = v
+	return s
+}
+
+type GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources struct {
+	// example:
+	//
+	// x
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// x
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	// example:
+	//
+	// x
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) GoString() string {
+	return s.String()
+}
+
+func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) SetCode(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) SetDatasetName(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources) SetName(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources {
+	s.Name = &v
 	return s
 }
 
