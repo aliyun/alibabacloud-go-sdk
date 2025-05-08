@@ -40408,6 +40408,7 @@ type ScaleWithAdjustmentRequest struct {
 	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
 	Overrides            *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
 	OwnerId              *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParallelTask         *bool                                `json:"ParallelTask,omitempty" xml:"ParallelTask,omitempty"`
 	ResourceOwnerAccount *string                              `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	//
@@ -40478,6 +40479,11 @@ func (s *ScaleWithAdjustmentRequest) SetOverrides(v *ScaleWithAdjustmentRequestO
 
 func (s *ScaleWithAdjustmentRequest) SetOwnerId(v int64) *ScaleWithAdjustmentRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentRequest) SetParallelTask(v bool) *ScaleWithAdjustmentRequest {
+	s.ParallelTask = &v
 	return s
 }
 
@@ -40719,6 +40725,7 @@ type ScaleWithAdjustmentShrinkRequest struct {
 	// The overrides that allow you to adjust the scaling group of the Elastic Container Instance type during a scale-out event.
 	OverridesShrink      *string `json:"Overrides,omitempty" xml:"Overrides,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ParallelTask         *bool   `json:"ParallelTask,omitempty" xml:"ParallelTask,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
 	//
@@ -40789,6 +40796,11 @@ func (s *ScaleWithAdjustmentShrinkRequest) SetOverridesShrink(v string) *ScaleWi
 
 func (s *ScaleWithAdjustmentShrinkRequest) SetOwnerId(v int64) *ScaleWithAdjustmentShrinkRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *ScaleWithAdjustmentShrinkRequest) SetParallelTask(v bool) *ScaleWithAdjustmentShrinkRequest {
+	s.ParallelTask = &v
 	return s
 }
 
@@ -52008,6 +52020,10 @@ func (client *Client) ScaleWithAdjustmentWithOptions(tmpReq *ScaleWithAdjustment
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParallelTask)) {
+		query["ParallelTask"] = request.ParallelTask
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
