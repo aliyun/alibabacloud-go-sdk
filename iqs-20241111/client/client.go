@@ -415,6 +415,41 @@ func (s *QueryContextRewrite) SetTimeRange(v string) *QueryContextRewrite {
 	return s
 }
 
+type RequestContents struct {
+	MainText     *bool `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText *bool `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
+	RerankScore  *bool `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	Summary      *bool `json:"summary,omitempty" xml:"summary,omitempty"`
+}
+
+func (s RequestContents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RequestContents) GoString() string {
+	return s.String()
+}
+
+func (s *RequestContents) SetMainText(v bool) *RequestContents {
+	s.MainText = &v
+	return s
+}
+
+func (s *RequestContents) SetMarkdownText(v bool) *RequestContents {
+	s.MarkdownText = &v
+	return s
+}
+
+func (s *RequestContents) SetRerankScore(v bool) *RequestContents {
+	s.RerankScore = &v
+	return s
+}
+
+func (s *RequestContents) SetSummary(v bool) *RequestContents {
+	s.Summary = &v
+	return s
+}
+
 type SceneItem struct {
 	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
 	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
@@ -621,6 +656,23 @@ func (s *ScorePageItem) SetTitle(v string) *ScorePageItem {
 	return s
 }
 
+type SearchCredits struct {
+	GenericTextSearch *int32 `json:"genericTextSearch,omitempty" xml:"genericTextSearch,omitempty"`
+}
+
+func (s SearchCredits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchCredits) GoString() string {
+	return s.String()
+}
+
+func (s *SearchCredits) SetGenericTextSearch(v int32) *SearchCredits {
+	s.GenericTextSearch = &v
+	return s
+}
+
 type SearchInformation struct {
 	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
 	Total      *int64 `json:"total,omitempty" xml:"total,omitempty"`
@@ -641,6 +693,335 @@ func (s *SearchInformation) SetSearchTime(v int64) *SearchInformation {
 
 func (s *SearchInformation) SetTotal(v int64) *SearchInformation {
 	s.Total = &v
+	return s
+}
+
+type UnifiedCostCredits struct {
+	Search     *SearchCredits     `json:"search,omitempty" xml:"search,omitempty"`
+	ValueAdded *ValueAddedCredits `json:"valueAdded,omitempty" xml:"valueAdded,omitempty"`
+}
+
+func (s UnifiedCostCredits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedCostCredits) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedCostCredits) SetSearch(v *SearchCredits) *UnifiedCostCredits {
+	s.Search = v
+	return s
+}
+
+func (s *UnifiedCostCredits) SetValueAdded(v *ValueAddedCredits) *UnifiedCostCredits {
+	s.ValueAdded = v
+	return s
+}
+
+type UnifiedOriginalQuery struct {
+	Query     *string `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s UnifiedOriginalQuery) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedOriginalQuery) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedOriginalQuery) SetQuery(v string) *UnifiedOriginalQuery {
+	s.Query = &v
+	return s
+}
+
+func (s *UnifiedOriginalQuery) SetTimeRange(v string) *UnifiedOriginalQuery {
+	s.TimeRange = &v
+	return s
+}
+
+type UnifiedPageItem struct {
+	HostLogo      *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
+	Hostname      *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Images        []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Link          *string   `json:"link,omitempty" xml:"link,omitempty"`
+	MainText      *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText  *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
+	PublishedTime *string   `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
+	RerankScore   *float64  `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	// example:
+	//
+	// 2025-04-07T10:15:30.123+08:00
+	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
+	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+}
+
+func (s UnifiedPageItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedPageItem) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedPageItem) SetHostLogo(v string) *UnifiedPageItem {
+	s.HostLogo = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetHostname(v string) *UnifiedPageItem {
+	s.Hostname = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetImages(v []*string) *UnifiedPageItem {
+	s.Images = v
+	return s
+}
+
+func (s *UnifiedPageItem) SetLink(v string) *UnifiedPageItem {
+	s.Link = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetMainText(v string) *UnifiedPageItem {
+	s.MainText = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetMarkdownText(v string) *UnifiedPageItem {
+	s.MarkdownText = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetPublishedTime(v string) *UnifiedPageItem {
+	s.PublishedTime = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetRerankScore(v float64) *UnifiedPageItem {
+	s.RerankScore = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetSnippet(v string) *UnifiedPageItem {
+	s.Snippet = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetSummary(v string) *UnifiedPageItem {
+	s.Summary = &v
+	return s
+}
+
+func (s *UnifiedPageItem) SetTitle(v string) *UnifiedPageItem {
+	s.Title = &v
+	return s
+}
+
+type UnifiedQueryContext struct {
+	EngineType    *string               `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	OriginalQuery *UnifiedOriginalQuery `json:"originalQuery,omitempty" xml:"originalQuery,omitempty"`
+	Rewrite       *UnifiedRewrite       `json:"rewrite,omitempty" xml:"rewrite,omitempty"`
+}
+
+func (s UnifiedQueryContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedQueryContext) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedQueryContext) SetEngineType(v string) *UnifiedQueryContext {
+	s.EngineType = &v
+	return s
+}
+
+func (s *UnifiedQueryContext) SetOriginalQuery(v *UnifiedOriginalQuery) *UnifiedQueryContext {
+	s.OriginalQuery = v
+	return s
+}
+
+func (s *UnifiedQueryContext) SetRewrite(v *UnifiedRewrite) *UnifiedQueryContext {
+	s.Rewrite = v
+	return s
+}
+
+type UnifiedRewrite struct {
+	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	TimeRange *string `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s UnifiedRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedRewrite) SetEnabled(v bool) *UnifiedRewrite {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UnifiedRewrite) SetTimeRange(v string) *UnifiedRewrite {
+	s.TimeRange = &v
+	return s
+}
+
+type UnifiedSceneItem struct {
+	Detail *string `json:"detail,omitempty" xml:"detail,omitempty"`
+	Type   *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UnifiedSceneItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSceneItem) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSceneItem) SetDetail(v string) *UnifiedSceneItem {
+	s.Detail = &v
+	return s
+}
+
+func (s *UnifiedSceneItem) SetType(v string) *UnifiedSceneItem {
+	s.Type = &v
+	return s
+}
+
+type UnifiedSearchInformation struct {
+	SearchTime *int64 `json:"searchTime,omitempty" xml:"searchTime,omitempty"`
+}
+
+func (s UnifiedSearchInformation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSearchInformation) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSearchInformation) SetSearchTime(v int64) *UnifiedSearchInformation {
+	s.SearchTime = &v
+	return s
+}
+
+type UnifiedSearchRequest struct {
+	Category   *string          `json:"category,omitempty" xml:"category,omitempty"`
+	Contents   *RequestContents `json:"contents,omitempty" xml:"contents,omitempty"`
+	EngineType *string          `json:"engineType,omitempty" xml:"engineType,omitempty"`
+	Query      *string          `json:"query,omitempty" xml:"query,omitempty"`
+	TimeRange  *string          `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
+}
+
+func (s UnifiedSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSearchRequest) SetCategory(v string) *UnifiedSearchRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *UnifiedSearchRequest) SetContents(v *RequestContents) *UnifiedSearchRequest {
+	s.Contents = v
+	return s
+}
+
+func (s *UnifiedSearchRequest) SetEngineType(v string) *UnifiedSearchRequest {
+	s.EngineType = &v
+	return s
+}
+
+func (s *UnifiedSearchRequest) SetQuery(v string) *UnifiedSearchRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *UnifiedSearchRequest) SetTimeRange(v string) *UnifiedSearchRequest {
+	s.TimeRange = &v
+	return s
+}
+
+type UnifiedSearchResponse struct {
+	CostCredits       *UnifiedCostCredits       `json:"costCredits,omitempty" xml:"costCredits,omitempty"`
+	PageItems         []*UnifiedPageItem        `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
+	QueryContext      *UnifiedQueryContext      `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
+	RequestId         *string                   `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	SceneItems        []*UnifiedSceneItem       `json:"sceneItems,omitempty" xml:"sceneItems,omitempty" type:"Repeated"`
+	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
+}
+
+func (s UnifiedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSearchResponse) SetCostCredits(v *UnifiedCostCredits) *UnifiedSearchResponse {
+	s.CostCredits = v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetPageItems(v []*UnifiedPageItem) *UnifiedSearchResponse {
+	s.PageItems = v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetQueryContext(v *UnifiedQueryContext) *UnifiedSearchResponse {
+	s.QueryContext = v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetRequestId(v string) *UnifiedSearchResponse {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetSceneItems(v []*UnifiedSceneItem) *UnifiedSearchResponse {
+	s.SceneItems = v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetSearchInformation(v *UnifiedSearchInformation) *UnifiedSearchResponse {
+	s.SearchInformation = v
+	return s
+}
+
+type ValueAddedCredits struct {
+	Advanced *int32 `json:"advanced,omitempty" xml:"advanced,omitempty"`
+	Summary  *int32 `json:"summary,omitempty" xml:"summary,omitempty"`
+}
+
+func (s ValueAddedCredits) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValueAddedCredits) GoString() string {
+	return s.String()
+}
+
+func (s *ValueAddedCredits) SetAdvanced(v int32) *ValueAddedCredits {
+	s.Advanced = &v
+	return s
+}
+
+func (s *ValueAddedCredits) SetSummary(v int32) *ValueAddedCredits {
+	s.Summary = &v
 	return s
 }
 
@@ -1313,24 +1694,13 @@ func (client *Client) AiSearchWithOptions(request *AiSearchRequest, headers map[
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AiSearchResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AiSearchResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AiSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1400,24 +1770,13 @@ func (client *Client) GenericAdvancedSearchWithOptions(request *GenericAdvancedS
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenericAdvancedSearchResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenericAdvancedSearchResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenericAdvancedSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1507,24 +1866,13 @@ func (client *Client) GenericSearchWithOptions(request *GenericSearchRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenericSearchResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenericSearchResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenericSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1594,24 +1942,13 @@ func (client *Client) GlobalSearchWithOptions(request *GlobalSearchRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GlobalSearchResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GlobalSearchResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GlobalSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
