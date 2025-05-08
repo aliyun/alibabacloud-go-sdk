@@ -1083,6 +1083,81 @@ func (s *GetDetectLanguageResponse) SetBody(v *GetDetectLanguageResponseBody) *G
 	return s
 }
 
+type GetDetectLanguageVpcRequest struct {
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+}
+
+func (s GetDetectLanguageVpcRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectLanguageVpcRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectLanguageVpcRequest) SetSourceText(v string) *GetDetectLanguageVpcRequest {
+	s.SourceText = &v
+	return s
+}
+
+type GetDetectLanguageVpcResponseBody struct {
+	DetectedLanguage      *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
+	LanguageProbabilities *string `json:"LanguageProbabilities,omitempty" xml:"LanguageProbabilities,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDetectLanguageVpcResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectLanguageVpcResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectLanguageVpcResponseBody) SetDetectedLanguage(v string) *GetDetectLanguageVpcResponseBody {
+	s.DetectedLanguage = &v
+	return s
+}
+
+func (s *GetDetectLanguageVpcResponseBody) SetLanguageProbabilities(v string) *GetDetectLanguageVpcResponseBody {
+	s.LanguageProbabilities = &v
+	return s
+}
+
+func (s *GetDetectLanguageVpcResponseBody) SetRequestId(v string) *GetDetectLanguageVpcResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDetectLanguageVpcResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDetectLanguageVpcResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDetectLanguageVpcResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDetectLanguageVpcResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDetectLanguageVpcResponse) SetHeaders(v map[string]*string) *GetDetectLanguageVpcResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDetectLanguageVpcResponse) SetStatusCode(v int32) *GetDetectLanguageVpcResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDetectLanguageVpcResponse) SetBody(v *GetDetectLanguageVpcResponseBody) *GetDetectLanguageVpcResponse {
+	s.Body = v
+	return s
+}
+
 type GetDocTranslateTaskRequest struct {
 	// This parameter is required.
 	//
@@ -3875,6 +3950,159 @@ func (s *TranslateImageBatchResponse) SetBody(v *TranslateImageBatchResponseBody
 	return s
 }
 
+type TranslateSearchRequest struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// text
+	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// query
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	//
+	// example:
+	//
+	// zh
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 今天天气不错
+	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// en
+	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
+}
+
+func (s TranslateSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateSearchRequest) SetFormatType(v string) *TranslateSearchRequest {
+	s.FormatType = &v
+	return s
+}
+
+func (s *TranslateSearchRequest) SetScene(v string) *TranslateSearchRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *TranslateSearchRequest) SetSourceLanguage(v string) *TranslateSearchRequest {
+	s.SourceLanguage = &v
+	return s
+}
+
+func (s *TranslateSearchRequest) SetSourceText(v string) *TranslateSearchRequest {
+	s.SourceText = &v
+	return s
+}
+
+func (s *TranslateSearchRequest) SetTargetLanguage(v string) *TranslateSearchRequest {
+	s.TargetLanguage = &v
+	return s
+}
+
+type TranslateSearchResponseBody struct {
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *TranslateSearchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TranslateSearchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateSearchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateSearchResponseBody) SetCode(v string) *TranslateSearchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TranslateSearchResponseBody) SetData(v *TranslateSearchResponseBodyData) *TranslateSearchResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TranslateSearchResponseBody) SetMessage(v string) *TranslateSearchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TranslateSearchResponseBody) SetRequestId(v string) *TranslateSearchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TranslateSearchResponseBodyData struct {
+	Translated *string `json:"Translated,omitempty" xml:"Translated,omitempty"`
+}
+
+func (s TranslateSearchResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateSearchResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateSearchResponseBodyData) SetTranslated(v string) *TranslateSearchResponseBodyData {
+	s.Translated = &v
+	return s
+}
+
+type TranslateSearchResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TranslateSearchResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TranslateSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TranslateSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TranslateSearchResponse) SetHeaders(v map[string]*string) *TranslateSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TranslateSearchResponse) SetStatusCode(v int32) *TranslateSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TranslateSearchResponse) SetBody(v *TranslateSearchResponseBody) *TranslateSearchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4444,7 +4672,7 @@ func (client *Client) GetBatchTranslate(request *GetBatchTranslateRequest) (_res
 
 // Summary:
 //
-// GetBatchTranslateByVPC
+// # GetBatchTranslateByVPC
 //
 // @param request - GetBatchTranslateByVPCRequest
 //
@@ -4506,7 +4734,7 @@ func (client *Client) GetBatchTranslateByVPCWithOptions(request *GetBatchTransla
 
 // Summary:
 //
-// GetBatchTranslateByVPC
+// # GetBatchTranslateByVPC
 //
 // @param request - GetBatchTranslateByVPCRequest
 //
@@ -4582,6 +4810,70 @@ func (client *Client) GetDetectLanguage(request *GetDetectLanguageRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// 语种识别
+//
+// @param request - GetDetectLanguageVpcRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDetectLanguageVpcResponse
+func (client *Client) GetDetectLanguageVpcWithOptions(request *GetDetectLanguageVpcRequest, runtime *util.RuntimeOptions) (_result *GetDetectLanguageVpcResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDetectLanguageVpc"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDetectLanguageVpcResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 语种识别
+//
+// @param request - GetDetectLanguageVpcRequest
+//
+// @return GetDetectLanguageVpcResponse
+func (client *Client) GetDetectLanguageVpc(request *GetDetectLanguageVpcRequest) (_result *GetDetectLanguageVpcResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDetectLanguageVpcResponse{}
+	_body, _err := client.GetDetectLanguageVpcWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文档翻译任务
+//
 // @param request - GetDocTranslateTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4616,6 +4908,10 @@ func (client *Client) GetDocTranslateTaskWithOptions(request *GetDocTranslateTas
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取文档翻译任务
+//
 // @param request - GetDocTranslateTaskRequest
 //
 // @return GetDocTranslateTaskResponse
@@ -4802,6 +5098,10 @@ func (client *Client) GetImageTranslateTask(request *GetImageTranslateTaskReques
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleDiagnose
+//
 // @param request - GetTitleDiagnoseRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4856,6 +5156,10 @@ func (client *Client) GetTitleDiagnoseWithOptions(request *GetTitleDiagnoseReque
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleDiagnose
+//
 // @param request - GetTitleDiagnoseRequest
 //
 // @return GetTitleDiagnoseResponse
@@ -4870,6 +5174,10 @@ func (client *Client) GetTitleDiagnose(request *GetTitleDiagnoseRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleGenerate
+//
 // @param request - GetTitleGenerateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4932,6 +5240,10 @@ func (client *Client) GetTitleGenerateWithOptions(request *GetTitleGenerateReque
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleGenerate
+//
 // @param request - GetTitleGenerateRequest
 //
 // @return GetTitleGenerateResponse
@@ -4946,6 +5258,10 @@ func (client *Client) GetTitleGenerate(request *GetTitleGenerateRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleIntelligence
+//
 // @param request - GetTitleIntelligenceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5000,6 +5316,10 @@ func (client *Client) GetTitleIntelligenceWithOptions(request *GetTitleIntellige
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTitleIntelligence
+//
 // @param request - GetTitleIntelligenceRequest
 //
 // @return GetTitleIntelligenceResponse
@@ -5074,6 +5394,10 @@ func (client *Client) GetTranslateImageBatchResult(request *GetTranslateImageBat
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTranslateReport
+//
 // @param request - GetTranslateReportRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5124,6 +5448,10 @@ func (client *Client) GetTranslateReportWithOptions(request *GetTranslateReportR
 	return _result, _err
 }
 
+// Summary:
+//
+// # GetTranslateReport
+//
 // @param request - GetTranslateReportRequest
 //
 // @return GetTranslateReportResponse
@@ -5202,6 +5530,10 @@ func (client *Client) OpenAlimtService(request *OpenAlimtServiceRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 专业文本翻译
+//
 // @param request - TranslateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5262,6 +5594,10 @@ func (client *Client) TranslateWithOptions(request *TranslateRequest, runtime *u
 	return _result, _err
 }
 
+// Summary:
+//
+// 专业文本翻译
+//
 // @param request - TranslateRequest
 //
 // @return TranslateResponse
@@ -5276,6 +5612,10 @@ func (client *Client) Translate(request *TranslateRequest) (_result *TranslateRe
 	return _result, _err
 }
 
+// Summary:
+//
+// # TranslateCertificate
+//
 // @param request - TranslateCertificateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5330,6 +5670,10 @@ func (client *Client) TranslateCertificateWithOptions(request *TranslateCertific
 	return _result, _err
 }
 
+// Summary:
+//
+// # TranslateCertificate
+//
 // @param request - TranslateCertificateRequest
 //
 // @return TranslateCertificateResponse
@@ -5457,6 +5801,10 @@ func (client *Client) TranslateCertificateAdvance(request *TranslateCertificateA
 
 // Deprecated: OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
 //
+// Summary:
+//
+// # TranslateECommerce
+//
 // @param request - TranslateECommerceRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5520,6 +5868,10 @@ func (client *Client) TranslateECommerceWithOptions(request *TranslateECommerceR
 
 // Deprecated: OpenAPI TranslateECommerce is deprecated, please use alimt::2018-10-12::Translate instead.
 //
+// Summary:
+//
+// # TranslateECommerce
+//
 // @param request - TranslateECommerceRequest
 //
 // @return TranslateECommerceResponse
@@ -5535,6 +5887,10 @@ func (client *Client) TranslateECommerce(request *TranslateECommerceRequest) (_r
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本通用翻译
+//
 // @param request - TranslateGeneralRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5595,6 +5951,10 @@ func (client *Client) TranslateGeneralWithOptions(request *TranslateGeneralReque
 	return _result, _err
 }
 
+// Summary:
+//
+// 文本通用翻译
+//
 // @param request - TranslateGeneralRequest
 //
 // @return TranslateGeneralResponse
@@ -5611,7 +5971,7 @@ func (client *Client) TranslateGeneral(request *TranslateGeneralRequest) (_resul
 
 // Summary:
 //
-// TranslateGeneralVpc
+// # TranslateGeneralVpc
 //
 // @param request - TranslateGeneralVpcRequest
 //
@@ -5675,7 +6035,7 @@ func (client *Client) TranslateGeneralVpcWithOptions(request *TranslateGeneralVp
 
 // Summary:
 //
-// TranslateGeneralVpc
+// # TranslateGeneralVpc
 //
 // @param request - TranslateGeneralVpcRequest
 //
@@ -5844,6 +6204,82 @@ func (client *Client) TranslateImageBatch(request *TranslateImageBatchRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &TranslateImageBatchResponse{}
 	_body, _err := client.TranslateImageBatchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索翻译
+//
+// @param request - TranslateSearchRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TranslateSearchResponse
+func (client *Client) TranslateSearchWithOptions(request *TranslateSearchRequest, runtime *util.RuntimeOptions) (_result *TranslateSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FormatType)) {
+		body["FormatType"] = request.FormatType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLanguage)) {
+		body["SourceLanguage"] = request.SourceLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceText)) {
+		body["SourceText"] = request.SourceText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetLanguage)) {
+		body["TargetLanguage"] = request.TargetLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TranslateSearch"),
+		Version:     tea.String("2018-10-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TranslateSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 搜索翻译
+//
+// @param request - TranslateSearchRequest
+//
+// @return TranslateSearchResponse
+func (client *Client) TranslateSearch(request *TranslateSearchRequest) (_result *TranslateSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TranslateSearchResponse{}
+	_body, _err := client.TranslateSearchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
