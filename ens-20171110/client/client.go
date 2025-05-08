@@ -3189,7 +3189,8 @@ type CreateARMServerInstancesRequest struct {
 	// example:
 	//
 	// cas.cf53r
-	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	ServerType *string                               `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+	Tag        []*CreateARMServerInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateARMServerInstancesRequest) String() string {
@@ -3282,6 +3283,34 @@ func (s *CreateARMServerInstancesRequest) SetServerName(v string) *CreateARMServ
 
 func (s *CreateARMServerInstancesRequest) SetServerType(v string) *CreateARMServerInstancesRequest {
 	s.ServerType = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetTag(v []*CreateARMServerInstancesRequestTag) *CreateARMServerInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateARMServerInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateARMServerInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateARMServerInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateARMServerInstancesRequestTag) SetKey(v string) *CreateARMServerInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequestTag) SetValue(v string) *CreateARMServerInstancesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -3723,7 +3752,8 @@ type CreateDiskRequest struct {
 	// example:
 	//
 	// cn-chengdu-telecom
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The billing method of the instance. Set the value to **PostPaid**.
 	//
 	// This parameter is required.
@@ -3787,6 +3817,11 @@ func (s *CreateDiskRequest) SetEncrypted(v bool) *CreateDiskRequest {
 
 func (s *CreateDiskRequest) SetEnsRegionId(v string) *CreateDiskRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetInstanceBillingCycle(v string) *CreateDiskRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -4165,11 +4200,11 @@ type CreateEnsRouteEntryRequest struct {
 	//
 	// example
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The destination CIDR block of the custom route entry. Make sure that the destination CIDR block meets the following requirements:
+	// The destination CIDR block of the custom route entry. Make sure that the following requirements are met:
 	//
-	// 	- The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
+	// 	- The destination CIDR block cannot point or belong to 100.64.0.0/10.
 	//
-	// 	- The destination CIDR block of the custom route entry is different from the destination CIDR blocks of other route entries in the same route table.
+	// 	- The destination CIDR blocks of the custom route entries in the same route table cannot overlap.
 	//
 	// 	- 0.0.0.0/0 indicates the default CIDR block.
 	//
@@ -9082,7 +9117,8 @@ type CreateSnapshotRequest struct {
 	// example:
 	//
 	// cn-shenzhen-3
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceBillingCycle *string `json:"InstanceBillingCycle,omitempty" xml:"InstanceBillingCycle,omitempty"`
 	// The name of the snapshot. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
 	//
 	// example:
@@ -9111,6 +9147,11 @@ func (s *CreateSnapshotRequest) SetDiskId(v string) *CreateSnapshotRequest {
 
 func (s *CreateSnapshotRequest) SetEnsRegionId(v string) *CreateSnapshotRequest {
 	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateSnapshotRequest) SetInstanceBillingCycle(v string) *CreateSnapshotRequest {
+	s.InstanceBillingCycle = &v
 	return s
 }
 
@@ -14059,7 +14100,8 @@ type DescribeARMServerInstancesResponseBodyServers struct {
 	// example:
 	//
 	// running
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*DescribeARMServerInstancesResponseBodyServersTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s DescribeARMServerInstancesResponseBodyServers) String() string {
@@ -14127,6 +14169,11 @@ func (s *DescribeARMServerInstancesResponseBodyServers) SetState(v string) *Desc
 
 func (s *DescribeARMServerInstancesResponseBodyServers) SetStatus(v string) *DescribeARMServerInstancesResponseBodyServers {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServers) SetTags(v []*DescribeARMServerInstancesResponseBodyServersTags) *DescribeARMServerInstancesResponseBodyServers {
+	s.Tags = v
 	return s
 }
 
@@ -14352,6 +14399,29 @@ func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo)
 
 func (s *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo) SetStatus(v string) *DescribeARMServerInstancesResponseBodyServersAICInstancesSdgDeployInfo {
 	s.Status = &v
+	return s
+}
+
+type DescribeARMServerInstancesResponseBodyServersTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeARMServerInstancesResponseBodyServersTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersTags) SetKey(v string) *DescribeARMServerInstancesResponseBodyServersTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeARMServerInstancesResponseBodyServersTags) SetValue(v string) *DescribeARMServerInstancesResponseBodyServersTags {
+	s.Value = &v
 	return s
 }
 
@@ -19601,7 +19671,7 @@ type DescribeEnsEipAddressesRequest struct {
 	//
 	// cn-chengdu-telecom
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	// ENS节点ID数组。数组长度：1~100。
+	// The IDs of edge nodes. You can specify 1 to 100 IDs.
 	EnsRegionIds []*string `json:"EnsRegionIds,omitempty" xml:"EnsRegionIds,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -19686,7 +19756,7 @@ func (s *DescribeEnsEipAddressesRequest) SetStandby(v string) *DescribeEnsEipAdd
 }
 
 type DescribeEnsEipAddressesResponseBody struct {
-	// Details about the EIP.
+	// Details of the EIPs.
 	EipAddresses *DescribeEnsEipAddressesResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
 	// The page number. Valid values: an integer that is greater than 0. Default value: 1.
 	//
@@ -19998,6 +20068,8 @@ func (s *DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTags) SetTag(v
 }
 
 type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
+	// 标签键
+	//
 	// example:
 	//
 	// TestKey
@@ -20014,6 +20086,8 @@ type DescribeEnsEipAddressesResponseBodyEipAddressesEipAddressTagsTag struct {
 	//
 	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// 标签值。
+	//
 	// example:
 	//
 	// TestValue
@@ -26488,6 +26562,11 @@ func (s *DescribeImageSharePermissionResponseBodyAccounts) SetAccount(v []*Descr
 }
 
 type DescribeImageSharePermissionResponseBodyAccountsAccount struct {
+	// The Alibaba Cloud account with which you share the image.
+	//
+	// example:
+	//
+	// 1515285523xxxx
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
 }
 
@@ -37248,6 +37327,8 @@ func (s *DescribeNetworksResponseBodyNetworksNetworkTags) SetTag(v []*DescribeNe
 }
 
 type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
+	// 标签键。
+	//
 	// example:
 	//
 	// TestKey
@@ -37264,6 +37345,8 @@ type DescribeNetworksResponseBodyNetworksNetworkTagsTag struct {
 	//
 	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// 标签值。
+	//
 	// example:
 	//
 	// TestValue
@@ -45982,6 +46065,8 @@ func (s *DescribeVSwitchesResponseBodyVSwitchesVSwitchTags) SetTag(v []*Describe
 }
 
 type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
+	// 标签键。
+	//
 	// example:
 	//
 	// TestKey
@@ -45998,6 +46083,8 @@ type DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag struct {
 	//
 	// TestValue
 	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+	// 标签值。
+	//
 	// example:
 	//
 	// TestValue
@@ -56958,7 +57045,8 @@ type RunInstancesRequest struct {
 	// example:
 	//
 	// ipv4
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IpType           *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ipv6AddressCount *int64  `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The name of the key pair.
 	//
 	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
@@ -57221,6 +57309,11 @@ func (s *RunInstancesRequest) SetInternetMaxBandwidthOut(v int64) *RunInstancesR
 
 func (s *RunInstancesRequest) SetIpType(v string) *RunInstancesRequest {
 	s.IpType = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetIpv6AddressCount(v int64) *RunInstancesRequest {
+	s.Ipv6AddressCount = &v
 	return s
 }
 
@@ -57617,7 +57710,8 @@ type RunInstancesShrinkRequest struct {
 	// example:
 	//
 	// ipv4
-	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	IpType           *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	Ipv6AddressCount *int64  `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// The name of the key pair.
 	//
 	// >  You need to specify at least one of **Password**, **KeyPairName**, and **PasswordInherit**.
@@ -57880,6 +57974,11 @@ func (s *RunInstancesShrinkRequest) SetInternetMaxBandwidthOut(v int64) *RunInst
 
 func (s *RunInstancesShrinkRequest) SetIpType(v string) *RunInstancesShrinkRequest {
 	s.IpType = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetIpv6AddressCount(v int64) *RunInstancesShrinkRequest {
+	s.Ipv6AddressCount = &v
 	return s
 }
 
@@ -63865,6 +63964,10 @@ func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServ
 		query["ServerType"] = request.ServerType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -64147,6 +64250,10 @@ func (client *Client) CreateDiskWithOptions(request *CreateDiskRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceChargeType)) {
@@ -66557,6 +66664,10 @@ func (client *Client) CreateSnapshotWithOptions(request *CreateSnapshotRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceBillingCycle)) {
+		query["InstanceBillingCycle"] = request.InstanceBillingCycle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
@@ -81687,6 +81798,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.IpType)) {
 		query["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6AddressCount)) {
+		query["Ipv6AddressCount"] = request.Ipv6AddressCount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
