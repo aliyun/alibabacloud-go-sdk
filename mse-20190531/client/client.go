@@ -15215,6 +15215,397 @@ func (s *CreatePluginConfigResponse) SetBody(v *CreatePluginConfigResponseBody) 
 	return s
 }
 
+type CreateWebFlowRuleRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// hkhon1****@c3df23522******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0
+	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// example:
+	//
+	// 0
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 200
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// example:
+	//
+	// 1
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
+	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /flow
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 0
+	ResourceMode *int32 `json:"ResourceMode,omitempty" xml:"ResourceMode,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 1000
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s CreateWebFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebFlowRuleRequest) SetAcceptLanguage(v string) *CreateWebFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetAppId(v string) *CreateWebFlowRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetAppName(v string) *CreateWebFlowRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetBurst(v int32) *CreateWebFlowRuleRequest {
+	s.Burst = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetControlBehavior(v int32) *CreateWebFlowRuleRequest {
+	s.ControlBehavior = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetEnable(v bool) *CreateWebFlowRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetMaxQueueingTimeMs(v int32) *CreateWebFlowRuleRequest {
+	s.MaxQueueingTimeMs = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetMetricType(v int32) *CreateWebFlowRuleRequest {
+	s.MetricType = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetNamespace(v string) *CreateWebFlowRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetParamItem(v string) *CreateWebFlowRuleRequest {
+	s.ParamItem = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetRegionId(v string) *CreateWebFlowRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetResource(v string) *CreateWebFlowRuleRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetResourceMode(v int32) *CreateWebFlowRuleRequest {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetResourceType(v int32) *CreateWebFlowRuleRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetStatIntervalMs(v int32) *CreateWebFlowRuleRequest {
+	s.StatIntervalMs = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleRequest) SetThreshold(v float32) *CreateWebFlowRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type CreateWebFlowRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CreateWebFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// A73AC37C-C617-4E3A-8049-372CF49C****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateWebFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebFlowRuleResponseBody) SetCode(v string) *CreateWebFlowRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBody) SetData(v *CreateWebFlowRuleResponseBodyData) *CreateWebFlowRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBody) SetMessage(v string) *CreateWebFlowRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBody) SetRequestId(v string) *CreateWebFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBody) SetSuccess(v bool) *CreateWebFlowRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateWebFlowRuleResponseBodyData struct {
+	// example:
+	//
+	// hkhon1****@c3df23522******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0
+	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// example:
+	//
+	// 0
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 200
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// example:
+	//
+	// 1
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
+	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	ReourceMode *int32 `json:"ReourceMode,omitempty" xml:"ReourceMode,omitempty"`
+	// example:
+	//
+	// /flow
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// 1000
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s CreateWebFlowRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebFlowRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetAppId(v string) *CreateWebFlowRuleResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetAppName(v string) *CreateWebFlowRuleResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetBurst(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.Burst = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetControlBehavior(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.ControlBehavior = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetEnable(v bool) *CreateWebFlowRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetId(v int64) *CreateWebFlowRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetMaxQueueingTimeMs(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.MaxQueueingTimeMs = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetMetricType(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.MetricType = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetNamespace(v string) *CreateWebFlowRuleResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetParamItem(v string) *CreateWebFlowRuleResponseBodyData {
+	s.ParamItem = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetRegionId(v string) *CreateWebFlowRuleResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetReourceMode(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.ReourceMode = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetResource(v string) *CreateWebFlowRuleResponseBodyData {
+	s.Resource = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetStatIntervalMs(v int32) *CreateWebFlowRuleResponseBodyData {
+	s.StatIntervalMs = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponseBodyData) SetThreshold(v float32) *CreateWebFlowRuleResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type CreateWebFlowRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateWebFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateWebFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWebFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWebFlowRuleResponse) SetHeaders(v map[string]*string) *CreateWebFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponse) SetStatusCode(v int32) *CreateWebFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateWebFlowRuleResponse) SetBody(v *CreateWebFlowRuleResponseBody) *CreateWebFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
 type CreateZnodeRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -20854,6 +21245,150 @@ func (s *DeleteSwimmingLaneGroupResponse) SetStatusCode(v int32) *DeleteSwimming
 }
 
 func (s *DeleteSwimmingLaneGroupResponse) SetBody(v *DeleteSwimmingLaneGroupResponseBody) *DeleteSwimmingLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteWebFlowRulesRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// [1, 2, 3]
+	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DeleteWebFlowRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebFlowRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebFlowRulesRequest) SetAcceptLanguage(v string) *DeleteWebFlowRulesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesRequest) SetAppName(v string) *DeleteWebFlowRulesRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesRequest) SetIds(v string) *DeleteWebFlowRulesRequest {
+	s.Ids = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesRequest) SetNamespace(v string) *DeleteWebFlowRulesRequest {
+	s.Namespace = &v
+	return s
+}
+
+type DeleteWebFlowRulesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*int64 `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 354FF159-E9FB-5FBA-BDD5-E99EE440A88D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteWebFlowRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebFlowRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetCode(v int32) *DeleteWebFlowRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetData(v []*int64) *DeleteWebFlowRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetHttpStatusCode(v int32) *DeleteWebFlowRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetMessage(v string) *DeleteWebFlowRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetRequestId(v string) *DeleteWebFlowRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponseBody) SetSuccess(v bool) *DeleteWebFlowRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteWebFlowRulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteWebFlowRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteWebFlowRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWebFlowRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWebFlowRulesResponse) SetHeaders(v map[string]*string) *DeleteWebFlowRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponse) SetStatusCode(v int32) *DeleteWebFlowRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteWebFlowRulesResponse) SetBody(v *DeleteWebFlowRulesResponseBody) *DeleteWebFlowRulesResponse {
 	s.Body = v
 	return s
 }
@@ -35978,6 +36513,7 @@ type ImportServicesRequestServiceList struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	SaeAppId  *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
 	// The port of the service.
 	//
 	// example:
@@ -36022,6 +36558,11 @@ func (s *ImportServicesRequestServiceList) SetName(v string) *ImportServicesRequ
 
 func (s *ImportServicesRequestServiceList) SetNamespace(v string) *ImportServicesRequestServiceList {
 	s.Namespace = &v
+	return s
+}
+
+func (s *ImportServicesRequestServiceList) SetSaeAppId(v string) *ImportServicesRequestServiceList {
+	s.SaeAppId = &v
 	return s
 }
 
@@ -56411,6 +56952,390 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ListWebFlowRulesRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// b22qb1****@2f0586be4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// /flow
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// flow
+	ResourceSearchKey *string `json:"ResourceSearchKey,omitempty" xml:"ResourceSearchKey,omitempty"`
+}
+
+func (s ListWebFlowRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebFlowRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebFlowRulesRequest) SetAcceptLanguage(v string) *ListWebFlowRulesRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetAppId(v string) *ListWebFlowRulesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetAppName(v string) *ListWebFlowRulesRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetNamespace(v string) *ListWebFlowRulesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetPageIndex(v int32) *ListWebFlowRulesRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetPageSize(v int32) *ListWebFlowRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetResource(v string) *ListWebFlowRulesRequest {
+	s.Resource = &v
+	return s
+}
+
+func (s *ListWebFlowRulesRequest) SetResourceSearchKey(v string) *ListWebFlowRulesRequest {
+	s.ResourceSearchKey = &v
+	return s
+}
+
+type ListWebFlowRulesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListWebFlowRulesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4AE73569-304C-5AA9-AE11-C1D99C7D1689
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListWebFlowRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebFlowRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebFlowRulesResponseBody) SetCode(v int32) *ListWebFlowRulesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBody) SetData(v *ListWebFlowRulesResponseBodyData) *ListWebFlowRulesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBody) SetHttpStatusCode(v int32) *ListWebFlowRulesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBody) SetMessage(v string) *ListWebFlowRulesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBody) SetRequestId(v string) *ListWebFlowRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBody) SetSuccess(v bool) *ListWebFlowRulesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListWebFlowRulesResponseBodyData struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   []*ListWebFlowRulesResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 36
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s ListWebFlowRulesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebFlowRulesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebFlowRulesResponseBodyData) SetPageNumber(v int32) *ListWebFlowRulesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyData) SetPageSize(v int32) *ListWebFlowRulesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyData) SetResult(v []*ListWebFlowRulesResponseBodyDataResult) *ListWebFlowRulesResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyData) SetTotalSize(v int32) *ListWebFlowRulesResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListWebFlowRulesResponseBodyDataResult struct {
+	// example:
+	//
+	// hkhon1XXXX@c3df23522bXXXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0
+	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// example:
+	//
+	// 0
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// {\\"appName\\":\\"spring-cloud-a\\",\\"fallbackBehavior\\":{\\"webFallbackMode\\":0,\\"webRespContentType\\":0,\\"webRespMessage\\":\\"Blocked\\",\\"webRespStatusCode\\":429},\\"id\\":977,\\"name\\":\\"Fallback\\",\\"namespace\\":\\"default\\",\\"resourceClassification\\":1}
+	FallbackObject *string `json:"FallbackObject,omitempty" xml:"FallbackObject,omitempty"`
+	// example:
+	//
+	// 200
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// example:
+	//
+	// 1
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
+	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// /flow
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// 0
+	ResourceMode *int32 `json:"ResourceMode,omitempty" xml:"ResourceMode,omitempty"`
+	// example:
+	//
+	// 1
+	ResourceType *int32 `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 1
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 1000
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s ListWebFlowRulesResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebFlowRulesResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetAppId(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetAppName(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetBurst(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.Burst = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetControlBehavior(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.ControlBehavior = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetEnable(v bool) *ListWebFlowRulesResponseBodyDataResult {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetFallbackObject(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.FallbackObject = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetMaxQueueingTimeMs(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.MaxQueueingTimeMs = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetMetricType(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.MetricType = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetNamespace(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetParamItem(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.ParamItem = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetRegionId(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetResource(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.Resource = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetResourceMode(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetResourceType(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetRuleId(v string) *ListWebFlowRulesResponseBodyDataResult {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetStatIntervalMs(v int32) *ListWebFlowRulesResponseBodyDataResult {
+	s.StatIntervalMs = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponseBodyDataResult) SetThreshold(v float32) *ListWebFlowRulesResponseBodyDataResult {
+	s.Threshold = &v
+	return s
+}
+
+type ListWebFlowRulesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWebFlowRulesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWebFlowRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWebFlowRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWebFlowRulesResponse) SetHeaders(v map[string]*string) *ListWebFlowRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWebFlowRulesResponse) SetStatusCode(v int32) *ListWebFlowRulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWebFlowRulesResponse) SetBody(v *ListWebFlowRulesResponseBody) *ListWebFlowRulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListZkTrackRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -58467,6 +59392,7 @@ type PullServicesResponseBodyDataServices struct {
 	//
 	// public
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	SaeAppId  *string `json:"SaeAppId,omitempty" xml:"SaeAppId,omitempty"`
 	// The ID of the service source.
 	//
 	// example:
@@ -58502,6 +59428,11 @@ func (s *PullServicesResponseBodyDataServices) SetName(v string) *PullServicesRe
 
 func (s *PullServicesResponseBodyDataServices) SetNamespace(v string) *PullServicesResponseBodyDataServices {
 	s.Namespace = &v
+	return s
+}
+
+func (s *PullServicesResponseBodyDataServices) SetSaeAppId(v string) *PullServicesResponseBodyDataServices {
+	s.SaeAppId = &v
 	return s
 }
 
@@ -79803,6 +80734,384 @@ func (s *UpdateServiceSourceResponse) SetBody(v *UpdateServiceSourceResponseBody
 	return s
 }
 
+type UpdateWebFlowRuleRequest struct {
+	// example:
+	//
+	// zh
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// example:
+	//
+	// hkhon1****@c3df23522******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0
+	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// example:
+	//
+	// 0
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 200
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// example:
+	//
+	// 1
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// {"fieldName":"key","matchStrategy":2,"parseStrategy":2,"pattern":"value"}
+	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	ResourceMode *int32 `json:"ResourceMode,omitempty" xml:"ResourceMode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// example:
+	//
+	// 1000
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateWebFlowRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebFlowRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebFlowRuleRequest) SetAcceptLanguage(v string) *UpdateWebFlowRuleRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetAppId(v string) *UpdateWebFlowRuleRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetAppName(v string) *UpdateWebFlowRuleRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetBurst(v int32) *UpdateWebFlowRuleRequest {
+	s.Burst = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetControlBehavior(v int32) *UpdateWebFlowRuleRequest {
+	s.ControlBehavior = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetEnable(v bool) *UpdateWebFlowRuleRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetMaxQueueingTimeMs(v int32) *UpdateWebFlowRuleRequest {
+	s.MaxQueueingTimeMs = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetMetricType(v int32) *UpdateWebFlowRuleRequest {
+	s.MetricType = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetNamespace(v string) *UpdateWebFlowRuleRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetParamItem(v string) *UpdateWebFlowRuleRequest {
+	s.ParamItem = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetRegionId(v string) *UpdateWebFlowRuleRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetResourceMode(v int32) *UpdateWebFlowRuleRequest {
+	s.ResourceMode = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetRuleId(v int64) *UpdateWebFlowRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetStatIntervalMs(v int32) *UpdateWebFlowRuleRequest {
+	s.StatIntervalMs = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleRequest) SetThreshold(v float32) *UpdateWebFlowRuleRequest {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateWebFlowRuleResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *UpdateWebFlowRuleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// OK
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 54973C90-F379-4372-9AA5-053A3F7****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateWebFlowRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebFlowRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebFlowRuleResponseBody) SetCode(v string) *UpdateWebFlowRuleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBody) SetData(v *UpdateWebFlowRuleResponseBodyData) *UpdateWebFlowRuleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBody) SetMessage(v string) *UpdateWebFlowRuleResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBody) SetRequestId(v string) *UpdateWebFlowRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBody) SetSuccess(v bool) *UpdateWebFlowRuleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateWebFlowRuleResponseBodyData struct {
+	// example:
+	//
+	// hkhon1XXXX@54e1f42f37cXXXX
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// spring-cloud-a
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 0
+	Burst *int32 `json:"Burst,omitempty" xml:"Burst,omitempty"`
+	// example:
+	//
+	// 0
+	ControlBehavior *int32 `json:"ControlBehavior,omitempty" xml:"ControlBehavior,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 200
+	MaxQueueingTimeMs *int32 `json:"MaxQueueingTimeMs,omitempty" xml:"MaxQueueingTimeMs,omitempty"`
+	// example:
+	//
+	// 1
+	MetricType *int32 `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// default
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// {"fieldName":"testKey","matchStrategy":2,"parseStrategy":2,"pattern":"testValue"}
+	ParamItem *string `json:"ParamItem,omitempty" xml:"ParamItem,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// 0
+	ReourceMode *int32 `json:"ReourceMode,omitempty" xml:"ReourceMode,omitempty"`
+	// example:
+	//
+	// /flow
+	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
+	// example:
+	//
+	// 1000
+	StatIntervalMs *int32 `json:"StatIntervalMs,omitempty" xml:"StatIntervalMs,omitempty"`
+	// example:
+	//
+	// 20
+	Threshold *float32 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s UpdateWebFlowRuleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebFlowRuleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetAppId(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetAppName(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetBurst(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.Burst = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetControlBehavior(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.ControlBehavior = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetEnable(v bool) *UpdateWebFlowRuleResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetId(v int64) *UpdateWebFlowRuleResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetMaxQueueingTimeMs(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.MaxQueueingTimeMs = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetMetricType(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.MetricType = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetNamespace(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetParamItem(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.ParamItem = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetRegionId(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetReourceMode(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.ReourceMode = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetResource(v string) *UpdateWebFlowRuleResponseBodyData {
+	s.Resource = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetStatIntervalMs(v int32) *UpdateWebFlowRuleResponseBodyData {
+	s.StatIntervalMs = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponseBodyData) SetThreshold(v float32) *UpdateWebFlowRuleResponseBodyData {
+	s.Threshold = &v
+	return s
+}
+
+type UpdateWebFlowRuleResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateWebFlowRuleResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateWebFlowRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWebFlowRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWebFlowRuleResponse) SetHeaders(v map[string]*string) *UpdateWebFlowRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponse) SetStatusCode(v int32) *UpdateWebFlowRuleResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateWebFlowRuleResponse) SetBody(v *UpdateWebFlowRuleResponseBody) *UpdateWebFlowRuleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateZnodeRequest struct {
 	// The language of the response. Valid values:
 	//
@@ -84089,6 +85398,126 @@ func (client *Client) CreatePluginConfig(request *CreatePluginConfigRequest) (_r
 
 // Summary:
 //
+// 创建热点参数防护规则（HTTP 请求）
+//
+// @param request - CreateWebFlowRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateWebFlowRuleResponse
+func (client *Client) CreateWebFlowRuleWithOptions(request *CreateWebFlowRuleRequest, runtime *util.RuntimeOptions) (_result *CreateWebFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Burst)) {
+		query["Burst"] = request.Burst
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamItem)) {
+		query["ParamItem"] = request.ParamItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceMode)) {
+		query["ResourceMode"] = request.ResourceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatIntervalMs)) {
+		query["StatIntervalMs"] = request.StatIntervalMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateWebFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateWebFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建热点参数防护规则（HTTP 请求）
+//
+// @param request - CreateWebFlowRuleRequest
+//
+// @return CreateWebFlowRuleResponse
+func (client *Client) CreateWebFlowRule(request *CreateWebFlowRuleRequest) (_result *CreateWebFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateWebFlowRuleResponse{}
+	_body, _err := client.CreateWebFlowRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a znode.
 //
 // @param request - CreateZnodeRequest
@@ -86206,6 +87635,78 @@ func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSwimmingLaneGroupResponse{}
 	_body, _err := client.DeleteSwimmingLaneGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除热点参数防护规则（HTTP 请求）
+//
+// @param request - DeleteWebFlowRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteWebFlowRulesResponse
+func (client *Client) DeleteWebFlowRulesWithOptions(request *DeleteWebFlowRulesRequest, runtime *util.RuntimeOptions) (_result *DeleteWebFlowRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ids)) {
+		query["Ids"] = request.Ids
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWebFlowRules"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWebFlowRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除热点参数防护规则（HTTP 请求）
+//
+// @param request - DeleteWebFlowRulesRequest
+//
+// @return DeleteWebFlowRulesResponse
+func (client *Client) DeleteWebFlowRules(request *DeleteWebFlowRulesRequest) (_result *DeleteWebFlowRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteWebFlowRulesResponse{}
+	_body, _err := client.DeleteWebFlowRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -93199,6 +94700,94 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
+// 查询热点参数防护规则（HTTP 请求）
+//
+// @param request - ListWebFlowRulesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWebFlowRulesResponse
+func (client *Client) ListWebFlowRulesWithOptions(request *ListWebFlowRulesRequest, runtime *util.RuntimeOptions) (_result *ListWebFlowRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resource)) {
+		query["Resource"] = request.Resource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceSearchKey)) {
+		query["ResourceSearchKey"] = request.ResourceSearchKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWebFlowRules"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWebFlowRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询热点参数防护规则（HTTP 请求）
+//
+// @param request - ListWebFlowRulesRequest
+//
+// @return ListWebFlowRulesResponse
+func (client *Client) ListWebFlowRules(request *ListWebFlowRulesRequest) (_result *ListWebFlowRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWebFlowRulesResponse{}
+	_body, _err := client.ListWebFlowRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains the track data of a ZooKeeper instance.
 //
 // @param request - ListZkTrackRequest
@@ -99884,6 +101473,122 @@ func (client *Client) UpdateServiceSource(request *UpdateServiceSourceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateServiceSourceResponse{}
 	_body, _err := client.UpdateServiceSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热点参数防护规则（HTTP 请求）
+//
+// @param request - UpdateWebFlowRuleRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateWebFlowRuleResponse
+func (client *Client) UpdateWebFlowRuleWithOptions(request *UpdateWebFlowRuleRequest, runtime *util.RuntimeOptions) (_result *UpdateWebFlowRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Burst)) {
+		query["Burst"] = request.Burst
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ControlBehavior)) {
+		query["ControlBehavior"] = request.ControlBehavior
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxQueueingTimeMs)) {
+		query["MaxQueueingTimeMs"] = request.MaxQueueingTimeMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetricType)) {
+		query["MetricType"] = request.MetricType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamItem)) {
+		query["ParamItem"] = request.ParamItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceMode)) {
+		query["ResourceMode"] = request.ResourceMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatIntervalMs)) {
+		query["StatIntervalMs"] = request.StatIntervalMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Threshold)) {
+		query["Threshold"] = request.Threshold
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWebFlowRule"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWebFlowRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新热点参数防护规则（HTTP 请求）
+//
+// @param request - UpdateWebFlowRuleRequest
+//
+// @return UpdateWebFlowRuleResponse
+func (client *Client) UpdateWebFlowRule(request *UpdateWebFlowRuleRequest) (_result *UpdateWebFlowRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWebFlowRuleResponse{}
+	_body, _err := client.UpdateWebFlowRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
