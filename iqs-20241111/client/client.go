@@ -743,20 +743,20 @@ func (s *UnifiedOriginalQuery) SetTimeRange(v string) *UnifiedOriginalQuery {
 }
 
 type UnifiedPageItem struct {
-	HostLogo      *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
-	Hostname      *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
-	Images        []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	Link          *string   `json:"link,omitempty" xml:"link,omitempty"`
-	MainText      *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
-	MarkdownText  *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
-	PublishedTime *string   `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
-	RerankScore   *float64  `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	HostLogo     *string   `json:"hostLogo,omitempty" xml:"hostLogo,omitempty"`
+	Hostname     *string   `json:"hostname,omitempty" xml:"hostname,omitempty"`
+	Images       []*string `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
+	Link         *string   `json:"link,omitempty" xml:"link,omitempty"`
+	MainText     *string   `json:"mainText,omitempty" xml:"mainText,omitempty"`
+	MarkdownText *string   `json:"markdownText,omitempty" xml:"markdownText,omitempty"`
 	// example:
 	//
 	// 2025-04-07T10:15:30.123+08:00
-	Snippet *string `json:"snippet,omitempty" xml:"snippet,omitempty"`
-	Summary *string `json:"summary,omitempty" xml:"summary,omitempty"`
-	Title   *string `json:"title,omitempty" xml:"title,omitempty"`
+	PublishedTime *string  `json:"publishedTime,omitempty" xml:"publishedTime,omitempty"`
+	RerankScore   *float64 `json:"rerankScore,omitempty" xml:"rerankScore,omitempty"`
+	Snippet       *string  `json:"snippet,omitempty" xml:"snippet,omitempty"`
+	Summary       *string  `json:"summary,omitempty" xml:"summary,omitempty"`
+	Title         *string  `json:"title,omitempty" xml:"title,omitempty"`
 }
 
 func (s UnifiedPageItem) String() string {
@@ -914,7 +914,7 @@ func (s *UnifiedSearchInformation) SetSearchTime(v int64) *UnifiedSearchInformat
 	return s
 }
 
-type UnifiedSearchRequest struct {
+type UnifiedSearchInput struct {
 	Category   *string          `json:"category,omitempty" xml:"category,omitempty"`
 	Contents   *RequestContents `json:"contents,omitempty" xml:"contents,omitempty"`
 	EngineType *string          `json:"engineType,omitempty" xml:"engineType,omitempty"`
@@ -922,40 +922,40 @@ type UnifiedSearchRequest struct {
 	TimeRange  *string          `json:"timeRange,omitempty" xml:"timeRange,omitempty"`
 }
 
-func (s UnifiedSearchRequest) String() string {
+func (s UnifiedSearchInput) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnifiedSearchRequest) GoString() string {
+func (s UnifiedSearchInput) GoString() string {
 	return s.String()
 }
 
-func (s *UnifiedSearchRequest) SetCategory(v string) *UnifiedSearchRequest {
+func (s *UnifiedSearchInput) SetCategory(v string) *UnifiedSearchInput {
 	s.Category = &v
 	return s
 }
 
-func (s *UnifiedSearchRequest) SetContents(v *RequestContents) *UnifiedSearchRequest {
+func (s *UnifiedSearchInput) SetContents(v *RequestContents) *UnifiedSearchInput {
 	s.Contents = v
 	return s
 }
 
-func (s *UnifiedSearchRequest) SetEngineType(v string) *UnifiedSearchRequest {
+func (s *UnifiedSearchInput) SetEngineType(v string) *UnifiedSearchInput {
 	s.EngineType = &v
 	return s
 }
 
-func (s *UnifiedSearchRequest) SetQuery(v string) *UnifiedSearchRequest {
+func (s *UnifiedSearchInput) SetQuery(v string) *UnifiedSearchInput {
 	s.Query = &v
 	return s
 }
 
-func (s *UnifiedSearchRequest) SetTimeRange(v string) *UnifiedSearchRequest {
+func (s *UnifiedSearchInput) SetTimeRange(v string) *UnifiedSearchInput {
 	s.TimeRange = &v
 	return s
 }
 
-type UnifiedSearchResponse struct {
+type UnifiedSearchOutput struct {
 	CostCredits       *UnifiedCostCredits       `json:"costCredits,omitempty" xml:"costCredits,omitempty"`
 	PageItems         []*UnifiedPageItem        `json:"pageItems,omitempty" xml:"pageItems,omitempty" type:"Repeated"`
 	QueryContext      *UnifiedQueryContext      `json:"queryContext,omitempty" xml:"queryContext,omitempty"`
@@ -964,40 +964,40 @@ type UnifiedSearchResponse struct {
 	SearchInformation *UnifiedSearchInformation `json:"searchInformation,omitempty" xml:"searchInformation,omitempty"`
 }
 
-func (s UnifiedSearchResponse) String() string {
+func (s UnifiedSearchOutput) String() string {
 	return tea.Prettify(s)
 }
 
-func (s UnifiedSearchResponse) GoString() string {
+func (s UnifiedSearchOutput) GoString() string {
 	return s.String()
 }
 
-func (s *UnifiedSearchResponse) SetCostCredits(v *UnifiedCostCredits) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetCostCredits(v *UnifiedCostCredits) *UnifiedSearchOutput {
 	s.CostCredits = v
 	return s
 }
 
-func (s *UnifiedSearchResponse) SetPageItems(v []*UnifiedPageItem) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetPageItems(v []*UnifiedPageItem) *UnifiedSearchOutput {
 	s.PageItems = v
 	return s
 }
 
-func (s *UnifiedSearchResponse) SetQueryContext(v *UnifiedQueryContext) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetQueryContext(v *UnifiedQueryContext) *UnifiedSearchOutput {
 	s.QueryContext = v
 	return s
 }
 
-func (s *UnifiedSearchResponse) SetRequestId(v string) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetRequestId(v string) *UnifiedSearchOutput {
 	s.RequestId = &v
 	return s
 }
 
-func (s *UnifiedSearchResponse) SetSceneItems(v []*UnifiedSceneItem) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetSceneItems(v []*UnifiedSceneItem) *UnifiedSearchOutput {
 	s.SceneItems = v
 	return s
 }
 
-func (s *UnifiedSearchResponse) SetSearchInformation(v *UnifiedSearchInformation) *UnifiedSearchResponse {
+func (s *UnifiedSearchOutput) SetSearchInformation(v *UnifiedSearchInformation) *UnifiedSearchOutput {
 	s.SearchInformation = v
 	return s
 }
@@ -1595,6 +1595,52 @@ func (s *GlobalSearchResponse) SetBody(v *GlobalSearchResult) *GlobalSearchRespo
 	return s
 }
 
+type UnifiedSearchRequest struct {
+	Body *UnifiedSearchInput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnifiedSearchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSearchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSearchRequest) SetBody(v *UnifiedSearchInput) *UnifiedSearchRequest {
+	s.Body = v
+	return s
+}
+
+type UnifiedSearchResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnifiedSearchOutput `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnifiedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnifiedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnifiedSearchResponse) SetHeaders(v map[string]*string) *UnifiedSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetStatusCode(v int32) *UnifiedSearchResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnifiedSearchResponse) SetBody(v *UnifiedSearchOutput) *UnifiedSearchResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1963,6 +2009,65 @@ func (client *Client) GlobalSearch(request *GlobalSearchRequest) (_result *Globa
 	headers := make(map[string]*string)
 	_result = &GlobalSearchResponse{}
 	_body, _err := client.GlobalSearchWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通晓统一搜索API
+//
+// @param request - UnifiedSearchRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnifiedSearchResponse
+func (client *Client) UnifiedSearchWithOptions(request *UnifiedSearchRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnifiedSearchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnifiedSearch"),
+		Version:     tea.String("2024-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnifiedSearchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通晓统一搜索API
+//
+// @param request - UnifiedSearchRequest
+//
+// @return UnifiedSearchResponse
+func (client *Client) UnifiedSearch(request *UnifiedSearchRequest) (_result *UnifiedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnifiedSearchResponse{}
+	_body, _err := client.UnifiedSearchWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
