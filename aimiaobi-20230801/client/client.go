@@ -6119,6 +6119,10 @@ type GetDataSourceOrderConfigRequest struct {
 	//
 	// d9a1f6146a37446495d9985c2e7b267e_p_outbound_public
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// copilotPrecise
+	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -6137,6 +6141,11 @@ func (s GetDataSourceOrderConfigRequest) GoString() string {
 
 func (s *GetDataSourceOrderConfigRequest) SetAgentKey(v string) *GetDataSourceOrderConfigRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *GetDataSourceOrderConfigRequest) SetGenerateTechnology(v string) *GetDataSourceOrderConfigRequest {
+	s.GenerateTechnology = &v
 	return s
 }
 
@@ -37126,6 +37135,10 @@ type SaveDataSourceOrderConfigRequest struct {
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// copilotReference
+	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -37149,6 +37162,11 @@ func (s *SaveDataSourceOrderConfigRequest) SetAgentKey(v string) *SaveDataSource
 	return s
 }
 
+func (s *SaveDataSourceOrderConfigRequest) SetGenerateTechnology(v string) *SaveDataSourceOrderConfigRequest {
+	s.GenerateTechnology = &v
+	return s
+}
+
 func (s *SaveDataSourceOrderConfigRequest) SetProductCode(v string) *SaveDataSourceOrderConfigRequest {
 	s.ProductCode = &v
 	return s
@@ -37165,8 +37183,9 @@ type SaveDataSourceOrderConfigRequestUserConfigDataSourceList struct {
 	// example:
 	//
 	// QuarkCommonNews
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Code   *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Enable *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -37194,6 +37213,11 @@ func (s *SaveDataSourceOrderConfigRequestUserConfigDataSourceList) SetCode(v str
 	return s
 }
 
+func (s *SaveDataSourceOrderConfigRequestUserConfigDataSourceList) SetEnable(v bool) *SaveDataSourceOrderConfigRequestUserConfigDataSourceList {
+	s.Enable = &v
+	return s
+}
+
 func (s *SaveDataSourceOrderConfigRequestUserConfigDataSourceList) SetName(v string) *SaveDataSourceOrderConfigRequestUserConfigDataSourceList {
 	s.Name = &v
 	return s
@@ -37216,6 +37240,10 @@ type SaveDataSourceOrderConfigShrinkRequest struct {
 	//
 	// c160c841c8e54295bf2f441432785944_p_efm
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// example:
+	//
+	// copilotReference
+	GenerateTechnology *string `json:"GenerateTechnology,omitempty" xml:"GenerateTechnology,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -37236,6 +37264,11 @@ func (s SaveDataSourceOrderConfigShrinkRequest) GoString() string {
 
 func (s *SaveDataSourceOrderConfigShrinkRequest) SetAgentKey(v string) *SaveDataSourceOrderConfigShrinkRequest {
 	s.AgentKey = &v
+	return s
+}
+
+func (s *SaveDataSourceOrderConfigShrinkRequest) SetGenerateTechnology(v string) *SaveDataSourceOrderConfigShrinkRequest {
+	s.GenerateTechnology = &v
 	return s
 }
 
@@ -45719,6 +45752,10 @@ func (client *Client) GetDataSourceOrderConfigWithOptions(request *GetDataSource
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GenerateTechnology)) {
+		body["GenerateTechnology"] = request.GenerateTechnology
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		body["ProductCode"] = request.ProductCode
 	}
@@ -52215,6 +52252,10 @@ func (client *Client) SaveDataSourceOrderConfigWithOptions(tmpReq *SaveDataSourc
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GenerateTechnology)) {
+		body["GenerateTechnology"] = request.GenerateTechnology
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
 		body["ProductCode"] = request.ProductCode
 	}
