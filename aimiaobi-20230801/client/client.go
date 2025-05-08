@@ -15105,6 +15105,10 @@ type ListDatasetDocumentsResponseBodyData struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// example:
 	//
+	// 2025-04-14 19:59:53
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
 	// false
 	DisableHandleMultimodalMedia *bool `json:"DisableHandleMultimodalMedia,omitempty" xml:"DisableHandleMultimodalMedia,omitempty"`
 	// example:
@@ -15152,6 +15156,10 @@ type ListDatasetDocumentsResponseBodyData struct {
 	//
 	// xx
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 2025-04-14 19:59:53
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// url
 	//
 	// example:
@@ -15175,6 +15183,11 @@ func (s *ListDatasetDocumentsResponseBodyData) SetCategoryUuid(v string) *ListDa
 
 func (s *ListDatasetDocumentsResponseBodyData) SetContent(v string) *ListDatasetDocumentsResponseBodyData {
 	s.Content = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetCreateTime(v string) *ListDatasetDocumentsResponseBodyData {
+	s.CreateTime = &v
 	return s
 }
 
@@ -15240,6 +15253,11 @@ func (s *ListDatasetDocumentsResponseBodyData) SetSummary(v string) *ListDataset
 
 func (s *ListDatasetDocumentsResponseBodyData) SetTitle(v string) *ListDatasetDocumentsResponseBodyData {
 	s.Title = &v
+	return s
+}
+
+func (s *ListDatasetDocumentsResponseBodyData) SetUpdateTime(v string) *ListDatasetDocumentsResponseBodyData {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -15331,7 +15349,8 @@ type ListDatasetsRequest struct {
 	// example:
 	//
 	// 创建时间-结束
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IncludeConfig *bool   `json:"IncludeConfig,omitempty" xml:"IncludeConfig,omitempty"`
 	// example:
 	//
 	// 1
@@ -15384,6 +15403,11 @@ func (s *ListDatasetsRequest) SetEndTime(v string) *ListDatasetsRequest {
 	return s
 }
 
+func (s *ListDatasetsRequest) SetIncludeConfig(v bool) *ListDatasetsRequest {
+	s.IncludeConfig = &v
+	return s
+}
+
 func (s *ListDatasetsRequest) SetPageNumber(v int32) *ListDatasetsRequest {
 	s.PageNumber = &v
 	return s
@@ -15413,8 +15437,9 @@ type ListDatasetsResponseBody struct {
 	// example:
 	//
 	// NoData
-	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data []*ListDatasetsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Code                       *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	CustomSemanticSearchConfig *ListDatasetsResponseBodyCustomSemanticSearchConfig `json:"CustomSemanticSearchConfig,omitempty" xml:"CustomSemanticSearchConfig,omitempty" type:"Struct"`
+	Data                       []*ListDatasetsResponseBodyData                     `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 200
@@ -15438,7 +15463,8 @@ type ListDatasetsResponseBody struct {
 	// example:
 	//
 	// true
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	Success           *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	ThirdSearchConfig *ListDatasetsResponseBodyThirdSearchConfig `json:"ThirdSearchConfig,omitempty" xml:"ThirdSearchConfig,omitempty" type:"Struct"`
 	// example:
 	//
 	// 100
@@ -15455,6 +15481,11 @@ func (s ListDatasetsResponseBody) GoString() string {
 
 func (s *ListDatasetsResponseBody) SetCode(v string) *ListDatasetsResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBody) SetCustomSemanticSearchConfig(v *ListDatasetsResponseBodyCustomSemanticSearchConfig) *ListDatasetsResponseBody {
+	s.CustomSemanticSearchConfig = v
 	return s
 }
 
@@ -15493,8 +15524,60 @@ func (s *ListDatasetsResponseBody) SetSuccess(v bool) *ListDatasetsResponseBody 
 	return s
 }
 
+func (s *ListDatasetsResponseBody) SetThirdSearchConfig(v *ListDatasetsResponseBodyThirdSearchConfig) *ListDatasetsResponseBody {
+	s.ThirdSearchConfig = v
+	return s
+}
+
 func (s *ListDatasetsResponseBody) SetTotalCount(v int32) *ListDatasetsResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+type ListDatasetsResponseBodyCustomSemanticSearchConfig struct {
+	// example:
+	//
+	// 3
+	DatasetQuota *int32 `json:"DatasetQuota,omitempty" xml:"DatasetQuota,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetUsedQuota *int32 `json:"DatasetUsedQuota,omitempty" xml:"DatasetUsedQuota,omitempty"`
+	// example:
+	//
+	// 1000
+	DocQuota *int64 `json:"DocQuota,omitempty" xml:"DocQuota,omitempty"`
+	// example:
+	//
+	// 1
+	DocUsedQuota *int64 `json:"DocUsedQuota,omitempty" xml:"DocUsedQuota,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyCustomSemanticSearchConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyCustomSemanticSearchConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) SetDatasetQuota(v int32) *ListDatasetsResponseBodyCustomSemanticSearchConfig {
+	s.DatasetQuota = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) SetDatasetUsedQuota(v int32) *ListDatasetsResponseBodyCustomSemanticSearchConfig {
+	s.DatasetUsedQuota = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) SetDocQuota(v int64) *ListDatasetsResponseBodyCustomSemanticSearchConfig {
+	s.DocQuota = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyCustomSemanticSearchConfig) SetDocUsedQuota(v int64) *ListDatasetsResponseBodyCustomSemanticSearchConfig {
+	s.DocUsedQuota = &v
 	return s
 }
 
@@ -15523,6 +15606,10 @@ type ListDatasetsResponseBodyData struct {
 	//
 	// CustomSemanticSearch
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	// example:
+	//
+	// 1
+	DocUsedQuota *int64 `json:"DocUsedQuota,omitempty" xml:"DocUsedQuota,omitempty"`
 	// example:
 	//
 	// 1
@@ -15567,8 +15654,42 @@ func (s *ListDatasetsResponseBodyData) SetDatasetType(v string) *ListDatasetsRes
 	return s
 }
 
+func (s *ListDatasetsResponseBodyData) SetDocUsedQuota(v int64) *ListDatasetsResponseBodyData {
+	s.DocUsedQuota = &v
+	return s
+}
+
 func (s *ListDatasetsResponseBodyData) SetSearchDatasetEnable(v int32) *ListDatasetsResponseBodyData {
 	s.SearchDatasetEnable = &v
+	return s
+}
+
+type ListDatasetsResponseBodyThirdSearchConfig struct {
+	// example:
+	//
+	// 2
+	DatasetQuota *int32 `json:"DatasetQuota,omitempty" xml:"DatasetQuota,omitempty"`
+	// example:
+	//
+	// 1
+	DatasetUsedQuota *int32 `json:"DatasetUsedQuota,omitempty" xml:"DatasetUsedQuota,omitempty"`
+}
+
+func (s ListDatasetsResponseBodyThirdSearchConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasetsResponseBodyThirdSearchConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasetsResponseBodyThirdSearchConfig) SetDatasetQuota(v int32) *ListDatasetsResponseBodyThirdSearchConfig {
+	s.DatasetQuota = &v
+	return s
+}
+
+func (s *ListDatasetsResponseBodyThirdSearchConfig) SetDatasetUsedQuota(v int32) *ListDatasetsResponseBodyThirdSearchConfig {
+	s.DatasetUsedQuota = &v
 	return s
 }
 
@@ -47779,6 +47900,10 @@ func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeConfig)) {
+		body["IncludeConfig"] = request.IncludeConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
