@@ -183,7 +183,8 @@ type AddFileRequest struct {
 	// example:
 	//
 	// 68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847
-	LeaseId *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	LeaseId         *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	OriginalFileUrl *string `json:"OriginalFileUrl,omitempty" xml:"OriginalFileUrl,omitempty"`
 	// The parser. Valid value:
 	//
 	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
@@ -221,6 +222,11 @@ func (s *AddFileRequest) SetLeaseId(v string) *AddFileRequest {
 	return s
 }
 
+func (s *AddFileRequest) SetOriginalFileUrl(v string) *AddFileRequest {
+	s.OriginalFileUrl = &v
+	return s
+}
+
 func (s *AddFileRequest) SetParser(v string) *AddFileRequest {
 	s.Parser = &v
 	return s
@@ -248,7 +254,8 @@ type AddFileShrinkRequest struct {
 	// example:
 	//
 	// 68abd1dea7b6404d8f7d7b9f7fbd332d.1716698936847
-	LeaseId *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	LeaseId         *string `json:"LeaseId,omitempty" xml:"LeaseId,omitempty"`
+	OriginalFileUrl *string `json:"OriginalFileUrl,omitempty" xml:"OriginalFileUrl,omitempty"`
 	// The parser. Valid value:
 	//
 	// 	- DASHSCOPE_DOCMIND: Intelligent document parsing by Alibaba Cloud.
@@ -283,6 +290,11 @@ func (s *AddFileShrinkRequest) SetCategoryType(v string) *AddFileShrinkRequest {
 
 func (s *AddFileShrinkRequest) SetLeaseId(v string) *AddFileShrinkRequest {
 	s.LeaseId = &v
+	return s
+}
+
+func (s *AddFileShrinkRequest) SetOriginalFileUrl(v string) *AddFileShrinkRequest {
+	s.OriginalFileUrl = &v
 	return s
 }
 
@@ -8984,6 +8996,10 @@ func (client *Client) AddFileWithOptions(WorkspaceId *string, tmpReq *AddFileReq
 
 	if !tea.BoolValue(util.IsUnset(request.LeaseId)) {
 		body["LeaseId"] = request.LeaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginalFileUrl)) {
+		body["OriginalFileUrl"] = request.OriginalFileUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Parser)) {
