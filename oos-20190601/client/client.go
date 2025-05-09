@@ -100,8 +100,9 @@ func (s *AnalyzeGitRepositoryResponseBody) SetRequestId(v string) *AnalyzeGitRep
 }
 
 type AnalyzeGitRepositoryResponseBodyAnalysisResults struct {
-	BuildFiles []*AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles `json:"BuildFiles,omitempty" xml:"BuildFiles,omitempty" type:"Repeated"`
-	BuildType  *string                                                      `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	BuildFiles  []*AnalyzeGitRepositoryResponseBodyAnalysisResultsBuildFiles `json:"BuildFiles,omitempty" xml:"BuildFiles,omitempty" type:"Repeated"`
+	BuildType   *string                                                      `json:"BuildType,omitempty" xml:"BuildType,omitempty"`
+	RuntimeType *string                                                      `json:"RuntimeType,omitempty" xml:"RuntimeType,omitempty"`
 }
 
 func (s AnalyzeGitRepositoryResponseBodyAnalysisResults) String() string {
@@ -119,6 +120,11 @@ func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetBuildFiles(v []*Ana
 
 func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetBuildType(v string) *AnalyzeGitRepositoryResponseBodyAnalysisResults {
 	s.BuildType = &v
+	return s
+}
+
+func (s *AnalyzeGitRepositoryResponseBodyAnalysisResults) SetRuntimeType(v string) *AnalyzeGitRepositoryResponseBodyAnalysisResults {
+	s.RuntimeType = &v
 	return s
 }
 
@@ -4783,6 +4789,86 @@ func (s *DeleteExecutionsResponse) SetBody(v *DeleteExecutionsResponseBody) *Del
 	return s
 }
 
+type DeleteOpsItemsRequest struct {
+	// The IDs of O\\&M items.
+	OpsItemIds []*string `json:"OpsItemIds,omitempty" xml:"OpsItemIds,omitempty" type:"Repeated"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteOpsItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOpsItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOpsItemsRequest) SetOpsItemIds(v []*string) *DeleteOpsItemsRequest {
+	s.OpsItemIds = v
+	return s
+}
+
+func (s *DeleteOpsItemsRequest) SetRegionId(v string) *DeleteOpsItemsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteOpsItemsResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// DBA6E6C8-F75D-41DE-AFF5-1FA03F551CA3
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteOpsItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOpsItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOpsItemsResponseBody) SetRequestId(v string) *DeleteOpsItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteOpsItemsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteOpsItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteOpsItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteOpsItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteOpsItemsResponse) SetHeaders(v map[string]*string) *DeleteOpsItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteOpsItemsResponse) SetStatusCode(v int32) *DeleteOpsItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteOpsItemsResponse) SetBody(v *DeleteOpsItemsResponseBody) *DeleteOpsItemsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteParameterRequest struct {
 	// The name of the common parameter. The name can be up to 180 characters in length and can contain only letters, digits, hyphens (-), and underscores (_). It cannot start with aliyun, acs, alibaba, alicloud, or oos.
 	//
@@ -6019,6 +6105,132 @@ func (s *GenerateExecutionPolicyResponse) SetBody(v *GenerateExecutionPolicyResp
 	return s
 }
 
+type GenerateOpsItemRequest struct {
+	// The token that is used to ensure the idempotency.
+	//
+	// example:
+	//
+	// 123e4567-e89b-12d3-a456-42665544****
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The configuration ID of the O\\&M item.
+	//
+	// example:
+	//
+	// oic-ae4f******2c682e3
+	ConfigurationId *string `json:"ConfigurationId,omitempty" xml:"ConfigurationId,omitempty"`
+	// The source system data.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// /aliyun/ecs
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The data source system.
+	//
+	// example:
+	//
+	// /aliyun/eventbridge/event
+	DataSource *string `json:"DataSource,omitempty" xml:"DataSource,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GenerateOpsItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOpsItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOpsItemRequest) SetClientToken(v string) *GenerateOpsItemRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *GenerateOpsItemRequest) SetConfigurationId(v string) *GenerateOpsItemRequest {
+	s.ConfigurationId = &v
+	return s
+}
+
+func (s *GenerateOpsItemRequest) SetData(v string) *GenerateOpsItemRequest {
+	s.Data = &v
+	return s
+}
+
+func (s *GenerateOpsItemRequest) SetDataSource(v string) *GenerateOpsItemRequest {
+	s.DataSource = &v
+	return s
+}
+
+func (s *GenerateOpsItemRequest) SetRegionId(v string) *GenerateOpsItemRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GenerateOpsItemResponseBody struct {
+	// The O\\&M item list.
+	OpsItemIds []*string `json:"OpsItemIds,omitempty" xml:"OpsItemIds,omitempty" type:"Repeated"`
+	// The ID of the request.
+	//
+	// example:
+	//
+	// DA4F08D4-DA54-5407-84B9-108C71D75B17
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GenerateOpsItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOpsItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOpsItemResponseBody) SetOpsItemIds(v []*string) *GenerateOpsItemResponseBody {
+	s.OpsItemIds = v
+	return s
+}
+
+func (s *GenerateOpsItemResponseBody) SetRequestId(v string) *GenerateOpsItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GenerateOpsItemResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateOpsItemResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateOpsItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateOpsItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateOpsItemResponse) SetHeaders(v map[string]*string) *GenerateOpsItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateOpsItemResponse) SetStatusCode(v int32) *GenerateOpsItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateOpsItemResponse) SetBody(v *GenerateOpsItemResponseBody) *GenerateOpsItemResponse {
+	s.Body = v
+	return s
+}
+
 type GetApplicationRequest struct {
 	// The application name.
 	//
@@ -6086,6 +6298,12 @@ func (s *GetApplicationResponseBody) SetRequestId(v string) *GetApplicationRespo
 type GetApplicationResponseBodyApplication struct {
 	// The configurations of application alerts.
 	AlarmConfig *GetApplicationResponseBodyApplicationAlarmConfig `json:"AlarmConfig,omitempty" xml:"AlarmConfig,omitempty" type:"Struct"`
+	// The source of application.
+	//
+	// example:
+	//
+	// {"Platform":"gitee","Owner":"aliyun-computenest","RepoName":"aliyun-computenest/java-springboot-demo","Name":"java-springboot-demo"}
+	ApplicationSource *string `json:"ApplicationSource,omitempty" xml:"ApplicationSource,omitempty"`
 	// The type of the application.
 	//
 	// Valid values:
@@ -6142,7 +6360,7 @@ type GetApplicationResponseBodyApplication struct {
 	//
 	// rg-acfmxsn4m******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the service.
+	// The ID of the Compute Nest service that corresponds to the application template.
 	//
 	// example:
 	//
@@ -6172,6 +6390,11 @@ func (s GetApplicationResponseBodyApplication) GoString() string {
 
 func (s *GetApplicationResponseBodyApplication) SetAlarmConfig(v *GetApplicationResponseBodyApplicationAlarmConfig) *GetApplicationResponseBodyApplication {
 	s.AlarmConfig = v
+	return s
+}
+
+func (s *GetApplicationResponseBodyApplication) SetApplicationSource(v string) *GetApplicationResponseBodyApplication {
+	s.ApplicationSource = &v
 	return s
 }
 
@@ -12085,6 +12308,12 @@ type ListExecutionsResponseBody struct {
 	//
 	// 14A074-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of the executions.
+	//
+	// example:
+	//
+	// 30
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListExecutionsResponseBody) String() string {
@@ -12112,6 +12341,11 @@ func (s *ListExecutionsResponseBody) SetNextToken(v string) *ListExecutionsRespo
 
 func (s *ListExecutionsResponseBody) SetRequestId(v string) *ListExecutionsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListExecutionsResponseBody) SetTotalCount(v int32) *ListExecutionsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -12569,332 +12803,6 @@ func (s *ListExecutionsResponse) SetStatusCode(v int32) *ListExecutionsResponse 
 }
 
 func (s *ListExecutionsResponse) SetBody(v *ListExecutionsResponseBody) *ListExecutionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListGitRepositoriesRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	OrgName     *string `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
-	// This parameter is required.
-	Owner      *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// This parameter is required.
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s ListGitRepositoriesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoriesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoriesRequest) SetClientToken(v string) *ListGitRepositoriesRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetOrgId(v string) *ListGitRepositoriesRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetOrgName(v string) *ListGitRepositoriesRequest {
-	s.OrgName = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetOwner(v string) *ListGitRepositoriesRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetPageNumber(v int32) *ListGitRepositoriesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetPageSize(v int32) *ListGitRepositoriesRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetPlatform(v string) *ListGitRepositoriesRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *ListGitRepositoriesRequest) SetRegionId(v string) *ListGitRepositoriesRequest {
-	s.RegionId = &v
-	return s
-}
-
-type ListGitRepositoriesResponseBody struct {
-	Count     *int32                                     `json:"Count,omitempty" xml:"Count,omitempty"`
-	GitRepos  []*ListGitRepositoriesResponseBodyGitRepos `json:"GitRepos,omitempty" xml:"GitRepos,omitempty" type:"Repeated"`
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListGitRepositoriesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoriesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoriesResponseBody) SetCount(v int32) *ListGitRepositoriesResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBody) SetGitRepos(v []*ListGitRepositoriesResponseBodyGitRepos) *ListGitRepositoriesResponseBody {
-	s.GitRepos = v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBody) SetRequestId(v string) *ListGitRepositoriesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListGitRepositoriesResponseBodyGitRepos struct {
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FullName    *string `json:"FullName,omitempty" xml:"FullName,omitempty"`
-	HtmlUrl     *string `json:"HtmlUrl,omitempty" xml:"HtmlUrl,omitempty"`
-	IsPrivate   *bool   `json:"IsPrivate,omitempty" xml:"IsPrivate,omitempty"`
-	RepoId      *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-}
-
-func (s ListGitRepositoriesResponseBodyGitRepos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoriesResponseBodyGitRepos) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoriesResponseBodyGitRepos) SetDescription(v string) *ListGitRepositoriesResponseBodyGitRepos {
-	s.Description = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBodyGitRepos) SetFullName(v string) *ListGitRepositoriesResponseBodyGitRepos {
-	s.FullName = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBodyGitRepos) SetHtmlUrl(v string) *ListGitRepositoriesResponseBodyGitRepos {
-	s.HtmlUrl = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBodyGitRepos) SetIsPrivate(v bool) *ListGitRepositoriesResponseBodyGitRepos {
-	s.IsPrivate = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponseBodyGitRepos) SetRepoId(v int64) *ListGitRepositoriesResponseBodyGitRepos {
-	s.RepoId = &v
-	return s
-}
-
-type ListGitRepositoriesResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListGitRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListGitRepositoriesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoriesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoriesResponse) SetHeaders(v map[string]*string) *ListGitRepositoriesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGitRepositoriesResponse) SetStatusCode(v int32) *ListGitRepositoriesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListGitRepositoriesResponse) SetBody(v *ListGitRepositoriesResponseBody) *ListGitRepositoriesResponse {
-	s.Body = v
-	return s
-}
-
-type ListGitRepositoryContentsRequest struct {
-	Branch      *string `json:"Branch,omitempty" xml:"Branch,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	OrgId       *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
-	// This parameter is required.
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	Path  *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	// This parameter is required.
-	Platform     *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RepoFullName *string `json:"RepoFullName,omitempty" xml:"RepoFullName,omitempty"`
-	RepoId       *int64  `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-}
-
-func (s ListGitRepositoryContentsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoryContentsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoryContentsRequest) SetBranch(v string) *ListGitRepositoryContentsRequest {
-	s.Branch = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetClientToken(v string) *ListGitRepositoryContentsRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetContentType(v string) *ListGitRepositoryContentsRequest {
-	s.ContentType = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetOrgId(v string) *ListGitRepositoryContentsRequest {
-	s.OrgId = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetOwner(v string) *ListGitRepositoryContentsRequest {
-	s.Owner = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetPath(v string) *ListGitRepositoryContentsRequest {
-	s.Path = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetPlatform(v string) *ListGitRepositoryContentsRequest {
-	s.Platform = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetRegionId(v string) *ListGitRepositoryContentsRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetRepoFullName(v string) *ListGitRepositoryContentsRequest {
-	s.RepoFullName = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsRequest) SetRepoId(v int64) *ListGitRepositoryContentsRequest {
-	s.RepoId = &v
-	return s
-}
-
-type ListGitRepositoryContentsResponseBody struct {
-	Contents  []*ListGitRepositoryContentsResponseBodyContents `json:"Contents,omitempty" xml:"Contents,omitempty" type:"Repeated"`
-	Count     *int32                                           `json:"Count,omitempty" xml:"Count,omitempty"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListGitRepositoryContentsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoryContentsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoryContentsResponseBody) SetContents(v []*ListGitRepositoryContentsResponseBodyContents) *ListGitRepositoryContentsResponseBody {
-	s.Contents = v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponseBody) SetCount(v int32) *ListGitRepositoryContentsResponseBody {
-	s.Count = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponseBody) SetRequestId(v string) *ListGitRepositoryContentsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListGitRepositoryContentsResponseBodyContents struct {
-	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Path    *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s ListGitRepositoryContentsResponseBodyContents) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoryContentsResponseBodyContents) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoryContentsResponseBodyContents) SetContent(v string) *ListGitRepositoryContentsResponseBodyContents {
-	s.Content = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponseBodyContents) SetName(v string) *ListGitRepositoryContentsResponseBodyContents {
-	s.Name = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponseBodyContents) SetPath(v string) *ListGitRepositoryContentsResponseBodyContents {
-	s.Path = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponseBodyContents) SetType(v string) *ListGitRepositoryContentsResponseBodyContents {
-	s.Type = &v
-	return s
-}
-
-type ListGitRepositoryContentsResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *ListGitRepositoryContentsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ListGitRepositoryContentsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListGitRepositoryContentsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListGitRepositoryContentsResponse) SetHeaders(v map[string]*string) *ListGitRepositoryContentsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponse) SetStatusCode(v int32) *ListGitRepositoryContentsResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListGitRepositoryContentsResponse) SetBody(v *ListGitRepositoryContentsResponseBody) *ListGitRepositoryContentsResponse {
 	s.Body = v
 	return s
 }
@@ -26849,6 +26757,70 @@ func (client *Client) DeleteExecutions(request *DeleteExecutionsRequest) (_resul
 
 // Summary:
 //
+// Deletes O\\\\\\&M Items.
+//
+// @param request - DeleteOpsItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteOpsItemsResponse
+func (client *Client) DeleteOpsItemsWithOptions(request *DeleteOpsItemsRequest, runtime *util.RuntimeOptions) (_result *DeleteOpsItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpsItemIds)) {
+		query["OpsItemIds"] = request.OpsItemIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOpsItems"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteOpsItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes O\\\\\\&M Items.
+//
+// @param request - DeleteOpsItemsRequest
+//
+// @return DeleteOpsItemsResponse
+func (client *Client) DeleteOpsItems(request *DeleteOpsItemsRequest) (_result *DeleteOpsItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteOpsItemsResponse{}
+	_body, _err := client.DeleteOpsItemsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a common parameter.
 //
 // @param request - DeleteParameterRequest
@@ -27532,6 +27504,82 @@ func (client *Client) GenerateExecutionPolicy(request *GenerateExecutionPolicyRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateExecutionPolicyResponse{}
 	_body, _err := client.GenerateExecutionPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates an O\\\\\\&M item.
+//
+// @param request - GenerateOpsItemRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateOpsItemResponse
+func (client *Client) GenerateOpsItemWithOptions(request *GenerateOpsItemRequest, runtime *util.RuntimeOptions) (_result *GenerateOpsItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationId)) {
+		query["ConfigurationId"] = request.ConfigurationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Data)) {
+		query["Data"] = request.Data
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSource)) {
+		query["DataSource"] = request.DataSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateOpsItem"),
+		Version:     tea.String("2019-06-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateOpsItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates an O\\\\\\&M item.
+//
+// @param request - GenerateOpsItemRequest
+//
+// @return GenerateOpsItemResponse
+func (client *Client) GenerateOpsItem(request *GenerateOpsItemRequest) (_result *GenerateOpsItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateOpsItemResponse{}
+	_body, _err := client.GenerateOpsItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29141,191 +29189,7 @@ func (client *Client) ListExecutions(request *ListExecutionsRequest) (_result *L
 
 // Summary:
 //
-// 获取仓库信息
-//
-// @param request - ListGitRepositoriesRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListGitRepositoriesResponse
-func (client *Client) ListGitRepositoriesWithOptions(request *ListGitRepositoriesRequest, runtime *util.RuntimeOptions) (_result *ListGitRepositoriesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
-		query["OrgId"] = request.OrgId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrgName)) {
-		query["OrgName"] = request.OrgName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Owner)) {
-		query["Owner"] = request.Owner
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Platform)) {
-		query["Platform"] = request.Platform
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGitRepositories"),
-		Version:     tea.String("2019-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGitRepositoriesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取仓库信息
-//
-// @param request - ListGitRepositoriesRequest
-//
-// @return ListGitRepositoriesResponse
-func (client *Client) ListGitRepositories(request *ListGitRepositoriesRequest) (_result *ListGitRepositoriesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGitRepositoriesResponse{}
-	_body, _err := client.ListGitRepositoriesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取仓库文件与目录信息
-//
-// @param request - ListGitRepositoryContentsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return ListGitRepositoryContentsResponse
-func (client *Client) ListGitRepositoryContentsWithOptions(request *ListGitRepositoryContentsRequest, runtime *util.RuntimeOptions) (_result *ListGitRepositoryContentsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Branch)) {
-		query["Branch"] = request.Branch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		query["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ContentType)) {
-		query["ContentType"] = request.ContentType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrgId)) {
-		query["OrgId"] = request.OrgId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Owner)) {
-		query["Owner"] = request.Owner
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Path)) {
-		query["Path"] = request.Path
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Platform)) {
-		query["Platform"] = request.Platform
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RepoFullName)) {
-		query["RepoFullName"] = request.RepoFullName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RepoId)) {
-		query["RepoId"] = request.RepoId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListGitRepositoryContents"),
-		Version:     tea.String("2019-06-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListGitRepositoryContentsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// 获取仓库文件与目录信息
-//
-// @param request - ListGitRepositoryContentsRequest
-//
-// @return ListGitRepositoryContentsResponse
-func (client *Client) ListGitRepositoryContents(request *ListGitRepositoryContentsRequest) (_result *ListGitRepositoryContentsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListGitRepositoryContentsResponse{}
-	_body, _err := client.ListGitRepositoryContentsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
-// List Instance Package States
+// # List Instance Package States
 //
 // @param request - ListInstancePackageStatesRequest
 //
@@ -29383,7 +29247,7 @@ func (client *Client) ListInstancePackageStatesWithOptions(request *ListInstance
 
 // Summary:
 //
-// List Instance Package States
+// # List Instance Package States
 //
 // @param request - ListInstancePackageStatesRequest
 //
@@ -30945,11 +30809,11 @@ func (client *Client) ListTemplates(request *ListTemplatesRequest) (_result *Lis
 //
 // You can call this operation to notify an execution in the following scenarios:
 //
-// 	- If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+//   - If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
 //
-// 	- If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+//   - If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
 //
-// 	- If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+//   - If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
 //
 // @param request - NotifyExecutionRequest
 //
@@ -31033,11 +30897,11 @@ func (client *Client) NotifyExecutionWithOptions(request *NotifyExecutionRequest
 //
 // You can call this operation to notify an execution in the following scenarios:
 //
-// 	- If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
+//   - If a template contains a special task, such as an approval task, the Operation Orchestration Service (OOS) execution engine sets the execution state to Waiting when the approval task is being run. You can call this operation to specify whether to continue the execution.
 //
-// 	- If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
+//   - If you perform debugging in the debug mode, you can call this operation to notify the execution of the subsequent operations after the execution is created or a task is complete.
 //
-// 	- If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
+//   - If a high-risk operation task waits for approval, you can call this operation to specify whether to continue the execution.
 //
 // @param request - NotifyExecutionRequest
 //
