@@ -1,3 +1,11 @@
+2025-05-09 Version: v1.72.0
+- Support API DescribeDifyAttribute.
+- Support API DescribeDifyRegions.
+- Support API GenerateSqlFromNL.
+- Support API ListDifyInstances.
+- Support API RedeployDifyInstance.
+
+
 2025-03-17 Version: v1.71.2
 - Update API CreateDifyInstance: add param NatGatewayOption.
 - Update API ListDataLakeCatalog: add param WorkspaceId.
