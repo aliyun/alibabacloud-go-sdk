@@ -65973,6 +65973,195 @@ func (s *SetWorkflowExtraInfoResponse) SetBody(v *SetWorkflowExtraInfoResponseBo
 	return s
 }
 
+type SimplyAddInstanceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test***
+	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// abc
+	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
+	// example:
+	//
+	// 192.XXX.0.56
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// rm****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	InstanceRegion *string `json:"InstanceRegion,omitempty" xml:"InstanceRegion,omitempty"`
+	// example:
+	//
+	// 5432
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s SimplyAddInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimplyAddInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SimplyAddInstanceRequest) SetDatabasePassword(v string) *SimplyAddInstanceRequest {
+	s.DatabasePassword = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetDatabaseUser(v string) *SimplyAddInstanceRequest {
+	s.DatabaseUser = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetHost(v string) *SimplyAddInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetInstanceId(v string) *SimplyAddInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetInstanceRegion(v string) *SimplyAddInstanceRequest {
+	s.InstanceRegion = &v
+	return s
+}
+
+func (s *SimplyAddInstanceRequest) SetPort(v int32) *SimplyAddInstanceRequest {
+	s.Port = &v
+	return s
+}
+
+type SimplyAddInstanceResponseBody struct {
+	// example:
+	//
+	// 403
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// UnknownError
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Instance     *SimplyAddInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// example:
+	//
+	// 7FAD400F-7A5C-4193-8F9A-39D86C4F0231
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SimplyAddInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimplyAddInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SimplyAddInstanceResponseBody) SetErrorCode(v string) *SimplyAddInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBody) SetErrorMessage(v string) *SimplyAddInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBody) SetInstance(v *SimplyAddInstanceResponseBodyInstance) *SimplyAddInstanceResponseBody {
+	s.Instance = v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBody) SetRequestId(v string) *SimplyAddInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBody) SetSuccess(v bool) *SimplyAddInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SimplyAddInstanceResponseBodyInstance struct {
+	// example:
+	//
+	// 192.168.XXX.XXX
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// 188****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// example:
+	//
+	// 5432
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s SimplyAddInstanceResponseBodyInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimplyAddInstanceResponseBodyInstance) GoString() string {
+	return s.String()
+}
+
+func (s *SimplyAddInstanceResponseBodyInstance) SetHost(v string) *SimplyAddInstanceResponseBodyInstance {
+	s.Host = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBodyInstance) SetInstanceId(v string) *SimplyAddInstanceResponseBodyInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponseBodyInstance) SetPort(v string) *SimplyAddInstanceResponseBodyInstance {
+	s.Port = &v
+	return s
+}
+
+type SimplyAddInstanceResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SimplyAddInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SimplyAddInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SimplyAddInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SimplyAddInstanceResponse) SetHeaders(v map[string]*string) *SimplyAddInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SimplyAddInstanceResponse) SetStatusCode(v int32) *SimplyAddInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SimplyAddInstanceResponse) SetBody(v *SimplyAddInstanceResponseBody) *SimplyAddInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type SkipDataCorrectRowCheckRequest struct {
 	// The ticket ID. You can call the [ListOrders](https://help.aliyun.com/document_detail/144643.html) operation to obtain the ticket ID.
 	//
@@ -91832,6 +92021,86 @@ func (client *Client) SetWorkflowExtraInfo(request *SetWorkflowExtraInfoRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SetWorkflowExtraInfoResponse{}
 	_body, _err := client.SetWorkflowExtraInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加实例
+//
+// @param request - SimplyAddInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SimplyAddInstanceResponse
+func (client *Client) SimplyAddInstanceWithOptions(request *SimplyAddInstanceRequest, runtime *util.RuntimeOptions) (_result *SimplyAddInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatabasePassword)) {
+		query["DatabasePassword"] = request.DatabasePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseUser)) {
+		query["DatabaseUser"] = request.DatabaseUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceRegion)) {
+		query["InstanceRegion"] = request.InstanceRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SimplyAddInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SimplyAddInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 添加实例
+//
+// @param request - SimplyAddInstanceRequest
+//
+// @return SimplyAddInstanceResponse
+func (client *Client) SimplyAddInstance(request *SimplyAddInstanceRequest) (_result *SimplyAddInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SimplyAddInstanceResponse{}
+	_body, _err := client.SimplyAddInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
