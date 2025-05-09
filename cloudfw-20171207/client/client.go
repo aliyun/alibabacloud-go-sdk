@@ -8959,6 +8959,24 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// true
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	// The inbound network throughput, which indicates the total number of bytes that are sent inbound. Unit: bytes.
+	//
+	// example:
+	//
+	// 235
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// The UID of the member that is managed by your Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 14151892****7022
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// The outbound network throughput, which indicates the total number of bytes that are sent outbound. Unit: bytes.
+	//
+	// example:
+	//
+	// 1123
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
 	// The list of ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// The public IP address of the instance.
@@ -9001,30 +9019,38 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// 22
 	SrcIpCnt *int64 `json:"SrcIpCnt,omitempty" xml:"SrcIpCnt,omitempty"`
+	// The total inbound and outbound network throughput, which indicates the total number of bytes that are sent inbound and outbound. Unit: bytes.
+	//
+	// example:
+	//
+	// 253023143
+	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
 	// Outbound traffic in the last 7 days.
 	//
 	// example:
 	//
 	// 100000
 	TotalReplyBytes *int64 `json:"TotalReplyBytes,omitempty" xml:"TotalReplyBytes,omitempty"`
-	// The percentage of traffic of a day. Unit: percent (%).
+	// For detailed traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
-	// 11.1
+	// 0
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// The percentage of traffic of 30 days. Unit: percent (%).
+	// For detailed traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
-	// 99.9
+	// 0
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// The percentage of traffic of seven days. Unit: percent (%).
+	// For detailed traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
-	// 77.7
+	// 0
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
+	// Reasons for not analyzing the protocol when the protocol is identified as Unknown.
+	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
 func (s DescribeInternetOpenIpResponseBodyDataList) String() string {
@@ -9065,6 +9091,21 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) SetHasAclRecommend(v bool) 
 	return s
 }
 
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetInBytes(v int64) *DescribeInternetOpenIpResponseBodyDataList {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetMemberUid(v int64) *DescribeInternetOpenIpResponseBodyDataList {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetOutBytes(v int64) *DescribeInternetOpenIpResponseBodyDataList {
+	s.OutBytes = &v
+	return s
+}
+
 func (s *DescribeInternetOpenIpResponseBodyDataList) SetPortList(v []*string) *DescribeInternetOpenIpResponseBodyDataList {
 	s.PortList = v
 	return s
@@ -9100,6 +9141,11 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) SetSrcIpCnt(v int64) *Descr
 	return s
 }
 
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetTotalBytes(v int64) *DescribeInternetOpenIpResponseBodyDataList {
+	s.TotalBytes = &v
+	return s
+}
+
 func (s *DescribeInternetOpenIpResponseBodyDataList) SetTotalReplyBytes(v int64) *DescribeInternetOpenIpResponseBodyDataList {
 	s.TotalReplyBytes = &v
 	return s
@@ -9117,6 +9163,11 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent30Day(v st
 
 func (s *DescribeInternetOpenIpResponseBodyDataList) SetTrafficPercent7Day(v string) *DescribeInternetOpenIpResponseBodyDataList {
 	s.TrafficPercent7Day = &v
+	return s
+}
+
+func (s *DescribeInternetOpenIpResponseBodyDataList) SetUnknownReason(v []*string) *DescribeInternetOpenIpResponseBodyDataList {
+	s.UnknownReason = v
 	return s
 }
 
@@ -10251,6 +10302,100 @@ func (s *DescribeInvadeEventListResponse) SetStatusCode(v int32) *DescribeInvade
 }
 
 func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResponseBody) *DescribeInvadeEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLogStoreInfoResponseBody struct {
+	// example:
+	//
+	// xxx-logstore
+	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
+	// example:
+	//
+	// project-xxx-cn-hangzhou
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 50000000
+	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	// example:
+	//
+	// C6C3B72B********E95FB0A161
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 20
+	Ttl *int32 `json:"Ttl,omitempty" xml:"Ttl,omitempty"`
+	// example:
+	//
+	// 0
+	Used *int64 `json:"Used,omitempty" xml:"Used,omitempty"`
+}
+
+func (s DescribeLogStoreInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetLogStoreName(v string) *DescribeLogStoreInfoResponseBody {
+	s.LogStoreName = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetProjectName(v string) *DescribeLogStoreInfoResponseBody {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetQuota(v int64) *DescribeLogStoreInfoResponseBody {
+	s.Quota = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetRequestId(v string) *DescribeLogStoreInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetTtl(v int32) *DescribeLogStoreInfoResponseBody {
+	s.Ttl = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetUsed(v int64) *DescribeLogStoreInfoResponseBody {
+	s.Used = &v
+	return s
+}
+
+type DescribeLogStoreInfoResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLogStoreInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLogStoreInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLogStoreInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLogStoreInfoResponse) SetHeaders(v map[string]*string) *DescribeLogStoreInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponse) SetStatusCode(v int32) *DescribeLogStoreInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponse) SetBody(v *DescribeLogStoreInfoResponseBody) *DescribeLogStoreInfoResponse {
 	s.Body = v
 	return s
 }
@@ -11669,6 +11814,233 @@ func (s *DescribeNatFirewallPolicyPriorUsedResponse) SetBody(v *DescribeNatFirew
 	return s
 }
 
+type DescribeNatFirewallTrafficTrendRequest struct {
+	// The end of the time range to query. The value is a UNIX timestamp that is accurate to seconds.
+	//
+	// example:
+	//
+	// 1739330580
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The time interval between the data entries to return. Unit: seconds. Valid values:
+	//
+	// 	- **60**: 1 minute
+	//
+	// 	- **1800**: 30 minutes
+	//
+	// example:
+	//
+	// 60
+	Interval *int64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	// The ID of the NAT gateway.
+	//
+	// example:
+	//
+	// ngw-xxxxxx
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// The private IP address of the source.
+	//
+	// example:
+	//
+	// 10.100.134.60
+	SrcPrivateIP *string `json:"SrcPrivateIP,omitempty" xml:"SrcPrivateIP,omitempty"`
+	// The public IP address of the source.
+	//
+	// example:
+	//
+	// 47.112.210.136
+	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
+	// The beginning of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1739326980
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeNatFirewallTrafficTrendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallTrafficTrendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetEndTime(v int64) *DescribeNatFirewallTrafficTrendRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetInterval(v int64) *DescribeNatFirewallTrafficTrendRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetNatGatewayId(v string) *DescribeNatFirewallTrafficTrendRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetSrcPrivateIP(v string) *DescribeNatFirewallTrafficTrendRequest {
+	s.SrcPrivateIP = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetSrcPublicIP(v string) *DescribeNatFirewallTrafficTrendRequest {
+	s.SrcPublicIP = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendRequest) SetStartTime(v int64) *DescribeNatFirewallTrafficTrendRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeNatFirewallTrafficTrendResponseBody struct {
+	// The statistics on traffic.
+	DataList []*DescribeNatFirewallTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
+	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 18038632
+	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
+	// The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 122596487
+	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
+	// The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 66953194
+	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 87F23A3A-6F57-59C3-8237-A090D0613D71
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeNatFirewallTrafficTrendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallTrafficTrendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBody) SetDataList(v []*DescribeNatFirewallTrafficTrendResponseBodyDataList) *DescribeNatFirewallTrafficTrendResponseBody {
+	s.DataList = v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBody) SetMaxInBps(v int64) *DescribeNatFirewallTrafficTrendResponseBody {
+	s.MaxInBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBody) SetMaxOutBps(v int64) *DescribeNatFirewallTrafficTrendResponseBody {
+	s.MaxOutBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBody) SetMaxTotalBps(v int64) *DescribeNatFirewallTrafficTrendResponseBody {
+	s.MaxTotalBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBody) SetRequestId(v string) *DescribeNatFirewallTrafficTrendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeNatFirewallTrafficTrendResponseBodyDataList struct {
+	// The maximum inbound network throughput, which indicates the maximum number of bits that are sent inbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 18038632
+	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
+	// The maximum outbound network throughput, which indicates the maximum number of bits that are sent outbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 122596487
+	MaxOutBps *int64 `json:"MaxOutBps,omitempty" xml:"MaxOutBps,omitempty"`
+	// The total maximum inbound and outbound network throughput, which indicates the maximum number of bits that are sent inbound and outbound per second. Unit: bit/s.
+	//
+	// example:
+	//
+	// 66953194
+	MaxTotalBps *int64 `json:"MaxTotalBps,omitempty" xml:"MaxTotalBps,omitempty"`
+	// The time range to query. The value is a UNIX timestamp. Unit: seconds.
+	//
+	// example:
+	//
+	// 1734418980
+	TrafficTime *int64 `json:"TrafficTime,omitempty" xml:"TrafficTime,omitempty"`
+}
+
+func (s DescribeNatFirewallTrafficTrendResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallTrafficTrendResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBodyDataList) SetMaxInBps(v int64) *DescribeNatFirewallTrafficTrendResponseBodyDataList {
+	s.MaxInBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBodyDataList) SetMaxOutBps(v int64) *DescribeNatFirewallTrafficTrendResponseBodyDataList {
+	s.MaxOutBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBodyDataList) SetMaxTotalBps(v int64) *DescribeNatFirewallTrafficTrendResponseBodyDataList {
+	s.MaxTotalBps = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponseBodyDataList) SetTrafficTime(v int64) *DescribeNatFirewallTrafficTrendResponseBodyDataList {
+	s.TrafficTime = &v
+	return s
+}
+
+type DescribeNatFirewallTrafficTrendResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeNatFirewallTrafficTrendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeNatFirewallTrafficTrendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatFirewallTrafficTrendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponse) SetHeaders(v map[string]*string) *DescribeNatFirewallTrafficTrendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponse) SetStatusCode(v int32) *DescribeNatFirewallTrafficTrendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeNatFirewallTrafficTrendResponse) SetBody(v *DescribeNatFirewallTrafficTrendResponseBody) *DescribeNatFirewallTrafficTrendResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeOutgoingDestinationIPRequest struct {
 	// The application type in the access control policy. Valid values:
 	//
@@ -12403,7 +12775,8 @@ type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struc
 	// example:
 	//
 	// 80
-	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+	Port          *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
 func (s DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) String() string {
@@ -12421,6 +12794,11 @@ func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) 
 
 func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) SetPort(v int32) *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList {
 	s.Port = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) SetUnknownReason(v []*string) *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList {
+	s.UnknownReason = v
 	return s
 }
 
@@ -14773,6 +15151,8 @@ type DescribeRiskEventGroupResponseBodyDataList struct {
 	//
 	// 192.0.XX.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
+	// Deprecated
+	//
 	// The tag added to the source IP address. The tag helps identify whether the source IP address is a back-to-origin IP address for a cloud service.
 	//
 	// example:
@@ -32046,6 +32426,53 @@ func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRe
 
 // Summary:
 //
+// 获取日志服务信息
+//
+// @param request - DescribeLogStoreInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLogStoreInfoResponse
+func (client *Client) DescribeLogStoreInfoWithOptions(runtime *util.RuntimeOptions) (_result *DescribeLogStoreInfoResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLogStoreInfo"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLogStoreInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取日志服务信息
+//
+// @return DescribeLogStoreInfoResponse
+func (client *Client) DescribeLogStoreInfo() (_result *DescribeLogStoreInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLogStoreInfoResponse{}
+	_body, _err := client.DescribeLogStoreInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the pagination status of NAT firewalls.
 //
 // @param request - DescribeNatAclPageStatusRequest
@@ -32393,6 +32820,62 @@ func (client *Client) DescribeNatFirewallPolicyPriorUsed(request *DescribeNatFir
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNatFirewallPolicyPriorUsedResponse{}
 	_body, _err := client.DescribeNatFirewallPolicyPriorUsedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 概览页-NAT流量趋势
+//
+// @param request - DescribeNatFirewallTrafficTrendRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeNatFirewallTrafficTrendResponse
+func (client *Client) DescribeNatFirewallTrafficTrendWithOptions(request *DescribeNatFirewallTrafficTrendRequest, runtime *util.RuntimeOptions) (_result *DescribeNatFirewallTrafficTrendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNatFirewallTrafficTrend"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNatFirewallTrafficTrendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 概览页-NAT流量趋势
+//
+// @param request - DescribeNatFirewallTrafficTrendRequest
+//
+// @return DescribeNatFirewallTrafficTrendResponse
+func (client *Client) DescribeNatFirewallTrafficTrend(request *DescribeNatFirewallTrafficTrendRequest) (_result *DescribeNatFirewallTrafficTrendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNatFirewallTrafficTrendResponse{}
+	_body, _err := client.DescribeNatFirewallTrafficTrendWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
