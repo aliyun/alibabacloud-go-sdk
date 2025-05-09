@@ -619,6 +619,525 @@ func (s *DescribeDeliveryAddressResponse) SetBody(v *DescribeDeliveryAddressResp
 	return s
 }
 
+type DescribeMultiPriceRequest struct {
+	OrderItems []*DescribeMultiPriceRequestOrderItems `json:"OrderItems,omitempty" xml:"OrderItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// create
+	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	// example:
+	//
+	// pacakge
+	PackageCode *string `json:"PackageCode,omitempty" xml:"PackageCode,omitempty"`
+	// example:
+	//
+	// 182864463481****
+	ResellerOwnerUid *int64 `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+}
+
+func (s DescribeMultiPriceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceRequest) SetOrderItems(v []*DescribeMultiPriceRequestOrderItems) *DescribeMultiPriceRequest {
+	s.OrderItems = v
+	return s
+}
+
+func (s *DescribeMultiPriceRequest) SetOrderType(v string) *DescribeMultiPriceRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequest) SetPackageCode(v string) *DescribeMultiPriceRequest {
+	s.PackageCode = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequest) SetResellerOwnerUid(v int64) *DescribeMultiPriceRequest {
+	s.ResellerOwnerUid = &v
+	return s
+}
+
+type DescribeMultiPriceRequestOrderItems struct {
+	// example:
+	//
+	// 1
+	Amount      *int32                                           `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Components  []*DescribeMultiPriceRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	InstanceIds []*string                                        `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// example:
+	//
+	// Year
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionId *string   `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	ResourceIds []*string `json:"ResourceIds,omitempty" xml:"ResourceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// DurationPackage
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s DescribeMultiPriceRequestOrderItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceRequestOrderItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetAmount(v int32) *DescribeMultiPriceRequestOrderItems {
+	s.Amount = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetComponents(v []*DescribeMultiPriceRequestOrderItemsComponents) *DescribeMultiPriceRequestOrderItems {
+	s.Components = v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetInstanceIds(v []*string) *DescribeMultiPriceRequestOrderItems {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetPeriod(v int32) *DescribeMultiPriceRequestOrderItems {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetPeriodUnit(v string) *DescribeMultiPriceRequestOrderItems {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetPromotionId(v string) *DescribeMultiPriceRequestOrderItems {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetResourceIds(v []*string) *DescribeMultiPriceRequestOrderItems {
+	s.ResourceIds = v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItems) SetResourceType(v string) *DescribeMultiPriceRequestOrderItems {
+	s.ResourceType = &v
+	return s
+}
+
+type DescribeMultiPriceRequestOrderItemsComponents struct {
+	// example:
+	//
+	// RegionId
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// cn-shanghai
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeMultiPriceRequestOrderItemsComponents) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceRequestOrderItemsComponents) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceRequestOrderItemsComponents) SetKey(v string) *DescribeMultiPriceRequestOrderItemsComponents {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeMultiPriceRequestOrderItemsComponents) SetValue(v string) *DescribeMultiPriceRequestOrderItemsComponents {
+	s.Value = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBody struct {
+	PriceInfo *DescribeMultiPriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 833C4D2C-09C7-5CE6-8159-06758B964970
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBody) SetPriceInfo(v *DescribeMultiPriceResponseBodyPriceInfo) *DescribeMultiPriceResponseBody {
+	s.PriceInfo = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBody) SetRequestId(v string) *DescribeMultiPriceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfo struct {
+	Price *DescribeMultiPriceResponseBodyPriceInfoPrice   `json:"Price,omitempty" xml:"Price,omitempty" type:"Struct"`
+	Rules []*DescribeMultiPriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfo) SetPrice(v *DescribeMultiPriceResponseBodyPriceInfoPrice) *DescribeMultiPriceResponseBodyPriceInfo {
+	s.Price = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfo) SetRules(v []*DescribeMultiPriceResponseBodyPriceInfoRules) *DescribeMultiPriceResponseBodyPriceInfo {
+	s.Rules = v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoPrice struct {
+	// example:
+	//
+	// CNY
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// example:
+	//
+	// 534.6
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 6800
+	OriginalPrice            *float32                                                    `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	PriceDetails             []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails `json:"PriceDetails,omitempty" xml:"PriceDetails,omitempty" type:"Repeated"`
+	Promotions               []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions   `json:"Promotions,omitempty" xml:"Promotions,omitempty" type:"Repeated"`
+	RefundInstanceIdPriceMap map[string]*float32                                         `json:"RefundInstanceIdPriceMap,omitempty" xml:"RefundInstanceIdPriceMap,omitempty"`
+	// example:
+	//
+	// 60.00
+	RefundPrice *float32 `json:"RefundPrice,omitempty" xml:"RefundPrice,omitempty"`
+	// example:
+	//
+	// 82.6
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPrice) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPrice) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetCurrency(v string) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.Currency = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetDiscountPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetOriginalPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetPriceDetails(v []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.PriceDetails = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetPromotions(v []*DescribeMultiPriceResponseBodyPriceInfoPricePromotions) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.Promotions = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetRefundInstanceIdPriceMap(v map[string]*float32) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.RefundInstanceIdPriceMap = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetRefundPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.RefundPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPrice) SetTradePrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPrice {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails struct {
+	ModuleDetails []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	OrderItem   *int32                                                               `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
+	PriceDetail *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail `json:"PriceDetail,omitempty" xml:"PriceDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) SetModuleDetails(v []*DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails {
+	s.ModuleDetails = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) SetOrderItem(v int32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails {
+	s.OrderItem = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails) SetPriceDetail(v *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetails {
+	s.PriceDetail = v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails struct {
+	// example:
+	//
+	// 734.65
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// DesktopType
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.8c32g
+	ModuleValue *string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty"`
+	// example:
+	//
+	// 10900
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// 292.2
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetDiscountPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetModuleCode(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetModuleName(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetModuleValue(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.ModuleValue = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetOriginalPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails) SetTradePrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsModuleDetails {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail struct {
+	// example:
+	//
+	// 20.00
+	DiscountPrice *float32 `json:"DiscountPrice,omitempty" xml:"DiscountPrice,omitempty"`
+	// example:
+	//
+	// 100.00
+	OriginalPrice *float32 `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
+	// example:
+	//
+	// DurationPackage
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// example:
+	//
+	// 80.00
+	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetDiscountPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
+	s.DiscountPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetOriginalPrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
+	s.OriginalPrice = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetResourceType(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail) SetTradePrice(v float32) *DescribeMultiPriceResponseBodyPriceInfoPricePriceDetailsPriceDetail {
+	s.TradePrice = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoPricePromotions struct {
+	// example:
+	//
+	// new
+	OptionCode    *string `json:"OptionCode,omitempty" xml:"OptionCode,omitempty"`
+	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
+	// example:
+	//
+	// youhuiquan_promotion_option_id_for_blank
+	PromotionId   *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
+	// example:
+	//
+	// true
+	Selected *bool `json:"Selected,omitempty" xml:"Selected,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePromotions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoPricePromotions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetOptionCode(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.OptionCode = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetPromotionDesc(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionDesc = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetPromotionId(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetPromotionName(v string) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.PromotionName = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoPricePromotions) SetSelected(v bool) *DescribeMultiPriceResponseBodyPriceInfoPricePromotions {
+	s.Selected = &v
+	return s
+}
+
+type DescribeMultiPriceResponseBodyPriceInfoRules struct {
+	// example:
+	//
+	// accounts_suspect_users
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// hrzdvc
+	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponseBodyPriceInfoRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoRules) SetDescription(v string) *DescribeMultiPriceResponseBodyPriceInfoRules {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponseBodyPriceInfoRules) SetRuleId(v int64) *DescribeMultiPriceResponseBodyPriceInfoRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeMultiPriceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeMultiPriceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeMultiPriceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiPriceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiPriceResponse) SetHeaders(v map[string]*string) *DescribeMultiPriceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMultiPriceResponse) SetStatusCode(v int32) *DescribeMultiPriceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMultiPriceResponse) SetBody(v *DescribeMultiPriceResponseBody) *DescribeMultiPriceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribePackageDeductionsRequest struct {
 	EndTime     *int64    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
@@ -1100,24 +1619,13 @@ func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateMultiOrderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateMultiOrderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateMultiOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateMultiOrderRequest
@@ -1152,24 +1660,13 @@ func (client *Client) DescribeDeliveryAddressWithOptions(runtime *util.RuntimeOp
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDeliveryAddressResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDeliveryAddressResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDeliveryAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @return DescribeDeliveryAddressResponse
@@ -1177,6 +1674,70 @@ func (client *Client) DescribeDeliveryAddress() (_result *DescribeDeliveryAddres
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDeliveryAddressResponse{}
 	_body, _err := client.DescribeDeliveryAddressWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeMultiPriceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeMultiPriceResponse
+func (client *Client) DescribeMultiPriceWithOptions(request *DescribeMultiPriceRequest, runtime *util.RuntimeOptions) (_result *DescribeMultiPriceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderItems)) {
+		query["OrderItems"] = request.OrderItems
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageCode)) {
+		query["PackageCode"] = request.PackageCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResellerOwnerUid)) {
+		query["ResellerOwnerUid"] = request.ResellerOwnerUid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMultiPrice"),
+		Version:     tea.String("2021-12-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMultiPriceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeMultiPriceRequest
+//
+// @return DescribeMultiPriceResponse
+func (client *Client) DescribeMultiPrice(request *DescribeMultiPriceRequest) (_result *DescribeMultiPriceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMultiPriceResponse{}
+	_body, _err := client.DescribeMultiPriceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1241,24 +1802,13 @@ func (client *Client) DescribePackageDeductionsWithOptions(request *DescribePack
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribePackageDeductionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribePackageDeductionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribePackageDeductionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -1324,24 +1874,13 @@ func (client *Client) ModifyInstancePropertiesWithOptions(request *ModifyInstanc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstancePropertiesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstancePropertiesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstancePropertiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyInstancePropertiesRequest
