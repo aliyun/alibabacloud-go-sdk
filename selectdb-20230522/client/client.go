@@ -734,7 +734,171 @@ func (s *CreateDBClusterResponse) SetBody(v *CreateDBClusterResponseBody) *Creat
 	return s
 }
 
+type CreateDBClusterBindingRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	DBClusterIdBak *string `json:"DBClusterIdBak,omitempty" xml:"DBClusterIdBak,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateDBClusterBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBClusterBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBClusterBindingRequest) SetDBClusterId(v string) *CreateDBClusterBindingRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingRequest) SetDBClusterIdBak(v string) *CreateDBClusterBindingRequest {
+	s.DBClusterIdBak = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingRequest) SetDBInstanceId(v string) *CreateDBClusterBindingRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingRequest) SetRegionId(v string) *CreateDBClusterBindingRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateDBClusterBindingResponseBody struct {
+	// The data returned.
+	Data *CreateDBClusterBindingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 4773E4EC-025D-509F-AEA9-D53123FDFB0F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDBClusterBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBClusterBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBClusterBindingResponseBody) SetData(v *CreateDBClusterBindingResponseBodyData) *CreateDBClusterBindingResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDBClusterBindingResponseBody) SetRequestId(v string) *CreateDBClusterBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDBClusterBindingResponseBodyData struct {
+	// The cluster ID.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez-be
+	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	// The numeric ID.
+	//
+	// example:
+	//
+	// 6585
+	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	// The instance ID.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez
+	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
+}
+
+func (s CreateDBClusterBindingResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBClusterBindingResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBClusterBindingResponseBodyData) SetDbClusterId(v string) *CreateDBClusterBindingResponseBodyData {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingResponseBodyData) SetDbInstanceId(v string) *CreateDBClusterBindingResponseBodyData {
+	s.DbInstanceId = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingResponseBodyData) SetDbInstanceName(v string) *CreateDBClusterBindingResponseBodyData {
+	s.DbInstanceName = &v
+	return s
+}
+
+type CreateDBClusterBindingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateDBClusterBindingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateDBClusterBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDBClusterBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDBClusterBindingResponse) SetHeaders(v map[string]*string) *CreateDBClusterBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDBClusterBindingResponse) SetStatusCode(v int32) *CreateDBClusterBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDBClusterBindingResponse) SetBody(v *CreateDBClusterBindingResponseBody) *CreateDBClusterBindingResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDBInstanceRequest struct {
+	AddVPCIPs *string `json:"AddVPCIPs,omitempty" xml:"AddVPCIPs,omitempty"`
 	// The reserved cache size.
 	//
 	// This parameter is required.
@@ -767,13 +931,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The specifications of the instance. Valid values:
-	//
-	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
-	//
-	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
-	//
-	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+	// The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
 	//
 	// This parameter is required.
 	//
@@ -787,14 +945,25 @@ type CreateDBInstanceRequest struct {
 	//
 	// The instance is created for testing.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DeployScheme          *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
+	// The deployment method of the instance.
+	//
+	// Valid values:
+	//
+	// 	- multi_az
+	//
+	// 	- single_az
+	//
+	// example:
+	//
+	// single_az
+	DeployScheme *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
 	// The database engine of the instance. Default value: **selectdb**.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Default value: **2.4**.
+	// The database engine version of the instance. Default value: **3.0**.
 	//
 	// This parameter is required.
 	//
@@ -802,6 +971,12 @@ type CreateDBInstanceRequest struct {
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The configurations of multi-zone deployment.
+	//
+	// >
+	//
+	// 	- This parameter takes effect and is required only when DeployScheme is set to multi_az.
+	//
 	// if can be null:
 	// false
 	MultiZone []*CreateDBInstanceRequestMultiZone `json:"MultiZone,omitempty" xml:"MultiZone,omitempty" type:"Repeated"`
@@ -840,11 +1015,11 @@ type CreateDBInstanceRequest struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The instance tags.
 	Tag []*CreateDBInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The subscription duration of the instance.
+	// The subscription duration of the instance. Valid values:
 	//
-	// 	- Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+	// 	- If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
 	//
-	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
+	// 	- If Period is set to Month, valid values of UsedTime are 1 to 12.
 	//
 	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
 	//
@@ -884,6 +1059,11 @@ func (s CreateDBInstanceRequest) String() string {
 
 func (s CreateDBInstanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceRequest) SetAddVPCIPs(v string) *CreateDBInstanceRequest {
+	s.AddVPCIPs = &v
+	return s
 }
 
 func (s *CreateDBInstanceRequest) SetCacheSize(v int32) *CreateDBInstanceRequest {
@@ -987,8 +1167,14 @@ func (s *CreateDBInstanceRequest) SetZoneId(v string) *CreateDBInstanceRequest {
 }
 
 type CreateDBInstanceRequestMultiZone struct {
+	// The vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	ZoneId     *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The zone ID.
+	//
+	// example:
+	//
+	// cn-hangzhou-k
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateDBInstanceRequestMultiZone) String() string {
@@ -1043,6 +1229,7 @@ func (s *CreateDBInstanceRequestTag) SetValue(v string) *CreateDBInstanceRequest
 }
 
 type CreateDBInstanceShrinkRequest struct {
+	AddVPCIPs *string `json:"AddVPCIPs,omitempty" xml:"AddVPCIPs,omitempty"`
 	// The reserved cache size.
 	//
 	// This parameter is required.
@@ -1075,13 +1262,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// selectdb-cn-7213c8y****-public.selectdbfe.pre.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The specifications of the instance. Valid values:
-	//
-	// 	- **selectdb.xlarge**: 4 CPU cores and 32 GB of memory
-	//
-	// 	- **selectdb.2xlarge**: 8 CPU cores and 64 GB of memory
-	//
-	// 	- **selectdb.4xlarge**: 16 CPU cores and 128 GB of memory
+	// The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
 	//
 	// This parameter is required.
 	//
@@ -1095,14 +1276,25 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// The instance is created for testing.
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	DeployScheme          *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
+	// The deployment method of the instance.
+	//
+	// Valid values:
+	//
+	// 	- multi_az
+	//
+	// 	- single_az
+	//
+	// example:
+	//
+	// single_az
+	DeployScheme *string `json:"DeployScheme,omitempty" xml:"DeployScheme,omitempty"`
 	// The database engine of the instance. Default value: **selectdb**.
 	//
 	// example:
 	//
 	// selectdb
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The database engine version of the instance. Default value: **2.4**.
+	// The database engine version of the instance. Default value: **3.0**.
 	//
 	// This parameter is required.
 	//
@@ -1110,6 +1302,12 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	// The configurations of multi-zone deployment.
+	//
+	// >
+	//
+	// 	- This parameter takes effect and is required only when DeployScheme is set to multi_az.
+	//
 	// if can be null:
 	// false
 	MultiZoneShrink *string `json:"MultiZone,omitempty" xml:"MultiZone,omitempty"`
@@ -1148,11 +1346,11 @@ type CreateDBInstanceShrinkRequest struct {
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	// The instance tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The subscription duration of the instance.
+	// The subscription duration of the instance. Valid values:
 	//
-	// 	- Valid values when Period is set to Year: 1, 2, 3, and 5 (integer)
+	// 	- If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
 	//
-	// 	- Valid values when Period is set to Month: 1 to 9 (integer)
+	// 	- If Period is set to Month, valid values of UsedTime are 1 to 12.
 	//
 	// >  This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
 	//
@@ -1192,6 +1390,11 @@ func (s CreateDBInstanceShrinkRequest) String() string {
 
 func (s CreateDBInstanceShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDBInstanceShrinkRequest) SetAddVPCIPs(v string) *CreateDBInstanceShrinkRequest {
+	s.AddVPCIPs = &v
+	return s
 }
 
 func (s *CreateDBInstanceShrinkRequest) SetCacheSize(v int32) *CreateDBInstanceShrinkRequest {
@@ -1838,6 +2041,118 @@ func (s *DeleteDBClusterResponse) SetStatusCode(v int32) *DeleteDBClusterRespons
 }
 
 func (s *DeleteDBClusterResponse) SetBody(v *DeleteDBClusterResponseBody) *DeleteDBClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDBClusterBindingRequest struct {
+	// The ID of Cluster 1.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez-be
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The ID of Cluster 2.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-xxxb9f2w-be
+	DBClusterIdBak *string `json:"DBClusterIdBak,omitempty" xml:"DBClusterIdBak,omitempty"`
+	// The instance ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// selectdb-cn-7213cjv2ez
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteDBClusterBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBClusterBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBClusterBindingRequest) SetDBClusterId(v string) *DeleteDBClusterBindingRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DeleteDBClusterBindingRequest) SetDBClusterIdBak(v string) *DeleteDBClusterBindingRequest {
+	s.DBClusterIdBak = &v
+	return s
+}
+
+func (s *DeleteDBClusterBindingRequest) SetDBInstanceId(v string) *DeleteDBClusterBindingRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DeleteDBClusterBindingRequest) SetRegionId(v string) *DeleteDBClusterBindingRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteDBClusterBindingResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// F8900A96-67F7-5274-A41B-7722E1ECF8C9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDBClusterBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBClusterBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBClusterBindingResponseBody) SetRequestId(v string) *DeleteDBClusterBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDBClusterBindingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteDBClusterBindingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteDBClusterBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDBClusterBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDBClusterBindingResponse) SetHeaders(v map[string]*string) *DeleteDBClusterBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDBClusterBindingResponse) SetStatusCode(v int32) *DeleteDBClusterBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDBClusterBindingResponse) SetBody(v *DeleteDBClusterBindingResponseBody) *DeleteDBClusterBindingResponse {
 	s.Body = v
 	return s
 }
@@ -5873,7 +6188,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// 	- selectdb_go_public_intl: pay-as-you-go commodity on the international site (alibabacloud.com)
 	//
-	// 	- selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com).
+	// 	- selectdb_pre_public_cn: subscription commodity on the China site (aliyun.com)
 	//
 	// This parameter is required.
 	//
@@ -5894,7 +6209,8 @@ type GetModifyBEClusterInquiryRequest struct {
 	// example:
 	//
 	// selectdb-cn-xxx
-	DbInstanceId *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	DbInstanceId            *string `json:"DbInstanceId,omitempty" xml:"DbInstanceId,omitempty"`
+	ModifyClusterChargeType *bool   `json:"ModifyClusterChargeType,omitempty" xml:"ModifyClusterChargeType,omitempty"`
 	// The size of the reserved cache.
 	//
 	// example:
@@ -5984,6 +6300,11 @@ func (s *GetModifyBEClusterInquiryRequest) SetDbInstanceId(v string) *GetModifyB
 	return s
 }
 
+func (s *GetModifyBEClusterInquiryRequest) SetModifyClusterChargeType(v bool) *GetModifyBEClusterInquiryRequest {
+	s.ModifyClusterChargeType = &v
+	return s
+}
+
 func (s *GetModifyBEClusterInquiryRequest) SetPreCacheSize(v int64) *GetModifyBEClusterInquiryRequest {
 	s.PreCacheSize = &v
 	return s
@@ -6049,7 +6370,8 @@ type GetModifyBEClusterInquiryResponseBodyData struct {
 	// example:
 	//
 	// CNY
-	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	Currency     *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	RefundAmount *string `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
 	// The amount of money.
 	//
 	// example:
@@ -6068,6 +6390,11 @@ func (s GetModifyBEClusterInquiryResponseBodyData) GoString() string {
 
 func (s *GetModifyBEClusterInquiryResponseBodyData) SetCurrency(v string) *GetModifyBEClusterInquiryResponseBodyData {
 	s.Currency = &v
+	return s
+}
+
+func (s *GetModifyBEClusterInquiryResponseBodyData) SetRefundAmount(v string) *GetModifyBEClusterInquiryResponseBodyData {
+	s.RefundAmount = &v
 	return s
 }
 
@@ -6119,6 +6446,12 @@ type ModifyBEClusterAttributeRequest struct {
 	// selectdb-cn-7213cjv****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The attribute type of the instance. Set this parameter to DBInstanceDescription.
+	//
+	// Valid values:
+	//
+	// 	- MaintainTime
+	//
+	// 	- DBInstanceDescription
 	//
 	// This parameter is required.
 	//
@@ -8050,24 +8383,13 @@ func (client *Client) AllocateInstancePublicConnectionWithOptions(request *Alloc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AllocateInstancePublicConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AllocateInstancePublicConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AllocateInstancePublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8185,24 +8507,13 @@ func (client *Client) CheckCreateDBInstanceWithOptions(request *CheckCreateDBIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckCreateDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckCreateDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckCreateDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8260,24 +8571,13 @@ func (client *Client) CheckServiceLinkedRoleWithOptions(request *CheckServiceLin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckServiceLinkedRoleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckServiceLinkedRoleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckServiceLinkedRoleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8389,24 +8689,13 @@ func (client *Client) CreateDBClusterWithOptions(request *CreateDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDBClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDBClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8424,6 +8713,94 @@ func (client *Client) CreateDBCluster(request *CreateDBClusterRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDBClusterResponse{}
 	_body, _err := client.CreateDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a binding relationship for clusters. If the zone-redundant storage (ZRS) deployment method is used, you can create a binding relationship between two clusters.
+//
+// Description:
+//
+// This operation is supported only for instances that use the zone-redundant storage (ZRS) feature and meet the following requirements:
+//
+//   - The instance clusters reside in different zones.
+//
+//   - The billing method of the instance clusters is consistent.
+//
+// @param request - CreateDBClusterBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateDBClusterBindingResponse
+func (client *Client) CreateDBClusterBindingWithOptions(request *CreateDBClusterBindingRequest, runtime *util.RuntimeOptions) (_result *CreateDBClusterBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterIdBak)) {
+		query["DBClusterIdBak"] = request.DBClusterIdBak
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDBClusterBinding"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDBClusterBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a binding relationship for clusters. If the zone-redundant storage (ZRS) deployment method is used, you can create a binding relationship between two clusters.
+//
+// Description:
+//
+// This operation is supported only for instances that use the zone-redundant storage (ZRS) feature and meet the following requirements:
+//
+//   - The instance clusters reside in different zones.
+//
+//   - The billing method of the instance clusters is consistent.
+//
+// @param request - CreateDBClusterBindingRequest
+//
+// @return CreateDBClusterBindingResponse
+func (client *Client) CreateDBClusterBinding(request *CreateDBClusterBindingRequest) (_result *CreateDBClusterBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDBClusterBindingResponse{}
+	_body, _err := client.CreateDBClusterBindingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8456,6 +8833,10 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddVPCIPs)) {
+		query["AddVPCIPs"] = request.AddVPCIPs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CacheSize)) {
 		query["CacheSize"] = request.CacheSize
 	}
@@ -8552,24 +8933,13 @@ func (client *Client) CreateDBInstanceWithOptions(tmpReq *CreateDBInstanceReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8647,24 +9017,13 @@ func (client *Client) CreateElasticRuleWithOptions(request *CreateElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateElasticRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateElasticRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8722,24 +9081,13 @@ func (client *Client) CreateServiceLinkedRoleForSelectDBWithOptions(request *Cre
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServiceLinkedRoleForSelectDBResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServiceLinkedRoleForSelectDBResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServiceLinkedRoleForSelectDBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8762,7 +9110,7 @@ func (client *Client) CreateServiceLinkedRoleForSelectDB(request *CreateServiceL
 
 // Summary:
 //
-// 释放实例下集群
+// Deletes a cluster from an instance.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -8811,29 +9159,18 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDBClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDBClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 释放实例下集群
+// Deletes a cluster from an instance.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -8842,6 +9179,78 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDBClusterResponse{}
 	_body, _err := client.DeleteDBClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the binding relationship between two clusters for mutual backup.
+//
+// @param request - DeleteDBClusterBindingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteDBClusterBindingResponse
+func (client *Client) DeleteDBClusterBindingWithOptions(request *DeleteDBClusterBindingRequest, runtime *util.RuntimeOptions) (_result *DeleteDBClusterBindingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBClusterIdBak)) {
+		query["DBClusterIdBak"] = request.DBClusterIdBak
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDBClusterBinding"),
+		Version:     tea.String("2023-05-22"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDBClusterBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the binding relationship between two clusters for mutual backup.
+//
+// @param request - DeleteDBClusterBindingRequest
+//
+// @return DeleteDBClusterBindingResponse
+func (client *Client) DeleteDBClusterBinding(request *DeleteDBClusterBindingRequest) (_result *DeleteDBClusterBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDBClusterBindingResponse{}
+	_body, _err := client.DeleteDBClusterBindingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8892,24 +9301,13 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDBInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDBInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDBInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -8983,24 +9381,13 @@ func (client *Client) DeleteElasticRuleWithOptions(request *DeleteElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteElasticRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteElasticRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9058,24 +9445,13 @@ func (client *Client) DescribeAllDBInstanceClassWithOptions(request *DescribeAll
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAllDBInstanceClassResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAllDBInstanceClassResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAllDBInstanceClassResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9141,24 +9517,13 @@ func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClus
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBClusterConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBClusterConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9232,24 +9597,13 @@ func (client *Client) DescribeDBClusterConfigChangeLogsWithOptions(request *Desc
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBClusterConfigChangeLogsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBClusterConfigChangeLogsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBClusterConfigChangeLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9311,24 +9665,13 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9390,24 +9733,13 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstanceNetInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstanceNetInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstanceNetInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9499,24 +9831,13 @@ func (client *Client) DescribeDBInstancesWithOptions(tmpReq *DescribeDBInstances
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeDBInstancesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeDBInstancesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeDBInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9566,24 +9887,13 @@ func (client *Client) DescribeElasticRulesWithOptions(request *DescribeElasticRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeElasticRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeElasticRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeElasticRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9633,24 +9943,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9712,24 +10011,13 @@ func (client *Client) DescribeSecurityIPListWithOptions(request *DescribeSecurit
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeSecurityIPListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeSecurityIPListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeSecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9803,24 +10091,13 @@ func (client *Client) EnDisableScalingRulesWithOptions(request *EnDisableScaling
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &EnDisableScalingRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &EnDisableScalingRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &EnDisableScalingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9870,24 +10147,13 @@ func (client *Client) GetCreateBEClusterInquiryWithOptions(request *GetCreateBEC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCreateBEClusterInquiryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCreateBEClusterInquiryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCreateBEClusterInquiryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -9937,24 +10203,13 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetModifyBEClusterInquiryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetModifyBEClusterInquiryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetModifyBEClusterInquiryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10028,24 +10283,13 @@ func (client *Client) ModifyBEClusterAttributeWithOptions(request *ModifyBEClust
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyBEClusterAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyBEClusterAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyBEClusterAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10123,24 +10367,13 @@ func (client *Client) ModifyDBClusterWithOptions(request *ModifyDBClusterRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10218,24 +10451,13 @@ func (client *Client) ModifyDBClusterConfigWithOptions(request *ModifyDBClusterC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBClusterConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBClusterConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10305,24 +10527,13 @@ func (client *Client) ModifyDBInstanceAttributeWithOptions(request *ModifyDBInst
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyDBInstanceAttributeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyDBInstanceAttributeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyDBInstanceAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10408,24 +10619,13 @@ func (client *Client) ModifyElasticRuleWithOptions(request *ModifyElasticRuleReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyElasticRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyElasticRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyElasticRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10499,24 +10699,13 @@ func (client *Client) ModifySecurityIPListWithOptions(request *ModifySecurityIPL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifySecurityIPListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifySecurityIPListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifySecurityIPListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10582,24 +10771,13 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseInstancePublicConnectionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseInstancePublicConnectionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseInstancePublicConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10649,24 +10827,13 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ResetAccountPasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ResetAccountPasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10742,24 +10909,13 @@ func (client *Client) RestartDBClusterWithOptions(request *RestartDBClusterReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartDBClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartDBClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartDBClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10825,24 +10981,13 @@ func (client *Client) StartBEClusterWithOptions(request *StartBEClusterRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StartBEClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StartBEClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StartBEClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10908,24 +11053,13 @@ func (client *Client) StopBEClusterWithOptions(request *StopBEClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopBEClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopBEClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopBEClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -10999,24 +11133,13 @@ func (client *Client) UpgradeDBInstanceEngineVersionWithOptions(request *Upgrade
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeDBInstanceEngineVersionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeDBInstanceEngineVersionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeDBInstanceEngineVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
