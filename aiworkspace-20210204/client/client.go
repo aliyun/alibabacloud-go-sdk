@@ -199,6 +199,147 @@ func (s *Collection) SetUserId(v string) *Collection {
 	return s
 }
 
+type Connection struct {
+	Accessibility   *string                 `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Configs         map[string]*string      `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	ConnectionId    *string                 `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	ConnectionName  *string                 `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	ConnectionType  *string                 `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	Creator         *string                 `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Description     *string                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreateTime   *string                 `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	GmtModifiedTime *string                 `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Models          []*ConnectionModels     `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	ResourceMeta    *ConnectionResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
+	Secrets         map[string]*string      `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	WorkspaceId     *string                 `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s Connection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Connection) GoString() string {
+	return s.String()
+}
+
+func (s *Connection) SetAccessibility(v string) *Connection {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *Connection) SetConfigs(v map[string]*string) *Connection {
+	s.Configs = v
+	return s
+}
+
+func (s *Connection) SetConnectionId(v string) *Connection {
+	s.ConnectionId = &v
+	return s
+}
+
+func (s *Connection) SetConnectionName(v string) *Connection {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *Connection) SetConnectionType(v string) *Connection {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *Connection) SetCreator(v string) *Connection {
+	s.Creator = &v
+	return s
+}
+
+func (s *Connection) SetDescription(v string) *Connection {
+	s.Description = &v
+	return s
+}
+
+func (s *Connection) SetGmtCreateTime(v string) *Connection {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *Connection) SetGmtModifiedTime(v string) *Connection {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *Connection) SetModels(v []*ConnectionModels) *Connection {
+	s.Models = v
+	return s
+}
+
+func (s *Connection) SetResourceMeta(v *ConnectionResourceMeta) *Connection {
+	s.ResourceMeta = v
+	return s
+}
+
+func (s *Connection) SetSecrets(v map[string]*string) *Connection {
+	s.Secrets = v
+	return s
+}
+
+func (s *Connection) SetWorkspaceId(v string) *Connection {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ConnectionModels struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	ModelType   *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+}
+
+func (s ConnectionModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConnectionModels) GoString() string {
+	return s.String()
+}
+
+func (s *ConnectionModels) SetDisplayName(v string) *ConnectionModels {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ConnectionModels) SetModel(v string) *ConnectionModels {
+	s.Model = &v
+	return s
+}
+
+func (s *ConnectionModels) SetModelType(v string) *ConnectionModels {
+	s.ModelType = &v
+	return s
+}
+
+type ConnectionResourceMeta struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s ConnectionResourceMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ConnectionResourceMeta) GoString() string {
+	return s.String()
+}
+
+func (s *ConnectionResourceMeta) SetInstanceId(v string) *ConnectionResourceMeta {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ConnectionResourceMeta) SetInstanceName(v string) *ConnectionResourceMeta {
+	s.InstanceName = &v
+	return s
+}
+
 type Dataset struct {
 	// example:
 	//
@@ -577,9 +718,10 @@ type DatasetFileMetaConentUpdate struct {
 	// example:
 	//
 	// 2021-01-12T14:36:01.000Z
-	FileCreateTime *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
-	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileType       *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	FileCreateTime  *string `json:"FileCreateTime,omitempty" xml:"FileCreateTime,omitempty"`
+	FileFingerPrint *string `json:"FileFingerPrint,omitempty" xml:"FileFingerPrint,omitempty"`
+	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileType        *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
@@ -630,6 +772,11 @@ func (s *DatasetFileMetaConentUpdate) SetDatasetFileMetaId(v string) *DatasetFil
 
 func (s *DatasetFileMetaConentUpdate) SetFileCreateTime(v string) *DatasetFileMetaConentUpdate {
 	s.FileCreateTime = &v
+	return s
+}
+
+func (s *DatasetFileMetaConentUpdate) SetFileFingerPrint(v string) *DatasetFileMetaConentUpdate {
+	s.FileFingerPrint = &v
 	return s
 }
 
@@ -4975,7 +5122,9 @@ type CreateModelVersionRequest struct {
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
 	// The framework of the model. Valid values:
 	//
-	// 	- Pytorch -XGBoost
+	// 	- Pytorch
+	//
+	// 	- XGBoost
 	//
 	// 	- Keras
 	//
@@ -7858,14 +8007,38 @@ func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSo
 }
 
 type GetConfigRequest struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle
+	//
+	// 	- DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// oss://***
@@ -7896,23 +8069,52 @@ func (s *GetConfigRequest) SetVerbose(v string) *GetConfigRequest {
 }
 
 type GetConfigResponseBody struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle
+	//
+	// 	- DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// oss://***
-	ConfigValue *string                        `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	Labels      []*GetConfigResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The tags of the configuration item.
+	Labels []*GetConfigResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The workspace ID.
+	//
 	// example:
 	//
 	// 1234******2
@@ -7958,10 +8160,14 @@ func (s *GetConfigResponseBody) SetWorkspaceId(v string) *GetConfigResponseBody 
 }
 
 type GetConfigResponseBodyLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -11443,18 +11649,48 @@ func (s *ListCodeSourcesResponse) SetBody(v *ListCodeSourcesResponseBody) *ListC
 }
 
 type ListConfigsRequest struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle
+	//
+	// 	- DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKeys *string `json:"ConfigKeys,omitempty" xml:"ConfigKeys,omitempty"`
+	// The tags used as filter conditions. Separate multiple tags with commas (,). These conditions are in an AND relationship.
+	//
 	// example:
 	//
 	// key1=value1,key2=value2
 	Labels *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// Specifies whether to show the tag information.
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
@@ -11490,11 +11726,16 @@ func (s *ListConfigsRequest) SetVerbose(v string) *ListConfigsRequest {
 }
 
 type ListConfigsResponseBody struct {
+	// The configuration items.
 	Configs []*ListConfigsResponseBodyConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The number of items returned.
+	//
 	// example:
 	//
 	// 15
@@ -11525,15 +11766,28 @@ func (s *ListConfigsResponseBody) SetTotalCount(v int64) *ListConfigsResponseBod
 }
 
 type ListConfigsResponseBodyConfigs struct {
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempTableLifecycle
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// oss://***
-	ConfigValue *string                                 `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	Labels      []*ListConfigsResponseBodyConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The tags of the configuration item.
+	Labels []*ListConfigsResponseBodyConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
 func (s ListConfigsResponseBodyConfigs) String() string {
@@ -11560,10 +11814,14 @@ func (s *ListConfigsResponseBodyConfigs) SetLabels(v []*ListConfigsResponseBodyC
 }
 
 type ListConfigsResponseBodyConfigsLabels struct {
+	// The tag key.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
 	// example:
 	//
 	// value1
@@ -18066,19 +18324,44 @@ func (s *UpdateCodeSourceResponse) SetBody(v *UpdateCodeSourceResponseBody) *Upd
 }
 
 type UpdateConfigRequest struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle
+	//
+	// 	- DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// oss://***
-	ConfigValue *string                      `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	Labels      []*UpdateConfigRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The tags of the configuration item.
+	Labels []*UpdateConfigRequestLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
 func (s UpdateConfigRequest) String() string {
@@ -18110,10 +18393,14 @@ func (s *UpdateConfigRequest) SetLabels(v []*UpdateConfigRequestLabels) *UpdateC
 }
 
 type UpdateConfigRequestLabels struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// value1
@@ -18139,6 +18426,8 @@ func (s *UpdateConfigRequestLabels) SetValue(v string) *UpdateConfigRequestLabel
 }
 
 type UpdateConfigResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
@@ -18188,6 +18477,7 @@ func (s *UpdateConfigResponse) SetBody(v *UpdateConfigResponseBody) *UpdateConfi
 }
 
 type UpdateConfigsRequest struct {
+	// The list of workspace configurations to update or add.
 	Configs []*UpdateConfigsRequestConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
 }
 
@@ -18205,19 +18495,44 @@ func (s *UpdateConfigsRequest) SetConfigs(v []*UpdateConfigsRequestConfigs) *Upd
 }
 
 type UpdateConfigsRequestConfigs struct {
+	// The category of the configuration item. Supported categories:
+	//
+	// 	- CommonResourceConfig
+	//
+	// 	- DLCAutoRecycle
+	//
+	// 	- DLCPriorityConfig
+	//
+	// 	- DSWPriorityConfig
+	//
+	// 	- QuotaMaximumDuration
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// The key of the configuration item. Supported keys:
+	//
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
+	//
+	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
+	//
+	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	//
+	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	// The value of the configuration item.
+	//
 	// example:
 	//
 	// oss://test/s/
-	ConfigValue *string                              `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	Labels      []*UpdateConfigsRequestConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	// The tags of the configuration item.
+	Labels []*UpdateConfigsRequestConfigsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 }
 
 func (s UpdateConfigsRequestConfigs) String() string {
@@ -18249,10 +18564,14 @@ func (s *UpdateConfigsRequestConfigs) SetLabels(v []*UpdateConfigsRequestConfigs
 }
 
 type UpdateConfigsRequestConfigsLabels struct {
+	// The key of the tag.
+	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The value of the tag.
+	//
 	// example:
 	//
 	// value1
@@ -18278,6 +18597,8 @@ func (s *UpdateConfigsRequestConfigsLabels) SetValue(v string) *UpdateConfigsReq
 }
 
 type UpdateConfigsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A******C83E
@@ -23040,7 +23361,7 @@ func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourc
 
 // Summary:
 //
-// 获取配置
+// Obtains a workspace configuration item.
 //
 // @param request - GetConfigRequest
 //
@@ -23093,7 +23414,7 @@ func (client *Client) GetConfigWithOptions(WorkspaceId *string, request *GetConf
 
 // Summary:
 //
-// 获取配置
+// Obtains a workspace configuration item.
 //
 // @param request - GetConfigRequest
 //
@@ -24146,7 +24467,7 @@ func (client *Client) ListCodeSources(request *ListCodeSourcesRequest) (_result 
 
 // Summary:
 //
-// 获取配置
+// Obtains a list of workspace configurations.
 //
 // @param request - ListConfigsRequest
 //
@@ -24203,7 +24524,7 @@ func (client *Client) ListConfigsWithOptions(WorkspaceId *string, request *ListC
 
 // Summary:
 //
-// 获取配置
+// Obtains a list of workspace configurations.
 //
 // @param request - ListConfigsRequest
 //
@@ -26750,7 +27071,7 @@ func (client *Client) UpdateCodeSource(CodeSourceId *string, request *UpdateCode
 
 // Summary:
 //
-// 更新配置
+// Updates or adds a workspace configuration item.
 //
 // @param request - UpdateConfigRequest
 //
@@ -26807,7 +27128,7 @@ func (client *Client) UpdateConfigWithOptions(WorkspaceId *string, request *Upda
 
 // Summary:
 //
-// 更新配置
+// Updates or adds a workspace configuration item.
 //
 // @param request - UpdateConfigRequest
 //
@@ -26826,7 +27147,7 @@ func (client *Client) UpdateConfig(WorkspaceId *string, request *UpdateConfigReq
 
 // Summary:
 //
-// 更新配置
+// Updates or adds workspace configurations in batches.
 //
 // @param request - UpdateConfigsRequest
 //
@@ -26871,7 +27192,7 @@ func (client *Client) UpdateConfigsWithOptions(WorkspaceId *string, request *Upd
 
 // Summary:
 //
-// 更新配置
+// Updates or adds workspace configurations in batches.
 //
 // @param request - UpdateConfigsRequest
 //
