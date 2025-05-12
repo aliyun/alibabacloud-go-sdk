@@ -783,7 +783,8 @@ type CreateElasticNetworkInterfaceRequest struct {
 	// example:
 	//
 	// sg-wz9fj2s3o21nw2****
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId *string                                    `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	Tag             []*CreateElasticNetworkInterfaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the vSwitch.
 	//
 	// example:
@@ -851,6 +852,11 @@ func (s *CreateElasticNetworkInterfaceRequest) SetSecurityGroupId(v string) *Cre
 	return s
 }
 
+func (s *CreateElasticNetworkInterfaceRequest) SetTag(v []*CreateElasticNetworkInterfaceRequestTag) *CreateElasticNetworkInterfaceRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateElasticNetworkInterfaceRequest) SetVSwitchId(v string) *CreateElasticNetworkInterfaceRequest {
 	s.VSwitchId = &v
 	return s
@@ -863,6 +869,29 @@ func (s *CreateElasticNetworkInterfaceRequest) SetVpcId(v string) *CreateElastic
 
 func (s *CreateElasticNetworkInterfaceRequest) SetZoneId(v string) *CreateElasticNetworkInterfaceRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type CreateElasticNetworkInterfaceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateElasticNetworkInterfaceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateElasticNetworkInterfaceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateElasticNetworkInterfaceRequestTag) SetKey(v string) *CreateElasticNetworkInterfaceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateElasticNetworkInterfaceRequestTag) SetValue(v string) *CreateElasticNetworkInterfaceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5193,7 +5222,8 @@ type GetElasticNetworkInterfaceResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                              `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetElasticNetworkInterfaceResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// NIC Type
 	//
 	// Valid value:
@@ -5316,6 +5346,11 @@ func (s *GetElasticNetworkInterfaceResponseBodyContent) SetSecurityGroupId(v str
 
 func (s *GetElasticNetworkInterfaceResponseBodyContent) SetStatus(v string) *GetElasticNetworkInterfaceResponseBodyContent {
 	s.Status = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContent) SetTags(v []*GetElasticNetworkInterfaceResponseBodyContentTags) *GetElasticNetworkInterfaceResponseBodyContent {
+	s.Tags = v
 	return s
 }
 
@@ -5556,6 +5591,29 @@ func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetReg
 
 func (s *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses) SetStatus(v string) *GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses {
 	s.Status = &v
+	return s
+}
+
+type GetElasticNetworkInterfaceResponseBodyContentTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetElasticNetworkInterfaceResponseBodyContentTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentTags) SetTagKey(v string) *GetElasticNetworkInterfaceResponseBodyContentTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetElasticNetworkInterfaceResponseBodyContentTags) SetTagValue(v string) *GetElasticNetworkInterfaceResponseBodyContentTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -8325,8 +8383,6 @@ type GetNetworkInterfaceRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// Subnet of Lingjun
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// subnet-f3zfzmnc
@@ -8506,6 +8562,7 @@ type GetNetworkInterfaceResponseBodyContent struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Lingjun subnet (Subnet) basic information
 	SubnetBaseInfo *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
+	Tags           []*GetNetworkInterfaceResponseBodyContentTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the tenant.
 	//
 	// example:
@@ -8602,6 +8659,11 @@ func (s *GetNetworkInterfaceResponseBodyContent) SetStatus(v string) *GetNetwork
 
 func (s *GetNetworkInterfaceResponseBodyContent) SetSubnetBaseInfo(v *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo) *GetNetworkInterfaceResponseBodyContent {
 	s.SubnetBaseInfo = v
+	return s
+}
+
+func (s *GetNetworkInterfaceResponseBodyContent) SetTags(v []*GetNetworkInterfaceResponseBodyContentTags) *GetNetworkInterfaceResponseBodyContent {
+	s.Tags = v
 	return s
 }
 
@@ -8749,6 +8811,29 @@ func (s *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo) SetSubnetId(v str
 
 func (s *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo) SetSubnetName(v string) *GetNetworkInterfaceResponseBodyContentSubnetBaseInfo {
 	s.SubnetName = &v
+	return s
+}
+
+type GetNetworkInterfaceResponseBodyContentTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetNetworkInterfaceResponseBodyContentTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNetworkInterfaceResponseBodyContentTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetNetworkInterfaceResponseBodyContentTags) SetTagKey(v string) *GetNetworkInterfaceResponseBodyContentTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetNetworkInterfaceResponseBodyContentTags) SetTagValue(v string) *GetNetworkInterfaceResponseBodyContentTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -12692,7 +12777,8 @@ type ListElasticNetworkInterfacesRequest struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tag    []*ListElasticNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the variable.
 	//
 	// Valid value:
@@ -12778,6 +12864,11 @@ func (s *ListElasticNetworkInterfacesRequest) SetStatus(v string) *ListElasticNe
 	return s
 }
 
+func (s *ListElasticNetworkInterfacesRequest) SetTag(v []*ListElasticNetworkInterfacesRequestTag) *ListElasticNetworkInterfacesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListElasticNetworkInterfacesRequest) SetType(v string) *ListElasticNetworkInterfacesRequest {
 	s.Type = &v
 	return s
@@ -12795,6 +12886,29 @@ func (s *ListElasticNetworkInterfacesRequest) SetVpcId(v string) *ListElasticNet
 
 func (s *ListElasticNetworkInterfacesRequest) SetZoneId(v string) *ListElasticNetworkInterfacesRequest {
 	s.ZoneId = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesRequestTag) SetKey(v string) *ListElasticNetworkInterfacesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesRequestTag) SetValue(v string) *ListElasticNetworkInterfacesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -12968,7 +13082,8 @@ type ListElasticNetworkInterfacesResponseBodyContentData struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListElasticNetworkInterfacesResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// network interface controller type, the default type DEFAULT cannot be manually released
 	//
 	// Valid value:
@@ -13079,6 +13194,11 @@ func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetStatus(v string
 	return s
 }
 
+func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetTags(v []*ListElasticNetworkInterfacesResponseBodyContentDataTags) *ListElasticNetworkInterfacesResponseBodyContentData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetType(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
 	s.Type = &v
 	return s
@@ -13096,6 +13216,29 @@ func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetVpcId(v string)
 
 func (s *ListElasticNetworkInterfacesResponseBodyContentData) SetZoneId(v string) *ListElasticNetworkInterfacesResponseBodyContentData {
 	s.ZoneId = &v
+	return s
+}
+
+type ListElasticNetworkInterfacesResponseBodyContentDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContentDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListElasticNetworkInterfacesResponseBodyContentDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentDataTags) SetTagKey(v string) *ListElasticNetworkInterfacesResponseBodyContentDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListElasticNetworkInterfacesResponseBodyContentDataTags) SetTagValue(v string) *ListElasticNetworkInterfacesResponseBodyContentDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -16036,7 +16179,8 @@ type ListNetworkInterfacesRequest struct {
 	// example:
 	//
 	// subnet-anhtskts
-	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	SubnetId *string                            `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	Tag      []*ListNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The ID of the VPD.
 	//
 	// example:
@@ -16098,8 +16242,36 @@ func (s *ListNetworkInterfacesRequest) SetSubnetId(v string) *ListNetworkInterfa
 	return s
 }
 
+func (s *ListNetworkInterfacesRequest) SetTag(v []*ListNetworkInterfacesRequestTag) *ListNetworkInterfacesRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ListNetworkInterfacesRequest) SetVpdId(v string) *ListNetworkInterfacesRequest {
 	s.VpdId = &v
+	return s
+}
+
+type ListNetworkInterfacesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListNetworkInterfacesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkInterfacesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkInterfacesRequestTag) SetKey(v string) *ListNetworkInterfacesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListNetworkInterfacesRequestTag) SetValue(v string) *ListNetworkInterfacesRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -16282,6 +16454,7 @@ type ListNetworkInterfacesResponseBodyContentData struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Lingjun subnet (Subnet) basic information.
 	SubnetBaseInfo *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo `json:"SubnetBaseInfo,omitempty" xml:"SubnetBaseInfo,omitempty" type:"Struct"`
+	Tags           []*ListNetworkInterfacesResponseBodyContentDataTags         `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
 	// example:
@@ -16378,6 +16551,11 @@ func (s *ListNetworkInterfacesResponseBodyContentData) SetStatus(v string) *List
 
 func (s *ListNetworkInterfacesResponseBodyContentData) SetSubnetBaseInfo(v *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo) *ListNetworkInterfacesResponseBodyContentData {
 	s.SubnetBaseInfo = v
+	return s
+}
+
+func (s *ListNetworkInterfacesResponseBodyContentData) SetTags(v []*ListNetworkInterfacesResponseBodyContentDataTags) *ListNetworkInterfacesResponseBodyContentData {
+	s.Tags = v
 	return s
 }
 
@@ -16533,6 +16711,29 @@ func (s *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo) SetSubnetId
 
 func (s *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo) SetSubnetName(v string) *ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo {
 	s.SubnetName = &v
+	return s
+}
+
+type ListNetworkInterfacesResponseBodyContentDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListNetworkInterfacesResponseBodyContentDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNetworkInterfacesResponseBodyContentDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListNetworkInterfacesResponseBodyContentDataTags) SetTagKey(v string) *ListNetworkInterfacesResponseBodyContentDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListNetworkInterfacesResponseBodyContentDataTags) SetTagValue(v string) *ListNetworkInterfacesResponseBodyContentDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -23984,6 +24185,10 @@ func (client *Client) CreateElasticNetworkInterfaceWithOptions(request *CreateEl
 		body["SecurityGroupId"] = request.SecurityGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
 		body["VSwitchId"] = request.VSwitchId
 	}
@@ -27316,6 +27521,10 @@ func (client *Client) ListElasticNetworkInterfacesWithOptions(request *ListElast
 		body["Status"] = request.Status
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
 		body["Type"] = request.Type
 	}
@@ -28106,6 +28315,10 @@ func (client *Client) ListNetworkInterfacesWithOptions(request *ListNetworkInter
 
 	if !tea.BoolValue(util.IsUnset(request.SubnetId)) {
 		body["SubnetId"] = request.SubnetId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VpdId)) {
