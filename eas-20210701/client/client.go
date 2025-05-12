@@ -2506,9 +2506,12 @@ type CreateResourceRequest struct {
 	//
 	// ecs.c6.8xlarge
 	EcsInstanceType *string `json:"EcsInstanceType,omitempty" xml:"EcsInstanceType,omitempty"`
-	// The custom tag.
-	Labels       map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	ResourceName *string            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// The labels.
+	Labels map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	// example:
+	//
+	// MyResource
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// The type of the resource group. Valid values:
 	//
 	// 	- Dedicated: the dedicated resource group.
@@ -2643,7 +2646,7 @@ func (s *CreateResourceRequestSelfManagedResourceOptions) SetRoleName(v string) 
 }
 
 type CreateResourceRequestSelfManagedResourceOptionsNodeTolerations struct {
-	// The result.
+	// The effect.
 	//
 	// Valid values:
 	//
@@ -15012,6 +15015,79 @@ func (s *UpdateGatewayResponse) SetBody(v *UpdateGatewayResponseBody) *UpdateGat
 	return s
 }
 
+type UpdateGroupRequest struct {
+	// The traffic mode. Valid values: auto and customized. auto: The traffic is automatically allocated based on the proportion of the number of instances to the total number of instances. customized: The traffic is allocated based on a custom weight.
+	//
+	// example:
+	//
+	// auto
+	TrafficMode *string `json:"TrafficMode,omitempty" xml:"TrafficMode,omitempty"`
+}
+
+func (s UpdateGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupRequest) SetTrafficMode(v string) *UpdateGroupRequest {
+	s.TrafficMode = &v
+	return s
+}
+
+type UpdateGroupResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 40325405-579C-4D82****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupResponseBody) SetRequestId(v string) *UpdateGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateGroupResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGroupResponse) SetHeaders(v map[string]*string) *UpdateGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupResponse) SetStatusCode(v int32) *UpdateGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGroupResponse) SetBody(v *UpdateGroupResponseBody) *UpdateGroupResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateResourceRequest struct {
 	// The new name of the resource group after the update. The name can be up to 27 characters in length.
 	//
@@ -17037,7 +17113,7 @@ func (client *Client) CreateAclPolicy(ClusterId *string, GatewayId *string, requ
 
 // Summary:
 //
-// Creates an application service.
+// Creates an application service to obtain the inference capabilities of large models.
 //
 // @param request - CreateAppServiceRequest
 //
@@ -17112,7 +17188,7 @@ func (client *Client) CreateAppServiceWithOptions(request *CreateAppServiceReque
 
 // Summary:
 //
-// Creates an application service.
+// Creates an application service to obtain the inference capabilities of large models.
 //
 // @param request - CreateAppServiceRequest
 //
@@ -22429,6 +22505,70 @@ func (client *Client) UpdateGateway(GatewayId *string, ClusterId *string, reques
 	headers := make(map[string]*string)
 	_result = &UpdateGatewayResponse{}
 	_body, _err := client.UpdateGatewayWithOptions(GatewayId, ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the specific fields of a service group.
+//
+// @param request - UpdateGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateGroupResponse
+func (client *Client) UpdateGroupWithOptions(ClusterId *string, GroupName *string, request *UpdateGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TrafficMode)) {
+		body["TrafficMode"] = request.TrafficMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroup"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/groups/" + tea.StringValue(openapiutil.GetEncodeParam(ClusterId)) + "/" + tea.StringValue(openapiutil.GetEncodeParam(GroupName))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the specific fields of a service group.
+//
+// @param request - UpdateGroupRequest
+//
+// @return UpdateGroupResponse
+func (client *Client) UpdateGroup(ClusterId *string, GroupName *string, request *UpdateGroupRequest) (_result *UpdateGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.UpdateGroupWithOptions(ClusterId, GroupName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
