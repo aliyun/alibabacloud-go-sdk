@@ -9,6 +9,229 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type WritingStyleTemplateDefine struct {
+	Example []*WritingStyleTemplateDefineExample `json:"Example,omitempty" xml:"Example,omitempty" type:"Repeated"`
+	Fields  []*WritingStyleTemplateField         `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+}
+
+func (s WritingStyleTemplateDefine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WritingStyleTemplateDefine) GoString() string {
+	return s.String()
+}
+
+func (s *WritingStyleTemplateDefine) SetExample(v []*WritingStyleTemplateDefineExample) *WritingStyleTemplateDefine {
+	s.Example = v
+	return s
+}
+
+func (s *WritingStyleTemplateDefine) SetFields(v []*WritingStyleTemplateField) *WritingStyleTemplateDefine {
+	s.Fields = v
+	return s
+}
+
+type WritingStyleTemplateDefineExample struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s WritingStyleTemplateDefineExample) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WritingStyleTemplateDefineExample) GoString() string {
+	return s.String()
+}
+
+func (s *WritingStyleTemplateDefineExample) SetKey(v string) *WritingStyleTemplateDefineExample {
+	s.Key = &v
+	return s
+}
+
+func (s *WritingStyleTemplateDefineExample) SetValue(v string) *WritingStyleTemplateDefineExample {
+	s.Value = &v
+	return s
+}
+
+type WritingStyleTemplateField struct {
+	BuildIn         *bool                             `json:"BuildIn,omitempty" xml:"BuildIn,omitempty"`
+	CascadingFields []*WritingStyleTemplateField      `json:"CascadingFields,omitempty" xml:"CascadingFields,omitempty" type:"Repeated"`
+	Enums           []*WritingStyleTemplateFieldEnums `json:"Enums,omitempty" xml:"Enums,omitempty" type:"Repeated"`
+	InitialValue    *string                           `json:"InitialValue,omitempty" xml:"InitialValue,omitempty"`
+	Key             *string                           `json:"Key,omitempty" xml:"Key,omitempty"`
+	Max             *float64                          `json:"Max,omitempty" xml:"Max,omitempty"`
+	MaxItem         *int32                            `json:"MaxItem,omitempty" xml:"MaxItem,omitempty"`
+	MaxItemLength   *int32                            `json:"MaxItemLength,omitempty" xml:"MaxItemLength,omitempty"`
+	MaxLength       *int32                            `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	Min             *float64                          `json:"Min,omitempty" xml:"Min,omitempty"`
+	MinItemLength   *int32                            `json:"MinItemLength,omitempty" xml:"MinItemLength,omitempty"`
+	MinLength       *int32                            `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
+	Name            *string                           `json:"Name,omitempty" xml:"Name,omitempty"`
+	Required        *bool                             `json:"Required,omitempty" xml:"Required,omitempty"`
+	Style           *WritingStyleTemplateFieldStyle   `json:"Style,omitempty" xml:"Style,omitempty" type:"Struct"`
+}
+
+func (s WritingStyleTemplateField) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WritingStyleTemplateField) GoString() string {
+	return s.String()
+}
+
+func (s *WritingStyleTemplateField) SetBuildIn(v bool) *WritingStyleTemplateField {
+	s.BuildIn = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetCascadingFields(v []*WritingStyleTemplateField) *WritingStyleTemplateField {
+	s.CascadingFields = v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetEnums(v []*WritingStyleTemplateFieldEnums) *WritingStyleTemplateField {
+	s.Enums = v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetInitialValue(v string) *WritingStyleTemplateField {
+	s.InitialValue = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetKey(v string) *WritingStyleTemplateField {
+	s.Key = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMax(v float64) *WritingStyleTemplateField {
+	s.Max = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMaxItem(v int32) *WritingStyleTemplateField {
+	s.MaxItem = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMaxItemLength(v int32) *WritingStyleTemplateField {
+	s.MaxItemLength = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMaxLength(v int32) *WritingStyleTemplateField {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMin(v float64) *WritingStyleTemplateField {
+	s.Min = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMinItemLength(v int32) *WritingStyleTemplateField {
+	s.MinItemLength = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetMinLength(v int32) *WritingStyleTemplateField {
+	s.MinLength = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetName(v string) *WritingStyleTemplateField {
+	s.Name = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetRequired(v bool) *WritingStyleTemplateField {
+	s.Required = &v
+	return s
+}
+
+func (s *WritingStyleTemplateField) SetStyle(v *WritingStyleTemplateFieldStyle) *WritingStyleTemplateField {
+	s.Style = v
+	return s
+}
+
+type WritingStyleTemplateFieldEnums struct {
+	CascadingFields []*string `json:"CascadingFields,omitempty" xml:"CascadingFields,omitempty" type:"Repeated"`
+	Key             *string   `json:"Key,omitempty" xml:"Key,omitempty"`
+	Name            *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s WritingStyleTemplateFieldEnums) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WritingStyleTemplateFieldEnums) GoString() string {
+	return s.String()
+}
+
+func (s *WritingStyleTemplateFieldEnums) SetCascadingFields(v []*string) *WritingStyleTemplateFieldEnums {
+	s.CascadingFields = v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldEnums) SetKey(v string) *WritingStyleTemplateFieldEnums {
+	s.Key = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldEnums) SetName(v string) *WritingStyleTemplateFieldEnums {
+	s.Name = &v
+	return s
+}
+
+type WritingStyleTemplateFieldStyle struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Format      *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Placeholder *string `json:"Placeholder,omitempty" xml:"Placeholder,omitempty"`
+	ShowTime    *bool   `json:"ShowTime,omitempty" xml:"ShowTime,omitempty"`
+	Suffix      *string `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s WritingStyleTemplateFieldStyle) String() string {
+	return tea.Prettify(s)
+}
+
+func (s WritingStyleTemplateFieldStyle) GoString() string {
+	return s.String()
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetDescription(v string) *WritingStyleTemplateFieldStyle {
+	s.Description = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetFormat(v string) *WritingStyleTemplateFieldStyle {
+	s.Format = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetPlaceholder(v string) *WritingStyleTemplateFieldStyle {
+	s.Placeholder = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetShowTime(v bool) *WritingStyleTemplateFieldStyle {
+	s.ShowTime = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetSuffix(v string) *WritingStyleTemplateFieldStyle {
+	s.Suffix = &v
+	return s
+}
+
+func (s *WritingStyleTemplateFieldStyle) SetType(v string) *WritingStyleTemplateFieldStyle {
+	s.Type = &v
+	return s
+}
+
 type AddDatasetDocumentRequest struct {
 	// example:
 	//
@@ -10154,6 +10377,7 @@ type GetPropertiesResponseBodyData struct {
 	ConsoleConfig           *GetPropertiesResponseBodyDataConsoleConfig           `json:"ConsoleConfig,omitempty" xml:"ConsoleConfig,omitempty" type:"Struct"`
 	GeneralConfigMap        map[string]interface{}                                `json:"GeneralConfigMap,omitempty" xml:"GeneralConfigMap,omitempty"`
 	IntelligentSearchConfig *GetPropertiesResponseBodyDataIntelligentSearchConfig `json:"IntelligentSearchConfig,omitempty" xml:"IntelligentSearchConfig,omitempty" type:"Struct"`
+	SearchSourceList        []*GetPropertiesResponseBodyDataSearchSourceList      `json:"SearchSourceList,omitempty" xml:"SearchSourceList,omitempty" type:"Repeated"`
 	SearchSources           []*GetPropertiesResponseBodyDataSearchSources         `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -10189,6 +10413,11 @@ func (s *GetPropertiesResponseBodyData) SetGeneralConfigMap(v map[string]interfa
 
 func (s *GetPropertiesResponseBodyData) SetIntelligentSearchConfig(v *GetPropertiesResponseBodyDataIntelligentSearchConfig) *GetPropertiesResponseBodyData {
 	s.IntelligentSearchConfig = v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyData) SetSearchSourceList(v []*GetPropertiesResponseBodyDataSearchSourceList) *GetPropertiesResponseBodyData {
+	s.SearchSourceList = v
 	return s
 }
 
@@ -10435,6 +10664,35 @@ func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) SetD
 }
 
 func (s *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources) SetName(v string) *GetPropertiesResponseBodyDataIntelligentSearchConfigSearchSources {
+	s.Name = &v
+	return s
+}
+
+type GetPropertiesResponseBodyDataSearchSourceList struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetPropertiesResponseBodyDataSearchSourceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPropertiesResponseBodyDataSearchSourceList) GoString() string {
+	return s.String()
+}
+
+func (s *GetPropertiesResponseBodyDataSearchSourceList) SetCode(v string) *GetPropertiesResponseBodyDataSearchSourceList {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataSearchSourceList) SetDatasetName(v string) *GetPropertiesResponseBodyDataSearchSourceList {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *GetPropertiesResponseBodyDataSearchSourceList) SetName(v string) *GetPropertiesResponseBodyDataSearchSourceList {
 	s.Name = &v
 	return s
 }
@@ -10875,6 +11133,490 @@ func (s *GetSmartClipTaskResponse) SetStatusCode(v int32) *GetSmartClipTaskRespo
 }
 
 func (s *GetSmartClipTaskResponse) SetBody(v *GetSmartClipTaskResponseBody) *GetSmartClipTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetStyleLearningResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 39
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s GetStyleLearningResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultRequest) SetAgentKey(v string) *GetStyleLearningResultRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GetStyleLearningResultRequest) SetId(v int64) *GetStyleLearningResultRequest {
+	s.Id = &v
+	return s
+}
+
+type GetStyleLearningResultResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetStyleLearningResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetStyleLearningResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultResponseBody) SetCode(v string) *GetStyleLearningResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBody) SetData(v *GetStyleLearningResultResponseBodyData) *GetStyleLearningResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBody) SetHttpStatusCode(v int32) *GetStyleLearningResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBody) SetMessage(v string) *GetStyleLearningResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBody) SetRequestId(v string) *GetStyleLearningResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBody) SetSuccess(v bool) *GetStyleLearningResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetStyleLearningResultResponseBodyData struct {
+	// example:
+	//
+	// AIGC 生成的内容
+	AigcResult       *string                                              `json:"AigcResult,omitempty" xml:"AigcResult,omitempty"`
+	ContentList      []*GetStyleLearningResultResponseBodyDataContentList `json:"ContentList,omitempty" xml:"ContentList,omitempty" type:"Repeated"`
+	CustomTextIdList []*int64                                             `json:"CustomTextIdList,omitempty" xml:"CustomTextIdList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 33
+	Id               *int64                                                    `json:"Id,omitempty" xml:"Id,omitempty"`
+	MaterialIdList   []*int64                                                  `json:"MaterialIdList,omitempty" xml:"MaterialIdList,omitempty" type:"Repeated"`
+	MaterialInfoList []*GetStyleLearningResultResponseBodyDataMaterialInfoList `json:"MaterialInfoList,omitempty" xml:"MaterialInfoList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 用户修订后内容
+	RewriteResult *string `json:"RewriteResult,omitempty" xml:"RewriteResult,omitempty"`
+	// example:
+	//
+	// 文体风格名称
+	StyleName *string `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetStyleLearningResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetAigcResult(v string) *GetStyleLearningResultResponseBodyData {
+	s.AigcResult = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetContentList(v []*GetStyleLearningResultResponseBodyDataContentList) *GetStyleLearningResultResponseBodyData {
+	s.ContentList = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetCustomTextIdList(v []*int64) *GetStyleLearningResultResponseBodyData {
+	s.CustomTextIdList = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetId(v int64) *GetStyleLearningResultResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetMaterialIdList(v []*int64) *GetStyleLearningResultResponseBodyData {
+	s.MaterialIdList = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetMaterialInfoList(v []*GetStyleLearningResultResponseBodyDataMaterialInfoList) *GetStyleLearningResultResponseBodyData {
+	s.MaterialInfoList = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetRewriteResult(v string) *GetStyleLearningResultResponseBodyData {
+	s.RewriteResult = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetStyleName(v string) *GetStyleLearningResultResponseBodyData {
+	s.StyleName = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyData) SetTaskId(v string) *GetStyleLearningResultResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type GetStyleLearningResultResponseBodyDataContentList struct {
+	// example:
+	//
+	// 内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 创建用户
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 1
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 修改用户
+	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+}
+
+func (s GetStyleLearningResultResponseBodyDataContentList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultResponseBodyDataContentList) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetContent(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.Content = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetCreateTime(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetCreateUser(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetId(v int64) *GetStyleLearningResultResponseBodyDataContentList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetTitle(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.Title = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetUpdateTime(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataContentList) SetUpdateUser(v string) *GetStyleLearningResultResponseBodyDataContentList {
+	s.UpdateUser = &v
+	return s
+}
+
+type GetStyleLearningResultResponseBodyDataMaterialInfoList struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 创建用户ID
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 创建用户姓名
+	CreateUserName *string   `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	DocKeywords    []*string `json:"DocKeywords,omitempty" xml:"DocKeywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文档类型，pdf、word、url、image
+	DocType *string `json:"DocType,omitempty" xml:"DocType,omitempty"`
+	// example:
+	//
+	// 外部客户上传的URL，仅用作记录保存
+	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	// example:
+	//
+	// 41
+	FileLength *int32 `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	// example:
+	//
+	// 解析后的原始html内容
+	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	// example:
+	//
+	// 50
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 发布时间
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 临时的对外公开的URL
+	PublicUrl *string `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+	// example:
+	//
+	// 1
+	ShareAttr *int32 `json:"ShareAttr,omitempty" xml:"ShareAttr,omitempty"`
+	// example:
+	//
+	// 文档来源，user_upload、search、viewpoint
+	SrcFrom *string `json:"SrcFrom,omitempty" xml:"SrcFrom,omitempty"`
+	// example:
+	//
+	// 文档摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 解析后的文本内容，对于图片来说为空
+	TextContent *string `json:"TextContent,omitempty" xml:"TextContent,omitempty"`
+	// example:
+	//
+	// 图片文档类型的Base64缩略图
+	ThumbnailInBase64 *string `json:"ThumbnailInBase64,omitempty" xml:"ThumbnailInBase64,omitempty"`
+	// example:
+	//
+	// 文档标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 修改用户ID
+	UpdateUser *string `json:"UpdateUser,omitempty" xml:"UpdateUser,omitempty"`
+	// example:
+	//
+	// 修改用户姓名
+	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
+	// example:
+	//
+	// 内部文档保存的URL，支持多协议，http://,file://,ftp://:客户上传时保存到内部存储的URL、长期保存、到期删除
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetStyleLearningResultResponseBodyDataMaterialInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultResponseBodyDataMaterialInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetAuthor(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.Author = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetCreateTime(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetCreateUser(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetCreateUserName(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetDocKeywords(v []*string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.DocKeywords = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetDocType(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.DocType = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetExternalUrl(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.ExternalUrl = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetFileLength(v int32) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.FileLength = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetHtmlContent(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.HtmlContent = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetId(v int64) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.Id = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetPubTime(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.PubTime = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetPublicUrl(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.PublicUrl = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetShareAttr(v int32) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.ShareAttr = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetSrcFrom(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.SrcFrom = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetSummary(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.Summary = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetTextContent(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.TextContent = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetThumbnailInBase64(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.ThumbnailInBase64 = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetTitle(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.Title = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetUpdateTime(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetUpdateUser(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.UpdateUser = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetUpdateUserName(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.UpdateUserName = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponseBodyDataMaterialInfoList) SetUrl(v string) *GetStyleLearningResultResponseBodyDataMaterialInfoList {
+	s.Url = &v
+	return s
+}
+
+type GetStyleLearningResultResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetStyleLearningResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetStyleLearningResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStyleLearningResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetStyleLearningResultResponse) SetHeaders(v map[string]*string) *GetStyleLearningResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetStyleLearningResultResponse) SetStatusCode(v int32) *GetStyleLearningResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetStyleLearningResultResponse) SetBody(v *GetStyleLearningResultResponseBody) *GetStyleLearningResultResponse {
 	s.Body = v
 	return s
 }
@@ -22987,6 +23729,221 @@ func (s *ListWebReviewPointsResponse) SetStatusCode(v int32) *ListWebReviewPoint
 }
 
 func (s *ListWebReviewPointsResponse) SetBody(v *ListWebReviewPointsResponseBody) *ListWebReviewPointsResponse {
+	s.Body = v
+	return s
+}
+
+type ListWritingStylesRequest struct {
+	// example:
+	//
+	// 100
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// media
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-xxxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListWritingStylesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWritingStylesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWritingStylesRequest) SetMaxResults(v int32) *ListWritingStylesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWritingStylesRequest) SetNextToken(v string) *ListWritingStylesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWritingStylesRequest) SetScene(v string) *ListWritingStylesRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListWritingStylesRequest) SetWorkspaceId(v string) *ListWritingStylesRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListWritingStylesResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*ListWritingStylesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 100
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Message    *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 58
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListWritingStylesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWritingStylesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWritingStylesResponseBody) SetCode(v string) *ListWritingStylesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetData(v []*ListWritingStylesResponseBodyData) *ListWritingStylesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetMaxResults(v int32) *ListWritingStylesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetMessage(v string) *ListWritingStylesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetNextToken(v string) *ListWritingStylesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetRequestId(v string) *ListWritingStylesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetSuccess(v string) *ListWritingStylesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBody) SetTotalCount(v int32) *ListWritingStylesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListWritingStylesResponseBodyData struct {
+	DistributeStepTemplateDefine *WritingStyleTemplateDefine `json:"DistributeStepTemplateDefine,omitempty" xml:"DistributeStepTemplateDefine,omitempty"`
+	// example:
+	//
+	// false
+	DistributeWriting *bool                       `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	Emoji             *string                     `json:"Emoji,omitempty" xml:"Emoji,omitempty"`
+	StyleDescription  *string                     `json:"StyleDescription,omitempty" xml:"StyleDescription,omitempty"`
+	StyleImage        *string                     `json:"StyleImage,omitempty" xml:"StyleImage,omitempty"`
+	StyleKey          *string                     `json:"StyleKey,omitempty" xml:"StyleKey,omitempty"`
+	StyleName         *string                     `json:"StyleName,omitempty" xml:"StyleName,omitempty"`
+	TemplateDefine    *WritingStyleTemplateDefine `json:"TemplateDefine,omitempty" xml:"TemplateDefine,omitempty"`
+}
+
+func (s ListWritingStylesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWritingStylesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListWritingStylesResponseBodyData) SetDistributeStepTemplateDefine(v *WritingStyleTemplateDefine) *ListWritingStylesResponseBodyData {
+	s.DistributeStepTemplateDefine = v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetDistributeWriting(v bool) *ListWritingStylesResponseBodyData {
+	s.DistributeWriting = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetEmoji(v string) *ListWritingStylesResponseBodyData {
+	s.Emoji = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetStyleDescription(v string) *ListWritingStylesResponseBodyData {
+	s.StyleDescription = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetStyleImage(v string) *ListWritingStylesResponseBodyData {
+	s.StyleImage = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetStyleKey(v string) *ListWritingStylesResponseBodyData {
+	s.StyleKey = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetStyleName(v string) *ListWritingStylesResponseBodyData {
+	s.StyleName = &v
+	return s
+}
+
+func (s *ListWritingStylesResponseBodyData) SetTemplateDefine(v *WritingStyleTemplateDefine) *ListWritingStylesResponseBodyData {
+	s.TemplateDefine = v
+	return s
+}
+
+type ListWritingStylesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListWritingStylesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListWritingStylesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWritingStylesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWritingStylesResponse) SetHeaders(v map[string]*string) *ListWritingStylesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWritingStylesResponse) SetStatusCode(v int32) *ListWritingStylesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWritingStylesResponse) SetBody(v *ListWritingStylesResponseBody) *ListWritingStylesResponse {
 	s.Body = v
 	return s
 }
@@ -37218,6 +38175,895 @@ func (s *RunWritingResponse) SetBody(v *RunWritingResponseBody) *RunWritingRespo
 	return s
 }
 
+type RunWritingV2Request struct {
+	Articles []*RunWritingV2RequestArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// example:
+	//
+	// 2
+	GcNumberSize    *int32    `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
+	GcNumberSizeTag *string   `json:"GcNumberSizeTag,omitempty" xml:"GcNumberSizeTag,omitempty"`
+	Keywords        []*string `json:"Keywords,omitempty" xml:"Keywords,omitempty" type:"Repeated"`
+	// example:
+	//
+	// en
+	Language *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
+	MiniDocs []*RunWritingV2RequestMiniDocs `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty" type:"Repeated"`
+	Outlines []*RunWritingV2RequestOutlines `json:"Outlines,omitempty" xml:"Outlines,omitempty" type:"Repeated"`
+	Prompt   *string                        `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// Template
+	PromptMode    *string                             `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	SearchSources []*RunWritingV2RequestSearchSources `json:"SearchSources,omitempty" xml:"SearchSources,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// Writing
+	Step          *string                             `json:"Step,omitempty" xml:"Step,omitempty"`
+	Summarization []*RunWritingV2RequestSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId   *string            `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingParams map[string]*string `json:"WritingParams,omitempty" xml:"WritingParams,omitempty"`
+	// example:
+	//
+	// media
+	WritingScene *string `json:"WritingScene,omitempty" xml:"WritingScene,omitempty"`
+	WritingStyle *string `json:"WritingStyle,omitempty" xml:"WritingStyle,omitempty"`
+}
+
+func (s RunWritingV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2Request) SetArticles(v []*RunWritingV2RequestArticles) *RunWritingV2Request {
+	s.Articles = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetDistributeWriting(v bool) *RunWritingV2Request {
+	s.DistributeWriting = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetGcNumberSize(v int32) *RunWritingV2Request {
+	s.GcNumberSize = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetGcNumberSizeTag(v string) *RunWritingV2Request {
+	s.GcNumberSizeTag = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetKeywords(v []*string) *RunWritingV2Request {
+	s.Keywords = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetLanguage(v string) *RunWritingV2Request {
+	s.Language = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetMiniDocs(v []*RunWritingV2RequestMiniDocs) *RunWritingV2Request {
+	s.MiniDocs = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetOutlines(v []*RunWritingV2RequestOutlines) *RunWritingV2Request {
+	s.Outlines = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetPrompt(v string) *RunWritingV2Request {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetPromptMode(v string) *RunWritingV2Request {
+	s.PromptMode = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetSearchSources(v []*RunWritingV2RequestSearchSources) *RunWritingV2Request {
+	s.SearchSources = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetSessionId(v string) *RunWritingV2Request {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetStep(v string) *RunWritingV2Request {
+	s.Step = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetSummarization(v []*RunWritingV2RequestSummarization) *RunWritingV2Request {
+	s.Summarization = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetTaskId(v string) *RunWritingV2Request {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetUseSearch(v bool) *RunWritingV2Request {
+	s.UseSearch = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetWorkspaceId(v string) *RunWritingV2Request {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetWritingParams(v map[string]*string) *RunWritingV2Request {
+	s.WritingParams = v
+	return s
+}
+
+func (s *RunWritingV2Request) SetWritingScene(v string) *RunWritingV2Request {
+	s.WritingScene = &v
+	return s
+}
+
+func (s *RunWritingV2Request) SetWritingStyle(v string) *RunWritingV2Request {
+	s.WritingStyle = &v
+	return s
+}
+
+type RunWritingV2RequestArticles struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 2024-11-25 14:25:59
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	SearchSourceName *string `json:"SearchSourceName,omitempty" xml:"SearchSourceName,omitempty"`
+	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Title            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunWritingV2RequestArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestArticles) SetContent(v string) *RunWritingV2RequestArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingV2RequestArticles) SetPubTime(v string) *RunWritingV2RequestArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunWritingV2RequestArticles) SetSearchSourceName(v string) *RunWritingV2RequestArticles {
+	s.SearchSourceName = &v
+	return s
+}
+
+func (s *RunWritingV2RequestArticles) SetSource(v string) *RunWritingV2RequestArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunWritingV2RequestArticles) SetTitle(v string) *RunWritingV2RequestArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunWritingV2RequestArticles) SetUrl(v string) *RunWritingV2RequestArticles {
+	s.Url = &v
+	return s
+}
+
+type RunWritingV2RequestMiniDocs struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Index   *string `json:"Index,omitempty" xml:"Index,omitempty"`
+	// example:
+	//
+	// true
+	Star *bool `json:"Star,omitempty" xml:"Star,omitempty"`
+}
+
+func (s RunWritingV2RequestMiniDocs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestMiniDocs) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestMiniDocs) SetContent(v string) *RunWritingV2RequestMiniDocs {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingV2RequestMiniDocs) SetIndex(v string) *RunWritingV2RequestMiniDocs {
+	s.Index = &v
+	return s
+}
+
+func (s *RunWritingV2RequestMiniDocs) SetStar(v bool) *RunWritingV2RequestMiniDocs {
+	s.Star = &v
+	return s
+}
+
+type RunWritingV2RequestOutlines struct {
+	Articles []*RunWritingV2RequestOutlinesArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	Outline  *string                                `json:"Outline,omitempty" xml:"Outline,omitempty"`
+}
+
+func (s RunWritingV2RequestOutlines) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestOutlines) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestOutlines) SetArticles(v []*RunWritingV2RequestOutlinesArticles) *RunWritingV2RequestOutlines {
+	s.Articles = v
+	return s
+}
+
+func (s *RunWritingV2RequestOutlines) SetOutline(v string) *RunWritingV2RequestOutlines {
+	s.Outline = &v
+	return s
+}
+
+type RunWritingV2RequestOutlinesArticles struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunWritingV2RequestOutlinesArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestOutlinesArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestOutlinesArticles) SetContent(v string) *RunWritingV2RequestOutlinesArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingV2RequestOutlinesArticles) SetTitle(v string) *RunWritingV2RequestOutlinesArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunWritingV2RequestOutlinesArticles) SetUrl(v string) *RunWritingV2RequestOutlinesArticles {
+	s.Url = &v
+	return s
+}
+
+type RunWritingV2RequestSearchSources struct {
+	// example:
+	//
+	// SystemSearch
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// QuarkCommonNews
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s RunWritingV2RequestSearchSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestSearchSources) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestSearchSources) SetCode(v string) *RunWritingV2RequestSearchSources {
+	s.Code = &v
+	return s
+}
+
+func (s *RunWritingV2RequestSearchSources) SetDatasetName(v string) *RunWritingV2RequestSearchSources {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *RunWritingV2RequestSearchSources) SetName(v string) *RunWritingV2RequestSearchSources {
+	s.Name = &v
+	return s
+}
+
+type RunWritingV2RequestSummarization struct {
+	Event   *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s RunWritingV2RequestSummarization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2RequestSummarization) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2RequestSummarization) SetEvent(v string) *RunWritingV2RequestSummarization {
+	s.Event = &v
+	return s
+}
+
+func (s *RunWritingV2RequestSummarization) SetMessage(v string) *RunWritingV2RequestSummarization {
+	s.Message = &v
+	return s
+}
+
+type RunWritingV2ShrinkRequest struct {
+	ArticlesShrink *string `json:"Articles,omitempty" xml:"Articles,omitempty"`
+	// example:
+	//
+	// false
+	DistributeWriting *bool `json:"DistributeWriting,omitempty" xml:"DistributeWriting,omitempty"`
+	// example:
+	//
+	// 2
+	GcNumberSize    *int32  `json:"GcNumberSize,omitempty" xml:"GcNumberSize,omitempty"`
+	GcNumberSizeTag *string `json:"GcNumberSizeTag,omitempty" xml:"GcNumberSizeTag,omitempty"`
+	KeywordsShrink  *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	// example:
+	//
+	// en
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	MiniDocsShrink *string `json:"MiniDocs,omitempty" xml:"MiniDocs,omitempty"`
+	OutlinesShrink *string `json:"Outlines,omitempty" xml:"Outlines,omitempty"`
+	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// example:
+	//
+	// Template
+	PromptMode          *string `json:"PromptMode,omitempty" xml:"PromptMode,omitempty"`
+	SearchSourcesShrink *string `json:"SearchSources,omitempty" xml:"SearchSources,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// Writing
+	Step                *string `json:"Step,omitempty" xml:"Step,omitempty"`
+	SummarizationShrink *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// true
+	UseSearch *bool `json:"UseSearch,omitempty" xml:"UseSearch,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	WorkspaceId         *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	WritingParamsShrink *string `json:"WritingParams,omitempty" xml:"WritingParams,omitempty"`
+	// example:
+	//
+	// media
+	WritingScene *string `json:"WritingScene,omitempty" xml:"WritingScene,omitempty"`
+	WritingStyle *string `json:"WritingStyle,omitempty" xml:"WritingStyle,omitempty"`
+}
+
+func (s RunWritingV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ShrinkRequest) SetArticlesShrink(v string) *RunWritingV2ShrinkRequest {
+	s.ArticlesShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetDistributeWriting(v bool) *RunWritingV2ShrinkRequest {
+	s.DistributeWriting = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetGcNumberSize(v int32) *RunWritingV2ShrinkRequest {
+	s.GcNumberSize = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetGcNumberSizeTag(v string) *RunWritingV2ShrinkRequest {
+	s.GcNumberSizeTag = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetKeywordsShrink(v string) *RunWritingV2ShrinkRequest {
+	s.KeywordsShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetLanguage(v string) *RunWritingV2ShrinkRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetMiniDocsShrink(v string) *RunWritingV2ShrinkRequest {
+	s.MiniDocsShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetOutlinesShrink(v string) *RunWritingV2ShrinkRequest {
+	s.OutlinesShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetPrompt(v string) *RunWritingV2ShrinkRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetPromptMode(v string) *RunWritingV2ShrinkRequest {
+	s.PromptMode = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetSearchSourcesShrink(v string) *RunWritingV2ShrinkRequest {
+	s.SearchSourcesShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetSessionId(v string) *RunWritingV2ShrinkRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetStep(v string) *RunWritingV2ShrinkRequest {
+	s.Step = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetSummarizationShrink(v string) *RunWritingV2ShrinkRequest {
+	s.SummarizationShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetTaskId(v string) *RunWritingV2ShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetUseSearch(v bool) *RunWritingV2ShrinkRequest {
+	s.UseSearch = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetWorkspaceId(v string) *RunWritingV2ShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetWritingParamsShrink(v string) *RunWritingV2ShrinkRequest {
+	s.WritingParamsShrink = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetWritingScene(v string) *RunWritingV2ShrinkRequest {
+	s.WritingScene = &v
+	return s
+}
+
+func (s *RunWritingV2ShrinkRequest) SetWritingStyle(v string) *RunWritingV2ShrinkRequest {
+	s.WritingStyle = &v
+	return s
+}
+
+type RunWritingV2ResponseBody struct {
+	// example:
+	//
+	// true
+	End     *bool                            `json:"End,omitempty" xml:"End,omitempty"`
+	Header  *RunWritingV2ResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunWritingV2ResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunWritingV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBody) SetEnd(v bool) *RunWritingV2ResponseBody {
+	s.End = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBody) SetHeader(v *RunWritingV2ResponseBodyHeader) *RunWritingV2ResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBody) SetPayload(v *RunWritingV2ResponseBodyPayload) *RunWritingV2ResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBody) SetRequestId(v string) *RunWritingV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunWritingV2ResponseBodyHeader struct {
+	// example:
+	//
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-started
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	OriginSessionId *string `json:"OriginSessionId,omitempty" xml:"OriginSessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 400
+	StatusCode *int32 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 全链路ID
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunWritingV2ResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetErrorCode(v string) *RunWritingV2ResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetErrorMessage(v string) *RunWritingV2ResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetEvent(v string) *RunWritingV2ResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetOriginSessionId(v string) *RunWritingV2ResponseBodyHeader {
+	s.OriginSessionId = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetSessionId(v string) *RunWritingV2ResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetStatusCode(v int32) *RunWritingV2ResponseBodyHeader {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetTaskId(v string) *RunWritingV2ResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyHeader) SetTraceId(v string) *RunWritingV2ResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunWritingV2ResponseBodyPayload struct {
+	Output *RunWritingV2ResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunWritingV2ResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunWritingV2ResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBodyPayload) SetOutput(v *RunWritingV2ResponseBodyPayloadOutput) *RunWritingV2ResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayload) SetUsage(v *RunWritingV2ResponseBodyPayloadUsage) *RunWritingV2ResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunWritingV2ResponseBodyPayloadOutput struct {
+	Articles []*RunWritingV2ResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 文章精排之后的片段
+	MiniDoc []*string `json:"MiniDoc,omitempty" xml:"MiniDoc,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 大模型改变世界
+	SearchQuery *string `json:"SearchQuery,omitempty" xml:"SearchQuery,omitempty"`
+	// example:
+	//
+	// 文本生成结果
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RunWritingV2ResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetArticles(v []*RunWritingV2ResponseBodyPayloadOutputArticles) *RunWritingV2ResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetMiniDoc(v []*string) *RunWritingV2ResponseBodyPayloadOutput {
+	s.MiniDoc = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetSearchQuery(v string) *RunWritingV2ResponseBodyPayloadOutput {
+	s.SearchQuery = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutput) SetText(v string) *RunWritingV2ResponseBodyPayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type RunWritingV2ResponseBodyPayloadOutputArticles struct {
+	// example:
+	//
+	// 作者
+	Author *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	// example:
+	//
+	// 文章内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 文档-自定义的唯一ID
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 98229f6001cf4deeb1668191d4eccc75
+	DocUuid *string `json:"DocUuid,omitempty" xml:"DocUuid,omitempty"`
+	// example:
+	//
+	// 2024-08-28 11:38:28
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	// example:
+	//
+	// 央视网
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 文章摘要
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	// example:
+	//
+	// 文章标签
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// example:
+	//
+	// 文章标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// https://www.example.com/aaa.docx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunWritingV2ResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetAuthor(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetContent(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetDocId(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetDocUuid(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.DocUuid = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetSource(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetSummary(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetTag(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Tag = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetTitle(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadOutputArticles) SetUrl(v string) *RunWritingV2ResponseBodyPayloadOutputArticles {
+	s.Url = &v
+	return s
+}
+
+type RunWritingV2ResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 78
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 34
+	OutputTokens *int64            `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	TokenMap     map[string]*int64 `json:"TokenMap,omitempty" xml:"TokenMap,omitempty"`
+	// example:
+	//
+	// 38
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunWritingV2ResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2ResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2ResponseBodyPayloadUsage) SetInputTokens(v int64) *RunWritingV2ResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunWritingV2ResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadUsage) SetTokenMap(v map[string]*int64) *RunWritingV2ResponseBodyPayloadUsage {
+	s.TokenMap = v
+	return s
+}
+
+func (s *RunWritingV2ResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunWritingV2ResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunWritingV2Response struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunWritingV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunWritingV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunWritingV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *RunWritingV2Response) SetHeaders(v map[string]*string) *RunWritingV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *RunWritingV2Response) SetStatusCode(v int32) *RunWritingV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunWritingV2Response) SetBody(v *RunWritingV2ResponseBody) *RunWritingV2Response {
+	s.Body = v
+	return s
+}
+
 type SaveCustomTextRequest struct {
 	// This parameter is required.
 	//
@@ -47009,6 +48855,72 @@ func (client *Client) GetSmartClipTask(request *GetSmartClipTaskRequest) (_resul
 
 // Summary:
 //
+// 获取文体学习分析结果
+//
+// @param request - GetStyleLearningResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetStyleLearningResultResponse
+func (client *Client) GetStyleLearningResultWithOptions(request *GetStyleLearningResultRequest, runtime *util.RuntimeOptions) (_result *GetStyleLearningResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetStyleLearningResult"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetStyleLearningResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文体学习分析结果
+//
+// @param request - GetStyleLearningResultRequest
+//
+// @return GetStyleLearningResultResponse
+func (client *Client) GetStyleLearningResult(request *GetStyleLearningResultRequest) (_result *GetStyleLearningResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetStyleLearningResultResponse{}
+	_body, _err := client.GetStyleLearningResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据ID获取热点事件信息
 //
 // @param request - GetTopicByIdRequest
@@ -49985,6 +51897,80 @@ func (client *Client) ListWebReviewPoints(request *ListWebReviewPointsRequest) (
 
 // Summary:
 //
+// 获取文体列表
+//
+// @param request - ListWritingStylesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListWritingStylesResponse
+func (client *Client) ListWritingStylesWithOptions(request *ListWritingStylesRequest, runtime *util.RuntimeOptions) (_result *ListWritingStylesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		body["Scene"] = request.Scene
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWritingStyles"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWritingStylesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文体列表
+//
+// @param request - ListWritingStylesRequest
+//
+// @return ListWritingStylesResponse
+func (client *Client) ListWritingStyles(request *ListWritingStylesRequest) (_result *ListWritingStylesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListWritingStylesResponse{}
+	_body, _err := client.ListWritingStylesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 根据taskId查询异步任务状态
 //
 // @param request - QueryAsyncTaskRequest
@@ -52386,6 +54372,172 @@ func (client *Client) RunWriting(request *RunWritingRequest) (_result *RunWritin
 	runtime := &util.RuntimeOptions{}
 	_result = &RunWritingResponse{}
 	_body, _err := client.RunWritingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param tmpReq - RunWritingV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunWritingV2Response
+func (client *Client) RunWritingV2WithOptions(tmpReq *RunWritingV2Request, runtime *util.RuntimeOptions) (_result *RunWritingV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RunWritingV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Articles)) {
+		request.ArticlesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Articles, tea.String("Articles"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Keywords)) {
+		request.KeywordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Keywords, tea.String("Keywords"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MiniDocs)) {
+		request.MiniDocsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MiniDocs, tea.String("MiniDocs"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Outlines)) {
+		request.OutlinesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Outlines, tea.String("Outlines"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SearchSources)) {
+		request.SearchSourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SearchSources, tea.String("SearchSources"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Summarization)) {
+		request.SummarizationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Summarization, tea.String("Summarization"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.WritingParams)) {
+		request.WritingParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.WritingParams, tea.String("WritingParams"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticlesShrink)) {
+		body["Articles"] = request.ArticlesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DistributeWriting)) {
+		body["DistributeWriting"] = request.DistributeWriting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GcNumberSize)) {
+		body["GcNumberSize"] = request.GcNumberSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GcNumberSizeTag)) {
+		body["GcNumberSizeTag"] = request.GcNumberSizeTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeywordsShrink)) {
+		body["Keywords"] = request.KeywordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		body["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MiniDocsShrink)) {
+		body["MiniDocs"] = request.MiniDocsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutlinesShrink)) {
+		body["Outlines"] = request.OutlinesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromptMode)) {
+		body["PromptMode"] = request.PromptMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchSourcesShrink)) {
+		body["SearchSources"] = request.SearchSourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Step)) {
+		body["Step"] = request.Step
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SummarizationShrink)) {
+		body["Summarization"] = request.SummarizationShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		body["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseSearch)) {
+		body["UseSearch"] = request.UseSearch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WritingParamsShrink)) {
+		body["WritingParams"] = request.WritingParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WritingScene)) {
+		body["WritingScene"] = request.WritingScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WritingStyle)) {
+		body["WritingStyle"] = request.WritingStyle
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunWritingV2"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunWritingV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 直接写作
+//
+// @param request - RunWritingV2Request
+//
+// @return RunWritingV2Response
+func (client *Client) RunWritingV2(request *RunWritingV2Request) (_result *RunWritingV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunWritingV2Response{}
+	_body, _err := client.RunWritingV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
