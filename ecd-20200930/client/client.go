@@ -6098,7 +6098,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- 1: public cloud.
+	// 	- 1: public cloud
 	//
 	// 	- 8: commercial edition.
 	//
@@ -6250,13 +6250,13 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	DomainResolveRuleType *string `json:"DomainResolveRuleType,omitempty" xml:"DomainResolveRuleType,omitempty"`
-	// Specifies whether to enforce session bandwidth limit.
+	// Specifies whether to enforce the peak bandwidth limit for sessions.
 	//
 	// Valid values:
 	//
-	// 	- off: doesn\\"t enforce session bandwidth limit.
+	// 	- off: doesn\\"t enforce the peak bandwidth limit for sessions.
 	//
-	// 	- on: enforces session bandwidth limit.
+	// 	- on: enforces the peak bandwidth limit for sessions.
 	//
 	// example:
 	//
@@ -6274,13 +6274,13 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
-	// Specifies whether end users in the same workspace can share cloud computers.
+	// Specifies whether to allow end users in the same office network to share cloud computers.
 	//
 	// Valid values:
 	//
-	// 	- off: End users in the same workspace cannot share cloud computers.
+	// 	- off: doesn\\"t allow end users in the same office network to share cloud computers.
 	//
-	// 	- on: End users in the same workspace can share cloud computers
+	// 	- on: allows end users in the same office network to share cloud computers.
 	//
 	// example:
 	//
@@ -6304,7 +6304,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	GpuAcceleration *string `json:"GpuAcceleration,omitempty" xml:"GpuAcceleration,omitempty"`
-	// The file transfer policy on the web client.
+	// The file transfer feature on the web client.
 	//
 	// Valid values:
 	//
@@ -6320,7 +6320,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	Html5FileTransfer *string `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
-	// The network communication protocol.
+	// The protocol for network communication.
 	//
 	// Valid values:
 	//
@@ -6328,9 +6328,9 @@ type CreateCenterPolicyRequest struct {
 	//
 	// 	- rtc: AST is used for high-frequency audio and video streaming.
 	//
-	// 	- auto: UTO enables automatic switch between AST and UDP modes based on desktop content.
+	// 	- auto: UTO is used to enable automatic switch between AST and UDP modes based on desktop content.
 	//
-	// 	- both: UDP is ideal for office and HD graphic design use.
+	// 	- both: UDP is used for office and HD graphic design use.
 	//
 	// example:
 	//
@@ -6395,7 +6395,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// 40
 	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
-	// Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+	// Specifies whether to display the Restart button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
 	//
@@ -6409,7 +6409,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
-	// Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+	// Specifies whether to display the Stop button in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
 	//
@@ -6447,7 +6447,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	NetRedirect *string `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
-	// The network redirection policies.
+	// The network redirection policy.
 	//
 	// >  This parameter is in private preview and only available to specific users.
 	NetRedirectRule []*CreateCenterPolicyRequestNetRedirectRule `json:"NetRedirectRule,omitempty" xml:"NetRedirectRule,omitempty" type:"Repeated"`
@@ -6509,7 +6509,7 @@ type CreateCenterPolicyRequest struct {
 	RecordEventFilePaths []*string `json:"RecordEventFilePaths,omitempty" xml:"RecordEventFilePaths,omitempty" type:"Repeated"`
 	// The absolute paths to screen recording registries.
 	RecordEventRegisters []*string `json:"RecordEventRegisters,omitempty" xml:"RecordEventRegisters,omitempty" type:"Repeated"`
-	// The event that triggers screen recording.
+	// The events that trigger screen recording.
 	RecordEvents []*string `json:"RecordEvents,omitempty" xml:"RecordEvents,omitempty" type:"Repeated"`
 	// The screen recording policy.
 	//
@@ -6611,7 +6611,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// off
 	ResetDesktop *string `json:"ResetDesktop,omitempty" xml:"ResetDesktop,omitempty"`
-	// The height of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+	// The resolution height. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
 	//
 	// example:
 	//
@@ -6629,7 +6629,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// adaptive
 	ResolutionModel *string `json:"ResolutionModel,omitempty" xml:"ResolutionModel,omitempty"`
-	// The width of the resolution. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
+	// The resolution width. Unit: pixel. Valid values for cloud applications: 500 to 50000. Valid values for cloud computers: 480 to 4096.
 	//
 	// example:
 	//
@@ -6641,7 +6641,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// 	- app: cloud applications.
 	//
-	// 	- Desktop: cloud computers.
+	// 	- desktop: cloud computers.
 	//
 	// This parameter is required.
 	//
@@ -6664,7 +6664,7 @@ type CreateCenterPolicyRequest struct {
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 	// The effective scopes. This parameter is required when `Scope` is set to `IP`. If `Scope` is set to `IP`, this parameter doesn\\"t take effect.
 	ScopeValue []*string `json:"ScopeValue,omitempty" xml:"ScopeValue,omitempty" type:"Repeated"`
-	// The bandwidth peak of the session. Valid values: 2000 to 100000.
+	// The bandwidth peak allowed for sessions. Unit: Kbit/s. Valid values: 2000 to 100000.
 	//
 	// example:
 	//
@@ -6740,7 +6740,7 @@ type CreateCenterPolicyRequest struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rules.
 	UsbSupplyRedirectRule []*CreateCenterPolicyRequestUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
-	// The average bitrate for video encoding. Valid values: 1000 to 50000.
+	// The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
 	//
@@ -6758,7 +6758,7 @@ type CreateCenterPolicyRequest struct {
 	//
 	// 30
 	VideoEncMinQP *int32 `json:"VideoEncMinQP,omitempty" xml:"VideoEncMinQP,omitempty"`
-	// The peak bitrate for video encoding. Valid values: 1000 to 50000.
+	// The peak bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
 	//
@@ -7749,7 +7749,7 @@ type CreateCenterPolicyRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- usbKey: U keys.
+	// 	- usbKey: UKeys.
 	//
 	// 	- other: other peripheral devices.
 	//
@@ -7788,11 +7788,11 @@ type CreateCenterPolicyRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- deviceRedirect: enables device redirection.
+	// 	- deviceRedirect: device redirection.
 	//
-	// 	- usbRedirect: enables USB redirection.
+	// 	- usbRedirect: USB redirection.
 	//
-	// 	- off: disables any type of redirection.
+	// 	- off: redirection disabled.
 	//
 	// example:
 	//
@@ -14149,7 +14149,7 @@ type CreatePolicyGroupRequestDeviceRules struct {
 	//
 	// sandisk
 	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	// The product ID.
+	// The product ID (PID).
 	//
 	// example:
 	//
@@ -14159,25 +14159,25 @@ type CreatePolicyGroupRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- usbKey
+	// 	- usbKey: UKeys.
 	//
-	// 	- other
+	// 	- other: other peripheral devices.
 	//
-	// 	- graphicsTablet
+	// 	- graphicsTablet: graphics tablets.
 	//
-	// 	- printer
+	// 	- printer: printers.
 	//
-	// 	- cardReader
+	// 	- cardReader: card readers.
 	//
-	// 	- scanner
+	// 	- scanner: scanners.
 	//
-	// 	- storage
+	// 	- storage: storage devices.
 	//
-	// 	- camera
+	// 	- camera: web cameras.
 	//
-	// 	- adb
+	// 	- adb: Android Debug Bridge (ADB) devices.
 	//
-	// 	- networkInterfaceCard: the NIC device.
+	// 	- networkInterfaceCard: NIC devices.
 	//
 	// example:
 	//
@@ -17025,9 +17025,11 @@ func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceRespon
 }
 
 type DescribeAclEntriesRequest struct {
-	// The number of entries per page. Maximum value: 1600.
+	// The number of entries per page.
 	//
-	// Default value: 1600.
+	// 	- Maximum value: 1600.
+	//
+	// 	- Default value: 1600.
 	//
 	// example:
 	//
@@ -17045,7 +17047,7 @@ type DescribeAclEntriesRequest struct {
 	//
 	// cn-shanghai+dir-631324****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -17164,7 +17166,7 @@ type DescribeAclEntriesResponseBodyAclEntries struct {
 	//
 	// allow
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The ID of the instance to which the ACL applies, such as an office network ID or a cloud computer ID.
+	// The ID of the instance to which the ACL applies. You can specify an office network ID or a cloud computer ID.
 	//
 	// example:
 	//
@@ -17834,7 +17836,7 @@ func (s *DescribeBundlesRequest) SetVolumeEncryptionEnabled(v bool) *DescribeBun
 }
 
 type DescribeBundlesResponseBody struct {
-	// The details of the cloud computer templates.
+	// The cloud computer templates.
 	Bundles []*DescribeBundlesResponseBodyBundles `json:"Bundles,omitempty" xml:"Bundles,omitempty" type:"Repeated"`
 	// The token that is used for the next query. If this parameter is empty, all results have been returned.
 	//
@@ -17916,13 +17918,15 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// 2021-09-30T06:09Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The category of the data disk. Valid values:
+	// The category of the data disk.
 	//
-	// 	- cloud_efficiency: ultra disk
+	// Valid values:
 	//
-	// 	- cloud_auto: SSD
+	// 	- cloud_efficiency: the ultra disk
 	//
-	// 	- cloud_essd: ESSD (supported by specific specifications)
+	// 	- cloud_auto: the standard SSD.
+	//
+	// 	- cloud_essd: the ESSD. Take note that only specific cloud computer types support ESSDs.
 	//
 	// example:
 	//
@@ -18102,13 +18106,15 @@ type DescribeBundlesResponseBodyBundles struct {
 	//
 	// Sufficient
 	StockState *string `json:"StockState,omitempty" xml:"StockState,omitempty"`
-	// The category of the system disk. Valid values:
+	// The category of the system disk.
 	//
-	// 	- cloud_efficiency: ultra disk
+	// Valid values:
 	//
-	// 	- cloud_auto: SSD
+	// 	- cloud_efficiency: the ultra disk
 	//
-	// 	- cloud_essd: ESSD (supported by specific specifications)
+	// 	- cloud_auto: the standard SSD.
+	//
+	// 	- cloud_essd: the Enterprise SSD (ESSD). Take note that only specific cloud computer types support ESSDs.
 	//
 	// example:
 	//
@@ -18959,7 +18965,7 @@ type DescribeCenterPolicyListRequest struct {
 	//
 	// Valid values:
 	//
-	// 	- 1: public cloud.
+	// 	- 1: public cloud
 	//
 	// 	- 8: commercial edition.
 	//
@@ -19220,7 +19226,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	EndUserApplyAdminCoordinate *string `json:"EndUserApplyAdminCoordinate,omitempty" xml:"EndUserApplyAdminCoordinate,omitempty"`
-	// Indicates whether end users in the same workspace can share cloud computers.
+	// Indicates whether end users in the same office network can share cloud computers.
 	//
 	// example:
 	//
@@ -19238,7 +19244,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	Html5Access *string `json:"Html5Access,omitempty" xml:"Html5Access,omitempty"`
-	// The file transfer policy of the HTML5 client.
+	// The file transfer feature on the web client.
 	//
 	// example:
 	//
@@ -19295,7 +19301,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// 30
 	MemorySingleRateLimit *int32 `json:"MemorySingleRateLimit,omitempty" xml:"MemorySingleRateLimit,omitempty"`
-	// Indicates whether the Restart button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+	// Indicates whether the Restart button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
 	//
@@ -19303,7 +19309,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// off
 	MobileRestart *string `json:"MobileRestart,omitempty" xml:"MobileRestart,omitempty"`
-	// Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from mobile clients (Android clients and iOS clients).
+	// Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
 	//
 	// >  This feature applies to only mobile clients of version 7.4.0 or later.
 	//
@@ -19526,7 +19532,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	UsbRedirect *string `json:"UsbRedirect,omitempty" xml:"UsbRedirect,omitempty"`
 	// The USB redirection rules.
 	UsbSupplyRedirectRule []*DescribeCenterPolicyListResponseBodyDescribePolicyGroupsUsbSupplyRedirectRule `json:"UsbSupplyRedirectRule,omitempty" xml:"UsbSupplyRedirectRule,omitempty" type:"Repeated"`
-	// The average bitrate for video encoding. Valid values: 1000 to 50000.
+	// The average bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
 	//
@@ -19544,7 +19550,7 @@ type DescribeCenterPolicyListResponseBodyDescribePolicyGroups struct {
 	//
 	// 20
 	VideoEncMinQP *int32 `json:"VideoEncMinQP,omitempty" xml:"VideoEncMinQP,omitempty"`
-	// The peak bitrate for video encoding. Valid values: 1000 to 50000.
+	// The peak bitrate for video encoding. Unit: Kbit/s. Valid values: 1000 to 50000.
 	//
 	// example:
 	//
@@ -24805,13 +24811,13 @@ type DescribeDesktopSessionsRequest struct {
 	//
 	// testUser
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The ID the end user. It is the same as EndUserId. Either one of these two parameters is required.
+	// The user ID. This parameter functions the same as the `EndUserId` parameter. You only need to include one of them in your request.
 	//
 	// example:
 	//
 	// alice
 	EndUserIdFilter *string `json:"EndUserIdFilter,omitempty" xml:"EndUserIdFilter,omitempty"`
-	// The ID of the office network.
+	// The office network ID.
 	//
 	// example:
 	//
@@ -25276,7 +25282,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 2
 	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The ID of the cloud computer pool when you change instance types of cloud computers. If you specify this parameter, the information about whether the instance type is compatible with the cloud computer pool is included in the response.
+	// The ID of the cloud computer share you want to modify. If this parameter is provided, the response will include compatibility information for the specified specification.
 	//
 	// example:
 	//
@@ -25288,177 +25294,63 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// ecd-gx2x1dhsmucyy****
 	DesktopIdForModify *string `json:"DesktopIdForModify,omitempty" xml:"DesktopIdForModify,omitempty"`
-	// The IDs of the instance types of cloud computers.
+	// The specification ID.
 	//
-	// >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance types of cloud computers are queried.
+	// >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all cloud computer specifications will be queried.
 	//
 	// Valid values:
 	//
+	// 	- eds.enterprise_office.4c8g
+	//
 	// 	- eds.hf.4c8g
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- ecd.basic.large
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- ecd.advanced.large
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- eds.enterprise_office.8c16g
 	//
 	// 	- ecd.basic.small
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- ecd.graphics.2xlarge
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.hf.8c16g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.hf.12c24g
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.general.8c16g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.general.16c32g
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- ecd.advanced.xlarge
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.graphics.16c1t4
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- ecd.graphics.xlarge
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- ecd.performance.2xlarge
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.general.8c32g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.general.2c2g
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.general.2c4g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.graphics.24c1t4
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.general.4c8g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- eds.enterprise_office.2c4g
 	//
 	// 	- eds.general.4c16g
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.general.2c8g
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
 	// ecd.graphics.xlarge
 	DesktopTypeId *string `json:"DesktopTypeId,omitempty" xml:"DesktopTypeId,omitempty"`
-	// The array of specifications.
+	// The specification IDs.
 	DesktopTypeIdList []*string `json:"DesktopTypeIdList,omitempty" xml:"DesktopTypeIdList,omitempty" type:"Repeated"`
 	// The number of GPUs.
 	//
@@ -25466,15 +25358,17 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// The type of the pre-installed GPU driver. Valid values:
+	// The GPU driver type.
 	//
-	// - T4
+	// Valid values:
 	//
-	// - A10
+	// 	- T4
 	//
-	// - G28
+	// 	- A10
 	//
-	// - G39
+	// 	- G28
+	//
+	// 	- G39
 	//
 	// example:
 	//
@@ -25486,67 +25380,27 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 2048
 	GpuMemory *int32 `json:"GpuMemory,omitempty" xml:"GpuMemory,omitempty"`
-	// The name of the instance family.
+	// The name of the specification family.
 	//
-	// >  If the values of the `InstanceTypeFamily` and `DesktopTypeId` parameters are empty, all instance families of cloud computers are queried.
+	// >  If both `InstanceTypeFamily` and `DesktopTypeId` are empty, all specification families will be queried.
 	//
 	// Valid values:
 	//
 	// 	- ecd.advanced
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- eds.graphics
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- ecd.basic
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
+	// 	- eds.enterprise_office
 	//
 	// 	- eds.hf
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- ecd.graphics
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// 	- eds.general
 	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
 	// 	- ecd.performance
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
-	//
-	//     <!-- -->
 	//
 	// example:
 	//
@@ -25558,11 +25412,13 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// 4
 	MemorySize *int32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The sort criterion. If left empty, the entries will be in descending order based on the creation time. Valid values:
+	// The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
 	//
-	// - Memory: sort by memory size
+	// Valid values:
 	//
-	// - Cpu: sort by number of CPU cores
+	// 	- Memory: sorts by memory size.
+	//
+	// 	- Cpu: sorts by the number of vCPUs.
 	//
 	// example:
 	//
@@ -25574,7 +25430,7 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// DOWNGRADE
 	OrderType *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -25582,33 +25438,37 @@ type DescribeDesktopTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The sales mode. Valid values:
+	// The sales mode of the specification.
 	//
-	// - MonthPackage: monthly subscription
+	// Valid values:
 	//
-	// - FastBuy: fast buy
+	// 	- MonthPackage: the monthly subscription mode.
+	//
+	// 	- FastBuy: the quick purchase mode.
 	//
 	// example:
 	//
 	// FastBuy
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The sort order. Valid values:
+	// The sorting order.
 	//
-	// - ASC: in ascending order [default]
+	// Valid values:
 	//
-	// - DESC: in descending order
+	// 	- ASC (default): the ascending order.
+	//
+	// 	- DESC: the descending order.
 	//
 	// example:
 	//
 	// ASC
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
-	// The number of sessions supported.
+	// The number of sessions supported by the specification.
 	//
 	// example:
 	//
 	// 2
 	SupportMinSessionCount *int32 `json:"SupportMinSessionCount,omitempty" xml:"SupportMinSessionCount,omitempty"`
-	// > This parameter is not publicly available.
+	// >  This parameter is not publicly available.
 	//
 	// example:
 	//
@@ -25715,7 +25575,7 @@ func (s *DescribeDesktopTypesRequest) SetZoneId(v string) *DescribeDesktopTypesR
 }
 
 type DescribeDesktopTypesResponseBody struct {
-	// Details of cloud desktop types.
+	// The specifications.
 	DesktopTypes []*DescribeDesktopTypesResponseBodyDesktopTypes `json:"DesktopTypes,omitempty" xml:"DesktopTypes,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -25774,7 +25634,7 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// 1
 	GpuCount *float32 `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
-	// The GPU memory size. Unit: MB. This parameter applies to GPU-enabled cloud computers only.
+	// The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
 	//
 	// example:
 	//
@@ -25792,7 +25652,7 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// ecd.graphics
 	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// The number of sessions supported by the current specification.
+	// The number of sessions supported by the specification.
 	//
 	// example:
 	//
@@ -25804,9 +25664,15 @@ type DescribeDesktopTypesResponseBodyDesktopTypes struct {
 	//
 	// 23552
 	MemorySize *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// The array of sales modes.
+	// The sales modes of the specifications.
 	Scopes []*string `json:"Scopes,omitempty" xml:"Scopes,omitempty" type:"Repeated"`
-	// The stock status.
+	// The inventory status of the specification.
+	//
+	// Valid values:
+	//
+	// 	- Insufficient
+	//
+	// 	- Sufficient
 	//
 	// example:
 	//
@@ -31267,7 +31133,7 @@ func (s *DescribeImageModifiedRecordsRequest) SetRegionId(v string) *DescribeIma
 }
 
 type DescribeImageModifiedRecordsResponseBody struct {
-	// Details about the image modification record.
+	// The image change records.
 	ImageModifiedRecords []*DescribeImageModifiedRecordsResponseBodyImageModifiedRecords `json:"ImageModifiedRecords,omitempty" xml:"ImageModifiedRecords,omitempty" type:"Repeated"`
 	// If the NextToken parameter is empty, no next page exists.
 	//
@@ -32178,85 +32044,89 @@ func (s *DescribeImagesResponse) SetBody(v *DescribeImagesResponseBody) *Describ
 }
 
 type DescribeInvocationsRequest struct {
-	// The type of the command. Valid values:
+	// The command type.
 	//
-	// 	- RunBatScript
+	// Valid values:
 	//
-	// 	- RunPowerShellScript
+	// 	- RunPowerShellScript: the PowerShell command.
+	//
+	// 	- RunBatScript: the Bat command.
 	//
 	// example:
 	//
 	// RunPowerShellScript
 	CommandType *string `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
-	// The encoding method of the command content and output. Valid values:
+	// The encoding method of the command content and outputs.
 	//
-	// 	- PlainText
+	// Valid values:
 	//
-	// 	- Base64
+	// 	- Base64 (default): returns the Base64-encoded command content and command outputs.
 	//
-	// Default value: Base64.
+	// 	- PlainText: returns the original command content and outputs in plain text.
 	//
 	// example:
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// The ID of the cloud desktop. If you specify a cloud desktop, all the execution records of Cloud Assistant commands on the cloud desktop are queried.
+	// The cloud computer ID. If you specify a cloud computer, all command execution records of the cloud computer are queried.
 	//
 	// example:
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The IDs of the cloud desktops.
+	// The cloud computer IDs.
+	//
+	// >  The `DesktopId` parameter will be deprecated. We recommend using the DesktopIds parameter to specify cloud computer IDs instead.
 	DesktopIds []*string `json:"DesktopIds,omitempty" xml:"DesktopIds,omitempty" type:"Repeated"`
-	// The ID of the end user.
+	// The user ID.
 	//
 	// example:
 	//
 	// test1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// Specifies whether to return the execution results of all cloud computers if the command is executed on multiple cloud computers.
+	// Specifies whether to return the execution results of the remote command on all cloud computers when executed across multiple cloud computers.
 	//
 	// Valid values:
 	//
-	// - true: returned.
+	// 	- true
 	//
-	// - false: not returned.
+	// 	- false
 	//
 	// example:
 	//
 	// false
 	IncludeInvokeDesktops *bool `json:"IncludeInvokeDesktops,omitempty" xml:"IncludeInvokeDesktops,omitempty"`
-	// Specifies whether to return command outputs in the response. Valid values:
+	// Specifies whether to return command outputs in the response.
 	//
-	// 	- true: returns command outputs.
+	// Valid values:
 	//
-	// 	- false: does not return command outputs.
+	// 	- true
 	//
-	// Default value: false.
+	// 	- false (default)
 	//
 	// example:
 	//
 	// false
 	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	// The ID of the execution.
+	// The execution ID of the command. You can obtain the value by calling the [RunCommand](~~RunCommand~~) operation.
 	//
 	// example:
 	//
 	// t-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The overall execution status of a command. The overall execution status is determined by the execution status of the command on one or more cloud desktops. Valid values:
+	// The execution status of the command. The value of this parameter is determined by the execution states of the command on all participating cloud computers.
 	//
-	// 	- Running: The execution is in progress on one or more cloud desktops.
+	// Valid values:
 	//
-	// 	- Finished: The execution is finished on all cloud desktops, or the execution is manually stopped on some cloud desktops and the execution is finished on others.
+	// 	- Finished: The command execution completes on all cloud computers. Alternatively, the command execution is manually stopped on some cloud computers while it completes on the others.
 	//
-	// 	- Failed: The execution failed on all cloud desktops.
+	// 	- Stopped: The command execution stops.
 	//
-	// 	- PartialFailed: The execution failed on some cloud desktops.
+	// 	- Failed: The command execution failed on all cloud computers.
 	//
-	// 	- Stopped: The execution is stopped.
+	// 	- Running: Once there is a command execution in progress, the execution status defaults to Running.
 	//
-	// Default value: Running.
+	// 	- PartialFailed: If the command execution failed on part of the cloud computers, the execution status is considered partially failed.
 	//
 	// example:
 	//
@@ -32278,7 +32148,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the region.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -32357,7 +32227,7 @@ func (s *DescribeInvocationsRequest) SetRegionId(v string) *DescribeInvocationsR
 }
 
 type DescribeInvocationsResponseBody struct {
-	// Details about execution records of the command.
+	// The command execution records.
 	Invocations []*DescribeInvocationsResponseBodyInvocations `json:"Invocations,omitempty" xml:"Invocations,omitempty" type:"Repeated"`
 	// The query token that is returned from this call.
 	//
@@ -32421,35 +32291,35 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	//
 	// User1
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The overall execution status of the command. The overall execution status is determined by the execution status on all involved cloud desktops. The valid values include:
+	// The overall execution status of the command. The value of this parameter depends on the execution status of the command on all the involved cloud computers. Valid values:
 	//
-	// 	- Pending: The system is verifying or sending the command. If the execution status on at least one cloud desktop is Pending, the overall execution status is Pending.
+	// 	- Pending: The command is being verified or sent. If the execution status is Pending on at least one cloud computer, the overall status is considered Pending.
 	//
-	// 	- Running: The execution is in progress on cloud desktops. If the execution status on at least one cloud desktop is Running, the overall execution status is Running.
+	// 	- Running: The command is being executed on cloud computers. If the execution status is Running on at least one cloud computer, the overall status is considered Running.
 	//
-	// 	- Success: If the execution status on all cloud desktops is Success or Stopped, or the execution status on at least one cloud desktop is Success, the overall execution status is Success.
+	// 	- Success: If the execution status is Success on at least one cloud computer and either Success or Stopped on all other cloud computers, the overall status is considered Success.
 	//
-	// 	- Failed: If the execution status on all cloud desktops is Stopped or Failed, the overall execution status is Failed. If one or more execution status of a cloud desktop is one of the following values, Failed is returned:
+	// 	- Failed: If the execution status is Stopped or Failed on all cloud computers, the overall status is considered Failed. If any execution status on cloud computers matches one of the following values, Failed is returned.
 	//
 	//     	- Invalid: The command is invalid.
 	//
-	//     	- Aborted: The command fails to be sent.
+	//     	- Aborted: The command failed to be sent.
 	//
 	//     	- Failed: The command is executed, but the exit code is not 0.
 	//
-	//     	- Timeout: The command times out.
+	//     	- Timeout: The command execution timed out.
 	//
-	//     	- Error: An error occurs in the command.
+	//     	- Error: An error occurred when the command is being executed.
 	//
-	// 	- Stopping: The execution is being stopped. If the execution status on at least one cloud desktop is Stopping, the overall execution state is Stopping.
+	// 	- Stopping: The command execution is being stopped. If the execution status is Stopping on at least one cloud computer, the overall status is considered Stopping.
 	//
-	// 	- Stopped: The execution is stopped. If the execution status on all cloud desktops is Stopped, the overall execution state is Stopped. If the execution status on a cloud desktop is one of the following values, Stopped is returned:
+	// 	- Stopped: The command execution stops. If the execution status is Stopped on at least one cloud computer, the overall status is considered Stopped. If any execution status on cloud computers matches one of the following values, Stopped is returned.
 	//
-	//     	- Cancelled: The execution is canceled.
+	//     	- Cancelled: The command execution is canceled.
 	//
-	//     	- Terminated: The execution is terminated.
+	//     	- Terminated: The command execution is terminated.
 	//
-	// 	- PartialFailed: The execution succeeded on some cloud desktops and failed on others. If the execution status on different cloud desktops is Success, Failed, or Stopped, the overall execution state is PartialFailed.
+	// 	- PartialFailed: The command execution succeeded on some cloud computers but failed on others. If the execution status on any cloud computer is Success, Failed, or Stopped, the overall status is considered PartialFailed.
 	//
 	// example:
 	//
@@ -32461,13 +32331,13 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	//
 	// 1
 	InvokeDesktopCount *int32 `json:"InvokeDesktopCount,omitempty" xml:"InvokeDesktopCount,omitempty"`
-	// The total number of cloud computers on which the command is executed successfully.
+	// The total number of cloud computers on which the command execution succeeds.
 	//
 	// example:
 	//
 	// 1
 	InvokeDesktopSucceedCount *int32 `json:"InvokeDesktopSucceedCount,omitempty" xml:"InvokeDesktopSucceedCount,omitempty"`
-	// The cloud desktops on which the command is executed.
+	// The cloud computers on which the command is executed.
 	InvokeDesktops []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
 	// The ID of the execution.
 	//
@@ -32537,13 +32407,13 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 2020-12-20T06:15:54Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The ID of the cloud desktop.
+	// The cloud computer ID.
 	//
 	// example:
 	//
 	// ecd-7w78ozhjcwa3u****
 	DesktopId *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	// The name of the cloud desktop.
+	// The cloud computer name.
 	//
 	// example:
 	//
@@ -32555,69 +32425,69 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 0
 	Dropped *int32 `json:"Dropped,omitempty" xml:"Dropped,omitempty"`
-	// The code that indicates the reason why a command failed to be sent or executed. The valid values include:
+	// The code explaining why the command failed to be sent or executed. Valid values:
 	//
-	// 	- If this parameter is empty, the execution is normal.
+	// 	- Null: The command is executed successfully.
 	//
-	// 	- InstanceNotExists: The specified cloud desktop does not exist or is released.
+	// 	- InstanceNotExists: The specified cloud computer does not exist or is released.
 	//
-	// 	- InstanceReleased: The cloud desktop is released during the execution.
+	// 	- InstanceReleased: The cloud computer is released during the execution.
 	//
-	// 	- InstanceNotRunning: The cloud desktop is not running during the execution.
+	// 	- InstanceNotRunning: The cloud computer is not running during the execution.
 	//
-	// 	- CommandNotApplicable: The command cannot be used on the cloud desktop.
+	// 	- CommandNotApplicable: The command cannot be executed on the specified cloud computer.
 	//
-	// 	- ClientNotRunning: The Cloud Assistant client is not running.
+	// 	- ClientNotRunning: The Cloud Assistant agent is not running.
 	//
-	// 	- ClientNotResponse: The Cloud Assistant client does not respond.
+	// 	- ClientNotResponse: The Cloud Assistant agent does not respond.
 	//
-	// 	- ClientIsUpgrading: The Cloud Assistant client is being upgraded.
+	// 	- ClientIsUpgrading: The Cloud Assistant agent is being updated.
 	//
-	// 	- ClientNeedUpgrade: The Cloud Assistant client needs to be upgraded.
+	// 	- ClientNeedUpgrade: The Cloud Assistant agent needs to be updated.
 	//
-	// 	- DeliveryTimeout: The time to send the command in the request times out.
+	// 	- DeliveryTimeout: The command sending times out.
 	//
-	// 	- ExecutionTimeout: The execution times out.
+	// 	- ExecutionTimeout: The command execution times out.
 	//
-	// 	- ExecutionException: An exception occurs during the execution.
+	// 	- ExecutionException: An exception occurs when the command is being executed.
 	//
-	// 	- ExecutionInterrupted: The execution is interrupted.
+	// 	- ExecutionInterrupted: The command execution is interrupted.
 	//
-	// 	- ExitCodeNonzero: The execution finishes, but the exit code is not 0.
+	// 	- ExitCodeNonzero: The command execution completes, but the exit code is not 0.
 	//
 	// example:
 	//
 	// InstanceNotExists
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// Details about the reason why the command failed to be sent or executed. The valid values include:
+	// The message explaining why the command failed to be sent or executed. Valid values:
 	//
-	// 	- If this parameter is empty, the execution is normal.
+	// 	- Null: The command is executed successfully.
 	//
-	// 	- the specified instance does not exists: The cloud desktop does not exist or is released.
+	// 	- the specified instance does not exists: The specified cloud computer does not exist or is released.
 	//
-	// 	- the instance has released when create task: The cloud desktop is released during execution.
+	// 	- the instance has released when create task: The cloud computer is released during the execution.
 	//
-	// 	- the instance is not running when create task: The cloud desktop is not running when the execution is being performed.
+	// 	- the instance is not running when create task: The cloud computer is not running during the execution.
 	//
-	// 	- the command is not applicable: The command cannot be used on the specified cloud desktop.
+	// 	- the command is not applicable: The command cannot be executed on the specified cloud computer.
 	//
-	// 	- the aliyun service is not running on the instance: The Cloud Assistance client is not running.
+	// 	- the aliyun service is not running on the instance: The Cloud Assistant agent is not running.
 	//
-	// 	- the aliyun service in the instance does not response: The Cloud Assistant client is not responding.
+	// 	- the aliyun service in the instance does not response: The Cloud Assistant agent does not respond.
 	//
-	// 	- the aliyun service in the instance is upgrading now: The Cloud Assistant client is being upgraded.
+	// 	- the aliyun service in the instance is upgrading now: The Cloud Assistant agent is being updated.
 	//
-	// 	- the aliyun service in the instance need upgrade: The Cloud Assistant client needs to be upgraded.
+	// 	- the aliyun service in the instance need upgrade: The Cloud Assistant agent needs to be updated.
 	//
-	// 	- the command delivery has been timeout: The command that is sent in the request times out.
+	// 	- the command delivery has been timeout: The command sending times out.
 	//
-	// 	- the command execution has been timeout: The execution times out.
+	// 	- the command execution has been timeout: The command execution times out.
 	//
-	// 	- the command execution got an exception: An exception occurs when the command is running.
+	// 	- the command execution got an exception: An exception occurs when the command is being executed.
 	//
-	// 	- the command execution has been interrupted: The execution is interrupted.
+	// 	- the command execution has been interrupted: The command execution is interrupted.
 	//
-	// 	- the command execution exit code is not zero: The execution finishes, but the exit code is not 0.
+	// 	- the command execution exit code is not zero: The command execution completes, but the exit code is not 0.
 	//
 	// example:
 	//
@@ -32635,7 +32505,7 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	//
 	// 2020-12-20T06:15:56Z
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	// The execution status on the cloud desktop.
+	// The execution progress of the command on a single cloud computer.
 	//
 	// example:
 	//
@@ -32643,27 +32513,27 @@ type DescribeInvocationsResponseBodyInvocationsInvokeDesktops struct {
 	InvocationStatus *string `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
 	// The command output.
 	//
-	// 	- If the IncludeOutput parameter is set to false, Output is not returned.
+	// 	- When the `IncludeOutput` parameter is set to false, the output is not returned.
 	//
-	// 	- If the ContentEncoding parameter is set to Base64, the value of Output is the output information that is encoded in Base64.
+	// 	- When the `ContentEncoding` parameter is set to Base64, the output is returned as a Base64-encoded string.
 	//
 	// example:
 	//
 	// OutPutTestmsg
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The number of times that the command is executed on the cloud desktop.
+	// The number of times the command has been executed on the cloud computer.
 	//
 	// example:
 	//
 	// 0
 	Repeats *int32 `json:"Repeats,omitempty" xml:"Repeats,omitempty"`
-	// The start time of the execution on the cloud desktop.
+	// The start time of the command execution.
 	//
 	// example:
 	//
 	// 2020-12-20T06:15:55Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The time when you called the [StopInvocation](~~196957#doc-api-ecd-StopInvocation~~ "You can call this operation to stop a Cloud Assistant command that is running on one or cloud desktops.") operation to manually stop the command.
+	// The stop time of the command execution (StopInvocatio).
 	//
 	// example:
 	//
@@ -33009,8 +32879,9 @@ type DescribeModificationPriceRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResellerOwnerUid *int64  `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	RegionId         *string                                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResellerOwnerUid *int64                                           `json:"ResellerOwnerUid,omitempty" xml:"ResellerOwnerUid,omitempty"`
+	ResourceSpecs    []*DescribeModificationPriceRequestResourceSpecs `json:"ResourceSpecs,omitempty" xml:"ResourceSpecs,omitempty" type:"Repeated"`
 	// The resource type. The required parameters depend on the resource type.
 	//
 	// 	- When `ResourceType` is set to `Desktop`, the required parameters are `InstanceType`, `RootDiskSizeGib`, and `UserDiskSizeGib`.
@@ -33074,6 +32945,11 @@ func (s *DescribeModificationPriceRequest) SetResellerOwnerUid(v int64) *Describ
 	return s
 }
 
+func (s *DescribeModificationPriceRequest) SetResourceSpecs(v []*DescribeModificationPriceRequestResourceSpecs) *DescribeModificationPriceRequest {
+	s.ResourceSpecs = v
+	return s
+}
+
 func (s *DescribeModificationPriceRequest) SetResourceType(v string) *DescribeModificationPriceRequest {
 	s.ResourceType = &v
 	return s
@@ -33085,6 +32961,35 @@ func (s *DescribeModificationPriceRequest) SetRootDiskSizeGib(v int32) *Describe
 }
 
 func (s *DescribeModificationPriceRequest) SetUserDiskSizeGib(v int32) *DescribeModificationPriceRequest {
+	s.UserDiskSizeGib = &v
+	return s
+}
+
+type DescribeModificationPriceRequestResourceSpecs struct {
+	DesktopId       *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	RootDiskSizeGib *int32  `json:"RootDiskSizeGib,omitempty" xml:"RootDiskSizeGib,omitempty"`
+	UserDiskSizeGib *int32  `json:"UserDiskSizeGib,omitempty" xml:"UserDiskSizeGib,omitempty"`
+}
+
+func (s DescribeModificationPriceRequestResourceSpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeModificationPriceRequestResourceSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeModificationPriceRequestResourceSpecs) SetDesktopId(v string) *DescribeModificationPriceRequestResourceSpecs {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequestResourceSpecs) SetRootDiskSizeGib(v int32) *DescribeModificationPriceRequestResourceSpecs {
+	s.RootDiskSizeGib = &v
+	return s
+}
+
+func (s *DescribeModificationPriceRequestResourceSpecs) SetUserDiskSizeGib(v int32) *DescribeModificationPriceRequestResourceSpecs {
 	s.UserDiskSizeGib = &v
 	return s
 }
@@ -33329,13 +33234,13 @@ func (s *DescribeModificationPriceResponse) SetBody(v *DescribeModificationPrice
 }
 
 type DescribeNASFileSystemsRequest struct {
-	// The IDs of the NAS file system.
+	// The IDs of the NAS file systems.
 	//
 	// example:
 	//
 	// 04f314****
 	FileSystemId []*string `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty" type:"Repeated"`
-	// Specifies whether to filter NAS file systems that only support the user profile management (UPM) feature.
+	// Specifies whether to include only NAS file systems that support the User Profile Management (UPM) feature in the query results.
 	//
 	// example:
 	//
@@ -33357,13 +33262,13 @@ type DescribeNASFileSystemsRequest struct {
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the workspace.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The ID of the region.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -33412,7 +33317,7 @@ func (s *DescribeNASFileSystemsRequest) SetRegionId(v string) *DescribeNASFileSy
 }
 
 type DescribeNASFileSystemsResponseBody struct {
-	// Details about the NAS file systems.
+	// The NAS file systems.
 	FileSystems []*DescribeNASFileSystemsResponseBodyFileSystems `json:"FileSystems,omitempty" xml:"FileSystems,omitempty" type:"Repeated"`
 	// The token that determines the start point of the next query. This parameter is empty if no additional results exist.
 	//
@@ -33452,9 +33357,9 @@ func (s *DescribeNASFileSystemsResponseBody) SetRequestId(v string) *DescribeNAS
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystems struct {
-	// > This parameter is not publicly available.
+	// >  This parameter is not publicly available.
 	AllowOperateUserDrive *bool `json:"AllowOperateUserDrive,omitempty" xml:"AllowOperateUserDrive,omitempty"`
-	// The array of the app steaming delivery groups bound with UPM-supported NAS.
+	// The application delivery groups that are associated with the UPM-supported NAS file systems.
 	AppInstanceGroups []*DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups `json:"AppInstanceGroups,omitempty" xml:"AppInstanceGroups,omitempty" type:"Repeated"`
 	// The total capacity of the NAS file system. Unit: GiB.
 	//
@@ -33478,7 +33383,7 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The desktop groups that are associated with the NAS file systems that support the UPM feature.
+	// The cloud computer shares that are associated with the UPM-supported NAS file systems.
 	DesktopGroups []*DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups `json:"DesktopGroups,omitempty" xml:"DesktopGroups,omitempty" type:"Repeated"`
 	// Indicates whether disk encryption is enabled.
 	//
@@ -33516,13 +33421,13 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// Running
 	FileSystemStatus *string `json:"FileSystemStatus,omitempty" xml:"FileSystemStatus,omitempty"`
-	// The type of the NAS file system. Valid value: Universal NAS. This value indicates that the NAS file system is a General-purpose one.
+	// The type of the NAS file system. The only valid value is `standard`.
 	//
 	// example:
 	//
 	// standard
 	FileSystemType *string `json:"FileSystemType,omitempty" xml:"FileSystemType,omitempty"`
-	// The used storage of the NAS file system. Unit: byte.
+	// The used capacity of the NAS file system. Unit: bytes.
 	//
 	// example:
 	//
@@ -33550,19 +33455,19 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// Active
 	MountTargetStatus *string `json:"MountTargetStatus,omitempty" xml:"MountTargetStatus,omitempty"`
-	// The ID of the workspace.
+	// The ID of the office network.
 	//
 	// example:
 	//
 	// cn-hangzhou+dir-363353****
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	// The name of the workspace.
+	// The name of the office network.
 	//
 	// example:
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The array of office networks.
+	// The office networks.
 	OfficeSites []*DescribeNASFileSystemsResponseBodyFileSystemsOfficeSites `json:"OfficeSites,omitempty" xml:"OfficeSites,omitempty" type:"Repeated"`
 	// Indicates whether the User Profile Management (UPM) feature is supported.
 	//
@@ -33576,11 +33481,13 @@ type DescribeNASFileSystemsResponseBodyFileSystems struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The storage type of the NAS file system. Valid values:
+	// The storage type of the NAS file system.
 	//
-	// - Upm: UPM NAS
+	// Valid values:
 	//
-	// - ShareNas: Shared NAS
+	// 	- Upm: the UPM-supported NAS file system.
+	//
+	// 	- ShareNas: the shared NAS file system.
 	//
 	// example:
 	//
@@ -33767,13 +33674,13 @@ func (s *DescribeNASFileSystemsResponseBodyFileSystemsAppInstanceGroups) SetAppI
 }
 
 type DescribeNASFileSystemsResponseBodyFileSystemsDesktopGroups struct {
-	// The ID of the desktop group.
+	// The ID of the cloud computer share.
 	//
 	// example:
 	//
 	// dg-9eeyf15b25nyl****
 	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	// The name of the desktop group.
+	// The name of the cloud computer share.
 	//
 	// example:
 	//
@@ -35535,7 +35442,7 @@ func (s *DescribePolicyGroupsRequest) SetScope(v string) *DescribePolicyGroupsRe
 
 type DescribePolicyGroupsResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The details of the cloud computer policies.
+	// The cloud computer policies.
 	DescribePolicyGroups []*DescribePolicyGroupsResponseBodyDescribePolicyGroups `json:"DescribePolicyGroups,omitempty" xml:"DescribePolicyGroups,omitempty" type:"Repeated"`
 	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
 	//
@@ -44899,7 +44806,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The credential that is returned to connect to the cloud computer. Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
+	// Before you use the credential, you must Base64 decode the content of the credential, save the credential as an xxx.ica file, and then open the file. Python sample code:
 	//
 	//     import base64
 	//
@@ -44929,7 +44836,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// 2afbad19-778a-4fc5-9674-1f19c638****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The ID of the cloud computer connection task.
+	// The ID of the connection task.
 	//
 	// example:
 	//
@@ -44967,7 +44874,7 @@ type GetConnectionTicketResponseBody struct {
 	//
 	// FINISHED
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The credential of the cloud computer connection.
+	// The credentials for connecting to the cloud computer.
 	//
 	// example:
 	//
@@ -49263,19 +49170,19 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// beijing-ad01
 	AdHostname *string `json:"AdHostname,omitempty" xml:"AdHostname,omitempty"`
-	// The hostname of the backup domain controller.
+	// The hostname of the secondary domain controller.
 	//
 	// example:
 	//
 	// dc002
 	BackupDCHostname *string `json:"BackupDCHostname,omitempty" xml:"BackupDCHostname,omitempty"`
-	// The DNS address of the backup domain controller.
+	// The IP address of the DNS server corresponding to the secondary domain controller.
 	//
 	// example:
 	//
 	// 192.168.2.100
 	BackupDns *string `json:"BackupDns,omitempty" xml:"BackupDns,omitempty"`
-	// Details of the IP addresses of the Domain Name System (DNS) servers that correspond to the enterprise AD system. You can specify only one IP address.
+	// The IP addresses of the DNS servers corresponding to the enterprise ADs. You can specify only one DNS IP address.
 	//
 	// example:
 	//
@@ -49345,7 +49252,7 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// test
 	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions where Elastic Desktop Service (EDS) Enterprise is available.
 	//
 	// This parameter is required.
 	//
@@ -49353,7 +49260,7 @@ type ModifyADConnectorOfficeSiteRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The DNS address of the subdomain in the enterprise AD domain. You can specify only one DNS address. If you configure `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
+	// The IP addresses of the DNS servers corresponding to the enterprise AD subdomains. You can specify only one DNS IP address. If you specify `SubDomainName` and leave this parameter empty, the value is the same as that of the enterprise AD domain.
 	//
 	// example:
 	//
@@ -52281,7 +52188,7 @@ type ModifyCenterPolicyRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- usbKey: UKeys
+	// 	- usbKey: UKeys.
 	//
 	// 	- other: other peripheral devices.
 	//
@@ -52320,11 +52227,11 @@ type ModifyCenterPolicyRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- deviceRedirect: device redirection
+	// 	- deviceRedirect: device redirection.
 	//
 	// 	- usbRedirect: USB redirection.
 	//
-	// 	- off: any type of redirection.
+	// 	- off: redirection disabled.
 	//
 	// example:
 	//
@@ -56888,7 +56795,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// on
 	AppContentProtection *string `json:"AppContentProtection,omitempty" xml:"AppContentProtection,omitempty"`
-	// The client IP address whitelist.
+	// The client IP address whitelists.
 	AuthorizeAccessPolicyRule []*ModifyPolicyGroupRequestAuthorizeAccessPolicyRule `json:"AuthorizeAccessPolicyRule,omitempty" xml:"AuthorizeAccessPolicyRule,omitempty" type:"Repeated"`
 	// The security group rules.
 	AuthorizeSecurityPolicyRule []*ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule `json:"AuthorizeSecurityPolicyRule,omitempty" xml:"AuthorizeSecurityPolicyRule,omitempty" type:"Repeated"`
@@ -56941,7 +56848,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// [black:],example1.com,example2.com
 	DomainList *string `json:"DomainList,omitempty" xml:"DomainList,omitempty"`
-	// The details of the domain name resolution rules.
+	// The domain resolution rules.
 	DomainResolveRule []*ModifyPolicyGroupRequestDomainResolveRule `json:"DomainResolveRule,omitempty" xml:"DomainResolveRule,omitempty" type:"Repeated"`
 	// The type of the domain name resolution rule.
 	//
@@ -57251,7 +57158,7 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// fullControl
 	RemoteCoordinate *string `json:"RemoteCoordinate,omitempty" xml:"RemoteCoordinate,omitempty"`
-	// The client IP addresses that you want to delete from the whitelist.
+	// The client IP address whitelists that you want to delete.
 	RevokeAccessPolicyRule []*ModifyPolicyGroupRequestRevokeAccessPolicyRule `json:"RevokeAccessPolicyRule,omitempty" xml:"RevokeAccessPolicyRule,omitempty" type:"Repeated"`
 	// The security group rules that you want to delete.
 	RevokeSecurityPolicyRule []*ModifyPolicyGroupRequestRevokeSecurityPolicyRule `json:"RevokeSecurityPolicyRule,omitempty" xml:"RevokeSecurityPolicyRule,omitempty" type:"Repeated"`
@@ -57437,15 +57344,13 @@ type ModifyPolicyGroupRequest struct {
 	//
 	// EndUserId
 	WatermarkType *string `json:"WatermarkType,omitempty" xml:"WatermarkType,omitempty"`
-	// Specifies whether to provide the AI Assistant function in the DesktopAssistant when the cloud computer is accessed from the Alibaba Cloud Workspace desktop clients (including the Windows client and the macOS client).
-	//
-	// > Desktop clients of V7.7 and higher versions required.
+	// Specifies whether to display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
 	//
 	// Valid values:
 	//
-	// - off: the AI Aisstant function is not provided.
+	// 	- off: does not display the Xiaoying AI Assistant entry in the DesktopAssistant menu.
 	//
-	// - on: the AI Aisstant function is provided.
+	// 	- on: displays the Xiaoying AI Assistant entry in the DesktopAssistant menu.
 	//
 	// example:
 	//
@@ -57762,7 +57667,7 @@ func (s *ModifyPolicyGroupRequest) SetWyAssistant(v string) *ModifyPolicyGroupRe
 }
 
 type ModifyPolicyGroupRequestAuthorizeAccessPolicyRule struct {
-	// The client CIDR block from which end users can connect to cloud computers. The value is an IPv4 CIDR block.
+	// The client CIDR block. Specify an IPv4 CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -58041,25 +57946,25 @@ type ModifyPolicyGroupRequestDeviceRules struct {
 	//
 	// Valid values:
 	//
-	// 	- usbKey
+	// 	- usbKey: UKeys
 	//
-	// 	- other
+	// 	- other: other peripheral devices.
 	//
-	// 	- graphicsTablet
+	// 	- graphicsTablet: graphics tablets.
 	//
-	// 	- printer
+	// 	- printer: printers.
 	//
-	// 	- cardReader
+	// 	- cardReader: card readers.
 	//
-	// 	- scanner
+	// 	- scanner: scanners.
 	//
-	// 	- storage
+	// 	- storage: storage devices.
 	//
-	// 	- camera
+	// 	- camera: web cameras.
 	//
-	// 	- adb
+	// 	- adb: Android Debug Bridge (ADB) device
 	//
-	// 	- networkInterfaceCard: the NIC device
+	// 	- networkInterfaceCard: NIC devices.
 	//
 	// example:
 	//
@@ -58084,7 +57989,7 @@ type ModifyPolicyGroupRequestDeviceRules struct {
 	//
 	// 	- deviceRedirect: device redirection
 	//
-	// 	- usbRedirect: USB redirection
+	// 	- usbRedirect: USB redirection.
 	//
 	// 	- off: redirection disabled
 	//
@@ -58138,7 +58043,7 @@ func (s *ModifyPolicyGroupRequestDeviceRules) SetRedirectType(v string) *ModifyP
 }
 
 type ModifyPolicyGroupRequestDomainResolveRule struct {
-	// The description of domain name resolution rule.
+	// The policy description.
 	//
 	// example:
 	//
@@ -58150,7 +58055,7 @@ type ModifyPolicyGroupRequestDomainResolveRule struct {
 	//
 	// *.igetget.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// Specifies whether to allow the domain name resolution rule.
+	// The resolution policy.
 	//
 	// Valid values:
 	//
@@ -58188,13 +58093,13 @@ func (s *ModifyPolicyGroupRequestDomainResolveRule) SetPolicy(v string) *ModifyP
 }
 
 type ModifyPolicyGroupRequestRevokeAccessPolicyRule struct {
-	// The client CIDR block that you want to delete. After it is deleted, end users cannot connect to cloud computers from the CIDR block. The value is an IPv4 CIDR block.
+	// The client CIDR block that you want to delete. Specify an IPv4 CIDR block.
 	//
 	// example:
 	//
 	// 47.100.XX.XX/16
 	CidrIp *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
-	// The description of the client IP addresses that you want to delete from the whitelist.
+	// The description of the client IP address whitelist that you want to delete.
 	//
 	// example:
 	//
@@ -64275,9 +64180,9 @@ type UploadImageRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The size of the system disk. Unit: GB.
+	// The size of the system disk. Unit: GiB.
 	//
-	// > The size of the system disk cannot be smaller than the size of the image.
+	// >  The system disk must be at least as large as the image.
 	//
 	// example:
 	//
@@ -67542,7 +67447,7 @@ func (client *Client) CreateCdsFileShareLink(request *CreateCdsFileShareLinkRequ
 
 // Summary:
 //
-// 创建无地域策略
+// Creates a center policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -67984,7 +67889,7 @@ func (client *Client) CreateCenterPolicyWithOptions(request *CreateCenterPolicyR
 
 // Summary:
 //
-// 创建无地域策略
+// Creates a center policy.
 //
 // @param request - CreateCenterPolicyRequest
 //
@@ -74417,6 +74322,10 @@ func (client *Client) DescribeModificationPriceWithOptions(request *DescribeModi
 		query["ResellerOwnerUid"] = request.ResellerOwnerUid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceSpecs)) {
+		query["ResourceSpecs"] = request.ResourceSpecs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
 		query["ResourceType"] = request.ResourceType
 	}
@@ -77268,7 +77177,7 @@ func (client *Client) GetAsyncTask(request *GetAsyncTaskRequest) (_result *GetAs
 //
 // Description:
 //
-// The cloud computer must be in the Running state.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
@@ -77350,7 +77259,7 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 //
 // Description:
 //
-// The cloud computer must be in the Running state.
+// The cloud computer must be in the Running state. The ticket obtained by calling this operation will expire in 10 minutes.
 //
 // @param request - GetConnectionTicketRequest
 //
