@@ -16583,7 +16583,8 @@ type ListGeneratedContentsRequest struct {
 	// example:
 	//
 	// 1
-	Current *int32 `json:"Current,omitempty" xml:"Current,omitempty"`
+	Current  *int32  `json:"Current,omitempty" xml:"Current,omitempty"`
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// example:
 	//
 	// 2024-01-04 11:46:07
@@ -16621,6 +16622,11 @@ func (s *ListGeneratedContentsRequest) SetContentDomain(v string) *ListGenerated
 
 func (s *ListGeneratedContentsRequest) SetCurrent(v int32) *ListGeneratedContentsRequest {
 	s.Current = &v
+	return s
+}
+
+func (s *ListGeneratedContentsRequest) SetDataType(v string) *ListGeneratedContentsRequest {
+	s.DataType = &v
 	return s
 }
 
@@ -16761,7 +16767,9 @@ type ListGeneratedContentsResponseBodyData struct {
 	// example:
 	//
 	// xxx
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId *string                                        `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	FileAttr *ListGeneratedContentsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	FileKey  *string                                        `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
 	// example:
 	//
 	// 10
@@ -16826,6 +16834,16 @@ func (s *ListGeneratedContentsResponseBodyData) SetDeviceId(v string) *ListGener
 	return s
 }
 
+func (s *ListGeneratedContentsResponseBodyData) SetFileAttr(v *ListGeneratedContentsResponseBodyDataFileAttr) *ListGeneratedContentsResponseBodyData {
+	s.FileAttr = v
+	return s
+}
+
+func (s *ListGeneratedContentsResponseBodyData) SetFileKey(v string) *ListGeneratedContentsResponseBodyData {
+	s.FileKey = &v
+	return s
+}
+
 func (s *ListGeneratedContentsResponseBodyData) SetId(v int64) *ListGeneratedContentsResponseBodyData {
 	s.Id = &v
 	return s
@@ -16868,6 +16886,41 @@ func (s *ListGeneratedContentsResponseBodyData) SetUpdateUser(v string) *ListGen
 
 func (s *ListGeneratedContentsResponseBodyData) SetUuid(v string) *ListGeneratedContentsResponseBodyData {
 	s.Uuid = &v
+	return s
+}
+
+type ListGeneratedContentsResponseBodyDataFileAttr struct {
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Height   *int32  `json:"Height,omitempty" xml:"Height,omitempty"`
+	TmpUrl   *string `json:"TmpUrl,omitempty" xml:"TmpUrl,omitempty"`
+	Width    *int32  `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s ListGeneratedContentsResponseBodyDataFileAttr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGeneratedContentsResponseBodyDataFileAttr) GoString() string {
+	return s.String()
+}
+
+func (s *ListGeneratedContentsResponseBodyDataFileAttr) SetFileName(v string) *ListGeneratedContentsResponseBodyDataFileAttr {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListGeneratedContentsResponseBodyDataFileAttr) SetHeight(v int32) *ListGeneratedContentsResponseBodyDataFileAttr {
+	s.Height = &v
+	return s
+}
+
+func (s *ListGeneratedContentsResponseBodyDataFileAttr) SetTmpUrl(v string) *ListGeneratedContentsResponseBodyDataFileAttr {
+	s.TmpUrl = &v
+	return s
+}
+
+func (s *ListGeneratedContentsResponseBodyDataFileAttr) SetWidth(v int32) *ListGeneratedContentsResponseBodyDataFileAttr {
+	s.Width = &v
 	return s
 }
 
@@ -19647,8 +19700,10 @@ type ListMaterialDocumentsResponseBodyData struct {
 	// example:
 	//
 	// https://www.example.com
-	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
-	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	ExternalUrl *string                                        `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
+	FileAttr    *ListMaterialDocumentsResponseBodyDataFileAttr `json:"FileAttr,omitempty" xml:"FileAttr,omitempty" type:"Struct"`
+	FileKey     *string                                        `json:"FileKey,omitempty" xml:"FileKey,omitempty"`
+	HtmlContent *string                                        `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
 	// example:
 	//
 	// 35
@@ -19731,6 +19786,16 @@ func (s *ListMaterialDocumentsResponseBodyData) SetExternalUrl(v string) *ListMa
 	return s
 }
 
+func (s *ListMaterialDocumentsResponseBodyData) SetFileAttr(v *ListMaterialDocumentsResponseBodyDataFileAttr) *ListMaterialDocumentsResponseBodyData {
+	s.FileAttr = v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyData) SetFileKey(v string) *ListMaterialDocumentsResponseBodyData {
+	s.FileKey = &v
+	return s
+}
+
 func (s *ListMaterialDocumentsResponseBodyData) SetHtmlContent(v string) *ListMaterialDocumentsResponseBodyData {
 	s.HtmlContent = &v
 	return s
@@ -19798,6 +19863,53 @@ func (s *ListMaterialDocumentsResponseBodyData) SetUpdateUserName(v string) *Lis
 
 func (s *ListMaterialDocumentsResponseBodyData) SetUrl(v string) *ListMaterialDocumentsResponseBodyData {
 	s.Url = &v
+	return s
+}
+
+type ListMaterialDocumentsResponseBodyDataFileAttr struct {
+	Duration   *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileLength *int64   `json:"FileLength,omitempty" xml:"FileLength,omitempty"`
+	FileName   *string  `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Height     *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
+	MimeType   *string  `json:"MimeType,omitempty" xml:"MimeType,omitempty"`
+	Width      *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s ListMaterialDocumentsResponseBodyDataFileAttr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMaterialDocumentsResponseBodyDataFileAttr) GoString() string {
+	return s.String()
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetDuration(v float64) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetFileLength(v int64) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.FileLength = &v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetFileName(v string) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetHeight(v int32) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.Height = &v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetMimeType(v string) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.MimeType = &v
+	return s
+}
+
+func (s *ListMaterialDocumentsResponseBodyDataFileAttr) SetWidth(v int32) *ListMaterialDocumentsResponseBodyDataFileAttr {
+	s.Width = &v
 	return s
 }
 
@@ -48251,6 +48363,10 @@ func (client *Client) ListGeneratedContentsWithOptions(request *ListGeneratedCon
 
 	if !tea.BoolValue(util.IsUnset(request.Current)) {
 		body["Current"] = request.Current
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		body["DataType"] = request.DataType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
