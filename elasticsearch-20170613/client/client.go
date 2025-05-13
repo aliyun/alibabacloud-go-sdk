@@ -1718,10 +1718,14 @@ func (s *ActivateZonesResponse) SetBody(v *ActivateZonesResponseBody) *ActivateZ
 }
 
 type AddConnectableClusterRequest struct {
+	// 请求体。
+	//
 	// example:
 	//
 	// {     "instanceId":"es-cn-09k1rgid9000g****" }
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+	// 5A2CFF0E-5718-45B5-9D4D-70B3FF\\*\\*\\*\\*
+	//
 	// example:
 	//
 	// 5A2CFF0E-5718-45B5-9D4D-70B3FF****
@@ -1747,10 +1751,18 @@ func (s *AddConnectableClusterRequest) SetClientToken(v string) *AddConnectableC
 }
 
 type AddConnectableClusterResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 5A5D8E74-565C-43DC-B031-29289FA****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The following information is returned:
+	//
+	// 	- true: The configuration is successful.
+	//
+	// 	- false: The configuration failed.
+	//
 	// example:
 	//
 	// true
@@ -7475,7 +7487,7 @@ type DescribeInstanceResponseBodyResult struct {
 	//
 	// true
 	EnablePublic *bool  `json:"enablePublic,omitempty" xml:"enablePublic,omitempty"`
-	Endtime      *int64 `json:"endtime,omitempty" xml:"endtime,omitempty"`
+	EndTime      *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
 	// example:
 	//
 	// {"http.cors.allow-credentials":"false"}
@@ -7666,8 +7678,8 @@ func (s *DescribeInstanceResponseBodyResult) SetEnablePublic(v bool) *DescribeIn
 	return s
 }
 
-func (s *DescribeInstanceResponseBodyResult) SetEndtime(v int64) *DescribeInstanceResponseBodyResult {
-	s.Endtime = &v
+func (s *DescribeInstanceResponseBodyResult) SetEndTime(v int64) *DescribeInstanceResponseBodyResult {
+	s.EndTime = &v
 	return s
 }
 
@@ -35130,6 +35142,10 @@ func (client *Client) ActivateZones(InstanceId *string, request *ActivateZonesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Connects Elasticsearch clusters.
+//
 // @param request - AddConnectableClusterRequest
 //
 // @param headers - map
@@ -35172,6 +35188,10 @@ func (client *Client) AddConnectableClusterWithOptions(InstanceId *string, reque
 	return _result, _err
 }
 
+// Summary:
+//
+// Connects Elasticsearch clusters.
+//
 // @param request - AddConnectableClusterRequest
 //
 // @return AddConnectableClusterResponse
