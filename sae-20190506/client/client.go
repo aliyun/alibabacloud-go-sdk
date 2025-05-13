@@ -36503,6 +36503,214 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 	return s
 }
 
+type ListApplicationsForSwimmingLaneRequest struct {
+	// example:
+	//
+	// b2a8a925-477a-eswa-b823-d5e22500****
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"gray"}
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListApplicationsForSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsForSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForSwimmingLaneRequest) SetGroupId(v int64) *ListApplicationsForSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneRequest) SetNamespaceId(v string) *ListApplicationsForSwimmingLaneRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneRequest) SetTag(v string) *ListApplicationsForSwimmingLaneRequest {
+	s.Tag = &v
+	return s
+}
+
+type ListApplicationsForSwimmingLaneResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListApplicationsForSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListApplicationsForSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsForSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetCode(v string) *ListApplicationsForSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetData(v []*ListApplicationsForSwimmingLaneResponseBodyData) *ListApplicationsForSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetErrorCode(v string) *ListApplicationsForSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetMessage(v string) *ListApplicationsForSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetRequestId(v string) *ListApplicationsForSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBody) SetSuccess(v bool) *ListApplicationsForSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListApplicationsForSwimmingLaneResponseBodyData struct {
+	// example:
+	//
+	// 0099b7be-5f5b-4512-a7fc-56049ef1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// demo-app
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// 8c573618-8d72-4407-baf4-f7b64b******
+	BaseAppId *string `json:"BaseAppId,omitempty" xml:"BaseAppId,omitempty"`
+	// example:
+	//
+	// demo
+	BaseAppName *string `json:"BaseAppName,omitempty" xml:"BaseAppName,omitempty"`
+	// example:
+	//
+	// mse-cn-hvm47******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// example:
+	//
+	// test
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// example:
+	//
+	// sae-test
+	MseNamespaceId *string            `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+	ServiceTags    map[string]*string `json:"ServiceTags,omitempty" xml:"ServiceTags,omitempty"`
+}
+
+func (s ListApplicationsForSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsForSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetAppId(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetAppName(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetBaseAppId(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.BaseAppId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetBaseAppName(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.BaseAppName = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetMseAppId(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.MseAppId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetMseAppName(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.MseAppName = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetMseNamespaceId(v string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.MseNamespaceId = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponseBodyData) SetServiceTags(v map[string]*string) *ListApplicationsForSwimmingLaneResponseBodyData {
+	s.ServiceTags = v
+	return s
+}
+
+type ListApplicationsForSwimmingLaneResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationsForSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApplicationsForSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationsForSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationsForSwimmingLaneResponse) SetHeaders(v map[string]*string) *ListApplicationsForSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponse) SetStatusCode(v int32) *ListApplicationsForSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationsForSwimmingLaneResponse) SetBody(v *ListApplicationsForSwimmingLaneResponseBody) *ListApplicationsForSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
 type ListChangeOrdersRequest struct {
 	// 1
 	//
@@ -55147,6 +55355,78 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	headers := make(map[string]*string)
 	_result = &ListApplicationsResponse{}
 	_body, _err := client.ListApplicationsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用列表，供全链路灰度拉取应用列表
+//
+// @param request - ListApplicationsForSwimmingLaneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationsForSwimmingLaneResponse
+func (client *Client) ListApplicationsForSwimmingLaneWithOptions(request *ListApplicationsForSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListApplicationsForSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplicationsForSwimmingLane"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/listApplicationsForSwimmingLane"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationsForSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取应用列表，供全链路灰度拉取应用列表
+//
+// @param request - ListApplicationsForSwimmingLaneRequest
+//
+// @return ListApplicationsForSwimmingLaneResponse
+func (client *Client) ListApplicationsForSwimmingLane(request *ListApplicationsForSwimmingLaneRequest) (_result *ListApplicationsForSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListApplicationsForSwimmingLaneResponse{}
+	_body, _err := client.ListApplicationsForSwimmingLaneWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
