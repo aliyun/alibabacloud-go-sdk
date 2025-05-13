@@ -2873,7 +2873,7 @@ type ImportNumberV2Request struct {
 	Customers []*ImportNumberV2RequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
 	// example:
 	//
-	// 38
+	// 1
 	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
 	// example:
 	//
@@ -2884,7 +2884,7 @@ type ImportNumberV2Request struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// 89
+	// 92
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -2988,7 +2988,7 @@ type ImportNumberV2ShrinkRequest struct {
 	CustomersShrink *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
 	// example:
 	//
-	// 38
+	// 1
 	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
 	// example:
 	//
@@ -2999,7 +2999,7 @@ type ImportNumberV2ShrinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// example:
 	//
-	// 89
+	// 92
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -7712,18 +7712,6 @@ func (client *Client) ImportNumberV2WithOptions(tmpReq *ImportNumberV2Request, r
 	}
 
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CustomersShrink)) {
-		query["Customers"] = request.CustomersShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FailReturn)) {
-		query["FailReturn"] = request.FailReturn
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutId)) {
-		query["OutId"] = request.OutId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -7736,12 +7724,26 @@ func (client *Client) ImportNumberV2WithOptions(tmpReq *ImportNumberV2Request, r
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomersShrink)) {
+		body["Customers"] = request.CustomersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailReturn)) {
+		body["FailReturn"] = request.FailReturn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		body["OutId"] = request.OutId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
+		body["TaskId"] = request.TaskId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImportNumberV2"),
