@@ -2869,6 +2869,336 @@ func (s *ImportNumberResponse) SetBody(v *ImportNumberResponseBody) *ImportNumbe
 	return s
 }
 
+type ImportNumberV2Request struct {
+	Customers []*ImportNumberV2RequestCustomers `json:"Customers,omitempty" xml:"Customers,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 38
+	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	// example:
+	//
+	// 示例值
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 89
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ImportNumberV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2Request) SetCustomers(v []*ImportNumberV2RequestCustomers) *ImportNumberV2Request {
+	s.Customers = v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetFailReturn(v int64) *ImportNumberV2Request {
+	s.FailReturn = &v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetOutId(v string) *ImportNumberV2Request {
+	s.OutId = &v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetOwnerId(v int64) *ImportNumberV2Request {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetResourceOwnerAccount(v string) *ImportNumberV2Request {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetResourceOwnerId(v int64) *ImportNumberV2Request {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ImportNumberV2Request) SetTaskId(v int64) *ImportNumberV2Request {
+	s.TaskId = &v
+	return s
+}
+
+type ImportNumberV2RequestCustomers struct {
+	// example:
+	//
+	// 示例值示例值
+	ClientUrl *string `json:"ClientUrl,omitempty" xml:"ClientUrl,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Number *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	NumberMD5  *string                `json:"NumberMD5,omitempty" xml:"NumberMD5,omitempty"`
+	Properties map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ImportNumberV2RequestCustomers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2RequestCustomers) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2RequestCustomers) SetClientUrl(v string) *ImportNumberV2RequestCustomers {
+	s.ClientUrl = &v
+	return s
+}
+
+func (s *ImportNumberV2RequestCustomers) SetNumber(v string) *ImportNumberV2RequestCustomers {
+	s.Number = &v
+	return s
+}
+
+func (s *ImportNumberV2RequestCustomers) SetNumberMD5(v string) *ImportNumberV2RequestCustomers {
+	s.NumberMD5 = &v
+	return s
+}
+
+func (s *ImportNumberV2RequestCustomers) SetProperties(v map[string]interface{}) *ImportNumberV2RequestCustomers {
+	s.Properties = v
+	return s
+}
+
+func (s *ImportNumberV2RequestCustomers) SetTag(v string) *ImportNumberV2RequestCustomers {
+	s.Tag = &v
+	return s
+}
+
+type ImportNumberV2ShrinkRequest struct {
+	CustomersShrink *string `json:"Customers,omitempty" xml:"Customers,omitempty"`
+	// example:
+	//
+	// 38
+	FailReturn *int64 `json:"FailReturn,omitempty" xml:"FailReturn,omitempty"`
+	// example:
+	//
+	// 示例值
+	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// example:
+	//
+	// 89
+	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s ImportNumberV2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetCustomersShrink(v string) *ImportNumberV2ShrinkRequest {
+	s.CustomersShrink = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetFailReturn(v int64) *ImportNumberV2ShrinkRequest {
+	s.FailReturn = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetOutId(v string) *ImportNumberV2ShrinkRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetOwnerId(v int64) *ImportNumberV2ShrinkRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetResourceOwnerAccount(v string) *ImportNumberV2ShrinkRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetResourceOwnerId(v int64) *ImportNumberV2ShrinkRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ImportNumberV2ShrinkRequest) SetTaskId(v int64) *ImportNumberV2ShrinkRequest {
+	s.TaskId = &v
+	return s
+}
+
+type ImportNumberV2ResponseBody struct {
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// example:
+	//
+	// 0
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值示例值
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	Model   *ImportNumberV2ResponseBodyModel `json:"Model,omitempty" xml:"Model,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8EFC6D10-307B-1ECA-A8C6-7CBDF776AAD2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 98
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+}
+
+func (s ImportNumberV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2ResponseBody) SetAccessDeniedDetail(v string) *ImportNumberV2ResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetCode(v int64) *ImportNumberV2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetMessage(v string) *ImportNumberV2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetModel(v *ImportNumberV2ResponseBodyModel) *ImportNumberV2ResponseBody {
+	s.Model = v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetRequestId(v string) *ImportNumberV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetSuccess(v string) *ImportNumberV2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBody) SetTimestamp(v int64) *ImportNumberV2ResponseBody {
+	s.Timestamp = &v
+	return s
+}
+
+type ImportNumberV2ResponseBodyModel struct {
+	// example:
+	//
+	// 74
+	BatchId *int64 `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 58
+	ImportNum *int64 `json:"ImportNum,omitempty" xml:"ImportNum,omitempty"`
+	// example:
+	//
+	// 示例值示例值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s ImportNumberV2ResponseBodyModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2ResponseBodyModel) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2ResponseBodyModel) SetBatchId(v int64) *ImportNumberV2ResponseBodyModel {
+	s.BatchId = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBodyModel) SetCode(v int64) *ImportNumberV2ResponseBodyModel {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBodyModel) SetData(v string) *ImportNumberV2ResponseBodyModel {
+	s.Data = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBodyModel) SetImportNum(v int64) *ImportNumberV2ResponseBodyModel {
+	s.ImportNum = &v
+	return s
+}
+
+func (s *ImportNumberV2ResponseBodyModel) SetMessage(v string) *ImportNumberV2ResponseBodyModel {
+	s.Message = &v
+	return s
+}
+
+type ImportNumberV2Response struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ImportNumberV2ResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ImportNumberV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportNumberV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ImportNumberV2Response) SetHeaders(v map[string]*string) *ImportNumberV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportNumberV2Response) SetStatusCode(v int32) *ImportNumberV2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ImportNumberV2Response) SetBody(v *ImportNumberV2ResponseBody) *ImportNumberV2Response {
+	s.Body = v
+	return s
+}
+
 type PageRequest struct {
 	Numbers []*string `json:"Numbers,omitempty" xml:"Numbers,omitempty" type:"Repeated"`
 	OwnerId *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7005,7 +7335,7 @@ func (client *Client) AgentRecoverCall(request *AgentRecoverCallRequest) (_resul
 
 // Summary:
 //
-// AI批量任务查询号码状态接口
+// # AI批量任务查询号码状态接口
 //
 // @param tmpReq - DetailsRequest
 //
@@ -7093,7 +7423,7 @@ func (client *Client) DetailsWithOptions(tmpReq *DetailsRequest, runtime *util.R
 
 // Summary:
 //
-// AI批量任务查询号码状态接口
+// # AI批量任务查询号码状态接口
 //
 // @param request - DetailsRequest
 //
@@ -7354,6 +7684,96 @@ func (client *Client) ImportNumber(request *ImportNumberRequest) (_result *Impor
 	runtime := &util.RuntimeOptions{}
 	_result = &ImportNumberResponse{}
 	_body, _err := client.ImportNumberWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入号码
+//
+// @param tmpReq - ImportNumberV2Request
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ImportNumberV2Response
+func (client *Client) ImportNumberV2WithOptions(tmpReq *ImportNumberV2Request, runtime *util.RuntimeOptions) (_result *ImportNumberV2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ImportNumberV2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Customers)) {
+		request.CustomersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Customers, tea.String("Customers"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomersShrink)) {
+		query["Customers"] = request.CustomersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailReturn)) {
+		query["FailReturn"] = request.FailReturn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportNumberV2"),
+		Version:     tea.String("2023-05-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportNumberV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 导入号码
+//
+// @param request - ImportNumberV2Request
+//
+// @return ImportNumberV2Response
+func (client *Client) ImportNumberV2(request *ImportNumberV2Request) (_result *ImportNumberV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportNumberV2Response{}
+	_body, _err := client.ImportNumberV2WithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7789,7 +8209,7 @@ func (client *Client) TaskCallInfo(request *TaskCallInfoRequest) (_result *TaskC
 
 // Summary:
 //
-// AI批量任务查询外呼记录接口
+// # AI批量任务查询外呼记录接口
 //
 // @param tmpReq - TaskCallListRequest
 //
@@ -7881,7 +8301,7 @@ func (client *Client) TaskCallListWithOptions(tmpReq *TaskCallListRequest, runti
 
 // Summary:
 //
-// AI批量任务查询外呼记录接口
+// # AI批量任务查询外呼记录接口
 //
 // @param request - TaskCallListRequest
 //
