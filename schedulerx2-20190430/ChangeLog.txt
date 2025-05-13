@@ -1,3 +1,25 @@
+2025-05-13 Version: v1.2.0
+- Support API DeleteNamespace.
+- Support API ListJobScriptHistory.
+- Support API ReadSchedulerxDesignateDetail.
+- Support API UpdateJobScript.
+- Support API UpdateNamespace.
+- Update API CreateAppGroup: add request parameters AppVersion.
+- Update API CreateJob: add request parameters Priority.
+- Update API GetAppGroup: add response parameters Body.Data.AppVersion.
+- Update API GetAppGroup: add response parameters Body.Data.MonitorContactsJson.
+- Update API GetAppGroup: add response parameters Body.Data.Namespace.
+- Update API GetWorkFlow: add response parameters Body.Data.WorkFlowInfo.GroupId.
+- Update API GetWorkFlow: add response parameters Body.Data.WorkFlowInfo.MaxConcurrency.
+- Update API GetWorkFlow: add response parameters Body.Data.WorkFlowInfo.Namespace.
+- Update API ListGroups: add response parameters Body.Data.AppGroups.$.AppVersion.
+- Update API ListGroups: add response parameters Body.Data.AppGroups.$.Namespace.
+- Update API UpdateAppGroup: add request parameters AppVersion.
+- Update API UpdateAppGroup: add request parameters MonitorConfigJson.
+- Update API UpdateAppGroup: add request parameters MonitorContactsJson.
+- Update API UpdateJob: add request parameters Priority.
+
+
 2024-06-26 Version: v2.0.0
 - Update API CreateAppGroup: add param AppVersion.
 - Update API CreateAppGroup: delete param Version.

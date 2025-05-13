@@ -172,19 +172,26 @@ func (s *BatchDeleteJobsResponse) SetBody(v *BatchDeleteJobsResponseBody) *Batch
 }
 
 type BatchDeleteRouteStrategyRequest struct {
+	// The ID of the application. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
-	GroupId   *string  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The IDs of the jobs.
 	JobIdList []*int64 `json:"JobIdList,omitempty" xml:"JobIdList,omitempty" type:"Repeated"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -222,18 +229,30 @@ func (s *BatchDeleteRouteStrategyRequest) SetRegionId(v string) *BatchDeleteRout
 }
 
 type BatchDeleteRouteStrategyResponseBody struct {
+	// The HTTP status code that is returned.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	//
 	// example:
 	//
 	// job is not existed, jobId=162837
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 704A2A61-3681-5568-92F7-2DFCC53F33D1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -632,16 +651,18 @@ type CreateAppGroupRequest struct {
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// 应用类型。
+	// The type of application. Valid values:
 	//
-	// - 1、普通应用。
+	// 	- `TRACE`: Application Monitoring
 	//
-	// - 2、k8s应用。
+	// 	- `EBPF`: Application Monitoring eBPF Edition
 	//
 	// example:
 	//
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// The application version. 1: Basic version, 2: Professional version.
+	//
 	// example:
 	//
 	// 2
@@ -652,11 +673,11 @@ type CreateAppGroupRequest struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 是否开启日志。
+	// Specifies whether to enable logging. Valid values:
 	//
-	// - true：开启
+	// 	- `true`: enabled
 	//
-	// - false：关闭
+	// 	- `false`: disabled
 	//
 	// example:
 	//
@@ -686,7 +707,7 @@ type CreateAppGroupRequest struct {
 	//
 	// example:
 	//
-	// [{"userName":"Tom","userPhone":"89756\\*\\*\\*\\*\\*\\*"},{"userName":"Bob","ding":"http://www.example.com"}]
+	// [{"userName":"Tom","userPhone":"89756******"},{"userName":"Bob","ding":"http://www.example.com"}]
 	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
 	// The namespace ID. You can obtain the namespace ID on the Namespace page in the SchedulerX console.
 	//
@@ -934,7 +955,7 @@ func (s *CreateAppGroupResponse) SetBody(v *CreateAppGroupResponseBody) *CreateA
 }
 
 type CreateJobRequest struct {
-	// The interval of retries after a job failure. Default value: 30. Unit: seconds.
+	// The time interval between retry attempts in case of a job failure. Unit: seconds. Default value: 30.
 	//
 	// example:
 	//
@@ -954,7 +975,7 @@ type CreateJobRequest struct {
 	//
 	// com.alibaba.schedulerx.test.helloworld
 	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
-	// The number of threads that are triggered by a single worker at a time. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	// The number of threads that a single worker triggers simultaneously. You can specify this parameter for MapReduce jobs. Default value: 5.
 	//
 	// example:
 	//
@@ -980,7 +1001,7 @@ type CreateJobRequest struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of task distribution threads. Default value: 5. This parameter is an advanced configuration item of the MapReduce job.
+	// The number of task distribution threads. This parameter is an advanced configuration item of the MapReduce job. Default value: 5.
 	//
 	// example:
 	//
@@ -1004,17 +1025,17 @@ type CreateJobRequest struct {
 	//
 	// standalone
 	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	// Specifies whether to turn on Failure alarm. If the switch is turned on, an alert will be generated upon a failure. Valid values:
+	// Specifies whether to trigger an alert when a job fails. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: triggers an alert when a job fails.
 	//
-	// 	- **false**
+	// 	- **false**: does not trigger an alert when a job fails.
 	//
 	// example:
 	//
 	// false
 	FailEnable *bool `json:"FailEnable,omitempty" xml:"FailEnable,omitempty"`
-	// The number of consecutive failures. An alert will be received if the number of consecutive failures reaches the value of this parameter.
+	// The maximum number of consecutive failures before an alert is triggered. An alert will be triggered if the number of consecutive failures reaches the value of this parameter.
 	//
 	// example:
 	//
@@ -1054,23 +1075,23 @@ type CreateJobRequest struct {
 	//
 	// java
 	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	// The maximum number of retries after a job failure. Specify this parameter based on your business requirements. Default value: 0.
+	// The maximum number of retry attempts in case of a job failure. Specify this parameter based on your business requirements. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	MaxAttempt *int32 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
-	// The maximum number of concurrent instances. Default value: 1. The default value indicates that only one instance is allowed to run at a time. When an instance is running, another instance is not triggered even if the scheduled time for running the instance is reached.
+	// The maximum number of concurrent instances. By default, only one instance can run at a time. When an instance is running, the next instance is not triggered even if the scheduled start time arrives.
 	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
-	// Specifies whether to turn on No machine alarm available. If the switch is turned on, an alert will be generated when no machine is available for running the job. Valid values:
+	// Specifies whether to generate an alert if no machines are available to run the job. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: generates an alert if no machines are available to run the job.
 	//
-	// 	- **false**
+	// 	- **false**: does not generate an alert if no machines are available to run the job.
 	//
 	// example:
 	//
@@ -1092,13 +1113,13 @@ type CreateJobRequest struct {
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The namespace source. This parameter is required only for a special third party.
+	// The source of the namespace. You must specify this parameter only if the namespace is provided by a third party.
 	//
 	// example:
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	// The number of tasks that can be pulled at a time. Default value: 100. This parameter is an advanced configuration item of the MapReduce job.
+	// The number of entries per page. You can specify this parameter for MapReduce jobs. Default value: 100.
 	//
 	// example:
 	//
@@ -1110,7 +1131,8 @@ type CreateJobRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	// The maximum capacity of the task queue. You can specify this parameter for MapReduce jobs. Default value: 10000.
 	//
 	// example:
 	//
@@ -1124,7 +1146,7 @@ type CreateJobRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The method that is used to send alerts. Only Short Message Service (SMS) is supported. Default value: sms.
+	// The method that is used to send alerts. Set the value to sms. Default value: sms.
 	//
 	// example:
 	//
@@ -1136,19 +1158,19 @@ type CreateJobRequest struct {
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Specifies whether to turn on Successful notice. If the switch is turned on, a notice will be sent when a job succeeds.
+	// Specifies whether to send notifications for successfully running the job.
 	//
 	// example:
 	//
 	// false
 	SuccessNoticeEnable *bool `json:"SuccessNoticeEnable,omitempty" xml:"SuccessNoticeEnable,omitempty"`
-	// The interval of retries after a task failure. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+	// The time interval between retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
 	//
 	// example:
 	//
 	// 0
 	TaskAttemptInterval *int32 `json:"TaskAttemptInterval,omitempty" xml:"TaskAttemptInterval,omitempty"`
-	// The number of retries after a task failure. Default value: 0. This parameter is an advanced configuration item of the MapReduce job.
+	// The maximum number of retry attempts in case of a job failure. This parameter is an advanced configuration item of the MapReduce job. Default value: 0.
 	//
 	// example:
 	//
@@ -1188,27 +1210,27 @@ type CreateJobRequest struct {
 	//
 	// 1
 	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	// The timeout threshold. Default value: 7200. Unit: seconds.
+	// The timeout threshold. Unit: seconds. Default value: 7200.
 	//
 	// example:
 	//
 	// 7200
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// Specifies whether to turn on Timeout alarm. If the switch is turned on, an alert will be generated upon a timeout. Valid values:
+	// Specifies whether to enable the timeout alert feature. If the feature is enabled, an alert will be triggered upon a timeout. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: enables the timeout alert feature.
 	//
-	// 	- **false**
+	// 	- **false**: disables the timeout alert feature.
 	//
 	// example:
 	//
 	// false
 	TimeoutEnable *bool `json:"TimeoutEnable,omitempty" xml:"TimeoutEnable,omitempty"`
-	// Specifies whether to turn on Timeout termination. If the switch is turned on, the job will be terminated upon a timeout. Valid values:
+	// Specifies whether to enable the timeout termination feature. If the feature is enabled, a job will automatically be terminated if it times out. Valid values:
 	//
-	// 	- **true**
+	// 	- **true**: enables the timeout termination feature.
 	//
-	// 	- **false**
+	// 	- **false**: disables the timeout termination feature.
 	//
 	// example:
 	//
@@ -1220,7 +1242,7 @@ type CreateJobRequest struct {
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// If you set JobType to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
+	// The extended attributes. If you set JobType to k8s, this parameter is required. For a job whose resource type is Job-YAML, set this parameter to {"resource":"job"}. For a job whose resource type is Shell-Script, set this parameter to {"image":"busybox","resource":"shell"}.
 	//
 	// example:
 	//
@@ -1343,6 +1365,11 @@ func (s *CreateJobRequest) SetPageSize(v int32) *CreateJobRequest {
 
 func (s *CreateJobRequest) SetParameters(v string) *CreateJobRequest {
 	s.Parameters = &v
+	return s
+}
+
+func (s *CreateJobRequest) SetPriority(v int32) *CreateJobRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -2036,9 +2063,9 @@ type CreateWorkflowRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The time expression. You can set the time expression based on the selected method that is used to specify time.
 	//
-	// 	- If you set the TimeType parameter to cron, you need to enter a standard cron expression. Online verification is supported.
+	// - If you set the TimeType parameter to cron, you need to enter a standard cron expression. Online verification is supported.
 	//
-	// 	- If you set the TimeType parameter to api, no time expression is required.
+	// - If you set the TimeType parameter to api, no time expression is required.
 	//
 	// example:
 	//
@@ -2046,9 +2073,9 @@ type CreateWorkflowRequest struct {
 	TimeExpression *string `json:"TimeExpression,omitempty" xml:"TimeExpression,omitempty"`
 	// The method that is used to specify the time. Valid values:
 	//
-	// 	- 1: cron
+	// - 1: cron
 	//
-	// 	- 100: api
+	// - 100: api
 	//
 	// This parameter is required.
 	//
@@ -2145,9 +2172,9 @@ type CreateWorkflowResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the workflow was created. Valid values:
 	//
-	// 	- true
+	// - true
 	//
-	// 	- false
+	// - false
 	//
 	// example:
 	//
@@ -2240,22 +2267,34 @@ func (s *CreateWorkflowResponse) SetBody(v *CreateWorkflowResponseBody) *CreateW
 }
 
 type DeleteAppGroupRequest struct {
+	// Specifies whether to delete the jobs in the application group. Valid values:
+	//
+	// true: deletes the jobs in the application group.
+	//
+	// false: does not delete the jobs in the application group.
+	//
 	// example:
 	//
 	// true
 	DeleteJobs *bool `json:"DeleteJobs,omitempty" xml:"DeleteJobs,omitempty"`
+	// The ID of the application. You can obtain the ID of the application on the Application Management page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2293,18 +2332,30 @@ func (s *DeleteAppGroupRequest) SetRegionId(v string) *DeleteAppGroupRequest {
 }
 
 type DeleteAppGroupResponseBody struct {
+	// The HTTP status code that is returned.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	//
 	// example:
 	//
 	// app is not existed, groupId=xxxx, namesapce=xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indices whether the request was successful. Valid values:
+	//
+	// true: The request was successful.
+	//
+	// false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -2530,6 +2581,115 @@ func (s *DeleteJobResponse) SetBody(v *DeleteJobResponseBody) *DeleteJobResponse
 	return s
 }
 
+type DeleteNamespaceRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceRequest) SetNamespace(v string) *DeleteNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteNamespaceRequest) SetRegionId(v string) *DeleteNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteNamespaceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The system namespace cannot be deleted
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4F68ABED-AC31-4412-9297-D9A8F0401107
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceResponseBody) SetCode(v int32) *DeleteNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetMessage(v string) *DeleteNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetRequestId(v string) *DeleteNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponseBody) SetSuccess(v bool) *DeleteNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNamespaceResponse) SetHeaders(v map[string]*string) *DeleteNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNamespaceResponse) SetStatusCode(v int32) *DeleteNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteNamespaceResponse) SetBody(v *DeleteNamespaceResponseBody) *DeleteNamespaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteRouteStrategyRequest struct {
 	// The application ID. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
 	//
@@ -2680,7 +2840,7 @@ func (s *DeleteRouteStrategyResponse) SetBody(v *DeleteRouteStrategyResponseBody
 }
 
 type DeleteWorkflowRequest struct {
-	// The application ID. You can obtain the application ID on the Application Management page in the SchedulerX console.
+	// The application group ID. You can obtain the application group ID on the Application Management page in the SchedulerX console.
 	//
 	// example:
 	//
@@ -2840,6 +3000,11 @@ func (s *DeleteWorkflowResponse) SetBody(v *DeleteWorkflowResponseBody) *DeleteW
 }
 
 type DescribeRegionsRequest struct {
+	// The region ID.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -4116,7 +4281,13 @@ type ExecuteWorkflowRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The region information.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The workflow ID.
 	//
@@ -4280,18 +4451,24 @@ func (s *ExecuteWorkflowResponse) SetBody(v *ExecuteWorkflowResponseBody) *Execu
 }
 
 type GetAppGroupRequest struct {
+	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the **Namespace*	- page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the region.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4322,19 +4499,32 @@ func (s *GetAppGroupRequest) SetRegionId(v string) *GetAppGroupRequest {
 }
 
 type GetAppGroupResponseBody struct {
+	// The HTTP status code that is returned.
+	//
 	// example:
 	//
 	// 200
-	Code *int32                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The information about the application group.
 	Data *GetAppGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The additional information that is returned.
+	//
 	// example:
 	//
 	// app is not existed, groupId=xxxx, namesapce=xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 39090022-1F3B-4797-8518-6B61095F1AF0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - **true**: The request was successful.
+	//
+	// - **false**: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -4375,38 +4565,70 @@ func (s *GetAppGroupResponseBody) SetSuccess(v bool) *GetAppGroupResponseBody {
 }
 
 type GetAppGroupResponseBodyData struct {
+	// The AppKey of the application.
+	//
 	// example:
 	//
 	// QI4lWMZ+xk1rNB67jFUhaw==
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// The name of the application.
+	//
 	// example:
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application version. 1: Basic version, 2: Professional version.
+	//
 	// example:
 	//
 	// 2
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The number of jobs that are configured for the application group.
+	//
 	// example:
 	//
 	// 1
 	CurJobs *int32 `json:"CurJobs,omitempty" xml:"CurJobs,omitempty"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the application.
+	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of jobs that can be configured for the application group.
+	//
 	// example:
 	//
 	// 1000
 	MaxJobs *int32 `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	// The alert notification configurations.
+	//
+	// >  For more information about this parameter, see the following **additional information about request parameters**.
+	//
 	// example:
 	//
 	// {"sendChannel":"sms,mail,ding"}
 	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+	// The alert contact configurations.
+	//
+	// >  For more information about this parameter, see the following **additional information about request parameters**.
+	//
+	// example:
+	//
+	// [ {"name": "Peter"}, {"name": "Paul"} ]
+	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
+	// The ID of the namespace.
+	//
+	// example:
+	//
+	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s GetAppGroupResponseBodyData) String() string {
@@ -4454,6 +4676,16 @@ func (s *GetAppGroupResponseBodyData) SetMaxJobs(v int32) *GetAppGroupResponseBo
 
 func (s *GetAppGroupResponseBodyData) SetMonitorConfigJson(v string) *GetAppGroupResponseBodyData {
 	s.MonitorConfigJson = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetMonitorContactsJson(v string) *GetAppGroupResponseBodyData {
+	s.MonitorContactsJson = &v
+	return s
+}
+
+func (s *GetAppGroupResponseBodyData) SetNamespace(v string) *GetAppGroupResponseBodyData {
+	s.Namespace = &v
 	return s
 }
 
@@ -4682,17 +4914,15 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution mode of the job. Valid values:
 	//
-	// 	- **Stand-alone operation**
+	// 	- **Stand-alone operation**: standalone
 	//
-	// 	- **Broadcast run**
+	// 	- **Broadcast run**: broadcast
 	//
-	// 	- **Visual MapReduce**
+	// 	- **Visual MapReduce**: parallel
 	//
-	// 	- **MapReduce**
+	// 	- **MapReduce**: batch
 	//
-	// 	- ****
-	//
-	// 	- **Shard run**
+	// 	- **Shard run**: sharding
 	//
 	// example:
 	//
@@ -5402,8 +5632,18 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	// example:
 	//
 	// 92583
-	JobId      *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName    *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// The job name.
+	//
+	// example:
+	//
+	// ManualJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The parameters of the job instance.
+	//
+	// example:
+	//
+	// {\\"alertId\\":11111}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The progress of the job instance.
 	//
@@ -5462,8 +5702,13 @@ type GetJobInstanceResponseBodyDataJobInstanceDetail struct {
 	// example:
 	//
 	// 1
-	TimeType *int32  `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
-	TraceId  *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	// The trace ID, which can be used to query trace details.
+	//
+	// example:
+	//
+	// 210e845016596663430048015d0a2c
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 	// The trigger type of the job instance. Valid values:
 	//
 	// 	- **1**: The job instance was triggered at the scheduled time.
@@ -5608,7 +5853,7 @@ func (s *GetJobInstanceResponse) SetBody(v *GetJobInstanceResponseBody) *GetJobI
 }
 
 type GetJobInstanceListRequest struct {
-	// The end of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end of the time range to query. Specify a UNIX timestamp.
 	//
 	// example:
 	//
@@ -5642,10 +5887,14 @@ type GetJobInstanceListRequest struct {
 	//
 	// schedulerx
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -5658,15 +5907,15 @@ type GetJobInstanceListRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time as a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The beginning of the time range to query. Specify a UNIX timestamp.
 	//
 	// example:
 	//
 	// 1684116000000
 	StartTimestamp *int64 `json:"StartTimestamp,omitempty" xml:"StartTimestamp,omitempty"`
-	// The state of the job instance. Valid values:
+	// The status of the job instance. Valid values:
 	//
-	// 1: The job instance is waiting for execution. 3: The job instance is running. 4: The job instance is successful. 5: The job instance fails. 9: The job instance is rejected. Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus
+	// 1: The job instance is pending. 3: The job instance is running. 4: The job instance is run. 5: The job instance fails. 9: The request for running the job instance is rejected. To specify this parameter, you must declare the following enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus.
 	//
 	// example:
 	//
@@ -6637,13 +6886,16 @@ type GetWorkFlowResponseBodyDataWorkFlowInfo struct {
 	// example:
 	//
 	// my first workflow
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MaxConcurrency *string `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
 	// The name of the workflow.
 	//
 	// example:
 	//
 	// workflow_111
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The status of the workflow.
 	//
 	// example:
@@ -6683,8 +6935,23 @@ func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetDescription(v string) *GetW
 	return s
 }
 
+func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetGroupId(v string) *GetWorkFlowResponseBodyDataWorkFlowInfo {
+	s.GroupId = &v
+	return s
+}
+
+func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetMaxConcurrency(v string) *GetWorkFlowResponseBodyDataWorkFlowInfo {
+	s.MaxConcurrency = &v
+	return s
+}
+
 func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetName(v string) *GetWorkFlowResponseBodyDataWorkFlowInfo {
 	s.Name = &v
+	return s
+}
+
+func (s *GetWorkFlowResponseBodyDataWorkFlowInfo) SetNamespace(v string) *GetWorkFlowResponseBodyDataWorkFlowInfo {
+	s.Namespace = &v
 	return s
 }
 
@@ -7244,7 +7511,7 @@ func (s *GetWorkflowInstanceResponseBody) SetSuccess(v bool) *GetWorkflowInstanc
 }
 
 type GetWorkflowInstanceResponseBodyData struct {
-	// The directed acyclic graph (DAG) of the workflow instance, including job instances and dependencies.
+	// The directed acyclic graph (DAG) of the workflow instance, including nodes and dependencies.
 	WfInstanceDag *GetWorkflowInstanceResponseBodyDataWfInstanceDag `json:"WfInstanceDag,omitempty" xml:"WfInstanceDag,omitempty" type:"Struct"`
 	// The details of the workflow instance, including the state of the workflow instance, the time when the workflow instance started to run, the time when the workflow instance stopped running, the state of each job instance, and the dependencies between job instances.
 	WfInstanceInfo *GetWorkflowInstanceResponseBodyDataWfInstanceInfo `json:"WfInstanceInfo,omitempty" xml:"WfInstanceInfo,omitempty" type:"Struct"`
@@ -7294,7 +7561,7 @@ func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDag) SetNodes(v []*GetWork
 }
 
 type GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges struct {
-	// The upstream job instance of the current job instance. The value 0 indicates that the upstream job instance is the root node.
+	// The upstream job instance of the current job instance. A value of 0 indicates that the upstream job instance is the root node.
 	//
 	// example:
 	//
@@ -7327,19 +7594,19 @@ func (s *GetWorkflowInstanceResponseBodyDataWfInstanceDagEdges) SetTarget(v int6
 }
 
 type GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes struct {
-	// The number of retries when the job instance failed.
+	// The number of retries when the job failed.
 	//
 	// example:
 	//
 	// 0
 	Attempt *int32 `json:"Attempt,omitempty" xml:"Attempt,omitempty"`
-	// The data timestamp of the job instance.
+	// The data timestamp of the job.
 	//
 	// example:
 	//
 	// 2023-01-03 18:00:00
 	DataTime *string `json:"DataTime,omitempty" xml:"DataTime,omitempty"`
-	// The time when the job instance stopped running.
+	// The time when the job stopped running.
 	//
 	// example:
 	//
@@ -7351,33 +7618,43 @@ type GetWorkflowInstanceResponseBodyDataWfInstanceDagNodes struct {
 	//
 	// 1472
 	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job instance ID.
+	// The ID of the job instance.
 	//
 	// example:
 	//
 	// 24058796
-	JobInstanceId *int64  `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
-	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	// The state of the job instance.
+	JobInstanceId *int64 `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
+	// The job name.
+	//
+	// example:
+	//
+	// TestJob
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The execution result of the job.
 	//
 	// example:
 	//
 	// code=200
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The time when the job instance was scheduled to run.
+	// The time when the job was scheduled.
 	//
 	// example:
 	//
 	// 2023-01-03 18:00:03
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The time when the job instance started to run.
+	// The time when the job started to run.
 	//
 	// example:
 	//
 	// 2023-01-03 18:00:03
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The server on which the job instance was run.
+	// The state of the job instance. Valid values: 1: The job instance is waiting for execution. 3: The job instance is running. 4: The job instance is run. 5: The job instance failed to run. 9: The job instance is rejected. Enumeration class: com.alibaba.schedulerx.common.domain.InstanceStatus.
+	//
+	// example:
+	//
+	// 4
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The worker on which the job instance run.
 	//
 	// example:
 	//
@@ -7801,7 +8078,7 @@ type ListGroupsResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The information about the applications.
+	// The applications.
 	Data *ListGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message.
 	//
@@ -7897,6 +8174,8 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The application version. 1: Basic version, 2: Professional version.
+	//
 	// example:
 	//
 	// 2
@@ -7913,6 +8192,12 @@ type ListGroupsResponseBodyDataAppGroups struct {
 	//
 	// DocTest.Group
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The ID of the namespace.
+	//
+	// example:
+	//
+	// 1a72ecb1-b4cc-400a-a71b-20cdec9b****
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 }
 
 func (s ListGroupsResponseBodyDataAppGroups) String() string {
@@ -7953,6 +8238,11 @@ func (s *ListGroupsResponseBodyDataAppGroups) SetGroupId(v string) *ListGroupsRe
 	return s
 }
 
+func (s *ListGroupsResponseBodyDataAppGroups) SetNamespace(v string) *ListGroupsResponseBodyDataAppGroups {
+	s.Namespace = &v
+	return s
+}
+
 type ListGroupsResponse struct {
 	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -7978,6 +8268,215 @@ func (s *ListGroupsResponse) SetStatusCode(v int32) *ListGroupsResponse {
 }
 
 func (s *ListGroupsResponse) SetBody(v *ListGroupsResponseBody) *ListGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListJobScriptHistoryRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testSchedulerx.defaultGroup
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 92583
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 4F68ABED-AC31-4412-9297-D9A8F0401108
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// schedulerx
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListJobScriptHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryRequest) SetGroupId(v string) *ListJobScriptHistoryRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetJobId(v int64) *ListJobScriptHistoryRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetNamespace(v string) *ListJobScriptHistoryRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetNamespaceSource(v string) *ListJobScriptHistoryRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryRequest) SetRegionId(v string) *ListJobScriptHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListJobScriptHistoryResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *ListJobScriptHistoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// job is not existed, jobId=302
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4F68ABED-AC31-4412-9297-D9A8F0401108
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetCode(v int32) *ListJobScriptHistoryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetData(v *ListJobScriptHistoryResponseBodyData) *ListJobScriptHistoryResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetMessage(v string) *ListJobScriptHistoryResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetRequestId(v string) *ListJobScriptHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBody) SetSuccess(v bool) *ListJobScriptHistoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListJobScriptHistoryResponseBodyData struct {
+	// -
+	JobScriptHistoryInfos []*ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos `json:"JobScriptHistoryInfos,omitempty" xml:"JobScriptHistoryInfos,omitempty" type:"Repeated"`
+}
+
+func (s ListJobScriptHistoryResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBodyData) SetJobScriptHistoryInfos(v []*ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) *ListJobScriptHistoryResponseBodyData {
+	s.JobScriptHistoryInfos = v
+	return s
+}
+
+type ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos struct {
+	// example:
+	//
+	// 2025-03-12 14:52:42
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 1272118248844842
+	Creator       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	ScriptContent *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	// example:
+	//
+	// init version
+	VersionesDescription *string `json:"VersionesDescription,omitempty" xml:"VersionesDescription,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) SetCreateTime(v string) *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) SetCreator(v string) *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) SetScriptContent(v string) *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos {
+	s.ScriptContent = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos) SetVersionesDescription(v string) *ListJobScriptHistoryResponseBodyDataJobScriptHistoryInfos {
+	s.VersionesDescription = &v
+	return s
+}
+
+type ListJobScriptHistoryResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListJobScriptHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListJobScriptHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobScriptHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobScriptHistoryResponse) SetHeaders(v map[string]*string) *ListJobScriptHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponse) SetStatusCode(v int32) *ListJobScriptHistoryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListJobScriptHistoryResponse) SetBody(v *ListJobScriptHistoryResponseBody) *ListJobScriptHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -8702,10 +9201,14 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 }
 
 type ListNamespacesRequest struct {
+	// The namespace ID.
+	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The name of the namespace.
+	//
 	// example:
 	//
 	// schedulerx-dev
@@ -9181,6 +9684,468 @@ func (s *ListWorkflowInstanceResponse) SetStatusCode(v int32) *ListWorkflowInsta
 }
 
 func (s *ListWorkflowInstanceResponse) SetBody(v *ListWorkflowInstanceResponseBody) *ListWorkflowInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailRequest struct {
+	// example:
+	//
+	// 1
+	DesignateType *int32 `json:"DesignateType,omitempty" xml:"DesignateType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test.defalutGroup
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 368
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// schedulerx
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetDesignateType(v int32) *ReadSchedulerxDesignateDetailRequest {
+	s.DesignateType = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetGroupId(v string) *ReadSchedulerxDesignateDetailRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetJobId(v int64) *ReadSchedulerxDesignateDetailRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetNamespace(v string) *ReadSchedulerxDesignateDetailRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetNamespaceSource(v string) *ReadSchedulerxDesignateDetailRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailRequest) SetRegionId(v string) *ReadSchedulerxDesignateDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponseBody struct {
+	AccessDeniedDetail *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// -
+	Data *ReadSchedulerxDesignateDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid parameter: jobId=368 invalid
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 883AFE93-FB03-4FA9-A958-E750C6DE120C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetAccessDeniedDetail(v *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) *ReadSchedulerxDesignateDetailResponseBody {
+	s.AccessDeniedDetail = v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetCode(v int32) *ReadSchedulerxDesignateDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetData(v *ReadSchedulerxDesignateDetailResponseBodyData) *ReadSchedulerxDesignateDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetMessage(v string) *ReadSchedulerxDesignateDetailResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetRequestId(v string) *ReadSchedulerxDesignateDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBody) SetSuccess(v bool) *ReadSchedulerxDesignateDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail struct {
+	// example:
+	//
+	// edas:ReadSchedulerxDesignateDetail
+	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
+	// example:
+	//
+	// 209312833131416xxx
+	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
+	// example:
+	//
+	// 1827811800526xxx
+	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
+	// example:
+	//
+	// SubUser
+	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
+	// example:
+	//
+	// AQFn/cLPZ/3Cz0YxQkZBMjVGLTY0REUtNTlGNS05NzUwLTgyMUE4M0MwMTFDRQ==
+	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
+	// example:
+	//
+	// ImplicitDeny
+	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
+	// example:
+	//
+	// AccountLevelIdentityBasedPolicy
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetAuthAction(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.AuthAction = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetAuthPrincipalDisplayName(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalDisplayName = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetAuthPrincipalOwnerId(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalOwnerId = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetAuthPrincipalType(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.AuthPrincipalType = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetEncodedDiagnosticMessage(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.EncodedDiagnosticMessage = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetNoPermissionType(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.NoPermissionType = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail) SetPolicyType(v string) *ReadSchedulerxDesignateDetailResponseBodyAccessDeniedDetail {
+	s.PolicyType = &v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponseBodyData struct {
+	// -
+	DesignateDetailVos []*ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos `json:"DesignateDetailVos,omitempty" xml:"DesignateDetailVos,omitempty" type:"Repeated"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyData) SetDesignateDetailVos(v []*ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) *ReadSchedulerxDesignateDetailResponseBodyData {
+	s.DesignateDetailVos = v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos struct {
+	// example:
+	//
+	// FREE
+	Busy *string `json:"Busy,omitempty" xml:"Busy,omitempty"`
+	// example:
+	//
+	// true
+	Checked *bool `json:"Checked,omitempty" xml:"Checked,omitempty"`
+	// example:
+	//
+	// 10.52.169.25
+	Key     *string                                                                 `json:"Key,omitempty" xml:"Key,omitempty"`
+	Metrics *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics `json:"Metrics,omitempty" xml:"Metrics,omitempty" type:"Struct"`
+	// example:
+	//
+	// fasle
+	Offline *bool `json:"Offline,omitempty" xml:"Offline,omitempty"`
+	// example:
+	//
+	// 1
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// pod
+	Starter *string `json:"Starter,omitempty" xml:"Starter,omitempty"`
+	// example:
+	//
+	// 1.12.5
+	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetBusy(v string) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Busy = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetChecked(v bool) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Checked = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetKey(v string) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Key = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetMetrics(v *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Metrics = v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetOffline(v bool) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Offline = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetSize(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Size = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetStarter(v string) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Starter = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos) SetVersion(v string) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVos {
+	s.Version = &v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics struct {
+	// example:
+	//
+	// 0
+	CpuLoad1 *float64 `json:"CpuLoad1,omitempty" xml:"CpuLoad1,omitempty"`
+	// example:
+	//
+	// 0
+	CpuLoad5 *float64 `json:"CpuLoad5,omitempty" xml:"CpuLoad5,omitempty"`
+	// example:
+	//
+	// 1
+	CpuProcessors *int32 `json:"CpuProcessors,omitempty" xml:"CpuProcessors,omitempty"`
+	// example:
+	//
+	// 1024
+	DiskMax *int32 `json:"DiskMax,omitempty" xml:"DiskMax,omitempty"`
+	// example:
+	//
+	// 0.19142496008515167
+	DiskUsage *float64 `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// example:
+	//
+	// 0.14865875
+	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
+	// example:
+	//
+	// 56
+	ExecCount *int64 `json:"ExecCount,omitempty" xml:"ExecCount,omitempty"`
+	// example:
+	//
+	// 0.06072874493927125
+	Heap1Usage *float64 `json:"Heap1Usage,omitempty" xml:"Heap1Usage,omitempty"`
+	// example:
+	//
+	// 14
+	Heap1Used *float64 `json:"Heap1Used,omitempty" xml:"Heap1Used,omitempty"`
+	// example:
+	//
+	// 0.06477732793522267
+	Heap5Usage *float64 `json:"Heap5Usage,omitempty" xml:"Heap5Usage,omitempty"`
+	// example:
+	//
+	// 500
+	HeapMax *int32 `json:"HeapMax,omitempty" xml:"HeapMax,omitempty"`
+	// example:
+	//
+	// 72
+	SharePoolAvailableSize *int32 `json:"SharePoolAvailableSize,omitempty" xml:"SharePoolAvailableSize,omitempty"`
+	// example:
+	//
+	// 1
+	SharePoolQueueSize *int32 `json:"SharePoolQueueSize,omitempty" xml:"SharePoolQueueSize,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetCpuLoad1(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.CpuLoad1 = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetCpuLoad5(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.CpuLoad5 = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetCpuProcessors(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.CpuProcessors = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetDiskMax(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.DiskMax = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetDiskUsage(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.DiskUsage = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetDiskUsed(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.DiskUsed = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetExecCount(v int64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.ExecCount = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetHeap1Usage(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.Heap1Usage = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetHeap1Used(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.Heap1Used = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetHeap5Usage(v float64) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.Heap5Usage = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetHeapMax(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.HeapMax = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetSharePoolAvailableSize(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.SharePoolAvailableSize = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics) SetSharePoolQueueSize(v int32) *ReadSchedulerxDesignateDetailResponseBodyDataDesignateDetailVosMetrics {
+	s.SharePoolQueueSize = &v
+	return s
+}
+
+type ReadSchedulerxDesignateDetailResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ReadSchedulerxDesignateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ReadSchedulerxDesignateDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReadSchedulerxDesignateDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReadSchedulerxDesignateDetailResponse) SetHeaders(v map[string]*string) *ReadSchedulerxDesignateDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponse) SetStatusCode(v int32) *ReadSchedulerxDesignateDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReadSchedulerxDesignateDetailResponse) SetBody(v *ReadSchedulerxDesignateDetailResponseBody) *ReadSchedulerxDesignateDetailResponse {
 	s.Body = v
 	return s
 }
@@ -10249,30 +11214,62 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type UpdateAppGroupRequest struct {
+	// The application version. 1: Basic version, 2: Professional version.
+	//
 	// example:
 	//
 	// 2
 	AppVersion *int32 `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The description of the application.
+	//
 	// example:
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The ID of the application. You can obtain the application ID on the **Application Management*	- page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testSchedulerx.defaultGroup
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// The maximum number of concurrent instances. Default value: 1. A value of 1 specifies that if the last triggered instance is running, the next instance is not triggered even if the scheduled point in time for running the next instance is reached.
+	//
 	// example:
 	//
 	// 1
 	MaxConcurrency *int32 `json:"MaxConcurrency,omitempty" xml:"MaxConcurrency,omitempty"`
+	// The configuration of the alert. The value is a JSON string. For more information about this parameter, see **Additional information about request parameters**.
+	//
+	// example:
+	//
+	// {
+	//
+	//     "sendChannel": "ding,sms,mail,phone",
+	//
+	//     "alarmType": "Contacts",
+	//
+	//     "webhookIsAtAll": false
+	//
+	// }
+	MonitorConfigJson *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+	// The configuration of alert contacts. The value is a JSON string.
+	//
+	// example:
+	//
+	// [{"userName":"Tom","userPhone":"89756******"},{"userName":"Bob","ding":"http://www.example.com"}]
+	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
+	// The ID of the namespace. You can obtain the ID of the namespace on the Namespace page in the SchedulerX console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// The ID of the region.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -10309,6 +11306,16 @@ func (s *UpdateAppGroupRequest) SetMaxConcurrency(v int32) *UpdateAppGroupReques
 	return s
 }
 
+func (s *UpdateAppGroupRequest) SetMonitorConfigJson(v string) *UpdateAppGroupRequest {
+	s.MonitorConfigJson = &v
+	return s
+}
+
+func (s *UpdateAppGroupRequest) SetMonitorContactsJson(v string) *UpdateAppGroupRequest {
+	s.MonitorContactsJson = &v
+	return s
+}
+
 func (s *UpdateAppGroupRequest) SetNamespace(v string) *UpdateAppGroupRequest {
 	s.Namespace = &v
 	return s
@@ -10320,18 +11327,30 @@ func (s *UpdateAppGroupRequest) SetRegionId(v string) *UpdateAppGroupRequest {
 }
 
 type UpdateAppGroupResponseBody struct {
+	// The HTTP status code returned.
+	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The additional information that is returned.
+	//
 	// example:
 	//
 	// app is not existed, groupId=xxxx, namesapce=xxxx
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 4F68ABED-AC31-4412-9297-D9A8F0401108
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// - true: The request was successful.
+	//
+	// - false: The request failed.
+	//
 	// example:
 	//
 	// true
@@ -10450,15 +11469,15 @@ type UpdateJobRequest struct {
 	DispatcherSize *int32 `json:"DispatcherSize,omitempty" xml:"DispatcherSize,omitempty"`
 	// The execution mode of the job. Valid values:
 	//
-	// 	- **Stand-alone operation**
+	// 	- **Stand-alone operation**: standalone
 	//
-	// 	- **Broadcast run**
+	// 	- **Broadcast run**: broadcatst
 	//
-	// 	- **Visual MapReduce**
+	// 	- **Visual MapReduce**: parallel
 	//
-	// 	- **MapReduce**
+	// 	- **MapReduce**: batch
 	//
-	// 	- **Shard run**
+	// 	- **Shard run**: shard
 	//
 	// example:
 	//
@@ -10550,6 +11569,7 @@ type UpdateJobRequest struct {
 	//
 	// test
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Priority   *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The maximum number of tasks that can be queued. Default value: 10000. This parameter is an advanced configuration item of the MapReduce job.
 	//
 	// example:
@@ -10593,8 +11613,55 @@ type UpdateJobRequest struct {
 	// example:
 	//
 	// 0
-	TaskMaxAttempt *int32  `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
-	Template       *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	TaskMaxAttempt *int32 `json:"TaskMaxAttempt,omitempty" xml:"TaskMaxAttempt,omitempty"`
+	// Custom task template for the k8s task type.
+	//
+	// example:
+	//
+	// apiVersion: v1
+	//
+	// kind: Pod
+	//
+	// metadata:
+	//
+	//   name: schedulerx-node-{JOB_ID}
+	//
+	//   namespace: {NAMESPACE}
+	//
+	// spec:
+	//
+	//   containers:
+	//
+	//   - name: node-job
+	//
+	//     image: node:16
+	//
+	//     imagePullPolicy: IfNotPresent
+	//
+	//     volumeMounts:
+	//
+	//     - name: script-node
+	//
+	//       mountPath: script/node
+	//
+	//     command: ["node", "script/node/node-{JOB_ID}.js"]
+	//
+	//   volumes:
+	//
+	//   - name: script-node
+	//
+	//     configMap:
+	//
+	//       name: schedulerx-configmap
+	//
+	//       items:
+	//
+	//       - key: schedulerx-node-{JOB_ID}
+	//
+	//         path: node-{JOB_ID}.js
+	//
+	//   restartPolicy: Never
+	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	// The time expression. Specify the time expression based on the value of TimeType:
 	//
 	// 	- If you set TimeType to **1*	- (cron), specify this parameter to a standard CRON expression.
@@ -10655,6 +11722,8 @@ type UpdateJobRequest struct {
 	//
 	// GMT+8
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	// If you set JobType to k8s, this parameter is required. xxljob task: {"resource":"job"} shell task: {"image":"busybox","resource":"shell"}
+	//
 	// example:
 	//
 	// {"resource":"shell","fileFormat":"unix","templateType":"customTemplate"}
@@ -10776,6 +11845,11 @@ func (s *UpdateJobRequest) SetPageSize(v int32) *UpdateJobRequest {
 
 func (s *UpdateJobRequest) SetParameters(v string) *UpdateJobRequest {
 	s.Parameters = &v
+	return s
+}
+
+func (s *UpdateJobRequest) SetPriority(v int32) *UpdateJobRequest {
+	s.Priority = &v
 	return s
 }
 
@@ -10989,6 +12063,279 @@ func (s *UpdateJobResponse) SetStatusCode(v int32) *UpdateJobResponse {
 }
 
 func (s *UpdateJobResponse) SetBody(v *UpdateJobResponseBody) *UpdateJobResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateJobScriptRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// testSchedulerx.defaultGroup
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 301
+	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	// example:
+	//
+	// schedulerx
+	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScriptContent      *string `json:"ScriptContent,omitempty" xml:"ScriptContent,omitempty"`
+	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
+}
+
+func (s UpdateJobScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptRequest) SetGroupId(v string) *UpdateJobScriptRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetJobId(v int64) *UpdateJobScriptRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetNamespace(v string) *UpdateJobScriptRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetNamespaceSource(v string) *UpdateJobScriptRequest {
+	s.NamespaceSource = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetRegionId(v string) *UpdateJobScriptRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetScriptContent(v string) *UpdateJobScriptRequest {
+	s.ScriptContent = &v
+	return s
+}
+
+func (s *UpdateJobScriptRequest) SetVersionDescription(v string) *UpdateJobScriptRequest {
+	s.VersionDescription = &v
+	return s
+}
+
+type UpdateJobScriptResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// job is not existed, jobId=302
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4F68ABED-AC31-4412-9297-D9A8F0401108
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateJobScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptResponseBody) SetCode(v int32) *UpdateJobScriptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetMessage(v string) *UpdateJobScriptResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetRequestId(v string) *UpdateJobScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponseBody) SetSuccess(v bool) *UpdateJobScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateJobScriptResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateJobScriptResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateJobScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobScriptResponse) SetHeaders(v map[string]*string) *UpdateJobScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateJobScriptResponse) SetStatusCode(v int32) *UpdateJobScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateJobScriptResponse) SetBody(v *UpdateJobScriptResponseBody) *UpdateJobScriptResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateNamespaceRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adcfc35d-e2fe-4fe9-bbaa-20e90ffc****
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s UpdateNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNamespaceRequest) SetDescription(v string) *UpdateNamespaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateNamespaceRequest) SetNamespace(v string) *UpdateNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateNamespaceRequest) SetNamespaceName(v string) *UpdateNamespaceRequest {
+	s.NamespaceName = &v
+	return s
+}
+
+func (s *UpdateNamespaceRequest) SetRegionId(v string) *UpdateNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type UpdateNamespaceResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// The system namespace cannot be modified
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 39090022-1F3B-4797-8518-6B61095F1AF0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNamespaceResponseBody) SetCode(v int32) *UpdateNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateNamespaceResponseBody) SetMessage(v string) *UpdateNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateNamespaceResponseBody) SetRequestId(v string) *UpdateNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateNamespaceResponseBody) SetSuccess(v bool) *UpdateNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateNamespaceResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateNamespaceResponse) SetHeaders(v map[string]*string) *UpdateNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateNamespaceResponse) SetStatusCode(v int32) *UpdateNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *UpdateNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -11302,10 +12649,6 @@ type UpdateWorkflowDagResponseBody struct {
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned error message.
-	//
-	// example:
-	//
-	// workflowId=xxxx is not existed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -11447,11 +12790,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11525,11 +12868,11 @@ func (client *Client) BatchDeleteJobsWithOptions(request *BatchDeleteJobsRequest
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11635,11 +12978,11 @@ func (client *Client) BatchDeleteRouteStrategy(request *BatchDeleteRouteStrategy
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11713,11 +13056,11 @@ func (client *Client) BatchDisableJobsWithOptions(request *BatchDisableJobsReque
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11749,11 +13092,11 @@ func (client *Client) BatchDisableJobs(request *BatchDisableJobsRequest) (_resul
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11827,11 +13170,11 @@ func (client *Client) BatchEnableJobsWithOptions(request *BatchEnableJobsRequest
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.4</version>
+//	<version>1.0.4</version>
 //
 // </dependency>
 //
@@ -11922,6 +13265,10 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -12486,6 +13833,70 @@ func (client *Client) DeleteJob(request *DeleteJobRequest) (_result *DeleteJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteJobResponse{}
 	_body, _err := client.DeleteJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除命名空间
+//
+// @param request - DeleteNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteNamespaceResponse
+func (client *Client) DeleteNamespaceWithOptions(request *DeleteNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNamespace"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除命名空间
+//
+// @param request - DeleteNamespaceRequest
+//
+// @return DeleteNamespaceResponse
+func (client *Client) DeleteNamespace(request *DeleteNamespaceRequest) (_result *DeleteNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNamespaceResponse{}
+	_body, _err := client.DeleteNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13083,7 +14494,7 @@ func (client *Client) ExecuteWorkflow(request *ExecuteWorkflowRequest) (_result 
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see **the additional information about response parameters below this table**.
+// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
 //
 // @param request - GetAppGroupRequest
 //
@@ -13133,7 +14544,7 @@ func (client *Client) GetAppGroupWithOptions(request *GetAppGroupRequest, runtim
 
 // Summary:
 //
-// The configuration of the alert. The value is a JSON string. For more information, see **the additional information about response parameters below this table**.
+// The configuration of the alert. The value is a JSON string. For more information, see \\\\*\\\\*the additional information about response parameters below this table\\\\*\\\\*.
 //
 // @param request - GetAppGroupRequest
 //
@@ -13725,11 +15136,11 @@ func (client *Client) GrantPermission(request *GrantPermissionRequest) (_result 
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.5</version>
+//	<version>1.0.5</version>
 //
 // </dependency>
 //
@@ -13797,11 +15208,11 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 //
 // <dependency>
 //
-//     <groupId>com.aliyun</groupId>
+//	<groupId>com.aliyun</groupId>
 //
-//     <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	<artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//     <version>1.0.5</version>
+//	<version>1.0.5</version>
 //
 // </dependency>
 //
@@ -13823,21 +15234,97 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
+// 获取任务脚本历史列表
+//
+// @param request - ListJobScriptHistoryRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListJobScriptHistoryResponse
+func (client *Client) ListJobScriptHistoryWithOptions(request *ListJobScriptHistoryRequest, runtime *util.RuntimeOptions) (_result *ListJobScriptHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobScriptHistory"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobScriptHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取任务脚本历史列表
+//
+// @param request - ListJobScriptHistoryRequest
+//
+// @return ListJobScriptHistoryResponse
+func (client *Client) ListJobScriptHistory(request *ListJobScriptHistoryRequest) (_result *ListJobScriptHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobScriptHistoryResponse{}
+	_body, _err := client.ListJobScriptHistoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries jobs.
 //
 // Description:
 //
 // Before you call this operation, you must add the following dependency to the pom.xml file:
 //
-//     <dependency>
+//	<dependency>
 //
-//           <groupId>com.aliyun</groupId>
+//	      <groupId>com.aliyun</groupId>
 //
-//           <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//           <version>1.0.5</version>
+//	      <version>1.0.5</version>
 //
-//     </dependency>
+//	</dependency>
 //
 // @param request - ListJobsRequest
 //
@@ -13881,15 +15368,15 @@ func (client *Client) ListJobsWithOptions(request *ListJobsRequest, runtime *uti
 //
 // Before you call this operation, you must add the following dependency to the pom.xml file:
 //
-//     <dependency>
+//	<dependency>
 //
-//           <groupId>com.aliyun</groupId>
+//	      <groupId>com.aliyun</groupId>
 //
-//           <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	      <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//           <version>1.0.5</version>
+//	      <version>1.0.5</version>
 //
-//     </dependency>
+//	</dependency>
 //
 // @param request - ListJobsRequest
 //
@@ -13913,15 +15400,15 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 //
 // Before you call this operation, you must add the following dependency to the pom.xml file:
 //
-//     <dependency>
+//	<dependency>
 //
-//         <groupId>com.aliyun</groupId>
+//	    <groupId>com.aliyun</groupId>
 //
-//         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	    <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//         <version>1.0.5</version>
+//	    <version>1.0.5</version>
 //
-//     </dependency>
+//	</dependency>
 //
 // @param request - ListNamespacesRequest
 //
@@ -13977,15 +15464,15 @@ func (client *Client) ListNamespacesWithOptions(request *ListNamespacesRequest, 
 //
 // Before you call this operation, you must add the following dependency to the pom.xml file:
 //
-//     <dependency>
+//	<dependency>
 //
-//         <groupId>com.aliyun</groupId>
+//	    <groupId>com.aliyun</groupId>
 //
-//         <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
+//	    <artifactId>aliyun-java-sdk-schedulerx2</artifactId>
 //
-//         <version>1.0.5</version>
+//	    <version>1.0.5</version>
 //
-//     </dependency>
+//	</dependency>
 //
 // @param request - ListNamespacesRequest
 //
@@ -14050,6 +15537,86 @@ func (client *Client) ListWorkflowInstance(request *ListWorkflowInstanceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWorkflowInstanceResponse{}
 	_body, _err := client.ListWorkflowInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取机器详细信息
+//
+// @param request - ReadSchedulerxDesignateDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReadSchedulerxDesignateDetailResponse
+func (client *Client) ReadSchedulerxDesignateDetailWithOptions(request *ReadSchedulerxDesignateDetailRequest, runtime *util.RuntimeOptions) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DesignateType)) {
+		query["DesignateType"] = request.DesignateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		query["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReadSchedulerxDesignateDetail"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReadSchedulerxDesignateDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取机器详细信息
+//
+// @param request - ReadSchedulerxDesignateDetailRequest
+//
+// @return ReadSchedulerxDesignateDetailResponse
+func (client *Client) ReadSchedulerxDesignateDetail(request *ReadSchedulerxDesignateDetailRequest) (_result *ReadSchedulerxDesignateDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReadSchedulerxDesignateDetailResponse{}
+	_body, _err := client.ReadSchedulerxDesignateDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14519,7 +16086,7 @@ func (client *Client) StopInstance(request *StopInstanceRequest) (_result *StopI
 
 // Summary:
 //
-// The additional information that is returned.
+// Updates the application group.
 //
 // @param request - UpdateAppGroupRequest
 //
@@ -14546,6 +16113,14 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.MaxConcurrency)) {
 		query["MaxConcurrency"] = request.MaxConcurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorConfigJson)) {
+		query["MonitorConfigJson"] = request.MonitorConfigJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MonitorContactsJson)) {
+		query["MonitorContactsJson"] = request.MonitorContactsJson
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
@@ -14581,7 +16156,7 @@ func (client *Client) UpdateAppGroupWithOptions(request *UpdateAppGroupRequest, 
 
 // Summary:
 //
-// The additional information that is returned.
+// Updates the application group.
 //
 // @param request - UpdateAppGroupRequest
 //
@@ -14612,6 +16187,10 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -14796,6 +16375,162 @@ func (client *Client) UpdateJob(request *UpdateJobRequest) (_result *UpdateJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateJobResponse{}
 	_body, _err := client.UpdateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务执行脚本
+//
+// @param request - UpdateJobScriptRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateJobScriptResponse
+func (client *Client) UpdateJobScriptWithOptions(request *UpdateJobScriptRequest, runtime *util.RuntimeOptions) (_result *UpdateJobScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceSource)) {
+		body["NamespaceSource"] = request.NamespaceSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		body["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptContent)) {
+		body["ScriptContent"] = request.ScriptContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionDescription)) {
+		body["VersionDescription"] = request.VersionDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateJobScript"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateJobScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新任务执行脚本
+//
+// @param request - UpdateJobScriptRequest
+//
+// @return UpdateJobScriptResponse
+func (client *Client) UpdateJobScript(request *UpdateJobScriptRequest) (_result *UpdateJobScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateJobScriptResponse{}
+	_body, _err := client.UpdateJobScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新命名空间
+//
+// @param request - UpdateNamespaceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateNamespaceResponse
+func (client *Client) UpdateNamespaceWithOptions(request *UpdateNamespaceRequest, runtime *util.RuntimeOptions) (_result *UpdateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
+		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateNamespace"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新命名空间
+//
+// @param request - UpdateNamespaceRequest
+//
+// @return UpdateNamespaceResponse
+func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result *UpdateNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateNamespaceResponse{}
+	_body, _err := client.UpdateNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
