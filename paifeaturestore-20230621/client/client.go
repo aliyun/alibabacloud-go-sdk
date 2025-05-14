@@ -537,7 +537,8 @@ type CreateFeatureViewRequestFields struct {
 	// example:
 	//
 	// age
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Transform []*CreateFeatureViewRequestFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Repeated"`
 	// example:
 	//
 	// INT32
@@ -562,7 +563,64 @@ func (s *CreateFeatureViewRequestFields) SetName(v string) *CreateFeatureViewReq
 	return s
 }
 
+func (s *CreateFeatureViewRequestFields) SetTransform(v []*CreateFeatureViewRequestFieldsTransform) *CreateFeatureViewRequestFields {
+	s.Transform = v
+	return s
+}
+
 func (s *CreateFeatureViewRequestFields) SetType(v string) *CreateFeatureViewRequestFields {
+	s.Type = &v
+	return s
+}
+
+type CreateFeatureViewRequestFieldsTransform struct {
+	Input       []*CreateFeatureViewRequestFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	LLMConfigId *int32                                          `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	Type        *string                                         `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFeatureViewRequestFieldsTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFeatureViewRequestFieldsTransform) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFeatureViewRequestFieldsTransform) SetInput(v []*CreateFeatureViewRequestFieldsTransformInput) *CreateFeatureViewRequestFieldsTransform {
+	s.Input = v
+	return s
+}
+
+func (s *CreateFeatureViewRequestFieldsTransform) SetLLMConfigId(v int32) *CreateFeatureViewRequestFieldsTransform {
+	s.LLMConfigId = &v
+	return s
+}
+
+func (s *CreateFeatureViewRequestFieldsTransform) SetType(v string) *CreateFeatureViewRequestFieldsTransform {
+	s.Type = &v
+	return s
+}
+
+type CreateFeatureViewRequestFieldsTransformInput struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFeatureViewRequestFieldsTransformInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFeatureViewRequestFieldsTransformInput) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFeatureViewRequestFieldsTransformInput) SetName(v string) *CreateFeatureViewRequestFieldsTransformInput {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFeatureViewRequestFieldsTransformInput) SetType(v string) *CreateFeatureViewRequestFieldsTransformInput {
 	s.Type = &v
 	return s
 }
@@ -2266,7 +2324,8 @@ type GetFeatureViewResponseBodyFields struct {
 	// example:
 	//
 	// user
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Transform *GetFeatureViewResponseBodyFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Struct"`
 	// example:
 	//
 	// int
@@ -2291,7 +2350,67 @@ func (s *GetFeatureViewResponseBodyFields) SetName(v string) *GetFeatureViewResp
 	return s
 }
 
+func (s *GetFeatureViewResponseBodyFields) SetTransform(v *GetFeatureViewResponseBodyFieldsTransform) *GetFeatureViewResponseBodyFields {
+	s.Transform = v
+	return s
+}
+
 func (s *GetFeatureViewResponseBodyFields) SetType(v string) *GetFeatureViewResponseBodyFields {
+	s.Type = &v
+	return s
+}
+
+type GetFeatureViewResponseBodyFieldsTransform struct {
+	Input []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	LLMConfigId *int32  `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFeatureViewResponseBodyFieldsTransform) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureViewResponseBodyFieldsTransform) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransform) SetInput(v []*GetFeatureViewResponseBodyFieldsTransformInput) *GetFeatureViewResponseBodyFieldsTransform {
+	s.Input = v
+	return s
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransform) SetLLMConfigId(v int32) *GetFeatureViewResponseBodyFieldsTransform {
+	s.LLMConfigId = &v
+	return s
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransform) SetType(v string) *GetFeatureViewResponseBodyFieldsTransform {
+	s.Type = &v
+	return s
+}
+
+type GetFeatureViewResponseBodyFieldsTransformInput struct {
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFeatureViewResponseBodyFieldsTransformInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureViewResponseBodyFieldsTransformInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransformInput) SetName(v string) *GetFeatureViewResponseBodyFieldsTransformInput {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFeatureViewResponseBodyFieldsTransformInput) SetType(v string) *GetFeatureViewResponseBodyFieldsTransformInput {
 	s.Type = &v
 	return s
 }
@@ -4542,6 +4661,10 @@ func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationships) SetOnlineTa
 type ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels struct {
 	// example:
 	//
+	// f1
+	FeatureAliasName *string `json:"FeatureAliasName,omitempty" xml:"FeatureAliasName,omitempty"`
+	// example:
+	//
 	// 3
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
 	// example:
@@ -4556,6 +4679,11 @@ func (s ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels) String
 
 func (s ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels) GoString() string {
 	return s.String()
+}
+
+func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels) SetFeatureAliasName(v string) *ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels {
+	s.FeatureAliasName = &v
+	return s
 }
 
 func (s *ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels) SetModelId(v string) *ListFeatureViewFieldRelationshipsResponseBodyRelationshipsModels {
