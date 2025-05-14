@@ -4139,6 +4139,176 @@ func (s *CreateDatabaseResponse) SetBody(v *CreateDatabaseResponseBody) *CreateD
 	return s
 }
 
+type CreateGlobalDataNetworkRequest struct {
+	// example:
+	//
+	// mygdn
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// /
+	DestinationFileSystemPath *string `json:"DestinationFileSystemPath,omitempty" xml:"DestinationFileSystemPath,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// example:
+	//
+	// pfs
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	// example:
+	//
+	// true
+	FreezeSourceDuringSync *string `json:"FreezeSourceDuringSync,omitempty" xml:"FreezeSourceDuringSync,omitempty"`
+	// example:
+	//
+	// /
+	SourceFileSystemPath *string `json:"SourceFileSystemPath,omitempty" xml:"SourceFileSystemPath,omitempty"`
+	// example:
+	//
+	// oss-xxx
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// cn-wulanchabu
+	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// example:
+	//
+	// oss
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateGlobalDataNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDataNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetDescription(v string) *CreateGlobalDataNetworkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetDestinationFileSystemPath(v string) *CreateGlobalDataNetworkRequest {
+	s.DestinationFileSystemPath = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetDestinationId(v string) *CreateGlobalDataNetworkRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetDestinationRegion(v string) *CreateGlobalDataNetworkRequest {
+	s.DestinationRegion = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetDestinationType(v string) *CreateGlobalDataNetworkRequest {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetFreezeSourceDuringSync(v string) *CreateGlobalDataNetworkRequest {
+	s.FreezeSourceDuringSync = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetSourceFileSystemPath(v string) *CreateGlobalDataNetworkRequest {
+	s.SourceFileSystemPath = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetSourceId(v string) *CreateGlobalDataNetworkRequest {
+	s.SourceId = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetSourceRegion(v string) *CreateGlobalDataNetworkRequest {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkRequest) SetSourceType(v string) *CreateGlobalDataNetworkRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateGlobalDataNetworkResponseBody struct {
+	// example:
+	//
+	// gdc-xxx
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// GDN ID
+	//
+	// example:
+	//
+	// gdn-xxx
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// 6BD9CDE4-5E7B-4BF3-9BB8-83C73E******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateGlobalDataNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDataNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDataNetworkResponseBody) SetChannelId(v string) *CreateGlobalDataNetworkResponseBody {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkResponseBody) SetNetworkId(v string) *CreateGlobalDataNetworkResponseBody {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkResponseBody) SetRequestId(v string) *CreateGlobalDataNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateGlobalDataNetworkResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateGlobalDataNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateGlobalDataNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGlobalDataNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGlobalDataNetworkResponse) SetHeaders(v map[string]*string) *CreateGlobalDataNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkResponse) SetStatusCode(v int32) *CreateGlobalDataNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateGlobalDataNetworkResponse) SetBody(v *CreateGlobalDataNetworkResponseBody) *CreateGlobalDataNetworkResponse {
+	s.Body = v
+	return s
+}
+
 type CreateGlobalDatabaseNetworkRequest struct {
 	// The ID of the primary cluster.
 	//
@@ -4168,6 +4338,7 @@ type CreateGlobalDatabaseNetworkRequest struct {
 	//
 	// GDN-fortest
 	GDNDescription *string `json:"GDNDescription,omitempty" xml:"GDNDescription,omitempty"`
+	GDNVersion     *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the resource group.
@@ -4201,6 +4372,11 @@ func (s *CreateGlobalDatabaseNetworkRequest) SetEnableGlobalDomainName(v bool) *
 
 func (s *CreateGlobalDatabaseNetworkRequest) SetGDNDescription(v string) *CreateGlobalDatabaseNetworkRequest {
 	s.GDNDescription = &v
+	return s
+}
+
+func (s *CreateGlobalDatabaseNetworkRequest) SetGDNVersion(v string) *CreateGlobalDatabaseNetworkRequest {
+	s.GDNVersion = &v
 	return s
 }
 
@@ -6193,6 +6369,77 @@ func (s *DeleteDatabaseResponse) SetStatusCode(v int32) *DeleteDatabaseResponse 
 }
 
 func (s *DeleteDatabaseResponse) SetBody(v *DeleteDatabaseResponseBody) *DeleteDatabaseResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGlobalDataNetworkRequest struct {
+	// GDN ID
+	//
+	// example:
+	//
+	// gdn-xxx
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+}
+
+func (s DeleteGlobalDataNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDataNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDataNetworkRequest) SetNetworkId(v string) *DeleteGlobalDataNetworkRequest {
+	s.NetworkId = &v
+	return s
+}
+
+type DeleteGlobalDataNetworkResponseBody struct {
+	// example:
+	//
+	// EBEAA83D-1734-42E3-85E3-E25F6E******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGlobalDataNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDataNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDataNetworkResponseBody) SetRequestId(v string) *DeleteGlobalDataNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGlobalDataNetworkResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteGlobalDataNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteGlobalDataNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGlobalDataNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGlobalDataNetworkResponse) SetHeaders(v map[string]*string) *DeleteGlobalDataNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGlobalDataNetworkResponse) SetStatusCode(v int32) *DeleteGlobalDataNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteGlobalDataNetworkResponse) SetBody(v *DeleteGlobalDataNetworkResponseBody) *DeleteGlobalDataNetworkResponse {
 	s.Body = v
 	return s
 }
@@ -19797,6 +20044,359 @@ func (s *DescribeDetachedBackupsResponse) SetBody(v *DescribeDetachedBackupsResp
 	return s
 }
 
+type DescribeGlobalDataNetworkListRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListRequest) SetPageNumber(v int64) *DescribeGlobalDataNetworkListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListRequest) SetPageSize(v int64) *DescribeGlobalDataNetworkListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBody struct {
+	Items *DescribeGlobalDataNetworkListResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 1
+	PageRecordCount *string `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
+	// example:
+	//
+	// CD35F3-F3-44CA-AFFF-BAF869******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalRecordCount *string `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBody) SetItems(v *DescribeGlobalDataNetworkListResponseBodyItems) *DescribeGlobalDataNetworkListResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBody) SetPageNumber(v string) *DescribeGlobalDataNetworkListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBody) SetPageRecordCount(v string) *DescribeGlobalDataNetworkListResponseBody {
+	s.PageRecordCount = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBody) SetRequestId(v string) *DescribeGlobalDataNetworkListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBody) SetTotalRecordCount(v string) *DescribeGlobalDataNetworkListResponseBody {
+	s.TotalRecordCount = &v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItems struct {
+	Networks []*DescribeGlobalDataNetworkListResponseBodyItemsNetworks `json:"Networks,omitempty" xml:"Networks,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItems) SetNetworks(v []*DescribeGlobalDataNetworkListResponseBodyItemsNetworks) *DescribeGlobalDataNetworkListResponseBodyItems {
+	s.Networks = v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItemsNetworks struct {
+	Channels []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2025-03-25T09:37:10Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// mygdn
+	NetworkDescription *string `json:"NetworkDescription,omitempty" xml:"NetworkDescription,omitempty"`
+	// GDN ID
+	//
+	// example:
+	//
+	// gdn-xxx
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// example:
+	//
+	// Running
+	NetworkStatus   *string                                                                `json:"NetworkStatus,omitempty" xml:"NetworkStatus,omitempty"`
+	NetworkTopology *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology `json:"NetworkTopology,omitempty" xml:"NetworkTopology,omitempty" type:"Struct"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetChannels(v []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.Channels = v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetCreateTime(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetNetworkDescription(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.NetworkDescription = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetNetworkId(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetNetworkStatus(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.NetworkStatus = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworks) SetNetworkTopology(v *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) *DescribeGlobalDataNetworkListResponseBodyItemsNetworks {
+	s.NetworkTopology = v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels struct {
+	// example:
+	//
+	// gdc-xxx
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// example:
+	//
+	// Syncing
+	ChannelStatus *string `json:"ChannelStatus,omitempty" xml:"ChannelStatus,omitempty"`
+	// example:
+	//
+	// true
+	FreezeSourceDuringSync *bool `json:"FreezeSourceDuringSync,omitempty" xml:"FreezeSourceDuringSync,omitempty"`
+	// example:
+	//
+	// 11.45%
+	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) SetChannelId(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) SetChannelStatus(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels {
+	s.ChannelStatus = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) SetFreezeSourceDuringSync(v bool) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels {
+	s.FreezeSourceDuringSync = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels) SetProgress(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksChannels {
+	s.Progress = &v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology struct {
+	Destinations []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Repeated"`
+	Sources      []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources      `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) SetDestinations(v []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology {
+	s.Destinations = v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology) SetSources(v []*DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopology {
+	s.Sources = v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations struct {
+	// example:
+	//
+	// /
+	DestinationFileSystemPath *string `json:"DestinationFileSystemPath,omitempty" xml:"DestinationFileSystemPath,omitempty"`
+	// example:
+	//
+	// pfs-xxx
+	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// example:
+	//
+	// pfs
+	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) SetDestinationFileSystemPath(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations {
+	s.DestinationFileSystemPath = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) SetDestinationId(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) SetDestinationRegion(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations {
+	s.DestinationRegion = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations) SetDestinationType(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologyDestinations {
+	s.DestinationType = &v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources struct {
+	// example:
+	//
+	// /
+	SourceFileSystemPath *string `json:"SourceFileSystemPath,omitempty" xml:"SourceFileSystemPath,omitempty"`
+	// example:
+	//
+	// oss-xxx
+	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
+	// example:
+	//
+	// cn-wulanchabu
+	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// example:
+	//
+	// oss
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) SetSourceFileSystemPath(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources {
+	s.SourceFileSystemPath = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) SetSourceId(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources {
+	s.SourceId = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) SetSourceRegion(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources {
+	s.SourceRegion = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources) SetSourceType(v string) *DescribeGlobalDataNetworkListResponseBodyItemsNetworksNetworkTopologySources {
+	s.SourceType = &v
+	return s
+}
+
+type DescribeGlobalDataNetworkListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeGlobalDataNetworkListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeGlobalDataNetworkListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDataNetworkListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDataNetworkListResponse) SetHeaders(v map[string]*string) *DescribeGlobalDataNetworkListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponse) SetStatusCode(v int32) *DescribeGlobalDataNetworkListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeGlobalDataNetworkListResponse) SetBody(v *DescribeGlobalDataNetworkListResponseBody) *DescribeGlobalDataNetworkListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGlobalDatabaseNetworkRequest struct {
 	// The ID of the GDN.
 	//
@@ -19932,7 +20532,8 @@ type DescribeGlobalDatabaseNetworkResponseBody struct {
 	// example:
 	//
 	// [gdnid].gdn.rds.aliyuncs.com
-	GlobalDomainName *string `json:"GlobalDomainName,omitempty" xml:"GlobalDomainName,omitempty"`
+	GlobalDomainName *string                                          `json:"GlobalDomainName,omitempty" xml:"GlobalDomainName,omitempty"`
+	Labels           *DescribeGlobalDatabaseNetworkResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
 	// example:
@@ -20002,6 +20603,11 @@ func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGDNStatus(v string) *Desc
 
 func (s *DescribeGlobalDatabaseNetworkResponseBody) SetGlobalDomainName(v string) *DescribeGlobalDatabaseNetworkResponseBody {
 	s.GlobalDomainName = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBody) SetLabels(v *DescribeGlobalDatabaseNetworkResponseBodyLabels) *DescribeGlobalDatabaseNetworkResponseBody {
+	s.Labels = v
 	return s
 }
 
@@ -20408,6 +21014,23 @@ func (s *DescribeGlobalDatabaseNetworkResponseBodyDBClustersDBNodes) SetZoneId(v
 	return s
 }
 
+type DescribeGlobalDatabaseNetworkResponseBodyLabels struct {
+	GDNVersion *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworkResponseBodyLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworkResponseBodyLabels) SetGDNVersion(v string) *DescribeGlobalDatabaseNetworkResponseBodyLabels {
+	s.GDNVersion = &v
+	return s
+}
+
 type DescribeGlobalDatabaseNetworkResponse struct {
 	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -20689,7 +21312,8 @@ type DescribeGlobalDatabaseNetworksResponseBodyItems struct {
 	// example:
 	//
 	// active
-	GDNStatus *string `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	GDNStatus *string                                                `json:"GDNStatus,omitempty" xml:"GDNStatus,omitempty"`
+	Labels    *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
 }
 
 func (s DescribeGlobalDatabaseNetworksResponseBodyItems) String() string {
@@ -20732,6 +21356,11 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) SetGDNId(v string) *De
 
 func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) SetGDNStatus(v string) *DescribeGlobalDatabaseNetworksResponseBodyItems {
 	s.GDNStatus = &v
+	return s
+}
+
+func (s *DescribeGlobalDatabaseNetworksResponseBodyItems) SetLabels(v *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels) *DescribeGlobalDatabaseNetworksResponseBodyItems {
+	s.Labels = v
 	return s
 }
 
@@ -20782,6 +21411,23 @@ func (s *DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters) SetRegionId(
 
 func (s *DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters) SetRole(v string) *DescribeGlobalDatabaseNetworksResponseBodyItemsDBClusters {
 	s.Role = &v
+	return s
+}
+
+type DescribeGlobalDatabaseNetworksResponseBodyItemsLabels struct {
+	GDNVersion *string `json:"GDNVersion,omitempty" xml:"GDNVersion,omitempty"`
+}
+
+func (s DescribeGlobalDatabaseNetworksResponseBodyItemsLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGlobalDatabaseNetworksResponseBodyItemsLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels) SetGDNVersion(v string) *DescribeGlobalDatabaseNetworksResponseBodyItemsLabels {
+	s.GDNVersion = &v
 	return s
 }
 
@@ -35549,6 +36195,7 @@ type RemoveDBClusterFromGDNRequest struct {
 	//
 	// pc-wz9fb5nn44u1d****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Force       *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	// The ID of the GDN.
 	//
 	// This parameter is required.
@@ -35574,6 +36221,11 @@ func (s RemoveDBClusterFromGDNRequest) GoString() string {
 
 func (s *RemoveDBClusterFromGDNRequest) SetDBClusterId(v string) *RemoveDBClusterFromGDNRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *RemoveDBClusterFromGDNRequest) SetForce(v bool) *RemoveDBClusterFromGDNRequest {
+	s.Force = &v
 	return s
 }
 
@@ -39619,6 +40271,102 @@ func (client *Client) CreateDatabase(request *CreateDatabaseRequest) (_result *C
 
 // Summary:
 //
+// 创建全球数据网络
+//
+// @param request - CreateGlobalDataNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateGlobalDataNetworkResponse
+func (client *Client) CreateGlobalDataNetworkWithOptions(request *CreateGlobalDataNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateGlobalDataNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationFileSystemPath)) {
+		query["DestinationFileSystemPath"] = request.DestinationFileSystemPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationRegion)) {
+		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FreezeSourceDuringSync)) {
+		query["FreezeSourceDuringSync"] = request.FreezeSourceDuringSync
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceFileSystemPath)) {
+		query["SourceFileSystemPath"] = request.SourceFileSystemPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceId)) {
+		query["SourceId"] = request.SourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegion)) {
+		query["SourceRegion"] = request.SourceRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGlobalDataNetwork"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGlobalDataNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建全球数据网络
+//
+// @param request - CreateGlobalDataNetworkRequest
+//
+// @return CreateGlobalDataNetworkResponse
+func (client *Client) CreateGlobalDataNetwork(request *CreateGlobalDataNetworkRequest) (_result *CreateGlobalDataNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGlobalDataNetworkResponse{}
+	_body, _err := client.CreateGlobalDataNetworkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a global database network (GDN).
 //
 // Description:
@@ -39646,6 +40394,10 @@ func (client *Client) CreateGlobalDatabaseNetworkWithOptions(request *CreateGlob
 
 	if !tea.BoolValue(util.IsUnset(request.GDNDescription)) {
 		query["GDNDescription"] = request.GDNDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GDNVersion)) {
+		query["GDNVersion"] = request.GDNVersion
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
@@ -40862,6 +41614,66 @@ func (client *Client) DeleteDatabase(request *DeleteDatabaseRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatabaseResponse{}
 	_body, _err := client.DeleteDatabaseWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteGlobalDataNetwork
+//
+// @param request - DeleteGlobalDataNetworkRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteGlobalDataNetworkResponse
+func (client *Client) DeleteGlobalDataNetworkWithOptions(request *DeleteGlobalDataNetworkRequest, runtime *util.RuntimeOptions) (_result *DeleteGlobalDataNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGlobalDataNetwork"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGlobalDataNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DeleteGlobalDataNetwork
+//
+// @param request - DeleteGlobalDataNetworkRequest
+//
+// @return DeleteGlobalDataNetworkResponse
+func (client *Client) DeleteGlobalDataNetwork(request *DeleteGlobalDataNetworkRequest) (_result *DeleteGlobalDataNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGlobalDataNetworkResponse{}
+	_body, _err := client.DeleteGlobalDataNetworkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44462,6 +45274,70 @@ func (client *Client) DescribeDetachedBackups(request *DescribeDetachedBackupsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDetachedBackupsResponse{}
 	_body, _err := client.DescribeDetachedBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeGlobalDataNetworkList
+//
+// @param request - DescribeGlobalDataNetworkListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeGlobalDataNetworkListResponse
+func (client *Client) DescribeGlobalDataNetworkListWithOptions(request *DescribeGlobalDataNetworkListRequest, runtime *util.RuntimeOptions) (_result *DescribeGlobalDataNetworkListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGlobalDataNetworkList"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGlobalDataNetworkListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # DescribeGlobalDataNetworkList
+//
+// @param request - DescribeGlobalDataNetworkListRequest
+//
+// @return DescribeGlobalDataNetworkListResponse
+func (client *Client) DescribeGlobalDataNetworkList(request *DescribeGlobalDataNetworkListRequest) (_result *DescribeGlobalDataNetworkListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGlobalDataNetworkListResponse{}
+	_body, _err := client.DescribeGlobalDataNetworkListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51178,6 +52054,10 @@ func (client *Client) RemoveDBClusterFromGDNWithOptions(request *RemoveDBCluster
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
 		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GDNId)) {
