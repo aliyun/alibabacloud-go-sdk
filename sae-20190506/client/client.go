@@ -20364,7 +20364,8 @@ type DescribeApplicationGroupsResponseBodyData struct {
 	// example:
 	//
 	// 1.0.0
-	PackageVersion *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PackageVersion   *string `json:"PackageVersion,omitempty" xml:"PackageVersion,omitempty"`
+	PackageVersionId *string `json:"PackageVersionId,omitempty" xml:"PackageVersionId,omitempty"`
 	// The total number of instances.
 	//
 	// example:
@@ -20435,6 +20436,11 @@ func (s *DescribeApplicationGroupsResponseBodyData) SetPackageUrl(v string) *Des
 
 func (s *DescribeApplicationGroupsResponseBodyData) SetPackageVersion(v string) *DescribeApplicationGroupsResponseBodyData {
 	s.PackageVersion = &v
+	return s
+}
+
+func (s *DescribeApplicationGroupsResponseBodyData) SetPackageVersionId(v string) *DescribeApplicationGroupsResponseBodyData {
+	s.PackageVersionId = &v
 	return s
 }
 
@@ -23082,6 +23088,9 @@ func (s *DescribeApplicationSlbsResponseBody) SetTraceId(v string) *DescribeAppl
 }
 
 type DescribeApplicationSlbsResponseBodyData struct {
+	AppId     *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The configurations of the Internet-facing SLB instance.
 	Internet []*DescribeApplicationSlbsResponseBodyDataInternet `json:"Internet,omitempty" xml:"Internet,omitempty" type:"Repeated"`
 	// The ID of the Internet-facing SLB instance.
@@ -23138,6 +23147,21 @@ func (s DescribeApplicationSlbsResponseBodyData) String() string {
 
 func (s DescribeApplicationSlbsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeApplicationSlbsResponseBodyData) SetAppId(v string) *DescribeApplicationSlbsResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyData) SetAppName(v string) *DescribeApplicationSlbsResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeApplicationSlbsResponseBodyData) SetClusterId(v string) *DescribeApplicationSlbsResponseBodyData {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeApplicationSlbsResponseBodyData) SetInternet(v []*DescribeApplicationSlbsResponseBodyDataInternet) *DescribeApplicationSlbsResponseBodyData {
@@ -23911,7 +23935,9 @@ type DescribeChangeOrderResponseBodyData struct {
 	// example:
 	//
 	// app-test
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName                       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ApplicationEnableGreyTagRoute *bool   `json:"ApplicationEnableGreyTagRoute,omitempty" xml:"ApplicationEnableGreyTagRoute,omitempty"`
+	ApplicationUpdateStrategy     *string `json:"ApplicationUpdateStrategy,omitempty" xml:"ApplicationUpdateStrategy,omitempty"`
 	// The approval ID of the change order.
 	//
 	// example:
@@ -24093,6 +24119,16 @@ func (s *DescribeChangeOrderResponseBodyData) SetAppId(v string) *DescribeChange
 
 func (s *DescribeChangeOrderResponseBodyData) SetAppName(v string) *DescribeChangeOrderResponseBodyData {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeChangeOrderResponseBodyData) SetApplicationEnableGreyTagRoute(v bool) *DescribeChangeOrderResponseBodyData {
+	s.ApplicationEnableGreyTagRoute = &v
+	return s
+}
+
+func (s *DescribeChangeOrderResponseBodyData) SetApplicationUpdateStrategy(v string) *DescribeChangeOrderResponseBodyData {
+	s.ApplicationUpdateStrategy = &v
 	return s
 }
 
