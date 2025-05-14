@@ -22559,6 +22559,7 @@ type LlmSmartCallRequest struct {
 	//
 	// 057188040000
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	Extension    *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// example:
 	//
 	// 222356****
@@ -22595,6 +22596,11 @@ func (s *LlmSmartCallRequest) SetCallerNumber(v string) *LlmSmartCallRequest {
 	return s
 }
 
+func (s *LlmSmartCallRequest) SetExtension(v string) *LlmSmartCallRequest {
+	s.Extension = &v
+	return s
+}
+
 func (s *LlmSmartCallRequest) SetOutId(v string) *LlmSmartCallRequest {
 	s.OutId = &v
 	return s
@@ -22628,6 +22634,7 @@ type LlmSmartCallShrinkRequest struct {
 	//
 	// 057188040000
 	CallerNumber *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
+	Extension    *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// example:
 	//
 	// 222356****
@@ -22661,6 +22668,11 @@ func (s *LlmSmartCallShrinkRequest) SetCalledNumber(v string) *LlmSmartCallShrin
 
 func (s *LlmSmartCallShrinkRequest) SetCallerNumber(v string) *LlmSmartCallShrinkRequest {
 	s.CallerNumber = &v
+	return s
+}
+
+func (s *LlmSmartCallShrinkRequest) SetExtension(v string) *LlmSmartCallShrinkRequest {
+	s.Extension = &v
 	return s
 }
 
@@ -37824,6 +37836,10 @@ func (client *Client) LlmSmartCallWithOptions(tmpReq *LlmSmartCallRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.CallerNumber)) {
 		query["CallerNumber"] = request.CallerNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extension)) {
+		query["Extension"] = request.Extension
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutId)) {
