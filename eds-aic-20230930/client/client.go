@@ -4668,6 +4668,7 @@ type DescribeAndroidInstancesRequest struct {
 	// node_name
 	NodeName      *string   `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
 	OfficeSiteIds []*string `json:"OfficeSiteIds,omitempty" xml:"OfficeSiteIds,omitempty" type:"Repeated"`
+	QosRuleIds    []*string `json:"QosRuleIds,omitempty" xml:"QosRuleIds,omitempty" type:"Repeated"`
 	// The sales mode.
 	//
 	// Valid values:
@@ -4797,6 +4798,11 @@ func (s *DescribeAndroidInstancesRequest) SetNodeName(v string) *DescribeAndroid
 
 func (s *DescribeAndroidInstancesRequest) SetOfficeSiteIds(v []*string) *DescribeAndroidInstancesRequest {
 	s.OfficeSiteIds = v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetQosRuleIds(v []*string) *DescribeAndroidInstancesRequest {
+	s.QosRuleIds = v
 	return s
 }
 
@@ -5060,6 +5066,7 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	//
 	// null
 	PublicIpv6Address *string `json:"PublicIpv6Address,omitempty" xml:"PublicIpv6Address,omitempty"`
+	QosRuleId         *string `json:"QosRuleId,omitempty" xml:"QosRuleId,omitempty"`
 	// The progress of instance data backup or restoration.
 	//
 	// example:
@@ -5244,6 +5251,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPublicIpAddress(v
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetPublicIpv6Address(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.PublicIpv6Address = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetQosRuleId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.QosRuleId = &v
 	return s
 }
 
@@ -6677,6 +6689,143 @@ func (s *DescribeCloudPhoneNodesResponse) SetStatusCode(v int32) *DescribeCloudP
 }
 
 func (s *DescribeCloudPhoneNodesResponse) SetBody(v *DescribeCloudPhoneNodesResponseBody) *DescribeCloudPhoneNodesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDisplayConfigRequest struct {
+	AndroidInstanceIds []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDisplayConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisplayConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisplayConfigRequest) SetAndroidInstanceIds(v []*string) *DescribeDisplayConfigRequest {
+	s.AndroidInstanceIds = v
+	return s
+}
+
+type DescribeDisplayConfigResponseBody struct {
+	DisplayConfigModel []*DescribeDisplayConfigResponseBodyDisplayConfigModel `json:"DisplayConfigModel,omitempty" xml:"DisplayConfigModel,omitempty" type:"Repeated"`
+	// example:
+	//
+	// FFEF7EFE-1E36-56D1-B5BF-5BACE43B****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDisplayConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisplayConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisplayConfigResponseBody) SetDisplayConfigModel(v []*DescribeDisplayConfigResponseBodyDisplayConfigModel) *DescribeDisplayConfigResponseBody {
+	s.DisplayConfigModel = v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBody) SetRequestId(v string) *DescribeDisplayConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDisplayConfigResponseBodyDisplayConfigModel struct {
+	// example:
+	//
+	// cpn-jewjt8xryuituz4qn-****
+	AndroidInstanceId *string `json:"AndroidInstanceId,omitempty" xml:"AndroidInstanceId,omitempty"`
+	// example:
+	//
+	// 240
+	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
+	// example:
+	//
+	// null
+	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// example:
+	//
+	// 1280
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+}
+
+func (s DescribeDisplayConfigResponseBodyDisplayConfigModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisplayConfigResponseBodyDisplayConfigModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetAndroidInstanceId(v string) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.AndroidInstanceId = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetDpi(v int32) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.Dpi = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetFps(v int32) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.Fps = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetLockResolution(v string) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.LockResolution = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetResolutionHeight(v int32) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponseBodyDisplayConfigModel) SetResolutionWidth(v int32) *DescribeDisplayConfigResponseBodyDisplayConfigModel {
+	s.ResolutionWidth = &v
+	return s
+}
+
+type DescribeDisplayConfigResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeDisplayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeDisplayConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisplayConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisplayConfigResponse) SetHeaders(v map[string]*string) *DescribeDisplayConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponse) SetStatusCode(v int32) *DescribeDisplayConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDisplayConfigResponse) SetBody(v *DescribeDisplayConfigResponseBody) *DescribeDisplayConfigResponse {
 	s.Body = v
 	return s
 }
@@ -10385,6 +10534,157 @@ func (s *ModifyCloudPhoneNodeResponse) SetStatusCode(v int32) *ModifyCloudPhoneN
 }
 
 func (s *ModifyCloudPhoneNodeResponse) SetBody(v *ModifyCloudPhoneNodeResponseBody) *ModifyCloudPhoneNodeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDisplayConfigRequest struct {
+	AndroidInstanceIds []*string                                `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	DisplayConfig      *ModifyDisplayConfigRequestDisplayConfig `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty" type:"Struct"`
+}
+
+func (s ModifyDisplayConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDisplayConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDisplayConfigRequest) SetAndroidInstanceIds(v []*string) *ModifyDisplayConfigRequest {
+	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *ModifyDisplayConfigRequest) SetDisplayConfig(v *ModifyDisplayConfigRequestDisplayConfig) *ModifyDisplayConfigRequest {
+	s.DisplayConfig = v
+	return s
+}
+
+type ModifyDisplayConfigRequestDisplayConfig struct {
+	// example:
+	//
+	// 240
+	Dpi *int32 `json:"Dpi,omitempty" xml:"Dpi,omitempty"`
+	// example:
+	//
+	// null
+	Fps *int32 `json:"Fps,omitempty" xml:"Fps,omitempty"`
+	// example:
+	//
+	// off
+	LockResolution *string `json:"LockResolution,omitempty" xml:"LockResolution,omitempty"`
+	// example:
+	//
+	// 1920
+	ResolutionHeight *int32 `json:"ResolutionHeight,omitempty" xml:"ResolutionHeight,omitempty"`
+	// example:
+	//
+	// 720
+	ResolutionWidth *int32 `json:"ResolutionWidth,omitempty" xml:"ResolutionWidth,omitempty"`
+}
+
+func (s ModifyDisplayConfigRequestDisplayConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDisplayConfigRequestDisplayConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDisplayConfigRequestDisplayConfig) SetDpi(v int32) *ModifyDisplayConfigRequestDisplayConfig {
+	s.Dpi = &v
+	return s
+}
+
+func (s *ModifyDisplayConfigRequestDisplayConfig) SetFps(v int32) *ModifyDisplayConfigRequestDisplayConfig {
+	s.Fps = &v
+	return s
+}
+
+func (s *ModifyDisplayConfigRequestDisplayConfig) SetLockResolution(v string) *ModifyDisplayConfigRequestDisplayConfig {
+	s.LockResolution = &v
+	return s
+}
+
+func (s *ModifyDisplayConfigRequestDisplayConfig) SetResolutionHeight(v int32) *ModifyDisplayConfigRequestDisplayConfig {
+	s.ResolutionHeight = &v
+	return s
+}
+
+func (s *ModifyDisplayConfigRequestDisplayConfig) SetResolutionWidth(v int32) *ModifyDisplayConfigRequestDisplayConfig {
+	s.ResolutionWidth = &v
+	return s
+}
+
+type ModifyDisplayConfigShrinkRequest struct {
+	AndroidInstanceIds  []*string `json:"AndroidInstanceIds,omitempty" xml:"AndroidInstanceIds,omitempty" type:"Repeated"`
+	DisplayConfigShrink *string   `json:"DisplayConfig,omitempty" xml:"DisplayConfig,omitempty"`
+}
+
+func (s ModifyDisplayConfigShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDisplayConfigShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDisplayConfigShrinkRequest) SetAndroidInstanceIds(v []*string) *ModifyDisplayConfigShrinkRequest {
+	s.AndroidInstanceIds = v
+	return s
+}
+
+func (s *ModifyDisplayConfigShrinkRequest) SetDisplayConfigShrink(v string) *ModifyDisplayConfigShrinkRequest {
+	s.DisplayConfigShrink = &v
+	return s
+}
+
+type ModifyDisplayConfigResponseBody struct {
+	// example:
+	//
+	// A578AD3A-8E7C-54FE-A09F-B060941*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDisplayConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDisplayConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDisplayConfigResponseBody) SetRequestId(v string) *ModifyDisplayConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDisplayConfigResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyDisplayConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyDisplayConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDisplayConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDisplayConfigResponse) SetHeaders(v map[string]*string) *ModifyDisplayConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDisplayConfigResponse) SetStatusCode(v int32) *ModifyDisplayConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDisplayConfigResponse) SetBody(v *ModifyDisplayConfigResponseBody) *ModifyDisplayConfigResponse {
 	s.Body = v
 	return s
 }
@@ -14847,6 +15147,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 		query["OfficeSiteIds"] = request.OfficeSiteIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.QosRuleIds)) {
+		query["QosRuleIds"] = request.QosRuleIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SaleMode)) {
 		query["SaleMode"] = request.SaleMode
 	}
@@ -15189,6 +15493,66 @@ func (client *Client) DescribeCloudPhoneNodes(request *DescribeCloudPhoneNodesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeCloudPhoneNodesResponse{}
 	_body, _err := client.DescribeCloudPhoneNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询显示设置
+//
+// @param request - DescribeDisplayConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDisplayConfigResponse
+func (client *Client) DescribeDisplayConfigWithOptions(request *DescribeDisplayConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeDisplayConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDisplayConfig"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDisplayConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询显示设置
+//
+// @param request - DescribeDisplayConfigRequest
+//
+// @return DescribeDisplayConfigResponse
+func (client *Client) DescribeDisplayConfig(request *DescribeDisplayConfigRequest) (_result *DescribeDisplayConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDisplayConfigResponse{}
+	_body, _err := client.DescribeDisplayConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16759,6 +17123,76 @@ func (client *Client) ModifyCloudPhoneNode(request *ModifyCloudPhoneNodeRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCloudPhoneNodeResponse{}
 	_body, _err := client.ModifyCloudPhoneNodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改显示设置
+//
+// @param tmpReq - ModifyDisplayConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyDisplayConfigResponse
+func (client *Client) ModifyDisplayConfigWithOptions(tmpReq *ModifyDisplayConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDisplayConfigResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ModifyDisplayConfigShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DisplayConfig)) {
+		request.DisplayConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DisplayConfig, tea.String("DisplayConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceIds)) {
+		body["AndroidInstanceIds"] = request.AndroidInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayConfigShrink)) {
+		body["DisplayConfig"] = request.DisplayConfigShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDisplayConfig"),
+		Version:     tea.String("2023-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDisplayConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 修改显示设置
+//
+// @param request - ModifyDisplayConfigRequest
+//
+// @return ModifyDisplayConfigResponse
+func (client *Client) ModifyDisplayConfig(request *ModifyDisplayConfigRequest) (_result *ModifyDisplayConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDisplayConfigResponse{}
+	_body, _err := client.ModifyDisplayConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
