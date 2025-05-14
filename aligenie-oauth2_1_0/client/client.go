@@ -231,6 +231,8 @@ func (s *CreatePlayingListShrinkRequest) SetOpenCreatePlayingListRequestShrink(v
 }
 
 type CreatePlayingListResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// example:
 	//
 	// 10002398812
@@ -243,6 +245,16 @@ func (s CreatePlayingListResponseBody) String() string {
 
 func (s CreatePlayingListResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePlayingListResponseBody) SetCode(v string) *CreatePlayingListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePlayingListResponseBody) SetMessage(v string) *CreatePlayingListResponseBody {
+	s.Message = &v
+	return s
 }
 
 func (s *CreatePlayingListResponseBody) SetRequestId(v string) *CreatePlayingListResponseBody {
