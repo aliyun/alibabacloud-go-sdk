@@ -35373,11 +35373,11 @@ type SubmitCopyrightJobRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 10
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// http://www.example.com/video/test.mp4
@@ -35431,12 +35431,12 @@ func (s *SubmitCopyrightJobRequest) SetParams(v string) *SubmitCopyrightJobReque
 	return s
 }
 
-func (s *SubmitCopyrightJobRequest) SetStartTime(v string) *SubmitCopyrightJobRequest {
+func (s *SubmitCopyrightJobRequest) SetStartTime(v int64) *SubmitCopyrightJobRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitCopyrightJobRequest) SetTotalTime(v string) *SubmitCopyrightJobRequest {
+func (s *SubmitCopyrightJobRequest) SetTotalTime(v int64) *SubmitCopyrightJobRequest {
 	s.TotalTime = &v
 	return s
 }
@@ -42506,11 +42506,11 @@ type SubmitTraceAbJobRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 360
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// http://www.example.com/video/test.mp4
@@ -42554,12 +42554,12 @@ func (s *SubmitTraceAbJobRequest) SetOutput(v string) *SubmitTraceAbJobRequest {
 	return s
 }
 
-func (s *SubmitTraceAbJobRequest) SetStartTime(v string) *SubmitTraceAbJobRequest {
+func (s *SubmitTraceAbJobRequest) SetStartTime(v int64) *SubmitTraceAbJobRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitTraceAbJobRequest) SetTotalTime(v string) *SubmitTraceAbJobRequest {
+func (s *SubmitTraceAbJobRequest) SetTotalTime(v int64) *SubmitTraceAbJobRequest {
 	s.TotalTime = &v
 	return s
 }

@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/mts-20140618/v6
+module github.com/alibabacloud-go/mts-20140618/v7
 
 go 1.14
 
