@@ -1055,7 +1055,8 @@ type CreateErRequest struct {
 	// example:
 	//
 	// rg-acfmyuzlx2iihcy
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*CreateErRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s CreateErRequest) String() string {
@@ -1088,6 +1089,34 @@ func (s *CreateErRequest) SetRegionId(v string) *CreateErRequest {
 
 func (s *CreateErRequest) SetResourceGroupId(v string) *CreateErRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateErRequest) SetTag(v []*CreateErRequestTag) *CreateErRequest {
+	s.Tag = v
+	return s
+}
+
+type CreateErRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateErRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateErRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateErRequestTag) SetKey(v string) *CreateErRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateErRequestTag) SetValue(v string) *CreateErRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5811,7 +5840,8 @@ type GetErResponseBodyContent struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*GetErResponseBodyContentTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The ID of the tenant.
 	//
 	// example:
@@ -5890,6 +5920,11 @@ func (s *GetErResponseBodyContent) SetResourceGroupId(v string) *GetErResponseBo
 
 func (s *GetErResponseBodyContent) SetStatus(v string) *GetErResponseBodyContent {
 	s.Status = &v
+	return s
+}
+
+func (s *GetErResponseBodyContent) SetTags(v []*GetErResponseBodyContentTags) *GetErResponseBodyContent {
+	s.Tags = v
 	return s
 }
 
@@ -6490,6 +6525,29 @@ func (s *GetErResponseBodyContentErRouteMaps) SetTransmissionInstanceOwner(v str
 
 func (s *GetErResponseBodyContentErRouteMaps) SetTransmissionInstanceType(v string) *GetErResponseBodyContentErRouteMaps {
 	s.TransmissionInstanceType = &v
+	return s
+}
+
+type GetErResponseBodyContentTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetErResponseBodyContentTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErResponseBodyContentTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetErResponseBodyContentTags) SetTagKey(v string) *GetErResponseBodyContentTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetErResponseBodyContentTags) SetTagValue(v string) *GetErResponseBodyContentTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -14868,7 +14926,8 @@ type ListErsRequest struct {
 	// example:
 	//
 	// rg-acfmwfm33rlt6zi
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListErsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListErsRequest) String() string {
@@ -14926,6 +14985,34 @@ func (s *ListErsRequest) SetRegionId(v string) *ListErsRequest {
 
 func (s *ListErsRequest) SetResourceGroupId(v string) *ListErsRequest {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListErsRequest) SetTag(v []*ListErsRequestTag) *ListErsRequest {
+	s.Tag = v
+	return s
+}
+
+type ListErsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListErsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListErsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListErsRequestTag) SetKey(v string) *ListErsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListErsRequestTag) SetValue(v string) *ListErsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -15092,7 +15179,8 @@ type ListErsResponseBodyContentData struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   []*ListErsResponseBodyContentDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The tenant ID.
 	//
 	// example:
@@ -15169,8 +15257,36 @@ func (s *ListErsResponseBodyContentData) SetStatus(v string) *ListErsResponseBod
 	return s
 }
 
+func (s *ListErsResponseBodyContentData) SetTags(v []*ListErsResponseBodyContentDataTags) *ListErsResponseBodyContentData {
+	s.Tags = v
+	return s
+}
+
 func (s *ListErsResponseBodyContentData) SetTenantId(v string) *ListErsResponseBodyContentData {
 	s.TenantId = &v
+	return s
+}
+
+type ListErsResponseBodyContentDataTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListErsResponseBodyContentDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListErsResponseBodyContentDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListErsResponseBodyContentDataTags) SetTagKey(v string) *ListErsResponseBodyContentDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListErsResponseBodyContentDataTags) SetTagValue(v string) *ListErsResponseBodyContentDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -24289,6 +24405,10 @@ func (client *Client) CreateErWithOptions(request *CreateErRequest, runtime *uti
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Body: openapiutil.ParseToMap(body),
 	}
@@ -27971,6 +28091,10 @@ func (client *Client) ListErsWithOptions(request *ListErsRequest, runtime *util.
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
