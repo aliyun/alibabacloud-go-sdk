@@ -72189,11 +72189,11 @@ type SubmitCopyrightJobRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 10
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -72238,12 +72238,12 @@ func (s *SubmitCopyrightJobRequest) SetParams(v string) *SubmitCopyrightJobReque
 	return s
 }
 
-func (s *SubmitCopyrightJobRequest) SetStartTime(v string) *SubmitCopyrightJobRequest {
+func (s *SubmitCopyrightJobRequest) SetStartTime(v int64) *SubmitCopyrightJobRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitCopyrightJobRequest) SetTotalTime(v string) *SubmitCopyrightJobRequest {
+func (s *SubmitCopyrightJobRequest) SetTotalTime(v int64) *SubmitCopyrightJobRequest {
 	s.TotalTime = &v
 	return s
 }
@@ -72330,11 +72330,11 @@ type SubmitCopyrightJobShrinkRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 10
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -72379,12 +72379,12 @@ func (s *SubmitCopyrightJobShrinkRequest) SetParams(v string) *SubmitCopyrightJo
 	return s
 }
 
-func (s *SubmitCopyrightJobShrinkRequest) SetStartTime(v string) *SubmitCopyrightJobShrinkRequest {
+func (s *SubmitCopyrightJobShrinkRequest) SetStartTime(v int64) *SubmitCopyrightJobShrinkRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitCopyrightJobShrinkRequest) SetTotalTime(v string) *SubmitCopyrightJobShrinkRequest {
+func (s *SubmitCopyrightJobShrinkRequest) SetTotalTime(v int64) *SubmitCopyrightJobShrinkRequest {
 	s.TotalTime = &v
 	return s
 }
@@ -80648,11 +80648,11 @@ type SubmitTraceAbJobRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 360
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -80687,12 +80687,12 @@ func (s *SubmitTraceAbJobRequest) SetOutput(v *SubmitTraceAbJobRequestOutput) *S
 	return s
 }
 
-func (s *SubmitTraceAbJobRequest) SetStartTime(v string) *SubmitTraceAbJobRequest {
+func (s *SubmitTraceAbJobRequest) SetStartTime(v int64) *SubmitTraceAbJobRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitTraceAbJobRequest) SetTotalTime(v string) *SubmitTraceAbJobRequest {
+func (s *SubmitTraceAbJobRequest) SetTotalTime(v int64) *SubmitTraceAbJobRequest {
 	s.TotalTime = &v
 	return s
 }
@@ -80784,11 +80784,11 @@ type SubmitTraceAbJobShrinkRequest struct {
 	// example:
 	//
 	// 0
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// example:
 	//
 	// 360
-	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
+	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
 	// example:
 	//
 	// 123
@@ -80823,12 +80823,12 @@ func (s *SubmitTraceAbJobShrinkRequest) SetOutputShrink(v string) *SubmitTraceAb
 	return s
 }
 
-func (s *SubmitTraceAbJobShrinkRequest) SetStartTime(v string) *SubmitTraceAbJobShrinkRequest {
+func (s *SubmitTraceAbJobShrinkRequest) SetStartTime(v int64) *SubmitTraceAbJobShrinkRequest {
 	s.StartTime = &v
 	return s
 }
 
-func (s *SubmitTraceAbJobShrinkRequest) SetTotalTime(v string) *SubmitTraceAbJobShrinkRequest {
+func (s *SubmitTraceAbJobShrinkRequest) SetTotalTime(v int64) *SubmitTraceAbJobShrinkRequest {
 	s.TotalTime = &v
 	return s
 }
