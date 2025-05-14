@@ -9957,6 +9957,7 @@ type CreateMediaLiveChannelRequestVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	VideoCodecType    *string                                                      `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
 	//
 	// example:
@@ -9990,6 +9991,11 @@ func (s *CreateMediaLiveChannelRequestVideoSettings) SetVideoCodec(v string) *Cr
 
 func (s *CreateMediaLiveChannelRequestVideoSettings) SetVideoCodecSetting(v *CreateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) *CreateMediaLiveChannelRequestVideoSettings {
 	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *CreateMediaLiveChannelRequestVideoSettings) SetVideoCodecType(v string) *CreateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodecType = &v
 	return s
 }
 
@@ -29858,6 +29864,8 @@ type GetMediaLiveChannelResponseBodyChannelVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// 视频转码方式（普通转码、窄带高清转码等）
+	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the video in pixels.
 	//
 	// example:
@@ -29891,6 +29899,11 @@ func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetVideoCodec(v st
 
 func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetVideoCodecSetting(v *GetMediaLiveChannelResponseBodyChannelVideoSettingsVideoCodecSetting) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
 	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *GetMediaLiveChannelResponseBodyChannelVideoSettings) SetVideoCodecType(v string) *GetMediaLiveChannelResponseBodyChannelVideoSettings {
+	s.VideoCodecType = &v
 	return s
 }
 
@@ -51618,6 +51631,8 @@ type ListMediaLiveChannelsResponseBodyChannelsVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	// 视频转码方式（普通转码、窄带高清转码等）
+	VideoCodecType *string `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the video in pixels.
 	//
 	// example:
@@ -51651,6 +51666,11 @@ func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetVideoCodec(v
 
 func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetVideoCodecSetting(v *ListMediaLiveChannelsResponseBodyChannelsVideoSettingsVideoCodecSetting) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
 	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *ListMediaLiveChannelsResponseBodyChannelsVideoSettings) SetVideoCodecType(v string) *ListMediaLiveChannelsResponseBodyChannelsVideoSettings {
+	s.VideoCodecType = &v
 	return s
 }
 
@@ -92119,6 +92139,7 @@ type UpdateMediaLiveChannelRequestVideoSettings struct {
 	VideoCodec *string `json:"VideoCodec,omitempty" xml:"VideoCodec,omitempty"`
 	// The video encoding settings.
 	VideoCodecSetting *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting `json:"VideoCodecSetting,omitempty" xml:"VideoCodecSetting,omitempty" type:"Struct"`
+	VideoCodecType    *string                                                      `json:"VideoCodecType,omitempty" xml:"VideoCodecType,omitempty"`
 	// The width of the output. Valid values: 0 to 2000. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
 	//
 	// example:
@@ -92152,6 +92173,11 @@ func (s *UpdateMediaLiveChannelRequestVideoSettings) SetVideoCodec(v string) *Up
 
 func (s *UpdateMediaLiveChannelRequestVideoSettings) SetVideoCodecSetting(v *UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting) *UpdateMediaLiveChannelRequestVideoSettings {
 	s.VideoCodecSetting = v
+	return s
+}
+
+func (s *UpdateMediaLiveChannelRequestVideoSettings) SetVideoCodecType(v string) *UpdateMediaLiveChannelRequestVideoSettings {
+	s.VideoCodecType = &v
 	return s
 }
 
