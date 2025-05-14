@@ -1211,7 +1211,7 @@ type CreateInstanceRequestDatasets struct {
 	//
 	// ReadOnly
 	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://www.alibabacloud.com/help/en/pai/user-guide/read-and-write-dataset-data).
 	//
 	// example:
 	//
@@ -5905,24 +5905,42 @@ func (s *GetUserConfigResponse) SetBody(v *GetUserConfigResponseBody) *GetUserCo
 }
 
 type ListEcsSpecsRequest struct {
+	// The accelerator type.
+	//
+	// 	- CPU: Only CPU computing is used.
+	//
+	// 	- GPU: GPUs are used to accelerate computing.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// PRIVATE
+	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The sorting order. Valid values:
+	//
+	// 	- ASC
+	//
+	// 	- DESC
+	//
 	// example:
 	//
 	// DESC
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The field by which the query results are sorted. Set the value to gmtCreate.
+	//
 	// example:
 	//
 	// gmtCreate
@@ -5963,27 +5981,52 @@ func (s *ListEcsSpecsRequest) SetSortBy(v string) *ListEcsSpecsRequest {
 }
 
 type ListEcsSpecsResponseBody struct {
+	// The status code. Valid values:
+	//
+	// 	- InternalError: an internal error. All errors, except for parameter validation errors, are classified as internal errors.
+	//
+	// 	- ValidationError: a parameter validation error.
+	//
 	// example:
 	//
 	// null
-	Code     *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The specifications of the ECS instances returned on this page.
 	EcsSpecs []*ListEcsSpecsResponseBodyEcsSpecs `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	// The HTTP status code. Valid values:
+	//
+	// 	- 400
+	//
+	// 	- 404
+	//
 	// example:
 	//
 	// null
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The response message.
+	//
 	// example:
 	//
 	// "XXX"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7D55162-4489-1619-AAF5-3F97D5FCA948
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of ECS instances.
+	//
 	// example:
 	//
 	// 35
@@ -6034,52 +6077,86 @@ func (s *ListEcsSpecsResponseBody) SetTotalCount(v int64) *ListEcsSpecsResponseB
 }
 
 type ListEcsSpecsResponseBodyEcsSpecs struct {
+	// The accelerator type.
+	//
 	// example:
 	//
 	// CPU
 	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// The number of vCPUs.
+	//
 	// example:
 	//
 	// 32
 	CPU *int64 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// The currency unit.
+	//
 	// example:
 	//
 	// CNY
 	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// The number of GPUs.
+	//
 	// example:
 	//
 	// 4
 	GPU           *int64   `json:"GPU,omitempty" xml:"GPU,omitempty"`
 	GPUMemorySize *float32 `json:"GPUMemorySize,omitempty" xml:"GPUMemorySize,omitempty"`
+	// The GPU type. Valid values:
+	//
+	// 	- V100
+	//
+	// 	- A100
+	//
+	// 	- A10
+	//
+	// 	- T4
+	//
+	// 	- P100
+	//
 	// example:
 	//
 	// v100
 	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// The inbound bandwidth of the instance.
+	//
 	// example:
 	//
 	// 5120000
 	InstanceBandwidthRx *int64 `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
+	// The instance type.
+	//
 	// example:
 	//
 	// ecs.gn5-c28g1.7xlarge
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// Indicates whether the resource was available.
+	//
 	// example:
 	//
 	// True
 	IsAvailable *bool `json:"IsAvailable,omitempty" xml:"IsAvailable,omitempty"`
+	// The labels of the ECS specification.
+	//
 	// example:
 	//
 	// {\\"foo\\": \\"bar\\"}
 	Labels []*ListEcsSpecsResponseBodyEcsSpecsLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	// The memory size. Unit: GB.
+	//
 	// example:
 	//
 	// 32
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// The price.
+	//
 	// example:
 	//
 	// 22.8
 	Price           *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
 	SpotStockStatus *string  `json:"SpotStockStatus,omitempty" xml:"SpotStockStatus,omitempty"`
+	// The size of the system disk. Unit: GB.
+	//
 	// example:
 	//
 	// 500
@@ -6165,10 +6242,17 @@ func (s *ListEcsSpecsResponseBodyEcsSpecs) SetSystemDiskCapacity(v int64) *ListE
 }
 
 type ListEcsSpecsResponseBodyEcsSpecsLabels struct {
+	// The label key added to the ECS specification.
+	//
 	// example:
 	//
-	// stsTokenOwner
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// SupportResourcePackDeduction
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The label value added to the ECS specification.
+	//
+	// example:
+	//
+	// true
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -9373,7 +9457,7 @@ type UpdateInstanceRequestDatasets struct {
 	//
 	// ReadOnly
 	OptionType *string `json:"OptionType,omitempty" xml:"OptionType,omitempty"`
-	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://help.aliyun.com/zh/pai/user-guide/read-and-write-dataset-data).
+	// The custom dataset mount options. Only OSS is supported. You cannot specify OptionType at the same time. For more information, see [DSW mount configurations](https://www.alibabacloud.com/help/en/pai/user-guide/read-and-write-dataset-data).
 	//
 	// example:
 	//
@@ -11255,7 +11339,7 @@ func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err erro
 
 // Summary:
 //
-// 获取ECS规格列表
+// Queries a list of specifications of ECS instances.
 //
 // @param request - ListEcsSpecsRequest
 //
@@ -11316,7 +11400,7 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 
 // Summary:
 //
-// 获取ECS规格列表
+// Queries a list of specifications of ECS instances.
 //
 // @param request - ListEcsSpecsRequest
 //
