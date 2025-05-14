@@ -1411,6 +1411,288 @@ func (s *AddMeetingRoomsResponse) SetBody(v *AddMeetingRoomsResponseBody) *AddMe
 	return s
 }
 
+type AddMultiDimTableHeaders struct {
+	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *AddMultiDimTableHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s AddMultiDimTableHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableHeaders) SetCommonHeaders(v map[string]*string) *AddMultiDimTableHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddMultiDimTableHeaders) SetAccountContext(v *AddMultiDimTableHeadersAccountContext) *AddMultiDimTableHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type AddMultiDimTableHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s AddMultiDimTableHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableHeadersAccountContext) SetAccountId(v string) *AddMultiDimTableHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type AddMultiDimTableShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s AddMultiDimTableShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableShrinkHeaders) SetCommonHeaders(v map[string]*string) *AddMultiDimTableShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *AddMultiDimTableShrinkHeaders) SetAccountContextShrink(v string) *AddMultiDimTableShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type AddMultiDimTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId        *string                               `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	Fields        []*AddMultiDimTableRequestFields      `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+	Name          *string                               `json:"Name,omitempty" xml:"Name,omitempty"`
+	TenantContext *AddMultiDimTableRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s AddMultiDimTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableRequest) SetBaseId(v string) *AddMultiDimTableRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *AddMultiDimTableRequest) SetFields(v []*AddMultiDimTableRequestFields) *AddMultiDimTableRequest {
+	s.Fields = v
+	return s
+}
+
+func (s *AddMultiDimTableRequest) SetName(v string) *AddMultiDimTableRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddMultiDimTableRequest) SetTenantContext(v *AddMultiDimTableRequestTenantContext) *AddMultiDimTableRequest {
+	s.TenantContext = v
+	return s
+}
+
+type AddMultiDimTableRequestFields struct {
+	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s AddMultiDimTableRequestFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableRequestFields) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableRequestFields) SetName(v string) *AddMultiDimTableRequestFields {
+	s.Name = &v
+	return s
+}
+
+func (s *AddMultiDimTableRequestFields) SetProperty(v map[string]interface{}) *AddMultiDimTableRequestFields {
+	s.Property = v
+	return s
+}
+
+func (s *AddMultiDimTableRequestFields) SetType(v string) *AddMultiDimTableRequestFields {
+	s.Type = &v
+	return s
+}
+
+type AddMultiDimTableRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s AddMultiDimTableRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableRequestTenantContext) SetTenantId(v string) *AddMultiDimTableRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type AddMultiDimTableShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	FieldsShrink        *string `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s AddMultiDimTableShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableShrinkRequest) SetBaseId(v string) *AddMultiDimTableShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *AddMultiDimTableShrinkRequest) SetFieldsShrink(v string) *AddMultiDimTableShrinkRequest {
+	s.FieldsShrink = &v
+	return s
+}
+
+func (s *AddMultiDimTableShrinkRequest) SetName(v string) *AddMultiDimTableShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddMultiDimTableShrinkRequest) SetTenantContextShrink(v string) *AddMultiDimTableShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type AddMultiDimTableResponseBody struct {
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7xxxxxxx
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s AddMultiDimTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableResponseBody) SetId(v string) *AddMultiDimTableResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *AddMultiDimTableResponseBody) SetName(v string) *AddMultiDimTableResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *AddMultiDimTableResponseBody) SetRequestId(v string) *AddMultiDimTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddMultiDimTableResponseBody) SetVendorRequestId(v string) *AddMultiDimTableResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *AddMultiDimTableResponseBody) SetVendorType(v string) *AddMultiDimTableResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type AddMultiDimTableResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AddMultiDimTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AddMultiDimTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddMultiDimTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddMultiDimTableResponse) SetHeaders(v map[string]*string) *AddMultiDimTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddMultiDimTableResponse) SetStatusCode(v int32) *AddMultiDimTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddMultiDimTableResponse) SetBody(v *AddMultiDimTableResponseBody) *AddMultiDimTableResponse {
+	s.Body = v
+	return s
+}
+
 type AddPermissionHeaders struct {
 	CommonHeaders  map[string]*string                  `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *AddPermissionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -12243,6 +12525,305 @@ func (s *CreateMessageResponse) SetBody(v *CreateMessageResponseBody) *CreateMes
 	return s
 }
 
+type CreateMultiDimTableFieldHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *CreateMultiDimTableFieldHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s CreateMultiDimTableFieldHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldHeaders) SetCommonHeaders(v map[string]*string) *CreateMultiDimTableFieldHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldHeaders) SetAccountContext(v *CreateMultiDimTableFieldHeadersAccountContext) *CreateMultiDimTableFieldHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type CreateMultiDimTableFieldHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldHeadersAccountContext) SetAccountId(v string) *CreateMultiDimTableFieldHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type CreateMultiDimTableFieldShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldShrinkHeaders) SetCommonHeaders(v map[string]*string) *CreateMultiDimTableFieldShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkHeaders) SetAccountContextShrink(v string) *CreateMultiDimTableFieldShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type CreateMultiDimTableFieldRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// This parameter is required.
+	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *CreateMultiDimTableFieldRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetBaseId(v string) *CreateMultiDimTableFieldRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetName(v string) *CreateMultiDimTableFieldRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetProperty(v map[string]interface{}) *CreateMultiDimTableFieldRequest {
+	s.Property = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetSheetIdOrName(v string) *CreateMultiDimTableFieldRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetTenantContext(v *CreateMultiDimTableFieldRequestTenantContext) *CreateMultiDimTableFieldRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldRequest) SetType(v string) *CreateMultiDimTableFieldRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMultiDimTableFieldRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldRequestTenantContext) SetTenantId(v string) *CreateMultiDimTableFieldRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type CreateMultiDimTableFieldShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PropertyShrink *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetBaseId(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetName(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetPropertyShrink(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.PropertyShrink = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetSheetIdOrName(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetTenantContextShrink(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldShrinkRequest) SetType(v string) *CreateMultiDimTableFieldShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateMultiDimTableFieldResponseBody struct {
+	// example:
+	//
+	// UhfysgH
+	Id       *string                `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// example:
+	//
+	// text
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetId(v string) *CreateMultiDimTableFieldResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetName(v string) *CreateMultiDimTableFieldResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetProperty(v map[string]interface{}) *CreateMultiDimTableFieldResponseBody {
+	s.Property = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetType(v string) *CreateMultiDimTableFieldResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetRequestId(v string) *CreateMultiDimTableFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetVendorRequestId(v string) *CreateMultiDimTableFieldResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponseBody) SetVendorType(v string) *CreateMultiDimTableFieldResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type CreateMultiDimTableFieldResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateMultiDimTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateMultiDimTableFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMultiDimTableFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMultiDimTableFieldResponse) SetHeaders(v map[string]*string) *CreateMultiDimTableFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponse) SetStatusCode(v int32) *CreateMultiDimTableFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMultiDimTableFieldResponse) SetBody(v *CreateMultiDimTableFieldResponseBody) *CreateMultiDimTableFieldResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateFormDataHeaders struct {
 	CommonHeaders  map[string]*string                           `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *CreateOrUpdateFormDataHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -20568,6 +21149,502 @@ func (s *DeleteMeetingRoomGroupResponse) SetBody(v *DeleteMeetingRoomGroupRespon
 	return s
 }
 
+type DeleteMultiDimTableFieldHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DeleteMultiDimTableFieldHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteMultiDimTableFieldHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldHeaders) SetCommonHeaders(v map[string]*string) *DeleteMultiDimTableFieldHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldHeaders) SetAccountContext(v *DeleteMultiDimTableFieldHeadersAccountContext) *DeleteMultiDimTableFieldHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteMultiDimTableFieldHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldHeadersAccountContext) SetAccountId(v string) *DeleteMultiDimTableFieldHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteMultiDimTableFieldShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteMultiDimTableFieldShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldShrinkHeaders) SetAccountContextShrink(v string) *DeleteMultiDimTableFieldShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteMultiDimTableFieldRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	FieldIdOrName *string `json:"FieldIdOrName,omitempty" xml:"FieldIdOrName,omitempty"`
+	// This parameter is required.
+	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *DeleteMultiDimTableFieldRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteMultiDimTableFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldRequest) SetBaseId(v string) *DeleteMultiDimTableFieldRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldRequest) SetFieldIdOrName(v string) *DeleteMultiDimTableFieldRequest {
+	s.FieldIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldRequest) SetSheetIdOrName(v string) *DeleteMultiDimTableFieldRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldRequest) SetTenantContext(v *DeleteMultiDimTableFieldRequestTenantContext) *DeleteMultiDimTableFieldRequest {
+	s.TenantContext = v
+	return s
+}
+
+type DeleteMultiDimTableFieldRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldRequestTenantContext) SetTenantId(v string) *DeleteMultiDimTableFieldRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteMultiDimTableFieldShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	FieldIdOrName *string `json:"FieldIdOrName,omitempty" xml:"FieldIdOrName,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldShrinkRequest) SetBaseId(v string) *DeleteMultiDimTableFieldShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldShrinkRequest) SetFieldIdOrName(v string) *DeleteMultiDimTableFieldShrinkRequest {
+	s.FieldIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldShrinkRequest) SetSheetIdOrName(v string) *DeleteMultiDimTableFieldShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldShrinkRequest) SetTenantContextShrink(v string) *DeleteMultiDimTableFieldShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type DeleteMultiDimTableFieldResponseBody struct {
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldResponseBody) SetSuccess(v bool) *DeleteMultiDimTableFieldResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldResponseBody) SetRequestId(v string) *DeleteMultiDimTableFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldResponseBody) SetVendorRequestId(v string) *DeleteMultiDimTableFieldResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldResponseBody) SetVendorType(v string) *DeleteMultiDimTableFieldResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DeleteMultiDimTableFieldResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMultiDimTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMultiDimTableFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableFieldResponse) SetHeaders(v map[string]*string) *DeleteMultiDimTableFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldResponse) SetStatusCode(v int32) *DeleteMultiDimTableFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableFieldResponse) SetBody(v *DeleteMultiDimTableFieldResponseBody) *DeleteMultiDimTableFieldResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteMultiDimTableRecordsHeaders struct {
+	CommonHeaders  map[string]*string                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DeleteMultiDimTableRecordsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteMultiDimTableRecordsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsHeaders) SetCommonHeaders(v map[string]*string) *DeleteMultiDimTableRecordsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsHeaders) SetAccountContext(v *DeleteMultiDimTableRecordsHeadersAccountContext) *DeleteMultiDimTableRecordsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DeleteMultiDimTableRecordsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsHeadersAccountContext) SetAccountId(v string) *DeleteMultiDimTableRecordsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DeleteMultiDimTableRecordsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkHeaders) SetCommonHeaders(v map[string]*string) *DeleteMultiDimTableRecordsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkHeaders) SetAccountContextShrink(v string) *DeleteMultiDimTableRecordsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DeleteMultiDimTableRecordsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	RecordIds []*string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SheetIdOrName *string                                         `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *DeleteMultiDimTableRecordsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s DeleteMultiDimTableRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsRequest) SetBaseId(v string) *DeleteMultiDimTableRecordsRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsRequest) SetRecordIds(v []*string) *DeleteMultiDimTableRecordsRequest {
+	s.RecordIds = v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsRequest) SetSheetIdOrName(v string) *DeleteMultiDimTableRecordsRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsRequest) SetTenantContext(v *DeleteMultiDimTableRecordsRequestTenantContext) *DeleteMultiDimTableRecordsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type DeleteMultiDimTableRecordsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsRequestTenantContext) SetTenantId(v string) *DeleteMultiDimTableRecordsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DeleteMultiDimTableRecordsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	RecordIdsShrink *string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkRequest) SetBaseId(v string) *DeleteMultiDimTableRecordsShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkRequest) SetRecordIdsShrink(v string) *DeleteMultiDimTableRecordsShrinkRequest {
+	s.RecordIdsShrink = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkRequest) SetSheetIdOrName(v string) *DeleteMultiDimTableRecordsShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsShrinkRequest) SetTenantContextShrink(v string) *DeleteMultiDimTableRecordsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type DeleteMultiDimTableRecordsResponseBody struct {
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsResponseBody) SetSuccess(v bool) *DeleteMultiDimTableRecordsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsResponseBody) SetRequestId(v string) *DeleteMultiDimTableRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsResponseBody) SetVendorRequestId(v string) *DeleteMultiDimTableRecordsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsResponseBody) SetVendorType(v string) *DeleteMultiDimTableRecordsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DeleteMultiDimTableRecordsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteMultiDimTableRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteMultiDimTableRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMultiDimTableRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMultiDimTableRecordsResponse) SetHeaders(v map[string]*string) *DeleteMultiDimTableRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsResponse) SetStatusCode(v int32) *DeleteMultiDimTableRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteMultiDimTableRecordsResponse) SetBody(v *DeleteMultiDimTableRecordsResponseBody) *DeleteMultiDimTableRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePermissionHeaders struct {
 	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *DeletePermissionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -22387,6 +23464,303 @@ func (s *DeleteWorkspaceMembersResponse) SetStatusCode(v int32) *DeleteWorkspace
 }
 
 func (s *DeleteWorkspaceMembersResponse) SetBody(v *DeleteWorkspaceMembersResponseBody) *DeleteWorkspaceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DocBlocksQueryHeaders struct {
+	CommonHeaders  map[string]*string                   `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *DocBlocksQueryHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s DocBlocksQueryHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryHeaders) SetCommonHeaders(v map[string]*string) *DocBlocksQueryHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DocBlocksQueryHeaders) SetAccountContext(v *DocBlocksQueryHeadersAccountContext) *DocBlocksQueryHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type DocBlocksQueryHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s DocBlocksQueryHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryHeadersAccountContext) SetAccountId(v string) *DocBlocksQueryHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type DocBlocksQueryShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s DocBlocksQueryShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryShrinkHeaders) SetCommonHeaders(v map[string]*string) *DocBlocksQueryShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *DocBlocksQueryShrinkHeaders) SetAccountContextShrink(v string) *DocBlocksQueryShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type DocBlocksQueryRequest struct {
+	// example:
+	//
+	// heading
+	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// example:
+	//
+	// 1
+	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// example:
+	//
+	// 0
+	StartIndex    *int32                              `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	TenantContext *DocBlocksQueryRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s DocBlocksQueryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryRequest) SetBlockType(v string) *DocBlocksQueryRequest {
+	s.BlockType = &v
+	return s
+}
+
+func (s *DocBlocksQueryRequest) SetDocKey(v string) *DocBlocksQueryRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *DocBlocksQueryRequest) SetEndIndex(v int32) *DocBlocksQueryRequest {
+	s.EndIndex = &v
+	return s
+}
+
+func (s *DocBlocksQueryRequest) SetStartIndex(v int32) *DocBlocksQueryRequest {
+	s.StartIndex = &v
+	return s
+}
+
+func (s *DocBlocksQueryRequest) SetTenantContext(v *DocBlocksQueryRequestTenantContext) *DocBlocksQueryRequest {
+	s.TenantContext = v
+	return s
+}
+
+type DocBlocksQueryRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s DocBlocksQueryRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryRequestTenantContext) SetTenantId(v string) *DocBlocksQueryRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type DocBlocksQueryShrinkRequest struct {
+	// example:
+	//
+	// heading
+	BlockType *string `json:"BlockType,omitempty" xml:"BlockType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxx
+	DocKey *string `json:"DocKey,omitempty" xml:"DocKey,omitempty"`
+	// example:
+	//
+	// 1
+	EndIndex *int32 `json:"EndIndex,omitempty" xml:"EndIndex,omitempty"`
+	// example:
+	//
+	// 0
+	StartIndex          *int32  `json:"StartIndex,omitempty" xml:"StartIndex,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s DocBlocksQueryShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryShrinkRequest) SetBlockType(v string) *DocBlocksQueryShrinkRequest {
+	s.BlockType = &v
+	return s
+}
+
+func (s *DocBlocksQueryShrinkRequest) SetDocKey(v string) *DocBlocksQueryShrinkRequest {
+	s.DocKey = &v
+	return s
+}
+
+func (s *DocBlocksQueryShrinkRequest) SetEndIndex(v int32) *DocBlocksQueryShrinkRequest {
+	s.EndIndex = &v
+	return s
+}
+
+func (s *DocBlocksQueryShrinkRequest) SetStartIndex(v int32) *DocBlocksQueryShrinkRequest {
+	s.StartIndex = &v
+	return s
+}
+
+func (s *DocBlocksQueryShrinkRequest) SetTenantContextShrink(v string) *DocBlocksQueryShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type DocBlocksQueryResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string                           `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *DocBlocksQueryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s DocBlocksQueryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryResponseBody) SetRequestId(v string) *DocBlocksQueryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DocBlocksQueryResponseBody) SetResult(v *DocBlocksQueryResponseBodyResult) *DocBlocksQueryResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *DocBlocksQueryResponseBody) SetSuccess(v bool) *DocBlocksQueryResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DocBlocksQueryResponseBody) SetVendorRequestId(v string) *DocBlocksQueryResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *DocBlocksQueryResponseBody) SetVendorType(v string) *DocBlocksQueryResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type DocBlocksQueryResponseBodyResult struct {
+	Data []interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+}
+
+func (s DocBlocksQueryResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryResponseBodyResult) SetData(v []interface{}) *DocBlocksQueryResponseBodyResult {
+	s.Data = v
+	return s
+}
+
+type DocBlocksQueryResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DocBlocksQueryResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DocBlocksQueryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DocBlocksQueryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DocBlocksQueryResponse) SetHeaders(v map[string]*string) *DocBlocksQueryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DocBlocksQueryResponse) SetStatusCode(v int32) *DocBlocksQueryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DocBlocksQueryResponse) SetBody(v *DocBlocksQueryResponseBody) *DocBlocksQueryResponse {
 	s.Body = v
 	return s
 }
@@ -47279,6 +48653,284 @@ func (s *InsertColumnsBeforeResponse) SetStatusCode(v int32) *InsertColumnsBefor
 }
 
 func (s *InsertColumnsBeforeResponse) SetBody(v *InsertColumnsBeforeResponseBody) *InsertColumnsBeforeResponse {
+	s.Body = v
+	return s
+}
+
+type InsertMultiDimTableRecordHeaders struct {
+	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *InsertMultiDimTableRecordHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s InsertMultiDimTableRecordHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordHeaders) SetCommonHeaders(v map[string]*string) *InsertMultiDimTableRecordHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordHeaders) SetAccountContext(v *InsertMultiDimTableRecordHeadersAccountContext) *InsertMultiDimTableRecordHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type InsertMultiDimTableRecordHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordHeadersAccountContext) SetAccountId(v string) *InsertMultiDimTableRecordHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type InsertMultiDimTableRecordShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordShrinkHeaders) SetCommonHeaders(v map[string]*string) *InsertMultiDimTableRecordShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordShrinkHeaders) SetAccountContextShrink(v string) *InsertMultiDimTableRecordShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type InsertMultiDimTableRecordRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId        *string                                        `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	Records       []*InsertMultiDimTableRecordRequestRecords     `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	SheetIdOrName *string                                        `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *InsertMultiDimTableRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s InsertMultiDimTableRecordRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordRequest) SetBaseId(v string) *InsertMultiDimTableRecordRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordRequest) SetRecords(v []*InsertMultiDimTableRecordRequestRecords) *InsertMultiDimTableRecordRequest {
+	s.Records = v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordRequest) SetSheetIdOrName(v string) *InsertMultiDimTableRecordRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordRequest) SetTenantContext(v *InsertMultiDimTableRecordRequestTenantContext) *InsertMultiDimTableRecordRequest {
+	s.TenantContext = v
+	return s
+}
+
+type InsertMultiDimTableRecordRequestRecords struct {
+	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordRequestRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordRequestRecords) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordRequestRecords) SetFields(v map[string]interface{}) *InsertMultiDimTableRecordRequestRecords {
+	s.Fields = v
+	return s
+}
+
+type InsertMultiDimTableRecordRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordRequestTenantContext) SetTenantId(v string) *InsertMultiDimTableRecordRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type InsertMultiDimTableRecordShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	RecordsShrink       *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordShrinkRequest) SetBaseId(v string) *InsertMultiDimTableRecordShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordShrinkRequest) SetRecordsShrink(v string) *InsertMultiDimTableRecordShrinkRequest {
+	s.RecordsShrink = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordShrinkRequest) SetSheetIdOrName(v string) *InsertMultiDimTableRecordShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordShrinkRequest) SetTenantContextShrink(v string) *InsertMultiDimTableRecordShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type InsertMultiDimTableRecordResponseBody struct {
+	Value []*InsertMultiDimTableRecordResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordResponseBody) SetValue(v []*InsertMultiDimTableRecordResponseBodyValue) *InsertMultiDimTableRecordResponseBody {
+	s.Value = v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordResponseBody) SetRequestId(v string) *InsertMultiDimTableRecordResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordResponseBody) SetVendorRequestId(v string) *InsertMultiDimTableRecordResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordResponseBody) SetVendorType(v string) *InsertMultiDimTableRecordResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type InsertMultiDimTableRecordResponseBodyValue struct {
+	// example:
+	//
+	// hfauVBFJIo
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordResponseBodyValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordResponseBodyValue) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordResponseBodyValue) SetId(v string) *InsertMultiDimTableRecordResponseBodyValue {
+	s.Id = &v
+	return s
+}
+
+type InsertMultiDimTableRecordResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertMultiDimTableRecordResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertMultiDimTableRecordResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertMultiDimTableRecordResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertMultiDimTableRecordResponse) SetHeaders(v map[string]*string) *InsertMultiDimTableRecordResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordResponse) SetStatusCode(v int32) *InsertMultiDimTableRecordResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertMultiDimTableRecordResponse) SetBody(v *InsertMultiDimTableRecordResponseBody) *InsertMultiDimTableRecordResponse {
 	s.Body = v
 	return s
 }
@@ -78894,6 +80546,831 @@ func (s *UpdateMeetingRoomGroupResponse) SetBody(v *UpdateMeetingRoomGroupRespon
 	return s
 }
 
+type UpdateMultiDimTableHeaders struct {
+	CommonHeaders  map[string]*string                        `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateMultiDimTableHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableHeaders) SetAccountContext(v *UpdateMultiDimTableHeadersAccountContext) *UpdateMultiDimTableHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateMultiDimTableHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateMultiDimTableHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableHeadersAccountContext) SetAccountId(v string) *UpdateMultiDimTableHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateMultiDimTableShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableShrinkHeaders) SetAccountContextShrink(v string) *UpdateMultiDimTableShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	SheetIdOrName *string                                  `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *UpdateMultiDimTableRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRequest) SetBaseId(v string) *UpdateMultiDimTableRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRequest) SetName(v string) *UpdateMultiDimTableRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRequest) SetTenantContext(v *UpdateMultiDimTableRequestTenantContext) *UpdateMultiDimTableRequest {
+	s.TenantContext = v
+	return s
+}
+
+type UpdateMultiDimTableRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateMultiDimTableRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRequestTenantContext) SetTenantId(v string) *UpdateMultiDimTableRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateMultiDimTableShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableShrinkRequest) SetBaseId(v string) *UpdateMultiDimTableShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableShrinkRequest) SetName(v string) *UpdateMultiDimTableShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableShrinkRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableShrinkRequest) SetTenantContextShrink(v string) *UpdateMultiDimTableShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableResponseBody struct {
+	// example:
+	//
+	// []
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// []
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateMultiDimTableResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableResponseBody) SetId(v string) *UpdateMultiDimTableResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponseBody) SetName(v string) *UpdateMultiDimTableResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponseBody) SetRequestId(v string) *UpdateMultiDimTableResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponseBody) SetVendorRequestId(v string) *UpdateMultiDimTableResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponseBody) SetVendorType(v string) *UpdateMultiDimTableResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateMultiDimTableResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMultiDimTableResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMultiDimTableResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableResponse) SetHeaders(v map[string]*string) *UpdateMultiDimTableResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponse) SetStatusCode(v int32) *UpdateMultiDimTableResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableResponse) SetBody(v *UpdateMultiDimTableResponseBody) *UpdateMultiDimTableResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMultiDimTableFieldHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateMultiDimTableFieldHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableFieldHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableFieldHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldHeaders) SetAccountContext(v *UpdateMultiDimTableFieldHeadersAccountContext) *UpdateMultiDimTableFieldHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateMultiDimTableFieldHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldHeadersAccountContext) SetAccountId(v string) *UpdateMultiDimTableFieldHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateMultiDimTableFieldShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableFieldShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkHeaders) SetAccountContextShrink(v string) *UpdateMultiDimTableFieldShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableFieldRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	FieldIdOrName *string `json:"FieldIdOrName,omitempty" xml:"FieldIdOrName,omitempty"`
+	// This parameter is required.
+	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// This parameter is required.
+	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *UpdateMultiDimTableFieldRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableFieldRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetBaseId(v string) *UpdateMultiDimTableFieldRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetFieldIdOrName(v string) *UpdateMultiDimTableFieldRequest {
+	s.FieldIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetName(v string) *UpdateMultiDimTableFieldRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetProperty(v map[string]interface{}) *UpdateMultiDimTableFieldRequest {
+	s.Property = v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableFieldRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldRequest) SetTenantContext(v *UpdateMultiDimTableFieldRequestTenantContext) *UpdateMultiDimTableFieldRequest {
+	s.TenantContext = v
+	return s
+}
+
+type UpdateMultiDimTableFieldRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldRequestTenantContext) SetTenantId(v string) *UpdateMultiDimTableFieldRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateMultiDimTableFieldShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7noNyJxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	FieldIdOrName *string `json:"FieldIdOrName,omitempty" xml:"FieldIdOrName,omitempty"`
+	// This parameter is required.
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PropertyShrink *string `json:"Property,omitempty" xml:"Property,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetBaseId(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetFieldIdOrName(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.FieldIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetName(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetPropertyShrink(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.PropertyShrink = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldShrinkRequest) SetTenantContextShrink(v string) *UpdateMultiDimTableFieldShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableFieldResponseBody struct {
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7xxxxxxx
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldResponseBody) SetId(v string) *UpdateMultiDimTableFieldResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldResponseBody) SetRequestId(v string) *UpdateMultiDimTableFieldResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldResponseBody) SetVendorRequestId(v string) *UpdateMultiDimTableFieldResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldResponseBody) SetVendorType(v string) *UpdateMultiDimTableFieldResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateMultiDimTableFieldResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMultiDimTableFieldResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMultiDimTableFieldResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableFieldResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableFieldResponse) SetHeaders(v map[string]*string) *UpdateMultiDimTableFieldResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldResponse) SetStatusCode(v int32) *UpdateMultiDimTableFieldResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableFieldResponse) SetBody(v *UpdateMultiDimTableFieldResponseBody) *UpdateMultiDimTableFieldResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMultiDimTableRecordsHeaders struct {
+	CommonHeaders  map[string]*string                               `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *UpdateMultiDimTableRecordsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableRecordsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableRecordsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsHeaders) SetAccountContext(v *UpdateMultiDimTableRecordsHeadersAccountContext) *UpdateMultiDimTableRecordsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type UpdateMultiDimTableRecordsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsHeadersAccountContext) SetAccountId(v string) *UpdateMultiDimTableRecordsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkHeaders) SetCommonHeaders(v map[string]*string) *UpdateMultiDimTableRecordsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkHeaders) SetAccountContextShrink(v string) *UpdateMultiDimTableRecordsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	RecordIds []*UpdateMultiDimTableRecordsRequestRecordIds `json:"RecordIds,omitempty" xml:"RecordIds,omitempty" type:"Repeated"`
+	// This parameter is required.
+	SheetIdOrName *string                                         `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContext *UpdateMultiDimTableRecordsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s UpdateMultiDimTableRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsRequest) SetBaseId(v string) *UpdateMultiDimTableRecordsRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsRequest) SetRecordIds(v []*UpdateMultiDimTableRecordsRequestRecordIds) *UpdateMultiDimTableRecordsRequest {
+	s.RecordIds = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableRecordsRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsRequest) SetTenantContext(v *UpdateMultiDimTableRecordsRequestTenantContext) *UpdateMultiDimTableRecordsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type UpdateMultiDimTableRecordsRequestRecordIds struct {
+	// This parameter is required.
+	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// HyDGtSj
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsRequestRecordIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsRequestRecordIds) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsRequestRecordIds) SetFields(v map[string]interface{}) *UpdateMultiDimTableRecordsRequestRecordIds {
+	s.Fields = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsRequestRecordIds) SetId(v string) *UpdateMultiDimTableRecordsRequestRecordIds {
+	s.Id = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsRequestTenantContext) SetTenantId(v string) *UpdateMultiDimTableRecordsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	RecordIdsShrink *string `json:"RecordIds,omitempty" xml:"RecordIds,omitempty"`
+	// This parameter is required.
+	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkRequest) SetBaseId(v string) *UpdateMultiDimTableRecordsShrinkRequest {
+	s.BaseId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkRequest) SetRecordIdsShrink(v string) *UpdateMultiDimTableRecordsShrinkRequest {
+	s.RecordIdsShrink = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkRequest) SetSheetIdOrName(v string) *UpdateMultiDimTableRecordsShrinkRequest {
+	s.SheetIdOrName = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsShrinkRequest) SetTenantContextShrink(v string) *UpdateMultiDimTableRecordsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsResponseBody struct {
+	Value []*UpdateMultiDimTableRecordsResponseBodyValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsResponseBody) SetValue(v []*UpdateMultiDimTableRecordsResponseBodyValue) *UpdateMultiDimTableRecordsResponseBody {
+	s.Value = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsResponseBody) SetRequestId(v string) *UpdateMultiDimTableRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsResponseBody) SetVendorRequestId(v string) *UpdateMultiDimTableRecordsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsResponseBody) SetVendorType(v string) *UpdateMultiDimTableRecordsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsResponseBodyValue struct {
+	// example:
+	//
+	// []
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsResponseBodyValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsResponseBodyValue) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsResponseBodyValue) SetId(v string) *UpdateMultiDimTableRecordsResponseBodyValue {
+	s.Id = &v
+	return s
+}
+
+type UpdateMultiDimTableRecordsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateMultiDimTableRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateMultiDimTableRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMultiDimTableRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMultiDimTableRecordsResponse) SetHeaders(v map[string]*string) *UpdateMultiDimTableRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsResponse) SetStatusCode(v int32) *UpdateMultiDimTableRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateMultiDimTableRecordsResponse) SetBody(v *UpdateMultiDimTableRecordsResponseBody) *UpdateMultiDimTableRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type UpdatePermissionHeaders struct {
 	CommonHeaders  map[string]*string                     `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *UpdatePermissionHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -83432,6 +85909,107 @@ func (client *Client) AddMeetingRooms(request *AddMeetingRoomsRequest) (_result 
 
 // Summary:
 //
+// 新增数据表
+//
+// @param tmpReq - AddMultiDimTableRequest
+//
+// @param tmpHeader - AddMultiDimTableHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddMultiDimTableResponse
+func (client *Client) AddMultiDimTableWithOptions(tmpReq *AddMultiDimTableRequest, tmpHeader *AddMultiDimTableHeaders, runtime *util.RuntimeOptions) (_result *AddMultiDimTableResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddMultiDimTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &AddMultiDimTableShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Fields)) {
+		request.FieldsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Fields, tea.String("Fields"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldsShrink)) {
+		body["Fields"] = request.FieldsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddMultiDimTable"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/addMultiDimTable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddMultiDimTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增数据表
+//
+// @param request - AddMultiDimTableRequest
+//
+// @return AddMultiDimTableResponse
+func (client *Client) AddMultiDimTable(request *AddMultiDimTableRequest) (_result *AddMultiDimTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &AddMultiDimTableHeaders{}
+	_result = &AddMultiDimTableResponse{}
+	_body, _err := client.AddMultiDimTableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加文件权限
 //
 // @param tmpReq - AddPermissionRequest
@@ -86485,6 +89063,115 @@ func (client *Client) CreateMessage(request *CreateMessageRequest) (_result *Cre
 
 // Summary:
 //
+// 创建字段
+//
+// @param tmpReq - CreateMultiDimTableFieldRequest
+//
+// @param tmpHeader - CreateMultiDimTableFieldHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateMultiDimTableFieldResponse
+func (client *Client) CreateMultiDimTableFieldWithOptions(tmpReq *CreateMultiDimTableFieldRequest, tmpHeader *CreateMultiDimTableFieldHeaders, runtime *util.RuntimeOptions) (_result *CreateMultiDimTableFieldResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateMultiDimTableFieldShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &CreateMultiDimTableFieldShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Property)) {
+		request.PropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Property, tea.String("Property"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyShrink)) {
+		body["Property"] = request.PropertyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		body["Type"] = request.Type
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMultiDimTableField"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/createMultiDimTableField"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMultiDimTableFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建字段
+//
+// @param request - CreateMultiDimTableFieldRequest
+//
+// @return CreateMultiDimTableFieldResponse
+func (client *Client) CreateMultiDimTableField(request *CreateMultiDimTableFieldRequest) (_result *CreateMultiDimTableFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &CreateMultiDimTableFieldHeaders{}
+	_result = &CreateMultiDimTableFieldResponse{}
+	_body, _err := client.CreateMultiDimTableFieldWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增或更新表单实例
 //
 // @param request - CreateOrUpdateFormDataRequest
@@ -89199,6 +91886,204 @@ func (client *Client) DeleteMeetingRoomGroup(request *DeleteMeetingRoomGroupRequ
 
 // Summary:
 //
+// 删除字段
+//
+// @param tmpReq - DeleteMultiDimTableFieldRequest
+//
+// @param tmpHeader - DeleteMultiDimTableFieldHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiDimTableFieldResponse
+func (client *Client) DeleteMultiDimTableFieldWithOptions(tmpReq *DeleteMultiDimTableFieldRequest, tmpHeader *DeleteMultiDimTableFieldHeaders, runtime *util.RuntimeOptions) (_result *DeleteMultiDimTableFieldResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteMultiDimTableFieldShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DeleteMultiDimTableFieldShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldIdOrName)) {
+		body["FieldIdOrName"] = request.FieldIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMultiDimTableField"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/deleteMultiDimTableField"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMultiDimTableFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除字段
+//
+// @param request - DeleteMultiDimTableFieldRequest
+//
+// @return DeleteMultiDimTableFieldResponse
+func (client *Client) DeleteMultiDimTableField(request *DeleteMultiDimTableFieldRequest) (_result *DeleteMultiDimTableFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteMultiDimTableFieldHeaders{}
+	_result = &DeleteMultiDimTableFieldResponse{}
+	_body, _err := client.DeleteMultiDimTableFieldWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除多行记录
+//
+// @param tmpReq - DeleteMultiDimTableRecordsRequest
+//
+// @param tmpHeader - DeleteMultiDimTableRecordsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteMultiDimTableRecordsResponse
+func (client *Client) DeleteMultiDimTableRecordsWithOptions(tmpReq *DeleteMultiDimTableRecordsRequest, tmpHeader *DeleteMultiDimTableRecordsHeaders, runtime *util.RuntimeOptions) (_result *DeleteMultiDimTableRecordsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteMultiDimTableRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DeleteMultiDimTableRecordsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordIds)) {
+		request.RecordIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordIds, tea.String("RecordIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordIdsShrink)) {
+		body["RecordIds"] = request.RecordIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMultiDimTableRecords"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/deleteMultiDimTableRecords"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMultiDimTableRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除多行记录
+//
+// @param request - DeleteMultiDimTableRecordsRequest
+//
+// @return DeleteMultiDimTableRecordsResponse
+func (client *Client) DeleteMultiDimTableRecords(request *DeleteMultiDimTableRecordsRequest) (_result *DeleteMultiDimTableRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DeleteMultiDimTableRecordsHeaders{}
+	_result = &DeleteMultiDimTableRecordsResponse{}
+	_body, _err := client.DeleteMultiDimTableRecordsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 删除文件权限
 //
 // @param tmpReq - DeletePermissionRequest
@@ -89938,6 +92823,107 @@ func (client *Client) DeleteWorkspaceMembers(request *DeleteWorkspaceMembersRequ
 	headers := &DeleteWorkspaceMembersHeaders{}
 	_result = &DeleteWorkspaceMembersResponse{}
 	_body, _err := client.DeleteWorkspaceMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询块元素
+//
+// @param tmpReq - DocBlocksQueryRequest
+//
+// @param tmpHeader - DocBlocksQueryHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DocBlocksQueryResponse
+func (client *Client) DocBlocksQueryWithOptions(tmpReq *DocBlocksQueryRequest, tmpHeader *DocBlocksQueryHeaders, runtime *util.RuntimeOptions) (_result *DocBlocksQueryResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DocBlocksQueryShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &DocBlocksQueryShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockType)) {
+		body["BlockType"] = request.BlockType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocKey)) {
+		body["DocKey"] = request.DocKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndIndex)) {
+		body["EndIndex"] = request.EndIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartIndex)) {
+		body["StartIndex"] = request.StartIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DocBlocksQuery"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/docBlocksQuery"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DocBlocksQueryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询块元素
+//
+// @param request - DocBlocksQueryRequest
+//
+// @return DocBlocksQueryResponse
+func (client *Client) DocBlocksQuery(request *DocBlocksQueryRequest) (_result *DocBlocksQueryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &DocBlocksQueryHeaders{}
+	_result = &DocBlocksQueryResponse{}
+	_body, _err := client.DocBlocksQueryWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -96786,6 +99772,107 @@ func (client *Client) InsertColumnsBefore(request *InsertColumnsBeforeRequest) (
 	headers := &InsertColumnsBeforeHeaders{}
 	_result = &InsertColumnsBeforeResponse{}
 	_body, _err := client.InsertColumnsBeforeWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增记录
+//
+// @param tmpReq - InsertMultiDimTableRecordRequest
+//
+// @param tmpHeader - InsertMultiDimTableRecordHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertMultiDimTableRecordResponse
+func (client *Client) InsertMultiDimTableRecordWithOptions(tmpReq *InsertMultiDimTableRecordRequest, tmpHeader *InsertMultiDimTableRecordHeaders, runtime *util.RuntimeOptions) (_result *InsertMultiDimTableRecordResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertMultiDimTableRecordShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &InsertMultiDimTableRecordShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Records)) {
+		request.RecordsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Records, tea.String("Records"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordsShrink)) {
+		body["Records"] = request.RecordsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertMultiDimTableRecord"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/insertMultiDimTableRecord"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertMultiDimTableRecordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 新增记录
+//
+// @param request - InsertMultiDimTableRecordRequest
+//
+// @return InsertMultiDimTableRecordResponse
+func (client *Client) InsertMultiDimTableRecord(request *InsertMultiDimTableRecordRequest) (_result *InsertMultiDimTableRecordResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsertMultiDimTableRecordHeaders{}
+	_result = &InsertMultiDimTableRecordResponse{}
+	_body, _err := client.InsertMultiDimTableRecordWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -105795,6 +108882,313 @@ func (client *Client) UpdateMeetingRoomGroup(request *UpdateMeetingRoomGroupRequ
 	headers := &UpdateMeetingRoomGroupHeaders{}
 	_result = &UpdateMeetingRoomGroupResponse{}
 	_body, _err := client.UpdateMeetingRoomGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据表
+//
+// @param tmpReq - UpdateMultiDimTableRequest
+//
+// @param tmpHeader - UpdateMultiDimTableHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultiDimTableResponse
+func (client *Client) UpdateMultiDimTableWithOptions(tmpReq *UpdateMultiDimTableRequest, tmpHeader *UpdateMultiDimTableHeaders, runtime *util.RuntimeOptions) (_result *UpdateMultiDimTableResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMultiDimTableShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateMultiDimTableShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMultiDimTable"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/updateMultiDimTable"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMultiDimTableResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新数据表
+//
+// @param request - UpdateMultiDimTableRequest
+//
+// @return UpdateMultiDimTableResponse
+func (client *Client) UpdateMultiDimTable(request *UpdateMultiDimTableRequest) (_result *UpdateMultiDimTableResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateMultiDimTableHeaders{}
+	_result = &UpdateMultiDimTableResponse{}
+	_body, _err := client.UpdateMultiDimTableWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新字段
+//
+// @param tmpReq - UpdateMultiDimTableFieldRequest
+//
+// @param tmpHeader - UpdateMultiDimTableFieldHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultiDimTableFieldResponse
+func (client *Client) UpdateMultiDimTableFieldWithOptions(tmpReq *UpdateMultiDimTableFieldRequest, tmpHeader *UpdateMultiDimTableFieldHeaders, runtime *util.RuntimeOptions) (_result *UpdateMultiDimTableFieldResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMultiDimTableFieldShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateMultiDimTableFieldShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Property)) {
+		request.PropertyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Property, tea.String("Property"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldIdOrName)) {
+		body["FieldIdOrName"] = request.FieldIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyShrink)) {
+		body["Property"] = request.PropertyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMultiDimTableField"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/updateMultiDimTableField"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMultiDimTableFieldResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新字段
+//
+// @param request - UpdateMultiDimTableFieldRequest
+//
+// @return UpdateMultiDimTableFieldResponse
+func (client *Client) UpdateMultiDimTableField(request *UpdateMultiDimTableFieldRequest) (_result *UpdateMultiDimTableFieldResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateMultiDimTableFieldHeaders{}
+	_result = &UpdateMultiDimTableFieldResponse{}
+	_body, _err := client.UpdateMultiDimTableFieldWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新多行记录
+//
+// @param tmpReq - UpdateMultiDimTableRecordsRequest
+//
+// @param tmpHeader - UpdateMultiDimTableRecordsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateMultiDimTableRecordsResponse
+func (client *Client) UpdateMultiDimTableRecordsWithOptions(tmpReq *UpdateMultiDimTableRecordsRequest, tmpHeader *UpdateMultiDimTableRecordsHeaders, runtime *util.RuntimeOptions) (_result *UpdateMultiDimTableRecordsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMultiDimTableRecordsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &UpdateMultiDimTableRecordsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RecordIds)) {
+		request.RecordIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RecordIds, tea.String("RecordIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaseId)) {
+		body["BaseId"] = request.BaseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordIdsShrink)) {
+		body["RecordIds"] = request.RecordIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SheetIdOrName)) {
+		body["SheetIdOrName"] = request.SheetIdOrName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMultiDimTableRecords"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/table/updateMultiDimTableRecords"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMultiDimTableRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新多行记录
+//
+// @param request - UpdateMultiDimTableRecordsRequest
+//
+// @return UpdateMultiDimTableRecordsResponse
+func (client *Client) UpdateMultiDimTableRecords(request *UpdateMultiDimTableRecordsRequest) (_result *UpdateMultiDimTableRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &UpdateMultiDimTableRecordsHeaders{}
+	_result = &UpdateMultiDimTableRecordsResponse{}
+	_body, _err := client.UpdateMultiDimTableRecordsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
