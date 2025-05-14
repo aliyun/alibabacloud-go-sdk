@@ -26355,7 +26355,8 @@ func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayload) SetUsage(v *RunC
 }
 
 type RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput struct {
-	AskUser []*string `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
+	Articles []*RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles `json:"Articles,omitempty" xml:"Articles,omitempty" type:"Repeated"`
+	AskUser  []*string                                                              `json:"AskUser,omitempty" xml:"AskUser,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 异步任务ID
@@ -26386,6 +26387,11 @@ func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) GoString() 
 	return s.String()
 }
 
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetArticles(v []*RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
+	s.Articles = v
+	return s
+}
+
 func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetAskUser(v []*string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
 	s.AskUser = v
 	return s
@@ -26413,6 +26419,59 @@ func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetText(v 
 
 func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput) SetTopicId(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutput {
 	s.TopicId = &v
+	return s
+}
+
+type RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles struct {
+	Author  *string `json:"Author,omitempty" xml:"Author,omitempty"`
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	PubTime *string `json:"PubTime,omitempty" xml:"PubTime,omitempty"`
+	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) GoString() string {
+	return s.String()
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetAuthor(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Author = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetContent(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Content = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetPubTime(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.PubTime = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetSource(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Source = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetSummary(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Summary = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetTitle(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Title = &v
+	return s
+}
+
+func (s *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles) SetUrl(v string) *RunCustomHotTopicViewPointAnalysisResponseBodyPayloadOutputArticles {
+	s.Url = &v
 	return s
 }
 
