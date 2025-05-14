@@ -1,3 +1,9 @@
+2025-05-14 Version: v1.22.0
+- Support API CancelAuditTask.
+- Support API QueryAuditTask.
+- Support API SubmitAuditTask.
+
+
 2025-05-14 Version: v1.21.1
 - Update API RunCustomHotTopicViewPointAnalysis: add response parameters Body.Payload.Output.Articles.
 

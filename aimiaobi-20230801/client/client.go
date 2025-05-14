@@ -776,6 +776,140 @@ func (s *CancelAsyncTaskResponse) SetBody(v *CancelAsyncTaskResponseBody) *Cance
 	return s
 }
 
+type CancelAuditTaskRequest struct {
+	// example:
+	//
+	// xxxx
+	ArticleId *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	// example:
+	//
+	// xxx
+	ContentAuditTaskId *string `json:"ContentAuditTaskId,omitempty" xml:"ContentAuditTaskId,omitempty"`
+	// example:
+	//
+	// llm-xxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CancelAuditTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAuditTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAuditTaskRequest) SetArticleId(v string) *CancelAuditTaskRequest {
+	s.ArticleId = &v
+	return s
+}
+
+func (s *CancelAuditTaskRequest) SetContentAuditTaskId(v string) *CancelAuditTaskRequest {
+	s.ContentAuditTaskId = &v
+	return s
+}
+
+func (s *CancelAuditTaskRequest) SetWorkspaceId(v string) *CancelAuditTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CancelAuditTaskResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelAuditTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAuditTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAuditTaskResponseBody) SetCode(v string) *CancelAuditTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponseBody) SetData(v bool) *CancelAuditTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponseBody) SetHttpStatusCode(v int32) *CancelAuditTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponseBody) SetMessage(v string) *CancelAuditTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponseBody) SetRequestId(v string) *CancelAuditTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponseBody) SetSuccess(v bool) *CancelAuditTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelAuditTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CancelAuditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CancelAuditTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelAuditTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelAuditTaskResponse) SetHeaders(v map[string]*string) *CancelAuditTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelAuditTaskResponse) SetStatusCode(v int32) *CancelAuditTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelAuditTaskResponse) SetBody(v *CancelAuditTaskResponseBody) *CancelAuditTaskResponse {
+	s.Body = v
+	return s
+}
+
 type ClearIntervenesRequest struct {
 	// This parameter is required.
 	//
@@ -24204,6 +24338,350 @@ func (s *QueryAsyncTaskResponse) SetBody(v *QueryAsyncTaskResponseBody) *QueryAs
 	return s
 }
 
+type QueryAuditTaskRequest struct {
+	// example:
+	//
+	// xxxx
+	ArticleId *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	// example:
+	//
+	// xxx
+	ContentAuditTaskId *string `json:"ContentAuditTaskId,omitempty" xml:"ContentAuditTaskId,omitempty"`
+	// example:
+	//
+	// llm-xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s QueryAuditTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskRequest) SetArticleId(v string) *QueryAuditTaskRequest {
+	s.ArticleId = &v
+	return s
+}
+
+func (s *QueryAuditTaskRequest) SetContentAuditTaskId(v string) *QueryAuditTaskRequest {
+	s.ContentAuditTaskId = &v
+	return s
+}
+
+func (s *QueryAuditTaskRequest) SetWorkspaceId(v string) *QueryAuditTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type QueryAuditTaskResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *QueryAuditTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryAuditTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBody) SetCode(v string) *QueryAuditTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBody) SetData(v *QueryAuditTaskResponseBodyData) *QueryAuditTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBody) SetHttpStatusCode(v int32) *QueryAuditTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBody) SetMessage(v string) *QueryAuditTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBody) SetRequestId(v string) *QueryAuditTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBody) SetSuccess(v bool) *QueryAuditTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryAuditTaskResponseBodyData struct {
+	// example:
+	//
+	// 2025-05-13 12:12:12
+	AuditTime *string `json:"AuditTime,omitempty" xml:"AuditTime,omitempty"`
+	// example:
+	//
+	// 审核时的原文
+	Content  *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	Response *QueryAuditTaskResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+}
+
+func (s QueryAuditTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetAuditTime(v string) *QueryAuditTaskResponseBodyData {
+	s.AuditTime = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetContent(v string) *QueryAuditTaskResponseBodyData {
+	s.Content = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetResponse(v *QueryAuditTaskResponseBodyDataResponse) *QueryAuditTaskResponseBodyData {
+	s.Response = v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetStatus(v string) *QueryAuditTaskResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetTaskStatus(v int32) *QueryAuditTaskResponseBodyData {
+	s.TaskStatus = &v
+	return s
+}
+
+type QueryAuditTaskResponseBodyDataResponse struct {
+	Header  *QueryAuditTaskResponseBodyDataResponseHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *QueryAuditTaskResponseBodyDataResponsePayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+}
+
+func (s QueryAuditTaskResponseBodyDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponse) SetHeader(v *QueryAuditTaskResponseBodyDataResponseHeader) *QueryAuditTaskResponseBodyDataResponse {
+	s.Header = v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponse) SetPayload(v *QueryAuditTaskResponseBodyDataResponsePayload) *QueryAuditTaskResponseBodyDataResponse {
+	s.Payload = v
+	return s
+}
+
+type QueryAuditTaskResponseBodyDataResponseHeader struct {
+	// example:
+	//
+	// DataNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// 数据不存在
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	// example:
+	//
+	// 49eab783-9172-487a-b9df-c6372c47392c
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 896b733535274d28b1a61c78bc145217
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s QueryAuditTaskResponseBodyDataResponseHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyDataResponseHeader) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponseHeader) SetErrorCode(v string) *QueryAuditTaskResponseBodyDataResponseHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponseHeader) SetErrorMessage(v string) *QueryAuditTaskResponseBodyDataResponseHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponseHeader) SetEvent(v string) *QueryAuditTaskResponseBodyDataResponseHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponseHeader) SetSessionId(v string) *QueryAuditTaskResponseBodyDataResponseHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponseHeader) SetTaskId(v string) *QueryAuditTaskResponseBodyDataResponseHeader {
+	s.TaskId = &v
+	return s
+}
+
+type QueryAuditTaskResponseBodyDataResponsePayload struct {
+	Output *QueryAuditTaskResponseBodyDataResponsePayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *QueryAuditTaskResponseBodyDataResponsePayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayload) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayload) SetOutput(v *QueryAuditTaskResponseBodyDataResponsePayloadOutput) *QueryAuditTaskResponseBodyDataResponsePayload {
+	s.Output = v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayload) SetUsage(v *QueryAuditTaskResponseBodyDataResponsePayloadUsage) *QueryAuditTaskResponseBodyDataResponsePayload {
+	s.Usage = v
+	return s
+}
+
+type QueryAuditTaskResponseBodyDataResponsePayloadOutput struct {
+	// example:
+	//
+	// x\\"x\\"x
+	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayloadOutput) SetText(v string) *QueryAuditTaskResponseBodyDataResponsePayloadOutput {
+	s.Text = &v
+	return s
+}
+
+type QueryAuditTaskResponseBodyDataResponsePayloadUsage struct {
+	// example:
+	//
+	// 200
+	InputTokens *int32 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int32 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 300
+	TotalTokens *int32 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponseBodyDataResponsePayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayloadUsage) SetInputTokens(v int32) *QueryAuditTaskResponseBodyDataResponsePayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayloadUsage) SetOutputTokens(v int32) *QueryAuditTaskResponseBodyDataResponsePayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyDataResponsePayloadUsage) SetTotalTokens(v int32) *QueryAuditTaskResponseBodyDataResponsePayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type QueryAuditTaskResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryAuditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryAuditTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryAuditTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryAuditTaskResponse) SetHeaders(v map[string]*string) *QueryAuditTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryAuditTaskResponse) SetStatusCode(v int32) *QueryAuditTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponse) SetBody(v *QueryAuditTaskResponseBody) *QueryAuditTaskResponse {
+	s.Body = v
+	return s
+}
+
 type RunAbbreviationContentRequest struct {
 	// This parameter is required.
 	//
@@ -40913,6 +41391,166 @@ func (s *SubmitAsyncTaskResponse) SetBody(v *SubmitAsyncTaskResponseBody) *Submi
 	return s
 }
 
+type SubmitAuditTaskRequest struct {
+	// example:
+	//
+	// xxxx
+	ArticleId   *string `json:"ArticleId,omitempty" xml:"ArticleId,omitempty"`
+	Content     *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	HtmlContent *string `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// xxxx
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s SubmitAuditTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAuditTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAuditTaskRequest) SetArticleId(v string) *SubmitAuditTaskRequest {
+	s.ArticleId = &v
+	return s
+}
+
+func (s *SubmitAuditTaskRequest) SetContent(v string) *SubmitAuditTaskRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SubmitAuditTaskRequest) SetHtmlContent(v string) *SubmitAuditTaskRequest {
+	s.HtmlContent = &v
+	return s
+}
+
+func (s *SubmitAuditTaskRequest) SetTitle(v string) *SubmitAuditTaskRequest {
+	s.Title = &v
+	return s
+}
+
+func (s *SubmitAuditTaskRequest) SetWorkspaceId(v string) *SubmitAuditTaskRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type SubmitAuditTaskResponseBody struct {
+	// example:
+	//
+	// DataNotExists
+	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *SubmitAuditTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 400
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// xxxxx
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitAuditTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAuditTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAuditTaskResponseBody) SetCode(v string) *SubmitAuditTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubmitAuditTaskResponseBody) SetData(v *SubmitAuditTaskResponseBodyData) *SubmitAuditTaskResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SubmitAuditTaskResponseBody) SetHttpStatusCode(v int32) *SubmitAuditTaskResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitAuditTaskResponseBody) SetMessage(v string) *SubmitAuditTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SubmitAuditTaskResponseBody) SetRequestId(v string) *SubmitAuditTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitAuditTaskResponseBody) SetSuccess(v bool) *SubmitAuditTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitAuditTaskResponseBodyData struct {
+	// example:
+	//
+	// xx
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s SubmitAuditTaskResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAuditTaskResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAuditTaskResponseBodyData) SetTaskId(v string) *SubmitAuditTaskResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type SubmitAuditTaskResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitAuditTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitAuditTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitAuditTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitAuditTaskResponse) SetHeaders(v map[string]*string) *SubmitAuditTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitAuditTaskResponse) SetStatusCode(v int32) *SubmitAuditTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitAuditTaskResponse) SetBody(v *SubmitAuditTaskResponseBody) *SubmitAuditTaskResponse {
+	s.Body = v
+	return s
+}
+
 type SubmitCustomHotTopicBroadcastJobRequest struct {
 	// This parameter is required.
 	HotTopicBroadcastConfig *SubmitCustomHotTopicBroadcastJobRequestHotTopicBroadcastConfig `json:"HotTopicBroadcastConfig,omitempty" xml:"HotTopicBroadcastConfig,omitempty" type:"Struct"`
@@ -45831,6 +46469,74 @@ func (client *Client) CancelAsyncTask(request *CancelAsyncTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelAsyncTaskResponse{}
 	_body, _err := client.CancelAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消审核任务
+//
+// @param request - CancelAuditTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CancelAuditTaskResponse
+func (client *Client) CancelAuditTaskWithOptions(request *CancelAuditTaskRequest, runtime *util.RuntimeOptions) (_result *CancelAuditTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticleId)) {
+		body["ArticleId"] = request.ArticleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentAuditTaskId)) {
+		body["ContentAuditTaskId"] = request.ContentAuditTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelAuditTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelAuditTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 取消审核任务
+//
+// @param request - CancelAuditTaskRequest
+//
+// @return CancelAuditTaskResponse
+func (client *Client) CancelAuditTask(request *CancelAuditTaskRequest) (_result *CancelAuditTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelAuditTaskResponse{}
+	_body, _err := client.CancelAuditTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52096,6 +52802,74 @@ func (client *Client) QueryAsyncTask(request *QueryAsyncTaskRequest) (_result *Q
 
 // Summary:
 //
+// 查询审核结果
+//
+// @param request - QueryAuditTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAuditTaskResponse
+func (client *Client) QueryAuditTaskWithOptions(request *QueryAuditTaskRequest, runtime *util.RuntimeOptions) (_result *QueryAuditTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticleId)) {
+		body["ArticleId"] = request.ArticleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentAuditTaskId)) {
+		body["ContentAuditTaskId"] = request.ContentAuditTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAuditTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryAuditTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询审核结果
+//
+// @param request - QueryAuditTaskRequest
+//
+// @return QueryAuditTaskResponse
+func (client *Client) QueryAuditTask(request *QueryAuditTaskRequest) (_result *QueryAuditTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryAuditTaskResponse{}
+	_body, _err := client.QueryAuditTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 内容缩写
 //
 // @param request - RunAbbreviationContentRequest
@@ -55219,6 +55993,82 @@ func (client *Client) SubmitAsyncTask(request *SubmitAsyncTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitAsyncTaskResponse{}
 	_body, _err := client.SubmitAsyncTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交审核任务
+//
+// @param request - SubmitAuditTaskRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAuditTaskResponse
+func (client *Client) SubmitAuditTaskWithOptions(request *SubmitAuditTaskRequest, runtime *util.RuntimeOptions) (_result *SubmitAuditTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArticleId)) {
+		body["ArticleId"] = request.ArticleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HtmlContent)) {
+		body["HtmlContent"] = request.HtmlContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		body["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitAuditTask"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitAuditTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 提交审核任务
+//
+// @param request - SubmitAuditTaskRequest
+//
+// @return SubmitAuditTaskResponse
+func (client *Client) SubmitAuditTask(request *SubmitAuditTaskRequest) (_result *SubmitAuditTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitAuditTaskResponse{}
+	_body, _err := client.SubmitAuditTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
