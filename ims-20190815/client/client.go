@@ -12,9 +12,9 @@ import (
 type AddClientIdToOIDCProviderRequest struct {
 	// The client ID that you want to add.
 	//
-	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/).
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
 	//
-	// The client ID can be up to 64 characters in length.
+	// The client ID can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -237,11 +237,11 @@ func (s *AddClientIdToOIDCProviderResponse) SetBody(v *AddClientIdToOIDCProvider
 }
 
 type AddFingerprintToOIDCProviderRequest struct {
-	// The fingerprint of the HTTPS certificate.
+	// The fingerprint of the HTTPS CA certificate.
 	//
 	// The fingerprint can contain letters and digits.
 	//
-	// The fingerprint can be up to 40 characters in length.
+	// The fingerprint can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -499,7 +499,7 @@ func (s *AddUserToGroupRequest) SetUserPrincipalName(v string) *AddUserToGroupRe
 }
 
 type AddUserToGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -613,7 +613,7 @@ func (s *BindMFADeviceRequest) SetUserPrincipalName(v string) *BindMFADeviceRequ
 }
 
 type BindMFADeviceResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -811,13 +811,13 @@ type CreateAccessKeyResponseBodyAccessKey struct {
 	//
 	// example:
 	//
-	// LTAI4G3HaMmeHpay2gcq****
+	// yourAccessKeyID
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The AccessKey secret.
 	//
 	// example:
 	//
-	// Y3MSLE6OgizS4qrz5LVFDoyZEL****
+	// yourAccessKeySecret
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	// The time when the AccessKey pair was created.
 	//
@@ -919,9 +919,9 @@ func (s *CreateAppSecretRequest) SetAppId(v string) *CreateAppSecretRequest {
 }
 
 type CreateAppSecretResponseBody struct {
-	// The information of the application secret.
+	// The details of the application secret.
 	AppSecret *CreateAppSecretResponseBodyAppSecret `json:"AppSecret,omitempty" xml:"AppSecret,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -960,7 +960,7 @@ type CreateAppSecretResponseBodyAppSecret struct {
 	//
 	// 2efd5004-005c-4f05-83c6-5b1dd176****
 	AppSecretId *string `json:"AppSecretId,omitempty" xml:"AppSecretId,omitempty"`
-	// The content of the application secret. This value can be used as the client secret for open authorization.
+	// The content of the application secret. This value can be used as the client secret for open authorization (OAuth).
 	//
 	// example:
 	//
@@ -1900,11 +1900,11 @@ func (s *CreateLoginProfileResponse) SetBody(v *CreateLoginProfileResponseBody) 
 }
 
 type CreateOIDCProviderRequest struct {
-	// The ID of the client, which is provided by the external IdP Okta. If you want to specify multiple client IDs, separate the client IDs with commas (,).
+	// The ID of the client, which is provided by the external IdP. If you want to specify multiple client IDs, separate the client IDs with commas (,).
 	//
-	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
 	//
-	// The client ID can be up to 64 characters in length.
+	// The client ID can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -1918,11 +1918,11 @@ type CreateOIDCProviderRequest struct {
 	//
 	// This is an OIDC Provider.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The fingerprint of the HTTPS certificate, which is provided by the external IdP Okta. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
+	// The fingerprint of the HTTPS CA certificate, which is provided by the external IdP. If you want to specify multiple fingerprints, separate the fingerprints with commas (,).
 	//
 	// The fingerprint can contain letters and digits.
 	//
-	// The fingerprint can be up to 40 characters in length.
+	// The fingerprint can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -2867,7 +2867,7 @@ type DeleteAccessKeyRequest struct {
 	//
 	// example:
 	//
-	// LTAI4GFTgcR8m8cZQDTH****
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The logon name of the RAM user.
 	//
@@ -2944,6 +2944,94 @@ func (s *DeleteAccessKeyResponse) SetStatusCode(v int32) *DeleteAccessKeyRespons
 }
 
 func (s *DeleteAccessKeyResponse) SetBody(v *DeleteAccessKeyResponseBody) *DeleteAccessKeyResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteAccessKeyInRecycleBinRequest struct {
+	// The AccessKey ID of the RAM user.
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the RAM user.
+	//
+	// > - If you use an Alibaba Cloud account to call the operation, you must specify the parameter.
+	//
+	// > - If you use a RAM user to call the operation, you can leave the parameter empty. In this case, the ID of the RAM user is used by default.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DeleteAccessKeyInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessKeyInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessKeyInRecycleBinRequest) SetUserAccessKeyId(v string) *DeleteAccessKeyInRecycleBinRequest {
+	s.UserAccessKeyId = &v
+	return s
+}
+
+func (s *DeleteAccessKeyInRecycleBinRequest) SetUserId(v string) *DeleteAccessKeyInRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type DeleteAccessKeyInRecycleBinResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccessKeyInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessKeyInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessKeyInRecycleBinResponseBody) SetRequestId(v string) *DeleteAccessKeyInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccessKeyInRecycleBinResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteAccessKeyInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteAccessKeyInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessKeyInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessKeyInRecycleBinResponse) SetHeaders(v map[string]*string) *DeleteAccessKeyInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessKeyInRecycleBinResponse) SetStatusCode(v int32) *DeleteAccessKeyInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccessKeyInRecycleBinResponse) SetBody(v *DeleteAccessKeyInRecycleBinResponseBody) *DeleteAccessKeyInRecycleBinResponse {
 	s.Body = v
 	return s
 }
@@ -3333,10 +3421,14 @@ func (s *DeleteOIDCProviderResponse) SetBody(v *DeleteOIDCProviderResponseBody) 
 }
 
 type DeletePasskeyRequest struct {
+	// The ID of the passkey.
+	//
 	// example:
 	//
 	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
 	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The logon name of the RAM user.
+	//
 	// example:
 	//
 	// test@example.onaliyun.com
@@ -3362,6 +3454,8 @@ func (s *DeletePasskeyRequest) SetUserPrincipalName(v string) *DeletePasskeyRequ
 }
 
 type DeletePasskeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 8A1673AA-5DB3-5AFB-8758-AF9EC2889259
@@ -3573,6 +3667,79 @@ func (s *DeleteUserResponse) SetBody(v *DeleteUserResponseBody) *DeleteUserRespo
 	return s
 }
 
+type DeleteUserInRecycleBinRequest struct {
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DeleteUserInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserInRecycleBinRequest) SetUserId(v string) *DeleteUserInRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type DeleteUserInRecycleBinResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteUserInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserInRecycleBinResponseBody) SetRequestId(v string) *DeleteUserInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteUserInRecycleBinResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteUserInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteUserInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUserInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUserInRecycleBinResponse) SetHeaders(v map[string]*string) *DeleteUserInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUserInRecycleBinResponse) SetStatusCode(v int32) *DeleteUserInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUserInRecycleBinResponse) SetBody(v *DeleteUserInRecycleBinResponseBody) *DeleteUserInRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVirtualMFADeviceRequest struct {
 	// The serial number of the MFA device.
 	//
@@ -3644,6 +3811,156 @@ func (s *DeleteVirtualMFADeviceResponse) SetStatusCode(v int32) *DeleteVirtualMF
 }
 
 func (s *DeleteVirtualMFADeviceResponse) SetBody(v *DeleteVirtualMFADeviceResponseBody) *DeleteVirtualMFADeviceResponse {
+	s.Body = v
+	return s
+}
+
+type DeprovisionApplicationRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeprovisionApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionApplicationRequest) SetAppId(v string) *DeprovisionApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeprovisionApplicationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 85836703-8D4F-485F-9726-4D1C730F957E
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeprovisionApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionApplicationResponseBody) SetRequestId(v string) *DeprovisionApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeprovisionApplicationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeprovisionApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeprovisionApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionApplicationResponse) SetHeaders(v map[string]*string) *DeprovisionApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeprovisionApplicationResponse) SetStatusCode(v int32) *DeprovisionApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeprovisionApplicationResponse) SetBody(v *DeprovisionApplicationResponseBody) *DeprovisionApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type DeprovisionExternalApplicationRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 417273362044613****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s DeprovisionExternalApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionExternalApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionExternalApplicationRequest) SetAppId(v string) *DeprovisionExternalApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+type DeprovisionExternalApplicationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1C2-3AB045D1AE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeprovisionExternalApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionExternalApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionExternalApplicationResponseBody) SetRequestId(v string) *DeprovisionExternalApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeprovisionExternalApplicationResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeprovisionExternalApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeprovisionExternalApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeprovisionExternalApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeprovisionExternalApplicationResponse) SetHeaders(v map[string]*string) *DeprovisionExternalApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeprovisionExternalApplicationResponse) SetStatusCode(v int32) *DeprovisionExternalApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeprovisionExternalApplicationResponse) SetBody(v *DeprovisionExternalApplicationResponseBody) *DeprovisionExternalApplicationResponse {
 	s.Body = v
 	return s
 }
@@ -3791,6 +4108,248 @@ func (s *GenerateCredentialReportResponse) SetBody(v *GenerateCredentialReportRe
 	return s
 }
 
+type GenerateGovernanceReportResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 492E130C-76D3-55D5-BE5C-C023E431369A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The report generation status. Valid values:
+	//
+	// 	- Started: The system starts to generate a governance report.
+	//
+	// 	- Progressing: The system is generating a governance report.
+	//
+	// 	- Completed: A governance report is generated.
+	//
+	// example:
+	//
+	// Started
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GenerateGovernanceReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateGovernanceReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateGovernanceReportResponseBody) SetRequestId(v string) *GenerateGovernanceReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateGovernanceReportResponseBody) SetState(v string) *GenerateGovernanceReportResponseBody {
+	s.State = &v
+	return s
+}
+
+type GenerateGovernanceReportResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GenerateGovernanceReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GenerateGovernanceReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateGovernanceReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateGovernanceReportResponse) SetHeaders(v map[string]*string) *GenerateGovernanceReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateGovernanceReportResponse) SetStatusCode(v int32) *GenerateGovernanceReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateGovernanceReportResponse) SetBody(v *GenerateGovernanceReportResponseBody) *GenerateGovernanceReportResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccessKeyInfoInRecycleBinRequest struct {
+	// The AccessKey ID of the Resource Access Management (RAM) user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+}
+
+func (s GetAccessKeyInfoInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessKeyInfoInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessKeyInfoInRecycleBinRequest) SetUserAccessKeyId(v string) *GetAccessKeyInfoInRecycleBinRequest {
+	s.UserAccessKeyId = &v
+	return s
+}
+
+type GetAccessKeyInfoInRecycleBinResponseBody struct {
+	// The information about the AccessKey pair.
+	AccessKey *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBody) SetAccessKey(v *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) *GetAccessKeyInfoInRecycleBinResponseBody {
+	s.AccessKey = v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBody) SetRequestId(v string) *GetAccessKeyInfoInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccessKeyInfoInRecycleBinResponseBodyAccessKey struct {
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// LTAI*******************
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The time when the AccessKey pair was created.
+	//
+	// example:
+	//
+	// 2020-10-12T09:12:00Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the AccessKey pair will be permanently deleted from the recycle bin.
+	//
+	// example:
+	//
+	// 2020-11-12T10:12:00Z
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The time when the AccessKey pair was deleted and moved to the recycle bin.
+	//
+	// example:
+	//
+	// 2020-10-12T10:12:00Z
+	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// Indicates whether the RAM user to which the AccessKey pair belongs is in the recycle bin. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	UserRecycled *bool `json:"UserRecycled,omitempty" xml:"UserRecycled,omitempty"`
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetAccessKeyId(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetCreateDate(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetDeleteDate(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.DeleteDate = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetRecycleDate(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.RecycleDate = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetUserId(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetUserPrincipalName(v string) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.UserPrincipalName = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey) SetUserRecycled(v bool) *GetAccessKeyInfoInRecycleBinResponseBodyAccessKey {
+	s.UserRecycled = &v
+	return s
+}
+
+type GetAccessKeyInfoInRecycleBinResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetAccessKeyInfoInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccessKeyInfoInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponse) SetHeaders(v map[string]*string) *GetAccessKeyInfoInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponse) SetStatusCode(v int32) *GetAccessKeyInfoInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAccessKeyInfoInRecycleBinResponse) SetBody(v *GetAccessKeyInfoInRecycleBinResponseBody) *GetAccessKeyInfoInRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
 type GetAccessKeyLastUsedRequest struct {
 	// The ID of the AccessKey pair that you want to query.
 	//
@@ -3798,7 +4357,7 @@ type GetAccessKeyLastUsedRequest struct {
 	//
 	// example:
 	//
-	// LTAI4GFTgcR8m8cZQDTH****
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The logon name of the RAM user.
 	//
@@ -4199,7 +4758,7 @@ type GetAccountSummaryResponseBody struct {
 	//
 	// 81313F5E-3C85-478F-BCC9-E1B70E4556DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The overview information of the Alibaba Cloud account.
+	// The overview information about the Alibaba Cloud account.
 	SummaryMap *GetAccountSummaryResponseBodySummaryMap `json:"SummaryMap,omitempty" xml:"SummaryMap,omitempty" type:"Struct"`
 }
 
@@ -4264,6 +4823,8 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 20
 	AttachedSystemPoliciesPerUserQuota *int32 `json:"AttachedSystemPoliciesPerUserQuota,omitempty" xml:"AttachedSystemPoliciesPerUserQuota,omitempty"`
+	// The maximum number of network access control policies that can be configured for an Alibaba Cloud account or AccessKey pair.
+	//
 	// example:
 	//
 	// 8
@@ -4286,6 +4847,8 @@ type GetAccountSummaryResponseBodySummaryMap struct {
 	//
 	// 50
 	GroupsQuota *int32 `json:"GroupsQuota,omitempty" xml:"GroupsQuota,omitempty"`
+	// The maximum number of IP addresses that can be specified in an account-level AccessKey pair-based or AccessKey pair-level policy for network access control.
+	//
 	// example:
 	//
 	// 50
@@ -4996,6 +5559,240 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 	return s
 }
 
+type GetApplicationProvisionInfoRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetApplicationProvisionInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoRequest) SetAppId(v string) *GetApplicationProvisionInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetApplicationProvisionInfoResponseBody struct {
+	// The installation information about the application.
+	ApplicationProvisionInfo *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 936E1D9C-157D-45BD-8A3B-81C0716EB078
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetApplicationProvisionInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponseBody) SetApplicationProvisionInfo(v *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) *GetApplicationProvisionInfoResponseBody {
+	s.ApplicationProvisionInfo = v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBody) SetRequestId(v string) *GetApplicationProvisionInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo struct {
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 177242285274****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// GiteePrd
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the scopes of permissions that are granted to the application.
+	DelegatedScope *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The update time. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAccountId(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAppId(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetAppName(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetCreateDate(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetDelegatedScope(v *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetDisplayName(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo) SetUpdateDate(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfo {
+	s.UpdateDate = &v
+	return s
+}
+
+type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope struct {
+	// The information about the scopes of permissions that are granted to the application.
+	PredefinedScopes *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope) SetPredefinedScopes(v *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) SetPredefinedScope(v []*GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission scope.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission scope.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *GetApplicationProvisionInfoResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type GetApplicationProvisionInfoResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetApplicationProvisionInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetApplicationProvisionInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationProvisionInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationProvisionInfoResponse) SetHeaders(v map[string]*string) *GetApplicationProvisionInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponse) SetStatusCode(v int32) *GetApplicationProvisionInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetApplicationProvisionInfoResponse) SetBody(v *GetApplicationProvisionInfoResponseBody) *GetApplicationProvisionInfoResponse {
+	s.Body = v
+	return s
+}
+
 type GetCredentialReportRequest struct {
 	// The number of entries per page. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
 	//
@@ -5190,6 +5987,574 @@ func (s *GetDefaultDomainResponse) SetStatusCode(v int32) *GetDefaultDomainRespo
 }
 
 func (s *GetDefaultDomainResponse) SetBody(v *GetDefaultDomainResponseBody) *GetDefaultDomainResponse {
+	s.Body = v
+	return s
+}
+
+type GetExternalApplicationRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 472457090344041****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+}
+
+func (s GetExternalApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationRequest) SetAppId(v string) *GetExternalApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+type GetExternalApplicationResponseBody struct {
+	// The information about the external application.
+	ExternalApplication *GetExternalApplicationResponseBodyExternalApplication `json:"ExternalApplication,omitempty" xml:"ExternalApplication,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E4C4D1BD-2558-5BD1-8C36-A5D7FB174A55
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetExternalApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponseBody) SetExternalApplication(v *GetExternalApplicationResponseBodyExternalApplication) *GetExternalApplicationResponseBody {
+	s.ExternalApplication = v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBody) SetRequestId(v string) *GetExternalApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetExternalApplicationResponseBodyExternalApplication struct {
+	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// GiteePrd@app.153082740420****.onaliyun.com
+	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1737534146000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the permissions that are granted on the application.
+	DelegatedScope *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 407426893752729****
+	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
+	// The ID of the Alibaba Cloud account for which the application is installed.
+	//
+	// example:
+	//
+	// 173082740420****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time of the application. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1737534146000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplication) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetAppPrincipalName(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.AppPrincipalName = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetCreateDate(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetDelegatedScope(v *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) *GetExternalApplicationResponseBodyExternalApplication {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetDisplayName(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetForeignAppId(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.ForeignAppId = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetTenantId(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.TenantId = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplication) SetUpdateDate(v string) *GetExternalApplicationResponseBodyExternalApplication {
+	s.UpdateDate = &v
+	return s
+}
+
+type GetExternalApplicationResponseBodyExternalApplicationDelegatedScope struct {
+	// The information about the permissions that are granted on the application.
+	PredefinedScopes *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope) SetPredefinedScopes(v *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) *GetExternalApplicationResponseBodyExternalApplicationDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) SetPredefinedScope(v []*GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *GetExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type GetExternalApplicationResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetExternalApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetExternalApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExternalApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExternalApplicationResponse) SetHeaders(v map[string]*string) *GetExternalApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExternalApplicationResponse) SetStatusCode(v int32) *GetExternalApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetExternalApplicationResponse) SetBody(v *GetExternalApplicationResponseBody) *GetExternalApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type GetGovernanceItemReportRequest struct {
+	// example:
+	//
+	// SSOLoginEnabled
+	GovernanceItemType *string `json:"GovernanceItemType,omitempty" xml:"GovernanceItemType,omitempty"`
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// example:
+	//
+	// 1000
+	MaxItems *string `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+}
+
+func (s GetGovernanceItemReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportRequest) SetGovernanceItemType(v string) *GetGovernanceItemReportRequest {
+	s.GovernanceItemType = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportRequest) SetMarker(v string) *GetGovernanceItemReportRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportRequest) SetMaxItems(v string) *GetGovernanceItemReportRequest {
+	s.MaxItems = &v
+	return s
+}
+
+type GetGovernanceItemReportResponseBody struct {
+	ColumnsSchema *GetGovernanceItemReportResponseBodyColumnsSchema `json:"ColumnsSchema,omitempty" xml:"ColumnsSchema,omitempty" type:"Struct"`
+	ColumnsValue  *GetGovernanceItemReportResponseBodyColumnsValue  `json:"ColumnsValue,omitempty" xml:"ColumnsValue,omitempty" type:"Struct"`
+	// example:
+	//
+	// 2020-10-19T15:06:52Z
+	GenerateTime *string `json:"GenerateTime,omitempty" xml:"GenerateTime,omitempty"`
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// example:
+	//
+	// Number
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// example:
+	//
+	// 100
+	MetricValue interface{} `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+	// example:
+	//
+	// F2CE9688-AA85-5F23-8C22-0EC23473405F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetGovernanceItemReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetColumnsSchema(v *GetGovernanceItemReportResponseBodyColumnsSchema) *GetGovernanceItemReportResponseBody {
+	s.ColumnsSchema = v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetColumnsValue(v *GetGovernanceItemReportResponseBodyColumnsValue) *GetGovernanceItemReportResponseBody {
+	s.ColumnsValue = v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetGenerateTime(v string) *GetGovernanceItemReportResponseBody {
+	s.GenerateTime = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetIsTruncated(v bool) *GetGovernanceItemReportResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetMarker(v string) *GetGovernanceItemReportResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetMetricType(v string) *GetGovernanceItemReportResponseBody {
+	s.MetricType = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetMetricValue(v interface{}) *GetGovernanceItemReportResponseBody {
+	s.MetricValue = v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBody) SetRequestId(v string) *GetGovernanceItemReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetGovernanceItemReportResponseBodyColumnsSchema struct {
+	ColumnSchema []*GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema `json:"ColumnSchema,omitempty" xml:"ColumnSchema,omitempty" type:"Repeated"`
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsSchema) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponseBodyColumnsSchema) SetColumnSchema(v []*GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema) *GetGovernanceItemReportResponseBodyColumnsSchema {
+	s.ColumnSchema = v
+	return s
+}
+
+type GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema struct {
+	// example:
+	//
+	// UserPrincipalName
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// String
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema) SetColumnName(v string) *GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema) SetColumnType(v string) *GetGovernanceItemReportResponseBodyColumnsSchemaColumnSchema {
+	s.ColumnType = &v
+	return s
+}
+
+type GetGovernanceItemReportResponseBodyColumnsValue struct {
+	ColumnRow []*GetGovernanceItemReportResponseBodyColumnsValueColumnRow `json:"ColumnRow,omitempty" xml:"ColumnRow,omitempty" type:"Repeated"`
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsValue) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponseBodyColumnsValue) SetColumnRow(v []*GetGovernanceItemReportResponseBodyColumnsValueColumnRow) *GetGovernanceItemReportResponseBodyColumnsValue {
+	s.ColumnRow = v
+	return s
+}
+
+type GetGovernanceItemReportResponseBodyColumnsValueColumnRow struct {
+	ColumnValue []interface{} `json:"ColumnValue,omitempty" xml:"ColumnValue,omitempty" type:"Repeated"`
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsValueColumnRow) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponseBodyColumnsValueColumnRow) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponseBodyColumnsValueColumnRow) SetColumnValue(v []interface{}) *GetGovernanceItemReportResponseBodyColumnsValueColumnRow {
+	s.ColumnValue = v
+	return s
+}
+
+type GetGovernanceItemReportResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGovernanceItemReportResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGovernanceItemReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceItemReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceItemReportResponse) SetHeaders(v map[string]*string) *GetGovernanceItemReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponse) SetStatusCode(v int32) *GetGovernanceItemReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGovernanceItemReportResponse) SetBody(v *GetGovernanceItemReportResponseBody) *GetGovernanceItemReportResponse {
+	s.Body = v
+	return s
+}
+
+type GetGovernanceReportStatusResponseBody struct {
+	GovernanceItemsStatus *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus `json:"GovernanceItemsStatus,omitempty" xml:"GovernanceItemsStatus,omitempty" type:"Struct"`
+	// example:
+	//
+	// F2CE9688-AA85-5F23-8C22-0EC23473405A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// Progressing
+	WholeReportStatus *string `json:"WholeReportStatus,omitempty" xml:"WholeReportStatus,omitempty"`
+}
+
+func (s GetGovernanceReportStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceReportStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceReportStatusResponseBody) SetGovernanceItemsStatus(v *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) *GetGovernanceReportStatusResponseBody {
+	s.GovernanceItemsStatus = v
+	return s
+}
+
+func (s *GetGovernanceReportStatusResponseBody) SetRequestId(v string) *GetGovernanceReportStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetGovernanceReportStatusResponseBody) SetWholeReportStatus(v string) *GetGovernanceReportStatusResponseBody {
+	s.WholeReportStatus = &v
+	return s
+}
+
+type GetGovernanceReportStatusResponseBodyGovernanceItemsStatus struct {
+	GovernanceItemStatus []*GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus `json:"GovernanceItemStatus,omitempty" xml:"GovernanceItemStatus,omitempty" type:"Repeated"`
+}
+
+func (s GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus) SetGovernanceItemStatus(v []*GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus) *GetGovernanceReportStatusResponseBodyGovernanceItemsStatus {
+	s.GovernanceItemStatus = v
+	return s
+}
+
+type GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus struct {
+	// example:
+	//
+	// AccountRecentUsingAccessKey
+	GovernanceItem *string `json:"GovernanceItem,omitempty" xml:"GovernanceItem,omitempty"`
+	// example:
+	//
+	// Progressing
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus) SetGovernanceItem(v string) *GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus {
+	s.GovernanceItem = &v
+	return s
+}
+
+func (s *GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus) SetStatus(v string) *GetGovernanceReportStatusResponseBodyGovernanceItemsStatusGovernanceItemStatus {
+	s.Status = &v
+	return s
+}
+
+type GetGovernanceReportStatusResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetGovernanceReportStatusResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetGovernanceReportStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetGovernanceReportStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetGovernanceReportStatusResponse) SetHeaders(v map[string]*string) *GetGovernanceReportStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetGovernanceReportStatusResponse) SetStatusCode(v int32) *GetGovernanceReportStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetGovernanceReportStatusResponse) SetBody(v *GetGovernanceReportStatusResponseBody) *GetGovernanceReportStatusResponse {
 	s.Body = v
 	return s
 }
@@ -5405,6 +6770,8 @@ func (s *GetLoginProfileResponseBody) SetRequestId(v string) *GetLoginProfileRes
 }
 
 type GetLoginProfileResponseBodyLoginProfile struct {
+	// Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
+	//
 	// example:
 	//
 	// true
@@ -6128,7 +7495,8 @@ type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	// The MFA preference.
 	MFAPreference *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	MaxIdleDays   *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays   `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
+	// The maximum idle periods. Unit: days.
+	MaxIdleDays *GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
 	// The personal information preference.
 	PersonalInfoPreference *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 	// The MFA method preference.
@@ -6209,7 +7577,16 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	// example:
 	//
 	// true
-	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Indicates whether a RAM user can use a passkey for logon. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Indicates whether RAM users can remember the multi-factor authentication (MFA) devices for seven days. Valid values:
 	//
@@ -6245,6 +7622,8 @@ type GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	//
 	// adaptive
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether to enable MFA for RAM users who initiated unusual logons. Valid values:
 	//
 	// 	- autonomous (default): yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA.
@@ -6327,10 +7706,14 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type GetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	// The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
+	//
 	// example:
 	//
 	// 730
 	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
+	// The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. Single sign-on (SSO) is not involved. The default value is 730. You cannot change the value.
+	//
 	// example:
 	//
 	// 730
@@ -6435,7 +7818,7 @@ type GetUserRequest struct {
 	//
 	// example:
 	//
-	// LTAI4GFTgcR8m8cZQDTH****
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The ID of the RAM user.
 	//
@@ -6578,6 +7961,12 @@ type GetUserResponseBodyUser struct {
 	//
 	// 20732900249392****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The username of the RAM user, which is the prefix of the logon name of the RAM user.
+	//
+	// example:
+	//
+	// test
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 	// The logon name of the RAM user.
 	//
 	// example:
@@ -6641,6 +8030,11 @@ func (s *GetUserResponseBodyUser) SetUpdateDate(v string) *GetUserResponseBodyUs
 
 func (s *GetUserResponseBodyUser) SetUserId(v string) *GetUserResponseBodyUser {
 	s.UserId = &v
+	return s
+}
+
+func (s *GetUserResponseBodyUser) SetUserName(v string) *GetUserResponseBodyUser {
+	s.UserName = &v
 	return s
 }
 
@@ -6728,10 +8122,182 @@ func (s *GetUserResponse) SetBody(v *GetUserResponseBody) *GetUserResponse {
 	return s
 }
 
+type GetUserInRecycleBinRequest struct {
+	// The AccessKey ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the RAM user.
+	//
+	// >  You must specify only one of the following parameters: `UserId` and `UserAccessKeyId`.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetUserInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInRecycleBinRequest) SetUserAccessKeyId(v string) *GetUserInRecycleBinRequest {
+	s.UserAccessKeyId = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinRequest) SetUserId(v string) *GetUserInRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetUserInRecycleBinResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM user.
+	User *GetUserInRecycleBinResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
+}
+
+func (s GetUserInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInRecycleBinResponseBody) SetRequestId(v string) *GetUserInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBody) SetUser(v *GetUserInRecycleBinResponseBodyUser) *GetUserInRecycleBinResponseBody {
+	s.User = v
+	return s
+}
+
+type GetUserInRecycleBinResponseBodyUser struct {
+	// The time when the RAM user was created.
+	//
+	// example:
+	//
+	// 2020-10-11T09:12:00Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the RAM user will be permanently deleted from the recycle bin.
+	//
+	// example:
+	//
+	// 2020-11-12T09:12:00Z
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// test
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the RAM user was deleted and moved to the recycle bin.
+	//
+	// example:
+	//
+	// 2020-10-12T09:12:00Z
+	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s GetUserInRecycleBinResponseBodyUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInRecycleBinResponseBodyUser) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetCreateDate(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetDeleteDate(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.DeleteDate = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetDisplayName(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetRecycleDate(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.RecycleDate = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetUserId(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponseBodyUser) SetUserPrincipalName(v string) *GetUserInRecycleBinResponseBodyUser {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type GetUserInRecycleBinResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetUserInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetUserInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserInRecycleBinResponse) SetHeaders(v map[string]*string) *GetUserInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponse) SetStatusCode(v int32) *GetUserInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetUserInRecycleBinResponse) SetBody(v *GetUserInRecycleBinResponseBody) *GetUserInRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
 type GetUserMFAInfoRequest struct {
 	// The logon name of the RAM user. This parameter is differently set in the following scenarios:
 	//
-	// 	- If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, the information of the MFA device that is bound to the RAM user is queried.
+	// 	- If you use a RAM user to call this operation, this parameter can be left empty. If you do not specify this parameter, information about the MFA device that is bound to the RAM user is queried.
 	//
 	// 	- If you use an Alibaba Cloud account to call this operation, you must set this parameter to the logon name of the RAM user that you want to query.
 	//
@@ -6767,7 +8333,7 @@ type GetUserMFAInfoResponseBody struct {
 	IsMFAEnable *bool `json:"IsMFAEnable,omitempty" xml:"IsMFAEnable,omitempty"`
 	// The information about the MFA device.
 	MFADevice *GetUserMFAInfoResponseBodyMFADevice `json:"MFADevice,omitempty" xml:"MFADevice,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -6807,9 +8373,9 @@ type GetUserMFAInfoResponseBodyMFADevice struct {
 	SerialNumber *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
 	// The type of the MFA device. Valid values:
 	//
-	// 	- VMFA: virtual MFA device
+	// 	- VMFA: virtual MFA device.
 	//
-	// 	- U2F: Universal 2nd Factor (U2F) security key
+	// 	- U2F: Universal 2nd Factor (U2F) security key.
 	//
 	// example:
 	//
@@ -7180,9 +8746,9 @@ func (s *ListAccessKeysRequest) SetUserPrincipalName(v string) *ListAccessKeysRe
 }
 
 type ListAccessKeysResponseBody struct {
-	// The list of AccessKey pairs.
+	// The AccessKey pairs.
 	AccessKeys *ListAccessKeysResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -7230,7 +8796,7 @@ type ListAccessKeysResponseBodyAccessKeysAccessKey struct {
 	//
 	// example:
 	//
-	// 0wNEpMMlzy7s****
+	// LTAI*******************
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
 	// The time when the AccessKey pair was created.
 	//
@@ -7309,6 +8875,158 @@ func (s *ListAccessKeysResponse) SetStatusCode(v int32) *ListAccessKeysResponse 
 }
 
 func (s *ListAccessKeysResponse) SetBody(v *ListAccessKeysResponseBody) *ListAccessKeysResponse {
+	s.Body = v
+	return s
+}
+
+type ListAccessKeysInRecycleBinRequest struct {
+	// The ID of the Resource Access Management (RAM) user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListAccessKeysInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysInRecycleBinRequest) SetUserId(v string) *ListAccessKeysInRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListAccessKeysInRecycleBinResponseBody struct {
+	// The information about the AccessKey pairs.
+	AccessKeys *ListAccessKeysInRecycleBinResponseBodyAccessKeys `json:"AccessKeys,omitempty" xml:"AccessKeys,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAccessKeysInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBody) SetAccessKeys(v *ListAccessKeysInRecycleBinResponseBodyAccessKeys) *ListAccessKeysInRecycleBinResponseBody {
+	s.AccessKeys = v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBody) SetRequestId(v string) *ListAccessKeysInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAccessKeysInRecycleBinResponseBodyAccessKeys struct {
+	AccessKey []*ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey `json:"AccessKey,omitempty" xml:"AccessKey,omitempty" type:"Repeated"`
+}
+
+func (s ListAccessKeysInRecycleBinResponseBodyAccessKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysInRecycleBinResponseBodyAccessKeys) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeys) SetAccessKey(v []*ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) *ListAccessKeysInRecycleBinResponseBodyAccessKeys {
+	s.AccessKey = v
+	return s
+}
+
+type ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey struct {
+	// The AccessKey ID.
+	//
+	// example:
+	//
+	// LTAI*******************
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	// The time when the AccessKey pair was created.
+	//
+	// example:
+	//
+	// 2020-10-11T09:12:00Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the AccessKey pair will be permanently deleted from the recycle bin.
+	//
+	// example:
+	//
+	// 2020-11-12T09:12:00Z
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The time when the AccessKey pair was deleted and moved to the recycle bin.
+	//
+	// example:
+	//
+	// 2020-10-12T09:12:00Z
+	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+}
+
+func (s ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) SetAccessKeyId(v string) *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) SetCreateDate(v string) *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) SetDeleteDate(v string) *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey {
+	s.DeleteDate = &v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey) SetRecycleDate(v string) *ListAccessKeysInRecycleBinResponseBodyAccessKeysAccessKey {
+	s.RecycleDate = &v
+	return s
+}
+
+type ListAccessKeysInRecycleBinResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAccessKeysInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAccessKeysInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAccessKeysInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAccessKeysInRecycleBinResponse) SetHeaders(v map[string]*string) *ListAccessKeysInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponse) SetStatusCode(v int32) *ListAccessKeysInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAccessKeysInRecycleBinResponse) SetBody(v *ListAccessKeysInRecycleBinResponseBody) *ListAccessKeysInRecycleBinResponse {
 	s.Body = v
 	return s
 }
@@ -7452,6 +9170,259 @@ func (s *ListAppSecretIdsResponse) SetStatusCode(v int32) *ListAppSecretIdsRespo
 }
 
 func (s *ListAppSecretIdsResponse) SetBody(v *ListAppSecretIdsResponseBody) *ListAppSecretIdsResponse {
+	s.Body = v
+	return s
+}
+
+type ListApplicationProvisionInfosRequest struct {
+	// The source of the applications. Valid values:
+	//
+	// 	- inner: The applications are from the current account.
+	//
+	// 	- external: The applications are from other accounts.
+	//
+	// example:
+	//
+	// external
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ListApplicationProvisionInfosRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosRequest) SetSourceType(v string) *ListApplicationProvisionInfosRequest {
+	s.SourceType = &v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBody struct {
+	// The information about the installed applications.
+	ApplicationProvisionInfos *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos `json:"ApplicationProvisionInfos,omitempty" xml:"ApplicationProvisionInfos,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// E403EBFD-C997-489D-BFC7-37C05E66D67C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListApplicationProvisionInfosResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBody) SetApplicationProvisionInfos(v *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) *ListApplicationProvisionInfosResponseBody {
+	s.ApplicationProvisionInfos = v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBody) SetRequestId(v string) *ListApplicationProvisionInfosResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos struct {
+	ApplicationProvisionInfo []*ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos) SetApplicationProvisionInfo(v []*ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfos {
+	s.ApplicationProvisionInfo = v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo struct {
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 177242285274****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// GiteePrd
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the permissions that are granted to the application.
+	DelegatedScope *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The update time. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAccountId(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAppId(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetAppName(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetCreateDate(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetDelegatedScope(v *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetDisplayName(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo) SetUpdateDate(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfo {
+	s.UpdateDate = &v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope struct {
+	// The information about the permissions that are granted to the application.
+	PredefinedScopes *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope) SetPredefinedScopes(v *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes) SetPredefinedScope(v []*ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *ListApplicationProvisionInfosResponseBodyApplicationProvisionInfosApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type ListApplicationProvisionInfosResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListApplicationProvisionInfosResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListApplicationProvisionInfosResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListApplicationProvisionInfosResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListApplicationProvisionInfosResponse) SetHeaders(v map[string]*string) *ListApplicationProvisionInfosResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponse) SetStatusCode(v int32) *ListApplicationProvisionInfosResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListApplicationProvisionInfosResponse) SetBody(v *ListApplicationProvisionInfosResponseBody) *ListApplicationProvisionInfosResponse {
 	s.Body = v
 	return s
 }
@@ -7785,6 +9756,261 @@ func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *Lis
 	return s
 }
 
+type ListExternalApplicationsResponseBody struct {
+	// The information about the external applications.
+	ExternalApplications *ListExternalApplicationsResponseBodyExternalApplications `json:"ExternalApplications,omitempty" xml:"ExternalApplications,omitempty" type:"Struct"`
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results.
+	//
+	// >  This parameter is returned only when `IsTruncated` is `true`.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 936E1D9C-157D-45BD-8A3B-81C0716EB077
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListExternalApplicationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBody) SetExternalApplications(v *ListExternalApplicationsResponseBodyExternalApplications) *ListExternalApplicationsResponseBody {
+	s.ExternalApplications = v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBody) SetIsTruncated(v bool) *ListExternalApplicationsResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBody) SetMarker(v string) *ListExternalApplicationsResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBody) SetRequestId(v string) *ListExternalApplicationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListExternalApplicationsResponseBodyExternalApplications struct {
+	ExternalApplication []*ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication `json:"ExternalApplication,omitempty" xml:"ExternalApplication,omitempty" type:"Repeated"`
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplications) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplications) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplications) SetExternalApplication(v []*ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) *ListExternalApplicationsResponseBodyExternalApplications {
+	s.ExternalApplication = v
+	return s
+}
+
+type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication struct {
+	// The name of the external application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// GiteePrd@app.153082740420****.onaliyun.com
+	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	// The time when the external application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693318000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the permissions that are granted to the external application.
+	DelegatedScope *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the external application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the external application.
+	//
+	// example:
+	//
+	// 407426893752729****
+	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
+	// The ID of the Alibaba Cloud account for which the external application was installed.
+	//
+	// example:
+	//
+	// 173082740420****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time of the external application. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetAppPrincipalName(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.AppPrincipalName = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetCreateDate(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetDelegatedScope(v *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetDisplayName(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetForeignAppId(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.ForeignAppId = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetTenantId(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication) SetUpdateDate(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplication {
+	s.UpdateDate = &v
+	return s
+}
+
+type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope struct {
+	// The information about the permissions that are granted to the external application.
+	PredefinedScopes *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope) SetPredefinedScopes(v *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes) SetPredefinedScope(v []*ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *ListExternalApplicationsResponseBodyExternalApplicationsExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type ListExternalApplicationsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListExternalApplicationsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListExternalApplicationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExternalApplicationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExternalApplicationsResponse) SetHeaders(v map[string]*string) *ListExternalApplicationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExternalApplicationsResponse) SetStatusCode(v int32) *ListExternalApplicationsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListExternalApplicationsResponse) SetBody(v *ListExternalApplicationsResponseBody) *ListExternalApplicationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListGroupsRequest struct {
 	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
 	//
@@ -8023,9 +10249,9 @@ func (s *ListGroupsForUserRequest) SetUserPrincipalName(v string) *ListGroupsFor
 }
 
 type ListGroupsForUserResponseBody struct {
-	// The information of the RAM user groups.
+	// The information about the RAM user groups.
 	Groups *ListGroupsForUserResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -8432,6 +10658,8 @@ func (s *ListOIDCProvidersResponse) SetBody(v *ListOIDCProvidersResponseBody) *L
 }
 
 type ListPasskeysRequest struct {
+	// The logon name of the RAM user.
+	//
 	// example:
 	//
 	// test@example.onaliyun.com
@@ -8452,7 +10680,10 @@ func (s *ListPasskeysRequest) SetUserPrincipalName(v string) *ListPasskeysReques
 }
 
 type ListPasskeysResponseBody struct {
+	// The information about the passkeys.
 	Passkeys []*ListPasskeysResponseBodyPasskeys `json:"Passkeys,omitempty" xml:"Passkeys,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE73368
@@ -8478,18 +10709,26 @@ func (s *ListPasskeysResponseBody) SetRequestId(v string) *ListPasskeysResponseB
 }
 
 type ListPasskeysResponseBodyPasskeys struct {
+	// The time when the passkey was created. The value is a timestamp.
+	//
 	// example:
 	//
 	// 1737450279
 	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the passkey was last used. The value is a timestamp.
+	//
 	// example:
 	//
 	// 1737450390
 	LastUseDate *string `json:"LastUseDate,omitempty" xml:"LastUseDate,omitempty"`
+	// The ID of the passkey.
+	//
 	// example:
 	//
 	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
 	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The name of the passkey.
+	//
 	// example:
 	//
 	// device1
@@ -8687,6 +10926,142 @@ func (s *ListPredefinedScopesResponse) SetStatusCode(v int32) *ListPredefinedSco
 }
 
 func (s *ListPredefinedScopesResponse) SetBody(v *ListPredefinedScopesResponseBody) *ListPredefinedScopesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRecentGovernanceMetricsResponseBody struct {
+	// The time when the report was generated.
+	//
+	// example:
+	//
+	// 2025-02-10T02:11:23Z
+	GenerateTime *string `json:"GenerateTime,omitempty" xml:"GenerateTime,omitempty"`
+	// The metric values of all governance items. The value of the parameter is an array, and each row in the array contains the metric value of a governance item.
+	GovernanceMetrics *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics `json:"GovernanceMetrics,omitempty" xml:"GovernanceMetrics,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 49846A91-C1C5-5C2B-BC64-8B0B7BADB4C0
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRecentGovernanceMetricsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentGovernanceMetricsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentGovernanceMetricsResponseBody) SetGenerateTime(v string) *ListRecentGovernanceMetricsResponseBody {
+	s.GenerateTime = &v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponseBody) SetGovernanceMetrics(v *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) *ListRecentGovernanceMetricsResponseBody {
+	s.GovernanceMetrics = v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponseBody) SetRequestId(v string) *ListRecentGovernanceMetricsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRecentGovernanceMetricsResponseBodyGovernanceMetrics struct {
+	GovernanceMetric []*ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric `json:"GovernanceMetric,omitempty" xml:"GovernanceMetric,omitempty" type:"Repeated"`
+}
+
+func (s ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics) SetGovernanceMetric(v []*ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) *ListRecentGovernanceMetricsResponseBodyGovernanceMetrics {
+	s.GovernanceMetric = v
+	return s
+}
+
+type ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric struct {
+	// The name of the governance item.
+	//
+	// example:
+	//
+	// RecentAccountLoginTimes
+	GovernanceItem *string `json:"GovernanceItem,omitempty" xml:"GovernanceItem,omitempty"`
+	// The type of the metric value. Valid values:
+	//
+	// 	- Number
+	//
+	// 	- String
+	//
+	// 	- Boolean
+	//
+	// example:
+	//
+	// Number
+	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	// The metric value. The type of the metric value is determined by `MetricType`.
+	//
+	// example:
+	//
+	// 5
+	MetricValue interface{} `json:"MetricValue,omitempty" xml:"MetricValue,omitempty"`
+}
+
+func (s ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) SetGovernanceItem(v string) *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric {
+	s.GovernanceItem = &v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) SetMetricType(v string) *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric {
+	s.MetricType = &v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric) SetMetricValue(v interface{}) *ListRecentGovernanceMetricsResponseBodyGovernanceMetricsGovernanceMetric {
+	s.MetricValue = v
+	return s
+}
+
+type ListRecentGovernanceMetricsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRecentGovernanceMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRecentGovernanceMetricsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRecentGovernanceMetricsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRecentGovernanceMetricsResponse) SetHeaders(v map[string]*string) *ListRecentGovernanceMetricsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponse) SetStatusCode(v int32) *ListRecentGovernanceMetricsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRecentGovernanceMetricsResponse) SetBody(v *ListRecentGovernanceMetricsResponseBody) *ListRecentGovernanceMetricsResponse {
 	s.Body = v
 	return s
 }
@@ -9179,9 +11554,14 @@ type ListUserBasicInfosRequest struct {
 	// example:
 	//
 	// 100
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag value.
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The status of the RAM users that you want to query. Valid values: active, freeze, and active,freeze. If you set the value to active,freeze, RAM users in both active and freeze states are queried. If you leave the parameter empty, the value active is used by default. If the Tag parameter is specified, you cannot specify the Status parameter. In this case, RAM users in both states are queried.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The tags.
 	Tag []*ListUserBasicInfosRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -9251,7 +11631,7 @@ func (s *ListUserBasicInfosRequestTag) SetValue(v string) *ListUserBasicInfosReq
 }
 
 type ListUserBasicInfosResponseBody struct {
-	// Indicates whether the response is truncated. Valid value:
+	// Indicates whether the response is truncated. Valid values:
 	//
 	// 	- true
 	//
@@ -9261,19 +11641,19 @@ type ListUserBasicInfosResponseBody struct {
 	//
 	// true
 	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
-	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	// The `marker`. This parameter is returned only if the value of `IsTruncated` is `true`. If the parameter is returned, you can call this operation again and set this parameter to obtain the truncated part.``
 	//
 	// example:
 	//
 	// EXAMPLE
 	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// EF2B25FD-CADE-445B-BE4D-E082E0FF1A0F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An array that consists of the information about the RAM user.
+	// The basic information about the RAM users.
 	UserBasicInfos *ListUserBasicInfosResponseBodyUserBasicInfos `json:"UserBasicInfos,omitempty" xml:"UserBasicInfos,omitempty" type:"Struct"`
 }
 
@@ -9329,7 +11709,12 @@ type ListUserBasicInfosResponseBodyUserBasicInfosUserBasicInfo struct {
 	//
 	// test
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the RAM user.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the RAM user.
 	//
 	// example:
@@ -9415,8 +11800,13 @@ type ListUsersRequest struct {
 	// example:
 	//
 	// 1000
-	MaxItems *int32  `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
-	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+	// The status of the RAM users that you want to query. Valid values: active, freeze, and active,freeze. If you leave the parameter empty, the value active is used by default. If you specify a value for the Tag parameter, users in both states are queried.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags. A maximum number of 20 tags are supported.
 	Tag []*ListUsersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -9509,7 +11899,7 @@ type ListUsersResponseBody struct {
 	//
 	// 4B450CA1-36E8-4AA2-8461-86B42BF4CC4E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the RAM user.
+	// The information about the RAM users.
 	Users *ListUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
 }
 
@@ -9611,7 +12001,12 @@ type ListUsersResponseBodyUsersUser struct {
 	//
 	// CloudSSO
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The status of the RAM user.
+	//
+	// example:
+	//
+	// active
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	Tags *ListUsersResponseBodyUsersUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The point in time when the information about the RAM user was last modified. The time is displayed in UTC.
@@ -9989,6 +12384,232 @@ func (s *ListUsersForGroupResponse) SetBody(v *ListUsersForGroupResponseBody) *L
 	return s
 }
 
+type ListUsersInRecycleBinRequest struct {
+	// The filter condition that is used to query information about a specified RAM user in the recycle bin.
+	//
+	// You must specify this parameter in the `UserPrincipalName eq <username>@<AccountAlias>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// UserPrincipalName eq test@example.onaliyun.com
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// The `marker`. If part of a previous response is truncated, you can use this parameter to obtain the truncated part.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The number of entries to return. If a response is truncated because it reaches the value of `MaxItems`, the value of `IsTruncated` will be true.
+	//
+	// Valid values: 1 to 100. Default value: 100.
+	//
+	// example:
+	//
+	// 100
+	MaxItems *int32 `json:"MaxItems,omitempty" xml:"MaxItems,omitempty"`
+}
+
+func (s ListUsersInRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersInRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersInRecycleBinRequest) SetFilter(v string) *ListUsersInRecycleBinRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinRequest) SetMarker(v string) *ListUsersInRecycleBinRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinRequest) SetMaxItems(v int32) *ListUsersInRecycleBinRequest {
+	s.MaxItems = &v
+	return s
+}
+
+type ListUsersInRecycleBinResponseBody struct {
+	// Indicates whether the response is truncated. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	IsTruncated *bool `json:"IsTruncated,omitempty" xml:"IsTruncated,omitempty"`
+	// The parameter that is used to obtain the truncated part. It takes effect only when `IsTruncated` is set to `true`.
+	//
+	// example:
+	//
+	// EXAMPLE
+	Marker *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3687BD52-49FD-585B-AB14-CD05B7C76963
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The information about the RAM users.
+	Users *ListUsersInRecycleBinResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Struct"`
+}
+
+func (s ListUsersInRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersInRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersInRecycleBinResponseBody) SetIsTruncated(v bool) *ListUsersInRecycleBinResponseBody {
+	s.IsTruncated = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBody) SetMarker(v string) *ListUsersInRecycleBinResponseBody {
+	s.Marker = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBody) SetRequestId(v string) *ListUsersInRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBody) SetUsers(v *ListUsersInRecycleBinResponseBodyUsers) *ListUsersInRecycleBinResponseBody {
+	s.Users = v
+	return s
+}
+
+type ListUsersInRecycleBinResponseBodyUsers struct {
+	User []*ListUsersInRecycleBinResponseBodyUsersUser `json:"User,omitempty" xml:"User,omitempty" type:"Repeated"`
+}
+
+func (s ListUsersInRecycleBinResponseBodyUsers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersInRecycleBinResponseBodyUsers) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsers) SetUser(v []*ListUsersInRecycleBinResponseBodyUsersUser) *ListUsersInRecycleBinResponseBodyUsers {
+	s.User = v
+	return s
+}
+
+type ListUsersInRecycleBinResponseBodyUsersUser struct {
+	// The time when the RAM user was created.
+	//
+	// example:
+	//
+	// 2020-10-12T09:12:00Z
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The time when the RAM user will be permanently deleted from the recycle bin.
+	//
+	// example:
+	//
+	// 2020-11-15T09:12:00Z
+	DeleteDate *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	// The display name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The time when the RAM user was deleted and moved to the recycle bin.
+	//
+	// example:
+	//
+	// 2020-10-15T09:12:00Z
+	RecycleDate *string `json:"RecycleDate,omitempty" xml:"RecycleDate,omitempty"`
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+}
+
+func (s ListUsersInRecycleBinResponseBodyUsersUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersInRecycleBinResponseBodyUsersUser) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetCreateDate(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetDeleteDate(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.DeleteDate = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetDisplayName(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetRecycleDate(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.RecycleDate = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetUserId(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponseBodyUsersUser) SetUserPrincipalName(v string) *ListUsersInRecycleBinResponseBodyUsersUser {
+	s.UserPrincipalName = &v
+	return s
+}
+
+type ListUsersInRecycleBinResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListUsersInRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListUsersInRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsersInRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsersInRecycleBinResponse) SetHeaders(v map[string]*string) *ListUsersInRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponse) SetStatusCode(v int32) *ListUsersInRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListUsersInRecycleBinResponse) SetBody(v *ListUsersInRecycleBinResponseBody) *ListUsersInRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
 type ListVirtualMFADevicesRequest struct {
 	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.``
 	//
@@ -10215,12 +12836,528 @@ func (s *ListVirtualMFADevicesResponse) SetBody(v *ListVirtualMFADevicesResponse
 	return s
 }
 
+type ProvisionApplicationRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 407426893752729****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
+	//
+	// >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
+	//
+	// example:
+	//
+	// openid;aliuid
+	Scopes *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+}
+
+func (s ProvisionApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationRequest) SetAppId(v string) *ProvisionApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ProvisionApplicationRequest) SetScopes(v string) *ProvisionApplicationRequest {
+	s.Scopes = &v
+	return s
+}
+
+type ProvisionApplicationResponseBody struct {
+	// The installation information of the application.
+	ApplicationProvisionInfo *ProvisionApplicationResponseBodyApplicationProvisionInfo `json:"ApplicationProvisionInfo,omitempty" xml:"ApplicationProvisionInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// C8AE06ED-9593-5BF9-8D4A-68D5DDCC90AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ProvisionApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponseBody) SetApplicationProvisionInfo(v *ProvisionApplicationResponseBodyApplicationProvisionInfo) *ProvisionApplicationResponseBody {
+	s.ApplicationProvisionInfo = v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBody) SetRequestId(v string) *ProvisionApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ProvisionApplicationResponseBodyApplicationProvisionInfo struct {
+	// The ID of the Alibaba Cloud account.
+	//
+	// example:
+	//
+	// 177242285274****
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 452392483381546****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application.
+	//
+	// example:
+	//
+	// GiteePrd
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// GiteePrd@app.177242285274****.onaliyun.com
+	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the permissions that are granted to the application.
+	DelegatedScope *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the Alibaba Cloud account for which the application was installed.
+	//
+	// example:
+	//
+	// 177242285274****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetAccountId(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetAppId(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetAppName(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.AppName = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetAppPrincipalName(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.AppPrincipalName = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetCreateDate(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetDelegatedScope(v *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetDisplayName(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetTenantId(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfo) SetUpdateDate(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfo {
+	s.UpdateDate = &v
+	return s
+}
+
+type ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope struct {
+	// The information about the permissions that are granted to the application.
+	PredefinedScopes *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope) SetPredefinedScopes(v *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes) SetPredefinedScope(v []*ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *ProvisionApplicationResponseBodyApplicationProvisionInfoDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type ProvisionApplicationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProvisionApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ProvisionApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionApplicationResponse) SetHeaders(v map[string]*string) *ProvisionApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ProvisionApplicationResponse) SetStatusCode(v int32) *ProvisionApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ProvisionApplicationResponse) SetBody(v *ProvisionApplicationResponseBody) *ProvisionApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type ProvisionExternalApplicationRequest struct {
+	// The ID of the application.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 403550611646604****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The permissions that are granted to the application. Separate multiple permissions with a semicolon (;).
+	//
+	// >  For more information about the supported permissions, see [Overview](https://help.aliyun.com/document_detail/93693.html).
+	//
+	// example:
+	//
+	// openid;aliuid
+	Scopes *string `json:"Scopes,omitempty" xml:"Scopes,omitempty"`
+}
+
+func (s ProvisionExternalApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationRequest) SetAppId(v string) *ProvisionExternalApplicationRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationRequest) SetScopes(v string) *ProvisionExternalApplicationRequest {
+	s.Scopes = &v
+	return s
+}
+
+type ProvisionExternalApplicationResponseBody struct {
+	// The information about the external application.
+	ExternalApplication *ProvisionExternalApplicationResponseBodyExternalApplication `json:"ExternalApplication,omitempty" xml:"ExternalApplication,omitempty" type:"Struct"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 55535873-9A6B-5C87-853F-C7CD258826F2
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ProvisionExternalApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponseBody) SetExternalApplication(v *ProvisionExternalApplicationResponseBodyExternalApplication) *ProvisionExternalApplicationResponseBody {
+	s.ExternalApplication = v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBody) SetRequestId(v string) *ProvisionExternalApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ProvisionExternalApplicationResponseBodyExternalApplication struct {
+	// The name of the application principal. The value is in the `<app_name>@app.<account_id>.onaliyun.com` format.
+	//
+	// example:
+	//
+	// GiteePrd@app.177242285274****.onaliyun.com
+	AppPrincipalName *string `json:"AppPrincipalName,omitempty" xml:"AppPrincipalName,omitempty"`
+	// The time when the application was installed. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	CreateDate *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	// The information about the scopes of permissions that are granted to the application.
+	DelegatedScope *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope `json:"DelegatedScope,omitempty" xml:"DelegatedScope,omitempty" type:"Struct"`
+	// The display name of the application.
+	//
+	// example:
+	//
+	// GiteeAliyun
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The ID of the application.
+	//
+	// example:
+	//
+	// 403550611646604****
+	ForeignAppId *string `json:"ForeignAppId,omitempty" xml:"ForeignAppId,omitempty"`
+	// The ID of the Alibaba Cloud account to which the external application belongs.
+	//
+	// example:
+	//
+	// 157242285274****
+	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// The update time. The value is a timestamp.
+	//
+	// example:
+	//
+	// 1603693518000
+	UpdateDate *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplication) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplication) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetAppPrincipalName(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.AppPrincipalName = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetCreateDate(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.CreateDate = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetDelegatedScope(v *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.DelegatedScope = v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetDisplayName(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetForeignAppId(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.ForeignAppId = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetTenantId(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplication) SetUpdateDate(v string) *ProvisionExternalApplicationResponseBodyExternalApplication {
+	s.UpdateDate = &v
+	return s
+}
+
+type ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope struct {
+	// The information about the scopes of permissions that are granted to the application.
+	PredefinedScopes *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes `json:"PredefinedScopes,omitempty" xml:"PredefinedScopes,omitempty" type:"Struct"`
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope) SetPredefinedScopes(v *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScope {
+	s.PredefinedScopes = v
+	return s
+}
+
+type ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes struct {
+	PredefinedScope []*ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope `json:"PredefinedScope,omitempty" xml:"PredefinedScope,omitempty" type:"Repeated"`
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes) SetPredefinedScope(v []*ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopes {
+	s.PredefinedScope = v
+	return s
+}
+
+type ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope struct {
+	// The description of the permission scope.
+	//
+	// example:
+	//
+	// Obtains the OpenID of the user. This is the default scope and cannot be deleted.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The name of the permission scope.
+	//
+	// example:
+	//
+	// openid
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetDescription(v string) *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Description = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope) SetName(v string) *ProvisionExternalApplicationResponseBodyExternalApplicationDelegatedScopePredefinedScopesPredefinedScope {
+	s.Name = &v
+	return s
+}
+
+type ProvisionExternalApplicationResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ProvisionExternalApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ProvisionExternalApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ProvisionExternalApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ProvisionExternalApplicationResponse) SetHeaders(v map[string]*string) *ProvisionExternalApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponse) SetStatusCode(v int32) *ProvisionExternalApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ProvisionExternalApplicationResponse) SetBody(v *ProvisionExternalApplicationResponseBody) *ProvisionExternalApplicationResponse {
+	s.Body = v
+	return s
+}
+
 type RemoveClientIdFromOIDCProviderRequest struct {
 	// The client ID that you want to remove.
 	//
 	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
 	//
-	// The client ID can be up to 64 characters in length.
+	// The client ID can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -10751,6 +13888,163 @@ func (s *RemoveUserFromGroupResponse) SetBody(v *RemoveUserFromGroupResponseBody
 	return s
 }
 
+type RestoreAccessKeyFromRecycleBinRequest struct {
+	// The AccessKey ID of the RAM user.
+	//
+	// example:
+	//
+	// LTAI*******************
+	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
+	// The ID of the Resource Access Management (RAM) user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RestoreAccessKeyFromRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreAccessKeyFromRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreAccessKeyFromRecycleBinRequest) SetUserAccessKeyId(v string) *RestoreAccessKeyFromRecycleBinRequest {
+	s.UserAccessKeyId = &v
+	return s
+}
+
+func (s *RestoreAccessKeyFromRecycleBinRequest) SetUserId(v string) *RestoreAccessKeyFromRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type RestoreAccessKeyFromRecycleBinResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestoreAccessKeyFromRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreAccessKeyFromRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreAccessKeyFromRecycleBinResponseBody) SetRequestId(v string) *RestoreAccessKeyFromRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestoreAccessKeyFromRecycleBinResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestoreAccessKeyFromRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestoreAccessKeyFromRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreAccessKeyFromRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreAccessKeyFromRecycleBinResponse) SetHeaders(v map[string]*string) *RestoreAccessKeyFromRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestoreAccessKeyFromRecycleBinResponse) SetStatusCode(v int32) *RestoreAccessKeyFromRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestoreAccessKeyFromRecycleBinResponse) SetBody(v *RestoreAccessKeyFromRecycleBinResponseBody) *RestoreAccessKeyFromRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
+type RestoreUserFromRecycleBinRequest struct {
+	// The ID of the RAM user.
+	//
+	// example:
+	//
+	// 20732900249392****
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s RestoreUserFromRecycleBinRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreUserFromRecycleBinRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreUserFromRecycleBinRequest) SetUserId(v string) *RestoreUserFromRecycleBinRequest {
+	s.UserId = &v
+	return s
+}
+
+type RestoreUserFromRecycleBinResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 4507D1CD-526A-4E2B-A1E2-3AB045D1EE0B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RestoreUserFromRecycleBinResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreUserFromRecycleBinResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreUserFromRecycleBinResponseBody) SetRequestId(v string) *RestoreUserFromRecycleBinResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RestoreUserFromRecycleBinResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RestoreUserFromRecycleBinResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RestoreUserFromRecycleBinResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RestoreUserFromRecycleBinResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RestoreUserFromRecycleBinResponse) SetHeaders(v map[string]*string) *RestoreUserFromRecycleBinResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RestoreUserFromRecycleBinResponse) SetStatusCode(v int32) *RestoreUserFromRecycleBinResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RestoreUserFromRecycleBinResponse) SetBody(v *RestoreUserFromRecycleBinResponseBody) *RestoreUserFromRecycleBinResponse {
+	s.Body = v
+	return s
+}
+
 type SetDefaultDomainRequest struct {
 	// The default domain name.
 	//
@@ -10912,41 +14206,41 @@ type SetPasswordPolicyRequest struct {
 	//
 	// 0
 	PasswordReusePrevention *int32 `json:"PasswordReusePrevention,omitempty" xml:"PasswordReusePrevention,omitempty"`
-	// Specifies whether the password must contain lowercase letters. Default value: false. Valid values:
+	// Specifies whether the password must contain lowercase letters. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
 	// false
 	RequireLowercaseCharacters *bool `json:"RequireLowercaseCharacters,omitempty" xml:"RequireLowercaseCharacters,omitempty"`
-	// Specifies whether the password must contain digits. Default value: false. Valid values:
+	// Specifies whether the password must contain digits. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
 	// false
 	RequireNumbers *bool `json:"RequireNumbers,omitempty" xml:"RequireNumbers,omitempty"`
-	// Specifies whether the password must contain special characters. Default value: false. Valid values:
+	// Specifies whether the password must contain special characters. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
 	// false
 	RequireSymbols *bool `json:"RequireSymbols,omitempty" xml:"RequireSymbols,omitempty"`
-	// Specifies whether the password must contain uppercase letters. Default value: false. Valid values:
+	// Specifies whether the password must contain uppercase letters. Valid values:
 	//
 	// 	- true
 	//
-	// 	- false
+	// 	- false (default)
 	//
 	// example:
 	//
@@ -11020,7 +14314,7 @@ func (s *SetPasswordPolicyRequest) SetRequireUppercaseCharacters(v bool) *SetPas
 type SetPasswordPolicyResponseBody struct {
 	// The details of the password policy.
 	PasswordPolicy *SetPasswordPolicyResponseBodyPasswordPolicy `json:"PasswordPolicy,omitempty" xml:"PasswordPolicy,omitempty" type:"Struct"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -11217,7 +14511,16 @@ type SetSecurityPreferenceRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether a RAM user can use a passkey for logon. Valid values:
+	//
+	// 	- true: A RAM user can use a passkey for logon. This is the default value.
+	//
+	// 	- false: A RAM user cannot use a passkey for logon.
+	//
+	// example:
+	//
+	// true
 	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
 	//
@@ -11295,6 +14598,8 @@ type SetSecurityPreferenceRequest struct {
 	//
 	// adaptive
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
 	//
 	// 	- autonomous (default): yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA.
@@ -11382,7 +14687,16 @@ type SetSecurityPreferenceShrinkRequest struct {
 	// example:
 	//
 	// true
-	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Specifies whether a RAM user can use a passkey for logon. Valid values:
+	//
+	// 	- true: A RAM user can use a passkey for logon. This is the default value.
+	//
+	// 	- false: A RAM user cannot use a passkey for logon.
+	//
+	// example:
+	//
+	// true
 	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Specifies whether RAM users can manage their AccessKey pairs. Valid values:
 	//
@@ -11460,6 +14774,8 @@ type SetSecurityPreferenceShrinkRequest struct {
 	//
 	// adaptive
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to enable MFA for RAM users who initiated unusual logons. Valid values:
 	//
 	// 	- autonomous (default): yes. MFA is prompted for RAM users who initiated unusual logons. However, the RAM users are allowed to skip MFA.
@@ -11573,7 +14889,8 @@ type SetSecurityPreferenceResponseBodySecurityPreference struct {
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	// The MFA preference.
 	MFAPreference *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	MaxIdleDays   *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays   `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
+	// The maximum idle periods. Unit: days.
+	MaxIdleDays *SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays `json:"MaxIdleDays,omitempty" xml:"MaxIdleDays,omitempty" type:"Struct"`
 	// The personal information preference.
 	PersonalInfoPreference *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 	// The MFA method preference.
@@ -11646,7 +14963,12 @@ type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	// example:
 	//
 	// true
-	AllowUserToChangePassword   *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToChangePassword *bool `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	// Indicates whether a RAM user can use a passkey for logon.
+	//
+	// example:
+	//
+	// false
 	AllowUserToLoginWithPasskey *bool `json:"AllowUserToLoginWithPasskey,omitempty" xml:"AllowUserToLoginWithPasskey,omitempty"`
 	// Indicates whether RAM users can remember the MFA devices for seven days.
 	//
@@ -11672,6 +14994,8 @@ type SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference s
 	//
 	// adaptive
 	MFAOperationForLogin *string `json:"MFAOperationForLogin,omitempty" xml:"MFAOperationForLogin,omitempty"`
+	// Deprecated
+	//
 	// Indicates whether to enable MFA for RAM users who initiated unusual logons.
 	//
 	// example:
@@ -11746,10 +15070,14 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 }
 
 type SetSecurityPreferenceResponseBodySecurityPreferenceMaxIdleDays struct {
+	// The maximum number of days that the AccessKey pair of a RAM user can stay unused. If an AccessKey pair is not used in the previous specified number of days, the AccessKey pair is automatically disabled on the next day. The default value is 730. You cannot change the value.
+	//
 	// example:
 	//
 	// 730
 	MaxIdleDaysForAccessKeys *int32 `json:"MaxIdleDaysForAccessKeys,omitempty" xml:"MaxIdleDaysForAccessKeys,omitempty"`
+	// The maximum number of days that a RAM user can stay idle. If a RAM user for whom console logon is enabled does not log on to the console in the previous specified number of days, console logon is automatically disabled for the RAM user on the next day. SSO is not involved. The default value is 730. You cannot change the value.
+	//
 	// example:
 	//
 	// 730
@@ -12029,6 +15357,120 @@ func (s *SetUserSsoSettingsResponse) SetBody(v *SetUserSsoSettingsResponseBody) 
 	return s
 }
 
+type SetVerificationInfoRequest struct {
+	// The email address.
+	//
+	// >  If you set `VerifyType` to `email`, you must specify this parameter.
+	//
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number.
+	//
+	// >  If you set `VerifyType` to `sms`, you must specify this parameter.
+	//
+	// example:
+	//
+	// 86-13900001234
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The multi-factor authentication (MFA) method. Valid values:
+	//
+	// 	- sms: mobile phone.
+	//
+	// 	- email: email.
+	//
+	// example:
+	//
+	// sms
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+}
+
+func (s SetVerificationInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVerificationInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetVerificationInfoRequest) SetEmail(v string) *SetVerificationInfoRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *SetVerificationInfoRequest) SetMobilePhone(v string) *SetVerificationInfoRequest {
+	s.MobilePhone = &v
+	return s
+}
+
+func (s *SetVerificationInfoRequest) SetUserPrincipalName(v string) *SetVerificationInfoRequest {
+	s.UserPrincipalName = &v
+	return s
+}
+
+func (s *SetVerificationInfoRequest) SetVerifyType(v string) *SetVerificationInfoRequest {
+	s.VerifyType = &v
+	return s
+}
+
+type SetVerificationInfoResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetVerificationInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVerificationInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetVerificationInfoResponseBody) SetRequestId(v string) *SetVerificationInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetVerificationInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SetVerificationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SetVerificationInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetVerificationInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetVerificationInfoResponse) SetHeaders(v map[string]*string) *SetVerificationInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetVerificationInfoResponse) SetStatusCode(v int32) *SetVerificationInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetVerificationInfoResponse) SetBody(v *SetVerificationInfoResponseBody) *SetVerificationInfoResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourcesRequest struct {
 	// The ID of resource N.
 	//
@@ -12280,6 +15722,120 @@ func (s *UnbindMFADeviceResponse) SetBody(v *UnbindMFADeviceResponseBody) *Unbin
 	return s
 }
 
+type UnbindVerificationRequest struct {
+	// The email address.
+	//
+	// >  If you set `VerifyType` to `email`, you must specify this parameter.
+	//
+	// example:
+	//
+	// username@example.com
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// The mobile phone number.
+	//
+	// >  If you set `VerifyType` to `sms`, you must specify this parameter.
+	//
+	// example:
+	//
+	// 86-13900001234
+	MobilePhone *string `json:"MobilePhone,omitempty" xml:"MobilePhone,omitempty"`
+	// The logon name of the RAM user.
+	//
+	// example:
+	//
+	// test@example.onaliyun.com
+	UserPrincipalName *string `json:"UserPrincipalName,omitempty" xml:"UserPrincipalName,omitempty"`
+	// The multi-factor authentication (MFA) method. Valid values:
+	//
+	// 	- sms: mobile phone.
+	//
+	// 	- email: email.
+	//
+	// example:
+	//
+	// sms
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+}
+
+func (s UnbindVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindVerificationRequest) SetEmail(v string) *UnbindVerificationRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *UnbindVerificationRequest) SetMobilePhone(v string) *UnbindVerificationRequest {
+	s.MobilePhone = &v
+	return s
+}
+
+func (s *UnbindVerificationRequest) SetUserPrincipalName(v string) *UnbindVerificationRequest {
+	s.UserPrincipalName = &v
+	return s
+}
+
+func (s *UnbindVerificationRequest) SetVerifyType(v string) *UnbindVerificationRequest {
+	s.VerifyType = &v
+	return s
+}
+
+type UnbindVerificationResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// B182C041-8C64-5F2F-A07B-FC67FAF89CF9
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnbindVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindVerificationResponseBody) SetRequestId(v string) *UnbindVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnbindVerificationResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UnbindVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UnbindVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindVerificationResponse) SetHeaders(v map[string]*string) *UnbindVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindVerificationResponse) SetStatusCode(v int32) *UnbindVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnbindVerificationResponse) SetBody(v *UnbindVerificationResponseBody) *UnbindVerificationResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourcesRequest struct {
 	// Specifies whether to remove all tags from the resource. Valid values:
 	//
@@ -12426,7 +15982,7 @@ type UpdateAccessKeyRequest struct {
 	//
 	// example:
 	//
-	// LTAI4GFTgcR8m8cZQDTH****
+	// LTAI*******************
 	UserAccessKeyId *string `json:"UserAccessKeyId,omitempty" xml:"UserAccessKeyId,omitempty"`
 	// The logon name of the RAM user.
 	//
@@ -13274,6 +16830,8 @@ func (s *UpdateLoginProfileResponseBody) SetRequestId(v string) *UpdateLoginProf
 }
 
 type UpdateLoginProfileResponseBodyLoginProfile struct {
+	// Indicates whether console logon is automatically disabled if a RAM user does not log on to the console in the previous specified number of days. The number of days is specified by MaxIdleDaysForUsers. The default value is true, and you cannot change the value.
+	//
 	// example:
 	//
 	// true
@@ -13380,11 +16938,11 @@ func (s *UpdateLoginProfileResponse) SetBody(v *UpdateLoginProfileResponseBody) 
 type UpdateOIDCProviderRequest struct {
 	// The ID of the client. If you want to specify multiple client IDs, separate the client IDs with commas (,).
 	//
-	// The client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods, (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
+	// A client ID can contain letters, digits, and special characters and cannot start with the special characters. The special characters are `periods (.), hyphens (-), underscores (_), colons (:), and forward slashes (/)`.``
 	//
-	// The client ID can be up to 64 characters in length.
+	// A client ID can be up to 128 characters in length.
 	//
-	// > If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](https://help.aliyun.com/document_detail/332057.html) or [RemoveClientIdFromOIDCProvider](https://help.aliyun.com/document_detail/332058.html).
+	// >  If you specify this parameter, all the client IDs of the OIDC IdP are replaced. If you need to only add or remove a client ID, call the AddClientIdToOIDCProvider or RemoveClientIdFromOIDCProvider operation. For more information, see [AddClientIdToOIDCProvider](https://help.aliyun.com/document_detail/332057.html) or [RemoveClientIdFromOIDCProvider](https://help.aliyun.com/document_detail/332058.html).
 	//
 	// example:
 	//
@@ -13631,14 +17189,20 @@ func (s *UpdateOIDCProviderResponse) SetBody(v *UpdateOIDCProviderResponseBody) 
 }
 
 type UpdatePasskeyRequest struct {
+	// The ID of the passkey.
+	//
 	// example:
 	//
 	// PASSKEY-CuZjEHhWcr7GIQOMGvkS
 	PasskeyId *string `json:"PasskeyId,omitempty" xml:"PasskeyId,omitempty"`
+	// The name of the passkey.
+	//
 	// example:
 	//
 	// device1
 	PasskeyName *string `json:"PasskeyName,omitempty" xml:"PasskeyName,omitempty"`
+	// The logon name of the Resource Access Management (RAM) user.
+	//
 	// example:
 	//
 	// test@example.onaliyun.com
@@ -13669,6 +17233,8 @@ func (s *UpdatePasskeyRequest) SetUserPrincipalName(v string) *UpdatePasskeyRequ
 }
 
 type UpdatePasskeyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 85836703-8D4F-485F-9726-4D1C730F957E
@@ -14270,24 +17836,13 @@ func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdT
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddClientIdToOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddClientIdToOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddClientIdToOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14351,24 +17906,13 @@ func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFinger
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddFingerprintToOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddFingerprintToOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddFingerprintToOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14397,7 +17941,7 @@ func (client *Client) AddFingerprintToOIDCProvider(request *AddFingerprintToOIDC
 
 // Summary:
 //
-// 将RAM用户添加到指定的用户组
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -14432,29 +17976,18 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddUserToGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddUserToGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddUserToGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 将RAM用户添加到指定的用户组
+// Adds a Resource Access Management (RAM) user to a RAM user group.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -14472,7 +18005,7 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 
 // Summary:
 //
-// Binds a multi-factor authentication (MFA) device to a RAM user.
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -14515,29 +18048,18 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &BindMFADeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &BindMFADeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &BindMFADeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Binds a multi-factor authentication (MFA) device to a RAM user.
+// Binds a multi-factor authentication (MFA) device to a Resource Access Management (RAM) user.
 //
 // @param request - BindMFADeviceRequest
 //
@@ -14594,24 +18116,13 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangePasswordResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangePasswordResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangePasswordResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14669,24 +18180,13 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAccessKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAccessKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAccessKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14709,7 +18209,7 @@ func (client *Client) CreateAccessKey(request *CreateAccessKeyRequest) (_result 
 
 // Summary:
 //
-// Creates an application secret for the specified application.
+// Creates an application secret for an application.
 //
 // @param request - CreateAppSecretRequest
 //
@@ -14740,29 +18240,18 @@ func (client *Client) CreateAppSecretWithOptions(request *CreateAppSecretRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAppSecretResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAppSecretResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAppSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Creates an application secret for the specified application.
+// Creates an application secret for an application.
 //
 // @param request - CreateAppSecretRequest
 //
@@ -14847,24 +18336,13 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14926,24 +18404,13 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15013,24 +18480,13 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateLoginProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateLoginProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateLoginProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15063,11 +18519,11 @@ func (client *Client) CreateLoginProfile(request *CreateLoginProfileRequest) (_r
 //
 // ### Limits
 //
-// 	- You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
 //
-// 	- You can add a maximum of 20 client IDs to an OIDC IdP.
+//   - You can add a maximum of 20 client IDs to an OIDC IdP.
 //
-// 	- You can add a maximum of five fingerprints to an OIDC IdP.
+//   - You can add a maximum of five fingerprints to an OIDC IdP.
 //
 // ###
 //
@@ -15122,24 +18578,13 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15154,11 +18599,11 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 //
 // ### Limits
 //
-// 	- You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
+//   - You can create a maximum of 100 OIDC IdPs in an Alibaba Cloud account.
 //
-// 	- You can add a maximum of 20 client IDs to an OIDC IdP.
+//   - You can add a maximum of 20 client IDs to an OIDC IdP.
 //
-// 	- You can add a maximum of five fingerprints to an OIDC IdP.
+//   - You can add a maximum of five fingerprints to an OIDC IdP.
 //
 // ###
 //
@@ -15219,24 +18664,13 @@ func (client *Client) CreateSAMLProviderWithOptions(request *CreateSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateSAMLProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateSAMLProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateSAMLProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15314,24 +18748,13 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15389,24 +18812,13 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateVirtualMFADeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateVirtualMFADeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateVirtualMFADeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15464,24 +18876,13 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAccessKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAccessKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAccessKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15495,6 +18896,70 @@ func (client *Client) DeleteAccessKey(request *DeleteAccessKeyRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAccessKeyResponse{}
 	_body, _err := client.DeleteAccessKeyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - DeleteAccessKeyInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteAccessKeyInRecycleBinResponse
+func (client *Client) DeleteAccessKeyInRecycleBinWithOptions(request *DeleteAccessKeyInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessKeyInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessKeyInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccessKeyInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - DeleteAccessKeyInRecycleBinRequest
+//
+// @return DeleteAccessKeyInRecycleBinResponse
+func (client *Client) DeleteAccessKeyInRecycleBin(request *DeleteAccessKeyInRecycleBinRequest) (_result *DeleteAccessKeyInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccessKeyInRecycleBinResponse{}
+	_body, _err := client.DeleteAccessKeyInRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15539,24 +19004,13 @@ func (client *Client) DeleteAppSecretWithOptions(request *DeleteAppSecretRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAppSecretResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAppSecretResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAppSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15610,24 +19064,13 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15685,24 +19128,13 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15760,24 +19192,13 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteLoginProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteLoginProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteLoginProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15837,24 +19258,13 @@ func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15883,7 +19293,7 @@ func (client *Client) DeleteOIDCProvider(request *DeleteOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 删除Passkey
+// Deletes a passkey for a Resource Access Management (RAM) user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -15918,29 +19328,18 @@ func (client *Client) DeletePasskeyWithOptions(request *DeletePasskeyRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeletePasskeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeletePasskeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeletePasskeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 删除Passkey
+// Deletes a passkey for a Resource Access Management (RAM) user.
 //
 // @param request - DeletePasskeyRequest
 //
@@ -15989,24 +19388,13 @@ func (client *Client) DeleteSAMLProviderWithOptions(request *DeleteSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteSAMLProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteSAMLProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteSAMLProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16064,24 +19452,13 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16095,6 +19472,66 @@ func (client *Client) DeleteUser(request *DeleteUserRequest) (_result *DeleteUse
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteUserResponse{}
 	_body, _err := client.DeleteUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - DeleteUserInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteUserInRecycleBinResponse
+func (client *Client) DeleteUserInRecycleBinWithOptions(request *DeleteUserInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *DeleteUserInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUserInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a specific Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - DeleteUserInRecycleBinRequest
+//
+// @return DeleteUserInRecycleBinResponse
+func (client *Client) DeleteUserInRecycleBin(request *DeleteUserInRecycleBinRequest) (_result *DeleteUserInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUserInRecycleBinResponse{}
+	_body, _err := client.DeleteUserInRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16135,24 +19572,13 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteVirtualMFADeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteVirtualMFADeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteVirtualMFADeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16166,6 +19592,138 @@ func (client *Client) DeleteVirtualMFADevice(request *DeleteVirtualMFADeviceRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVirtualMFADeviceResponse{}
 	_body, _err := client.DeleteVirtualMFADeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Uninstalls an external application or an internal application of the ServerApp type.
+//
+// Description:
+//
+// If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
+//
+// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+//
+// @param request - DeprovisionApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeprovisionApplicationResponse
+func (client *Client) DeprovisionApplicationWithOptions(request *DeprovisionApplicationRequest, runtime *util.RuntimeOptions) (_result *DeprovisionApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeprovisionApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeprovisionApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Uninstalls an external application or an internal application of the ServerApp type.
+//
+// Description:
+//
+// If you want to call this operation to uninstall an internal application, the type of the internal application must be **ServerApp**. Otherwise, an error occurs when you call this operation.
+//
+// >  For **internal applications**, only internal applications of the ServerApp type need to be **installed or provisioned**. Therefore, only internal applications of the ServerApp type **can be uninstalled**. Internal applications of the WebApp and NativeApp types **do not need to and cannot be uninstalled**.
+//
+// @param request - DeprovisionApplicationRequest
+//
+// @return DeprovisionApplicationResponse
+func (client *Client) DeprovisionApplication(request *DeprovisionApplicationRequest) (_result *DeprovisionApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeprovisionApplicationResponse{}
+	_body, _err := client.DeprovisionApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an installed external application.
+//
+// @param request - DeprovisionExternalApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeprovisionExternalApplicationResponse
+func (client *Client) DeprovisionExternalApplicationWithOptions(request *DeprovisionExternalApplicationRequest, runtime *util.RuntimeOptions) (_result *DeprovisionExternalApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeprovisionExternalApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeprovisionExternalApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes an installed external application.
+//
+// @param request - DeprovisionExternalApplicationRequest
+//
+// @return DeprovisionExternalApplicationResponse
+func (client *Client) DeprovisionExternalApplication(request *DeprovisionExternalApplicationRequest) (_result *DeprovisionExternalApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeprovisionExternalApplicationResponse{}
+	_body, _err := client.DeprovisionExternalApplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16206,24 +19764,13 @@ func (client *Client) DisableVirtualMFAWithOptions(request *DisableVirtualMFAReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DisableVirtualMFAResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DisableVirtualMFAResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DisableVirtualMFAResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16266,24 +19813,13 @@ func (client *Client) GenerateCredentialReportWithOptions(runtime *util.RuntimeO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GenerateCredentialReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GenerateCredentialReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GenerateCredentialReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16295,6 +19831,113 @@ func (client *Client) GenerateCredentialReport() (_result *GenerateCredentialRep
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateCredentialReportResponse{}
 	_body, _err := client.GenerateCredentialReportWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates a check report for Cloud Governance.
+//
+// @param request - GenerateGovernanceReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateGovernanceReportResponse
+func (client *Client) GenerateGovernanceReportWithOptions(runtime *util.RuntimeOptions) (_result *GenerateGovernanceReportResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateGovernanceReport"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateGovernanceReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Generates a check report for Cloud Governance.
+//
+// @return GenerateGovernanceReportResponse
+func (client *Client) GenerateGovernanceReport() (_result *GenerateGovernanceReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateGovernanceReportResponse{}
+	_body, _err := client.GenerateGovernanceReportWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - GetAccessKeyInfoInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAccessKeyInfoInRecycleBinResponse
+func (client *Client) GetAccessKeyInfoInRecycleBinWithOptions(request *GetAccessKeyInfoInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *GetAccessKeyInfoInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccessKeyInfoInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccessKeyInfoInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about a specific AccessKey pair of a Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - GetAccessKeyInfoInRecycleBinRequest
+//
+// @return GetAccessKeyInfoInRecycleBinResponse
+func (client *Client) GetAccessKeyInfoInRecycleBin(request *GetAccessKeyInfoInRecycleBinRequest) (_result *GetAccessKeyInfoInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccessKeyInfoInRecycleBinResponse{}
+	_body, _err := client.GetAccessKeyInfoInRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16339,24 +19982,13 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAccessKeyLastUsedResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAccessKeyLastUsedResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAccessKeyLastUsedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16399,24 +20031,13 @@ func (client *Client) GetAccountMFAInfoWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAccountMFAInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAccountMFAInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAccountMFAInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16457,24 +20078,13 @@ func (client *Client) GetAccountSecurityPracticeReportWithOptions(runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAccountSecurityPracticeReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAccountSecurityPracticeReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAccountSecurityPracticeReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16515,24 +20125,13 @@ func (client *Client) GetAccountSummaryWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAccountSummaryResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAccountSummaryResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAccountSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16588,24 +20187,13 @@ func (client *Client) GetAppSecretWithOptions(request *GetAppSecretRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAppSecretResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAppSecretResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAppSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16663,24 +20251,13 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16698,6 +20275,66 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 	runtime := &util.RuntimeOptions{}
 	_result = &GetApplicationResponse{}
 	_body, _err := client.GetApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries installation information about a specified installed application.
+//
+// @param request - GetApplicationProvisionInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetApplicationProvisionInfoResponse
+func (client *Client) GetApplicationProvisionInfoWithOptions(request *GetApplicationProvisionInfoRequest, runtime *util.RuntimeOptions) (_result *GetApplicationProvisionInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplicationProvisionInfo"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationProvisionInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries installation information about a specified installed application.
+//
+// @param request - GetApplicationProvisionInfoRequest
+//
+// @return GetApplicationProvisionInfoResponse
+func (client *Client) GetApplicationProvisionInfo(request *GetApplicationProvisionInfoRequest) (_result *GetApplicationProvisionInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationProvisionInfoResponse{}
+	_body, _err := client.GetApplicationProvisionInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16742,24 +20379,13 @@ func (client *Client) GetCredentialReportWithOptions(request *GetCredentialRepor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCredentialReportResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCredentialReportResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCredentialReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16802,24 +20428,13 @@ func (client *Client) GetDefaultDomainWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDefaultDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDefaultDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDefaultDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16831,6 +20446,181 @@ func (client *Client) GetDefaultDomain() (_result *GetDefaultDomainResponse, _er
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDefaultDomainResponse{}
 	_body, _err := client.GetDefaultDomainWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about an installed external application.
+//
+// @param request - GetExternalApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExternalApplicationResponse
+func (client *Client) GetExternalApplicationWithOptions(request *GetExternalApplicationRequest, runtime *util.RuntimeOptions) (_result *GetExternalApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExternalApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExternalApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about an installed external application.
+//
+// @param request - GetExternalApplicationRequest
+//
+// @return GetExternalApplicationResponse
+func (client *Client) GetExternalApplication(request *GetExternalApplicationRequest) (_result *GetExternalApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetExternalApplicationResponse{}
+	_body, _err := client.GetExternalApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的单项ram治理报告
+//
+// @param request - GetGovernanceItemReportRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGovernanceItemReportResponse
+func (client *Client) GetGovernanceItemReportWithOptions(request *GetGovernanceItemReportRequest, runtime *util.RuntimeOptions) (_result *GetGovernanceItemReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GovernanceItemType)) {
+		query["GovernanceItemType"] = request.GovernanceItemType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGovernanceItemReport"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGovernanceItemReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询用户的单项ram治理报告
+//
+// @param request - GetGovernanceItemReportRequest
+//
+// @return GetGovernanceItemReportResponse
+func (client *Client) GetGovernanceItemReport(request *GetGovernanceItemReportRequest) (_result *GetGovernanceItemReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGovernanceItemReportResponse{}
+	_body, _err := client.GetGovernanceItemReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询成熟度报告状态
+//
+// @param request - GetGovernanceReportStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetGovernanceReportStatusResponse
+func (client *Client) GetGovernanceReportStatusWithOptions(runtime *util.RuntimeOptions) (_result *GetGovernanceReportStatusResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetGovernanceReportStatus"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetGovernanceReportStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询成熟度报告状态
+//
+// @return GetGovernanceReportStatusResponse
+func (client *Client) GetGovernanceReportStatus() (_result *GetGovernanceReportStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetGovernanceReportStatusResponse{}
+	_body, _err := client.GetGovernanceReportStatusWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16871,24 +20661,13 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16942,24 +20721,13 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLoginProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLoginProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLoginProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17019,24 +20787,13 @@ func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17085,24 +20842,13 @@ func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions)
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPasswordPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPasswordPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPasswordPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17154,24 +20900,13 @@ func (client *Client) GetSAMLProviderWithOptions(request *GetSAMLProviderRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSAMLProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSAMLProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSAMLProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17214,24 +20949,13 @@ func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOpti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetSecurityPreferenceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetSecurityPreferenceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetSecurityPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17253,10 +20977,6 @@ func (client *Client) GetSecurityPreference() (_result *GetSecurityPreferenceRes
 // Summary:
 //
 // Queries the information about a RAM user.
-//
-// Description:
-//
-// This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
 //
 // @param request - GetUserRequest
 //
@@ -17295,33 +21015,18 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
 // Queries the information about a RAM user.
-//
-// Description:
-//
-// This topic provides an example to show how to query the information about a RAM user named `test@example.onaliyun.com`.
 //
 // @param request - GetUserRequest
 //
@@ -17339,7 +21044,71 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 
 // Summary:
 //
-// 查询RAM用户多因素认证设备信息
+// Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - GetUserInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetUserInRecycleBinResponse
+func (client *Client) GetUserInRecycleBinWithOptions(request *GetUserInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *GetUserInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about a specific Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - GetUserInRecycleBinRequest
+//
+// @return GetUserInRecycleBinResponse
+func (client *Client) GetUserInRecycleBin(request *GetUserInRecycleBinRequest) (_result *GetUserInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserInRecycleBinResponse{}
+	_body, _err := client.GetUserInRecycleBinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetUserMFAInfoRequest
 //
@@ -17370,29 +21139,18 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserMFAInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserMFAInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserMFAInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询RAM用户多因素认证设备信息
+// Queries information about the multi-factor authentication (MFA) device that is bound to a Resource Access Management (RAM) user.
 //
 // @param request - GetUserMFAInfoRequest
 //
@@ -17430,24 +21188,13 @@ func (client *Client) GetUserSsoSettingsWithOptions(runtime *util.RuntimeOptions
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetUserSsoSettingsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetUserSsoSettingsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetUserSsoSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17499,24 +21246,13 @@ func (client *Client) GetVerificationInfoWithOptions(request *GetVerificationInf
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetVerificationInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetVerificationInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetVerificationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17539,7 +21275,7 @@ func (client *Client) GetVerificationInfo(request *GetVerificationInfoRequest) (
 
 // Summary:
 //
-// 查询主账号或RAM用户访问密钥列表
+// Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -17570,29 +21306,18 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAccessKeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAccessKeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAccessKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询主账号或RAM用户访问密钥列表
+// Queries the AccessKey pairs of an Alibaba Cloud account or a Resource Access Management (RAM) user.
 //
 // @param request - ListAccessKeysRequest
 //
@@ -17601,6 +21326,66 @@ func (client *Client) ListAccessKeys(request *ListAccessKeysRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAccessKeysResponse{}
 	_body, _err := client.ListAccessKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - ListAccessKeysInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAccessKeysInRecycleBinResponse
+func (client *Client) ListAccessKeysInRecycleBinWithOptions(request *ListAccessKeysInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *ListAccessKeysInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccessKeysInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAccessKeysInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AccessKey pairs of a specific Resource Access Management (RAM) user in the recycle bin.
+//
+// @param request - ListAccessKeysInRecycleBinRequest
+//
+// @return ListAccessKeysInRecycleBinResponse
+func (client *Client) ListAccessKeysInRecycleBin(request *ListAccessKeysInRecycleBinRequest) (_result *ListAccessKeysInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAccessKeysInRecycleBinResponse{}
+	_body, _err := client.ListAccessKeysInRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17641,24 +21426,13 @@ func (client *Client) ListAppSecretIdsWithOptions(request *ListAppSecretIdsReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAppSecretIdsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAppSecretIdsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAppSecretIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17672,6 +21446,66 @@ func (client *Client) ListAppSecretIds(request *ListAppSecretIdsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAppSecretIdsResponse{}
 	_body, _err := client.ListAppSecretIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries installation information about all installed applications.
+//
+// @param request - ListApplicationProvisionInfosRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListApplicationProvisionInfosResponse
+func (client *Client) ListApplicationProvisionInfosWithOptions(request *ListApplicationProvisionInfosRequest, runtime *util.RuntimeOptions) (_result *ListApplicationProvisionInfosResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplicationProvisionInfos"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListApplicationProvisionInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries installation information about all installed applications.
+//
+// @param request - ListApplicationProvisionInfosRequest
+//
+// @return ListApplicationProvisionInfosResponse
+func (client *Client) ListApplicationProvisionInfos(request *ListApplicationProvisionInfosRequest) (_result *ListApplicationProvisionInfosResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListApplicationProvisionInfosResponse{}
+	_body, _err := client.ListApplicationProvisionInfosWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17705,24 +21539,13 @@ func (client *Client) ListApplicationsWithOptions(runtime *util.RuntimeOptions) 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListApplicationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListApplicationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17738,6 +21561,53 @@ func (client *Client) ListApplications() (_result *ListApplicationsResponse, _er
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsResponse{}
 	_body, _err := client.ListApplicationsWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about all installed external applications.
+//
+// @param request - ListExternalApplicationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListExternalApplicationsResponse
+func (client *Client) ListExternalApplicationsWithOptions(runtime *util.RuntimeOptions) (_result *ListExternalApplicationsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListExternalApplications"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExternalApplicationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries information about all installed external applications.
+//
+// @return ListExternalApplicationsResponse
+func (client *Client) ListExternalApplications() (_result *ListExternalApplicationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExternalApplicationsResponse{}
+	_body, _err := client.ListExternalApplicationsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17782,24 +21652,13 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17822,7 +21681,7 @@ func (client *Client) ListGroups(request *ListGroupsRequest) (_result *ListGroup
 
 // Summary:
 //
-// Queries the RAM user groups to which a RAM user belongs.
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -17853,29 +21712,18 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListGroupsForUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListGroupsForUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListGroupsForUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the RAM user groups to which a RAM user belongs.
+// Queries the Resource Access Management (RAM) user groups to which a RAM user belongs.
 //
 // @param request - ListGroupsForUserRequest
 //
@@ -17934,24 +21782,13 @@ func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListOIDCProvidersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListOIDCProvidersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListOIDCProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17980,7 +21817,7 @@ func (client *Client) ListOIDCProviders(request *ListOIDCProvidersRequest) (_res
 
 // Summary:
 //
-// 查询Passkey
+// Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
 //
 // @param request - ListPasskeysRequest
 //
@@ -18011,29 +21848,18 @@ func (client *Client) ListPasskeysWithOptions(request *ListPasskeysRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPasskeysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPasskeysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPasskeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 查询Passkey
+// Queries the information about the passkeys that are bound to a Resource Access Management (RAM) user.
 //
 // @param request - ListPasskeysRequest
 //
@@ -18082,24 +21908,13 @@ func (client *Client) ListPredefinedScopesWithOptions(request *ListPredefinedSco
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPredefinedScopesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPredefinedScopesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPredefinedScopesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18113,6 +21928,53 @@ func (client *Client) ListPredefinedScopes(request *ListPredefinedScopesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPredefinedScopesResponse{}
 	_body, _err := client.ListPredefinedScopesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all metric values in the most recent governance check.
+//
+// @param request - ListRecentGovernanceMetricsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRecentGovernanceMetricsResponse
+func (client *Client) ListRecentGovernanceMetricsWithOptions(runtime *util.RuntimeOptions) (_result *ListRecentGovernanceMetricsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListRecentGovernanceMetrics"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRecentGovernanceMetricsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries all metric values in the most recent governance check.
+//
+// @return ListRecentGovernanceMetricsResponse
+func (client *Client) ListRecentGovernanceMetrics() (_result *ListRecentGovernanceMetricsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRecentGovernanceMetricsResponse{}
+	_body, _err := client.ListRecentGovernanceMetricsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18157,24 +22019,13 @@ func (client *Client) ListSAMLProvidersWithOptions(request *ListSAMLProvidersReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSAMLProvidersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSAMLProvidersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSAMLProvidersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18205,11 +22056,11 @@ func (client *Client) ListSAMLProviders(request *ListSAMLProvidersRequest) (_res
 //
 // You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
 //
-// 	- `ResourceId.N`
+//   - `ResourceId.N`
 //
-// 	- `Tag.N.Key`
+//   - `Tag.N.Key`
 //
-// 	- `Tag.N.Key` and `Tag.N.Value`
+//   - `Tag.N.Key` and `Tag.N.Value`
 //
 // @param request - ListTagResourcesRequest
 //
@@ -18260,24 +22111,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18290,11 +22130,11 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 //
 // You must specify at least one of the following parameters or parameter pairs in a request to determine a query object:
 //
-// 	- `ResourceId.N`
+//   - `ResourceId.N`
 //
-// 	- `Tag.N.Key`
+//   - `Tag.N.Key`
 //
-// 	- `Tag.N.Key` and `Tag.N.Value`
+//   - `Tag.N.Key` and `Tag.N.Value`
 //
 // @param request - ListTagResourcesRequest
 //
@@ -18312,15 +22152,15 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Queries the basic information about all RAM users.
+// Queries the basic information about all Resource Access Management (RAM) users.
 //
 // Description:
 //
-// You can call the following API operations to query the information about all RAM users:
+// You can call the following API operations to query information about all RAM users:
 //
-// 	- ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// 	- ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -18363,37 +22203,26 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUserBasicInfosResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUserBasicInfosResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUserBasicInfosResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the basic information about all RAM users.
+// Queries the basic information about all Resource Access Management (RAM) users.
 //
 // Description:
 //
-// You can call the following API operations to query the information about all RAM users:
+// You can call the following API operations to query information about all RAM users:
 //
-// 	- ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// 	- ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUserBasicInfosRequest
 //
@@ -18411,7 +22240,7 @@ func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_r
 
 // Summary:
 //
-// Queries the details of all RAM users.
+// Queries information about all Resource Access Management (RAM) users.
 //
 // Description:
 //
@@ -18419,9 +22248,9 @@ func (client *Client) ListUserBasicInfos(request *ListUserBasicInfosRequest) (_r
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-// 	- ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// 	- ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -18464,29 +22293,18 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Queries the details of all RAM users.
+// Queries information about all Resource Access Management (RAM) users.
 //
 // Description:
 //
@@ -18494,9 +22312,9 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 //
 // You can call the following API operations to query the details of all RAM users:
 //
-// 	- ListUsers: queries the details of all RAM users.
+//   - ListUsers: queries the details of all RAM users.
 //
-// 	- ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
+//   - ListUserBasicInfos: queries the basic information about all RAM users. The basic information includes only the logon names (`UserPrincipalName`), display names (`DisplayName`), and user IDs (`UserId`).
 //
 // @param request - ListUsersRequest
 //
@@ -18553,24 +22371,13 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersForGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersForGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersForGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18584,6 +22391,74 @@ func (client *Client) ListUsersForGroup(request *ListUsersForGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUsersForGroupResponse{}
 	_body, _err := client.ListUsersForGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+//
+// @param request - ListUsersInRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUsersInRecycleBinResponse
+func (client *Client) ListUsersInRecycleBinWithOptions(request *ListUsersInRecycleBinRequest, runtime *util.RuntimeOptions) (_result *ListUsersInRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersInRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUsersInRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the basic information about all Resource Access Management (RAM) users in the recycle bin.
+//
+// @param request - ListUsersInRecycleBinRequest
+//
+// @return ListUsersInRecycleBinResponse
+func (client *Client) ListUsersInRecycleBin(request *ListUsersInRecycleBinRequest) (_result *ListUsersInRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsersInRecycleBinResponse{}
+	_body, _err := client.ListUsersInRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18628,24 +22503,13 @@ func (client *Client) ListVirtualMFADevicesWithOptions(request *ListVirtualMFADe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListVirtualMFADevicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListVirtualMFADevicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListVirtualMFADevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18659,6 +22523,134 @@ func (client *Client) ListVirtualMFADevices(request *ListVirtualMFADevicesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &ListVirtualMFADevicesResponse{}
 	_body, _err := client.ListVirtualMFADevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an application.
+//
+// @param request - ProvisionApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProvisionApplicationResponse
+func (client *Client) ProvisionApplicationWithOptions(request *ProvisionApplicationRequest, runtime *util.RuntimeOptions) (_result *ProvisionApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scopes)) {
+		query["Scopes"] = request.Scopes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ProvisionApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ProvisionApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an application.
+//
+// @param request - ProvisionApplicationRequest
+//
+// @return ProvisionApplicationResponse
+func (client *Client) ProvisionApplication(request *ProvisionApplicationRequest) (_result *ProvisionApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ProvisionApplicationResponse{}
+	_body, _err := client.ProvisionApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an external application.
+//
+// @param request - ProvisionExternalApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ProvisionExternalApplicationResponse
+func (client *Client) ProvisionExternalApplicationWithOptions(request *ProvisionExternalApplicationRequest, runtime *util.RuntimeOptions) (_result *ProvisionExternalApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scopes)) {
+		query["Scopes"] = request.Scopes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ProvisionExternalApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ProvisionExternalApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Installs an external application.
+//
+// @param request - ProvisionExternalApplicationRequest
+//
+// @return ProvisionExternalApplicationResponse
+func (client *Client) ProvisionExternalApplication(request *ProvisionExternalApplicationRequest) (_result *ProvisionExternalApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ProvisionExternalApplicationResponse{}
+	_body, _err := client.ProvisionExternalApplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18709,24 +22701,13 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveClientIdFromOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveClientIdFromOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveClientIdFromOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18796,24 +22777,13 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *Remo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveFingerprintFromOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveFingerprintFromOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveFingerprintFromOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18877,24 +22847,13 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RemoveUserFromGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RemoveUserFromGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RemoveUserFromGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18908,6 +22867,130 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveUserFromGroupResponse{}
 	_body, _err := client.RemoveUserFromGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - RestoreAccessKeyFromRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreAccessKeyFromRecycleBinResponse
+func (client *Client) RestoreAccessKeyFromRecycleBinWithOptions(request *RestoreAccessKeyFromRecycleBinRequest, runtime *util.RuntimeOptions) (_result *RestoreAccessKeyFromRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestoreAccessKeyFromRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestoreAccessKeyFromRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a specific AccessKey pair that belongs to a Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - RestoreAccessKeyFromRecycleBinRequest
+//
+// @return RestoreAccessKeyFromRecycleBinResponse
+func (client *Client) RestoreAccessKeyFromRecycleBin(request *RestoreAccessKeyFromRecycleBinRequest) (_result *RestoreAccessKeyFromRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestoreAccessKeyFromRecycleBinResponse{}
+	_body, _err := client.RestoreAccessKeyFromRecycleBinWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a specific Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - RestoreUserFromRecycleBinRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RestoreUserFromRecycleBinResponse
+func (client *Client) RestoreUserFromRecycleBinWithOptions(request *RestoreUserFromRecycleBinRequest, runtime *util.RuntimeOptions) (_result *RestoreUserFromRecycleBinResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestoreUserFromRecycleBin"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RestoreUserFromRecycleBinResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Restores a specific Resource Access Management (RAM) user from the recycle bin.
+//
+// @param request - RestoreUserFromRecycleBinRequest
+//
+// @return RestoreUserFromRecycleBinResponse
+func (client *Client) RestoreUserFromRecycleBin(request *RestoreUserFromRecycleBinRequest) (_result *RestoreUserFromRecycleBinResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RestoreUserFromRecycleBinResponse{}
+	_body, _err := client.RestoreUserFromRecycleBinWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18948,24 +23031,13 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDefaultDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDefaultDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDefaultDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18988,7 +23060,7 @@ func (client *Client) SetDefaultDomain(request *SetDefaultDomainRequest) (_resul
 
 // Summary:
 //
-// Configures the password policy for RAM users.
+// Configures the password policy for Resource Access Management (RAM) users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -19059,29 +23131,18 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetPasswordPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetPasswordPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetPasswordPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Configures the password policy for RAM users.
+// Configures the password policy for Resource Access Management (RAM) users.
 //
 // @param request - SetPasswordPolicyRequest
 //
@@ -19182,24 +23243,13 @@ func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPrefer
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetSecurityPreferenceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetSecurityPreferenceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetSecurityPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19271,24 +23321,13 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetUserSsoSettingsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetUserSsoSettingsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetUserSsoSettingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19302,6 +23341,78 @@ func (client *Client) SetUserSsoSettings(request *SetUserSsoSettingsRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SetUserSsoSettingsResponse{}
 	_body, _err := client.SetUserSsoSettingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a mobile phone or email to a Resource Access Management (RAM) user.
+//
+// @param request - SetVerificationInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetVerificationInfoResponse
+func (client *Client) SetVerificationInfoWithOptions(request *SetVerificationInfoRequest, runtime *util.RuntimeOptions) (_result *SetVerificationInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobilePhone)) {
+		query["MobilePhone"] = request.MobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetVerificationInfo"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetVerificationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Binds a mobile phone or email to a Resource Access Management (RAM) user.
+//
+// @param request - SetVerificationInfoRequest
+//
+// @return SetVerificationInfoResponse
+func (client *Client) SetVerificationInfo(request *SetVerificationInfoRequest) (_result *SetVerificationInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetVerificationInfoResponse{}
+	_body, _err := client.SetVerificationInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19354,24 +23465,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19425,24 +23525,13 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnbindMFADeviceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnbindMFADeviceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnbindMFADeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19456,6 +23545,78 @@ func (client *Client) UnbindMFADevice(request *UnbindMFADeviceRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UnbindMFADeviceResponse{}
 	_body, _err := client.UnbindMFADeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+//
+// @param request - UnbindVerificationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UnbindVerificationResponse
+func (client *Client) UnbindVerificationWithOptions(request *UnbindVerificationRequest, runtime *util.RuntimeOptions) (_result *UnbindVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobilePhone)) {
+		query["MobilePhone"] = request.MobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindVerification"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Unbinds a mobile phone or email from a Resource Access Management (RAM) user.
+//
+// @param request - UnbindVerificationRequest
+//
+// @return UnbindVerificationResponse
+func (client *Client) UnbindVerification(request *UnbindVerificationRequest) (_result *UnbindVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindVerificationResponse{}
+	_body, _err := client.UnbindVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19512,24 +23673,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19591,24 +23741,13 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateAccessKeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateAccessKeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateAccessKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19694,24 +23833,13 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateApplicationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateApplicationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19777,24 +23905,13 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19864,24 +23981,13 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLoginProfileResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLoginProfileResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLoginProfileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19953,24 +24059,13 @@ func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateOIDCProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateOIDCProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateOIDCProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19999,7 +24094,7 @@ func (client *Client) UpdateOIDCProvider(request *UpdateOIDCProviderRequest) (_r
 
 // Summary:
 //
-// 更新Passkey
+// Updates the name of a passkey.
 //
 // @param request - UpdatePasskeyRequest
 //
@@ -20038,29 +24133,18 @@ func (client *Client) UpdatePasskeyWithOptions(request *UpdatePasskeyRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdatePasskeyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdatePasskeyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdatePasskeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// 更新Passkey
+// Updates the name of a passkey.
 //
 // @param request - UpdatePasskeyRequest
 //
@@ -20121,24 +24205,13 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateSAMLProviderResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateSAMLProviderResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateSAMLProviderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -20224,24 +24297,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
