@@ -10318,7 +10318,8 @@ type DescribeLogStoreInfoResponseBody struct {
 	// example:
 	//
 	// 50000000
-	Quota *int64 `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	Quota    *int64  `json:"Quota,omitempty" xml:"Quota,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// example:
 	//
 	// C6C3B72B********E95FB0A161
@@ -10353,6 +10354,11 @@ func (s *DescribeLogStoreInfoResponseBody) SetProjectName(v string) *DescribeLog
 
 func (s *DescribeLogStoreInfoResponseBody) SetQuota(v int64) *DescribeLogStoreInfoResponseBody {
 	s.Quota = &v
+	return s
+}
+
+func (s *DescribeLogStoreInfoResponseBody) SetRegionId(v string) *DescribeLogStoreInfoResponseBody {
+	s.RegionId = &v
 	return s
 }
 
@@ -12934,6 +12940,7 @@ type DescribeOutgoingDomainRequest struct {
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DataType    *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
 	// The domain name in outbound connections.
 	//
 	// example:
@@ -12947,7 +12954,8 @@ type DescribeOutgoingDomainRequest struct {
 	// example:
 	//
 	// 1656750960
-	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IsAITraffic *string `json:"IsAITraffic,omitempty" xml:"IsAITraffic,omitempty"`
 	// The language of the content within the request. Valid values:
 	//
 	// 	- **zh**: Chinese (default)
@@ -13100,6 +13108,11 @@ func (s *DescribeOutgoingDomainRequest) SetCurrentPage(v string) *DescribeOutgoi
 	return s
 }
 
+func (s *DescribeOutgoingDomainRequest) SetDataType(v string) *DescribeOutgoingDomainRequest {
+	s.DataType = &v
+	return s
+}
+
 func (s *DescribeOutgoingDomainRequest) SetDomain(v string) *DescribeOutgoingDomainRequest {
 	s.Domain = &v
 	return s
@@ -13107,6 +13120,11 @@ func (s *DescribeOutgoingDomainRequest) SetDomain(v string) *DescribeOutgoingDom
 
 func (s *DescribeOutgoingDomainRequest) SetEndTime(v string) *DescribeOutgoingDomainRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetIsAITraffic(v string) *DescribeOutgoingDomainRequest {
+	s.IsAITraffic = &v
 	return s
 }
 
@@ -33018,12 +33036,20 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		query["DataType"] = request.DataType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Domain)) {
 		query["Domain"] = request.Domain
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAITraffic)) {
+		query["IsAITraffic"] = request.IsAITraffic
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Lang)) {
