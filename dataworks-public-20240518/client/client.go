@@ -63349,7 +63349,8 @@ type UpdateWorkflowRequest struct {
 	// example:
 	//
 	// 1234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The name of the workflow.
 	//
 	// This parameter is required.
@@ -63414,6 +63415,11 @@ func (s *UpdateWorkflowRequest) SetEnvType(v string) *UpdateWorkflowRequest {
 
 func (s *UpdateWorkflowRequest) SetId(v int64) *UpdateWorkflowRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateWorkflowRequest) SetInstanceMode(v string) *UpdateWorkflowRequest {
+	s.InstanceMode = &v
 	return s
 }
 
@@ -64303,7 +64309,8 @@ type UpdateWorkflowShrinkRequest struct {
 	// example:
 	//
 	// 1234
-	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	InstanceMode *string `json:"InstanceMode,omitempty" xml:"InstanceMode,omitempty"`
 	// The name of the workflow.
 	//
 	// This parameter is required.
@@ -64368,6 +64375,11 @@ func (s *UpdateWorkflowShrinkRequest) SetEnvType(v string) *UpdateWorkflowShrink
 
 func (s *UpdateWorkflowShrinkRequest) SetId(v int64) *UpdateWorkflowShrinkRequest {
 	s.Id = &v
+	return s
+}
+
+func (s *UpdateWorkflowShrinkRequest) SetInstanceMode(v string) *UpdateWorkflowShrinkRequest {
+	s.InstanceMode = &v
 	return s
 }
 
@@ -78726,6 +78738,10 @@ func (client *Client) UpdateWorkflowWithOptions(tmpReq *UpdateWorkflowRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceMode)) {
+		body["InstanceMode"] = request.InstanceMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
