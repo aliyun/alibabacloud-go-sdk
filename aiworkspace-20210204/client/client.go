@@ -292,6 +292,7 @@ type ConnectionModels struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	Model       *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	ModelType   *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	ToolCall    *bool   `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
 }
 
 func (s ConnectionModels) String() string {
@@ -314,6 +315,11 @@ func (s *ConnectionModels) SetModel(v string) *ConnectionModels {
 
 func (s *ConnectionModels) SetModelType(v string) *ConnectionModels {
 	s.ModelType = &v
+	return s
+}
+
+func (s *ConnectionModels) SetToolCall(v bool) *ConnectionModels {
+	s.ToolCall = &v
 	return s
 }
 
@@ -1965,6 +1971,65 @@ func (s *ModelVersion) SetVersionDescription(v string) *ModelVersion {
 
 func (s *ModelVersion) SetVersionName(v string) *ModelVersion {
 	s.VersionName = &v
+	return s
+}
+
+type Prompt struct {
+	Accessibility    *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	CreateTime       *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	FrameworkContent *string `json:"FrameworkContent,omitempty" xml:"FrameworkContent,omitempty"`
+	FrameworkType    *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
+	ModifyTime       *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	PromptId         *string `json:"PromptId,omitempty" xml:"PromptId,omitempty"`
+	PromptName       *string `json:"PromptName,omitempty" xml:"PromptName,omitempty"`
+}
+
+func (s Prompt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Prompt) GoString() string {
+	return s.String()
+}
+
+func (s *Prompt) SetAccessibility(v string) *Prompt {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *Prompt) SetCreateTime(v string) *Prompt {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *Prompt) SetDescription(v string) *Prompt {
+	s.Description = &v
+	return s
+}
+
+func (s *Prompt) SetFrameworkContent(v string) *Prompt {
+	s.FrameworkContent = &v
+	return s
+}
+
+func (s *Prompt) SetFrameworkType(v string) *Prompt {
+	s.FrameworkType = &v
+	return s
+}
+
+func (s *Prompt) SetModifyTime(v string) *Prompt {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *Prompt) SetPromptId(v string) *Prompt {
+	s.PromptId = &v
+	return s
+}
+
+func (s *Prompt) SetPromptName(v string) *Prompt {
+	s.PromptName = &v
 	return s
 }
 
@@ -7531,6 +7596,7 @@ type DeleteUserConfigRequest struct {
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
+	Scope     *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s DeleteUserConfigRequest) String() string {
@@ -7543,6 +7609,11 @@ func (s DeleteUserConfigRequest) GoString() string {
 
 func (s *DeleteUserConfigRequest) SetConfigKey(v string) *DeleteUserConfigRequest {
 	s.ConfigKey = &v
+	return s
+}
+
+func (s *DeleteUserConfigRequest) SetScope(v string) *DeleteUserConfigRequest {
+	s.Scope = &v
 	return s
 }
 
@@ -18324,7 +18395,7 @@ func (s *UpdateCodeSourceResponse) SetBody(v *UpdateCodeSourceResponseBody) *Upd
 }
 
 type UpdateConfigRequest struct {
-	// The category of the configuration item. Supported categories:
+	// The category of the configuration item. Valid values:
 	//
 	// 	- CommonResourceConfig
 	//
@@ -18336,11 +18407,13 @@ type UpdateConfigRequest struct {
 	//
 	// 	- QuotaMaximumDuration
 	//
+	// 	- CommonTagConfig
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. Supported keys:
+	// The key of the configuration item. Valid values:
 	//
 	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
 	//
@@ -18348,7 +18421,9 @@ type UpdateConfigRequest struct {
 	//
 	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: Preset tags of the workspace. Created resources must include tags.
 	//
 	// example:
 	//
@@ -18393,13 +18468,13 @@ func (s *UpdateConfigRequest) SetLabels(v []*UpdateConfigRequestLabels) *UpdateC
 }
 
 type UpdateConfigRequestLabels struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// key1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//
@@ -23130,6 +23205,10 @@ func (client *Client) DeleteUserConfigWithOptions(CategoryName *string, request 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConfigKey)) {
 		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
 	}
 
 	req := &openapi.OpenApiRequest{
