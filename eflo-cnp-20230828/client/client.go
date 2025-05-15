@@ -10,42 +10,68 @@ import (
 )
 
 type DataResultsTaskIndividualResultMapValue struct {
+	// Experiment ID
+	//
 	// example:
 	//
 	// 54
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Host IP
+	//
 	// example:
 	//
 	// p-jt-waf-app1
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Pod name
+	//
 	// example:
 	//
 	// fluxserv-6fc89b45cf-w8wq6
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// GPU数量
+	//
 	// example:
 	//
 	// 8
 	GpuNum *int32 `json:"GpuNum,omitempty" xml:"GpuNum,omitempty"`
+	// GPU名称
+	//
 	// example:
 	//
 	// 8x OAM 810 GPU
 	GpuName *string `json:"GpuName,omitempty" xml:"GpuName,omitempty"`
+	// Whether there is a warning
+	//
 	// example:
 	//
 	// false
-	WarningFlag *bool   `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
-	WarningMsg  *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
+	WarningFlag *bool `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
+	// Warning message
+	//
+	// example:
+	//
+	// warning message
+	WarningMsg *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
+	// Whether there is an error
+	//
 	// example:
 	//
 	// false
-	ErrorFlag *bool   `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// TFLOPS
+	ErrorFlag *bool `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// error message
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// TFLOPS value
 	//
 	// example:
 	//
 	// 45
 	Tflops *float64 `json:"Tflops,omitempty" xml:"Tflops,omitempty"`
+	// Throughput
+	//
 	// example:
 	//
 	// 23
@@ -116,6 +142,12 @@ func (s *DataResultsTaskIndividualResultMapValue) SetSamplesPerSecond(v float64)
 }
 
 type ChangeResourceGroupRequest struct {
+	// Region Id
+	//
+	// example:
+	//
+	// cn-shanghai
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The resource group id.
 	//
 	// This parameter is required.
@@ -146,6 +178,11 @@ func (s ChangeResourceGroupRequest) String() string {
 
 func (s ChangeResourceGroupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetRegionId(v string) *ChangeResourceGroupRequest {
+	s.RegionId = &v
+	return s
 }
 
 func (s *ChangeResourceGroupRequest) SetResourceGroupId(v string) *ChangeResourceGroupRequest {
@@ -221,6 +258,12 @@ type CreateExperimentPlanRequest struct {
 	//
 	// {}
 	ExternalParams map[string]interface{} `json:"ExternalParams,omitempty" xml:"ExternalParams,omitempty"`
+	// Plan Template Name
+	//
+	// example:
+	//
+	// test
+	PlanTemplateName *string `json:"PlanTemplateName,omitempty" xml:"PlanTemplateName,omitempty"`
 	// Resource group ID
 	//
 	// example:
@@ -229,11 +272,17 @@ type CreateExperimentPlanRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Resource ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 189
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource tags
+	Tag []*CreateExperimentPlanRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Template ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -254,6 +303,11 @@ func (s *CreateExperimentPlanRequest) SetExternalParams(v map[string]interface{}
 	return s
 }
 
+func (s *CreateExperimentPlanRequest) SetPlanTemplateName(v string) *CreateExperimentPlanRequest {
+	s.PlanTemplateName = &v
+	return s
+}
+
 func (s *CreateExperimentPlanRequest) SetResourceGroupId(v string) *CreateExperimentPlanRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -264,8 +318,46 @@ func (s *CreateExperimentPlanRequest) SetResourceId(v int64) *CreateExperimentPl
 	return s
 }
 
+func (s *CreateExperimentPlanRequest) SetTag(v []*CreateExperimentPlanRequestTag) *CreateExperimentPlanRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateExperimentPlanRequest) SetTemplateId(v int64) *CreateExperimentPlanRequest {
 	s.TemplateId = &v
+	return s
+}
+
+type CreateExperimentPlanRequestTag struct {
+	// Key
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExperimentPlanRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExperimentPlanRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExperimentPlanRequestTag) SetKey(v string) *CreateExperimentPlanRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExperimentPlanRequestTag) SetValue(v string) *CreateExperimentPlanRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -276,6 +368,12 @@ type CreateExperimentPlanShrinkRequest struct {
 	//
 	// {}
 	ExternalParamsShrink *string `json:"ExternalParams,omitempty" xml:"ExternalParams,omitempty"`
+	// Plan Template Name
+	//
+	// example:
+	//
+	// test
+	PlanTemplateName *string `json:"PlanTemplateName,omitempty" xml:"PlanTemplateName,omitempty"`
 	// Resource group ID
 	//
 	// example:
@@ -284,11 +382,17 @@ type CreateExperimentPlanShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Resource ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 189
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource tags
+	Tag []*CreateExperimentPlanShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Template ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -309,6 +413,11 @@ func (s *CreateExperimentPlanShrinkRequest) SetExternalParamsShrink(v string) *C
 	return s
 }
 
+func (s *CreateExperimentPlanShrinkRequest) SetPlanTemplateName(v string) *CreateExperimentPlanShrinkRequest {
+	s.PlanTemplateName = &v
+	return s
+}
+
 func (s *CreateExperimentPlanShrinkRequest) SetResourceGroupId(v string) *CreateExperimentPlanShrinkRequest {
 	s.ResourceGroupId = &v
 	return s
@@ -319,8 +428,46 @@ func (s *CreateExperimentPlanShrinkRequest) SetResourceId(v int64) *CreateExperi
 	return s
 }
 
+func (s *CreateExperimentPlanShrinkRequest) SetTag(v []*CreateExperimentPlanShrinkRequestTag) *CreateExperimentPlanShrinkRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateExperimentPlanShrinkRequest) SetTemplateId(v int64) *CreateExperimentPlanShrinkRequest {
 	s.TemplateId = &v
+	return s
+}
+
+type CreateExperimentPlanShrinkRequestTag struct {
+	// Key
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Value
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateExperimentPlanShrinkRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateExperimentPlanShrinkRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateExperimentPlanShrinkRequestTag) SetKey(v string) *CreateExperimentPlanShrinkRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateExperimentPlanShrinkRequestTag) SetValue(v string) *CreateExperimentPlanShrinkRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -343,7 +490,7 @@ type CreateExperimentPlanResponseBody struct {
 	//
 	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Total count of the query
+	// Total count
 	//
 	// example:
 	//
@@ -409,19 +556,37 @@ func (s *CreateExperimentPlanResponse) SetBody(v *CreateExperimentPlanResponseBo
 }
 
 type CreateExperimentPlanTemplateRequest struct {
+	// Privacy Level
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// private
 	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// Template Description
+	//
 	// example:
 	//
 	// The template installs jdk and tomcat on a new ECS instance.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// 4724
-	TemplateId       *int64                                                 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName     *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template Name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template Pipeline
+	//
+	// This parameter is required.
 	TemplatePipeline []*CreateExperimentPlanTemplateRequestTemplatePipeline `json:"TemplatePipeline,omitempty" xml:"TemplatePipeline,omitempty" type:"Repeated"`
 }
 
@@ -459,20 +624,40 @@ func (s *CreateExperimentPlanTemplateRequest) SetTemplatePipeline(v []*CreateExp
 }
 
 type CreateExperimentPlanTemplateRequestTemplatePipeline struct {
+	// Configured Environment Parameters
+	//
+	// This parameter is required.
 	EnvParams *CreateExperimentPlanTemplateRequestTemplatePipelineEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Node Order Number
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
 	PipelineOrder *int32 `json:"PipelineOrder,omitempty" xml:"PipelineOrder,omitempty"`
+	// Usage Scenario, e.g., "baseline"
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// baseline
-	Scene         *string            `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Configured Workload Parameters
 	SettingParams map[string]*string `json:"SettingParams,omitempty" xml:"SettingParams,omitempty"`
+	// Workload ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 14
 	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
@@ -518,46 +703,66 @@ func (s *CreateExperimentPlanTemplateRequestTemplatePipeline) SetWorkloadName(v 
 }
 
 type CreateExperimentPlanTemplateRequestTemplatePipelineEnvParams struct {
+	// CPU allocation count
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 90
 	CpuPerWorker *int32 `json:"CpuPerWorker,omitempty" xml:"CpuPerWorker,omitempty"`
-	// cudaVersion
+	// CUDA Version
 	//
 	// example:
 	//
 	// 1.0.0
 	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
-	// GpuDriverVersion
+	// GPU Driver Version
 	//
 	// example:
 	//
 	// 1.0.0
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU allocation count
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 8
 	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Memory (GB) allocation count
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 500
 	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
-	// NCCLVersion
+	// NCCL Version
 	//
 	// example:
 	//
 	// 1.0.0
 	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
-	// PyTorchVersion
+	// PyTorch Version
 	//
 	// example:
 	//
 	// 1.0.0
 	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Shared Memory (GB) allocation count
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 500
 	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Number of nodes
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 1
@@ -618,19 +823,37 @@ func (s *CreateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetWorker
 }
 
 type CreateExperimentPlanTemplateShrinkRequest struct {
+	// Privacy Level
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// private
 	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// Template Description
+	//
 	// example:
 	//
 	// The template installs jdk and tomcat on a new ECS instance.
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// 4724
-	TemplateId             *int64  `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName           *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template Name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template Pipeline
+	//
+	// This parameter is required.
 	TemplatePipelineShrink *string `json:"TemplatePipeline,omitempty" xml:"TemplatePipeline,omitempty"`
 }
 
@@ -668,15 +891,22 @@ func (s *CreateExperimentPlanTemplateShrinkRequest) SetTemplatePipelineShrink(v 
 }
 
 type CreateExperimentPlanTemplateResponseBody struct {
+	// Access Denied Detail
+	//
 	// example:
 	//
 	// {}
-	AccessDeniedDetail *string                                       `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *CreateExperimentPlanTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data *CreateExperimentPlanTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// total
+	//
 	// example:
 	//
 	// 0
@@ -712,33 +942,64 @@ func (s *CreateExperimentPlanTemplateResponseBody) SetTotalCount(v int64) *Creat
 }
 
 type CreateExperimentPlanTemplateResponseBodyData struct {
+	// Creation Time
+	//
 	// example:
 	//
 	// 2024-11-19T02:01:05Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Primary Account UID
+	//
 	// example:
 	//
 	// 12312312312312
 	CreatorUid *int64 `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// Is Deleted
+	//
 	// example:
 	//
 	// 0
 	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// Privacy Level
+	//
 	// example:
 	//
 	// private
-	PrivacyLevel        *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// Template Code
+	//
+	// example:
+	//
+	// 1
+	TemplateCode *int64 `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template Description
+	//
+	// example:
+	//
+	// test
 	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// 17615126
-	TemplateId            *int64                                                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName          *string                                                              `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template Name
+	//
+	// example:
+	//
+	// test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template Pipeline
 	TemplatePipelineParam []*CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam `json:"TemplatePipelineParam,omitempty" xml:"TemplatePipelineParam,omitempty" type:"Repeated"`
+	// Update Time
+	//
 	// example:
 	//
 	// 2023-10-16T01:58Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Version ID
+	//
 	// example:
 	//
 	// 1
@@ -773,6 +1034,11 @@ func (s *CreateExperimentPlanTemplateResponseBodyData) SetPrivacyLevel(v string)
 	return s
 }
 
+func (s *CreateExperimentPlanTemplateResponseBodyData) SetTemplateCode(v int64) *CreateExperimentPlanTemplateResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
 func (s *CreateExperimentPlanTemplateResponseBodyData) SetTemplateDescription(v string) *CreateExperimentPlanTemplateResponseBodyData {
 	s.TemplateDescription = &v
 	return s
@@ -804,20 +1070,30 @@ func (s *CreateExperimentPlanTemplateResponseBodyData) SetVersionId(v int64) *Cr
 }
 
 type CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam struct {
+	// Configured Environment Parameters
 	EnvParams *CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Pipeline Order
+	//
 	// example:
 	//
 	// 1
 	PipelineOrder *int32 `json:"PipelineOrder,omitempty" xml:"PipelineOrder,omitempty"`
+	// Usage Scenario, e.g., "baseline"
+	//
 	// example:
 	//
 	// baseline
-	Scene         *string            `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Configured Workload Parameters
 	SettingParams map[string]*string `json:"SettingParams,omitempty" xml:"SettingParams,omitempty"`
+	// Workload ID
+	//
 	// example:
 	//
 	// 13
 	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
 	// example:
 	//
 	// test
@@ -863,6 +1139,8 @@ func (s *CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetW
 }
 
 type CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams struct {
+	// CPU Allocation
+	//
 	// example:
 	//
 	// 90
@@ -873,36 +1151,44 @@ type CreateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams 
 	//
 	// 1.0.0
 	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
-	// GpuDriverVersion
+	// GPU Driver Version
 	//
 	// example:
 	//
 	// 1.0.0
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU Allocation
+	//
 	// example:
 	//
 	// 8
 	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Memory (GB) Allocation
+	//
 	// example:
 	//
 	// 500
 	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
-	// NCCLVersion
+	// NCCL Version
 	//
 	// example:
 	//
 	// 1.0.0
 	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
-	// PyTorchVersion
+	// PyTorch Version
 	//
 	// example:
 	//
 	// 1.0.0
 	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Shared Memory (GB) Allocation
+	//
 	// example:
 	//
 	// 500
 	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Number of Nodes
+	//
 	// example:
 	//
 	// 1
@@ -1000,31 +1286,27 @@ type CreateResourceRequest struct {
 	ClusterDesc *string `json:"ClusterDesc,omitempty" xml:"ClusterDesc,omitempty"`
 	// Cluster ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ehpc-sh-fj71c0ycfw
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Cluster Name
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tre-1-ppu
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Cluster Type
-	//
-	// example:
-	//
-	// ACK
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// Machine Types
+	//
+	// This parameter is required.
 	MachineTypes *CreateResourceRequestMachineTypes `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty" type:"Struct"`
-	// Resource Type
-	//
-	// example:
-	//
-	// ACK
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// User Access Parameters
+	//
+	// This parameter is required.
 	UserAccessParam *CreateResourceRequestUserAccessParam `json:"UserAccessParam,omitempty" xml:"UserAccessParam,omitempty" type:"Struct"`
 }
 
@@ -1051,18 +1333,8 @@ func (s *CreateResourceRequest) SetClusterName(v string) *CreateResourceRequest 
 	return s
 }
 
-func (s *CreateResourceRequest) SetClusterType(v string) *CreateResourceRequest {
-	s.ClusterType = &v
-	return s
-}
-
 func (s *CreateResourceRequest) SetMachineTypes(v *CreateResourceRequestMachineTypes) *CreateResourceRequest {
 	s.MachineTypes = v
-	return s
-}
-
-func (s *CreateResourceRequest) SetResourceType(v string) *CreateResourceRequest {
-	s.ResourceType = &v
 	return s
 }
 
@@ -1080,6 +1352,8 @@ type CreateResourceRequestMachineTypes struct {
 	BondNum *int32 `json:"BondNum,omitempty" xml:"BondNum,omitempty"`
 	// CPU Information
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 2x Intel Saphhire Rapid 8469C 48C CPU
@@ -1091,6 +1365,8 @@ type CreateResourceRequestMachineTypes struct {
 	// 2x 480GB SATA SSD \\n 4x 3.84TB NVMe SSD
 	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
 	// GPU Information
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1195,11 +1471,15 @@ func (s *CreateResourceRequestMachineTypes) SetType(v string) *CreateResourceReq
 type CreateResourceRequestUserAccessParam struct {
 	// User ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// dev
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
 	// User Key
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1207,11 +1487,15 @@ type CreateResourceRequestUserAccessParam struct {
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	// Endpoint
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// test
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
 	// Workspace ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -1256,31 +1540,27 @@ type CreateResourceShrinkRequest struct {
 	ClusterDesc *string `json:"ClusterDesc,omitempty" xml:"ClusterDesc,omitempty"`
 	// Cluster ID
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// ehpc-sh-fj71c0ycfw
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Cluster Name
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// tre-1-ppu
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Cluster Type
-	//
-	// example:
-	//
-	// ACK
-	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	// Machine Types
+	//
+	// This parameter is required.
 	MachineTypesShrink *string `json:"MachineTypes,omitempty" xml:"MachineTypes,omitempty"`
-	// Resource Type
-	//
-	// example:
-	//
-	// ACK
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	// User Access Parameters
+	//
+	// This parameter is required.
 	UserAccessParamShrink *string `json:"UserAccessParam,omitempty" xml:"UserAccessParam,omitempty"`
 }
 
@@ -1307,18 +1587,8 @@ func (s *CreateResourceShrinkRequest) SetClusterName(v string) *CreateResourceSh
 	return s
 }
 
-func (s *CreateResourceShrinkRequest) SetClusterType(v string) *CreateResourceShrinkRequest {
-	s.ClusterType = &v
-	return s
-}
-
 func (s *CreateResourceShrinkRequest) SetMachineTypesShrink(v string) *CreateResourceShrinkRequest {
 	s.MachineTypesShrink = &v
-	return s
-}
-
-func (s *CreateResourceShrinkRequest) SetResourceType(v string) *CreateResourceShrinkRequest {
-	s.ResourceType = &v
 	return s
 }
 
@@ -1401,10 +1671,20 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 }
 
 type DeleteExperimentRequest struct {
+	// Plan ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 234
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Resource Group Id
+	//
+	// example:
+	//
+	// rg-sdkfjgnvd24
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteExperimentRequest) String() string {
@@ -1420,19 +1700,32 @@ func (s *DeleteExperimentRequest) SetExperimentId(v int64) *DeleteExperimentRequ
 	return s
 }
 
+func (s *DeleteExperimentRequest) SetResourceGroupId(v string) *DeleteExperimentRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type DeleteExperimentResponseBody struct {
+	// Access denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
 	// example:
 	//
 	// []
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count of queries
+	//
 	// example:
 	//
 	// 0
@@ -1496,7 +1789,119 @@ func (s *DeleteExperimentResponse) SetBody(v *DeleteExperimentResponseBody) *Del
 	return s
 }
 
+type DeleteExperimentPlanRequest struct {
+	// Plan ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 189
+	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+}
+
+func (s DeleteExperimentPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentPlanRequest) SetPlanId(v int64) *DeleteExperimentPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+type DeleteExperimentPlanResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// E67E2E4C-2B47-5C55-AA17-1D771E070AEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DeleteExperimentPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentPlanResponseBody) SetAccessDeniedDetail(v string) *DeleteExperimentPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteExperimentPlanResponseBody) SetData(v bool) *DeleteExperimentPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteExperimentPlanResponseBody) SetRequestId(v string) *DeleteExperimentPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteExperimentPlanResponseBody) SetTotalCount(v int64) *DeleteExperimentPlanResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DeleteExperimentPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteExperimentPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteExperimentPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteExperimentPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteExperimentPlanResponse) SetHeaders(v map[string]*string) *DeleteExperimentPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteExperimentPlanResponse) SetStatusCode(v int32) *DeleteExperimentPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteExperimentPlanResponse) SetBody(v *DeleteExperimentPlanResponseBody) *DeleteExperimentPlanResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteExperimentPlanTemplateRequest struct {
+	// Template ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 346527
@@ -1517,14 +1922,20 @@ func (s *DeleteExperimentPlanTemplateRequest) SetTemplateId(v int64) *DeleteExpe
 }
 
 type DeleteExperimentPlanTemplateResponseBody struct {
+	// Data
+	//
 	// example:
 	//
 	// []
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4D3FD55F-3BCD-5914-9B74-A1F4961327E7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total Count
+	//
 	// example:
 	//
 	// 0
@@ -1584,10 +1995,20 @@ func (s *DeleteExperimentPlanTemplateResponse) SetBody(v *DeleteExperimentPlanTe
 }
 
 type GetExperimentRequest struct {
+	// Experiment ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 234
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Resource Group Id
+	//
+	// example:
+	//
+	// rg-sdsmfg23
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s GetExperimentRequest) String() string {
@@ -1603,16 +2024,28 @@ func (s *GetExperimentRequest) SetExperimentId(v int64) *GetExperimentRequest {
 	return s
 }
 
+func (s *GetExperimentRequest) SetResourceGroupId(v string) *GetExperimentRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type GetExperimentResponseBody struct {
+	// Access denied detail
+	//
 	// example:
 	//
 	// {}
-	AccessDeniedDetail *string                        `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *GetExperimentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data *GetExperimentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// RequestId
+	//
 	// example:
 	//
 	// E67E2E4C-2B47-5C55-AA17-1D771E070AEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// total
+	//
 	// example:
 	//
 	// 0
@@ -1648,49 +2081,76 @@ func (s *GetExperimentResponseBody) SetTotalCount(v int64) *GetExperimentRespons
 }
 
 type GetExperimentResponseBodyData struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-11-29 02:16:35
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Task end time
+	//
 	// example:
 	//
 	// 2024-11-29 02:26:35
-	EndTime   *string                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Running environment parameters
 	EnvParams *GetExperimentResponseBodyDataEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Experiment ID
+	//
 	// example:
 	//
 	// 1726882991828688898
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Experiment name
+	//
 	// example:
 	//
 	// test
 	ExperimentName *string `json:"ExperimentName,omitempty" xml:"ExperimentName,omitempty"`
+	// Experiment type
+	//
 	// example:
 	//
 	// AI
-	ExperimentType *string                                `json:"ExperimentType,omitempty" xml:"ExperimentType,omitempty"`
-	GetParams      map[string]*string                     `json:"GetParams,omitempty" xml:"GetParams,omitempty"`
-	Resource       *GetExperimentResponseBodyDataResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	ExperimentType *string `json:"ExperimentType,omitempty" xml:"ExperimentType,omitempty"`
+	// Parsed workload parameters
+	GetParams map[string]*string `json:"GetParams,omitempty" xml:"GetParams,omitempty"`
+	// cluster info
+	Resource *GetExperimentResponseBodyDataResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
+	// Resource name
+	//
 	// example:
 	//
 	// cifnews-guoyuan
-	ResourceName *string                               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	Results      *GetExperimentResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
-	SetParams    map[string]*string                    `json:"SetParams,omitempty" xml:"SetParams,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// Task results
+	Results *GetExperimentResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Struct"`
+	// Running workload parameters
+	SetParams map[string]*string `json:"SetParams,omitempty" xml:"SetParams,omitempty"`
+	// Task start time
+	//
 	// example:
 	//
 	// 2024-11-29 02:16:35
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Status
+	//
 	// example:
 	//
 	// RUNNING
-	Status *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
-	Task   *GetExperimentResponseBodyDataTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Experiment task
+	Task *GetExperimentResponseBodyDataTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	// Update time
+	//
 	// example:
 	//
 	// 2024-11-29 02:16:35
-	UpdateTime *int64                                 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	Workload   *GetExperimentResponseBodyDataWorkload `json:"Workload,omitempty" xml:"Workload,omitempty" type:"Struct"`
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Workload information
+	Workload *GetExperimentResponseBodyDataWorkload `json:"Workload,omitempty" xml:"Workload,omitempty" type:"Struct"`
+	// Workload name
+	//
 	// example:
 	//
 	// test
@@ -1791,6 +2251,8 @@ func (s *GetExperimentResponseBodyData) SetWorkloadName(v string) *GetExperiment
 }
 
 type GetExperimentResponseBodyDataEnvParams struct {
+	// CPU allocation number
+	//
 	// example:
 	//
 	// 90
@@ -1800,39 +2262,49 @@ type GetExperimentResponseBodyDataEnvParams struct {
 	// example:
 	//
 	// 1.0.0
-	CudaVersion *string            `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	// Additional parameters
 	ExtendParam map[string]*string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
-	// GpuDriverVersion
+	// GPU driver version
 	//
 	// example:
 	//
 	// 1.0.0
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU allocation number
+	//
 	// example:
 	//
 	// 8
 	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Memory Per Worker
+	//
 	// example:
 	//
 	// 500
 	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
-	// NCCLVersion
+	// NCCL version
 	//
 	// example:
 	//
 	// 1.0.0
 	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
-	// PyTorchVersion
+	// PyTorch version
 	//
 	// example:
 	//
 	// 1.0.0
-	PyTorchVersion *string                                                `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
-	ResourceNodes  []*GetExperimentResponseBodyDataEnvParamsResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Specified nodes
+	ResourceNodes []*GetExperimentResponseBodyDataEnvParamsResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	// Share Memory
+	//
 	// example:
 	//
 	// 500
 	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Worker number
+	//
 	// example:
 	//
 	// 1
@@ -1903,30 +2375,44 @@ func (s *GetExperimentResponseBodyDataEnvParams) SetWorkerNum(v int32) *GetExper
 }
 
 type GetExperimentResponseBodyDataEnvParamsResourceNodes struct {
+	// Node name
+	//
 	// example:
 	//
 	// p-jt-waf-app1
 	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Requested CPU
+	//
 	// example:
 	//
 	// 90
 	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// Requested GPU
+	//
 	// example:
 	//
 	// 8
 	RequestGPU *int32 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// Requested memory
+	//
 	// example:
 	//
 	// 500
 	RequestMemory *int32 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// Total CPU
+	//
 	// example:
 	//
 	// 90
 	TotalCPU *int32 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	// Total GPU
+	//
 	// example:
 	//
 	// 8
 	TotalGPU *int32 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	// Total memory
+	//
 	// example:
 	//
 	// 500
@@ -1977,40 +2463,59 @@ func (s *GetExperimentResponseBodyDataEnvParamsResourceNodes) SetTotalMemory(v i
 }
 
 type GetExperimentResponseBodyDataResource struct {
+	// Used CPU
+	//
 	// example:
 	//
 	// 90
 	CpuCoreLimit *int32 `json:"CpuCoreLimit,omitempty" xml:"CpuCoreLimit,omitempty"`
+	// Used GPU
+	//
 	// example:
 	//
 	// 8
-	GpuLimit    *int32                                            `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
+	GpuLimit *int32 `json:"GpuLimit,omitempty" xml:"GpuLimit,omitempty"`
+	// Instance type
 	MachineType *GetExperimentResponseBodyDataResourceMachineType `json:"MachineType,omitempty" xml:"MachineType,omitempty" type:"Struct"`
+	// Used memory
+	//
 	// example:
 	//
 	// 90
 	MaxCpuCore *int32 `json:"MaxCpuCore,omitempty" xml:"MaxCpuCore,omitempty"`
+	// Used memory
+	//
 	// example:
 	//
 	// 8
 	MaxGpu *int32 `json:"MaxGpu,omitempty" xml:"MaxGpu,omitempty"`
+	// Used memory
+	//
 	// example:
 	//
 	// 500
 	MaxMemory *int64 `json:"MaxMemory,omitempty" xml:"MaxMemory,omitempty"`
+	// Used memory
+	//
 	// example:
 	//
 	// 500
 	MemoryLimit *int64 `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	// Cluster ID
+	//
 	// example:
 	//
 	// 189
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Cluster name
+	//
 	// example:
 	//
 	// ecs.r8y.4xlarge
-	ResourceName    *string                                               `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
-	ResourceNodes   []*GetExperimentResponseBodyDataResourceResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	// Resource node list
+	ResourceNodes []*GetExperimentResponseBodyDataResourceResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	// User authorization parameters
 	UserAccessParam *GetExperimentResponseBodyDataResourceUserAccessParam `json:"UserAccessParam,omitempty" xml:"UserAccessParam,omitempty" type:"Struct"`
 }
 
@@ -2078,42 +2583,62 @@ func (s *GetExperimentResponseBodyDataResource) SetUserAccessParam(v *GetExperim
 }
 
 type GetExperimentResponseBodyDataResourceMachineType struct {
+	// Number of network bonds
+	//
 	// example:
 	//
 	// 5
 	BondNum *int32 `json:"BondNum,omitempty" xml:"BondNum,omitempty"`
+	// CPU information
+	//
 	// example:
 	//
 	// 2x Intel Icelake 8369B 32C CPU
 	CpuInfo *string `json:"CpuInfo,omitempty" xml:"CpuInfo,omitempty"`
+	// Disk information
+	//
 	// example:
 	//
 	// 2x 480GB SATA SSD \\n 4x 3.84TB NVMe SSD
 	DiskInfo *string `json:"DiskInfo,omitempty" xml:"DiskInfo,omitempty"`
+	// GPU information
+	//
 	// example:
 	//
 	// 8x NVIDIA SXM4 80GB A100 GPU
 	GpuInfo *string `json:"GpuInfo,omitempty" xml:"GpuInfo,omitempty"`
+	// Memory information
+	//
 	// example:
 	//
 	// 32x 64GB DDR4 3200 Memory
 	MemoryInfo *string `json:"MemoryInfo,omitempty" xml:"MemoryInfo,omitempty"`
+	// Specification name
+	//
 	// example:
 	//
 	// efg1.nvga1n
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Network information
+	//
 	// example:
 	//
 	// 1x 100Gbps DP NIC for VPC \\n 4x 100Gbps DP RoCE NIC
 	NetworkInfo *string `json:"NetworkInfo,omitempty" xml:"NetworkInfo,omitempty"`
+	// Network mode
+	//
 	// example:
 	//
 	// 2
 	NetworkMode *string `json:"NetworkMode,omitempty" xml:"NetworkMode,omitempty"`
+	// Number of nodes
+	//
 	// example:
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	// Type
+	//
 	// example:
 	//
 	// Public
@@ -2179,6 +2704,8 @@ func (s *GetExperimentResponseBodyDataResourceMachineType) SetType(v string) *Ge
 }
 
 type GetExperimentResponseBodyDataResourceResourceNodes struct {
+	// Node name
+	//
 	// example:
 	//
 	// InputCheck
@@ -2199,20 +2726,26 @@ func (s *GetExperimentResponseBodyDataResourceResourceNodes) SetNodeName(v strin
 }
 
 type GetExperimentResponseBodyDataResourceUserAccessParam struct {
+	// User ID
+	//
 	// example:
 	//
 	// dev
 	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// User key
+	//
 	// example:
 	//
 	// test
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// endpoint
+	// Endpoint
 	//
 	// example:
 	//
 	// test
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// Workspace ID
+	//
 	// example:
 	//
 	// 123434542498
@@ -2248,11 +2781,16 @@ func (s *GetExperimentResponseBodyDataResourceUserAccessParam) SetWorkspaceId(v 
 }
 
 type GetExperimentResponseBodyDataResults struct {
+	// Duration
+	//
 	// example:
 	//
 	// 764
-	Duration    *float64                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Error node
 	ErrorWorker []*GetExperimentResponseBodyDataResultsErrorWorker `json:"ErrorWorker,omitempty" xml:"ErrorWorker,omitempty" type:"Repeated"`
+	// Parameter name
+	//
 	// example:
 	//
 	// 1748274952976261121
@@ -2263,18 +2801,26 @@ type GetExperimentResponseBodyDataResults struct {
 	//
 	// 54.2
 	Mfu *float64 `json:"Mfu,omitempty" xml:"Mfu,omitempty"`
+	// Samples Per Second
+	//
 	// example:
 	//
 	// 10
 	SamplesPerSecond *float64 `json:"SamplesPerSecond,omitempty" xml:"SamplesPerSecond,omitempty"`
+	// Seconds per iteration
+	//
 	// example:
 	//
 	// 1000
-	SecondsPerIteration      *float64                                                        `json:"SecondsPerIteration,omitempty" xml:"SecondsPerIteration,omitempty"`
+	SecondsPerIteration *float64 `json:"SecondsPerIteration,omitempty" xml:"SecondsPerIteration,omitempty"`
+	// Task individual result list
 	TaskIndividualResultList []*GetExperimentResponseBodyDataResultsTaskIndividualResultList `json:"TaskIndividualResultList,omitempty" xml:"TaskIndividualResultList,omitempty" type:"Repeated"`
-	TaskIndividualResultMap  map[string][]*DataResultsTaskIndividualResultMapValue           `json:"TaskIndividualResultMap,omitempty" xml:"TaskIndividualResultMap,omitempty"`
-	WarningBoundList         []*GetExperimentResponseBodyDataResultsWarningBoundList         `json:"WarningBoundList,omitempty" xml:"WarningBoundList,omitempty" type:"Repeated"`
-	WarningWorker            []*GetExperimentResponseBodyDataResultsWarningWorker            `json:"WarningWorker,omitempty" xml:"WarningWorker,omitempty" type:"Repeated"`
+	// Invalid task results
+	TaskIndividualResultMap map[string][]*DataResultsTaskIndividualResultMapValue `json:"TaskIndividualResultMap,omitempty" xml:"TaskIndividualResultMap,omitempty"`
+	// Warning bound list
+	WarningBoundList []*GetExperimentResponseBodyDataResultsWarningBoundList `json:"WarningBoundList,omitempty" xml:"WarningBoundList,omitempty" type:"Repeated"`
+	// Warning worker
+	WarningWorker []*GetExperimentResponseBodyDataResultsWarningWorker `json:"WarningWorker,omitempty" xml:"WarningWorker,omitempty" type:"Repeated"`
 }
 
 func (s GetExperimentResponseBodyDataResults) String() string {
@@ -2336,47 +2882,72 @@ func (s *GetExperimentResponseBodyDataResults) SetWarningWorker(v []*GetExperime
 }
 
 type GetExperimentResponseBodyDataResultsErrorWorker struct {
+	// error flag
+	//
 	// example:
 	//
 	// true
 	ErrorFlag *bool `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
+	// error message
+	//
 	// example:
 	//
 	// Connection reset
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Experiment ID
+	//
 	// example:
 	//
 	// 97
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// GPU name
+	//
 	// example:
 	//
 	// 8x OAM 810 GPU
 	GpuName *string `json:"GpuName,omitempty" xml:"GpuName,omitempty"`
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 8
 	GpuNum *int32 `json:"GpuNum,omitempty" xml:"GpuNum,omitempty"`
+	// Service address
+	//
 	// example:
 	//
 	// 60.188.98.209
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Pod name.
+	//
 	// example:
 	//
 	// hzs-forge-sdxl-online-7ff4d86444-pc95h
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// Samples Per Second
+	//
 	// example:
 	//
 	// 23
 	SamplesPerSecond *float64 `json:"SamplesPerSecond,omitempty" xml:"SamplesPerSecond,omitempty"`
+	// TFLOPS
+	//
 	// example:
 	//
 	// 12
 	Tflops *float64 `json:"Tflops,omitempty" xml:"Tflops,omitempty"`
+	// Whether there is a warning
+	//
 	// example:
 	//
 	// false
-	WarningFlag *bool   `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
-	WarningMsg  *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
+	WarningFlag *bool `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
+	// Warning message
+	//
+	// example:
+	//
+	// warning message
+	WarningMsg *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
 }
 
 func (s GetExperimentResponseBodyDataResultsErrorWorker) String() string {
@@ -2443,44 +3014,72 @@ func (s *GetExperimentResponseBodyDataResultsErrorWorker) SetWarningMsg(v string
 }
 
 type GetExperimentResponseBodyDataResultsTaskIndividualResultList struct {
+	// Whether there is an error
+	//
 	// example:
 	//
 	// false
-	ErrorFlag *bool   `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorFlag *bool `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// error message
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// 实验ID。
+	//
 	// example:
 	//
 	// 48
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// GPU name
+	//
 	// example:
 	//
 	// 8x OAM 810 GPU
 	GpuName *string `json:"GpuName,omitempty" xml:"GpuName,omitempty"`
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 8
 	GpuNum *int32 `json:"GpuNum,omitempty" xml:"GpuNum,omitempty"`
+	// 节点主机名称。
+	//
 	// example:
 	//
 	// p-jt-waf-app1
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Pod名称。
+	//
 	// example:
 	//
 	// fluxserv-6fc89b45cf-w8wq6
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// Throughput
+	//
 	// example:
 	//
 	// 28
 	SamplesPerSecond *float64 `json:"SamplesPerSecond,omitempty" xml:"SamplesPerSecond,omitempty"`
+	// TFLOPS value
+	//
 	// example:
 	//
 	// 16
 	Tflops *float64 `json:"Tflops,omitempty" xml:"Tflops,omitempty"`
+	// Whether there is a warning
+	//
 	// example:
 	//
 	// false
-	WarningFlag *bool   `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
-	WarningMsg  *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
+	WarningFlag *bool `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
+	// Warning message
+	//
+	// example:
+	//
+	// warning message
+	WarningMsg *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
 }
 
 func (s GetExperimentResponseBodyDataResultsTaskIndividualResultList) String() string {
@@ -2547,6 +3146,8 @@ func (s *GetExperimentResponseBodyDataResultsTaskIndividualResultList) SetWarnin
 }
 
 type GetExperimentResponseBodyDataResultsWarningBoundList struct {
+	// Iteration
+	//
 	// example:
 	//
 	// 10
@@ -2589,44 +3190,72 @@ func (s *GetExperimentResponseBodyDataResultsWarningBoundList) SetUpper(v float6
 }
 
 type GetExperimentResponseBodyDataResultsWarningWorker struct {
+	// Whether there is an error
+	//
 	// example:
 	//
 	// true
-	ErrorFlag *bool   `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
-	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	ErrorFlag *bool `json:"ErrorFlag,omitempty" xml:"ErrorFlag,omitempty"`
+	// Error message
+	//
+	// example:
+	//
+	// error message
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Experiment ID
+	//
 	// example:
 	//
 	// 9
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// GPU name
+	//
 	// example:
 	//
 	// 8x OAM 810 GPU
 	GpuName *string `json:"GpuName,omitempty" xml:"GpuName,omitempty"`
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 8
 	GpuNum *int32 `json:"GpuNum,omitempty" xml:"GpuNum,omitempty"`
+	// Service address
+	//
 	// example:
 	//
 	// whza008403
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Pod name.
+	//
 	// example:
 	//
 	// fluxserv-6fc89b45cf-w8wq6
 	PodName *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+	// Throughput
+	//
 	// example:
 	//
 	// 15
 	SamplesPerSecond *float64 `json:"SamplesPerSecond,omitempty" xml:"SamplesPerSecond,omitempty"`
+	// TFLOPS value
+	//
 	// example:
 	//
 	// 14
 	Tflops *float64 `json:"Tflops,omitempty" xml:"Tflops,omitempty"`
+	// Whether there is an alarm
+	//
 	// example:
 	//
 	// true
-	WarningFlag *bool   `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
-	WarningMsg  *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
+	WarningFlag *bool `json:"WarningFlag,omitempty" xml:"WarningFlag,omitempty"`
+	// Alarm message
+	//
+	// example:
+	//
+	// warging message
+	WarningMsg *string `json:"WarningMsg,omitempty" xml:"WarningMsg,omitempty"`
 }
 
 func (s GetExperimentResponseBodyDataResultsWarningWorker) String() string {
@@ -2693,31 +3322,46 @@ func (s *GetExperimentResponseBodyDataResultsWarningWorker) SetWarningMsg(v stri
 }
 
 type GetExperimentResponseBodyDataTask struct {
+	// Creation time
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:08
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// End time
+	//
 	// example:
 	//
 	// 2024-03-05 18:34:08
-	EndTime *int64             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Params  map[string]*string `json:"Params,omitempty" xml:"Params,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// Experiment parameters
+	Params map[string]*string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// Scene
+	//
 	// example:
 	//
 	// baseline
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Start time
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:08
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Status
+	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Task ID
+	//
 	// example:
 	//
 	// 167420
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Update time
+	//
 	// example:
 	//
 	// 2024-03-05 18:24:08
@@ -2773,56 +3417,84 @@ func (s *GetExperimentResponseBodyDataTask) SetUpdateTime(v int64) *GetExperimen
 }
 
 type GetExperimentResponseBodyDataWorkload struct {
+	// Default CPU allocation
+	//
 	// example:
 	//
 	// 90
 	DefaultCpuPerWorker *int32 `json:"DefaultCpuPerWorker,omitempty" xml:"DefaultCpuPerWorker,omitempty"`
+	// Default GPU allocation
+	//
 	// example:
 	//
 	// 8
 	DefaultGpuPerWorker *int32 `json:"DefaultGpuPerWorker,omitempty" xml:"DefaultGpuPerWorker,omitempty"`
+	// Default memory (GB) allocation
+	//
 	// example:
 	//
 	// 500
 	DefaultMemoryPerWorker *int32 `json:"DefaultMemoryPerWorker,omitempty" xml:"DefaultMemoryPerWorker,omitempty"`
+	// Default shared memory (GB) allocation
+	//
 	// example:
 	//
 	// 500
 	DefaultShareMemory *int32 `json:"DefaultShareMemory,omitempty" xml:"DefaultShareMemory,omitempty"`
+	// Workload cluster, AI, GPU
+	//
 	// example:
 	//
 	// AI
 	Family *string `json:"Family,omitempty" xml:"Family,omitempty"`
+	// JobKind
+	//
 	// example:
 	//
 	// PyTorchJob
-	JobKind       *string                                               `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	JobKind *string `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	// Parameter settings
 	ParamSettings []*GetExperimentResponseBodyDataWorkloadParamSettings `json:"ParamSettings,omitempty" xml:"ParamSettings,omitempty" type:"Repeated"`
+	// Workload usage scenario
+	//
 	// example:
 	//
 	// NLP-LLM
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Scope
+	//
 	// example:
 	//
 	// common
-	Scope        *string                                            `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Static configuration
 	StaticConfig *GetExperimentResponseBodyDataWorkloadStaticConfig `json:"StaticConfig,omitempty" xml:"StaticConfig,omitempty" type:"Struct"`
+	// Version ID
+	//
 	// example:
 	//
 	// 1
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// Workload description
+	//
 	// example:
 	//
 	// test
 	WorkloadDescription *string `json:"WorkloadDescription,omitempty" xml:"WorkloadDescription,omitempty"`
+	// Workload ID
+	//
 	// example:
 	//
 	// 13
 	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload name
+	//
 	// example:
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// Workload name
+	//
 	// example:
 	//
 	// AI
@@ -2913,23 +3585,38 @@ func (s *GetExperimentResponseBodyDataWorkload) SetWorkloadType(v string) *GetEx
 }
 
 type GetExperimentResponseBodyDataWorkloadParamSettings struct {
+	// Default parameter value
+	//
 	// example:
 	//
 	// 100
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ParamDesc    *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter description
+	//
+	// example:
+	//
+	// number
+	ParamDesc *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter name
+	//
 	// example:
 	//
 	// ITERATION
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// Parameter regular expression
+	//
 	// example:
 	//
 	// [0-9]+
 	ParamRegex *string `json:"ParamRegex,omitempty" xml:"ParamRegex,omitempty"`
+	// Parameter type
+	//
 	// example:
 	//
 	// number
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// Parameter value
+	//
 	// example:
 	//
 	// 100
@@ -2975,18 +3662,26 @@ func (s *GetExperimentResponseBodyDataWorkloadParamSettings) SetParamValue(v str
 }
 
 type GetExperimentResponseBodyDataWorkloadStaticConfig struct {
+	// Framework
+	//
 	// example:
 	//
 	// pyTorch
 	FrameWork *string `json:"FrameWork,omitempty" xml:"FrameWork,omitempty"`
+	// Operating system
+	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Number of parameters
+	//
 	// example:
 	//
 	// 7B
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Software stack
+	//
 	// example:
 	//
 	// python
@@ -3052,6 +3747,8 @@ func (s *GetExperimentResponse) SetBody(v *GetExperimentResponseBody) *GetExperi
 
 type GetExperimentPlanRequest struct {
 	// Plan ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3150,6 +3847,8 @@ type GetExperimentPlanResponseBodyData struct {
 	//
 	// 260860230684
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// The tag.
+	Tags []*GetExperimentPlanResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Associated test plan template ID
 	//
 	// example:
@@ -3200,6 +3899,11 @@ func (s *GetExperimentPlanResponseBodyData) SetResourceGroupId(v string) *GetExp
 
 func (s *GetExperimentPlanResponseBodyData) SetResourceId(v int64) *GetExperimentPlanResponseBodyData {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *GetExperimentPlanResponseBodyData) SetTags(v []*GetExperimentPlanResponseBodyDataTags) *GetExperimentPlanResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -3521,6 +4225,39 @@ func (s *GetExperimentPlanResponseBodyDataPlanPipelineEnvParamsResourceNodes) Se
 	return s
 }
 
+type GetExperimentPlanResponseBodyDataTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// acs:testLXP:test-quota40-19
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// 000088aabb0019e4
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetExperimentPlanResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanResponseBodyDataTags) SetTagKey(v string) *GetExperimentPlanResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetExperimentPlanResponseBodyDataTags) SetTagValue(v string) *GetExperimentPlanResponseBodyDataTags {
+	s.TagValue = &v
+	return s
+}
+
 type GetExperimentPlanResponse struct {
 	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
 	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
@@ -3550,15 +4287,542 @@ func (s *GetExperimentPlanResponse) SetBody(v *GetExperimentPlanResponseBody) *G
 	return s
 }
 
+type GetExperimentPlanTemplateRequest struct {
+	// Template ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 315797
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateRequest) SetTemplateId(v int64) *GetExperimentPlanTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data *GetExperimentPlanTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
+	// example:
+	//
+	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponseBody) SetAccessDeniedDetail(v string) *GetExperimentPlanTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBody) SetData(v *GetExperimentPlanTemplateResponseBodyData) *GetExperimentPlanTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBody) SetRequestId(v string) *GetExperimentPlanTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBody) SetTotalCount(v int64) *GetExperimentPlanTemplateResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponseBodyData struct {
+	// Creation Time
+	//
+	// example:
+	//
+	// 2024-11-29 02:16:35
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Primary account UID
+	//
+	// example:
+	//
+	// 12312312312312
+	CreatorUid *int64 `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// Whether deleted
+	//
+	// example:
+	//
+	// 0
+	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// Privacy Level
+	//
+	// example:
+	//
+	// private
+	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// Template Code
+	//
+	// example:
+	//
+	// 464086216
+	TemplateCode *int64 `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template Description
+	//
+	// example:
+	//
+	// test
+	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	// Template ID
+	//
+	// example:
+	//
+	// 17615126
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template Name
+	//
+	// example:
+	//
+	// Test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template Pipeline
+	TemplatePipelineParam []*GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam `json:"TemplatePipelineParam,omitempty" xml:"TemplatePipelineParam,omitempty" type:"Repeated"`
+	// Update Time
+	//
+	// example:
+	//
+	// 2024-10-22 10:18:10
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Version ID
+	//
+	// example:
+	//
+	// 1
+	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetCreateTime(v string) *GetExperimentPlanTemplateResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetCreatorUid(v int64) *GetExperimentPlanTemplateResponseBodyData {
+	s.CreatorUid = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetIsDelete(v int32) *GetExperimentPlanTemplateResponseBodyData {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetPrivacyLevel(v string) *GetExperimentPlanTemplateResponseBodyData {
+	s.PrivacyLevel = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetTemplateCode(v int64) *GetExperimentPlanTemplateResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetTemplateDescription(v string) *GetExperimentPlanTemplateResponseBodyData {
+	s.TemplateDescription = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetTemplateId(v int64) *GetExperimentPlanTemplateResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetTemplateName(v string) *GetExperimentPlanTemplateResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetTemplatePipelineParam(v []*GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) *GetExperimentPlanTemplateResponseBodyData {
+	s.TemplatePipelineParam = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetUpdateTime(v string) *GetExperimentPlanTemplateResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyData) SetVersionId(v int64) *GetExperimentPlanTemplateResponseBodyData {
+	s.VersionId = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam struct {
+	// Configured environment parameters
+	EnvParams *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Node sequence number
+	//
+	// example:
+	//
+	// 1
+	PipelineOrder *int32 `json:"PipelineOrder,omitempty" xml:"PipelineOrder,omitempty"`
+	// Usage scenario, e.g., "baseline"
+	//
+	// example:
+	//
+	// baseline
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Configured workload parameters
+	SettingParams map[string]*string `json:"SettingParams,omitempty" xml:"SettingParams,omitempty"`
+	// Workload ID
+	//
+	// example:
+	//
+	// 13
+	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
+	// example:
+	//
+	// test
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetEnvParams(v *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.EnvParams = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetPipelineOrder(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.PipelineOrder = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetScene(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.Scene = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetSettingParams(v map[string]*string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.SettingParams = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetWorkloadId(v int64) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetWorkloadName(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.WorkloadName = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams struct {
+	// CPU allocation
+	//
+	// example:
+	//
+	// 90
+	CpuPerWorker *int32 `json:"CpuPerWorker,omitempty" xml:"CpuPerWorker,omitempty"`
+	// CUDA version
+	//
+	// example:
+	//
+	// 1.0.0
+	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	// Additional parameters
+	ExtendParam map[string]*string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// GPU driver version
+	//
+	// example:
+	//
+	// 1.0.0
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU allocation
+	//
+	// example:
+	//
+	// 8
+	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Allocated memory in GB
+	//
+	// example:
+	//
+	// 500
+	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
+	// NCCL version
+	//
+	// example:
+	//
+	// 1.0.0
+	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
+	// PyTorch version
+	//
+	// example:
+	//
+	// 1.0.0
+	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Specified nodes
+	ResourceNodes []*GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	// Shared memory in GB
+	//
+	// example:
+	//
+	// 500
+	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Number of nodes
+	//
+	// example:
+	//
+	// 1
+	WorkerNum *int32 `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetCpuPerWorker(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.CpuPerWorker = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetCudaVersion(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.CudaVersion = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetExtendParam(v map[string]*string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ExtendParam = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetGpuDriverVersion(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.GpuDriverVersion = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetGpuPerWorker(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.GpuPerWorker = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetMemoryPerWorker(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.MemoryPerWorker = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetNCCLVersion(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.NCCLVersion = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetPyTorchVersion(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.PyTorchVersion = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetResourceNodes(v []*GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ResourceNodes = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetShareMemory(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ShareMemory = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetWorkerNum(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.WorkerNum = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes struct {
+	// Node name
+	//
+	// example:
+	//
+	// exclusive_coud
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// 当前请求的cpu
+	//
+	// example:
+	//
+	// 10
+	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// Requested GPU
+	//
+	// example:
+	//
+	// 10
+	RequestGPU *int32 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// Requested memory
+	//
+	// example:
+	//
+	// 1024
+	RequestMemory *int32 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// Total CPU
+	//
+	// example:
+	//
+	// 100
+	TotalCPU *int32 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	// Total GPU
+	//
+	// example:
+	//
+	// 100
+	TotalGPU *int32 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	// Total memory
+	//
+	// example:
+	//
+	// 2048
+	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetNodeName(v string) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.NodeName = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestCPU(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestGPU(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestMemory(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalCPU(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalGPU(v int32) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalMemory(v int64) *GetExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalMemory = &v
+	return s
+}
+
+type GetExperimentPlanTemplateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetExperimentPlanTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetExperimentPlanTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExperimentPlanTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExperimentPlanTemplateResponse) SetHeaders(v map[string]*string) *GetExperimentPlanTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponse) SetStatusCode(v int32) *GetExperimentPlanTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetExperimentPlanTemplateResponse) SetBody(v *GetExperimentPlanTemplateResponseBody) *GetExperimentPlanTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type GetExperimentResultDataRequest struct {
+	// Experiment ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 234
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Hostname
+	//
 	// example:
 	//
 	// iZj6ccwd7zwfms7hzaz2riZ
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// Resource Group Id
+	//
+	// example:
+	//
+	// rg-sfjgskdfj3k4
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Workload Type
+	//
 	// example:
 	//
 	// AI
@@ -3583,21 +4847,33 @@ func (s *GetExperimentResultDataRequest) SetHostname(v string) *GetExperimentRes
 	return s
 }
 
+func (s *GetExperimentResultDataRequest) SetResourceGroupId(v string) *GetExperimentResultDataRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 func (s *GetExperimentResultDataRequest) SetWorkloadType(v string) *GetExperimentResultDataRequest {
 	s.WorkloadType = &v
 	return s
 }
 
 type GetExperimentResultDataResponseBody struct {
+	// Access Denied Details
+	//
 	// example:
 	//
 	// {}
-	AccessDeniedDetail *string                                    `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*GetExperimentResultDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data []*GetExperimentResultDataResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// C1D34EC2-AB13-56F4-8322-F15AE563EA04
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total Count of Queries
+	//
 	// example:
 	//
 	// 0
@@ -3633,15 +4909,22 @@ func (s *GetExperimentResultDataResponseBody) SetTotalCount(v int64) *GetExperim
 }
 
 type GetExperimentResultDataResponseBodyData struct {
+	// Number of GPUs
+	//
 	// example:
 	//
 	// 8
 	GpuNum *string `json:"GpuNum,omitempty" xml:"GpuNum,omitempty"`
+	// Host IP
+	//
 	// example:
 	//
 	// p-jt-waf-app1
-	Hostname     *string                                                `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// List of Metrics Information
 	MetricsInfos []*GetExperimentResultDataResponseBodyDataMetricsInfos `json:"MetricsInfos,omitempty" xml:"MetricsInfos,omitempty" type:"Repeated"`
+	// Pod Name
+	//
 	// example:
 	//
 	// hzs-forge-sdxl-online-7ff4d86444-pc95h
@@ -3677,13 +4960,13 @@ func (s *GetExperimentResultDataResponseBodyData) SetPodName(v string) *GetExper
 }
 
 type GetExperimentResultDataResponseBodyDataMetricsInfos struct {
-	// gpu
+	// GPU
 	//
 	// example:
 	//
 	// 8
 	GpuNum *string `json:"Gpu_num,omitempty" xml:"Gpu_num,omitempty"`
-	// iteration
+	// Iteration
 	//
 	// example:
 	//
@@ -3695,10 +4978,14 @@ type GetExperimentResultDataResponseBodyDataMetricsInfos struct {
 	//
 	// 43
 	Tflops *float64 `json:"Tflops,omitempty" xml:"Tflops,omitempty"`
+	// Operation Timestamp
+	//
 	// example:
 	//
 	// 1715393860
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Metric Value
+	//
 	// example:
 	//
 	// 126
@@ -3769,6 +5056,8 @@ func (s *GetExperimentResultDataResponse) SetBody(v *GetExperimentResultDataResp
 
 type GetResourceRequest struct {
 	// The cluster ID of Lingjun
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -3903,12 +5192,6 @@ type GetResourceResponseBodyData struct {
 	//
 	// 189
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Cluster name
-	//
-	// example:
-	//
-	// ecs.g6.4xlarge
-	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// List of resource nodes
 	ResourceNodes []*GetResourceResponseBodyDataResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
 	// User authorization parameters
@@ -3975,11 +5258,6 @@ func (s *GetResourceResponseBodyData) SetMemoryLimit(v int64) *GetResourceRespon
 
 func (s *GetResourceResponseBodyData) SetResourceId(v int64) *GetResourceResponseBodyData {
 	s.ResourceId = &v
-	return s
-}
-
-func (s *GetResourceResponseBodyData) SetResourceName(v string) *GetResourceResponseBodyData {
-	s.ResourceName = &v
 	return s
 }
 
@@ -4221,10 +5499,16 @@ func (s *GetResourceResponse) SetBody(v *GetResourceResponseBody) *GetResourceRe
 }
 
 type GetResourcePredictResultRequest struct {
+	// Resource ID
+	//
 	// example:
 	//
 	// 36
 	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Template ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 315797
@@ -4250,14 +5534,20 @@ func (s *GetResourcePredictResultRequest) SetTemplateId(v int64) *GetResourcePre
 }
 
 type GetResourcePredictResultResponseBody struct {
+	// Data
+	//
 	// example:
 	//
 	// 2
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// total
+	//
 	// example:
 	//
 	// 1
@@ -4317,6 +5607,8 @@ func (s *GetResourcePredictResultResponse) SetBody(v *GetResourcePredictResultRe
 }
 
 type GetWorkloadRequest struct {
+	// Workload ID
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4339,15 +5631,22 @@ func (s *GetWorkloadRequest) SetWorkloadId(v int64) *GetWorkloadRequest {
 }
 
 type GetWorkloadResponseBody struct {
+	// Access Denied Information
+	//
 	// example:
 	//
 	// {}
-	AccessDeniedDetail *string                      `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               *GetWorkloadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data *GetWorkloadResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
 	// example:
 	//
 	// E67E2E4C-2B47-5C55-AA17-1D771E070AEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// total
+	//
 	// example:
 	//
 	// 0
@@ -4383,56 +5682,84 @@ func (s *GetWorkloadResponseBody) SetTotalCount(v int64) *GetWorkloadResponseBod
 }
 
 type GetWorkloadResponseBodyData struct {
+	// Default CPU Allocation per Worker
+	//
 	// example:
 	//
 	// 90
 	DefaultCpuPerWorker *int32 `json:"DefaultCpuPerWorker,omitempty" xml:"DefaultCpuPerWorker,omitempty"`
+	// Default GPU Allocation per Worker
+	//
 	// example:
 	//
 	// 8
 	DefaultGpuPerWorker *int32 `json:"DefaultGpuPerWorker,omitempty" xml:"DefaultGpuPerWorker,omitempty"`
+	// Default Memory (GB) Allocation per Worker
+	//
 	// example:
 	//
 	// 500
 	DefaultMemoryPerWorker *int32 `json:"DefaultMemoryPerWorker,omitempty" xml:"DefaultMemoryPerWorker,omitempty"`
+	// Default Shared Memory (GB) Allocation
+	//
 	// example:
 	//
 	// 500
 	DefaultShareMemory *int32 `json:"DefaultShareMemory,omitempty" xml:"DefaultShareMemory,omitempty"`
+	// Workload Cluster, e.g., AI, GPU
+	//
 	// example:
 	//
 	// AI
 	Family *string `json:"Family,omitempty" xml:"Family,omitempty"`
+	// Training Job Type
+	//
 	// example:
 	//
 	// PyTorchJob
-	JobKind       *string                                     `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	JobKind *string `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	// Parameter Settings
 	ParamSettings []*GetWorkloadResponseBodyDataParamSettings `json:"ParamSettings,omitempty" xml:"ParamSettings,omitempty" type:"Repeated"`
+	// Workload Usage Scenario
+	//
 	// example:
 	//
 	// NLP-LLM
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Scope Identifier for Workload Usage
+	//
 	// example:
 	//
 	// common
-	Scope        *string                                  `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Static Configuration
 	StaticConfig *GetWorkloadResponseBodyDataStaticConfig `json:"StaticConfig,omitempty" xml:"StaticConfig,omitempty" type:"Struct"`
+	// Version ID
+	//
 	// example:
 	//
 	// 1
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// Workload Description
+	//
 	// example:
 	//
 	// test
 	WorkloadDescription *string `json:"WorkloadDescription,omitempty" xml:"WorkloadDescription,omitempty"`
+	// Workload ID
+	//
 	// example:
 	//
 	// 13
 	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
 	// example:
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// Workload Type
+	//
 	// example:
 	//
 	// AI
@@ -4523,23 +5850,38 @@ func (s *GetWorkloadResponseBodyData) SetWorkloadType(v string) *GetWorkloadResp
 }
 
 type GetWorkloadResponseBodyDataParamSettings struct {
+	// Default Parameter Value
+	//
 	// example:
 	//
 	// 100
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ParamDesc    *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter Description
+	//
+	// example:
+	//
+	// number
+	ParamDesc *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter Name
+	//
 	// example:
 	//
 	// ITERATION
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// Parameter Regular Expression
+	//
 	// example:
 	//
 	// [0-9]+
 	ParamRegex *string `json:"ParamRegex,omitempty" xml:"ParamRegex,omitempty"`
+	// Parameter type
+	//
 	// example:
 	//
 	// number
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// Parameter Value
+	//
 	// example:
 	//
 	// 100
@@ -4585,18 +5927,26 @@ func (s *GetWorkloadResponseBodyDataParamSettings) SetParamValue(v string) *GetW
 }
 
 type GetWorkloadResponseBodyDataStaticConfig struct {
+	// Framework
+	//
 	// example:
 	//
 	// PyTorch
 	FrameWork *string `json:"FrameWork,omitempty" xml:"FrameWork,omitempty"`
+	// Operating System
+	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Parameter Volume
+	//
 	// example:
 	//
 	// 7B
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Software Stack
+	//
 	// example:
 	//
 	// python
@@ -4747,6 +6097,12 @@ type ListExperimentPlanTemplatesResponseBodyData struct {
 	//
 	// private
 	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// The template code.
+	//
+	// example:
+	//
+	// 475315534
+	TemplateCode *int64 `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 	// Template description
 	//
 	// example:
@@ -4806,6 +6162,11 @@ func (s *ListExperimentPlanTemplatesResponseBodyData) SetIsDelete(v int32) *List
 
 func (s *ListExperimentPlanTemplatesResponseBodyData) SetPrivacyLevel(v string) *ListExperimentPlanTemplatesResponseBodyData {
 	s.PrivacyLevel = &v
+	return s
+}
+
+func (s *ListExperimentPlanTemplatesResponseBodyData) SetTemplateCode(v int64) *ListExperimentPlanTemplatesResponseBodyData {
+	s.TemplateCode = &v
 	return s
 }
 
@@ -4915,6 +6276,18 @@ type ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams s
 	//
 	// 90
 	CpuPerWorker *int32 `json:"CpuPerWorker,omitempty" xml:"CpuPerWorker,omitempty"`
+	// Cuda Version
+	//
+	// example:
+	//
+	// 1.0.0
+	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	// The version of the GPU driver.
+	//
+	// example:
+	//
+	// 1.0.0
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	// GPU allocation
 	//
 	// example:
@@ -4927,6 +6300,18 @@ type ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams s
 	//
 	// 500
 	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
+	// NCCL Version
+	//
+	// example:
+	//
+	// 1.0.0
+	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
+	// PyTorch Version
+	//
+	// example:
+	//
+	// 1.0.0
+	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
 	// Allocated shared memory in GB
 	//
 	// example:
@@ -4954,6 +6339,16 @@ func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvPara
 	return s
 }
 
+func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetCudaVersion(v string) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
+	s.CudaVersion = &v
+	return s
+}
+
+func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetGpuDriverVersion(v string) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
+	s.GpuDriverVersion = &v
+	return s
+}
+
 func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetGpuPerWorker(v int32) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
 	s.GpuPerWorker = &v
 	return s
@@ -4961,6 +6356,16 @@ func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvPara
 
 func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetMemoryPerWorker(v int32) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
 	s.MemoryPerWorker = &v
+	return s
+}
+
+func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetNCCLVersion(v string) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
+	s.NCCLVersion = &v
+	return s
+}
+
+func (s *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams) SetPyTorchVersion(v string) *ListExperimentPlanTemplatesResponseBodyDataTemplatePipelineParamEnvParams {
+	s.PyTorchVersion = &v
 	return s
 }
 
@@ -5030,6 +6435,12 @@ type ListExperimentPlansRequest struct {
 	//
 	// rg-aekzij65sf2rr5i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource ID
+	//
+	// example:
+	//
+	// 189
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Resource
 	ResourceName []*string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty" type:"Repeated"`
 	// Number of Items
@@ -5044,6 +6455,14 @@ type ListExperimentPlansRequest struct {
 	//
 	// desc
 	StartTimeOrder *string `json:"StartTimeOrder,omitempty" xml:"StartTimeOrder,omitempty"`
+	// The tags.
+	Tag []*ListExperimentPlansRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Template Id
+	//
+	// example:
+	//
+	// 96
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListExperimentPlansRequest) String() string {
@@ -5079,6 +6498,11 @@ func (s *ListExperimentPlansRequest) SetResourceGroupId(v string) *ListExperimen
 	return s
 }
 
+func (s *ListExperimentPlansRequest) SetResourceId(v int64) *ListExperimentPlansRequest {
+	s.ResourceId = &v
+	return s
+}
+
 func (s *ListExperimentPlansRequest) SetResourceName(v []*string) *ListExperimentPlansRequest {
 	s.ResourceName = v
 	return s
@@ -5091,6 +6515,49 @@ func (s *ListExperimentPlansRequest) SetSize(v int32) *ListExperimentPlansReques
 
 func (s *ListExperimentPlansRequest) SetStartTimeOrder(v string) *ListExperimentPlansRequest {
 	s.StartTimeOrder = &v
+	return s
+}
+
+func (s *ListExperimentPlansRequest) SetTag(v []*ListExperimentPlansRequestTag) *ListExperimentPlansRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *ListExperimentPlansRequest) SetTemplateId(v int64) *ListExperimentPlansRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type ListExperimentPlansRequestTag struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value
+	//
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListExperimentPlansRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentPlansRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentPlansRequestTag) SetKey(v string) *ListExperimentPlansRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListExperimentPlansRequestTag) SetValue(v string) *ListExperimentPlansRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5121,6 +6588,12 @@ type ListExperimentPlansShrinkRequest struct {
 	//
 	// rg-aekzij65sf2rr5i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource ID
+	//
+	// example:
+	//
+	// 189
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Resource
 	ResourceNameShrink *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// Number of Items
@@ -5135,6 +6608,14 @@ type ListExperimentPlansShrinkRequest struct {
 	//
 	// desc
 	StartTimeOrder *string `json:"StartTimeOrder,omitempty" xml:"StartTimeOrder,omitempty"`
+	// The tags.
+	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Template Id
+	//
+	// example:
+	//
+	// 96
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
 }
 
 func (s ListExperimentPlansShrinkRequest) String() string {
@@ -5170,6 +6651,11 @@ func (s *ListExperimentPlansShrinkRequest) SetResourceGroupId(v string) *ListExp
 	return s
 }
 
+func (s *ListExperimentPlansShrinkRequest) SetResourceId(v int64) *ListExperimentPlansShrinkRequest {
+	s.ResourceId = &v
+	return s
+}
+
 func (s *ListExperimentPlansShrinkRequest) SetResourceNameShrink(v string) *ListExperimentPlansShrinkRequest {
 	s.ResourceNameShrink = &v
 	return s
@@ -5182,6 +6668,16 @@ func (s *ListExperimentPlansShrinkRequest) SetSize(v int32) *ListExperimentPlans
 
 func (s *ListExperimentPlansShrinkRequest) SetStartTimeOrder(v string) *ListExperimentPlansShrinkRequest {
 	s.StartTimeOrder = &v
+	return s
+}
+
+func (s *ListExperimentPlansShrinkRequest) SetTagShrink(v string) *ListExperimentPlansShrinkRequest {
+	s.TagShrink = &v
+	return s
+}
+
+func (s *ListExperimentPlansShrinkRequest) SetTemplateId(v int64) *ListExperimentPlansShrinkRequest {
+	s.TemplateId = &v
 	return s
 }
 
@@ -5263,6 +6759,12 @@ type ListExperimentPlansResponseBodyData struct {
 	//
 	// rg-aek5behqmwbfhuy
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The resource ID.
+	//
+	// example:
+	//
+	// 189
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// Associated Resource Name
 	//
 	// example:
@@ -5275,6 +6777,8 @@ type ListExperimentPlansResponseBodyData struct {
 	//
 	// 2024-07-08 10:12:42
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The tag.
+	Tags []*ListExperimentPlansResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// Associated Test Plan Template ID
 	//
 	// example:
@@ -5328,6 +6832,11 @@ func (s *ListExperimentPlansResponseBodyData) SetResourceGroupId(v string) *List
 	return s
 }
 
+func (s *ListExperimentPlansResponseBodyData) SetResourceId(v int64) *ListExperimentPlansResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
 func (s *ListExperimentPlansResponseBodyData) SetResourceName(v string) *ListExperimentPlansResponseBodyData {
 	s.ResourceName = &v
 	return s
@@ -5335,6 +6844,11 @@ func (s *ListExperimentPlansResponseBodyData) SetResourceName(v string) *ListExp
 
 func (s *ListExperimentPlansResponseBodyData) SetStartTime(v string) *ListExperimentPlansResponseBodyData {
 	s.StartTime = &v
+	return s
+}
+
+func (s *ListExperimentPlansResponseBodyData) SetTags(v []*ListExperimentPlansResponseBodyDataTags) *ListExperimentPlansResponseBodyData {
+	s.Tags = v
 	return s
 }
 
@@ -5350,6 +6864,39 @@ func (s *ListExperimentPlansResponseBodyData) SetTemplateName(v string) *ListExp
 
 func (s *ListExperimentPlansResponseBodyData) SetUpdateTime(v string) *ListExperimentPlansResponseBodyData {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListExperimentPlansResponseBodyDataTags struct {
+	// The tag key.
+	//
+	// example:
+	//
+	// owner
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// test
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListExperimentPlansResponseBodyDataTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExperimentPlansResponseBodyDataTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListExperimentPlansResponseBodyDataTags) SetTagKey(v string) *ListExperimentPlansResponseBodyDataTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListExperimentPlansResponseBodyDataTags) SetTagValue(v string) *ListExperimentPlansResponseBodyDataTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -5395,6 +6942,12 @@ type ListExperimentsRequest struct {
 	//
 	// 189
 	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// 资源组id
+	//
+	// example:
+	//
+	// rg-uo8f26cpmo
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListExperimentsRequest) String() string {
@@ -5412,6 +6965,11 @@ func (s *ListExperimentsRequest) SetOrder(v int32) *ListExperimentsRequest {
 
 func (s *ListExperimentsRequest) SetPlanId(v int64) *ListExperimentsRequest {
 	s.PlanId = &v
+	return s
+}
+
+func (s *ListExperimentsRequest) SetResourceGroupId(v string) *ListExperimentsRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6200,7 +7758,237 @@ func (s *ListExperimentsResponse) SetBody(v *ListExperimentsResponseBody) *ListE
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// Next token for the next query
+	//
+	// example:
+	//
+	// F0lqbr2JpLDppro1RahGKViWtqXr3L28cePimcRn
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// ResourceId
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ExperimentPlan
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The list of tags to be queried. The value range for N is 1~20.
+	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	// Tag key, with n in the range [1, 20].
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value
+	//
+	// example:
+	//
+	// syg
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Next token for the next query. An empty NextToken indicates there are no more results.
+	//
+	// example:
+	//
+	// uPZbmbpgxp2/6vNWNPoase3Eqy+gL9pdDBH7KGZXMuZ9GxmBbMJcTP/dlrNqRaWF
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of resources
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetAccessDeniedDetail(v string) *ListTagResourcesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTotalCount(v int64) *ListTagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// ResourceId
+	//
+	// example:
+	//
+	// 189
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	// Resource type
+	//
+	// example:
+	//
+	// ExperimentPlan
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tag key
+	//
+	// example:
+	//
+	// owner
+	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value
+	//
+	// example:
+	//
+	// syg
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkloadsRequest struct {
+	// Scope
+	//
 	// example:
 	//
 	// common
@@ -6221,15 +8009,22 @@ func (s *ListWorkloadsRequest) SetScope(v string) *ListWorkloadsRequest {
 }
 
 type ListWorkloadsResponseBody struct {
+	// Access Denied Information
+	//
 	// example:
 	//
 	// {}
-	AccessDeniedDetail *string                          `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	Data               []*ListWorkloadsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data []*ListWorkloadsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Request ID
+	//
 	// example:
 	//
 	// 4AC08332-436C-57A3-9FBA-26772B1A9901
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// total
+	//
 	// example:
 	//
 	// 1
@@ -6265,56 +8060,84 @@ func (s *ListWorkloadsResponseBody) SetTotalCount(v int64) *ListWorkloadsRespons
 }
 
 type ListWorkloadsResponseBodyData struct {
+	// Default CPU Allocation
+	//
 	// example:
 	//
 	// 90
 	DefaultCpuPerWorker *int32 `json:"DefaultCpuPerWorker,omitempty" xml:"DefaultCpuPerWorker,omitempty"`
+	// Default GPU Allocation
+	//
 	// example:
 	//
 	// 8
 	DefaultGpuPerWorker *int32 `json:"DefaultGpuPerWorker,omitempty" xml:"DefaultGpuPerWorker,omitempty"`
+	// Default Memory (GB) Allocation
+	//
 	// example:
 	//
 	// 500
 	DefaultMemoryPerWorker *int32 `json:"DefaultMemoryPerWorker,omitempty" xml:"DefaultMemoryPerWorker,omitempty"`
+	// Default Shared Memory (GB) Allocation
+	//
 	// example:
 	//
 	// 500
 	DefaultShareMemory *int32 `json:"DefaultShareMemory,omitempty" xml:"DefaultShareMemory,omitempty"`
+	// Workload Cluster, AI, GPU
+	//
 	// example:
 	//
 	// AI
 	Family *string `json:"Family,omitempty" xml:"Family,omitempty"`
+	// Training Job Type
+	//
 	// example:
 	//
 	// PyTorchJob
-	JobKind       *string                                       `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	JobKind *string `json:"JobKind,omitempty" xml:"JobKind,omitempty"`
+	// Parameter Settings
 	ParamSettings []*ListWorkloadsResponseBodyDataParamSettings `json:"ParamSettings,omitempty" xml:"ParamSettings,omitempty" type:"Repeated"`
+	// Workload Usage Scenario
+	//
 	// example:
 	//
 	// NLP-LLM
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Scope Identifier for Workload Usage
+	//
 	// example:
 	//
 	// common
-	Scope        *string                                    `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// Static Configuration
 	StaticConfig *ListWorkloadsResponseBodyDataStaticConfig `json:"StaticConfig,omitempty" xml:"StaticConfig,omitempty" type:"Struct"`
+	// Version ID
+	//
 	// example:
 	//
 	// 1
 	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	// Workload Description
+	//
 	// example:
 	//
 	// test
 	WorkloadDescription *string `json:"WorkloadDescription,omitempty" xml:"WorkloadDescription,omitempty"`
+	// Workload ID
+	//
 	// example:
 	//
 	// 13
 	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
 	// example:
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+	// Workload Type
+	//
 	// example:
 	//
 	// AI
@@ -6405,23 +8228,38 @@ func (s *ListWorkloadsResponseBodyData) SetWorkloadType(v string) *ListWorkloads
 }
 
 type ListWorkloadsResponseBodyDataParamSettings struct {
+	// Default Parameter Value
+	//
 	// example:
 	//
 	// 100
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	ParamDesc    *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter Description
+	//
+	// example:
+	//
+	// number
+	ParamDesc *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	// Parameter Name
+	//
 	// example:
 	//
 	// ITERATION
 	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// Parameter Regular Expression
+	//
 	// example:
 	//
 	// [0-9]+
 	ParamRegex *string `json:"ParamRegex,omitempty" xml:"ParamRegex,omitempty"`
+	// Parameter type
+	//
 	// example:
 	//
 	// number
 	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// Parameter Value
+	//
 	// example:
 	//
 	// 100
@@ -6467,18 +8305,26 @@ func (s *ListWorkloadsResponseBodyDataParamSettings) SetParamValue(v string) *Li
 }
 
 type ListWorkloadsResponseBodyDataStaticConfig struct {
+	// Framework
+	//
 	// example:
 	//
 	// PyTorch
 	FrameWork *string `json:"FrameWork,omitempty" xml:"FrameWork,omitempty"`
+	// Operating System
+	//
 	// example:
 	//
 	// linux
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Number of Parameters
+	//
 	// example:
 	//
 	// 7B
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	// Software Stack
+	//
 	// example:
 	//
 	// python
@@ -6543,10 +8389,20 @@ func (s *ListWorkloadsResponse) SetBody(v *ListWorkloadsResponseBody) *ListWorkl
 }
 
 type StopExperimentRequest struct {
+	// Plan ID
+	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 234
 	ExperimentId *int64 `json:"ExperimentId,omitempty" xml:"ExperimentId,omitempty"`
+	// Resource Group Id
+	//
+	// example:
+	//
+	// rg-kdsflsdfj23m
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s StopExperimentRequest) String() string {
@@ -6562,19 +8418,32 @@ func (s *StopExperimentRequest) SetExperimentId(v int64) *StopExperimentRequest 
 	return s
 }
 
+func (s *StopExperimentRequest) SetResourceGroupId(v string) *StopExperimentRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
 type StopExperimentResponseBody struct {
+	// Access denied information
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
 	// example:
 	//
 	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of queries
+	//
 	// example:
 	//
 	// 0
@@ -6638,8 +8507,1181 @@ func (s *StopExperimentResponse) SetBody(v *StopExperimentResponseBody) *StopExp
 	return s
 }
 
+type TagResourcesRequest struct {
+	// ResourceId
+	//
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ExperimentPlan
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// List of tags, up to 20.
+	//
+	// This parameter is required.
+	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	// Tag key.
+	//
+	// example:
+	//
+	// owner
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value
+	//
+	// example:
+	//
+	// syg
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	// Access denied details
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
+	// example:
+	//
+	// []
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// E67E2E4C-2B47-5C55-AA17-1D771E070AEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetAccessDeniedDetail(v string) *TagResourcesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetData(v string) *TagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TagResourcesResponseBody) SetTotalCount(v int64) *TagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	// Whether to delete all, only effective when TagKey.N is empty. Allowed values: true, false, True, False. Default is false.
+	//
+	// example:
+	//
+	// true
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// Resource ID
+	//
+	// This parameter is required.
+	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	// Resource type
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ExperimentPlan
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Tag key group, up to 20 items
+	//
+	// This parameter is required.
+	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
+	// example:
+	//
+	// []
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 25859897-35C8-5015-8365-7A3CE52F4854
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetAccessDeniedDetail(v string) *UntagResourcesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetData(v string) *UntagResourcesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UntagResourcesResponseBody) SetTotalCount(v int64) *UntagResourcesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateExperimentPlanRequest struct {
+	// Experiment plan ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 189
+	PlanId *int64 `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	// Experiment plan name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	PlanTemplateName *string `json:"PlanTemplateName,omitempty" xml:"PlanTemplateName,omitempty"`
+}
+
+func (s UpdateExperimentPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanRequest) SetPlanId(v int64) *UpdateExperimentPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanRequest) SetPlanTemplateName(v string) *UpdateExperimentPlanRequest {
+	s.PlanTemplateName = &v
+	return s
+}
+
+type UpdateExperimentPlanResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	//
+	// example:
+	//
+	// true
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s UpdateExperimentPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanResponseBody) SetAccessDeniedDetail(v string) *UpdateExperimentPlanResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanResponseBody) SetData(v bool) *UpdateExperimentPlanResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanResponseBody) SetRequestId(v string) *UpdateExperimentPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanResponseBody) SetTotalCount(v int64) *UpdateExperimentPlanResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type UpdateExperimentPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateExperimentPlanResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateExperimentPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanResponse) SetHeaders(v map[string]*string) *UpdateExperimentPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateExperimentPlanResponse) SetStatusCode(v int32) *UpdateExperimentPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanResponse) SetBody(v *UpdateExperimentPlanResponseBody) *UpdateExperimentPlanResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateExperimentPlanTemplateRequest struct {
+	// Template code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 349623
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template pipeline
+	//
+	// This parameter is required.
+	TemplatePipeline []*UpdateExperimentPlanTemplateRequestTemplatePipeline `json:"TemplatePipeline,omitempty" xml:"TemplatePipeline,omitempty" type:"Repeated"`
+}
+
+func (s UpdateExperimentPlanTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateRequest) SetTemplateId(v int64) *UpdateExperimentPlanTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequest) SetTemplatePipeline(v []*UpdateExperimentPlanTemplateRequestTemplatePipeline) *UpdateExperimentPlanTemplateRequest {
+	s.TemplatePipeline = v
+	return s
+}
+
+type UpdateExperimentPlanTemplateRequestTemplatePipeline struct {
+	// Configured environment parameters
+	//
+	// This parameter is required.
+	EnvParams *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Node order number
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PipelineOrder *int32 `json:"PipelineOrder,omitempty" xml:"PipelineOrder,omitempty"`
+	// Usage scenario, e.g., "baseline"
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// baseline
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Configured workload parameters
+	SettingParams map[string]*string `json:"SettingParams,omitempty" xml:"SettingParams,omitempty"`
+	// Workload ID
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 14
+	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload name
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateRequestTemplatePipeline) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateRequestTemplatePipeline) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetEnvParams(v *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.EnvParams = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetPipelineOrder(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.PipelineOrder = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetScene(v string) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.Scene = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetSettingParams(v map[string]*string) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.SettingParams = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetWorkloadId(v int64) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipeline) SetWorkloadName(v string) *UpdateExperimentPlanTemplateRequestTemplatePipeline {
+	s.WorkloadName = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams struct {
+	// CPU allocation count
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 90
+	CpuPerWorker *int32 `json:"CpuPerWorker,omitempty" xml:"CpuPerWorker,omitempty"`
+	// CUDA version
+	//
+	// example:
+	//
+	// 1.0.0
+	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	// GPU driver version
+	//
+	// example:
+	//
+	// 1.0.0
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU allocation count
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8
+	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Memory GB allocation count
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
+	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
+	// NCCL version
+	//
+	// example:
+	//
+	// 1.0.0
+	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
+	// PyTorch version
+	//
+	// example:
+	//
+	// 1.0.0
+	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Shared memory GB allocation count
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 500
+	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Number of nodes
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	WorkerNum *int32 `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetCpuPerWorker(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.CpuPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetCudaVersion(v string) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.CudaVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetGpuDriverVersion(v string) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.GpuDriverVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetGpuPerWorker(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.GpuPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetMemoryPerWorker(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.MemoryPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetNCCLVersion(v string) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.NCCLVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetPyTorchVersion(v string) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.PyTorchVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetShareMemory(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.ShareMemory = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams) SetWorkerNum(v int32) *UpdateExperimentPlanTemplateRequestTemplatePipelineEnvParams {
+	s.WorkerNum = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateShrinkRequest struct {
+	// Template code
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 349623
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template pipeline
+	//
+	// This parameter is required.
+	TemplatePipelineShrink *string `json:"TemplatePipeline,omitempty" xml:"TemplatePipeline,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateShrinkRequest) SetTemplateId(v int64) *UpdateExperimentPlanTemplateShrinkRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateShrinkRequest) SetTemplatePipelineShrink(v string) *UpdateExperimentPlanTemplateShrinkRequest {
+	s.TemplatePipelineShrink = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponseBody struct {
+	// Access denied information
+	//
+	// example:
+	//
+	// {}
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// Data
+	Data *UpdateExperimentPlanTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Request ID
+	//
+	// example:
+	//
+	// 5514CB39-B7C0-5B89-8534-2DE1E0F2B7AB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total
+	//
+	// example:
+	//
+	// 0
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBody) SetAccessDeniedDetail(v string) *UpdateExperimentPlanTemplateResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBody) SetData(v *UpdateExperimentPlanTemplateResponseBodyData) *UpdateExperimentPlanTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBody) SetRequestId(v string) *UpdateExperimentPlanTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBody) SetTotalCount(v int64) *UpdateExperimentPlanTemplateResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponseBodyData struct {
+	// Create Time
+	//
+	// example:
+	//
+	// 2024-10-22 10:18:10
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Primary account UID
+	//
+	// example:
+	//
+	// 12312312312312
+	CreatorUid *int64 `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
+	// Whether it is deleted
+	//
+	// example:
+	//
+	// 0
+	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	// Privacy Level
+	//
+	// example:
+	//
+	// private
+	PrivacyLevel *string `json:"PrivacyLevel,omitempty" xml:"PrivacyLevel,omitempty"`
+	// Template code
+	//
+	// example:
+	//
+	// 472840184
+	TemplateCode *int64 `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// Template Description
+	//
+	// example:
+	//
+	// test
+	TemplateDescription *string `json:"TemplateDescription,omitempty" xml:"TemplateDescription,omitempty"`
+	// Template ID
+	//
+	// example:
+	//
+	// 17815441
+	TemplateId *int64 `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Template Name
+	//
+	// example:
+	//
+	// test
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// Template Pipeline
+	TemplatePipelineParam []*UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam `json:"TemplatePipelineParam,omitempty" xml:"TemplatePipelineParam,omitempty" type:"Repeated"`
+	// Update Time
+	//
+	// example:
+	//
+	// 2024-07-07 02:08:54
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// Version ID
+	//
+	// example:
+	//
+	// 1
+	VersionId *int64 `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetCreateTime(v string) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetCreatorUid(v int64) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.CreatorUid = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetIsDelete(v int32) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetPrivacyLevel(v string) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.PrivacyLevel = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetTemplateCode(v int64) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetTemplateDescription(v string) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.TemplateDescription = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetTemplateId(v int64) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetTemplateName(v string) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetTemplatePipelineParam(v []*UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.TemplatePipelineParam = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetUpdateTime(v string) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyData) SetVersionId(v int64) *UpdateExperimentPlanTemplateResponseBodyData {
+	s.VersionId = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam struct {
+	// Configured Environment Parameters
+	EnvParams *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams `json:"EnvParams,omitempty" xml:"EnvParams,omitempty" type:"Struct"`
+	// Node sequence number
+	//
+	// example:
+	//
+	// 1
+	PipelineOrder *int32 `json:"PipelineOrder,omitempty" xml:"PipelineOrder,omitempty"`
+	// Usage Scenario, e.g., "baseline"
+	//
+	// example:
+	//
+	// baseline
+	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	// Configured Workload Parameters
+	SettingParams map[string]*string `json:"SettingParams,omitempty" xml:"SettingParams,omitempty"`
+	// Workload ID
+	//
+	// example:
+	//
+	// 13
+	WorkloadId *int64 `json:"WorkloadId,omitempty" xml:"WorkloadId,omitempty"`
+	// Workload Name
+	//
+	// example:
+	//
+	// test
+	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetEnvParams(v *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.EnvParams = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetPipelineOrder(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.PipelineOrder = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetScene(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.Scene = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetSettingParams(v map[string]*string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.SettingParams = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetWorkloadId(v int64) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.WorkloadId = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam) SetWorkloadName(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParam {
+	s.WorkloadName = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams struct {
+	// CPU Allocation
+	//
+	// example:
+	//
+	// 90
+	CpuPerWorker *int32 `json:"CpuPerWorker,omitempty" xml:"CpuPerWorker,omitempty"`
+	// CUDA Version
+	//
+	// example:
+	//
+	// 1.0.0
+	CudaVersion *string `json:"CudaVersion,omitempty" xml:"CudaVersion,omitempty"`
+	// Extend Param
+	ExtendParam map[string]*string `json:"ExtendParam,omitempty" xml:"ExtendParam,omitempty"`
+	// GPU Driver Version
+	//
+	// example:
+	//
+	// 1.0.0
+	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
+	// GPU Allocation
+	//
+	// example:
+	//
+	// 8
+	GpuPerWorker *int32 `json:"GpuPerWorker,omitempty" xml:"GpuPerWorker,omitempty"`
+	// Memory (GB) Allocation
+	//
+	// example:
+	//
+	// 500
+	MemoryPerWorker *int32 `json:"MemoryPerWorker,omitempty" xml:"MemoryPerWorker,omitempty"`
+	// NCCL Version
+	//
+	// example:
+	//
+	// 1.0.0
+	NCCLVersion *string `json:"NCCLVersion,omitempty" xml:"NCCLVersion,omitempty"`
+	// PyTorch Version
+	//
+	// example:
+	//
+	// 1.0.0
+	PyTorchVersion *string `json:"PyTorchVersion,omitempty" xml:"PyTorchVersion,omitempty"`
+	// Specified Nodes
+	ResourceNodes []*UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes `json:"ResourceNodes,omitempty" xml:"ResourceNodes,omitempty" type:"Repeated"`
+	// Shared Memory (GB) Allocation
+	//
+	// example:
+	//
+	// 500
+	ShareMemory *int32 `json:"ShareMemory,omitempty" xml:"ShareMemory,omitempty"`
+	// Number of Nodes
+	//
+	// example:
+	//
+	// 1
+	WorkerNum *int32 `json:"WorkerNum,omitempty" xml:"WorkerNum,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetCpuPerWorker(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.CpuPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetCudaVersion(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.CudaVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetExtendParam(v map[string]*string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ExtendParam = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetGpuDriverVersion(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.GpuDriverVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetGpuPerWorker(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.GpuPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetMemoryPerWorker(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.MemoryPerWorker = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetNCCLVersion(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.NCCLVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetPyTorchVersion(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.PyTorchVersion = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetResourceNodes(v []*UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ResourceNodes = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetShareMemory(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.ShareMemory = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams) SetWorkerNum(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParams {
+	s.WorkerNum = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes struct {
+	// Node Name
+	//
+	// example:
+	//
+	// honeypot
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// Requested CPU
+	//
+	// example:
+	//
+	// 10
+	RequestCPU *int32 `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	// Requested GPU
+	//
+	// example:
+	//
+	// 10
+	RequestGPU *int32 `json:"RequestGPU,omitempty" xml:"RequestGPU,omitempty"`
+	// Requested Memory
+	//
+	// example:
+	//
+	// 10
+	RequestMemory *int32 `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	// Total CPU
+	//
+	// example:
+	//
+	// 100
+	TotalCPU *int32 `json:"TotalCPU,omitempty" xml:"TotalCPU,omitempty"`
+	// Total GPU
+	//
+	// example:
+	//
+	// 100
+	TotalGPU *int32 `json:"TotalGPU,omitempty" xml:"TotalGPU,omitempty"`
+	// Total Memory
+	//
+	// example:
+	//
+	// 100
+	TotalMemory *int64 `json:"TotalMemory,omitempty" xml:"TotalMemory,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetNodeName(v string) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.NodeName = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestCPU(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestGPU(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestGPU = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetRequestMemory(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalCPU(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalCPU = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalGPU(v int32) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalGPU = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes) SetTotalMemory(v int64) *UpdateExperimentPlanTemplateResponseBodyDataTemplatePipelineParamEnvParamsResourceNodes {
+	s.TotalMemory = &v
+	return s
+}
+
+type UpdateExperimentPlanTemplateResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateExperimentPlanTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateExperimentPlanTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateExperimentPlanTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateExperimentPlanTemplateResponse) SetHeaders(v map[string]*string) *UpdateExperimentPlanTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponse) SetStatusCode(v int32) *UpdateExperimentPlanTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateExperimentPlanTemplateResponse) SetBody(v *UpdateExperimentPlanTemplateResponseBody) *UpdateExperimentPlanTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type ValidateResourceRequest struct {
 	// Resource ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6724,6 +9766,8 @@ func (s *ValidateResourceRequestUserAccessParam) SetWorkspaceId(v string) *Valid
 
 type ValidateResourceShrinkRequest struct {
 	// Resource ID
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -6873,7 +9917,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// 资源转组
+// # Change resource group
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -6886,6 +9930,10 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
@@ -6923,7 +9971,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// 资源转组
+// # Change resource group
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -6941,7 +9989,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Create Experiment Plan
+// # Create Experiment Plan
 //
 // @param tmpReq - CreateExperimentPlanRequest
 //
@@ -6964,12 +10012,20 @@ func (client *Client) CreateExperimentPlanWithOptions(tmpReq *CreateExperimentPl
 		query["ExternalParams"] = request.ExternalParamsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PlanTemplateName)) {
+		query["PlanTemplateName"] = request.PlanTemplateName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
@@ -7001,7 +10057,7 @@ func (client *Client) CreateExperimentPlanWithOptions(tmpReq *CreateExperimentPl
 
 // Summary:
 //
-// Create Experiment Plan
+// # Create Experiment Plan
 //
 // @param request - CreateExperimentPlanRequest
 //
@@ -7019,7 +10075,7 @@ func (client *Client) CreateExperimentPlan(request *CreateExperimentPlanRequest)
 
 // Summary:
 //
-// 创建/更新测试计划模板
+// Create/Update Test Plan Template
 //
 // @param tmpReq - CreateExperimentPlanTemplateRequest
 //
@@ -7085,7 +10141,7 @@ func (client *Client) CreateExperimentPlanTemplateWithOptions(tmpReq *CreateExpe
 
 // Summary:
 //
-// 创建/更新测试计划模板
+// Create/Update Test Plan Template
 //
 // @param request - CreateExperimentPlanTemplateRequest
 //
@@ -7103,7 +10159,7 @@ func (client *Client) CreateExperimentPlanTemplate(request *CreateExperimentPlan
 
 // Summary:
 //
-// Create Evaluation Resource
+// # Create Evaluation Resource
 //
 // @param tmpReq - CreateResourceRequest
 //
@@ -7136,14 +10192,6 @@ func (client *Client) CreateResourceWithOptions(tmpReq *CreateResourceRequest, r
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
 		query["ClusterName"] = request.ClusterName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
-		query["ClusterType"] = request.ClusterType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
 	}
 
 	body := map[string]interface{}{}
@@ -7181,7 +10229,7 @@ func (client *Client) CreateResourceWithOptions(tmpReq *CreateResourceRequest, r
 
 // Summary:
 //
-// Create Evaluation Resource
+// # Create Evaluation Resource
 //
 // @param request - CreateResourceRequest
 //
@@ -7199,7 +10247,7 @@ func (client *Client) CreateResource(request *CreateResourceRequest) (_result *C
 
 // Summary:
 //
-// 删除实验
+// # Delete Experiment
 //
 // @param request - DeleteExperimentRequest
 //
@@ -7214,6 +10262,10 @@ func (client *Client) DeleteExperimentWithOptions(request *DeleteExperimentReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
 		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7241,7 +10293,7 @@ func (client *Client) DeleteExperimentWithOptions(request *DeleteExperimentReque
 
 // Summary:
 //
-// 删除实验
+// # Delete Experiment
 //
 // @param request - DeleteExperimentRequest
 //
@@ -7259,7 +10311,67 @@ func (client *Client) DeleteExperiment(request *DeleteExperimentRequest) (_resul
 
 // Summary:
 //
-// 删除测试计划模板
+// 获取实验计划详情
+//
+// @param request - DeleteExperimentPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteExperimentPlanResponse
+func (client *Client) DeleteExperimentPlanWithOptions(request *DeleteExperimentPlanRequest, runtime *util.RuntimeOptions) (_result *DeleteExperimentPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteExperimentPlan"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取实验计划详情
+//
+// @param request - DeleteExperimentPlanRequest
+//
+// @return DeleteExperimentPlanResponse
+func (client *Client) DeleteExperimentPlan(request *DeleteExperimentPlanRequest) (_result *DeleteExperimentPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteExperimentPlanResponse{}
+	_body, _err := client.DeleteExperimentPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Delete Test Plan Template
 //
 // @param request - DeleteExperimentPlanTemplateRequest
 //
@@ -7301,7 +10413,7 @@ func (client *Client) DeleteExperimentPlanTemplateWithOptions(request *DeleteExp
 
 // Summary:
 //
-// 删除测试计划模板
+// # Delete Test Plan Template
 //
 // @param request - DeleteExperimentPlanTemplateRequest
 //
@@ -7319,7 +10431,7 @@ func (client *Client) DeleteExperimentPlanTemplate(request *DeleteExperimentPlan
 
 // Summary:
 //
-// 获取实验详情
+// # Get Experiment Details
 //
 // @param request - GetExperimentRequest
 //
@@ -7334,6 +10446,10 @@ func (client *Client) GetExperimentWithOptions(request *GetExperimentRequest, ru
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
 		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7361,7 +10477,7 @@ func (client *Client) GetExperimentWithOptions(request *GetExperimentRequest, ru
 
 // Summary:
 //
-// 获取实验详情
+// # Get Experiment Details
 //
 // @param request - GetExperimentRequest
 //
@@ -7379,7 +10495,7 @@ func (client *Client) GetExperiment(request *GetExperimentRequest) (_result *Get
 
 // Summary:
 //
-// Get Experiment Plan Details
+// # Get Experiment Plan Details
 //
 // @param request - GetExperimentPlanRequest
 //
@@ -7421,7 +10537,7 @@ func (client *Client) GetExperimentPlanWithOptions(request *GetExperimentPlanReq
 
 // Summary:
 //
-// Get Experiment Plan Details
+// # Get Experiment Plan Details
 //
 // @param request - GetExperimentPlanRequest
 //
@@ -7439,7 +10555,67 @@ func (client *Client) GetExperimentPlan(request *GetExperimentPlanRequest) (_res
 
 // Summary:
 //
-// 获取实验结果数据
+// # Query Test Plan Template Details
+//
+// @param request - GetExperimentPlanTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetExperimentPlanTemplateResponse
+func (client *Client) GetExperimentPlanTemplateWithOptions(request *GetExperimentPlanTemplateRequest, runtime *util.RuntimeOptions) (_result *GetExperimentPlanTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExperimentPlanTemplate"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExperimentPlanTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Test Plan Template Details
+//
+// @param request - GetExperimentPlanTemplateRequest
+//
+// @return GetExperimentPlanTemplateResponse
+func (client *Client) GetExperimentPlanTemplate(request *GetExperimentPlanTemplateRequest) (_result *GetExperimentPlanTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetExperimentPlanTemplateResponse{}
+	_body, _err := client.GetExperimentPlanTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Fetch Experiment Result Data
 //
 // @param request - GetExperimentResultDataRequest
 //
@@ -7458,6 +10634,10 @@ func (client *Client) GetExperimentResultDataWithOptions(request *GetExperimentR
 
 	if !tea.BoolValue(util.IsUnset(request.Hostname)) {
 		query["Hostname"] = request.Hostname
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkloadType)) {
@@ -7489,7 +10669,7 @@ func (client *Client) GetExperimentResultDataWithOptions(request *GetExperimentR
 
 // Summary:
 //
-// 获取实验结果数据
+// # Fetch Experiment Result Data
 //
 // @param request - GetExperimentResultDataRequest
 //
@@ -7507,7 +10687,7 @@ func (client *Client) GetExperimentResultData(request *GetExperimentResultDataRe
 
 // Summary:
 //
-// Get Resource Information
+// # Get Resource Information
 //
 // @param request - GetResourceRequest
 //
@@ -7549,7 +10729,7 @@ func (client *Client) GetResourceWithOptions(request *GetResourceRequest, runtim
 
 // Summary:
 //
-// Get Resource Information
+// # Get Resource Information
 //
 // @param request - GetResourceRequest
 //
@@ -7567,7 +10747,7 @@ func (client *Client) GetResource(request *GetResourceRequest) (_result *GetReso
 
 // Summary:
 //
-// 查询测试计划模板资源预测结果
+// # Query the resource prediction results of the test plan template
 //
 // @param request - GetResourcePredictResultRequest
 //
@@ -7613,7 +10793,7 @@ func (client *Client) GetResourcePredictResultWithOptions(request *GetResourcePr
 
 // Summary:
 //
-// 查询测试计划模板资源预测结果
+// # Query the resource prediction results of the test plan template
 //
 // @param request - GetResourcePredictResultRequest
 //
@@ -7631,7 +10811,7 @@ func (client *Client) GetResourcePredictResult(request *GetResourcePredictResult
 
 // Summary:
 //
-// 通过id获取负载信息
+// # Retrieve workload information by ID
 //
 // @param request - GetWorkloadRequest
 //
@@ -7673,7 +10853,7 @@ func (client *Client) GetWorkloadWithOptions(request *GetWorkloadRequest, runtim
 
 // Summary:
 //
-// 通过id获取负载信息
+// # Retrieve workload information by ID
 //
 // @param request - GetWorkloadRequest
 //
@@ -7691,7 +10871,7 @@ func (client *Client) GetWorkload(request *GetWorkloadRequest) (_result *GetWork
 
 // Summary:
 //
-// Query Test Plan Template List
+// # Query Test Plan Template List
 //
 // @param request - ListExperimentPlanTemplatesRequest
 //
@@ -7733,7 +10913,7 @@ func (client *Client) ListExperimentPlanTemplatesWithOptions(request *ListExperi
 
 // Summary:
 //
-// Query Test Plan Template List
+// # Query Test Plan Template List
 //
 // @param request - ListExperimentPlanTemplatesRequest
 //
@@ -7751,7 +10931,7 @@ func (client *Client) ListExperimentPlanTemplates(request *ListExperimentPlanTem
 
 // Summary:
 //
-// Query Experiment Plan List
+// # Query Experiment Plan List
 //
 // @param tmpReq - ListExperimentPlansRequest
 //
@@ -7773,6 +10953,10 @@ func (client *Client) ListExperimentPlansWithOptions(tmpReq *ListExperimentPlans
 		request.ResourceNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceName, tea.String("ResourceName"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tag)) {
+		request.TagShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tag, tea.String("Tag"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CreatTimeOrder)) {
 		query["CreatTimeOrder"] = request.CreatTimeOrder
@@ -7790,12 +10974,24 @@ func (client *Client) ListExperimentPlansWithOptions(tmpReq *ListExperimentPlans
 		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Size)) {
 		query["Size"] = request.Size
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTimeOrder)) {
 		query["StartTimeOrder"] = request.StartTimeOrder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagShrink)) {
+		query["Tag"] = request.TagShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
 	}
 
 	body := map[string]interface{}{}
@@ -7833,7 +11029,7 @@ func (client *Client) ListExperimentPlansWithOptions(tmpReq *ListExperimentPlans
 
 // Summary:
 //
-// Query Experiment Plan List
+// # Query Experiment Plan List
 //
 // @param request - ListExperimentPlansRequest
 //
@@ -7851,7 +11047,7 @@ func (client *Client) ListExperimentPlans(request *ListExperimentPlansRequest) (
 
 // Summary:
 //
-// Query the experiment list based on the plan ID
+// # Query the experiment list based on the plan ID
 //
 // @param request - ListExperimentsRequest
 //
@@ -7870,6 +11066,10 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
 		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7897,7 +11097,7 @@ func (client *Client) ListExperimentsWithOptions(request *ListExperimentsRequest
 
 // Summary:
 //
-// Query the experiment list based on the plan ID
+// # Query the experiment list based on the plan ID
 //
 // @param request - ListExperimentsRequest
 //
@@ -7915,7 +11115,79 @@ func (client *Client) ListExperiments(request *ListExperimentsRequest) (_result 
 
 // Summary:
 //
-// 获取负载列表
+// # Query Resource Tags
+//
+// @param request - ListTagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Query Resource Tags
+//
+// @param request - ListTagResourcesRequest
+//
+// @return ListTagResourcesResponse
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Get Workload List
 //
 // @param request - ListWorkloadsRequest
 //
@@ -7957,7 +11229,7 @@ func (client *Client) ListWorkloadsWithOptions(request *ListWorkloadsRequest, ru
 
 // Summary:
 //
-// 获取负载列表
+// # Get Workload List
 //
 // @param request - ListWorkloadsRequest
 //
@@ -7975,7 +11247,7 @@ func (client *Client) ListWorkloads(request *ListWorkloadsRequest) (_result *Lis
 
 // Summary:
 //
-// 停止实验
+// # Stop Experiment
 //
 // @param request - StopExperimentRequest
 //
@@ -7990,6 +11262,10 @@ func (client *Client) StopExperimentWithOptions(request *StopExperimentRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ExperimentId)) {
 		query["ExperimentId"] = request.ExperimentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -8017,7 +11293,7 @@ func (client *Client) StopExperimentWithOptions(request *StopExperimentRequest, 
 
 // Summary:
 //
-// 停止实验
+// # Stop Experiment
 //
 // @param request - StopExperimentRequest
 //
@@ -8035,7 +11311,283 @@ func (client *Client) StopExperiment(request *StopExperimentRequest) (_result *S
 
 // Summary:
 //
-// Resource Connectivity Test
+// # Tag Resources with User Labels
+//
+// @param request - TagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TagResourcesResponse
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Tag Resources with User Labels
+//
+// @param request - TagResourcesRequest
+//
+// @return TagResourcesResponse
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Remove User Tags from Resources
+//
+// @param request - UntagResourcesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Remove User Tags from Resources
+//
+// @param request - UntagResourcesRequest
+//
+// @return UntagResourcesResponse
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Experiment Plan
+//
+// @param request - UpdateExperimentPlanRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentPlanResponse
+func (client *Client) UpdateExperimentPlanWithOptions(request *UpdateExperimentPlanRequest, runtime *util.RuntimeOptions) (_result *UpdateExperimentPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanTemplateName)) {
+		query["PlanTemplateName"] = request.PlanTemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExperimentPlan"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateExperimentPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Experiment Plan
+//
+// @param request - UpdateExperimentPlanRequest
+//
+// @return UpdateExperimentPlanResponse
+func (client *Client) UpdateExperimentPlan(request *UpdateExperimentPlanRequest) (_result *UpdateExperimentPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateExperimentPlanResponse{}
+	_body, _err := client.UpdateExperimentPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Test Plan Template
+//
+// @param tmpReq - UpdateExperimentPlanTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateExperimentPlanTemplateResponse
+func (client *Client) UpdateExperimentPlanTemplateWithOptions(tmpReq *UpdateExperimentPlanTemplateRequest, runtime *util.RuntimeOptions) (_result *UpdateExperimentPlanTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateExperimentPlanTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.TemplatePipeline)) {
+		request.TemplatePipelineShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TemplatePipeline, tea.String("TemplatePipeline"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		query["TemplateId"] = request.TemplateId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplatePipelineShrink)) {
+		body["TemplatePipeline"] = request.TemplatePipelineShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateExperimentPlanTemplate"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateExperimentPlanTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Update Test Plan Template
+//
+// @param request - UpdateExperimentPlanTemplateRequest
+//
+// @return UpdateExperimentPlanTemplateResponse
+func (client *Client) UpdateExperimentPlanTemplate(request *UpdateExperimentPlanTemplateRequest) (_result *UpdateExperimentPlanTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateExperimentPlanTemplateResponse{}
+	_body, _err := client.UpdateExperimentPlanTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Resource Connectivity Test
 //
 // @param tmpReq - ValidateResourceRequest
 //
@@ -8089,7 +11641,7 @@ func (client *Client) ValidateResourceWithOptions(tmpReq *ValidateResourceReques
 
 // Summary:
 //
-// Resource Connectivity Test
+// # Resource Connectivity Test
 //
 // @param request - ValidateResourceRequest
 //
