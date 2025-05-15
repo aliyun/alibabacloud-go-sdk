@@ -9142,7 +9142,10 @@ type GetNodeInfoForPodResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu-b
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneId            *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	HdeniIpv6SipQuota *int32  `json:"hdeniIpv6SipQuota,omitempty" xml:"hdeniIpv6SipQuota,omitempty"`
+	HdeniSipQuota     *int32  `json:"hdeniSipQuota,omitempty" xml:"hdeniSipQuota,omitempty"`
+	LeniIpv6SipQuota  *int32  `json:"leniIpv6SipQuota,omitempty" xml:"leniIpv6SipQuota,omitempty"`
 }
 
 func (s GetNodeInfoForPodResponseBodyContent) String() string {
@@ -9200,6 +9203,21 @@ func (s *GetNodeInfoForPodResponseBodyContent) SetVpcId(v string) *GetNodeInfoFo
 
 func (s *GetNodeInfoForPodResponseBodyContent) SetZoneId(v string) *GetNodeInfoForPodResponseBodyContent {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.HdeniIpv6SipQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniSipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.HdeniSipQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetLeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.LeniIpv6SipQuota = &v
 	return s
 }
 
