@@ -3381,6 +3381,133 @@ func (s *DeleteMaterialByIdResponse) SetBody(v *DeleteMaterialByIdResponseBody) 
 	return s
 }
 
+type DeleteStyleLearningResultRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// xxxxx_p_efm
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DeleteStyleLearningResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStyleLearningResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStyleLearningResultRequest) SetAgentKey(v string) *DeleteStyleLearningResultRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultRequest) SetId(v int64) *DeleteStyleLearningResultRequest {
+	s.Id = &v
+	return s
+}
+
+type DeleteStyleLearningResultResponseBody struct {
+	// example:
+	//
+	// NoData
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// xxx
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1813ceee-7fe5-41b4-87e5-982a4d18cca5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteStyleLearningResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStyleLearningResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetCode(v string) *DeleteStyleLearningResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetData(v bool) *DeleteStyleLearningResultResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetHttpStatusCode(v int32) *DeleteStyleLearningResultResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetMessage(v string) *DeleteStyleLearningResultResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetRequestId(v string) *DeleteStyleLearningResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponseBody) SetSuccess(v bool) *DeleteStyleLearningResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteStyleLearningResultResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteStyleLearningResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteStyleLearningResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteStyleLearningResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteStyleLearningResultResponse) SetHeaders(v map[string]*string) *DeleteStyleLearningResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponse) SetStatusCode(v int32) *DeleteStyleLearningResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStyleLearningResultResponse) SetBody(v *DeleteStyleLearningResultResponseBody) *DeleteStyleLearningResultResponse {
+	s.Body = v
+	return s
+}
+
 type DocumentExtractionRequest struct {
 	// This parameter is required.
 	//
@@ -24689,8 +24816,9 @@ type QueryAuditTaskResponseBodyData struct {
 	// example:
 	//
 	// 审核时的原文
-	Content  *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
-	Response *QueryAuditTaskResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+	Content     *string                                 `json:"Content,omitempty" xml:"Content,omitempty"`
+	HtmlContent *string                                 `json:"HtmlContent,omitempty" xml:"HtmlContent,omitempty"`
+	Response    *QueryAuditTaskResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 	// example:
 	//
 	// RUNNING
@@ -24698,7 +24826,8 @@ type QueryAuditTaskResponseBodyData struct {
 	// example:
 	//
 	// 1
-	TaskStatus *int32 `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatus *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryAuditTaskResponseBodyData) String() string {
@@ -24719,6 +24848,11 @@ func (s *QueryAuditTaskResponseBodyData) SetContent(v string) *QueryAuditTaskRes
 	return s
 }
 
+func (s *QueryAuditTaskResponseBodyData) SetHtmlContent(v string) *QueryAuditTaskResponseBodyData {
+	s.HtmlContent = &v
+	return s
+}
+
 func (s *QueryAuditTaskResponseBodyData) SetResponse(v *QueryAuditTaskResponseBodyDataResponse) *QueryAuditTaskResponseBodyData {
 	s.Response = v
 	return s
@@ -24731,6 +24865,11 @@ func (s *QueryAuditTaskResponseBodyData) SetStatus(v string) *QueryAuditTaskResp
 
 func (s *QueryAuditTaskResponseBodyData) SetTaskStatus(v int32) *QueryAuditTaskResponseBodyData {
 	s.TaskStatus = &v
+	return s
+}
+
+func (s *QueryAuditTaskResponseBodyData) SetTitle(v string) *QueryAuditTaskResponseBodyData {
+	s.Title = &v
 	return s
 }
 
@@ -48008,6 +48147,72 @@ func (client *Client) DeleteMaterialById(request *DeleteMaterialByIdRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteMaterialByIdResponse{}
 	_body, _err := client.DeleteMaterialByIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定自定义文体
+//
+// @param request - DeleteStyleLearningResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteStyleLearningResultResponse
+func (client *Client) DeleteStyleLearningResultWithOptions(request *DeleteStyleLearningResultRequest, runtime *util.RuntimeOptions) (_result *DeleteStyleLearningResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteStyleLearningResult"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStyleLearningResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除指定自定义文体
+//
+// @param request - DeleteStyleLearningResultRequest
+//
+// @return DeleteStyleLearningResultResponse
+func (client *Client) DeleteStyleLearningResult(request *DeleteStyleLearningResultRequest) (_result *DeleteStyleLearningResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteStyleLearningResultResponse{}
+	_body, _err := client.DeleteStyleLearningResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
