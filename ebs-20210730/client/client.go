@@ -9528,9 +9528,8 @@ func (s *GetReportResponse) SetBody(v *GetReportResponseBody) *GetReportResponse
 }
 
 type ListReportsRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// App name.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -9574,6 +9573,11 @@ func (s ListReportsRequest) String() string {
 
 func (s ListReportsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListReportsRequest) SetAppId(v string) *ListReportsRequest {
+	s.AppId = &v
+	return s
 }
 
 func (s *ListReportsRequest) SetAppName(v string) *ListReportsRequest {
@@ -16329,6 +16333,10 @@ func (client *Client) ListReportsWithOptions(request *ListReportsRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
