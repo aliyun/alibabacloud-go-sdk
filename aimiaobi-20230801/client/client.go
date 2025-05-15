@@ -995,6 +995,7 @@ func (s *ClearIntervenesResponseBody) SetSuccess(v bool) *ClearIntervenesRespons
 }
 
 type ClearIntervenesResponseBodyData struct {
+	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -1008,6 +1009,11 @@ func (s ClearIntervenesResponseBodyData) String() string {
 
 func (s ClearIntervenesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ClearIntervenesResponseBodyData) SetCode(v int32) *ClearIntervenesResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ClearIntervenesResponseBodyData) SetFailIdList(v []*string) *ClearIntervenesResponseBodyData {
@@ -3188,6 +3194,7 @@ func (s *DeleteInterveneRuleResponseBody) SetSuccess(v bool) *DeleteInterveneRul
 }
 
 type DeleteInterveneRuleResponseBodyData struct {
+	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -3201,6 +3208,11 @@ func (s DeleteInterveneRuleResponseBodyData) String() string {
 
 func (s DeleteInterveneRuleResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteInterveneRuleResponseBodyData) SetCode(v int32) *DeleteInterveneRuleResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *DeleteInterveneRuleResponseBodyData) SetFailIdList(v []*string) *DeleteInterveneRuleResponseBodyData {
@@ -4251,6 +4263,7 @@ func (s *ExportIntervenesResponseBody) SetSuccess(v bool) *ExportIntervenesRespo
 }
 
 type ExportIntervenesResponseBodyData struct {
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// http://xxx/xxx.xls
@@ -4263,6 +4276,11 @@ func (s ExportIntervenesResponseBodyData) String() string {
 
 func (s ExportIntervenesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ExportIntervenesResponseBodyData) SetCode(v int32) *ExportIntervenesResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ExportIntervenesResponseBodyData) SetFileUrl(v string) *ExportIntervenesResponseBodyData {
@@ -8250,6 +8268,157 @@ func (s *GetEnterpriseVocAnalysisTaskResponse) SetBody(v *GetEnterpriseVocAnalys
 	return s
 }
 
+type GetFileContentLengthRequest struct {
+	// example:
+	//
+	// test.pdf
+	DocName *string `json:"DocName,omitempty" xml:"DocName,omitempty"`
+	// example:
+	//
+	// https://xxx/test.pdf
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-2setzb9x4ewsd
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetFileContentLengthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileContentLengthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileContentLengthRequest) SetDocName(v string) *GetFileContentLengthRequest {
+	s.DocName = &v
+	return s
+}
+
+func (s *GetFileContentLengthRequest) SetFileUrl(v string) *GetFileContentLengthRequest {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *GetFileContentLengthRequest) SetWorkspaceId(v string) *GetFileContentLengthRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetFileContentLengthResponseBody struct {
+	// example:
+	//
+	// successful
+	Code *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetFileContentLengthResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// DD656AF9-0839-521A-A3D2-F320009F9C87
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFileContentLengthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileContentLengthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileContentLengthResponseBody) SetCode(v string) *GetFileContentLengthResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFileContentLengthResponseBody) SetData(v *GetFileContentLengthResponseBodyData) *GetFileContentLengthResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFileContentLengthResponseBody) SetHttpStatusCode(v int32) *GetFileContentLengthResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetFileContentLengthResponseBody) SetMessage(v string) *GetFileContentLengthResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFileContentLengthResponseBody) SetRequestId(v string) *GetFileContentLengthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileContentLengthResponseBody) SetSuccess(v bool) *GetFileContentLengthResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFileContentLengthResponseBodyData struct {
+	// example:
+	//
+	// 1024
+	WordNum *int64 `json:"WordNum,omitempty" xml:"WordNum,omitempty"`
+}
+
+func (s GetFileContentLengthResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileContentLengthResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileContentLengthResponseBodyData) SetWordNum(v int64) *GetFileContentLengthResponseBodyData {
+	s.WordNum = &v
+	return s
+}
+
+type GetFileContentLengthResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileContentLengthResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFileContentLengthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileContentLengthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileContentLengthResponse) SetHeaders(v map[string]*string) *GetFileContentLengthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileContentLengthResponse) SetStatusCode(v int32) *GetFileContentLengthResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFileContentLengthResponse) SetBody(v *GetFileContentLengthResponseBody) *GetFileContentLengthResponse {
+	s.Body = v
+	return s
+}
+
 type GetGeneratedContentRequest struct {
 	// This parameter is required.
 	//
@@ -9470,6 +9639,7 @@ func (s *GetInterveneGlobalReplyResponseBody) SetSuccess(v bool) *GetInterveneGl
 }
 
 type GetInterveneGlobalReplyResponseBodyData struct {
+	Code            *int32                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
 	ReplyMessagList []*GetInterveneGlobalReplyResponseBodyDataReplyMessagList `json:"ReplyMessagList,omitempty" xml:"ReplyMessagList,omitempty" type:"Repeated"`
 }
 
@@ -9479,6 +9649,11 @@ func (s GetInterveneGlobalReplyResponseBodyData) String() string {
 
 func (s GetInterveneGlobalReplyResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetInterveneGlobalReplyResponseBodyData) SetCode(v int32) *GetInterveneGlobalReplyResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *GetInterveneGlobalReplyResponseBodyData) SetReplyMessagList(v []*GetInterveneGlobalReplyResponseBodyDataReplyMessagList) *GetInterveneGlobalReplyResponseBodyData {
@@ -9638,6 +9813,7 @@ func (s *GetInterveneImportTaskInfoResponseBody) SetSuccess(v bool) *GetInterven
 }
 
 type GetInterveneImportTaskInfoResponseBodyData struct {
+	Code   *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Status *GetInterveneImportTaskInfoResponseBodyDataStatus `json:"Status,omitempty" xml:"Status,omitempty" type:"Struct"`
 }
 
@@ -9647,6 +9823,11 @@ func (s GetInterveneImportTaskInfoResponseBodyData) String() string {
 
 func (s GetInterveneImportTaskInfoResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetInterveneImportTaskInfoResponseBodyData) SetCode(v int32) *GetInterveneImportTaskInfoResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *GetInterveneImportTaskInfoResponseBodyData) SetStatus(v *GetInterveneImportTaskInfoResponseBodyDataStatus) *GetInterveneImportTaskInfoResponseBodyData {
@@ -9833,6 +10014,7 @@ func (s *GetInterveneRuleDetailResponseBody) SetSuccess(v bool) *GetInterveneRul
 }
 
 type GetInterveneRuleDetailResponseBodyData struct {
+	Code                *int32                                                     `json:"Code,omitempty" xml:"Code,omitempty"`
 	InterveneRuleDetail *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail `json:"InterveneRuleDetail,omitempty" xml:"InterveneRuleDetail,omitempty" type:"Struct"`
 }
 
@@ -9842,6 +10024,11 @@ func (s GetInterveneRuleDetailResponseBodyData) String() string {
 
 func (s GetInterveneRuleDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetInterveneRuleDetailResponseBodyData) SetCode(v int32) *GetInterveneRuleDetailResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *GetInterveneRuleDetailResponseBodyData) SetInterveneRuleDetail(v *GetInterveneRuleDetailResponseBodyDataInterveneRuleDetail) *GetInterveneRuleDetailResponseBodyData {
@@ -10089,6 +10276,7 @@ func (s *GetInterveneTemplateFileUrlResponseBody) SetSuccess(v bool) *GetInterve
 }
 
 type GetInterveneTemplateFileUrlResponseBodyData struct {
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// http://xxx/xxx.xls
@@ -10101,6 +10289,11 @@ func (s GetInterveneTemplateFileUrlResponseBodyData) String() string {
 
 func (s GetInterveneTemplateFileUrlResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetInterveneTemplateFileUrlResponseBodyData) SetCode(v int32) *GetInterveneTemplateFileUrlResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *GetInterveneTemplateFileUrlResponseBodyData) SetFileUrl(v string) *GetInterveneTemplateFileUrlResponseBodyData {
@@ -13150,6 +13343,7 @@ func (s *ImportInterveneFileResponseBody) SetSuccess(v bool) *ImportInterveneFil
 }
 
 type ImportInterveneFileResponseBodyData struct {
+	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -13163,6 +13357,11 @@ func (s ImportInterveneFileResponseBodyData) String() string {
 
 func (s ImportInterveneFileResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ImportInterveneFileResponseBodyData) SetCode(v int32) *ImportInterveneFileResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ImportInterveneFileResponseBodyData) SetFailIdList(v []*string) *ImportInterveneFileResponseBodyData {
@@ -13316,6 +13515,7 @@ func (s *ImportInterveneFileAsyncResponseBody) SetSuccess(v bool) *ImportInterve
 }
 
 type ImportInterveneFileAsyncResponseBodyData struct {
+	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -13329,6 +13529,11 @@ func (s ImportInterveneFileAsyncResponseBodyData) String() string {
 
 func (s ImportInterveneFileAsyncResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ImportInterveneFileAsyncResponseBodyData) SetCode(v int32) *ImportInterveneFileAsyncResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ImportInterveneFileAsyncResponseBodyData) SetFailIdList(v []*string) *ImportInterveneFileAsyncResponseBodyData {
@@ -13512,6 +13717,7 @@ func (s *InsertInterveneGlobalReplyResponseBody) SetSuccess(v bool) *InsertInter
 }
 
 type InsertInterveneGlobalReplyResponseBodyData struct {
+	Code       *int32    `json:"Code,omitempty" xml:"Code,omitempty"`
 	FailIdList []*string `json:"FailIdList,omitempty" xml:"FailIdList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -13525,6 +13731,11 @@ func (s InsertInterveneGlobalReplyResponseBodyData) String() string {
 
 func (s InsertInterveneGlobalReplyResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *InsertInterveneGlobalReplyResponseBodyData) SetCode(v int32) *InsertInterveneGlobalReplyResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *InsertInterveneGlobalReplyResponseBodyData) SetFailIdList(v []*string) *InsertInterveneGlobalReplyResponseBodyData {
@@ -13857,6 +14068,7 @@ func (s *InsertInterveneRuleResponseBody) SetSuccess(v bool) *InsertInterveneRul
 }
 
 type InsertInterveneRuleResponseBodyData struct {
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// 12345
@@ -13869,6 +14081,11 @@ func (s InsertInterveneRuleResponseBodyData) String() string {
 
 func (s InsertInterveneRuleResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *InsertInterveneRuleResponseBodyData) SetCode(v int32) *InsertInterveneRuleResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *InsertInterveneRuleResponseBodyData) SetRuleId(v int64) *InsertInterveneRuleResponseBodyData {
@@ -19374,6 +19591,7 @@ func (s *ListInterveneCntResponseBody) SetSuccess(v bool) *ListInterveneCntRespo
 
 type ListInterveneCntResponseBodyData struct {
 	CntList []interface{} `json:"CntList,omitempty" xml:"CntList,omitempty" type:"Repeated"`
+	Code    *int32        `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// 10
@@ -19398,6 +19616,11 @@ func (s ListInterveneCntResponseBodyData) GoString() string {
 
 func (s *ListInterveneCntResponseBodyData) SetCntList(v []interface{}) *ListInterveneCntResponseBodyData {
 	s.CntList = v
+	return s
+}
+
+func (s *ListInterveneCntResponseBodyData) SetCode(v int32) *ListInterveneCntResponseBodyData {
+	s.Code = &v
 	return s
 }
 
@@ -19548,6 +19771,7 @@ func (s *ListInterveneImportTasksResponseBody) SetSuccess(v bool) *ListIntervene
 }
 
 type ListInterveneImportTasksResponseBodyData struct {
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// 1
@@ -19569,6 +19793,11 @@ func (s ListInterveneImportTasksResponseBodyData) String() string {
 
 func (s ListInterveneImportTasksResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListInterveneImportTasksResponseBodyData) SetCode(v int32) *ListInterveneImportTasksResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ListInterveneImportTasksResponseBodyData) SetPageIndex(v int32) *ListInterveneImportTasksResponseBodyData {
@@ -19779,6 +20008,7 @@ func (s *ListInterveneRulesResponseBody) SetSuccess(v bool) *ListInterveneRulesR
 }
 
 type ListInterveneRulesResponseBodyData struct {
+	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
 	// example:
 	//
 	// 1
@@ -19800,6 +20030,11 @@ func (s ListInterveneRulesResponseBodyData) String() string {
 
 func (s ListInterveneRulesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListInterveneRulesResponseBodyData) SetCode(v int32) *ListInterveneRulesResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ListInterveneRulesResponseBodyData) SetCount(v int64) *ListInterveneRulesResponseBodyData {
@@ -20078,6 +20313,7 @@ func (s *ListIntervenesResponseBody) SetSuccess(v bool) *ListIntervenesResponseB
 }
 
 type ListIntervenesResponseBodyData struct {
+	Code          *int32                                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	InterveneList []*ListIntervenesResponseBodyDataInterveneList `json:"InterveneList,omitempty" xml:"InterveneList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -20099,6 +20335,11 @@ func (s ListIntervenesResponseBodyData) String() string {
 
 func (s ListIntervenesResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListIntervenesResponseBodyData) SetCode(v int32) *ListIntervenesResponseBodyData {
+	s.Code = &v
+	return s
 }
 
 func (s *ListIntervenesResponseBodyData) SetInterveneList(v []*ListIntervenesResponseBodyDataInterveneList) *ListIntervenesResponseBodyData {
@@ -24937,6 +25178,298 @@ func (s *RunAbbreviationContentResponse) SetBody(v *RunAbbreviationContentRespon
 	return s
 }
 
+type RunBookBrainmapRequest struct {
+	// example:
+	//
+	// true
+	CleanCache *bool `json:"CleanCache,omitempty" xml:"CleanCache,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	// example:
+	//
+	// 3
+	NodeNumber *int32  `json:"NodeNumber,omitempty" xml:"NodeNumber,omitempty"`
+	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 20
+	WordNumber *int32 `json:"WordNumber,omitempty" xml:"WordNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-hx72jf15gqyobvd9
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s RunBookBrainmapRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapRequest) SetCleanCache(v bool) *RunBookBrainmapRequest {
+	s.CleanCache = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetDocId(v string) *RunBookBrainmapRequest {
+	s.DocId = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetNodeNumber(v int32) *RunBookBrainmapRequest {
+	s.NodeNumber = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetPrompt(v string) *RunBookBrainmapRequest {
+	s.Prompt = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetSessionId(v string) *RunBookBrainmapRequest {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetWordNumber(v int32) *RunBookBrainmapRequest {
+	s.WordNumber = &v
+	return s
+}
+
+func (s *RunBookBrainmapRequest) SetWorkspaceId(v string) *RunBookBrainmapRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type RunBookBrainmapResponseBody struct {
+	Header  *RunBookBrainmapResponseBodyHeader  `json:"Header,omitempty" xml:"Header,omitempty" type:"Struct"`
+	Payload *RunBookBrainmapResponseBodyPayload `json:"Payload,omitempty" xml:"Payload,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RunBookBrainmapResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponseBody) SetHeader(v *RunBookBrainmapResponseBodyHeader) *RunBookBrainmapResponseBody {
+	s.Header = v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBody) SetPayload(v *RunBookBrainmapResponseBodyPayload) *RunBookBrainmapResponseBody {
+	s.Payload = v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBody) SetRequestId(v string) *RunBookBrainmapResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RunBookBrainmapResponseBodyHeader struct {
+	// example:
+	//
+	// Success
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// task-failed
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
+	// example:
+	//
+	// 3cd10828-0e42-471c-8f1a-931cde20b035
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// example:
+	//
+	// 3f7045e099474ba28ceca1b4eb6d6e21
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// example:
+	//
+	// 0bc1409b17210096103458421ec62e
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s RunBookBrainmapResponseBodyHeader) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponseBodyHeader) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetErrorCode(v string) *RunBookBrainmapResponseBodyHeader {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetErrorMessage(v string) *RunBookBrainmapResponseBodyHeader {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetEvent(v string) *RunBookBrainmapResponseBodyHeader {
+	s.Event = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetEventInfo(v string) *RunBookBrainmapResponseBodyHeader {
+	s.EventInfo = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetSessionId(v string) *RunBookBrainmapResponseBodyHeader {
+	s.SessionId = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetTaskId(v string) *RunBookBrainmapResponseBodyHeader {
+	s.TaskId = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyHeader) SetTraceId(v string) *RunBookBrainmapResponseBodyHeader {
+	s.TraceId = &v
+	return s
+}
+
+type RunBookBrainmapResponseBodyPayload struct {
+	Output *RunBookBrainmapResponseBodyPayloadOutput `json:"Output,omitempty" xml:"Output,omitempty" type:"Struct"`
+	Usage  *RunBookBrainmapResponseBodyPayloadUsage  `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
+}
+
+func (s RunBookBrainmapResponseBodyPayload) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponseBodyPayload) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponseBodyPayload) SetOutput(v *RunBookBrainmapResponseBodyPayloadOutput) *RunBookBrainmapResponseBodyPayload {
+	s.Output = v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyPayload) SetUsage(v *RunBookBrainmapResponseBodyPayloadUsage) *RunBookBrainmapResponseBodyPayload {
+	s.Usage = v
+	return s
+}
+
+type RunBookBrainmapResponseBodyPayloadOutput struct {
+	// example:
+	//
+	// {"xxxx":"xxx"}
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+}
+
+func (s RunBookBrainmapResponseBodyPayloadOutput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponseBodyPayloadOutput) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponseBodyPayloadOutput) SetContent(v string) *RunBookBrainmapResponseBodyPayloadOutput {
+	s.Content = &v
+	return s
+}
+
+type RunBookBrainmapResponseBodyPayloadUsage struct {
+	// example:
+	//
+	// 100
+	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// example:
+	//
+	// 100
+	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// example:
+	//
+	// 200
+	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+}
+
+func (s RunBookBrainmapResponseBodyPayloadUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponseBodyPayloadUsage) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponseBodyPayloadUsage) SetInputTokens(v int64) *RunBookBrainmapResponseBodyPayloadUsage {
+	s.InputTokens = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyPayloadUsage) SetOutputTokens(v int64) *RunBookBrainmapResponseBodyPayloadUsage {
+	s.OutputTokens = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponseBodyPayloadUsage) SetTotalTokens(v int64) *RunBookBrainmapResponseBodyPayloadUsage {
+	s.TotalTokens = &v
+	return s
+}
+
+type RunBookBrainmapResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *RunBookBrainmapResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RunBookBrainmapResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RunBookBrainmapResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RunBookBrainmapResponse) SetHeaders(v map[string]*string) *RunBookBrainmapResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RunBookBrainmapResponse) SetStatusCode(v int32) *RunBookBrainmapResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RunBookBrainmapResponse) SetBody(v *RunBookBrainmapResponseBody) *RunBookBrainmapResponse {
+	s.Body = v
+	return s
+}
+
 type RunBookIntroductionRequest struct {
 	// This parameter is required.
 	//
@@ -28277,7 +28810,8 @@ type RunDocSmartCardRequest struct {
 	// example:
 	//
 	// 84ufBYEeLMZOjRFo84HJ7ySL3Efr55
-	DocId *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	DocId  *string `json:"DocId,omitempty" xml:"DocId,omitempty"`
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -28302,6 +28836,11 @@ func (s RunDocSmartCardRequest) GoString() string {
 
 func (s *RunDocSmartCardRequest) SetDocId(v string) *RunDocSmartCardRequest {
 	s.DocId = &v
+	return s
+}
+
+func (s *RunDocSmartCardRequest) SetPrompt(v string) *RunDocSmartCardRequest {
+	s.Prompt = &v
 	return s
 }
 
@@ -48990,6 +49529,74 @@ func (client *Client) GetEnterpriseVocAnalysisTask(request *GetEnterpriseVocAnal
 
 // Summary:
 //
+// 妙读获得文档字数
+//
+// @param request - GetFileContentLengthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileContentLengthResponse
+func (client *Client) GetFileContentLengthWithOptions(request *GetFileContentLengthRequest, runtime *util.RuntimeOptions) (_result *GetFileContentLengthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DocName)) {
+		body["DocName"] = request.DocName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
+		body["FileUrl"] = request.FileUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFileContentLength"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileContentLengthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读获得文档字数
+//
+// @param request - GetFileContentLengthRequest
+//
+// @return GetFileContentLengthResponse
+func (client *Client) GetFileContentLength(request *GetFileContentLengthRequest) (_result *GetFileContentLengthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileContentLengthResponse{}
+	_body, _err := client.GetFileContentLengthWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 文档管理-查询详情。
 //
 // @param request - GetGeneratedContentRequest
@@ -52934,6 +53541,90 @@ func (client *Client) RunAbbreviationContent(request *RunAbbreviationContentRequ
 
 // Summary:
 //
+// 妙读生成书籍脑图
+//
+// @param request - RunBookBrainmapRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RunBookBrainmapResponse
+func (client *Client) RunBookBrainmapWithOptions(request *RunBookBrainmapRequest, runtime *util.RuntimeOptions) (_result *RunBookBrainmapResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CleanCache)) {
+		body["CleanCache"] = request.CleanCache
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocId)) {
+		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeNumber)) {
+		body["NodeNumber"] = request.NodeNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["SessionId"] = request.SessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WordNumber)) {
+		body["WordNumber"] = request.WordNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RunBookBrainmap"),
+		Version:     tea.String("2023-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RunBookBrainmapResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 妙读生成书籍脑图
+//
+// @param request - RunBookBrainmapRequest
+//
+// @return RunBookBrainmapResponse
+func (client *Client) RunBookBrainmap(request *RunBookBrainmapRequest) (_result *RunBookBrainmapResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RunBookBrainmapResponse{}
+	_body, _err := client.RunBookBrainmapWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 书籍导读接口
 //
 // @param request - RunBookIntroductionRequest
@@ -53729,6 +54420,10 @@ func (client *Client) RunDocSmartCardWithOptions(request *RunDocSmartCardRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DocId)) {
 		body["DocId"] = request.DocId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["Prompt"] = request.Prompt
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
