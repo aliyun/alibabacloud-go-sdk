@@ -3078,6 +3078,356 @@ func (s *QueryExchangeRateResponse) SetBody(v *QueryExchangeRateResponseBody) *Q
 	return s
 }
 
+type QueryExportDomainExpireSnatchsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	CurrentId *int64 `json:"CurrentId,omitempty" xml:"CurrentId,omitempty"`
+	// example:
+	//
+	// 50
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// f07b150eadfa1d7a
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryExportDomainExpireSnatchsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExportDomainExpireSnatchsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExportDomainExpireSnatchsRequest) SetCurrentId(v int64) *QueryExportDomainExpireSnatchsRequest {
+	s.CurrentId = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsRequest) SetMaxResults(v int32) *QueryExportDomainExpireSnatchsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsRequest) SetNextToken(v string) *QueryExportDomainExpireSnatchsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsRequest) SetPageSize(v int32) *QueryExportDomainExpireSnatchsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryExportDomainExpireSnatchsResponseBody struct {
+	Data      []*QueryExportDomainExpireSnatchsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryExportDomainExpireSnatchsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExportDomainExpireSnatchsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBody) SetData(v []*QueryExportDomainExpireSnatchsResponseBodyData) *QueryExportDomainExpireSnatchsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBody) SetRequestId(v string) *QueryExportDomainExpireSnatchsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryExportDomainExpireSnatchsResponseBodyData struct {
+	AuctionEndTime          *string  `json:"AuctionEndTime,omitempty" xml:"AuctionEndTime,omitempty"`
+	AuctionRemainingSeconds *int64   `json:"AuctionRemainingSeconds,omitempty" xml:"AuctionRemainingSeconds,omitempty"`
+	BaiduAntiLink           *int32   `json:"BaiduAntiLink,omitempty" xml:"BaiduAntiLink,omitempty"`
+	BaiduExLink             *int32   `json:"BaiduExLink,omitempty" xml:"BaiduExLink,omitempty"`
+	BaiduIndex              *int32   `json:"BaiduIndex,omitempty" xml:"BaiduIndex,omitempty"`
+	BaiduWeight             *int32   `json:"BaiduWeight,omitempty" xml:"BaiduWeight,omitempty"`
+	BookEndTime             *string  `json:"BookEndTime,omitempty" xml:"BookEndTime,omitempty"`
+	BookRemainingSeconds    *int64   `json:"BookRemainingSeconds,omitempty" xml:"BookRemainingSeconds,omitempty"`
+	BookedNum               *int32   `json:"BookedNum,omitempty" xml:"BookedNum,omitempty"`
+	BookedPartners          *string  `json:"BookedPartners,omitempty" xml:"BookedPartners,omitempty"`
+	Constitute              *string  `json:"Constitute,omitempty" xml:"Constitute,omitempty"`
+	CurrencyType            *string  `json:"CurrencyType,omitempty" xml:"CurrencyType,omitempty"`
+	DeliveryTime            *string  `json:"DeliveryTime,omitempty" xml:"DeliveryTime,omitempty"`
+	DomainId                *string  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainLen               *int32   `json:"DomainLen,omitempty" xml:"DomainLen,omitempty"`
+	DomainName              *string  `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainType              *string  `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	EndDate                 *string  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	ExpireDate              *string  `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
+	Extend                  *string  `json:"Extend,omitempty" xml:"Extend,omitempty"`
+	FreezeAmount            *float64 `json:"FreezeAmount,omitempty" xml:"FreezeAmount,omitempty"`
+	Introduction            *string  `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
+	IsPremium               *bool    `json:"IsPremium,omitempty" xml:"IsPremium,omitempty"`
+	PartnerTypes            *string  `json:"PartnerTypes,omitempty" xml:"PartnerTypes,omitempty"`
+	Price                   *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	ProductId               *string  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	PublishTime             *string  `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	RegDate                 *string  `json:"RegDate,omitempty" xml:"RegDate,omitempty"`
+	Reserved                *bool    `json:"Reserved,omitempty" xml:"Reserved,omitempty"`
+	RmbPrice                *float64 `json:"RmbPrice,omitempty" xml:"RmbPrice,omitempty"`
+	S360Weight              *int32   `json:"S360Weight,omitempty" xml:"S360Weight,omitempty"`
+	SeoAttributes           *string  `json:"SeoAttributes,omitempty" xml:"SeoAttributes,omitempty"`
+	ShortName               *string  `json:"ShortName,omitempty" xml:"ShortName,omitempty"`
+	SnatchTypeDesc          *string  `json:"SnatchTypeDesc,omitempty" xml:"SnatchTypeDesc,omitempty"`
+	SougouAntiLink          *int32   `json:"SougouAntiLink,omitempty" xml:"SougouAntiLink,omitempty"`
+	SougouIndex             *int32   `json:"SougouIndex,omitempty" xml:"SougouIndex,omitempty"`
+	SougouWeight            *int32   `json:"SougouWeight,omitempty" xml:"SougouWeight,omitempty"`
+	Suffix                  *string  `json:"Suffix,omitempty" xml:"Suffix,omitempty"`
+	Weight                  *int32   `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s QueryExportDomainExpireSnatchsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExportDomainExpireSnatchsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetAuctionEndTime(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.AuctionEndTime = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetAuctionRemainingSeconds(v int64) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.AuctionRemainingSeconds = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBaiduAntiLink(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BaiduAntiLink = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBaiduExLink(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BaiduExLink = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBaiduIndex(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BaiduIndex = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBaiduWeight(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BaiduWeight = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBookEndTime(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BookEndTime = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBookRemainingSeconds(v int64) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BookRemainingSeconds = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBookedNum(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BookedNum = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetBookedPartners(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.BookedPartners = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetConstitute(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Constitute = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetCurrencyType(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.CurrencyType = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetDeliveryTime(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.DeliveryTime = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetDomainId(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.DomainId = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetDomainLen(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.DomainLen = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetDomainName(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetDomainType(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.DomainType = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetEndDate(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.EndDate = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetExpireDate(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.ExpireDate = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetExtend(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Extend = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetFreezeAmount(v float64) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.FreezeAmount = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetIntroduction(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Introduction = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetIsPremium(v bool) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.IsPremium = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetPartnerTypes(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.PartnerTypes = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetPrice(v float64) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Price = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetProductId(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.ProductId = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetPublishTime(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.PublishTime = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetRegDate(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.RegDate = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetReserved(v bool) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Reserved = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetRmbPrice(v float64) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.RmbPrice = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetS360Weight(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.S360Weight = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSeoAttributes(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.SeoAttributes = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetShortName(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.ShortName = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSnatchTypeDesc(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.SnatchTypeDesc = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSougouAntiLink(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.SougouAntiLink = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSougouIndex(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.SougouIndex = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSougouWeight(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.SougouWeight = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetSuffix(v string) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Suffix = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponseBodyData) SetWeight(v int32) *QueryExportDomainExpireSnatchsResponseBodyData {
+	s.Weight = &v
+	return s
+}
+
+type QueryExportDomainExpireSnatchsResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryExportDomainExpireSnatchsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryExportDomainExpireSnatchsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryExportDomainExpireSnatchsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryExportDomainExpireSnatchsResponse) SetHeaders(v map[string]*string) *QueryExportDomainExpireSnatchsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponse) SetStatusCode(v int32) *QueryExportDomainExpireSnatchsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryExportDomainExpireSnatchsResponse) SetBody(v *QueryExportDomainExpireSnatchsResponseBody) *QueryExportDomainExpireSnatchsResponse {
+	s.Body = v
+	return s
+}
+
 type QueryPurchasedDomainsRequest struct {
 	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	DomainName         *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
@@ -5305,6 +5655,78 @@ func (client *Client) QueryExchangeRate(request *QueryExchangeRateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryExchangeRateResponse{}
 	_body, _err := client.QueryExchangeRateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询导出的抢注域名
+//
+// @param request - QueryExportDomainExpireSnatchsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryExportDomainExpireSnatchsResponse
+func (client *Client) QueryExportDomainExpireSnatchsWithOptions(request *QueryExportDomainExpireSnatchsRequest, runtime *util.RuntimeOptions) (_result *QueryExportDomainExpireSnatchsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentId)) {
+		query["CurrentId"] = request.CurrentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryExportDomainExpireSnatchs"),
+		Version:     tea.String("2018-02-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryExportDomainExpireSnatchsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询导出的抢注域名
+//
+// @param request - QueryExportDomainExpireSnatchsRequest
+//
+// @return QueryExportDomainExpireSnatchsResponse
+func (client *Client) QueryExportDomainExpireSnatchs(request *QueryExportDomainExpireSnatchsRequest) (_result *QueryExportDomainExpireSnatchsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryExportDomainExpireSnatchsResponse{}
+	_body, _err := client.QueryExportDomainExpireSnatchsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
