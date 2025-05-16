@@ -3243,12 +3243,220 @@ func (s *CreateCodeSourceResponse) SetBody(v *CreateCodeSourceResponseBody) *Cre
 	return s
 }
 
+type CreateConnectionRequest struct {
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// This parameter is required.
+	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-connection
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// DashScopeConnection
+	ConnectionType *string                              `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	Description    *string                              `json:"Description,omitempty" xml:"Description,omitempty"`
+	Models         []*CreateConnectionRequestModels     `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	ResourceMeta   *CreateConnectionRequestResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
+	Secrets        map[string]*string                   `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// example:
+	//
+	// 123**45
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConnectionRequest) SetAccessibility(v string) *CreateConnectionRequest {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetConfigs(v map[string]*string) *CreateConnectionRequest {
+	s.Configs = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetConnectionName(v string) *CreateConnectionRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetConnectionType(v string) *CreateConnectionRequest {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetDescription(v string) *CreateConnectionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetModels(v []*CreateConnectionRequestModels) *CreateConnectionRequest {
+	s.Models = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetResourceMeta(v *CreateConnectionRequestResourceMeta) *CreateConnectionRequest {
+	s.ResourceMeta = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetSecrets(v map[string]*string) *CreateConnectionRequest {
+	s.Secrets = v
+	return s
+}
+
+func (s *CreateConnectionRequest) SetWorkspaceId(v string) *CreateConnectionRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateConnectionRequestModels struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// LLM
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+}
+
+func (s CreateConnectionRequestModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConnectionRequestModels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConnectionRequestModels) SetDisplayName(v string) *CreateConnectionRequestModels {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetModel(v string) *CreateConnectionRequestModels {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetModelType(v string) *CreateConnectionRequestModels {
+	s.ModelType = &v
+	return s
+}
+
+func (s *CreateConnectionRequestModels) SetToolCall(v bool) *CreateConnectionRequestModels {
+	s.ToolCall = &v
+	return s
+}
+
+type CreateConnectionRequestResourceMeta struct {
+	// example:
+	//
+	// ld-uf69****9nqjjes
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s CreateConnectionRequestResourceMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConnectionRequestResourceMeta) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConnectionRequestResourceMeta) SetInstanceId(v string) *CreateConnectionRequestResourceMeta {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateConnectionRequestResourceMeta) SetInstanceName(v string) *CreateConnectionRequestResourceMeta {
+	s.InstanceName = &v
+	return s
+}
+
+type CreateConnectionResponseBody struct {
+	// example:
+	//
+	// conn-pai9m***mi47
+	ConnectionId *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConnectionResponseBody) SetConnectionId(v string) *CreateConnectionResponseBody {
+	s.ConnectionId = &v
+	return s
+}
+
+func (s *CreateConnectionResponseBody) SetRequestId(v string) *CreateConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateConnectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConnectionResponse) SetHeaders(v map[string]*string) *CreateConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateConnectionResponse) SetStatusCode(v int32) *CreateConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateConnectionResponse) SetBody(v *CreateConnectionResponseBody) *CreateConnectionResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDatasetRequest struct {
-	// The visibility of the workspace. Valid values:
+	// The workspace accessibility. Valid values:
 	//
-	// 	- PRIVATE (default): The workspace is visible only to you and the administrator of the workspace.
+	// 	- PRIVATE: The workspace is accessible only to you and the administrator of the workspace. This is the default value.
 	//
-	// 	- PUBLIC: The workspace is visible to all users.
+	// 	- PUBLIC: The workspace is accessible to all users.
 	//
 	// example:
 	//
@@ -3266,7 +3474,7 @@ type CreateDatasetRequest struct {
 	//
 	// 10000
 	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	// The type of the data source. Valid values:
+	// The data source type. Valid values:
 	//
 	// 	- OSS: Object Storage Service (OSS).
 	//
@@ -3302,11 +3510,11 @@ type CreateDatasetRequest struct {
 	//
 	// {\\
 	//
-	// "region": "${region}",// The region ID\\
+	// "region": "${region}",// The region ID.\\
 	//
-	// "bucket": "${bucket}",//The bucket name\\
+	// "bucket": "${bucket}",//The bucket name.\\
 	//
-	// "path": "${path}" // The file path\\
+	// "path": "${path}" // The file path.\\
 	//
 	// }\\
 	//
@@ -3315,13 +3523,13 @@ type CreateDatasetRequest struct {
 	//
 	// {\\
 	//
-	// "region": "${region}",// The region ID\\
+	// "region": "${region}",// The region ID.\\
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// "fileSystemId": "${file_system_id}", // The file system ID.\\
 	//
-	// "path": "${path}", // The file system path\\
+	// "path": "${path}", // The file system path.\\
 	//
-	// "mountTarget": "${mount_target}" // The mount point of the file system\\
+	// "mountTarget": "${mount_target}" // The mount point of the file system.\\
 	//
 	// }\\
 	//
@@ -3330,15 +3538,15 @@ type CreateDatasetRequest struct {
 	//
 	// {\\
 	//
-	// "region": "${region}",// The region ID\\
+	// "region": "${region}",// The region ID.\\
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// "fileSystemId": "${file_system_id}", // The file system ID.\\
 	//
-	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service\\
+	// "protocolServiceId":"${protocol_service_id}", // The file system protocol service.\\
 	//
-	// "exportId": "${export_id}", // The file system export directory\\
+	// "exportId": "${export_id}", // The file system export directory.\\
 	//
-	// "path": "${path}", // The file system path\\
+	// "path": "${path}", // The file system path.\\
 	//
 	// }\\
 	//
@@ -3347,15 +3555,15 @@ type CreateDatasetRequest struct {
 	//
 	// {\\
 	//
-	// "region": "${region}",// The region ID\\
+	// "region": "${region}",// The region ID.\\
 	//
-	// "fileSystemId": "${file_system_id}", // The file system ID\\
+	// "fileSystemId": "${file_system_id}", // The file system ID.\\
 	//
-	// "path": "${path}", // The file system path\\
+	// "path": "${path}", // The file system path.\\
 	//
-	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only\\
+	// "mountTarget": "${mount_target}" // The mount point of the file system, CPFS for Lingjun only.\\
 	//
-	// "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only\\
+	// "isVpcMount": boolean, // Whether the mount point is a virtual private cloud (VPC) mount point, CPFS for Lingjun only.\\
 	//
 	// }\\
 	//
@@ -3437,33 +3645,35 @@ type CreateDatasetRequest struct {
 	//
 	// Ecs
 	ProviderType *string `json:"ProviderType,omitempty" xml:"ProviderType,omitempty"`
-	// The ID of the source dataset of the labeled dataset.
+	// The ID of the source dataset for the labeled dataset.
 	//
 	// example:
 	//
 	// d-bvfasdfxxxxj8o411
 	SourceDatasetId *string `json:"SourceDatasetId,omitempty" xml:"SourceDatasetId,omitempty"`
-	// The version of the source dataset of the labeled dataset.
+	// The version of the source dataset for the labeled dataset.
 	//
 	// example:
 	//
 	// v2
 	SourceDatasetVersion *string `json:"SourceDatasetVersion,omitempty" xml:"SourceDatasetVersion,omitempty"`
-	// The ID of the data source.
+	// The data source ID.
 	//
-	// 	- If SourceType is set to USER, the value of SourceId can be a custom string.
+	// 	- If SourceType is set to USER, the value of SourceId is a custom string.
 	//
 	// 	- If SourceType is set to ITAG, the value of SourceId is the ID of the labeling job of iTAG.
 	//
-	// 	- If SourceType is set to PAI_PUBLIC_DATASET, the value of SourceId is empty by default.
+	// 	- If SourceType is set to PAI_PUBLIC_DATASET, SourceId is empty by default.
 	//
 	// example:
 	//
 	// jdnhf***fnrimv
 	SourceId *string `json:"SourceId,omitempty" xml:"SourceId,omitempty"`
-	// The type of the data source. Default value: USER. Valid values:
+	// The type of the data source. Default value: USER.
 	//
-	// 	- PAI-PUBLIC-DATASET: a public dataset of Platform for AI (PAI).
+	// Valid values:
+	//
+	// 	- PAI_PUBLIC_DATASET: a public dataset of PAI.
 	//
 	// 	- ITAG: a dataset generated from a labeling job of iTAG.
 	//
@@ -3475,9 +3685,9 @@ type CreateDatasetRequest struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The URI of the data source.
 	//
-	// 	- Value format when DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
+	// 	- Value format if DataSourceType is set to OSS: `oss://bucket.endpoint/object`.
 	//
-	// 	- Value formats when DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
+	// 	- Value formats if DataSourceType is set to NAS: General-purpose NAS: `nas://<nasfisid>.region/subpath/to/dir/`. CPFS 1.0: `nas://<cpfs-fsid>.region/subpath/to/dir/`. CPFS 2.0: `nas://<cpfs-fsid>.region/<protocolserviceid>/`. You can distinguish CPFS 1.0 and CPFS 2.0 file systems based on the format of the file system ID: The ID for CPFS 1.0 is in the cpfs-<8-bit ASCII characters> format. The ID for CPFS 2.0 is in the cpfs-<16-bit ASCII characters> format.
 	//
 	// This parameter is required.
 	//
@@ -5135,19 +5345,19 @@ type CreateModelVersionRequest struct {
 	//
 	// Approved
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// Compression Configuration
+	// The compression configuration.
 	//
 	// example:
 	//
 	// {}
 	CompressionSpec map[string]interface{} `json:"CompressionSpec,omitempty" xml:"CompressionSpec,omitempty"`
-	// Evaluation Configuration
+	// The evaluation configuration.
 	//
 	// example:
 	//
 	// {}
 	EvaluationSpec map[string]interface{} `json:"EvaluationSpec,omitempty" xml:"EvaluationSpec,omitempty"`
-	// Other information.
+	// The additional information.
 	//
 	// example:
 	//
@@ -5159,7 +5369,7 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	ExtraInfo map[string]interface{} `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	// The format of the model. Valid values:
+	// The model format. Valid values:
 	//
 	// 	- OfflineModel
 	//
@@ -5185,7 +5395,7 @@ type CreateModelVersionRequest struct {
 	//
 	// SavedModel
 	FormatType *string `json:"FormatType,omitempty" xml:"FormatType,omitempty"`
-	// The framework of the model. Valid values:
+	// The model framework. Valid values:
 	//
 	// 	- Pytorch
 	//
@@ -5205,7 +5415,7 @@ type CreateModelVersionRequest struct {
 	//
 	// TensorFlow
 	FrameworkType *string `json:"FrameworkType,omitempty" xml:"FrameworkType,omitempty"`
-	// Describes how to apply to downstream inference services. For example, describes the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
+	// Describes how to apply to downstream inference services. For example, describe the processor and container of EAS. Example: `{ "processor": "tensorflow_gpu_1.12" }`
 	//
 	// example:
 	//
@@ -5215,7 +5425,7 @@ type CreateModelVersionRequest struct {
 	//
 	// }
 	InferenceSpec map[string]interface{} `json:"InferenceSpec,omitempty" xml:"InferenceSpec,omitempty"`
-	// The tags.
+	// The labels.
 	Labels []*Label `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	// The metrics for the model. The length after serialization is limited to 8,192.
 	//
@@ -5261,25 +5471,25 @@ type CreateModelVersionRequest struct {
 	//
 	// {}
 	Options *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	// The source ID.
+	// The ID of the model source.
 	//
-	// 	- If the source type is Custom, this field is not limited.
+	// 	- If SourceType is set to Custom, this parameter is not limited.
 	//
-	// 	- If the source is PAIFlow or TrainingService, the format is:
+	// 	- If SourceType is set to PAIFlow or TrainingService, the ID of the model source is in the following format:
 	//
 	// <!---->
 	//
 	//     region=<region_id>,workspaceId=<workspace_id>,kind=<kind>,id=<id>
 	//
-	// Where,
+	// Take note of the following parameters:
 	//
-	// 	- region is the region ID.
+	// 	- region indicates the region ID.
 	//
-	// 	- workspaceId is the ID of the workspace.
+	// 	- workspaceId indicates the workspace ID.
 	//
-	// 	- kind is the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
+	// 	- kind indicates the type. Valid values: PipelineRun (PAIFlow) and ServiceJob (training service).
 	//
-	// 	- id: a unique identifier.
+	// 	- id indicates the unique identifier.
 	//
 	// example:
 	//
@@ -5291,13 +5501,13 @@ type CreateModelVersionRequest struct {
 	//
 	// 	- PAIFlow
 	//
-	// 	- TrainingService: PAI training service.
+	// 	- TrainingService: the Platform for AI (PAI) training service.
 	//
 	// example:
 	//
 	// PAIFlow
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The training configurations. Used for fine-tuning and incremental training.
+	// The training configurations, which is used for fine-tuning and incremental training.
 	//
 	// example:
 	//
@@ -5307,7 +5517,7 @@ type CreateModelVersionRequest struct {
 	//
 	// 	- The HTTP(S) address of the model. Example: `https://myweb.com/mymodel.tar.gz`.
 	//
-	// 	- The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For endpoint, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
+	// 	- The OSS path of the model, in the format of `oss://<bucket>.<endpoint>/object`. For information about endpoints, see [OSS regions and endpoints](https://help.aliyun.com/document_detail/31837.html). Example: `oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/`.
 	//
 	// This parameter is required.
 	//
@@ -5315,9 +5525,9 @@ type CreateModelVersionRequest struct {
 	//
 	// oss://mybucket.oss-cn-beijing.aliyuncs.com/mypath/
 	Uri *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
-	// The version descriptions.
+	// The version description.
 	VersionDescription *string `json:"VersionDescription,omitempty" xml:"VersionDescription,omitempty"`
-	// The model version, which is unique for each model. If left empty, the first version is **0.1.0*	- by default. After that, the version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). Among them: the major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
+	// The model version, which is unique for each model. If you leave this parameter empty, the first version is **0.1.0*	- by default. After that, the minor version number is increased by 1 in sequence. For example, the second version number is **0.2.0**. A version number consists of a major version number, a minor version number, and a stage version number, separated by periods (.). The major version number and minor version number are numeric. The stage version number begins with a digit and can include numbers, underscores, and letters. For example, the version number is 1.1.0 or 2.3.4_beta.
 	//
 	// example:
 	//
@@ -6468,7 +6678,7 @@ func (s *DeleteCodeSourceResponse) SetBody(v *DeleteCodeSourceResponseBody) *Del
 }
 
 type DeleteConfigRequest struct {
-	// The category of the configuration item. Supported categories:
+	// The category of the configuration item. Valid values:
 	//
 	// 	- CommonResourceConfig
 	//
@@ -6477,6 +6687,8 @@ type DeleteConfigRequest struct {
 	// 	- DSWPriorityConfig
 	//
 	// 	- QuotaMaximumDuration
+	//
+	// 	- CommonTagConfig
 	//
 	// example:
 	//
@@ -6555,6 +6767,57 @@ func (s *DeleteConfigResponse) SetStatusCode(v int32) *DeleteConfigResponse {
 }
 
 func (s *DeleteConfigResponse) SetBody(v *DeleteConfigResponseBody) *DeleteConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteConnectionResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConnectionResponseBody) SetRequestId(v string) *DeleteConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteConnectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteConnectionResponse) SetHeaders(v map[string]*string) *DeleteConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteConnectionResponse) SetStatusCode(v int32) *DeleteConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteConnectionResponse) SetBody(v *DeleteConnectionResponseBody) *DeleteConnectionResponse {
 	s.Body = v
 	return s
 }
@@ -7596,7 +7859,12 @@ type DeleteUserConfigRequest struct {
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	Scope     *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	// The scope. Valid values: subUser and owner.
+	//
+	// example:
+	//
+	// subUser
+	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
 }
 
 func (s DeleteUserConfigRequest) String() string {
@@ -8078,7 +8346,7 @@ func (s *GetCodeSourceResponse) SetBody(v *GetCodeSourceResponseBody) *GetCodeSo
 }
 
 type GetConfigRequest struct {
-	// The category of the configuration item. Supported categories:
+	// The category of the configuration item. Valid values:
 	//
 	// 	- CommonResourceConfig
 	//
@@ -8090,11 +8358,13 @@ type GetConfigRequest struct {
 	//
 	// 	- QuotaMaximumDuration
 	//
+	// 	- CommonTagConfig
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. Supported keys:
+	// The key of the configuration item. Valid values:
 	//
 	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
 	//
@@ -8102,7 +8372,9 @@ type GetConfigRequest struct {
 	//
 	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: Predefined tags of the workspace. Created resources must include tags.
 	//
 	// example:
 	//
@@ -8140,7 +8412,7 @@ func (s *GetConfigRequest) SetVerbose(v string) *GetConfigRequest {
 }
 
 type GetConfigResponseBody struct {
-	// The category of the configuration item. Supported categories:
+	// The category of the configuration item. Valid values:
 	//
 	// 	- CommonResourceConfig
 	//
@@ -8152,11 +8424,13 @@ type GetConfigResponseBody struct {
 	//
 	// 	- QuotaMaximumDuration
 	//
+	// 	- CommonTagConfig
+	//
 	// example:
 	//
 	// CommonResourceConfig
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The key of the configuration item. Supported keys:
+	// The key of the configuration item. Valid values:
 	//
 	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
 	//
@@ -8164,7 +8438,9 @@ type GetConfigResponseBody struct {
 	//
 	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: Predefined tags of the workspace. Created resources must include tags.
 	//
 	// example:
 	//
@@ -8288,6 +8564,244 @@ func (s *GetConfigResponse) SetStatusCode(v int32) *GetConfigResponse {
 }
 
 func (s *GetConfigResponse) SetBody(v *GetConfigResponseBody) *GetConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetConnectionRequest struct {
+	// example:
+	//
+	// PlainText
+	EncryptOption *string `json:"EncryptOption,omitempty" xml:"EncryptOption,omitempty"`
+}
+
+func (s GetConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionRequest) SetEncryptOption(v string) *GetConnectionRequest {
+	s.EncryptOption = &v
+	return s
+}
+
+type GetConnectionResponseBody struct {
+	// example:
+	//
+	// PRIVATE
+	Accessibility *string            `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	Configs       map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// example:
+	//
+	// conn-pai9m***mi47
+	ConnectionId   *string `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// OpenSearchConnection
+	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
+	// example:
+	//
+	// 28632***898231
+	Creator     *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2025-03-07T07:54:56Z
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2025-03-07T07:54:56Z
+	GmtModifiedTime *string                            `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	Models          []*GetConnectionResponseBodyModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 5A14FA81-DD4E-******-6343FE44B941
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceMeta *GetConnectionResponseBodyResourceMeta `json:"ResourceMeta,omitempty" xml:"ResourceMeta,omitempty" type:"Struct"`
+	Secrets      map[string]*string                     `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+	// example:
+	//
+	// 11**43
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionResponseBody) SetAccessibility(v string) *GetConnectionResponseBody {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetConfigs(v map[string]*string) *GetConnectionResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetConnectionId(v string) *GetConnectionResponseBody {
+	s.ConnectionId = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetConnectionName(v string) *GetConnectionResponseBody {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetConnectionType(v string) *GetConnectionResponseBody {
+	s.ConnectionType = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetCreator(v string) *GetConnectionResponseBody {
+	s.Creator = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetDescription(v string) *GetConnectionResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetGmtCreateTime(v string) *GetConnectionResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetGmtModifiedTime(v string) *GetConnectionResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetModels(v []*GetConnectionResponseBodyModels) *GetConnectionResponseBody {
+	s.Models = v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetRequestId(v string) *GetConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetResourceMeta(v *GetConnectionResponseBodyResourceMeta) *GetConnectionResponseBody {
+	s.ResourceMeta = v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetSecrets(v map[string]*string) *GetConnectionResponseBody {
+	s.Secrets = v
+	return s
+}
+
+func (s *GetConnectionResponseBody) SetWorkspaceId(v string) *GetConnectionResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetConnectionResponseBodyModels struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// LLM
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+}
+
+func (s GetConnectionResponseBodyModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionResponseBodyModels) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionResponseBodyModels) SetDisplayName(v string) *GetConnectionResponseBodyModels {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetConnectionResponseBodyModels) SetModel(v string) *GetConnectionResponseBodyModels {
+	s.Model = &v
+	return s
+}
+
+func (s *GetConnectionResponseBodyModels) SetModelType(v string) *GetConnectionResponseBodyModels {
+	s.ModelType = &v
+	return s
+}
+
+func (s *GetConnectionResponseBodyModels) SetToolCall(v bool) *GetConnectionResponseBodyModels {
+	s.ToolCall = &v
+	return s
+}
+
+type GetConnectionResponseBodyResourceMeta struct {
+	// example:
+	//
+	// ld-2vc1***v1zaqgzol
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s GetConnectionResponseBodyResourceMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionResponseBodyResourceMeta) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionResponseBodyResourceMeta) SetInstanceId(v string) *GetConnectionResponseBodyResourceMeta {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetConnectionResponseBodyResourceMeta) SetInstanceName(v string) *GetConnectionResponseBodyResourceMeta {
+	s.InstanceName = &v
+	return s
+}
+
+type GetConnectionResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetConnectionResponse) SetHeaders(v map[string]*string) *GetConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetConnectionResponse) SetStatusCode(v int32) *GetConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetConnectionResponse) SetBody(v *GetConnectionResponseBody) *GetConnectionResponse {
 	s.Body = v
 	return s
 }
@@ -11732,6 +12246,8 @@ type ListConfigsRequest struct {
 	//
 	// 	- QuotaMaximumDuration
 	//
+	// 	- CommonTagConfig
+	//
 	// example:
 	//
 	// CommonResourceConfig
@@ -11744,7 +12260,9 @@ type ListConfigsRequest struct {
 	//
 	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: The predefined tags of the workspace. All created resources must have tags
 	//
 	// example:
 	//
@@ -11845,7 +12363,9 @@ type ListConfigsResponseBodyConfigs struct {
 	//
 	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: The predefined tags of the workspace. All created resources must have tags
 	//
 	// example:
 	//
@@ -11942,6 +12462,379 @@ func (s *ListConfigsResponse) SetStatusCode(v int32) *ListConfigsResponse {
 }
 
 func (s *ListConfigsResponse) SetBody(v *ListConfigsResponseBody) *ListConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type ListConnectionsRequest struct {
+	// The list of connection IDs.
+	ConnectionIds []*string `json:"ConnectionIds,omitempty" xml:"ConnectionIds,omitempty" type:"Repeated"`
+	// The connection name.
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// The list of connection types.
+	ConnectionTypes []*string `json:"ConnectionTypes,omitempty" xml:"ConnectionTypes,omitempty" type:"Repeated"`
+	// The encryption settings. Valid values:
+	//
+	// 	- PlainText
+	//
+	// 	- Secret
+	//
+	// example:
+	//
+	// PlainText
+	EncryptOption *string `json:"EncryptOption,omitempty" xml:"EncryptOption,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The model identifier.
+	//
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The list of model types.
+	ModelTypes []*string `json:"ModelTypes,omitempty" xml:"ModelTypes,omitempty" type:"Repeated"`
+	// The pagination token that indicates the start position from which to retrieve data on the next page.
+	//
+	// example:
+	//
+	// 15
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+	//
+	// 	- ASC: ascending order.
+	//
+	// 	- DESC: descending order. This is the default value.
+	//
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+	//
+	// 	- GmtCreateTime: The results are sorted by creation time. This is the default value.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether a tool can be called by using ToolCall. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// example:
+	//
+	// 478**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListConnectionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsRequest) SetConnectionIds(v []*string) *ListConnectionsRequest {
+	s.ConnectionIds = v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetConnectionName(v string) *ListConnectionsRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetConnectionTypes(v []*string) *ListConnectionsRequest {
+	s.ConnectionTypes = v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetEncryptOption(v string) *ListConnectionsRequest {
+	s.EncryptOption = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetMaxResults(v int32) *ListConnectionsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetModel(v string) *ListConnectionsRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetModelTypes(v []*string) *ListConnectionsRequest {
+	s.ModelTypes = v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetNextToken(v string) *ListConnectionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetOrder(v string) *ListConnectionsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetSortBy(v string) *ListConnectionsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetToolCall(v bool) *ListConnectionsRequest {
+	s.ToolCall = &v
+	return s
+}
+
+func (s *ListConnectionsRequest) SetWorkspaceId(v string) *ListConnectionsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListConnectionsShrinkRequest struct {
+	// The list of connection IDs.
+	ConnectionIdsShrink *string `json:"ConnectionIds,omitempty" xml:"ConnectionIds,omitempty"`
+	// The connection name.
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// The list of connection types.
+	ConnectionTypesShrink *string `json:"ConnectionTypes,omitempty" xml:"ConnectionTypes,omitempty"`
+	// The encryption settings. Valid values:
+	//
+	// 	- PlainText
+	//
+	// 	- Secret
+	//
+	// example:
+	//
+	// PlainText
+	EncryptOption *string `json:"EncryptOption,omitempty" xml:"EncryptOption,omitempty"`
+	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The model identifier.
+	//
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The list of model types.
+	ModelTypesShrink *string `json:"ModelTypes,omitempty" xml:"ModelTypes,omitempty"`
+	// The pagination token that indicates the start position from which to retrieve data on the next page.
+	//
+	// example:
+	//
+	// 15
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The order in which the entries are sorted by the specific field on the returned page. This parameter must be used together with SortBy.
+	//
+	// 	- ASC: ascending order.
+	//
+	// 	- DESC: descending order. This is the default value.
+	//
+	// example:
+	//
+	// DESC
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The field used to sort the results in queries by page. Default value: GmtCreateTime. Valid value:
+	//
+	// 	- GmtCreateTime: The results are sorted by creation time. This is the default value.
+	//
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// Specifies whether a tool can be called by using ToolCall. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+	// The workspace ID. You can call [ListWorkspaces](https://help.aliyun.com/document_detail/449124.html) to obtain the workspace ID.
+	//
+	// example:
+	//
+	// 478**
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListConnectionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsShrinkRequest) SetConnectionIdsShrink(v string) *ListConnectionsShrinkRequest {
+	s.ConnectionIdsShrink = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetConnectionName(v string) *ListConnectionsShrinkRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetConnectionTypesShrink(v string) *ListConnectionsShrinkRequest {
+	s.ConnectionTypesShrink = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetEncryptOption(v string) *ListConnectionsShrinkRequest {
+	s.EncryptOption = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetMaxResults(v int32) *ListConnectionsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetModel(v string) *ListConnectionsShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetModelTypesShrink(v string) *ListConnectionsShrinkRequest {
+	s.ModelTypesShrink = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetNextToken(v string) *ListConnectionsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetOrder(v string) *ListConnectionsShrinkRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetSortBy(v string) *ListConnectionsShrinkRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetToolCall(v bool) *ListConnectionsShrinkRequest {
+	s.ToolCall = &v
+	return s
+}
+
+func (s *ListConnectionsShrinkRequest) SetWorkspaceId(v string) *ListConnectionsShrinkRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListConnectionsResponseBody struct {
+	// The connection list.
+	Connections []*Connection `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
+	// The maximum number of entries per page.
+	//
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that indicates the start position from which to retrieve data on the next page.
+	//
+	// example:
+	//
+	// 15
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// B2C51F93-1C07-5477-9705-5FDB****F19F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of connections that meet the filter conditions.
+	//
+	// example:
+	//
+	// 27
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListConnectionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsResponseBody) SetConnections(v []*Connection) *ListConnectionsResponseBody {
+	s.Connections = v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetMaxResults(v int32) *ListConnectionsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetNextToken(v string) *ListConnectionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetRequestId(v string) *ListConnectionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListConnectionsResponseBody) SetTotalCount(v int32) *ListConnectionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListConnectionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListConnectionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListConnectionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListConnectionsResponse) SetHeaders(v map[string]*string) *ListConnectionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionsResponse) SetStatusCode(v int32) *ListConnectionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListConnectionsResponse) SetBody(v *ListConnectionsResponseBody) *ListConnectionsResponse {
 	s.Body = v
 	return s
 }
@@ -18048,7 +18941,9 @@ func (s *SetUserConfigsRequest) SetConfigs(v []*SetUserConfigsRequestConfigs) *S
 }
 
 type SetUserConfigsRequestConfigs struct {
-	// The category. Currently, only DataPrivacyConfig is supported.
+	// The category. Only DataPrivacyConfig is supported.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18056,17 +18951,23 @@ type SetUserConfigsRequestConfigs struct {
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// The key of the configuration item.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// customizePAIAssumedRole
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
 	// The value of the configuration item.
 	//
+	// This parameter is required.
+	//
 	// example:
 	//
 	// role
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The scope. Currently, subUser and owner are supported.
+	// The scope. Valid values: subUser and owner.
+	//
+	// This parameter is required.
 	//
 	// example:
 	//
@@ -18582,6 +19483,8 @@ type UpdateConfigsRequestConfigs struct {
 	//
 	// 	- QuotaMaximumDuration
 	//
+	// 	- CommonTagConfig
+	//
 	// example:
 	//
 	// CommonResourceConfig
@@ -18592,15 +19495,19 @@ type UpdateConfigsRequestConfigs struct {
 	//
 	// 	- isAutoRecycle: Automatic recycle configuration. This key can be used only when CategoryName is set to DLCAutoRecycle.
 	//
-	// 	- priorityConfig: Priority configuration. This key can be used only when CategoryName is set to DLCPriorityConfig or DSWPriorityConfig.
+	// 	- tempStoragePath: Temporary storage path. This key can be used only when CategoryName is set to CommonResourceConfig.
 	//
-	// 	- quotaMaximumDuration Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	// 	- quotaMaximumDuration: Maximum run time of DLC jobs for a quota. This key can be used only when CategoryName is set to QuotaMaximumDuration.
+	//
+	// 	- predefinedTags: The predefined tags of the workspace. All created resources must have tags.
 	//
 	// example:
 	//
 	// tempStoragePath
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
 	// The value of the configuration item.
+	//
+	// 	- When ConfigKey is predefinedTags, the ConfigValue follows this format: [{"Type":"Tag","Key":"Key1","Value":"{"Products":"DLC,DSW,EAS","Values":"value1,value2,value3"}"}]. "Products" indicates the products that use the predefined tags.
 	//
 	// example:
 	//
@@ -18639,7 +19546,7 @@ func (s *UpdateConfigsRequestConfigs) SetLabels(v []*UpdateConfigsRequestConfigs
 }
 
 type UpdateConfigsRequestConfigsLabels struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
@@ -18718,6 +19625,161 @@ func (s *UpdateConfigsResponse) SetStatusCode(v int32) *UpdateConfigsResponse {
 }
 
 func (s *UpdateConfigsResponse) SetBody(v *UpdateConfigsResponseBody) *UpdateConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateConnectionRequest struct {
+	// The connection configuration. The connection configuration is in the key-value format. The keys configured for different connection types are different. For more information, see the supplementary description of the request parameters in CreateConnection.
+	Configs map[string]*string `json:"Configs,omitempty" xml:"Configs,omitempty"`
+	// The connection description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The models.
+	Models []*UpdateConnectionRequestModels `json:"Models,omitempty" xml:"Models,omitempty" type:"Repeated"`
+	// The key-value configuration to be encrypted, such as the database logon password and the key for model connection.
+	Secrets map[string]*string `json:"Secrets,omitempty" xml:"Secrets,omitempty"`
+}
+
+func (s UpdateConnectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConnectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConnectionRequest) SetConfigs(v map[string]*string) *UpdateConnectionRequest {
+	s.Configs = v
+	return s
+}
+
+func (s *UpdateConnectionRequest) SetDescription(v string) *UpdateConnectionRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateConnectionRequest) SetModels(v []*UpdateConnectionRequestModels) *UpdateConnectionRequest {
+	s.Models = v
+	return s
+}
+
+func (s *UpdateConnectionRequest) SetSecrets(v map[string]*string) *UpdateConnectionRequest {
+	s.Secrets = v
+	return s
+}
+
+type UpdateConnectionRequestModels struct {
+	// The display name of the model.
+	//
+	// example:
+	//
+	// car_tag
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	// The model identifier.
+	//
+	// example:
+	//
+	// model_001
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The model type. Valid values:
+	//
+	// 	- LLM
+	//
+	// 	- Embedding
+	//
+	// 	- ReRank
+	//
+	// example:
+	//
+	// LLM
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// Indicates whether tool calling is supported. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	ToolCall *bool `json:"ToolCall,omitempty" xml:"ToolCall,omitempty"`
+}
+
+func (s UpdateConnectionRequestModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConnectionRequestModels) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConnectionRequestModels) SetDisplayName(v string) *UpdateConnectionRequestModels {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *UpdateConnectionRequestModels) SetModel(v string) *UpdateConnectionRequestModels {
+	s.Model = &v
+	return s
+}
+
+func (s *UpdateConnectionRequestModels) SetModelType(v string) *UpdateConnectionRequestModels {
+	s.ModelType = &v
+	return s
+}
+
+func (s *UpdateConnectionRequestModels) SetToolCall(v bool) *UpdateConnectionRequestModels {
+	s.ToolCall = &v
+	return s
+}
+
+type UpdateConnectionResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// A0F049F0-8D69-5BAC-8F10-B******A34C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateConnectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConnectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConnectionResponseBody) SetRequestId(v string) *UpdateConnectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateConnectionResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateConnectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateConnectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateConnectionResponse) SetHeaders(v map[string]*string) *UpdateConnectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateConnectionResponse) SetStatusCode(v int32) *UpdateConnectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateConnectionResponse) SetBody(v *UpdateConnectionResponseBody) *UpdateConnectionResponse {
 	s.Body = v
 	return s
 }
@@ -20728,6 +21790,102 @@ func (client *Client) CreateCodeSource(request *CreateCodeSourceRequest) (_resul
 
 // Summary:
 //
+// 创建连接
+//
+// @param request - CreateConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateConnectionResponse
+func (client *Client) CreateConnectionWithOptions(request *CreateConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		body["Configs"] = request.Configs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
+		body["ConnectionType"] = request.ConnectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Models)) {
+		body["Models"] = request.Models
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceMeta)) {
+		body["ResourceMeta"] = request.ResourceMeta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Secrets)) {
+		body["Secrets"] = request.Secrets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateConnection"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/connections"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建连接
+//
+// @param request - CreateConnectionRequest
+//
+// @return CreateConnectionResponse
+func (client *Client) CreateConnection(request *CreateConnectionRequest) (_result *CreateConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateConnectionResponse{}
+	_body, _err := client.CreateConnectionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a dataset.
 //
 // @param request - CreateDatasetRequest
@@ -22282,6 +23440,56 @@ func (client *Client) DeleteConfig(WorkspaceId *string, ConfigKey *string, reque
 
 // Summary:
 //
+// Deletes a connection.
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteConnectionResponse
+func (client *Client) DeleteConnectionWithOptions(ConnectionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteConnectionResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteConnection"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/connections/" + tea.StringValue(openapiutil.GetEncodeParam(ConnectionId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes a connection.
+//
+// @return DeleteConnectionResponse
+func (client *Client) DeleteConnection(ConnectionId *string) (_result *DeleteConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteConnectionResponse{}
+	_body, _err := client.DeleteConnectionWithOptions(ConnectionId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Deletes a dataset.
 //
 // @param headers - map
@@ -23512,6 +24720,70 @@ func (client *Client) GetConfig(WorkspaceId *string, request *GetConfigRequest) 
 
 // Summary:
 //
+// 获取连接
+//
+// @param request - GetConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetConnectionResponse
+func (client *Client) GetConnectionWithOptions(ConnectionId *string, request *GetConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptOption)) {
+		query["EncryptOption"] = request.EncryptOption
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetConnection"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/connections/" + tea.StringValue(openapiutil.GetEncodeParam(ConnectionId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取连接
+//
+// @param request - GetConnectionRequest
+//
+// @return GetConnectionResponse
+func (client *Client) GetConnection(ConnectionId *string, request *GetConnectionRequest) (_result *GetConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetConnectionResponse{}
+	_body, _err := client.GetConnectionWithOptions(ConnectionId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Obtains a dataset.
 //
 // @param headers - map
@@ -24613,6 +25885,128 @@ func (client *Client) ListConfigs(WorkspaceId *string, request *ListConfigsReque
 	headers := make(map[string]*string)
 	_result = &ListConfigsResponse{}
 	_body, _err := client.ListConfigsWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists connections.
+//
+// @param tmpReq - ListConnectionsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListConnectionsResponse
+func (client *Client) ListConnectionsWithOptions(tmpReq *ListConnectionsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConnectionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListConnectionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConnectionIds)) {
+		request.ConnectionIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConnectionIds, tea.String("ConnectionIds"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ConnectionTypes)) {
+		request.ConnectionTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ConnectionTypes, tea.String("ConnectionTypes"), tea.String("simple"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ModelTypes)) {
+		request.ModelTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ModelTypes, tea.String("ModelTypes"), tea.String("simple"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionIdsShrink)) {
+		query["ConnectionIds"] = request.ConnectionIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		query["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionTypesShrink)) {
+		query["ConnectionTypes"] = request.ConnectionTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptOption)) {
+		query["EncryptOption"] = request.EncryptOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		query["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelTypesShrink)) {
+		query["ModelTypes"] = request.ModelTypesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToolCall)) {
+		query["ToolCall"] = request.ToolCall
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListConnections"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/connections"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListConnectionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Lists connections.
+//
+// @param request - ListConnectionsRequest
+//
+// @return ListConnectionsResponse
+func (client *Client) ListConnections(request *ListConnectionsRequest) (_result *ListConnectionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListConnectionsResponse{}
+	_body, _err := client.ListConnectionsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27281,6 +28675,82 @@ func (client *Client) UpdateConfigs(WorkspaceId *string, request *UpdateConfigsR
 	headers := make(map[string]*string)
 	_result = &UpdateConfigsResponse{}
 	_body, _err := client.UpdateConfigsWithOptions(WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a connection.
+//
+// @param request - UpdateConnectionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateConnectionResponse
+func (client *Client) UpdateConnectionWithOptions(ConnectionId *string, request *UpdateConnectionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateConnectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configs)) {
+		body["Configs"] = request.Configs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Models)) {
+		body["Models"] = request.Models
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Secrets)) {
+		body["Secrets"] = request.Secrets
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateConnection"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/connections/" + tea.StringValue(openapiutil.GetEncodeParam(ConnectionId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateConnectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates a connection.
+//
+// @param request - UpdateConnectionRequest
+//
+// @return UpdateConnectionResponse
+func (client *Client) UpdateConnection(ConnectionId *string, request *UpdateConnectionRequest) (_result *UpdateConnectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateConnectionResponse{}
+	_body, _err := client.UpdateConnectionWithOptions(ConnectionId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
