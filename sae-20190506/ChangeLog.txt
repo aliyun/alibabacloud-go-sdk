@@ -1,3 +1,15 @@
+2025-05-16 Version: v4.2.0
+- Support API CreateOrUpdateSwimmingLane.
+- Support API CreateOrUpdateSwimmingLaneGroup.
+- Support API DeleteSwimmingLaneGroup.
+- Support API DescribeSwimmingLane.
+- Support API ListAllSwimmingLaneGroups.
+- Support API ListAllSwimmingLanes.
+- Support API ListSwimmingLaneGatewayRoutes.
+- Support API ListSwimmingLaneGroupTags.
+- Support API UpdateSwimmingLaneEnableAttribute.
+
+
 2025-05-14 Version: v4.1.1
 - Update API DescribeApplicationGroups: add response parameters Body.Data.$.PackageVersionId.
 - Update API DescribeApplicationSlbs: add response parameters Body.Data.AppId.

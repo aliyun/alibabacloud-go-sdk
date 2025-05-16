@@ -13870,6 +13870,760 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 	return s
 }
 
+type CreateOrUpdateSwimmingLaneRequest struct {
+	AppEntryRule *CreateOrUpdateSwimmingLaneRequestAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// b2a8a925-477a-eswa-b823-d5e22500****
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 13857
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// test
+	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"g1"}
+	LaneTag             *string                                               `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	MseGatewayEntryRule *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetAppEntryRule(v *CreateOrUpdateSwimmingLaneRequestAppEntryRule) *CreateOrUpdateSwimmingLaneRequest {
+	s.AppEntryRule = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneRequest {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetLaneId(v int64) *CreateOrUpdateSwimmingLaneRequest {
+	s.LaneId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetLaneName(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.LaneName = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetLaneTag(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.LaneTag = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetMseGatewayEntryRule(v *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) *CreateOrUpdateSwimmingLaneRequest {
+	s.MseGatewayEntryRule = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequest) SetNamespaceId(v string) *CreateOrUpdateSwimmingLaneRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestAppEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                    `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool     `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	Paths                       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	Percentage       *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestAppEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestAppEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetConditionJoiner(v string) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetConditions(v []*CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetIndependentPercentageEnable(v bool) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetPaths(v []*string) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.Paths = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetPercentage(v int32) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRule) SetPercentageByPath(v map[string]*int32) *CreateOrUpdateSwimmingLaneRequestAppEntryRule {
+	s.PercentageByPath = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// t
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) SetCondition(v string) *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) SetName(v string) *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) SetType(v string) *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestAppEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                           `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// example:
+	//
+	// 100
+	Percentage        *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByRoute map[string]*int32 `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
+	RouteIds          []*int64          `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetConditionJoiner(v string) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetConditions(v []*CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetIndependentPercentageEnable(v bool) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetPercentage(v int32) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetPercentageByRoute(v map[string]*int32) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.PercentageByRoute = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule) SetRouteIds(v []*int64) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRule {
+	s.RouteIds = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) SetCondition(v string) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) SetName(v string) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) SetType(v string) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions) SetValue(v string) *CreateOrUpdateSwimmingLaneRequestMseGatewayEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneShrinkRequest struct {
+	AppEntryRuleShrink *string `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty"`
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// b2a8a925-477a-eswa-b823-d5e22500****
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 13857
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// test
+	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"g1"}
+	LaneTag                   *string `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	MseGatewayEntryRuleShrink *string `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetAppEntryRuleShrink(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.AppEntryRuleShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetCanaryModel(v int32) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetEnable(v bool) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetLaneId(v int64) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.LaneId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetLaneName(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.LaneName = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetLaneTag(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.LaneTag = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetMseGatewayEntryRuleShrink(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.MseGatewayEntryRuleShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneShrinkRequest) SetNamespaceId(v string) *CreateOrUpdateSwimmingLaneShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateOrUpdateSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetCode(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetData(v *CreateOrUpdateSwimmingLaneResponseBodyData) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBody) SetTraceId(v string) *CreateOrUpdateSwimmingLaneResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponseBodyData struct {
+	// example:
+	//
+	// 22318
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponseBodyData) SetLaneId(v int64) *CreateOrUpdateSwimmingLaneResponseBodyData {
+	s.LaneId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrUpdateSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetStatusCode(v int32) *CreateOrUpdateSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneResponse) SetBody(v *CreateOrUpdateSwimmingLaneResponseBody) *CreateOrUpdateSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupRequest struct {
+	AppIds []*string `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// mse_ingresspost-cn-axc49******
+	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
+	// example:
+	//
+	// mse-gw
+	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
+	// example:
+	//
+	// 2047
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// mse-test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// 2
+	SwimVersion *string `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetAppIds(v []*string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.AppIds = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEntryAppId(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.EntryAppId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetEntryAppType(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.EntryAppType = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetGroupName(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetNamespaceId(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupRequest) SetSwimVersion(v string) *CreateOrUpdateSwimmingLaneGroupRequest {
+	s.SwimVersion = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupShrinkRequest struct {
+	AppIdsShrink *string `json:"AppIds,omitempty" xml:"AppIds,omitempty"`
+	// example:
+	//
+	// mse_ingresspost-cn-axc49******
+	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
+	// example:
+	//
+	// mse-gw
+	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
+	// example:
+	//
+	// 2047
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// mse-test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// 2
+	SwimVersion *string `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetAppIdsShrink(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.AppIdsShrink = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetEntryAppId(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.EntryAppId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetEntryAppType(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.EntryAppType = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetGroupName(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetNamespaceId(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupShrinkRequest) SetSwimVersion(v string) *CreateOrUpdateSwimmingLaneGroupShrinkRequest {
+	s.SwimVersion = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateOrUpdateSwimmingLaneGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetCode(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetData(v *CreateOrUpdateSwimmingLaneGroupResponseBodyData) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetErrorCode(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetMessage(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetRequestId(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetSuccess(v bool) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBody) SetTraceId(v string) *CreateOrUpdateSwimmingLaneGroupResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponseBodyData struct {
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponseBodyData) SetGroupId(v int64) *CreateOrUpdateSwimmingLaneGroupResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+type CreateOrUpdateSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateOrUpdateSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOrUpdateSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetStatusCode(v int32) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimmingLaneGroupResponseBody) *CreateOrUpdateSwimmingLaneGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSecretRequest struct {
 	// This parameter is required.
 	//
@@ -15718,6 +16472,126 @@ func (s *DeleteSecretResponse) SetStatusCode(v int32) *DeleteSecretResponse {
 }
 
 func (s *DeleteSecretResponse) SetBody(v *DeleteSecretResponseBody) *DeleteSecretResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSwimmingLaneGroupRequest struct {
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// cn-beijing:demo
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetGroupId(v int64) *DeleteSwimmingLaneGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupRequest) SetNamespaceId(v string) *DeleteSwimmingLaneGroupRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DeleteSwimmingLaneGroupResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622920113732501e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteSwimmingLaneGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetCode(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetErrorCode(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetMessage(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetRequestId(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetSuccess(v bool) *DeleteSwimmingLaneGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponseBody) SetTraceId(v string) *DeleteSwimmingLaneGroupResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteSwimmingLaneGroupResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteSwimmingLaneGroupResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteSwimmingLaneGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSwimmingLaneGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSwimmingLaneGroupResponse) SetHeaders(v map[string]*string) *DeleteSwimmingLaneGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponse) SetStatusCode(v int32) *DeleteSwimmingLaneGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteSwimmingLaneGroupResponse) SetBody(v *DeleteSwimmingLaneGroupResponseBody) *DeleteSwimmingLaneGroupResponse {
 	s.Body = v
 	return s
 }
@@ -31497,6 +32371,579 @@ func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *Describ
 	return s
 }
 
+type DescribeSwimmingLaneRequest struct {
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 9637
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s DescribeSwimmingLaneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneRequest) SetGroupId(v int64) *DescribeSwimmingLaneRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneRequest) SetLaneId(v int64) *DescribeSwimmingLaneRequest {
+	s.LaneId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneRequest) SetNamespaceId(v string) *DescribeSwimmingLaneRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeSwimmingLaneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetCode(v string) *DescribeSwimmingLaneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetData(v *DescribeSwimmingLaneResponseBodyData) *DescribeSwimmingLaneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetErrorCode(v string) *DescribeSwimmingLaneResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetMessage(v string) *DescribeSwimmingLaneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetRequestId(v string) *DescribeSwimmingLaneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetSuccess(v bool) *DescribeSwimmingLaneResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBody) SetTraceId(v string) *DescribeSwimmingLaneResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyData struct {
+	AppEntryRule *DescribeSwimmingLaneResponseBodyDataAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
+	Apps         []*DescribeSwimmingLaneResponseBodyDataApps       `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// example:
+	//
+	// 9488
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// mse-test
+	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"g1"}
+	LaneTag             *string                                                  `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	MseGatewayEntryRule *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetAppEntryRule(v *DescribeSwimmingLaneResponseBodyDataAppEntryRule) *DescribeSwimmingLaneResponseBodyData {
+	s.AppEntryRule = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetApps(v []*DescribeSwimmingLaneResponseBodyDataApps) *DescribeSwimmingLaneResponseBodyData {
+	s.Apps = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetCanaryModel(v int32) *DescribeSwimmingLaneResponseBodyData {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetEnable(v bool) *DescribeSwimmingLaneResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetEnableRules(v bool) *DescribeSwimmingLaneResponseBodyData {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetLaneId(v int64) *DescribeSwimmingLaneResponseBodyData {
+	s.LaneId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetLaneName(v string) *DescribeSwimmingLaneResponseBodyData {
+	s.LaneName = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetLaneTag(v string) *DescribeSwimmingLaneResponseBodyData {
+	s.LaneTag = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyData) SetMseGatewayEntryRule(v *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) *DescribeSwimmingLaneResponseBodyData {
+	s.MseGatewayEntryRule = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataAppEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                       `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool     `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	Paths                       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	Percentage       *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataAppEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataAppEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetConditionJoiner(v string) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetConditions(v []*DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetIndependentPercentageEnable(v bool) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetPaths(v []*string) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.Paths = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetPercentage(v int32) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRule) SetPercentageByPath(v map[string]*int32) *DescribeSwimmingLaneResponseBodyDataAppEntryRule {
+	s.PercentageByPath = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// t
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) SetCondition(v string) *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) SetName(v string) *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) SetType(v string) *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) SetValue(v string) *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions) SetValues(v []*string) *DescribeSwimmingLaneResponseBodyDataAppEntryRuleConditions {
+	s.Values = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataApps struct {
+	// example:
+	//
+	// 6b4c0f64-f679-4580-8105-91eac4******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// mse-cn-53y49******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// example:
+	//
+	// sae-test
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// example:
+	//
+	// 6733e538-d52f-48e6-91a4-192f91******
+	MseNamespaceId *string `json:"mseNamespaceId,omitempty" xml:"mseNamespaceId,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataApps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataApps) SetAppId(v string) *DescribeSwimmingLaneResponseBodyDataApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataApps) SetAppName(v string) *DescribeSwimmingLaneResponseBodyDataApps {
+	s.AppName = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataApps) SetMseAppId(v string) *DescribeSwimmingLaneResponseBodyDataApps {
+	s.MseAppId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataApps) SetMseAppName(v string) *DescribeSwimmingLaneResponseBodyDataApps {
+	s.MseAppName = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataApps) SetMseNamespaceId(v string) *DescribeSwimmingLaneResponseBodyDataApps {
+	s.MseNamespaceId = &v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                              `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// example:
+	//
+	// 100
+	Percentage        *int32                                                           `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByRoute map[string]*int32                                                `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
+	RouteIds          []*int64                                                         `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
+	Routes            []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetConditionJoiner(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetConditions(v []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetIndependentPercentageEnable(v bool) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetPercentage(v int32) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetPercentageByRoute(v map[string]*int32) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.PercentageByRoute = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetRouteIds(v []*int64) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.RouteIds = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule) SetRoutes(v []*DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRule {
+	s.Routes = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// t
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) SetCondition(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) SetName(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) SetType(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions) SetValue(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes struct {
+	// example:
+	//
+	// 9504
+	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// example:
+	//
+	// demo
+	RouteName      *string                                                                      `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RoutePredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) SetRouteId(v int64) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RouteId = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) SetRouteName(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RouteName = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes) SetRoutePredicate(v *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RoutePredicate = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate struct {
+	PathPredicate *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) SetPathPredicate(v *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate {
+	s.PathPredicate = v
+	return s
+}
+
+type DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate struct {
+	// example:
+	//
+	// /Path
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) SetPath(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate {
+	s.Path = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) SetType(v string) *DescribeSwimmingLaneResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate {
+	s.Type = &v
+	return s
+}
+
+type DescribeSwimmingLaneResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSwimmingLaneResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSwimmingLaneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSwimmingLaneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSwimmingLaneResponse) SetHeaders(v map[string]*string) *DescribeSwimmingLaneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponse) SetStatusCode(v int32) *DescribeSwimmingLaneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSwimmingLaneResponse) SetBody(v *DescribeSwimmingLaneResponseBody) *DescribeSwimmingLaneResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeWebApplicationRequest struct {
 	// The namespace ID.
 	//
@@ -34470,6 +35917,909 @@ func (s *GetWebshellTokenResponse) SetStatusCode(v int32) *GetWebshellTokenRespo
 }
 
 func (s *GetWebshellTokenResponse) SetBody(v *GetWebshellTokenResponseBody) *GetWebshellTokenResponse {
+	s.Body = v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsRequest struct {
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsRequest) SetNamespaceId(v string) *ListAllSwimmingLaneGroupsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListAllSwimmingLaneGroupsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622246421415014e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetCode(v string) *ListAllSwimmingLaneGroupsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetData(v []*ListAllSwimmingLaneGroupsResponseBodyData) *ListAllSwimmingLaneGroupsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetErrorCode(v string) *ListAllSwimmingLaneGroupsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetMessage(v string) *ListAllSwimmingLaneGroupsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetRequestId(v string) *ListAllSwimmingLaneGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetSuccess(v bool) *ListAllSwimmingLaneGroupsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBody) SetTraceId(v string) *ListAllSwimmingLaneGroupsResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsResponseBodyData struct {
+	AppIds []*string                                        `json:"AppIds,omitempty" xml:"AppIds,omitempty" type:"Repeated"`
+	Apps   []*ListAllSwimmingLaneGroupsResponseBodyDataApps `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	CanaryModel *int32                                             `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	EntryApp    *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp `json:"EntryApp,omitempty" xml:"EntryApp,omitempty" type:"Struct"`
+	// example:
+	//
+	// mse_ingresspost-cn-axc49******
+	EntryAppId *string `json:"EntryAppId,omitempty" xml:"EntryAppId,omitempty"`
+	// example:
+	//
+	// mse-gw
+	EntryAppType *string `json:"EntryAppType,omitempty" xml:"EntryAppType,omitempty"`
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// mse-test
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// example:
+	//
+	// sae-test
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	// example:
+	//
+	// 2
+	SwimVersion *string `json:"SwimVersion,omitempty" xml:"SwimVersion,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetAppIds(v []*string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.AppIds = v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetApps(v []*ListAllSwimmingLaneGroupsResponseBodyDataApps) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.Apps = v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetCanaryModel(v int32) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetEntryApp(v *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.EntryApp = v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetEntryAppId(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.EntryAppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetEntryAppType(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.EntryAppType = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetGroupId(v int64) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetGroupName(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetMseNamespaceId(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.MseNamespaceId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetNamespaceId(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyData) SetSwimVersion(v string) *ListAllSwimmingLaneGroupsResponseBodyData {
+	s.SwimVersion = &v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsResponseBodyDataApps struct {
+	// example:
+	//
+	// f5aad0d0-3e56-44cd-8199-9887a0******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// mse-cn-53y49******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// example:
+	//
+	// demo
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// example:
+	//
+	// 6733e538-d52f-48e6-91a4-192f91******
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyDataApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyDataApps) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) SetAppId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) SetAppName(v string) *ListAllSwimmingLaneGroupsResponseBodyDataApps {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) SetMseAppId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataApps {
+	s.MseAppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) SetMseAppName(v string) *ListAllSwimmingLaneGroupsResponseBodyDataApps {
+	s.MseAppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataApps) SetMseNamespaceId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataApps {
+	s.MseNamespaceId = &v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsResponseBodyDataEntryApp struct {
+	// example:
+	//
+	// 09805e5d-9b8d-42cd-9442-03c498******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// mse
+	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
+	// example:
+	//
+	// mse-cn-53y49******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// example:
+	//
+	// test
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// example:
+	//
+	// demo
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetAppId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetAppName(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetAppType(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.AppType = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetMseAppId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.MseAppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetMseAppName(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.MseAppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp) SetMseNamespaceId(v string) *ListAllSwimmingLaneGroupsResponseBodyDataEntryApp {
+	s.MseNamespaceId = &v
+	return s
+}
+
+type ListAllSwimmingLaneGroupsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAllSwimmingLaneGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAllSwimmingLaneGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLaneGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLaneGroupsResponse) SetHeaders(v map[string]*string) *ListAllSwimmingLaneGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponse) SetStatusCode(v int32) *ListAllSwimmingLaneGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAllSwimmingLaneGroupsResponse) SetBody(v *ListAllSwimmingLaneGroupsResponseBody) *ListAllSwimmingLaneGroupsResponse {
+	s.Body = v
+	return s
+}
+
+type ListAllSwimmingLanesRequest struct {
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListAllSwimmingLanesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesRequest) SetGroupId(v int64) *ListAllSwimmingLanesRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesRequest) SetNamespaceId(v string) *ListAllSwimmingLanesRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListAllSwimmingLanesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// B4D805CA-926D-41B1-8E63-7AD0C1ED****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a98a02315955564772843261e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetCode(v string) *ListAllSwimmingLanesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetData(v []*ListAllSwimmingLanesResponseBodyData) *ListAllSwimmingLanesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetErrorCode(v string) *ListAllSwimmingLanesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetMessage(v string) *ListAllSwimmingLanesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetRequestId(v string) *ListAllSwimmingLanesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetSuccess(v bool) *ListAllSwimmingLanesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBody) SetTraceId(v string) *ListAllSwimmingLanesResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyData struct {
+	AppEntryRule *ListAllSwimmingLanesResponseBodyDataAppEntryRule `json:"AppEntryRule,omitempty" xml:"AppEntryRule,omitempty" type:"Struct"`
+	Apps         []*ListAllSwimmingLanesResponseBodyDataApps       `json:"Apps,omitempty" xml:"Apps,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	CanaryModel *int32 `json:"CanaryModel,omitempty" xml:"CanaryModel,omitempty"`
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// true
+	EnableRules *bool `json:"EnableRules,omitempty" xml:"EnableRules,omitempty"`
+	// example:
+	//
+	// 16401
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// test
+	LaneName *string `json:"LaneName,omitempty" xml:"LaneName,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"g1"}
+	LaneTag             *string                                                  `json:"LaneTag,omitempty" xml:"LaneTag,omitempty"`
+	MseGatewayEntryRule *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule `json:"MseGatewayEntryRule,omitempty" xml:"MseGatewayEntryRule,omitempty" type:"Struct"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetAppEntryRule(v *ListAllSwimmingLanesResponseBodyDataAppEntryRule) *ListAllSwimmingLanesResponseBodyData {
+	s.AppEntryRule = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetApps(v []*ListAllSwimmingLanesResponseBodyDataApps) *ListAllSwimmingLanesResponseBodyData {
+	s.Apps = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetCanaryModel(v int32) *ListAllSwimmingLanesResponseBodyData {
+	s.CanaryModel = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetEnable(v bool) *ListAllSwimmingLanesResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetEnableRules(v bool) *ListAllSwimmingLanesResponseBodyData {
+	s.EnableRules = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetLaneId(v int64) *ListAllSwimmingLanesResponseBodyData {
+	s.LaneId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetLaneName(v string) *ListAllSwimmingLanesResponseBodyData {
+	s.LaneName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetLaneTag(v string) *ListAllSwimmingLanesResponseBodyData {
+	s.LaneTag = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyData) SetMseGatewayEntryRule(v *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) *ListAllSwimmingLanesResponseBodyData {
+	s.MseGatewayEntryRule = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataAppEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                       `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool     `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	Paths                       []*string `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 50
+	Percentage       *int32            `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByPath map[string]*int32 `json:"PercentageByPath,omitempty" xml:"PercentageByPath,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataAppEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataAppEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetConditionJoiner(v string) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetConditions(v []*ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetIndependentPercentageEnable(v bool) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetPaths(v []*string) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.Paths = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetPercentage(v int32) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRule) SetPercentageByPath(v map[string]*int32) *ListAllSwimmingLanesResponseBodyDataAppEntryRule {
+	s.PercentageByPath = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// t
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value  *string   `json:"Value,omitempty" xml:"Value,omitempty"`
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) SetCondition(v string) *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) SetName(v string) *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) SetType(v string) *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) SetValue(v string) *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions) SetValues(v []*string) *ListAllSwimmingLanesResponseBodyDataAppEntryRuleConditions {
+	s.Values = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataApps struct {
+	// example:
+	//
+	// 8ea0c468-8165-416d-beae-531abb******
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// test
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// mse-cn-53y49******
+	MseAppId *string `json:"MseAppId,omitempty" xml:"MseAppId,omitempty"`
+	// example:
+	//
+	// sae-test
+	MseAppName *string `json:"MseAppName,omitempty" xml:"MseAppName,omitempty"`
+	// example:
+	//
+	// space
+	MseNamespaceId *string `json:"MseNamespaceId,omitempty" xml:"MseNamespaceId,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataApps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataApps) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataApps) SetAppId(v string) *ListAllSwimmingLanesResponseBodyDataApps {
+	s.AppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataApps) SetAppName(v string) *ListAllSwimmingLanesResponseBodyDataApps {
+	s.AppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataApps) SetMseAppId(v string) *ListAllSwimmingLanesResponseBodyDataApps {
+	s.MseAppId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataApps) SetMseAppName(v string) *ListAllSwimmingLanesResponseBodyDataApps {
+	s.MseAppName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataApps) SetMseNamespaceId(v string) *ListAllSwimmingLanesResponseBodyDataApps {
+	s.MseNamespaceId = &v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule struct {
+	// example:
+	//
+	// AND
+	ConditionJoiner *string                                                              `json:"ConditionJoiner,omitempty" xml:"ConditionJoiner,omitempty"`
+	Conditions      []*ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	IndependentPercentageEnable *bool `json:"IndependentPercentageEnable,omitempty" xml:"IndependentPercentageEnable,omitempty"`
+	// example:
+	//
+	// 100
+	Percentage        *int32                                                           `json:"Percentage,omitempty" xml:"Percentage,omitempty"`
+	PercentageByRoute map[string]*int32                                                `json:"PercentageByRoute,omitempty" xml:"PercentageByRoute,omitempty"`
+	RouteIds          []*int64                                                         `json:"RouteIds,omitempty" xml:"RouteIds,omitempty" type:"Repeated"`
+	Routes            []*ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetConditionJoiner(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.ConditionJoiner = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetConditions(v []*ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.Conditions = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetIndependentPercentageEnable(v bool) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.IndependentPercentageEnable = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetPercentage(v int32) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.Percentage = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetPercentageByRoute(v map[string]*int32) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.PercentageByRoute = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetRouteIds(v []*int64) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.RouteIds = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule) SetRoutes(v []*ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRule {
+	s.Routes = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions struct {
+	// example:
+	//
+	// ==
+	Condition *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// example:
+	//
+	// t
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// g1
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) SetCondition(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Condition = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) SetName(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Name = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) SetType(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Type = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions) SetValue(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleConditions {
+	s.Value = &v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes struct {
+	// example:
+	//
+	// 9504
+	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// example:
+	//
+	// demo
+	RouteName      *string                                                                      `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RoutePredicate *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) SetRouteId(v int64) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) SetRouteName(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes) SetRoutePredicate(v *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutes {
+	s.RoutePredicate = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate struct {
+	PathPredicate *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate) SetPathPredicate(v *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicate {
+	s.PathPredicate = v
+	return s
+}
+
+type ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate struct {
+	// example:
+	//
+	// /Path
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) SetPath(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate {
+	s.Path = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate) SetType(v string) *ListAllSwimmingLanesResponseBodyDataMseGatewayEntryRuleRoutesRoutePredicatePathPredicate {
+	s.Type = &v
+	return s
+}
+
+type ListAllSwimmingLanesResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListAllSwimmingLanesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListAllSwimmingLanesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAllSwimmingLanesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAllSwimmingLanesResponse) SetHeaders(v map[string]*string) *ListAllSwimmingLanesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponse) SetStatusCode(v int32) *ListAllSwimmingLanesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListAllSwimmingLanesResponse) SetBody(v *ListAllSwimmingLanesResponseBody) *ListAllSwimmingLanesResponse {
 	s.Body = v
 	return s
 }
@@ -41050,6 +43400,368 @@ func (s *ListSecretsResponse) SetStatusCode(v int32) *ListSecretsResponse {
 }
 
 func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesRequest struct {
+	// example:
+	//
+	// gw-277c0727535f4aae917e48de0f******
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesRequest) SetGatewayUniqueId(v string) *ListSwimmingLaneGatewayRoutesRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesRequest) SetNamespaceId(v string) *ListSwimmingLaneGatewayRoutesRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListSwimmingLaneGatewayRoutesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622246421415014e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetCode(v string) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetData(v []*ListSwimmingLaneGatewayRoutesResponseBodyData) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetErrorCode(v string) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetMessage(v string) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetRequestId(v string) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetSuccess(v bool) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBody) SetTraceId(v string) *ListSwimmingLaneGatewayRoutesResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesResponseBodyData struct {
+	// example:
+	//
+	// 16933
+	RouteId *int64 `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+	// example:
+	//
+	// test-route
+	RouteName      *string                                                      `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RoutePredicate *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate `json:"RoutePredicate,omitempty" xml:"RoutePredicate,omitempty" type:"Struct"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) SetRouteId(v int64) *ListSwimmingLaneGatewayRoutesResponseBodyData {
+	s.RouteId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) SetRouteName(v string) *ListSwimmingLaneGatewayRoutesResponseBodyData {
+	s.RouteName = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyData) SetRoutePredicate(v *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) *ListSwimmingLaneGatewayRoutesResponseBodyData {
+	s.RoutePredicate = v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate struct {
+	PathPredicate *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate `json:"PathPredicate,omitempty" xml:"PathPredicate,omitempty" type:"Struct"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate) SetPathPredicate(v *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate) *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicate {
+	s.PathPredicate = v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate struct {
+	// example:
+	//
+	// /Path
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// example:
+	//
+	// Header
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate) SetPath(v string) *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate {
+	s.Path = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate) SetType(v string) *ListSwimmingLaneGatewayRoutesResponseBodyDataRoutePredicatePathPredicate {
+	s.Type = &v
+	return s
+}
+
+type ListSwimmingLaneGatewayRoutesResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSwimmingLaneGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGatewayRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponse) SetHeaders(v map[string]*string) *ListSwimmingLaneGatewayRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponse) SetStatusCode(v int32) *ListSwimmingLaneGatewayRoutesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGatewayRoutesResponse) SetBody(v *ListSwimmingLaneGatewayRoutesResponseBody) *ListSwimmingLaneGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type ListSwimmingLaneGroupTagsRequest struct {
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupTagsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupTagsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupTagsRequest) SetGroupId(v int64) *ListSwimmingLaneGroupTagsRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsRequest) SetNamespaceId(v string) *ListSwimmingLaneGroupTagsRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type ListSwimmingLaneGroupTagsResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ListSwimmingLaneGroupTagsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 30375C38-F4ED-4135-A0AE-5C75DC7F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622920113732501e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupTagsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupTagsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetCode(v string) *ListSwimmingLaneGroupTagsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetData(v []*ListSwimmingLaneGroupTagsResponseBodyData) *ListSwimmingLaneGroupTagsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetErrorCode(v string) *ListSwimmingLaneGroupTagsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetMessage(v string) *ListSwimmingLaneGroupTagsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetRequestId(v string) *ListSwimmingLaneGroupTagsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetSuccess(v bool) *ListSwimmingLaneGroupTagsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBody) SetTraceId(v string) *ListSwimmingLaneGroupTagsResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ListSwimmingLaneGroupTagsResponseBodyData struct {
+	// example:
+	//
+	// {"version":"1.0.0","owner":"team-a"}
+	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
+	// example:
+	//
+	// {"alicloud.service.tag":"g1"}
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupTagsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupTagsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBodyData) SetMetadata(v string) *ListSwimmingLaneGroupTagsResponseBodyData {
+	s.Metadata = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponseBodyData) SetTag(v string) *ListSwimmingLaneGroupTagsResponseBodyData {
+	s.Tag = &v
+	return s
+}
+
+type ListSwimmingLaneGroupTagsResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListSwimmingLaneGroupTagsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListSwimmingLaneGroupTagsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSwimmingLaneGroupTagsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSwimmingLaneGroupTagsResponse) SetHeaders(v map[string]*string) *ListSwimmingLaneGroupTagsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponse) SetStatusCode(v int32) *ListSwimmingLaneGroupTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSwimmingLaneGroupTagsResponse) SetBody(v *ListSwimmingLaneGroupTagsResponseBody) *ListSwimmingLaneGroupTagsResponse {
 	s.Body = v
 	return s
 }
@@ -48352,6 +51064,144 @@ func (s *UpdateSecretResponse) SetBody(v *UpdateSecretResponseBody) *UpdateSecre
 	return s
 }
 
+type UpdateSwimmingLaneEnableAttributeRequest struct {
+	// example:
+	//
+	// true
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// example:
+	//
+	// 2074
+	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 9637
+	LaneId *int64 `json:"LaneId,omitempty" xml:"LaneId,omitempty"`
+	// example:
+	//
+	// cn-beijing:test
+	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+}
+
+func (s UpdateSwimmingLaneEnableAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneEnableAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeRequest) SetEnable(v bool) *UpdateSwimmingLaneEnableAttributeRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeRequest) SetGroupId(v int64) *UpdateSwimmingLaneEnableAttributeRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeRequest) SetLaneId(v int64) *UpdateSwimmingLaneEnableAttributeRequest {
+	s.LaneId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeRequest) SetNamespaceId(v string) *UpdateSwimmingLaneEnableAttributeRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+type UpdateSwimmingLaneEnableAttributeResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// ac1a0b2215622920113732501e****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s UpdateSwimmingLaneEnableAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneEnableAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetCode(v string) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetErrorCode(v string) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetMessage(v string) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetRequestId(v string) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetSuccess(v bool) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponseBody) SetTraceId(v string) *UpdateSwimmingLaneEnableAttributeResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type UpdateSwimmingLaneEnableAttributeResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateSwimmingLaneEnableAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateSwimmingLaneEnableAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSwimmingLaneEnableAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponse) SetHeaders(v map[string]*string) *UpdateSwimmingLaneEnableAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponse) SetStatusCode(v int32) *UpdateSwimmingLaneEnableAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSwimmingLaneEnableAttributeResponse) SetBody(v *UpdateSwimmingLaneEnableAttributeResponseBody) *UpdateSwimmingLaneEnableAttributeResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWebApplicationRequest struct {
 	// The namespace ID.
 	//
@@ -50358,6 +53208,206 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
+// 创建或者更新泳道
+//
+// @param tmpReq - CreateOrUpdateSwimmingLaneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateSwimmingLaneResponse
+func (client *Client) CreateOrUpdateSwimmingLaneWithOptions(tmpReq *CreateOrUpdateSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateOrUpdateSwimmingLaneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppEntryRule)) {
+		request.AppEntryRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppEntryRule, tea.String("AppEntryRule"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.MseGatewayEntryRule)) {
+		request.MseGatewayEntryRuleShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MseGatewayEntryRule, tea.String("MseGatewayEntryRule"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppEntryRuleShrink)) {
+		query["AppEntryRule"] = request.AppEntryRuleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CanaryModel)) {
+		query["CanaryModel"] = request.CanaryModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneName)) {
+		query["LaneName"] = request.LaneName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneTag)) {
+		query["LaneTag"] = request.LaneTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseGatewayEntryRuleShrink)) {
+		query["MseGatewayEntryRule"] = request.MseGatewayEntryRuleShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLane"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/createOrUpdateSwimmingLane"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或者更新泳道
+//
+// @param request - CreateOrUpdateSwimmingLaneRequest
+//
+// @return CreateOrUpdateSwimmingLaneResponse
+func (client *Client) CreateOrUpdateSwimmingLane(request *CreateOrUpdateSwimmingLaneRequest) (_result *CreateOrUpdateSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOrUpdateSwimmingLaneResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或者更新泳道组
+//
+// @param tmpReq - CreateOrUpdateSwimmingLaneGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateOrUpdateSwimmingLaneGroupResponse
+func (client *Client) CreateOrUpdateSwimmingLaneGroupWithOptions(tmpReq *CreateOrUpdateSwimmingLaneGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateOrUpdateSwimmingLaneGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppIds)) {
+		request.AppIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppIds, tea.String("AppIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIdsShrink)) {
+		query["AppIds"] = request.AppIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryAppId)) {
+		query["EntryAppId"] = request.EntryAppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntryAppType)) {
+		query["EntryAppType"] = request.EntryAppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwimVersion)) {
+		query["SwimVersion"] = request.SwimVersion
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOrUpdateSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/createOrUpdateSwimmingLaneGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建或者更新泳道组
+//
+// @param request - CreateOrUpdateSwimmingLaneGroupRequest
+//
+// @return CreateOrUpdateSwimmingLaneGroupResponse
+func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwimmingLaneGroupRequest) (_result *CreateOrUpdateSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
+	_body, _err := client.CreateOrUpdateSwimmingLaneGroupWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // # Null
 //
 // @param tmpReq - CreateSecretRequest
@@ -51169,6 +54219,74 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 	headers := make(map[string]*string)
 	_result = &DeleteSecretResponse{}
 	_body, _err := client.DeleteSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除泳道组
+//
+// @param request - DeleteSwimmingLaneGroupRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSwimmingLaneGroupResponse
+func (client *Client) DeleteSwimmingLaneGroupWithOptions(request *DeleteSwimmingLaneGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSwimmingLaneGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSwimmingLaneGroup"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/deleteSwimmingLaneGroup"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSwimmingLaneGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除泳道组
+//
+// @param request - DeleteSwimmingLaneGroupRequest
+//
+// @return DeleteSwimmingLaneGroupResponse
+func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRequest) (_result *DeleteSwimmingLaneGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSwimmingLaneGroupResponse{}
+	_body, _err := client.DeleteSwimmingLaneGroupWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -53612,6 +56730,78 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 
 // Summary:
 //
+// 查询泳道详情
+//
+// @param request - DescribeSwimmingLaneRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSwimmingLaneResponse
+func (client *Client) DescribeSwimmingLaneWithOptions(request *DescribeSwimmingLaneRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeSwimmingLaneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSwimmingLane"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/describeSwimmingLane"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSwimmingLaneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询泳道详情
+//
+// @param request - DescribeSwimmingLaneRequest
+//
+// @return DescribeSwimmingLaneResponse
+func (client *Client) DescribeSwimmingLane(request *DescribeSwimmingLaneRequest) (_result *DescribeSwimmingLaneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeSwimmingLaneResponse{}
+	_body, _err := client.DescribeSwimmingLaneWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Query web applications.
 //
 // Description:
@@ -54972,6 +58162,138 @@ func (client *Client) GetWebshellToken(request *GetWebshellTokenRequest) (_resul
 
 // Summary:
 //
+// 查询所有泳道组
+//
+// @param request - ListAllSwimmingLaneGroupsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllSwimmingLaneGroupsResponse
+func (client *Client) ListAllSwimmingLaneGroupsWithOptions(request *ListAllSwimmingLaneGroupsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAllSwimmingLaneGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllSwimmingLaneGroups"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/listSwimmingLaneGroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAllSwimmingLaneGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有泳道组
+//
+// @param request - ListAllSwimmingLaneGroupsRequest
+//
+// @return ListAllSwimmingLaneGroupsResponse
+func (client *Client) ListAllSwimmingLaneGroups(request *ListAllSwimmingLaneGroupsRequest) (_result *ListAllSwimmingLaneGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAllSwimmingLaneGroupsResponse{}
+	_body, _err := client.ListAllSwimmingLaneGroupsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有泳道
+//
+// @param request - ListAllSwimmingLanesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListAllSwimmingLanesResponse
+func (client *Client) ListAllSwimmingLanesWithOptions(request *ListAllSwimmingLanesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListAllSwimmingLanesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAllSwimmingLanes"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/listSwimmingLanes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAllSwimmingLanesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有泳道
+//
+// @param request - ListAllSwimmingLanesRequest
+//
+// @return ListAllSwimmingLanesResponse
+func (client *Client) ListAllSwimmingLanes(request *ListAllSwimmingLanesRequest) (_result *ListAllSwimmingLanesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListAllSwimmingLanesResponse{}
+	_body, _err := client.ListAllSwimmingLanesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the events that occurred in an application.
 //
 // @param request - ListAppEventsRequest
@@ -56207,6 +59529,142 @@ func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSec
 	headers := make(map[string]*string)
 	_result = &ListSecretsResponse{}
 	_body, _err := client.ListSecretsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询泳道可选的网关路由
+//
+// @param request - ListSwimmingLaneGatewayRoutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSwimmingLaneGatewayRoutesResponse
+func (client *Client) ListSwimmingLaneGatewayRoutesWithOptions(request *ListSwimmingLaneGatewayRoutesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSwimmingLaneGatewayRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSwimmingLaneGatewayRoutes"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/listSwimmingLaneGatewayRoutes"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSwimmingLaneGatewayRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询泳道可选的网关路由
+//
+// @param request - ListSwimmingLaneGatewayRoutesRequest
+//
+// @return ListSwimmingLaneGatewayRoutesResponse
+func (client *Client) ListSwimmingLaneGatewayRoutes(request *ListSwimmingLaneGatewayRoutesRequest) (_result *ListSwimmingLaneGatewayRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSwimmingLaneGatewayRoutesResponse{}
+	_body, _err := client.ListSwimmingLaneGatewayRoutesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有泳道标签列表
+//
+// @param request - ListSwimmingLaneGroupTagsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListSwimmingLaneGroupTagsResponse
+func (client *Client) ListSwimmingLaneGroupTagsWithOptions(request *ListSwimmingLaneGroupTagsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListSwimmingLaneGroupTagsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSwimmingLaneGroupTags"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/listSwimmingLaneGroupTags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSwimmingLaneGroupTagsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询所有泳道标签列表
+//
+// @param request - ListSwimmingLaneGroupTagsRequest
+//
+// @return ListSwimmingLaneGroupTagsResponse
+func (client *Client) ListSwimmingLaneGroupTags(request *ListSwimmingLaneGroupTagsRequest) (_result *ListSwimmingLaneGroupTagsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListSwimmingLaneGroupTagsResponse{}
+	_body, _err := client.ListSwimmingLaneGroupTagsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -59028,6 +62486,82 @@ func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *Updat
 	headers := make(map[string]*string)
 	_result = &UpdateSecretResponse{}
 	_body, _err := client.UpdateSecretWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新泳道的启用属性
+//
+// @param request - UpdateSwimmingLaneEnableAttributeRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateSwimmingLaneEnableAttributeResponse
+func (client *Client) UpdateSwimmingLaneEnableAttributeWithOptions(request *UpdateSwimmingLaneEnableAttributeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateSwimmingLaneEnableAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LaneId)) {
+		query["LaneId"] = request.LaneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		query["NamespaceId"] = request.NamespaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSwimmingLaneEnableAttribute"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/cas/gray/updateSwimmingLaneEnableAttribute"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSwimmingLaneEnableAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新泳道的启用属性
+//
+// @param request - UpdateSwimmingLaneEnableAttributeRequest
+//
+// @return UpdateSwimmingLaneEnableAttributeResponse
+func (client *Client) UpdateSwimmingLaneEnableAttribute(request *UpdateSwimmingLaneEnableAttributeRequest) (_result *UpdateSwimmingLaneEnableAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateSwimmingLaneEnableAttributeResponse{}
+	_body, _err := client.UpdateSwimmingLaneEnableAttributeWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
