@@ -363,6 +363,457 @@ func (s *OpenApiSingleResponseData) SetModelTrainStatus(v string) *OpenApiSingle
 	return s
 }
 
+type OralEvaluationStatisticsCallsCountRequest struct {
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	EndTime             *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Granularity         *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	ProjectId           *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	StartTime           *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s OralEvaluationStatisticsCallsCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsCallsCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsCallsCountRequest) SetApplicationAccessId(v string) *OralEvaluationStatisticsCallsCountRequest {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountRequest) SetEndTime(v string) *OralEvaluationStatisticsCallsCountRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountRequest) SetGranularity(v string) *OralEvaluationStatisticsCallsCountRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountRequest) SetProjectId(v string) *OralEvaluationStatisticsCallsCountRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountRequest) SetStartTime(v string) *OralEvaluationStatisticsCallsCountRequest {
+	s.StartTime = &v
+	return s
+}
+
+type OralEvaluationStatisticsCallsCountResponse struct {
+	// This parameter is required.
+	ProjectData *OralEvaluationStatisticsCallsCountResponseProjectData `json:"projectData,omitempty" xml:"projectData,omitempty" type:"Struct"`
+	// This parameter is required.
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsCallsCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsCallsCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponse) SetProjectData(v *OralEvaluationStatisticsCallsCountResponseProjectData) *OralEvaluationStatisticsCallsCountResponse {
+	s.ProjectData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponse) SetProjectId(v string) *OralEvaluationStatisticsCallsCountResponse {
+	s.ProjectId = &v
+	return s
+}
+
+type OralEvaluationStatisticsCallsCountResponseProjectData struct {
+	ApplicationData []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationInternalId *string `json:"applicationInternalId,omitempty" xml:"applicationInternalId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectData) SetApplicationData(v []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) *OralEvaluationStatisticsCallsCountResponseProjectData {
+	s.ApplicationData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectData) SetApplicationInternalId(v string) *OralEvaluationStatisticsCallsCountResponseProjectData {
+	s.ApplicationInternalId = &v
+	return s
+}
+
+type OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData struct {
+	Data []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) SetData(v []*OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData) *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData {
+	s.Data = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData) SetApplicationAccessId(v string) *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationData {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+type OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData struct {
+	// This parameter is required.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData) SetCount(v int32) *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData {
+	s.Count = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData) SetName(v string) *OralEvaluationStatisticsCallsCountResponseProjectDataApplicationDataData {
+	s.Name = &v
+	return s
+}
+
+type OralEvaluationStatisticsConcurrentCountRequest struct {
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	EndTime             *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	Granularity         *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	ProjectId           *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	StartTime           *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s OralEvaluationStatisticsConcurrentCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsConcurrentCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountRequest) SetApplicationAccessId(v string) *OralEvaluationStatisticsConcurrentCountRequest {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountRequest) SetEndTime(v string) *OralEvaluationStatisticsConcurrentCountRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountRequest) SetGranularity(v string) *OralEvaluationStatisticsConcurrentCountRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountRequest) SetProjectId(v string) *OralEvaluationStatisticsConcurrentCountRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountRequest) SetStartTime(v string) *OralEvaluationStatisticsConcurrentCountRequest {
+	s.StartTime = &v
+	return s
+}
+
+type OralEvaluationStatisticsConcurrentCountResponse struct {
+	// This parameter is required.
+	ProjectData *OralEvaluationStatisticsConcurrentCountResponseProjectData `json:"projectData,omitempty" xml:"projectData,omitempty" type:"Struct"`
+	// This parameter is required.
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponse) SetProjectData(v *OralEvaluationStatisticsConcurrentCountResponseProjectData) *OralEvaluationStatisticsConcurrentCountResponse {
+	s.ProjectData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponse) SetProjectId(v string) *OralEvaluationStatisticsConcurrentCountResponse {
+	s.ProjectId = &v
+	return s
+}
+
+type OralEvaluationStatisticsConcurrentCountResponseProjectData struct {
+	ApplicationData []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationInternalId *string `json:"applicationInternalId,omitempty" xml:"applicationInternalId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectData) SetApplicationData(v []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData) *OralEvaluationStatisticsConcurrentCountResponseProjectData {
+	s.ApplicationData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectData) SetApplicationInternalId(v string) *OralEvaluationStatisticsConcurrentCountResponseProjectData {
+	s.ApplicationInternalId = &v
+	return s
+}
+
+type OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData struct {
+	Data []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData) SetData(v []*OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData) *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData {
+	s.Data = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData) SetApplicationAccessId(v string) *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationData {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+type OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData struct {
+	// This parameter is required.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData) SetCount(v int32) *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData {
+	s.Count = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData) SetName(v string) *OralEvaluationStatisticsConcurrentCountResponseProjectDataApplicationDataData {
+	s.Name = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountRequest struct {
+	ApplicationAccessId *string   `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+	EndTime             *string   `json:"endTime,omitempty" xml:"endTime,omitempty"`
+	ErrorCode           []*string `json:"errorCode,omitempty" xml:"errorCode,omitempty" type:"Repeated"`
+	Granularity         *string   `json:"granularity,omitempty" xml:"granularity,omitempty"`
+	ProjectId           *string   `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	StartTime           *string   `json:"startTime,omitempty" xml:"startTime,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetApplicationAccessId(v string) *OralEvaluationStatisticsErrorCountRequest {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetEndTime(v string) *OralEvaluationStatisticsErrorCountRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetErrorCode(v []*string) *OralEvaluationStatisticsErrorCountRequest {
+	s.ErrorCode = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetGranularity(v string) *OralEvaluationStatisticsErrorCountRequest {
+	s.Granularity = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetProjectId(v string) *OralEvaluationStatisticsErrorCountRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountRequest) SetStartTime(v string) *OralEvaluationStatisticsErrorCountRequest {
+	s.StartTime = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountResponse struct {
+	ProjectData *OralEvaluationStatisticsErrorCountResponseProjectData `json:"ProjectData,omitempty" xml:"ProjectData,omitempty" type:"Struct"`
+	// This parameter is required.
+	ProjectId *string `json:"projectId,omitempty" xml:"projectId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponse) SetProjectData(v *OralEvaluationStatisticsErrorCountResponseProjectData) *OralEvaluationStatisticsErrorCountResponse {
+	s.ProjectData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponse) SetProjectId(v string) *OralEvaluationStatisticsErrorCountResponse {
+	s.ProjectId = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountResponseProjectData struct {
+	ApplicationData []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData `json:"ApplicationData,omitempty" xml:"ApplicationData,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationInternalId *string `json:"applicationInternalId,omitempty" xml:"applicationInternalId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectData) SetApplicationData(v []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) *OralEvaluationStatisticsErrorCountResponseProjectData {
+	s.ApplicationData = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectData) SetApplicationInternalId(v string) *OralEvaluationStatisticsErrorCountResponseProjectData {
+	s.ApplicationInternalId = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData struct {
+	Data []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// This parameter is required.
+	ApplicationAccessId *string `json:"applicationAccessId,omitempty" xml:"applicationAccessId,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) SetData(v []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData {
+	s.Data = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData) SetApplicationAccessId(v string) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationData {
+	s.ApplicationAccessId = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData struct {
+	Data         []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode    *string                                                                         `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) SetData(v []*OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData {
+	s.Data = v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) SetErrorCode(v string) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData) SetErrorMessage(v string) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataData {
+	s.ErrorMessage = &v
+	return s
+}
+
+type OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData struct {
+	// This parameter is required.
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// This parameter is required.
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData) GoString() string {
+	return s.String()
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData) SetCount(v int32) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData {
+	s.Count = &v
+	return s
+}
+
+func (s *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData) SetName(v string) *OralEvaluationStatisticsErrorCountResponseProjectDataApplicationDataDataData {
+	s.Name = &v
+	return s
+}
+
 type Personalizedtxt2imgAddInferenceJobCmd struct {
 	// example:
 	//
@@ -1310,6 +1761,339 @@ func (s *AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse) SetBody(v *A
 	return s
 }
 
+type CountOralEvaluationStatisticsCallsRequest struct {
+	Body *OralEvaluationStatisticsCallsCountRequest `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsCallsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsCallsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsCallsRequest) SetBody(v *OralEvaluationStatisticsCallsCountRequest) *CountOralEvaluationStatisticsCallsRequest {
+	s.Body = v
+	return s
+}
+
+type CountOralEvaluationStatisticsCallsResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*OralEvaluationStatisticsCallsCountResponse `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsCallsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsCallsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetData(v []*OralEvaluationStatisticsCallsCountResponse) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetErrCode(v string) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetErrMessage(v string) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetHttpStatusCode(v int32) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetRequestId(v string) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponseBody) SetSuccess(v bool) *CountOralEvaluationStatisticsCallsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountOralEvaluationStatisticsCallsResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CountOralEvaluationStatisticsCallsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsCallsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsCallsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponse) SetHeaders(v map[string]*string) *CountOralEvaluationStatisticsCallsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponse) SetStatusCode(v int32) *CountOralEvaluationStatisticsCallsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsCallsResponse) SetBody(v *CountOralEvaluationStatisticsCallsResponseBody) *CountOralEvaluationStatisticsCallsResponse {
+	s.Body = v
+	return s
+}
+
+type CountOralEvaluationStatisticsConcurrentRequest struct {
+	Body *OralEvaluationStatisticsConcurrentCountRequest `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsConcurrentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsConcurrentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentRequest) SetBody(v *OralEvaluationStatisticsConcurrentCountRequest) *CountOralEvaluationStatisticsConcurrentRequest {
+	s.Body = v
+	return s
+}
+
+type CountOralEvaluationStatisticsConcurrentResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*OralEvaluationStatisticsConcurrentCountResponse `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsConcurrentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsConcurrentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetData(v []*OralEvaluationStatisticsConcurrentCountResponse) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetErrCode(v string) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetErrMessage(v string) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetHttpStatusCode(v int32) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetRequestId(v string) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponseBody) SetSuccess(v bool) *CountOralEvaluationStatisticsConcurrentResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountOralEvaluationStatisticsConcurrentResponse struct {
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CountOralEvaluationStatisticsConcurrentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsConcurrentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsConcurrentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponse) SetHeaders(v map[string]*string) *CountOralEvaluationStatisticsConcurrentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponse) SetStatusCode(v int32) *CountOralEvaluationStatisticsConcurrentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsConcurrentResponse) SetBody(v *CountOralEvaluationStatisticsConcurrentResponseBody) *CountOralEvaluationStatisticsConcurrentResponse {
+	s.Body = v
+	return s
+}
+
+type CountOralEvaluationStatisticsErrorRequest struct {
+	Body *OralEvaluationStatisticsErrorCountRequest `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsErrorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsErrorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsErrorRequest) SetBody(v *OralEvaluationStatisticsErrorCountRequest) *CountOralEvaluationStatisticsErrorRequest {
+	s.Body = v
+	return s
+}
+
+type CountOralEvaluationStatisticsErrorResponseBody struct {
+	// example:
+	//
+	// []
+	Data []*OralEvaluationStatisticsErrorCountResponse `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// UNKNOWN_ERROR
+	ErrCode *string `json:"errCode,omitempty" xml:"errCode,omitempty"`
+	// example:
+	//
+	// 未知错误
+	ErrMessage *string `json:"errMessage,omitempty" xml:"errMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
+	// example:
+	//
+	// xxxx-xxxx-xxxx-xxxxxxxx
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsErrorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsErrorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetData(v []*OralEvaluationStatisticsErrorCountResponse) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetErrCode(v string) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.ErrCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetErrMessage(v string) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.ErrMessage = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetHttpStatusCode(v int32) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetRequestId(v string) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponseBody) SetSuccess(v bool) *CountOralEvaluationStatisticsErrorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CountOralEvaluationStatisticsErrorResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CountOralEvaluationStatisticsErrorResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CountOralEvaluationStatisticsErrorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CountOralEvaluationStatisticsErrorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponse) SetHeaders(v map[string]*string) *CountOralEvaluationStatisticsErrorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponse) SetStatusCode(v int32) *CountOralEvaluationStatisticsErrorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CountOralEvaluationStatisticsErrorResponse) SetBody(v *CountOralEvaluationStatisticsErrorResponseBody) *CountOralEvaluationStatisticsErrorResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAccessWarrantRequest struct {
 	// example:
 	//
@@ -1860,63 +2644,14 @@ func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreatePro
 	return s
 }
 
-type ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders struct {
-	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	// example:
-	//
-	// xxxxxxx
-	CallerParentId *int64 `json:"callerParentId,omitempty" xml:"callerParentId,omitempty"`
-	// example:
-	//
-	// sub
-	CallerType *string `json:"callerType,omitempty" xml:"callerType,omitempty"`
-	// example:
-	//
-	// xxxxxxx
-	CallerUid *int64 `json:"callerUid,omitempty" xml:"callerUid,omitempty"`
-	// example:
-	//
-	// xxxxxxx
-	StsTokenCallerUid *int64 `json:"stsTokenCallerUid,omitempty" xml:"stsTokenCallerUid,omitempty"`
-}
-
-func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCommonHeaders(v map[string]*string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerParentId(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
-	s.CallerParentId = &v
-	return s
-}
-
-func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerType(v string) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
-	s.CallerType = &v
-	return s
-}
-
-func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetCallerUid(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
-	s.CallerUid = &v
-	return s
-}
-
-func (s *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders) SetStsTokenCallerUid(v int64) *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders {
-	s.StsTokenCallerUid = &v
-	return s
-}
-
 type ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest struct {
-	EssayOutline      *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+	EssayOutline *string `json:"essayOutline,omitempty" xml:"essayOutline,omitempty"`
+	// This parameter is required.
 	EssayRequirements *string `json:"essayRequirements,omitempty" xml:"essayRequirements,omitempty"`
-	EssayTopic        *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+	// This parameter is required.
+	EssayTopic *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// essay
@@ -1925,14 +2660,20 @@ type ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest struct {
 	//
 	// 100
 	EssayWordCount *int64 `json:"essayWordCount,omitempty" xml:"essayWordCount,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// 3
 	Grade *int64 `json:"grade,omitempty" xml:"grade,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// streaming
 	ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxxxxxxxx
@@ -2074,6 +2815,8 @@ type ExecuteAITeacherEnglishCompositionTutoringWorkflowRunRequest struct {
 	//
 	// Discuss what to eat
 	EssayTopic *string `json:"essayTopic,omitempty" xml:"essayTopic,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// essay
@@ -2222,6 +2965,8 @@ type ExecuteAITeacherEnglishParaphraseChatMessageRequest struct {
 	//
 	// 6788e0b475a4631ffc626722
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// How much is this?
@@ -2234,18 +2979,26 @@ type ExecuteAITeacherEnglishParaphraseChatMessageRequest struct {
 	//
 	// xxxxxxxxx
 	QuestionId *string `json:"questionId,omitempty" xml:"questionId,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// How to inquire about the price
 	QuestionInfo *string `json:"questionInfo,omitempty" xml:"questionInfo,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// sreaming
 	ResponseMode *string `json:"responseMode,omitempty" xml:"responseMode,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// How much is this?
 	UserAnswer *string `json:"userAnswer,omitempty" xml:"userAnswer,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// xxxxxxx
@@ -4167,6 +4920,247 @@ func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetStatusCode(v int32) *
 }
 
 func (s *ExecuteAITeacherSyncDialogueTranslateResponse) SetBody(v *ExecuteAITeacherSyncDialogueTranslateResponseBody) *ExecuteAITeacherSyncDialogueTranslateResponse {
+	s.Body = v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueRequest struct {
+	// example:
+	//
+	// CHILDREN
+	AgeGroup *string `json:"ageGroup,omitempty" xml:"ageGroup,omitempty"`
+	// example:
+	//
+	// 2f28670c-eba6-4afb-9610-0942c434a021
+	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 700d4d9411efbe6e0
+	DeviceId *string `json:"deviceId,omitempty" xml:"deviceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 00:1A:2B:3C:4D:5E
+	MacAddress *string `json:"macAddress,omitempty" xml:"macAddress,omitempty"`
+	// This parameter is required.
+	Messages []*ExecuteHundredThousandWhysDialogueRequestMessages `json:"messages,omitempty" xml:"messages,omitempty" type:"Repeated"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequest) SetAgeGroup(v string) *ExecuteHundredThousandWhysDialogueRequest {
+	s.AgeGroup = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequest) SetChatId(v string) *ExecuteHundredThousandWhysDialogueRequest {
+	s.ChatId = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequest) SetDeviceId(v string) *ExecuteHundredThousandWhysDialogueRequest {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequest) SetMacAddress(v string) *ExecuteHundredThousandWhysDialogueRequest {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequest) SetMessages(v []*ExecuteHundredThousandWhysDialogueRequestMessages) *ExecuteHundredThousandWhysDialogueRequest {
+	s.Messages = v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueRequestMessages struct {
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// user
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueRequestMessages) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueRequestMessages) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequestMessages) SetContent(v string) *ExecuteHundredThousandWhysDialogueRequestMessages {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueRequestMessages) SetRole(v string) *ExecuteHundredThousandWhysDialogueRequestMessages {
+	s.Role = &v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueResponseBody struct {
+	Choices []*ExecuteHundredThousandWhysDialogueResponseBodyChoices `json:"choices,omitempty" xml:"choices,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 0
+	Created *int64 `json:"created,omitempty" xml:"created,omitempty"`
+	// example:
+	//
+	// null
+	Id *string `json:"id,omitempty" xml:"id,omitempty"`
+	// example:
+	//
+	// null
+	Model *string `json:"model,omitempty" xml:"model,omitempty"`
+	// example:
+	//
+	// null
+	Object *string `json:"object,omitempty" xml:"object,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// DBFA232A-1176-50E6-95AE-50F7A62A28AD
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetChoices(v []*ExecuteHundredThousandWhysDialogueResponseBodyChoices) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.Choices = v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetCreated(v int64) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.Created = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetId(v string) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetModel(v string) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetObject(v string) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.Object = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBody) SetRequestId(v string) *ExecuteHundredThousandWhysDialogueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueResponseBodyChoices struct {
+	Delta *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta `json:"delta,omitempty" xml:"delta,omitempty" type:"Struct"`
+	// example:
+	//
+	// stop
+	FinishReason *string `json:"finish_reason,omitempty" xml:"finish_reason,omitempty"`
+	// example:
+	//
+	// 0
+	Index *int64 `json:"index,omitempty" xml:"index,omitempty"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBodyChoices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBodyChoices) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBodyChoices) SetDelta(v *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta) *ExecuteHundredThousandWhysDialogueResponseBodyChoices {
+	s.Delta = v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBodyChoices) SetFinishReason(v string) *ExecuteHundredThousandWhysDialogueResponseBodyChoices {
+	s.FinishReason = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBodyChoices) SetIndex(v int64) *ExecuteHundredThousandWhysDialogueResponseBodyChoices {
+	s.Index = &v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta struct {
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// example:
+	//
+	// assistant
+	Role *string `json:"role,omitempty" xml:"role,omitempty"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta) SetContent(v string) *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta {
+	s.Content = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta) SetRole(v string) *ExecuteHundredThousandWhysDialogueResponseBodyChoicesDelta {
+	s.Role = &v
+	return s
+}
+
+type ExecuteHundredThousandWhysDialogueResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ExecuteHundredThousandWhysDialogueResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecuteHundredThousandWhysDialogueResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponse) SetHeaders(v map[string]*string) *ExecuteHundredThousandWhysDialogueResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponse) SetStatusCode(v int32) *ExecuteHundredThousandWhysDialogueResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecuteHundredThousandWhysDialogueResponse) SetBody(v *ExecuteHundredThousandWhysDialogueResponseBody) *ExecuteHundredThousandWhysDialogueResponse {
 	s.Body = v
 	return s
 }
@@ -7917,7 +8911,7 @@ func (s *ListTextbookAssistantGradeVolumesRequest) SetScenario(v string) *ListTe
 }
 
 type ListTextbookAssistantGradeVolumesResponseBody struct {
-	Data *ListTextbookAssistantGradeVolumesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	Data []*ListTextbookAssistantGradeVolumesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 0
@@ -7947,7 +8941,7 @@ func (s ListTextbookAssistantGradeVolumesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListTextbookAssistantGradeVolumesResponseBody) SetData(v *ListTextbookAssistantGradeVolumesResponseBodyData) *ListTextbookAssistantGradeVolumesResponseBody {
+func (s *ListTextbookAssistantGradeVolumesResponseBody) SetData(v []*ListTextbookAssistantGradeVolumesResponseBodyData) *ListTextbookAssistantGradeVolumesResponseBody {
 	s.Data = v
 	return s
 }
@@ -7979,8 +8973,6 @@ func (s *ListTextbookAssistantGradeVolumesResponseBody) SetSuccess(v bool) *List
 
 type ListTextbookAssistantGradeVolumesResponseBodyData struct {
 	GradeVolumes []*ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes `json:"gradeVolumes,omitempty" xml:"gradeVolumes,omitempty" type:"Repeated"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 人教版
@@ -8006,14 +8998,10 @@ func (s *ListTextbookAssistantGradeVolumesResponseBodyData) SetTextbookVersion(v
 }
 
 type ListTextbookAssistantGradeVolumesResponseBodyDataGradeVolumes struct {
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 3
 	Grade *string `json:"grade,omitempty" xml:"grade,omitempty"`
-	// This parameter is required.
-	//
 	// example:
 	//
 	// 1
@@ -11453,24 +12441,13 @@ func (client *Client) AITeacherExpansionPracticeTaskGenerateWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AITeacherExpansionPracticeTaskGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11556,24 +12533,13 @@ func (client *Client) AITeacherSyncPracticeTaskGenerateWithOptions(request *AITe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AITeacherSyncPracticeTaskGenerateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AITeacherSyncPracticeTaskGenerateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AITeacherSyncPracticeTaskGenerateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11619,24 +12585,13 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServcieListWithOptio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServcieListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11680,24 +12635,13 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11710,6 +12654,183 @@ func (client *Client) AliyunConsoleOpenApiQueryAliyunConsoleServiceList() (_resu
 	headers := make(map[string]*string)
 	_result = &AliyunConsoleOpenApiQueryAliyunConsoleServiceListResponse{}
 	_body, _err := client.AliyunConsoleOpenApiQueryAliyunConsoleServiceListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/调用量
+//
+// @param request - CountOralEvaluationStatisticsCallsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountOralEvaluationStatisticsCallsResponse
+func (client *Client) CountOralEvaluationStatisticsCallsWithOptions(request *CountOralEvaluationStatisticsCallsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CountOralEvaluationStatisticsCallsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountOralEvaluationStatisticsCalls"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/countOralEvaluationStatisticsCalls"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountOralEvaluationStatisticsCallsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/调用量
+//
+// @param request - CountOralEvaluationStatisticsCallsRequest
+//
+// @return CountOralEvaluationStatisticsCallsResponse
+func (client *Client) CountOralEvaluationStatisticsCalls(request *CountOralEvaluationStatisticsCallsRequest) (_result *CountOralEvaluationStatisticsCallsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CountOralEvaluationStatisticsCallsResponse{}
+	_body, _err := client.CountOralEvaluationStatisticsCallsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/并发数
+//
+// @param request - CountOralEvaluationStatisticsConcurrentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountOralEvaluationStatisticsConcurrentResponse
+func (client *Client) CountOralEvaluationStatisticsConcurrentWithOptions(request *CountOralEvaluationStatisticsConcurrentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CountOralEvaluationStatisticsConcurrentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountOralEvaluationStatisticsConcurrent"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/countOralEvaluationStatisticsConcurrent"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountOralEvaluationStatisticsConcurrentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/并发数
+//
+// @param request - CountOralEvaluationStatisticsConcurrentRequest
+//
+// @return CountOralEvaluationStatisticsConcurrentResponse
+func (client *Client) CountOralEvaluationStatisticsConcurrent(request *CountOralEvaluationStatisticsConcurrentRequest) (_result *CountOralEvaluationStatisticsConcurrentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CountOralEvaluationStatisticsConcurrentResponse{}
+	_body, _err := client.CountOralEvaluationStatisticsConcurrentWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/调用错误
+//
+// @param request - CountOralEvaluationStatisticsErrorRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CountOralEvaluationStatisticsErrorResponse
+func (client *Client) CountOralEvaluationStatisticsErrorWithOptions(request *CountOralEvaluationStatisticsErrorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CountOralEvaluationStatisticsErrorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CountOralEvaluationStatisticsError"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/aliyunConsole/countOralEvaluationStatisticsError"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CountOralEvaluationStatisticsErrorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 智能批改/口语评测/统计/调用错误
+//
+// @param request - CountOralEvaluationStatisticsErrorRequest
+//
+// @return CountOralEvaluationStatisticsErrorResponse
+func (client *Client) CountOralEvaluationStatisticsError(request *CountOralEvaluationStatisticsErrorRequest) (_result *CountOralEvaluationStatisticsErrorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CountOralEvaluationStatisticsErrorResponse{}
+	_body, _err := client.CountOralEvaluationStatisticsErrorWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11773,24 +12894,13 @@ func (client *Client) CreateAccessWarrantWithOptions(request *CreateAccessWarran
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAccessWarrantResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAccessWarrantResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAccessWarrantResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11852,24 +12962,13 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -11897,12 +12996,12 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // @param request - ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest
 //
-// @param headers - ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders
+// @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
-func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithOptions(request *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest, headers *ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse, _err error) {
+func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithOptions(request *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
@@ -11940,29 +13039,8 @@ func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithO
 		body["userId"] = request.UserId
 	}
 
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.CallerParentId)) {
-		realHeaders["callerParentId"] = util.ToJSONString(headers.CallerParentId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.CallerType)) {
-		realHeaders["callerType"] = util.ToJSONString(headers.CallerType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.CallerUid)) {
-		realHeaders["callerUid"] = util.ToJSONString(headers.CallerUid)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.StsTokenCallerUid)) {
-		realHeaders["stsTokenCallerUid"] = util.ToJSONString(headers.StsTokenCallerUid)
-	}
-
 	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
+		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
@@ -11976,24 +13054,13 @@ func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithO
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12005,7 +13072,7 @@ func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithO
 // @return ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse
 func (client *Client) ExecuteAITeacherChineseCompositionTutoringWorkflowRun(request *ExecuteAITeacherChineseCompositionTutoringWorkflowRunRequest) (_result *ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	headers := &ExecuteAITeacherChineseCompositionTutoringWorkflowRunHeaders{}
+	headers := make(map[string]*string)
 	_result = &ExecuteAITeacherChineseCompositionTutoringWorkflowRunResponse{}
 	_body, _err := client.ExecuteAITeacherChineseCompositionTutoringWorkflowRunWithOptions(request, headers, runtime)
 	if _err != nil {
@@ -12079,24 +13146,13 @@ func (client *Client) ExecuteAITeacherEnglishCompositionTutoringWorkflowRunWithO
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherEnglishCompositionTutoringWorkflowRunResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12182,24 +13238,13 @@ func (client *Client) ExecuteAITeacherEnglishParaphraseChatMessageWithOptions(re
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherEnglishParaphraseChatMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12285,24 +13330,13 @@ func (client *Client) ExecuteAITeacherExpansionDialogueWithOptions(request *Exec
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherExpansionDialogueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherExpansionDialogueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherExpansionDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12388,24 +13422,13 @@ func (client *Client) ExecuteAITeacherExpansionDialogueRefineWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherExpansionDialogueRefineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12487,24 +13510,13 @@ func (client *Client) ExecuteAITeacherExpansionDialogueTranslateWithOptions(requ
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherExpansionDialogueTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12566,24 +13578,13 @@ func (client *Client) ExecuteAITeacherGrammarCheckWithOptions(request *ExecuteAI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherGrammarCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherGrammarCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherGrammarCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12653,24 +13654,13 @@ func (client *Client) ExecuteAITeacherSyncDialogueWithOptions(request *ExecuteAI
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherSyncDialogueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherSyncDialogueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherSyncDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12736,24 +13726,13 @@ func (client *Client) ExecuteAITeacherSyncDialogueTranslateWithOptions(request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12768,6 +13747,86 @@ func (client *Client) ExecuteAITeacherSyncDialogueTranslate(request *ExecuteAITe
 	headers := make(map[string]*string)
 	_result = &ExecuteAITeacherSyncDialogueTranslateResponse{}
 	_body, _err := client.ExecuteAITeacherSyncDialogueTranslateWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 十万个为什么对话接入
+//
+// @param request - ExecuteHundredThousandWhysDialogueRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ExecuteHundredThousandWhysDialogueResponse
+func (client *Client) ExecuteHundredThousandWhysDialogueWithOptions(request *ExecuteHundredThousandWhysDialogueRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecuteHundredThousandWhysDialogueResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgeGroup)) {
+		body["ageGroup"] = request.AgeGroup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChatId)) {
+		body["chatId"] = request.ChatId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		body["deviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MacAddress)) {
+		body["macAddress"] = request.MacAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Messages)) {
+		body["messages"] = request.Messages
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecuteHundredThousandWhysDialogue"),
+		Version:     tea.String("20240611"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/api/v1/intelligentAgent/tenWWhys/executeDialogue"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecuteHundredThousandWhysDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 十万个为什么对话接入
+//
+// @param request - ExecuteHundredThousandWhysDialogueRequest
+//
+// @return ExecuteHundredThousandWhysDialogueResponse
+func (client *Client) ExecuteHundredThousandWhysDialogue(request *ExecuteHundredThousandWhysDialogueRequest) (_result *ExecuteHundredThousandWhysDialogueResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecuteHundredThousandWhysDialogueResponse{}
+	_body, _err := client.ExecuteHundredThousandWhysDialogueWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12823,24 +13882,13 @@ func (client *Client) ExecuteTextbookAssistantDialogueWithOptions(request *Execu
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantDialogueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantDialogueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12914,24 +13962,13 @@ func (client *Client) ExecuteTextbookAssistantDifficultyWithOptions(request *Exe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantDifficultyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantDifficultyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantDifficultyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13001,24 +14038,13 @@ func (client *Client) ExecuteTextbookAssistantGrammarCheckWithOptions(request *E
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantGrammarCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13088,24 +14114,13 @@ func (client *Client) ExecuteTextbookAssistantRefineByContextWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantRefineByContextResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantRefineByContextResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantRefineByContextResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13175,24 +14190,13 @@ func (client *Client) ExecuteTextbookAssistantRetryConversationWithOptions(reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantRetryConversationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantRetryConversationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantRetryConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13262,24 +14266,13 @@ func (client *Client) ExecuteTextbookAssistantSseDialogueWithOptions(request *Ex
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantSseDialogueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantSseDialogueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantSseDialogueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13345,24 +14338,13 @@ func (client *Client) ExecuteTextbookAssistantStartConversationWithOptions(reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantStartConversationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantStartConversationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantStartConversationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13432,24 +14414,13 @@ func (client *Client) ExecuteTextbookAssistantSuggestionWithOptions(request *Exe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantSuggestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantSuggestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13519,24 +14490,13 @@ func (client *Client) ExecuteTextbookAssistantTranslateWithOptions(request *Exec
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExecuteTextbookAssistantTranslateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExecuteTextbookAssistantTranslateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExecuteTextbookAssistantTranslateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13622,24 +14582,13 @@ func (client *Client) GetAITeacherExpansionDialogueSuggestionWithOptions(request
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAITeacherExpansionDialogueSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13709,24 +14658,13 @@ func (client *Client) GetAITeacherSyncDialogueSuggestionWithOptions(request *Get
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAITeacherSyncDialogueSuggestionResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAITeacherSyncDialogueSuggestionResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAITeacherSyncDialogueSuggestionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13788,24 +14726,13 @@ func (client *Client) GetTextbookAssistantTokenWithOptions(request *GetTextbookA
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTextbookAssistantTokenResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTextbookAssistantTokenResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTextbookAssistantTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13867,24 +14794,13 @@ func (client *Client) ListTextbookAssistantArticleDetailsWithOptions(request *Li
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantArticleDetailsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantArticleDetailsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantArticleDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13946,24 +14862,13 @@ func (client *Client) ListTextbookAssistantArticlesWithOptions(request *ListText
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantArticlesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantArticlesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantArticlesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14029,24 +14934,13 @@ func (client *Client) ListTextbookAssistantBookDirectoriesWithOptions(request *L
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantBookDirectoriesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantBookDirectoriesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantBookDirectoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14128,24 +15022,13 @@ func (client *Client) ListTextbookAssistantBooksWithOptions(request *ListTextboo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantBooksResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantBooksResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantBooksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14207,24 +15090,13 @@ func (client *Client) ListTextbookAssistantGradeVolumesWithOptions(request *List
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantGradeVolumesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantGradeVolumesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantGradeVolumesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14286,24 +15158,13 @@ func (client *Client) ListTextbookAssistantSceneDetailsWithOptions(request *List
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTextbookAssistantSceneDetailsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTextbookAssistantSceneDetailsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTextbookAssistantSceneDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14381,24 +15242,13 @@ func (client *Client) PersonalizedTextToImageAddInferenceJobWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PersonalizedTextToImageAddInferenceJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PersonalizedTextToImageAddInferenceJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PersonalizedTextToImageAddInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14460,24 +15310,13 @@ func (client *Client) PersonalizedTextToImageQueryImageAssetWithOptions(request 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("any"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PersonalizedTextToImageQueryImageAssetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PersonalizedTextToImageQueryImageAssetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PersonalizedTextToImageQueryImageAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14535,24 +15374,13 @@ func (client *Client) PersonalizedTextToImageQueryPreModelInferenceJobInfoWithOp
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &PersonalizedTextToImageQueryPreModelInferenceJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14622,24 +15450,13 @@ func (client *Client) Personalizedtxt2imgAddInferenceJobWithOptions(request *Per
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgAddInferenceJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgAddInferenceJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgAddInferenceJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14709,24 +15526,13 @@ func (client *Client) Personalizedtxt2imgAddModelTrainJobWithOptions(request *Pe
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgAddModelTrainJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14796,24 +15602,13 @@ func (client *Client) Personalizedtxt2imgQueryImageAssetWithOptions(request *Per
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("any"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgQueryImageAssetResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgQueryImageAssetResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgQueryImageAssetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14871,24 +15666,13 @@ func (client *Client) Personalizedtxt2imgQueryInferenceJobInfoWithOptions(reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgQueryInferenceJobInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14934,24 +15718,13 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainJobListWithOptions(heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgQueryModelTrainJobListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15007,24 +15780,13 @@ func (client *Client) Personalizedtxt2imgQueryModelTrainStatusWithOptions(reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &Personalizedtxt2imgQueryModelTrainStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15082,24 +15844,13 @@ func (client *Client) QueryApplicationAccessIdWithOptions(request *QueryApplicat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryApplicationAccessIdResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryApplicationAccessIdResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryApplicationAccessIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15157,24 +15908,13 @@ func (client *Client) QueryProjectWithOptions(request *QueryProjectRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15220,24 +15960,13 @@ func (client *Client) QueryProjectListWithOptions(headers map[string]*string, ru
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryProjectListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryProjectListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryProjectListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15281,24 +16010,13 @@ func (client *Client) QueryPurchasedServiceWithOptions(headers map[string]*strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &QueryPurchasedServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &QueryPurchasedServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &QueryPurchasedServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15358,24 +16076,13 @@ func (client *Client) UpdateProjectWithOptions(request *UpdateProjectRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateProjectResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateProjectResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
