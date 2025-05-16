@@ -698,6 +698,195 @@ func (s *SharedStorageTemplate) SetProtocolType(v string) *SharedStorageTemplate
 	return s
 }
 
+type AttachNodesRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-xxxxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The compute node information.
+	//
+	// This parameter is required.
+	ComputeNode *AttachNodesRequestComputeNode `json:"ComputeNode,omitempty" xml:"ComputeNode,omitempty" type:"Struct"`
+	// The name of the queue to which the instance is to be added.
+	//
+	// example:
+	//
+	// comp
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+}
+
+func (s AttachNodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNodesRequest) SetClusterId(v string) *AttachNodesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *AttachNodesRequest) SetComputeNode(v *AttachNodesRequestComputeNode) *AttachNodesRequest {
+	s.ComputeNode = v
+	return s
+}
+
+func (s *AttachNodesRequest) SetQueueName(v string) *AttachNodesRequest {
+	s.QueueName = &v
+	return s
+}
+
+type AttachNodesRequestComputeNode struct {
+	// The image ID. This image will be used to replace the original system disk image.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// m-bp1h765oyqyxxxxxxxxx
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// The instance IDs.
+	//
+	// This parameter is required.
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s AttachNodesRequestComputeNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNodesRequestComputeNode) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNodesRequestComputeNode) SetImageId(v string) *AttachNodesRequestComputeNode {
+	s.ImageId = &v
+	return s
+}
+
+func (s *AttachNodesRequestComputeNode) SetInstanceIds(v []*string) *AttachNodesRequestComputeNode {
+	s.InstanceIds = v
+	return s
+}
+
+type AttachNodesShrinkRequest struct {
+	// The cluster ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// ehpc-hz-xxxxxxx
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The compute node information.
+	//
+	// This parameter is required.
+	ComputeNodeShrink *string `json:"ComputeNode,omitempty" xml:"ComputeNode,omitempty"`
+	// The name of the queue to which the instance is to be added.
+	//
+	// example:
+	//
+	// comp
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+}
+
+func (s AttachNodesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNodesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNodesShrinkRequest) SetClusterId(v string) *AttachNodesShrinkRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *AttachNodesShrinkRequest) SetComputeNodeShrink(v string) *AttachNodesShrinkRequest {
+	s.ComputeNodeShrink = &v
+	return s
+}
+
+func (s *AttachNodesShrinkRequest) SetQueueName(v string) *AttachNodesShrinkRequest {
+	s.QueueName = &v
+	return s
+}
+
+type AttachNodesResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 2263XXXX-XXXX-XXXX-XXXX-XXXX2448XXXX
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
+	// Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachNodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNodesResponseBody) SetRequestId(v string) *AttachNodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachNodesResponseBody) SetSuccess(v bool) *AttachNodesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AttachNodesResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *AttachNodesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s AttachNodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachNodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachNodesResponse) SetHeaders(v map[string]*string) *AttachNodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachNodesResponse) SetStatusCode(v int32) *AttachNodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachNodesResponse) SetBody(v *AttachNodesResponseBody) *AttachNodesResponse {
+	s.Body = v
+	return s
+}
+
 type AttachSharedStoragesRequest struct {
 	// The cluster ID.
 	//
@@ -1077,7 +1266,7 @@ type CreateClusterRequest struct {
 	//
 	// 500
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The configurations of the queues in the cluster. The number of queues can be 0 to 8.
+	// The queues in the cluster. The number of queues can be 0 to 8.
 	Queues []*QueueTemplate `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
 	// The ID of the resource group to which the cluster belongs.
 	//
@@ -1095,7 +1284,7 @@ type CreateClusterRequest struct {
 	//
 	// sg-bp13n61xsydodfyg****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The configurations of shared storage in the cluster.
+	// The shared storage resources of the cluster.
 	SharedStorages []*SharedStorageTemplate `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty" type:"Repeated"`
 	// The tags of the cluster.
 	Tags []*CreateClusterRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -1379,7 +1568,7 @@ func (s *CreateClusterRequestClusterCustomConfiguration) SetScript(v string) *Cr
 type CreateClusterRequestManager struct {
 	// The configurations of the domain name resolution service.
 	DNS *CreateClusterRequestManagerDNS `json:"DNS,omitempty" xml:"DNS,omitempty" type:"Struct"`
-	// The configurations of the directory service.
+	// The configurations of the domain account service.
 	DirectoryService *CreateClusterRequestManagerDirectoryService `json:"DirectoryService,omitempty" xml:"DirectoryService,omitempty" type:"Struct"`
 	// The hardware configurations of the management node.
 	ManagerNode *NodeTemplate `json:"ManagerNode,omitempty" xml:"ManagerNode,omitempty"`
@@ -1418,9 +1607,9 @@ func (s *CreateClusterRequestManager) SetScheduler(v *CreateClusterRequestManage
 type CreateClusterRequestManagerDNS struct {
 	// The domain name resolution type.
 	//
-	// Valid values:
+	// Valid value:
 	//
-	// 	- NIS: NIS.
+	// 	- NIS
 	//
 	// example:
 	//
@@ -1455,9 +1644,9 @@ func (s *CreateClusterRequestManagerDNS) SetVersion(v string) *CreateClusterRequ
 type CreateClusterRequestManagerDirectoryService struct {
 	// The type of the domain account.
 	//
-	// Valid values:
+	// Valid value:
 	//
-	// 	- NIS: NIS.
+	// 	- NIS
 	//
 	// example:
 	//
@@ -1666,7 +1855,7 @@ type CreateClusterShrinkRequest struct {
 	//
 	// 500
 	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	// The configurations of the queues in the cluster. The number of queues can be 0 to 8.
+	// The queues in the cluster. The number of queues can be 0 to 8.
 	QueuesShrink *string `json:"Queues,omitempty" xml:"Queues,omitempty"`
 	// The ID of the resource group to which the cluster belongs.
 	//
@@ -1684,7 +1873,7 @@ type CreateClusterShrinkRequest struct {
 	//
 	// sg-bp13n61xsydodfyg****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The configurations of shared storage in the cluster.
+	// The shared storage resources of the cluster.
 	SharedStoragesShrink *string `json:"SharedStorages,omitempty" xml:"SharedStorages,omitempty"`
 	// The tags of the cluster.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
@@ -2276,7 +2465,12 @@ type CreateNodesRequest struct {
 	// example:
 	//
 	// 10
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
+	//
+	// example:
+	//
+	// ds-bp1frxuzdg87zh4pzq****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The type of the network between compute nodes. Valid values:
 	//
@@ -2317,7 +2511,12 @@ type CreateNodesRequest struct {
 	// example:
 	//
 	// AliyunServiceRoleForOOSBandwidthScheduler
-	RamRole            *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	// Preset node pool ID.
+	//
+	// example:
+	//
+	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
 	// The ID of the vSwitch to be used by the added nodes.
 	//
@@ -2417,7 +2616,12 @@ type CreateNodesShrinkRequest struct {
 	// example:
 	//
 	// 10
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// Deployment set ID. You can obtain the deployment set ID through [DescribeDeploymentSets](https://help.aliyun.com/document_detail/91313.html). Currently, only deployment sets with a low network latency strategy are supported.
+	//
+	// example:
+	//
+	// ds-bp1frxuzdg87zh4pzq****
 	DeploymentSetId *string `json:"DeploymentSetId,omitempty" xml:"DeploymentSetId,omitempty"`
 	// The type of the network between compute nodes. Valid values:
 	//
@@ -2458,7 +2662,12 @@ type CreateNodesShrinkRequest struct {
 	// example:
 	//
 	// AliyunServiceRoleForOOSBandwidthScheduler
-	RamRole            *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	// Preset node pool ID.
+	//
+	// example:
+	//
+	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
 	// The ID of the vSwitch to be used by the added nodes.
 	//
@@ -4171,7 +4380,7 @@ func (s *GetAddonRequest) SetClusterId(v string) *GetAddonRequest {
 }
 
 type GetAddonResponseBody struct {
-	// The details about the addon.
+	// The information about the addon.
 	Addon *GetAddonResponseBodyAddon `json:"Addon,omitempty" xml:"Addon,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -4807,7 +5016,8 @@ type GetClusterResponseBody struct {
 	// example:
 	//
 	// 100
-	MaxCount    *string                            `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	MaxCount *string `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The monitoring details of the cluster.
 	MonitorSpec *GetClusterResponseBodyMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -4820,8 +5030,9 @@ type GetClusterResponseBody struct {
 	// example:
 	//
 	// rg-acfmxazb4ph****
-	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SchedulerSpec   *GetClusterResponseBodySchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The scheduler specifications of the cluster.
+	SchedulerSpec *GetClusterResponseBodySchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
 	// The security group ID.
 	//
 	// example:
@@ -5279,6 +5490,15 @@ func (s *GetClusterResponseBodyManagerScheduler) SetVersion(v string) *GetCluste
 }
 
 type GetClusterResponseBodyMonitorSpec struct {
+	// Indicates whether the monitoring component of compute nodes is enabled for the cluster. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableComputeLoadMonitor *bool `json:"EnableComputeLoadMonitor,omitempty" xml:"EnableComputeLoadMonitor,omitempty"`
 }
 
@@ -5296,6 +5516,15 @@ func (s *GetClusterResponseBodyMonitorSpec) SetEnableComputeLoadMonitor(v bool) 
 }
 
 type GetClusterResponseBodySchedulerSpec struct {
+	// Indicates whether the topology awareness feature is enabled for the cluster. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableTopologyAwareness *bool `json:"EnableTopologyAwareness,omitempty" xml:"EnableTopologyAwareness,omitempty"`
 }
 
@@ -6476,7 +6705,12 @@ type GetQueueResponseBodyQueue struct {
 	// example:
 	//
 	// AliyunECSInstanceForEHPCRole
-	RamRole            *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	RamRole *string `json:"RamRole,omitempty" xml:"RamRole,omitempty"`
+	// Preset node pool ID.
+	//
+	// example:
+	//
+	// rnp-756vlp7a
 	ReservedNodePoolId *string `json:"ReservedNodePoolId,omitempty" xml:"ReservedNodePoolId,omitempty"`
 	// The available vSwitches for compute nodes in the queue. Valid values of N: 1 to 5.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
@@ -10014,8 +10248,9 @@ type ListJobsRequestJobFilter struct {
 	// example:
 	//
 	// 1724122486
-	CreateTimeStart *string                              `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	Diagnosis       []*ListJobsRequestJobFilterDiagnosis `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty" type:"Repeated"`
+	CreateTimeStart *string `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	// Job diagnosis and analysis list.
+	Diagnosis []*ListJobsRequestJobFilterDiagnosis `json:"Diagnosis,omitempty" xml:"Diagnosis,omitempty" type:"Repeated"`
 	// The job name. Fuzzy match is supported.
 	//
 	// example:
@@ -10100,8 +10335,23 @@ func (s *ListJobsRequestJobFilter) SetUsers(v []*string) *ListJobsRequestJobFilt
 }
 
 type ListJobsRequestJobFilterDiagnosis struct {
-	Operator  *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	Option    *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// Job diagnosis threshold comparator.
+	//
+	// example:
+	//
+	// greater
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// Job diagnosis and analysis metrics
+	//
+	// example:
+	//
+	// run_duration
+	Option *string `json:"Option,omitempty" xml:"Option,omitempty"`
+	// Job diagnosis threshold.
+	//
+	// example:
+	//
+	// 24
 	Threshold *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 }
 
@@ -10419,7 +10669,8 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	// 0
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The information about the resources required to run the job.
-	Resources               *ListJobsResponseBodyJobsJobSpecResources               `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	Resources *ListJobsResponseBodyJobsJobSpecResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	// Actual resource usage of the job program
 	ResourcesActualOccupied *ListJobsResponseBodyJobsJobSpecResourcesActualOccupied `json:"ResourcesActualOccupied,omitempty" xml:"ResourcesActualOccupied,omitempty" type:"Struct"`
 	// The user that ran the job.
 	//
@@ -10427,6 +10678,11 @@ type ListJobsResponseBodyJobsJobSpec struct {
 	//
 	// testuser1
 	RunasUser *string `json:"RunasUser,omitempty" xml:"RunasUser,omitempty"`
+	// Job start time.
+	//
+	// example:
+	//
+	// 1724122486
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The job state. Valid values: (PBS cluster and Slurm cluster)
 	//
@@ -10622,10 +10878,30 @@ func (s *ListJobsResponseBodyJobsJobSpecResources) SetNodes(v string) *ListJobsR
 }
 
 type ListJobsResponseBodyJobsJobSpecResourcesActualOccupied struct {
-	Cores  *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	Gpus   *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// Number of CPU cores.
+	//
+	// example:
+	//
+	// 4
+	Cores *string `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	// Number of CPUs
+	//
+	// example:
+	//
+	// 0
+	Gpus *string `json:"Gpus,omitempty" xml:"Gpus,omitempty"`
+	// Number of memory.
+	//
+	// example:
+	//
+	// 982MB
 	Memory *string `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	Nodes  *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+	// Number of compute nodes.
+	//
+	// example:
+	//
+	// 2
+	Nodes *string `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
 }
 
 func (s ListJobsResponseBodyJobsJobSpecResourcesActualOccupied) String() string {
@@ -12287,7 +12563,7 @@ type ListUsersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values: 1 to 50.
 	//
-	// Default value: 10
+	// Default value: 10.
 	//
 	// example:
 	//
@@ -12865,56 +13141,6 @@ func (s *UninstallSoftwaresResponse) SetBody(v *UninstallSoftwaresResponseBody) 
 }
 
 type UpdateClusterRequest struct {
-	// The client version. By default, the latest version is used.
-	//
-	// example:
-	//
-	// 2.1.0
-	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The post-processing script of the cluster.
-	ClusterCustomConfiguration *UpdateClusterRequestClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
-	// The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-	//
-	// example:
-	//
-	// slurm22.05.8-serverless-cluster-20240805
-	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// The cluster ID.
-	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
-	//
-	// example:
-	//
-	// ehpc-hz-FYUr32****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-	//
-	// example:
-	//
-	// slurm22.05.8-serverless-cluster-20240805
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the DeleteCluster operation. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// Default value: false.
-	//
-	// example:
-	//
-	// false
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable auto scale-in for the cluster. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
 	// Specifies whether to enable auto scale-out for the cluster. Valid values:
 	//
 	// 	- true
@@ -12923,33 +13149,85 @@ type UpdateClusterRequest struct {
 	//
 	// example:
 	//
+	// 2.1.0
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	ClusterCustomConfiguration *UpdateClusterRequestClusterCustomConfiguration `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty" type:"Struct"`
+	// The URL that is used to download the post-processing script.
+	//
+	// example:
+	//
+	// slurm22.05.8-serverless-cluster-20240805
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// The client version. By default, the latest version is used.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The post-processing script of the cluster.
+	//
+	// example:
+	//
+	// slurm22.05.8-serverless-cluster-20240805
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The idle duration of the compute nodes allowed by the cluster.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The request result. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
+	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The interval at which the cluster is automatically scaled out.
+	// The scheduler specifications of the cluster.
 	//
 	// example:
 	//
 	// 2
 	GrowInterval *int32 `json:"GrowInterval,omitempty" xml:"GrowInterval,omitempty"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable the topology awareness feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// 4
 	IdleInterval *int32 `json:"IdleInterval,omitempty" xml:"IdleInterval,omitempty"`
-	// The total maximum number of vCPUs for use by compute nodes in the cluster. Valid values: 0 to 100,000.
+	// The interval at which the cluster is automatically scaled out.
 	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
-	// The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+	// The arguments that are used to run the post-processing script.
 	//
 	// example:
 	//
 	// 500
-	MaxCount      *int32                             `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	MonitorSpec   *UpdateClusterRequestMonitorSpec   `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The monitoring details of the cluster.
+	MonitorSpec *UpdateClusterRequestMonitorSpec `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty" type:"Struct"`
+	// The scheduler specifications of the cluster.
 	SchedulerSpec *UpdateClusterRequestSchedulerSpec `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty" type:"Struct"`
 }
 
@@ -13032,13 +13310,17 @@ func (s *UpdateClusterRequest) SetSchedulerSpec(v *UpdateClusterRequestScheduler
 }
 
 type UpdateClusterRequestClusterCustomConfiguration struct {
-	// The arguments that are used to run the post-processing script.
+	// Specifies whether to enable the monitoring component of compute nodes. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// E-HPC cn-hangzhou
 	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
-	// The URL that is used to download the post-processing script.
+	// The monitoring details of the cluster.
 	//
 	// example:
 	//
@@ -13065,6 +13347,15 @@ func (s *UpdateClusterRequestClusterCustomConfiguration) SetScript(v string) *Up
 }
 
 type UpdateClusterRequestMonitorSpec struct {
+	// Specifies whether to enable the monitoring component of compute nodes. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableComputeLoadMonitor *bool `json:"EnableComputeLoadMonitor,omitempty" xml:"EnableComputeLoadMonitor,omitempty"`
 }
 
@@ -13082,6 +13373,15 @@ func (s *UpdateClusterRequestMonitorSpec) SetEnableComputeLoadMonitor(v bool) *U
 }
 
 type UpdateClusterRequestSchedulerSpec struct {
+	// Specifies whether to enable the topology awareness feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
+	// example:
+	//
+	// true
 	EnableTopologyAwareness *bool `json:"EnableTopologyAwareness,omitempty" xml:"EnableTopologyAwareness,omitempty"`
 }
 
@@ -13099,56 +13399,6 @@ func (s *UpdateClusterRequestSchedulerSpec) SetEnableTopologyAwareness(v bool) *
 }
 
 type UpdateClusterShrinkRequest struct {
-	// The client version. By default, the latest version is used.
-	//
-	// example:
-	//
-	// 2.1.0
-	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	// The post-processing script of the cluster.
-	ClusterCustomConfigurationShrink *string `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty"`
-	// The cluster description. The description must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-	//
-	// example:
-	//
-	// slurm22.05.8-serverless-cluster-20240805
-	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
-	// The cluster ID.
-	//
-	// You can call the [ListClusters](https://help.aliyun.com/document_detail/87116.html) operation to query the cluster ID.
-	//
-	// example:
-	//
-	// ehpc-hz-FYUr32****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The cluster name. The name must be 1 to 128 characters in length and can contain letters, digits, hyphens (-), and underscores (_).
-	//
-	// example:
-	//
-	// slurm22.05.8-serverless-cluster-20240805
-	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// Specifies whether to enable deletion protection for the cluster. Deletion protection decides whether the cluster can be deleted in the console or by calling the DeleteCluster operation. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// Default value: false.
-	//
-	// example:
-	//
-	// false
-	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// Specifies whether to enable auto scale-in for the cluster. Valid values:
-	//
-	// 	- true
-	//
-	// 	- false
-	//
-	// example:
-	//
-	// true
-	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
 	// Specifies whether to enable auto scale-out for the cluster. Valid values:
 	//
 	// 	- true
@@ -13157,33 +13407,85 @@ type UpdateClusterShrinkRequest struct {
 	//
 	// example:
 	//
+	// 2.1.0
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	// Specifies whether to enable auto scale-in for the cluster. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	ClusterCustomConfigurationShrink *string `json:"ClusterCustomConfiguration,omitempty" xml:"ClusterCustomConfiguration,omitempty"`
+	// The URL that is used to download the post-processing script.
+	//
+	// example:
+	//
+	// slurm22.05.8-serverless-cluster-20240805
+	ClusterDescription *string `json:"ClusterDescription,omitempty" xml:"ClusterDescription,omitempty"`
+	// The client version. By default, the latest version is used.
+	//
+	// example:
+	//
+	// ehpc-hz-FYUr32****
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// The post-processing script of the cluster.
+	//
+	// example:
+	//
+	// slurm22.05.8-serverless-cluster-20240805
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// The idle duration of the compute nodes allowed by the cluster.
+	//
+	// example:
+	//
+	// false
+	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	// The request result. Valid values:
+	//
+	// 	- true: The request was successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
+	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
+	// The response parameters.
+	//
+	// example:
+	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The interval at which the cluster is automatically scaled out.
+	// The scheduler specifications of the cluster.
 	//
 	// example:
 	//
 	// 2
 	GrowInterval *int32 `json:"GrowInterval,omitempty" xml:"GrowInterval,omitempty"`
-	// The idle duration of the compute nodes allowed by the cluster.
+	// Specifies whether to enable the topology awareness feature. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
 	//
 	// example:
 	//
 	// 4
 	IdleInterval *int32 `json:"IdleInterval,omitempty" xml:"IdleInterval,omitempty"`
-	// The total maximum number of vCPUs for use by compute nodes in the cluster. Valid values: 0 to 100,000.
+	// The interval at which the cluster is automatically scaled out.
 	//
 	// example:
 	//
 	// 10000
 	MaxCoreCount *int32 `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
-	// The maximum number of compute nodes that the cluster can manage. Valid values: 0 to 5,000.
+	// The arguments that are used to run the post-processing script.
 	//
 	// example:
 	//
 	// 500
-	MaxCount            *int32  `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
-	MonitorSpecShrink   *string `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty"`
+	MaxCount *int32 `json:"MaxCount,omitempty" xml:"MaxCount,omitempty"`
+	// The monitoring details of the cluster.
+	MonitorSpecShrink *string `json:"MonitorSpec,omitempty" xml:"MonitorSpec,omitempty"`
+	// The scheduler specifications of the cluster.
 	SchedulerSpecShrink *string `json:"SchedulerSpec,omitempty" xml:"SchedulerSpec,omitempty"`
 }
 
@@ -13266,17 +13568,17 @@ func (s *UpdateClusterShrinkRequest) SetSchedulerSpecShrink(v string) *UpdateClu
 }
 
 type UpdateClusterResponseBody struct {
-	// The request ID.
+	// Request ID.
 	//
 	// example:
 	//
 	// 04F0F334-1335-436C-A1D7-6C044FE7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The request result. Valid values:
+	// Request result, possible values:
 	//
-	// 	- true: The request was successful.
+	// - true: request succeeded
 	//
-	// 	- false: The request failed.
+	// - false: request failed
 	//
 	// example:
 	//
@@ -13542,15 +13844,15 @@ type UpdateQueueRequestQueue struct {
 	EnableScaleIn *bool `json:"EnableScaleIn,omitempty" xml:"EnableScaleIn,omitempty"`
 	// Specifies whether to enable auto scale-out for the queue. Valid values:
 	//
-	// 	- true
+	// 	- true: deletion protection is enabled.
 	//
-	// 	- false
+	// 	- false: disables ASM.
 	//
 	// example:
 	//
 	// true
 	EnableScaleOut *bool `json:"EnableScaleOut,omitempty" xml:"EnableScaleOut,omitempty"`
-	// The hostname prefix of the compute nodes in the queue.
+	// The hostname prefix of the added compute nodes.
 	//
 	// example:
 	//
@@ -13984,6 +14286,120 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
+// Adds Elastic Compute Service (ECS) instances as compute nodes to Elastic High Performance Computing (E-HPC) clusters.
+//
+// Description:
+//
+// The ECS instances must meet the following requirements:
+//
+//   - The ECS instances do not belong to any E-HPC cluster.
+//
+//   - The ECS instances reside in the same virtual private cloud (VPC) as the cluster.
+//
+//   - The ECS instances are in the Stopped state.
+//
+// Take of the following limits:
+//
+//   - You can specify multiple instance IDs to add them at a time. However, the instances must be of the same type.
+//
+//   - When an instance is added to the cluster, [the system disk is reset](https://help.aliyun.com/zh/ecs/user-guide/re-initialize-a-system-disk) by using the image specified by the input parameters.
+//
+//   - If the instance has data disks, they are not automatically created and mounted after the instance is added.
+//
+//   - The hostname of the instance remains the same. Therefore, you must ensure that the hostname of the instance to be added is different from the hostname of an existing node in the cluster.
+//
+// @param tmpReq - AttachNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AttachNodesResponse
+func (client *Client) AttachNodesWithOptions(tmpReq *AttachNodesRequest, runtime *util.RuntimeOptions) (_result *AttachNodesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AttachNodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ComputeNode)) {
+		request.ComputeNodeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ComputeNode, tea.String("ComputeNode"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComputeNodeShrink)) {
+		query["ComputeNode"] = request.ComputeNodeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
+		query["QueueName"] = request.QueueName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachNodes"),
+		Version:     tea.String("2024-07-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adds Elastic Compute Service (ECS) instances as compute nodes to Elastic High Performance Computing (E-HPC) clusters.
+//
+// Description:
+//
+// The ECS instances must meet the following requirements:
+//
+//   - The ECS instances do not belong to any E-HPC cluster.
+//
+//   - The ECS instances reside in the same virtual private cloud (VPC) as the cluster.
+//
+//   - The ECS instances are in the Stopped state.
+//
+// Take of the following limits:
+//
+//   - You can specify multiple instance IDs to add them at a time. However, the instances must be of the same type.
+//
+//   - When an instance is added to the cluster, [the system disk is reset](https://help.aliyun.com/zh/ecs/user-guide/re-initialize-a-system-disk) by using the image specified by the input parameters.
+//
+//   - If the instance has data disks, they are not automatically created and mounted after the instance is added.
+//
+//   - The hostname of the instance remains the same. Therefore, you must ensure that the hostname of the instance to be added is different from the hostname of an existing node in the cluster.
+//
+// @param request - AttachNodesRequest
+//
+// @return AttachNodesResponse
+func (client *Client) AttachNodes(request *AttachNodesRequest) (_result *AttachNodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachNodesResponse{}
+	_body, _err := client.AttachNodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Attaches shared storage to an Elastic High Performance Computing (E-HPC) cluster.
 //
 // Description:
@@ -13992,9 +14408,9 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 //
 // When you call this operation, take note of the following items:
 //
-// 	- The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+//   - The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
 //
-// 	- E-HPC clusters support Apsara File Storage NAS file systems.
+//   - E-HPC clusters support Apsara File Storage NAS file systems.
 //
 // @param tmpReq - AttachSharedStoragesRequest
 //
@@ -14035,24 +14451,13 @@ func (client *Client) AttachSharedStoragesWithOptions(tmpReq *AttachSharedStorag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AttachSharedStoragesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AttachSharedStoragesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AttachSharedStoragesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14065,9 +14470,9 @@ func (client *Client) AttachSharedStoragesWithOptions(tmpReq *AttachSharedStorag
 //
 // When you call this operation, take note of the following items:
 //
-// 	- The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
+//   - The file system that you want to attach must be created in advance in the same virtual private cloud (VPC) as the destination cluster. For more information, see [Create a file system](https://help.aliyun.com/document_detail/27530.html) and [Manage mount targets](https://help.aliyun.com/document_detail/27531.html).
 //
-// 	- E-HPC clusters support Apsara File Storage NAS file systems.
+//   - E-HPC clusters support Apsara File Storage NAS file systems.
 //
 // @param request - AttachSharedStoragesRequest
 //
@@ -14236,24 +14641,13 @@ func (client *Client) CreateClusterWithOptions(tmpReq *CreateClusterRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14331,24 +14725,13 @@ func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14460,24 +14843,13 @@ func (client *Client) CreateNodesWithOptions(tmpReq *CreateNodesRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14545,24 +14917,13 @@ func (client *Client) CreateQueueWithOptions(tmpReq *CreateQueueRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateQueueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateQueueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14626,24 +14987,13 @@ func (client *Client) CreateUsersWithOptions(tmpReq *CreateUsersRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14705,24 +15055,13 @@ func (client *Client) DeleteClusterWithOptions(request *DeleteClusterRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14800,24 +15139,13 @@ func (client *Client) DeleteNodesWithOptions(tmpReq *DeleteNodesRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14893,24 +15221,13 @@ func (client *Client) DeleteQueuesWithOptions(tmpReq *DeleteQueuesRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteQueuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteQueuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteQueuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14972,24 +15289,13 @@ func (client *Client) DeleteUsersWithOptions(tmpReq *DeleteUsersRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15063,24 +15369,13 @@ func (client *Client) DescribeAddonTemplateWithOptions(request *DescribeAddonTem
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeAddonTemplateResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeAddonTemplateResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeAddonTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15144,24 +15439,13 @@ func (client *Client) DetachSharedStoragesWithOptions(tmpReq *DetachSharedStorag
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DetachSharedStoragesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DetachSharedStoragesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DetachSharedStoragesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15219,24 +15503,13 @@ func (client *Client) GetAddonWithOptions(request *GetAddonRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAddonResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAddonResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15290,24 +15563,13 @@ func (client *Client) GetClusterWithOptions(request *GetClusterRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15373,24 +15635,13 @@ func (client *Client) GetCommonLogDetailWithOptions(request *GetCommonLogDetailR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetCommonLogDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetCommonLogDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetCommonLogDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15448,24 +15699,13 @@ func (client *Client) GetJobWithOptions(request *GetJobRequest, runtime *util.Ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetJobResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetJobResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15541,24 +15781,13 @@ func (client *Client) GetJobLogWithOptions(request *GetJobLogRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetJobLogResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetJobLogResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetJobLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15622,24 +15851,13 @@ func (client *Client) GetQueueWithOptions(request *GetQueueRequest, runtime *uti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetQueueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetQueueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15670,13 +15888,13 @@ func (client *Client) GetQueue(request *GetQueueRequest) (_result *GetQueueRespo
 //
 // Take note of the following items when you call this operation:
 //
-// 	- The cluster must be in the `Running` state.
+//   - The cluster must be in the `Running` state.
 //
-// 	- Clusters fall into two types:
+//   - Clusters fall into two types:
 //
-//     	- Regular clusters on Alibaba Cloud Public Cloud
+//   - Regular clusters on Alibaba Cloud Public Cloud
 //
-//     	- Managed clusters on Alibaba Cloud Public Cloud
+//   - Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - InstallAddonRequest
 //
@@ -15723,24 +15941,13 @@ func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InstallAddonResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InstallAddonResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InstallAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15753,13 +15960,13 @@ func (client *Client) InstallAddonWithOptions(request *InstallAddonRequest, runt
 //
 // Take note of the following items when you call this operation:
 //
-// 	- The cluster must be in the `Running` state.
+//   - The cluster must be in the `Running` state.
 //
-// 	- Clusters fall into two types:
+//   - Clusters fall into two types:
 //
-//     	- Regular clusters on Alibaba Cloud Public Cloud
+//   - Regular clusters on Alibaba Cloud Public Cloud
 //
-//     	- Managed clusters on Alibaba Cloud Public Cloud
+//   - Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - InstallAddonRequest
 //
@@ -15777,7 +15984,17 @@ func (client *Client) InstallAddon(request *InstallAddonRequest) (_result *Insta
 
 // Summary:
 //
-// Installs software for a specified cluster.
+// Install software for the specified cluster.
+//
+// Description:
+//
+// ## Interface Description
+//
+// When calling this interface, please note the following:
+//
+// - The cluster status must be `Running`.
+//
+// - If the cluster series is `Serverless`, ensure that there is at least one login node or compute node in the cluster; otherwise, software cannot be added to the target cluster.
 //
 // @param tmpReq - InstallSoftwaresRequest
 //
@@ -15810,29 +16027,28 @@ func (client *Client) InstallSoftwaresWithOptions(tmpReq *InstallSoftwaresReques
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &InstallSoftwaresResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &InstallSoftwaresResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &InstallSoftwaresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Installs software for a specified cluster.
+// Install software for the specified cluster.
+//
+// Description:
+//
+// ## Interface Description
+//
+// When calling this interface, please note the following:
+//
+// - The cluster status must be `Running`.
+//
+// - If the cluster series is `Serverless`, ensure that there is at least one login node or compute node in the cluster; otherwise, software cannot be added to the target cluster.
 //
 // @param request - InstallSoftwaresRequest
 //
@@ -15897,24 +16113,13 @@ func (client *Client) ListAddonTemplatesWithOptions(request *ListAddonTemplatesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAddonTemplatesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAddonTemplatesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAddonTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15986,24 +16191,13 @@ func (client *Client) ListAddonsWithOptions(tmpReq *ListAddonsRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAddonsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAddonsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAddonsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16061,24 +16255,13 @@ func (client *Client) ListAvailableFileSystemsWithOptions(request *ListAvailable
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAvailableFileSystemsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAvailableFileSystemsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAvailableFileSystemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16138,24 +16321,13 @@ func (client *Client) ListAvailableImagesWithOptions(tmpReq *ListAvailableImages
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAvailableImagesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAvailableImagesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAvailableImagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16231,24 +16403,13 @@ func (client *Client) ListClustersWithOptions(tmpReq *ListClustersRequest, runti
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListClustersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListClustersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListClustersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16352,24 +16513,13 @@ func (client *Client) ListCommonLogsWithOptions(tmpReq *ListCommonLogsRequest, r
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListCommonLogsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListCommonLogsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListCommonLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16419,24 +16569,13 @@ func (client *Client) ListInstalledSoftwaresWithOptions(request *ListInstalledSo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListInstalledSoftwaresResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListInstalledSoftwaresResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListInstalledSoftwaresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16508,24 +16647,13 @@ func (client *Client) ListJobsWithOptions(tmpReq *ListJobsRequest, runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16629,24 +16757,13 @@ func (client *Client) ListNodesWithOptions(tmpReq *ListNodesRequest, runtime *ut
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16710,24 +16827,13 @@ func (client *Client) ListQueuesWithOptions(tmpReq *ListQueuesRequest, runtime *
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListQueuesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListQueuesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListQueuesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16789,24 +16895,13 @@ func (client *Client) ListSharedStoragesWithOptions(request *ListSharedStoragesR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSharedStoragesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSharedStoragesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSharedStoragesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16856,24 +16951,13 @@ func (client *Client) ListSoftwaresWithOptions(request *ListSoftwaresRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSoftwaresResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSoftwaresResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSoftwaresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16923,24 +17007,13 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListUsersResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListUsersResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListUsersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17004,24 +17077,13 @@ func (client *Client) StopJobsWithOptions(tmpReq *StopJobsRequest, runtime *util
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &StopJobsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &StopJobsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &StopJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17052,13 +17114,13 @@ func (client *Client) StopJobs(request *StopJobsRequest) (_result *StopJobsRespo
 //
 // Take note of the following items when you call this operation:
 //
-// 	- The cluster must be in the `Running` state.
+//   - The cluster must be in the `Running` state.
 //
-// 	- Clusters fall into the following types:
+//   - Clusters fall into the following types:
 //
-//     	- Regular clusters on Alibaba Cloud Public Cloud
+//   - Regular clusters on Alibaba Cloud Public Cloud
 //
-//     	- Managed clusters on Alibaba Cloud Public Cloud
+//   - Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - UnInstallAddonRequest
 //
@@ -17093,24 +17155,13 @@ func (client *Client) UnInstallAddonWithOptions(request *UnInstallAddonRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UnInstallAddonResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UnInstallAddonResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UnInstallAddonResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17123,13 +17174,13 @@ func (client *Client) UnInstallAddonWithOptions(request *UnInstallAddonRequest, 
 //
 // Take note of the following items when you call this operation:
 //
-// 	- The cluster must be in the `Running` state.
+//   - The cluster must be in the `Running` state.
 //
-// 	- Clusters fall into the following types:
+//   - Clusters fall into the following types:
 //
-//     	- Regular clusters on Alibaba Cloud Public Cloud
+//   - Regular clusters on Alibaba Cloud Public Cloud
 //
-//     	- Managed clusters on Alibaba Cloud Public Cloud
+//   - Managed clusters on Alibaba Cloud Public Cloud
 //
 // @param request - UnInstallAddonRequest
 //
@@ -17148,6 +17199,14 @@ func (client *Client) UnInstallAddon(request *UnInstallAddonRequest) (_result *U
 // Summary:
 //
 // Uninstalls software systems from an Enterprise High Performance Computing (E-HPC) cluster.
+//
+// Description:
+//
+// ## Interface Description
+//
+// When calling this interface, please note:
+//
+// The cluster status must be `Running`.
 //
 // @param tmpReq - UninstallSoftwaresRequest
 //
@@ -17180,29 +17239,26 @@ func (client *Client) UninstallSoftwaresWithOptions(tmpReq *UninstallSoftwaresRe
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UninstallSoftwaresResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UninstallSoftwaresResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UninstallSoftwaresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
 // Uninstalls software systems from an Enterprise High Performance Computing (E-HPC) cluster.
+//
+// Description:
+//
+// ## Interface Description
+//
+// When calling this interface, please note:
+//
+// The cluster status must be `Running`.
 //
 // @param request - UninstallSoftwaresRequest
 //
@@ -17220,7 +17276,7 @@ func (client *Client) UninstallSoftwares(request *UninstallSoftwaresRequest) (_r
 
 // Summary:
 //
-// Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
+// Modify the basic information of a specified cluster.
 //
 // @param tmpReq - UpdateClusterRequest
 //
@@ -17317,29 +17373,18 @@ func (client *Client) UpdateClusterWithOptions(tmpReq *UpdateClusterRequest, run
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateClusterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateClusterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
-// Modifies the configurations of an Elastic High Performance Computing (E-HPC) cluster.
+// Modify the basic information of a specified cluster.
 //
 // @param request - UpdateClusterRequest
 //
@@ -17404,24 +17449,13 @@ func (client *Client) UpdateNodesWithOptions(tmpReq *UpdateNodesRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateNodesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateNodesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateNodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17491,24 +17525,13 @@ func (client *Client) UpdateQueueWithOptions(tmpReq *UpdateQueueRequest, runtime
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateQueueResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateQueueResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateQueueResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17574,24 +17597,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateUserResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
