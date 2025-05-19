@@ -9092,13 +9092,16 @@ type GetNodeInfoForPodResponseBodyContent struct {
 	// example:
 	//
 	// cluster-****
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	HdeniIpv6SipQuota *int32  `json:"HdeniIpv6SipQuota,omitempty" xml:"HdeniIpv6SipQuota,omitempty"`
 	// Lingjun Gaomi network interface controller quota
 	//
 	// example:
 	//
 	// 10
-	HdeniQuota *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
+	HdeniQuota       *int32 `json:"HdeniQuota,omitempty" xml:"HdeniQuota,omitempty"`
+	HdeniSipQuota    *int32 `json:"HdeniSipQuota,omitempty" xml:"HdeniSipQuota,omitempty"`
+	LeniIpv6SipQuota *int32 `json:"LeniIpv6SipQuota,omitempty" xml:"LeniIpv6SipQuota,omitempty"`
 	// Lingjun Elastic Network Interface quota, including system type
 	//
 	// example:
@@ -9142,10 +9145,7 @@ type GetNodeInfoForPodResponseBodyContent struct {
 	// example:
 	//
 	// cn-wulanchabu-b
-	ZoneId            *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	HdeniIpv6SipQuota *int32  `json:"hdeniIpv6SipQuota,omitempty" xml:"hdeniIpv6SipQuota,omitempty"`
-	HdeniSipQuota     *int32  `json:"hdeniSipQuota,omitempty" xml:"hdeniSipQuota,omitempty"`
-	LeniIpv6SipQuota  *int32  `json:"leniIpv6SipQuota,omitempty" xml:"leniIpv6SipQuota,omitempty"`
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetNodeInfoForPodResponseBodyContent) String() string {
@@ -9161,8 +9161,23 @@ func (s *GetNodeInfoForPodResponseBodyContent) SetClusterId(v string) *GetNodeIn
 	return s
 }
 
+func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.HdeniIpv6SipQuota = &v
+	return s
+}
+
 func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
 	s.HdeniQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniSipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.HdeniSipQuota = &v
+	return s
+}
+
+func (s *GetNodeInfoForPodResponseBodyContent) SetLeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
+	s.LeniIpv6SipQuota = &v
 	return s
 }
 
@@ -9203,21 +9218,6 @@ func (s *GetNodeInfoForPodResponseBodyContent) SetVpcId(v string) *GetNodeInfoFo
 
 func (s *GetNodeInfoForPodResponseBodyContent) SetZoneId(v string) *GetNodeInfoForPodResponseBodyContent {
 	s.ZoneId = &v
-	return s
-}
-
-func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
-	s.HdeniIpv6SipQuota = &v
-	return s
-}
-
-func (s *GetNodeInfoForPodResponseBodyContent) SetHdeniSipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
-	s.HdeniSipQuota = &v
-	return s
-}
-
-func (s *GetNodeInfoForPodResponseBodyContent) SetLeniIpv6SipQuota(v int32) *GetNodeInfoForPodResponseBodyContent {
-	s.LeniIpv6SipQuota = &v
 	return s
 }
 
