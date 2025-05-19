@@ -179,6 +179,99 @@ func (s *CheckInstanceDatasourceResponse) SetBody(v *CheckInstanceDatasourceResp
 	return s
 }
 
+type CheckModelFeatureFGFeatureResponseBody struct {
+	FGCheckResults []*CheckModelFeatureFGFeatureResponseBodyFGCheckResults `json:"FGCheckResults,omitempty" xml:"FGCheckResults,omitempty" type:"Repeated"`
+	// example:
+	//
+	// ED4DEA2F-F216-57F0-AE28-08D791233280
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CheckModelFeatureFGFeatureResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckModelFeatureFGFeatureResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckModelFeatureFGFeatureResponseBody) SetFGCheckResults(v []*CheckModelFeatureFGFeatureResponseBodyFGCheckResults) *CheckModelFeatureFGFeatureResponseBody {
+	s.FGCheckResults = v
+	return s
+}
+
+func (s *CheckModelFeatureFGFeatureResponseBody) SetRequestId(v string) *CheckModelFeatureFGFeatureResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckModelFeatureFGFeatureResponseBodyFGCheckResults struct {
+	// example:
+	//
+	// f1[1]: these lookup_features\\"s LookupValueFeature(key) not exist in model features
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// SeqSubEx
+	RuleCode *string `json:"RuleCode,omitempty" xml:"RuleCode,omitempty"`
+	// example:
+	//
+	// True
+	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckModelFeatureFGFeatureResponseBodyFGCheckResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckModelFeatureFGFeatureResponseBodyFGCheckResults) GoString() string {
+	return s.String()
+}
+
+func (s *CheckModelFeatureFGFeatureResponseBodyFGCheckResults) SetMessage(v string) *CheckModelFeatureFGFeatureResponseBodyFGCheckResults {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckModelFeatureFGFeatureResponseBodyFGCheckResults) SetRuleCode(v string) *CheckModelFeatureFGFeatureResponseBodyFGCheckResults {
+	s.RuleCode = &v
+	return s
+}
+
+func (s *CheckModelFeatureFGFeatureResponseBodyFGCheckResults) SetStatus(v bool) *CheckModelFeatureFGFeatureResponseBodyFGCheckResults {
+	s.Status = &v
+	return s
+}
+
+type CheckModelFeatureFGFeatureResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckModelFeatureFGFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckModelFeatureFGFeatureResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckModelFeatureFGFeatureResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckModelFeatureFGFeatureResponse) SetHeaders(v map[string]*string) *CheckModelFeatureFGFeatureResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckModelFeatureFGFeatureResponse) SetStatusCode(v int32) *CheckModelFeatureFGFeatureResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckModelFeatureFGFeatureResponse) SetBody(v *CheckModelFeatureFGFeatureResponseBody) *CheckModelFeatureFGFeatureResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDatasourceRequest struct {
 	// example:
 	//
@@ -766,6 +859,150 @@ func (s *CreateInstanceResponse) SetStatusCode(v int32) *CreateInstanceResponse 
 }
 
 func (s *CreateInstanceResponse) SetBody(v *CreateInstanceResponseBody) *CreateInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateLLMConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// api-xyz
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// 8
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text-embedding-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm_config1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 30
+	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateLLMConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLLMConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLLMConfigRequest) SetApiKey(v string) *CreateLLMConfigRequest {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetBaseUrl(v string) *CreateLLMConfigRequest {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetBatchSize(v int32) *CreateLLMConfigRequest {
+	s.BatchSize = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetMaxTokens(v int32) *CreateLLMConfigRequest {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetModel(v string) *CreateLLMConfigRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetName(v string) *CreateLLMConfigRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetRps(v int32) *CreateLLMConfigRequest {
+	s.Rps = &v
+	return s
+}
+
+func (s *CreateLLMConfigRequest) SetWorkspaceId(v string) *CreateLLMConfigRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateLLMConfigResponseBody struct {
+	// example:
+	//
+	// llm_config1
+	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLLMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLLMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLLMConfigResponseBody) SetLLMConfigId(v string) *CreateLLMConfigResponseBody {
+	s.LLMConfigId = &v
+	return s
+}
+
+func (s *CreateLLMConfigResponseBody) SetRequestId(v string) *CreateLLMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLLMConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateLLMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateLLMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLLMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLLMConfigResponse) SetHeaders(v map[string]*string) *CreateLLMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLLMConfigResponse) SetStatusCode(v int32) *CreateLLMConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLLMConfigResponse) SetBody(v *CreateLLMConfigResponseBody) *CreateLLMConfigResponse {
 	s.Body = v
 	return s
 }
@@ -1459,6 +1696,53 @@ func (s *DeleteFeatureViewResponse) SetStatusCode(v int32) *DeleteFeatureViewRes
 }
 
 func (s *DeleteFeatureViewResponse) SetBody(v *DeleteFeatureViewResponseBody) *DeleteFeatureViewResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLLMConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLLMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLLMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLLMConfigResponseBody) SetRequestId(v string) *DeleteLLMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLLMConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteLLMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteLLMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLLMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLLMConfigResponse) SetHeaders(v map[string]*string) *DeleteLLMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLLMConfigResponse) SetStatusCode(v int32) *DeleteLLMConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLLMConfigResponse) SetBody(v *DeleteLLMConfigResponseBody) *DeleteLLMConfigResponse {
 	s.Body = v
 	return s
 }
@@ -2575,6 +2859,156 @@ func (s *GetInstanceResponse) SetStatusCode(v int32) *GetInstanceResponse {
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetLLMConfigResponseBody struct {
+	// example:
+	//
+	// api-abcdxy
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// 8
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// llm_config1
+	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// example:
+	//
+	// 2048
+	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// example:
+	//
+	// text-embedding-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// llm_config_name1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C03B2680-AC9C-59CD-93C5-8142B92537FA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 30
+	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s GetLLMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLLMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLLMConfigResponseBody) SetApiKey(v string) *GetLLMConfigResponseBody {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetBaseUrl(v string) *GetLLMConfigResponseBody {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetBatchSize(v int32) *GetLLMConfigResponseBody {
+	s.BatchSize = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetGmtCreateTime(v string) *GetLLMConfigResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetGmtModifiedTime(v string) *GetLLMConfigResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetLLMConfigId(v string) *GetLLMConfigResponseBody {
+	s.LLMConfigId = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetMaxTokens(v int32) *GetLLMConfigResponseBody {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetModel(v string) *GetLLMConfigResponseBody {
+	s.Model = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetName(v string) *GetLLMConfigResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetRequestId(v string) *GetLLMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetRps(v int32) *GetLLMConfigResponseBody {
+	s.Rps = &v
+	return s
+}
+
+func (s *GetLLMConfigResponseBody) SetWorkspaceId(v string) *GetLLMConfigResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type GetLLMConfigResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetLLMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetLLMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLLMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLLMConfigResponse) SetHeaders(v map[string]*string) *GetLLMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLLMConfigResponse) SetStatusCode(v int32) *GetLLMConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLLMConfigResponse) SetBody(v *GetLLMConfigResponseBody) *GetLLMConfigResponse {
 	s.Body = v
 	return s
 }
@@ -3981,6 +4415,432 @@ func (s *GetTaskResponse) SetStatusCode(v int32) *GetTaskResponse {
 }
 
 func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
+type ListDatasourceFeatureViewsRequest struct {
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
+	// example:
+	//
+	// 2025-03-19
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// example:
+	//
+	// fv
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 3
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// fs_project
+	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	ShowStorageUsage *bool   `json:"ShowStorageUsage,omitempty" xml:"ShowStorageUsage,omitempty"`
+	// example:
+	//
+	// GmtCreateTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 2025-03-14
+	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// example:
+	//
+	// Stream
+	Type    *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Verbose *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetAll(v bool) *ListDatasourceFeatureViewsRequest {
+	s.All = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetEndDate(v string) *ListDatasourceFeatureViewsRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetName(v string) *ListDatasourceFeatureViewsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetOrder(v string) *ListDatasourceFeatureViewsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetPageNumber(v int32) *ListDatasourceFeatureViewsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetPageSize(v int32) *ListDatasourceFeatureViewsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetProjectId(v string) *ListDatasourceFeatureViewsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetProjectName(v string) *ListDatasourceFeatureViewsRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetShowStorageUsage(v bool) *ListDatasourceFeatureViewsRequest {
+	s.ShowStorageUsage = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetSortBy(v string) *ListDatasourceFeatureViewsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetStartDate(v string) *ListDatasourceFeatureViewsRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetType(v string) *ListDatasourceFeatureViewsRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsRequest) SetVerbose(v bool) *ListDatasourceFeatureViewsRequest {
+	s.Verbose = &v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBody struct {
+	FeatureViews []*ListDatasourceFeatureViewsResponseBodyFeatureViews `json:"FeatureViews,omitempty" xml:"FeatureViews,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount           *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TotalUsageStatistics *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics `json:"TotalUsageStatistics,omitempty" xml:"TotalUsageStatistics,omitempty" type:"Struct"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 514F82AF-3C04-5C3D-8F38-A11261BF37B0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBody) SetFeatureViews(v []*ListDatasourceFeatureViewsResponseBodyFeatureViews) *ListDatasourceFeatureViewsResponseBody {
+	s.FeatureViews = v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBody) SetTotalCount(v int64) *ListDatasourceFeatureViewsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBody) SetTotalUsageStatistics(v *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) *ListDatasourceFeatureViewsResponseBody {
+	s.TotalUsageStatistics = v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBody) SetRequestId(v string) *ListDatasourceFeatureViewsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBodyFeatureViews struct {
+	// example:
+	//
+	// {"shard_count":5,"replication_count":1}
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// example:
+	//
+	// user
+	FeatureEntityName *string `json:"FeatureEntityName,omitempty" xml:"FeatureEntityName,omitempty"`
+	// example:
+	//
+	// 3
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// fv1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// p1
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// example:
+	//
+	// 86400
+	TTL *int32 `json:"TTL,omitempty" xml:"TTL,omitempty"`
+	// example:
+	//
+	// Batch
+	Type            *string                                                            `json:"Type,omitempty" xml:"Type,omitempty"`
+	UsageStatistics *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics `json:"UsageStatistics,omitempty" xml:"UsageStatistics,omitempty" type:"Struct"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViews) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetConfig(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.Config = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetFeatureEntityName(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.FeatureEntityName = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetFeatureViewId(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.FeatureViewId = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetName(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetProjectName(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetTTL(v int32) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.TTL = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetType(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViews) SetUsageStatistics(v *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) *ListDatasourceFeatureViewsResponseBodyFeatureViews {
+	s.UsageStatistics = v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics struct {
+	// example:
+	//
+	// 1.23
+	DiskUsage *float64 `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	// example:
+	//
+	// 0.12
+	MemoryUsage    *float64                                                                           `json:"MemoryUsage,omitempty" xml:"MemoryUsage,omitempty"`
+	ReadWriteCount []*ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount `json:"ReadWriteCount,omitempty" xml:"ReadWriteCount,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10000
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) SetDiskUsage(v float64) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics {
+	s.DiskUsage = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) SetMemoryUsage(v float64) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics {
+	s.MemoryUsage = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) SetReadWriteCount(v []*ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics {
+	s.ReadWriteCount = v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics) SetRowCount(v int64) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatistics {
+	s.RowCount = &v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount struct {
+	// example:
+	//
+	// 2025-03-18T00:00:00+08:00
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 200
+	ReadCount *int64 `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	// example:
+	//
+	// 100
+	WriteCount *int64 `json:"WriteCount,omitempty" xml:"WriteCount,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) SetDate(v string) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount {
+	s.Date = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) SetReadCount(v int64) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount {
+	s.ReadCount = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount) SetWriteCount(v int64) *ListDatasourceFeatureViewsResponseBodyFeatureViewsUsageStatisticsReadWriteCount {
+	s.WriteCount = &v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics struct {
+	// example:
+	//
+	// 12.3
+	TotalDiskUsage *float64 `json:"TotalDiskUsage,omitempty" xml:"TotalDiskUsage,omitempty"`
+	// example:
+	//
+	// 1.23
+	TotalMemoryUsage    *float64                                                                         `json:"TotalMemoryUsage,omitempty" xml:"TotalMemoryUsage,omitempty"`
+	TotalReadWriteCount []*ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount `json:"TotalReadWriteCount,omitempty" xml:"TotalReadWriteCount,omitempty" type:"Repeated"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) SetTotalDiskUsage(v float64) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics {
+	s.TotalDiskUsage = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) SetTotalMemoryUsage(v float64) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics {
+	s.TotalMemoryUsage = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics) SetTotalReadWriteCount(v []*ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatistics {
+	s.TotalReadWriteCount = v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount struct {
+	// example:
+	//
+	// 2025-03-18T00:00:00+08:00
+	Date *string `json:"Date,omitempty" xml:"Date,omitempty"`
+	// example:
+	//
+	// 456
+	TotalReadCount *int64 `json:"TotalReadCount,omitempty" xml:"TotalReadCount,omitempty"`
+	// example:
+	//
+	// 123
+	TotalWriteCount *int64 `json:"TotalWriteCount,omitempty" xml:"TotalWriteCount,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) SetDate(v string) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount {
+	s.Date = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) SetTotalReadCount(v int64) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount {
+	s.TotalReadCount = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount) SetTotalWriteCount(v int64) *ListDatasourceFeatureViewsResponseBodyTotalUsageStatisticsTotalReadWriteCount {
+	s.TotalWriteCount = &v
+	return s
+}
+
+type ListDatasourceFeatureViewsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDatasourceFeatureViewsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDatasourceFeatureViewsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDatasourceFeatureViewsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDatasourceFeatureViewsResponse) SetHeaders(v map[string]*string) *ListDatasourceFeatureViewsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponse) SetStatusCode(v int32) *ListDatasourceFeatureViewsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDatasourceFeatureViewsResponse) SetBody(v *ListDatasourceFeatureViewsResponseBody) *ListDatasourceFeatureViewsResponse {
 	s.Body = v
 	return s
 }
@@ -5555,6 +6415,296 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListLLMConfigsRequest struct {
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// llm_config_1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// None
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// example:
+	//
+	// Asc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// GmtModifiedTime
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListLLMConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLLMConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLLMConfigsRequest) SetMaxResults(v int32) *ListLLMConfigsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetName(v string) *ListLLMConfigsRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetNextToken(v string) *ListLLMConfigsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetOrder(v string) *ListLLMConfigsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetPageNumber(v int32) *ListLLMConfigsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetPageSize(v int32) *ListLLMConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetSortBy(v string) *ListLLMConfigsRequest {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListLLMConfigsRequest) SetWorkspaceId(v string) *ListLLMConfigsRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListLLMConfigsResponseBody struct {
+	// This parameter is required.
+	//
+	// if can be null:
+	// false
+	LLMConfigs []*ListLLMConfigsResponseBodyLLMConfigs `json:"LLMConfigs,omitempty" xml:"LLMConfigs,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// example:
+	//
+	// AAAAAV3MpHK1AP0pfERHZN5pu6mbU5D/SFHCHMApYkMcWlp5
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 898DB17C-09E9-5C41-909D-269BA183EB92
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 10
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLLMConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLLMConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLLMConfigsResponseBody) SetLLMConfigs(v []*ListLLMConfigsResponseBodyLLMConfigs) *ListLLMConfigsResponseBody {
+	s.LLMConfigs = v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBody) SetMaxResults(v int32) *ListLLMConfigsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBody) SetNextToken(v string) *ListLLMConfigsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBody) SetRequestId(v string) *ListLLMConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBody) SetTotalCount(v int64) *ListLLMConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLLMConfigsResponseBodyLLMConfigs struct {
+	// example:
+	//
+	// apikey-abcdxy
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// 8
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 2023-07-04T11:26:09.036+08:00
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// example:
+	//
+	// llm_config1
+	LLMConfigId *string `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	// example:
+	//
+	// 2048
+	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// example:
+	//
+	// text-embedding-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// example:
+	//
+	// llm_config_name1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// rg-aek2vtzqjaohzqi
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// 30
+	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+	// example:
+	//
+	// 234
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListLLMConfigsResponseBodyLLMConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLLMConfigsResponseBodyLLMConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetApiKey(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetBaseUrl(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetBatchSize(v int32) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.BatchSize = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetGmtCreateTime(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetGmtModifiedTime(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetLLMConfigId(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.LLMConfigId = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetMaxTokens(v int32) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetModel(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.Model = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetName(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetResourceGroupId(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetRps(v int32) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.Rps = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponseBodyLLMConfigs) SetWorkspaceId(v string) *ListLLMConfigsResponseBodyLLMConfigs {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListLLMConfigsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListLLMConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListLLMConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLLMConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLLMConfigsResponse) SetHeaders(v map[string]*string) *ListLLMConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLLMConfigsResponse) SetStatusCode(v int32) *ListLLMConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLLMConfigsResponse) SetBody(v *ListLLMConfigsResponseBody) *ListLLMConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type ListLabelTablesRequest struct {
 	LabelTableIds []*string `json:"LabelTableIds,omitempty" xml:"LabelTableIds,omitempty" type:"Repeated"`
 	// example:
@@ -6445,6 +7595,229 @@ func (s *ListProjectFeatureViewsResponse) SetStatusCode(v int32) *ListProjectFea
 }
 
 func (s *ListProjectFeatureViewsResponse) SetBody(v *ListProjectFeatureViewsResponseBody) *ListProjectFeatureViewsResponse {
+	s.Body = v
+	return s
+}
+
+type ListProjectFeaturesRequest struct {
+	// example:
+	//
+	// ff1
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// example:
+	//
+	// {"feature_view_name":"fv1"}
+	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
+	// example:
+	//
+	// f1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// Desc
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// ModelFeatureCount
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListProjectFeaturesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFeaturesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFeaturesRequest) SetAliasName(v string) *ListProjectFeaturesRequest {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetFilter(v string) *ListProjectFeaturesRequest {
+	s.Filter = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetName(v string) *ListProjectFeaturesRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetOrder(v string) *ListProjectFeaturesRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetPageNumber(v int32) *ListProjectFeaturesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetPageSize(v int32) *ListProjectFeaturesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListProjectFeaturesRequest) SetSortBy(v string) *ListProjectFeaturesRequest {
+	s.SortBy = &v
+	return s
+}
+
+type ListProjectFeaturesResponseBody struct {
+	Features []*ListProjectFeaturesResponseBodyFeatures `json:"Features,omitempty" xml:"Features,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 10
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 7D497816-607C-5B67-97B1-61354B6ACB2B
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListProjectFeaturesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFeaturesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFeaturesResponseBody) SetFeatures(v []*ListProjectFeaturesResponseBodyFeatures) *ListProjectFeaturesResponseBody {
+	s.Features = v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBody) SetTotalCount(v int32) *ListProjectFeaturesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBody) SetRequestId(v string) *ListProjectFeaturesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListProjectFeaturesResponseBodyFeatures struct {
+	// example:
+	//
+	// age1,age2
+	AliasNames *string `json:"AliasNames,omitempty" xml:"AliasNames,omitempty"`
+	// example:
+	//
+	// 1
+	FeatureViewId *string `json:"FeatureViewId,omitempty" xml:"FeatureViewId,omitempty"`
+	// example:
+	//
+	// fv1
+	FeatureViewName *string `json:"FeatureViewName,omitempty" xml:"FeatureViewName,omitempty"`
+	// example:
+	//
+	// 2021-12-15T23:24:33.132+08:00
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// example:
+	//
+	// 10
+	ModelFeatureCount *int32 `json:"ModelFeatureCount,omitempty" xml:"ModelFeatureCount,omitempty"`
+	// example:
+	//
+	// f1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 123456
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// STRING
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListProjectFeaturesResponseBodyFeatures) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFeaturesResponseBodyFeatures) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetAliasNames(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.AliasNames = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetFeatureViewId(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.FeatureViewId = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetFeatureViewName(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.FeatureViewName = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetGmtCreateTime(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetModelFeatureCount(v int32) *ListProjectFeaturesResponseBodyFeatures {
+	s.ModelFeatureCount = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetName(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.Name = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetOwner(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponseBodyFeatures) SetType(v string) *ListProjectFeaturesResponseBodyFeatures {
+	s.Type = &v
+	return s
+}
+
+type ListProjectFeaturesResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListProjectFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListProjectFeaturesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProjectFeaturesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListProjectFeaturesResponse) SetHeaders(v map[string]*string) *ListProjectFeaturesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListProjectFeaturesResponse) SetStatusCode(v int32) *ListProjectFeaturesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListProjectFeaturesResponse) SetBody(v *ListProjectFeaturesResponseBody) *ListProjectFeaturesResponse {
 	s.Body = v
 	return s
 }
@@ -7358,6 +8731,57 @@ func (s *PublishFeatureViewTableResponse) SetBody(v *PublishFeatureViewTableResp
 	return s
 }
 
+type StopTaskResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 514F82AF-3C04-5C3D-8F38-A11261BF37B0
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s StopTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskResponseBody) SetRequestId(v string) *StopTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopTaskResponse struct {
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *StopTaskResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s StopTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopTaskResponse) SetHeaders(v map[string]*string) *StopTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopTaskResponse) SetStatusCode(v int32) *StopTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopTaskResponse) SetBody(v *StopTaskResponseBody) *StopTaskResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDatasourceRequest struct {
 	// example:
 	//
@@ -7445,6 +8869,139 @@ func (s *UpdateDatasourceResponse) SetStatusCode(v int32) *UpdateDatasourceRespo
 }
 
 func (s *UpdateDatasourceResponse) SetBody(v *UpdateDatasourceResponseBody) *UpdateDatasourceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateLLMConfigRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// apikey-***
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// https://dashscope.aliyuncs.com/compatible-mode/v1
+	BaseUrl *string `json:"BaseUrl,omitempty" xml:"BaseUrl,omitempty"`
+	// example:
+	//
+	// 8
+	BatchSize *int32 `json:"BatchSize,omitempty" xml:"BatchSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2048
+	MaxTokens *int32 `json:"MaxTokens,omitempty" xml:"MaxTokens,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// text-embedding-v1
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// llm-config1
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 30
+	Rps *int32 `json:"Rps,omitempty" xml:"Rps,omitempty"`
+}
+
+func (s UpdateLLMConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLLMConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLLMConfigRequest) SetApiKey(v string) *UpdateLLMConfigRequest {
+	s.ApiKey = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetBaseUrl(v string) *UpdateLLMConfigRequest {
+	s.BaseUrl = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetBatchSize(v int32) *UpdateLLMConfigRequest {
+	s.BatchSize = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetMaxTokens(v int32) *UpdateLLMConfigRequest {
+	s.MaxTokens = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetModel(v string) *UpdateLLMConfigRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetName(v string) *UpdateLLMConfigRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateLLMConfigRequest) SetRps(v int32) *UpdateLLMConfigRequest {
+	s.Rps = &v
+	return s
+}
+
+type UpdateLLMConfigResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLLMConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLLMConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLLMConfigResponseBody) SetRequestId(v string) *UpdateLLMConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLLMConfigResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateLLMConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateLLMConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLLMConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLLMConfigResponse) SetHeaders(v map[string]*string) *UpdateLLMConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLLMConfigResponse) SetStatusCode(v int32) *UpdateLLMConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLLMConfigResponse) SetBody(v *UpdateLLMConfigResponseBody) *UpdateLLMConfigResponse {
 	s.Body = v
 	return s
 }
@@ -8430,6 +9987,56 @@ func (client *Client) CheckInstanceDatasource(InstanceId *string, request *Check
 
 // Summary:
 //
+// 检查FG配置内容是否正确，是否满足所有规则。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckModelFeatureFGFeatureResponse
+func (client *Client) CheckModelFeatureFGFeatureWithOptions(InstanceId *string, ModelFeatureId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CheckModelFeatureFGFeatureResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckModelFeatureFGFeature"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/modelfeatures/" + tea.StringValue(openapiutil.GetEncodeParam(ModelFeatureId)) + "/action/checkfgfeature"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckModelFeatureFGFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检查FG配置内容是否正确，是否满足所有规则。
+//
+// @return CheckModelFeatureFGFeatureResponse
+func (client *Client) CheckModelFeatureFGFeature(InstanceId *string, ModelFeatureId *string) (_result *CheckModelFeatureFGFeatureResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CheckModelFeatureFGFeatureResponse{}
+	_body, _err := client.CheckModelFeatureFGFeatureWithOptions(InstanceId, ModelFeatureId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 创建数据源。
 //
 // @param request - CreateDatasourceRequest
@@ -8749,6 +10356,98 @@ func (client *Client) CreateInstance(request *CreateInstanceRequest) (_result *C
 	headers := make(map[string]*string)
 	_result = &CreateInstanceResponse{}
 	_body, _err := client.CreateInstanceWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建大模型调用信息配置
+//
+// @param request - CreateLLMConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateLLMConfigResponse
+func (client *Client) CreateLLMConfigWithOptions(InstanceId *string, request *CreateLLMConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLLMConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseUrl)) {
+		body["BaseUrl"] = request.BaseUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchSize)) {
+		body["BatchSize"] = request.BatchSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTokens)) {
+		body["MaxTokens"] = request.MaxTokens
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rps)) {
+		body["Rps"] = request.Rps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLLMConfig"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/llmconfigs"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLLMConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建大模型调用信息配置
+//
+// @param request - CreateLLMConfigRequest
+//
+// @return CreateLLMConfigResponse
+func (client *Client) CreateLLMConfig(InstanceId *string, request *CreateLLMConfigRequest) (_result *CreateLLMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLLMConfigResponse{}
+	_body, _err := client.CreateLLMConfigWithOptions(InstanceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9207,6 +10906,56 @@ func (client *Client) DeleteFeatureView(InstanceId *string, FeatureViewId *strin
 	headers := make(map[string]*string)
 	_result = &DeleteFeatureViewResponse{}
 	_body, _err := client.DeleteFeatureViewWithOptions(InstanceId, FeatureViewId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除大模型调用信息配置
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteLLMConfigResponse
+func (client *Client) DeleteLLMConfigWithOptions(InstanceId *string, LLMConfigId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLLMConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLLMConfig"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/llmconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(LLMConfigId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLLMConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除大模型调用信息配置
+//
+// @return DeleteLLMConfigResponse
+func (client *Client) DeleteLLMConfig(InstanceId *string, LLMConfigId *string) (_result *DeleteLLMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLLMConfigResponse{}
+	_body, _err := client.DeleteLLMConfigWithOptions(InstanceId, LLMConfigId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9696,6 +11445,56 @@ func (client *Client) GetInstance(InstanceId *string) (_result *GetInstanceRespo
 
 // Summary:
 //
+// 获取 LLMConfig 信息
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLLMConfigResponse
+func (client *Client) GetLLMConfigWithOptions(InstanceId *string, LLMConfigId *string, RegionId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLLMConfigResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLLMConfig"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/llmconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(LLMConfigId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLLMConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取 LLMConfig 信息
+//
+// @return GetLLMConfigResponse
+func (client *Client) GetLLMConfig(InstanceId *string, LLMConfigId *string, RegionId *string) (_result *GetLLMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLLMConfigResponse{}
+	_body, _err := client.GetLLMConfigWithOptions(InstanceId, LLMConfigId, RegionId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Label表详细信息。
 //
 // @param headers - map
@@ -10087,6 +11886,118 @@ func (client *Client) GetTask(InstanceId *string, TaskId *string) (_result *GetT
 	headers := make(map[string]*string)
 	_result = &GetTaskResponse{}
 	_body, _err := client.GetTaskWithOptions(InstanceId, TaskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据源下所有特征视图信息。
+//
+// @param request - ListDatasourceFeatureViewsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDatasourceFeatureViewsResponse
+func (client *Client) ListDatasourceFeatureViewsWithOptions(InstanceId *string, DatasourceId *string, request *ListDatasourceFeatureViewsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasourceFeatureViewsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowStorageUsage)) {
+		query["ShowStorageUsage"] = request.ShowStorageUsage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDatasourceFeatureViews"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/datasources/" + tea.StringValue(openapiutil.GetEncodeParam(DatasourceId)) + "/featureviews"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDatasourceFeatureViewsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取数据源下所有特征视图信息。
+//
+// @param request - ListDatasourceFeatureViewsRequest
+//
+// @return ListDatasourceFeatureViewsResponse
+func (client *Client) ListDatasourceFeatureViews(InstanceId *string, DatasourceId *string, request *ListDatasourceFeatureViewsRequest) (_result *ListDatasourceFeatureViewsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDatasourceFeatureViewsResponse{}
+	_body, _err := client.ListDatasourceFeatureViewsWithOptions(InstanceId, DatasourceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10706,6 +12617,98 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 
 // Summary:
 //
+// 获取大模型调用信息配置
+//
+// @param request - ListLLMConfigsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListLLMConfigsResponse
+func (client *Client) ListLLMConfigsWithOptions(InstanceId *string, request *ListLLMConfigsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListLLMConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLLMConfigs"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/llmconfigs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLLMConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取大模型调用信息配置
+//
+// @param request - ListLLMConfigsRequest
+//
+// @return ListLLMConfigsResponse
+func (client *Client) ListLLMConfigs(InstanceId *string, request *ListLLMConfigsRequest) (_result *ListLLMConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListLLMConfigsResponse{}
+	_body, _err := client.ListLLMConfigsWithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 获取Label表列表。
 //
 // @param tmpReq - ListLabelTablesRequest
@@ -11007,6 +13010,94 @@ func (client *Client) ListProjectFeatureViews(InstanceId *string, ProjectId *str
 	headers := make(map[string]*string)
 	_result = &ListProjectFeatureViewsResponse{}
 	_body, _err := client.ListProjectFeatureViewsWithOptions(InstanceId, ProjectId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取项目下所有特征信息
+//
+// @param request - ListProjectFeaturesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProjectFeaturesResponse
+func (client *Client) ListProjectFeaturesWithOptions(InstanceId *string, ProjectId *string, request *ListProjectFeaturesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProjectFeaturesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListProjectFeatures"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/projects/" + tea.StringValue(openapiutil.GetEncodeParam(ProjectId)) + "/features"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListProjectFeaturesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取项目下所有特征信息
+//
+// @param request - ListProjectFeaturesRequest
+//
+// @return ListProjectFeaturesResponse
+func (client *Client) ListProjectFeatures(InstanceId *string, ProjectId *string, request *ListProjectFeaturesRequest) (_result *ListProjectFeaturesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListProjectFeaturesResponse{}
+	_body, _err := client.ListProjectFeaturesWithOptions(InstanceId, ProjectId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11360,6 +13451,56 @@ func (client *Client) PublishFeatureViewTable(InstanceId *string, FeatureViewId 
 
 // Summary:
 //
+// 停止任务。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StopTaskResponse
+func (client *Client) StopTaskWithOptions(InstanceId *string, TaskId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopTask"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/tasks/" + tea.StringValue(openapiutil.GetEncodeParam(TaskId)) + "/action/stop"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 停止任务。
+//
+// @return StopTaskResponse
+func (client *Client) StopTask(InstanceId *string, TaskId *string) (_result *StopTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopTaskResponse{}
+	_body, _err := client.StopTaskWithOptions(InstanceId, TaskId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 更新数据源信息。
 //
 // @param request - UpdateDatasourceRequest
@@ -11423,6 +13564,94 @@ func (client *Client) UpdateDatasource(InstanceId *string, DatasourceId *string,
 	headers := make(map[string]*string)
 	_result = &UpdateDatasourceResponse{}
 	_body, _err := client.UpdateDatasourceWithOptions(InstanceId, DatasourceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新大模型调用信息配置
+//
+// @param request - UpdateLLMConfigRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateLLMConfigResponse
+func (client *Client) UpdateLLMConfigWithOptions(InstanceId *string, LLMConfigId *string, request *UpdateLLMConfigRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLLMConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiKey)) {
+		body["ApiKey"] = request.ApiKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaseUrl)) {
+		body["BaseUrl"] = request.BaseUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BatchSize)) {
+		body["BatchSize"] = request.BatchSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxTokens)) {
+		body["MaxTokens"] = request.MaxTokens
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Model)) {
+		body["Model"] = request.Model
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rps)) {
+		body["Rps"] = request.Rps
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLLMConfig"),
+		Version:     tea.String("2023-06-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(openapiutil.GetEncodeParam(InstanceId)) + "/llmconfigs/" + tea.StringValue(openapiutil.GetEncodeParam(LLMConfigId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLLMConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新大模型调用信息配置
+//
+// @param request - UpdateLLMConfigRequest
+//
+// @return UpdateLLMConfigResponse
+func (client *Client) UpdateLLMConfig(InstanceId *string, LLMConfigId *string, request *UpdateLLMConfigRequest) (_result *UpdateLLMConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLLMConfigResponse{}
+	_body, _err := client.UpdateLLMConfigWithOptions(InstanceId, LLMConfigId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
