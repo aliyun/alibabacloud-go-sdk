@@ -1116,6 +1116,7 @@ func (s *TaskSnapshot) SetVersion(v string) *TaskSnapshot {
 }
 
 type Template struct {
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
 	// This parameter is required.
 	Creator             *int64  `json:"creator,omitempty" xml:"creator,omitempty"`
 	DisplaySparkVersion *string `json:"displaySparkVersion,omitempty" xml:"displaySparkVersion,omitempty"`
@@ -1124,8 +1125,10 @@ type Template struct {
 	GmtCreated *string `json:"gmtCreated,omitempty" xml:"gmtCreated,omitempty"`
 	// This parameter is required.
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	IsDefault   *bool   `json:"isDefault,omitempty" xml:"isDefault,omitempty"`
 	// This parameter is required.
 	Modifier  *int64       `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	Name      *string      `json:"name,omitempty" xml:"name,omitempty"`
 	SparkConf []*SparkConf `json:"sparkConf,omitempty" xml:"sparkConf,omitempty" type:"Repeated"`
 	// This parameter is required.
 	SparkDriverCores *int32 `json:"sparkDriverCores,omitempty" xml:"sparkDriverCores,omitempty"`
@@ -1150,6 +1153,11 @@ func (s Template) String() string {
 
 func (s Template) GoString() string {
 	return s.String()
+}
+
+func (s *Template) SetBizId(v string) *Template {
+	s.BizId = &v
+	return s
 }
 
 func (s *Template) SetCreator(v int64) *Template {
@@ -1177,8 +1185,18 @@ func (s *Template) SetGmtModified(v string) *Template {
 	return s
 }
 
+func (s *Template) SetIsDefault(v bool) *Template {
+	s.IsDefault = &v
+	return s
+}
+
 func (s *Template) SetModifier(v int64) *Template {
 	s.Modifier = &v
+	return s
+}
+
+func (s *Template) SetName(v string) *Template {
+	s.Name = &v
 	return s
 }
 
@@ -2547,7 +2565,8 @@ type CreateSessionClusterRequest struct {
 	// example:
 	//
 	// spark_job_name
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+	PublicEndpointEnabled *bool   `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
 	// The queue name.
 	//
 	// example:
@@ -2613,6 +2632,11 @@ func (s *CreateSessionClusterRequest) SetKind(v string) *CreateSessionClusterReq
 
 func (s *CreateSessionClusterRequest) SetName(v string) *CreateSessionClusterRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateSessionClusterRequest) SetPublicEndpointEnabled(v bool) *CreateSessionClusterRequest {
+	s.PublicEndpointEnabled = &v
 	return s
 }
 
@@ -4096,7 +4120,8 @@ type GetSessionClusterResponseBodySessionCluster struct {
 	// example:
 	//
 	// test
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+	PublicEndpointEnabled *bool   `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
 	// The queue name.
 	//
 	// example:
@@ -4235,6 +4260,11 @@ func (s *GetSessionClusterResponseBodySessionCluster) SetKind(v string) *GetSess
 
 func (s *GetSessionClusterResponseBodySessionCluster) SetName(v string) *GetSessionClusterResponseBodySessionCluster {
 	s.Name = &v
+	return s
+}
+
+func (s *GetSessionClusterResponseBodySessionCluster) SetPublicEndpointEnabled(v bool) *GetSessionClusterResponseBodySessionCluster {
+	s.PublicEndpointEnabled = &v
 	return s
 }
 
@@ -4663,7 +4693,8 @@ type GetTemplateRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	RegionId      *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
+	TemplateBizId *string `json:"templateBizId,omitempty" xml:"templateBizId,omitempty"`
 	// The template type.
 	//
 	// Valid values:
@@ -4688,6 +4719,11 @@ func (s GetTemplateRequest) GoString() string {
 
 func (s *GetTemplateRequest) SetRegionId(v string) *GetTemplateRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetTemplateBizId(v string) *GetTemplateRequest {
+	s.TemplateBizId = &v
 	return s
 }
 
@@ -6684,7 +6720,8 @@ type ListSessionClustersResponseBodySessionClusters struct {
 	// example:
 	//
 	// adhoc_query
-	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	Name                  *string `json:"name,omitempty" xml:"name,omitempty"`
+	PublicEndpointEnabled *bool   `json:"publicEndpointEnabled,omitempty" xml:"publicEndpointEnabled,omitempty"`
 	// The name of the queue that is used to run the session.
 	//
 	// example:
@@ -6818,6 +6855,11 @@ func (s *ListSessionClustersResponseBodySessionClusters) SetKind(v string) *List
 
 func (s *ListSessionClustersResponseBodySessionClusters) SetName(v string) *ListSessionClustersResponseBodySessionClusters {
 	s.Name = &v
+	return s
+}
+
+func (s *ListSessionClustersResponseBodySessionClusters) SetPublicEndpointEnabled(v bool) *ListSessionClustersResponseBodySessionClusters {
+	s.PublicEndpointEnabled = &v
 	return s
 }
 
@@ -7918,6 +7960,7 @@ type ListWorkspacesResponseBodyWorkspacesPrePaidQuota struct {
 	//
 	// {\\"cpu\\":\\"1\\",\\"memory\\":\\"4Gi\\",\\"cu\\":\\"1\\"}
 	MaxResource *string `json:"maxResource,omitempty" xml:"maxResource,omitempty"`
+	OrderId     *string `json:"orderId,omitempty" xml:"orderId,omitempty"`
 	// The status of the subscription quota. Valid values:
 	//
 	// 	- NORMAL
@@ -7973,6 +8016,11 @@ func (s *ListWorkspacesResponseBodyWorkspacesPrePaidQuota) SetInstanceId(v strin
 
 func (s *ListWorkspacesResponseBodyWorkspacesPrePaidQuota) SetMaxResource(v string) *ListWorkspacesResponseBodyWorkspacesPrePaidQuota {
 	s.MaxResource = &v
+	return s
+}
+
+func (s *ListWorkspacesResponseBodyWorkspacesPrePaidQuota) SetOrderId(v string) *ListWorkspacesResponseBodyWorkspacesPrePaidQuota {
+	s.OrderId = &v
 	return s
 }
 
@@ -10525,6 +10573,10 @@ func (client *Client) CreateSessionClusterWithOptions(workspaceId *string, reque
 		body["name"] = request.Name
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PublicEndpointEnabled)) {
+		body["publicEndpointEnabled"] = request.PublicEndpointEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.QueueName)) {
 		body["queueName"] = request.QueueName
 	}
@@ -11226,6 +11278,10 @@ func (client *Client) GetTemplateWithOptions(workspaceBizId *string, request *Ge
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["regionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBizId)) {
+		query["templateBizId"] = request.TemplateBizId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
