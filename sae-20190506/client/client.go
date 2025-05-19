@@ -8749,6 +8749,7 @@ type AbortChangeOrderRequest struct {
 	//
 	// be2e1c76-682b-4897-98d3-1d8d6478****
 	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+	Rollback      *bool   `json:"Rollback,omitempty" xml:"Rollback,omitempty"`
 }
 
 func (s AbortChangeOrderRequest) String() string {
@@ -8761,6 +8762,11 @@ func (s AbortChangeOrderRequest) GoString() string {
 
 func (s *AbortChangeOrderRequest) SetChangeOrderId(v string) *AbortChangeOrderRequest {
 	s.ChangeOrderId = &v
+	return s
+}
+
+func (s *AbortChangeOrderRequest) SetRollback(v bool) *AbortChangeOrderRequest {
+	s.Rollback = &v
 	return s
 }
 
@@ -51719,6 +51725,10 @@ func (client *Client) AbortChangeOrderWithOptions(request *AbortChangeOrderReque
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChangeOrderId)) {
 		query["ChangeOrderId"] = request.ChangeOrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rollback)) {
+		query["Rollback"] = request.Rollback
 	}
 
 	req := &openapi.OpenApiRequest{
