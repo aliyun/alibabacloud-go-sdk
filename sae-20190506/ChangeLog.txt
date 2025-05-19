@@ -2,6 +2,10 @@
 - Update API AbortChangeOrder: add request parameters Rollback.
 
 
+2025-05-19 Version: v4.2.1
+- Update API AbortChangeOrder: add request parameters Rollback.
+
+
 2025-05-16 Version: v4.2.0
 - Support API CreateOrUpdateSwimmingLane.
 - Support API CreateOrUpdateSwimmingLaneGroup.
