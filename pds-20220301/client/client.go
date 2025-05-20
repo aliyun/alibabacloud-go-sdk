@@ -9587,6 +9587,7 @@ func (s *ClearRecyclebinResponse) SetBody(v *ClearRecyclebinResponseBody) *Clear
 }
 
 type CompleteFileRequest struct {
+	Crc64Hash *string `json:"crc64_hash,omitempty" xml:"crc64_hash,omitempty"`
 	// The drive ID.
 	//
 	// This parameter is required.
@@ -9619,6 +9620,11 @@ func (s CompleteFileRequest) String() string {
 
 func (s CompleteFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CompleteFileRequest) SetCrc64Hash(v string) *CompleteFileRequest {
+	s.Crc64Hash = &v
+	return s
 }
 
 func (s *CompleteFileRequest) SetDriveId(v string) *CompleteFileRequest {
@@ -14647,7 +14653,12 @@ type GetShareLinkByAnonymousResponseBody struct {
 	//
 	// 2020-08-20T06:51:27.292Z
 	Expiration *string `json:"expiration,omitempty" xml:"expiration,omitempty"`
-	HasPwd     *bool   `json:"has_pwd,omitempty" xml:"has_pwd,omitempty"`
+	// Indicates whether a password is specified for the share link.
+	//
+	// example:
+	//
+	// true
+	HasPwd *bool `json:"has_pwd,omitempty" xml:"has_pwd,omitempty"`
 	// The number of times that the shared files are previewed.
 	//
 	// example:
@@ -15533,15 +15544,15 @@ func (s *GetUserResponse) SetBody(v *User) *GetUserResponse {
 }
 
 type GetVideoPreviewPlayInfoRequest struct {
-	// The preview type. You must enable the corresponding video transcoding feature. Valid values:
+	// The category. It is the transcoding mode that you want to use. Valid values:
 	//
-	// 	- live_transcoding: previews a live stream while transcoding is in progress.
+	// 	- live_transcoding: plays a live stream while transcoding is in progress.
 	//
-	// 	- quick_video: previews a video while transcoding is in progress.
+	// 	- quick_video: plays a video while transcoding is in progress.
 	//
-	// 	- offline_audio: previews a piece of audio after the audio is transcoded offline.
+	// 	- offline_audio: plays a piece of audio after the audio is transcoded offline.
 	//
-	// 	- offline_video: previews a video after the video is transcoded offline.
+	// 	- offline_video: plays a video after the video is transcoded offline.
 	//
 	// This parameter is required.
 	//
@@ -15562,16 +15573,26 @@ type GetVideoPreviewPlayInfoRequest struct {
 	// example:
 	//
 	// 9520943DC264
-	FileId       *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
-	GetMasterUrl *bool   `json:"get_master_url,omitempty" xml:"get_master_url,omitempty"`
-	// Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged for the value-added service fees generated for transcoding.
+	FileId *string `json:"file_id,omitempty" xml:"file_id,omitempty"`
+	// Specifies whether to obtain the URL of the master M3U8 playlist. This parameter is valid only if the category parameter is set to quick_video.
+	//
+	// example:
+	//
+	// false
+	GetMasterUrl *bool `json:"get_master_url,omitempty" xml:"get_master_url,omitempty"`
+	// Specifies whether not to query the playback URL. If you set this parameter to true, only transcoding metadata is returned. The video is not transcoded in the TS format, and the playback URL is not returned. If you set this parameter to false, the playback URL is returned. If the video has not been transcoded by using the template specified by template_id, the transcoding process is triggered. You are charged value-added service fees generated for transcoding.
 	//
 	// example:
 	//
 	// true
 	GetWithoutUrl *bool `json:"get_without_url,omitempty" xml:"get_without_url,omitempty"`
-	ReTranscode   *bool `json:"re_transcode,omitempty" xml:"re_transcode,omitempty"`
-	// The share ID. If you want to manage a file by using a sharing link, carry the `x-share-token` header in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify at least either `share_id` or `drive_id`.
+	// Specifies whether to initiate re-transcoding. If you set this parameter to true, the file is re-transcoded, with a fixed 202 response for retries. Before you use this parameter, contact us to enable it for you.
+	//
+	// example:
+	//
+	// true
+	ReTranscode *bool `json:"re_transcode,omitempty" xml:"re_transcode,omitempty"`
+	// The share ID. If you want to share a file, carry the `x-share-token` header for authentication in the request and specify share_id. In this case, `drive_id` is invalid. Otherwise, use an `AccessKey pair` or `access token` for authentication and specify `drive_id`. You must specify one of `share_id` and `drive_id`.
 	//
 	// example:
 	//
@@ -15583,7 +15604,7 @@ type GetVideoPreviewPlayInfoRequest struct {
 	//
 	// 264_480p
 	TemplateId *string `json:"template_id,omitempty" xml:"template_id,omitempty"`
-	// The validity period of the video preview. Unit: seconds. Default value: 900. Maximum value: 14400.
+	// The validity period of the URL. Unit: seconds. Default value: 900, which is 15 minutes. Maximum value: 14400, which is 4 hours.
 	//
 	// example:
 	//
@@ -20114,6 +20135,16 @@ type SearchFileRequest struct {
 	//
 	// 1
 	DriveId *string `json:"drive_id,omitempty" xml:"drive_id,omitempty"`
+	// The field that is used to return additional information about files. Valid values:
+	//
+	// 	- dir_size: returns the statistics on each subfolder in the response.
+	//
+	// 	- id_path: returns the id_path value of each child subject in the response.
+	//
+	// 	- name_path: returns the name_path value of each child subject in the response.
+	//
+	// You can specify multiple fields by separating them with commas (,). Example: "id_path,name_path,dir_size".
+	//
 	// example:
 	//
 	// url,thumbnail
@@ -23629,6 +23660,10 @@ func (client *Client) CompleteFileWithOptions(request *CompleteFileRequest, head
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Crc64Hash)) {
+		body["crc64_hash"] = request.Crc64Hash
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DriveId)) {
 		body["drive_id"] = request.DriveId
 	}
@@ -27304,7 +27339,19 @@ func (client *Client) GetUser(request *GetUserRequest) (_result *GetUserResponse
 //
 // Description:
 //
-// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
+//	  **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service (PDS).**
+//
+//		- Before you call this operation, make sure that the transcoding mode which you want to specify by using the category parameter is enabled for the domain. To enable the transcoding feature and configure transcoding templates, contact our technical support. For more information, see [Contact us](https://help.aliyun.com/document_detail/175917.html).
+//
+//		- This operation is a synchronous operation. If the specified file is not transcoded in the specified transcoding mode, the API call returns **202 VideoPreviewWaitAndRetry**, which indicates that you need to wait a moment and try again. If the specified file cannot be transcoded in the specified transcoding mode, the API call returns **404 NotFound.VideoPreviewInfo**.
+//
+//		- This operation generates transcoding data and stores it in the space that is used to store the value-added data of the tenant domain. This way, end users can play audio and videos online. For specific transcoding modes, this operation provides domain-level deduplication for transcoding.
+//
+//		- If the transcoding mode is set to quick_video, the playback URL returned by this operation contains the `{` and `}` characters that are not URL-encoded. For development on iOS, decode and encode the returned URL first to avoid decoding failure of the NSURL library of the system.
+//
+//		- If the transcoding mode is set to quick_video, you cannot use the GET Range method to obtain segments of the M3U8 file in the playback URL.
+//
+// >
 //
 // @param request - GetVideoPreviewPlayInfoRequest
 //
@@ -27385,7 +27432,19 @@ func (client *Client) GetVideoPreviewPlayInfoWithOptions(request *GetVideoPrevie
 //
 // Description:
 //
-// For more information about best practices, see [Preview videos online](https://help.aliyun.com/document_detail/427477.html).
+//	  **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/425220.html) of Drive and Photo Service (PDS).**
+//
+//		- Before you call this operation, make sure that the transcoding mode which you want to specify by using the category parameter is enabled for the domain. To enable the transcoding feature and configure transcoding templates, contact our technical support. For more information, see [Contact us](https://help.aliyun.com/document_detail/175917.html).
+//
+//		- This operation is a synchronous operation. If the specified file is not transcoded in the specified transcoding mode, the API call returns **202 VideoPreviewWaitAndRetry**, which indicates that you need to wait a moment and try again. If the specified file cannot be transcoded in the specified transcoding mode, the API call returns **404 NotFound.VideoPreviewInfo**.
+//
+//		- This operation generates transcoding data and stores it in the space that is used to store the value-added data of the tenant domain. This way, end users can play audio and videos online. For specific transcoding modes, this operation provides domain-level deduplication for transcoding.
+//
+//		- If the transcoding mode is set to quick_video, the playback URL returned by this operation contains the `{` and `}` characters that are not URL-encoded. For development on iOS, decode and encode the returned URL first to avoid decoding failure of the NSURL library of the system.
+//
+//		- If the transcoding mode is set to quick_video, you cannot use the GET Range method to obtain segments of the M3U8 file in the playback URL.
+//
+// >
 //
 // @param request - GetVideoPreviewPlayInfoRequest
 //
