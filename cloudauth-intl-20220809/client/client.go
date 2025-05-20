@@ -3538,6 +3538,7 @@ type InitializeResponseBodyResult struct {
 	//
 	// ***
 	ClientCfg *string `json:"ClientCfg,omitempty" xml:"ClientCfg,omitempty"`
+	Protocol  *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// example:
 	//
 	// 08573be80f944d95ac812e019e3655a8
@@ -3558,6 +3559,11 @@ func (s InitializeResponseBodyResult) GoString() string {
 
 func (s *InitializeResponseBodyResult) SetClientCfg(v string) *InitializeResponseBodyResult {
 	s.ClientCfg = &v
+	return s
+}
+
+func (s *InitializeResponseBodyResult) SetProtocol(v string) *InitializeResponseBodyResult {
+	s.Protocol = &v
 	return s
 }
 
