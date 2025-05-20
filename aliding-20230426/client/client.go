@@ -1520,8 +1520,11 @@ func (s *AddMultiDimTableRequest) SetTenantContext(v *AddMultiDimTableRequestTen
 }
 
 type AddMultiDimTableRequestFields struct {
+	// This parameter is required.
 	Name     *string                `json:"Name,omitempty" xml:"Name,omitempty"`
 	Property map[string]interface{} `json:"Property,omitempty" xml:"Property,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// text
@@ -12606,6 +12609,8 @@ type CreateMultiDimTableFieldRequest struct {
 	// This parameter is required.
 	SheetIdOrName *string                                       `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContext *CreateMultiDimTableFieldRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// text
@@ -12683,6 +12688,8 @@ type CreateMultiDimTableFieldShrinkRequest struct {
 	// This parameter is required.
 	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
 	// example:
 	//
 	// text
@@ -48657,6 +48664,306 @@ func (s *InsertColumnsBeforeResponse) SetBody(v *InsertColumnsBeforeResponseBody
 	return s
 }
 
+type InsertContentWithOptionsHeaders struct {
+	CommonHeaders  map[string]*string                             `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *InsertContentWithOptionsHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s InsertContentWithOptionsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsHeaders) SetCommonHeaders(v map[string]*string) *InsertContentWithOptionsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertContentWithOptionsHeaders) SetAccountContext(v *InsertContentWithOptionsHeadersAccountContext) *InsertContentWithOptionsHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type InsertContentWithOptionsHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s InsertContentWithOptionsHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsHeadersAccountContext) SetAccountId(v string) *InsertContentWithOptionsHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type InsertContentWithOptionsShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s InsertContentWithOptionsShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsShrinkHeaders) SetCommonHeaders(v map[string]*string) *InsertContentWithOptionsShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkHeaders) SetAccountContextShrink(v string) *InsertContentWithOptionsShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type InsertContentWithOptionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// content
+	Content map[string]interface{} `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// documentId
+	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// union_id
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// example:
+	//
+	// [0,0]
+	Path          []*int32                                      `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	TenantContext *InsertContentWithOptionsRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+}
+
+func (s InsertContentWithOptionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsRequest) SetContent(v map[string]interface{}) *InsertContentWithOptionsRequest {
+	s.Content = v
+	return s
+}
+
+func (s *InsertContentWithOptionsRequest) SetDocumentId(v string) *InsertContentWithOptionsRequest {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsRequest) SetIndex(v int32) *InsertContentWithOptionsRequest {
+	s.Index = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsRequest) SetOperatorId(v string) *InsertContentWithOptionsRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsRequest) SetPath(v []*int32) *InsertContentWithOptionsRequest {
+	s.Path = v
+	return s
+}
+
+func (s *InsertContentWithOptionsRequest) SetTenantContext(v *InsertContentWithOptionsRequestTenantContext) *InsertContentWithOptionsRequest {
+	s.TenantContext = v
+	return s
+}
+
+type InsertContentWithOptionsRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s InsertContentWithOptionsRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsRequestTenantContext) SetTenantId(v string) *InsertContentWithOptionsRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type InsertContentWithOptionsShrinkRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// content
+	ContentShrink *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// documentId
+	DocumentId *string `json:"DocumentId,omitempty" xml:"DocumentId,omitempty"`
+	// example:
+	//
+	// 1
+	Index *int32 `json:"Index,omitempty" xml:"Index,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// union_id
+	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
+	// example:
+	//
+	// [0,0]
+	PathShrink          *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+}
+
+func (s InsertContentWithOptionsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetContentShrink(v string) *InsertContentWithOptionsShrinkRequest {
+	s.ContentShrink = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetDocumentId(v string) *InsertContentWithOptionsShrinkRequest {
+	s.DocumentId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetIndex(v int32) *InsertContentWithOptionsShrinkRequest {
+	s.Index = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetOperatorId(v string) *InsertContentWithOptionsShrinkRequest {
+	s.OperatorId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetPathShrink(v string) *InsertContentWithOptionsShrinkRequest {
+	s.PathShrink = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsShrinkRequest) SetTenantContextShrink(v string) *InsertContentWithOptionsShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+type InsertContentWithOptionsResponseBody struct {
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s InsertContentWithOptionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsResponseBody) SetRequestId(v string) *InsertContentWithOptionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsResponseBody) SetSuccess(v bool) *InsertContentWithOptionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsResponseBody) SetVendorRequestId(v string) *InsertContentWithOptionsResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsResponseBody) SetVendorType(v string) *InsertContentWithOptionsResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type InsertContentWithOptionsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *InsertContentWithOptionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s InsertContentWithOptionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InsertContentWithOptionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InsertContentWithOptionsResponse) SetHeaders(v map[string]*string) *InsertContentWithOptionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InsertContentWithOptionsResponse) SetStatusCode(v int32) *InsertContentWithOptionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InsertContentWithOptionsResponse) SetBody(v *InsertContentWithOptionsResponseBody) *InsertContentWithOptionsResponse {
+	s.Body = v
+	return s
+}
+
 type InsertMultiDimTableRecordHeaders struct {
 	CommonHeaders  map[string]*string                              `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	AccountContext *InsertMultiDimTableRecordHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
@@ -48731,8 +49038,10 @@ type InsertMultiDimTableRecordRequest struct {
 	// example:
 	//
 	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
-	BaseId        *string                                        `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
-	Records       []*InsertMultiDimTableRecordRequestRecords     `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	Records []*InsertMultiDimTableRecordRequestRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// This parameter is required.
 	SheetIdOrName *string                                        `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContext *InsertMultiDimTableRecordRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
 }
@@ -48766,6 +49075,7 @@ func (s *InsertMultiDimTableRecordRequest) SetTenantContext(v *InsertMultiDimTab
 }
 
 type InsertMultiDimTableRecordRequestRecords struct {
+	// This parameter is required.
 	Fields map[string]interface{} `json:"Fields,omitempty" xml:"Fields,omitempty"`
 }
 
@@ -48808,8 +49118,10 @@ type InsertMultiDimTableRecordShrinkRequest struct {
 	// example:
 	//
 	// r1R7q3QmWew5lo02fxB7nxxxxxxxx
-	BaseId              *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
-	RecordsShrink       *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	BaseId *string `json:"BaseId,omitempty" xml:"BaseId,omitempty"`
+	// This parameter is required.
+	RecordsShrink *string `json:"Records,omitempty" xml:"Records,omitempty"`
+	// This parameter is required.
 	SheetIdOrName       *string `json:"SheetIdOrName,omitempty" xml:"SheetIdOrName,omitempty"`
 	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
 }
@@ -61591,6 +61903,528 @@ func (s *QueryConferenceMembersResponse) SetStatusCode(v int32) *QueryConference
 }
 
 func (s *QueryConferenceMembersResponse) SetBody(v *QueryConferenceMembersResponseBody) *QueryConferenceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDentriesInfoHeaders struct {
+	CommonHeaders  map[string]*string                      `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContext *QueryDentriesInfoHeadersAccountContext `json:"AccountContext,omitempty" xml:"AccountContext,omitempty" type:"Struct"`
+}
+
+func (s QueryDentriesInfoHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoHeaders) SetCommonHeaders(v map[string]*string) *QueryDentriesInfoHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryDentriesInfoHeaders) SetAccountContext(v *QueryDentriesInfoHeadersAccountContext) *QueryDentriesInfoHeaders {
+	s.AccountContext = v
+	return s
+}
+
+type QueryDentriesInfoHeadersAccountContext struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 012345
+	AccountId *string `json:"accountId,omitempty" xml:"accountId,omitempty"`
+}
+
+func (s QueryDentriesInfoHeadersAccountContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoHeadersAccountContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoHeadersAccountContext) SetAccountId(v string) *QueryDentriesInfoHeadersAccountContext {
+	s.AccountId = &v
+	return s
+}
+
+type QueryDentriesInfoShrinkHeaders struct {
+	CommonHeaders        map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	AccountContextShrink *string            `json:"AccountContext,omitempty" xml:"AccountContext,omitempty"`
+}
+
+func (s QueryDentriesInfoShrinkHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoShrinkHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoShrinkHeaders) SetCommonHeaders(v map[string]*string) *QueryDentriesInfoShrinkHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkHeaders) SetAccountContextShrink(v string) *QueryDentriesInfoShrinkHeaders {
+	s.AccountContextShrink = &v
+	return s
+}
+
+type QueryDentriesInfoRequest struct {
+	AppIdsForAppProperties []*string `json:"AppIdsForAppProperties,omitempty" xml:"AppIdsForAppProperties,omitempty" type:"Repeated"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 140901622636
+	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22443475065
+	SpaceId       *string                                `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantContext *QueryDentriesInfoRequestTenantContext `json:"TenantContext,omitempty" xml:"TenantContext,omitempty" type:"Struct"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// urv3ZIAtcmmIgQzHq08YcAiEiE
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+	// example:
+	//
+	// false
+	WithThumbnail *bool `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
+}
+
+func (s QueryDentriesInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoRequest) SetAppIdsForAppProperties(v []*string) *QueryDentriesInfoRequest {
+	s.AppIdsForAppProperties = v
+	return s
+}
+
+func (s *QueryDentriesInfoRequest) SetDentryId(v string) *QueryDentriesInfoRequest {
+	s.DentryId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoRequest) SetSpaceId(v string) *QueryDentriesInfoRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoRequest) SetTenantContext(v *QueryDentriesInfoRequestTenantContext) *QueryDentriesInfoRequest {
+	s.TenantContext = v
+	return s
+}
+
+func (s *QueryDentriesInfoRequest) SetUnionId(v string) *QueryDentriesInfoRequest {
+	s.UnionId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoRequest) SetWithThumbnail(v bool) *QueryDentriesInfoRequest {
+	s.WithThumbnail = &v
+	return s
+}
+
+type QueryDentriesInfoRequestTenantContext struct {
+	// example:
+	//
+	// xxxxxx
+	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
+}
+
+func (s QueryDentriesInfoRequestTenantContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoRequestTenantContext) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoRequestTenantContext) SetTenantId(v string) *QueryDentriesInfoRequestTenantContext {
+	s.TenantId = &v
+	return s
+}
+
+type QueryDentriesInfoShrinkRequest struct {
+	AppIdsForAppPropertiesShrink *string `json:"AppIdsForAppProperties,omitempty" xml:"AppIdsForAppProperties,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 140901622636
+	DentryId *string `json:"DentryId,omitempty" xml:"DentryId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 22443475065
+	SpaceId             *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	TenantContextShrink *string `json:"TenantContext,omitempty" xml:"TenantContext,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// urv3ZIAtcmmIgQzHq08YcAiEiE
+	UnionId *string `json:"UnionId,omitempty" xml:"UnionId,omitempty"`
+	// example:
+	//
+	// false
+	WithThumbnail *bool `json:"WithThumbnail,omitempty" xml:"WithThumbnail,omitempty"`
+}
+
+func (s QueryDentriesInfoShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetAppIdsForAppPropertiesShrink(v string) *QueryDentriesInfoShrinkRequest {
+	s.AppIdsForAppPropertiesShrink = &v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetDentryId(v string) *QueryDentriesInfoShrinkRequest {
+	s.DentryId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetSpaceId(v string) *QueryDentriesInfoShrinkRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetTenantContextShrink(v string) *QueryDentriesInfoShrinkRequest {
+	s.TenantContextShrink = &v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetUnionId(v string) *QueryDentriesInfoShrinkRequest {
+	s.UnionId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoShrinkRequest) SetWithThumbnail(v bool) *QueryDentriesInfoShrinkRequest {
+	s.WithThumbnail = &v
+	return s
+}
+
+type QueryDentriesInfoResponseBody struct {
+	Dentry *QueryDentriesInfoResponseBodyDentry `json:"Dentry,omitempty" xml:"Dentry,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// 0FAAEC9C-C6C8-5C87-AF8E-1195889BBXXX
+	VendorRequestId *string `json:"vendorRequestId,omitempty" xml:"vendorRequestId,omitempty"`
+	// example:
+	//
+	// dingtalk
+	VendorType *string `json:"vendorType,omitempty" xml:"vendorType,omitempty"`
+}
+
+func (s QueryDentriesInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoResponseBody) SetDentry(v *QueryDentriesInfoResponseBodyDentry) *QueryDentriesInfoResponseBody {
+	s.Dentry = v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBody) SetRequestId(v string) *QueryDentriesInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBody) SetVendorRequestId(v string) *QueryDentriesInfoResponseBody {
+	s.VendorRequestId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBody) SetVendorType(v string) *QueryDentriesInfoResponseBody {
+	s.VendorType = &v
+	return s
+}
+
+type QueryDentriesInfoResponseBodyDentry struct {
+	AppProperties map[string][]*DentryAppPropertiesValue `json:"AppProperties,omitempty" xml:"AppProperties,omitempty"`
+	// example:
+	//
+	// 2025-03-26T02:19:35Z
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// qt8bGiSa7WnHKeRPtMuoiSJwiE
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// txt
+	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	// example:
+	//
+	// 140901622636
+	Id           *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	// example:
+	//
+	// qt8bGiSa7WnHKeRPtMuoiSJwiE
+	ModifierId *string `json:"ModifierId,omitempty" xml:"ModifierId,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 0
+	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// PUBLIC_OSS_PARTITION
+	PartitionType *string                                        `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	Path          *string                                        `json:"Path,omitempty" xml:"Path,omitempty"`
+	Properties    *QueryDentriesInfoResponseBodyDentryProperties `json:"Properties,omitempty" xml:"Properties,omitempty" type:"Struct"`
+	// example:
+	//
+	// 512
+	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// 22443475065
+	SpaceId *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// DINGTALK
+	StorageDriver *string                                       `json:"StorageDriver,omitempty" xml:"StorageDriver,omitempty"`
+	Thumbnail     *QueryDentriesInfoResponseBodyDentryThumbnail `json:"Thumbnail,omitempty" xml:"Thumbnail,omitempty" type:"Struct"`
+	// example:
+	//
+	// FILE
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1716258459684
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s QueryDentriesInfoResponseBodyDentry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoResponseBodyDentry) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetAppProperties(v map[string][]*DentryAppPropertiesValue) *QueryDentriesInfoResponseBodyDentry {
+	s.AppProperties = v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetCreateTime(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetCreatorId(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetExtension(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Extension = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetId(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Id = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetModifiedTime(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetModifierId(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.ModifierId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetName(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetParentId(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.ParentId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetPartitionType(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetPath(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Path = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetProperties(v *QueryDentriesInfoResponseBodyDentryProperties) *QueryDentriesInfoResponseBodyDentry {
+	s.Properties = v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetSize(v int64) *QueryDentriesInfoResponseBodyDentry {
+	s.Size = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetSpaceId(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetStatus(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetStorageDriver(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.StorageDriver = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetThumbnail(v *QueryDentriesInfoResponseBodyDentryThumbnail) *QueryDentriesInfoResponseBodyDentry {
+	s.Thumbnail = v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetType(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Type = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetUuid(v string) *QueryDentriesInfoResponseBodyDentry {
+	s.Uuid = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentry) SetVersion(v int64) *QueryDentriesInfoResponseBodyDentry {
+	s.Version = &v
+	return s
+}
+
+type QueryDentriesInfoResponseBodyDentryProperties struct {
+	// example:
+	//
+	// True
+	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
+}
+
+func (s QueryDentriesInfoResponseBodyDentryProperties) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoResponseBodyDentryProperties) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoResponseBodyDentryProperties) SetReadOnly(v bool) *QueryDentriesInfoResponseBodyDentryProperties {
+	s.ReadOnly = &v
+	return s
+}
+
+type QueryDentriesInfoResponseBodyDentryThumbnail struct {
+	// example:
+	//
+	// 720
+	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// example:
+	//
+	// xxx
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// example:
+	//
+	// 1920
+	Width *int32 `json:"Width,omitempty" xml:"Width,omitempty"`
+}
+
+func (s QueryDentriesInfoResponseBodyDentryThumbnail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoResponseBodyDentryThumbnail) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoResponseBodyDentryThumbnail) SetHeight(v int32) *QueryDentriesInfoResponseBodyDentryThumbnail {
+	s.Height = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentryThumbnail) SetUrl(v string) *QueryDentriesInfoResponseBodyDentryThumbnail {
+	s.Url = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponseBodyDentryThumbnail) SetWidth(v int32) *QueryDentriesInfoResponseBodyDentryThumbnail {
+	s.Width = &v
+	return s
+}
+
+type QueryDentriesInfoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *QueryDentriesInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s QueryDentriesInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDentriesInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDentriesInfoResponse) SetHeaders(v map[string]*string) *QueryDentriesInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDentriesInfoResponse) SetStatusCode(v int32) *QueryDentriesInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryDentriesInfoResponse) SetBody(v *QueryDentriesInfoResponseBody) *QueryDentriesInfoResponse {
 	s.Body = v
 	return s
 }
@@ -99781,6 +100615,119 @@ func (client *Client) InsertColumnsBefore(request *InsertColumnsBeforeRequest) (
 
 // Summary:
 //
+// 文档中插入内容
+//
+// @param tmpReq - InsertContentWithOptionsRequest
+//
+// @param tmpHeader - InsertContentWithOptionsHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return InsertContentWithOptionsResponse
+func (client *Client) InsertContentWithOptionsWithOptions(tmpReq *InsertContentWithOptionsRequest, tmpHeader *InsertContentWithOptionsHeaders, runtime *util.RuntimeOptions) (_result *InsertContentWithOptionsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &InsertContentWithOptionsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &InsertContentWithOptionsShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Content)) {
+		request.ContentShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Content, tea.String("Content"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Path)) {
+		request.PathShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Path, tea.String("Path"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContentShrink)) {
+		body["Content"] = request.ContentShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DocumentId)) {
+		body["DocumentId"] = request.DocumentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Index)) {
+		body["Index"] = request.Index
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorId)) {
+		body["OperatorId"] = request.OperatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathShrink)) {
+		body["Path"] = request.PathShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InsertContentWithOptions"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/insertContentWithOptions"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InsertContentWithOptionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 文档中插入内容
+//
+// @param request - InsertContentWithOptionsRequest
+//
+// @return InsertContentWithOptionsResponse
+func (client *Client) InsertContentWithOptions(request *InsertContentWithOptionsRequest) (_result *InsertContentWithOptionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &InsertContentWithOptionsHeaders{}
+	_result = &InsertContentWithOptionsResponse{}
+	_body, _err := client.InsertContentWithOptionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增记录
 //
 // @param tmpReq - InsertMultiDimTableRecordRequest
@@ -102782,6 +103729,115 @@ func (client *Client) QueryConferenceMembers(request *QueryConferenceMembersRequ
 	headers := &QueryConferenceMembersHeaders{}
 	_result = &QueryConferenceMembersResponse{}
 	_body, _err := client.QueryConferenceMembersWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件或文件夹信息
+//
+// @param tmpReq - QueryDentriesInfoRequest
+//
+// @param tmpHeader - QueryDentriesInfoHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryDentriesInfoResponse
+func (client *Client) QueryDentriesInfoWithOptions(tmpReq *QueryDentriesInfoRequest, tmpHeader *QueryDentriesInfoHeaders, runtime *util.RuntimeOptions) (_result *QueryDentriesInfoResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &QueryDentriesInfoShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	headers := &QueryDentriesInfoShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !tea.BoolValue(util.IsUnset(tmpHeader.AccountContext)) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, tea.String("AccountContext"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.AppIdsForAppProperties)) {
+		request.AppIdsForAppPropertiesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AppIdsForAppProperties, tea.String("AppIdsForAppProperties"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TenantContext)) {
+		request.TenantContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TenantContext, tea.String("TenantContext"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppIdsForAppPropertiesShrink)) {
+		body["AppIdsForAppProperties"] = request.AppIdsForAppPropertiesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DentryId)) {
+		body["DentryId"] = request.DentryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		body["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantContextShrink)) {
+		body["TenantContext"] = request.TenantContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnionId)) {
+		body["UnionId"] = request.UnionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithThumbnail)) {
+		body["WithThumbnail"] = request.WithThumbnail
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.AccountContextShrink)) {
+		realHeaders["AccountContext"] = util.ToJSONString(headers.AccountContextShrink)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDentriesInfo"),
+		Version:     tea.String("2023-04-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/dingtalk/v1/documents/queryDentriesInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDentriesInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取文件或文件夹信息
+//
+// @param request - QueryDentriesInfoRequest
+//
+// @return QueryDentriesInfoResponse
+func (client *Client) QueryDentriesInfo(request *QueryDentriesInfoRequest) (_result *QueryDentriesInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &QueryDentriesInfoHeaders{}
+	_result = &QueryDentriesInfoResponse{}
+	_body, _err := client.QueryDentriesInfoWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
