@@ -5463,7 +5463,8 @@ type SubscribeRequest struct {
 	// example:
 	//
 	// queue
-	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	StsRoleArn *string `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
 	// The name of the subscription.
 	//
 	// This parameter is required.
@@ -5517,6 +5518,11 @@ func (s *SubscribeRequest) SetNotifyStrategy(v string) *SubscribeRequest {
 
 func (s *SubscribeRequest) SetPushType(v string) *SubscribeRequest {
 	s.PushType = &v
+	return s
+}
+
+func (s *SubscribeRequest) SetStsRoleArn(v string) *SubscribeRequest {
+	s.StsRoleArn = &v
 	return s
 }
 
@@ -5631,7 +5637,8 @@ type SubscribeShrinkRequest struct {
 	// example:
 	//
 	// queue
-	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	StsRoleArn *string `json:"StsRoleArn,omitempty" xml:"StsRoleArn,omitempty"`
 	// The name of the subscription.
 	//
 	// This parameter is required.
@@ -5685,6 +5692,11 @@ func (s *SubscribeShrinkRequest) SetNotifyStrategy(v string) *SubscribeShrinkReq
 
 func (s *SubscribeShrinkRequest) SetPushType(v string) *SubscribeShrinkRequest {
 	s.PushType = &v
+	return s
+}
+
+func (s *SubscribeShrinkRequest) SetStsRoleArn(v string) *SubscribeShrinkRequest {
+	s.StsRoleArn = &v
 	return s
 }
 
@@ -7503,6 +7515,10 @@ func (client *Client) SubscribeWithOptions(tmpReq *SubscribeRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.PushType)) {
 		query["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StsRoleArn)) {
+		query["StsRoleArn"] = request.StsRoleArn
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SubscriptionName)) {
