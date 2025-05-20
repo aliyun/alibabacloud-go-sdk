@@ -251,6 +251,184 @@ func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody
 	return s
 }
 
+type CheckServiceLinkedRoleEfloCnpForDeletingRequest struct {
+	// The ID of the cloud account.
+	//
+	// example:
+	//
+	// 345678901234
+	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	// The ID of the deletion task.
+	//
+	// example:
+	//
+	// task-003
+	DeletionTaskId *string `json:"DeletionTaskId,omitempty" xml:"DeletionTaskId,omitempty"`
+	// The Alibaba Cloud Resource Name (ARN) of the RAM role.
+	//
+	// The trusted entity of the RAM role is an Alibaba Cloud account. For more information, see [Create a RAM role for a trusted Alibaba Cloud account](https://help.aliyun.com/document_detail/93691.html) or [CreateRole](https://help.aliyun.com/document_detail/28710.html).
+	//
+	// Format: `acs:ram::<account_id>:role/<role_name>`.
+	//
+	// You can view the ARN in the RAM console or by calling operations. The following items describe the validity periods of storage addresses:
+	//
+	// 	- For more information about how to view the ARN in the RAM console, see [How do I find the ARN of the RAM role?](https://help.aliyun.com/document_detail/39744.html)
+	//
+	// 	- For more information about how to view the ARN by calling operations, see [ListRoles](https://help.aliyun.com/document_detail/28713.html) or [GetRole](https://help.aliyun.com/document_detail/28711.html).
+	//
+	// example:
+	//
+	// arn:aws:iam::345678901234:role/eflo-cnp-role
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+	// The ID of the region.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	SPIRegionId *string `json:"SPIRegionId,omitempty" xml:"SPIRegionId,omitempty"`
+	// The Service Name.
+	//
+	// example:
+	//
+	// eflo-cnp
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingRequest) SetAccountId(v string) *CheckServiceLinkedRoleEfloCnpForDeletingRequest {
+	s.AccountId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingRequest) SetDeletionTaskId(v string) *CheckServiceLinkedRoleEfloCnpForDeletingRequest {
+	s.DeletionTaskId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingRequest) SetRoleArn(v string) *CheckServiceLinkedRoleEfloCnpForDeletingRequest {
+	s.RoleArn = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingRequest) SetSPIRegionId(v string) *CheckServiceLinkedRoleEfloCnpForDeletingRequest {
+	s.SPIRegionId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingRequest) SetServiceName(v string) *CheckServiceLinkedRoleEfloCnpForDeletingRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type CheckServiceLinkedRoleEfloCnpForDeletingResponseBody struct {
+	// Indicates whether the SLR can be deleted. Valid values:
+	//
+	// 	- `true`: The SLR can be deleted.
+	//
+	// 	- `false`: The SLR cannot be deleted.
+	//
+	// example:
+	//
+	// True
+	Deletable *bool `json:"Deletable,omitempty" xml:"Deletable,omitempty"`
+	// Request ID
+	//
+	// example:
+	//
+	// 6C212C4A-2CB3-56E6-BA2F-1CE2B03C5C94
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The resources.
+	Resources []*CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) SetDeletable(v bool) *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody {
+	s.Deletable = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) SetRequestId(v string) *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) SetResources(v []*CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources) *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody {
+	s.Resources = v
+	return s
+}
+
+type CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources struct {
+	// The region.
+	//
+	// example:
+	//
+	// cn-beijing
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The resources.
+	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources) SetRegion(v string) *CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources {
+	s.Region = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources) SetResources(v []*string) *CheckServiceLinkedRoleEfloCnpForDeletingResponseBodyResources {
+	s.Resources = v
+	return s
+}
+
+type CheckServiceLinkedRoleEfloCnpForDeletingResponse struct {
+	Headers    map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                                `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckServiceLinkedRoleEfloCnpForDeletingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponse) SetHeaders(v map[string]*string) *CheckServiceLinkedRoleEfloCnpForDeletingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponse) SetStatusCode(v int32) *CheckServiceLinkedRoleEfloCnpForDeletingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckServiceLinkedRoleEfloCnpForDeletingResponse) SetBody(v *CheckServiceLinkedRoleEfloCnpForDeletingResponseBody) *CheckServiceLinkedRoleEfloCnpForDeletingResponse {
+	s.Body = v
+	return s
+}
+
 type CreateExperimentPlanRequest struct {
 	// Additional parameters
 	//
@@ -9980,6 +10158,82 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ChangeResourceGroupResponse{}
 	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// deleteSlrEfloCnpForDeleting
+//
+// @param request - CheckServiceLinkedRoleEfloCnpForDeletingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CheckServiceLinkedRoleEfloCnpForDeletingResponse
+func (client *Client) CheckServiceLinkedRoleEfloCnpForDeletingWithOptions(request *CheckServiceLinkedRoleEfloCnpForDeletingRequest, runtime *util.RuntimeOptions) (_result *CheckServiceLinkedRoleEfloCnpForDeletingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeletionTaskId)) {
+		query["DeletionTaskId"] = request.DeletionTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SPIRegionId)) {
+		query["SPIRegionId"] = request.SPIRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		query["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckServiceLinkedRoleEfloCnpForDeleting"),
+		Version:     tea.String("2023-08-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckServiceLinkedRoleEfloCnpForDeletingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// deleteSlrEfloCnpForDeleting
+//
+// @param request - CheckServiceLinkedRoleEfloCnpForDeletingRequest
+//
+// @return CheckServiceLinkedRoleEfloCnpForDeletingResponse
+func (client *Client) CheckServiceLinkedRoleEfloCnpForDeleting(request *CheckServiceLinkedRoleEfloCnpForDeletingRequest) (_result *CheckServiceLinkedRoleEfloCnpForDeletingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckServiceLinkedRoleEfloCnpForDeletingResponse{}
+	_body, _err := client.CheckServiceLinkedRoleEfloCnpForDeletingWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
