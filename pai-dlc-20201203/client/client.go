@@ -164,6 +164,23 @@ func (s *AssumeUserInfo) SetType(v string) *AssumeUserInfo {
 	return s
 }
 
+type AutoScalingSpec struct {
+	ScalingStrategy *string `json:"ScalingStrategy,omitempty" xml:"ScalingStrategy,omitempty"`
+}
+
+func (s AutoScalingSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AutoScalingSpec) GoString() string {
+	return s.String()
+}
+
+func (s *AutoScalingSpec) SetScalingStrategy(v string) *AutoScalingSpec {
+	s.ScalingStrategy = &v
+	return s
+}
+
 type CodeSourceItem struct {
 	// example:
 	//
@@ -2207,7 +2224,8 @@ func (s *JobItemUserVpc) SetVpcId(v string) *JobItemUserVpc {
 }
 
 type JobSettings struct {
-	AdvancedSettings map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	AdvancedSettings       map[string]interface{} `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	AllocateAllRDMADevices *bool                  `json:"AllocateAllRDMADevices,omitempty" xml:"AllocateAllRDMADevices,omitempty"`
 	// example:
 	//
 	// 166924
@@ -2285,6 +2303,11 @@ func (s JobSettings) GoString() string {
 
 func (s *JobSettings) SetAdvancedSettings(v map[string]interface{}) *JobSettings {
 	s.AdvancedSettings = v
+	return s
+}
+
+func (s *JobSettings) SetAllocateAllRDMADevices(v bool) *JobSettings {
+	s.AllocateAllRDMADevices = &v
 	return s
 }
 
@@ -2374,7 +2397,8 @@ func (s *JobSettings) SetTags(v map[string]*string) *JobSettings {
 }
 
 type JobSpec struct {
-	AssignNodeSpec *AssignNodeSpec `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	AssignNodeSpec  *AssignNodeSpec  `json:"AssignNodeSpec,omitempty" xml:"AssignNodeSpec,omitempty"`
+	AutoScalingSpec *AutoScalingSpec `json:"AutoScalingSpec,omitempty" xml:"AutoScalingSpec,omitempty"`
 	// example:
 	//
 	// ecs.c6.large
@@ -2383,13 +2407,17 @@ type JobSpec struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/tensorflow-training:1.12.2PAI-cpu-py27-ubuntu16.04
-	Image       *string      `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
+	Image           *string           `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageConfig     *ImageConfig      `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
+	IsCheif         *bool             `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
+	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 1
 	PodCount       *int64          `json:"PodCount,omitempty" xml:"PodCount,omitempty"`
 	ResourceConfig *ResourceConfig `json:"ResourceConfig,omitempty" xml:"ResourceConfig,omitempty"`
+	RestartPolicy  *string         `json:"RestartPolicy,omitempty" xml:"RestartPolicy,omitempty"`
+	ServiceSpec    *ServiceSpec    `json:"ServiceSpec,omitempty" xml:"ServiceSpec,omitempty"`
 	SpotSpec       *SpotSpec       `json:"SpotSpec,omitempty" xml:"SpotSpec,omitempty"`
 	// example:
 	//
@@ -2416,6 +2444,11 @@ func (s *JobSpec) SetAssignNodeSpec(v *AssignNodeSpec) *JobSpec {
 	return s
 }
 
+func (s *JobSpec) SetAutoScalingSpec(v *AutoScalingSpec) *JobSpec {
+	s.AutoScalingSpec = v
+	return s
+}
+
 func (s *JobSpec) SetEcsSpec(v string) *JobSpec {
 	s.EcsSpec = &v
 	return s
@@ -2436,6 +2469,16 @@ func (s *JobSpec) SetImageConfig(v *ImageConfig) *JobSpec {
 	return s
 }
 
+func (s *JobSpec) SetIsCheif(v bool) *JobSpec {
+	s.IsCheif = &v
+	return s
+}
+
+func (s *JobSpec) SetLocalMountSpecs(v []*LocalMountSpec) *JobSpec {
+	s.LocalMountSpecs = v
+	return s
+}
+
 func (s *JobSpec) SetPodCount(v int64) *JobSpec {
 	s.PodCount = &v
 	return s
@@ -2443,6 +2486,16 @@ func (s *JobSpec) SetPodCount(v int64) *JobSpec {
 
 func (s *JobSpec) SetResourceConfig(v *ResourceConfig) *JobSpec {
 	s.ResourceConfig = v
+	return s
+}
+
+func (s *JobSpec) SetRestartPolicy(v string) *JobSpec {
+	s.RestartPolicy = &v
+	return s
+}
+
+func (s *JobSpec) SetServiceSpec(v *ServiceSpec) *JobSpec {
+	s.ServiceSpec = v
 	return s
 }
 
@@ -2549,6 +2602,35 @@ func (s LifecyclePreStopExec) GoString() string {
 
 func (s *LifecyclePreStopExec) SetCommand(v []*string) *LifecyclePreStopExec {
 	s.Command = v
+	return s
+}
+
+type LocalMountSpec struct {
+	LocalPath *string `json:"LocalPath,omitempty" xml:"LocalPath,omitempty"`
+	MountMode *string `json:"MountMode,omitempty" xml:"MountMode,omitempty"`
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s LocalMountSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LocalMountSpec) GoString() string {
+	return s.String()
+}
+
+func (s *LocalMountSpec) SetLocalPath(v string) *LocalMountSpec {
+	s.LocalPath = &v
+	return s
+}
+
+func (s *LocalMountSpec) SetMountMode(v string) *LocalMountSpec {
+	s.MountMode = &v
+	return s
+}
+
+func (s *LocalMountSpec) SetMountPath(v string) *LocalMountSpec {
+	s.MountPath = &v
 	return s
 }
 
@@ -3211,6 +3293,8 @@ func (s *SeccompProfile) SetType(v string) *SeccompProfile {
 }
 
 type SecurityContext struct {
+	Capabilities *SecurityContextCapabilities `json:"Capabilities,omitempty" xml:"Capabilities,omitempty"`
+	Privileged   *bool                        `json:"Privileged,omitempty" xml:"Privileged,omitempty"`
 	// example:
 	//
 	// 1000
@@ -3230,6 +3314,16 @@ func (s SecurityContext) GoString() string {
 	return s.String()
 }
 
+func (s *SecurityContext) SetCapabilities(v *SecurityContextCapabilities) *SecurityContext {
+	s.Capabilities = v
+	return s
+}
+
+func (s *SecurityContext) SetPrivileged(v bool) *SecurityContext {
+	s.Privileged = &v
+	return s
+}
+
 func (s *SecurityContext) SetRunAsGroup(v int64) *SecurityContext {
 	s.RunAsGroup = &v
 	return s
@@ -3242,6 +3336,58 @@ func (s *SecurityContext) SetRunAsUser(v int64) *SecurityContext {
 
 func (s *SecurityContext) SetSeccompProfile(v *SeccompProfile) *SecurityContext {
 	s.SeccompProfile = v
+	return s
+}
+
+type SecurityContextCapabilities struct {
+	Add  []*string `json:"Add,omitempty" xml:"Add,omitempty" type:"Repeated"`
+	Drop []*string `json:"Drop,omitempty" xml:"Drop,omitempty" type:"Repeated"`
+}
+
+func (s SecurityContextCapabilities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecurityContextCapabilities) GoString() string {
+	return s.String()
+}
+
+func (s *SecurityContextCapabilities) SetAdd(v []*string) *SecurityContextCapabilities {
+	s.Add = v
+	return s
+}
+
+func (s *SecurityContextCapabilities) SetDrop(v []*string) *SecurityContextCapabilities {
+	s.Drop = v
+	return s
+}
+
+type ServiceSpec struct {
+	DefaultPort *int32  `json:"DefaultPort,omitempty" xml:"DefaultPort,omitempty"`
+	ExtraPorts  *int32  `json:"ExtraPorts,omitempty" xml:"ExtraPorts,omitempty"`
+	ServiceMode *string `json:"ServiceMode,omitempty" xml:"ServiceMode,omitempty"`
+}
+
+func (s ServiceSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ServiceSpec) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceSpec) SetDefaultPort(v int32) *ServiceSpec {
+	s.DefaultPort = &v
+	return s
+}
+
+func (s *ServiceSpec) SetExtraPorts(v int32) *ServiceSpec {
+	s.ExtraPorts = &v
+	return s
+}
+
+func (s *ServiceSpec) SetServiceMode(v string) *ServiceSpec {
+	s.ServiceMode = &v
 	return s
 }
 
