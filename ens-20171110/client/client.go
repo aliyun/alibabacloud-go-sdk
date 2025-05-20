@@ -8327,7 +8327,8 @@ type CreateNetworkAclEntryRequest struct {
 	// example:
 	//
 	// This is my NetworkAcl.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The direction in which the rule is applied. Valid values:
 	//
 	// 	- **ingress**
@@ -8421,6 +8422,11 @@ func (s *CreateNetworkAclEntryRequest) SetCidrBlock(v string) *CreateNetworkAclE
 
 func (s *CreateNetworkAclEntryRequest) SetDescription(v string) *CreateNetworkAclEntryRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateNetworkAclEntryRequest) SetDestinationCidrBlock(v string) *CreateNetworkAclEntryRequest {
+	s.DestinationCidrBlock = &v
 	return s
 }
 
@@ -35751,7 +35757,8 @@ type DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries struct {
 	// example:
 	//
 	// This is IngressAclEntries.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
 	// The ID of the inbound rule.
 	//
 	// example:
@@ -35831,6 +35838,11 @@ func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetCidrBlo
 
 func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetDescription(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries) SetDestinationCidrBlock(v string) *DescribeNetworkAclsResponseBodyNetworkAclsIngressAclEntries {
+	s.DestinationCidrBlock = &v
 	return s
 }
 
@@ -66338,6 +66350,10 @@ func (client *Client) CreateNetworkAclEntryWithOptions(request *CreateNetworkAcl
 		query["Description"] = request.Description
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Direction)) {
 		query["Direction"] = request.Direction
 	}
@@ -74071,7 +74087,27 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclId)) {
+		query["NetworkAclId"] = request.NetworkAclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkAclName)) {
+		query["NetworkAclName"] = request.NetworkAclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -74080,7 +74116,7 @@ func (client *Client) DescribeNetworkAclsWithOptions(request *DescribeNetworkAcl
 		Version:     tea.String("2017-11-10"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
