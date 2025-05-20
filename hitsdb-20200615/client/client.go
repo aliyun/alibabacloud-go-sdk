@@ -1038,23 +1038,55 @@ type CreateLindormInstanceRequest struct {
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
 	// The specification of the nodes in the instance if you set DiskCategory to local_ssd_pro or local_hdd_pro.
 	//
-	// When DiskCategory is set to local_ssd_pro, you can set this parameter to the following values:
+	// Valid values when DiskCategory is set to local_ssd_pro (i3 instance types support only subscription instances):
 	//
-	// 	- **lindorm.i2.xlarge**: Each node has 4 dedicated CPU cores and 32 GB of dedicated memory.
+	// 	- **lindorm.i4.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
 	//
-	// 	- **lindorm.i2.2xlarge**: Each node has 8 dedicated CPU cores and 64 GB of dedicated memory.
+	// 	- **lindorm.i4.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
 	//
-	// 	- **lindorm.i2.4xlarge**: Each node has 16 dedicated CPU cores and 128 GB of dedicated memory.
+	// 	- **lindorm.i4.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
 	//
-	// 	- **lindorm.i2.8xlarge**: Each node has 32 dedicated CPU cores and 256 GB of dedicated memory.
+	// 	- **lindorm.i4.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
 	//
-	// When DiskCategory is set to local_hdd_pro, you can set this parameter to the following values:
+	// 	- **lindorm.i3.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
 	//
-	// 	- **lindorm.d1.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
+	// 	- **lindorm.i3.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
 	//
-	// 	- **lindorm.d1.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	// 	- **lindorm.i3.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
 	//
-	// 	- **lindorm.d1.6xlarge**: Each node has 24 dedicated CPU cores and 96 GB of dedicated memory.
+	// 	- **lindorm.i3.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
+	//
+	// 	- **lindorm.i2.xlarge**: Each node has 4 CPU cores and 32 GB of memory.
+	//
+	// 	- **lindorm.i2.2xlarge**: Each node has 8 CPU cores and 64 GB of memory.
+	//
+	// 	- **lindorm.i2.4xlarge**: Each node has 16 CPU cores and 128 GB of memory.
+	//
+	// 	- **lindorm.i2.8xlarge**: Each node has 32 CPU cores and 256 GB of memory.
+	//
+	// Valid values when DiskCategory is set to local_hhd_pro:
+	//
+	// 	- **lindorm.sd3c.3xlarge**: Each node has 14 CPU cores and 56 GB of memory.
+	//
+	// 	- **lindorm.sd3c.7xlarge**: Each node has 28 CPU cores and 112 GB of memory.
+	//
+	// 	- **lindorm.sd3c.14xlarge**: Each node has 56 CPU cores and 224 GB of memory.
+	//
+	// 	- **lindorm.d2c.6xlarge**: Each node has 24 CPU cores and 88 GB of memory.
+	//
+	// 	- **lindorm.d2c.12xlarge**: Each node has 48 CPU cores and 176 GB of memory.
+	//
+	// 	- **lindorm.d2c.24xlarge**: Each node has 96 CPU cores and 352 GB of memory.
+	//
+	// 	- **lindorm.d2s.5xlarge**: Each node has 20 CPU cores and 88 GB of memory.
+	//
+	// 	- **lindorm.d2s.10xlarge**: Each node has 40 CPU cores and 176 GB of memory.
+	//
+	// 	- **lindorm.d1.2xlarge**: Each node has 8 CPU cores and 32 GB of memory.
+	//
+	// 	- **lindorm.d1.4xlarge**: Each node has 16 CPU cores and 64 GB of memory.
+	//
+	// 	- **lindorm.d1.6xlarge**: Each node has 24 CPU cores and 96 GB of memory.
 	//
 	// example:
 	//
@@ -1303,9 +1335,15 @@ type CreateLindormInstanceRequest struct {
 	//
 	// 	- **lindorm.g.xlarge**: Each node has 4 dedicated CPU cores and 16 GB of dedicated memory.
 	//
+	// 	- **lindorm.c.2xlarge**: Each node has 8 dedicated CPU cores and 16 GB of dedicated memory.
+	//
 	// 	- **lindorm.g.2xlarge**: Each node has 8 dedicated CPU cores and 32 GB of dedicated memory.
 	//
+	// 	- **lindorm.c.4xlarge**: Each node has 16 dedicated CPU cores and 32 GB of dedicated memory.
+	//
 	// 	- **lindorm.g.4xlarge**: Each node has 16 dedicated CPU cores and 64 GB of dedicated memory.
+	//
+	// 	- **lindorm.c.8xlarge**: Each node has 32 dedicated CPU cores and 64 GB of dedicated memory.
 	//
 	// 	- **lindorm.g.8xlarge**: Each node has 32 dedicated CPU cores and 128 GB of dedicated memory.
 	//
@@ -1344,8 +1382,9 @@ type CreateLindormInstanceRequest struct {
 	// example:
 	//
 	// lindorm.g.xlarge
-	StreamSpec *string                            `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
-	Tag        []*CreateLindormInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
+	// The tags that are added to instances.
+	Tag []*CreateLindormInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The number of the LindormTSDB nodes in the instance. The valid values of this parameter depend on the value of the PayType parameter.
 	//
 	// 	- If the PayType parameter is set to **PREPAY**, set this parameter to an integer that ranges from **0*	- to **24**.
@@ -1635,7 +1674,21 @@ func (s *CreateLindormInstanceRequest) SetZoneId(v string) *CreateLindormInstanc
 }
 
 type CreateLindormInstanceRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key. Valid values of N: 1 to 20.
+	//
+	// >  You can specify the keys of multiple tags. For example, you can specify the key of the first tag in the first key-value pair contained in the value of this parameter and specify the key of the second tag in the second key-value pair.
+	//
+	// example:
+	//
+	// test
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value. Valid values of N: 1 to 20.
+	//
+	// >  You can specify the values of multiple tags. For example, you can specify the value of the first tag in the first key-value pair contained in the value of this parameter and specify the value of the second tag in the second key-value pair.
+	//
+	// example:
+	//
+	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -1658,7 +1711,7 @@ func (s *CreateLindormInstanceRequestTag) SetValue(v string) *CreateLindormInsta
 }
 
 type CreateLindormInstanceResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason why the access was denied.
 	//
 	// example:
 	//
@@ -4396,6 +4449,8 @@ func (s *GetLdpsResourceCostResponse) SetBody(v *GetLdpsResourceCostResponseBody
 }
 
 type GetLindormFsUsedDetailRequest struct {
+	// The ID of the instance. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to query the instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -4404,6 +4459,8 @@ type GetLindormFsUsedDetailRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
@@ -4457,79 +4514,118 @@ func (s *GetLindormFsUsedDetailRequest) SetSecurityToken(v string) *GetLindormFs
 }
 
 type GetLindormFsUsedDetailResponseBody struct {
+	// The detailed reason why the access was denied.
+	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The total storage space of the cluster. Unit: bytes.
+	//
 	// example:
 	//
 	// 85899345920
 	FsCapacity *string `json:"FsCapacity,omitempty" xml:"FsCapacity,omitempty"`
+	// The cold storage space of the cluster. Unit: bytes.
+	//
 	// example:
 	//
 	// 85899345920
 	FsCapacityCold *string `json:"FsCapacityCold,omitempty" xml:"FsCapacityCold,omitempty"`
+	// The hot storage space of the cluster. Unit: bytes.
+	//
 	// example:
 	//
 	// 85899345920
 	FsCapacityHot *string `json:"FsCapacityHot,omitempty" xml:"FsCapacityHot,omitempty"`
+	// The cold storage usage of the cluster. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedCold *string `json:"FsUsedCold,omitempty" xml:"FsUsedCold,omitempty"`
+	// The cold storage usage of the table data of the search engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormSearch *string `json:"FsUsedColdOnLindormSearch,omitempty" xml:"FsUsedColdOnLindormSearch,omitempty"`
+	// The cold storage usage of the table data of the time series engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormTSDB *string `json:"FsUsedColdOnLindormTSDB,omitempty" xml:"FsUsedColdOnLindormTSDB,omitempty"`
+	// The cold storage usage of the table data of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormTable *string `json:"FsUsedColdOnLindormTable,omitempty" xml:"FsUsedColdOnLindormTable,omitempty"`
+	// The hot storage usage of the cluster. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedHot *string `json:"FsUsedHot,omitempty" xml:"FsUsedHot,omitempty"`
+	// The hot storage usage of the table data of the search engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormSearch *string `json:"FsUsedHotOnLindormSearch,omitempty" xml:"FsUsedHotOnLindormSearch,omitempty"`
+	// The hot storage usage of the table data of the time series engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormTSDB *string `json:"FsUsedHotOnLindormTSDB,omitempty" xml:"FsUsedHotOnLindormTSDB,omitempty"`
+	// The hot storage usage of the table data of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormTable *string `json:"FsUsedHotOnLindormTable,omitempty" xml:"FsUsedHotOnLindormTable,omitempty"`
+	// The storage usage of the search engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormSearch *string `json:"FsUsedOnLindormSearch,omitempty" xml:"FsUsedOnLindormSearch,omitempty"`
+	// The storage usage of the time series engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTSDB *string `json:"FsUsedOnLindormTSDB,omitempty" xml:"FsUsedOnLindormTSDB,omitempty"`
+	// The space usage of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTable *string `json:"FsUsedOnLindormTable,omitempty" xml:"FsUsedOnLindormTable,omitempty"`
+	// The storage usage of the table data of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTableData *string `json:"FsUsedOnLindormTableData,omitempty" xml:"FsUsedOnLindormTableData,omitempty"`
+	// The storage usage of the log data of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
-	FsUsedOnLindormTableWAL *string                                                `json:"FsUsedOnLindormTableWAL,omitempty" xml:"FsUsedOnLindormTableWAL,omitempty"`
-	LStorageUsageList       []*GetLindormFsUsedDetailResponseBodyLStorageUsageList `json:"LStorageUsageList,omitempty" xml:"LStorageUsageList,omitempty" type:"Repeated"`
+	FsUsedOnLindormTableWAL *string `json:"FsUsedOnLindormTableWAL,omitempty" xml:"FsUsedOnLindormTableWAL,omitempty"`
+	// If the version of the underlying storage engine is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail. Storage details are returned based on the storage type.
+	LStorageUsageList []*GetLindormFsUsedDetailResponseBodyLStorageUsageList `json:"LStorageUsageList,omitempty" xml:"LStorageUsageList,omitempty" type:"Repeated"`
+	// The request ID. Each request has a unique ID. You can use the request ID to locate and troubleshoot issues.
+	//
 	// example:
 	//
 	// 4F23D50C-400C-592C-9486-9D1E10179065
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the return value is valid. Valid values: true and false. If a value of false is returned, you must provide the request ID for troubleshooting.
+	//
 	// example:
 	//
 	// true
@@ -4645,34 +4741,62 @@ func (s *GetLindormFsUsedDetailResponseBody) SetValid(v string) *GetLindormFsUse
 }
 
 type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
+	// The total storage capacity. Unit: bytes.
+	//
 	// example:
 	//
 	// 85899345920
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
+	// The storage type of the cluster. Valid values:
+	//
+	// 	- StandardCloudStorage
+	//
+	// 	- PerformanceCloudStorage
+	//
+	// 	- CapacityCloudStorage
+	//
+	// 	- LocalSsdStorage
+	//
+	// 	- LocalHddStorage
+	//
+	// 	- LocalEbsStorage
+	//
 	// example:
 	//
 	// StandardCloudStorage
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	// The storage usage. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	Used *string `json:"Used,omitempty" xml:"Used,omitempty"`
+	// The storage usage of the search engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	UsedLindormSearch *string `json:"UsedLindormSearch,omitempty" xml:"UsedLindormSearch,omitempty"`
+	// The storage usage of the compute engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	UsedLindormSpark *string `json:"UsedLindormSpark,omitempty" xml:"UsedLindormSpark,omitempty"`
+	// The storage usage of the wide table engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	UsedLindormTable *string `json:"UsedLindormTable,omitempty" xml:"UsedLindormTable,omitempty"`
+	// The storage usage of the time series engine. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
 	UsedLindormTsdb *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	// The storage usage of other resources, such as logs and recycle bins. Unit: bytes.
+	//
 	// example:
 	//
 	// 33269
@@ -4851,7 +4975,9 @@ type GetLindormInstanceResponseBody struct {
 	ArchiveStorage *int32 `json:"ArchiveStorage,omitempty" xml:"ArchiveStorage,omitempty"`
 	// Indicates whether auto-renewal is enabled, with the following returns:
 	//
-	// - **true**: Enabled. - **false**: Disabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// > This parameter is returned when the instance\\"s payment type is prepaid.
 	//
@@ -4911,7 +5037,9 @@ type GetLindormInstanceResponseBody struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Indicates whether deletion protection is enabled, returning:
 	//
-	// - **true**: Enabled. - **false**: Disabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -4959,7 +5087,9 @@ type GetLindormInstanceResponseBody struct {
 	EnableBlob *bool `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
 	// Indicates whether the data subscription feature for the instance is enabled. Returns:
 	//
-	// - **true**: Enabled. - **false**: Not enabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -4967,7 +5097,9 @@ type GetLindormInstanceResponseBody struct {
 	EnableCdc *bool `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
 	// Indicates whether the instance\\"s compute engine is enabled, returning:
 	//
-	// - **true**: Enabled. - **false**: Not enabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
@@ -4975,17 +5107,19 @@ type GetLindormInstanceResponseBody struct {
 	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	// Indicates whether the Key Management Service (KMS) is enabled, returning:
 	//
-	// - **true**: Enabled. - **false**: Disabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
 	// false
 	EnableKms *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
-	// Indicates whether the wide-table engine supports Thrift and CQL protocols. If not supported, the SwitchLProxyService interface can be used to enable or disable.
+	// Indicates whether LindormTable supports the Thrift and CQL protocols. If these protocols are not supported. You can call the SwitchLProxyService operation to enable or disable the support on these protocols for LindormTable.
 	//
-	// True indicates support
+	// True: LindormTable supports the Thrift and CQL protocols.
 	//
-	// False indicates no support
+	// False: LindormTable does not support the Thrift and CQL protocols.
 	//
 	// example:
 	//
@@ -5023,7 +5157,9 @@ type GetLindormInstanceResponseBody struct {
 	EnableMLCtrl *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
 	// Indicates whether SSL link encryption is enabled, returning:
 	//
-	// - **true**: Enabled. - **false**: Disabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -5037,7 +5173,9 @@ type GetLindormInstanceResponseBody struct {
 	EnableShs *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
 	// Indicates whether the Transparent Data Encryption (TDE) is enabled, returning:
 	//
-	// - **true**: Enabled. - **false**: Disabled.
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// example:
 	//
@@ -5045,17 +5183,25 @@ type GetLindormInstanceResponseBody struct {
 	EnableStoreTDE *bool `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
 	// Indicates whether the instance has the stream engine enabled. Return values:
 	//
-	// - **true**: Stream engine is enabled. - **false**: Stream engine is not enabled.
+	// - **true**: Stream engine is enabled.
+	//
+	// - **false**: Stream engine is not enabled.
 	//
 	// example:
 	//
 	// true
 	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
-	// The latest version number of the engine.
+	// The list of engines supported by the instance.
 	EngineList []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
 	// Supported engine types, the return value is obtained by performing addition operations on the values of the following engine types.
 	//
-	// - 1: Search Engine - 2: Time Series Engine - 4: Wide Table Engine - 8: File Engine
+	// - 1: Search Engine
+	//
+	// - 2: Time Series Engine
+	//
+	// - 4: Wide Table Engine
+	//
+	// - 8: File Engine
 	//
 	// > For example: If EngineType is 15, where 15 = 8 + 4 + 2 + 1, it indicates that the instance supports Search Engine, Time Series Engine, Wide Table Engine, and File Engine. If EngineType is 6, where 6 = 4 + 2, it signifies that the instance supports Time Series Engine and Wide Table Engine.
 	//
@@ -5145,7 +5291,9 @@ type GetLindormInstanceResponseBody struct {
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
 	// Multi-zone instance, log node disk type, returns:
 	//
-	// - **cloud_efficiency**：Standard cloud storage. - **cloud_ssd**：Performance cloud storage.
+	// - **cloud_efficiency**: Standard cloud storage.
+	//
+	// - **cloud_ssd**: Performance cloud storage.
 	//
 	// example:
 	//
@@ -5183,7 +5331,27 @@ type GetLindormInstanceResponseBody struct {
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	// Multi-zone combinations. For support details on zone combinations, please refer to the product page.
 	//
-	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C. - **cn-hangzhou-ehi-aliyun**: East China 1 (Hangzhou) E+H+I. - **cn-beijing-acd-aliyun**: North China 2 (Beijing) A+C+D. - **ap-southeast-1-abc-aliyun**: Singapore A+B+C. - **cn-zhangjiakou-abc-aliyun**: North China 3 (Zhangjiakou) A+B+C. - **cn-shanghai-efg-aliyun**: East China 2 (Shanghai) E+F+G. - **cn-shanghai-abd-aliyun**: East China 2 (Shanghai) A+B+D. - **cn-hangzhou-bef-aliyun**: East China 1 (Hangzhou) B+E+F. - **cn-hangzhou-bce-aliyun**: East China 1 (Hangzhou) B+C+E. - **cn-beijing-fgh-aliyun**: North China 2 (Beijing) F+G+H. - **cn-shenzhen-abc-aliyun**: South China 1 (Shenzhen) A+B+C.
+	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C.
+	//
+	// - **cn-hangzhou-ehi-aliyun**: East China 1 (Hangzhou) E+H+I.
+	//
+	// - **cn-beijing-acd-aliyun**: North China 2 (Beijing) A+C+D.
+	//
+	// - **ap-southeast-1-abc-aliyun**: Singapore A+B+C.
+	//
+	// - **cn-zhangjiakou-abc-aliyun**: North China 3 (Zhangjiakou) A+B+C.
+	//
+	// - **cn-shanghai-efg-aliyun**: East China 2 (Shanghai) E+F+G.
+	//
+	// - **cn-shanghai-abd-aliyun**: East China 2 (Shanghai) A+B+D.
+	//
+	// - **cn-hangzhou-bef-aliyun**: East China 1 (Hangzhou) B+E+F.
+	//
+	// - **cn-hangzhou-bce-aliyun**: East China 1 (Hangzhou) B+C+E.
+	//
+	// - **cn-beijing-fgh-aliyun**: North China 2 (Beijing) F+G+H.
+	//
+	// - **cn-shenzhen-abc-aliyun**: South China 1 (Shenzhen) A+B+C.
 	//
 	// example:
 	//
@@ -5195,7 +5363,11 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// 400
+	// The billing method of the instance. Valid values:
+	//
+	// PREPAY: subscription.
+	//
+	// POSTPAY: pay-as-you-go.
 	//
 	// example:
 	//
@@ -5233,7 +5405,15 @@ type GetLindormInstanceResponseBody struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Instance type, valid values:
 	//
-	// - **lindorm**：represents a Lindorm single-zone instance. - **lindorm_multizone**：represents a Lindorm multi-zone instance. - **serverless_lindorm**：represents a Lindorm Serverless instance. - **lindorm_standalone**：represents a Lindorm standalone instance. - **lts**：represents the Lindorm Data Channel Service type.
+	// - **lindorm**: represents a Lindorm single-zone instance.
+	//
+	// - **lindorm_multizone**: represents a Lindorm multi-zone instance.
+	//
+	// - **serverless_lindorm**: represents a Lindorm Serverless instance.
+	//
+	// - **lindorm_standalone**: represents a Lindorm standalone instance.
+	//
+	// - **lts**: represents the Lindorm Data Channel Service type.
 	//
 	// example:
 	//
@@ -5565,6 +5745,7 @@ func (s *GetLindormInstanceResponseBody) SetZoneId(v string) *GetLindormInstance
 }
 
 type GetLindormInstanceResponseBodyEngineList struct {
+	ArbiterCoreCount *string `json:"ArbiterCoreCount,omitempty" xml:"ArbiterCoreCount,omitempty"`
 	// The number of engine nodes.
 	//
 	// example:
@@ -5616,8 +5797,15 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	// example:
 	//
 	// 8GB
-	MemorySize    *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	MemorySize       *string `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	PrimaryCoreCount *string `json:"PrimaryCoreCount,omitempty" xml:"PrimaryCoreCount,omitempty"`
+	// The specification of the engine node.
+	//
+	// example:
+	//
+	// lindorm.g.2xlarge
+	Specification    *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	StandbyCoreCount *string `json:"StandbyCoreCount,omitempty" xml:"StandbyCoreCount,omitempty"`
 	// The version of the engine.
 	//
 	// example:
@@ -5632,6 +5820,11 @@ func (s GetLindormInstanceResponseBodyEngineList) String() string {
 
 func (s GetLindormInstanceResponseBodyEngineList) GoString() string {
 	return s.String()
+}
+
+func (s *GetLindormInstanceResponseBodyEngineList) SetArbiterCoreCount(v string) *GetLindormInstanceResponseBodyEngineList {
+	s.ArbiterCoreCount = &v
+	return s
 }
 
 func (s *GetLindormInstanceResponseBodyEngineList) SetCoreCount(v string) *GetLindormInstanceResponseBodyEngineList {
@@ -5664,8 +5857,18 @@ func (s *GetLindormInstanceResponseBodyEngineList) SetMemorySize(v string) *GetL
 	return s
 }
 
+func (s *GetLindormInstanceResponseBodyEngineList) SetPrimaryCoreCount(v string) *GetLindormInstanceResponseBodyEngineList {
+	s.PrimaryCoreCount = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBodyEngineList) SetSpecification(v string) *GetLindormInstanceResponseBodyEngineList {
 	s.Specification = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodyEngineList) SetStandbyCoreCount(v string) *GetLindormInstanceResponseBodyEngineList {
+	s.StandbyCoreCount = &v
 	return s
 }
 
@@ -5961,7 +6164,7 @@ func (s *GetLindormInstanceEngineListResponse) SetBody(v *GetLindormInstanceEngi
 type GetLindormInstanceListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the pages to return,
+	// The number of the page to return.
 	//
 	// example:
 	//
@@ -6014,13 +6217,13 @@ type GetLindormInstanceListRequest struct {
 	//
 	// 	- **1**: LindormSearch.
 	//
-	// 	- **2**: LindormTSDB.
+	// 	- **2**: LindormTSDB
 	//
-	// 	- **4**: LindormTable.
+	// 	- **4**: LindormTable
 	//
-	// 	- **8**: LindormDFS.
+	// 	- **8**: LindormDFS
 	//
-	// > The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
+	// >  The value of this parameter is the sum of all numbers that indicate the engines supported by the instance. For example, if you set the value of this parameter to 15, which is the sum of 1, 2, 4, and 8, this operation queries instances that support all four engines. If you set the value of this parameter to 6, which is the sum of 2 and 4, this operation queries instances that support LindormTSDB and LindormTable.
 	//
 	// example:
 	//
@@ -6141,7 +6344,7 @@ func (s *GetLindormInstanceListRequestTag) SetValue(v string) *GetLindormInstanc
 }
 
 type GetLindormInstanceListResponseBody struct {
-	// The list of instance.
+	// The instances.
 	InstanceList []*GetLindormInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	// The number of returned pages.
 	//
@@ -6255,7 +6458,14 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	//
 	// true
 	EnableMessage *bool `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
-	EnableRow     *bool `json:"EnableRow,omitempty" xml:"EnableRow,omitempty"`
+	// Indicates whether the table 3.0 storage engine is enabled, returning:
+	//
+	// true: Enabled. - false: Not enabled.
+	//
+	// example:
+	//
+	// true
+	EnableRow *bool `json:"EnableRow,omitempty" xml:"EnableRow,omitempty"`
 	// Indicates whether the Lindorm streaming engine is activated for the instance. Valid values:
 	//
 	// 	- **true**: The Lindorm streaming engine is activated for the instance.
@@ -6673,6 +6883,8 @@ func (s *GetLindormV2InstanceRequest) SetSecurityToken(v string) *GetLindormV2In
 
 type GetLindormV2InstanceResponseBody struct {
 	AliUid              *int64                                         `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ArbiterVSwitchId    *string                                        `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId       *string                                        `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	AutoRenew           *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	ColdStorage         *int32                                         `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
 	CreateMilliseconds  *int64                                         `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
@@ -6692,10 +6904,14 @@ type GetLindormV2InstanceResponseBody struct {
 	MaintainStartTime   *string                                        `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	NetworkType         *string                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PayType             *string                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryVSwitchId    *string                                        `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId       *string                                        `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
 	RegionId            *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId           *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId     *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ServiceType         *string                                        `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	StandbyVSwitchId    *string                                        `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId       *string                                        `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
 	StorageUsage        *GetLindormV2InstanceResponseBodyStorageUsage  `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
 	VpcId               *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	VswitchId           *string                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
@@ -6714,6 +6930,16 @@ func (s GetLindormV2InstanceResponseBody) GoString() string {
 
 func (s *GetLindormV2InstanceResponseBody) SetAliUid(v int64) *GetLindormV2InstanceResponseBody {
 	s.AliUid = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetArbiterVSwitchId(v string) *GetLindormV2InstanceResponseBody {
+	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetArbiterZoneId(v string) *GetLindormV2InstanceResponseBody {
+	s.ArbiterZoneId = &v
 	return s
 }
 
@@ -6812,6 +7038,16 @@ func (s *GetLindormV2InstanceResponseBody) SetPayType(v string) *GetLindormV2Ins
 	return s
 }
 
+func (s *GetLindormV2InstanceResponseBody) SetPrimaryVSwitchId(v string) *GetLindormV2InstanceResponseBody {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetPrimaryZoneId(v string) *GetLindormV2InstanceResponseBody {
+	s.PrimaryZoneId = &v
+	return s
+}
+
 func (s *GetLindormV2InstanceResponseBody) SetRegionId(v string) *GetLindormV2InstanceResponseBody {
 	s.RegionId = &v
 	return s
@@ -6829,6 +7065,16 @@ func (s *GetLindormV2InstanceResponseBody) SetResourceGroupId(v string) *GetLind
 
 func (s *GetLindormV2InstanceResponseBody) SetServiceType(v string) *GetLindormV2InstanceResponseBody {
 	s.ServiceType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetStandbyVSwitchId(v string) *GetLindormV2InstanceResponseBody {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBody) SetStandbyZoneId(v string) *GetLindormV2InstanceResponseBody {
+	s.StandbyZoneId = &v
 	return s
 }
 
@@ -12055,24 +12301,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12142,24 +12377,13 @@ func (client *Client) CheckLdpsColumnarIndexStatusWithOptions(request *CheckLdps
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CheckLdpsColumnarIndexStatusResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CheckLdpsColumnarIndexStatusResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CheckLdpsColumnarIndexStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CheckLdpsColumnarIndexStatusRequest
@@ -12271,24 +12495,13 @@ func (client *Client) CreateAutoScalingConfigWithOptions(tmpReq *CreateAutoScali
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAutoScalingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAutoScalingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateAutoScalingConfigRequest
@@ -12418,24 +12631,13 @@ func (client *Client) CreateAutoScalingRuleWithOptions(request *CreateAutoScalin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateAutoScalingRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateAutoScalingRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateAutoScalingRuleRequest
@@ -12513,24 +12715,13 @@ func (client *Client) CreateLdpsComputeGroupWithOptions(request *CreateLdpsCompu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateLdpsComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateLdpsComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateLdpsComputeGroupRequest
@@ -12764,24 +12955,13 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateLindormInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateLindormInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -12951,24 +13131,13 @@ func (client *Client) CreateLindormV2InstanceWithOptions(request *CreateLindormV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateLindormV2InstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateLindormV2InstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - CreateLindormV2InstanceRequest
@@ -13038,24 +13207,13 @@ func (client *Client) DeleteAutoScalingConfigWithOptions(request *DeleteAutoScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAutoScalingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAutoScalingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteAutoScalingConfigRequest
@@ -13129,24 +13287,13 @@ func (client *Client) DeleteAutoScalingRuleWithOptions(request *DeleteAutoScalin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteAutoScalingRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteAutoScalingRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteAutoScalingRuleRequest
@@ -13220,24 +13367,13 @@ func (client *Client) DeleteCustomResourceWithOptions(request *DeleteCustomResou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteCustomResourceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteCustomResourceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteCustomResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteCustomResourceRequest
@@ -13311,24 +13447,13 @@ func (client *Client) DeleteLdpsComputeGroupWithOptions(request *DeleteLdpsCompu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteLdpsComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteLdpsComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeleteLdpsComputeGroupRequest
@@ -13402,24 +13527,13 @@ func (client *Client) DeployLdpsSemiManagedComponentWithOptions(request *DeployL
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeployLdpsSemiManagedComponentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeployLdpsSemiManagedComponentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeployLdpsSemiManagedComponentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - DeployLdpsSemiManagedComponentRequest
@@ -13489,24 +13603,13 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DescribeRegionsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -13580,24 +13683,13 @@ func (client *Client) GetAutoScalingConfigWithOptions(request *GetAutoScalingCon
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAutoScalingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAutoScalingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAutoScalingConfigRequest
@@ -13671,24 +13763,13 @@ func (client *Client) GetAutoScalingRuleWithOptions(request *GetAutoScalingRuleR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetAutoScalingRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetAutoScalingRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetAutoScalingRuleRequest
@@ -13758,24 +13839,13 @@ func (client *Client) GetClientSourceIpWithOptions(request *GetClientSourceIpReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetClientSourceIpResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetClientSourceIpResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetClientSourceIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetClientSourceIpRequest
@@ -13845,24 +13915,13 @@ func (client *Client) GetEngineDefaultAuthWithOptions(request *GetEngineDefaultA
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEngineDefaultAuthResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEngineDefaultAuthResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEngineDefaultAuthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetEngineDefaultAuthRequest
@@ -13932,24 +13991,13 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceIpWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceIpWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceIpWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14019,24 +14067,13 @@ func (client *Client) GetInstanceSecurityGroupsWithOptions(request *GetInstanceS
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetInstanceSecurityGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetInstanceSecurityGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetInstanceSecurityGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetInstanceSecurityGroupsRequest
@@ -14110,24 +14147,13 @@ func (client *Client) GetLdpsComputeGroupWithOptions(request *GetLdpsComputeGrou
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLdpsComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLdpsComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLdpsComputeGroupRequest
@@ -14201,24 +14227,13 @@ func (client *Client) GetLdpsNamespacedQuotaWithOptions(request *GetLdpsNamespac
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLdpsNamespacedQuotaResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLdpsNamespacedQuotaResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLdpsNamespacedQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLdpsNamespacedQuotaRequest
@@ -14300,24 +14315,13 @@ func (client *Client) GetLdpsResourceCostWithOptions(request *GetLdpsResourceCos
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLdpsResourceCostResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLdpsResourceCostResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLdpsResourceCostResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLdpsResourceCostRequest
@@ -14334,6 +14338,14 @@ func (client *Client) GetLdpsResourceCost(request *GetLdpsResourceCostRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of each storage type in a Lindorm instance.
+//
+// Description:
+//
+// If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+//
 // @param request - GetLindormFsUsedDetailRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -14387,26 +14399,23 @@ func (client *Client) GetLindormFsUsedDetailWithOptions(request *GetLindormFsUse
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormFsUsedDetailResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormFsUsedDetailResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormFsUsedDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of each storage type in a Lindorm instance.
+//
+// Description:
+//
+// If the version of the underlying storage engine in a Lindorm cluster is 4.1.9 or later, the storage usage values returned for the LStorageUsageList parameter prevail.
+//
 // @param request - GetLindormFsUsedDetailRequest
 //
 // @return GetLindormFsUsedDetailResponse
@@ -14474,24 +14483,13 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14569,24 +14567,13 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormInstanceEngineListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormInstanceEngineListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormInstanceEngineListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14688,24 +14675,13 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormInstanceListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormInstanceListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormInstanceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -14775,24 +14751,13 @@ func (client *Client) GetLindormV2InstanceWithOptions(request *GetLindormV2Insta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormV2InstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormV2InstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLindormV2InstanceRequest
@@ -14862,24 +14827,13 @@ func (client *Client) GetLindormV2InstanceEngineListWithOptions(request *GetLind
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormV2InstanceEngineListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormV2InstanceEngineListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormV2InstanceEngineListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLindormV2InstanceEngineListRequest
@@ -14945,24 +14899,13 @@ func (client *Client) GetLindormV2StorageUsageWithOptions(request *GetLindormV2S
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetLindormV2StorageUsageResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetLindormV2StorageUsageResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetLindormV2StorageUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - GetLindormV2StorageUsageRequest
@@ -15028,24 +14971,13 @@ func (client *Client) ListAutoScalingConfigsWithOptions(request *ListAutoScaling
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAutoScalingConfigsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAutoScalingConfigsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAutoScalingConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAutoScalingConfigsRequest
@@ -15119,24 +15051,13 @@ func (client *Client) ListAutoScalingRecordsWithOptions(request *ListAutoScaling
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAutoScalingRecordsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAutoScalingRecordsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAutoScalingRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAutoScalingRecordsRequest
@@ -15206,24 +15127,13 @@ func (client *Client) ListAutoScalingRulesWithOptions(request *ListAutoScalingRu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListAutoScalingRulesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListAutoScalingRulesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListAutoScalingRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListAutoScalingRulesRequest
@@ -15293,24 +15203,13 @@ func (client *Client) ListLdpsComputeGroupsWithOptions(request *ListLdpsComputeG
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListLdpsComputeGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListLdpsComputeGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListLdpsComputeGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ListLdpsComputeGroupsRequest
@@ -15396,24 +15295,13 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListTagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15523,24 +15411,13 @@ func (client *Client) ModifyAutoScalingConfigWithOptions(request *ModifyAutoScal
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAutoScalingConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAutoScalingConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAutoScalingConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyAutoScalingConfigRequest
@@ -15674,24 +15551,13 @@ func (client *Client) ModifyAutoScalingRuleWithOptions(request *ModifyAutoScalin
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyAutoScalingRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyAutoScalingRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyAutoScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyAutoScalingRuleRequest
@@ -15779,24 +15645,13 @@ func (client *Client) ModifyInstancePayTypeWithOptions(request *ModifyInstancePa
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyInstancePayTypeResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyInstancePayTypeResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyInstancePayTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15896,24 +15751,13 @@ func (client *Client) ModifyLindormV2InstanceWithOptions(request *ModifyLindormV
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyLindormV2InstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyLindormV2InstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyLindormV2InstanceRequest
@@ -15995,24 +15839,13 @@ func (client *Client) ModifyLindormV2WhiteIpListWithOptions(request *ModifyLindo
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ModifyLindormV2WhiteIpListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ModifyLindormV2WhiteIpListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ModifyLindormV2WhiteIpListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ModifyLindormV2WhiteIpListRequest
@@ -16086,24 +15919,13 @@ func (client *Client) OpenComputeEngineWithOptions(request *OpenComputeEngineReq
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OpenComputeEngineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OpenComputeEngineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OpenComputeEngineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - OpenComputeEngineRequest
@@ -16177,24 +15999,13 @@ func (client *Client) OpenComputePreCheckWithOptions(request *OpenComputePreChec
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &OpenComputePreCheckResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &OpenComputePreCheckResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &OpenComputePreCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - OpenComputePreCheckRequest
@@ -16268,24 +16079,13 @@ func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseLindormInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseLindormInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16359,24 +16159,13 @@ func (client *Client) ReleaseLindormV2InstanceWithOptions(request *ReleaseLindor
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ReleaseLindormV2InstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ReleaseLindormV2InstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ReleaseLindormV2InstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - ReleaseLindormV2InstanceRequest
@@ -16464,24 +16253,13 @@ func (client *Client) RenewLindormInstanceWithOptions(request *RenewLindormInsta
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RenewLindormInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RenewLindormInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RenewLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16565,24 +16343,13 @@ func (client *Client) RestartLdpsComputeGroupWithOptions(request *RestartLdpsCom
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartLdpsComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartLdpsComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - RestartLdpsComputeGroupRequest
@@ -16660,24 +16427,13 @@ func (client *Client) SetDefaultOlapComputeGroupWithOptions(request *SetDefaultO
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SetDefaultOlapComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SetDefaultOlapComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SetDefaultOlapComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - SetDefaultOlapComputeGroupRequest
@@ -16761,24 +16517,13 @@ func (client *Client) SwitchLSQLV3MySQLServiceWithOptions(request *SwitchLSQLV3M
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &SwitchLSQLV3MySQLServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &SwitchLSQLV3MySQLServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &SwitchLSQLV3MySQLServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16874,24 +16619,13 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &TagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16981,24 +16715,13 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UntagResourcesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17088,24 +16811,13 @@ func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstan
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceIpWhiteListResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateInstanceIpWhiteListResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateInstanceIpWhiteListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17179,24 +16891,13 @@ func (client *Client) UpdateInstanceSecurityGroupsWithOptions(request *UpdateIns
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateInstanceSecurityGroupsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateInstanceSecurityGroupsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateInstanceSecurityGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateInstanceSecurityGroupsRequest
@@ -17274,24 +16975,13 @@ func (client *Client) UpdateLdpsComputeGroupWithOptions(request *UpdateLdpsCompu
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLdpsComputeGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLdpsComputeGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLdpsComputeGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateLdpsComputeGroupRequest
@@ -17369,24 +17059,13 @@ func (client *Client) UpdateLindormV2InstanceParameterWithOptions(request *Updat
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateLindormV2InstanceParameterResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateLindormV2InstanceParameterResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateLindormV2InstanceParameterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpdateLindormV2InstanceParameterRequest
@@ -17544,24 +17223,13 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeLindormInstanceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeLindormInstanceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeLindormInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17655,24 +17323,13 @@ func (client *Client) UpgradeLindormV2StreamEngineWithOptions(request *UpgradeLi
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeLindormV2StreamEngineResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeLindormV2StreamEngineResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeLindormV2StreamEngineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // @param request - UpgradeLindormV2StreamEngineRequest
