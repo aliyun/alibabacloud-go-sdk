@@ -7669,7 +7669,11 @@ func (s *RunVideoAnalysisRequestTextProcessTasks) SetModelId(v string) *RunVideo
 }
 
 type RunVideoAnalysisRequestVideoCaptionInfo struct {
-	VideoCaptions []*RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions `json:"videoCaptions,omitempty" xml:"videoCaptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// oss:// | http://
+	VideoCaptionFileUrl *string                                                 `json:"videoCaptionFileUrl,omitempty" xml:"videoCaptionFileUrl,omitempty"`
+	VideoCaptions       []*RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions `json:"videoCaptions,omitempty" xml:"videoCaptions,omitempty" type:"Repeated"`
 }
 
 func (s RunVideoAnalysisRequestVideoCaptionInfo) String() string {
@@ -7678,6 +7682,11 @@ func (s RunVideoAnalysisRequestVideoCaptionInfo) String() string {
 
 func (s RunVideoAnalysisRequestVideoCaptionInfo) GoString() string {
 	return s.String()
+}
+
+func (s *RunVideoAnalysisRequestVideoCaptionInfo) SetVideoCaptionFileUrl(v string) *RunVideoAnalysisRequestVideoCaptionInfo {
+	s.VideoCaptionFileUrl = &v
+	return s
 }
 
 func (s *RunVideoAnalysisRequestVideoCaptionInfo) SetVideoCaptions(v []*RunVideoAnalysisRequestVideoCaptionInfoVideoCaptions) *RunVideoAnalysisRequestVideoCaptionInfo {
@@ -9738,7 +9747,11 @@ func (s *SubmitVideoAnalysisTaskRequestTextProcessTasks) SetModelId(v string) *S
 }
 
 type SubmitVideoAnalysisTaskRequestVideoCaptionInfo struct {
-	VideoCaptions []*SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions `json:"videoCaptions,omitempty" xml:"videoCaptions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// oss:// | http://
+	VideoCaptionFileUrl *string                                                        `json:"videoCaptionFileUrl,omitempty" xml:"videoCaptionFileUrl,omitempty"`
+	VideoCaptions       []*SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions `json:"videoCaptions,omitempty" xml:"videoCaptions,omitempty" type:"Repeated"`
 }
 
 func (s SubmitVideoAnalysisTaskRequestVideoCaptionInfo) String() string {
@@ -9747,6 +9760,11 @@ func (s SubmitVideoAnalysisTaskRequestVideoCaptionInfo) String() string {
 
 func (s SubmitVideoAnalysisTaskRequestVideoCaptionInfo) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitVideoAnalysisTaskRequestVideoCaptionInfo) SetVideoCaptionFileUrl(v string) *SubmitVideoAnalysisTaskRequestVideoCaptionInfo {
+	s.VideoCaptionFileUrl = &v
+	return s
 }
 
 func (s *SubmitVideoAnalysisTaskRequestVideoCaptionInfo) SetVideoCaptions(v []*SubmitVideoAnalysisTaskRequestVideoCaptionInfoVideoCaptions) *SubmitVideoAnalysisTaskRequestVideoCaptionInfo {
