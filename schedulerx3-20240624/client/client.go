@@ -4895,7 +4895,8 @@ type ListJobExecutionsResponseBodyDataRecords struct {
 	// example:
 	//
 	// 1
-	TimeType *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	TimeType    *int32 `json:"TimeType,omitempty" xml:"TimeType,omitempty"`
+	TotalTokens *int32 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
 	// example:
 	//
 	// 1
@@ -4996,6 +4997,11 @@ func (s *ListJobExecutionsResponseBodyDataRecords) SetStatus(v int32) *ListJobEx
 
 func (s *ListJobExecutionsResponseBodyDataRecords) SetTimeType(v int32) *ListJobExecutionsResponseBodyDataRecords {
 	s.TimeType = &v
+	return s
+}
+
+func (s *ListJobExecutionsResponseBodyDataRecords) SetTotalTokens(v int32) *ListJobExecutionsResponseBodyDataRecords {
+	s.TotalTokens = &v
 	return s
 }
 
@@ -5941,7 +5947,8 @@ type ListScheduleEventRequest struct {
 	// example:
 	//
 	// INFO
-	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// example:
 	//
 	// 1310630367761285120
@@ -5997,6 +6004,11 @@ func (s *ListScheduleEventRequest) SetEndTime(v int64) *ListScheduleEventRequest
 
 func (s *ListScheduleEventRequest) SetEvent(v string) *ListScheduleEventRequest {
 	s.Event = &v
+	return s
+}
+
+func (s *ListScheduleEventRequest) SetEventType(v string) *ListScheduleEventRequest {
+	s.EventType = &v
 	return s
 }
 
