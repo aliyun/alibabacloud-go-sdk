@@ -55,6 +55,286 @@ func (s *CarbonEmissionElecSummaryItem) SetRawData(v float64) *CarbonEmissionEle
 	return s
 }
 
+type ChatDocumentPageNum struct {
+	Num *int32                 `json:"num,omitempty" xml:"num,omitempty"`
+	Pos [][]*ChatRefDocPostion `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+}
+
+func (s ChatDocumentPageNum) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatDocumentPageNum) GoString() string {
+	return s.String()
+}
+
+func (s *ChatDocumentPageNum) SetNum(v int32) *ChatDocumentPageNum {
+	s.Num = &v
+	return s
+}
+
+func (s *ChatDocumentPageNum) SetPos(v [][]*ChatRefDocPostion) *ChatDocumentPageNum {
+	s.Pos = v
+	return s
+}
+
+type ChatFolderItem struct {
+	FolderId   *string     `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	FolderName *string     `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	SubFolders []*ChatItem `json:"subFolders,omitempty" xml:"subFolders,omitempty" type:"Repeated"`
+}
+
+func (s ChatFolderItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatFolderItem) GoString() string {
+	return s.String()
+}
+
+func (s *ChatFolderItem) SetFolderId(v string) *ChatFolderItem {
+	s.FolderId = &v
+	return s
+}
+
+func (s *ChatFolderItem) SetFolderName(v string) *ChatFolderItem {
+	s.FolderName = &v
+	return s
+}
+
+func (s *ChatFolderItem) SetSubFolders(v []*ChatItem) *ChatFolderItem {
+	s.SubFolders = v
+	return s
+}
+
+type ChatItem struct {
+	Answer     *string           `json:"answer,omitempty" xml:"answer,omitempty"`
+	CreateTime *int64            `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	FolderId   *string           `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	FolderName *string           `json:"folderName,omitempty" xml:"folderName,omitempty"`
+	Question   *string           `json:"question,omitempty" xml:"question,omitempty"`
+	RefDocList []*ChatRefDocItem `json:"refDocList,omitempty" xml:"refDocList,omitempty" type:"Repeated"`
+}
+
+func (s ChatItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatItem) GoString() string {
+	return s.String()
+}
+
+func (s *ChatItem) SetAnswer(v string) *ChatItem {
+	s.Answer = &v
+	return s
+}
+
+func (s *ChatItem) SetCreateTime(v int64) *ChatItem {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ChatItem) SetFolderId(v string) *ChatItem {
+	s.FolderId = &v
+	return s
+}
+
+func (s *ChatItem) SetFolderName(v string) *ChatItem {
+	s.FolderName = &v
+	return s
+}
+
+func (s *ChatItem) SetQuestion(v string) *ChatItem {
+	s.Question = &v
+	return s
+}
+
+func (s *ChatItem) SetRefDocList(v []*ChatRefDocItem) *ChatItem {
+	s.RefDocList = v
+	return s
+}
+
+type ChatRefDocInfo struct {
+	PageListInfo []*ChatRefDocPageInfo `json:"pageListInfo,omitempty" xml:"pageListInfo,omitempty" type:"Repeated"`
+	Pages        *int64                `json:"pages,omitempty" xml:"pages,omitempty"`
+}
+
+func (s ChatRefDocInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRefDocInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRefDocInfo) SetPageListInfo(v []*ChatRefDocPageInfo) *ChatRefDocInfo {
+	s.PageListInfo = v
+	return s
+}
+
+func (s *ChatRefDocInfo) SetPages(v int64) *ChatRefDocInfo {
+	s.Pages = &v
+	return s
+}
+
+type ChatRefDocItem struct {
+	DocInfo       *ChatRefDocInfo        `json:"docInfo,omitempty" xml:"docInfo,omitempty"`
+	DocName       *string                `json:"docName,omitempty" xml:"docName,omitempty"`
+	DocUrl        *string                `json:"docUrl,omitempty" xml:"docUrl,omitempty"`
+	OriginDocName *string                `json:"originDocName,omitempty" xml:"originDocName,omitempty"`
+	OriginDocUrl  *string                `json:"originDocUrl,omitempty" xml:"originDocUrl,omitempty"`
+	PageNum       []*ChatDocumentPageNum `json:"pageNum,omitempty" xml:"pageNum,omitempty" type:"Repeated"`
+	SourceType    *string                `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
+}
+
+func (s ChatRefDocItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRefDocItem) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRefDocItem) SetDocInfo(v *ChatRefDocInfo) *ChatRefDocItem {
+	s.DocInfo = v
+	return s
+}
+
+func (s *ChatRefDocItem) SetDocName(v string) *ChatRefDocItem {
+	s.DocName = &v
+	return s
+}
+
+func (s *ChatRefDocItem) SetDocUrl(v string) *ChatRefDocItem {
+	s.DocUrl = &v
+	return s
+}
+
+func (s *ChatRefDocItem) SetOriginDocName(v string) *ChatRefDocItem {
+	s.OriginDocName = &v
+	return s
+}
+
+func (s *ChatRefDocItem) SetOriginDocUrl(v string) *ChatRefDocItem {
+	s.OriginDocUrl = &v
+	return s
+}
+
+func (s *ChatRefDocItem) SetPageNum(v []*ChatDocumentPageNum) *ChatRefDocItem {
+	s.PageNum = v
+	return s
+}
+
+func (s *ChatRefDocItem) SetSourceType(v string) *ChatRefDocItem {
+	s.SourceType = &v
+	return s
+}
+
+type ChatRefDocPageInfo struct {
+	Angle            *float64 `json:"angle,omitempty" xml:"angle,omitempty"`
+	ExcelParseResult *string  `json:"excelParseResult,omitempty" xml:"excelParseResult,omitempty"`
+	ImageHeight      *int32   `json:"imageHeight,omitempty" xml:"imageHeight,omitempty"`
+	ImageUrl         *string  `json:"imageUrl,omitempty" xml:"imageUrl,omitempty"`
+	ImageWidth       *int32   `json:"imageWidth,omitempty" xml:"imageWidth,omitempty"`
+	PageIdCurDoc     *int32   `json:"pageIdCurDoc,omitempty" xml:"pageIdCurDoc,omitempty"`
+	PdfParseResult   *string  `json:"pdfParseResult,omitempty" xml:"pdfParseResult,omitempty"`
+	WordParseResult  *string  `json:"wordParseResult,omitempty" xml:"wordParseResult,omitempty"`
+}
+
+func (s ChatRefDocPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRefDocPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRefDocPageInfo) SetAngle(v float64) *ChatRefDocPageInfo {
+	s.Angle = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetExcelParseResult(v string) *ChatRefDocPageInfo {
+	s.ExcelParseResult = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetImageHeight(v int32) *ChatRefDocPageInfo {
+	s.ImageHeight = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetImageUrl(v string) *ChatRefDocPageInfo {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetImageWidth(v int32) *ChatRefDocPageInfo {
+	s.ImageWidth = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetPageIdCurDoc(v int32) *ChatRefDocPageInfo {
+	s.PageIdCurDoc = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetPdfParseResult(v string) *ChatRefDocPageInfo {
+	s.PdfParseResult = &v
+	return s
+}
+
+func (s *ChatRefDocPageInfo) SetWordParseResult(v string) *ChatRefDocPageInfo {
+	s.WordParseResult = &v
+	return s
+}
+
+type ChatRefDocPageNum struct {
+	Num *int32                 `json:"num,omitempty" xml:"num,omitempty"`
+	Pos [][]*ChatRefDocPostion `json:"pos,omitempty" xml:"pos,omitempty" type:"Repeated"`
+}
+
+func (s ChatRefDocPageNum) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRefDocPageNum) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRefDocPageNum) SetNum(v int32) *ChatRefDocPageNum {
+	s.Num = &v
+	return s
+}
+
+func (s *ChatRefDocPageNum) SetPos(v [][]*ChatRefDocPostion) *ChatRefDocPageNum {
+	s.Pos = v
+	return s
+}
+
+type ChatRefDocPostion struct {
+	X *int32 `json:"x,omitempty" xml:"x,omitempty"`
+	Y *int32 `json:"y,omitempty" xml:"y,omitempty"`
+}
+
+func (s ChatRefDocPostion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRefDocPostion) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRefDocPostion) SetX(v int32) *ChatRefDocPostion {
+	s.X = &v
+	return s
+}
+
+func (s *ChatRefDocPostion) SetY(v int32) *ChatRefDocPostion {
+	s.Y = &v
+	return s
+}
+
 type ConstituteItem struct {
 	CarbonEmissionData *float64                         `json:"carbonEmissionData,omitempty" xml:"carbonEmissionData,omitempty"`
 	DataUnit           *string                          `json:"dataUnit,omitempty" xml:"dataUnit,omitempty"`
@@ -1251,6 +1531,237 @@ func (s *BatchUpdateSystemRunningPlanResponse) SetBody(v *BatchUpdateSystemRunni
 	return s
 }
 
+type ChatRequest struct {
+	// Q&A content.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// How to access knowledge base Q&A documents.
+	Question *string `json:"question,omitempty" xml:"question,omitempty"`
+	// - Q&A session ID.
+	//
+	// - Historical sessions can be retrieved through GetSessionList.
+	//
+	// - A new session can also be created via CreateChatSession.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bfce2248-1546-4298-8bcf-70ac26e69646
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s ChatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChatRequest) SetQuestion(v string) *ChatRequest {
+	s.Question = &v
+	return s
+}
+
+func (s *ChatRequest) SetSessionId(v string) *ChatRequest {
+	s.SessionId = &v
+	return s
+}
+
+type ChatResponseBody struct {
+	// Details of the Q&A.
+	//
+	// example:
+	//
+	// true
+	Data *ChatItem `json:"data,omitempty" xml:"data,omitempty"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ChatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChatResponseBody) SetData(v *ChatItem) *ChatResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ChatResponseBody) SetRequestId(v string) *ChatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ChatResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ChatResponseBody  `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ChatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChatResponse) SetHeaders(v map[string]*string) *ChatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChatResponse) SetStatusCode(v int32) *ChatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChatResponse) SetBody(v *ChatResponseBody) *ChatResponse {
+	s.Body = v
+	return s
+}
+
+type CreateChatSessionRequest struct {
+	// Folder ID, to search for Q&A content within the current folder and its subfolders.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1a851c4a-1d65-11ef-99a7-ssfsfdd
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Name of the current session.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// analyzer_1744684195
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The unique identifier of the user. If not provided, the SDK calling account will be used as the user ID by default.
+	//
+	// example:
+	//
+	// 1233333
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s CreateChatSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatSessionRequest) SetFolderId(v string) *CreateChatSessionRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *CreateChatSessionRequest) SetName(v string) *CreateChatSessionRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateChatSessionRequest) SetUserId(v string) *CreateChatSessionRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateChatSessionResponseBody struct {
+	// Returned data structure.
+	Data *CreateChatSessionResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// ID of the request
+	//
+	// example:
+	//
+	// 9bc20a5a-b26b-4c28-922a-7cd10b61f96f
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreateChatSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatSessionResponseBody) SetData(v *CreateChatSessionResponseBodyData) *CreateChatSessionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateChatSessionResponseBody) SetRequestId(v string) *CreateChatSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateChatSessionResponseBodyData struct {
+	// Q&A session ID, used to record multiple Q&A sessions of the same user.
+	//
+	// example:
+	//
+	// 596ac39c-8855-4128-bad7-78aebeff48fc
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s CreateChatSessionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatSessionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatSessionResponseBodyData) SetSessionId(v string) *CreateChatSessionResponseBodyData {
+	s.SessionId = &v
+	return s
+}
+
+type CreateChatSessionResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateChatSessionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateChatSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateChatSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateChatSessionResponse) SetHeaders(v map[string]*string) *CreateChatSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateChatSessionResponse) SetStatusCode(v int32) *CreateChatSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateChatSessionResponse) SetBody(v *CreateChatSessionResponseBody) *CreateChatSessionResponse {
+	s.Body = v
+	return s
+}
+
 type EditProhibitedDevicesRequest struct {
 	// This parameter is required.
 	//
@@ -2196,6 +2707,482 @@ func (s *GetCarbonEmissionTrendResponse) SetStatusCode(v int32) *GetCarbonEmissi
 }
 
 func (s *GetCarbonEmissionTrendResponse) SetBody(v *GetCarbonEmissionTrendResponseBody) *GetCarbonEmissionTrendResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatFolderListResponseBody struct {
+	// Returned data
+	Data []*ChatFolderItem `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// ID of the request
+	//
+	// example:
+	//
+	// A8AEC6D9-A359-5169-BD1A-BD848BA60D65
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetChatFolderListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFolderListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFolderListResponseBody) SetData(v []*ChatFolderItem) *GetChatFolderListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatFolderListResponseBody) SetRequestId(v string) *GetChatFolderListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatFolderListResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatFolderListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatFolderListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatFolderListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatFolderListResponse) SetHeaders(v map[string]*string) *GetChatFolderListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatFolderListResponse) SetStatusCode(v int32) *GetChatFolderListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatFolderListResponse) SetBody(v *GetChatFolderListResponseBody) *GetChatFolderListResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatListRequest struct {
+	// Pagination parameter, page number, starting from 1.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *string `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Q&A session ID, used to record multiple Q&As for the same user.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// bfce2248-1546-4298-8bcf-70ac26e69646
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+}
+
+func (s GetChatListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatListRequest) SetCurrentPage(v string) *GetChatListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetChatListRequest) SetPageSize(v string) *GetChatListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetChatListRequest) SetSessionId(v string) *GetChatListRequest {
+	s.SessionId = &v
+	return s
+}
+
+type GetChatListResponseBody struct {
+	// Returned data structure.
+	Data *GetChatListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetChatListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatListResponseBody) SetData(v *GetChatListResponseBodyData) *GetChatListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatListResponseBody) SetRequestId(v string) *GetChatListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatListResponseBodyData struct {
+	// Q&A list.
+	ChatList []*ChatItem `json:"chatList,omitempty" xml:"chatList,omitempty" type:"Repeated"`
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Page size.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Total number of records.
+	//
+	// example:
+	//
+	// 21
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// Total number of pages.
+	//
+	// example:
+	//
+	// 3
+	TotalPage *int64 `json:"totalPage,omitempty" xml:"totalPage,omitempty"`
+}
+
+func (s GetChatListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatListResponseBodyData) SetChatList(v []*ChatItem) *GetChatListResponseBodyData {
+	s.ChatList = v
+	return s
+}
+
+func (s *GetChatListResponseBodyData) SetCurrentPage(v int64) *GetChatListResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetChatListResponseBodyData) SetPageSize(v int64) *GetChatListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetChatListResponseBodyData) SetTotal(v int64) *GetChatListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *GetChatListResponseBodyData) SetTotalPage(v int64) *GetChatListResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type GetChatListResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatListResponse) SetHeaders(v map[string]*string) *GetChatListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatListResponse) SetStatusCode(v int32) *GetChatListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatListResponse) SetBody(v *GetChatListResponseBody) *GetChatListResponse {
+	s.Body = v
+	return s
+}
+
+type GetChatSessionListRequest struct {
+	// Pagination parameter, page number, default is 1.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// Session name.
+	//
+	// example:
+	//
+	// oklabs
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Page size, default is 10.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// The unique identifier of the user. If not provided, the SDK calling account will be used as the user ID by default.
+	//
+	// example:
+	//
+	// 12222
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetChatSessionListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatSessionListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatSessionListRequest) SetCurrentPage(v int32) *GetChatSessionListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetChatSessionListRequest) SetName(v string) *GetChatSessionListRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *GetChatSessionListRequest) SetPageSize(v int32) *GetChatSessionListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetChatSessionListRequest) SetUserId(v string) *GetChatSessionListRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetChatSessionListResponseBody struct {
+	// Returned data
+	Data *GetChatSessionListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// Request ID.
+	//
+	// example:
+	//
+	// 83A5A7DD-8974-5769-952E-590A97BEA34E
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetChatSessionListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatSessionListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatSessionListResponseBody) SetData(v *GetChatSessionListResponseBodyData) *GetChatSessionListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetChatSessionListResponseBody) SetRequestId(v string) *GetChatSessionListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetChatSessionListResponseBodyData struct {
+	// Current page number.
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int64 `json:"currentPage,omitempty" xml:"currentPage,omitempty"`
+	// 分页大小。
+	//
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// Session list.
+	SessionList []*GetChatSessionListResponseBodyDataSessionList `json:"sessionList,omitempty" xml:"sessionList,omitempty" type:"Repeated"`
+	// Total number of records.
+	//
+	// example:
+	//
+	// 21
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+	// Total number of pages
+	//
+	// example:
+	//
+	// 3
+	TotalPage *int64 `json:"totalPage,omitempty" xml:"totalPage,omitempty"`
+}
+
+func (s GetChatSessionListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatSessionListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatSessionListResponseBodyData) SetCurrentPage(v int64) *GetChatSessionListResponseBodyData {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyData) SetPageSize(v int64) *GetChatSessionListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyData) SetSessionList(v []*GetChatSessionListResponseBodyDataSessionList) *GetChatSessionListResponseBodyData {
+	s.SessionList = v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyData) SetTotal(v int64) *GetChatSessionListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyData) SetTotalPage(v int64) *GetChatSessionListResponseBodyData {
+	s.TotalPage = &v
+	return s
+}
+
+type GetChatSessionListResponseBodyDataSessionList struct {
+	// Report creation timestamp, in milliseconds.
+	//
+	// example:
+	//
+	// 2025-01-01T14:45:17Z
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// Folder ID, used to specify the scope of documents to be queried.
+	//
+	// example:
+	//
+	// 3493370b-4884-47dd-95ed-49038769af53
+	FolderId *string `json:"folderId,omitempty" xml:"folderId,omitempty"`
+	// Session name
+	//
+	// example:
+	//
+	// student_app_spelling
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// Q&A session ID, used to record multiple Q&As of the same user.
+	//
+	// example:
+	//
+	// 5c748ef9-3f23-4b5a-916f-966c0d2c6dcd
+	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
+	// Modification time, in milliseconds.
+	//
+	// example:
+	//
+	// 2024-12-30T02:05:03Z
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// User ID of the current session.
+	//
+	// example:
+	//
+	// 12222
+	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
+}
+
+func (s GetChatSessionListResponseBodyDataSessionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatSessionListResponseBodyDataSessionList) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetCreateTime(v int64) *GetChatSessionListResponseBodyDataSessionList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetFolderId(v string) *GetChatSessionListResponseBodyDataSessionList {
+	s.FolderId = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetName(v string) *GetChatSessionListResponseBodyDataSessionList {
+	s.Name = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetSessionId(v string) *GetChatSessionListResponseBodyDataSessionList {
+	s.SessionId = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetUpdateTime(v int64) *GetChatSessionListResponseBodyDataSessionList {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetChatSessionListResponseBodyDataSessionList) SetUserId(v string) *GetChatSessionListResponseBodyDataSessionList {
+	s.UserId = &v
+	return s
+}
+
+type GetChatSessionListResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetChatSessionListResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetChatSessionListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetChatSessionListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetChatSessionListResponse) SetHeaders(v map[string]*string) *GetChatSessionListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetChatSessionListResponse) SetStatusCode(v int32) *GetChatSessionListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetChatSessionListResponse) SetBody(v *GetChatSessionListResponseBody) *GetChatSessionListResponse {
 	s.Body = v
 	return s
 }
@@ -10837,6 +11824,162 @@ func (client *Client) BatchUpdateSystemRunningPlan(request *BatchUpdateSystemRun
 
 // Summary:
 //
+// Knowledge Base Q\\&A
+//
+// Description:
+//
+// - The interface provides Q&A services within the scope of the selected directory in the session.
+//
+// - The sessionId information is obtained through GetChatSessionList.
+//
+// - You can also create a new session via the CreateChatSession interface.
+//
+// @param request - ChatRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ChatResponse
+func (client *Client) ChatWithOptions(request *ChatRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ChatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Question)) {
+		body["question"] = request.Question
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Chat"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/chat"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Knowledge Base Q\\&A
+//
+// Description:
+//
+// - The interface provides Q&A services within the scope of the selected directory in the session.
+//
+// - The sessionId information is obtained through GetChatSessionList.
+//
+// - You can also create a new session via the CreateChatSession interface.
+//
+// @param request - ChatRequest
+//
+// @return ChatResponse
+func (client *Client) Chat(request *ChatRequest) (_result *ChatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ChatResponse{}
+	_body, _err := client.ChatWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Create Q&A Window
+//
+// @param request - CreateChatSessionRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateChatSessionResponse
+func (client *Client) CreateChatSessionWithOptions(request *CreateChatSessionRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateChatSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["folderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateChatSession"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/chat/session/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateChatSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Create Q&A Window
+//
+// @param request - CreateChatSessionRequest
+//
+// @return CreateChatSessionResponse
+func (client *Client) CreateChatSession(request *CreateChatSessionRequest) (_result *CreateChatSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateChatSessionResponse{}
+	_body, _err := client.CreateChatSessionWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 编辑禁用设备
 //
 // @param request - EditProhibitedDevicesRequest
@@ -11200,6 +12343,220 @@ func (client *Client) GetCarbonEmissionTrend(request *GetCarbonEmissionTrendRequ
 	headers := make(map[string]*string)
 	_result = &GetCarbonEmissionTrendResponse{}
 	_body, _err := client.GetCarbonEmissionTrendWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Q&A folder List
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatFolderListResponse
+func (client *Client) GetChatFolderListWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChatFolderListResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatFolderList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/chat/folder/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatFolderListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Q&A folder List
+//
+// @return GetChatFolderListResponse
+func (client *Client) GetChatFolderList() (_result *GetChatFolderListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChatFolderListResponse{}
+	_body, _err := client.GetChatFolderListWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # Retrieve the historical documents of a session
+//
+// Description:
+//
+// - This API retrieves the list of historical documents within a session by passing in the session ID.
+//
+// - The sessionId information is obtained through GetChatSessionList.
+//
+// - A new session can also be created using the CreateChatSession interface.
+//
+// @param request - GetChatListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatListResponse
+func (client *Client) GetChatListWithOptions(request *GetChatListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChatListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SessionId)) {
+		body["sessionId"] = request.SessionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/chat/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # Retrieve the historical documents of a session
+//
+// Description:
+//
+// - This API retrieves the list of historical documents within a session by passing in the session ID.
+//
+// - The sessionId information is obtained through GetChatSessionList.
+//
+// - A new session can also be created using the CreateChatSession interface.
+//
+// @param request - GetChatListRequest
+//
+// @return GetChatListResponse
+func (client *Client) GetChatList(request *GetChatListRequest) (_result *GetChatListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChatListResponse{}
+	_body, _err := client.GetChatListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Q&A Session List
+//
+// @param request - GetChatSessionListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetChatSessionListResponse
+func (client *Client) GetChatSessionListWithOptions(request *GetChatSessionListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetChatSessionListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["currentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["userId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetChatSessionList"),
+		Version:     tea.String("2022-09-23"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/aidoc/document/chat/session/list"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetChatSessionListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Get Q&A Session List
+//
+// @param request - GetChatSessionListRequest
+//
+// @return GetChatSessionListResponse
+func (client *Client) GetChatSessionList(request *GetChatSessionListRequest) (_result *GetChatSessionListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetChatSessionListResponse{}
+	_body, _err := client.GetChatSessionListWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
