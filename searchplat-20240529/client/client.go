@@ -1187,6 +1187,173 @@ func (s *GetImageAnalyzeTaskStatusResponse) SetBody(v *GetImageAnalyzeTaskStatus
 	return s
 }
 
+type GetMultiModalEmbeddingRequest struct {
+	Input []*GetMultiModalEmbeddingRequestInput `json:"input,omitempty" xml:"input,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiModalEmbeddingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingRequest) SetInput(v []*GetMultiModalEmbeddingRequestInput) *GetMultiModalEmbeddingRequest {
+	s.Input = v
+	return s
+}
+
+type GetMultiModalEmbeddingRequestInput struct {
+	Image *string `json:"image,omitempty" xml:"image,omitempty"`
+	Text  *string `json:"text,omitempty" xml:"text,omitempty"`
+}
+
+func (s GetMultiModalEmbeddingRequestInput) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingRequestInput) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingRequestInput) SetImage(v string) *GetMultiModalEmbeddingRequestInput {
+	s.Image = &v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingRequestInput) SetText(v string) *GetMultiModalEmbeddingRequestInput {
+	s.Text = &v
+	return s
+}
+
+type GetMultiModalEmbeddingResponseBody struct {
+	Latency   *int32                                    `json:"latency,omitempty" xml:"latency,omitempty"`
+	RequestId *string                                   `json:"request_id,omitempty" xml:"request_id,omitempty"`
+	Result    *GetMultiModalEmbeddingResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Usage     *GetMultiModalEmbeddingResponseBodyUsage  `json:"usage,omitempty" xml:"usage,omitempty" type:"Struct"`
+}
+
+func (s GetMultiModalEmbeddingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingResponseBody) SetLatency(v int32) *GetMultiModalEmbeddingResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponseBody) SetRequestId(v string) *GetMultiModalEmbeddingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponseBody) SetResult(v *GetMultiModalEmbeddingResponseBodyResult) *GetMultiModalEmbeddingResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponseBody) SetUsage(v *GetMultiModalEmbeddingResponseBodyUsage) *GetMultiModalEmbeddingResponseBody {
+	s.Usage = v
+	return s
+}
+
+type GetMultiModalEmbeddingResponseBodyResult struct {
+	Embeddings []*GetMultiModalEmbeddingResponseBodyResultEmbeddings `json:"embeddings,omitempty" xml:"embeddings,omitempty" type:"Repeated"`
+}
+
+func (s GetMultiModalEmbeddingResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingResponseBodyResult) SetEmbeddings(v []*GetMultiModalEmbeddingResponseBodyResultEmbeddings) *GetMultiModalEmbeddingResponseBodyResult {
+	s.Embeddings = v
+	return s
+}
+
+type GetMultiModalEmbeddingResponseBodyResultEmbeddings struct {
+	Embedding []*float64 `json:"embedding,omitempty" xml:"embedding,omitempty" type:"Repeated"`
+	Index     *int64     `json:"index,omitempty" xml:"index,omitempty"`
+}
+
+func (s GetMultiModalEmbeddingResponseBodyResultEmbeddings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingResponseBodyResultEmbeddings) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingResponseBodyResultEmbeddings) SetEmbedding(v []*float64) *GetMultiModalEmbeddingResponseBodyResultEmbeddings {
+	s.Embedding = v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponseBodyResultEmbeddings) SetIndex(v int64) *GetMultiModalEmbeddingResponseBodyResultEmbeddings {
+	s.Index = &v
+	return s
+}
+
+type GetMultiModalEmbeddingResponseBodyUsage struct {
+	Image      *int64 `json:"image,omitempty" xml:"image,omitempty"`
+	TokenCount *int64 `json:"token_count,omitempty" xml:"token_count,omitempty"`
+}
+
+func (s GetMultiModalEmbeddingResponseBodyUsage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingResponseBodyUsage) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingResponseBodyUsage) SetImage(v int64) *GetMultiModalEmbeddingResponseBodyUsage {
+	s.Image = &v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponseBodyUsage) SetTokenCount(v int64) *GetMultiModalEmbeddingResponseBodyUsage {
+	s.TokenCount = &v
+	return s
+}
+
+type GetMultiModalEmbeddingResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetMultiModalEmbeddingResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetMultiModalEmbeddingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMultiModalEmbeddingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMultiModalEmbeddingResponse) SetHeaders(v map[string]*string) *GetMultiModalEmbeddingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponse) SetStatusCode(v int32) *GetMultiModalEmbeddingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMultiModalEmbeddingResponse) SetBody(v *GetMultiModalEmbeddingResponseBody) *GetMultiModalEmbeddingResponse {
+	s.Body = v
+	return s
+}
+
 type GetPredictionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	Token         *string            `json:"Token,omitempty" xml:"Token,omitempty"`
@@ -2721,6 +2888,70 @@ func (client *Client) GetImageAnalyzeTaskStatus(workspaceName *string, serviceId
 	headers := make(map[string]*string)
 	_result = &GetImageAnalyzeTaskStatusResponse{}
 	_body, _err := client.GetImageAnalyzeTaskStatusWithOptions(workspaceName, serviceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 多模态向量化
+//
+// @param request - GetMultiModalEmbeddingRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetMultiModalEmbeddingResponse
+func (client *Client) GetMultiModalEmbeddingWithOptions(workspaceName *string, serviceId *string, request *GetMultiModalEmbeddingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMultiModalEmbeddingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Input)) {
+		body["input"] = request.Input
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultiModalEmbedding"),
+		Version:     tea.String("2024-05-29"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v3/openapi/workspaces/" + tea.StringValue(workspaceName) + "/multi-modal-embedding/" + tea.StringValue(serviceId)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMultiModalEmbeddingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 多模态向量化
+//
+// @param request - GetMultiModalEmbeddingRequest
+//
+// @return GetMultiModalEmbeddingResponse
+func (client *Client) GetMultiModalEmbedding(workspaceName *string, serviceId *string, request *GetMultiModalEmbeddingRequest) (_result *GetMultiModalEmbeddingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMultiModalEmbeddingResponse{}
+	_body, _err := client.GetMultiModalEmbeddingWithOptions(workspaceName, serviceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
