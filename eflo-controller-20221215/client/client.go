@@ -1022,6 +1022,11 @@ func (s *CreateClusterRequestNetworksVpdInfo) SetVpdSubnets(v []*string) *Create
 }
 
 type CreateClusterRequestNodeGroups struct {
+	// Whether file system mounting is supported
+	//
+	// example:
+	//
+	// False
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// System image ID
 	//
@@ -2475,8 +2480,13 @@ type CreateNodeGroupRequestNodeGroup struct {
 	// example:
 	//
 	// cn-wulanchabu-b
-	Az                     *string `json:"Az,omitempty" xml:"Az,omitempty"`
-	FileSystemMountEnabled *bool   `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
+	Az *string `json:"Az,omitempty" xml:"Az,omitempty"`
+	// Whether file storage mounting is supported
+	//
+	// example:
+	//
+	// False
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Image ID.
 	//
 	// This parameter is required.
@@ -2890,25 +2900,36 @@ func (s *CreateSessionResponse) SetBody(v *CreateSessionResponseBody) *CreateSes
 }
 
 type CreateVscRequest struct {
+	// Idempotent parameter
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Node ID
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// e01-cn-zvp2tgykr08
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2xdkc6icwfha
-	ResourceGroupId *string                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*CreateVscRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Resource tags
+	Tag []*CreateVscRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// User-defined name for vscId, unique on a single compute node
+	//
 	// example:
 	//
 	// test_name
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// Set VSC type, primary/standard, default value is primary
+	//
 	// example:
 	//
 	// primary
@@ -2954,10 +2975,14 @@ func (s *CreateVscRequest) SetVscType(v string) *CreateVscRequest {
 }
 
 type CreateVscRequestTag struct {
+	// Resource tag key
+	//
 	// example:
 	//
 	// key001
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Resource tag value
+	//
 	// example:
 	//
 	// value001
@@ -2983,12 +3008,14 @@ func (s *CreateVscRequestTag) SetValue(v string) *CreateVscRequestTag {
 }
 
 type CreateVscResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 887FA855-89F4-5DB3-B305-C5879EC480E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Created VscId
+	//
 	// example:
 	//
 	// vsc-001
@@ -3202,10 +3229,14 @@ func (s *DeleteNodeGroupResponse) SetBody(v *DeleteNodeGroupResponseBody) *Delet
 }
 
 type DeleteVscRequest struct {
+	// Idempotent parameter
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The VscId to be deleted
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -3233,7 +3264,7 @@ func (s *DeleteVscRequest) SetVscId(v string) *DeleteVscRequest {
 }
 
 type DeleteVscResponseBody struct {
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
@@ -5040,7 +5071,11 @@ type DescribeNodeResponseBody struct {
 	//
 	// 2022-06-23T16:00:00Z
 	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	// 是否支持文件存储挂载
+	// Whether file storage mounting is supported
+	//
+	// example:
+	//
+	// False
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Hostname
 	//
@@ -6374,6 +6409,8 @@ func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTas
 }
 
 type DescribeVscRequest struct {
+	// The VscId to be queried
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -6396,34 +6433,44 @@ func (s *DescribeVscRequest) SetVscId(v string) *DescribeVscRequest {
 }
 
 type DescribeVscResponseBody struct {
+	// ID of the compute node where the Vsc is located
+	//
 	// example:
 	//
 	// e01-cn-kvw44e6dn04
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 4FD06DF0-9167-5C6F-A145-F30CA4A15D54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Resource Group ID
+	//
 	// example:
 	//
 	// rg-aek2k3rqlvv6ytq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Status of the Vsc
+	//
 	// example:
 	//
-	// NORMAL
+	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// VscId
+	// Vsc ID
 	//
 	// example:
 	//
 	// vsc-001
 	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	// Custom name of the Vsc
+	//
 	// example:
 	//
 	// test_name
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// Vsc type
+	//
 	// example:
 	//
 	// primary
@@ -8462,7 +8509,8 @@ type ListFreeNodesRequest struct {
 	// example:
 	//
 	// a3f2224a5ec7224116c4f5246120abe4
-	NextToken       *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// return array of operating states
 	OperatingStates []*string `json:"OperatingStates,omitempty" xml:"OperatingStates,omitempty" type:"Repeated"`
 	// Resource group ID
 	//
@@ -10221,8 +10269,13 @@ type ListNodeGroupsResponseBodyGroups struct {
 	// example:
 	//
 	// created by ga2_prepare
-	Description            *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	FileSystemMountEnabled *bool   `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Whether file storage mounting is supported
+	//
+	// example:
+	//
+	// False
+	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
 	// Group ID.
 	//
 	// example:
@@ -10265,7 +10318,7 @@ type ListNodeGroupsResponseBodyGroups struct {
 	//
 	// 2023-09-22T00:03:05.114
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// 可用区id
+	// availability zone id
 	//
 	// example:
 	//
@@ -10714,20 +10767,30 @@ func (s *ListUserClusterTypesResponse) SetBody(v *ListUserClusterTypesResponseBo
 }
 
 type ListVscsRequest struct {
+	// The maximum number of data records to be read in this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Marks the position to start reading from. If empty, it starts from the beginning.
+	//
 	// example:
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
-	NextToken *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	NodeIds   []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// List of node IDs
+	NodeIds []*string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty" type:"Repeated"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2xdkc6icwfha
-	ResourceGroupId *string               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListVscsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// List of tags.
+	Tag []*ListVscsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Vsc name
+	//
 	// example:
 	//
 	// test_name
@@ -10773,10 +10836,14 @@ func (s *ListVscsRequest) SetVscName(v string) *ListVscsRequest {
 }
 
 type ListVscsRequestTag struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// key001
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// value001
@@ -10802,20 +10869,30 @@ func (s *ListVscsRequestTag) SetValue(v string) *ListVscsRequestTag {
 }
 
 type ListVscsShrinkRequest struct {
+	// The maximum number of data records to be read in this request.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Marks the position to start reading from. If empty, it starts from the beginning.
+	//
 	// example:
 	//
 	// 563d42ae0b17572449ec8c97f7f66069
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// List of node IDs
 	NodeIdsShrink *string `json:"NodeIds,omitempty" xml:"NodeIds,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-aek2xdkc6icwfha
-	ResourceGroupId *string                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	Tag             []*ListVscsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// List of tags.
+	Tag []*ListVscsShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// Vsc name
+	//
 	// example:
 	//
 	// test_name
@@ -10861,10 +10938,14 @@ func (s *ListVscsShrinkRequest) SetVscName(v string) *ListVscsShrinkRequest {
 }
 
 type ListVscsShrinkRequestTag struct {
+	// Tag key.
+	//
 	// example:
 	//
 	// key001
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// Tag value.
+	//
 	// example:
 	//
 	// value001
@@ -10890,27 +10971,34 @@ func (s *ListVscsShrinkRequestTag) SetValue(v string) *ListVscsShrinkRequestTag 
 }
 
 type ListVscsResponseBody struct {
+	// No return. Please use TotalCount
+	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// Indicates the position of the current call return read. An empty value means that the data has been fully read.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3a6b93229825ac667104463b56790c91
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// ID of the request
 	//
 	// example:
 	//
 	// 03668372-18FF-5959-98D9-6B36A4643C7A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count of data under the current request conditions
+	//
 	// example:
 	//
 	// 3
-	TotalCount *int32                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	Vscs       []*ListVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// VSC list
+	Vscs []*ListVscsResponseBodyVscs `json:"Vscs,omitempty" xml:"Vscs,omitempty" type:"Repeated"`
 }
 
 func (s ListVscsResponseBody) String() string {
@@ -10947,29 +11035,40 @@ func (s *ListVscsResponseBody) SetVscs(v []*ListVscsResponseBodyVscs) *ListVscsR
 }
 
 type ListVscsResponseBodyVscs struct {
+	// Lingjun node ID
+	//
 	// example:
 	//
 	// e01-cn-fzh47xd7u08
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// Resource group ID
+	//
 	// example:
 	//
 	// rg-acfm2zkwhkns57i
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// Status of Vsc
+	//
 	// example:
 	//
-	// NORMAL
-	Status *string                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*ListVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// VscId
+	// Normal
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Tags
+	Tags []*ListVscsResponseBodyVscsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// Vsc ID
 	//
 	// example:
 	//
 	// vsc-001
 	VscId *string `json:"VscId,omitempty" xml:"VscId,omitempty"`
+	// Customized name of Vsc
+	//
 	// example:
 	//
 	// test_name
 	VscName *string `json:"VscName,omitempty" xml:"VscName,omitempty"`
+	// Vsc type, primary/standard
+	//
 	// example:
 	//
 	// primary
@@ -11020,10 +11119,14 @@ func (s *ListVscsResponseBodyVscs) SetVscType(v string) *ListVscsResponseBodyVsc
 }
 
 type ListVscsResponseBodyVscsTags struct {
+	// Tag key
+	//
 	// example:
 	//
 	// key001
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	// Tag value
+	//
 	// example:
 	//
 	// value001
@@ -13099,7 +13202,18 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 }
 
 type UpdateNodeGroupRequest struct {
+	// Whether file storage mounting is supported
+	//
+	// example:
+	//
+	// True
 	FileSystemMountEnabled *bool `json:"FileSystemMountEnabled,omitempty" xml:"FileSystemMountEnabled,omitempty"`
+	// 节点组的默认镜像id，如果不设置，那么就不会改变。
+	//
+	// example:
+	//
+	// i123847249284734
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The name of the key pair.
 	//
 	// example:
@@ -13140,6 +13254,11 @@ func (s UpdateNodeGroupRequest) GoString() string {
 
 func (s *UpdateNodeGroupRequest) SetFileSystemMountEnabled(v bool) *UpdateNodeGroupRequest {
 	s.FileSystemMountEnabled = &v
+	return s
+}
+
+func (s *UpdateNodeGroupRequest) SetImageId(v string) *UpdateNodeGroupRequest {
+	s.ImageId = &v
 	return s
 }
 
@@ -13960,7 +14079,7 @@ func (client *Client) CreateSession(request *CreateSessionRequest) (_result *Cre
 
 // Summary:
 //
-// 创建Vsc
+// # Create Vsc
 //
 // @param request - CreateVscRequest
 //
@@ -14024,7 +14143,7 @@ func (client *Client) CreateVscWithOptions(request *CreateVscRequest, runtime *u
 
 // Summary:
 //
-// 创建Vsc
+// # Create Vsc
 //
 // @param request - CreateVscRequest
 //
@@ -14174,7 +14293,7 @@ func (client *Client) DeleteNodeGroup(request *DeleteNodeGroupRequest) (_result 
 
 // Summary:
 //
-// 删除Vsc
+// # Delete Vsc
 //
 // @param request - DeleteVscRequest
 //
@@ -14222,7 +14341,7 @@ func (client *Client) DeleteVscWithOptions(request *DeleteVscRequest, runtime *u
 
 // Summary:
 //
-// 删除Vsc
+// # Delete Vsc
 //
 // @param request - DeleteVscRequest
 //
@@ -14752,7 +14871,7 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 
 // Summary:
 //
-// 获取单个Vsc详情
+// # Get details of a single Vsc
 //
 // @param request - DescribeVscRequest
 //
@@ -14794,7 +14913,7 @@ func (client *Client) DescribeVscWithOptions(request *DescribeVscRequest, runtim
 
 // Summary:
 //
-// 获取单个Vsc详情
+// # Get details of a single Vsc
 //
 // @param request - DescribeVscRequest
 //
@@ -15773,7 +15892,7 @@ func (client *Client) ListUserClusterTypes() (_result *ListUserClusterTypesRespo
 
 // Summary:
 //
-// 查询Vsc列表
+// # Query Vsc List
 //
 // @param tmpReq - ListVscsRequest
 //
@@ -15843,7 +15962,7 @@ func (client *Client) ListVscsWithOptions(tmpReq *ListVscsRequest, runtime *util
 
 // Summary:
 //
-// 查询Vsc列表
+// # Query Vsc List
 //
 // @param request - ListVscsRequest
 //
@@ -16630,6 +16749,10 @@ func (client *Client) UpdateNodeGroupWithOptions(request *UpdateNodeGroupRequest
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.FileSystemMountEnabled)) {
 		body["FileSystemMountEnabled"] = request.FileSystemMountEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
