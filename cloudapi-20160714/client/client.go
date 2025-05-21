@@ -2887,6 +2887,7 @@ type CreateDatasetRequest struct {
 	//
 	// JWT_BLOCKING
 	DatasetType   *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	// The tag of objects that match the rule. You can specify multiple tags.
 	Tag []*CreateDatasetRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -2907,6 +2908,11 @@ func (s *CreateDatasetRequest) SetDatasetName(v string) *CreateDatasetRequest {
 
 func (s *CreateDatasetRequest) SetDatasetType(v string) *CreateDatasetRequest {
 	s.DatasetType = &v
+	return s
+}
+
+func (s *CreateDatasetRequest) SetDescription(v string) *CreateDatasetRequest {
+	s.Description = &v
 	return s
 }
 
@@ -22793,6 +22799,7 @@ type DescribeDatasetInfoResponseBodyDatasetInfo struct {
 	//
 	// JWT_BLOCKING
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The last modification time (UTC) of the dataset.
 	//
 	// example:
@@ -22826,6 +22833,11 @@ func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDatasetName(v string) *D
 
 func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDatasetType(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
 	s.DatasetType = &v
+	return s
+}
+
+func (s *DescribeDatasetInfoResponseBodyDatasetInfo) SetDescription(v string) *DescribeDatasetInfoResponseBodyDatasetInfo {
+	s.Description = &v
 	return s
 }
 
@@ -23497,6 +23509,7 @@ type DescribeDatasetListResponseBodyDatasetInfoList struct {
 	//
 	// IP_WHITELIST_CIDR
 	DatasetType *string `json:"DatasetType,omitempty" xml:"DatasetType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The time when the dataset was last modified. The time is displayed in UTC.
 	//
 	// example:
@@ -23532,6 +23545,11 @@ func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDatasetName(v string
 
 func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDatasetType(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
 	s.DatasetType = &v
+	return s
+}
+
+func (s *DescribeDatasetListResponseBodyDatasetInfoList) SetDescription(v string) *DescribeDatasetListResponseBodyDatasetInfoList {
+	s.Description = &v
 	return s
 }
 
@@ -42431,12 +42449,11 @@ type ModifyDatasetRequest struct {
 	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	// The name of the dataset.
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// NewDatasetName
 	DatasetName   *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -42455,6 +42472,11 @@ func (s *ModifyDatasetRequest) SetDatasetId(v string) *ModifyDatasetRequest {
 
 func (s *ModifyDatasetRequest) SetDatasetName(v string) *ModifyDatasetRequest {
 	s.DatasetName = &v
+	return s
+}
+
+func (s *ModifyDatasetRequest) SetDescription(v string) *ModifyDatasetRequest {
+	s.Description = &v
 	return s
 }
 
@@ -51475,6 +51497,10 @@ func (client *Client) CreateDatasetWithOptions(request *CreateDatasetRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DatasetType)) {
 		query["DatasetType"] = request.DatasetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
@@ -63505,6 +63531,10 @@ func (client *Client) ModifyDatasetWithOptions(request *ModifyDatasetRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
 		query["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
