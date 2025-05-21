@@ -1495,6 +1495,133 @@ func (s *GetNodeByTemplateIdResponse) SetBody(v *GetNodeByTemplateIdResponseBody
 	return s
 }
 
+type GetPlatformUserInfoForPartnerRequest struct {
+	// example:
+	//
+	// app-0wceagu85ceaaais
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// example:
+	//
+	// MP
+	PlatformType *string `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
+	// example:
+	//
+	// 123153124411
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetPlatformUserInfoForPartnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPlatformUserInfoForPartnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPlatformUserInfoForPartnerRequest) SetAppId(v string) *GetPlatformUserInfoForPartnerRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerRequest) SetPlatformType(v string) *GetPlatformUserInfoForPartnerRequest {
+	s.PlatformType = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerRequest) SetUserId(v string) *GetPlatformUserInfoForPartnerRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetPlatformUserInfoForPartnerResponseBody struct {
+	// example:
+	//
+	// djisdpfOjofjifojfajaspsdkasdada
+	EncryptedOpenId *string `json:"EncryptedOpenId,omitempty" xml:"EncryptedOpenId,omitempty"`
+	// example:
+	//
+	// djisdpfOjofjifojfajaspsdkasdada
+	EncryptedUnionId *string `json:"EncryptedUnionId,omitempty" xml:"EncryptedUnionId,omitempty"`
+	// example:
+	//
+	// 11111111111111111111111
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 0320C9F4-5EDC-5355-9D7E-DF4CF6C2B3BB
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetPlatformUserInfoForPartnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPlatformUserInfoForPartnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPlatformUserInfoForPartnerResponseBody) SetEncryptedOpenId(v string) *GetPlatformUserInfoForPartnerResponseBody {
+	s.EncryptedOpenId = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponseBody) SetEncryptedUnionId(v string) *GetPlatformUserInfoForPartnerResponseBody {
+	s.EncryptedUnionId = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponseBody) SetErrorMsg(v string) *GetPlatformUserInfoForPartnerResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponseBody) SetRequestId(v string) *GetPlatformUserInfoForPartnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponseBody) SetSuccess(v bool) *GetPlatformUserInfoForPartnerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetPlatformUserInfoForPartnerResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPlatformUserInfoForPartnerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPlatformUserInfoForPartnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPlatformUserInfoForPartnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPlatformUserInfoForPartnerResponse) SetHeaders(v map[string]*string) *GetPlatformUserInfoForPartnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponse) SetStatusCode(v int32) *GetPlatformUserInfoForPartnerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPlatformUserInfoForPartnerResponse) SetBody(v *GetPlatformUserInfoForPartnerResponseBody) *GetPlatformUserInfoForPartnerResponse {
+	s.Body = v
+	return s
+}
+
 type GetProxyByTypeRequest struct {
 	// aliyunKp
 	//
@@ -5550,6 +5677,74 @@ func (client *Client) GetNodeByTemplateId(request *GetNodeByTemplateIdRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetNodeByTemplateIdResponse{}
 	_body, _err := client.GetNodeByTemplateIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 合作伙伴获取用户跨平台信息
+//
+// @param request - GetPlatformUserInfoForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPlatformUserInfoForPartnerResponse
+func (client *Client) GetPlatformUserInfoForPartnerWithOptions(request *GetPlatformUserInfoForPartnerRequest, runtime *util.RuntimeOptions) (_result *GetPlatformUserInfoForPartnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformType)) {
+		query["PlatformType"] = request.PlatformType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPlatformUserInfoForPartner"),
+		Version:     tea.String("2021-01-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPlatformUserInfoForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 合作伙伴获取用户跨平台信息
+//
+// @param request - GetPlatformUserInfoForPartnerRequest
+//
+// @return GetPlatformUserInfoForPartnerResponse
+func (client *Client) GetPlatformUserInfoForPartner(request *GetPlatformUserInfoForPartnerRequest) (_result *GetPlatformUserInfoForPartnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPlatformUserInfoForPartnerResponse{}
+	_body, _err := client.GetPlatformUserInfoForPartnerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
