@@ -7907,7 +7907,7 @@ type ListTextbookAssistantArticleDetailsResponseBodyDataSceneList struct {
 	// 38cddd70509911efbe6e0c42a106bb02
 	SceneId        *string   `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
 	SceneImageList []*string `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
-	SceneTransLate *string   `json:"sceneTransLate,omitempty" xml:"sceneTransLate,omitempty"`
+	SceneTranslate *string   `json:"sceneTranslate,omitempty" xml:"sceneTranslate,omitempty"`
 }
 
 func (s ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) String() string {
@@ -7933,8 +7933,8 @@ func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneI
 	return s
 }
 
-func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneTransLate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
-	s.SceneTransLate = &v
+func (s *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList) SetSceneTranslate(v string) *ListTextbookAssistantArticleDetailsResponseBodyDataSceneList {
+	s.SceneTranslate = &v
 	return s
 }
 
@@ -8382,6 +8382,7 @@ type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree struct {
 	// 2 Jobs
 	DirectoryName *string                                                                   `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
 	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+	Unit          []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit  `json:"unit,omitempty" xml:"unit,omitempty" type:"Repeated"`
 }
 
 func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) String() string {
@@ -8407,6 +8408,11 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) SetT
 	return s
 }
 
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree) SetUnit(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTree {
+	s.Unit = v
+	return s
+}
+
 type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic struct {
 	// example:
 	//
@@ -8429,6 +8435,122 @@ func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic)
 }
 
 func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic) SetLabelName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeTopic {
+	s.LabelName = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit struct {
+	DirectoryId   *string                                                                         `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	DirectoryName *string                                                                         `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	Section       []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection `json:"section,omitempty" xml:"section,omitempty" type:"Repeated"`
+	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic   `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) SetDirectoryId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) SetDirectoryName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit {
+	s.DirectoryName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) SetSection(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit {
+	s.Section = v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit) SetTopic(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnit {
+	s.Topic = v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection struct {
+	Children      interface{}                                                                          `json:"children,omitempty" xml:"children,omitempty"`
+	DirectoryId   *string                                                                              `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	DirectoryName *string                                                                              `json:"directoryName,omitempty" xml:"directoryName,omitempty"`
+	Topic         []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic `json:"topic,omitempty" xml:"topic,omitempty" type:"Repeated"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) SetChildren(v interface{}) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection {
+	s.Children = v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) SetDirectoryId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection {
+	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) SetDirectoryName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection {
+	s.DirectoryName = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection) SetTopic(v []*ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSection {
+	s.Topic = v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic struct {
+	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic) SetLabelId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic {
+	s.LabelId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic) SetLabelName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitSectionTopic {
+	s.LabelName = &v
+	return s
+}
+
+type ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic struct {
+	LabelId   *string `json:"labelId,omitempty" xml:"labelId,omitempty"`
+	LabelName *string `json:"labelName,omitempty" xml:"labelName,omitempty"`
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic) GoString() string {
+	return s.String()
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic) SetLabelId(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic {
+	s.LabelId = &v
+	return s
+}
+
+func (s *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic) SetLabelName(v string) *ListTextbookAssistantBookDirectoriesResponseBodyDataDirectoryTreeUnitTopic {
 	s.LabelName = &v
 	return s
 }
@@ -9154,6 +9276,7 @@ type ListTextbookAssistantSceneDetailsResponseBodyData struct {
 	SceneId        *string                                                           `json:"sceneId,omitempty" xml:"sceneId,omitempty"`
 	SceneImageList []*string                                                         `json:"sceneImageList,omitempty" xml:"sceneImageList,omitempty" type:"Repeated"`
 	SceneTaskList  []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList `json:"sceneTaskList,omitempty" xml:"sceneTaskList,omitempty" type:"Repeated"`
+	SceneTranslate *string                                                           `json:"sceneTranslate,omitempty" xml:"sceneTranslate,omitempty"`
 	SentenceList   []*ListTextbookAssistantSceneDetailsResponseBodyDataSentenceList  `json:"sentenceList,omitempty" xml:"sentenceList,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -9194,6 +9317,11 @@ func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneImageList(v 
 
 func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneTaskList(v []*ListTextbookAssistantSceneDetailsResponseBodyDataSceneTaskList) *ListTextbookAssistantSceneDetailsResponseBodyData {
 	s.SceneTaskList = v
+	return s
+}
+
+func (s *ListTextbookAssistantSceneDetailsResponseBodyData) SetSceneTranslate(v string) *ListTextbookAssistantSceneDetailsResponseBodyData {
+	s.SceneTranslate = &v
 	return s
 }
 
