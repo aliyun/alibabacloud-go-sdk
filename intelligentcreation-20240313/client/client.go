@@ -5749,8 +5749,10 @@ func (s *GetAICoachScriptResponseBodySampleDialogueList) SetRole(v string) *GetA
 }
 
 type GetAICoachScriptResponseBodyScoreConfig struct {
-	Enabled   *bool   `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	PassScore *string `json:"passScore,omitempty" xml:"passScore,omitempty"`
+	Enabled      *bool                                            `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	LevelEnabled *bool                                            `json:"levelEnabled,omitempty" xml:"levelEnabled,omitempty"`
+	Levels       []*GetAICoachScriptResponseBodyScoreConfigLevels `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
+	PassScore    *string                                          `json:"passScore,omitempty" xml:"passScore,omitempty"`
 }
 
 func (s GetAICoachScriptResponseBodyScoreConfig) String() string {
@@ -5766,8 +5768,47 @@ func (s *GetAICoachScriptResponseBodyScoreConfig) SetEnabled(v bool) *GetAICoach
 	return s
 }
 
+func (s *GetAICoachScriptResponseBodyScoreConfig) SetLevelEnabled(v bool) *GetAICoachScriptResponseBodyScoreConfig {
+	s.LevelEnabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfig) SetLevels(v []*GetAICoachScriptResponseBodyScoreConfigLevels) *GetAICoachScriptResponseBodyScoreConfig {
+	s.Levels = v
+	return s
+}
+
 func (s *GetAICoachScriptResponseBodyScoreConfig) SetPassScore(v string) *GetAICoachScriptResponseBodyScoreConfig {
 	s.PassScore = &v
+	return s
+}
+
+type GetAICoachScriptResponseBodyScoreConfigLevels struct {
+	Max  *int32  `json:"max,omitempty" xml:"max,omitempty"`
+	Min  *int32  `json:"min,omitempty" xml:"min,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetAICoachScriptResponseBodyScoreConfigLevels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAICoachScriptResponseBodyScoreConfigLevels) GoString() string {
+	return s.String()
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfigLevels) SetMax(v int32) *GetAICoachScriptResponseBodyScoreConfigLevels {
+	s.Max = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfigLevels) SetMin(v int32) *GetAICoachScriptResponseBodyScoreConfigLevels {
+	s.Min = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyScoreConfigLevels) SetName(v string) *GetAICoachScriptResponseBodyScoreConfigLevels {
+	s.Name = &v
 	return s
 }
 
@@ -5800,7 +5841,8 @@ type GetAICoachScriptResponseBodyWeights struct {
 	// example:
 	//
 	// true
-	PointDeductionRuleEnabled *bool `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	PointDeductionRuleEnabled          *bool `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	SimilarPronunciationScoringEnabled *bool `json:"similarPronunciationScoringEnabled,omitempty" xml:"similarPronunciationScoringEnabled,omitempty"`
 	// example:
 	//
 	// 10
@@ -5856,6 +5898,11 @@ func (s *GetAICoachScriptResponseBodyWeights) SetPointDeductionRule(v int32) *Ge
 
 func (s *GetAICoachScriptResponseBodyWeights) SetPointDeductionRuleEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
 	s.PointDeductionRuleEnabled = &v
+	return s
+}
+
+func (s *GetAICoachScriptResponseBodyWeights) SetSimilarPronunciationScoringEnabled(v bool) *GetAICoachScriptResponseBodyWeights {
+	s.SimilarPronunciationScoringEnabled = &v
 	return s
 }
 
@@ -6027,6 +6074,7 @@ func (s *GetAICoachTaskSessionHistoryResponseBody) SetUid(v string) *GetAICoachT
 
 type GetAICoachTaskSessionHistoryResponseBodyConversationList struct {
 	AudioUrl           *string `json:"audioUrl,omitempty" xml:"audioUrl,omitempty"`
+	DateLabel          *string `json:"dateLabel,omitempty" xml:"dateLabel,omitempty"`
 	EvaluationFeedback *string `json:"evaluationFeedback,omitempty" xml:"evaluationFeedback,omitempty"`
 	// example:
 	//
@@ -6047,6 +6095,11 @@ func (s GetAICoachTaskSessionHistoryResponseBodyConversationList) GoString() str
 
 func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetAudioUrl(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
 	s.AudioUrl = &v
+	return s
+}
+
+func (s *GetAICoachTaskSessionHistoryResponseBodyConversationList) SetDateLabel(v string) *GetAICoachTaskSessionHistoryResponseBodyConversationList {
+	s.DateLabel = &v
 	return s
 }
 
@@ -7240,8 +7293,10 @@ func (s *ListAICoachScriptPageResponseBodyListSampleDialogueList) SetRole(v stri
 }
 
 type ListAICoachScriptPageResponseBodyListScoreConfig struct {
-	Enabled   *bool  `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	PassScore *int32 `json:"passScore,omitempty" xml:"passScore,omitempty"`
+	Enabled      *bool                                                     `json:"enabled,omitempty" xml:"enabled,omitempty"`
+	LevelEnabled *bool                                                     `json:"levelEnabled,omitempty" xml:"levelEnabled,omitempty"`
+	Levels       []*ListAICoachScriptPageResponseBodyListScoreConfigLevels `json:"levels,omitempty" xml:"levels,omitempty" type:"Repeated"`
+	PassScore    *int32                                                    `json:"passScore,omitempty" xml:"passScore,omitempty"`
 }
 
 func (s ListAICoachScriptPageResponseBodyListScoreConfig) String() string {
@@ -7257,8 +7312,47 @@ func (s *ListAICoachScriptPageResponseBodyListScoreConfig) SetEnabled(v bool) *L
 	return s
 }
 
+func (s *ListAICoachScriptPageResponseBodyListScoreConfig) SetLevelEnabled(v bool) *ListAICoachScriptPageResponseBodyListScoreConfig {
+	s.LevelEnabled = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListScoreConfig) SetLevels(v []*ListAICoachScriptPageResponseBodyListScoreConfigLevels) *ListAICoachScriptPageResponseBodyListScoreConfig {
+	s.Levels = v
+	return s
+}
+
 func (s *ListAICoachScriptPageResponseBodyListScoreConfig) SetPassScore(v int32) *ListAICoachScriptPageResponseBodyListScoreConfig {
 	s.PassScore = &v
+	return s
+}
+
+type ListAICoachScriptPageResponseBodyListScoreConfigLevels struct {
+	Max  *int32  `json:"max,omitempty" xml:"max,omitempty"`
+	Min  *int32  `json:"min,omitempty" xml:"min,omitempty"`
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListAICoachScriptPageResponseBodyListScoreConfigLevels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAICoachScriptPageResponseBodyListScoreConfigLevels) GoString() string {
+	return s.String()
+}
+
+func (s *ListAICoachScriptPageResponseBodyListScoreConfigLevels) SetMax(v int32) *ListAICoachScriptPageResponseBodyListScoreConfigLevels {
+	s.Max = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListScoreConfigLevels) SetMin(v int32) *ListAICoachScriptPageResponseBodyListScoreConfigLevels {
+	s.Min = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListScoreConfigLevels) SetName(v string) *ListAICoachScriptPageResponseBodyListScoreConfigLevels {
+	s.Name = &v
 	return s
 }
 
@@ -7271,10 +7365,11 @@ type ListAICoachScriptPageResponseBodyListWeights struct {
 	// example:
 	//
 	// 30
-	Expressiveness            *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
-	ExpressivenessEnabled     *bool  `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
-	PointDeductionRule        *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
-	PointDeductionRuleEnabled *bool  `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	Expressiveness                     *int32 `json:"expressiveness,omitempty" xml:"expressiveness,omitempty"`
+	ExpressivenessEnabled              *bool  `json:"expressivenessEnabled,omitempty" xml:"expressivenessEnabled,omitempty"`
+	PointDeductionRule                 *int32 `json:"pointDeductionRule,omitempty" xml:"pointDeductionRule,omitempty"`
+	PointDeductionRuleEnabled          *bool  `json:"pointDeductionRuleEnabled,omitempty" xml:"pointDeductionRuleEnabled,omitempty"`
+	SimilarPronunciationScoringEnabled *bool  `json:"similarPronunciationScoringEnabled,omitempty" xml:"similarPronunciationScoringEnabled,omitempty"`
 	// example:
 	//
 	// 20
@@ -7320,6 +7415,11 @@ func (s *ListAICoachScriptPageResponseBodyListWeights) SetPointDeductionRule(v i
 
 func (s *ListAICoachScriptPageResponseBodyListWeights) SetPointDeductionRuleEnabled(v bool) *ListAICoachScriptPageResponseBodyListWeights {
 	s.PointDeductionRuleEnabled = &v
+	return s
+}
+
+func (s *ListAICoachScriptPageResponseBodyListWeights) SetSimilarPronunciationScoringEnabled(v bool) *ListAICoachScriptPageResponseBodyListWeights {
+	s.SimilarPronunciationScoringEnabled = &v
 	return s
 }
 
