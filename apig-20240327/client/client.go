@@ -934,11 +934,13 @@ type HttpApiApiInfo struct {
 	// example:
 	//
 	// /v1
-	BasePath      *string                       `json:"basePath,omitempty" xml:"basePath,omitempty"`
-	DeployConfigs []*HttpApiDeployConfig        `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	Description   *string                       `json:"description,omitempty" xml:"description,omitempty"`
-	EnabelAuth    *bool                         `json:"enabelAuth,omitempty" xml:"enabelAuth,omitempty"`
-	Environments  []*HttpApiApiInfoEnvironments `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	BasePath      *string                                     `json:"basePath,omitempty" xml:"basePath,omitempty"`
+	DeployCntMap  map[string]*HttpApiApiInfoDeployCntMapValue `json:"deployCntMap,omitempty" xml:"deployCntMap,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig                      `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
+	Description   *string                                     `json:"description,omitempty" xml:"description,omitempty"`
+	EnabelAuth    *bool                                       `json:"enabelAuth,omitempty" xml:"enabelAuth,omitempty"`
+	Environments  []*HttpApiApiInfoEnvironments               `json:"environments,omitempty" xml:"environments,omitempty" type:"Repeated"`
+	GatewayId     *string                                     `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// example:
 	//
 	// api-xxx
@@ -983,6 +985,11 @@ func (s *HttpApiApiInfo) SetBasePath(v string) *HttpApiApiInfo {
 	return s
 }
 
+func (s *HttpApiApiInfo) SetDeployCntMap(v map[string]*HttpApiApiInfoDeployCntMapValue) *HttpApiApiInfo {
+	s.DeployCntMap = v
+	return s
+}
+
 func (s *HttpApiApiInfo) SetDeployConfigs(v []*HttpApiDeployConfig) *HttpApiApiInfo {
 	s.DeployConfigs = v
 	return s
@@ -1000,6 +1007,11 @@ func (s *HttpApiApiInfo) SetEnabelAuth(v bool) *HttpApiApiInfo {
 
 func (s *HttpApiApiInfo) SetEnvironments(v []*HttpApiApiInfoEnvironments) *HttpApiApiInfo {
 	s.Environments = v
+	return s
+}
+
+func (s *HttpApiApiInfo) SetGatewayId(v string) *HttpApiApiInfo {
+	s.GatewayId = &v
 	return s
 }
 
@@ -1445,14 +1457,23 @@ type HttpApiDeployConfig struct {
 	// example:
 	//
 	// SingleService
-	BackendScene    *string   `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
-	CustomDomainIds []*string `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	BackendScene      *string                                 `json:"backendScene,omitempty" xml:"backendScene,omitempty"`
+	CustomDomainIds   []*string                               `json:"customDomainIds,omitempty" xml:"customDomainIds,omitempty" type:"Repeated"`
+	CustomDomainInfos []*HttpApiDeployConfigCustomDomainInfos `json:"customDomainInfos,omitempty" xml:"customDomainInfos,omitempty" type:"Repeated"`
 	// example:
 	//
 	// env-xxx
-	EnvironmentId  *string                              `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// gw-xx
+	GatewayId      *string                              `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayInfo    *GatewayInfo                         `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	Mock           *HttpApiMockContract                 `json:"mock,omitempty" xml:"mock,omitempty"`
 	PolicyConfigs  []*HttpApiDeployConfigPolicyConfigs  `json:"policyConfigs,omitempty" xml:"policyConfigs,omitempty" type:"Repeated"`
+	RouteBackend   *Backend                             `json:"routeBackend,omitempty" xml:"routeBackend,omitempty"`
 	ServiceConfigs []*HttpApiDeployConfigServiceConfigs `json:"serviceConfigs,omitempty" xml:"serviceConfigs,omitempty" type:"Repeated"`
+	SubDomains     []*HttpApiDeployConfigSubDomains     `json:"subDomains,omitempty" xml:"subDomains,omitempty" type:"Repeated"`
 }
 
 func (s HttpApiDeployConfig) String() string {
@@ -1478,8 +1499,28 @@ func (s *HttpApiDeployConfig) SetCustomDomainIds(v []*string) *HttpApiDeployConf
 	return s
 }
 
+func (s *HttpApiDeployConfig) SetCustomDomainInfos(v []*HttpApiDeployConfigCustomDomainInfos) *HttpApiDeployConfig {
+	s.CustomDomainInfos = v
+	return s
+}
+
 func (s *HttpApiDeployConfig) SetEnvironmentId(v string) *HttpApiDeployConfig {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetGatewayId(v string) *HttpApiDeployConfig {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetGatewayInfo(v *GatewayInfo) *HttpApiDeployConfig {
+	s.GatewayInfo = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetMock(v *HttpApiMockContract) *HttpApiDeployConfig {
+	s.Mock = v
 	return s
 }
 
@@ -1488,8 +1529,47 @@ func (s *HttpApiDeployConfig) SetPolicyConfigs(v []*HttpApiDeployConfigPolicyCon
 	return s
 }
 
+func (s *HttpApiDeployConfig) SetRouteBackend(v *Backend) *HttpApiDeployConfig {
+	s.RouteBackend = v
+	return s
+}
+
 func (s *HttpApiDeployConfig) SetServiceConfigs(v []*HttpApiDeployConfigServiceConfigs) *HttpApiDeployConfig {
 	s.ServiceConfigs = v
+	return s
+}
+
+func (s *HttpApiDeployConfig) SetSubDomains(v []*HttpApiDeployConfigSubDomains) *HttpApiDeployConfig {
+	s.SubDomains = v
+	return s
+}
+
+type HttpApiDeployConfigCustomDomainInfos struct {
+	DomainId *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name     *string `json:"name,omitempty" xml:"name,omitempty"`
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpApiDeployConfigCustomDomainInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfigCustomDomainInfos) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigCustomDomainInfos) SetDomainId(v string) *HttpApiDeployConfigCustomDomainInfos {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigCustomDomainInfos) SetName(v string) *HttpApiDeployConfigCustomDomainInfos {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigCustomDomainInfos) SetProtocol(v string) *HttpApiDeployConfigCustomDomainInfos {
+	s.Protocol = &v
 	return s
 }
 
@@ -1592,6 +1672,41 @@ func (s *HttpApiDeployConfigServiceConfigs) SetWeight(v int64) *HttpApiDeployCon
 	return s
 }
 
+type HttpApiDeployConfigSubDomains struct {
+	DomainId    *string `json:"domainId,omitempty" xml:"domainId,omitempty"`
+	Name        *string `json:"name,omitempty" xml:"name,omitempty"`
+	NetworkType *string `json:"networkType,omitempty" xml:"networkType,omitempty"`
+	Protocol    *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+}
+
+func (s HttpApiDeployConfigSubDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiDeployConfigSubDomains) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiDeployConfigSubDomains) SetDomainId(v string) *HttpApiDeployConfigSubDomains {
+	s.DomainId = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigSubDomains) SetName(v string) *HttpApiDeployConfigSubDomains {
+	s.Name = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigSubDomains) SetNetworkType(v string) *HttpApiDeployConfigSubDomains {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *HttpApiDeployConfigSubDomains) SetProtocol(v string) *HttpApiDeployConfigSubDomains {
+	s.Protocol = &v
+	return s
+}
+
 type HttpApiDomainInfo struct {
 	// example:
 	//
@@ -1633,6 +1748,10 @@ func (s *HttpApiDomainInfo) SetProtocol(v string) *HttpApiDomainInfo {
 type HttpApiInfoByName struct {
 	// example:
 	//
+	// gw-xx
+	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	// example:
+	//
 	// test-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// example:
@@ -1652,6 +1771,11 @@ func (s HttpApiInfoByName) String() string {
 
 func (s HttpApiInfoByName) GoString() string {
 	return s.String()
+}
+
+func (s *HttpApiInfoByName) SetGatewayId(v string) *HttpApiInfoByName {
+	s.GatewayId = &v
+	return s
 }
 
 func (s *HttpApiInfoByName) SetName(v string) *HttpApiInfoByName {
@@ -1710,7 +1834,8 @@ func (s *HttpApiMockContract) SetResponseContent(v string) *HttpApiMockContract 
 }
 
 type HttpApiOperation struct {
-	AuthConfig *AuthConfig `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	AuthConfig    *AuthConfig            `json:"authConfig,omitempty" xml:"authConfig,omitempty"`
+	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 获取用户信息
@@ -1749,6 +1874,11 @@ func (s HttpApiOperation) GoString() string {
 
 func (s *HttpApiOperation) SetAuthConfig(v *AuthConfig) *HttpApiOperation {
 	s.AuthConfig = v
+	return s
+}
+
+func (s *HttpApiOperation) SetDeployConfigs(v []*HttpApiDeployConfig) *HttpApiOperation {
+	s.DeployConfigs = v
 	return s
 }
 
@@ -1797,12 +1927,16 @@ type HttpApiOperationInfo struct {
 	// example:
 	//
 	// 1719386834548
-	CreateTimestamp *int64 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	CreateTimestamp *int64                 `json:"createTimestamp,omitempty" xml:"createTimestamp,omitempty"`
+	DeployConfigs   []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 获取用户信息
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	EnableAuth  *bool   `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
+	// example:
+	//
+	// true
+	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// example:
 	//
 	// GET
@@ -1822,6 +1956,10 @@ type HttpApiOperationInfo struct {
 	Path     *string                  `json:"path,omitempty" xml:"path,omitempty"`
 	Request  *HttpApiRequestContract  `json:"request,omitempty" xml:"request,omitempty"`
 	Response *HttpApiResponseContract `json:"response,omitempty" xml:"response,omitempty"`
+	// example:
+	//
+	// Deployed
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
 func (s HttpApiOperationInfo) String() string {
@@ -1839,6 +1977,11 @@ func (s *HttpApiOperationInfo) SetAuthConfig(v *AuthConfig) *HttpApiOperationInf
 
 func (s *HttpApiOperationInfo) SetCreateTimestamp(v int64) *HttpApiOperationInfo {
 	s.CreateTimestamp = &v
+	return s
+}
+
+func (s *HttpApiOperationInfo) SetDeployConfigs(v []*HttpApiDeployConfig) *HttpApiOperationInfo {
+	s.DeployConfigs = v
 	return s
 }
 
@@ -1884,6 +2027,11 @@ func (s *HttpApiOperationInfo) SetRequest(v *HttpApiRequestContract) *HttpApiOpe
 
 func (s *HttpApiOperationInfo) SetResponse(v *HttpApiResponseContract) *HttpApiOperationInfo {
 	s.Response = v
+	return s
+}
+
+func (s *HttpApiOperationInfo) SetStatus(v string) *HttpApiOperationInfo {
+	s.Status = &v
 	return s
 }
 
@@ -2872,6 +3020,7 @@ type HttpRoute struct {
 	Description     *string                   `json:"description,omitempty" xml:"description,omitempty"`
 	DomainInfos     []*HttpRouteDomainInfos   `json:"domainInfos,omitempty" xml:"domainInfos,omitempty" type:"Repeated"`
 	EnvironmentInfo *HttpRouteEnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty" type:"Struct"`
+	GatewayStatus   map[string]*string        `json:"gatewayStatus,omitempty" xml:"gatewayStatus,omitempty"`
 	Match           *HttpRouteMatch           `json:"match,omitempty" xml:"match,omitempty"`
 	Name            *string                   `json:"name,omitempty" xml:"name,omitempty"`
 	RouteId         *string                   `json:"routeId,omitempty" xml:"routeId,omitempty"`
@@ -2913,6 +3062,11 @@ func (s *HttpRoute) SetDomainInfos(v []*HttpRouteDomainInfos) *HttpRoute {
 
 func (s *HttpRoute) SetEnvironmentInfo(v *HttpRouteEnvironmentInfo) *HttpRoute {
 	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *HttpRoute) SetGatewayStatus(v map[string]*string) *HttpRoute {
+	s.GatewayStatus = v
 	return s
 }
 
@@ -4203,6 +4357,29 @@ func (s *TlsCipherSuitesConfigTlsCipherSuite) SetSupportVersions(v []*string) *T
 	return s
 }
 
+type HttpApiApiInfoDeployCntMapValue struct {
+	DeployedCnt *int64 `json:"deployedCnt,omitempty" xml:"deployedCnt,omitempty"`
+	Cnt         *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
+}
+
+func (s HttpApiApiInfoDeployCntMapValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HttpApiApiInfoDeployCntMapValue) GoString() string {
+	return s.String()
+}
+
+func (s *HttpApiApiInfoDeployCntMapValue) SetDeployedCnt(v int64) *HttpApiApiInfoDeployCntMapValue {
+	s.DeployedCnt = &v
+	return s
+}
+
+func (s *HttpApiApiInfoDeployCntMapValue) SetCnt(v int64) *HttpApiApiInfoDeployCntMapValue {
+	s.Cnt = &v
+	return s
+}
+
 type AddGatewaySecurityGroupRuleRequest struct {
 	// Description of the security group rule.
 	//
@@ -4454,7 +4631,8 @@ type CreateDomainRequest struct {
 	// example:
 	//
 	// false
-	ForceHttps *bool `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	ForceHttps  *bool   `json:"forceHttps,omitempty" xml:"forceHttps,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The HTTP/2 configuration.
 	//
 	// Valid values:
@@ -4538,6 +4716,11 @@ func (s *CreateDomainRequest) SetClientCACert(v string) *CreateDomainRequest {
 
 func (s *CreateDomainRequest) SetForceHttps(v bool) *CreateDomainRequest {
 	s.ForceHttps = &v
+	return s
+}
+
+func (s *CreateDomainRequest) SetGatewayType(v string) *CreateDomainRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -4985,6 +5168,7 @@ func (s *CreateHttpApiRequest) SetVersionConfig(v *HttpApiVersionConfig) *Create
 }
 
 type CreateHttpApiRequestIngressConfig struct {
+	ClusterId *string `json:"clusterId,omitempty" xml:"clusterId,omitempty"`
 	// The environment ID.
 	//
 	// example:
@@ -5003,6 +5187,8 @@ type CreateHttpApiRequestIngressConfig struct {
 	//
 	// false
 	OverrideIngressIp *bool `json:"overrideIngressIp,omitempty" xml:"overrideIngressIp,omitempty"`
+	// Deprecated
+	//
 	// The source ID.
 	//
 	// example:
@@ -5023,6 +5209,11 @@ func (s CreateHttpApiRequestIngressConfig) String() string {
 
 func (s CreateHttpApiRequestIngressConfig) GoString() string {
 	return s.String()
+}
+
+func (s *CreateHttpApiRequestIngressConfig) SetClusterId(v string) *CreateHttpApiRequestIngressConfig {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *CreateHttpApiRequestIngressConfig) SetEnvironmentId(v string) *CreateHttpApiRequestIngressConfig {
@@ -5304,6 +5495,7 @@ func (s *CreateHttpApiOperationResponse) SetBody(v *CreateHttpApiOperationRespon
 type CreateHttpApiRouteRequest struct {
 	// The backend service configurations of the route.
 	BackendConfig *CreateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	DeployConfigs []*HttpApiDeployConfig                  `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
 	// example:
@@ -5338,6 +5530,11 @@ func (s CreateHttpApiRouteRequest) GoString() string {
 
 func (s *CreateHttpApiRouteRequest) SetBackendConfig(v *CreateHttpApiRouteRequestBackendConfig) *CreateHttpApiRouteRequest {
 	s.BackendConfig = v
+	return s
+}
+
+func (s *CreateHttpApiRouteRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *CreateHttpApiRouteRequest {
+	s.DeployConfigs = v
 	return s
 }
 
@@ -5571,6 +5768,172 @@ func (s *CreateHttpApiRouteResponse) SetStatusCode(v int32) *CreateHttpApiRouteR
 }
 
 func (s *CreateHttpApiRouteResponse) SetBody(v *CreateHttpApiRouteResponseBody) *CreateHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePluginAttachmentRequest struct {
+	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// HttpApi
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// env-xxx
+	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	// example:
+	//
+	// gw-cq7l5s5lhtg***
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
+	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
+	// example:
+	//
+	// pl-cvo8udem1hkob1qd67i0
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+}
+
+func (s CreatePluginAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginAttachmentRequest) SetAttachResourceIds(v []*string) *CreatePluginAttachmentRequest {
+	s.AttachResourceIds = v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetAttachResourceType(v string) *CreatePluginAttachmentRequest {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetEnable(v bool) *CreatePluginAttachmentRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetEnvironmentId(v string) *CreatePluginAttachmentRequest {
+	s.EnvironmentId = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetGatewayId(v string) *CreatePluginAttachmentRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetPluginConfig(v string) *CreatePluginAttachmentRequest {
+	s.PluginConfig = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentRequest) SetPluginId(v string) *CreatePluginAttachmentRequest {
+	s.PluginId = &v
+	return s
+}
+
+type CreatePluginAttachmentResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                                 `json:"code,omitempty" xml:"code,omitempty"`
+	Data *CreatePluginAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// EBCB8485-24F9-54CD-B258-CB15FDB27677
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s CreatePluginAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginAttachmentResponseBody) SetCode(v string) *CreatePluginAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentResponseBody) SetData(v *CreatePluginAttachmentResponseBodyData) *CreatePluginAttachmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreatePluginAttachmentResponseBody) SetMessage(v string) *CreatePluginAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentResponseBody) SetRequestId(v string) *CreatePluginAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreatePluginAttachmentResponseBodyData struct {
+	// example:
+	//
+	// pa-cvs7jpmm1hkgihaqv4a0
+	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
+}
+
+func (s CreatePluginAttachmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginAttachmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginAttachmentResponseBodyData) SetPluginAttachmentId(v string) *CreatePluginAttachmentResponseBodyData {
+	s.PluginAttachmentId = &v
+	return s
+}
+
+type CreatePluginAttachmentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreatePluginAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreatePluginAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePluginAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePluginAttachmentResponse) SetHeaders(v map[string]*string) *CreatePluginAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePluginAttachmentResponse) SetStatusCode(v int32) *CreatePluginAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePluginAttachmentResponse) SetBody(v *CreatePluginAttachmentResponseBody) *CreatePluginAttachmentResponse {
 	s.Body = v
 	return s
 }
@@ -6704,6 +7067,75 @@ func (s *DeleteHttpApiRouteResponse) SetBody(v *DeleteHttpApiRouteResponseBody) 
 	return s
 }
 
+type DeletePluginAttachmentResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 76BDFFC7-0764-5168-B047-92EE0BC7FDDE
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeletePluginAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePluginAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePluginAttachmentResponseBody) SetCode(v string) *DeletePluginAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePluginAttachmentResponseBody) SetMessage(v string) *DeletePluginAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePluginAttachmentResponseBody) SetRequestId(v string) *DeletePluginAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeletePluginAttachmentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeletePluginAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeletePluginAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePluginAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePluginAttachmentResponse) SetHeaders(v map[string]*string) *DeletePluginAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePluginAttachmentResponse) SetStatusCode(v int32) *DeletePluginAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePluginAttachmentResponse) SetBody(v *DeletePluginAttachmentResponseBody) *DeletePluginAttachmentResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePolicyResponseBody struct {
 	// Response status code.
 	//
@@ -6851,6 +7283,7 @@ func (s *DeletePolicyAttachmentResponse) SetBody(v *DeletePolicyAttachmentRespon
 }
 
 type DeployHttpApiRequest struct {
+	HttpApiConfig *DeployHttpApiRequestHttpApiConfig `json:"httpApiConfig,omitempty" xml:"httpApiConfig,omitempty" type:"Struct"`
 	// Rest API deployment configuration. Required when deploying an HTTP API as a Rest API.
 	RestApiConfig *DeployHttpApiRequestRestApiConfig `json:"restApiConfig,omitempty" xml:"restApiConfig,omitempty" type:"Struct"`
 	// Route ID. This must be provided when publishing the route of an HTTP API.
@@ -6869,6 +7302,11 @@ func (s DeployHttpApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeployHttpApiRequest) SetHttpApiConfig(v *DeployHttpApiRequestHttpApiConfig) *DeployHttpApiRequest {
+	s.HttpApiConfig = v
+	return s
+}
+
 func (s *DeployHttpApiRequest) SetRestApiConfig(v *DeployHttpApiRequestRestApiConfig) *DeployHttpApiRequest {
 	s.RestApiConfig = v
 	return s
@@ -6876,6 +7314,29 @@ func (s *DeployHttpApiRequest) SetRestApiConfig(v *DeployHttpApiRequestRestApiCo
 
 func (s *DeployHttpApiRequest) SetRouteId(v string) *DeployHttpApiRequest {
 	s.RouteId = &v
+	return s
+}
+
+type DeployHttpApiRequestHttpApiConfig struct {
+	GatewayId *string   `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	RouteIds  []*string `json:"routeIds,omitempty" xml:"routeIds,omitempty" type:"Repeated"`
+}
+
+func (s DeployHttpApiRequestHttpApiConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployHttpApiRequestHttpApiConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DeployHttpApiRequestHttpApiConfig) SetGatewayId(v string) *DeployHttpApiRequestHttpApiConfig {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestHttpApiConfig) SetRouteIds(v []*string) *DeployHttpApiRequestHttpApiConfig {
+	s.RouteIds = v
 	return s
 }
 
@@ -6887,7 +7348,9 @@ type DeployHttpApiRequestRestApiConfig struct {
 	// 用户服务API发布。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Publication environment configuration.
-	Environment *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	Environment  *DeployHttpApiRequestRestApiConfigEnvironment `json:"environment,omitempty" xml:"environment,omitempty" type:"Struct"`
+	GatewayId    *string                                       `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	OperationIds []*string                                     `json:"operationIds,omitempty" xml:"operationIds,omitempty" type:"Repeated"`
 	// Historical version number. If this field is specified, the publication information will be based on the historical version information.
 	//
 	// example:
@@ -6911,6 +7374,16 @@ func (s *DeployHttpApiRequestRestApiConfig) SetDescription(v string) *DeployHttp
 
 func (s *DeployHttpApiRequestRestApiConfig) SetEnvironment(v *DeployHttpApiRequestRestApiConfigEnvironment) *DeployHttpApiRequestRestApiConfig {
 	s.Environment = v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetGatewayId(v string) *DeployHttpApiRequestRestApiConfig {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *DeployHttpApiRequestRestApiConfig) SetOperationIds(v []*string) *DeployHttpApiRequestRestApiConfig {
+	s.OperationIds = v
 	return s
 }
 
@@ -9236,6 +9709,158 @@ func (s *GetHttpApiRouteResponse) SetBody(v *GetHttpApiRouteResponseBody) *GetHt
 	return s
 }
 
+type GetPluginAttachmentResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                              `json:"code,omitempty" xml:"code,omitempty"`
+	Data *GetPluginAttachmentResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// C61E30D3-579A-5B43-994E-31E02EDC9129
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s GetPluginAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPluginAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPluginAttachmentResponseBody) SetCode(v string) *GetPluginAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBody) SetData(v *GetPluginAttachmentResponseBodyData) *GetPluginAttachmentResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBody) SetMessage(v string) *GetPluginAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBody) SetRequestId(v string) *GetPluginAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPluginAttachmentResponseBodyData struct {
+	// example:
+	//
+	// true
+	Enable             *bool               `json:"enable,omitempty" xml:"enable,omitempty"`
+	EnvironmentInfo    *EnvironmentInfo    `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
+	GatewayInfo        *GatewayInfo        `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
+	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
+	// example:
+	//
+	// pa-d05f1tmm1hku195dd8j0
+	PluginAttachmentId *string          `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
+	PluginClassInfo    *PluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty"`
+	// example:
+	//
+	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
+	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
+	// example:
+	//
+	// pl-cvo8ub6m1hkvgv03r3k0
+	PluginId      *string         `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
+}
+
+func (s GetPluginAttachmentResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPluginAttachmentResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetEnable(v bool) *GetPluginAttachmentResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetEnvironmentInfo(v *EnvironmentInfo) *GetPluginAttachmentResponseBodyData {
+	s.EnvironmentInfo = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetGatewayInfo(v *GatewayInfo) *GetPluginAttachmentResponseBodyData {
+	s.GatewayInfo = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetParentResourceInfo(v *ParentResourceInfo) *GetPluginAttachmentResponseBodyData {
+	s.ParentResourceInfo = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetPluginAttachmentId(v string) *GetPluginAttachmentResponseBodyData {
+	s.PluginAttachmentId = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetPluginClassInfo(v *PluginClassInfo) *GetPluginAttachmentResponseBodyData {
+	s.PluginClassInfo = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetPluginConfig(v string) *GetPluginAttachmentResponseBodyData {
+	s.PluginConfig = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetPluginId(v string) *GetPluginAttachmentResponseBodyData {
+	s.PluginId = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponseBodyData) SetResourceInfos(v []*ResourceInfo) *GetPluginAttachmentResponseBodyData {
+	s.ResourceInfos = v
+	return s
+}
+
+type GetPluginAttachmentResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetPluginAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetPluginAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPluginAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPluginAttachmentResponse) SetHeaders(v map[string]*string) *GetPluginAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPluginAttachmentResponse) SetStatusCode(v int32) *GetPluginAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetPluginAttachmentResponse) SetBody(v *GetPluginAttachmentResponseBody) *GetPluginAttachmentResponse {
+	s.Body = v
+	return s
+}
+
 type GetPolicyResponseBody struct {
 	// The status code.
 	//
@@ -9481,6 +10106,23 @@ func (s *GetPolicyAttachmentResponse) SetStatusCode(v int32) *GetPolicyAttachmen
 
 func (s *GetPolicyAttachmentResponse) SetBody(v *GetPolicyAttachmentResponseBody) *GetPolicyAttachmentResponse {
 	s.Body = v
+	return s
+}
+
+type GetResourceOverviewRequest struct {
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+}
+
+func (s GetResourceOverviewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetResourceOverviewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetResourceOverviewRequest) SetGatewayType(v string) *GetResourceOverviewRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -9935,6 +10577,7 @@ func (s *GetTraceConfigResponse) SetBody(v *GetTraceConfigResponseBody) *GetTrac
 }
 
 type ImportHttpApiRequest struct {
+	DeployConfigs *HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty"`
 	// The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
 	//
 	// example:
@@ -9946,7 +10589,8 @@ type ImportHttpApiRequest struct {
 	// example:
 	//
 	// false
-	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	DryRun     *bool   `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
+	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
 	// The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
 	//
 	// example:
@@ -10003,6 +10647,11 @@ func (s ImportHttpApiRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ImportHttpApiRequest) SetDeployConfigs(v *HttpApiDeployConfig) *ImportHttpApiRequest {
+	s.DeployConfigs = v
+	return s
+}
+
 func (s *ImportHttpApiRequest) SetDescription(v string) *ImportHttpApiRequest {
 	s.Description = &v
 	return s
@@ -10010,6 +10659,11 @@ func (s *ImportHttpApiRequest) SetDescription(v string) *ImportHttpApiRequest {
 
 func (s *ImportHttpApiRequest) SetDryRun(v bool) *ImportHttpApiRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *ImportHttpApiRequest) SetMcpRouteId(v string) *ImportHttpApiRequest {
+	s.McpRouteId = &v
 	return s
 }
 
@@ -10456,7 +11110,8 @@ type ListDomainsRequest struct {
 	// example:
 	//
 	// gw-xxx
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The domain name keyword for fuzzy search.
 	//
 	// example:
@@ -10493,6 +11148,11 @@ func (s ListDomainsRequest) GoString() string {
 
 func (s *ListDomainsRequest) SetGatewayId(v string) *ListDomainsRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetGatewayType(v string) *ListDomainsRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -10666,6 +11326,7 @@ type ListEnvironmentsRequest struct {
 	//
 	// test-gw
 	GatewayNameLike *string `json:"gatewayNameLike,omitempty" xml:"gatewayNameLike,omitempty"`
+	GatewayType     *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// Environment name, fuzzy search.
 	//
 	// example:
@@ -10712,6 +11373,11 @@ func (s *ListEnvironmentsRequest) SetGatewayId(v string) *ListEnvironmentsReques
 
 func (s *ListEnvironmentsRequest) SetGatewayNameLike(v string) *ListEnvironmentsRequest {
 	s.GatewayNameLike = &v
+	return s
+}
+
+func (s *ListEnvironmentsRequest) SetGatewayType(v string) *ListEnvironmentsRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -10872,7 +11538,8 @@ type ListGatewaysRequest struct {
 	// example:
 	//
 	// gw-cpv4sqdl****
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The search keyword. A full match is performed. The search is case-insensitive.
 	//
 	// example:
@@ -10917,6 +11584,11 @@ func (s ListGatewaysRequest) GoString() string {
 
 func (s *ListGatewaysRequest) SetGatewayId(v string) *ListGatewaysRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewaysRequest) SetGatewayType(v string) *ListGatewaysRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -10989,7 +11661,8 @@ type ListGatewaysShrinkRequest struct {
 	// example:
 	//
 	// gw-cpv4sqdl****
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The search keyword. A full match is performed. The search is case-insensitive.
 	//
 	// example:
@@ -11034,6 +11707,11 @@ func (s ListGatewaysShrinkRequest) GoString() string {
 
 func (s *ListGatewaysShrinkRequest) SetGatewayId(v string) *ListGatewaysShrinkRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewaysShrinkRequest) SetGatewayType(v string) *ListGatewaysShrinkRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -11205,7 +11883,9 @@ type ListGatewaysResponseBodyDataItems struct {
 	// example:
 	//
 	// gw-cpv54p5***
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	Legacy      *bool   `json:"legacy,omitempty" xml:"legacy,omitempty"`
 	// The ingress addresses of the instance.
 	LoadBalancers []*ListGatewaysResponseBodyDataItemsLoadBalancers `json:"loadBalancers,omitempty" xml:"loadBalancers,omitempty" type:"Repeated"`
 	// The instance name.
@@ -11320,6 +12000,16 @@ func (s *ListGatewaysResponseBodyDataItems) SetExpireTimestamp(v int64) *ListGat
 
 func (s *ListGatewaysResponseBodyDataItems) SetGatewayId(v string) *ListGatewaysResponseBodyDataItems {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetGatewayType(v string) *ListGatewaysResponseBodyDataItems {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *ListGatewaysResponseBodyDataItems) SetLegacy(v bool) *ListGatewaysResponseBodyDataItems {
+	s.Legacy = &v
 	return s
 }
 
@@ -11745,6 +12435,8 @@ type ListHttpApiOperationsRequest struct {
 	//
 	// cas-xxx
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
+	ForDeploy                   *bool   `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
+	GatewayId                   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
 	// List interfaces by Method.
 	//
 	// example:
@@ -11811,6 +12503,16 @@ func (s ListHttpApiOperationsRequest) GoString() string {
 
 func (s *ListHttpApiOperationsRequest) SetConsumerAuthorizationRuleId(v string) *ListHttpApiOperationsRequest {
 	s.ConsumerAuthorizationRuleId = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetForDeploy(v bool) *ListHttpApiOperationsRequest {
+	s.ForDeploy = &v
+	return s
+}
+
+func (s *ListHttpApiOperationsRequest) SetGatewayId(v string) *ListHttpApiOperationsRequest {
+	s.GatewayId = &v
 	return s
 }
 
@@ -12031,6 +12733,7 @@ type ListHttpApiRoutesRequest struct {
 	//
 	// env-cpqnr6tlhtgubc***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	ForDeploy     *bool   `json:"forDeploy,omitempty" xml:"forDeploy,omitempty"`
 	// The ID of the Cloud-native API Gateway instance.
 	//
 	// example:
@@ -12112,6 +12815,11 @@ func (s *ListHttpApiRoutesRequest) SetDomainId(v string) *ListHttpApiRoutesReque
 
 func (s *ListHttpApiRoutesRequest) SetEnvironmentId(v string) *ListHttpApiRoutesRequest {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *ListHttpApiRoutesRequest) SetForDeploy(v bool) *ListHttpApiRoutesRequest {
+	s.ForDeploy = &v
 	return s
 }
 
@@ -12297,7 +13005,8 @@ type ListHttpApisRequest struct {
 	// example:
 	//
 	// gw-cq2avtllh****
-	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayId   *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
 	// The search keyword. You can fuzzy-search by API name or exact-search by API ID.
 	//
 	// example:
@@ -12398,6 +13107,11 @@ func (s ListHttpApisRequest) GoString() string {
 
 func (s *ListHttpApisRequest) SetGatewayId(v string) *ListHttpApisRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *ListHttpApisRequest) SetGatewayType(v string) *ListHttpApisRequest {
+	s.GatewayType = &v
 	return s
 }
 
@@ -12603,6 +13317,388 @@ func (s *ListHttpApisResponse) SetStatusCode(v int32) *ListHttpApisResponse {
 }
 
 func (s *ListHttpApisResponse) SetBody(v *ListHttpApisResponseBody) *ListHttpApisResponse {
+	s.Body = v
+	return s
+}
+
+type ListPluginsRequest struct {
+	// example:
+	//
+	// api-cuip2pum1hksng6oni3g
+	AttachResourceId *string `json:"attachResourceId,omitempty" xml:"attachResourceId,omitempty"`
+	// example:
+	//
+	// HttpApi
+	AttachResourceType *string `json:"attachResourceType,omitempty" xml:"attachResourceType,omitempty"`
+	// example:
+	//
+	// gw-csrhgn6m1hkt65qbxxgg
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// AI
+	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// pls-dn82a9djd8z****
+	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// example:
+	//
+	// key-auth
+	PluginClassName *string `json:"pluginClassName,omitempty" xml:"pluginClassName,omitempty"`
+	// example:
+	//
+	// false
+	WithAttachmentInfo *bool `json:"withAttachmentInfo,omitempty" xml:"withAttachmentInfo,omitempty"`
+}
+
+func (s ListPluginsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsRequest) SetAttachResourceId(v string) *ListPluginsRequest {
+	s.AttachResourceId = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetAttachResourceType(v string) *ListPluginsRequest {
+	s.AttachResourceType = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetGatewayId(v string) *ListPluginsRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetGatewayType(v string) *ListPluginsRequest {
+	s.GatewayType = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetPageNumber(v int32) *ListPluginsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetPageSize(v int32) *ListPluginsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetPluginClassId(v string) *ListPluginsRequest {
+	s.PluginClassId = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetPluginClassName(v string) *ListPluginsRequest {
+	s.PluginClassName = &v
+	return s
+}
+
+func (s *ListPluginsRequest) SetWithAttachmentInfo(v bool) *ListPluginsRequest {
+	s.WithAttachmentInfo = &v
+	return s
+}
+
+type ListPluginsResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string                      `json:"code,omitempty" xml:"code,omitempty"`
+	Data *ListPluginsResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 168BA42D-F822-569D-A67F-FC59E6ABC2B1
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s ListPluginsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBody) SetCode(v string) *ListPluginsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListPluginsResponseBody) SetData(v *ListPluginsResponseBodyData) *ListPluginsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListPluginsResponseBody) SetMessage(v string) *ListPluginsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPluginsResponseBody) SetRequestId(v string) *ListPluginsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPluginsResponseBodyData struct {
+	Items []*ListPluginsResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+	// example:
+	//
+	// 10
+	TotalSize *int32 `json:"totalSize,omitempty" xml:"totalSize,omitempty"`
+}
+
+func (s ListPluginsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBodyData) SetItems(v []*ListPluginsResponseBodyDataItems) *ListPluginsResponseBodyData {
+	s.Items = v
+	return s
+}
+
+func (s *ListPluginsResponseBodyData) SetPageNumber(v int32) *ListPluginsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyData) SetPageSize(v int32) *ListPluginsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyData) SetTotalSize(v int32) *ListPluginsResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type ListPluginsResponseBodyDataItems struct {
+	AttachmentInfo  *ListPluginsResponseBodyDataItemsAttachmentInfo  `json:"attachmentInfo,omitempty" xml:"attachmentInfo,omitempty" type:"Struct"`
+	GatewayInfo     *ListPluginsResponseBodyDataItemsGatewayInfo     `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty" type:"Struct"`
+	PluginClassInfo *ListPluginsResponseBodyDataItemsPluginClassInfo `json:"pluginClassInfo,omitempty" xml:"pluginClassInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// pl-cvu6r4um1hko3b3ti0a0
+	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
+}
+
+func (s ListPluginsResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBodyDataItems) SetAttachmentInfo(v *ListPluginsResponseBodyDataItemsAttachmentInfo) *ListPluginsResponseBodyDataItems {
+	s.AttachmentInfo = v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItems) SetGatewayInfo(v *ListPluginsResponseBodyDataItemsGatewayInfo) *ListPluginsResponseBodyDataItems {
+	s.GatewayInfo = v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItems) SetPluginClassInfo(v *ListPluginsResponseBodyDataItemsPluginClassInfo) *ListPluginsResponseBodyDataItems {
+	s.PluginClassInfo = v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItems) SetPluginId(v string) *ListPluginsResponseBodyDataItems {
+	s.PluginId = &v
+	return s
+}
+
+type ListPluginsResponseBodyDataItemsAttachmentInfo struct {
+	// example:
+	//
+	// false
+	Enable *string `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// pa-ct2irn6m1hkreaen0t40
+	PluginAttachmentId *string `json:"pluginAttachmentId,omitempty" xml:"pluginAttachmentId,omitempty"`
+}
+
+func (s ListPluginsResponseBodyDataItemsAttachmentInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBodyDataItemsAttachmentInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBodyDataItemsAttachmentInfo) SetEnable(v string) *ListPluginsResponseBodyDataItemsAttachmentInfo {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsAttachmentInfo) SetPluginAttachmentId(v string) *ListPluginsResponseBodyDataItemsAttachmentInfo {
+	s.PluginAttachmentId = &v
+	return s
+}
+
+type ListPluginsResponseBodyDataItemsGatewayInfo struct {
+	// example:
+	//
+	// gw-cq7og15lhtxx6qasrj60
+	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// example:
+	//
+	// apitest-gw
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s ListPluginsResponseBodyDataItemsGatewayInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBodyDataItemsGatewayInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBodyDataItemsGatewayInfo) SetGatewayId(v string) *ListPluginsResponseBodyDataItemsGatewayInfo {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsGatewayInfo) SetName(v string) *ListPluginsResponseBodyDataItemsGatewayInfo {
+	s.Name = &v
+	return s
+}
+
+type ListPluginsResponseBodyDataItemsPluginClassInfo struct {
+	Alias *string `json:"alias,omitempty" xml:"alias,omitempty"`
+	// example:
+	//
+	// 999
+	ExecutePriority *string `json:"executePriority,omitempty" xml:"executePriority,omitempty"`
+	// example:
+	//
+	// AUTHZ
+	ExecuteStage *string `json:"executeStage,omitempty" xml:"executeStage,omitempty"`
+	// example:
+	//
+	// key-rate-limit
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// example:
+	//
+	// pls-cqebrgh46ppatmpri
+	PluginClassId *string `json:"pluginClassId,omitempty" xml:"pluginClassId,omitempty"`
+	// example:
+	//
+	// HigressOfficial
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// 2.0.3
+	Version            *string `json:"version,omitempty" xml:"version,omitempty"`
+	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
+}
+
+func (s ListPluginsResponseBodyDataItemsPluginClassInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponseBodyDataItemsPluginClassInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetAlias(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.Alias = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetExecutePriority(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.ExecutePriority = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetExecuteStage(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.ExecuteStage = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetName(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetPluginClassId(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.PluginClassId = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetSource(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetVersion(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.Version = &v
+	return s
+}
+
+func (s *ListPluginsResponseBodyDataItemsPluginClassInfo) SetVersionDescription(v string) *ListPluginsResponseBodyDataItemsPluginClassInfo {
+	s.VersionDescription = &v
+	return s
+}
+
+type ListPluginsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPluginsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPluginsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPluginsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPluginsResponse) SetHeaders(v map[string]*string) *ListPluginsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPluginsResponse) SetStatusCode(v int32) *ListPluginsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPluginsResponse) SetBody(v *ListPluginsResponseBody) *ListPluginsResponse {
 	s.Body = v
 	return s
 }
@@ -13446,6 +14542,8 @@ type UndeployHttpApiRequest struct {
 	//
 	// env-cqsmtellhtgvo***
 	EnvironmentId *string `json:"environmentId,omitempty" xml:"environmentId,omitempty"`
+	GatewayId     *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	OperationId   *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
 	// Route ID. This must be provided when publishing the route of an HTTP API.
 	//
 	// example:
@@ -13464,6 +14562,16 @@ func (s UndeployHttpApiRequest) GoString() string {
 
 func (s *UndeployHttpApiRequest) SetEnvironmentId(v string) *UndeployHttpApiRequest {
 	s.EnvironmentId = &v
+	return s
+}
+
+func (s *UndeployHttpApiRequest) SetGatewayId(v string) *UndeployHttpApiRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UndeployHttpApiRequest) SetOperationId(v string) *UndeployHttpApiRequest {
+	s.OperationId = &v
 	return s
 }
 
@@ -14397,6 +15505,7 @@ func (s *UpdateHttpApiOperationResponse) SetBody(v *UpdateHttpApiOperationRespon
 type UpdateHttpApiRouteRequest struct {
 	// The backend service configurations of the route.
 	BackendConfig *UpdateHttpApiRouteRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
+	DeployConfigs []*HttpApiDeployConfig                  `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
 	// The route description.
 	//
 	// example:
@@ -14425,6 +15534,11 @@ func (s UpdateHttpApiRouteRequest) GoString() string {
 
 func (s *UpdateHttpApiRouteRequest) SetBackendConfig(v *UpdateHttpApiRouteRequestBackendConfig) *UpdateHttpApiRouteRequest {
 	s.BackendConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRouteRequest) SetDeployConfigs(v []*HttpApiDeployConfig) *UpdateHttpApiRouteRequest {
+	s.DeployConfigs = v
 	return s
 }
 
@@ -14626,6 +15740,110 @@ func (s *UpdateHttpApiRouteResponse) SetStatusCode(v int32) *UpdateHttpApiRouteR
 }
 
 func (s *UpdateHttpApiRouteResponse) SetBody(v *UpdateHttpApiRouteResponseBody) *UpdateHttpApiRouteResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePluginAttachmentRequest struct {
+	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// false
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// example:
+	//
+	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
+	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
+}
+
+func (s UpdatePluginAttachmentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePluginAttachmentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePluginAttachmentRequest) SetAttachResourceIds(v []*string) *UpdatePluginAttachmentRequest {
+	s.AttachResourceIds = v
+	return s
+}
+
+func (s *UpdatePluginAttachmentRequest) SetEnable(v bool) *UpdatePluginAttachmentRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdatePluginAttachmentRequest) SetPluginConfig(v string) *UpdatePluginAttachmentRequest {
+	s.PluginConfig = &v
+	return s
+}
+
+type UpdatePluginAttachmentResponseBody struct {
+	// example:
+	//
+	// Ok
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// F330090D-80F8-557B-8610-7EC7E386B4A4
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s UpdatePluginAttachmentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePluginAttachmentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePluginAttachmentResponseBody) SetCode(v string) *UpdatePluginAttachmentResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePluginAttachmentResponseBody) SetMessage(v string) *UpdatePluginAttachmentResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePluginAttachmentResponseBody) SetRequestId(v string) *UpdatePluginAttachmentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdatePluginAttachmentResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdatePluginAttachmentResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdatePluginAttachmentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePluginAttachmentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePluginAttachmentResponse) SetHeaders(v map[string]*string) *UpdatePluginAttachmentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePluginAttachmentResponse) SetStatusCode(v int32) *UpdatePluginAttachmentResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePluginAttachmentResponse) SetBody(v *UpdatePluginAttachmentResponseBody) *UpdatePluginAttachmentResponse {
 	s.Body = v
 	return s
 }
@@ -14937,24 +16155,13 @@ func (client *Client) AddGatewaySecurityGroupRuleWithOptions(gatewayId *string, 
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &AddGatewaySecurityGroupRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &AddGatewaySecurityGroupRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &AddGatewaySecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15024,24 +16231,13 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ChangeResourceGroupResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15100,6 +16296,10 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		body["forceHttps"] = request.ForceHttps
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		body["gatewayType"] = request.GatewayType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Http2Option)) {
 		body["http2Option"] = request.Http2Option
 	}
@@ -15147,24 +16347,13 @@ func (client *Client) CreateDomainWithOptions(request *CreateDomainRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15249,24 +16438,13 @@ func (client *Client) CreateEnvironmentWithOptions(request *CreateEnvironmentReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI CreateEnvironment is deprecated
@@ -15375,24 +16553,13 @@ func (client *Client) CreateHttpApiWithOptions(request *CreateHttpApiRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15450,24 +16617,13 @@ func (client *Client) CreateHttpApiOperationWithOptions(httpApiId *string, reque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateHttpApiOperationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateHttpApiOperationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateHttpApiOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15510,6 +16666,10 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 		body["backendConfig"] = request.BackendConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeployConfigs)) {
+		body["deployConfigs"] = request.DeployConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -15545,24 +16705,13 @@ func (client *Client) CreateHttpApiRouteWithOptions(httpApiId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateHttpApiRouteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateHttpApiRouteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateHttpApiRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15577,6 +16726,94 @@ func (client *Client) CreateHttpApiRoute(httpApiId *string, request *CreateHttpA
 	headers := make(map[string]*string)
 	_result = &CreateHttpApiRouteResponse{}
 	_body, _err := client.CreateHttpApiRouteWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建API
+//
+// @param request - CreatePluginAttachmentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreatePluginAttachmentResponse
+func (client *Client) CreatePluginAttachmentWithOptions(request *CreatePluginAttachmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreatePluginAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceIds)) {
+		body["attachResourceIds"] = request.AttachResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceType)) {
+		body["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentId)) {
+		body["environmentId"] = request.EnvironmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginConfig)) {
+		body["pluginConfig"] = request.PluginConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		body["pluginId"] = request.PluginId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePluginAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugin-attachments"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePluginAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建API
+//
+// @param request - CreatePluginAttachmentRequest
+//
+// @return CreatePluginAttachmentResponse
+func (client *Client) CreatePluginAttachment(request *CreatePluginAttachmentRequest) (_result *CreatePluginAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreatePluginAttachmentResponse{}
+	_body, _err := client.CreatePluginAttachmentWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15632,24 +16869,13 @@ func (client *Client) CreatePolicyWithOptions(request *CreatePolicyRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreatePolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreatePolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15723,24 +16949,13 @@ func (client *Client) CreatePolicyAttachmentWithOptions(request *CreatePolicyAtt
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreatePolicyAttachmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreatePolicyAttachmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreatePolicyAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15814,24 +17029,13 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &CreateServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &CreateServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &CreateServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15881,24 +17085,13 @@ func (client *Client) DeleteDomainWithOptions(domainId *string, headers map[stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -15945,24 +17138,13 @@ func (client *Client) DeleteEnvironmentWithOptions(environmentId *string, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI DeleteEnvironment is deprecated
@@ -16009,24 +17191,13 @@ func (client *Client) DeleteGatewayWithOptions(gatewayId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteGatewayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteGatewayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16082,24 +17253,13 @@ func (client *Client) DeleteGatewaySecurityGroupRuleWithOptions(gatewayId *strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteGatewaySecurityGroupRuleResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteGatewaySecurityGroupRuleResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteGatewaySecurityGroupRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16145,24 +17305,13 @@ func (client *Client) DeleteHttpApiWithOptions(httpApiId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16206,24 +17355,13 @@ func (client *Client) DeleteHttpApiOperationWithOptions(httpApiId *string, opera
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteHttpApiOperationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteHttpApiOperationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteHttpApiOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16267,24 +17405,13 @@ func (client *Client) DeleteHttpApiRouteWithOptions(httpApiId *string, routeId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeleteHttpApiRouteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeleteHttpApiRouteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeleteHttpApiRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16297,6 +17424,56 @@ func (client *Client) DeleteHttpApiRoute(httpApiId *string, routeId *string) (_r
 	headers := make(map[string]*string)
 	_result = &DeleteHttpApiRouteResponse{}
 	_body, _err := client.DeleteHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除挂载规则API
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeletePluginAttachmentResponse
+func (client *Client) DeletePluginAttachmentWithOptions(pluginAttachmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeletePluginAttachmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePluginAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugin-attachments/" + tea.StringValue(openapiutil.GetEncodeParam(pluginAttachmentId))),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePluginAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除挂载规则API
+//
+// @return DeletePluginAttachmentResponse
+func (client *Client) DeletePluginAttachment(pluginAttachmentId *string) (_result *DeletePluginAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeletePluginAttachmentResponse{}
+	_body, _err := client.DeletePluginAttachmentWithOptions(pluginAttachmentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16328,24 +17505,13 @@ func (client *Client) DeletePolicyWithOptions(policyId *string, headers map[stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeletePolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeletePolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeletePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16389,24 +17555,13 @@ func (client *Client) DeletePolicyAttachmentWithOptions(policyAttachmentId *stri
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeletePolicyAttachmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeletePolicyAttachmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeletePolicyAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16443,6 +17598,10 @@ func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *Deplo
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HttpApiConfig)) {
+		body["httpApiConfig"] = request.HttpApiConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RestApiConfig)) {
 		body["restApiConfig"] = request.RestApiConfig
 	}
@@ -16466,24 +17625,13 @@ func (client *Client) DeployHttpApiWithOptions(httpApiId *string, request *Deplo
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &DeployHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &DeployHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &DeployHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16529,24 +17677,13 @@ func (client *Client) ExportHttpApiWithOptions(httpApiId *string, headers map[st
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ExportHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ExportHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ExportHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16636,24 +17773,13 @@ func (client *Client) GetDashboardWithOptions(gatewayId *string, tmpReq *GetDash
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDashboardResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDashboardResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDashboardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16711,24 +17837,13 @@ func (client *Client) GetDomainWithOptions(domainId *string, request *GetDomainR
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16793,24 +17908,13 @@ func (client *Client) GetEnvironmentWithOptions(environmentId *string, request *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI GetEnvironment is deprecated
@@ -16859,24 +17963,13 @@ func (client *Client) GetGatewayWithOptions(gatewayId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetGatewayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetGatewayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16920,24 +18013,13 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -16981,24 +18063,13 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetHttpApiOperationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetHttpApiOperationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetHttpApiOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17042,24 +18113,13 @@ func (client *Client) GetHttpApiRouteWithOptions(httpApiId *string, routeId *str
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetHttpApiRouteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetHttpApiRouteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetHttpApiRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17072,6 +18132,56 @@ func (client *Client) GetHttpApiRoute(httpApiId *string, routeId *string) (_resu
 	headers := make(map[string]*string)
 	_result = &GetHttpApiRouteResponse{}
 	_body, _err := client.GetHttpApiRouteWithOptions(httpApiId, routeId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// GetPluginAttachment。
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetPluginAttachmentResponse
+func (client *Client) GetPluginAttachmentWithOptions(pluginAttachmentId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetPluginAttachmentResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPluginAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugin-attachments/" + tea.StringValue(openapiutil.GetEncodeParam(pluginAttachmentId))),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPluginAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// GetPluginAttachment。
+//
+// @return GetPluginAttachmentResponse
+func (client *Client) GetPluginAttachment(pluginAttachmentId *string) (_result *GetPluginAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetPluginAttachmentResponse{}
+	_body, _err := client.GetPluginAttachmentWithOptions(pluginAttachmentId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17103,24 +18213,13 @@ func (client *Client) GetPolicyWithOptions(policyId *string, headers map[string]
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17164,24 +18263,13 @@ func (client *Client) GetPolicyAttachmentWithOptions(policyAttachmentId *string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetPolicyAttachmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetPolicyAttachmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetPolicyAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17205,14 +18293,26 @@ func (client *Client) GetPolicyAttachment(policyAttachmentId *string) (_result *
 //
 // # Get resource overview information
 //
+// @param request - GetResourceOverviewRequest
+//
 // @param headers - map
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return GetResourceOverviewResponse
-func (client *Client) GetResourceOverviewWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
+func (client *Client) GetResourceOverviewWithOptions(request *GetResourceOverviewRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetResourceOverviewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetResourceOverview"),
@@ -17225,36 +18325,27 @@ func (client *Client) GetResourceOverviewWithOptions(headers map[string]*string,
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetResourceOverviewResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetResourceOverviewResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetResourceOverviewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
 //
 // # Get resource overview information
 //
+// @param request - GetResourceOverviewRequest
+//
 // @return GetResourceOverviewResponse
-func (client *Client) GetResourceOverview() (_result *GetResourceOverviewResponse, _err error) {
+func (client *Client) GetResourceOverview(request *GetResourceOverviewRequest) (_result *GetResourceOverviewResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetResourceOverviewResponse{}
-	_body, _err := client.GetResourceOverviewWithOptions(headers, runtime)
+	_body, _err := client.GetResourceOverviewWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17286,24 +18377,13 @@ func (client *Client) GetServiceWithOptions(serviceId *string, headers map[strin
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetServiceResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetServiceResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17359,24 +18439,13 @@ func (client *Client) GetTraceConfigWithOptions(gatewayId *string, request *GetT
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &GetTraceConfigResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &GetTraceConfigResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &GetTraceConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17415,12 +18484,20 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeployConfigs)) {
+		body["deployConfigs"] = request.DeployConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		body["dryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.McpRouteId)) {
+		body["mcpRouteId"] = request.McpRouteId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -17470,24 +18547,13 @@ func (client *Client) ImportHttpApiWithOptions(request *ImportHttpApiRequest, he
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ImportHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ImportHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ImportHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17530,6 +18596,10 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		query["gatewayId"] = request.GatewayId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NameLike)) {
 		query["nameLike"] = request.NameLike
 	}
@@ -17561,24 +18631,13 @@ func (client *Client) ListDomainsWithOptions(request *ListDomainsRequest, header
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListDomainsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListDomainsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17632,6 +18691,10 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		query["gatewayNameLike"] = request.GatewayNameLike
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.NameLike)) {
 		query["nameLike"] = request.NameLike
 	}
@@ -17663,24 +18726,13 @@ func (client *Client) ListEnvironmentsWithOptions(request *ListEnvironmentsReque
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListEnvironmentsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListEnvironmentsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListEnvironmentsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI ListEnvironments is deprecated
@@ -17732,6 +18784,10 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 		query["gatewayId"] = request.GatewayId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["keyword"] = request.Keyword
 	}
@@ -17771,24 +18827,13 @@ func (client *Client) ListGatewaysWithOptions(tmpReq *ListGatewaysRequest, heade
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListGatewaysResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListGatewaysResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListGatewaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17829,6 +18874,14 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ConsumerAuthorizationRuleId)) {
 		query["consumerAuthorizationRuleId"] = request.ConsumerAuthorizationRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForDeploy)) {
+		query["forDeploy"] = request.ForDeploy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["gatewayId"] = request.GatewayId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Method)) {
@@ -17882,24 +18935,13 @@ func (client *Client) ListHttpApiOperationsWithOptions(httpApiId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListHttpApiOperationsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListHttpApiOperationsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListHttpApiOperationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -17954,6 +18996,10 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 		query["environmentId"] = request.EnvironmentId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ForDeploy)) {
+		query["forDeploy"] = request.ForDeploy
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
 		query["gatewayId"] = request.GatewayId
 	}
@@ -18005,24 +19051,13 @@ func (client *Client) ListHttpApiRoutesWithOptions(httpApiId *string, request *L
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListHttpApiRoutesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListHttpApiRoutesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListHttpApiRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18063,6 +19098,10 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
 		query["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
@@ -18140,24 +19179,13 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListHttpApisResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListHttpApisResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListHttpApisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18172,6 +19200,102 @@ func (client *Client) ListHttpApis(request *ListHttpApisRequest) (_result *ListH
 	headers := make(map[string]*string)
 	_result = &ListHttpApisResponse{}
 	_body, _err := client.ListHttpApisWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListPlugins
+//
+// @param request - ListPluginsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPluginsResponse
+func (client *Client) ListPluginsWithOptions(request *ListPluginsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListPluginsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceId)) {
+		query["attachResourceId"] = request.AttachResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceType)) {
+		query["attachResourceType"] = request.AttachResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayType)) {
+		query["gatewayType"] = request.GatewayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginClassId)) {
+		query["pluginClassId"] = request.PluginClassId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginClassName)) {
+		query["pluginClassName"] = request.PluginClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WithAttachmentInfo)) {
+		query["withAttachmentInfo"] = request.WithAttachmentInfo
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPlugins"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugins"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPluginsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # ListPlugins
+//
+// @param request - ListPluginsRequest
+//
+// @return ListPluginsResponse
+func (client *Client) ListPlugins(request *ListPluginsRequest) (_result *ListPluginsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListPluginsResponse{}
+	_body, _err := client.ListPluginsWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18231,24 +19355,13 @@ func (client *Client) ListPolicyClassesWithOptions(request *ListPolicyClassesReq
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListPolicyClassesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListPolicyClassesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListPolicyClassesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18330,24 +19443,13 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListServicesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListServicesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18417,24 +19519,13 @@ func (client *Client) ListSslCertsWithOptions(request *ListSslCertsRequest, head
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListSslCertsResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListSslCertsResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListSslCertsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18480,24 +19571,13 @@ func (client *Client) ListZonesWithOptions(headers map[string]*string, runtime *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &ListZonesResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &ListZonesResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &ListZonesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18541,24 +19621,13 @@ func (client *Client) RestartGatewayWithOptions(gatewayId *string, headers map[s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &RestartGatewayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &RestartGatewayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &RestartGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18599,6 +19668,14 @@ func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *Und
 		body["environmentId"] = request.EnvironmentId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		body["gatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationId)) {
+		body["operationId"] = request.OperationId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
 		body["routeId"] = request.RouteId
 	}
@@ -18618,24 +19695,13 @@ func (client *Client) UndeployHttpApiWithOptions(httpApiId *string, request *Und
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UndeployHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UndeployHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UndeployHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18729,24 +19795,13 @@ func (client *Client) UpdateDomainWithOptions(domainId *string, request *UpdateD
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateDomainResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateDomainResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18811,24 +19866,13 @@ func (client *Client) UpdateEnvironmentWithOptions(environmentId *string, reques
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateEnvironmentResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateEnvironmentResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateEnvironmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Deprecated: OpenAPI UpdateEnvironment is deprecated
@@ -18889,24 +19933,13 @@ func (client *Client) UpdateGatewayFeatureWithOptions(gatewayId *string, name *s
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateGatewayFeatureResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateGatewayFeatureResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateGatewayFeatureResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -18964,24 +19997,13 @@ func (client *Client) UpdateGatewayNameWithOptions(gatewayId *string, request *U
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateGatewayNameResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateGatewayNameResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateGatewayNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19071,24 +20093,13 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateHttpApiResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateHttpApiResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateHttpApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19146,24 +20157,13 @@ func (client *Client) UpdateHttpApiOperationWithOptions(httpApiId *string, opera
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateHttpApiOperationResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateHttpApiOperationResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateHttpApiOperationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19206,6 +20206,10 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 		body["backendConfig"] = request.BackendConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeployConfigs)) {
+		body["deployConfigs"] = request.DeployConfigs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
 	}
@@ -19237,24 +20241,13 @@ func (client *Client) UpdateHttpApiRouteWithOptions(httpApiId *string, routeId *
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdateHttpApiRouteResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdateHttpApiRouteResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdateHttpApiRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19269,6 +20262,78 @@ func (client *Client) UpdateHttpApiRoute(httpApiId *string, routeId *string, req
 	headers := make(map[string]*string)
 	_result = &UpdateHttpApiRouteResponse{}
 	_body, _err := client.UpdateHttpApiRouteWithOptions(httpApiId, routeId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新挂载规则API
+//
+// @param request - UpdatePluginAttachmentRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdatePluginAttachmentResponse
+func (client *Client) UpdatePluginAttachmentWithOptions(pluginAttachmentId *string, request *UpdatePluginAttachmentRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdatePluginAttachmentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachResourceIds)) {
+		body["attachResourceIds"] = request.AttachResourceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginConfig)) {
+		body["pluginConfig"] = request.PluginConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePluginAttachment"),
+		Version:     tea.String("2024-03-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v1/plugin-attachments/" + tea.StringValue(openapiutil.GetEncodeParam(pluginAttachmentId))),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePluginAttachmentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新挂载规则API
+//
+// @param request - UpdatePluginAttachmentRequest
+//
+// @return UpdatePluginAttachmentResponse
+func (client *Client) UpdatePluginAttachment(pluginAttachmentId *string, request *UpdatePluginAttachmentRequest) (_result *UpdatePluginAttachmentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdatePluginAttachmentResponse{}
+	_body, _err := client.UpdatePluginAttachmentWithOptions(pluginAttachmentId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19320,24 +20385,13 @@ func (client *Client) UpdatePolicyWithOptions(policyId *string, request *UpdateP
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpdatePolicyResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpdatePolicyResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpdatePolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
@@ -19395,24 +20449,13 @@ func (client *Client) UpgradeGatewayWithOptions(gatewayId *string, request *Upgr
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	if tea.BoolValue(util.IsUnset(client.SignatureVersion)) || !tea.BoolValue(util.EqualString(client.SignatureVersion, tea.String("v4"))) {
-		_result = &UpgradeGatewayResponse{}
-		_body, _err := client.CallApi(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
-		return _result, _err
-	} else {
-		_result = &UpgradeGatewayResponse{}
-		_body, _err := client.Execute(params, req, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-		_err = tea.Convert(_body, &_result)
+	_result = &UpgradeGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
 		return _result, _err
 	}
-
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
 }
 
 // Summary:
