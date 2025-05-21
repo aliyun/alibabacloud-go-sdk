@@ -19135,7 +19135,8 @@ type DescribeDisksResponseBodyDisksDisks struct {
 	// example:
 	//
 	// Available
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags   *DescribeDisksResponseBodyDisksDisksTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	// The type of the cloud disk or local disk. Valid values:
 	//
 	// 	- 1: system disk.
@@ -19241,8 +19242,53 @@ func (s *DescribeDisksResponseBodyDisksDisks) SetStatus(v string) *DescribeDisks
 	return s
 }
 
+func (s *DescribeDisksResponseBodyDisksDisks) SetTags(v *DescribeDisksResponseBodyDisksDisksTags) *DescribeDisksResponseBodyDisksDisks {
+	s.Tags = v
+	return s
+}
+
 func (s *DescribeDisksResponseBodyDisksDisks) SetType(v string) *DescribeDisksResponseBodyDisksDisks {
 	s.Type = &v
+	return s
+}
+
+type DescribeDisksResponseBodyDisksDisksTags struct {
+	Tags []*DescribeDisksResponseBodyDisksDisksTagsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDisksResponseBodyDisksDisksTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDisksDisksTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDisksDisksTags) SetTags(v []*DescribeDisksResponseBodyDisksDisksTagsTags) *DescribeDisksResponseBodyDisksDisksTags {
+	s.Tags = v
+	return s
+}
+
+type DescribeDisksResponseBodyDisksDisksTagsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDisksResponseBodyDisksDisksTagsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDisksResponseBodyDisksDisksTagsTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDisksResponseBodyDisksDisksTagsTags) SetKey(v string) *DescribeDisksResponseBodyDisksDisksTagsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisksTagsTags) SetValue(v string) *DescribeDisksResponseBodyDisksDisksTagsTags {
+	s.Value = &v
 	return s
 }
 
