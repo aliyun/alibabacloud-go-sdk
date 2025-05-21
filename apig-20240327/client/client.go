@@ -15212,7 +15212,8 @@ type UpdateHttpApiRequest struct {
 	// Specifies whether to enable authentication.
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
 	// The HTTP Ingress API configurations.
-	IngressConfig *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	IngressConfig    *UpdateHttpApiRequestIngressConfig `json:"ingressConfig,omitempty" xml:"ingressConfig,omitempty" type:"Struct"`
+	OnlyChangeConfig *bool                              `json:"onlyChangeConfig,omitempty" xml:"onlyChangeConfig,omitempty"`
 	// The protocols that are used to access the API.
 	Protocols []*string `json:"protocols,omitempty" xml:"protocols,omitempty" type:"Repeated"`
 	// The versioning configurations.
@@ -15259,6 +15260,11 @@ func (s *UpdateHttpApiRequest) SetEnableAuth(v bool) *UpdateHttpApiRequest {
 
 func (s *UpdateHttpApiRequest) SetIngressConfig(v *UpdateHttpApiRequestIngressConfig) *UpdateHttpApiRequest {
 	s.IngressConfig = v
+	return s
+}
+
+func (s *UpdateHttpApiRequest) SetOnlyChangeConfig(v bool) *UpdateHttpApiRequest {
+	s.OnlyChangeConfig = &v
 	return s
 }
 
@@ -20068,6 +20074,10 @@ func (client *Client) UpdateHttpApiWithOptions(httpApiId *string, request *Updat
 
 	if !tea.BoolValue(util.IsUnset(request.IngressConfig)) {
 		body["ingressConfig"] = request.IngressConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OnlyChangeConfig)) {
+		body["onlyChangeConfig"] = request.OnlyChangeConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
