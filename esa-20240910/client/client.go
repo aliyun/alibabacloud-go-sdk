@@ -11951,6 +11951,7 @@ func (s *CreateRoutineRelatedRecordRequest) SetSiteId(v int64) *CreateRoutineRel
 }
 
 type CreateRoutineRelatedRecordResponseBody struct {
+	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	// The request ID.
 	//
 	// example:
@@ -11971,6 +11972,11 @@ func (s CreateRoutineRelatedRecordResponseBody) String() string {
 
 func (s CreateRoutineRelatedRecordResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRoutineRelatedRecordResponseBody) SetRecordId(v int64) *CreateRoutineRelatedRecordResponseBody {
+	s.RecordId = &v
+	return s
 }
 
 func (s *CreateRoutineRelatedRecordResponseBody) SetRequestId(v string) *CreateRoutineRelatedRecordResponseBody {
@@ -12008,124 +12014,6 @@ func (s *CreateRoutineRelatedRecordResponse) SetStatusCode(v int32) *CreateRouti
 }
 
 func (s *CreateRoutineRelatedRecordResponse) SetBody(v *CreateRoutineRelatedRecordResponseBody) *CreateRoutineRelatedRecordResponse {
-	s.Body = v
-	return s
-}
-
-type CreateRoutineRelatedRouteRequest struct {
-	ByPass *string `json:"ByPass,omitempty" xml:"ByPass,omitempty"`
-	// The routine name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// CreateRoutineRelatedRoute
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The route.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// *.example.com/path1*
-	Route *string `json:"Route,omitempty" xml:"Route,omitempty"`
-	// The website ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 54362329990032
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s CreateRoutineRelatedRouteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRoutineRelatedRouteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRoutineRelatedRouteRequest) SetByPass(v string) *CreateRoutineRelatedRouteRequest {
-	s.ByPass = &v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteRequest) SetName(v string) *CreateRoutineRelatedRouteRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteRequest) SetRoute(v string) *CreateRoutineRelatedRouteRequest {
-	s.Route = &v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteRequest) SetSiteId(v int64) *CreateRoutineRelatedRouteRequest {
-	s.SiteId = &v
-	return s
-}
-
-type CreateRoutineRelatedRouteResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s CreateRoutineRelatedRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRoutineRelatedRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRoutineRelatedRouteResponseBody) SetRequestId(v string) *CreateRoutineRelatedRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteResponseBody) SetStatus(v string) *CreateRoutineRelatedRouteResponseBody {
-	s.Status = &v
-	return s
-}
-
-type CreateRoutineRelatedRouteResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *CreateRoutineRelatedRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s CreateRoutineRelatedRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRoutineRelatedRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRoutineRelatedRouteResponse) SetHeaders(v map[string]*string) *CreateRoutineRelatedRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteResponse) SetStatusCode(v int32) *CreateRoutineRelatedRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateRoutineRelatedRouteResponse) SetBody(v *CreateRoutineRelatedRouteResponseBody) *CreateRoutineRelatedRouteResponse {
 	s.Body = v
 	return s
 }
@@ -19565,131 +19453,6 @@ func (s *DeleteRoutineRelatedRecordResponse) SetBody(v *DeleteRoutineRelatedReco
 	return s
 }
 
-type DeleteRoutineRelatedRouteRequest struct {
-	// The routine name.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// DeleteRoutineRelatedRoute
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The route URL.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// *.example.com/path1*
-	Route *string `json:"Route,omitempty" xml:"Route,omitempty"`
-	// The route ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 0c3b82a3d1524e9f750da11d0cc0be0a
-	RouteId *string `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
-	// The website ID.
-	//
-	// This parameter is required.
-	//
-	// example:
-	//
-	// 54362329990032
-	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-}
-
-func (s DeleteRoutineRelatedRouteRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoutineRelatedRouteRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoutineRelatedRouteRequest) SetName(v string) *DeleteRoutineRelatedRouteRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteRequest) SetRoute(v string) *DeleteRoutineRelatedRouteRequest {
-	s.Route = &v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteRequest) SetRouteId(v string) *DeleteRoutineRelatedRouteRequest {
-	s.RouteId = &v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteRequest) SetSiteId(v int64) *DeleteRoutineRelatedRouteRequest {
-	s.SiteId = &v
-	return s
-}
-
-type DeleteRoutineRelatedRouteResponseBody struct {
-	// The request ID.
-	//
-	// example:
-	//
-	// EDBD3EB3-97DA-5465-AEF5-8DCA5DC5E395
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the operation is successful.
-	//
-	// example:
-	//
-	// OK
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DeleteRoutineRelatedRouteResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoutineRelatedRouteResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoutineRelatedRouteResponseBody) SetRequestId(v string) *DeleteRoutineRelatedRouteResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteResponseBody) SetStatus(v string) *DeleteRoutineRelatedRouteResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DeleteRoutineRelatedRouteResponse struct {
-	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *DeleteRoutineRelatedRouteResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s DeleteRoutineRelatedRouteResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRoutineRelatedRouteResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRoutineRelatedRouteResponse) SetHeaders(v map[string]*string) *DeleteRoutineRelatedRouteResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteResponse) SetStatusCode(v int32) *DeleteRoutineRelatedRouteResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteRoutineRelatedRouteResponse) SetBody(v *DeleteRoutineRelatedRouteResponseBody) *DeleteRoutineRelatedRouteResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteRoutineRouteRequest struct {
 	// This parameter is required.
 	//
@@ -23087,6 +22850,265 @@ func (s *DescribeRatePlanInstanceStatusResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeRatePlanInstanceStatusResponse) SetBody(v *DescribeRatePlanInstanceStatusResponseBody) *DescribeRatePlanInstanceStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSiteLogsRequest struct {
+	// example:
+	//
+	// 2022-11-06T17:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 123456***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// 2022-11-06T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsRequest) SetEndTime(v string) *DescribeSiteLogsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteLogsRequest) SetPageNumber(v int64) *DescribeSiteLogsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSiteLogsRequest) SetPageSize(v int64) *DescribeSiteLogsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSiteLogsRequest) SetSiteId(v int64) *DescribeSiteLogsRequest {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteLogsRequest) SetStartTime(v string) *DescribeSiteLogsRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteLogsResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 0AEDAF20-4DDF-4165-8750-47FF9C1929C9
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SiteLogDetails []*DescribeSiteLogsResponseBodySiteLogDetails `json:"SiteLogDetails,omitempty" xml:"SiteLogDetails,omitempty" type:"Repeated"`
+}
+
+func (s DescribeSiteLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsResponseBody) SetRequestId(v string) *DescribeSiteLogsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBody) SetSiteLogDetails(v []*DescribeSiteLogsResponseBodySiteLogDetails) *DescribeSiteLogsResponseBody {
+	s.SiteLogDetails = v
+	return s
+}
+
+type DescribeSiteLogsResponseBodySiteLogDetails struct {
+	// example:
+	//
+	// 300
+	LogCount  *int32                                                `json:"LogCount,omitempty" xml:"LogCount,omitempty"`
+	LogInfos  []*DescribeSiteLogsResponseBodySiteLogDetailsLogInfos `json:"LogInfos,omitempty" xml:"LogInfos,omitempty" type:"Repeated"`
+	PageInfos *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos  `json:"PageInfos,omitempty" xml:"PageInfos,omitempty" type:"Struct"`
+	// example:
+	//
+	// 123456***
+	SiteId *int64 `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+	// example:
+	//
+	// example.com
+	SiteName *string `json:"SiteName,omitempty" xml:"SiteName,omitempty"`
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetLogCount(v int32) *DescribeSiteLogsResponseBodySiteLogDetails {
+	s.LogCount = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetLogInfos(v []*DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) *DescribeSiteLogsResponseBodySiteLogDetails {
+	s.LogInfos = v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetPageInfos(v *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) *DescribeSiteLogsResponseBodySiteLogDetails {
+	s.PageInfos = v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetSiteId(v int64) *DescribeSiteLogsResponseBodySiteLogDetails {
+	s.SiteId = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetails) SetSiteName(v string) *DescribeSiteLogsResponseBodySiteLogDetails {
+	s.SiteName = &v
+	return s
+}
+
+type DescribeSiteLogsResponseBodySiteLogDetailsLogInfos struct {
+	// example:
+	//
+	// 2022-11-06T17:00:00Z
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// example.com_2022_11_07_000000_020000.gz.xxxxxx
+	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
+	// example:
+	//
+	// example.aliyundoc.com /v1.l1cache/105252530/example.com/2022_11_07/example.com_2022_11_07_000000_020000.gz.xxxxxx?Expires=1636963354&OSSAccessKeyId=LTAIviCc6zy8****&Signature=u0V6foRfZniHE8i%2BHUdxGOhZsK****
+	LogPath *string `json:"LogPath,omitempty" xml:"LogPath,omitempty"`
+	// example:
+	//
+	// 438304768
+	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
+	// example:
+	//
+	// 2022-11-06T16:00:00Z
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) SetEndTime(v string) *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) SetLogName(v string) *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos {
+	s.LogName = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) SetLogPath(v string) *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos {
+	s.LogPath = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) SetLogSize(v int32) *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos {
+	s.LogSize = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos) SetStartTime(v string) *DescribeSiteLogsResponseBodySiteLogDetailsLogInfos {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeSiteLogsResponseBodySiteLogDetailsPageInfos struct {
+	// example:
+	//
+	// 1
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 47
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) SetPageIndex(v int32) *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) SetPageSize(v int32) *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos) SetTotalCount(v int32) *DescribeSiteLogsResponseBodySiteLogDetailsPageInfos {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSiteLogsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSiteLogsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSiteLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSiteLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSiteLogsResponse) SetHeaders(v map[string]*string) *DescribeSiteLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteLogsResponse) SetStatusCode(v int32) *DescribeSiteLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSiteLogsResponse) SetBody(v *DescribeSiteLogsResponseBody) *DescribeSiteLogsResponse {
 	s.Body = v
 	return s
 }
@@ -31739,7 +31761,8 @@ type GetManagedTransformResponseBody struct {
 	// example:
 	//
 	// on
-	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	AddRealClientIpHeader  *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	RealClientIpHeaderName *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
 	// Request ID.
 	//
 	// example:
@@ -31769,6 +31792,11 @@ func (s *GetManagedTransformResponseBody) SetAddClientGeolocationHeader(v string
 
 func (s *GetManagedTransformResponseBody) SetAddRealClientIpHeader(v string) *GetManagedTransformResponseBody {
 	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *GetManagedTransformResponseBody) SetRealClientIpHeaderName(v string) *GetManagedTransformResponseBody {
+	s.RealClientIpHeaderName = &v
 	return s
 }
 
@@ -59052,6 +59080,80 @@ func (s *ListWaitingRoomsResponse) SetBody(v *ListWaitingRoomsResponseBody) *Lis
 	return s
 }
 
+type OpenErServiceRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s OpenErServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenErServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OpenErServiceRequest) SetOwnerId(v int64) *OpenErServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *OpenErServiceRequest) SetSecurityToken(v string) *OpenErServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type OpenErServiceResponseBody struct {
+	// Id of the request
+	//
+	// example:
+	//
+	// 5CC228B4-7A67-4016-9C9F-4A4133494A91
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s OpenErServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenErServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OpenErServiceResponseBody) SetRequestId(v string) *OpenErServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type OpenErServiceResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *OpenErServiceResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s OpenErServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OpenErServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OpenErServiceResponse) SetHeaders(v map[string]*string) *OpenErServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OpenErServiceResponse) SetStatusCode(v int32) *OpenErServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OpenErServiceResponse) SetBody(v *OpenErServiceResponseBody) *OpenErServiceResponse {
+	s.Body = v
+	return s
+}
+
 type PreloadCachesRequest struct {
 	// The files to be prefetched.
 	Content []*string `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
@@ -66609,7 +66711,8 @@ type UpdateManagedTransformRequest struct {
 	// example:
 	//
 	// on
-	AddRealClientIpHeader *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	AddRealClientIpHeader  *string `json:"AddRealClientIpHeader,omitempty" xml:"AddRealClientIpHeader,omitempty"`
+	RealClientIpHeaderName *string `json:"RealClientIpHeaderName,omitempty" xml:"RealClientIpHeaderName,omitempty"`
 	// The website ID, which can be obtained by calling the [ListSites](https://help.aliyun.com/document_detail/2850189.html) operation.
 	//
 	// This parameter is required.
@@ -66641,6 +66744,11 @@ func (s *UpdateManagedTransformRequest) SetAddClientGeolocationHeader(v string) 
 
 func (s *UpdateManagedTransformRequest) SetAddRealClientIpHeader(v string) *UpdateManagedTransformRequest {
 	s.AddRealClientIpHeader = &v
+	return s
+}
+
+func (s *UpdateManagedTransformRequest) SetRealClientIpHeaderName(v string) *UpdateManagedTransformRequest {
+	s.RealClientIpHeaderName = &v
 	return s
 }
 
@@ -77200,78 +77308,6 @@ func (client *Client) CreateRoutineRelatedRecord(request *CreateRoutineRelatedRe
 
 // Summary:
 //
-// Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-//
-// @param request - CreateRoutineRelatedRouteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return CreateRoutineRelatedRouteResponse
-func (client *Client) CreateRoutineRelatedRouteWithOptions(request *CreateRoutineRelatedRouteRequest, runtime *util.RuntimeOptions) (_result *CreateRoutineRelatedRouteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ByPass)) {
-		body["ByPass"] = request.ByPass
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Route)) {
-		body["Route"] = request.Route
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		body["SiteId"] = request.SiteId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRoutineRelatedRoute"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateRoutineRelatedRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Adds a route to map a URL to a routine so that the routine can be triggered to respond to requests destined for the URL.
-//
-// @param request - CreateRoutineRelatedRouteRequest
-//
-// @return CreateRoutineRelatedRouteResponse
-func (client *Client) CreateRoutineRelatedRoute(request *CreateRoutineRelatedRouteRequest) (_result *CreateRoutineRelatedRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRoutineRelatedRouteResponse{}
-	_body, _err := client.CreateRoutineRelatedRouteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 新增边缘函数路由配置
 //
 // @param request - CreateRoutineRouteRequest
@@ -80527,78 +80563,6 @@ func (client *Client) DeleteRoutineRelatedRecord(request *DeleteRoutineRelatedRe
 
 // Summary:
 //
-// Deletes a route that is associated with a routine.
-//
-// @param request - DeleteRoutineRelatedRouteRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return DeleteRoutineRelatedRouteResponse
-func (client *Client) DeleteRoutineRelatedRouteWithOptions(request *DeleteRoutineRelatedRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteRoutineRelatedRouteResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Route)) {
-		body["Route"] = request.Route
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
-		body["RouteId"] = request.RouteId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
-		body["SiteId"] = request.SiteId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteRoutineRelatedRoute"),
-		Version:     tea.String("2024-09-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteRoutineRelatedRouteResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
-// Deletes a route that is associated with a routine.
-//
-// @param request - DeleteRoutineRelatedRouteRequest
-//
-// @return DeleteRoutineRelatedRouteResponse
-func (client *Client) DeleteRoutineRelatedRoute(request *DeleteRoutineRelatedRouteRequest) (_result *DeleteRoutineRelatedRouteResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteRoutineRelatedRouteResponse{}
-	_body, _err := client.DeleteRoutineRelatedRouteWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-// Summary:
-//
 // 删除边缘函数路由配置
 //
 // @param request - DeleteRoutineRouteRequest
@@ -82057,6 +82021,82 @@ func (client *Client) DescribeRatePlanInstanceStatus(request *DescribeRatePlanIn
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRatePlanInstanceStatusResponse{}
 	_body, _err := client.DescribeRatePlanInstanceStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点离线日志
+//
+// @param request - DescribeSiteLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSiteLogsResponse
+func (client *Client) DescribeSiteLogsWithOptions(request *DescribeSiteLogsRequest, runtime *util.RuntimeOptions) (_result *DescribeSiteLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
+		query["SiteId"] = request.SiteId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSiteLogs"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSiteLogsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询站点离线日志
+//
+// @param request - DescribeSiteLogsRequest
+//
+// @return DescribeSiteLogsResponse
+func (client *Client) DescribeSiteLogs(request *DescribeSiteLogsRequest) (_result *DescribeSiteLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSiteLogsResponse{}
+	_body, _err := client.DescribeSiteLogsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -90405,6 +90445,70 @@ func (client *Client) ListWaitingRooms(request *ListWaitingRoomsRequest) (_resul
 
 // Summary:
 //
+// # OpenErService
+//
+// @param request - OpenErServiceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OpenErServiceResponse
+func (client *Client) OpenErServiceWithOptions(request *OpenErServiceRequest, runtime *util.RuntimeOptions) (_result *OpenErServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenErService"),
+		Version:     tea.String("2024-09-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OpenErServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// # OpenErService
+//
+// @param request - OpenErServiceRequest
+//
+// @return OpenErServiceResponse
+func (client *Client) OpenErService(request *OpenErServiceRequest) (_result *OpenErServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OpenErServiceResponse{}
+	_body, _err := client.OpenErServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Prefetches cache.
 //
 // @param tmpReq - PreloadCachesRequest
@@ -93801,6 +93905,10 @@ func (client *Client) UpdateManagedTransformWithOptions(request *UpdateManagedTr
 
 	if !tea.BoolValue(util.IsUnset(request.AddRealClientIpHeader)) {
 		query["AddRealClientIpHeader"] = request.AddRealClientIpHeader
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealClientIpHeaderName)) {
+		query["RealClientIpHeaderName"] = request.RealClientIpHeaderName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SiteId)) {
