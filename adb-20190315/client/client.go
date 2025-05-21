@@ -16663,6 +16663,7 @@ func (s *DescribeEIURangeResponseBody) SetRequestId(v string) *DescribeEIURangeR
 }
 
 type DescribeEIURangeResponseBodyEIUInfo struct {
+	DefaultReservedNodeSize *string `json:"DefaultReservedNodeSize,omitempty" xml:"DefaultReservedNodeSize,omitempty"`
 	// The suggested value for the number of EIUs.
 	//
 	// example:
@@ -16682,7 +16683,8 @@ type DescribeEIURangeResponseBodyEIUInfo struct {
 	// example:
 	//
 	// none
-	MinValue *string `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	MinValue              *string   `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ReservedNodeSizeRange []*string `json:"ReservedNodeSizeRange,omitempty" xml:"ReservedNodeSizeRange,omitempty" type:"Repeated"`
 	// A reserved parameter.
 	//
 	// example:
@@ -16699,6 +16701,11 @@ func (s DescribeEIURangeResponseBodyEIUInfo) String() string {
 
 func (s DescribeEIURangeResponseBodyEIUInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEIURangeResponseBodyEIUInfo) SetDefaultReservedNodeSize(v string) *DescribeEIURangeResponseBodyEIUInfo {
+	s.DefaultReservedNodeSize = &v
+	return s
 }
 
 func (s *DescribeEIURangeResponseBodyEIUInfo) SetDefaultValue(v string) *DescribeEIURangeResponseBodyEIUInfo {
@@ -16718,6 +16725,11 @@ func (s *DescribeEIURangeResponseBodyEIUInfo) SetMaxValue(v string) *DescribeEIU
 
 func (s *DescribeEIURangeResponseBodyEIUInfo) SetMinValue(v string) *DescribeEIURangeResponseBodyEIUInfo {
 	s.MinValue = &v
+	return s
+}
+
+func (s *DescribeEIURangeResponseBodyEIUInfo) SetReservedNodeSizeRange(v []*string) *DescribeEIURangeResponseBodyEIUInfo {
+	s.ReservedNodeSizeRange = v
 	return s
 }
 
@@ -18762,16 +18774,25 @@ func (s *DescribeInclinedNodesResponse) SetBody(v *DescribeInclinedNodesResponse
 }
 
 type DescribeInclinedTablesRequest struct {
-	// The ID of the cluster.
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// am-bpxxxxxxxx47
+	// am-k2jofo4pi5zhd****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order in which queries are sorted in the JSON format based on the specified fields. Specify the fields used to sort the queries and the order type.
+	// The language in which you want to send requests and receive messages. Default value: zh. Valid values:
+	//
+	// - **zh**: Chinese.
+	//
+	// - **en**: English.
+	//
+	// example:
+	//
+	// zh
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format.
 	//
 	// Example:
 	//
@@ -18791,11 +18812,9 @@ type DescribeInclinedTablesRequest struct {
 	//
 	// ```
 	//
-	// In the preceding code, Field indicates the field used to sort queries. Set the value of Field to Name.
+	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
 	//
-	// Type indicates the order type. Valid values of Type: Desc and Asc. A value of Desc indicates a descending order. A value of Asc indicates an ascending order.
-	//
-	// Both fields are not case-sensitive.
+	// Field and Type are case-insensitive.
 	//
 	// example:
 	//
@@ -18803,34 +18822,42 @@ type DescribeInclinedTablesRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from page 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// 	- 30
+	// - 30；
 	//
-	// 	- 50
+	// - 50；
 	//
-	// 	- 100
+	// - 100；
 	//
 	// Default value: 30.
 	//
 	// example:
 	//
 	// 30
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-zhangjiakou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The type of the table. Valid values:
 	//
-	// 	- FactTable
 	//
-	// 	- DimensionTable
+	// - **FactTable**: the partitioned table.
+	//
+	// - **DimensionTable**: the dimension table.
 	//
 	// This parameter is required.
 	//
@@ -18904,8 +18931,9 @@ func (s *DescribeInclinedTablesRequest) SetTableType(v string) *DescribeInclined
 }
 
 type DescribeInclinedTablesResponseBody struct {
+	// The queried detection items and detection results.
 	DetectionItems []*DescribeInclinedTablesResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
-	// The monitoring information about tables.
+	// The queried tables.
 	Items *DescribeInclinedTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -18929,7 +18957,7 @@ type DescribeInclinedTablesResponseBody struct {
 	//
 	// example:
 	//
-	// 1
+	// 15
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
@@ -18972,9 +19000,30 @@ func (s *DescribeInclinedTablesResponseBody) SetTotalCount(v string) *DescribeIn
 }
 
 type DescribeInclinedTablesResponseBodyDetectionItems struct {
+	// The message of the detection result.
+	//
+	// example:
+	//
+	// There are a total of 10 tables with an excessive number of primary keys.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Excessive primary key fields
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result. Valid values:
+	//
+	// - NORMAL
+	//
+	// - WARNING
+	//
+	// - CRITICAL
+	//
+	// example:
+	//
+	// WARNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeInclinedTablesResponseBodyDetectionItems) String() string {
@@ -19001,6 +19050,7 @@ func (s *DescribeInclinedTablesResponseBodyDetectionItems) SetStatus(v string) *
 }
 
 type DescribeInclinedTablesResponseBodyItems struct {
+	// The queried table.
 	Table []*DescribeInclinedTablesResponseBodyItemsTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
 }
 
@@ -19018,14 +19068,54 @@ func (s *DescribeInclinedTablesResponseBodyItems) SetTable(v []*DescribeInclined
 }
 
 type DescribeInclinedTablesResponseBodyItemsTable struct {
-	IsIncline  *string  `json:"IsIncline,omitempty" xml:"IsIncline,omitempty"`
-	Name       *string  `json:"Name,omitempty" xml:"Name,omitempty"`
-	RowCount   *int64   `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	Schema     *string  `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	Size       *string  `json:"Size,omitempty" xml:"Size,omitempty"`
+	// Indicates whether data is skewed in the table.
+	//
+	// example:
+	//
+	// true
+	IsIncline *string `json:"IsIncline,omitempty" xml:"IsIncline,omitempty"`
+	// The name of the table.
+	//
+	// example:
+	//
+	// ff
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 2565
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The name of the database.
+	//
+	// example:
+	//
+	// adm_analyze
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The number of rows in the table.
+	//
+	// example:
+	//
+	// 2416527
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The percentage of the table size.
+	//
+	// example:
+	//
+	// 89
 	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
-	TotalSize  *int64   `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-	Type       *string  `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The total data size of the table.
+	//
+	// example:
+	//
+	// 65
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The column type.
+	//
+	// example:
+	//
+	// executor
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeInclinedTablesResponseBodyItemsTable) String() string {
@@ -31702,6 +31792,7 @@ type MigrateDBClusterRequest struct {
 	//
 	// am-bp1xxxxxxxx47
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DryRun       *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// example:
@@ -31752,6 +31843,11 @@ func (s *MigrateDBClusterRequest) SetComputeResource(v string) *MigrateDBCluster
 
 func (s *MigrateDBClusterRequest) SetDBClusterId(v string) *MigrateDBClusterRequest {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *MigrateDBClusterRequest) SetDryRun(v bool) *MigrateDBClusterRequest {
+	s.DryRun = &v
 	return s
 }
 
@@ -34113,32 +34209,58 @@ func (s *ModifyDBClusterSSLResponse) SetBody(v *ModifyDBClusterSSLResponseBody) 
 }
 
 type ModifyDBClusterShardNumberRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Warehouse Edition cluster.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Warehouse Edition clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-bp1xxxxxxxx47
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// Specifies whether to perform only a dry run. Valid values:
+	//
+	// 	- true: sends a request to check whether the cluster meets the prerequisites for changing the number of shards and whether the desired number of shards is valid, but **does not*	- perform the change operation.
+	//
+	// 	- false (default): sends a request to perform a check and trigger the change operation.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The desired number of shards.
+	//
 	// example:
 	//
 	// 256
 	NewShardNumber *int64  `json:"NewShardNumber,omitempty" xml:"NewShardNumber,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// The point in time when you want the system to perform the change operation. Specify the time in the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
+	//
 	// example:
 	//
 	// 2021-07-09T22:00:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
+	// The mode in which you want the change operation to be performed. Valid values:
+	//
+	// 	- **Immediate*	- (default): immediately performs the change operation.
+	//
+	// 	- **MaintainTime**: performs the change operation within the maintenance window of the cluster. You can call the ModifyDBInstanceMaintainTime operation to change the maintenance window.
+	//
+	// 	- **ScheduleTime**: performs the change operation at the point in time that you specify. If you specify this value, you must also specify **SwitchTime**.
+	//
 	// example:
 	//
 	// Immediate
@@ -34204,6 +34326,8 @@ func (s *ModifyDBClusterShardNumberRequest) SetSwitchTimeMode(v int64) *ModifyDB
 }
 
 type ModifyDBClusterShardNumberResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 25B56BC7-4978-40B3-9E48-4B7067******
@@ -43697,7 +43821,7 @@ func (client *Client) DescribeInclinedNodes(request *DescribeInclinedNodesReques
 
 // Summary:
 //
-// Queries the monitoring information about tables.
+// Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeInclinedTablesRequest
 //
@@ -43779,7 +43903,7 @@ func (client *Client) DescribeInclinedTablesWithOptions(request *DescribeIncline
 
 // Summary:
 //
-// Queries the monitoring information about tables.
+// Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeInclinedTablesRequest
 //
@@ -47562,6 +47686,10 @@ func (client *Client) MigrateDBClusterWithOptions(request *MigrateDBClusterReque
 		query["DBClusterId"] = request.DBClusterId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -48921,7 +49049,7 @@ func (client *Client) ModifyDBClusterSSL(request *ModifyDBClusterSSLRequest) (_r
 
 // Summary:
 //
-// 修改实例分片数目
+// Changes the number of shards for an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterShardNumberRequest
 //
@@ -48999,7 +49127,7 @@ func (client *Client) ModifyDBClusterShardNumberWithOptions(request *ModifyDBClu
 
 // Summary:
 //
-// 修改实例分片数目
+// Changes the number of shards for an AnalyticDB for MySQL cluster.
 //
 // @param request - ModifyDBClusterShardNumberRequest
 //
