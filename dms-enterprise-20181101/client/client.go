@@ -7745,7 +7745,8 @@ type CreateDataImportOrderRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	Param *CreateDataImportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	Param            *CreateDataImportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RealLoginUserUid *string                            `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserList []*int64 `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -7776,6 +7777,11 @@ func (s *CreateDataImportOrderRequest) SetComment(v string) *CreateDataImportOrd
 
 func (s *CreateDataImportOrderRequest) SetParam(v *CreateDataImportOrderRequestParam) *CreateDataImportOrderRequest {
 	s.Param = v
+	return s
+}
+
+func (s *CreateDataImportOrderRequest) SetRealLoginUserUid(v string) *CreateDataImportOrderRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -8060,7 +8066,8 @@ type CreateDataImportOrderShrinkRequest struct {
 	// The parameters of the ticket.
 	//
 	// This parameter is required.
-	ParamShrink *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	ParamShrink      *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RealLoginUserUid *string `json:"RealLoginUserUid,omitempty" xml:"RealLoginUserUid,omitempty"`
 	// The stakeholders of the data import. All stakeholders can view the ticket details and assist in the approval process. Irrelevant users other than DMS administrators and database administrators (DBAs) are not allowed to view the ticket details.
 	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
 	// The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -8091,6 +8098,11 @@ func (s *CreateDataImportOrderShrinkRequest) SetComment(v string) *CreateDataImp
 
 func (s *CreateDataImportOrderShrinkRequest) SetParamShrink(v string) *CreateDataImportOrderShrinkRequest {
 	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataImportOrderShrinkRequest) SetRealLoginUserUid(v string) *CreateDataImportOrderShrinkRequest {
+	s.RealLoginUserUid = &v
 	return s
 }
 
@@ -74679,6 +74691,10 @@ func (client *Client) CreateDataImportOrderWithOptions(tmpReq *CreateDataImportO
 
 	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
 		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RealLoginUserUid)) {
+		query["RealLoginUserUid"] = request.RealLoginUserUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
