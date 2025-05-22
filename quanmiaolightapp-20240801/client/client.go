@@ -2512,6 +2512,187 @@ func (s *GetVideoAnalysisTaskResponse) SetBody(v *GetVideoAnalysisTaskResponseBo
 	return s
 }
 
+type HotNewsRecommendRequest struct {
+	Prompt *string `json:"prompt,omitempty" xml:"prompt,omitempty"`
+}
+
+func (s HotNewsRecommendRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotNewsRecommendRequest) GoString() string {
+	return s.String()
+}
+
+func (s *HotNewsRecommendRequest) SetPrompt(v string) *HotNewsRecommendRequest {
+	s.Prompt = &v
+	return s
+}
+
+type HotNewsRecommendResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string                           `json:"code,omitempty" xml:"code,omitempty"`
+	Data *HotNewsRecommendResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
+	// example:
+	//
+	// ok
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// example:
+	//
+	// 575D5893-01DB-5C81-A899-74F67616762A
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s HotNewsRecommendResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotNewsRecommendResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *HotNewsRecommendResponseBody) SetCode(v string) *HotNewsRecommendResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBody) SetData(v *HotNewsRecommendResponseBodyData) *HotNewsRecommendResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBody) SetMessage(v string) *HotNewsRecommendResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBody) SetRequestId(v string) *HotNewsRecommendResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBody) SetSuccess(v bool) *HotNewsRecommendResponseBody {
+	s.Success = &v
+	return s
+}
+
+type HotNewsRecommendResponseBodyData struct {
+	News []*HotNewsRecommendResponseBodyDataNews `json:"news,omitempty" xml:"news,omitempty" type:"Repeated"`
+}
+
+func (s HotNewsRecommendResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotNewsRecommendResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *HotNewsRecommendResponseBodyData) SetNews(v []*HotNewsRecommendResponseBodyDataNews) *HotNewsRecommendResponseBodyData {
+	s.News = v
+	return s
+}
+
+type HotNewsRecommendResponseBodyDataNews struct {
+	// example:
+	//
+	// xx
+	Content   *string   `json:"content,omitempty" xml:"content,omitempty"`
+	ImageUrls []*string `json:"imageUrls,omitempty" xml:"imageUrls,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 2024-09-10 15:32:00
+	PubTime      *string `json:"pubTime,omitempty" xml:"pubTime,omitempty"`
+	SearchSource *string `json:"searchSource,omitempty" xml:"searchSource,omitempty"`
+	Source       *string `json:"source,omitempty" xml:"source,omitempty"`
+	// example:
+	//
+	// xx
+	Title *string `json:"title,omitempty" xml:"title,omitempty"`
+	// example:
+	//
+	// http://xxx
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s HotNewsRecommendResponseBodyDataNews) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotNewsRecommendResponseBodyDataNews) GoString() string {
+	return s.String()
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetContent(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.Content = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetImageUrls(v []*string) *HotNewsRecommendResponseBodyDataNews {
+	s.ImageUrls = v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetPubTime(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.PubTime = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetSearchSource(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.SearchSource = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetSource(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.Source = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetTitle(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.Title = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponseBodyDataNews) SetUrl(v string) *HotNewsRecommendResponseBodyDataNews {
+	s.Url = &v
+	return s
+}
+
+type HotNewsRecommendResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *HotNewsRecommendResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s HotNewsRecommendResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HotNewsRecommendResponse) GoString() string {
+	return s.String()
+}
+
+func (s *HotNewsRecommendResponse) SetHeaders(v map[string]*string) *HotNewsRecommendResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *HotNewsRecommendResponse) SetStatusCode(v int32) *HotNewsRecommendResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *HotNewsRecommendResponse) SetBody(v *HotNewsRecommendResponseBody) *HotNewsRecommendResponse {
+	s.Body = v
+	return s
+}
+
 type ListAnalysisTagDetailByTaskIdRequest struct {
 	// example:
 	//
@@ -10949,6 +11130,70 @@ func (client *Client) GetVideoAnalysisTask(workspaceId *string, request *GetVide
 	headers := make(map[string]*string)
 	_result = &GetVideoAnalysisTaskResponse{}
 	_body, _err := client.GetVideoAnalysisTaskWithOptions(workspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 热点新闻推荐
+//
+// @param request - HotNewsRecommendRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return HotNewsRecommendResponse
+func (client *Client) HotNewsRecommendWithOptions(workspaceId *string, request *HotNewsRecommendRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *HotNewsRecommendResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
+		body["prompt"] = request.Prompt
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("HotNewsRecommend"),
+		Version:     tea.String("2024-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/" + tea.StringValue(openapiutil.GetEncodeParam(workspaceId)) + "/quanmiao/lightapp/hotNewsRecommend"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &HotNewsRecommendResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 热点新闻推荐
+//
+// @param request - HotNewsRecommendRequest
+//
+// @return HotNewsRecommendResponse
+func (client *Client) HotNewsRecommend(workspaceId *string, request *HotNewsRecommendRequest) (_result *HotNewsRecommendResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &HotNewsRecommendResponse{}
+	_body, _err := client.HotNewsRecommendWithOptions(workspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
