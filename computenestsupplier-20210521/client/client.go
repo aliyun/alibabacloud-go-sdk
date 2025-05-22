@@ -22288,7 +22288,8 @@ type UpdateServiceInstanceAttributeRequestLicenseData struct {
 	// example:
 	//
 	// {"Test"}
-	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+	CustomData   *string                                                       `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+	ResponseInfo *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo `json:"ResponseInfo,omitempty" xml:"ResponseInfo,omitempty" type:"Struct"`
 }
 
 func (s UpdateServiceInstanceAttributeRequestLicenseData) String() string {
@@ -22301,6 +22302,40 @@ func (s UpdateServiceInstanceAttributeRequestLicenseData) GoString() string {
 
 func (s *UpdateServiceInstanceAttributeRequestLicenseData) SetCustomData(v string) *UpdateServiceInstanceAttributeRequestLicenseData {
 	s.CustomData = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeRequestLicenseData) SetResponseInfo(v *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) *UpdateServiceInstanceAttributeRequestLicenseData {
+	s.ResponseInfo = v
+	return s
+}
+
+type UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo struct {
+	ErrorCode      *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	UpdateResponse *bool   `json:"UpdateResponse,omitempty" xml:"UpdateResponse,omitempty"`
+}
+
+func (s UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) SetErrorCode(v string) *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) SetErrorMessage(v string) *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo) SetUpdateResponse(v bool) *UpdateServiceInstanceAttributeRequestLicenseDataResponseInfo {
+	s.UpdateResponse = &v
 	return s
 }
 
