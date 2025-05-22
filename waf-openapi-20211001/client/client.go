@@ -11001,7 +11001,9 @@ type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails struct 
 	// example:
 	//
 	// 1
-	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status           *int32                                                                                 `json:"Status,omitempty" xml:"Status,omitempty"`
+	SubStatus        *string                                                                                `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	SubStatusDetails []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails `json:"SubStatusDetails,omitempty" xml:"SubStatusDetails,omitempty" type:"Repeated"`
 	// The version of the Transport Layer Security (TLS) protocol. Valid values:
 	//
 	// 	- **tlsv1**
@@ -11126,6 +11128,16 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) Se
 	return s
 }
 
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetSubStatus(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.SubStatus = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetSubStatusDetails(v []*DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
+	s.SubStatusDetails = v
+	return s
+}
+
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails) SetTLSVersion(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails {
 	s.TLSVersion = &v
 	return s
@@ -11229,6 +11241,71 @@ func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogH
 
 func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders) SetValue(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders {
 	s.Value = &v
+	return s
+}
+
+type DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails struct {
+	AppliedType     *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
+	CertId          *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	CertName        *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
+	CommonName      *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	ExpireTime      *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ProductCertId   *string `json:"ProductCertId,omitempty" xml:"ProductCertId,omitempty"`
+	ProductCertName *string `json:"ProductCertName,omitempty" xml:"ProductCertName,omitempty"`
+	ReasonCode      *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetAppliedType(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.AppliedType = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetCertId(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.CertId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetCertName(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.CertName = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetCommonName(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.CommonName = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetDomain(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetExpireTime(v int64) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetProductCertId(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.ProductCertId = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetProductCertName(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.ProductCertName = &v
+	return s
+}
+
+func (s *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails) SetReasonCode(v string) *DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails {
+	s.ReasonCode = &v
 	return s
 }
 
@@ -23239,7 +23316,8 @@ type DescribeProductInstancesRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -23353,6 +23431,11 @@ func (s *DescribeProductInstancesRequest) SetRegionId(v string) *DescribeProduct
 	return s
 }
 
+func (s *DescribeProductInstancesRequest) SetResourceInstanceAccessStatus(v string) *DescribeProductInstancesRequest {
+	s.ResourceInstanceAccessStatus = &v
+	return s
+}
+
 func (s *DescribeProductInstancesRequest) SetResourceInstanceId(v string) *DescribeProductInstancesRequest {
 	s.ResourceInstanceId = &v
 	return s
@@ -23434,12 +23517,17 @@ func (s *DescribeProductInstancesResponseBody) SetTotalCount(v int64) *DescribeP
 }
 
 type DescribeProductInstancesResponseBodyProductInstances struct {
+	AccessInstanceId       *string                                                                       `json:"AccessInstanceId,omitempty" xml:"AccessInstanceId,omitempty"`
+	AccessPortAndProtocols []*DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols `json:"AccessPortAndProtocols,omitempty" xml:"AccessPortAndProtocols,omitempty" type:"Repeated"`
+	AccessPorts            []*int32                                                                      `json:"AccessPorts,omitempty" xml:"AccessPorts,omitempty" type:"Repeated"`
 	// The ID of the Alibaba Cloud account to which the resource belongs.
 	//
 	// example:
 	//
 	// 1704********9107
-	OwnerUserId *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	OwnerUserId                  *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	ResourceInstanceAccessStatus *string `json:"ResourceInstanceAccessStatus,omitempty" xml:"ResourceInstanceAccessStatus,omitempty"`
+	ResourceInstanceEdition      *string `json:"ResourceInstanceEdition,omitempty" xml:"ResourceInstanceEdition,omitempty"`
 	// The ID of the instance.
 	//
 	// example:
@@ -23524,8 +23612,33 @@ func (s DescribeProductInstancesResponseBodyProductInstances) GoString() string 
 	return s.String()
 }
 
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetAccessInstanceId(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.AccessInstanceId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetAccessPortAndProtocols(v []*DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) *DescribeProductInstancesResponseBodyProductInstances {
+	s.AccessPortAndProtocols = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetAccessPorts(v []*int32) *DescribeProductInstancesResponseBodyProductInstances {
+	s.AccessPorts = v
+	return s
+}
+
 func (s *DescribeProductInstancesResponseBodyProductInstances) SetOwnerUserId(v string) *DescribeProductInstancesResponseBodyProductInstances {
 	s.OwnerUserId = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceAccessStatus(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceInstanceAccessStatus = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceInstanceEdition(v string) *DescribeProductInstancesResponseBodyProductInstances {
+	s.ResourceInstanceEdition = &v
 	return s
 }
 
@@ -23566,6 +23679,35 @@ func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceProduc
 
 func (s *DescribeProductInstancesResponseBodyProductInstances) SetResourceRegionId(v string) *DescribeProductInstancesResponseBodyProductInstances {
 	s.ResourceRegionId = &v
+	return s
+}
+
+type DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols struct {
+	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	Port           *int32    `json:"Port,omitempty" xml:"Port,omitempty"`
+	Protocol       *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) SetCertificateIds(v []*string) *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols {
+	s.CertificateIds = v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) SetPort(v int32) *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols) SetProtocol(v string) *DescribeProductInstancesResponseBodyProductInstancesAccessPortAndProtocols {
+	s.Protocol = &v
 	return s
 }
 
@@ -23614,6 +23756,7 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePorts) SetP
 }
 
 type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates struct {
+	AppliedType *string `json:"AppliedType,omitempty" xml:"AppliedType,omitempty"`
 	// The ID of the certificate.
 	//
 	// example:
@@ -23626,6 +23769,7 @@ type DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificat
 	//
 	// trafficxxxx.cn
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 }
 
 func (s DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) String() string {
@@ -23636,6 +23780,11 @@ func (s DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertifi
 	return s.String()
 }
 
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetAppliedType(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
+	s.AppliedType = &v
+	return s
+}
+
 func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetCertificateId(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
 	s.CertificateId = &v
 	return s
@@ -23643,6 +23792,11 @@ func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertif
 
 func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetCertificateName(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
 	s.CertificateName = &v
+	return s
+}
+
+func (s *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates) SetDomain(v string) *DescribeProductInstancesResponseBodyProductInstancesResourcePortsCertificates {
+	s.Domain = &v
 	return s
 }
 
@@ -46393,6 +46547,10 @@ func (client *Client) DescribeProductInstancesWithOptions(request *DescribeProdu
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceAccessStatus)) {
+		query["ResourceInstanceAccessStatus"] = request.ResourceInstanceAccessStatus
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceId)) {
