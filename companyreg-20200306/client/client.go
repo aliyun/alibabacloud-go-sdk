@@ -1,7 +1,4 @@
 // This file is auto-generated, don't edit it. Thanks.
-/**
- *
- */
 package client
 
 import (
@@ -13,9 +10,22 @@ import (
 )
 
 type BindProduceAuthorizationRequest struct {
+	// example:
+	//
+	// 1219541161213057,1219541161213059
 	AuthorizedUserIds *string `json:"AuthorizedUserIds,omitempty" xml:"AuthorizedUserIds,omitempty"`
-	BizId             *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType           *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210815211849000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.bookkeeping_ai
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
 func (s BindProduceAuthorizationRequest) String() string {
@@ -42,10 +52,16 @@ func (s *BindProduceAuthorizationRequest) SetBizType(v string) *BindProduceAutho
 }
 
 type BindProduceAuthorizationResponseBody struct {
-	Data      *BindProduceAuthorizationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                                   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string                                   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Data *BindProduceAuthorizationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 200
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// AC492C5D-29D0-5103-9271-2C3A9D99F5CA
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s BindProduceAuthorizationResponseBody) String() string {
@@ -79,7 +95,10 @@ func (s *BindProduceAuthorizationResponseBody) SetRequestId(v string) *BindProdu
 type BindProduceAuthorizationResponseBodyData struct {
 	AuthorizedUserList []*BindProduceAuthorizationResponseBodyDataAuthorizedUserList `json:"AuthorizedUserList,omitempty" xml:"AuthorizedUserList,omitempty" type:"Repeated"`
 	Message            *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
-	Success            *bool                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// false
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s BindProduceAuthorizationResponseBodyData) String() string {
@@ -106,9 +125,18 @@ func (s *BindProduceAuthorizationResponseBodyData) SetSuccess(v bool) *BindProdu
 }
 
 type BindProduceAuthorizationResponseBodyDataAuthorizedUserList struct {
-	AccountValidType *int32  `json:"AccountValidType,omitempty" xml:"AccountValidType,omitempty"`
-	UserId           *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserName         *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// example:
+	//
+	// 2
+	AccountValidType *int32 `json:"AccountValidType,omitempty" xml:"AccountValidType,omitempty"`
+	// example:
+	//
+	// 1219541161213058
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// test@alibaba-inc.com
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s BindProduceAuthorizationResponseBodyDataAuthorizedUserList) String() string {
@@ -164,9 +192,20 @@ func (s *BindProduceAuthorizationResponse) SetBody(v *BindProduceAuthorizationRe
 }
 
 type CloseIntentionForPartnerRequest struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.beian_assist
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20211105230733000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	Note           *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// This parameter is required.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
 func (s CloseIntentionForPartnerRequest) String() string {
@@ -193,10 +232,19 @@ func (s *CloseIntentionForPartnerRequest) SetNote(v string) *CloseIntentionForPa
 }
 
 type CloseIntentionForPartnerResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 4674B06A-B57F-5922-890C-D23D17C5BD21
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CloseIntentionForPartnerResponseBody) String() string {
@@ -257,9 +305,18 @@ func (s *CloseIntentionForPartnerResponse) SetBody(v *CloseIntentionForPartnerRe
 }
 
 type CloseUserIntentionRequest struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// esp.bookkeeping
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20201027162033000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	Note           *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// This parameter is required.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
 func (s CloseUserIntentionRequest) String() string {
@@ -286,10 +343,19 @@ func (s *CloseUserIntentionRequest) SetNote(v string) *CloseUserIntentionRequest
 }
 
 type CloseUserIntentionResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// DD5639FF-1240-51DE-9BA8-2075670A1EAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CloseUserIntentionResponseBody) String() string {
@@ -350,11 +416,25 @@ func (s *CloseUserIntentionResponse) SetBody(v *CloseUserIntentionResponseBody) 
 }
 
 type CreateBusinessOpportunityRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.hightech
 	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Source      *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
-	VCode       *string `json:"VCode,omitempty" xml:"VCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 18704330000
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 345674
+	VCode *string `json:"VCode,omitempty" xml:"VCode,omitempty"`
 }
 
 func (s CreateBusinessOpportunityRequest) String() string {
@@ -391,10 +471,19 @@ func (s *CreateBusinessOpportunityRequest) SetVCode(v string) *CreateBusinessOpp
 }
 
 type CreateBusinessOpportunityResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateBusinessOpportunityResponseBody) String() string {
@@ -455,7 +544,17 @@ func (s *CreateBusinessOpportunityResponse) SetBody(v *CreateBusinessOpportunity
 }
 
 type CreateProduceForPartnerRequest struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210301102840000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.hightech
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 }
@@ -484,11 +583,23 @@ func (s *CreateProduceForPartnerRequest) SetExtInfo(v string) *CreateProduceForP
 }
 
 type CreateProduceForPartnerResponseBody struct {
-	BizId     *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// P20210208152920000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s CreateProduceForPartnerResponseBody) String() string {
@@ -554,7 +665,17 @@ func (s *CreateProduceForPartnerResponse) SetBody(v *CreateProduceForPartnerResp
 }
 
 type DescribePartnerConfigRequest struct {
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// jinsan
 	PartnerCode *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
 }
 
@@ -577,10 +698,16 @@ func (s *DescribePartnerConfigRequest) SetPartnerCode(v string) *DescribePartner
 }
 
 type DescribePartnerConfigResponseBody struct {
-	Contact     *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
+	Contact *string `json:"Contact,omitempty" xml:"Contact,omitempty"`
+	// example:
+	//
+	// jinsan
 	PartnerCode *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
 	PartnerName *string `json:"PartnerName,omitempty" xml:"PartnerName,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 8179A0B3-A5D3-52F4-8845-F0ABC3CC6783
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribePartnerConfigResponseBody) String() string {
@@ -641,8 +768,14 @@ func (s *DescribePartnerConfigResponse) SetBody(v *DescribePartnerConfigResponse
 }
 
 type GenerateUploadFilePolicyRequest struct {
+	// example:
+	//
+	// esp.isp
 	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// company_apply_business_license
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
 }
 
@@ -671,14 +804,40 @@ func (s *GenerateUploadFilePolicyRequest) SetFileType(v string) *GenerateUploadF
 
 type GenerateUploadFilePolicyResponseBody struct {
 	// OSSAccessKeyId
-	AccessId      *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	//
+	// example:
+	//
+	// hObpgEXoca42qH3V
+	AccessId *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	// example:
+	//
+	// eyJleHBpcmF0aW9uIjoiMjAyMS0xMi0wNlQwNjoxOTowMi40MjdaIiwiY29uZGl0aW9ucyI6W1siZXEiLCIkYnVja2V0IiwibXNlYS1jYWlzaHVpIl1dfQ==
 	EncodedPolicy *string `json:"EncodedPolicy,omitempty" xml:"EncodedPolicy,omitempty"`
-	ExpireTime    *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FileDir       *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
-	FileUrl       *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	// example:
+	//
+	// 1638169824405
+	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// example:
+	//
+	// company_apply_card/company_change_city/1577930895198750/1638170049657
+	FileDir *string `json:"FileDir,omitempty" xml:"FileDir,omitempty"`
+	// example:
+	//
+	// https://
+	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
 	// OSS Endpoint。
-	Host      *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	//
+	// example:
+	//
+	// //companyapply.oss-cn-zhangjiakou.aliyuncs.com/
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	// example:
+	//
+	// EB809CAB-82F7-5843-A42F-356770CD4914
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// jykxhmskIF24sLlxc1GafU/eQMU=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 }
 
@@ -760,10 +919,28 @@ func (s *GenerateUploadFilePolicyResponse) SetBody(v *GenerateUploadFilePolicyRe
 }
 
 type GetAlipayUrlRequest struct {
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.beian_assist
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 206129201170307
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// example:
+	//
+	// https://nfyt.lzsgtghchy.com:502/sigin/
 	ReturnUrl *string `json:"ReturnUrl,omitempty" xml:"ReturnUrl,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// web
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetAlipayUrlRequest) String() string {
@@ -795,7 +972,13 @@ func (s *GetAlipayUrlRequest) SetType(v string) *GetAlipayUrlRequest {
 }
 
 type GetAlipayUrlResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// https://
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -847,11 +1030,29 @@ func (s *GetAlipayUrlResponse) SetBody(v *GetAlipayUrlResponseBody) *GetAlipayUr
 }
 
 type ListIntentionNoteRequest struct {
-	BeginTime      *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	EndTime        *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// example:
+	//
+	// 1640456765459
+	BeginTime *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 1631635199999
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20210420142416000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIntentionNoteRequest) String() string {
@@ -864,6 +1065,11 @@ func (s ListIntentionNoteRequest) GoString() string {
 
 func (s *ListIntentionNoteRequest) SetBeginTime(v int64) *ListIntentionNoteRequest {
 	s.BeginTime = &v
+	return s
+}
+
+func (s *ListIntentionNoteRequest) SetBizType(v string) *ListIntentionNoteRequest {
+	s.BizType = &v
 	return s
 }
 
@@ -888,12 +1094,27 @@ func (s *ListIntentionNoteRequest) SetPageSize(v int32) *ListIntentionNoteReques
 }
 
 type ListIntentionNoteResponseBody struct {
+	// example:
+	//
+	// 0
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListIntentionNoteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 3
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListIntentionNoteResponseBody) String() string {
@@ -935,11 +1156,23 @@ func (s *ListIntentionNoteResponseBody) SetTotalPageNum(v int32) *ListIntentionN
 }
 
 type ListIntentionNoteResponseBodyData struct {
-	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2022-01-25 10:21:38
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// I20210420142416000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
 	Note           *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	Source         *int32  `json:"Source,omitempty" xml:"Source,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// 1
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
+	// example:
+	//
+	// 1
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListIntentionNoteResponseBodyData) String() string {
@@ -1005,10 +1238,26 @@ func (s *ListIntentionNoteResponse) SetBody(v *ListIntentionNoteResponseBody) *L
 }
 
 type ListProduceAuthorizationRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// P20210709190452000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.bookkeeping_ai
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListProduceAuthorizationRequest) String() string {
@@ -1040,13 +1289,31 @@ func (s *ListProduceAuthorizationRequest) SetPageSize(v int32) *ListProduceAutho
 }
 
 type ListProduceAuthorizationResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                                      `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListProduceAuthorizationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalItemNum   *int32                                      `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                      `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10AAC56B-C512-5860-9A9E-B949431E7174
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 292
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 27
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListProduceAuthorizationResponseBody) String() string {
@@ -1093,7 +1360,13 @@ func (s *ListProduceAuthorizationResponseBody) SetTotalPageNum(v int32) *ListPro
 }
 
 type ListProduceAuthorizationResponseBodyData struct {
-	AuthorizedUserId   *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// example:
+	//
+	// 12195411612139999
+	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
+	// example:
+	//
+	// test@alibaba-inc.com
 	AuthorizedUserName *string `json:"AuthorizedUserName,omitempty" xml:"AuthorizedUserName,omitempty"`
 }
 
@@ -1145,10 +1418,22 @@ func (s *ListProduceAuthorizationResponse) SetBody(v *ListProduceAuthorizationRe
 }
 
 type ListUserDetailSolutionsRequest struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// I20211222161651000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserDetailSolutionsRequest) String() string {
@@ -1180,12 +1465,27 @@ func (s *ListUserDetailSolutionsRequest) SetPageSize(v int32) *ListUserDetailSol
 }
 
 type ListUserDetailSolutionsResponseBody struct {
+	// example:
+	//
+	// 5
 	CurrentPageNum *int32                                     `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListUserDetailSolutionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                     `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                     `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 1
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListUserDetailSolutionsResponseBody) String() string {
@@ -1227,18 +1527,51 @@ func (s *ListUserDetailSolutionsResponseBody) SetTotalPageNum(v int32) *ListUser
 }
 
 type ListUserDetailSolutionsResponseBodyData struct {
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeliveryOrderBizId   *string `json:"DeliveryOrderBizId,omitempty" xml:"DeliveryOrderBizId,omitempty"`
-	ExtInfo              *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// example:
+	//
+	// S20211222161651000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 15556223433
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// P20211222161651000001
+	DeliveryOrderBizId *string `json:"DeliveryOrderBizId,omitempty" xml:"DeliveryOrderBizId,omitempty"`
+	// example:
+	//
+	// {}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// example:
+	//
+	// A20211222161651000001
 	IntentionAssignBizId *string `json:"IntentionAssignBizId,omitempty" xml:"IntentionAssignBizId,omitempty"`
-	IntentionBizId       *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PartnerCode          *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
-	Reason               *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime           *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// I20211222161651000001
+	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	// example:
+	//
+	// jinsan
+	PartnerCode *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 15556223433
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1219541161213057
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUserDetailSolutionsResponseBodyData) String() string {
@@ -1339,10 +1672,30 @@ func (s *ListUserDetailSolutionsResponse) SetBody(v *ListUserDetailSolutionsResp
 }
 
 type ListUserIntentionNotesRequest struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.beian_assist
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20210912102942000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserIntentionNotesRequest) String() string {
@@ -1374,13 +1727,31 @@ func (s *ListUserIntentionNotesRequest) SetPageSize(v int32) *ListUserIntentionN
 }
 
 type ListUserIntentionNotesResponseBody struct {
-	Data         []*ListUserIntentionNotesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum      *int32                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalItemNum *int32                                    `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum *int32                                    `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	Data []*ListUserIntentionNotesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 5D8BD6E8-28D9-5451-BBA1-3D3DCA6971F6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 8
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListUserIntentionNotesResponseBody) String() string {
@@ -1427,6 +1798,9 @@ func (s *ListUserIntentionNotesResponseBody) SetTotalPageNum(v int32) *ListUserI
 }
 
 type ListUserIntentionNotesResponseBodyData struct {
+	// example:
+	//
+	// 2022-01-25 10:21:38
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Note       *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
@@ -1479,16 +1853,40 @@ func (s *ListUserIntentionNotesResponse) SetBody(v *ListUserIntentionNotesRespon
 }
 
 type ListUserIntentionsRequest struct {
-	Area           *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizTypes       *string `json:"BizTypes,omitempty" xml:"BizTypes,omitempty"`
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// esp.companyreg_cloud
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// esp.bookkeeping,esp.bookkeeping_cloud
+	BizTypes *string `json:"BizTypes,omitempty" xml:"BizTypes,omitempty"`
+	// example:
+	//
+	// I20210917170147000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SortFiled      *string `json:"SortFiled,omitempty" xml:"SortFiled,omitempty"`
-	SortOrder      *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	WithExtInfo    *bool   `json:"WithExtInfo,omitempty" xml:"WithExtInfo,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// UpdateTime
+	SortFiled *string `json:"SortFiled,omitempty" xml:"SortFiled,omitempty"`
+	// example:
+	//
+	// desc
+	SortOrder *string `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
+	// example:
+	//
+	// 37
+	Status      *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	WithExtInfo *bool  `json:"WithExtInfo,omitempty" xml:"WithExtInfo,omitempty"`
 }
 
 func (s ListUserIntentionsRequest) String() string {
@@ -1550,12 +1948,27 @@ func (s *ListUserIntentionsRequest) SetWithExtInfo(v bool) *ListUserIntentionsRe
 }
 
 type ListUserIntentionsResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int32                                `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListUserIntentionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                                `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                                `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 2
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListUserIntentionsResponseBody) String() string {
@@ -1597,18 +2010,39 @@ func (s *ListUserIntentionsResponseBody) SetTotalPageNum(v int32) *ListUserInten
 }
 
 type ListUserIntentionsResponseBodyData struct {
-	Area        *string `json:"Area,omitempty" xml:"Area,omitempty"`
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// I100000033443
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.lgo
 	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	ContactName *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// example:
+	//
+	// 2022-01-24 15:43:58
 	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Ext         *string `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	Mobile      *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
-	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime  *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// 18000000000
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 2022-01-24 15:43:58
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1219541161213057
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUserIntentionsResponseBodyData) String() string {
@@ -1709,10 +2143,30 @@ func (s *ListUserIntentionsResponse) SetBody(v *ListUserIntentionsResponseBody) 
 }
 
 type ListUserProduceOperateLogsRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210928095324000002
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserProduceOperateLogsRequest) String() string {
@@ -1744,13 +2198,31 @@ func (s *ListUserProduceOperateLogsRequest) SetPageSize(v int32) *ListUserProduc
 }
 
 type ListUserProduceOperateLogsResponseBody struct {
-	Data         []*ListUserProduceOperateLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageNum      *int32                                        `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize     *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	TotalItemNum *int32                                        `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum *int32                                        `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	Data []*ListUserProduceOperateLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 0DCBE2FF-2DFC-56DC-9A15-BDF27B7FFB1B
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 6
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 23
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListUserProduceOperateLogsResponseBody) String() string {
@@ -1797,14 +2269,32 @@ func (s *ListUserProduceOperateLogsResponseBody) SetTotalPageNum(v int32) *ListU
 }
 
 type ListUserProduceOperateLogsResponseBodyData struct {
-	BizId           *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizStatus       *int32  `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Note            *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	OperateName     *string `json:"OperateName,omitempty" xml:"OperateName,omitempty"`
-	OperateTime     *int64  `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// example:
+	//
+	// P20210928095324000002
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 10
+	BizStatus *int32 `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
+	// example:
+	//
+	// esp.wangwen
+	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	Note        *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	OperateName *string `json:"OperateName,omitempty" xml:"OperateName,omitempty"`
+	// example:
+	//
+	// 1695324000002
+	OperateTime *int64 `json:"OperateTime,omitempty" xml:"OperateTime,omitempty"`
+	// example:
+	//
+	// user
 	OperateUserType *string `json:"OperateUserType,omitempty" xml:"OperateUserType,omitempty"`
-	ToBizStatus     *int32  `json:"ToBizStatus,omitempty" xml:"ToBizStatus,omitempty"`
+	// example:
+	//
+	// 35
+	ToBizStatus *int32 `json:"ToBizStatus,omitempty" xml:"ToBizStatus,omitempty"`
 }
 
 func (s ListUserProduceOperateLogsResponseBodyData) String() string {
@@ -1885,10 +2375,20 @@ func (s *ListUserProduceOperateLogsResponse) SetBody(v *ListUserProduceOperateLo
 }
 
 type ListUserSolutionsRequest struct {
-	ExistStatus    []*int64 `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty" type:"Repeated"`
-	IntentionBizId *string  `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNum        *int32   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int32   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	BizType     *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	ExistStatus []*int64 `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty" type:"Repeated"`
+	// example:
+	//
+	// I20210924151843000001
+	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserSolutionsRequest) String() string {
@@ -1897,6 +2397,11 @@ func (s ListUserSolutionsRequest) String() string {
 
 func (s ListUserSolutionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListUserSolutionsRequest) SetBizType(v string) *ListUserSolutionsRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *ListUserSolutionsRequest) SetExistStatus(v []*int64) *ListUserSolutionsRequest {
@@ -1920,10 +2425,20 @@ func (s *ListUserSolutionsRequest) SetPageSize(v int32) *ListUserSolutionsReques
 }
 
 type ListUserSolutionsShrinkRequest struct {
+	BizType           *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	ExistStatusShrink *string `json:"ExistStatus,omitempty" xml:"ExistStatus,omitempty"`
-	IntentionBizId    *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PageNum           *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// I20210924151843000001
+	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListUserSolutionsShrinkRequest) String() string {
@@ -1932,6 +2447,11 @@ func (s ListUserSolutionsShrinkRequest) String() string {
 
 func (s ListUserSolutionsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListUserSolutionsShrinkRequest) SetBizType(v string) *ListUserSolutionsShrinkRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *ListUserSolutionsShrinkRequest) SetExistStatusShrink(v string) *ListUserSolutionsShrinkRequest {
@@ -1955,12 +2475,27 @@ func (s *ListUserSolutionsShrinkRequest) SetPageSize(v int32) *ListUserSolutions
 }
 
 type ListUserSolutionsResponseBody struct {
+	// example:
+	//
+	// 8
 	CurrentPageNum *int32                               `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*ListUserSolutionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int32                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int32                               `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int32                               `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 344
+	TotalItemNum *int32 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s ListUserSolutionsResponseBody) String() string {
@@ -2002,17 +2537,47 @@ func (s *ListUserSolutionsResponseBody) SetTotalPageNum(v int32) *ListUserSoluti
 }
 
 type ListUserSolutionsResponseBodyData struct {
-	BizId                *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType              *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CreateTime           *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeliveryOrderBizId   *string `json:"DeliveryOrderBizId,omitempty" xml:"DeliveryOrderBizId,omitempty"`
+	// example:
+	//
+	// S20210924151843000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.logo
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 164454443222
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// P20210924151843000001
+	DeliveryOrderBizId *string `json:"DeliveryOrderBizId,omitempty" xml:"DeliveryOrderBizId,omitempty"`
+	// example:
+	//
+	// A20210924151843000001
 	IntentionAssignBizId *string `json:"IntentionAssignBizId,omitempty" xml:"IntentionAssignBizId,omitempty"`
-	IntentionBizId       *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	PartnerCode          *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
-	Reason               *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	UpdateTime           *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// example:
+	//
+	// I20210924151843000001
+	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	// example:
+	//
+	// jinsan
+	PartnerCode *string `json:"PartnerCode,omitempty" xml:"PartnerCode,omitempty"`
+	Reason      *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 164454443222
+	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// example:
+	//
+	// 1219541161213057
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s ListUserSolutionsResponseBodyData) String() string {
@@ -2108,9 +2673,21 @@ func (s *ListUserSolutionsResponse) SetBody(v *ListUserSolutionsResponseBody) *L
 }
 
 type OperateProduceForPartnerRequest struct {
-	BizId       *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType     *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// example:
+	//
+	// P20210930105636000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.beian_assist
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// {\\"beianServiceNumber\\":\\"9969c666-0935-4c5b-8042-926ff546e39f\\"}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// example:
+	//
+	// CERT_MATERIAL_SUBMITTED
 	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
 }
 
@@ -2143,10 +2720,19 @@ func (s *OperateProduceForPartnerRequest) SetOperateType(v string) *OperateProdu
 }
 
 type OperateProduceForPartnerResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// D170A4BA-4528-5E07-B8D5-6449C42EC23F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s OperateProduceForPartnerResponseBody) String() string {
@@ -2207,10 +2793,35 @@ func (s *OperateProduceForPartnerResponse) SetBody(v *OperateProduceForPartnerRe
 }
 
 type PutMeasureDataRequest struct {
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.sp
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// []
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1634019240000
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1640400574804
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2248,7 +2859,13 @@ func (s *PutMeasureDataRequest) SetStartTime(v string) *PutMeasureDataRequest {
 }
 
 type PutMeasureDataResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2300,10 +2917,35 @@ func (s *PutMeasureDataResponse) SetBody(v *PutMeasureDataResponseBody) *PutMeas
 }
 
 type PutMeasureReadyFlagRequest struct {
-	BizType   *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	DataType  *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.bookkeeping
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// d
+	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1634784240000
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
 	ReadyFlag *string `json:"ReadyFlag,omitempty" xml:"ReadyFlag,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1634969692175
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -2341,7 +2983,13 @@ func (s *PutMeasureReadyFlagRequest) SetStartTime(v string) *PutMeasureReadyFlag
 }
 
 type PutMeasureReadyFlagResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2393,6 +3041,11 @@ func (s *PutMeasureReadyFlagResponse) SetBody(v *PutMeasureReadyFlagResponseBody
 }
 
 type QueryAvailableNumbersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
@@ -2410,11 +3063,20 @@ func (s *QueryAvailableNumbersRequest) SetBizType(v string) *QueryAvailableNumbe
 }
 
 type QueryAvailableNumbersResponseBody struct {
-	Data      []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string   `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg  *string   `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Data []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// PARTNER.CONFIG.NOT.FOUND
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryAvailableNumbersResponseBody) String() string {
@@ -2480,6 +3142,11 @@ func (s *QueryAvailableNumbersResponse) SetBody(v *QueryAvailableNumbersResponse
 }
 
 type QueryBagRemainingRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.hightech
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
@@ -2497,7 +3164,13 @@ func (s *QueryBagRemainingRequest) SetBizType(v string) *QueryBagRemainingReques
 }
 
 type QueryBagRemainingResponseBody struct {
-	Data      *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2548,213 +3221,18 @@ func (s *QueryBagRemainingResponse) SetBody(v *QueryBagRemainingResponseBody) *Q
 	return s
 }
 
-type QueryCommodityConfigRequest struct {
-	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	QueryModule   *bool   `json:"QueryModule,omitempty" xml:"QueryModule,omitempty"`
-}
-
-func (s QueryCommodityConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCommodityConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCommodityConfigRequest) SetBizType(v string) *QueryCommodityConfigRequest {
-	s.BizType = &v
-	return s
-}
-
-func (s *QueryCommodityConfigRequest) SetCommodityCode(v string) *QueryCommodityConfigRequest {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *QueryCommodityConfigRequest) SetQueryModule(v bool) *QueryCommodityConfigRequest {
-	s.QueryModule = &v
-	return s
-}
-
-type QueryCommodityConfigResponseBody struct {
-	Data      *QueryCommodityConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s QueryCommodityConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCommodityConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCommodityConfigResponseBody) SetData(v *QueryCommodityConfigResponseBodyData) *QueryCommodityConfigResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBody) SetRequestId(v string) *QueryCommodityConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type QueryCommodityConfigResponseBodyData struct {
-	CommodityCode    *string                                                 `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	CommodityModules []*QueryCommodityConfigResponseBodyDataCommodityModules `json:"CommodityModules,omitempty" xml:"CommodityModules,omitempty" type:"Repeated"`
-	Description      *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
-	IconUrl          *string                                                 `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
-	ProductLine      *string                                                 `json:"ProductLine,omitempty" xml:"ProductLine,omitempty"`
-	ProtocolUrl      *string                                                 `json:"ProtocolUrl,omitempty" xml:"ProtocolUrl,omitempty"`
-	StartingPrice    *string                                                 `json:"StartingPrice,omitempty" xml:"StartingPrice,omitempty"`
-	Type             *int32                                                  `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s QueryCommodityConfigResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCommodityConfigResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetCommodityCode(v string) *QueryCommodityConfigResponseBodyData {
-	s.CommodityCode = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetCommodityModules(v []*QueryCommodityConfigResponseBodyDataCommodityModules) *QueryCommodityConfigResponseBodyData {
-	s.CommodityModules = v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetDescription(v string) *QueryCommodityConfigResponseBodyData {
-	s.Description = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetIconUrl(v string) *QueryCommodityConfigResponseBodyData {
-	s.IconUrl = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetProductLine(v string) *QueryCommodityConfigResponseBodyData {
-	s.ProductLine = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetProtocolUrl(v string) *QueryCommodityConfigResponseBodyData {
-	s.ProtocolUrl = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetStartingPrice(v string) *QueryCommodityConfigResponseBodyData {
-	s.StartingPrice = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyData) SetType(v int32) *QueryCommodityConfigResponseBodyData {
-	s.Type = &v
-	return s
-}
-
-type QueryCommodityConfigResponseBodyDataCommodityModules struct {
-	LxModuleCode      *string `json:"LxModuleCode,omitempty" xml:"LxModuleCode,omitempty"`
-	ModuleCode        *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	ModuleDescription *string `json:"ModuleDescription,omitempty" xml:"ModuleDescription,omitempty"`
-	ModuleName        *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	ModuleTip         *string `json:"ModuleTip,omitempty" xml:"ModuleTip,omitempty"`
-	ModuleType        *string `json:"ModuleType,omitempty" xml:"ModuleType,omitempty"`
-	ModuleUrl         *string `json:"ModuleUrl,omitempty" xml:"ModuleUrl,omitempty"`
-	ModuleValue       *string `json:"ModuleValue,omitempty" xml:"ModuleValue,omitempty"`
-	SortNumber        *int32  `json:"SortNumber,omitempty" xml:"SortNumber,omitempty"`
-}
-
-func (s QueryCommodityConfigResponseBodyDataCommodityModules) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCommodityConfigResponseBodyDataCommodityModules) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetLxModuleCode(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.LxModuleCode = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleCode(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleCode = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleDescription(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleDescription = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleName(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleName = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleTip(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleTip = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleType(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleType = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleUrl(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleUrl = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetModuleValue(v string) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.ModuleValue = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponseBodyDataCommodityModules) SetSortNumber(v int32) *QueryCommodityConfigResponseBodyDataCommodityModules {
-	s.SortNumber = &v
-	return s
-}
-
-type QueryCommodityConfigResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
-	Body       *QueryCommodityConfigResponseBody `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s QueryCommodityConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryCommodityConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryCommodityConfigResponse) SetHeaders(v map[string]*string) *QueryCommodityConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryCommodityConfigResponse) SetStatusCode(v int32) *QueryCommodityConfigResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryCommodityConfigResponse) SetBody(v *QueryCommodityConfigResponseBody) *QueryCommodityConfigResponse {
-	s.Body = v
-	return s
-}
-
 type QueryInstanceRequest struct {
-	BizType    *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.bookkeeping
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// T20210302164856000001
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
@@ -2777,7 +3255,13 @@ func (s *QueryInstanceRequest) SetInstanceId(v string) *QueryInstanceRequest {
 }
 
 type QueryInstanceResponseBody struct {
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// {}
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -2829,10 +3313,22 @@ func (s *QueryInstanceResponse) SetBody(v *QueryInstanceResponseBody) *QueryInst
 }
 
 type QueryPartnerIntentionListRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// I20211117092704000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 10
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryPartnerIntentionListRequest) String() string {
@@ -2864,12 +3360,27 @@ func (s *QueryPartnerIntentionListRequest) SetPageSize(v int64) *QueryPartnerInt
 }
 
 type QueryPartnerIntentionListResponseBody struct {
+	// example:
+	//
+	// 2
 	CurrentPageNum *int64                                       `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryPartnerIntentionListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int64                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int64                                       `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int64                                       `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 78E9DC76-7DFD-5975-99B0-4A95E8A92F5D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 319
+	TotalItemNum *int64 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 13
+	TotalPageNum *int64 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryPartnerIntentionListResponseBody) String() string {
@@ -2911,9 +3422,18 @@ func (s *QueryPartnerIntentionListResponseBody) SetTotalPageNum(v int64) *QueryP
 }
 
 type QueryPartnerIntentionListResponseBodyData struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// I20211117092704000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.wangwen
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Mobile  *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 18700000003
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
 }
 
 func (s QueryPartnerIntentionListResponseBodyData) String() string {
@@ -2969,10 +3489,22 @@ func (s *QueryPartnerIntentionListResponse) SetBody(v *QueryPartnerIntentionList
 }
 
 type QueryPartnerProduceListRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// P20211216204717000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.cdn
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryPartnerProduceListRequest) String() string {
@@ -3004,12 +3536,27 @@ func (s *QueryPartnerProduceListRequest) SetPageSize(v int64) *QueryPartnerProdu
 }
 
 type QueryPartnerProduceListResponseBody struct {
+	// example:
+	//
+	// 1
 	CurrentPageNum *int64                                     `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	Data           []*QueryPartnerProduceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	PageSize       *int64                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalItemNum   *int64                                     `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
-	TotalPageNum   *int64                                     `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1A13ABB5-7649-5031-B55C-D2E38F9F189D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 34
+	TotalItemNum *int64 `json:"TotalItemNum,omitempty" xml:"TotalItemNum,omitempty"`
+	// example:
+	//
+	// 1
+	TotalPageNum *int64 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
 }
 
 func (s QueryPartnerProduceListResponseBody) String() string {
@@ -3051,9 +3598,18 @@ func (s *QueryPartnerProduceListResponseBody) SetTotalPageNum(v int64) *QueryPar
 }
 
 type QueryPartnerProduceListResponseBodyData struct {
-	BizId   *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// P20211216204717000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// esp.cdn
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Mobile  *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+	// example:
+	//
+	// 18600000001
+	Mobile *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
 }
 
 func (s QueryPartnerProduceListResponseBodyData) String() string {
@@ -3109,9 +3665,18 @@ func (s *QueryPartnerProduceListResponse) SetBody(v *QueryPartnerProduceListResp
 }
 
 type QueryUserNeedAuthResponseBody struct {
-	NeedAuth  *bool   `json:"NeedAuth,omitempty" xml:"NeedAuth,omitempty"`
+	// example:
+	//
+	// True
+	NeedAuth *bool `json:"NeedAuth,omitempty" xml:"NeedAuth,omitempty"`
+	// example:
+	//
+	// 2C859C36-886C-5BE7-A606-01F38A5374D6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryUserNeedAuthResponseBody) String() string {
@@ -3167,10 +3732,27 @@ func (s *QueryUserNeedAuthResponse) SetBody(v *QueryUserNeedAuthResponseBody) *Q
 }
 
 type RecordPostBackRequest struct {
-	BizId     *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
-	BizType   *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P111111111111
+	BizId *string `json:"bizId,omitempty" xml:"bizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.zhangsan
+	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
+	// This parameter is required.
 	Contactor *string `json:"contactor,omitempty" xml:"contactor,omitempty"`
-	Content   *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	Content *string `json:"content,omitempty" xml:"content,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp_produce
 	EntityKey *string `json:"entityKey,omitempty" xml:"entityKey,omitempty"`
 }
 
@@ -3208,17 +3790,41 @@ func (s *RecordPostBackRequest) SetEntityKey(v string) *RecordPostBackRequest {
 }
 
 type RecordPostBackResponseBody struct {
-	AllowRetry     *bool         `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	AppName        *string       `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// false
+	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
+	// example:
+	//
+	// esp-core-aliyun-com
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// example:
+	//
+	// PARAMETER.ILLEGAL
 	DynamicCode    *string       `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	DynamicMessage *string       `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	ErrorArgs      []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	ErrorCode      *string       `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg       *string       `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	HttpStatusCode *int32        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Module         *bool         `json:"Module,omitempty" xml:"Module,omitempty"`
-	RequestId      *string       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool         `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// PARAMETER.ILLEGAL
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// True
+	Module *bool `json:"Module,omitempty" xml:"Module,omitempty"`
+	// example:
+	//
+	// B8E5CC4C-7563-19BD-B02F-DFFFD4E51D4A
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RecordPostBackResponseBody) String() string {
@@ -3314,7 +3920,14 @@ func (s *RecordPostBackResponse) SetBody(v *RecordPostBackResponseBody) *RecordP
 }
 
 type RejectSolutionRequest struct {
-	Note          *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20200512114050000001
 	SolutionBizId *string `json:"SolutionBizId,omitempty" xml:"SolutionBizId,omitempty"`
 }
 
@@ -3324,6 +3937,11 @@ func (s RejectSolutionRequest) String() string {
 
 func (s RejectSolutionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RejectSolutionRequest) SetBizType(v string) *RejectSolutionRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *RejectSolutionRequest) SetNote(v string) *RejectSolutionRequest {
@@ -3337,10 +3955,19 @@ func (s *RejectSolutionRequest) SetSolutionBizId(v string) *RejectSolutionReques
 }
 
 type RejectSolutionResponseBody struct {
+	// example:
+	//
+	// PARTNER.CONFIG.NOT.FOUND
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RejectSolutionResponseBody) String() string {
@@ -3401,8 +4028,19 @@ func (s *RejectSolutionResponse) SetBody(v *RejectSolutionResponseBody) *RejectS
 }
 
 type RejectUserSolutionRequest struct {
-	BizType       *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	Note          *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.companyreg
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// S20211227151912000001
 	SolutionBizId *string `json:"SolutionBizId,omitempty" xml:"SolutionBizId,omitempty"`
 }
 
@@ -3430,10 +4068,19 @@ func (s *RejectUserSolutionRequest) SetSolutionBizId(v string) *RejectUserSoluti
 }
 
 type RejectUserSolutionResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 717711FB-F887-597B-8121-B77437E89B97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s RejectUserSolutionResponseBody) String() string {
@@ -3494,9 +4141,22 @@ func (s *RejectUserSolutionResponse) SetBody(v *RejectUserSolutionResponseBody) 
 }
 
 type ReleaseProduceAuthorizationRequest struct {
+	// example:
+	//
+	// 1219541161213000
 	AuthorizedUserId *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
-	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20211117141528000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.beian_assist
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
 }
 
 func (s ReleaseProduceAuthorizationRequest) String() string {
@@ -3523,10 +4183,19 @@ func (s *ReleaseProduceAuthorizationRequest) SetBizType(v string) *ReleaseProduc
 }
 
 type ReleaseProduceAuthorizationResponseBody struct {
+	// example:
+	//
+	// 200
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s ReleaseProduceAuthorizationResponseBody) String() string {
@@ -3587,12 +4256,38 @@ func (s *ReleaseProduceAuthorizationResponse) SetBody(v *ReleaseProduceAuthoriza
 }
 
 type StartBackToBackCallRequest struct {
-	BizId            *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType          *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 20211203180209000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// 02131584184
 	CallCenterNumber *string `json:"CallCenterNumber,omitempty" xml:"CallCenterNumber,omitempty"`
-	Caller           *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
-	MobileKey        *string `json:"MobileKey,omitempty" xml:"MobileKey,omitempty"`
-	SkillType        *int64  `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 13162828888
+	Caller *string `json:"Caller,omitempty" xml:"Caller,omitempty"`
+	// example:
+	//
+	// mobile1
+	MobileKey *string `json:"MobileKey,omitempty" xml:"MobileKey,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	SkillType *int64 `json:"SkillType,omitempty" xml:"SkillType,omitempty"`
 }
 
 func (s StartBackToBackCallRequest) String() string {
@@ -3634,11 +4329,23 @@ func (s *StartBackToBackCallRequest) SetSkillType(v int64) *StartBackToBackCallR
 }
 
 type StartBackToBackCallResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 2174AA97-56FB-50FA-B243-0460B9E4CE0C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s StartBackToBackCallResponseBody) String() string {
@@ -3703,9 +4410,186 @@ func (s *StartBackToBackCallResponse) SetBody(v *StartBackToBackCallResponseBody
 	return s
 }
 
-type SubmitIntentionNoteRequest struct {
+type SubmitIntentionForPartnerRequest struct {
+	Area *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	// example:
+	//
+	// esp.isp
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// lingjun
+	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	// example:
+	//
+	// Server
+	CommodityType *string `json:"CommodityType,omitempty" xml:"CommodityType,omitempty"`
+	ContactName   *string `json:"ContactName,omitempty" xml:"ContactName,omitempty"`
+	// example:
+	//
+	// ceshi
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// {\\"beianServiceNumber\\":\\"9969c666-0935-4c5b-8042-926ff546e39f\\"}
+	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
+	// example:
+	//
+	// country
+	Grade *int32 `json:"Grade,omitempty" xml:"Grade,omitempty"`
+	// example:
+	//
+	// 18704330000
+	Mobile *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// example:
+	//
+	// 1212312312312
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s SubmitIntentionForPartnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIntentionForPartnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetArea(v string) *SubmitIntentionForPartnerRequest {
+	s.Area = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetBizType(v string) *SubmitIntentionForPartnerRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetChannel(v string) *SubmitIntentionForPartnerRequest {
+	s.Channel = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetCommodityType(v string) *SubmitIntentionForPartnerRequest {
+	s.CommodityType = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetContactName(v string) *SubmitIntentionForPartnerRequest {
+	s.ContactName = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetDescription(v string) *SubmitIntentionForPartnerRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetExtInfo(v string) *SubmitIntentionForPartnerRequest {
+	s.ExtInfo = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetGrade(v int32) *SubmitIntentionForPartnerRequest {
+	s.Grade = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetMobile(v string) *SubmitIntentionForPartnerRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerRequest) SetUserId(v string) *SubmitIntentionForPartnerRequest {
+	s.UserId = &v
+	return s
+}
+
+type SubmitIntentionForPartnerResponseBody struct {
+	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// I20211223101045000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
-	Note           *string `json:"Note,omitempty" xml:"Note,omitempty"`
+	// Id of the request
+	//
+	// example:
+	//
+	// 6A603AA0-73BA-52B3-AC7D-0F846ECF7A9D
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitIntentionForPartnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIntentionForPartnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIntentionForPartnerResponseBody) SetErrorMsg(v string) *SubmitIntentionForPartnerResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponseBody) SetIntentionBizId(v string) *SubmitIntentionForPartnerResponseBody {
+	s.IntentionBizId = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponseBody) SetRequestId(v string) *SubmitIntentionForPartnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponseBody) SetSuccess(v bool) *SubmitIntentionForPartnerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitIntentionForPartnerResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitIntentionForPartnerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitIntentionForPartnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitIntentionForPartnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitIntentionForPartnerResponse) SetHeaders(v map[string]*string) *SubmitIntentionForPartnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponse) SetStatusCode(v int32) *SubmitIntentionForPartnerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitIntentionForPartnerResponse) SetBody(v *SubmitIntentionForPartnerResponseBody) *SubmitIntentionForPartnerResponse {
+	s.Body = v
+	return s
+}
+
+type SubmitIntentionNoteRequest struct {
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20210927144823000001
+	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
+	// This parameter is required.
+	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
 }
 
 func (s SubmitIntentionNoteRequest) String() string {
@@ -3714,6 +4598,11 @@ func (s SubmitIntentionNoteRequest) String() string {
 
 func (s SubmitIntentionNoteRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitIntentionNoteRequest) SetBizType(v string) *SubmitIntentionNoteRequest {
+	s.BizType = &v
+	return s
 }
 
 func (s *SubmitIntentionNoteRequest) SetIntentionBizId(v string) *SubmitIntentionNoteRequest {
@@ -3727,10 +4616,19 @@ func (s *SubmitIntentionNoteRequest) SetNote(v string) *SubmitIntentionNoteReque
 }
 
 type SubmitIntentionNoteResponseBody struct {
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 668571EF-1E7E-5435-AA65-4ECFFDDA133F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitIntentionNoteResponseBody) String() string {
@@ -3791,11 +4689,25 @@ func (s *SubmitIntentionNoteResponse) SetBody(v *SubmitIntentionNoteResponseBody
 }
 
 type SubmitSolutionRequest struct {
-	BizType        *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// I20211223101045000001
 	IntentionBizId *string `json:"IntentionBizId,omitempty" xml:"IntentionBizId,omitempty"`
 	OperateType    *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
-	Solution       *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// This parameter is required.
+	Solution *string `json:"Solution,omitempty" xml:"Solution,omitempty"`
+	// example:
+	//
+	// 1219541161213057
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s SubmitSolutionRequest) String() string {
@@ -3832,12 +4744,27 @@ func (s *SubmitSolutionRequest) SetUserId(v string) *SubmitSolutionRequest {
 }
 
 type SubmitSolutionResponseBody struct {
-	ConfirmUrl    *string `json:"ConfirmUrl,omitempty" xml:"ConfirmUrl,omitempty"`
-	ErrorCode     *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMsg      *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// https://companyreg.console.aliyun.com/#/intention-notarize?Type=119&bizid=I20220114181457000001
+	ConfirmUrl *string `json:"ConfirmUrl,omitempty" xml:"ConfirmUrl,omitempty"`
+	// example:
+	//
+	// NoPermission
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 0A3CFCF5-E0C0-5C0B-A2ED-03827F16D85F
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// S20211109140729000001
 	SolutionBizId *string `json:"SolutionBizId,omitempty" xml:"SolutionBizId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s SubmitSolutionResponseBody) String() string {
@@ -3908,8 +4835,23 @@ func (s *SubmitSolutionResponse) SetBody(v *SubmitSolutionResponseBody) *SubmitS
 }
 
 type TransferIntentionOwnerRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210709190452000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.wangwen
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 67842
 	PersonId *int32  `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
@@ -3943,11 +4885,23 @@ func (s *TransferIntentionOwnerRequest) SetRemark(v string) *TransferIntentionOw
 }
 
 type TransferIntentionOwnerResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// 717711FB-F887-597B-8121-B77437E89B97
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TransferIntentionOwnerResponseBody) String() string {
@@ -4013,8 +4967,23 @@ func (s *TransferIntentionOwnerResponse) SetBody(v *TransferIntentionOwnerRespon
 }
 
 type TransferProduceOwnerRequest struct {
-	BizId    *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BizType  *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// P20210208152920000001
+	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// esp.companyreg_cloud
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 15565
 	PersonId *int32  `json:"PersonId,omitempty" xml:"PersonId,omitempty"`
 	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
@@ -4048,11 +5017,23 @@ func (s *TransferProduceOwnerRequest) SetRemark(v string) *TransferProduceOwnerR
 }
 
 type TransferProduceOwnerResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// True
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// NoPermission
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
 	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// example:
+	//
+	// DD5639FF-1240-51DE-9BA8-2075670A1EAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s TransferProduceOwnerResponseBody) String() string {
@@ -4222,6 +5203,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// @param request - BindProduceAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BindProduceAuthorizationResponse
 func (client *Client) BindProduceAuthorizationWithOptions(request *BindProduceAuthorizationRequest, runtime *util.RuntimeOptions) (_result *BindProduceAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4263,6 +5249,9 @@ func (client *Client) BindProduceAuthorizationWithOptions(request *BindProduceAu
 	return _result, _err
 }
 
+// @param request - BindProduceAuthorizationRequest
+//
+// @return BindProduceAuthorizationResponse
 func (client *Client) BindProduceAuthorization(request *BindProduceAuthorizationRequest) (_result *BindProduceAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &BindProduceAuthorizationResponse{}
@@ -4274,6 +5263,11 @@ func (client *Client) BindProduceAuthorization(request *BindProduceAuthorization
 	return _result, _err
 }
 
+// @param request - CloseIntentionForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseIntentionForPartnerResponse
 func (client *Client) CloseIntentionForPartnerWithOptions(request *CloseIntentionForPartnerRequest, runtime *util.RuntimeOptions) (_result *CloseIntentionForPartnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4315,6 +5309,9 @@ func (client *Client) CloseIntentionForPartnerWithOptions(request *CloseIntentio
 	return _result, _err
 }
 
+// @param request - CloseIntentionForPartnerRequest
+//
+// @return CloseIntentionForPartnerResponse
 func (client *Client) CloseIntentionForPartner(request *CloseIntentionForPartnerRequest) (_result *CloseIntentionForPartnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseIntentionForPartnerResponse{}
@@ -4326,6 +5323,11 @@ func (client *Client) CloseIntentionForPartner(request *CloseIntentionForPartner
 	return _result, _err
 }
 
+// @param request - CloseUserIntentionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CloseUserIntentionResponse
 func (client *Client) CloseUserIntentionWithOptions(request *CloseUserIntentionRequest, runtime *util.RuntimeOptions) (_result *CloseUserIntentionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4367,6 +5369,9 @@ func (client *Client) CloseUserIntentionWithOptions(request *CloseUserIntentionR
 	return _result, _err
 }
 
+// @param request - CloseUserIntentionRequest
+//
+// @return CloseUserIntentionResponse
 func (client *Client) CloseUserIntention(request *CloseUserIntentionRequest) (_result *CloseUserIntentionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CloseUserIntentionResponse{}
@@ -4378,6 +5383,11 @@ func (client *Client) CloseUserIntention(request *CloseUserIntentionRequest) (_r
 	return _result, _err
 }
 
+// @param request - CreateBusinessOpportunityRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBusinessOpportunityResponse
 func (client *Client) CreateBusinessOpportunityWithOptions(request *CreateBusinessOpportunityRequest, runtime *util.RuntimeOptions) (_result *CreateBusinessOpportunityResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4427,6 +5437,9 @@ func (client *Client) CreateBusinessOpportunityWithOptions(request *CreateBusine
 	return _result, _err
 }
 
+// @param request - CreateBusinessOpportunityRequest
+//
+// @return CreateBusinessOpportunityResponse
 func (client *Client) CreateBusinessOpportunity(request *CreateBusinessOpportunityRequest) (_result *CreateBusinessOpportunityResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBusinessOpportunityResponse{}
@@ -4438,6 +5451,11 @@ func (client *Client) CreateBusinessOpportunity(request *CreateBusinessOpportuni
 	return _result, _err
 }
 
+// @param request - CreateProduceForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateProduceForPartnerResponse
 func (client *Client) CreateProduceForPartnerWithOptions(request *CreateProduceForPartnerRequest, runtime *util.RuntimeOptions) (_result *CreateProduceForPartnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4479,6 +5497,9 @@ func (client *Client) CreateProduceForPartnerWithOptions(request *CreateProduceF
 	return _result, _err
 }
 
+// @param request - CreateProduceForPartnerRequest
+//
+// @return CreateProduceForPartnerResponse
 func (client *Client) CreateProduceForPartner(request *CreateProduceForPartnerRequest) (_result *CreateProduceForPartnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateProduceForPartnerResponse{}
@@ -4490,6 +5511,11 @@ func (client *Client) CreateProduceForPartner(request *CreateProduceForPartnerRe
 	return _result, _err
 }
 
+// @param request - DescribePartnerConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribePartnerConfigResponse
 func (client *Client) DescribePartnerConfigWithOptions(request *DescribePartnerConfigRequest, runtime *util.RuntimeOptions) (_result *DescribePartnerConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4527,6 +5553,9 @@ func (client *Client) DescribePartnerConfigWithOptions(request *DescribePartnerC
 	return _result, _err
 }
 
+// @param request - DescribePartnerConfigRequest
+//
+// @return DescribePartnerConfigResponse
 func (client *Client) DescribePartnerConfig(request *DescribePartnerConfigRequest) (_result *DescribePartnerConfigResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePartnerConfigResponse{}
@@ -4538,6 +5567,11 @@ func (client *Client) DescribePartnerConfig(request *DescribePartnerConfigReques
 	return _result, _err
 }
 
+// @param request - GenerateUploadFilePolicyRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GenerateUploadFilePolicyResponse
 func (client *Client) GenerateUploadFilePolicyWithOptions(request *GenerateUploadFilePolicyRequest, runtime *util.RuntimeOptions) (_result *GenerateUploadFilePolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4579,6 +5613,9 @@ func (client *Client) GenerateUploadFilePolicyWithOptions(request *GenerateUploa
 	return _result, _err
 }
 
+// @param request - GenerateUploadFilePolicyRequest
+//
+// @return GenerateUploadFilePolicyResponse
 func (client *Client) GenerateUploadFilePolicy(request *GenerateUploadFilePolicyRequest) (_result *GenerateUploadFilePolicyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateUploadFilePolicyResponse{}
@@ -4590,6 +5627,11 @@ func (client *Client) GenerateUploadFilePolicy(request *GenerateUploadFilePolicy
 	return _result, _err
 }
 
+// @param request - GetAlipayUrlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAlipayUrlResponse
 func (client *Client) GetAlipayUrlWithOptions(request *GetAlipayUrlRequest, runtime *util.RuntimeOptions) (_result *GetAlipayUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4619,6 +5661,9 @@ func (client *Client) GetAlipayUrlWithOptions(request *GetAlipayUrlRequest, runt
 	return _result, _err
 }
 
+// @param request - GetAlipayUrlRequest
+//
+// @return GetAlipayUrlResponse
 func (client *Client) GetAlipayUrl(request *GetAlipayUrlRequest) (_result *GetAlipayUrlResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAlipayUrlResponse{}
@@ -4630,6 +5675,11 @@ func (client *Client) GetAlipayUrl(request *GetAlipayUrlRequest) (_result *GetAl
 	return _result, _err
 }
 
+// @param request - ListIntentionNoteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListIntentionNoteResponse
 func (client *Client) ListIntentionNoteWithOptions(request *ListIntentionNoteRequest, runtime *util.RuntimeOptions) (_result *ListIntentionNoteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4638,6 +5688,10 @@ func (client *Client) ListIntentionNoteWithOptions(request *ListIntentionNoteReq
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
 		query["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
@@ -4679,6 +5733,9 @@ func (client *Client) ListIntentionNoteWithOptions(request *ListIntentionNoteReq
 	return _result, _err
 }
 
+// @param request - ListIntentionNoteRequest
+//
+// @return ListIntentionNoteResponse
 func (client *Client) ListIntentionNote(request *ListIntentionNoteRequest) (_result *ListIntentionNoteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIntentionNoteResponse{}
@@ -4690,6 +5747,11 @@ func (client *Client) ListIntentionNote(request *ListIntentionNoteRequest) (_res
 	return _result, _err
 }
 
+// @param request - ListProduceAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListProduceAuthorizationResponse
 func (client *Client) ListProduceAuthorizationWithOptions(request *ListProduceAuthorizationRequest, runtime *util.RuntimeOptions) (_result *ListProduceAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4735,6 +5797,9 @@ func (client *Client) ListProduceAuthorizationWithOptions(request *ListProduceAu
 	return _result, _err
 }
 
+// @param request - ListProduceAuthorizationRequest
+//
+// @return ListProduceAuthorizationResponse
 func (client *Client) ListProduceAuthorization(request *ListProduceAuthorizationRequest) (_result *ListProduceAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListProduceAuthorizationResponse{}
@@ -4746,6 +5811,11 @@ func (client *Client) ListProduceAuthorization(request *ListProduceAuthorization
 	return _result, _err
 }
 
+// @param request - ListUserDetailSolutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserDetailSolutionsResponse
 func (client *Client) ListUserDetailSolutionsWithOptions(request *ListUserDetailSolutionsRequest, runtime *util.RuntimeOptions) (_result *ListUserDetailSolutionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4791,6 +5861,9 @@ func (client *Client) ListUserDetailSolutionsWithOptions(request *ListUserDetail
 	return _result, _err
 }
 
+// @param request - ListUserDetailSolutionsRequest
+//
+// @return ListUserDetailSolutionsResponse
 func (client *Client) ListUserDetailSolutions(request *ListUserDetailSolutionsRequest) (_result *ListUserDetailSolutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserDetailSolutionsResponse{}
@@ -4802,6 +5875,11 @@ func (client *Client) ListUserDetailSolutions(request *ListUserDetailSolutionsRe
 	return _result, _err
 }
 
+// @param request - ListUserIntentionNotesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserIntentionNotesResponse
 func (client *Client) ListUserIntentionNotesWithOptions(request *ListUserIntentionNotesRequest, runtime *util.RuntimeOptions) (_result *ListUserIntentionNotesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4847,6 +5925,9 @@ func (client *Client) ListUserIntentionNotesWithOptions(request *ListUserIntenti
 	return _result, _err
 }
 
+// @param request - ListUserIntentionNotesRequest
+//
+// @return ListUserIntentionNotesResponse
 func (client *Client) ListUserIntentionNotes(request *ListUserIntentionNotesRequest) (_result *ListUserIntentionNotesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserIntentionNotesResponse{}
@@ -4858,6 +5939,15 @@ func (client *Client) ListUserIntentionNotes(request *ListUserIntentionNotesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户控制天需求列表查询
+//
+// @param request - ListUserIntentionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserIntentionsResponse
 func (client *Client) ListUserIntentionsWithOptions(request *ListUserIntentionsRequest, runtime *util.RuntimeOptions) (_result *ListUserIntentionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4927,6 +6017,13 @@ func (client *Client) ListUserIntentionsWithOptions(request *ListUserIntentionsR
 	return _result, _err
 }
 
+// Summary:
+//
+// 用户控制天需求列表查询
+//
+// @param request - ListUserIntentionsRequest
+//
+// @return ListUserIntentionsResponse
 func (client *Client) ListUserIntentions(request *ListUserIntentionsRequest) (_result *ListUserIntentionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserIntentionsResponse{}
@@ -4938,6 +6035,11 @@ func (client *Client) ListUserIntentions(request *ListUserIntentionsRequest) (_r
 	return _result, _err
 }
 
+// @param request - ListUserProduceOperateLogsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserProduceOperateLogsResponse
 func (client *Client) ListUserProduceOperateLogsWithOptions(request *ListUserProduceOperateLogsRequest, runtime *util.RuntimeOptions) (_result *ListUserProduceOperateLogsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4983,6 +6085,9 @@ func (client *Client) ListUserProduceOperateLogsWithOptions(request *ListUserPro
 	return _result, _err
 }
 
+// @param request - ListUserProduceOperateLogsRequest
+//
+// @return ListUserProduceOperateLogsResponse
 func (client *Client) ListUserProduceOperateLogs(request *ListUserProduceOperateLogsRequest) (_result *ListUserProduceOperateLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserProduceOperateLogsResponse{}
@@ -4994,6 +6099,11 @@ func (client *Client) ListUserProduceOperateLogs(request *ListUserProduceOperate
 	return _result, _err
 }
 
+// @param tmpReq - ListUserSolutionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListUserSolutionsResponse
 func (client *Client) ListUserSolutionsWithOptions(tmpReq *ListUserSolutionsRequest, runtime *util.RuntimeOptions) (_result *ListUserSolutionsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -5006,6 +6116,10 @@ func (client *Client) ListUserSolutionsWithOptions(tmpReq *ListUserSolutionsRequ
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExistStatusShrink)) {
 		query["ExistStatus"] = request.ExistStatusShrink
 	}
@@ -5045,6 +6159,9 @@ func (client *Client) ListUserSolutionsWithOptions(tmpReq *ListUserSolutionsRequ
 	return _result, _err
 }
 
+// @param request - ListUserSolutionsRequest
+//
+// @return ListUserSolutionsResponse
 func (client *Client) ListUserSolutions(request *ListUserSolutionsRequest) (_result *ListUserSolutionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListUserSolutionsResponse{}
@@ -5056,6 +6173,11 @@ func (client *Client) ListUserSolutions(request *ListUserSolutionsRequest) (_res
 	return _result, _err
 }
 
+// @param request - OperateProduceForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return OperateProduceForPartnerResponse
 func (client *Client) OperateProduceForPartnerWithOptions(request *OperateProduceForPartnerRequest, runtime *util.RuntimeOptions) (_result *OperateProduceForPartnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5101,6 +6223,9 @@ func (client *Client) OperateProduceForPartnerWithOptions(request *OperateProduc
 	return _result, _err
 }
 
+// @param request - OperateProduceForPartnerRequest
+//
+// @return OperateProduceForPartnerResponse
 func (client *Client) OperateProduceForPartner(request *OperateProduceForPartnerRequest) (_result *OperateProduceForPartnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &OperateProduceForPartnerResponse{}
@@ -5112,6 +6237,11 @@ func (client *Client) OperateProduceForPartner(request *OperateProduceForPartner
 	return _result, _err
 }
 
+// @param request - PutMeasureDataRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutMeasureDataResponse
 func (client *Client) PutMeasureDataWithOptions(request *PutMeasureDataRequest, runtime *util.RuntimeOptions) (_result *PutMeasureDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5161,6 +6291,9 @@ func (client *Client) PutMeasureDataWithOptions(request *PutMeasureDataRequest, 
 	return _result, _err
 }
 
+// @param request - PutMeasureDataRequest
+//
+// @return PutMeasureDataResponse
 func (client *Client) PutMeasureData(request *PutMeasureDataRequest) (_result *PutMeasureDataResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PutMeasureDataResponse{}
@@ -5172,6 +6305,11 @@ func (client *Client) PutMeasureData(request *PutMeasureDataRequest) (_result *P
 	return _result, _err
 }
 
+// @param request - PutMeasureReadyFlagRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return PutMeasureReadyFlagResponse
 func (client *Client) PutMeasureReadyFlagWithOptions(request *PutMeasureReadyFlagRequest, runtime *util.RuntimeOptions) (_result *PutMeasureReadyFlagResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5221,6 +6359,9 @@ func (client *Client) PutMeasureReadyFlagWithOptions(request *PutMeasureReadyFla
 	return _result, _err
 }
 
+// @param request - PutMeasureReadyFlagRequest
+//
+// @return PutMeasureReadyFlagResponse
 func (client *Client) PutMeasureReadyFlag(request *PutMeasureReadyFlagRequest) (_result *PutMeasureReadyFlagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &PutMeasureReadyFlagResponse{}
@@ -5232,6 +6373,15 @@ func (client *Client) PutMeasureReadyFlag(request *PutMeasureReadyFlagRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取玄坛合作伙伴双呼时可用外呼号码
+//
+// @param request - QueryAvailableNumbersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryAvailableNumbersResponse
 func (client *Client) QueryAvailableNumbersWithOptions(request *QueryAvailableNumbersRequest, runtime *util.RuntimeOptions) (_result *QueryAvailableNumbersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5265,6 +6415,13 @@ func (client *Client) QueryAvailableNumbersWithOptions(request *QueryAvailableNu
 	return _result, _err
 }
 
+// Summary:
+//
+// 获取玄坛合作伙伴双呼时可用外呼号码
+//
+// @param request - QueryAvailableNumbersRequest
+//
+// @return QueryAvailableNumbersResponse
 func (client *Client) QueryAvailableNumbers(request *QueryAvailableNumbersRequest) (_result *QueryAvailableNumbersResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryAvailableNumbersResponse{}
@@ -5276,6 +6433,11 @@ func (client *Client) QueryAvailableNumbers(request *QueryAvailableNumbersReques
 	return _result, _err
 }
 
+// @param request - QueryBagRemainingRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryBagRemainingResponse
 func (client *Client) QueryBagRemainingWithOptions(request *QueryBagRemainingRequest, runtime *util.RuntimeOptions) (_result *QueryBagRemainingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5305,6 +6467,9 @@ func (client *Client) QueryBagRemainingWithOptions(request *QueryBagRemainingReq
 	return _result, _err
 }
 
+// @param request - QueryBagRemainingRequest
+//
+// @return QueryBagRemainingResponse
 func (client *Client) QueryBagRemaining(request *QueryBagRemainingRequest) (_result *QueryBagRemainingResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryBagRemainingResponse{}
@@ -5316,58 +6481,11 @@ func (client *Client) QueryBagRemaining(request *QueryBagRemainingRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) QueryCommodityConfigWithOptions(request *QueryCommodityConfigRequest, runtime *util.RuntimeOptions) (_result *QueryCommodityConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BizType)) {
-		query["BizType"] = request.BizType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
-		query["CommodityCode"] = request.CommodityCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.QueryModule)) {
-		query["QueryModule"] = request.QueryModule
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryCommodityConfig"),
-		Version:     tea.String("2020-03-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryCommodityConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryCommodityConfig(request *QueryCommodityConfigRequest) (_result *QueryCommodityConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryCommodityConfigResponse{}
-	_body, _err := client.QueryCommodityConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
+// @param request - QueryInstanceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryInstanceResponse
 func (client *Client) QueryInstanceWithOptions(request *QueryInstanceRequest, runtime *util.RuntimeOptions) (_result *QueryInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5405,6 +6523,9 @@ func (client *Client) QueryInstanceWithOptions(request *QueryInstanceRequest, ru
 	return _result, _err
 }
 
+// @param request - QueryInstanceRequest
+//
+// @return QueryInstanceResponse
 func (client *Client) QueryInstance(request *QueryInstanceRequest) (_result *QueryInstanceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryInstanceResponse{}
@@ -5416,6 +6537,15 @@ func (client *Client) QueryInstance(request *QueryInstanceRequest) (_result *Que
 	return _result, _err
 }
 
+// Summary:
+//
+// # QueryPartnerIntentionList
+//
+// @param request - QueryPartnerIntentionListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPartnerIntentionListResponse
 func (client *Client) QueryPartnerIntentionListWithOptions(request *QueryPartnerIntentionListRequest, runtime *util.RuntimeOptions) (_result *QueryPartnerIntentionListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5461,6 +6591,13 @@ func (client *Client) QueryPartnerIntentionListWithOptions(request *QueryPartner
 	return _result, _err
 }
 
+// Summary:
+//
+// # QueryPartnerIntentionList
+//
+// @param request - QueryPartnerIntentionListRequest
+//
+// @return QueryPartnerIntentionListResponse
 func (client *Client) QueryPartnerIntentionList(request *QueryPartnerIntentionListRequest) (_result *QueryPartnerIntentionListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPartnerIntentionListResponse{}
@@ -5472,6 +6609,15 @@ func (client *Client) QueryPartnerIntentionList(request *QueryPartnerIntentionLi
 	return _result, _err
 }
 
+// Summary:
+//
+// # QueryPartnerProduceList
+//
+// @param request - QueryPartnerProduceListRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryPartnerProduceListResponse
 func (client *Client) QueryPartnerProduceListWithOptions(request *QueryPartnerProduceListRequest, runtime *util.RuntimeOptions) (_result *QueryPartnerProduceListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5501,6 +6647,13 @@ func (client *Client) QueryPartnerProduceListWithOptions(request *QueryPartnerPr
 	return _result, _err
 }
 
+// Summary:
+//
+// # QueryPartnerProduceList
+//
+// @param request - QueryPartnerProduceListRequest
+//
+// @return QueryPartnerProduceListResponse
 func (client *Client) QueryPartnerProduceList(request *QueryPartnerProduceListRequest) (_result *QueryPartnerProduceListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryPartnerProduceListResponse{}
@@ -5512,6 +6665,11 @@ func (client *Client) QueryPartnerProduceList(request *QueryPartnerProduceListRe
 	return _result, _err
 }
 
+// @param request - QueryUserNeedAuthRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryUserNeedAuthResponse
 func (client *Client) QueryUserNeedAuthWithOptions(runtime *util.RuntimeOptions) (_result *QueryUserNeedAuthResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -5534,6 +6692,7 @@ func (client *Client) QueryUserNeedAuthWithOptions(runtime *util.RuntimeOptions)
 	return _result, _err
 }
 
+// @return QueryUserNeedAuthResponse
 func (client *Client) QueryUserNeedAuth() (_result *QueryUserNeedAuthResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryUserNeedAuthResponse{}
@@ -5545,6 +6704,15 @@ func (client *Client) QueryUserNeedAuth() (_result *QueryUserNeedAuthResponse, _
 	return _result, _err
 }
 
+// Summary:
+//
+// # RecordPostBack
+//
+// @param request - RecordPostBackRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RecordPostBackResponse
 func (client *Client) RecordPostBackWithOptions(request *RecordPostBackRequest, runtime *util.RuntimeOptions) (_result *RecordPostBackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5594,6 +6762,13 @@ func (client *Client) RecordPostBackWithOptions(request *RecordPostBackRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// # RecordPostBack
+//
+// @param request - RecordPostBackRequest
+//
+// @return RecordPostBackResponse
 func (client *Client) RecordPostBack(request *RecordPostBackRequest) (_result *RecordPostBackResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RecordPostBackResponse{}
@@ -5605,12 +6780,21 @@ func (client *Client) RecordPostBack(request *RecordPostBackRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - RejectSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectSolutionResponse
 func (client *Client) RejectSolutionWithOptions(request *RejectSolutionRequest, runtime *util.RuntimeOptions) (_result *RejectSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Note)) {
 		query["Note"] = request.Note
 	}
@@ -5642,6 +6826,9 @@ func (client *Client) RejectSolutionWithOptions(request *RejectSolutionRequest, 
 	return _result, _err
 }
 
+// @param request - RejectSolutionRequest
+//
+// @return RejectSolutionResponse
 func (client *Client) RejectSolution(request *RejectSolutionRequest) (_result *RejectSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectSolutionResponse{}
@@ -5653,6 +6840,11 @@ func (client *Client) RejectSolution(request *RejectSolutionRequest) (_result *R
 	return _result, _err
 }
 
+// @param request - RejectUserSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RejectUserSolutionResponse
 func (client *Client) RejectUserSolutionWithOptions(request *RejectUserSolutionRequest, runtime *util.RuntimeOptions) (_result *RejectUserSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5694,6 +6886,9 @@ func (client *Client) RejectUserSolutionWithOptions(request *RejectUserSolutionR
 	return _result, _err
 }
 
+// @param request - RejectUserSolutionRequest
+//
+// @return RejectUserSolutionResponse
 func (client *Client) RejectUserSolution(request *RejectUserSolutionRequest) (_result *RejectUserSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &RejectUserSolutionResponse{}
@@ -5705,6 +6900,11 @@ func (client *Client) RejectUserSolution(request *RejectUserSolutionRequest) (_r
 	return _result, _err
 }
 
+// @param request - ReleaseProduceAuthorizationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ReleaseProduceAuthorizationResponse
 func (client *Client) ReleaseProduceAuthorizationWithOptions(request *ReleaseProduceAuthorizationRequest, runtime *util.RuntimeOptions) (_result *ReleaseProduceAuthorizationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5746,6 +6946,9 @@ func (client *Client) ReleaseProduceAuthorizationWithOptions(request *ReleasePro
 	return _result, _err
 }
 
+// @param request - ReleaseProduceAuthorizationRequest
+//
+// @return ReleaseProduceAuthorizationResponse
 func (client *Client) ReleaseProduceAuthorization(request *ReleaseProduceAuthorizationRequest) (_result *ReleaseProduceAuthorizationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ReleaseProduceAuthorizationResponse{}
@@ -5757,6 +6960,15 @@ func (client *Client) ReleaseProduceAuthorization(request *ReleaseProduceAuthori
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛双呼外呼发起
+//
+// @param request - StartBackToBackCallRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return StartBackToBackCallResponse
 func (client *Client) StartBackToBackCallWithOptions(request *StartBackToBackCallRequest, runtime *util.RuntimeOptions) (_result *StartBackToBackCallResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5810,6 +7022,13 @@ func (client *Client) StartBackToBackCallWithOptions(request *StartBackToBackCal
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛双呼外呼发起
+//
+// @param request - StartBackToBackCallRequest
+//
+// @return StartBackToBackCallResponse
 func (client *Client) StartBackToBackCall(request *StartBackToBackCallRequest) (_result *StartBackToBackCallResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartBackToBackCallResponse{}
@@ -5821,12 +7040,117 @@ func (client *Client) StartBackToBackCall(request *StartBackToBackCallRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// 合作伙伴提交需求单
+//
+// @param request - SubmitIntentionForPartnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitIntentionForPartnerResponse
+func (client *Client) SubmitIntentionForPartnerWithOptions(request *SubmitIntentionForPartnerRequest, runtime *util.RuntimeOptions) (_result *SubmitIntentionForPartnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Area)) {
+		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Channel)) {
+		query["Channel"] = request.Channel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommodityType)) {
+		query["CommodityType"] = request.CommodityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactName)) {
+		query["ContactName"] = request.ContactName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		query["ExtInfo"] = request.ExtInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Grade)) {
+		query["Grade"] = request.Grade
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitIntentionForPartner"),
+		Version:     tea.String("2020-03-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitIntentionForPartnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 合作伙伴提交需求单
+//
+// @param request - SubmitIntentionForPartnerRequest
+//
+// @return SubmitIntentionForPartnerResponse
+func (client *Client) SubmitIntentionForPartner(request *SubmitIntentionForPartnerRequest) (_result *SubmitIntentionForPartnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitIntentionForPartnerResponse{}
+	_body, _err := client.SubmitIntentionForPartnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - SubmitIntentionNoteRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitIntentionNoteResponse
 func (client *Client) SubmitIntentionNoteWithOptions(request *SubmitIntentionNoteRequest, runtime *util.RuntimeOptions) (_result *SubmitIntentionNoteResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		query["BizType"] = request.BizType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IntentionBizId)) {
 		query["IntentionBizId"] = request.IntentionBizId
 	}
@@ -5858,6 +7182,9 @@ func (client *Client) SubmitIntentionNoteWithOptions(request *SubmitIntentionNot
 	return _result, _err
 }
 
+// @param request - SubmitIntentionNoteRequest
+//
+// @return SubmitIntentionNoteResponse
 func (client *Client) SubmitIntentionNote(request *SubmitIntentionNoteRequest) (_result *SubmitIntentionNoteResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitIntentionNoteResponse{}
@@ -5869,6 +7196,11 @@ func (client *Client) SubmitIntentionNote(request *SubmitIntentionNoteRequest) (
 	return _result, _err
 }
 
+// @param request - SubmitSolutionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitSolutionResponse
 func (client *Client) SubmitSolutionWithOptions(request *SubmitSolutionRequest, runtime *util.RuntimeOptions) (_result *SubmitSolutionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5918,6 +7250,9 @@ func (client *Client) SubmitSolutionWithOptions(request *SubmitSolutionRequest, 
 	return _result, _err
 }
 
+// @param request - SubmitSolutionRequest
+//
+// @return SubmitSolutionResponse
 func (client *Client) SubmitSolution(request *SubmitSolutionRequest) (_result *SubmitSolutionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitSolutionResponse{}
@@ -5929,6 +7264,15 @@ func (client *Client) SubmitSolution(request *SubmitSolutionRequest) (_result *S
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛需求单转派小二
+//
+// @param request - TransferIntentionOwnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferIntentionOwnerResponse
 func (client *Client) TransferIntentionOwnerWithOptions(request *TransferIntentionOwnerRequest, runtime *util.RuntimeOptions) (_result *TransferIntentionOwnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5974,6 +7318,13 @@ func (client *Client) TransferIntentionOwnerWithOptions(request *TransferIntenti
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛需求单转派小二
+//
+// @param request - TransferIntentionOwnerRequest
+//
+// @return TransferIntentionOwnerResponse
 func (client *Client) TransferIntentionOwner(request *TransferIntentionOwnerRequest) (_result *TransferIntentionOwnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferIntentionOwnerResponse{}
@@ -5985,6 +7336,15 @@ func (client *Client) TransferIntentionOwner(request *TransferIntentionOwnerRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛服务单转派小二
+//
+// @param request - TransferProduceOwnerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return TransferProduceOwnerResponse
 func (client *Client) TransferProduceOwnerWithOptions(request *TransferProduceOwnerRequest, runtime *util.RuntimeOptions) (_result *TransferProduceOwnerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6030,6 +7390,13 @@ func (client *Client) TransferProduceOwnerWithOptions(request *TransferProduceOw
 	return _result, _err
 }
 
+// Summary:
+//
+// 玄坛服务单转派小二
+//
+// @param request - TransferProduceOwnerRequest
+//
+// @return TransferProduceOwnerResponse
 func (client *Client) TransferProduceOwner(request *TransferProduceOwnerRequest) (_result *TransferProduceOwnerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &TransferProduceOwnerResponse{}
