@@ -5197,12 +5197,25 @@ type PriceEstimateFeature struct {
 	//
 	// Request/Always
 	CpuStrategy *string `json:"CpuStrategy,omitempty" xml:"CpuStrategy,omitempty"`
+	// example:
+	//
+	// L1
+	CpuUtilLevel   *string    `json:"CpuUtilLevel,omitempty" xml:"CpuUtilLevel,omitempty"`
+	CpuUtilMetrics []*float32 `json:"CpuUtilMetrics,omitempty" xml:"CpuUtilMetrics,omitempty" type:"Repeated"`
+	// example:
+	//
+	// true
+	EnableCpuIdle *bool `json:"EnableCpuIdle,omitempty" xml:"EnableCpuIdle,omitempty"`
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Test/Production
 	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	// example:
+	//
+	// 30
+	EphemeralStorageGiB *int64 `json:"EphemeralStorageGiB,omitempty" xml:"EphemeralStorageGiB,omitempty"`
 	// example:
 	//
 	// 3
@@ -5251,6 +5264,10 @@ type PriceEstimateFeature struct {
 	MinInstanceCount *int64 `json:"MinInstanceCount,omitempty" xml:"MinInstanceCount,omitempty"`
 	// example:
 	//
+	// std
+	NewSaeVersion *string `json:"NewSaeVersion,omitempty" xml:"NewSaeVersion,omitempty"`
+	// example:
+	//
 	// 0
 	NoneLoadInstanceCount *int64 `json:"NoneLoadInstanceCount,omitempty" xml:"NoneLoadInstanceCount,omitempty"`
 	// example:
@@ -5263,6 +5280,10 @@ type PriceEstimateFeature struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// haiguang
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
 
 func (s PriceEstimateFeature) String() string {
@@ -5288,8 +5309,28 @@ func (s *PriceEstimateFeature) SetCpuStrategy(v string) *PriceEstimateFeature {
 	return s
 }
 
+func (s *PriceEstimateFeature) SetCpuUtilLevel(v string) *PriceEstimateFeature {
+	s.CpuUtilLevel = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetCpuUtilMetrics(v []*float32) *PriceEstimateFeature {
+	s.CpuUtilMetrics = v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetEnableCpuIdle(v bool) *PriceEstimateFeature {
+	s.EnableCpuIdle = &v
+	return s
+}
+
 func (s *PriceEstimateFeature) SetEnvType(v string) *PriceEstimateFeature {
 	s.EnvType = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetEphemeralStorageGiB(v int64) *PriceEstimateFeature {
+	s.EphemeralStorageGiB = &v
 	return s
 }
 
@@ -5348,6 +5389,11 @@ func (s *PriceEstimateFeature) SetMinInstanceCount(v int64) *PriceEstimateFeatur
 	return s
 }
 
+func (s *PriceEstimateFeature) SetNewSaeVersion(v string) *PriceEstimateFeature {
+	s.NewSaeVersion = &v
+	return s
+}
+
 func (s *PriceEstimateFeature) SetNoneLoadInstanceCount(v int64) *PriceEstimateFeature {
 	s.NoneLoadInstanceCount = &v
 	return s
@@ -5360,6 +5406,11 @@ func (s *PriceEstimateFeature) SetNoneLoadSeconds(v int64) *PriceEstimateFeature
 
 func (s *PriceEstimateFeature) SetRegionId(v string) *PriceEstimateFeature {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PriceEstimateFeature) SetResourceType(v string) *PriceEstimateFeature {
+	s.ResourceType = &v
 	return s
 }
 
@@ -9841,7 +9892,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
 	// example:
 	//
 	// 10
@@ -10209,6 +10261,11 @@ func (s *CreateApplicationRequest) SetEnvs(v string) *CreateApplicationRequest {
 	return s
 }
 
+func (s *CreateApplicationRequest) SetGpuConfig(v string) *CreateApplicationRequest {
+	s.GpuConfig = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetImagePullSecrets(v string) *CreateApplicationRequest {
 	s.ImagePullSecrets = &v
 	return s
@@ -10559,7 +10616,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
 	// example:
 	//
 	// 10
@@ -10924,6 +10982,11 @@ func (s *CreateApplicationShrinkRequest) SetEnableSidecarResourceIsolated(v bool
 
 func (s *CreateApplicationShrinkRequest) SetEnvs(v string) *CreateApplicationShrinkRequest {
 	s.Envs = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetGpuConfig(v string) *CreateApplicationShrinkRequest {
+	s.GpuConfig = &v
 	return s
 }
 
@@ -15980,6 +16043,156 @@ func (s *DeleteIngressResponse) SetBody(v *DeleteIngressResponseBody) *DeleteIng
 	return s
 }
 
+type DeleteInstancesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 017f39b8-dfa4-4e16-a84b-1dcee4b1****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// demo-aaed579c-1f8a-431e-8705-97d18e91c7b4******
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s DeleteInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesRequest) SetAppId(v string) *DeleteInstancesRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DeleteInstancesRequest) SetInstanceIds(v string) *DeleteInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type DeleteInstancesResponseBody struct {
+	// example:
+	//
+	// 200
+	Code      *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DeleteInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 91F93257-7A4A-4BD3-9A7E-2F6EAE6D****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 0a981dd515966966104121683d****
+	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DeleteInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponseBody) SetCode(v string) *DeleteInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetData(v *DeleteInstancesResponseBodyData) *DeleteInstancesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetErrorCode(v string) *DeleteInstancesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetMessage(v string) *DeleteInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetRequestId(v string) *DeleteInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetSuccess(v bool) *DeleteInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DeleteInstancesResponseBody) SetTraceId(v string) *DeleteInstancesResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DeleteInstancesResponseBodyData struct {
+	// example:
+	//
+	// 01db03d3-3ee9-48b3-b3d0-dfce2d88****
+	ChangeOrderId *string `json:"ChangeOrderId,omitempty" xml:"ChangeOrderId,omitempty"`
+}
+
+func (s DeleteInstancesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponseBodyData) SetChangeOrderId(v string) *DeleteInstancesResponseBodyData {
+	s.ChangeOrderId = &v
+	return s
+}
+
+type DeleteInstancesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponse) SetHeaders(v map[string]*string) *DeleteInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstancesResponse) SetStatusCode(v int32) *DeleteInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteInstancesResponse) SetBody(v *DeleteInstancesResponseBody) *DeleteInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteJobRequest struct {
 	// The ID of the job template that you want to delete.
 	//
@@ -16947,7 +17160,8 @@ type DeployApplicationRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -17482,6 +17696,11 @@ func (s *DeployApplicationRequest) SetEnvs(v string) *DeployApplicationRequest {
 	return s
 }
 
+func (s *DeployApplicationRequest) SetGpuConfig(v string) *DeployApplicationRequest {
+	s.GpuConfig = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetImagePullSecrets(v string) *DeployApplicationRequest {
 	s.ImagePullSecrets = &v
 	return s
@@ -17918,7 +18137,8 @@ type DeployApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"name":"envtmp","value":"0"}]
-	Envs *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	Envs      *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	GpuConfig *string `json:"GpuConfig,omitempty" xml:"GpuConfig,omitempty"`
 	// The ID of the corresponding Secret.
 	//
 	// example:
@@ -18450,6 +18670,11 @@ func (s *DeployApplicationShrinkRequest) SetEnableSidecarResourceIsolated(v bool
 
 func (s *DeployApplicationShrinkRequest) SetEnvs(v string) *DeployApplicationShrinkRequest {
 	s.Envs = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetGpuConfig(v string) *DeployApplicationShrinkRequest {
+	s.GpuConfig = &v
 	return s
 }
 
@@ -44840,6 +45065,8 @@ type QueryResourceStaticsResponseBodyDataSummary struct {
 	Cpu              *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	Cu               *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
 	EphemeralStorage *float32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
+	GpuA10           *float32 `json:"GpuA10,omitempty" xml:"GpuA10,omitempty"`
+	GpuPpu810e       *float32 `json:"GpuPpu810e,omitempty" xml:"GpuPpu810e,omitempty"`
 	IdleCpu          *float32 `json:"IdleCpu,omitempty" xml:"IdleCpu,omitempty"`
 	// The memory usage. Unit: GiB per minute.
 	//
@@ -44874,6 +45101,16 @@ func (s *QueryResourceStaticsResponseBodyDataSummary) SetCu(v float32) *QueryRes
 
 func (s *QueryResourceStaticsResponseBodyDataSummary) SetEphemeralStorage(v float32) *QueryResourceStaticsResponseBodyDataSummary {
 	s.EphemeralStorage = &v
+	return s
+}
+
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetGpuA10(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.GpuA10 = &v
+	return s
+}
+
+func (s *QueryResourceStaticsResponseBodyDataSummary) SetGpuPpu810e(v float32) *QueryResourceStaticsResponseBodyDataSummary {
+	s.GpuPpu810e = &v
 	return s
 }
 
@@ -52153,6 +52390,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["Envs"] = request.Envs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GpuConfig)) {
+		query["GpuConfig"] = request.GpuConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
 		query["ImagePullSecrets"] = request.ImagePullSecrets
 	}
@@ -54038,6 +54279,74 @@ func (client *Client) DeleteIngress(request *DeleteIngressRequest) (_result *Del
 
 // Summary:
 //
+// 删除实例
+//
+// @param request - DeleteInstancesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteInstancesResponse
+func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstances"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/app/deleteInstances"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除实例
+//
+// @param request - DeleteInstancesRequest
+//
+// @return DeleteInstancesResponse
+func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result *DeleteInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstancesResponse{}
+	_body, _err := client.DeleteInstancesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Delete a job template.
 //
 // @param request - DeleteJobRequest
@@ -54617,6 +54926,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.Envs)) {
 		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GpuConfig)) {
+		query["GpuConfig"] = request.GpuConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImagePullSecrets)) {
