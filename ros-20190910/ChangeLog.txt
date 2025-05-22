@@ -1,3 +1,7 @@
+2025-05-22 Version: v4.3.6
+- Update API GetServiceProvisions: add response parameters Body.ServiceProvisions.$.CommodityProvisions.
+
+
 2025-04-27 Version: v4.3.5
 - Generated golang 2019-09-10 for ROS.
 

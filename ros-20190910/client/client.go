@@ -597,15 +597,34 @@ func (s *ContinueCreateStackResponse) SetBody(v *ContinueCreateStackResponseBody
 }
 
 type CreateAITaskRequest struct {
+	// The input description for the AI task.
+	//
+	// - When the task type is Generate Template, this parameter specifies the functionality of the template to be generated.
+	//
+	// - When the task type is FixTemplate, this parameter can describe how the template should be repaired.
+	//
+	// example:
+	//
+	// 创建一台ECS，部署nignx服务
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The type of AI task. Values:
+	//
+	// - GenerateTemplate: AI template generation
+	//
+	// - FixTemplate: AI template repair
+	//
 	// example:
 	//
 	// GenerateTemplate
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// When the task type is AI template repair, specify the original template that needs to be fixed or modified.
+	//
 	// example:
 	//
 	// {"ROSTemplateFormatVersion": "2015-09-01"}
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	// The type of the template to be generated or repaired. Default is ROS.
+	//
 	// example:
 	//
 	// ROS
@@ -641,26 +660,42 @@ func (s *CreateAITaskRequest) SetTemplateType(v string) *CreateAITaskRequest {
 }
 
 type CreateAITaskResponseBody struct {
+	// Error code.
+	//
 	// example:
 	//
 	// Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Error message.
+	//
 	// example:
 	//
 	// You are not authorized to complete this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the call was successful. Values:
+	//
+	// - true: Call succeeded.
+	//
+	// - false: Call failed.
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// AI task ID.
+	//
 	// example:
 	//
 	// t-asas*****
@@ -6637,10 +6672,20 @@ func (s *GenerateTemplatePolicyResponse) SetBody(v *GenerateTemplatePolicyRespon
 }
 
 type GetAITaskRequest struct {
+	// Specifies whether to return the TaskOutput parameter. The TaskOutput parameter specifies the outputs of the AI task. Valid values:
+	//
+	// 	- Enabled
+	//
+	// 	- Disabled (default)
+	//
+	// >  The value of TaskOutput may be excessively long. If you do not require the outputs of the task, we recommend that you set OutputOption to Disabled to improve the response speed of the API operation.
+	//
 	// example:
 	//
 	// Disabled
 	OutputOption *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// t-asasas*****
@@ -6666,38 +6711,72 @@ func (s *GetAITaskRequest) SetTaskId(v string) *GetAITaskRequest {
 }
 
 type GetAITaskResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Forbidden
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// You are not authorized to complete this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 14A07460-EBE7-47CA-9757-12CC4761D47A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The state of the AI task.
+	//
+	// 	- PENDING
+	//
+	// 	- WAITING
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCESS
+	//
+	// 	- FAILURE
+	//
 	// example:
 	//
 	// FAILURE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the AI task is in the state.
+	//
 	// example:
 	//
 	// Handler execution unexpected failure
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// t-asasas*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The outputs of the AI task. The outputs include the template.
+	//
+	// *
+	//
 	// example:
 	//
 	// "Result": {
@@ -6706,6 +6785,12 @@ type GetAITaskResponseBody struct {
 	//
 	// }
 	TaskOutput map[string]interface{} `json:"TaskOutput,omitempty" xml:"TaskOutput,omitempty"`
+	// The type of the AI task.
+	//
+	// 	- GenerateTemplate: The AI task is used to generate a template.
+	//
+	// 	- FixTemplate: The AI task is used to fix a template.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -8711,7 +8796,8 @@ type GetServiceProvisionsResponseBodyServiceProvisions struct {
 	// example:
 	//
 	// false
-	AutoEnableService *bool `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	AutoEnableService   *bool                                                                   `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	CommodityProvisions []*GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions `json:"CommodityProvisions,omitempty" xml:"CommodityProvisions,omitempty" type:"Repeated"`
 	// The names of the services on which the service that is queried depends.
 	DependentServiceNames []*string `json:"DependentServiceNames,omitempty" xml:"DependentServiceNames,omitempty" type:"Repeated"`
 	// The URL that points to the activation page of the service.
@@ -8765,6 +8851,11 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetAutoEnableService
 	return s
 }
 
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetCommodityProvisions(v []*GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.CommodityProvisions = v
+	return s
+}
+
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetDependentServiceNames(v []*string) *GetServiceProvisionsResponseBodyServiceProvisions {
 	s.DependentServiceNames = v
 	return s
@@ -8792,6 +8883,35 @@ func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatus(v string) 
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetStatusReason(v string) *GetServiceProvisionsResponseBodyServiceProvisions {
 	s.StatusReason = &v
+	return s
+}
+
+type GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions struct {
+	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
+	EnableURL     *string `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) GoString() string {
+	return s.String()
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetCommodityCode(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.CommodityCode = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetEnableURL(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.EnableURL = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions) SetStatus(v string) *GetServiceProvisionsResponseBodyServiceProvisionsCommodityProvisions {
+	s.Status = &v
 	return s
 }
 
@@ -14975,14 +15095,24 @@ func (s *ImportStacksToStackGroupResponse) SetBody(v *ImportStacksToStackGroupRe
 }
 
 type ListAITaskEventsRequest struct {
+	// The maximum number of results to be returned from a single query when the NextToken parameter is used in the query.
+	//
+	// Valid values: 1 to 100.
+	//
+	// Default value: 50.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// AAAAAdDWBF2****w==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// t-asasas*****
@@ -15013,37 +15143,72 @@ func (s *ListAITaskEventsRequest) SetTaskId(v string) *ListAITaskEventsRequest {
 }
 
 type ListAITaskEventsResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// Forbidden
-	Code   *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The events.
 	Events []*ListAITaskEventsResponseBodyEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****w==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B288A0BE-D927-4888-B0F7-B35EF84B6E6F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
 	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// t-asasas*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The state of the AI task.
+	//
+	// 	- PENDING
+	//
+	// 	- WAITING
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCESS
+	//
+	// 	- FAILURE
+	//
 	// example:
 	//
 	// RUNNING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	// The type of the AI task.
+	//
+	// 	- GenerateTemplate: The AI task is used to generate a template.
+	//
+	// 	- FixTemplate: The AI task is used to fix a template.
+	//
 	// example:
 	//
 	// GenerateTemplate
@@ -15104,26 +15269,86 @@ func (s *ListAITaskEventsResponseBody) SetTaskType(v string) *ListAITaskEventsRe
 }
 
 type ListAITaskEventsResponseBodyEvents struct {
+	// The type of the agent that is used to execute the AI task.
+	//
+	// Valid values:
+	//
+	// 	- GenerateTemplateAgent
+	//
+	// 	- FixUserTemplateAgent
+	//
 	// example:
 	//
 	// GenerateTemplateAgent
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
+	// The time when the event was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format. The time is displayed in UTC.
+	//
 	// example:
 	//
 	// 2019-08-01T04:07:39
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The estimated execution time of the handler. Unit: seconds.
+	//
 	// example:
 	//
 	// 60
 	EstimatedProcessingTime *string `json:"EstimatedProcessingTime,omitempty" xml:"EstimatedProcessingTime,omitempty"`
+	// The details of the event.
+	//
 	// example:
 	//
 	// Document template generator started.
 	EventData *string `json:"EventData,omitempty" xml:"EventData,omitempty"`
+	// The execution state of the handler that process the AI task.
+	//
+	// Valid values:
+	//
+	// 	- SUCCESS
+	//
+	// 	- RUNNING
+	//
+	// 	- FAILURE
+	//
 	// example:
 	//
 	// RUNNING
 	HandlerProcessStatus *string `json:"HandlerProcessStatus,omitempty" xml:"HandlerProcessStatus,omitempty"`
+	// The type of the handler that is used to execute the task.
+	//
+	// Valid values:
+	//
+	// 	- TerraformTemplateGenerator
+	//
+	// 	- TemplateGenerator
+	//
+	// 	- ROSTemplateModifier
+	//
+	// 	- TerraformTemplateStaticFixer
+	//
+	// 	- TerraformTemplateDynamicFixer
+	//
+	// 	- DocumentTemplateGenerator
+	//
+	// 	- TerraformTemplateModifier
+	//
+	// 	- TemplateModifier
+	//
+	// 	- FixTemplateInputPreprocessor
+	//
+	// 	- TemplateStaticFixer
+	//
+	// 	- GenerateTemplateInputPreprocessor
+	//
+	// 	- ROSTemplateGenerator
+	//
+	// 	- TemplateDynamicFixer
+	//
+	// 	- BaseDynamicFixer
+	//
+	// 	- ROSTemplateStaticFixer
+	//
+	// 	- ROSTemplateDynamicFixer
+	//
 	// example:
 	//
 	// ROSTemplateGenerator
@@ -15198,18 +15423,32 @@ func (s *ListAITaskEventsResponse) SetBody(v *ListAITaskEventsResponseBody) *Lis
 }
 
 type ListAITasksRequest struct {
+	// The maximum number of data entries to return.
+	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+	//
 	// example:
 	//
 	// U12WEI6Ro2ol3wA54rBNS3Cltv2VJyA+7hP4GqbIOhmWU5mWU9ZE3cXLgDaH4KSMRfIYcIVrvtHaAzCoyfo7VQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The ID of the AI task. You can filter AI tasks by task ID.
+	//
 	// example:
 	//
 	// t-asasas*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the AI task. You can filter AI tasks by task type.
+	//
+	// 	- GenerateTemplate: The AI task is used to generate a template.
+	//
+	// 	- FixTemplate: The AI task is used to fix a template.
+	//
+	// If you leave this parameter empty, all task types are queried.
+	//
 	// example:
 	//
 	// GenerateTemplate
@@ -15245,29 +15484,44 @@ func (s *ListAITasksRequest) SetTaskType(v string) *ListAITasksRequest {
 }
 
 type ListAITasksResponseBody struct {
+	// The HTTP status code.
+	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// You are not authorized to complete this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// U12WEI6Ro2ol3wA54rBNS3Cltv2VJyA+7hP4GqbIOhmWU5mWU9ZE3cXLgDaH4KSMRfIYcIVrvtHaAzCoyfo7VQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B288A0BE-D927-4888-B0F7-B35EF84****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful. Valid values:
+	//
+	// 	- true
+	//
+	// 	- false
+	//
 	// example:
 	//
 	// true
-	Success *string                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	Tasks   []*ListAITasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The AI tasks.
+	Tasks []*ListAITasksResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
 }
 
 func (s ListAITasksResponseBody) String() string {
@@ -15309,27 +15563,58 @@ func (s *ListAITasksResponseBody) SetTasks(v []*ListAITasksResponseBodyTasks) *L
 }
 
 type ListAITasksResponseBodyTasks struct {
+	// The time when the AI task was created. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2023-03-15T03:15:53
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Prompt     *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The description of the AI task.
+	//
+	// example:
+	//
+	// Create an ECS instance and deploy the Nginx service.
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The state of the AI task.
+	//
+	// 	- PENDING
+	//
+	// 	- WAITING
+	//
+	// 	- RUNNING
+	//
+	// 	- SUCCESS
+	//
+	// 	- FAILURE
+	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The reason why the AI task is in the state.
+	//
 	// example:
 	//
 	// Handler execution unexpected failure
 	StatusReason *string `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	// The ID of the AI task.
+	//
 	// example:
 	//
 	// t-asasas*****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The type of the AI task.
+	//
+	// 	- GenerateTemplate: The AI task is used to generate a template.
+	//
+	// 	- FixTemplate: The AI task is used to fix a template.
+	//
 	// example:
 	//
 	// GenerateTemplate
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// The time when the AI task was updated. The time is displayed in UTC. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ss format.
+	//
 	// example:
 	//
 	// 2023-11-20T22:00:50
@@ -27264,7 +27549,11 @@ func (client *Client) ContinueCreateStack(request *ContinueCreateStackRequest) (
 
 // Summary:
 //
-// 创建AI任务
+// # Create AI Task
+//
+// Description:
+//
+// This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
 //
 // @param request - CreateAITaskRequest
 //
@@ -27320,7 +27609,11 @@ func (client *Client) CreateAITaskWithOptions(request *CreateAITaskRequest, runt
 
 // Summary:
 //
-// 创建AI任务
+// # Create AI Task
+//
+// Description:
+//
+// This API allows users to create an AI task based on the specified task type, covering a range of capabilities from natural language understanding to resource stack deployment. Users need to provide the task type and any required parameters, and the API will return a unique TaskId for tracking the status and results of the task.
 //
 // @param request - CreateAITaskRequest
 //
@@ -29168,6 +29461,10 @@ func (client *Client) DetectStackDrift(request *DetectStackDriftRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// 对资源栈组进行偏差检测
+//
 // @param tmpReq - DetectStackGroupDriftRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -29224,6 +29521,10 @@ func (client *Client) DetectStackGroupDriftWithOptions(tmpReq *DetectStackGroupD
 	return _result, _err
 }
 
+// Summary:
+//
+// 对资源栈组进行偏差检测
+//
 // @param request - DetectStackGroupDriftRequest
 //
 // @return DetectStackGroupDriftResponse
@@ -29560,7 +29861,7 @@ func (client *Client) GenerateTemplatePolicy(request *GenerateTemplatePolicyRequ
 
 // Summary:
 //
-// 查询指定AI任务信息
+// Queries the information about an AI task by task ID.
 //
 // @param request - GetAITaskRequest
 //
@@ -29606,7 +29907,7 @@ func (client *Client) GetAITaskWithOptions(request *GetAITaskRequest, runtime *u
 
 // Summary:
 //
-// 查询指定AI任务信息
+// Queries the information about an AI task by task ID.
 //
 // @param request - GetAITaskRequest
 //
@@ -31518,7 +31819,7 @@ func (client *Client) ImportStacksToStackGroup(request *ImportStacksToStackGroup
 
 // Summary:
 //
-// 获取指定AITask事件列表
+// Queries the events of an AI task.
 //
 // @param request - ListAITaskEventsRequest
 //
@@ -31568,7 +31869,7 @@ func (client *Client) ListAITaskEventsWithOptions(request *ListAITaskEventsReque
 
 // Summary:
 //
-// 获取指定AITask事件列表
+// Queries the events of an AI task.
 //
 // @param request - ListAITaskEventsRequest
 //
@@ -31586,7 +31887,7 @@ func (client *Client) ListAITaskEvents(request *ListAITaskEventsRequest) (_resul
 
 // Summary:
 //
-// 查询AI任务列表
+// Queries a list of AI tasks.
 //
 // @param request - ListAITasksRequest
 //
@@ -31640,7 +31941,7 @@ func (client *Client) ListAITasksWithOptions(request *ListAITasksRequest, runtim
 
 // Summary:
 //
-// 查询AI任务列表
+// Queries a list of AI tasks.
 //
 // @param request - ListAITasksRequest
 //
@@ -33646,6 +33947,10 @@ func (client *Client) RegisterResourceType(request *RegisterResourceTypeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改资源栈的删除保护属性
+//
 // @param request - SetDeletionProtectionRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -33692,6 +33997,10 @@ func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProte
 	return _result, _err
 }
 
+// Summary:
+//
+// 修改资源栈的删除保护属性
+//
 // @param request - SetDeletionProtectionRequest
 //
 // @return SetDeletionProtectionResponse
