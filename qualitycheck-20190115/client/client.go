@@ -9580,6 +9580,8 @@ type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo str
 	// true
 	Complainable         *bool                                                                                        `json:"Complainable,omitempty" xml:"Complainable,omitempty"`
 	ConditionHitInfoList *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList `json:"ConditionHitInfoList,omitempty" xml:"ConditionHitInfoList,omitempty" type:"Struct"`
+	MachineHitResult     *int32                                                                                       `json:"MachineHitResult,omitempty" xml:"MachineHitResult,omitempty"`
+	ReviewHitResult      *int32                                                                                       `json:"ReviewHitResult,omitempty" xml:"ReviewHitResult,omitempty"`
 	ReviewInfo           *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo           `json:"ReviewInfo,omitempty" xml:"ReviewInfo,omitempty" type:"Struct"`
 	// example:
 	//
@@ -9629,6 +9631,16 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetConditionHitInfoList(v *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoList) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
 	s.ConditionHitInfoList = v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetMachineHitResult(v int32) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
+	s.MachineHitResult = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo) SetReviewHitResult(v int32) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo {
+	s.ReviewHitResult = &v
 	return s
 }
 
@@ -9826,7 +9838,8 @@ type GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoCond
 	// example:
 	//
 	// 1
-	From *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	From    *int32 `json:"From,omitempty" xml:"From,omitempty"`
+	IsMatch *bool  `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
 	// example:
 	//
 	// 2
@@ -9862,6 +9875,11 @@ func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo
 
 func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetFrom(v int32) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
 	s.From = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord) SetIsMatch(v bool) *GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoConditionHitInfoListConditionHitInfoKeyWordsKeyWord {
+	s.IsMatch = &v
 	return s
 }
 
