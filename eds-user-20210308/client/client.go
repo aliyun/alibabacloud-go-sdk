@@ -1423,10 +1423,17 @@ func (s *CreateUsersResponse) SetBody(v *CreateUsersResponseBody) *CreateUsersRe
 }
 
 type DeleteResourceGroupRequest struct {
+	// >  The ID of the resource group that you want to delete.
+	//
+	// 	- If you also specify ResourceGroupIds, both parameters take effect.
+	//
 	// example:
 	//
 	// rg-aj01tck67a0szp***
-	ResourceGroupId  *string   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// >  The IDs of the resource groups that you want to delete.
+	//
+	// 	- If you also specify ResourceGroupId, both parameters take effect.
 	ResourceGroupIds []*string `json:"ResourceGroupIds,omitempty" xml:"ResourceGroupIds,omitempty" type:"Repeated"`
 }
 
@@ -1449,6 +1456,8 @@ func (s *DeleteResourceGroupRequest) SetResourceGroupIds(v []*string) *DeleteRes
 }
 
 type DeleteResourceGroupResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 2463A343-BD32-5803-959E-9A8472A1***
@@ -2252,6 +2261,7 @@ func (s *DescribeResourceGroupsResponseBody) SetTotalCount(v string) *DescribeRe
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroup struct {
+	AppRules []*DescribeResourceGroupsResponseBodyResourceGroupAppRules `json:"AppRules,omitempty" xml:"AppRules,omitempty" type:"Repeated"`
 	// example:
 	//
 	// 3
@@ -2279,6 +2289,11 @@ func (s DescribeResourceGroupsResponseBodyResourceGroup) String() string {
 
 func (s DescribeResourceGroupsResponseBodyResourceGroup) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAppRules(v []*DescribeResourceGroupsResponseBodyResourceGroupAppRules) *DescribeResourceGroupsResponseBodyResourceGroup {
+	s.AppRules = v
+	return s
 }
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetAuthCount(v string) *DescribeResourceGroupsResponseBodyResourceGroup {
@@ -2313,6 +2328,35 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetResourceGroupName(v
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroup) SetTimers(v []*DescribeResourceGroupsResponseBodyResourceGroupTimers) *DescribeResourceGroupsResponseBodyResourceGroup {
 	s.Timers = v
+	return s
+}
+
+type DescribeResourceGroupsResponseBodyResourceGroupAppRules struct {
+	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupAppRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeResourceGroupsResponseBodyResourceGroupAppRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupAppRules) SetId(v string) *DescribeResourceGroupsResponseBodyResourceGroupAppRules {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupAppRules) SetName(v string) *DescribeResourceGroupsResponseBodyResourceGroupAppRules {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupAppRules) SetType(v int32) *DescribeResourceGroupsResponseBodyResourceGroupAppRules {
+	s.Type = &v
 	return s
 }
 
@@ -2352,11 +2396,13 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupPolicies) SetName(v stri
 }
 
 type DescribeResourceGroupsResponseBodyResourceGroupTimers struct {
+	BindStatus *string `json:"BindStatus,omitempty" xml:"BindStatus,omitempty"`
 	// example:
 	//
 	// t-asdzx0mbjhg***
-	Id   *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Id          *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	TimerStatus *string `json:"TimerStatus,omitempty" xml:"TimerStatus,omitempty"`
 }
 
 func (s DescribeResourceGroupsResponseBodyResourceGroupTimers) String() string {
@@ -2367,6 +2413,11 @@ func (s DescribeResourceGroupsResponseBodyResourceGroupTimers) GoString() string
 	return s.String()
 }
 
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetBindStatus(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
+	s.BindStatus = &v
+	return s
+}
+
 func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetId(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	s.Id = &v
 	return s
@@ -2374,6 +2425,11 @@ func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetId(v string) 
 
 func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetName(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeResourceGroupsResponseBodyResourceGroupTimers) SetTimerStatus(v string) *DescribeResourceGroupsResponseBodyResourceGroupTimers {
+	s.TimerStatus = &v
 	return s
 }
 
@@ -7182,7 +7238,7 @@ func (client *Client) CreateUsers(request *CreateUsersRequest) (_result *CreateU
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
@@ -7228,7 +7284,7 @@ func (client *Client) DeleteResourceGroupWithOptions(request *DeleteResourceGrou
 
 // Summary:
 //
-// 删除资源组
+// Deletes a resource group.
 //
 // @param request - DeleteResourceGroupRequest
 //
