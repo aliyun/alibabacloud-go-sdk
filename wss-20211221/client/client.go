@@ -60,6 +60,7 @@ type CreateMultiOrderRequestOrderItems struct {
 	//
 	// false
 	AutoRenew  *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BuyChange  *bool                                          `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
 	Components []*CreateMultiOrderRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -102,6 +103,11 @@ func (s *CreateMultiOrderRequestOrderItems) SetAutoPay(v bool) *CreateMultiOrder
 
 func (s *CreateMultiOrderRequestOrderItems) SetAutoRenew(v bool) *CreateMultiOrderRequestOrderItems {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateMultiOrderRequestOrderItems) SetBuyChange(v bool) *CreateMultiOrderRequestOrderItems {
+	s.BuyChange = &v
 	return s
 }
 
@@ -215,6 +221,7 @@ type CreateMultiOrderShrinkRequestOrderItems struct {
 	//
 	// false
 	AutoRenew  *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	BuyChange  *bool                                                `json:"BuyChange,omitempty" xml:"BuyChange,omitempty"`
 	Components []*CreateMultiOrderShrinkRequestOrderItemsComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -257,6 +264,11 @@ func (s *CreateMultiOrderShrinkRequestOrderItems) SetAutoPay(v bool) *CreateMult
 
 func (s *CreateMultiOrderShrinkRequestOrderItems) SetAutoRenew(v bool) *CreateMultiOrderShrinkRequestOrderItems {
 	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateMultiOrderShrinkRequestOrderItems) SetBuyChange(v bool) *CreateMultiOrderShrinkRequestOrderItems {
+	s.BuyChange = &v
 	return s
 }
 
@@ -1572,6 +1584,10 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// 多商品组合下单
+//
 // @param tmpReq - CreateMultiOrderRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1628,6 +1644,10 @@ func (client *Client) CreateMultiOrderWithOptions(tmpReq *CreateMultiOrderReques
 	return _result, _err
 }
 
+// Summary:
+//
+// 多商品组合下单
+//
 // @param request - CreateMultiOrderRequest
 //
 // @return CreateMultiOrderResponse
