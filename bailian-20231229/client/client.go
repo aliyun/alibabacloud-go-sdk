@@ -4102,6 +4102,7 @@ func (s *GetPublishedAgentResponse) SetBody(v *GetPublishedAgentResponseBody) *G
 }
 
 type ListCategoryRequest struct {
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
 	// This parameter is required.
 	//
 	// example:
@@ -4128,6 +4129,11 @@ func (s ListCategoryRequest) String() string {
 
 func (s ListCategoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListCategoryRequest) SetCategoryName(v string) *ListCategoryRequest {
+	s.CategoryName = &v
+	return s
 }
 
 func (s *ListCategoryRequest) SetCategoryType(v string) *ListCategoryRequest {
@@ -10494,6 +10500,10 @@ func (client *Client) ListCategoryWithOptions(WorkspaceId *string, request *List
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryName)) {
+		body["CategoryName"] = request.CategoryName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CategoryType)) {
 		body["CategoryType"] = request.CategoryType
 	}
