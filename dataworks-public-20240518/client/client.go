@@ -4343,6 +4343,164 @@ func (s *CreateAlertRuleResponse) SetBody(v *CreateAlertRuleResponseBody) *Creat
 	return s
 }
 
+type CreateBusinessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// My business process
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 1000000000001
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s CreateBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessRequest) SetBusinessName(v string) *CreateBusinessRequest {
+	s.BusinessName = &v
+	return s
+}
+
+func (s *CreateBusinessRequest) SetDescription(v string) *CreateBusinessRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateBusinessRequest) SetOwner(v string) *CreateBusinessRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateBusinessRequest) SetProjectId(v int64) *CreateBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateBusinessRequest) SetProjectIdentifier(v string) *CreateBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *CreateBusinessRequest) SetUseType(v string) *CreateBusinessRequest {
+	s.UseType = &v
+	return s
+}
+
+type CreateBusinessResponseBody struct {
+	// example:
+	//
+	// 100001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessResponseBody) SetBusinessId(v int64) *CreateBusinessResponseBody {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *CreateBusinessResponseBody) SetErrorCode(v string) *CreateBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateBusinessResponseBody) SetErrorMessage(v string) *CreateBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateBusinessResponseBody) SetHttpStatusCode(v int32) *CreateBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateBusinessResponseBody) SetRequestId(v string) *CreateBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBusinessResponseBody) SetSuccess(v bool) *CreateBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBusinessResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBusinessResponse) SetHeaders(v map[string]*string) *CreateBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBusinessResponse) SetStatusCode(v int32) *CreateBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBusinessResponse) SetBody(v *CreateBusinessResponseBody) *CreateBusinessResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDIAlarmRuleRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
@@ -8895,6 +9053,552 @@ func (s *CreateDataSourceSharedRuleResponse) SetBody(v *CreateDataSourceSharedRu
 	return s
 }
 
+type CreateFileRequest struct {
+	// example:
+	//
+	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
+	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// example:
+	//
+	// true
+	ApplyScheduleImmediately *bool `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
+	// example:
+	//
+	// true
+	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	// example:
+	//
+	// 120000
+	AutoRerunIntervalMillis *int32 `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
+	// example:
+	//
+	// 3
+	AutoRerunTimes *int32 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
+	// example:
+	//
+	// odps_source
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// false
+	CreateFolderIfNotExists *bool `json:"CreateFolderIfNotExists,omitempty" xml:"CreateFolderIfNotExists,omitempty"`
+	// example:
+	//
+	// 00 05 00 	- 	- ?
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// example:
+	//
+	// DAY
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// example:
+	//
+	// abc
+	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
+	// example:
+	//
+	// NONE
+	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
+	// example:
+	//
+	// 1671694850000
+	EndEffectDate   *int64  `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// example:
+	//
+	// Business_process/First_Business_Process/MaxCompute/Folder_1/Folder_2
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// File name
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// false
+	IgnoreParentSkipRunningProperty *bool `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
+	// example:
+	//
+	// m-bp1h4b5a8ogkbll2f3tr
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// project_root,project.file1,project.001_out
+	InputList *string `json:"InputList,omitempty" xml:"InputList,omitempty"`
+	// example:
+	//
+	// [{"ValueSource": "project_001.first_node:bizdate_param","ParameterName": "bizdate_input"}]
+	InputParameters *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// example:
+	//
+	// [{"Type": 1,"Value": "${bizdate}","ParameterName": "bizdate_param"}]
+	OutputParameters *string `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty"`
+	// example:
+	//
+	// 1000000000001
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// a=x b=y
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// ALL_ALLOWED
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 375827434852437
+	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// S_res_group_559_1613715566828
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	// example:
+	//
+	// 1671608450000
+	StartEffectDate *int64 `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	// example:
+	//
+	// true
+	StartImmediately *bool `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
+	// example:
+	//
+	// false
+	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileRequest) SetAdvancedSettings(v string) *CreateFileRequest {
+	s.AdvancedSettings = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetApplyScheduleImmediately(v bool) *CreateFileRequest {
+	s.ApplyScheduleImmediately = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetAutoParsing(v bool) *CreateFileRequest {
+	s.AutoParsing = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetAutoRerunIntervalMillis(v int32) *CreateFileRequest {
+	s.AutoRerunIntervalMillis = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetAutoRerunTimes(v int32) *CreateFileRequest {
+	s.AutoRerunTimes = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetConnectionName(v string) *CreateFileRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetContent(v string) *CreateFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetCreateFolderIfNotExists(v bool) *CreateFileRequest {
+	s.CreateFolderIfNotExists = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetCronExpress(v string) *CreateFileRequest {
+	s.CronExpress = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetCycleType(v string) *CreateFileRequest {
+	s.CycleType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetDependentNodeIdList(v string) *CreateFileRequest {
+	s.DependentNodeIdList = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetDependentType(v string) *CreateFileRequest {
+	s.DependentType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetEndEffectDate(v int64) *CreateFileRequest {
+	s.EndEffectDate = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetFileDescription(v string) *CreateFileRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetFileFolderPath(v string) *CreateFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetFileName(v string) *CreateFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetFileType(v int32) *CreateFileRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetIgnoreParentSkipRunningProperty(v bool) *CreateFileRequest {
+	s.IgnoreParentSkipRunningProperty = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetImageId(v string) *CreateFileRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetInputList(v string) *CreateFileRequest {
+	s.InputList = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetInputParameters(v string) *CreateFileRequest {
+	s.InputParameters = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetOutputParameters(v string) *CreateFileRequest {
+	s.OutputParameters = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetOwner(v string) *CreateFileRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetParaValue(v string) *CreateFileRequest {
+	s.ParaValue = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetProjectId(v int64) *CreateFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetProjectIdentifier(v string) *CreateFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetRerunMode(v string) *CreateFileRequest {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetResourceGroupId(v int64) *CreateFileRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetResourceGroupIdentifier(v string) *CreateFileRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetSchedulerType(v string) *CreateFileRequest {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetStartEffectDate(v int64) *CreateFileRequest {
+	s.StartEffectDate = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetStartImmediately(v bool) *CreateFileRequest {
+	s.StartImmediately = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetStop(v bool) *CreateFileRequest {
+	s.Stop = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetTimeout(v int32) *CreateFileRequest {
+	s.Timeout = &v
+	return s
+}
+
+type CreateFileResponseBody struct {
+	// example:
+	//
+	// 1000001
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileResponseBody) SetData(v int64) *CreateFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateFileResponseBody) SetErrorCode(v string) *CreateFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFileResponseBody) SetErrorMessage(v string) *CreateFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFileResponseBody) SetHttpStatusCode(v int32) *CreateFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateFileResponseBody) SetRequestId(v string) *CreateFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFileResponseBody) SetSuccess(v bool) *CreateFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileResponse) SetHeaders(v map[string]*string) *CreateFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileResponse) SetStatusCode(v int32) *CreateFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFileResponse) SetBody(v *CreateFileResponseBody) *CreateFileResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFolderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Business_process/System_Data/MaxCompute/import_layer
+	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s CreateFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderRequest) SetFolderPath(v string) *CreateFolderRequest {
+	s.FolderPath = &v
+	return s
+}
+
+func (s *CreateFolderRequest) SetProjectId(v int64) *CreateFolderRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateFolderRequest) SetProjectIdentifier(v string) *CreateFolderRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type CreateFolderResponseBody struct {
+	// example:
+	//
+	// bdfd68****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponseBody) SetData(v string) *CreateFolderResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetErrorCode(v string) *CreateFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetErrorMessage(v string) *CreateFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetHttpStatusCode(v int32) *CreateFolderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetRequestId(v string) *CreateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFolderResponseBody) SetSuccess(v bool) *CreateFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFolderResponse) SetHeaders(v map[string]*string) *CreateFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFolderResponse) SetStatusCode(v int32) *CreateFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFolderResponse) SetBody(v *CreateFolderResponseBody) *CreateFolderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFunctionRequest struct {
 	// The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
 	//
@@ -10620,6 +11324,326 @@ func (s *CreateResourceResponse) SetBody(v *CreateResourceResponseBody) *CreateR
 	return s
 }
 
+type CreateResourceFileRequest struct {
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// This is a description
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Business_process/First_Business_Process/MaxCompute/Folder_1/Folder_2
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Filename
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// origin_file_name.sql
+	OriginResourceName *string `json:"OriginResourceName,omitempty" xml:"OriginResourceName,omitempty"`
+	// example:
+	//
+	// 1000000000001
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	RegisterToCalcEngine *bool `json:"RegisterToCalcEngine,omitempty" xml:"RegisterToCalcEngine,omitempty"`
+	// example:
+	//
+	// http://bucketname1.oss-cn-shanghai.aliyuncs.com/example
+	ResourceFile *string `json:"ResourceFile,omitempty" xml:"ResourceFile,omitempty"`
+	// example:
+	//
+	// oss://oss-cn-shanghai.aliyuncs.com/emr-test
+	StorageURL *string `json:"StorageURL,omitempty" xml:"StorageURL,omitempty"`
+	// example:
+	//
+	// false
+	UploadMode *bool `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+}
+
+func (s CreateResourceFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileRequest) SetContent(v string) *CreateResourceFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileDescription(v string) *CreateResourceFileRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileFolderPath(v string) *CreateResourceFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileName(v string) *CreateResourceFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetFileType(v int32) *CreateResourceFileRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetOriginResourceName(v string) *CreateResourceFileRequest {
+	s.OriginResourceName = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetOwner(v string) *CreateResourceFileRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetProjectId(v int64) *CreateResourceFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetRegisterToCalcEngine(v bool) *CreateResourceFileRequest {
+	s.RegisterToCalcEngine = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetResourceFile(v string) *CreateResourceFileRequest {
+	s.ResourceFile = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetStorageURL(v string) *CreateResourceFileRequest {
+	s.StorageURL = &v
+	return s
+}
+
+func (s *CreateResourceFileRequest) SetUploadMode(v bool) *CreateResourceFileRequest {
+	s.UploadMode = &v
+	return s
+}
+
+type CreateResourceFileAdvanceRequest struct {
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// This is a description
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Business_process/First_Business_Process/MaxCompute/Folder_1/Folder_2
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Filename
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// origin_file_name.sql
+	OriginResourceName *string `json:"OriginResourceName,omitempty" xml:"OriginResourceName,omitempty"`
+	// example:
+	//
+	// 1000000000001
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// false
+	RegisterToCalcEngine *bool `json:"RegisterToCalcEngine,omitempty" xml:"RegisterToCalcEngine,omitempty"`
+	// example:
+	//
+	// http://bucketname1.oss-cn-shanghai.aliyuncs.com/example
+	ResourceFileObject io.Reader `json:"ResourceFile,omitempty" xml:"ResourceFile,omitempty"`
+	// example:
+	//
+	// oss://oss-cn-shanghai.aliyuncs.com/emr-test
+	StorageURL *string `json:"StorageURL,omitempty" xml:"StorageURL,omitempty"`
+	// example:
+	//
+	// false
+	UploadMode *bool `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
+}
+
+func (s CreateResourceFileAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetContent(v string) *CreateResourceFileAdvanceRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileDescription(v string) *CreateResourceFileAdvanceRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileFolderPath(v string) *CreateResourceFileAdvanceRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileName(v string) *CreateResourceFileAdvanceRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetFileType(v int32) *CreateResourceFileAdvanceRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetOriginResourceName(v string) *CreateResourceFileAdvanceRequest {
+	s.OriginResourceName = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetOwner(v string) *CreateResourceFileAdvanceRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetProjectId(v int64) *CreateResourceFileAdvanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetRegisterToCalcEngine(v bool) *CreateResourceFileAdvanceRequest {
+	s.RegisterToCalcEngine = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetResourceFileObject(v io.Reader) *CreateResourceFileAdvanceRequest {
+	s.ResourceFileObject = v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetStorageURL(v string) *CreateResourceFileAdvanceRequest {
+	s.StorageURL = &v
+	return s
+}
+
+func (s *CreateResourceFileAdvanceRequest) SetUploadMode(v bool) *CreateResourceFileAdvanceRequest {
+	s.UploadMode = &v
+	return s
+}
+
+type CreateResourceFileResponseBody struct {
+	// example:
+	//
+	// 1000001
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateResourceFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileResponseBody) SetData(v int64) *CreateResourceFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateResourceFileResponseBody) SetRequestId(v string) *CreateResourceFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateResourceFileResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateResourceFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateResourceFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateResourceFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateResourceFileResponse) SetHeaders(v map[string]*string) *CreateResourceFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceFileResponse) SetStatusCode(v int32) *CreateResourceFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateResourceFileResponse) SetBody(v *CreateResourceFileResponseBody) *CreateResourceFileResponse {
+	s.Body = v
+	return s
+}
+
 type CreateResourceGroupRequest struct {
 	// The ID of the Alibaba Cloud resource group.
 	//
@@ -11173,6 +12197,238 @@ func (s *CreateRouteResponse) SetStatusCode(v int32) *CreateRouteResponse {
 }
 
 func (s *CreateRouteResponse) SetBody(v *CreateRouteResponseBody) *CreateRouteResponse {
+	s.Body = v
+	return s
+}
+
+type CreateUdfFileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.alibaba.DataWorks.api.udf.StringConcat
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// example:
+	//
+	// StringConcat(String... substrs)
+	CmdDescription *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
+	// example:
+	//
+	// false
+	CreateFolderIfNotExists *bool `json:"CreateFolderIfNotExists,omitempty" xml:"CreateFolderIfNotExists,omitempty"`
+	// example:
+	//
+	// StringConcat(\\"a\\", \\"b\\", \\"c\\")
+	Example *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Business_process/First_Business_Process/function/string_processing
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// StringConcat
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// example:
+	//
+	// List of strings to be connected
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// string-concat-1.0.0.jar,commons-lang-2.6.jar
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// example:
+	//
+	// New strings generated by concatenating all strings before and after the input order
+	ReturnValue *string `json:"ReturnValue,omitempty" xml:"ReturnValue,omitempty"`
+	// example:
+	//
+	// Concatenate several strings to generate a new string
+	UdfDescription *string `json:"UdfDescription,omitempty" xml:"UdfDescription,omitempty"`
+}
+
+func (s CreateUdfFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfFileRequest) SetClassName(v string) *CreateUdfFileRequest {
+	s.ClassName = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetCmdDescription(v string) *CreateUdfFileRequest {
+	s.CmdDescription = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetCreateFolderIfNotExists(v bool) *CreateUdfFileRequest {
+	s.CreateFolderIfNotExists = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetExample(v string) *CreateUdfFileRequest {
+	s.Example = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetFileFolderPath(v string) *CreateUdfFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetFileName(v string) *CreateUdfFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetFunctionType(v string) *CreateUdfFileRequest {
+	s.FunctionType = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetParameterDescription(v string) *CreateUdfFileRequest {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetProjectId(v int64) *CreateUdfFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetProjectIdentifier(v string) *CreateUdfFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetResources(v string) *CreateUdfFileRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetReturnValue(v string) *CreateUdfFileRequest {
+	s.ReturnValue = &v
+	return s
+}
+
+func (s *CreateUdfFileRequest) SetUdfDescription(v string) *CreateUdfFileRequest {
+	s.UdfDescription = &v
+	return s
+}
+
+type CreateUdfFileResponseBody struct {
+	// example:
+	//
+	// 100000002
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateUdfFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfFileResponseBody) SetData(v int64) *CreateUdfFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateUdfFileResponseBody) SetErrorCode(v string) *CreateUdfFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateUdfFileResponseBody) SetErrorMessage(v string) *CreateUdfFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateUdfFileResponseBody) SetHttpStatusCode(v int32) *CreateUdfFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateUdfFileResponseBody) SetRequestId(v string) *CreateUdfFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUdfFileResponseBody) SetSuccess(v bool) *CreateUdfFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateUdfFileResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateUdfFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateUdfFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdfFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdfFileResponse) SetHeaders(v map[string]*string) *CreateUdfFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUdfFileResponse) SetStatusCode(v int32) *CreateUdfFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUdfFileResponse) SetBody(v *CreateUdfFileResponseBody) *CreateUdfFileResponse {
 	s.Body = v
 	return s
 }
@@ -12169,6 +13425,131 @@ func (s *DeleteAlertRuleResponse) SetBody(v *DeleteAlertRuleResponseBody) *Delet
 	return s
 }
 
+type DeleteBusinessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s DeleteBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessRequest) SetBusinessId(v int64) *DeleteBusinessRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *DeleteBusinessRequest) SetProjectId(v int64) *DeleteBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteBusinessRequest) SetProjectIdentifier(v string) *DeleteBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type DeleteBusinessResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessResponseBody) SetErrorCode(v string) *DeleteBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteBusinessResponseBody) SetErrorMessage(v string) *DeleteBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteBusinessResponseBody) SetHttpStatusCode(v int32) *DeleteBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteBusinessResponseBody) SetRequestId(v string) *DeleteBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteBusinessResponseBody) SetSuccess(v bool) *DeleteBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteBusinessResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBusinessResponse) SetHeaders(v map[string]*string) *DeleteBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBusinessResponse) SetStatusCode(v int32) *DeleteBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBusinessResponse) SetBody(v *DeleteBusinessResponseBody) *DeleteBusinessResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteCertificateRequest struct {
 	// The ID of the certificate file.
 	//
@@ -13081,6 +14462,265 @@ func (s *DeleteDataSourceSharedRuleResponse) SetStatusCode(v int32) *DeleteDataS
 }
 
 func (s *DeleteDataSourceSharedRuleResponse) SetBody(v *DeleteDataSourceSharedRuleResponseBody) *DeleteDataSourceSharedRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000201
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s DeleteFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileRequest) SetFileId(v int64) *DeleteFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetProjectId(v int64) *DeleteFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteFileRequest) SetProjectIdentifier(v string) *DeleteFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type DeleteFileResponseBody struct {
+	// example:
+	//
+	// 1000000001
+	DeploymentId *int64 `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileResponseBody) SetDeploymentId(v int64) *DeleteFileResponseBody {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetErrorCode(v string) *DeleteFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetErrorMessage(v string) *DeleteFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetHttpStatusCode(v int32) *DeleteFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetRequestId(v string) *DeleteFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFileResponseBody) SetSuccess(v bool) *DeleteFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFileResponse) SetHeaders(v map[string]*string) *DeleteFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFileResponse) SetStatusCode(v int32) *DeleteFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFolderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2eb6f9****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s DeleteFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderRequest) SetFolderId(v string) *DeleteFolderRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *DeleteFolderRequest) SetProjectId(v int64) *DeleteFolderRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteFolderRequest) SetProjectIdentifier(v string) *DeleteFolderRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type DeleteFolderResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponseBody) SetErrorCode(v string) *DeleteFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetErrorMessage(v string) *DeleteFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetHttpStatusCode(v int32) *DeleteFolderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetRequestId(v string) *DeleteFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFolderResponseBody) SetSuccess(v bool) *DeleteFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFolderResponse) SetHeaders(v map[string]*string) *DeleteFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetStatusCode(v int32) *DeleteFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteFolderResponse) SetBody(v *DeleteFolderResponseBody) *DeleteFolderResponse {
 	s.Body = v
 	return s
 }
@@ -14290,6 +15930,156 @@ func (s *DeleteWorkflowDefinitionResponse) SetBody(v *DeleteWorkflowDefinitionRe
 	return s
 }
 
+type DeployFileRequest struct {
+	// example:
+	//
+	// First release task
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 10000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 2000001
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s DeployFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeployFileRequest) SetComment(v string) *DeployFileRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *DeployFileRequest) SetFileId(v int64) *DeployFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *DeployFileRequest) SetNodeId(v int64) *DeployFileRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *DeployFileRequest) SetProjectId(v int64) *DeployFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DeployFileRequest) SetProjectIdentifier(v string) *DeployFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type DeployFileResponseBody struct {
+	// example:
+	//
+	// 30000001
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeployFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeployFileResponseBody) SetData(v int64) *DeployFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeployFileResponseBody) SetErrorCode(v string) *DeployFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeployFileResponseBody) SetErrorMessage(v string) *DeployFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeployFileResponseBody) SetHttpStatusCode(v int32) *DeployFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeployFileResponseBody) SetRequestId(v string) *DeployFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeployFileResponseBody) SetSuccess(v bool) *DeployFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeployFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeployFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeployFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeployFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeployFileResponse) SetHeaders(v map[string]*string) *DeployFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeployFileResponse) SetStatusCode(v int32) *DeployFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeployFileResponse) SetBody(v *DeployFileResponseBody) *DeployFileResponse {
+	s.Body = v
+	return s
+}
+
 type DetachDataQualityRulesFromEvaluationTaskRequest struct {
 	// The ID of the data quality monitoring task that is associated with the rule.
 	//
@@ -14543,6 +16333,151 @@ func (s *DissociateProjectFromResourceGroupResponse) SetStatusCode(v int32) *Dis
 }
 
 func (s *DissociateProjectFromResourceGroupResponse) SetBody(v *DissociateProjectFromResourceGroupResponseBody) *DissociateProjectFromResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type EstablishRelationTableToBusinessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000001
+	BusinessId *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 2eb6f9****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// odps.dw_project.tb1
+	TableGuid *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
+}
+
+func (s EstablishRelationTableToBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstablishRelationTableToBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EstablishRelationTableToBusinessRequest) SetBusinessId(v string) *EstablishRelationTableToBusinessRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessRequest) SetFolderId(v string) *EstablishRelationTableToBusinessRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessRequest) SetProjectId(v int64) *EstablishRelationTableToBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessRequest) SetProjectIdentifier(v string) *EstablishRelationTableToBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessRequest) SetTableGuid(v string) *EstablishRelationTableToBusinessRequest {
+	s.TableGuid = &v
+	return s
+}
+
+type EstablishRelationTableToBusinessResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EstablishRelationTableToBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstablishRelationTableToBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EstablishRelationTableToBusinessResponseBody) SetErrorCode(v string) *EstablishRelationTableToBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponseBody) SetErrorMessage(v string) *EstablishRelationTableToBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponseBody) SetHttpStatusCode(v int32) *EstablishRelationTableToBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponseBody) SetRequestId(v string) *EstablishRelationTableToBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponseBody) SetSuccess(v bool) *EstablishRelationTableToBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EstablishRelationTableToBusinessResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *EstablishRelationTableToBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s EstablishRelationTableToBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EstablishRelationTableToBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EstablishRelationTableToBusinessResponse) SetHeaders(v map[string]*string) *EstablishRelationTableToBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponse) SetStatusCode(v int32) *EstablishRelationTableToBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EstablishRelationTableToBusinessResponse) SetBody(v *EstablishRelationTableToBusinessResponseBody) *EstablishRelationTableToBusinessResponse {
 	s.Body = v
 	return s
 }
@@ -15933,6 +17868,202 @@ func (s *GetAlertRuleResponse) SetStatusCode(v int32) *GetAlertRuleResponse {
 }
 
 func (s *GetAlertRuleResponse) SetBody(v *GetAlertRuleResponseBody) *GetAlertRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetBusinessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000000111
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s GetBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetBusinessRequest) SetBusinessId(v int64) *GetBusinessRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetBusinessRequest) SetProjectId(v int64) *GetBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetBusinessRequest) SetProjectIdentifier(v string) *GetBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type GetBusinessResponseBody struct {
+	Data *GetBusinessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetBusinessResponseBody) SetData(v *GetBusinessResponseBodyData) *GetBusinessResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetBusinessResponseBody) SetErrorCode(v string) *GetBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetBusinessResponseBody) SetErrorMessage(v string) *GetBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetBusinessResponseBody) SetHttpStatusCode(v int32) *GetBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetBusinessResponseBody) SetRequestId(v string) *GetBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetBusinessResponseBody) SetSuccess(v bool) *GetBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetBusinessResponseBodyData struct {
+	// example:
+	//
+	// 1000001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// The first business process
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// example:
+	//
+	// This is my first business process.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 20000****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s GetBusinessResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBusinessResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetBusinessResponseBodyData) SetBusinessId(v int64) *GetBusinessResponseBodyData {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetBusinessResponseBodyData) SetBusinessName(v string) *GetBusinessResponseBodyData {
+	s.BusinessName = &v
+	return s
+}
+
+func (s *GetBusinessResponseBodyData) SetDescription(v string) *GetBusinessResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetBusinessResponseBodyData) SetOwner(v string) *GetBusinessResponseBodyData {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetBusinessResponseBodyData) SetProjectId(v string) *GetBusinessResponseBodyData {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetBusinessResponseBodyData) SetUseType(v string) *GetBusinessResponseBodyData {
+	s.UseType = &v
+	return s
+}
+
+type GetBusinessResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetBusinessResponse) SetHeaders(v map[string]*string) *GetBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetBusinessResponse) SetStatusCode(v int32) *GetBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetBusinessResponse) SetBody(v *GetBusinessResponseBody) *GetBusinessResponse {
 	s.Body = v
 	return s
 }
@@ -20295,6 +22426,1472 @@ func (s *GetDatabaseResponse) SetBody(v *GetDatabaseResponseBody) *GetDatabaseRe
 	return s
 }
 
+type GetDeploymentPackageRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000000001
+	DeploymentId *int64 `json:"DeploymentId,omitempty" xml:"DeploymentId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s GetDeploymentPackageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageRequest) SetDeploymentId(v int64) *GetDeploymentPackageRequest {
+	s.DeploymentId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageRequest) SetProjectId(v int64) *GetDeploymentPackageRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageRequest) SetProjectIdentifier(v string) *GetDeploymentPackageRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type GetDeploymentPackageResponseBody struct {
+	Data *GetDeploymentPackageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// You have no permission.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0bc1ec92159376****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDeploymentPackageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageResponseBody) SetData(v *GetDeploymentPackageResponseBodyData) *GetDeploymentPackageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBody) SetErrorCode(v string) *GetDeploymentPackageResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBody) SetErrorMessage(v string) *GetDeploymentPackageResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBody) SetHttpStatusCode(v int32) *GetDeploymentPackageResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBody) SetRequestId(v string) *GetDeploymentPackageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBody) SetSuccess(v bool) *GetDeploymentPackageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDeploymentPackageResponseBodyData struct {
+	DeployedItems []*GetDeploymentPackageResponseBodyDataDeployedItems `json:"DeployedItems,omitempty" xml:"DeployedItems,omitempty" type:"Repeated"`
+	Deployment    *GetDeploymentPackageResponseBodyDataDeployment      `json:"Deployment,omitempty" xml:"Deployment,omitempty" type:"Struct"`
+}
+
+func (s GetDeploymentPackageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageResponseBodyData) SetDeployedItems(v []*GetDeploymentPackageResponseBodyDataDeployedItems) *GetDeploymentPackageResponseBodyData {
+	s.DeployedItems = v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyData) SetDeployment(v *GetDeploymentPackageResponseBodyDataDeployment) *GetDeploymentPackageResponseBodyData {
+	s.Deployment = v
+	return s
+}
+
+type GetDeploymentPackageResponseBodyDataDeployedItems struct {
+	// example:
+	//
+	// 5076****
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 7
+	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDeploymentPackageResponseBodyDataDeployedItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageResponseBodyDataDeployedItems) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployedItems) SetFileId(v int64) *GetDeploymentPackageResponseBodyDataDeployedItems {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployedItems) SetFileVersion(v int64) *GetDeploymentPackageResponseBodyDataDeployedItems {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployedItems) SetStatus(v int32) *GetDeploymentPackageResponseBodyDataDeployedItems {
+	s.Status = &v
+	return s
+}
+
+type GetDeploymentPackageResponseBodyDataDeployment struct {
+	// example:
+	//
+	// 7
+	CheckingStatus *int32 `json:"CheckingStatus,omitempty" xml:"CheckingStatus,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 20030****
+	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	// example:
+	//
+	// Success
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// example:
+	//
+	// 0
+	FromEnvironment *int32 `json:"FromEnvironment,omitempty" xml:"FromEnvironment,omitempty"`
+	// example:
+	//
+	// 2003****
+	HandlerId *string `json:"HandlerId,omitempty" xml:"HandlerId,omitempty"`
+	// example:
+	//
+	// ods_user_info_d-2020-07-04_20030****
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 1
+	ToEnvironment *int32 `json:"ToEnvironment,omitempty" xml:"ToEnvironment,omitempty"`
+}
+
+func (s GetDeploymentPackageResponseBodyDataDeployment) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageResponseBodyDataDeployment) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetCheckingStatus(v int32) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.CheckingStatus = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetCreateTime(v int64) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetCreatorId(v string) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetErrorMessage(v string) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetExecuteTime(v int64) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetFromEnvironment(v int32) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.FromEnvironment = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetHandlerId(v string) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.HandlerId = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetName(v string) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetStatus(v int32) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.Status = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponseBodyDataDeployment) SetToEnvironment(v int32) *GetDeploymentPackageResponseBodyDataDeployment {
+	s.ToEnvironment = &v
+	return s
+}
+
+type GetDeploymentPackageResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetDeploymentPackageResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetDeploymentPackageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDeploymentPackageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDeploymentPackageResponse) SetHeaders(v map[string]*string) *GetDeploymentPackageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDeploymentPackageResponse) SetStatusCode(v int32) *GetDeploymentPackageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDeploymentPackageResponse) SetBody(v *GetDeploymentPackageResponseBody) *GetDeploymentPackageResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileRequest struct {
+	// example:
+	//
+	// 100000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 200000001
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s GetFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileRequest) SetFileId(v int64) *GetFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetNodeId(v int64) *GetFileRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetProjectId(v int64) *GetFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetFileRequest) SetProjectIdentifier(v string) *GetFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type GetFileResponseBody struct {
+	Data *GetFileResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBody) SetData(v *GetFileResponseBodyData) *GetFileResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFileResponseBody) SetErrorCode(v string) *GetFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFileResponseBody) SetErrorMessage(v string) *GetFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFileResponseBody) SetHttpStatusCode(v int32) *GetFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetFileResponseBody) SetRequestId(v string) *GetFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileResponseBody) SetSuccess(v bool) *GetFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFileResponseBodyData struct {
+	File                 *GetFileResponseBodyDataFile                 `json:"File,omitempty" xml:"File,omitempty" type:"Struct"`
+	NodeConfiguration    *GetFileResponseBodyDataNodeConfiguration    `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty" type:"Struct"`
+	ResourceDownloadLink *GetFileResponseBodyDataResourceDownloadLink `json:"ResourceDownloadLink,omitempty" xml:"ResourceDownloadLink,omitempty" type:"Struct"`
+}
+
+func (s GetFileResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyData) SetFile(v *GetFileResponseBodyDataFile) *GetFileResponseBodyData {
+	s.File = v
+	return s
+}
+
+func (s *GetFileResponseBodyData) SetNodeConfiguration(v *GetFileResponseBodyDataNodeConfiguration) *GetFileResponseBodyData {
+	s.NodeConfiguration = v
+	return s
+}
+
+func (s *GetFileResponseBodyData) SetResourceDownloadLink(v *GetFileResponseBodyDataResourceDownloadLink) *GetFileResponseBodyData {
+	s.ResourceDownloadLink = v
+	return s
+}
+
+type GetFileResponseBodyDataFile struct {
+	// example:
+	//
+	// {\\"priority\\":\\"1\\",\\"ENABLE_SPARKSQL_JDBC\\":false,\\"FLOW_SKIP_SQL_ANALYZE\\":false,\\"queue\\":\\"default\\"}
+	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// example:
+	//
+	// true
+	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	// example:
+	//
+	// 1000001
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 1000001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 0
+	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
+	// example:
+	//
+	// odps_source
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1593879116000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 424732****
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 3
+	CurrentVersion *int32 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// RECYCLE
+	DeletedStatus *string `json:"DeletedStatus,omitempty" xml:"DeletedStatus,omitempty"`
+	// example:
+	//
+	// My first DataWorks file
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// example:
+	//
+	// 2735c2****
+	FileFolderId *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
+	// example:
+	//
+	// 100000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// true
+	IsMaxCompute *bool `json:"IsMaxCompute,omitempty" xml:"IsMaxCompute,omitempty"`
+	// example:
+	//
+	// 1593879116000
+	LastEditTime *int64 `json:"LastEditTime,omitempty" xml:"LastEditTime,omitempty"`
+	// example:
+	//
+	// 424732****
+	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
+	// example:
+	//
+	// 300001
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 7775674356****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// -1
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s GetFileResponseBodyDataFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataFile) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataFile) SetAdvancedSettings(v string) *GetFileResponseBodyDataFile {
+	s.AdvancedSettings = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetAutoParsing(v bool) *GetFileResponseBodyDataFile {
+	s.AutoParsing = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetBizId(v int64) *GetFileResponseBodyDataFile {
+	s.BizId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetBusinessId(v int64) *GetFileResponseBodyDataFile {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetCommitStatus(v int32) *GetFileResponseBodyDataFile {
+	s.CommitStatus = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetConnectionName(v string) *GetFileResponseBodyDataFile {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetContent(v string) *GetFileResponseBodyDataFile {
+	s.Content = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetCreateTime(v int64) *GetFileResponseBodyDataFile {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetCreateUser(v string) *GetFileResponseBodyDataFile {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetCurrentVersion(v int32) *GetFileResponseBodyDataFile {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetDeletedStatus(v string) *GetFileResponseBodyDataFile {
+	s.DeletedStatus = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileDescription(v string) *GetFileResponseBodyDataFile {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileFolderId(v string) *GetFileResponseBodyDataFile {
+	s.FileFolderId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileId(v int64) *GetFileResponseBodyDataFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileName(v string) *GetFileResponseBodyDataFile {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetFileType(v int32) *GetFileResponseBodyDataFile {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetIsMaxCompute(v bool) *GetFileResponseBodyDataFile {
+	s.IsMaxCompute = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetLastEditTime(v int64) *GetFileResponseBodyDataFile {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetLastEditUser(v string) *GetFileResponseBodyDataFile {
+	s.LastEditUser = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetNodeId(v int64) *GetFileResponseBodyDataFile {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetOwner(v string) *GetFileResponseBodyDataFile {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetParentId(v int64) *GetFileResponseBodyDataFile {
+	s.ParentId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataFile) SetUseType(v string) *GetFileResponseBodyDataFile {
+	s.UseType = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfiguration struct {
+	// example:
+	//
+	// true
+	ApplyScheduleImmediately *string `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
+	// example:
+	//
+	// 120000
+	AutoRerunIntervalMillis *int32 `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
+	// example:
+	//
+	// 3
+	AutoRerunTimes *int32 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
+	// example:
+	//
+	// 00 05 00 	- 	- ?
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// example:
+	//
+	// DAY
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// example:
+	//
+	// 5,10,15,20
+	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
+	// example:
+	//
+	// 4155787800000
+	EndEffectDate *int64 `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	// example:
+	//
+	// true
+	IgnoreParentSkipRunningProperty *string `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
+	// example:
+	//
+	// m-bp1h4b5a8ogkbll2f3tr
+	ImageId          *string                                                     `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InputList        []*GetFileResponseBodyDataNodeConfigurationInputList        `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
+	InputParameters  []*GetFileResponseBodyDataNodeConfigurationInputParameters  `json:"InputParameters,omitempty" xml:"InputParameters,omitempty" type:"Repeated"`
+	OutputList       []*GetFileResponseBodyDataNodeConfigurationOutputList       `json:"OutputList,omitempty" xml:"OutputList,omitempty" type:"Repeated"`
+	OutputParameters []*GetFileResponseBodyDataNodeConfigurationOutputParameters `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a=x b=y
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+	// example:
+	//
+	// ALL_ALLOWED
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 375827434852437
+	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	// example:
+	//
+	// 936923400000
+	StartEffectDate *int64 `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	// example:
+	//
+	// true
+	StartImmediately *bool `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
+	// example:
+	//
+	// false
+	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetApplyScheduleImmediately(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.ApplyScheduleImmediately = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetAutoRerunIntervalMillis(v int32) *GetFileResponseBodyDataNodeConfiguration {
+	s.AutoRerunIntervalMillis = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetAutoRerunTimes(v int32) *GetFileResponseBodyDataNodeConfiguration {
+	s.AutoRerunTimes = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetCronExpress(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.CronExpress = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetCycleType(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.CycleType = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetDependentNodeIdList(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.DependentNodeIdList = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetDependentType(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.DependentType = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetEndEffectDate(v int64) *GetFileResponseBodyDataNodeConfiguration {
+	s.EndEffectDate = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetIgnoreParentSkipRunningProperty(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.IgnoreParentSkipRunningProperty = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetImageId(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetInputList(v []*GetFileResponseBodyDataNodeConfigurationInputList) *GetFileResponseBodyDataNodeConfiguration {
+	s.InputList = v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetInputParameters(v []*GetFileResponseBodyDataNodeConfigurationInputParameters) *GetFileResponseBodyDataNodeConfiguration {
+	s.InputParameters = v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetOutputList(v []*GetFileResponseBodyDataNodeConfigurationOutputList) *GetFileResponseBodyDataNodeConfiguration {
+	s.OutputList = v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetOutputParameters(v []*GetFileResponseBodyDataNodeConfigurationOutputParameters) *GetFileResponseBodyDataNodeConfiguration {
+	s.OutputParameters = v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetParaValue(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.ParaValue = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetRerunMode(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetResourceGroupId(v int64) *GetFileResponseBodyDataNodeConfiguration {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetSchedulerType(v string) *GetFileResponseBodyDataNodeConfiguration {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetStartEffectDate(v int64) *GetFileResponseBodyDataNodeConfiguration {
+	s.StartEffectDate = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetStartImmediately(v bool) *GetFileResponseBodyDataNodeConfiguration {
+	s.StartImmediately = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetStop(v bool) *GetFileResponseBodyDataNodeConfiguration {
+	s.Stop = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetTimeout(v int32) *GetFileResponseBodyDataNodeConfiguration {
+	s.Timeout = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfigurationInputList struct {
+	// example:
+	//
+	// project.001_out
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// MANUAL
+	ParseType *string `json:"ParseType,omitempty" xml:"ParseType,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputList) SetInput(v string) *GetFileResponseBodyDataNodeConfigurationInputList {
+	s.Input = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputList) SetParseType(v string) *GetFileResponseBodyDataNodeConfigurationInputList {
+	s.ParseType = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfigurationInputParameters struct {
+	// example:
+	//
+	// input
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// example:
+	//
+	// project_001.parent_node:outputs
+	ValueSource *string `json:"ValueSource,omitempty" xml:"ValueSource,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputParameters) SetParameterName(v string) *GetFileResponseBodyDataNodeConfigurationInputParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputParameters) SetValueSource(v string) *GetFileResponseBodyDataNodeConfigurationInputParameters {
+	s.ValueSource = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfigurationOutputList struct {
+	// example:
+	//
+	// dw_project.002_out
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputList) SetOutput(v string) *GetFileResponseBodyDataNodeConfigurationOutputList {
+	s.Output = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputList) SetRefTableName(v string) *GetFileResponseBodyDataNodeConfigurationOutputList {
+	s.RefTableName = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfigurationOutputParameters struct {
+	// example:
+	//
+	// It\\"s a context output parameter.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// output
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	// example:
+	//
+	// 1
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// example:
+	//
+	// ${bizdate}
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetDescription(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Description = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetParameterName(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetType(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Type = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetValue(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Value = &v
+	return s
+}
+
+type GetFileResponseBodyDataResourceDownloadLink struct {
+	// example:
+	//
+	// http://xx
+	DownloadLink *string `json:"downloadLink,omitempty" xml:"downloadLink,omitempty"`
+}
+
+func (s GetFileResponseBodyDataResourceDownloadLink) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataResourceDownloadLink) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataResourceDownloadLink) SetDownloadLink(v string) *GetFileResponseBodyDataResourceDownloadLink {
+	s.DownloadLink = &v
+	return s
+}
+
+type GetFileResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponse) SetHeaders(v map[string]*string) *GetFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileResponse) SetStatusCode(v int32) *GetFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFileResponse) SetBody(v *GetFileResponseBody) *GetFileResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileVersionRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// 1000011
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s GetFileVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileVersionRequest) SetFileId(v int64) *GetFileVersionRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetFileVersionRequest) SetFileVersion(v int32) *GetFileVersionRequest {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *GetFileVersionRequest) SetProjectId(v int64) *GetFileVersionRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetFileVersionRequest) SetProjectIdentifier(v string) *GetFileVersionRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type GetFileVersionResponseBody struct {
+	Data *GetFileVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFileVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileVersionResponseBody) SetData(v *GetFileVersionResponseBodyData) *GetFileVersionResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFileVersionResponseBody) SetErrorCode(v string) *GetFileVersionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBody) SetErrorMessage(v string) *GetFileVersionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBody) SetHttpStatusCode(v int32) *GetFileVersionResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBody) SetRequestId(v string) *GetFileVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBody) SetSuccess(v bool) *GetFileVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFileVersionResponseBodyData struct {
+	// example:
+	//
+	// UPDATE
+	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// example:
+	//
+	// Second version submission
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1593881265000
+	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
+	// example:
+	//
+	// 7384234****
+	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// {"fileName":"ods_user_info_d","fileType":10}
+	FilePropertyContent *string `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty"`
+	// example:
+	//
+	// 2
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// true
+	IsCurrentProd *bool `json:"IsCurrentProd,omitempty" xml:"IsCurrentProd,omitempty"`
+	// example:
+	//
+	// {"cycleType":0,"cronExpress":"00 05 00 	- 	- ?"}
+	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	// example:
+	//
+	// 3000001
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// COMMITTED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 0
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s GetFileVersionResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileVersionResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileVersionResponseBodyData) SetChangeType(v string) *GetFileVersionResponseBodyData {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetComment(v string) *GetFileVersionResponseBodyData {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetCommitTime(v int64) *GetFileVersionResponseBodyData {
+	s.CommitTime = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetCommitUser(v string) *GetFileVersionResponseBodyData {
+	s.CommitUser = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetFileContent(v string) *GetFileVersionResponseBodyData {
+	s.FileContent = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetFileName(v string) *GetFileVersionResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetFilePropertyContent(v string) *GetFileVersionResponseBodyData {
+	s.FilePropertyContent = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetFileVersion(v int32) *GetFileVersionResponseBodyData {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetIsCurrentProd(v bool) *GetFileVersionResponseBodyData {
+	s.IsCurrentProd = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetNodeContent(v string) *GetFileVersionResponseBodyData {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetNodeId(v int64) *GetFileVersionResponseBodyData {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetStatus(v string) *GetFileVersionResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetFileVersionResponseBodyData) SetUseType(v string) *GetFileVersionResponseBodyData {
+	s.UseType = &v
+	return s
+}
+
+type GetFileVersionResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFileVersionResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFileVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileVersionResponse) SetHeaders(v map[string]*string) *GetFileVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileVersionResponse) SetStatusCode(v int32) *GetFileVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFileVersionResponse) SetBody(v *GetFileVersionResponseBody) *GetFileVersionResponse {
+	s.Body = v
+	return s
+}
+
+type GetFolderRequest struct {
+	// example:
+	//
+	// 273****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute/ods_layer
+	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
+	// example:
+	//
+	// 1000011
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s GetFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderRequest) SetFolderId(v string) *GetFolderRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *GetFolderRequest) SetFolderPath(v string) *GetFolderRequest {
+	s.FolderPath = &v
+	return s
+}
+
+func (s *GetFolderRequest) SetProjectId(v int64) *GetFolderRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *GetFolderRequest) SetProjectIdentifier(v string) *GetFolderRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type GetFolderResponseBody struct {
+	Data *GetFolderResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderResponseBody) SetData(v *GetFolderResponseBodyData) *GetFolderResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetErrorCode(v string) *GetFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetErrorMessage(v string) *GetFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetHttpStatusCode(v int32) *GetFolderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetRequestId(v string) *GetFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFolderResponseBody) SetSuccess(v bool) *GetFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFolderResponseBodyData struct {
+	// example:
+	//
+	// 2735****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute/ods_layer
+	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
+}
+
+func (s GetFolderResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderResponseBodyData) SetFolderId(v string) *GetFolderResponseBodyData {
+	s.FolderId = &v
+	return s
+}
+
+func (s *GetFolderResponseBodyData) SetFolderPath(v string) *GetFolderResponseBodyData {
+	s.FolderPath = &v
+	return s
+}
+
+type GetFolderResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFolderResponse) SetHeaders(v map[string]*string) *GetFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFolderResponse) SetStatusCode(v int32) *GetFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFolderResponse) SetBody(v *GetFolderResponseBody) *GetFolderResponse {
+	s.Body = v
+	return s
+}
+
 type GetFunctionRequest struct {
 	// The ID of the UDF.
 	//
@@ -20534,6 +24131,753 @@ func (s *GetFunctionResponse) SetStatusCode(v int32) *GetFunctionResponse {
 }
 
 func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type GetIDEEventDetailRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed67****1
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetIDEEventDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailRequest) SetMessageId(v string) *GetIDEEventDetailRequest {
+	s.MessageId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailRequest) SetProjectId(v int64) *GetIDEEventDetailRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBody struct {
+	EventDetail *GetIDEEventDetailResponseBodyEventDetail `json:"EventDetail,omitempty" xml:"EventDetail,omitempty" type:"Struct"`
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBody) SetEventDetail(v *GetIDEEventDetailResponseBodyEventDetail) *GetIDEEventDetailResponseBody {
+	s.EventDetail = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBody) SetRequestId(v string) *GetIDEEventDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetail struct {
+	CommittedFile        *GetIDEEventDetailResponseBodyEventDetailCommittedFile        `json:"CommittedFile,omitempty" xml:"CommittedFile,omitempty" type:"Struct"`
+	DeletedFile          *GetIDEEventDetailResponseBodyEventDetailDeletedFile          `json:"DeletedFile,omitempty" xml:"DeletedFile,omitempty" type:"Struct"`
+	FileExecutionCommand *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand `json:"FileExecutionCommand,omitempty" xml:"FileExecutionCommand,omitempty" type:"Struct"`
+	TableModel           *GetIDEEventDetailResponseBodyEventDetailTableModel           `json:"TableModel,omitempty" xml:"TableModel,omitempty" type:"Struct"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetail) SetCommittedFile(v *GetIDEEventDetailResponseBodyEventDetailCommittedFile) *GetIDEEventDetailResponseBodyEventDetail {
+	s.CommittedFile = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetail) SetDeletedFile(v *GetIDEEventDetailResponseBodyEventDetailDeletedFile) *GetIDEEventDetailResponseBodyEventDetail {
+	s.DeletedFile = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetail) SetFileExecutionCommand(v *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) *GetIDEEventDetailResponseBodyEventDetail {
+	s.FileExecutionCommand = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetail) SetTableModel(v *GetIDEEventDetailResponseBodyEventDetailTableModel) *GetIDEEventDetailResponseBodyEventDetail {
+	s.TableModel = v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailCommittedFile struct {
+	// example:
+	//
+	// UPDATE
+	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// example:
+	//
+	// Second version submission
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 7384234****
+	Committor *string `json:"Committor,omitempty" xml:"Committor,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1234123
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// hello_dataworks.sql
+	FileName            *string                                                                   `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FilePropertyContent *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty" type:"Struct"`
+	// example:
+	//
+	// 10
+	FileType          *int64                                                                  `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	NodeConfiguration *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty" type:"Struct"`
+	// example:
+	//
+	// 421429
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFile) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetChangeType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetComment(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetCommittor(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.Committor = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetContent(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.Content = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetFileId(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetFileName(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetFilePropertyContent(v *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.FilePropertyContent = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetFileType(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetNodeConfiguration(v *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.NodeConfiguration = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetNodeId(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFile) SetUseType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFile {
+	s.UseType = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent struct {
+	// example:
+	//
+	// 74328
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// odps_source
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// aldurie78l2falure
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// 7384234****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1234122
+	ParentFileId *int64 `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetBusinessId(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetCurrentVersion(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetDataSourceName(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetFolderId(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.FolderId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetOwner(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent) SetParentFileId(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileFilePropertyContent {
+	s.ParentFileId = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration struct {
+	// example:
+	//
+	// 120000
+	AutoRerunIntervalMillis *int64 `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
+	// example:
+	//
+	// 3
+	AutoRerunTimes *int64 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
+	// example:
+	//
+	// 00 05 00 	- 	- ?
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// example:
+	//
+	// DAY
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// example:
+	//
+	// 5,10,15,20
+	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	DependentType *string                                                                             `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
+	InputList     []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList  `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
+	OutputList    []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList `json:"OutputList,omitempty" xml:"OutputList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// a=x b=y
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+	// example:
+	//
+	// ALL_ALLOWED
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// 375827434852437
+	ResourceGroupId *int64 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetAutoRerunIntervalMillis(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.AutoRerunIntervalMillis = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetAutoRerunTimes(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.AutoRerunTimes = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetCronExpress(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.CronExpress = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetCycleType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.CycleType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetDependentNodeIdList(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.DependentNodeIdList = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetDependentType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.DependentType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetInputList(v []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.InputList = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetOutputList(v []*GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.OutputList = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetParaValue(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.ParaValue = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetRerunMode(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetResourceGroupId(v int64) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration) SetSchedulerType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfiguration {
+	s.SchedulerType = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList struct {
+	// example:
+	//
+	// dw_project_root
+	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
+	// example:
+	//
+	// MANUAL
+	ParseType *string `json:"ParseType,omitempty" xml:"ParseType,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList) SetInput(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList {
+	s.Input = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList) SetParseType(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationInputList {
+	s.ParseType = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList struct {
+	// example:
+	//
+	// dw_project.002_out
+	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList) SetOutput(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList {
+	s.Output = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList) SetRefTableName(v string) *GetIDEEventDetailResponseBodyEventDetailCommittedFileNodeConfigurationOutputList {
+	s.RefTableName = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailDeletedFile struct {
+	// example:
+	//
+	// 74328
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1
+	CurrentVersion *int64 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// odps_source
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// 1234123
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// hello_dataworks.sql
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// aldurie78l2falure
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// 421429
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 7384234****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1234122
+	ParentFileId *int64 `json:"ParentFileId,omitempty" xml:"ParentFileId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailDeletedFile) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailDeletedFile) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetBusinessId(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetContent(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.Content = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetCurrentVersion(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetDataSourceName(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetFileId(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetFileName(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.FileName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetFileType(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.FileType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetFolderId(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.FolderId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetNodeId(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetOwner(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.Owner = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetParentFileId(v int64) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.ParentFileId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailDeletedFile) SetUseType(v string) *GetIDEEventDetailResponseBodyEventDetailDeletedFile {
+	s.UseType = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand struct {
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// odps_source
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// 1234123
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) SetContent(v string) *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand {
+	s.Content = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) SetDataSourceName(v string) *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) SetFileId(v int64) *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand {
+	s.FileId = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand) SetFileType(v int64) *GetIDEEventDetailResponseBodyEventDetailFileExecutionCommand {
+	s.FileType = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailTableModel struct {
+	Columns []*GetIDEEventDetailResponseBodyEventDetailTableModelColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
+	// example:
+	//
+	// A new table
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// odps_source
+	DataSourceName *string `json:"DataSourceName,omitempty" xml:"DataSourceName,omitempty"`
+	// example:
+	//
+	// DEV
+	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
+	// example:
+	//
+	// 7
+	LifeCycle *int64 `json:"LifeCycle,omitempty" xml:"LifeCycle,omitempty"`
+	// example:
+	//
+	// hdfs://path/to/object
+	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// example:
+	//
+	// tb_hello
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailTableModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailTableModel) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetColumns(v []*GetIDEEventDetailResponseBodyEventDetailTableModelColumns) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.Columns = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetComment(v string) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetDataSourceName(v string) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.DataSourceName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetEnv(v string) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.Env = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetLifeCycle(v int64) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.LifeCycle = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetLocation(v string) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.Location = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModel) SetTableName(v string) *GetIDEEventDetailResponseBodyEventDetailTableModel {
+	s.TableName = &v
+	return s
+}
+
+type GetIDEEventDetailResponseBodyEventDetailTableModelColumns struct {
+	// example:
+	//
+	// ID
+	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
+	// example:
+	//
+	// BIGINT
+	ColumnType *string `json:"ColumnType,omitempty" xml:"ColumnType,omitempty"`
+	// example:
+	//
+	// ID
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// false
+	IsPartitionColumn *bool `json:"IsPartitionColumn,omitempty" xml:"IsPartitionColumn,omitempty"`
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailTableModelColumns) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponseBodyEventDetailTableModelColumns) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModelColumns) SetColumnName(v string) *GetIDEEventDetailResponseBodyEventDetailTableModelColumns {
+	s.ColumnName = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModelColumns) SetColumnType(v string) *GetIDEEventDetailResponseBodyEventDetailTableModelColumns {
+	s.ColumnType = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModelColumns) SetComment(v string) *GetIDEEventDetailResponseBodyEventDetailTableModelColumns {
+	s.Comment = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponseBodyEventDetailTableModelColumns) SetIsPartitionColumn(v bool) *GetIDEEventDetailResponseBodyEventDetailTableModelColumns {
+	s.IsPartitionColumn = &v
+	return s
+}
+
+type GetIDEEventDetailResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *GetIDEEventDetailResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s GetIDEEventDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetIDEEventDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetIDEEventDetailResponse) SetHeaders(v map[string]*string) *GetIDEEventDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetIDEEventDetailResponse) SetStatusCode(v int32) *GetIDEEventDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetIDEEventDetailResponse) SetBody(v *GetIDEEventDetailResponseBody) *GetIDEEventDetailResponse {
 	s.Body = v
 	return s
 }
@@ -28707,6 +33051,260 @@ func (s *ListAlertRulesResponse) SetBody(v *ListAlertRulesResponseBody) *ListAle
 	return s
 }
 
+type ListBusinessRequest struct {
+	// example:
+	//
+	// my
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s ListBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessRequest) SetKeyword(v string) *ListBusinessRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListBusinessRequest) SetPageNumber(v int32) *ListBusinessRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBusinessRequest) SetPageSize(v int32) *ListBusinessRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBusinessRequest) SetProjectId(v int64) *ListBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListBusinessRequest) SetProjectIdentifier(v string) *ListBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type ListBusinessResponseBody struct {
+	Data *ListBusinessResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessResponseBody) SetData(v *ListBusinessResponseBodyData) *ListBusinessResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListBusinessResponseBody) SetErrorCode(v string) *ListBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListBusinessResponseBody) SetErrorMessage(v string) *ListBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListBusinessResponseBody) SetHttpStatusCode(v int32) *ListBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListBusinessResponseBody) SetRequestId(v string) *ListBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBusinessResponseBody) SetSuccess(v bool) *ListBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListBusinessResponseBodyData struct {
+	Business []*ListBusinessResponseBodyDataBusiness `json:"Business,omitempty" xml:"Business,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListBusinessResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessResponseBodyData) SetBusiness(v []*ListBusinessResponseBodyDataBusiness) *ListBusinessResponseBodyData {
+	s.Business = v
+	return s
+}
+
+func (s *ListBusinessResponseBodyData) SetPageNumber(v int32) *ListBusinessResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyData) SetPageSize(v int32) *ListBusinessResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyData) SetTotalCount(v int32) *ListBusinessResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListBusinessResponseBodyDataBusiness struct {
+	// example:
+	//
+	// 3000001
+	BusinessId   *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 34824327****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s ListBusinessResponseBodyDataBusiness) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessResponseBodyDataBusiness) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetBusinessId(v int64) *ListBusinessResponseBodyDataBusiness {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetBusinessName(v string) *ListBusinessResponseBodyDataBusiness {
+	s.BusinessName = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetDescription(v string) *ListBusinessResponseBodyDataBusiness {
+	s.Description = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetOwner(v string) *ListBusinessResponseBodyDataBusiness {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetProjectId(v int64) *ListBusinessResponseBodyDataBusiness {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListBusinessResponseBodyDataBusiness) SetUseType(v string) *ListBusinessResponseBodyDataBusiness {
+	s.UseType = &v
+	return s
+}
+
+type ListBusinessResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBusinessResponse) SetHeaders(v map[string]*string) *ListBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBusinessResponse) SetStatusCode(v int32) *ListBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBusinessResponse) SetBody(v *ListBusinessResponseBody) *ListBusinessResponse {
+	s.Body = v
+	return s
+}
+
 type ListCatalogsRequest struct {
 	// example:
 	//
@@ -36455,6 +41053,883 @@ func (s *ListDatabasesResponse) SetBody(v *ListDatabasesResponseBody) *ListDatab
 	return s
 }
 
+type ListDeploymentPackageFilesRequest struct {
+	// example:
+	//
+	// 100001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 0
+	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// example:
+	//
+	// 2025-01-01
+	CommitFrom *string `json:"CommitFrom,omitempty" xml:"CommitFrom,omitempty"`
+	// example:
+	//
+	// 2025-01-31
+	CommitTo *string `json:"CommitTo,omitempty" xml:"CommitTo,omitempty"`
+	// example:
+	//
+	// 2003****
+	CommitUserId *string   `json:"CommitUserId,omitempty" xml:"CommitUserId,omitempty"`
+	FileIds      []*string `json:"FileIds,omitempty" xml:"FileIds,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Filename
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 8065
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetBusinessId(v int64) *ListDeploymentPackageFilesRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetChangeType(v int32) *ListDeploymentPackageFilesRequest {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetCommitFrom(v string) *ListDeploymentPackageFilesRequest {
+	s.CommitFrom = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetCommitTo(v string) *ListDeploymentPackageFilesRequest {
+	s.CommitTo = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetCommitUserId(v string) *ListDeploymentPackageFilesRequest {
+	s.CommitUserId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetFileIds(v []*string) *ListDeploymentPackageFilesRequest {
+	s.FileIds = v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetFileName(v string) *ListDeploymentPackageFilesRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetFileType(v int32) *ListDeploymentPackageFilesRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetPageNumber(v int32) *ListDeploymentPackageFilesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetPageSize(v int32) *ListDeploymentPackageFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetProjectId(v int64) *ListDeploymentPackageFilesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesRequest) SetSolutionId(v int64) *ListDeploymentPackageFilesRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type ListDeploymentPackageFilesShrinkRequest struct {
+	// example:
+	//
+	// 100001
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 0
+	ChangeType *int32 `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// example:
+	//
+	// 2025-01-01
+	CommitFrom *string `json:"CommitFrom,omitempty" xml:"CommitFrom,omitempty"`
+	// example:
+	//
+	// 2025-01-31
+	CommitTo *string `json:"CommitTo,omitempty" xml:"CommitTo,omitempty"`
+	// example:
+	//
+	// 2003****
+	CommitUserId  *string `json:"CommitUserId,omitempty" xml:"CommitUserId,omitempty"`
+	FileIdsShrink *string `json:"FileIds,omitempty" xml:"FileIds,omitempty"`
+	// example:
+	//
+	// Filename
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 12345
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// 8065
+	SolutionId *int64 `json:"SolutionId,omitempty" xml:"SolutionId,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetBusinessId(v int64) *ListDeploymentPackageFilesShrinkRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetChangeType(v int32) *ListDeploymentPackageFilesShrinkRequest {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetCommitFrom(v string) *ListDeploymentPackageFilesShrinkRequest {
+	s.CommitFrom = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetCommitTo(v string) *ListDeploymentPackageFilesShrinkRequest {
+	s.CommitTo = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetCommitUserId(v string) *ListDeploymentPackageFilesShrinkRequest {
+	s.CommitUserId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetFileIdsShrink(v string) *ListDeploymentPackageFilesShrinkRequest {
+	s.FileIdsShrink = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetFileName(v string) *ListDeploymentPackageFilesShrinkRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetFileType(v int32) *ListDeploymentPackageFilesShrinkRequest {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetPageNumber(v int32) *ListDeploymentPackageFilesShrinkRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetPageSize(v int32) *ListDeploymentPackageFilesShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetProjectId(v int64) *ListDeploymentPackageFilesShrinkRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesShrinkRequest) SetSolutionId(v int64) *ListDeploymentPackageFilesShrinkRequest {
+	s.SolutionId = &v
+	return s
+}
+
+type ListDeploymentPackageFilesResponseBody struct {
+	PagingInfo *ListDeploymentPackageFilesResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesResponseBody) SetPagingInfo(v *ListDeploymentPackageFilesResponseBodyPagingInfo) *ListDeploymentPackageFilesResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBody) SetRequestId(v string) *ListDeploymentPackageFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeploymentPackageFilesResponseBodyPagingInfo struct {
+	DeploymentPackageFiles []*ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles `json:"DeploymentPackageFiles,omitempty" xml:"DeploymentPackageFiles,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) SetDeploymentPackageFiles(v []*ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) *ListDeploymentPackageFilesResponseBodyPagingInfo {
+	s.DeploymentPackageFiles = v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) SetPageNumber(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) SetPageSize(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfo) SetTotalCount(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles struct {
+	// example:
+	//
+	// 0
+	ChangeType *int32  `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 2025-04-10 15:55:47
+	CommitTime *string `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
+	// example:
+	//
+	// 446***
+	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
+	// example:
+	//
+	// user***
+	CommitUserName *string `json:"CommitUserName,omitempty" xml:"CommitUserName,omitempty"`
+	// example:
+	//
+	// 520246913
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// bak_part_basc_person_relation_all_da
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 13
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// 34
+	FileVersion *int64 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// 650433503
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// true
+	IsSameAsProductionVersion *bool `json:"IsSameAsProductionVersion,omitempty" xml:"IsSameAsProductionVersion,omitempty"`
+	// example:
+	//
+	// {
+	//
+	// 	"tagList": [],
+	//
+	// 	"fileId": -1,
+	//
+	// 	"taskRerunTime": 0,
+	//
+	// 	"taskRerunInterval": 0,
+	//
+	// 	"reRunAble": 1,
+	//
+	// 	"nodeId": 125803000,
+	//
+	// 	"nodeName": "new",
+	//
+	// 	"nodeType": 0,
+	//
+	// 	"isStop": 0,
+	//
+	// 	"paraValue": "",
+	//
+	// 	"startEffectDate": "1970-01-01 00:00:00",
+	//
+	// 	"endEffectDate": "9999-01-01 00:00:00",
+	//
+	// 	"cronExpress": "00 26 00 	- 	- ?",
+	//
+	// 	"owner": "1107550004250000",
+	//
+	// 	"resgroupId": 6300000,
+	//
+	// 	"cu": "0.25",
+	//
+	// 	"appId": 170000,
+	//
+	// 	"tenantId": 524257424560000,
+	//
+	// 	"createTime": "2025-04-10 15:55:01",
+	//
+	// 	"createUser": "1107550004250000",
+	//
+	// 	"lastModifyTime": "2025-04-10 15:55:41",
+	//
+	// 	"cycleType": 0,
+	//
+	// 	"dependentType": 0,
+	//
+	// 	"dependentTypeList": [0],
+	//
+	// 	"lastModifyUser": "1107550004250000",
+	//
+	// 	"dependentDataNode": "",
+	//
+	// 	"input": "[{\\"regionId\\":\\"cn-hangzhou\\",\\"str\\":\\"root_input\\",\\"parseType\\":1}]",
+	//
+	// 	"output": "[{\\"str\\":\\"project_root.526586287_out\\",\\"parseType\\":2},{\\"str\\":\\"project_root.new\\",\\"parseType\\":1}]",
+	//
+	// 	"inputList": [{
+	//
+	// 		"regionId": "cn-hangzhou",
+	//
+	// 		"str": "root_input",
+	//
+	// 		"parseType": 1
+	//
+	// 	}],
+	//
+	// 	"outputList": [{
+	//
+	// 		"str": "project_root.526586287_out",
+	//
+	// 		"parseType": 2
+	//
+	// 	}, {
+	//
+	// 		"str": "project_root.new",
+	//
+	// 		"parseType": 1
+	//
+	// 	}],
+	//
+	// 	"isAutoParse": 1,
+	//
+	// 	"startRightNow": false,
+	//
+	// 	"extConfig": "{\\"openCustomCron\\":false,\\"formCron\\":\\"\\"}",
+	//
+	// 	"inputContextList": [],
+	//
+	// 	"outputContextList": []
+	//
+	// }
+	NodeConfiguration *string `json:"NodeConfiguration,omitempty" xml:"NodeConfiguration,omitempty"`
+	// example:
+	//
+	// 700005008419
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 27595
+	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	SmokeTestStatus *string `json:"SmokeTestStatus,omitempty" xml:"SmokeTestStatus,omitempty"`
+	// example:
+	//
+	// 100
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// 639415964191360
+	TenantId *int64 `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetChangeType(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetComment(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetCommitTime(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.CommitTime = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetCommitUser(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.CommitUser = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetCommitUserName(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.CommitUserName = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetFileId(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetFileName(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetFileType(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetFileVersion(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetId(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetIsSameAsProductionVersion(v bool) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.IsSameAsProductionVersion = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetNodeConfiguration(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.NodeConfiguration = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetNodeId(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetProjectId(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetSmokeTestStatus(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.SmokeTestStatus = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetStatus(v int32) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetTenantId(v int64) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles) SetUseType(v string) *ListDeploymentPackageFilesResponseBodyPagingInfoDeploymentPackageFiles {
+	s.UseType = &v
+	return s
+}
+
+type ListDeploymentPackageFilesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentPackageFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentPackageFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackageFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackageFilesResponse) SetHeaders(v map[string]*string) *ListDeploymentPackageFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponse) SetStatusCode(v int32) *ListDeploymentPackageFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentPackageFilesResponse) SetBody(v *ListDeploymentPackageFilesResponseBody) *ListDeploymentPackageFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListDeploymentPackagesRequest struct {
+	// example:
+	//
+	// 110755000425****
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	EndCreateTime *int64 `json:"EndCreateTime,omitempty" xml:"EndCreateTime,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	EndExecuteTime *int64 `json:"EndExecuteTime,omitempty" xml:"EndExecuteTime,omitempty"`
+	// example:
+	//
+	// 2003****
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// example:
+	//
+	// abc
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10003
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDeploymentPackagesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackagesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackagesRequest) SetCreator(v string) *ListDeploymentPackagesRequest {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetEndCreateTime(v int64) *ListDeploymentPackagesRequest {
+	s.EndCreateTime = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetEndExecuteTime(v int64) *ListDeploymentPackagesRequest {
+	s.EndExecuteTime = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetExecutor(v string) *ListDeploymentPackagesRequest {
+	s.Executor = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetKeyword(v string) *ListDeploymentPackagesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetPageNumber(v int32) *ListDeploymentPackagesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetPageSize(v int32) *ListDeploymentPackagesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetProjectId(v int64) *ListDeploymentPackagesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetProjectIdentifier(v string) *ListDeploymentPackagesRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesRequest) SetStatus(v int32) *ListDeploymentPackagesRequest {
+	s.Status = &v
+	return s
+}
+
+type ListDeploymentPackagesResponseBody struct {
+	Data *ListDeploymentPackagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// 952795279527ab****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDeploymentPackagesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackagesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackagesResponseBody) SetData(v *ListDeploymentPackagesResponseBodyData) *ListDeploymentPackagesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBody) SetRequestId(v string) *ListDeploymentPackagesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDeploymentPackagesResponseBodyData struct {
+	Deployments []*ListDeploymentPackagesResponseBodyDataDeployments `json:"Deployments,omitempty" xml:"Deployments,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 20
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDeploymentPackagesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackagesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackagesResponseBodyData) SetDeployments(v []*ListDeploymentPackagesResponseBodyDataDeployments) *ListDeploymentPackagesResponseBodyData {
+	s.Deployments = v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyData) SetPageNumber(v int64) *ListDeploymentPackagesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyData) SetPageSize(v int64) *ListDeploymentPackagesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyData) SetTotalCount(v int64) *ListDeploymentPackagesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDeploymentPackagesResponseBodyDataDeployments struct {
+	// example:
+	//
+	// 1593877765000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 2003****
+	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	// example:
+	//
+	// OK
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 1593877765000
+	ExecuteTime *int64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	// example:
+	//
+	// 2003****
+	Executor *string `json:"Executor,omitempty" xml:"Executor,omitempty"`
+	// example:
+	//
+	// 11111
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// auto_created
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// 1
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListDeploymentPackagesResponseBodyDataDeployments) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackagesResponseBodyDataDeployments) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetCreateTime(v int64) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetCreator(v string) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetErrorMessage(v string) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetExecuteTime(v int64) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetExecutor(v string) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.Executor = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetId(v int64) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.Id = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetName(v string) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponseBodyDataDeployments) SetStatus(v int32) *ListDeploymentPackagesResponseBodyDataDeployments {
+	s.Status = &v
+	return s
+}
+
+type ListDeploymentPackagesResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListDeploymentPackagesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListDeploymentPackagesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDeploymentPackagesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDeploymentPackagesResponse) SetHeaders(v map[string]*string) *ListDeploymentPackagesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponse) SetStatusCode(v int32) *ListDeploymentPackagesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDeploymentPackagesResponse) SetBody(v *ListDeploymentPackagesResponseBody) *ListDeploymentPackagesResponse {
+	s.Body = v
+	return s
+}
+
 type ListDownstreamTaskInstancesRequest struct {
 	// The instance ID.
 	//
@@ -38997,6 +44472,1052 @@ func (s *ListEntitiesInMetaCollectionResponse) SetStatusCode(v int32) *ListEntit
 }
 
 func (s *ListEntitiesInMetaCollectionResponse) SetBody(v *ListEntitiesInMetaCollectionResponseBody) *ListEntitiesInMetaCollectionResponse {
+	s.Body = v
+	return s
+}
+
+type ListFileVersionsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 100001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s ListFileVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileVersionsRequest) SetFileId(v int64) *ListFileVersionsRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListFileVersionsRequest) SetPageNumber(v int32) *ListFileVersionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFileVersionsRequest) SetPageSize(v int32) *ListFileVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFileVersionsRequest) SetProjectId(v int64) *ListFileVersionsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListFileVersionsRequest) SetProjectIdentifier(v string) *ListFileVersionsRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type ListFileVersionsResponseBody struct {
+	Data *ListFileVersionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListFileVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileVersionsResponseBody) SetData(v *ListFileVersionsResponseBodyData) *ListFileVersionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFileVersionsResponseBody) SetErrorCode(v string) *ListFileVersionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBody) SetErrorMessage(v string) *ListFileVersionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBody) SetHttpStatusCode(v int32) *ListFileVersionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBody) SetRequestId(v string) *ListFileVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBody) SetSuccess(v bool) *ListFileVersionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFileVersionsResponseBodyData struct {
+	FileVersions []*ListFileVersionsResponseBodyDataFileVersions `json:"FileVersions,omitempty" xml:"FileVersions,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFileVersionsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileVersionsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileVersionsResponseBodyData) SetFileVersions(v []*ListFileVersionsResponseBodyDataFileVersions) *ListFileVersionsResponseBodyData {
+	s.FileVersions = v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyData) SetPageNumber(v int32) *ListFileVersionsResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyData) SetPageSize(v int32) *ListFileVersionsResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyData) SetTotalCount(v int32) *ListFileVersionsResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFileVersionsResponseBodyDataFileVersions struct {
+	// example:
+	//
+	// UPDATE
+	ChangeType *string `json:"ChangeType,omitempty" xml:"ChangeType,omitempty"`
+	// example:
+	//
+	// Second version submission
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// example:
+	//
+	// 1593881265000
+	CommitTime *int64 `json:"CommitTime,omitempty" xml:"CommitTime,omitempty"`
+	// example:
+	//
+	// 73842342****
+	CommitUser *string `json:"CommitUser,omitempty" xml:"CommitUser,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	FileContent *string `json:"FileContent,omitempty" xml:"FileContent,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// {"fileName":"ods_user_info_d","fileType":10}
+	FilePropertyContent *string `json:"FilePropertyContent,omitempty" xml:"FilePropertyContent,omitempty"`
+	// example:
+	//
+	// 2
+	FileVersion *int32 `json:"FileVersion,omitempty" xml:"FileVersion,omitempty"`
+	// example:
+	//
+	// false
+	IsCurrentProd *bool `json:"IsCurrentProd,omitempty" xml:"IsCurrentProd,omitempty"`
+	// example:
+	//
+	// {"cycleType":0,"cronExpress":"00 05 00 	- 	- ?"}
+	NodeContent *string `json:"NodeContent,omitempty" xml:"NodeContent,omitempty"`
+	// example:
+	//
+	// 1234
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// COMMITTED
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s ListFileVersionsResponseBodyDataFileVersions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileVersionsResponseBodyDataFileVersions) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetChangeType(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.ChangeType = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetComment(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetCommitTime(v int64) *ListFileVersionsResponseBodyDataFileVersions {
+	s.CommitTime = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetCommitUser(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.CommitUser = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetFileContent(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.FileContent = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetFileName(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetFilePropertyContent(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.FilePropertyContent = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetFileVersion(v int32) *ListFileVersionsResponseBodyDataFileVersions {
+	s.FileVersion = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetIsCurrentProd(v bool) *ListFileVersionsResponseBodyDataFileVersions {
+	s.IsCurrentProd = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetNodeContent(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.NodeContent = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetNodeId(v int64) *ListFileVersionsResponseBodyDataFileVersions {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetStatus(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFileVersionsResponseBodyDataFileVersions) SetUseType(v string) *ListFileVersionsResponseBodyDataFileVersions {
+	s.UseType = &v
+	return s
+}
+
+type ListFileVersionsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFileVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFileVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFileVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFileVersionsResponse) SetHeaders(v map[string]*string) *ListFileVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFileVersionsResponse) SetStatusCode(v int32) *ListFileVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFileVersionsResponse) SetBody(v *ListFileVersionsResponseBody) *ListFileVersionsResponse {
+	s.Body = v
+	return s
+}
+
+type ListFilesRequest struct {
+	// example:
+	//
+	// 1
+	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
+	// example:
+	//
+	// ods_create.sql
+	ExactFileName *string `json:"ExactFileName,omitempty" xml:"ExactFileName,omitempty"`
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute/ods_layer
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// example:
+	//
+	// 78237,816123
+	FileIdIn *string `json:"FileIdIn,omitempty" xml:"FileIdIn,omitempty"`
+	// example:
+	//
+	// 10,23
+	FileTypes *string `json:"FileTypes,omitempty" xml:"FileTypes,omitempty"`
+	// example:
+	//
+	// ods
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 11233***
+	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
+	// example:
+	//
+	// false
+	NeedAbsoluteFolderPath *bool `json:"NeedAbsoluteFolderPath,omitempty" xml:"NeedAbsoluteFolderPath,omitempty"`
+	// example:
+	//
+	// false
+	NeedContent *bool `json:"NeedContent,omitempty" xml:"NeedContent,omitempty"`
+	// example:
+	//
+	// 123541234
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 3726346****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s ListFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFilesRequest) SetCommitStatus(v int32) *ListFilesRequest {
+	s.CommitStatus = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetExactFileName(v string) *ListFilesRequest {
+	s.ExactFileName = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetFileFolderPath(v string) *ListFilesRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetFileIdIn(v string) *ListFilesRequest {
+	s.FileIdIn = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetFileTypes(v string) *ListFilesRequest {
+	s.FileTypes = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetKeyword(v string) *ListFilesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetLastEditUser(v string) *ListFilesRequest {
+	s.LastEditUser = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNeedAbsoluteFolderPath(v bool) *ListFilesRequest {
+	s.NeedAbsoluteFolderPath = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNeedContent(v bool) *ListFilesRequest {
+	s.NeedContent = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetNodeId(v int64) *ListFilesRequest {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetOwner(v string) *ListFilesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetPageNumber(v int32) *ListFilesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetPageSize(v int32) *ListFilesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetProjectId(v int64) *ListFilesRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetProjectIdentifier(v string) *ListFilesRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *ListFilesRequest) SetUseType(v string) *ListFilesRequest {
+	s.UseType = &v
+	return s
+}
+
+type ListFilesResponseBody struct {
+	Data *ListFilesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFilesResponseBody) SetData(v *ListFilesResponseBodyData) *ListFilesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFilesResponseBody) SetErrorCode(v string) *ListFilesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListFilesResponseBody) SetErrorMessage(v string) *ListFilesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListFilesResponseBody) SetHttpStatusCode(v int32) *ListFilesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFilesResponseBody) SetRequestId(v string) *ListFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFilesResponseBody) SetSuccess(v bool) *ListFilesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFilesResponseBodyData struct {
+	Files []*ListFilesResponseBodyDataFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFilesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFilesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFilesResponseBodyData) SetFiles(v []*ListFilesResponseBodyDataFiles) *ListFilesResponseBodyData {
+	s.Files = v
+	return s
+}
+
+func (s *ListFilesResponseBodyData) SetPageNumber(v int32) *ListFilesResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyData) SetPageSize(v int32) *ListFilesResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyData) SetTotalCount(v int32) *ListFilesResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFilesResponseBodyDataFiles struct {
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute/ods_layer
+	AbsoluteFolderPath *string `json:"AbsoluteFolderPath,omitempty" xml:"AbsoluteFolderPath,omitempty"`
+	// example:
+	//
+	// true
+	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	// example:
+	//
+	// 300000
+	BizId *int64 `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	// example:
+	//
+	// 300000
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// 1
+	CommitStatus *int32 `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
+	// example:
+	//
+	// odps_source
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// SHOW TABLES;
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 1593950832000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 382762****
+	CreateUser *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	// example:
+	//
+	// 2
+	CurrentVersion *int32 `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	// example:
+	//
+	// my test datastudio file
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// example:
+	//
+	// 2735c2****
+	FileFolderId *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
+	// example:
+	//
+	// 10000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// 10
+	FileType *int32 `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	// example:
+	//
+	// false
+	IsMaxCompute *bool `json:"IsMaxCompute,omitempty" xml:"IsMaxCompute,omitempty"`
+	// example:
+	//
+	// 1593950832000
+	LastEditTime *int64 `json:"LastEditTime,omitempty" xml:"LastEditTime,omitempty"`
+	// example:
+	//
+	// 382762****
+	LastEditUser *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
+	// example:
+	//
+	// 300001
+	NodeId *int64 `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	// example:
+	//
+	// 3872572****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// -1
+	ParentId *int64 `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	// example:
+	//
+	// NORMAL
+	UseType *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+}
+
+func (s ListFilesResponseBodyDataFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFilesResponseBodyDataFiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetAbsoluteFolderPath(v string) *ListFilesResponseBodyDataFiles {
+	s.AbsoluteFolderPath = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetAutoParsing(v bool) *ListFilesResponseBodyDataFiles {
+	s.AutoParsing = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetBizId(v int64) *ListFilesResponseBodyDataFiles {
+	s.BizId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetBusinessId(v int64) *ListFilesResponseBodyDataFiles {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetCommitStatus(v int32) *ListFilesResponseBodyDataFiles {
+	s.CommitStatus = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetConnectionName(v string) *ListFilesResponseBodyDataFiles {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetContent(v string) *ListFilesResponseBodyDataFiles {
+	s.Content = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetCreateTime(v int64) *ListFilesResponseBodyDataFiles {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetCreateUser(v string) *ListFilesResponseBodyDataFiles {
+	s.CreateUser = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetCurrentVersion(v int32) *ListFilesResponseBodyDataFiles {
+	s.CurrentVersion = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetFileDescription(v string) *ListFilesResponseBodyDataFiles {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetFileFolderId(v string) *ListFilesResponseBodyDataFiles {
+	s.FileFolderId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetFileId(v int64) *ListFilesResponseBodyDataFiles {
+	s.FileId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetFileName(v string) *ListFilesResponseBodyDataFiles {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetFileType(v int32) *ListFilesResponseBodyDataFiles {
+	s.FileType = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetIsMaxCompute(v bool) *ListFilesResponseBodyDataFiles {
+	s.IsMaxCompute = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetLastEditTime(v int64) *ListFilesResponseBodyDataFiles {
+	s.LastEditTime = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetLastEditUser(v string) *ListFilesResponseBodyDataFiles {
+	s.LastEditUser = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetNodeId(v int64) *ListFilesResponseBodyDataFiles {
+	s.NodeId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetOwner(v string) *ListFilesResponseBodyDataFiles {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetParentId(v int64) *ListFilesResponseBodyDataFiles {
+	s.ParentId = &v
+	return s
+}
+
+func (s *ListFilesResponseBodyDataFiles) SetUseType(v string) *ListFilesResponseBodyDataFiles {
+	s.UseType = &v
+	return s
+}
+
+type ListFilesResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFilesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFilesResponse) SetHeaders(v map[string]*string) *ListFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFilesResponse) SetStatusCode(v int32) *ListFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFilesResponse) SetBody(v *ListFilesResponseBody) *ListFilesResponse {
+	s.Body = v
+	return s
+}
+
+type ListFoldersRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute
+	ParentFolderPath *string `json:"ParentFolderPath,omitempty" xml:"ParentFolderPath,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s ListFoldersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoldersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoldersRequest) SetPageNumber(v int32) *ListFoldersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFoldersRequest) SetPageSize(v int32) *ListFoldersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFoldersRequest) SetParentFolderPath(v string) *ListFoldersRequest {
+	s.ParentFolderPath = &v
+	return s
+}
+
+func (s *ListFoldersRequest) SetProjectId(v int64) *ListFoldersRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListFoldersRequest) SetProjectIdentifier(v string) *ListFoldersRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type ListFoldersResponseBody struct {
+	Data *ListFoldersResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListFoldersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoldersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoldersResponseBody) SetData(v *ListFoldersResponseBodyData) *ListFoldersResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListFoldersResponseBody) SetErrorCode(v string) *ListFoldersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListFoldersResponseBody) SetErrorMessage(v string) *ListFoldersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListFoldersResponseBody) SetHttpStatusCode(v int32) *ListFoldersResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListFoldersResponseBody) SetRequestId(v string) *ListFoldersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFoldersResponseBody) SetSuccess(v bool) *ListFoldersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListFoldersResponseBodyData struct {
+	Folders []*ListFoldersResponseBodyDataFolders `json:"Folders,omitempty" xml:"Folders,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 13
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListFoldersResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoldersResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoldersResponseBodyData) SetFolders(v []*ListFoldersResponseBodyDataFolders) *ListFoldersResponseBodyData {
+	s.Folders = v
+	return s
+}
+
+func (s *ListFoldersResponseBodyData) SetPageNumber(v int32) *ListFoldersResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFoldersResponseBodyData) SetPageSize(v int32) *ListFoldersResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFoldersResponseBodyData) SetTotalCount(v int32) *ListFoldersResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListFoldersResponseBodyDataFolders struct {
+	// example:
+	//
+	// 2735c2****
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// example:
+	//
+	// Business_process/my_first_business_process/MaxCompute/ods_layer
+	FolderPath *string `json:"FolderPath,omitempty" xml:"FolderPath,omitempty"`
+}
+
+func (s ListFoldersResponseBodyDataFolders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoldersResponseBodyDataFolders) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoldersResponseBodyDataFolders) SetFolderId(v string) *ListFoldersResponseBodyDataFolders {
+	s.FolderId = &v
+	return s
+}
+
+func (s *ListFoldersResponseBodyDataFolders) SetFolderPath(v string) *ListFoldersResponseBodyDataFolders {
+	s.FolderPath = &v
+	return s
+}
+
+type ListFoldersResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListFoldersResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListFoldersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFoldersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFoldersResponse) SetHeaders(v map[string]*string) *ListFoldersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFoldersResponse) SetStatusCode(v int32) *ListFoldersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersResponse {
 	s.Body = v
 	return s
 }
@@ -42967,6 +49488,258 @@ func (s *ListPartitionsResponse) SetBody(v *ListPartitionsResponseBody) *ListPar
 	return s
 }
 
+type ListPipelineRunItemsRequest struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 097c73fe-ed6e-4fb1-b109-a5d59e46cd58
+	PipelineRunId *string `json:"PipelineRunId,omitempty" xml:"PipelineRunId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s ListPipelineRunItemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunItemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunItemsRequest) SetPageNumber(v int32) *ListPipelineRunItemsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsRequest) SetPageSize(v int32) *ListPipelineRunItemsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsRequest) SetPipelineRunId(v string) *ListPipelineRunItemsRequest {
+	s.PipelineRunId = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsRequest) SetProjectId(v int64) *ListPipelineRunItemsRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type ListPipelineRunItemsResponseBody struct {
+	PagingInfo *ListPipelineRunItemsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// example:
+	//
+	// C99E2BE6-9DEA-5C2E-8F51-1DDCFEADE490
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListPipelineRunItemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunItemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunItemsResponseBody) SetPagingInfo(v *ListPipelineRunItemsResponseBodyPagingInfo) *ListPipelineRunItemsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBody) SetRequestId(v string) *ListPipelineRunItemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListPipelineRunItemsResponseBodyPagingInfo struct {
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 10
+	PageSize         *int32                                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PipelineRunItems []*ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems `json:"PipelineRunItems,omitempty" xml:"PipelineRunItems,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 12
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListPipelineRunItemsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunItemsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfo) SetPageNumber(v int32) *ListPipelineRunItemsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfo) SetPageSize(v int32) *ListPipelineRunItemsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfo) SetPipelineRunItems(v []*ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) *ListPipelineRunItemsResponseBodyPagingInfo {
+	s.PipelineRunItems = v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfo) SetTotalCount(v int32) *ListPipelineRunItemsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems struct {
+	// 发布包创建时间戳
+	//
+	// example:
+	//
+	// 1724984066000
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// 860438872620113XXXX
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 创建人
+	//
+	// example:
+	//
+	// Error Message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 修改时间
+	//
+	// example:
+	//
+	// 1724984066000
+	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// example:
+	//
+	// test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// { "version": "1.1.0", "kind": "Node", "spec": { "nodes": [ { "recurrence": "Normal", "id": "860438872620113XXXX", "timeout": 0, "instanceMode": "T+1", "rerunMode": "Allowed", "rerunTimes": 3, "rerunInterval": 180000, "datasource": { "name": "odps_test", "type": "odps" }, "script": { "language": "odps-sql", "path": "XX/OpenAPI_Test/ODPS_SQL_Test", "runtime": { "command": "ODPS_SQL", "commandTypeId": 10 }, "content": "select now();", "id": "853573334108680XXXX" }, "trigger": { "type": "Scheduler", "id": "543680677872062XXXX", "cron": "00 00 00 	- 	- ?", "startTime": "1970-01-01 00:00:00", "endTime": "9999-01-01 00:00:00", "timezone": "Asia/Shanghai", "delaySeconds": 0 }, "runtimeResource": { "resourceGroup": "S_res_group_XXXX_XXXX", "id": "623731286945488XXXX", "resourceGroupId": "7201XXXX" }, "name": "ODPS_SQL_Test", "owner": "110755000425XXXX", "metadata": { "owner": "110755000425XXXX", "ownerName": "XXXXX@test.XXX.com", "projectId": "307XXX" }, "inputs": { "nodeOutputs": [ { "data": "lwttest_standard_root", "artifactType": "NodeOutput" } ] }, "outputs": { "nodeOutputs": [ { "data": "860438872620113XXXX", "artifactType": "NodeOutput", "refTableName": "ODPS_SQL_Test", "isDefault": true } ] } } ], "flow": [ { "nodeId": "860438872620113XXXX", "depends": [ { "type": "Normal", "output": "lwttest_standard_root" } ] } ] }, "metadata": { "uuid": "860438872620113XXXX" } }
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	// 发布流程状态
+	//
+	// example:
+	//
+	// Running
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// example:
+	//
+	// Node
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 项目Id
+	//
+	// example:
+	//
+	// 1
+	Version *int64 `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetCreateTime(v int64) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetId(v int64) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Id = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetMessage(v string) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Message = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetModifyTime(v int64) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetName(v string) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Name = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetSpec(v string) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Spec = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetStatus(v string) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetType(v string) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Type = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems) SetVersion(v int64) *ListPipelineRunItemsResponseBodyPagingInfoPipelineRunItems {
+	s.Version = &v
+	return s
+}
+
+type ListPipelineRunItemsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListPipelineRunItemsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListPipelineRunItemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPipelineRunItemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListPipelineRunItemsResponse) SetHeaders(v map[string]*string) *ListPipelineRunItemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponse) SetStatusCode(v int32) *ListPipelineRunItemsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListPipelineRunItemsResponse) SetBody(v *ListPipelineRunItemsResponseBody) *ListPipelineRunItemsResponse {
+	s.Body = v
+	return s
+}
+
 type ListPipelineRunsRequest struct {
 	// The ID of the user who creates the processes. This parameter specifies a filter condition.
 	//
@@ -46933,6 +53706,7 @@ type ListTaskInstancesRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
 	// example:
@@ -47063,6 +53837,11 @@ func (s *ListTaskInstancesRequest) SetSortBy(v string) *ListTaskInstancesRequest
 	return s
 }
 
+func (s *ListTaskInstancesRequest) SetStatus(v string) *ListTaskInstancesRequest {
+	s.Status = &v
+	return s
+}
+
 func (s *ListTaskInstancesRequest) SetTaskId(v int64) *ListTaskInstancesRequest {
 	s.TaskId = &v
 	return s
@@ -47185,6 +53964,7 @@ type ListTaskInstancesShrinkRequest struct {
 	//
 	// Id Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The ID of the task for which the instance is generated.
 	//
 	// example:
@@ -47312,6 +54092,11 @@ func (s *ListTaskInstancesShrinkRequest) SetRuntimeResource(v string) *ListTaskI
 
 func (s *ListTaskInstancesShrinkRequest) SetSortBy(v string) *ListTaskInstancesShrinkRequest {
 	s.SortBy = &v
+	return s
+}
+
+func (s *ListTaskInstancesShrinkRequest) SetStatus(v string) *ListTaskInstancesShrinkRequest {
+	s.Status = &v
 	return s
 }
 
@@ -55395,6 +62180,158 @@ func (s *StopWorkflowInstancesResponse) SetBody(v *StopWorkflowInstancesResponse
 	return s
 }
 
+type SubmitFileRequest struct {
+	// example:
+	//
+	// Submit a task for the first time
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 1000000
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// 100001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// false
+	SkipAllDeployFileExtensions *bool `json:"SkipAllDeployFileExtensions,omitempty" xml:"SkipAllDeployFileExtensions,omitempty"`
+}
+
+func (s SubmitFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFileRequest) SetComment(v string) *SubmitFileRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *SubmitFileRequest) SetFileId(v int64) *SubmitFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *SubmitFileRequest) SetProjectId(v int64) *SubmitFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *SubmitFileRequest) SetProjectIdentifier(v string) *SubmitFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *SubmitFileRequest) SetSkipAllDeployFileExtensions(v bool) *SubmitFileRequest {
+	s.SkipAllDeployFileExtensions = &v
+	return s
+}
+
+type SubmitFileResponseBody struct {
+	// example:
+	//
+	// 3000001
+	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubmitFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFileResponseBody) SetData(v int64) *SubmitFileResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SubmitFileResponseBody) SetErrorCode(v string) *SubmitFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *SubmitFileResponseBody) SetErrorMessage(v string) *SubmitFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubmitFileResponseBody) SetHttpStatusCode(v int32) *SubmitFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SubmitFileResponseBody) SetRequestId(v string) *SubmitFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubmitFileResponseBody) SetSuccess(v bool) *SubmitFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubmitFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *SubmitFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s SubmitFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubmitFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubmitFileResponse) SetHeaders(v map[string]*string) *SubmitFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubmitFileResponse) SetStatusCode(v int32) *SubmitFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SubmitFileResponse) SetBody(v *SubmitFileResponseBody) *SubmitFileResponse {
+	s.Body = v
+	return s
+}
+
 type SuspendTaskInstancesRequest struct {
 	// Remarks.
 	//
@@ -57026,6 +63963,158 @@ func (s *UpdateAlertRuleResponse) SetStatusCode(v int32) *UpdateAlertRuleRespons
 }
 
 func (s *UpdateAlertRuleResponse) SetBody(v *UpdateAlertRuleResponseBody) *UpdateAlertRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBusinessRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 300000
+	BusinessId *int64 `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	// example:
+	//
+	// MyBusiness
+	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
+	// example:
+	//
+	// modified from my first business
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 348428****
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s UpdateBusinessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessRequest) SetBusinessId(v int64) *UpdateBusinessRequest {
+	s.BusinessId = &v
+	return s
+}
+
+func (s *UpdateBusinessRequest) SetBusinessName(v string) *UpdateBusinessRequest {
+	s.BusinessName = &v
+	return s
+}
+
+func (s *UpdateBusinessRequest) SetDescription(v string) *UpdateBusinessRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateBusinessRequest) SetOwner(v string) *UpdateBusinessRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateBusinessRequest) SetProjectId(v int64) *UpdateBusinessRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateBusinessRequest) SetProjectIdentifier(v string) *UpdateBusinessRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type UpdateBusinessResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateBusinessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessResponseBody) SetErrorCode(v string) *UpdateBusinessResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateBusinessResponseBody) SetErrorMessage(v string) *UpdateBusinessResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateBusinessResponseBody) SetHttpStatusCode(v int32) *UpdateBusinessResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateBusinessResponseBody) SetRequestId(v string) *UpdateBusinessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateBusinessResponseBody) SetSuccess(v bool) *UpdateBusinessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateBusinessResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateBusinessResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateBusinessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBusinessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBusinessResponse) SetHeaders(v map[string]*string) *UpdateBusinessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBusinessResponse) SetStatusCode(v int32) *UpdateBusinessResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBusinessResponse) SetBody(v *UpdateBusinessResponseBody) *UpdateBusinessResponse {
 	s.Body = v
 	return s
 }
@@ -60884,6 +67973,537 @@ func (s *UpdateDataSourceResponse) SetBody(v *UpdateDataSourceResponseBody) *Upd
 	return s
 }
 
+type UpdateFileRequest struct {
+	// example:
+	//
+	// {"queue":"default","SPARK_CONF":"--conf spark.driver.memory=2g"}
+	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	// example:
+	//
+	// true
+	ApplyScheduleImmediately *bool `json:"ApplyScheduleImmediately,omitempty" xml:"ApplyScheduleImmediately,omitempty"`
+	// example:
+	//
+	// true
+	AutoParsing *bool `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	// example:
+	//
+	// 120000
+	AutoRerunIntervalMillis *int32 `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
+	// example:
+	//
+	// 3
+	AutoRerunTimes *int32 `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
+	// example:
+	//
+	// odps_source
+	ConnectionName *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	// example:
+	//
+	// SELECT "1";
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// example:
+	//
+	// 00 00-59/5 1-23 	- 	- ?
+	CronExpress *string `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	// example:
+	//
+	// NOT_DAY
+	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	// example:
+	//
+	// 5,10,15,20
+	DependentNodeIdList *string `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
+	// example:
+	//
+	// USER_DEFINE
+	DependentType *string `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
+	// example:
+	//
+	// 4155787800000
+	EndEffectDate *int64 `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	// example:
+	//
+	// Here is the file description
+	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	// example:
+	//
+	// Business_process/First_Business_Process/data_integration/Folder_1/Folder_2
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 100000001
+	FileId *int64 `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// example:
+	//
+	// ods_user_info_d
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// example:
+	//
+	// true
+	IgnoreParentSkipRunningProperty *bool `json:"IgnoreParentSkipRunningProperty,omitempty" xml:"IgnoreParentSkipRunningProperty,omitempty"`
+	// example:
+	//
+	// m-uf6d7npxk1hhek8ng0cb
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// project_root,project.file1,project.001_out
+	InputList *string `json:"InputList,omitempty" xml:"InputList,omitempty"`
+	// example:
+	//
+	// [{"ValueSource": "project_001.first_node:bizdate_param","ParameterName": "bizdate_input"}]
+	InputParameters *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	// example:
+	//
+	// dw_project.ods_user_info_d
+	OutputList *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
+	// example:
+	//
+	// [{"Type": 1,"Value": "${bizdate}","ParameterName": "bizdate_param"}]
+	OutputParameters *string `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty"`
+	// example:
+	//
+	// 18023848927592
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// example:
+	//
+	// x=a y=b z=c
+	ParaValue *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+	// example:
+	//
+	// 100001
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// example:
+	//
+	// ALL_ALLOWED
+	RerunMode *string `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	// example:
+	//
+	// default_group
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// example:
+	//
+	// NORMAL
+	SchedulerType *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	// example:
+	//
+	// 936923400000
+	StartEffectDate *int64 `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	// example:
+	//
+	// true
+	StartImmediately *bool `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
+	// example:
+	//
+	// false
+	Stop *bool `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	// example:
+	//
+	// 1
+	Timeout *int32 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileRequest) SetAdvancedSettings(v string) *UpdateFileRequest {
+	s.AdvancedSettings = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetApplyScheduleImmediately(v bool) *UpdateFileRequest {
+	s.ApplyScheduleImmediately = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetAutoParsing(v bool) *UpdateFileRequest {
+	s.AutoParsing = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetAutoRerunIntervalMillis(v int32) *UpdateFileRequest {
+	s.AutoRerunIntervalMillis = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetAutoRerunTimes(v int32) *UpdateFileRequest {
+	s.AutoRerunTimes = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetConnectionName(v string) *UpdateFileRequest {
+	s.ConnectionName = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetContent(v string) *UpdateFileRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetCronExpress(v string) *UpdateFileRequest {
+	s.CronExpress = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetCycleType(v string) *UpdateFileRequest {
+	s.CycleType = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetDependentNodeIdList(v string) *UpdateFileRequest {
+	s.DependentNodeIdList = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetDependentType(v string) *UpdateFileRequest {
+	s.DependentType = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetEndEffectDate(v int64) *UpdateFileRequest {
+	s.EndEffectDate = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetFileDescription(v string) *UpdateFileRequest {
+	s.FileDescription = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetFileFolderPath(v string) *UpdateFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetFileId(v int64) *UpdateFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetFileName(v string) *UpdateFileRequest {
+	s.FileName = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetIgnoreParentSkipRunningProperty(v bool) *UpdateFileRequest {
+	s.IgnoreParentSkipRunningProperty = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetImageId(v string) *UpdateFileRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetInputList(v string) *UpdateFileRequest {
+	s.InputList = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetInputParameters(v string) *UpdateFileRequest {
+	s.InputParameters = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetOutputList(v string) *UpdateFileRequest {
+	s.OutputList = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetOutputParameters(v string) *UpdateFileRequest {
+	s.OutputParameters = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetOwner(v string) *UpdateFileRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetParaValue(v string) *UpdateFileRequest {
+	s.ParaValue = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetProjectId(v int64) *UpdateFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetProjectIdentifier(v string) *UpdateFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetRerunMode(v string) *UpdateFileRequest {
+	s.RerunMode = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetResourceGroupIdentifier(v string) *UpdateFileRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetSchedulerType(v string) *UpdateFileRequest {
+	s.SchedulerType = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetStartEffectDate(v int64) *UpdateFileRequest {
+	s.StartEffectDate = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetStartImmediately(v bool) *UpdateFileRequest {
+	s.StartImmediately = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetStop(v bool) *UpdateFileRequest {
+	s.Stop = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetTimeout(v int32) *UpdateFileRequest {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateFileResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFGH-IJKLMNOPQ
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileResponseBody) SetErrorCode(v string) *UpdateFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateFileResponseBody) SetErrorMessage(v string) *UpdateFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateFileResponseBody) SetHttpStatusCode(v int32) *UpdateFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateFileResponseBody) SetRequestId(v string) *UpdateFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFileResponseBody) SetSuccess(v bool) *UpdateFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFileResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFileResponse) SetHeaders(v map[string]*string) *UpdateFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFileResponse) SetStatusCode(v int32) *UpdateFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFileResponse) SetBody(v *UpdateFileResponseBody) *UpdateFileResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateFolderRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 2735c2c19d58
+	FolderId *string `json:"FolderId,omitempty" xml:"FolderId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// MySecondFolder
+	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+}
+
+func (s UpdateFolderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderRequest) SetFolderId(v string) *UpdateFolderRequest {
+	s.FolderId = &v
+	return s
+}
+
+func (s *UpdateFolderRequest) SetFolderName(v string) *UpdateFolderRequest {
+	s.FolderName = &v
+	return s
+}
+
+func (s *UpdateFolderRequest) SetProjectId(v int64) *UpdateFolderRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateFolderRequest) SetProjectIdentifier(v string) *UpdateFolderRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+type UpdateFolderResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateFolderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderResponseBody) SetErrorCode(v string) *UpdateFolderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetErrorMessage(v string) *UpdateFolderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetHttpStatusCode(v int32) *UpdateFolderResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetRequestId(v string) *UpdateFolderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateFolderResponseBody) SetSuccess(v bool) *UpdateFolderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateFolderResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateFolderResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateFolderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFolderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFolderResponse) SetHeaders(v map[string]*string) *UpdateFolderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateFolderResponse) SetStatusCode(v int32) *UpdateFolderResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateFolderResponse) SetBody(v *UpdateFolderResponseBody) *UpdateFolderResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFunctionRequest struct {
 	// The ID of the UDF.
 	//
@@ -61044,6 +68664,104 @@ func (s *UpdateFunctionResponse) SetStatusCode(v int32) *UpdateFunctionResponse 
 }
 
 func (s *UpdateFunctionResponse) SetBody(v *UpdateFunctionResponseBody) *UpdateFunctionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIDEEventResultRequest struct {
+	// example:
+	//
+	// OK
+	CheckResult *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	// example:
+	//
+	// Succeeded
+	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	// 扩展点消息UUID
+	//
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s UpdateIDEEventResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIDEEventResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIDEEventResultRequest) SetCheckResult(v string) *UpdateIDEEventResultRequest {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *UpdateIDEEventResultRequest) SetCheckResultTip(v string) *UpdateIDEEventResultRequest {
+	s.CheckResultTip = &v
+	return s
+}
+
+func (s *UpdateIDEEventResultRequest) SetExtensionCode(v string) *UpdateIDEEventResultRequest {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *UpdateIDEEventResultRequest) SetMessageId(v string) *UpdateIDEEventResultRequest {
+	s.MessageId = &v
+	return s
+}
+
+type UpdateIDEEventResultResponseBody struct {
+	// example:
+	//
+	// 8abcb91f-d266-4073-b907-2ed670378ed1
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIDEEventResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIDEEventResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIDEEventResultResponseBody) SetRequestId(v string) *UpdateIDEEventResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIDEEventResultResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateIDEEventResultResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateIDEEventResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIDEEventResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIDEEventResultResponse) SetHeaders(v map[string]*string) *UpdateIDEEventResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIDEEventResultResponse) SetStatusCode(v int32) *UpdateIDEEventResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateIDEEventResultResponse) SetBody(v *UpdateIDEEventResultResponseBody) *UpdateIDEEventResultResponse {
 	s.Body = v
 	return s
 }
@@ -63317,6 +71035,218 @@ func (s *UpdateTaskInstancesResponse) SetBody(v *UpdateTaskInstancesResponseBody
 	return s
 }
 
+type UpdateUdfFileRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// com.alibaba.DataWorks.api.udf.StringConcat
+	ClassName *string `json:"ClassName,omitempty" xml:"ClassName,omitempty"`
+	// example:
+	//
+	// StringConcat(String... substrs)
+	CmdDescription *string `json:"CmdDescription,omitempty" xml:"CmdDescription,omitempty"`
+	// example:
+	//
+	// StringConcat(\\"a\\", \\"b\\", \\"c\\")
+	Example *string `json:"Example,omitempty" xml:"Example,omitempty"`
+	// example:
+	//
+	// Business_process/First_Business_Process/function/string_processing_function
+	FileFolderPath *string `json:"FileFolderPath,omitempty" xml:"FileFolderPath,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// 10000001
+	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// STRING
+	FunctionType *string `json:"FunctionType,omitempty" xml:"FunctionType,omitempty"`
+	// example:
+	//
+	// List of strings to be connected
+	ParameterDescription *string `json:"ParameterDescription,omitempty" xml:"ParameterDescription,omitempty"`
+	// example:
+	//
+	// 10000
+	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// example:
+	//
+	// dw_project
+	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// string-concat-1.0.0.jar,commons-lang-2.6.jar
+	Resources *string `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	// example:
+	//
+	// New strings generated by concatenating all strings before and after the input order
+	ReturnValue *string `json:"ReturnValue,omitempty" xml:"ReturnValue,omitempty"`
+	// example:
+	//
+	// Concatenate several strings to generate a new string
+	UdfDescription *string `json:"UdfDescription,omitempty" xml:"UdfDescription,omitempty"`
+}
+
+func (s UpdateUdfFileRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfFileRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfFileRequest) SetClassName(v string) *UpdateUdfFileRequest {
+	s.ClassName = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetCmdDescription(v string) *UpdateUdfFileRequest {
+	s.CmdDescription = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetExample(v string) *UpdateUdfFileRequest {
+	s.Example = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetFileFolderPath(v string) *UpdateUdfFileRequest {
+	s.FileFolderPath = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetFileId(v string) *UpdateUdfFileRequest {
+	s.FileId = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetFunctionType(v string) *UpdateUdfFileRequest {
+	s.FunctionType = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetParameterDescription(v string) *UpdateUdfFileRequest {
+	s.ParameterDescription = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetProjectId(v int64) *UpdateUdfFileRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetProjectIdentifier(v string) *UpdateUdfFileRequest {
+	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetResources(v string) *UpdateUdfFileRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetReturnValue(v string) *UpdateUdfFileRequest {
+	s.ReturnValue = &v
+	return s
+}
+
+func (s *UpdateUdfFileRequest) SetUdfDescription(v string) *UpdateUdfFileRequest {
+	s.UdfDescription = &v
+	return s
+}
+
+type UpdateUdfFileResponseBody struct {
+	// example:
+	//
+	// Invalid.Tenant.ConnectionNotExists
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// example:
+	//
+	// The connection does not exist.
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// 0000-ABCD-EFG****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateUdfFileResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfFileResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfFileResponseBody) SetErrorCode(v string) *UpdateUdfFileResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateUdfFileResponseBody) SetErrorMessage(v string) *UpdateUdfFileResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateUdfFileResponseBody) SetHttpStatusCode(v int32) *UpdateUdfFileResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateUdfFileResponseBody) SetRequestId(v string) *UpdateUdfFileResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUdfFileResponseBody) SetSuccess(v bool) *UpdateUdfFileResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateUdfFileResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *UpdateUdfFileResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateUdfFileResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdfFileResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdfFileResponse) SetHeaders(v map[string]*string) *UpdateUdfFileResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUdfFileResponse) SetStatusCode(v int32) *UpdateUdfFileResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUdfFileResponse) SetBody(v *UpdateUdfFileResponseBody) *UpdateUdfFileResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateWorkflowRequest struct {
 	// The unique code of the client. This parameter is used to create a workflow asynchronously and implement the idempotence of the workflow. If you do not specify this parameter when you create the workflow, the system automatically generates a unique code. The unique code is uniquely associated with the workflow ID. If you specify this parameter when you update or delete the workflow, the value of this parameter must be the unique code that is used to create the workflow.
 	//
@@ -65295,6 +73225,78 @@ func (client *Client) CreateAlertRule(request *CreateAlertRuleRequest) (_result 
 	return _result, _err
 }
 
+// @param request - CreateBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateBusinessResponse
+func (client *Client) CreateBusinessWithOptions(request *CreateBusinessRequest, runtime *util.RuntimeOptions) (_result *CreateBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessName)) {
+		body["BusinessName"] = request.BusinessName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseType)) {
+		body["UseType"] = request.UseType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateBusinessRequest
+//
+// @return CreateBusinessResponse
+func (client *Client) CreateBusiness(request *CreateBusinessRequest) (_result *CreateBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBusinessResponse{}
+	_body, _err := client.CreateBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates an alert rule for a synchronization task.
@@ -66141,6 +74143,250 @@ func (client *Client) CreateDataSourceSharedRule(request *CreateDataSourceShared
 	return _result, _err
 }
 
+// @param request - CreateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFileResponse
+func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime *util.RuntimeOptions) (_result *CreateFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
+		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyScheduleImmediately)) {
+		body["ApplyScheduleImmediately"] = request.ApplyScheduleImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
+		body["AutoParsing"] = request.AutoParsing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunIntervalMillis)) {
+		body["AutoRerunIntervalMillis"] = request.AutoRerunIntervalMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunTimes)) {
+		body["AutoRerunTimes"] = request.AutoRerunTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFolderIfNotExists)) {
+		body["CreateFolderIfNotExists"] = request.CreateFolderIfNotExists
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpress)) {
+		body["CronExpress"] = request.CronExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleType)) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentNodeIdList)) {
+		body["DependentNodeIdList"] = request.DependentNodeIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentType)) {
+		body["DependentType"] = request.DependentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndEffectDate)) {
+		body["EndEffectDate"] = request.EndEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreParentSkipRunningProperty)) {
+		body["IgnoreParentSkipRunningProperty"] = request.IgnoreParentSkipRunningProperty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputList)) {
+		body["InputList"] = request.InputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParameters)) {
+		body["InputParameters"] = request.InputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputParameters)) {
+		body["OutputParameters"] = request.OutputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParaValue)) {
+		body["ParaValue"] = request.ParaValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunMode)) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartEffectDate)) {
+		body["StartEffectDate"] = request.StartEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartImmediately)) {
+		body["StartImmediately"] = request.StartImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stop)) {
+		body["Stop"] = request.Stop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateFileRequest
+//
+// @return CreateFileResponse
+func (client *Client) CreateFile(request *CreateFileRequest) (_result *CreateFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFileResponse{}
+	_body, _err := client.CreateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateFolderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runtime *util.RuntimeOptions) (_result *CreateFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderPath)) {
+		body["FolderPath"] = request.FolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFolder"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateFolderRequest
+//
+// @return CreateFolderResponse
+func (client *Client) CreateFolder(request *CreateFolderRequest) (_result *CreateFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFolderResponse{}
+	_body, _err := client.CreateFolderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Creates a user-defined function (UDF) in DataStudio. The information about the UDF is described by using FlowSpec.
@@ -66978,6 +75224,221 @@ func (client *Client) CreateResourceAdvance(request *CreateResourceAdvanceReques
 
 // Summary:
 //
+// 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+//
+// @param request - CreateResourceFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateResourceFileResponse
+func (client *Client) CreateResourceFileWithOptions(request *CreateResourceFileRequest, runtime *util.RuntimeOptions) (_result *CreateResourceFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginResourceName)) {
+		body["OriginResourceName"] = request.OriginResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegisterToCalcEngine)) {
+		body["RegisterToCalcEngine"] = request.RegisterToCalcEngine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceFile)) {
+		body["ResourceFile"] = request.ResourceFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageURL)) {
+		body["StorageURL"] = request.StorageURL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UploadMode)) {
+		body["UploadMode"] = request.UploadMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourceFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateResourceFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 支持用户指定自己的文件（比如jar，py，arhive，file等）创建数据开发资源文件
+//
+// @param request - CreateResourceFileRequest
+//
+// @return CreateResourceFileResponse
+func (client *Client) CreateResourceFile(request *CreateResourceFileRequest) (_result *CreateResourceFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateResourceFileResponse{}
+	_body, _err := client.CreateResourceFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateResourceFileAdvance(request *CreateResourceFileAdvanceRequest, runtime *util.RuntimeOptions) (_result *CreateResourceFileResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.Empty(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &openapi.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("dataworks-public"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	ossClient, _err := oss.NewClient(ossConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	createResourceFileReq := &CreateResourceFileRequest{}
+	openapiutil.Convert(request, createResourceFileReq)
+	if !tea.BoolValue(util.IsUnset(request.ResourceFileObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.Body.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Body.Endpoint, authResponse.Body.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.Body.ObjectKey,
+			Content:     request.ResourceFileObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.Body.AccessKeyId,
+			Policy:              authResponse.Body.EncodedPolicy,
+			Signature:           authResponse.Body.Signature,
+			Key:                 authResponse.Body.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Body.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		createResourceFileReq.ResourceFile = tea.String("http://" + tea.StringValue(authResponse.Body.Bucket) + "." + tea.StringValue(authResponse.Body.Endpoint) + "/" + tea.StringValue(authResponse.Body.ObjectKey))
+	}
+
+	createResourceFileResp, _err := client.CreateResourceFileWithOptions(createResourceFileReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = createResourceFileResp
+	return _result, _err
+}
+
+// Summary:
+//
 // Creates a serverless resource group.
 //
 // Description:
@@ -67167,6 +75628,106 @@ func (client *Client) CreateRoute(request *CreateRouteRequest) (_result *CreateR
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRouteResponse{}
 	_body, _err := client.CreateRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - CreateUdfFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateUdfFileResponse
+func (client *Client) CreateUdfFileWithOptions(request *CreateUdfFileRequest, runtime *util.RuntimeOptions) (_result *CreateUdfFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		body["ClassName"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmdDescription)) {
+		body["CmdDescription"] = request.CmdDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateFolderIfNotExists)) {
+		body["CreateFolderIfNotExists"] = request.CreateFolderIfNotExists
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Example)) {
+		body["Example"] = request.Example
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
+		body["FunctionType"] = request.FunctionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterDescription)) {
+		body["ParameterDescription"] = request.ParameterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnValue)) {
+		body["ReturnValue"] = request.ReturnValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfDescription)) {
+		body["UdfDescription"] = request.UdfDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUdfFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUdfFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - CreateUdfFileRequest
+//
+// @return CreateUdfFileResponse
+func (client *Client) CreateUdfFile(request *CreateUdfFileRequest) (_result *CreateUdfFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUdfFileResponse{}
+	_body, _err := client.CreateUdfFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -67401,6 +75962,66 @@ func (client *Client) DeleteAlertRule(request *DeleteAlertRuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteAlertRuleResponse{}
 	_body, _err := client.DeleteAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteBusinessResponse
+func (client *Client) DeleteBusinessWithOptions(request *DeleteBusinessRequest, runtime *util.RuntimeOptions) (_result *DeleteBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteBusinessRequest
+//
+// @return DeleteBusinessResponse
+func (client *Client) DeleteBusiness(request *DeleteBusinessRequest) (_result *DeleteBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteBusinessResponse{}
+	_body, _err := client.DeleteBusinessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68015,6 +76636,126 @@ func (client *Client) DeleteDataSourceSharedRule(request *DeleteDataSourceShared
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDataSourceSharedRuleResponse{}
 	_body, _err := client.DeleteDataSourceSharedRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFileResponse
+func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime *util.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteFileRequest
+//
+// @return DeleteFileResponse
+func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFileResponse{}
+	_body, _err := client.DeleteFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DeleteFolderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runtime *util.RuntimeOptions) (_result *DeleteFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFolder"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeleteFolderRequest
+//
+// @return DeleteFolderResponse
+func (client *Client) DeleteFolder(request *DeleteFolderRequest) (_result *DeleteFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteFolderResponse{}
+	_body, _err := client.DeleteFolderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68928,6 +77669,74 @@ func (client *Client) DeleteWorkflowDefinition(request *DeleteWorkflowDefinition
 	return _result, _err
 }
 
+// @param request - DeployFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeployFileResponse
+func (client *Client) DeployFileWithOptions(request *DeployFileRequest, runtime *util.RuntimeOptions) (_result *DeployFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeployFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeployFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DeployFileRequest
+//
+// @return DeployFileResponse
+func (client *Client) DeployFile(request *DeployFileRequest) (_result *DeployFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeployFileResponse{}
+	_body, _err := client.DeployFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Disassociates monitoring rules from a data quality monitoring task.
@@ -69075,6 +77884,74 @@ func (client *Client) DissociateProjectFromResourceGroup(request *DissociateProj
 	runtime := &util.RuntimeOptions{}
 	_result = &DissociateProjectFromResourceGroupResponse{}
 	_body, _err := client.DissociateProjectFromResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - EstablishRelationTableToBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return EstablishRelationTableToBusinessResponse
+func (client *Client) EstablishRelationTableToBusinessWithOptions(request *EstablishRelationTableToBusinessRequest, runtime *util.RuntimeOptions) (_result *EstablishRelationTableToBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		body["TableGuid"] = request.TableGuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EstablishRelationTableToBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EstablishRelationTableToBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - EstablishRelationTableToBusinessRequest
+//
+// @return EstablishRelationTableToBusinessResponse
+func (client *Client) EstablishRelationTableToBusiness(request *EstablishRelationTableToBusinessRequest) (_result *EstablishRelationTableToBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EstablishRelationTableToBusinessResponse{}
+	_body, _err := client.EstablishRelationTableToBusinessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69307,6 +78184,66 @@ func (client *Client) GetAlertRule(request *GetAlertRuleRequest) (_result *GetAl
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAlertRuleResponse{}
 	_body, _err := client.GetAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetBusinessResponse
+func (client *Client) GetBusinessWithOptions(request *GetBusinessRequest, runtime *util.RuntimeOptions) (_result *GetBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetBusinessRequest
+//
+// @return GetBusinessResponse
+func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetBusinessResponse{}
+	_body, _err := client.GetBusinessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -70054,6 +78991,258 @@ func (client *Client) GetDatabase(request *GetDatabaseRequest) (_result *GetData
 	return _result, _err
 }
 
+// @param request - GetDeploymentPackageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetDeploymentPackageResponse
+func (client *Client) GetDeploymentPackageWithOptions(request *GetDeploymentPackageRequest, runtime *util.RuntimeOptions) (_result *GetDeploymentPackageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		body["DeploymentId"] = request.DeploymentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDeploymentPackage"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDeploymentPackageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetDeploymentPackageRequest
+//
+// @return GetDeploymentPackageResponse
+func (client *Client) GetDeploymentPackage(request *GetDeploymentPackageRequest) (_result *GetDeploymentPackageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDeploymentPackageResponse{}
+	_body, _err := client.GetDeploymentPackageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileResponse
+func (client *Client) GetFileWithOptions(request *GetFileRequest, runtime *util.RuntimeOptions) (_result *GetFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetFileRequest
+//
+// @return GetFileResponse
+func (client *Client) GetFile(request *GetFileRequest) (_result *GetFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileResponse{}
+	_body, _err := client.GetFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetFileVersionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFileVersionResponse
+func (client *Client) GetFileVersionWithOptions(request *GetFileVersionRequest, runtime *util.RuntimeOptions) (_result *GetFileVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileVersion)) {
+		body["FileVersion"] = request.FileVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFileVersion"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetFileVersionRequest
+//
+// @return GetFileVersionResponse
+func (client *Client) GetFileVersion(request *GetFileVersionRequest) (_result *GetFileVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileVersionResponse{}
+	_body, _err := client.GetFileVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - GetFolderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetFolderResponse
+func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *util.RuntimeOptions) (_result *GetFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderPath)) {
+		body["FolderPath"] = request.FolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFolder"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - GetFolderRequest
+//
+// @return GetFolderResponse
+func (client *Client) GetFolder(request *GetFolderRequest) (_result *GetFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFolderResponse{}
+	_body, _err := client.GetFolderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Queries the information about a user-defined function (UDF) in DataStudio.
@@ -70103,6 +79292,70 @@ func (client *Client) GetFunction(request *GetFunctionRequest) (_result *GetFunc
 	runtime := &util.RuntimeOptions{}
 	_result = &GetFunctionResponse{}
 	_body, _err := client.GetFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取扩展点触发时的数据快照
+//
+// @param request - GetIDEEventDetailRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetIDEEventDetailResponse
+func (client *Client) GetIDEEventDetailWithOptions(request *GetIDEEventDetailRequest, runtime *util.RuntimeOptions) (_result *GetIDEEventDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetIDEEventDetail"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetIDEEventDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取扩展点触发时的数据快照
+//
+// @param request - GetIDEEventDetailRequest
+//
+// @return GetIDEEventDetailResponse
+func (client *Client) GetIDEEventDetail(request *GetIDEEventDetailRequest) (_result *GetIDEEventDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetIDEEventDetailResponse{}
+	_body, _err := client.GetIDEEventDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71821,6 +81074,74 @@ func (client *Client) ListAlertRules(request *ListAlertRulesRequest) (_result *L
 	return _result, _err
 }
 
+// @param request - ListBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBusinessResponse
+func (client *Client) ListBusinessWithOptions(request *ListBusinessRequest, runtime *util.RuntimeOptions) (_result *ListBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListBusinessRequest
+//
+// @return ListBusinessResponse
+func (client *Client) ListBusiness(request *ListBusinessRequest) (_result *ListBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListBusinessResponse{}
+	_body, _err := client.ListBusinessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // 查询数据目录列表
@@ -73022,6 +82343,212 @@ func (client *Client) ListDatabases(request *ListDatabasesRequest) (_result *Lis
 
 // Summary:
 //
+// 获取待发布的文件版本列表
+//
+// @param tmpReq - ListDeploymentPackageFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeploymentPackageFilesResponse
+func (client *Client) ListDeploymentPackageFilesWithOptions(tmpReq *ListDeploymentPackageFilesRequest, runtime *util.RuntimeOptions) (_result *ListDeploymentPackageFilesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListDeploymentPackageFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.FileIds)) {
+		request.FileIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.FileIds, tea.String("FileIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		query["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChangeType)) {
+		query["ChangeType"] = request.ChangeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommitFrom)) {
+		query["CommitFrom"] = request.CommitFrom
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommitTo)) {
+		query["CommitTo"] = request.CommitTo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommitUserId)) {
+		query["CommitUserId"] = request.CommitUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileIdsShrink)) {
+		query["FileIds"] = request.FileIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		query["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolutionId)) {
+		query["SolutionId"] = request.SolutionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentPackageFiles"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentPackageFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取待发布的文件版本列表
+//
+// @param request - ListDeploymentPackageFilesRequest
+//
+// @return ListDeploymentPackageFilesResponse
+func (client *Client) ListDeploymentPackageFiles(request *ListDeploymentPackageFilesRequest) (_result *ListDeploymentPackageFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeploymentPackageFilesResponse{}
+	_body, _err := client.ListDeploymentPackageFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询发布包列表
+//
+// @param request - ListDeploymentPackagesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeploymentPackagesResponse
+func (client *Client) ListDeploymentPackagesWithOptions(request *ListDeploymentPackagesRequest, runtime *util.RuntimeOptions) (_result *ListDeploymentPackagesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		body["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndCreateTime)) {
+		body["EndCreateTime"] = request.EndCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndExecuteTime)) {
+		body["EndExecuteTime"] = request.EndExecuteTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Executor)) {
+		body["Executor"] = request.Executor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDeploymentPackages"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDeploymentPackagesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询发布包列表
+//
+// @param request - ListDeploymentPackagesRequest
+//
+// @return ListDeploymentPackagesResponse
+func (client *Client) ListDeploymentPackages(request *ListDeploymentPackagesRequest) (_result *ListDeploymentPackagesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDeploymentPackagesResponse{}
+	_body, _err := client.ListDeploymentPackagesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of descendant instances of an instance by page.
 //
 // Description:
@@ -73189,6 +82716,254 @@ func (client *Client) ListEntitiesInMetaCollection(request *ListEntitiesInMetaCo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListEntitiesInMetaCollectionResponse{}
 	_body, _err := client.ListEntitiesInMetaCollectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListFileVersionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFileVersionsResponse
+func (client *Client) ListFileVersionsWithOptions(request *ListFileVersionsRequest, runtime *util.RuntimeOptions) (_result *ListFileVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFileVersions"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFileVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListFileVersionsRequest
+//
+// @return ListFileVersionsResponse
+func (client *Client) ListFileVersions(request *ListFileVersionsRequest) (_result *ListFileVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFileVersionsResponse{}
+	_body, _err := client.ListFileVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListFilesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFilesResponse
+func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *util.RuntimeOptions) (_result *ListFilesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommitStatus)) {
+		body["CommitStatus"] = request.CommitStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExactFileName)) {
+		body["ExactFileName"] = request.ExactFileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileIdIn)) {
+		body["FileIdIn"] = request.FileIdIn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTypes)) {
+		body["FileTypes"] = request.FileTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastEditUser)) {
+		body["LastEditUser"] = request.LastEditUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedAbsoluteFolderPath)) {
+		body["NeedAbsoluteFolderPath"] = request.NeedAbsoluteFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedContent)) {
+		body["NeedContent"] = request.NeedContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseType)) {
+		body["UseType"] = request.UseType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFiles"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListFilesRequest
+//
+// @return ListFilesResponse
+func (client *Client) ListFiles(request *ListFilesRequest) (_result *ListFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFilesResponse{}
+	_body, _err := client.ListFilesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - ListFoldersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListFoldersResponse
+func (client *Client) ListFoldersWithOptions(request *ListFoldersRequest, runtime *util.RuntimeOptions) (_result *ListFoldersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderPath)) {
+		body["ParentFolderPath"] = request.ParentFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFolders"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFoldersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - ListFoldersRequest
+//
+// @return ListFoldersResponse
+func (client *Client) ListFolders(request *ListFoldersRequest) (_result *ListFoldersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFoldersResponse{}
+	_body, _err := client.ListFoldersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -73645,6 +83420,62 @@ func (client *Client) ListPartitions(request *ListPartitionsRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListPartitionsResponse{}
 	_body, _err := client.ListPartitionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过发布流程的ID获取发布内容
+//
+// @param request - ListPipelineRunItemsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPipelineRunItemsResponse
+func (client *Client) ListPipelineRunItemsWithOptions(request *ListPipelineRunItemsRequest, runtime *util.RuntimeOptions) (_result *ListPipelineRunItemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPipelineRunItems"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListPipelineRunItemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 通过发布流程的ID获取发布内容
+//
+// @param request - ListPipelineRunItemsRequest
+//
+// @return ListPipelineRunItemsResponse
+func (client *Client) ListPipelineRunItems(request *ListPipelineRunItemsRequest) (_result *ListPipelineRunItemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListPipelineRunItemsResponse{}
+	_body, _err := client.ListPipelineRunItemsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -74459,6 +84290,10 @@ func (client *Client) ListTaskInstancesWithOptions(tmpReq *ListTaskInstancesRequ
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
 		body["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
@@ -76492,6 +86327,74 @@ func (client *Client) StopWorkflowInstances(request *StopWorkflowInstancesReques
 	return _result, _err
 }
 
+// @param request - SubmitFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitFileResponse
+func (client *Client) SubmitFileWithOptions(request *SubmitFileRequest, runtime *util.RuntimeOptions) (_result *SubmitFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipAllDeployFileExtensions)) {
+		body["SkipAllDeployFileExtensions"] = request.SkipAllDeployFileExtensions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubmitFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubmitFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - SubmitFileRequest
+//
+// @return SubmitFileResponse
+func (client *Client) SubmitFile(request *SubmitFileRequest) (_result *SubmitFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubmitFileResponse{}
+	_body, _err := client.SubmitFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Suspends multiple instances at a time.
@@ -77003,6 +86906,78 @@ func (client *Client) UpdateAlertRule(request *UpdateAlertRuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAlertRuleResponse{}
 	_body, _err := client.UpdateAlertRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateBusinessRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateBusinessResponse
+func (client *Client) UpdateBusinessWithOptions(request *UpdateBusinessRequest, runtime *util.RuntimeOptions) (_result *UpdateBusinessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessName)) {
+		body["BusinessName"] = request.BusinessName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBusiness"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBusinessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateBusinessRequest
+//
+// @return UpdateBusinessResponse
+func (client *Client) UpdateBusiness(request *UpdateBusinessRequest) (_result *UpdateBusinessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateBusinessResponse{}
+	_body, _err := client.UpdateBusinessWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -77738,6 +87713,250 @@ func (client *Client) UpdateDataSource(request *UpdateDataSourceRequest) (_resul
 	return _result, _err
 }
 
+// @param request - UpdateFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFileResponse
+func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime *util.RuntimeOptions) (_result *UpdateFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
+		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyScheduleImmediately)) {
+		body["ApplyScheduleImmediately"] = request.ApplyScheduleImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
+		body["AutoParsing"] = request.AutoParsing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunIntervalMillis)) {
+		body["AutoRerunIntervalMillis"] = request.AutoRerunIntervalMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunTimes)) {
+		body["AutoRerunTimes"] = request.AutoRerunTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpress)) {
+		body["CronExpress"] = request.CronExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleType)) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentNodeIdList)) {
+		body["DependentNodeIdList"] = request.DependentNodeIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentType)) {
+		body["DependentType"] = request.DependentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndEffectDate)) {
+		body["EndEffectDate"] = request.EndEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IgnoreParentSkipRunningProperty)) {
+		body["IgnoreParentSkipRunningProperty"] = request.IgnoreParentSkipRunningProperty
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputList)) {
+		body["InputList"] = request.InputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParameters)) {
+		body["InputParameters"] = request.InputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputList)) {
+		body["OutputList"] = request.OutputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputParameters)) {
+		body["OutputParameters"] = request.OutputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParaValue)) {
+		body["ParaValue"] = request.ParaValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunMode)) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartEffectDate)) {
+		body["StartEffectDate"] = request.StartEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartImmediately)) {
+		body["StartImmediately"] = request.StartImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stop)) {
+		body["Stop"] = request.Stop
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateFileRequest
+//
+// @return UpdateFileResponse
+func (client *Client) UpdateFile(request *UpdateFileRequest) (_result *UpdateFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFileResponse{}
+	_body, _err := client.UpdateFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateFolderRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateFolderResponse
+func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runtime *util.RuntimeOptions) (_result *UpdateFolderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderName)) {
+		body["FolderName"] = request.FolderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateFolder"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateFolderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateFolderRequest
+//
+// @return UpdateFolderResponse
+func (client *Client) UpdateFolder(request *UpdateFolderRequest) (_result *UpdateFolderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateFolderResponse{}
+	_body, _err := client.UpdateFolderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 // Summary:
 //
 // Updates the basic information about a user-defined function (UDF) in DataStudio. This API operation performs an incremental update. The update information is described by using FlowSpec.
@@ -77799,6 +88018,78 @@ func (client *Client) UpdateFunction(request *UpdateFunctionRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateFunctionResponse{}
 	_body, _err := client.UpdateFunctionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 回调扩展点消息的检查结果
+//
+// @param request - UpdateIDEEventResultRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateIDEEventResultResponse
+func (client *Client) UpdateIDEEventResultWithOptions(request *UpdateIDEEventResultRequest, runtime *util.RuntimeOptions) (_result *UpdateIDEEventResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckResult)) {
+		body["CheckResult"] = request.CheckResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckResultTip)) {
+		body["CheckResultTip"] = request.CheckResultTip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		body["ExtensionCode"] = request.ExtensionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIDEEventResult"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIDEEventResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 回调扩展点消息的检查结果
+//
+// @param request - UpdateIDEEventResultRequest
+//
+// @return UpdateIDEEventResultResponse
+func (client *Client) UpdateIDEEventResult(request *UpdateIDEEventResultRequest) (_result *UpdateIDEEventResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIDEEventResultResponse{}
+	_body, _err := client.UpdateIDEEventResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -78672,6 +88963,102 @@ func (client *Client) UpdateTaskInstances(request *UpdateTaskInstancesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateTaskInstancesResponse{}
 	_body, _err := client.UpdateTaskInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - UpdateUdfFileRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateUdfFileResponse
+func (client *Client) UpdateUdfFileWithOptions(request *UpdateUdfFileRequest, runtime *util.RuntimeOptions) (_result *UpdateUdfFileResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		body["ClassName"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmdDescription)) {
+		body["CmdDescription"] = request.CmdDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Example)) {
+		body["Example"] = request.Example
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
+		body["FunctionType"] = request.FunctionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterDescription)) {
+		body["ParameterDescription"] = request.ParameterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnValue)) {
+		body["ReturnValue"] = request.ReturnValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfDescription)) {
+		body["UdfDescription"] = request.UdfDescription
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUdfFile"),
+		Version:     tea.String("2024-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUdfFileResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - UpdateUdfFileRequest
+//
+// @return UpdateUdfFileResponse
+func (client *Client) UpdateUdfFile(request *UpdateUdfFileRequest) (_result *UpdateUdfFileResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUdfFileResponse{}
+	_body, _err := client.UpdateUdfFileWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
