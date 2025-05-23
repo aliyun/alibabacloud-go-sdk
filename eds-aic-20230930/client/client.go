@@ -4604,6 +4604,7 @@ type DescribeAndroidInstancesRequest struct {
 	//
 	// name
 	AndroidInstanceName *string `json:"AndroidInstanceName,omitempty" xml:"AndroidInstanceName,omitempty"`
+	AppManagePolicyId   *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
 	AuthorizedUserId    *string `json:"AuthorizedUserId,omitempty" xml:"AuthorizedUserId,omitempty"`
 	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2807298.html) operation to query the regions where Cloud Phone is supported.
 	//
@@ -4738,6 +4739,11 @@ func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceIds(v []*string) *De
 
 func (s *DescribeAndroidInstancesRequest) SetAndroidInstanceName(v string) *DescribeAndroidInstancesRequest {
 	s.AndroidInstanceName = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesRequest) SetAppManagePolicyId(v string) *DescribeAndroidInstancesRequest {
+	s.AppManagePolicyId = &v
 	return s
 }
 
@@ -4947,7 +4953,8 @@ type DescribeAndroidInstancesResponseBodyInstanceModel struct {
 	// example:
 	//
 	// ai-9ey6io0q58rcd****
-	AppInstanceId *string `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppInstanceId   *string                                                           `json:"AppInstanceId,omitempty" xml:"AppInstanceId,omitempty"`
+	AppManagePolicy *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy `json:"AppManagePolicy,omitempty" xml:"AppManagePolicy,omitempty" type:"Struct"`
 	// The ID of the user to whom the instance is assigned.
 	//
 	// example:
@@ -5144,6 +5151,11 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetAppInstanceId(v s
 	return s
 }
 
+func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetAppManagePolicy(v *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) *DescribeAndroidInstancesResponseBodyInstanceModel {
+	s.AppManagePolicy = v
+	return s
+}
+
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetAuthorizedUserId(v string) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.AuthorizedUserId = &v
 	return s
@@ -5281,6 +5293,29 @@ func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetSessionStatus(v s
 
 func (s *DescribeAndroidInstancesResponseBodyInstanceModel) SetTags(v []*DescribeAndroidInstancesResponseBodyInstanceModelTags) *DescribeAndroidInstancesResponseBodyInstanceModel {
 	s.Tags = v
+	return s
+}
+
+type DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy struct {
+	AppManagePolicyId   *string `json:"AppManagePolicyId,omitempty" xml:"AppManagePolicyId,omitempty"`
+	AppManagePolicyName *string `json:"AppManagePolicyName,omitempty" xml:"AppManagePolicyName,omitempty"`
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) SetAppManagePolicyId(v string) *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy {
+	s.AppManagePolicyId = &v
+	return s
+}
+
+func (s *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy) SetAppManagePolicyName(v string) *DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy {
+	s.AppManagePolicyName = &v
 	return s
 }
 
@@ -15097,6 +15132,10 @@ func (client *Client) DescribeAndroidInstancesWithOptions(request *DescribeAndro
 
 	if !tea.BoolValue(util.IsUnset(request.AndroidInstanceName)) {
 		query["AndroidInstanceName"] = request.AndroidInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppManagePolicyId)) {
+		query["AppManagePolicyId"] = request.AppManagePolicyId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AuthorizedUserId)) {
