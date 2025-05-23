@@ -8663,10 +8663,11 @@ type GetGeneratedContentResponseBodyData struct {
 	// example:
 	//
 	// 86
-	Id          *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
-	KeywordList []*string `json:"KeywordList,omitempty" xml:"KeywordList,omitempty" type:"Repeated"`
-	Keywords    *string   `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
-	Prompt      *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	Id                      *int64    `json:"Id,omitempty" xml:"Id,omitempty"`
+	IgnoreContentAuditWords *string   `json:"IgnoreContentAuditWords,omitempty" xml:"IgnoreContentAuditWords,omitempty"`
+	KeywordList             []*string `json:"KeywordList,omitempty" xml:"KeywordList,omitempty" type:"Repeated"`
+	Keywords                *string   `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	Prompt                  *string   `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
 	// example:
 	//
 	// 3f7045e099474ba28ceca1b4eb6d6e21
@@ -8726,6 +8727,11 @@ func (s *GetGeneratedContentResponseBodyData) SetDeviceId(v string) *GetGenerate
 
 func (s *GetGeneratedContentResponseBodyData) SetId(v int64) *GetGeneratedContentResponseBodyData {
 	s.Id = &v
+	return s
+}
+
+func (s *GetGeneratedContentResponseBodyData) SetIgnoreContentAuditWords(v string) *GetGeneratedContentResponseBodyData {
+	s.IgnoreContentAuditWords = &v
 	return s
 }
 
