@@ -10093,7 +10093,8 @@ type CreateApplicationRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs   *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	// 30
 	//
 	// example:
@@ -10486,6 +10487,11 @@ func (s *CreateApplicationRequest) SetSlsConfigs(v string) *CreateApplicationReq
 	return s
 }
 
+func (s *CreateApplicationRequest) SetStartupProbe(v string) *CreateApplicationRequest {
+	s.StartupProbe = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetTerminationGracePeriodSeconds(v int32) *CreateApplicationRequest {
 	s.TerminationGracePeriodSeconds = &v
 	return s
@@ -10817,7 +10823,8 @@ type CreateApplicationShrinkRequest struct {
 	// example:
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
-	SlsConfigs *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	SlsConfigs   *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	StartupProbe *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	// 30
 	//
 	// example:
@@ -11207,6 +11214,11 @@ func (s *CreateApplicationShrinkRequest) SetSidecarContainersConfigShrink(v stri
 
 func (s *CreateApplicationShrinkRequest) SetSlsConfigs(v string) *CreateApplicationShrinkRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetStartupProbe(v string) *CreateApplicationShrinkRequest {
+	s.StartupProbe = &v
 	return s
 }
 
@@ -17499,6 +17511,7 @@ type DeployApplicationRequest struct {
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs               *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
@@ -17908,6 +17921,11 @@ func (s *DeployApplicationRequest) SetSidecarContainersConfig(v []*SidecarContai
 
 func (s *DeployApplicationRequest) SetSlsConfigs(v string) *DeployApplicationRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetStartupProbe(v string) *DeployApplicationRequest {
+	s.StartupProbe = &v
 	return s
 }
 
@@ -18476,6 +18494,7 @@ type DeployApplicationShrinkRequest struct {
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs               *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	StartupProbe             *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	SwimlanePvtzDiscoverySvc *string `json:"SwimlanePvtzDiscoverySvc,omitempty" xml:"SwimlanePvtzDiscoverySvc,omitempty"`
 	// The timeout period for a graceful shutdown. Default value: 30. Unit: seconds. Valid values: 1 to 300.
 	//
@@ -18885,6 +18904,11 @@ func (s *DeployApplicationShrinkRequest) SetSidecarContainersConfigShrink(v stri
 
 func (s *DeployApplicationShrinkRequest) SetSlsConfigs(v string) *DeployApplicationShrinkRequest {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DeployApplicationShrinkRequest) SetStartupProbe(v string) *DeployApplicationShrinkRequest {
+	s.StartupProbe = &v
 	return s
 }
 
@@ -20272,6 +20296,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	//
 	// [{"logDir":"","logType":"stdout"},{"logDir":"/tmp/a.log"}]
 	SlsConfigs            *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
+	StartupProbe          *string `json:"StartupProbe,omitempty" xml:"StartupProbe,omitempty"`
 	SwimlanePvtzDiscovery *string `json:"SwimlanePvtzDiscovery,omitempty" xml:"SwimlanePvtzDiscovery,omitempty"`
 	// The details of the tags.
 	Tags []*DescribeApplicationConfigResponseBodyDataTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
@@ -20731,6 +20756,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetSidecarContainersConfig(v
 
 func (s *DescribeApplicationConfigResponseBodyData) SetSlsConfigs(v string) *DescribeApplicationConfigResponseBodyData {
 	s.SlsConfigs = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetStartupProbe(v string) *DescribeApplicationConfigResponseBodyData {
+	s.StartupProbe = &v
 	return s
 }
 
@@ -52534,6 +52564,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		query["SlsConfigs"] = request.SlsConfigs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.StartupProbe)) {
+		query["StartupProbe"] = request.StartupProbe
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TerminationGracePeriodSeconds)) {
 		query["TerminationGracePeriodSeconds"] = request.TerminationGracePeriodSeconds
 	}
@@ -55062,6 +55096,10 @@ func (client *Client) DeployApplicationWithOptions(tmpReq *DeployApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.SlsConfigs)) {
 		query["SlsConfigs"] = request.SlsConfigs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartupProbe)) {
+		query["StartupProbe"] = request.StartupProbe
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TerminationGracePeriodSeconds)) {
