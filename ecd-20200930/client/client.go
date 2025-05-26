@@ -1022,8 +1022,9 @@ type AddUserToDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s AddUserToDesktopGroupRequest) String() string {
@@ -1056,6 +1057,11 @@ func (s *AddUserToDesktopGroupRequest) SetEndUserIds(v []*string) *AddUserToDesk
 
 func (s *AddUserToDesktopGroupRequest) SetRegionId(v string) *AddUserToDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *AddUserToDesktopGroupRequest) SetUserGroupName(v string) *AddUserToDesktopGroupRequest {
+	s.UserGroupName = &v
 	return s
 }
 
@@ -8833,7 +8839,8 @@ type CreateConfigGroupRequestConfigTimers struct {
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
-	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ResetType     *string                                              `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	SegmentTimers []*CreateConfigGroupRequestConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
 	// The scheduled task type.
 	//
 	// Valid values:
@@ -8924,12 +8931,94 @@ func (s *CreateConfigGroupRequestConfigTimers) SetResetType(v string) *CreateCon
 	return s
 }
 
+func (s *CreateConfigGroupRequestConfigTimers) SetSegmentTimers(v []*CreateConfigGroupRequestConfigTimersSegmentTimers) *CreateConfigGroupRequestConfigTimers {
+	s.SegmentTimers = v
+	return s
+}
+
 func (s *CreateConfigGroupRequestConfigTimers) SetTimerType(v string) *CreateConfigGroupRequestConfigTimers {
 	s.TimerType = &v
 	return s
 }
 
 func (s *CreateConfigGroupRequestConfigTimers) SetTriggerType(v string) *CreateConfigGroupRequestConfigTimers {
+	s.TriggerType = &v
+	return s
+}
+
+type CreateConfigGroupRequestConfigTimersSegmentTimers struct {
+	EndCronExpression   *string   `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	Enforce             *bool     `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	Interval            *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	TimerOrder          *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	Timezone            *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TriggerType         *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s CreateConfigGroupRequestConfigTimersSegmentTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateConfigGroupRequestConfigTimersSegmentTimers) GoString() string {
+	return s.String()
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetEndCronExpression(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.EndCronExpression = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetEnforce(v bool) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetInterval(v int32) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetNotificationTime(v int32) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.NotificationTime = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetOperationType(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetProcessWhitelist(v []*string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.ProcessWhitelist = v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetResetType(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetStartCronExpression(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.StartCronExpression = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetTimerOrder(v int32) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.TimerOrder = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetTimezone(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
+	s.Timezone = &v
+	return s
+}
+
+func (s *CreateConfigGroupRequestConfigTimersSegmentTimers) SetTriggerType(v string) *CreateConfigGroupRequestConfigTimersSegmentTimers {
 	s.TriggerType = &v
 	return s
 }
@@ -9500,8 +9589,9 @@ type CreateDesktopGroupRequest struct {
 	// example:
 	//
 	// ccg-0caoeogrk9m5****
-	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
-	UserOuPath   *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	TimerGroupId  *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 	// Specifies whether to enable disk encryption.
 	//
 	// example:
@@ -9799,6 +9889,11 @@ func (s *CreateDesktopGroupRequest) SetTag(v []*CreateDesktopGroupRequestTag) *C
 
 func (s *CreateDesktopGroupRequest) SetTimerGroupId(v string) *CreateDesktopGroupRequest {
 	s.TimerGroupId = &v
+	return s
+}
+
+func (s *CreateDesktopGroupRequest) SetUserGroupName(v string) *CreateDesktopGroupRequest {
+	s.UserGroupName = &v
 	return s
 }
 
@@ -10123,7 +10218,8 @@ type CreateDesktopsRequest struct {
 	// example:
 	//
 	// 1
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
 	// Specifies whether to enable automatic payment.
 	//
 	// example:
@@ -10414,6 +10510,11 @@ func (s CreateDesktopsRequest) GoString() string {
 
 func (s *CreateDesktopsRequest) SetAmount(v int32) *CreateDesktopsRequest {
 	s.Amount = &v
+	return s
+}
+
+func (s *CreateDesktopsRequest) SetAppRuleId(v string) *CreateDesktopsRequest {
+	s.AppRuleId = &v
 	return s
 }
 
@@ -11140,7 +11241,8 @@ type CreateDesktopsShrinkRequest struct {
 	// example:
 	//
 	// 1
-	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	Amount    *int32  `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
 	// Specifies whether to enable automatic payment.
 	//
 	// example:
@@ -11431,6 +11533,11 @@ func (s CreateDesktopsShrinkRequest) GoString() string {
 
 func (s *CreateDesktopsShrinkRequest) SetAmount(v int32) *CreateDesktopsShrinkRequest {
 	s.Amount = &v
+	return s
+}
+
+func (s *CreateDesktopsShrinkRequest) SetAppRuleId(v string) *CreateDesktopsShrinkRequest {
+	s.AppRuleId = &v
 	return s
 }
 
@@ -15137,6 +15244,381 @@ func (s *CreateSnapshotResponse) SetBody(v *CreateSnapshotResponseBody) *CreateS
 	return s
 }
 
+type CreateTemplateRequest struct {
+	// example:
+	//
+	// 1
+	BizType      *string                              `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	DataDiskList []*CreateTemplateRequestDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zh-CN
+	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// desktopimage-windows-server-2022-64-asp
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// pg-8hlryfn331******
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// CloudDesktop
+	ProductType      *string                                  `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionConfigList []*CreateTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-4knxmfneq1e******
+	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTagList []*CreateTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
+	SiteConfigList  []*CreateTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AutoPL
+	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// example:
+	//
+	// 80
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// This parameter is required.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// ccg-0caoeogrk9m5****
+	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+}
+
+func (s CreateTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequest) SetBizType(v string) *CreateTemplateRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetDataDiskList(v []*CreateTemplateRequestDataDiskList) *CreateTemplateRequest {
+	s.DataDiskList = v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetDefaultLanguage(v string) *CreateTemplateRequest {
+	s.DefaultLanguage = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetImageId(v string) *CreateTemplateRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetPolicyGroupId(v string) *CreateTemplateRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetProductType(v string) *CreateTemplateRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetRegionConfigList(v []*CreateTemplateRequestRegionConfigList) *CreateTemplateRequest {
+	s.RegionConfigList = v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetResourceGroupId(v string) *CreateTemplateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetResourceTagList(v []*CreateTemplateRequestResourceTagList) *CreateTemplateRequest {
+	s.ResourceTagList = v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetSiteConfigList(v []*CreateTemplateRequestSiteConfigList) *CreateTemplateRequest {
+	s.SiteConfigList = v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetSystemDiskPerformanceLevel(v string) *CreateTemplateRequest {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetSystemDiskSize(v int32) *CreateTemplateRequest {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetTemplateName(v string) *CreateTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetTimerGroupId(v string) *CreateTemplateRequest {
+	s.TimerGroupId = &v
+	return s
+}
+
+type CreateTemplateRequestDataDiskList struct {
+	// example:
+	//
+	// AutoPL
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 40
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s CreateTemplateRequestDataDiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequestDataDiskList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequestDataDiskList) SetPerformanceLevel(v string) *CreateTemplateRequestDataDiskList {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *CreateTemplateRequestDataDiskList) SetSize(v int32) *CreateTemplateRequestDataDiskList {
+	s.Size = &v
+	return s
+}
+
+type CreateTemplateRequestRegionConfigList struct {
+	// example:
+	//
+	// cn-hangzhou+dir-709******
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// example:
+	//
+	// sp-35fvn8m21pnx2****
+	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// example:
+	//
+	// vsw-bp1yiu**********
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// example:
+	//
+	// false
+	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// example:
+	//
+	// a7b3c0c8-b3a2-4876-b1cc-*********
+	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+}
+
+func (s CreateTemplateRequestRegionConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequestRegionConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetOfficeSiteId(v string) *CreateTemplateRequestRegionConfigList {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetRegionId(v string) *CreateTemplateRequestRegionConfigList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetResourceInstanceType(v string) *CreateTemplateRequestRegionConfigList {
+	s.ResourceInstanceType = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetSnapshotPolicyId(v string) *CreateTemplateRequestRegionConfigList {
+	s.SnapshotPolicyId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetSubnetId(v string) *CreateTemplateRequestRegionConfigList {
+	s.SubnetId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetVolumeEncryptionEnable(v bool) *CreateTemplateRequestRegionConfigList {
+	s.VolumeEncryptionEnable = &v
+	return s
+}
+
+func (s *CreateTemplateRequestRegionConfigList) SetVolumeEncryptionKey(v string) *CreateTemplateRequestRegionConfigList {
+	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type CreateTemplateRequestResourceTagList struct {
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// design
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateTemplateRequestResourceTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequestResourceTagList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequestResourceTagList) SetKey(v string) *CreateTemplateRequestResourceTagList {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateTemplateRequestResourceTagList) SetValue(v string) *CreateTemplateRequestResourceTagList {
+	s.Value = &v
+	return s
+}
+
+type CreateTemplateRequestSiteConfigList struct {
+	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
+	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s CreateTemplateRequestSiteConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateRequestSiteConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateRequestSiteConfigList) SetAppRuleId(v string) *CreateTemplateRequestSiteConfigList {
+	s.AppRuleId = &v
+	return s
+}
+
+func (s *CreateTemplateRequestSiteConfigList) SetSiteId(v string) *CreateTemplateRequestSiteConfigList {
+	s.SiteId = &v
+	return s
+}
+
+type CreateTemplateResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// b-0cc7rx533*****
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 791CC0D3-1A38-573B-8F5F-********
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateResponseBody) SetCode(v string) *CreateTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateTemplateResponseBody) SetData(v string) *CreateTemplateResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateTemplateResponseBody) SetHttpStatusCode(v int32) *CreateTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateTemplateResponseBody) SetMessage(v string) *CreateTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateTemplateResponseBody) SetRequestId(v string) *CreateTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTemplateResponseBody) SetSuccess(v bool) *CreateTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateTemplateResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *CreateTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTemplateResponse) SetHeaders(v map[string]*string) *CreateTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTemplateResponse) SetStatusCode(v int32) *CreateTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateTemplateResponse) SetBody(v *CreateTemplateResponseBody) *CreateTemplateResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAutoSnapshotPolicyRequest struct {
 	// The IDs of the automatic snapshot policies that you want to delete.
 	//
@@ -16930,6 +17412,147 @@ func (s *DeleteSnapshotResponse) SetStatusCode(v int32) *DeleteSnapshotResponse 
 }
 
 func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTemplatesRequest struct {
+	// >  This parameter is not publicly available.
+	//
+	// example:
+	//
+	// null
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// The IDs of the templates that you want to delete.
+	TemplateIds []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+}
+
+func (s DeleteTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplatesRequest) SetBizType(v string) *DeleteTemplatesRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DeleteTemplatesRequest) SetTemplateIds(v []*string) *DeleteTemplatesRequest {
+	s.TemplateIds = v
+	return s
+}
+
+type DeleteTemplatesResponseBody struct {
+	// The information about the request denial..
+	//
+	// example:
+	//
+	// None
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The modification result. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The description of the error code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message returned. This parameter is not returned if the value of Code is `success`.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// F7E4322D-D679-5ACB-A909-490D2F0E****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// Valid values:
+	//
+	// 	- true: The request is successful.
+	//
+	// 	- false: The request failed.
+	//
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplatesResponseBody) SetAccessDeniedDetail(v string) *DeleteTemplatesResponseBody {
+	s.AccessDeniedDetail = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponseBody) SetCode(v string) *DeleteTemplatesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponseBody) SetHttpStatusCode(v int32) *DeleteTemplatesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponseBody) SetMessage(v string) *DeleteTemplatesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponseBody) SetRequestId(v string) *DeleteTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponseBody) SetSuccess(v bool) *DeleteTemplatesResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTemplatesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DeleteTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DeleteTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplatesResponse) SetHeaders(v map[string]*string) *DeleteTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTemplatesResponse) SetStatusCode(v int32) *DeleteTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteTemplatesResponse) SetBody(v *DeleteTemplatesResponseBody) *DeleteTemplatesResponse {
 	s.Body = v
 	return s
 }
@@ -23598,7 +24221,8 @@ type DescribeDesktopGroupsResponseBodyDesktopGroups struct {
 	// 80
 	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	// The tags.
-	Tags []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	Tags          []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserGroupName *string                                               `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
 	// The user\\"s organizational unit path.
 	//
 	// example:
@@ -23860,6 +24484,11 @@ func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetSystemDiskSize(v int
 
 func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetTags(v []*DescribeDesktopGroupsResponseBodyDesktopGroupsTags) *DescribeDesktopGroupsResponseBodyDesktopGroups {
 	s.Tags = v
+	return s
+}
+
+func (s *DescribeDesktopGroupsResponseBodyDesktopGroups) SetUserGroupName(v string) *DescribeDesktopGroupsResponseBodyDesktopGroups {
+	s.UserGroupName = &v
 	return s
 }
 
@@ -40526,6 +41155,574 @@ func (s *DescribeSnapshotsResponse) SetBody(v *DescribeSnapshotsResponseBody) *D
 	return s
 }
 
+type DescribeTemplatesRequest struct {
+	// example:
+	//
+	// cn-beijing
+	BizRegionId *string `json:"BizRegionId,omitempty" xml:"BizRegionId,omitempty"`
+	// example:
+	//
+	// null
+	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	// example:
+	//
+	// m-dnz9xjgbm8*****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// abc
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// CloudDesktop
+	ProductType  *string   `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	TemplateIds  []*string `json:"TemplateIds,omitempty" xml:"TemplateIds,omitempty" type:"Repeated"`
+	TemplateName *string   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// USER_TEMPLATE
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+}
+
+func (s DescribeTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesRequest) SetBizRegionId(v string) *DescribeTemplatesRequest {
+	s.BizRegionId = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetBizType(v string) *DescribeTemplatesRequest {
+	s.BizType = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetImageId(v string) *DescribeTemplatesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetKeyword(v string) *DescribeTemplatesRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetPageNumber(v int32) *DescribeTemplatesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetPageSize(v int32) *DescribeTemplatesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetProductType(v string) *DescribeTemplatesRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetTemplateIds(v []*string) *DescribeTemplatesRequest {
+	s.TemplateIds = v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetTemplateName(v string) *DescribeTemplatesRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DescribeTemplatesRequest) SetTemplateType(v string) *DescribeTemplatesRequest {
+	s.TemplateType = &v
+	return s
+}
+
+type DescribeTemplatesResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*DescribeTemplatesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 20
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 1871984F-51F6-5588-BAF6-*******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// 94
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBody) SetCode(v string) *DescribeTemplatesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetData(v []*DescribeTemplatesResponseBodyData) *DescribeTemplatesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetHttpStatusCode(v int32) *DescribeTemplatesResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetMessage(v string) *DescribeTemplatesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetPageNumber(v int32) *DescribeTemplatesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetPageSize(v int32) *DescribeTemplatesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetRequestId(v string) *DescribeTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetSuccess(v bool) *DescribeTemplatesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBody) SetTotalCount(v int32) *DescribeTemplatesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTemplatesResponseBodyData struct {
+	DataDiskList []*DescribeTemplatesResponseBodyDataDataDiskList `json:"DataDiskList,omitempty" xml:"DataDiskList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// zh-CN
+	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// 2025-04-25T05:18:46.000+00:00
+	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// example:
+	//
+	// 2025-04-25T05:18:46.000+00:00
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// example:
+	//
+	// m-5q8ehbihx*****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// User
+	ImageType *string `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	// example:
+	//
+	// pg-0caoeogkhz*****
+	PolicyGroupId *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	// example:
+	//
+	// CLOUD_DESKTOP
+	ProductType      *string                                              `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	RegionConfigList []*DescribeTemplatesResponseBodyDataRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 1871984F-51F6-5588-BAF6-******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// rg-a5fqjjqaejt***
+	ResourceGroupId *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTagList []*DescribeTemplatesResponseBodyDataResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
+	SiteConfigList  []*DescribeTemplatesResponseBodyDataSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AutoPL
+	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// example:
+	//
+	// 80
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// example:
+	//
+	// b-0caoeogs88y*****
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// USER_TEMPLATE
+	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	// example:
+	//
+	// bcc-dweha*****
+	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetDataDiskList(v []*DescribeTemplatesResponseBodyDataDataDiskList) *DescribeTemplatesResponseBodyData {
+	s.DataDiskList = v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetDefaultLanguage(v string) *DescribeTemplatesResponseBodyData {
+	s.DefaultLanguage = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetDescription(v string) *DescribeTemplatesResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetGmtCreate(v string) *DescribeTemplatesResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetGmtModified(v string) *DescribeTemplatesResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetImageId(v string) *DescribeTemplatesResponseBodyData {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetImageType(v string) *DescribeTemplatesResponseBodyData {
+	s.ImageType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetPolicyGroupId(v string) *DescribeTemplatesResponseBodyData {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetProductType(v string) *DescribeTemplatesResponseBodyData {
+	s.ProductType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetRegionConfigList(v []*DescribeTemplatesResponseBodyDataRegionConfigList) *DescribeTemplatesResponseBodyData {
+	s.RegionConfigList = v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetRequestId(v string) *DescribeTemplatesResponseBodyData {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetResourceGroupId(v string) *DescribeTemplatesResponseBodyData {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetResourceTagList(v []*DescribeTemplatesResponseBodyDataResourceTagList) *DescribeTemplatesResponseBodyData {
+	s.ResourceTagList = v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetSiteConfigList(v []*DescribeTemplatesResponseBodyDataSiteConfigList) *DescribeTemplatesResponseBodyData {
+	s.SiteConfigList = v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetSystemDiskPerformanceLevel(v string) *DescribeTemplatesResponseBodyData {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetSystemDiskSize(v int32) *DescribeTemplatesResponseBodyData {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetTemplateId(v string) *DescribeTemplatesResponseBodyData {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetTemplateName(v string) *DescribeTemplatesResponseBodyData {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetTemplateType(v string) *DescribeTemplatesResponseBodyData {
+	s.TemplateType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyData) SetTimerGroupId(v string) *DescribeTemplatesResponseBodyData {
+	s.TimerGroupId = &v
+	return s
+}
+
+type DescribeTemplatesResponseBodyDataDataDiskList struct {
+	// example:
+	//
+	// AutoPL
+	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
+	// example:
+	//
+	// 100
+	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyDataDataDiskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyDataDataDiskList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyDataDataDiskList) SetPerformanceLevel(v string) *DescribeTemplatesResponseBodyDataDataDiskList {
+	s.PerformanceLevel = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataDataDiskList) SetSize(v string) *DescribeTemplatesResponseBodyDataDataDiskList {
+	s.Size = &v
+	return s
+}
+
+type DescribeTemplatesResponseBodyDataRegionConfigList struct {
+	// example:
+	//
+	// 4
+	CpuCount *int32 `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
+	// example:
+	//
+	// 4GiB
+	GpuSpec *string `json:"GpuSpec,omitempty" xml:"GpuSpec,omitempty"`
+	// example:
+	//
+	// 8192
+	MemorySize *int64 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
+	// example:
+	//
+	// cn-beijing+dir-3040*****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// cn-shenzhen
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.4c8g
+	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// example:
+	//
+	// sp-b9fasjuu0*****
+	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// example:
+	//
+	// vsw-dgea1*****
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// example:
+	//
+	// false
+	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// example:
+	//
+	// 3bc77be0-cbce-4a29-b07b-13f16394****
+	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyDataRegionConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyDataRegionConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetCpuCount(v int32) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.CpuCount = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetGpuSpec(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.GpuSpec = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetMemorySize(v int64) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.MemorySize = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetOfficeSiteId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetRegionId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetResourceInstanceType(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.ResourceInstanceType = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetSnapshotPolicyId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.SnapshotPolicyId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetSubnetId(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.SubnetId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetVolumeEncryptionEnable(v bool) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.VolumeEncryptionEnable = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataRegionConfigList) SetVolumeEncryptionKey(v string) *DescribeTemplatesResponseBodyDataRegionConfigList {
+	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type DescribeTemplatesResponseBodyDataResourceTagList struct {
+	// example:
+	//
+	// env
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// test
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyDataResourceTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyDataResourceTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyDataResourceTagList) SetKey(v string) *DescribeTemplatesResponseBodyDataResourceTagList {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataResourceTagList) SetValue(v string) *DescribeTemplatesResponseBodyDataResourceTagList {
+	s.Value = &v
+	return s
+}
+
+type DescribeTemplatesResponseBodyDataSiteConfigList struct {
+	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
+	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s DescribeTemplatesResponseBodyDataSiteConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponseBodyDataSiteConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponseBodyDataSiteConfigList) SetAppRuleId(v string) *DescribeTemplatesResponseBodyDataSiteConfigList {
+	s.AppRuleId = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponseBodyDataSiteConfigList) SetSiteId(v string) *DescribeTemplatesResponseBodyDataSiteConfigList {
+	s.SiteId = &v
+	return s
+}
+
+type DescribeTemplatesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTemplatesResponse) SetHeaders(v map[string]*string) *DescribeTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTemplatesResponse) SetStatusCode(v int32) *DescribeTemplatesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTemplatesResponse) SetBody(v *DescribeTemplatesResponseBody) *DescribeTemplatesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTimerGroupRequest struct {
 	// The ID of the configuration group.
 	//
@@ -40755,7 +41952,8 @@ type DescribeTimerGroupResponseBodyDataConfigTimers struct {
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
-	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ResetType     *string                                                        `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	SegmentTimers []*DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
 	// The type of the scheduled task.
 	//
 	// Valid values:
@@ -40844,12 +42042,94 @@ func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetResetType(v string) 
 	return s
 }
 
+func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetSegmentTimers(v []*DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) *DescribeTimerGroupResponseBodyDataConfigTimers {
+	s.SegmentTimers = v
+	return s
+}
+
 func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetTimerType(v string) *DescribeTimerGroupResponseBodyDataConfigTimers {
 	s.TimerType = &v
 	return s
 }
 
 func (s *DescribeTimerGroupResponseBodyDataConfigTimers) SetTriggerType(v string) *DescribeTimerGroupResponseBodyDataConfigTimers {
+	s.TriggerType = &v
+	return s
+}
+
+type DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers struct {
+	EndCronExpression   *string   `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	Enforce             *bool     `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	Interval            *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	TimerOrder          *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	Timezone            *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TriggerType         *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetEndCronExpression(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.EndCronExpression = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetEnforce(v bool) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetInterval(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetNotificationTime(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.NotificationTime = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetOperationType(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetProcessWhitelist(v []*string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.ProcessWhitelist = v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetResetType(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetStartCronExpression(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.StartCronExpression = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetTimerOrder(v int32) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.TimerOrder = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetTimezone(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
+	s.Timezone = &v
+	return s
+}
+
+func (s *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers) SetTriggerType(v string) *DescribeTimerGroupResponseBodyDataConfigTimersSegmentTimers {
 	s.TriggerType = &v
 	return s
 }
@@ -41841,8 +43121,9 @@ type DescribeUsersInGroupResponseBody struct {
 	// example:
 	//
 	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 	// The total number of authorized users of the cloud computer share.
 	//
 	// example:
@@ -41876,6 +43157,11 @@ func (s *DescribeUsersInGroupResponseBody) SetOnlineUsersCount(v int32) *Describ
 
 func (s *DescribeUsersInGroupResponseBody) SetRequestId(v string) *DescribeUsersInGroupResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupResponseBody) SetUserGroupName(v string) *DescribeUsersInGroupResponseBody {
+	s.UserGroupName = &v
 	return s
 }
 
@@ -58592,6 +59878,472 @@ func (s *ModifyResourceCenterPolicyResponse) SetBody(v *ModifyResourceCenterPoli
 	return s
 }
 
+type ModifyTemplateRequest struct {
+	// example:
+	//
+	// zh-CN
+	DefaultLanguage *string `json:"DefaultLanguage,omitempty" xml:"DefaultLanguage,omitempty"`
+	// example:
+	//
+	// testDescription
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// example:
+	//
+	// m-gx2x1dhsmusr2****
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// example:
+	//
+	// pg-gx2x1dhsmthe9****
+	PolicyGroupId    *string                                  `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	RegionConfigList []*ModifyTemplateRequestRegionConfigList `json:"RegionConfigList,omitempty" xml:"RegionConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// rg-a5fqjjqaejt***
+	ResourceGroupId *string                                 `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ResourceTagList []*ModifyTemplateRequestResourceTagList `json:"ResourceTagList,omitempty" xml:"ResourceTagList,omitempty" type:"Repeated"`
+	SiteConfigList  []*ModifyTemplateRequestSiteConfigList  `json:"SiteConfigList,omitempty" xml:"SiteConfigList,omitempty" type:"Repeated"`
+	// example:
+	//
+	// AutoPL
+	SystemDiskPerformanceLevel *string `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	// example:
+	//
+	// 80
+	SystemDiskSize *int32 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b-0caoeogs88y*****
+	TemplateId   *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// example:
+	//
+	// bcc-dweha*****
+	TimerGroupId *string `json:"TimerGroupId,omitempty" xml:"TimerGroupId,omitempty"`
+}
+
+func (s ModifyTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateRequest) SetDefaultLanguage(v string) *ModifyTemplateRequest {
+	s.DefaultLanguage = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetDescription(v string) *ModifyTemplateRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetImageId(v string) *ModifyTemplateRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetPolicyGroupId(v string) *ModifyTemplateRequest {
+	s.PolicyGroupId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetRegionConfigList(v []*ModifyTemplateRequestRegionConfigList) *ModifyTemplateRequest {
+	s.RegionConfigList = v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetResourceGroupId(v string) *ModifyTemplateRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetResourceTagList(v []*ModifyTemplateRequestResourceTagList) *ModifyTemplateRequest {
+	s.ResourceTagList = v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetSiteConfigList(v []*ModifyTemplateRequestSiteConfigList) *ModifyTemplateRequest {
+	s.SiteConfigList = v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetSystemDiskPerformanceLevel(v string) *ModifyTemplateRequest {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetSystemDiskSize(v int32) *ModifyTemplateRequest {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetTemplateId(v string) *ModifyTemplateRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetTemplateName(v string) *ModifyTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *ModifyTemplateRequest) SetTimerGroupId(v string) *ModifyTemplateRequest {
+	s.TimerGroupId = &v
+	return s
+}
+
+type ModifyTemplateRequestRegionConfigList struct {
+	// example:
+	//
+	// cn-hangzhou+dir-709****
+	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// eds.enterprise_office.8c16g
+	ResourceInstanceType *string `json:"ResourceInstanceType,omitempty" xml:"ResourceInstanceType,omitempty"`
+	// example:
+	//
+	// sp-35fvn8m2*****
+	SnapshotPolicyId *string `json:"SnapshotPolicyId,omitempty" xml:"SnapshotPolicyId,omitempty"`
+	// example:
+	//
+	// vsw-adjrehad1****
+	SubnetId *string `json:"SubnetId,omitempty" xml:"SubnetId,omitempty"`
+	// example:
+	//
+	// false
+	VolumeEncryptionEnable *bool `json:"VolumeEncryptionEnable,omitempty" xml:"VolumeEncryptionEnable,omitempty"`
+	// example:
+	//
+	// a7b3c0c8-b3a2-4876-b1cc-116dddc9****
+	VolumeEncryptionKey *string `json:"VolumeEncryptionKey,omitempty" xml:"VolumeEncryptionKey,omitempty"`
+}
+
+func (s ModifyTemplateRequestRegionConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateRequestRegionConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetOfficeSiteId(v string) *ModifyTemplateRequestRegionConfigList {
+	s.OfficeSiteId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetRegionId(v string) *ModifyTemplateRequestRegionConfigList {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetResourceInstanceType(v string) *ModifyTemplateRequestRegionConfigList {
+	s.ResourceInstanceType = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetSnapshotPolicyId(v string) *ModifyTemplateRequestRegionConfigList {
+	s.SnapshotPolicyId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetSubnetId(v string) *ModifyTemplateRequestRegionConfigList {
+	s.SubnetId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetVolumeEncryptionEnable(v bool) *ModifyTemplateRequestRegionConfigList {
+	s.VolumeEncryptionEnable = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestRegionConfigList) SetVolumeEncryptionKey(v string) *ModifyTemplateRequestRegionConfigList {
+	s.VolumeEncryptionKey = &v
+	return s
+}
+
+type ModifyTemplateRequestResourceTagList struct {
+	// example:
+	//
+	// department
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// example:
+	//
+	// design
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyTemplateRequestResourceTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateRequestResourceTagList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateRequestResourceTagList) SetKey(v string) *ModifyTemplateRequestResourceTagList {
+	s.Key = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestResourceTagList) SetValue(v string) *ModifyTemplateRequestResourceTagList {
+	s.Value = &v
+	return s
+}
+
+type ModifyTemplateRequestSiteConfigList struct {
+	AppRuleId *string `json:"AppRuleId,omitempty" xml:"AppRuleId,omitempty"`
+	SiteId    *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
+}
+
+func (s ModifyTemplateRequestSiteConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateRequestSiteConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateRequestSiteConfigList) SetAppRuleId(v string) *ModifyTemplateRequestSiteConfigList {
+	s.AppRuleId = &v
+	return s
+}
+
+func (s *ModifyTemplateRequestSiteConfigList) SetSiteId(v string) *ModifyTemplateRequestSiteConfigList {
+	s.SiteId = &v
+	return s
+}
+
+type ModifyTemplateResponseBody struct {
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 1CBAFFAB-B697-4049-A9B1-67E1FC5F****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateResponseBody) SetCode(v string) *ModifyTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyTemplateResponseBody) SetHttpStatusCode(v int32) *ModifyTemplateResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyTemplateResponseBody) SetMessage(v string) *ModifyTemplateResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyTemplateResponseBody) SetRequestId(v string) *ModifyTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTemplateResponseBody) SetSuccess(v bool) *ModifyTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyTemplateResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateResponse) SetHeaders(v map[string]*string) *ModifyTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTemplateResponse) SetStatusCode(v int32) *ModifyTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTemplateResponse) SetBody(v *ModifyTemplateResponseBody) *ModifyTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyTemplateBaseInfoRequest struct {
+	// The template description.
+	//
+	// example:
+	//
+	// This is description.
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The template ID.
+	//
+	// This parameter is required.
+	//
+	// example:
+	//
+	// b-0caoeogs88y*****
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The template name.
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ModifyTemplateBaseInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateBaseInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateBaseInfoRequest) SetDescription(v string) *ModifyTemplateBaseInfoRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoRequest) SetTemplateId(v string) *ModifyTemplateBaseInfoRequest {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoRequest) SetTemplateName(v string) *ModifyTemplateBaseInfoRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type ModifyTemplateBaseInfoResponseBody struct {
+	// The execution result of the operation. If the request was successful, `success` is returned. If the request failed, an error message is returned.
+	//
+	// example:
+	//
+	// success
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The HTTP status code.
+	//
+	// example:
+	//
+	// 200
+	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// The error message. This parameter is not returned if the value of Code is `success`.
+	//
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 3D99C38F-DE7D-5109-BC06-43EC5D*****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request was successful.
+	//
+	// example:
+	//
+	// True
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyTemplateBaseInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateBaseInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateBaseInfoResponseBody) SetCode(v string) *ModifyTemplateBaseInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponseBody) SetHttpStatusCode(v int32) *ModifyTemplateBaseInfoResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponseBody) SetMessage(v string) *ModifyTemplateBaseInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponseBody) SetRequestId(v string) *ModifyTemplateBaseInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponseBody) SetSuccess(v bool) *ModifyTemplateBaseInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyTemplateBaseInfoResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ModifyTemplateBaseInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ModifyTemplateBaseInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTemplateBaseInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTemplateBaseInfoResponse) SetHeaders(v map[string]*string) *ModifyTemplateBaseInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponse) SetStatusCode(v int32) *ModifyTemplateBaseInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyTemplateBaseInfoResponse) SetBody(v *ModifyTemplateBaseInfoResponseBody) *ModifyTemplateBaseInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyTimerGroupRequest struct {
 	// The scheduled task groups.
 	ConfigTimers []*ModifyTimerGroupRequestConfigTimers `json:"ConfigTimers,omitempty" xml:"ConfigTimers,omitempty" type:"Repeated"`
@@ -58703,7 +60455,8 @@ type ModifyTimerGroupRequestConfigTimers struct {
 	// example:
 	//
 	// RESET_TYPE_SYSTEM
-	ResetType *string `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	ResetType     *string                                             `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	SegmentTimers []*ModifyTimerGroupRequestConfigTimersSegmentTimers `json:"SegmentTimers,omitempty" xml:"SegmentTimers,omitempty" type:"Repeated"`
 	// The scheduled task type.
 	//
 	// Valid value:
@@ -58792,12 +60545,94 @@ func (s *ModifyTimerGroupRequestConfigTimers) SetResetType(v string) *ModifyTime
 	return s
 }
 
+func (s *ModifyTimerGroupRequestConfigTimers) SetSegmentTimers(v []*ModifyTimerGroupRequestConfigTimersSegmentTimers) *ModifyTimerGroupRequestConfigTimers {
+	s.SegmentTimers = v
+	return s
+}
+
 func (s *ModifyTimerGroupRequestConfigTimers) SetTimerType(v string) *ModifyTimerGroupRequestConfigTimers {
 	s.TimerType = &v
 	return s
 }
 
 func (s *ModifyTimerGroupRequestConfigTimers) SetTriggerType(v string) *ModifyTimerGroupRequestConfigTimers {
+	s.TriggerType = &v
+	return s
+}
+
+type ModifyTimerGroupRequestConfigTimersSegmentTimers struct {
+	EndCronExpression   *string   `json:"EndCronExpression,omitempty" xml:"EndCronExpression,omitempty"`
+	Enforce             *bool     `json:"Enforce,omitempty" xml:"Enforce,omitempty"`
+	Interval            *int32    `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	NotificationTime    *int32    `json:"NotificationTime,omitempty" xml:"NotificationTime,omitempty"`
+	OperationType       *string   `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	ProcessWhitelist    []*string `json:"ProcessWhitelist,omitempty" xml:"ProcessWhitelist,omitempty" type:"Repeated"`
+	ResetType           *string   `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
+	StartCronExpression *string   `json:"StartCronExpression,omitempty" xml:"StartCronExpression,omitempty"`
+	TimerOrder          *int32    `json:"TimerOrder,omitempty" xml:"TimerOrder,omitempty"`
+	Timezone            *string   `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
+	TriggerType         *string   `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTimerGroupRequestConfigTimersSegmentTimers) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetEndCronExpression(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.EndCronExpression = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetEnforce(v bool) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.Enforce = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetInterval(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.Interval = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetNotificationTime(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.NotificationTime = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetOperationType(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.OperationType = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetProcessWhitelist(v []*string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.ProcessWhitelist = v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetResetType(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.ResetType = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetStartCronExpression(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.StartCronExpression = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetTimerOrder(v int32) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.TimerOrder = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetTimezone(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
+	s.Timezone = &v
+	return s
+}
+
+func (s *ModifyTimerGroupRequestConfigTimersSegmentTimers) SetTriggerType(v string) *ModifyTimerGroupRequestConfigTimersSegmentTimers {
 	s.TriggerType = &v
 	return s
 }
@@ -60144,8 +61979,9 @@ type RemoveUserFromDesktopGroupRequest struct {
 	// example:
 	//
 	// cn-hangzhou
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserOuPath *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
+	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserGroupName *string `json:"UserGroupName,omitempty" xml:"UserGroupName,omitempty"`
+	UserOuPath    *string `json:"UserOuPath,omitempty" xml:"UserOuPath,omitempty"`
 }
 
 func (s RemoveUserFromDesktopGroupRequest) String() string {
@@ -60173,6 +62009,11 @@ func (s *RemoveUserFromDesktopGroupRequest) SetEndUserIds(v []*string) *RemoveUs
 
 func (s *RemoveUserFromDesktopGroupRequest) SetRegionId(v string) *RemoveUserFromDesktopGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *RemoveUserFromDesktopGroupRequest) SetUserGroupName(v string) *RemoveUserFromDesktopGroupRequest {
+	s.UserGroupName = &v
 	return s
 }
 
@@ -65032,6 +66873,10 @@ func (client *Client) AddUserToDesktopGroupWithOptions(request *AddUserToDesktop
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserGroupName)) {
+		query["UserGroupName"] = request.UserGroupName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
 		query["UserOuPath"] = request.UserOuPath
 	}
@@ -68430,6 +70275,10 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 		query["TimerGroupId"] = request.TimerGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserGroupName)) {
+		query["UserGroupName"] = request.UserGroupName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
 		query["UserOuPath"] = request.UserOuPath
 	}
@@ -68652,6 +70501,10 @@ func (client *Client) CreateDesktopsWithOptions(tmpReq *CreateDesktopsRequest, r
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Amount)) {
 		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppRuleId)) {
+		query["AppRuleId"] = request.AppRuleId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
@@ -69804,6 +71657,125 @@ func (client *Client) CreateSnapshot(request *CreateSnapshotRequest) (_result *C
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSnapshotResponse{}
 	_body, _err := client.CreateSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模板
+//
+// @param request - CreateTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateTemplateResponse
+func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataDiskList)) {
+		bodyFlat["DataDiskList"] = request.DataDiskList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DefaultLanguage)) {
+		body["DefaultLanguage"] = request.DefaultLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		body["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionConfigList)) {
+		bodyFlat["RegionConfigList"] = request.RegionConfigList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTagList)) {
+		bodyFlat["ResourceTagList"] = request.ResourceTagList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteConfigList)) {
+		bodyFlat["SiteConfigList"] = request.SiteConfigList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskPerformanceLevel)) {
+		body["SystemDiskPerformanceLevel"] = request.SystemDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimerGroupId)) {
+		body["TimerGroupId"] = request.TimerGroupId
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTemplate"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 创建模板
+//
+// @param request - CreateTemplateRequest
+//
+// @return CreateTemplateResponse
+func (client *Client) CreateTemplate(request *CreateTemplateRequest) (_result *CreateTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTemplateResponse{}
+	_body, _err := client.CreateTemplateWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -71096,6 +73068,78 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSnapshotResponse{}
 	_body, _err := client.DeleteSnapshotWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom cloud computer templates.
+//
+// Description:
+//
+// Deleting a template does not affect cloud computers created from it or the associated resources.
+//
+// @param request - DeleteTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteTemplatesResponse
+func (client *Client) DeleteTemplatesWithOptions(request *DeleteTemplatesRequest, runtime *util.RuntimeOptions) (_result *DeleteTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		body["TemplateIds"] = request.TemplateIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplates"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes custom cloud computer templates.
+//
+// Description:
+//
+// Deleting a template does not affect cloud computers created from it or the associated resources.
+//
+// @param request - DeleteTemplatesRequest
+//
+// @return DeleteTemplatesResponse
+func (client *Client) DeleteTemplates(request *DeleteTemplatesRequest) (_result *DeleteTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTemplatesResponse{}
+	_body, _err := client.DeleteTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -75660,6 +77704,102 @@ func (client *Client) DescribeSnapshots(request *DescribeSnapshotsRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSnapshotsResponse{}
 	_body, _err := client.DescribeSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模板列表
+//
+// @param request - DescribeTemplatesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTemplatesResponse
+func (client *Client) DescribeTemplatesWithOptions(request *DescribeTemplatesRequest, runtime *util.RuntimeOptions) (_result *DescribeTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizRegionId)) {
+		body["BizRegionId"] = request.BizRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizType)) {
+		body["BizType"] = request.BizType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateIds)) {
+		body["TemplateIds"] = request.TemplateIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateType)) {
+		body["TemplateType"] = request.TemplateType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTemplates"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询模板列表
+//
+// @param request - DescribeTemplatesRequest
+//
+// @return DescribeTemplatesResponse
+func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_result *DescribeTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTemplatesResponse{}
+	_body, _err := client.DescribeTemplatesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -82215,6 +84355,195 @@ func (client *Client) ModifyResourceCenterPolicy(request *ModifyResourceCenterPo
 
 // Summary:
 //
+// 模板全量更新
+//
+// @param request - ModifyTemplateRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTemplateResponse
+func (client *Client) ModifyTemplateWithOptions(request *ModifyTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SiteConfigList)) {
+		query["SiteConfigList"] = request.SiteConfigList
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefaultLanguage)) {
+		body["DefaultLanguage"] = request.DefaultLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
+		body["PolicyGroupId"] = request.PolicyGroupId
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionConfigList)) {
+		bodyFlat["RegionConfigList"] = request.RegionConfigList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTagList)) {
+		bodyFlat["ResourceTagList"] = request.ResourceTagList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskPerformanceLevel)) {
+		body["SystemDiskPerformanceLevel"] = request.SystemDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemDiskSize)) {
+		body["SystemDiskSize"] = request.SystemDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimerGroupId)) {
+		body["TimerGroupId"] = request.TimerGroupId
+	}
+
+	body = tea.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTemplate"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 模板全量更新
+//
+// @param request - ModifyTemplateRequest
+//
+// @return ModifyTemplateResponse
+func (client *Client) ModifyTemplate(request *ModifyTemplateRequest) (_result *ModifyTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTemplateResponse{}
+	_body, _err := client.ModifyTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the basic information of a custom cloud computer template, including the template name and template description.
+//
+// Description:
+//
+// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+//
+// @param request - ModifyTemplateBaseInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyTemplateBaseInfoResponse
+func (client *Client) ModifyTemplateBaseInfoWithOptions(request *ModifyTemplateBaseInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyTemplateBaseInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		body["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTemplateBaseInfo"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTemplateBaseInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the basic information of a custom cloud computer template, including the template name and template description.
+//
+// Description:
+//
+// You can use this operation to modify only the name and description of a custom cloud computer template. To change other parameters of the template, use the [ModifyTemplate](~~ModifyTemplate~~) operation.
+//
+// @param request - ModifyTemplateBaseInfoRequest
+//
+// @return ModifyTemplateBaseInfoResponse
+func (client *Client) ModifyTemplateBaseInfo(request *ModifyTemplateBaseInfoRequest) (_result *ModifyTemplateBaseInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTemplateBaseInfoResponse{}
+	_body, _err := client.ModifyTemplateBaseInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies a scheduled task configuration group.
 //
 // @param request - ModifyTimerGroupRequest
@@ -82824,6 +85153,10 @@ func (client *Client) RemoveUserFromDesktopGroupWithOptions(request *RemoveUserF
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserGroupName)) {
+		query["UserGroupName"] = request.UserGroupName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserOuPath)) {
