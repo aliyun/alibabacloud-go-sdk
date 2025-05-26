@@ -2608,8 +2608,8 @@ type GetFeatureViewResponseBodyFields struct {
 	// example:
 	//
 	// user
-	Name      *string                                    `json:"Name,omitempty" xml:"Name,omitempty"`
-	Transform *GetFeatureViewResponseBodyFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Struct"`
+	Name      *string                                      `json:"Name,omitempty" xml:"Name,omitempty"`
+	Transform []*GetFeatureViewResponseBodyFieldsTransform `json:"Transform,omitempty" xml:"Transform,omitempty" type:"Repeated"`
 	// example:
 	//
 	// int
@@ -2634,7 +2634,7 @@ func (s *GetFeatureViewResponseBodyFields) SetName(v string) *GetFeatureViewResp
 	return s
 }
 
-func (s *GetFeatureViewResponseBodyFields) SetTransform(v *GetFeatureViewResponseBodyFieldsTransform) *GetFeatureViewResponseBodyFields {
+func (s *GetFeatureViewResponseBodyFields) SetTransform(v []*GetFeatureViewResponseBodyFieldsTransform) *GetFeatureViewResponseBodyFields {
 	s.Transform = v
 	return s
 }
@@ -2645,12 +2645,9 @@ func (s *GetFeatureViewResponseBodyFields) SetType(v string) *GetFeatureViewResp
 }
 
 type GetFeatureViewResponseBodyFieldsTransform struct {
-	Input []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
-	// example:
-	//
-	// 1
-	LLMConfigId *int32  `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
-	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Input       []*GetFeatureViewResponseBodyFieldsTransformInput `json:"Input,omitempty" xml:"Input,omitempty" type:"Repeated"`
+	LLMConfigId *int32                                            `json:"LLMConfigId,omitempty" xml:"LLMConfigId,omitempty"`
+	Type        *string                                           `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s GetFeatureViewResponseBodyFieldsTransform) String() string {
