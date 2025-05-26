@@ -14,6 +14,198 @@ import (
 	"io"
 )
 
+type BankMetaVerifyIntlRequest struct {
+	// This parameter is required.
+	BankCard    *string `json:"BankCard,omitempty" xml:"BankCard,omitempty"`
+	IdentifyNum *string `json:"IdentifyNum,omitempty" xml:"IdentifyNum,omitempty"`
+	// example:
+	//
+	// 01
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	Mobile       *string `json:"Mobile,omitempty" xml:"Mobile,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// normal
+	ParamType *string `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BANK_CARD_N_META
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// BANK_CARD_4_META
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+	// This parameter is required.
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// VERIFY_BANK_CARD
+	VerifyMode *string `json:"VerifyMode,omitempty" xml:"VerifyMode,omitempty"`
+}
+
+func (s BankMetaVerifyIntlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyIntlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyIntlRequest) SetBankCard(v string) *BankMetaVerifyIntlRequest {
+	s.BankCard = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetIdentifyNum(v string) *BankMetaVerifyIntlRequest {
+	s.IdentifyNum = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetIdentityType(v string) *BankMetaVerifyIntlRequest {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetMobile(v string) *BankMetaVerifyIntlRequest {
+	s.Mobile = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetParamType(v string) *BankMetaVerifyIntlRequest {
+	s.ParamType = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetProductCode(v string) *BankMetaVerifyIntlRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetProductType(v string) *BankMetaVerifyIntlRequest {
+	s.ProductType = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetUserName(v string) *BankMetaVerifyIntlRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlRequest) SetVerifyMode(v string) *BankMetaVerifyIntlRequest {
+	s.VerifyMode = &v
+	return s
+}
+
+type BankMetaVerifyIntlResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 4EB35****87EBA1
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultObject *BankMetaVerifyIntlResponseBodyResultObject `json:"ResultObject,omitempty" xml:"ResultObject,omitempty" type:"Struct"`
+}
+
+func (s BankMetaVerifyIntlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyIntlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyIntlResponseBody) SetCode(v string) *BankMetaVerifyIntlResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponseBody) SetMessage(v string) *BankMetaVerifyIntlResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponseBody) SetRequestId(v string) *BankMetaVerifyIntlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponseBody) SetResultObject(v *BankMetaVerifyIntlResponseBodyResultObject) *BankMetaVerifyIntlResponseBody {
+	s.ResultObject = v
+	return s
+}
+
+type BankMetaVerifyIntlResponseBodyResultObject struct {
+	// example:
+	//
+	// 1
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	// example:
+	//
+	// 101
+	SubCode *string `json:"SubCode,omitempty" xml:"SubCode,omitempty"`
+}
+
+func (s BankMetaVerifyIntlResponseBodyResultObject) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyIntlResponseBodyResultObject) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyIntlResponseBodyResultObject) SetBizCode(v string) *BankMetaVerifyIntlResponseBodyResultObject {
+	s.BizCode = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponseBodyResultObject) SetSubCode(v string) *BankMetaVerifyIntlResponseBodyResultObject {
+	s.SubCode = &v
+	return s
+}
+
+type BankMetaVerifyIntlResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *BankMetaVerifyIntlResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s BankMetaVerifyIntlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BankMetaVerifyIntlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BankMetaVerifyIntlResponse) SetHeaders(v map[string]*string) *BankMetaVerifyIntlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponse) SetStatusCode(v int32) *BankMetaVerifyIntlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *BankMetaVerifyIntlResponse) SetBody(v *BankMetaVerifyIntlResponseBody) *BankMetaVerifyIntlResponse {
+	s.Body = v
+	return s
+}
+
 type CardOcrRequest struct {
 	// example:
 	//
@@ -3810,6 +4002,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 银行卡核验
+//
+// @param request - BankMetaVerifyIntlRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BankMetaVerifyIntlResponse
+func (client *Client) BankMetaVerifyIntlWithOptions(request *BankMetaVerifyIntlRequest, runtime *util.RuntimeOptions) (_result *BankMetaVerifyIntlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BankCard)) {
+		query["BankCard"] = request.BankCard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentifyNum)) {
+		query["IdentifyNum"] = request.IdentifyNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdentityType)) {
+		query["IdentityType"] = request.IdentityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mobile)) {
+		query["Mobile"] = request.Mobile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamType)) {
+		query["ParamType"] = request.ParamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyMode)) {
+		query["VerifyMode"] = request.VerifyMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BankMetaVerifyIntl"),
+		Version:     tea.String("2022-08-09"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BankMetaVerifyIntlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 银行卡核验
+//
+// @param request - BankMetaVerifyIntlRequest
+//
+// @return BankMetaVerifyIntlResponse
+func (client *Client) BankMetaVerifyIntl(request *BankMetaVerifyIntlRequest) (_result *BankMetaVerifyIntlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BankMetaVerifyIntlResponse{}
+	_body, _err := client.BankMetaVerifyIntlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
