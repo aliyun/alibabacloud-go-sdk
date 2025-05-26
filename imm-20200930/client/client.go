@@ -4647,8 +4647,10 @@ func (s *TargetVideo) SetTranscodeVideo(v *TargetVideoTranscodeVideo) *TargetVid
 }
 
 type TargetVideoFilterVideo struct {
-	Delogos    []*TargetVideoFilterVideoDelogos    `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
-	Watermarks []*TargetVideoFilterVideoWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	Delogos         []*TargetVideoFilterVideoDelogos       `json:"Delogos,omitempty" xml:"Delogos,omitempty" type:"Repeated"`
+	Desensitization *TargetVideoFilterVideoDesensitization `json:"Desensitization,omitempty" xml:"Desensitization,omitempty" type:"Struct"`
+	Speed           *float32                               `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Watermarks      []*TargetVideoFilterVideoWatermarks    `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s TargetVideoFilterVideo) String() string {
@@ -4661,6 +4663,16 @@ func (s TargetVideoFilterVideo) GoString() string {
 
 func (s *TargetVideoFilterVideo) SetDelogos(v []*TargetVideoFilterVideoDelogos) *TargetVideoFilterVideo {
 	s.Delogos = v
+	return s
+}
+
+func (s *TargetVideoFilterVideo) SetDesensitization(v *TargetVideoFilterVideoDesensitization) *TargetVideoFilterVideo {
+	s.Desensitization = v
+	return s
+}
+
+func (s *TargetVideoFilterVideo) SetSpeed(v float32) *TargetVideoFilterVideo {
+	s.Speed = &v
 	return s
 }
 
@@ -4719,6 +4731,75 @@ func (s *TargetVideoFilterVideoDelogos) SetStartTime(v float64) *TargetVideoFilt
 
 func (s *TargetVideoFilterVideoDelogos) SetWidth(v float32) *TargetVideoFilterVideoDelogos {
 	s.Width = &v
+	return s
+}
+
+type TargetVideoFilterVideoDesensitization struct {
+	Face         *TargetVideoFilterVideoDesensitizationFace         `json:"Face,omitempty" xml:"Face,omitempty" type:"Struct"`
+	LicensePlate *TargetVideoFilterVideoDesensitizationLicensePlate `json:"LicensePlate,omitempty" xml:"LicensePlate,omitempty" type:"Struct"`
+}
+
+func (s TargetVideoFilterVideoDesensitization) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideoDesensitization) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideoDesensitization) SetFace(v *TargetVideoFilterVideoDesensitizationFace) *TargetVideoFilterVideoDesensitization {
+	s.Face = v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDesensitization) SetLicensePlate(v *TargetVideoFilterVideoDesensitizationLicensePlate) *TargetVideoFilterVideoDesensitization {
+	s.LicensePlate = v
+	return s
+}
+
+type TargetVideoFilterVideoDesensitizationFace struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	MinSize    *int32   `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+}
+
+func (s TargetVideoFilterVideoDesensitizationFace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideoDesensitizationFace) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideoDesensitizationFace) SetConfidence(v float32) *TargetVideoFilterVideoDesensitizationFace {
+	s.Confidence = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDesensitizationFace) SetMinSize(v int32) *TargetVideoFilterVideoDesensitizationFace {
+	s.MinSize = &v
+	return s
+}
+
+type TargetVideoFilterVideoDesensitizationLicensePlate struct {
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	MinSize    *int32   `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+}
+
+func (s TargetVideoFilterVideoDesensitizationLicensePlate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TargetVideoFilterVideoDesensitizationLicensePlate) GoString() string {
+	return s.String()
+}
+
+func (s *TargetVideoFilterVideoDesensitizationLicensePlate) SetConfidence(v float32) *TargetVideoFilterVideoDesensitizationLicensePlate {
+	s.Confidence = &v
+	return s
+}
+
+func (s *TargetVideoFilterVideoDesensitizationLicensePlate) SetMinSize(v int32) *TargetVideoFilterVideoDesensitizationLicensePlate {
+	s.MinSize = &v
 	return s
 }
 
