@@ -1,3 +1,6 @@
+2025-05-26 Version: v1.6.4
+- Generated golang 2020-12-03 for pai-dlc.
+
 2025-05-20 Version: v1.6.3
 - Generated golang 2020-12-03 for pai-dlc.
 

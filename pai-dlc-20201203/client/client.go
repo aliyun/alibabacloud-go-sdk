@@ -2407,9 +2407,11 @@ type JobSpec struct {
 	// example:
 	//
 	// registry.cn-hangzhou.aliyuncs.com/pai-dlc/tensorflow-training:1.12.2PAI-cpu-py27-ubuntu16.04
-	Image           *string           `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageConfig     *ImageConfig      `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
+	Image       *string      `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageConfig *ImageConfig `json:"ImageConfig,omitempty" xml:"ImageConfig,omitempty"`
+	// Deprecated
 	IsCheif         *bool             `json:"IsCheif,omitempty" xml:"IsCheif,omitempty"`
+	IsChief         *bool             `json:"IsChief,omitempty" xml:"IsChief,omitempty"`
 	LocalMountSpecs []*LocalMountSpec `json:"LocalMountSpecs,omitempty" xml:"LocalMountSpecs,omitempty" type:"Repeated"`
 	// example:
 	//
@@ -2471,6 +2473,11 @@ func (s *JobSpec) SetImageConfig(v *ImageConfig) *JobSpec {
 
 func (s *JobSpec) SetIsCheif(v bool) *JobSpec {
 	s.IsCheif = &v
+	return s
+}
+
+func (s *JobSpec) SetIsChief(v bool) *JobSpec {
+	s.IsChief = &v
 	return s
 }
 
