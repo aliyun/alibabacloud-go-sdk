@@ -1,3 +1,7 @@
+2025-05-26 Version: v2.2.6
+- Update API CreateDomain: add request parameters dkimSelector.
+
+
 2025-01-10 Version: v2.2.5
 - Generated golang 2015-11-23 for Dm.
 
