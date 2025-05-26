@@ -12002,6 +12002,195 @@ func (s *DescribeAdbMySqlColumnsResponse) SetBody(v *DescribeAdbMySqlColumnsResp
 	return s
 }
 
+type DescribeAdbMySqlIndexesRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-uf6wjk5xxxxxxxxxx
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// tpch_oss
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// orders
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeAdbMySqlIndexesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlIndexesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlIndexesRequest) SetDBClusterId(v string) *DescribeAdbMySqlIndexesRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesRequest) SetRegionId(v string) *DescribeAdbMySqlIndexesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesRequest) SetSchema(v string) *DescribeAdbMySqlIndexesRequest {
+	s.Schema = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesRequest) SetTableName(v string) *DescribeAdbMySqlIndexesRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeAdbMySqlIndexesResponseBody struct {
+	// example:
+	//
+	// 10
+	IndexCount *int32                                        `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
+	Indexes    []*DescribeAdbMySqlIndexesResponseBodyIndexes `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// F0983B43-B2EC-536A-8791-142B5CF1E9B6
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// adb_demo
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeAdbMySqlIndexesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlIndexesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetIndexCount(v int32) *DescribeAdbMySqlIndexesResponseBody {
+	s.IndexCount = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetIndexes(v []*DescribeAdbMySqlIndexesResponseBodyIndexes) *DescribeAdbMySqlIndexesResponseBody {
+	s.Indexes = v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetMessage(v string) *DescribeAdbMySqlIndexesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetRequestId(v string) *DescribeAdbMySqlIndexesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetSchema(v string) *DescribeAdbMySqlIndexesResponseBody {
+	s.Schema = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetSuccess(v bool) *DescribeAdbMySqlIndexesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBody) SetTableName(v string) *DescribeAdbMySqlIndexesResponseBody {
+	s.TableName = &v
+	return s
+}
+
+type DescribeAdbMySqlIndexesResponseBodyIndexes struct {
+	// example:
+	//
+	// preclcu
+	Column *string `json:"Column,omitempty" xml:"Column,omitempty"`
+	// example:
+	//
+	// ttl
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// example:
+	//
+	// normal
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeAdbMySqlIndexesResponseBodyIndexes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlIndexesResponseBodyIndexes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBodyIndexes) SetColumn(v string) *DescribeAdbMySqlIndexesResponseBodyIndexes {
+	s.Column = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBodyIndexes) SetName(v string) *DescribeAdbMySqlIndexesResponseBodyIndexes {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponseBodyIndexes) SetType(v string) *DescribeAdbMySqlIndexesResponseBodyIndexes {
+	s.Type = &v
+	return s
+}
+
+type DescribeAdbMySqlIndexesResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdbMySqlIndexesResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAdbMySqlIndexesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlIndexesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlIndexesResponse) SetHeaders(v map[string]*string) *DescribeAdbMySqlIndexesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponse) SetStatusCode(v int32) *DescribeAdbMySqlIndexesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlIndexesResponse) SetBody(v *DescribeAdbMySqlIndexesResponseBody) *DescribeAdbMySqlIndexesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAdbMySqlSchemasRequest struct {
 	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
@@ -12125,6 +12314,280 @@ func (s *DescribeAdbMySqlSchemasResponse) SetStatusCode(v int32) *DescribeAdbMyS
 }
 
 func (s *DescribeAdbMySqlSchemasResponse) SetBody(v *DescribeAdbMySqlSchemasResponseBody) *DescribeAdbMySqlSchemasResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAdbMySqlTableMetaRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// am-bp11q28kvl688****
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// adb_demo
+	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// test
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+}
+
+func (s DescribeAdbMySqlTableMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlTableMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlTableMetaRequest) SetDBClusterId(v string) *DescribeAdbMySqlTableMetaRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaRequest) SetRegionId(v string) *DescribeAdbMySqlTableMetaRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaRequest) SetSchema(v string) *DescribeAdbMySqlTableMetaRequest {
+	s.Schema = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaRequest) SetTableName(v string) *DescribeAdbMySqlTableMetaRequest {
+	s.TableName = &v
+	return s
+}
+
+type DescribeAdbMySqlTableMetaResponseBody struct {
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 2FED790E-FB61-4721-8C1C-07C627FA5A19
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TableMeta *DescribeAdbMySqlTableMetaResponseBodyTableMeta `json:"TableMeta,omitempty" xml:"TableMeta,omitempty" type:"Struct"`
+}
+
+func (s DescribeAdbMySqlTableMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlTableMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBody) SetMessage(v string) *DescribeAdbMySqlTableMetaResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBody) SetRequestId(v string) *DescribeAdbMySqlTableMetaResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBody) SetSuccess(v bool) *DescribeAdbMySqlTableMetaResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBody) SetTableMeta(v *DescribeAdbMySqlTableMetaResponseBodyTableMeta) *DescribeAdbMySqlTableMetaResponseBody {
+	s.TableMeta = v
+	return s
+}
+
+type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
+	// example:
+	//
+	// 2025-03-14 02:18:08.0
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// example:
+	//
+	// customer_id
+	DistributeColumn *string `json:"DistributeColumn,omitempty" xml:"DistributeColumn,omitempty"`
+	// example:
+	//
+	// hash
+	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
+	// example:
+	//
+	// false
+	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
+	// example:
+	//
+	// true
+	IsDictEncode *bool `json:"IsDictEncode,omitempty" xml:"IsDictEncode,omitempty"`
+	// example:
+	//
+	// true
+	IsFullTextDict *bool `json:"IsFullTextDict,omitempty" xml:"IsFullTextDict,omitempty"`
+	// example:
+	//
+	// true
+	IsHidden *bool `json:"IsHidden,omitempty" xml:"IsHidden,omitempty"`
+	// example:
+	//
+	// DATE_FORMAT(login_time, \\"%Y%m%d\\")
+	PartitionColumn *string `json:"PartitionColumn,omitempty" xml:"PartitionColumn,omitempty"`
+	// example:
+	//
+	// value
+	PartitionType *string `json:"PartitionType,omitempty" xml:"PartitionType,omitempty"`
+	// example:
+	//
+	// login_time,customer_id,phone_num
+	PrimaryKeyColumn *string `json:"PrimaryKeyColumn,omitempty" xml:"PrimaryKeyColumn,omitempty"`
+	// example:
+	//
+	// XUANWU
+	TableEngine *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
+	// example:
+	//
+	// external_supplier
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// tpch
+	TableSchema *string `json:"TableSchema,omitempty" xml:"TableSchema,omitempty"`
+	// example:
+	//
+	// fact_table
+	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
+	// example:
+	//
+	// 2024-07-25 02:07:23.0
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeAdbMySqlTableMetaResponseBodyTableMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlTableMetaResponseBodyTableMeta) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetCreateTime(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetDistributeColumn(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.DistributeColumn = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetDistributeType(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.DistributeType = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetIsAllIndex(v bool) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.IsAllIndex = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetIsDictEncode(v bool) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.IsDictEncode = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetIsFullTextDict(v bool) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.IsFullTextDict = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetIsHidden(v bool) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.IsHidden = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetPartitionColumn(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.PartitionColumn = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetPartitionType(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.PartitionType = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetPrimaryKeyColumn(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.PrimaryKeyColumn = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetTableEngine(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.TableEngine = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetTableName(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetTableSchema(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.TableSchema = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetTableType(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.TableType = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponseBodyTableMeta) SetUpdateTime(v string) *DescribeAdbMySqlTableMetaResponseBodyTableMeta {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeAdbMySqlTableMetaResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeAdbMySqlTableMetaResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeAdbMySqlTableMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAdbMySqlTableMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAdbMySqlTableMetaResponse) SetHeaders(v map[string]*string) *DescribeAdbMySqlTableMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponse) SetStatusCode(v int32) *DescribeAdbMySqlTableMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAdbMySqlTableMetaResponse) SetBody(v *DescribeAdbMySqlTableMetaResponseBody) *DescribeAdbMySqlTableMetaResponse {
 	s.Body = v
 	return s
 }
@@ -17298,6 +17761,7 @@ type DescribeBackupsRequest struct {
 	//
 	// 30
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Remote               *bool   `json:"Remote,omitempty" xml:"Remote,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
@@ -17350,6 +17814,11 @@ func (s *DescribeBackupsRequest) SetPageNumber(v int32) *DescribeBackupsRequest 
 
 func (s *DescribeBackupsRequest) SetPageSize(v int32) *DescribeBackupsRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetRemote(v bool) *DescribeBackupsRequest {
+	s.Remote = &v
 	return s
 }
 
@@ -17479,6 +17948,7 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	//
 	// Snapshot
 	BackupMethod *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupRegion *string `json:"BackupRegion,omitempty" xml:"BackupRegion,omitempty"`
 	// The size of the backup set. Unit: bytes.
 	//
 	// example:
@@ -17506,7 +17976,8 @@ type DescribeBackupsResponseBodyItemsBackup struct {
 	// example:
 	//
 	// am-bp11q28kvl688****
-	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	DBClusterId    *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	ParentBackupId *string `json:"ParentBackupId,omitempty" xml:"ParentBackupId,omitempty"`
 }
 
 func (s DescribeBackupsResponseBodyItemsBackup) String() string {
@@ -17537,6 +18008,11 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupMethod(v string) *Desc
 	return s
 }
 
+func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupRegion(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.BackupRegion = &v
+	return s
+}
+
 func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupSize(v int32) *DescribeBackupsResponseBodyItemsBackup {
 	s.BackupSize = &v
 	return s
@@ -17554,6 +18030,11 @@ func (s *DescribeBackupsResponseBodyItemsBackup) SetBackupType(v string) *Descri
 
 func (s *DescribeBackupsResponseBodyItemsBackup) SetDBClusterId(v string) *DescribeBackupsResponseBodyItemsBackup {
 	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyItemsBackup) SetParentBackupId(v string) *DescribeBackupsResponseBodyItemsBackup {
+	s.ParentBackupId = &v
 	return s
 }
 
@@ -27247,32 +27728,86 @@ func (s *DescribeInclinedNodesResponse) SetBody(v *DescribeInclinedNodesResponse
 }
 
 type DescribeInclinedTablesRequest struct {
+	// The cluster ID.
+	//
+	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the information about all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region, including cluster IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-k2jofo4pi5zhd****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The language. Valid values:
+	//
+	// 	- **zh (default)**: simplified Chinese.
+	//
+	// 	- **en**: English.
+	//
+	// 	- **ja**: Japanese.
+	//
+	// 	- **zh-tw**: traditional Chinese.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The order by which to sort query results. Specify the parameter value in the JSON format.
+	//
+	// Example:
+	//
+	//     [
+	//
+	//         {
+	//
+	//             "Field":"Name",
+	//
+	//             "Type":"Asc"
+	//
+	//         }
+	//
+	//     ]
+	//
+	// Field specifies the field by which to sort the query results. Set the value to Name. Type specifies the sorting order. Valid values: Desc and Asc.
+	//
+	// Field and Type are case-insensitive.
+	//
 	// example:
 	//
 	// [      {          "Field":"Name",          "Type":"Asc"      }  ]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The number of entries per page. Valid values:
+	//
+	// 	- **30*	- (default)
+	//
+	// 	- **50**
+	//
+	// 	- **100**
+	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The region ID.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hongkong
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the table. Valid values:
+	//
+	// 	- **FactTable**: the partitioned table.
+	//
+	// 	- **DimensionTable**: the dimension table.
+	//
 	// example:
 	//
 	// FactTable
@@ -27323,6 +27858,8 @@ func (s *DescribeInclinedTablesRequest) SetTableType(v string) *DescribeInclined
 }
 
 type DescribeInclinedTablesResponseBody struct {
+	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	//
 	// example:
 	//
 	// {
@@ -27342,21 +27879,31 @@ type DescribeInclinedTablesResponseBody struct {
 	//     "AuthAction": "adb:DescribeExcessivePrimaryKeys"
 	//
 	// }
-	AccessDeniedDetail *string                                             `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	DetectionItems     []*DescribeInclinedTablesResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
-	Items              *DescribeInclinedTablesResponseBodyItems            `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
+	// The queried detection items and detection results.
+	DetectionItems []*DescribeInclinedTablesResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
+	// The queried tables.
+	Items *DescribeInclinedTablesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// The page number. Pages start from page 1.
+	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 15
@@ -27407,8 +27954,20 @@ func (s *DescribeInclinedTablesResponseBody) SetTotalCount(v string) *DescribeIn
 }
 
 type DescribeInclinedTablesResponseBodyDetectionItems struct {
+	// The message of the detection result.
+	//
+	// example:
+	//
+	// A shard skew is detected in a table.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the detection item.
+	//
+	// example:
+	//
+	// Table skew
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The severity level of the detection result.
+	//
 	// example:
 	//
 	// NORMAL
@@ -27443,6 +28002,7 @@ func (s *DescribeInclinedTablesResponseBodyDetectionItems) SetStatus(v string) *
 }
 
 type DescribeInclinedTablesResponseBodyItems struct {
+	// The queried table.
 	Table []*DescribeInclinedTablesResponseBodyItemsTable `json:"Table,omitempty" xml:"Table,omitempty" type:"Repeated"`
 }
 
@@ -27460,34 +28020,58 @@ func (s *DescribeInclinedTablesResponseBodyItems) SetTable(v []*DescribeInclined
 }
 
 type DescribeInclinedTablesResponseBodyItemsTable struct {
+	// Indicates whether data is skewed in the table.
+	//
 	// example:
 	//
 	// True
 	IsIncline *bool `json:"IsIncline,omitempty" xml:"IsIncline,omitempty"`
+	// The name of the table.
+	//
 	// example:
 	//
 	// admin_daily_own_statistic_record
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The number of rows in the table.
+	//
 	// example:
 	//
 	// 1000
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// The name of the database.
+	//
 	// example:
 	//
 	// spark_test
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
+	// The number of rows in the table.
+	//
 	// example:
 	//
 	// 200
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
+	// The percentage of the table size. Unit: %.
+	//
+	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	//
 	// example:
 	//
 	// 0.4
 	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// The total data size of the table. Unit: bytes.
+	//
+	// >  The following formulas can be used to calculate the total data size:
+	//
+	// 	- Formula 1: Total data size = Hot data size + Cold data size.
+	//
+	// 	- Formula 2: Total data size = Data size of table records + Data size of regular indexes + Data size of primary key indexes + Data size of other data.
+	//
 	// example:
 	//
 	// 53687091200
 	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// The detection type of the table.
+	//
 	// example:
 	//
 	// Fact
@@ -28054,6 +28638,331 @@ func (s *DescribeKernelVersionResponse) SetStatusCode(v int32) *DescribeKernelVe
 }
 
 func (s *DescribeKernelVersionResponse) SetBody(v *DescribeKernelVersionResponseBody) *DescribeKernelVersionResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLLMAnswerRequest struct {
+	// The cluster ID.
+	//
+	// >  Enterprise Edition, Basic Edition, and Data Lakehouse Edition: You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the information about all AnalyticDB for MySQL clusters within a region, including cluster IDs.
+	//
+	// example:
+	//
+	// am-uf6g8w25jacm7****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The question proposed by a user.
+	//
+	// This parameter is required.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// The region ID
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the most recent region list.
+	//
+	// example:
+	//
+	// cn-beijing
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLLMAnswerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMAnswerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMAnswerRequest) SetDBClusterId(v string) *DescribeLLMAnswerRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetOwnerAccount(v string) *DescribeLLMAnswerRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetOwnerId(v int64) *DescribeLLMAnswerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetQuery(v string) *DescribeLLMAnswerRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetRegionId(v string) *DescribeLLMAnswerRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetResourceOwnerAccount(v string) *DescribeLLMAnswerRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerRequest) SetResourceOwnerId(v int64) *DescribeLLMAnswerRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLLMAnswerResponseBody struct {
+	// The answer by the intelligent assistant to the question.
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The session ID.
+	//
+	// example:
+	//
+	// 456
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s DescribeLLMAnswerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMAnswerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMAnswerResponseBody) SetContent(v string) *DescribeLLMAnswerResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerResponseBody) SetRequestId(v string) *DescribeLLMAnswerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerResponseBody) SetSessionId(v string) *DescribeLLMAnswerResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+type DescribeLLMAnswerResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLLMAnswerResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLLMAnswerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMAnswerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMAnswerResponse) SetHeaders(v map[string]*string) *DescribeLLMAnswerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLLMAnswerResponse) SetStatusCode(v int32) *DescribeLLMAnswerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLLMAnswerResponse) SetBody(v *DescribeLLMAnswerResponseBody) *DescribeLLMAnswerResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLLMSimilarQuestionsRequest struct {
+	// example:
+	//
+	// am-bp1565u55p32****
+	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// This parameter is required.
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	// example:
+	//
+	// cn-hangzhou
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLLMSimilarQuestionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMSimilarQuestionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetDBClusterId(v string) *DescribeLLMSimilarQuestionsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetOwnerAccount(v string) *DescribeLLMSimilarQuestionsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetOwnerId(v int64) *DescribeLLMSimilarQuestionsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetQuery(v string) *DescribeLLMSimilarQuestionsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetRegionId(v string) *DescribeLLMSimilarQuestionsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetResourceOwnerAccount(v string) *DescribeLLMSimilarQuestionsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsRequest) SetResourceOwnerId(v int64) *DescribeLLMSimilarQuestionsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLLMSimilarQuestionsResponseBody struct {
+	Items []*DescribeLLMSimilarQuestionsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// example:
+	//
+	// 96A55627-28E9-5E47-B8F6-D786BE551349
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// 4847
+	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+}
+
+func (s DescribeLLMSimilarQuestionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMSimilarQuestionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBody) SetItems(v []*DescribeLLMSimilarQuestionsResponseBodyItems) *DescribeLLMSimilarQuestionsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBody) SetRequestId(v string) *DescribeLLMSimilarQuestionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBody) SetSessionId(v string) *DescribeLLMSimilarQuestionsResponseBody {
+	s.SessionId = &v
+	return s
+}
+
+type DescribeLLMSimilarQuestionsResponseBodyItems struct {
+	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
+	// example:
+	//
+	// 2389899
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// example:
+	//
+	// 0.58
+	Score   *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Source  *string  `json:"Source,omitempty" xml:"Source,omitempty"`
+	Summary *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
+	Title   *string  `json:"Title,omitempty" xml:"Title,omitempty"`
+	// example:
+	//
+	// www.aliyun.com/product
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s DescribeLLMSimilarQuestionsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMSimilarQuestionsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetAnswer(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Answer = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetId(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetScore(v float64) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Score = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetSource(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetSummary(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Summary = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetTitle(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Title = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponseBodyItems) SetUrl(v string) *DescribeLLMSimilarQuestionsResponseBodyItems {
+	s.Url = &v
+	return s
+}
+
+type DescribeLLMSimilarQuestionsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeLLMSimilarQuestionsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeLLMSimilarQuestionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLLMSimilarQuestionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLLMSimilarQuestionsResponse) SetHeaders(v map[string]*string) *DescribeLLMSimilarQuestionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponse) SetStatusCode(v int32) *DescribeLLMSimilarQuestionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLLMSimilarQuestionsResponse) SetBody(v *DescribeLLMSimilarQuestionsResponseBody) *DescribeLLMSimilarQuestionsResponse {
 	s.Body = v
 	return s
 }
@@ -29929,16 +30838,24 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 }
 
 type DescribeResourceGroupSpecRequest struct {
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// amv-8vbo40tl1dxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// The region ID of the cluster.
+	//
+	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The type of the resource group.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29971,13 +30888,14 @@ func (s *DescribeResourceGroupSpecRequest) SetResourceGroupType(v string) *Descr
 }
 
 type DescribeResourceGroupSpecResponseBody struct {
-	// requestId
+	// The request ID.
 	//
 	// example:
 	//
 	// 10226189-4391-5B10-97AF-5CA5XXXXXXX
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Specs     []*DescribeResourceGroupSpecResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The queried specifications.
+	Specs []*DescribeResourceGroupSpecResponseBodySpecs `json:"Specs,omitempty" xml:"Specs,omitempty" type:"Repeated"`
 }
 
 func (s DescribeResourceGroupSpecResponseBody) String() string {
@@ -29999,15 +30917,22 @@ func (s *DescribeResourceGroupSpecResponseBody) SetSpecs(v []*DescribeResourceGr
 }
 
 type DescribeResourceGroupSpecResponseBodySpecs struct {
+	// The allocation units supported by this specification.
 	AllocateUnits []*string `json:"AllocateUnits,omitempty" xml:"AllocateUnits,omitempty" type:"Repeated"`
+	// The maximum number of resource groups that can be used with this specification.
+	//
 	// example:
 	//
 	// 8
 	MaxQuantity *int32 `json:"MaxQuantity,omitempty" xml:"MaxQuantity,omitempty"`
+	// The name of the specification.
+	//
 	// example:
 	//
 	// xlarge
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The resource type.
+	//
 	// example:
 	//
 	// GPU
@@ -30641,6 +31566,124 @@ func (s *DescribeSQLPatternsResponse) SetStatusCode(v int32) *DescribeSQLPattern
 }
 
 func (s *DescribeSQLPatternsResponse) SetBody(v *DescribeSQLPatternsResponseBody) *DescribeSQLPatternsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeSQLWebSocketDomainRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-bp1lw6g669zpi660
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeSQLWebSocketDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLWebSocketDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLWebSocketDomainRequest) SetDBClusterId(v string) *DescribeSQLWebSocketDomainRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainRequest) SetRegionId(v string) *DescribeSQLWebSocketDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeSQLWebSocketDomainResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// example:
+	//
+	// adb-ws-beijing.console.aliyun.com/query
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// example:
+	//
+	// Success
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// E03F0806-A67B-5B24-8562-9589F20DEEB5
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeSQLWebSocketDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLWebSocketDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLWebSocketDomainResponseBody) SetCode(v int64) *DescribeSQLWebSocketDomainResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponseBody) SetDomain(v string) *DescribeSQLWebSocketDomainResponseBody {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponseBody) SetMessage(v string) *DescribeSQLWebSocketDomainResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponseBody) SetRequestId(v string) *DescribeSQLWebSocketDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponseBody) SetSuccess(v bool) *DescribeSQLWebSocketDomainResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeSQLWebSocketDomainResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeSQLWebSocketDomainResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeSQLWebSocketDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSQLWebSocketDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSQLWebSocketDomainResponse) SetHeaders(v map[string]*string) *DescribeSQLWebSocketDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponse) SetStatusCode(v int32) *DescribeSQLWebSocketDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeSQLWebSocketDomainResponse) SetBody(v *DescribeSQLWebSocketDomainResponseBody) *DescribeSQLWebSocketDomainResponse {
 	s.Body = v
 	return s
 }
@@ -33788,6 +34831,318 @@ func (s *DescribeTablePartitionDiagnoseResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeTablePartitionDiagnoseResponse) SetBody(v *DescribeTablePartitionDiagnoseResponseBody) *DescribeTablePartitionDiagnoseResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeTableStatisticsRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// amv-****************
+	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	// example:
+	//
+	// you_table_name
+	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	// example:
+	//
+	// [{"Field":"SchemaName","Type":"Desc"}]
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// example:
+	//
+	// 1
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// cn-beijing
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// example:
+	//
+	// test
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+}
+
+func (s DescribeTableStatisticsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableStatisticsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableStatisticsRequest) SetDBClusterId(v string) *DescribeTableStatisticsRequest {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetKeyword(v string) *DescribeTableStatisticsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetOrder(v string) *DescribeTableStatisticsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetPageNumber(v int32) *DescribeTableStatisticsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetPageSize(v int32) *DescribeTableStatisticsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetRegionId(v string) *DescribeTableStatisticsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsRequest) SetSchemaName(v string) *DescribeTableStatisticsRequest {
+	s.SchemaName = &v
+	return s
+}
+
+type DescribeTableStatisticsResponseBody struct {
+	// example:
+	//
+	// am-****************
+	DBClusterId *string                                   `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	Items       *DescribeTableStatisticsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	// example:
+	//
+	// 1
+	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// example:
+	//
+	// 30
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// example:
+	//
+	// 4C4433FF-5D3A-4C3E-A19C-6D93B2******
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// [\\"adb_platform\\", \\"adb_ai\\", \\"adb_data\\"]
+	SchemaNames *string `json:"SchemaNames,omitempty" xml:"SchemaNames,omitempty"`
+	// example:
+	//
+	// 693
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeTableStatisticsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableStatisticsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetDBClusterId(v string) *DescribeTableStatisticsResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetItems(v *DescribeTableStatisticsResponseBodyItems) *DescribeTableStatisticsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetPageNumber(v string) *DescribeTableStatisticsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetPageSize(v string) *DescribeTableStatisticsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetRequestId(v string) *DescribeTableStatisticsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetSchemaNames(v string) *DescribeTableStatisticsResponseBody {
+	s.SchemaNames = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBody) SetTotalCount(v string) *DescribeTableStatisticsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeTableStatisticsResponseBodyItems struct {
+	TableStatisticRecords []*DescribeTableStatisticsResponseBodyItemsTableStatisticRecords `json:"TableStatisticRecords,omitempty" xml:"TableStatisticRecords,omitempty" type:"Repeated"`
+}
+
+func (s DescribeTableStatisticsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableStatisticsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableStatisticsResponseBodyItems) SetTableStatisticRecords(v []*DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) *DescribeTableStatisticsResponseBodyItems {
+	s.TableStatisticRecords = v
+	return s
+}
+
+type DescribeTableStatisticsResponseBodyItemsTableStatisticRecords struct {
+	// example:
+	//
+	// 4428120064
+	ColdDataSize *int64 `json:"ColdDataSize,omitempty" xml:"ColdDataSize,omitempty"`
+	// example:
+	//
+	// 15592
+	DataSize *int64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	// example:
+	//
+	// 1048576
+	HotDataSize *int64 `json:"HotDataSize,omitempty" xml:"HotDataSize,omitempty"`
+	// example:
+	//
+	// 3076
+	IndexSize *int64 `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	// example:
+	//
+	// 1048576
+	OtherSize *int64 `json:"OtherSize,omitempty" xml:"OtherSize,omitempty"`
+	// example:
+	//
+	// 1
+	PartitionCount *int64 `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
+	// example:
+	//
+	// 16340
+	PrimaryKeyIndexSize *int64 `json:"PrimaryKeyIndexSize,omitempty" xml:"PrimaryKeyIndexSize,omitempty"`
+	// example:
+	//
+	// 3
+	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
+	// example:
+	//
+	// test_schema
+	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	// example:
+	//
+	// 66.23
+	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
+	// example:
+	//
+	// test_table
+	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	// example:
+	//
+	// 1577
+	TotalSize *int64 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetColdDataSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.ColdDataSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetDataSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetHotDataSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.HotDataSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetIndexSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetOtherSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.OtherSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetPartitionCount(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.PartitionCount = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetPrimaryKeyIndexSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.PrimaryKeyIndexSize = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetRowCount(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.RowCount = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetSchemaName(v string) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetSpaceRatio(v float64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.SpaceRatio = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetTableName(v string) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords) SetTotalSize(v int64) *DescribeTableStatisticsResponseBodyItemsTableStatisticRecords {
+	s.TotalSize = &v
+	return s
+}
+
+type DescribeTableStatisticsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *DescribeTableStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s DescribeTableStatisticsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeTableStatisticsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeTableStatisticsResponse) SetHeaders(v map[string]*string) *DescribeTableStatisticsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponse) SetStatusCode(v int32) *DescribeTableStatisticsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeTableStatisticsResponse) SetBody(v *DescribeTableStatisticsResponseBody) *DescribeTableStatisticsResponse {
 	s.Body = v
 	return s
 }
@@ -56603,6 +57958,78 @@ func (client *Client) DescribeAdbMySqlColumns(request *DescribeAdbMySqlColumnsRe
 
 // Summary:
 //
+// 用于查看表索引信息
+//
+// @param request - DescribeAdbMySqlIndexesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdbMySqlIndexesResponse
+func (client *Client) DescribeAdbMySqlIndexesWithOptions(request *DescribeAdbMySqlIndexesRequest, runtime *util.RuntimeOptions) (_result *DescribeAdbMySqlIndexesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAdbMySqlIndexes"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAdbMySqlIndexesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于查看表索引信息
+//
+// @param request - DescribeAdbMySqlIndexesRequest
+//
+// @return DescribeAdbMySqlIndexesResponse
+func (client *Client) DescribeAdbMySqlIndexes(request *DescribeAdbMySqlIndexesRequest) (_result *DescribeAdbMySqlIndexesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAdbMySqlIndexesResponse{}
+	_body, _err := client.DescribeAdbMySqlIndexesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of databases for an AnalyticDB for MySQL cluster.
 //
 // Description:
@@ -56670,6 +58097,78 @@ func (client *Client) DescribeAdbMySqlSchemas(request *DescribeAdbMySqlSchemasRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAdbMySqlSchemasResponse{}
 	_body, _err := client.DescribeAdbMySqlSchemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于查看表元数据信息
+//
+// @param request - DescribeAdbMySqlTableMetaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAdbMySqlTableMetaResponse
+func (client *Client) DescribeAdbMySqlTableMetaWithOptions(request *DescribeAdbMySqlTableMetaRequest, runtime *util.RuntimeOptions) (_result *DescribeAdbMySqlTableMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAdbMySqlTableMeta"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAdbMySqlTableMetaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 用于查看表元数据信息
+//
+// @param request - DescribeAdbMySqlTableMetaRequest
+//
+// @return DescribeAdbMySqlTableMetaResponse
+func (client *Client) DescribeAdbMySqlTableMeta(request *DescribeAdbMySqlTableMetaRequest) (_result *DescribeAdbMySqlTableMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAdbMySqlTableMetaResponse{}
+	_body, _err := client.DescribeAdbMySqlTableMetaWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58065,6 +59564,10 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例备份集
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -58108,6 +59611,10 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Remote)) {
+		query["Remote"] = request.Remote
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -58143,6 +59650,10 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// 查询实例备份集
+//
 // Description:
 //
 // For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://help.aliyun.com/document_detail/612373.html).
@@ -60555,7 +62066,7 @@ func (client *Client) DescribeInclinedNodes(request *DescribeInclinedNodesReques
 
 // Summary:
 //
-// 查看表倾斜诊断结果
+// Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeInclinedTablesRequest
 //
@@ -60621,7 +62132,7 @@ func (client *Client) DescribeInclinedTablesWithOptions(request *DescribeIncline
 
 // Summary:
 //
-// 查看表倾斜诊断结果
+// Queries the information about skewed tables for an AnalyticDB for MySQL cluster.
 //
 // @param request - DescribeInclinedTablesRequest
 //
@@ -60786,6 +62297,166 @@ func (client *Client) DescribeKernelVersion(request *DescribeKernelVersionReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeKernelVersionResponse{}
 	_body, _err := client.DescribeKernelVersionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+//
+// @param request - DescribeLLMAnswerRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLLMAnswerResponse
+func (client *Client) DescribeLLMAnswerWithOptions(request *DescribeLLMAnswerRequest, runtime *util.RuntimeOptions) (_result *DescribeLLMAnswerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLLMAnswer"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLLMAnswerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the answer by a large language model (LLM) to a user question about the use of AnalyticDB for MySQL.
+//
+// @param request - DescribeLLMAnswerRequest
+//
+// @return DescribeLLMAnswerResponse
+func (client *Client) DescribeLLMAnswer(request *DescribeLLMAnswerRequest) (_result *DescribeLLMAnswerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLLMAnswerResponse{}
+	_body, _err := client.DescribeLLMAnswerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// @param request - DescribeLLMSimilarQuestionsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeLLMSimilarQuestionsResponse
+func (client *Client) DescribeLLMSimilarQuestionsWithOptions(request *DescribeLLMSimilarQuestionsRequest, runtime *util.RuntimeOptions) (_result *DescribeLLMSimilarQuestionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLLMSimilarQuestions"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLLMSimilarQuestionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// @param request - DescribeLLMSimilarQuestionsRequest
+//
+// @return DescribeLLMSimilarQuestionsResponse
+func (client *Client) DescribeLLMSimilarQuestions(request *DescribeLLMSimilarQuestionsRequest) (_result *DescribeLLMSimilarQuestionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLLMSimilarQuestionsResponse{}
+	_body, _err := client.DescribeLLMSimilarQuestionsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61379,7 +63050,13 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// 查询资源组规格相关信息
+// Queries the information about resource group specifications.
+//
+// Description:
+//
+// ### [](#)
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
 //
 // @param request - DescribeResourceGroupSpecRequest
 //
@@ -61429,7 +63106,13 @@ func (client *Client) DescribeResourceGroupSpecWithOptions(request *DescribeReso
 
 // Summary:
 //
-// 查询资源组规格相关信息
+// Queries the information about resource group specifications.
+//
+// Description:
+//
+// ### [](#)
+//
+// For information about the endpoints of AnalyticDB for MySQL, see [Endpoints](https://www.alibabacloud.com/help/en/analyticdb/analyticdb-for-mysql/developer-reference/api-adb-2021-12-01-endpoint?spm=a2c63.p38356.help-menu-92664.d_5_3_1.57da5837J23pkx).
 //
 // @param request - DescribeResourceGroupSpecRequest
 //
@@ -61546,6 +63229,70 @@ func (client *Client) DescribeSQLPatterns(request *DescribeSQLPatternsRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeSQLPatternsResponse{}
 	_body, _err := client.DescribeSQLPatternsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看注册的WebSocket域名
+//
+// @param request - DescribeSQLWebSocketDomainRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeSQLWebSocketDomainResponse
+func (client *Client) DescribeSQLWebSocketDomainWithOptions(request *DescribeSQLWebSocketDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeSQLWebSocketDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSQLWebSocketDomain"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSQLWebSocketDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查看注册的WebSocket域名
+//
+// @param request - DescribeSQLWebSocketDomainRequest
+//
+// @return DescribeSQLWebSocketDomainResponse
+func (client *Client) DescribeSQLWebSocketDomain(request *DescribeSQLWebSocketDomainRequest) (_result *DescribeSQLWebSocketDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSQLWebSocketDomainResponse{}
+	_body, _err := client.DescribeSQLWebSocketDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -62591,6 +64338,90 @@ func (client *Client) DescribeTablePartitionDiagnose(request *DescribeTableParti
 
 // Summary:
 //
+// 查询表统计信息
+//
+// @param request - DescribeTableStatisticsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeTableStatisticsResponse
+func (client *Client) DescribeTableStatisticsWithOptions(request *DescribeTableStatisticsRequest, runtime *util.RuntimeOptions) (_result *DescribeTableStatisticsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBClusterId)) {
+		query["DBClusterId"] = request.DBClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
+		query["SchemaName"] = request.SchemaName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeTableStatistics"),
+		Version:     tea.String("2021-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeTableStatisticsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 查询表统计信息
+//
+// @param request - DescribeTableStatisticsRequest
+//
+// @return DescribeTableStatisticsResponse
+func (client *Client) DescribeTableStatistics(request *DescribeTableStatisticsRequest) (_result *DescribeTableStatisticsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeTableStatisticsResponse{}
+	_body, _err := client.DescribeTableStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries a list of tables in a database.
 //
 // Description:
@@ -63521,6 +65352,8 @@ func (client *Client) ExecuteSparkWarehouseBatchSQL(request *ExecuteSparkWarehou
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ExistRunningSQLEngine is deprecated
+//
 // Summary:
 //
 // Queries whether a running SQL engine exists.
@@ -63538,6 +65371,7 @@ func (client *Client) ExecuteSparkWarehouseBatchSQL(request *ExecuteSparkWarehou
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ExistRunningSQLEngineResponse
+// Deprecated
 func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLEngineRequest, runtime *util.RuntimeOptions) (_result *ExistRunningSQLEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -63575,6 +65409,8 @@ func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLE
 	return _result, _err
 }
 
+// Deprecated: OpenAPI ExistRunningSQLEngine is deprecated
+//
 // Summary:
 //
 // Queries whether a running SQL engine exists.
@@ -63590,6 +65426,7 @@ func (client *Client) ExistRunningSQLEngineWithOptions(request *ExistRunningSQLE
 // @param request - ExistRunningSQLEngineRequest
 //
 // @return ExistRunningSQLEngineResponse
+// Deprecated
 func (client *Client) ExistRunningSQLEngine(request *ExistRunningSQLEngineRequest) (_result *ExistRunningSQLEngineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ExistRunningSQLEngineResponse{}
@@ -69549,6 +71386,8 @@ func (client *Client) StartSparkReplSession(request *StartSparkReplSessionReques
 	return _result, _err
 }
 
+// Deprecated: OpenAPI StartSparkSQLEngine is deprecated
+//
 // Summary:
 //
 // Starts the Spark SQL engine.
@@ -69566,6 +71405,7 @@ func (client *Client) StartSparkReplSession(request *StartSparkReplSessionReques
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return StartSparkSQLEngineResponse
+// Deprecated
 func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngineRequest, runtime *util.RuntimeOptions) (_result *StartSparkSQLEngineResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -69623,6 +71463,8 @@ func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngin
 	return _result, _err
 }
 
+// Deprecated: OpenAPI StartSparkSQLEngine is deprecated
+//
 // Summary:
 //
 // Starts the Spark SQL engine.
@@ -69638,6 +71480,7 @@ func (client *Client) StartSparkSQLEngineWithOptions(request *StartSparkSQLEngin
 // @param request - StartSparkSQLEngineRequest
 //
 // @return StartSparkSQLEngineResponse
+// Deprecated
 func (client *Client) StartSparkSQLEngine(request *StartSparkSQLEngineRequest) (_result *StartSparkSQLEngineResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &StartSparkSQLEngineResponse{}
