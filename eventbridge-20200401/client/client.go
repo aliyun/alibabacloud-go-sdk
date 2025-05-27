@@ -2529,6 +2529,7 @@ type CreateEventStreamingRequestRunOptions struct {
 	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
 	// The retry policy that you want to use if events fail to be pushed.
 	RetryStrategy *CreateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	Throttling    *int32                                              `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
 }
 
 func (s CreateEventStreamingRequestRunOptions) String() string {
@@ -2561,6 +2562,11 @@ func (s *CreateEventStreamingRequestRunOptions) SetMaximumTasks(v int64) *Create
 
 func (s *CreateEventStreamingRequestRunOptions) SetRetryStrategy(v *CreateEventStreamingRequestRunOptionsRetryStrategy) *CreateEventStreamingRequestRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *CreateEventStreamingRequestRunOptions) SetThrottling(v int32) *CreateEventStreamingRequestRunOptions {
+	s.Throttling = &v
 	return s
 }
 
@@ -8591,7 +8597,11 @@ type CreateRuleRequestEventTargetsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:mns:cn-hangzhou:123456789098****:/queues/rule-deadletterqueue
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateRuleRequestEventTargetsDeadLetterQueue) String() string {
@@ -8604,6 +8614,26 @@ func (s CreateRuleRequestEventTargetsDeadLetterQueue) GoString() string {
 
 func (s *CreateRuleRequestEventTargetsDeadLetterQueue) SetArn(v string) *CreateRuleRequestEventTargetsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *CreateRuleRequestEventTargetsDeadLetterQueue) SetNetwork(v string) *CreateRuleRequestEventTargetsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *CreateRuleRequestEventTargetsDeadLetterQueue) SetSecurityGroupId(v string) *CreateRuleRequestEventTargetsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateRuleRequestEventTargetsDeadLetterQueue) SetVSwitchIds(v string) *CreateRuleRequestEventTargetsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *CreateRuleRequestEventTargetsDeadLetterQueue) SetVpcId(v string) *CreateRuleRequestEventTargetsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -11970,6 +12000,7 @@ type GetEventStreamingResponseBodyDataRunOptions struct {
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
 	// The information about the retry policy that is used if the event fails to be pushed.
 	RetryStrategy *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	Throttling    *int32                                                    `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
 }
 
 func (s GetEventStreamingResponseBodyDataRunOptions) String() string {
@@ -12002,6 +12033,11 @@ func (s *GetEventStreamingResponseBodyDataRunOptions) SetMaximumTasks(v int32) *
 
 func (s *GetEventStreamingResponseBodyDataRunOptions) SetRetryStrategy(v *GetEventStreamingResponseBodyDataRunOptionsRetryStrategy) *GetEventStreamingResponseBodyDataRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *GetEventStreamingResponseBodyDataRunOptions) SetThrottling(v int32) *GetEventStreamingResponseBodyDataRunOptions {
+	s.Throttling = &v
 	return s
 }
 
@@ -17170,7 +17206,11 @@ type GetRuleResponseBodyDataTargetsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:eventbridge:cn-hangzhou:164901546557****:eventbus/my-event-bus/eventsource/myRocketMQ.source
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s GetRuleResponseBodyDataTargetsDeadLetterQueue) String() string {
@@ -17183,6 +17223,26 @@ func (s GetRuleResponseBodyDataTargetsDeadLetterQueue) GoString() string {
 
 func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetArn(v string) *GetRuleResponseBodyDataTargetsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetNetwork(v string) *GetRuleResponseBodyDataTargetsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetSecurityGroupId(v string) *GetRuleResponseBodyDataTargetsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetVSwitchIds(v string) *GetRuleResponseBodyDataTargetsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *GetRuleResponseBodyDataTargetsDeadLetterQueue) SetVpcId(v string) *GetRuleResponseBodyDataTargetsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -19036,6 +19096,7 @@ type ListEventStreamingsResponseBodyDataEventStreamingsRunOptions struct {
 	MaximumTasks *int32 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
 	// The retry policy that is used if events fail to be pushed.
 	RetryStrategy *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	Throttling    *int32                                                                     `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
 }
 
 func (s ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) String() string {
@@ -19068,6 +19129,11 @@ func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetMaximu
 
 func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetRetryStrategy(v *ListEventStreamingsResponseBodyDataEventStreamingsRunOptionsRetryStrategy) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions) SetThrottling(v int32) *ListEventStreamingsResponseBodyDataEventStreamingsRunOptions {
+	s.Throttling = &v
 	return s
 }
 
@@ -25841,7 +25907,11 @@ type PutTargetsRequestTargetsDeadLetterQueue struct {
 	// example:
 	//
 	// acs:mns:cn-hangzhou:123456789098****:/queues/deadletterqueue or acs:mq:cn-hangzhou:123456789098****:/instances/MQ_INST_123456789098****_BX8QbBPL/topic/deadlettertopic or acs:alikafka:cn-hangzhou:123456789098****:instance/alikafka_post-cn-123456/topic/deadlettertopic or acs:eventbridge:cn-hangzhou:123456789098****:eventbus/deadletterbus
-	Arn *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Arn             *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Network         *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	VSwitchIds      *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	VpcId           *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s PutTargetsRequestTargetsDeadLetterQueue) String() string {
@@ -25854,6 +25924,26 @@ func (s PutTargetsRequestTargetsDeadLetterQueue) GoString() string {
 
 func (s *PutTargetsRequestTargetsDeadLetterQueue) SetArn(v string) *PutTargetsRequestTargetsDeadLetterQueue {
 	s.Arn = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsDeadLetterQueue) SetNetwork(v string) *PutTargetsRequestTargetsDeadLetterQueue {
+	s.Network = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsDeadLetterQueue) SetSecurityGroupId(v string) *PutTargetsRequestTargetsDeadLetterQueue {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsDeadLetterQueue) SetVSwitchIds(v string) *PutTargetsRequestTargetsDeadLetterQueue {
+	s.VSwitchIds = &v
+	return s
+}
+
+func (s *PutTargetsRequestTargetsDeadLetterQueue) SetVpcId(v string) *PutTargetsRequestTargetsDeadLetterQueue {
+	s.VpcId = &v
 	return s
 }
 
@@ -29389,6 +29479,7 @@ type UpdateEventStreamingRequestRunOptions struct {
 	MaximumTasks *int64 `json:"MaximumTasks,omitempty" xml:"MaximumTasks,omitempty"`
 	// The retry policy that you want to use if events fail to be pushed.
 	RetryStrategy *UpdateEventStreamingRequestRunOptionsRetryStrategy `json:"RetryStrategy,omitempty" xml:"RetryStrategy,omitempty" type:"Struct"`
+	Throttling    *int32                                              `json:"Throttling,omitempty" xml:"Throttling,omitempty"`
 }
 
 func (s UpdateEventStreamingRequestRunOptions) String() string {
@@ -29421,6 +29512,11 @@ func (s *UpdateEventStreamingRequestRunOptions) SetMaximumTasks(v int64) *Update
 
 func (s *UpdateEventStreamingRequestRunOptions) SetRetryStrategy(v *UpdateEventStreamingRequestRunOptionsRetryStrategy) *UpdateEventStreamingRequestRunOptions {
 	s.RetryStrategy = v
+	return s
+}
+
+func (s *UpdateEventStreamingRequestRunOptions) SetThrottling(v int32) *UpdateEventStreamingRequestRunOptions {
+	s.Throttling = &v
 	return s
 }
 
