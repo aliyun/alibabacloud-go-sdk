@@ -10650,6 +10650,214 @@ func (s *GetTopicSubscribeStatusResponse) SetBody(v *GetTopicSubscribeStatusResp
 	return s
 }
 
+type ListRebalanceInfoRequest struct {
+	// This parameter is required.
+	//
+	// example:
+	//
+	// kafka-test
+	ConsumerId *string `json:"ConsumerId,omitempty" xml:"ConsumerId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// alikafka_pre-cn-v0h1cng0****
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListRebalanceInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRebalanceInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRebalanceInfoRequest) SetConsumerId(v string) *ListRebalanceInfoRequest {
+	s.ConsumerId = &v
+	return s
+}
+
+func (s *ListRebalanceInfoRequest) SetInstanceId(v string) *ListRebalanceInfoRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListRebalanceInfoRequest) SetRegionId(v string) *ListRebalanceInfoRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListRebalanceInfoResponseBody struct {
+	// example:
+	//
+	// 200
+	Code *int32                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *ListRebalanceInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// example:
+	//
+	// operation success.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// example:
+	//
+	// 06084011-E093-46F3-A51F-4B19A8AD****
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// example:
+	//
+	// true
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListRebalanceInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRebalanceInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRebalanceInfoResponseBody) SetCode(v int32) *ListRebalanceInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBody) SetData(v *ListRebalanceInfoResponseBodyData) *ListRebalanceInfoResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBody) SetMessage(v string) *ListRebalanceInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBody) SetRequestId(v string) *ListRebalanceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBody) SetSuccess(v bool) *ListRebalanceInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRebalanceInfoResponseBodyData struct {
+	RebalanceInfoList []*ListRebalanceInfoResponseBodyDataRebalanceInfoList `json:"RebalanceInfoList,omitempty" xml:"RebalanceInfoList,omitempty" type:"Repeated"`
+}
+
+func (s ListRebalanceInfoResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRebalanceInfoResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListRebalanceInfoResponseBodyData) SetRebalanceInfoList(v []*ListRebalanceInfoResponseBodyDataRebalanceInfoList) *ListRebalanceInfoResponseBodyData {
+	s.RebalanceInfoList = v
+	return s
+}
+
+type ListRebalanceInfoResponseBodyDataRebalanceInfoList struct {
+	// example:
+	//
+	// 100
+	Generation *int64 `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	// example:
+	//
+	// kafka-test
+	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	// example:
+	//
+	// 1709199270
+	LastRebalanceTimestamp *int64 `json:"LastRebalanceTimestamp,omitempty" xml:"LastRebalanceTimestamp,omitempty"`
+	// example:
+	//
+	// removing member consumer-1-cd14eb9c-379b-4b8e-9bbd-76f147f8536f on LeaveGroup
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// example:
+	//
+	// true
+	RebalanceSuccess *bool `json:"RebalanceSuccess,omitempty" xml:"RebalanceSuccess,omitempty"`
+	// example:
+	//
+	// 12
+	RebalanceTimeConsuming *int64 `json:"RebalanceTimeConsuming,omitempty" xml:"RebalanceTimeConsuming,omitempty"`
+}
+
+func (s ListRebalanceInfoResponseBodyDataRebalanceInfoList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRebalanceInfoResponseBodyDataRebalanceInfoList) GoString() string {
+	return s.String()
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetGeneration(v int64) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.Generation = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetGroupId(v string) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetLastRebalanceTimestamp(v int64) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.LastRebalanceTimestamp = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetReason(v string) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetRebalanceSuccess(v bool) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.RebalanceSuccess = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponseBodyDataRebalanceInfoList) SetRebalanceTimeConsuming(v int64) *ListRebalanceInfoResponseBodyDataRebalanceInfoList {
+	s.RebalanceTimeConsuming = &v
+	return s
+}
+
+type ListRebalanceInfoResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty"`
+	Body       *ListRebalanceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s ListRebalanceInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRebalanceInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRebalanceInfoResponse) SetHeaders(v map[string]*string) *ListRebalanceInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRebalanceInfoResponse) SetStatusCode(v int32) *ListRebalanceInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRebalanceInfoResponse) SetBody(v *ListRebalanceInfoResponseBody) *ListRebalanceInfoResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	// The token that determines the start point of the next query.
 	//
@@ -17896,6 +18104,74 @@ func (client *Client) GetTopicSubscribeStatus(request *GetTopicSubscribeStatusRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTopicSubscribeStatusResponse{}
 	_body, _err := client.GetTopicSubscribeStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Rebalance详情
+//
+// @param request - ListRebalanceInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRebalanceInfoResponse
+func (client *Client) ListRebalanceInfoWithOptions(request *ListRebalanceInfoRequest, runtime *util.RuntimeOptions) (_result *ListRebalanceInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsumerId)) {
+		query["ConsumerId"] = request.ConsumerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRebalanceInfo"),
+		Version:     tea.String("2019-09-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRebalanceInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 获取Rebalance详情
+//
+// @param request - ListRebalanceInfoRequest
+//
+// @return ListRebalanceInfoResponse
+func (client *Client) ListRebalanceInfo(request *ListRebalanceInfoRequest) (_result *ListRebalanceInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRebalanceInfoResponse{}
+	_body, _err := client.ListRebalanceInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
