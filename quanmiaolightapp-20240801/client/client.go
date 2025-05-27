@@ -2824,6 +2824,7 @@ type ListAnalysisTagDetailByTaskIdResponseBodyData struct {
 	Content        *string                                                     `json:"content,omitempty" xml:"content,omitempty"`
 	ContentTags    []*ListAnalysisTagDetailByTaskIdResponseBodyDataContentTags `json:"contentTags,omitempty" xml:"contentTags,omitempty" type:"Repeated"`
 	OriginResponse *string                                                     `json:"originResponse,omitempty" xml:"originResponse,omitempty"`
+	SourceList     []*string                                                   `json:"sourceList,omitempty" xml:"sourceList,omitempty" type:"Repeated"`
 }
 
 func (s ListAnalysisTagDetailByTaskIdResponseBodyData) String() string {
@@ -2846,6 +2847,11 @@ func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetContentTags(v []*List
 
 func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetOriginResponse(v string) *ListAnalysisTagDetailByTaskIdResponseBodyData {
 	s.OriginResponse = &v
+	return s
+}
+
+func (s *ListAnalysisTagDetailByTaskIdResponseBodyData) SetSourceList(v []*string) *ListAnalysisTagDetailByTaskIdResponseBodyData {
+	s.SourceList = v
 	return s
 }
 
@@ -3292,6 +3298,7 @@ type RunEnterpriseVocAnalysisRequest struct {
 	//
 	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
 	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	SourceTrace  *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	// 业务标签体系，用于对文本内容进行分类和分析。
 	Tags []*RunEnterpriseVocAnalysisRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// example:
@@ -3352,6 +3359,11 @@ func (s *RunEnterpriseVocAnalysisRequest) SetModelId(v string) *RunEnterpriseVoc
 
 func (s *RunEnterpriseVocAnalysisRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisRequest) SetSourceTrace(v bool) *RunEnterpriseVocAnalysisRequest {
+	s.SourceTrace = &v
 	return s
 }
 
@@ -3453,6 +3465,7 @@ type RunEnterpriseVocAnalysisShrinkRequest struct {
 	//
 	// 按照如下格式输出：{"text1": "xxxx", "text2": "xxxx"}
 	OutputFormat *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	SourceTrace  *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	// 业务标签体系，用于对文本内容进行分类和分析。
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// example:
@@ -3513,6 +3526,11 @@ func (s *RunEnterpriseVocAnalysisShrinkRequest) SetModelId(v string) *RunEnterpr
 
 func (s *RunEnterpriseVocAnalysisShrinkRequest) SetOutputFormat(v string) *RunEnterpriseVocAnalysisShrinkRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisShrinkRequest) SetSourceTrace(v bool) *RunEnterpriseVocAnalysisShrinkRequest {
+	s.SourceTrace = &v
 	return s
 }
 
@@ -3649,8 +3667,9 @@ func (s *RunEnterpriseVocAnalysisResponseBodyPayload) SetUsage(v *RunEnterpriseV
 }
 
 type RunEnterpriseVocAnalysisResponseBodyPayloadOutput struct {
-	FilterResult *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult `json:"filterResult,omitempty" xml:"filterResult,omitempty" type:"Struct"`
-	Text         *string                                                        `json:"text,omitempty" xml:"text,omitempty"`
+	FilterResult  *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult `json:"filterResult,omitempty" xml:"filterResult,omitempty" type:"Struct"`
+	ReasonContent *string                                                        `json:"reasonContent,omitempty" xml:"reasonContent,omitempty"`
+	Text          *string                                                        `json:"text,omitempty" xml:"text,omitempty"`
 }
 
 func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutput) String() string {
@@ -3663,6 +3682,11 @@ func (s RunEnterpriseVocAnalysisResponseBodyPayloadOutput) GoString() string {
 
 func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) SetFilterResult(v *RunEnterpriseVocAnalysisResponseBodyPayloadOutputFilterResult) *RunEnterpriseVocAnalysisResponseBodyPayloadOutput {
 	s.FilterResult = v
+	return s
+}
+
+func (s *RunEnterpriseVocAnalysisResponseBodyPayloadOutput) SetReasonContent(v string) *RunEnterpriseVocAnalysisResponseBodyPayloadOutput {
+	s.ReasonContent = &v
 	return s
 }
 
@@ -9064,6 +9088,7 @@ type SubmitEnterpriseVocAnalysisTaskRequest struct {
 	// qwen-max
 	ModelId         *string                                       `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	OutputFormat    *string                                       `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	SourceTrace     *bool                                         `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	Tags            []*SubmitEnterpriseVocAnalysisTaskRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	TaskDescription *string                                       `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
 	// example:
@@ -9112,6 +9137,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetModelId(v string) *SubmitEnt
 
 func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskRequest) SetSourceTrace(v bool) *SubmitEnterpriseVocAnalysisTaskRequest {
+	s.SourceTrace = &v
 	return s
 }
 
@@ -9225,6 +9255,7 @@ type SubmitEnterpriseVocAnalysisTaskShrinkRequest struct {
 	// qwen-max
 	ModelId         *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
 	OutputFormat    *string `json:"outputFormat,omitempty" xml:"outputFormat,omitempty"`
+	SourceTrace     *bool   `json:"sourceTrace,omitempty" xml:"sourceTrace,omitempty"`
 	TagsShrink      *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	TaskDescription *string `json:"taskDescription,omitempty" xml:"taskDescription,omitempty"`
 	// example:
@@ -9273,6 +9304,11 @@ func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetModelId(v string) *Sub
 
 func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetOutputFormat(v string) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
 	s.OutputFormat = &v
+	return s
+}
+
+func (s *SubmitEnterpriseVocAnalysisTaskShrinkRequest) SetSourceTrace(v bool) *SubmitEnterpriseVocAnalysisTaskShrinkRequest {
+	s.SourceTrace = &v
 	return s
 }
 
@@ -11408,6 +11444,10 @@ func (client *Client) RunEnterpriseVocAnalysisWithOptions(workspaceId *string, t
 		body["outputFormat"] = request.OutputFormat
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SourceTrace)) {
+		body["sourceTrace"] = request.SourceTrace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
 		body["tags"] = request.TagsShrink
 	}
@@ -12646,6 +12686,10 @@ func (client *Client) SubmitEnterpriseVocAnalysisTaskWithOptions(workspaceId *st
 
 	if !tea.BoolValue(util.IsUnset(request.OutputFormat)) {
 		body["outputFormat"] = request.OutputFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceTrace)) {
+		body["sourceTrace"] = request.SourceTrace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
